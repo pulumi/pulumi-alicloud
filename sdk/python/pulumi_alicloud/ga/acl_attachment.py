@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AclAttachmentArgs', 'AclAttachment']
@@ -25,11 +25,26 @@ class AclAttachmentArgs:
         :param pulumi.Input[str] listener_id: The ID of the listener.
         :param pulumi.Input[bool] dry_run: The dry run.
         """
-        pulumi.set(__self__, "acl_id", acl_id)
-        pulumi.set(__self__, "acl_type", acl_type)
-        pulumi.set(__self__, "listener_id", listener_id)
+        AclAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_id=acl_id,
+            acl_type=acl_type,
+            listener_id=listener_id,
+            dry_run=dry_run,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_id: pulumi.Input[str],
+             acl_type: pulumi.Input[str],
+             listener_id: pulumi.Input[str],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("acl_id", acl_id)
+        _setter("acl_type", acl_type)
+        _setter("listener_id", listener_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
 
     @property
     @pulumi.getter(name="aclId")
@@ -96,16 +111,33 @@ class _AclAttachmentState:
         :param pulumi.Input[str] listener_id: The ID of the listener.
         :param pulumi.Input[str] status: The status of the Acl Attachment.
         """
+        _AclAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_id=acl_id,
+            acl_type=acl_type,
+            dry_run=dry_run,
+            listener_id=listener_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_id: Optional[pulumi.Input[str]] = None,
+             acl_type: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acl_id is not None:
-            pulumi.set(__self__, "acl_id", acl_id)
+            _setter("acl_id", acl_id)
         if acl_type is not None:
-            pulumi.set(__self__, "acl_type", acl_type)
+            _setter("acl_type", acl_type)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if listener_id is not None:
-            pulumi.set(__self__, "listener_id", listener_id)
+            _setter("listener_id", listener_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="aclId")
@@ -313,6 +345,10 @@ class AclAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AclAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

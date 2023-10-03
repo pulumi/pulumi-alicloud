@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccountArgs', 'Account']
@@ -29,11 +29,26 @@ class AccountArgs:
                * The description must start with a letter, and cannot start with `http://` or `https://`.
                * It must be `2` to `256` characters in length, and can contain letters, digits, underscores (_), and hyphens (-).
         """
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_password", account_password)
-        pulumi.set(__self__, "instance_id", instance_id)
+        AccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_name=account_name,
+            account_password=account_password,
+            instance_id=instance_id,
+            account_description=account_description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_name: pulumi.Input[str],
+             account_password: pulumi.Input[str],
+             instance_id: pulumi.Input[str],
+             account_description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_name", account_name)
+        _setter("account_password", account_password)
+        _setter("instance_id", instance_id)
         if account_description is not None:
-            pulumi.set(__self__, "account_description", account_description)
+            _setter("account_description", account_description)
 
     @property
     @pulumi.getter(name="accountName")
@@ -108,16 +123,33 @@ class _AccountState:
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] status: The status of the account. Valid values: `Unavailable`, `Available`.
         """
+        _AccountState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_description=account_description,
+            account_name=account_name,
+            account_password=account_password,
+            instance_id=instance_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_description: Optional[pulumi.Input[str]] = None,
+             account_name: Optional[pulumi.Input[str]] = None,
+             account_password: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_description is not None:
-            pulumi.set(__self__, "account_description", account_description)
+            _setter("account_description", account_description)
         if account_name is not None:
-            pulumi.set(__self__, "account_name", account_name)
+            _setter("account_name", account_name)
         if account_password is not None:
-            pulumi.set(__self__, "account_password", account_password)
+            _setter("account_password", account_password)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accountDescription")
@@ -337,6 +369,10 @@ class Account(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

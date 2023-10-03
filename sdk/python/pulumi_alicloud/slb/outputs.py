@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -51,10 +51,21 @@ class AclEntryList(dict):
     def __init__(__self__, *,
                  comment: Optional[str] = None,
                  entry: Optional[str] = None):
+        AclEntryList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            entry=entry,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: Optional[str] = None,
+             entry: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if entry is not None:
-            pulumi.set(__self__, "entry", entry)
+            _setter("entry", entry)
 
     @property
     @pulumi.getter
@@ -93,12 +104,27 @@ class BackendServerBackendServer(dict):
                  weight: int,
                  server_ip: Optional[str] = None,
                  type: Optional[str] = None):
-        pulumi.set(__self__, "server_id", server_id)
-        pulumi.set(__self__, "weight", weight)
+        BackendServerBackendServer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_id=server_id,
+            weight=weight,
+            server_ip=server_ip,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_id: str,
+             weight: int,
+             server_ip: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("server_id", server_id)
+        _setter("weight", weight)
         if server_ip is not None:
-            pulumi.set(__self__, "server_ip", server_ip)
+            _setter("server_ip", server_ip)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="serverId")
@@ -157,14 +183,29 @@ class ListenerXForwardedFor(dict):
         :param bool retrive_slb_ip: Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
         :param bool retrive_slb_proto: Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
         """
+        ListenerXForwardedFor._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            retrive_client_ip=retrive_client_ip,
+            retrive_slb_id=retrive_slb_id,
+            retrive_slb_ip=retrive_slb_ip,
+            retrive_slb_proto=retrive_slb_proto,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             retrive_client_ip: Optional[bool] = None,
+             retrive_slb_id: Optional[bool] = None,
+             retrive_slb_ip: Optional[bool] = None,
+             retrive_slb_proto: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if retrive_client_ip is not None:
-            pulumi.set(__self__, "retrive_client_ip", retrive_client_ip)
+            _setter("retrive_client_ip", retrive_client_ip)
         if retrive_slb_id is not None:
-            pulumi.set(__self__, "retrive_slb_id", retrive_slb_id)
+            _setter("retrive_slb_id", retrive_slb_id)
         if retrive_slb_ip is not None:
-            pulumi.set(__self__, "retrive_slb_ip", retrive_slb_ip)
+            _setter("retrive_slb_ip", retrive_slb_ip)
         if retrive_slb_proto is not None:
-            pulumi.set(__self__, "retrive_slb_proto", retrive_slb_proto)
+            _setter("retrive_slb_proto", retrive_slb_proto)
 
     @property
     @pulumi.getter(name="retriveClientIp")
@@ -229,16 +270,35 @@ class MasterSlaveServerGroupServer(dict):
                  server_type: Optional[str] = None,
                  type: Optional[str] = None,
                  weight: Optional[int] = None):
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server_id", server_id)
+        MasterSlaveServerGroupServer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            server_id=server_id,
+            is_backup=is_backup,
+            server_type=server_type,
+            type=type,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: int,
+             server_id: str,
+             is_backup: Optional[int] = None,
+             server_type: Optional[str] = None,
+             type: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port", port)
+        _setter("server_id", server_id)
         if is_backup is not None:
-            pulumi.set(__self__, "is_backup", is_backup)
+            _setter("is_backup", is_backup)
         if server_type is not None:
-            pulumi.set(__self__, "server_type", server_type)
+            _setter("server_type", server_type)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -295,12 +355,27 @@ class ServerGroupServer(dict):
                  server_ids: Sequence[str],
                  type: Optional[str] = None,
                  weight: Optional[int] = None):
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server_ids", server_ids)
+        ServerGroupServer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            server_ids=server_ids,
+            type=type,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: int,
+             server_ids: Sequence[str],
+             type: Optional[str] = None,
+             weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port", port)
+        _setter("server_ids", server_ids)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -341,14 +416,35 @@ class GetAclsAclResult(dict):
         :param str resource_group_id: The Id of resource group which acl belongs.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "entry_lists", entry_lists)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_version", ip_version)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "related_listeners", related_listeners)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        GetAclsAclResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entry_lists=entry_lists,
+            id=id,
+            ip_version=ip_version,
+            name=name,
+            related_listeners=related_listeners,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entry_lists: Sequence['outputs.GetAclsAclEntryListResult'],
+             id: str,
+             ip_version: str,
+             name: str,
+             related_listeners: Sequence['outputs.GetAclsAclRelatedListenerResult'],
+             resource_group_id: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entry_lists", entry_lists)
+        _setter("id", id)
+        _setter("ip_version", ip_version)
+        _setter("name", name)
+        _setter("related_listeners", related_listeners)
+        _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="entryLists")
@@ -409,8 +505,19 @@ class GetAclsAclEntryListResult(dict):
     def __init__(__self__, *,
                  comment: str,
                  entry: str):
-        pulumi.set(__self__, "comment", comment)
-        pulumi.set(__self__, "entry", entry)
+        GetAclsAclEntryListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            entry=entry,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: str,
+             entry: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("comment", comment)
+        _setter("entry", entry)
 
     @property
     @pulumi.getter
@@ -430,10 +537,25 @@ class GetAclsAclRelatedListenerResult(dict):
                  frontend_port: int,
                  load_balancer_id: str,
                  protocol: str):
-        pulumi.set(__self__, "acl_type", acl_type)
-        pulumi.set(__self__, "frontend_port", frontend_port)
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
-        pulumi.set(__self__, "protocol", protocol)
+        GetAclsAclRelatedListenerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_type=acl_type,
+            frontend_port=frontend_port,
+            load_balancer_id=load_balancer_id,
+            protocol=protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_type: str,
+             frontend_port: int,
+             load_balancer_id: str,
+             protocol: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("acl_type", acl_type)
+        _setter("frontend_port", frontend_port)
+        _setter("load_balancer_id", load_balancer_id)
+        _setter("protocol", protocol)
 
     @property
     @pulumi.getter(name="aclType")
@@ -525,38 +647,109 @@ class GetApplicationLoadBalancersBalancerResult(dict):
         :param str vpc_id: ID of the VPC linked to the SLBs.
         :param str vswitch_id: ID of the VSwitch linked to the SLBs.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "address_ip_version", address_ip_version)
-        pulumi.set(__self__, "address_type", address_type)
-        pulumi.set(__self__, "auto_release_time", auto_release_time)
-        pulumi.set(__self__, "backend_servers", backend_servers)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "create_time_stamp", create_time_stamp)
-        pulumi.set(__self__, "delete_protection", delete_protection)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "end_time_stamp", end_time_stamp)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "listener_ports_and_protocals", listener_ports_and_protocals)
-        pulumi.set(__self__, "listener_ports_and_protocols", listener_ports_and_protocols)
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
-        pulumi.set(__self__, "load_balancer_name", load_balancer_name)
-        pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
-        pulumi.set(__self__, "master_zone_id", master_zone_id)
-        pulumi.set(__self__, "modification_protection_reason", modification_protection_reason)
-        pulumi.set(__self__, "modification_protection_status", modification_protection_status)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "region_id_alias", region_id_alias)
-        pulumi.set(__self__, "renewal_cyc_unit", renewal_cyc_unit)
-        pulumi.set(__self__, "renewal_duration", renewal_duration)
-        pulumi.set(__self__, "renewal_status", renewal_status)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "slave_zone_id", slave_zone_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetApplicationLoadBalancersBalancerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            address_ip_version=address_ip_version,
+            address_type=address_type,
+            auto_release_time=auto_release_time,
+            backend_servers=backend_servers,
+            bandwidth=bandwidth,
+            create_time_stamp=create_time_stamp,
+            delete_protection=delete_protection,
+            end_time=end_time,
+            end_time_stamp=end_time_stamp,
+            id=id,
+            internet_charge_type=internet_charge_type,
+            listener_ports_and_protocals=listener_ports_and_protocals,
+            listener_ports_and_protocols=listener_ports_and_protocols,
+            load_balancer_id=load_balancer_id,
+            load_balancer_name=load_balancer_name,
+            load_balancer_spec=load_balancer_spec,
+            master_zone_id=master_zone_id,
+            modification_protection_reason=modification_protection_reason,
+            modification_protection_status=modification_protection_status,
+            network_type=network_type,
+            payment_type=payment_type,
+            region_id_alias=region_id_alias,
+            renewal_cyc_unit=renewal_cyc_unit,
+            renewal_duration=renewal_duration,
+            renewal_status=renewal_status,
+            resource_group_id=resource_group_id,
+            slave_zone_id=slave_zone_id,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             address_ip_version: str,
+             address_type: str,
+             auto_release_time: int,
+             backend_servers: Sequence['outputs.GetApplicationLoadBalancersBalancerBackendServerResult'],
+             bandwidth: int,
+             create_time_stamp: int,
+             delete_protection: str,
+             end_time: str,
+             end_time_stamp: int,
+             id: str,
+             internet_charge_type: str,
+             listener_ports_and_protocals: Sequence['outputs.GetApplicationLoadBalancersBalancerListenerPortsAndProtocalResult'],
+             listener_ports_and_protocols: Sequence['outputs.GetApplicationLoadBalancersBalancerListenerPortsAndProtocolResult'],
+             load_balancer_id: str,
+             load_balancer_name: str,
+             load_balancer_spec: str,
+             master_zone_id: str,
+             modification_protection_reason: str,
+             modification_protection_status: str,
+             network_type: str,
+             payment_type: str,
+             region_id_alias: str,
+             renewal_cyc_unit: str,
+             renewal_duration: int,
+             renewal_status: str,
+             resource_group_id: str,
+             slave_zone_id: str,
+             status: str,
+             tags: Mapping[str, Any],
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("address_ip_version", address_ip_version)
+        _setter("address_type", address_type)
+        _setter("auto_release_time", auto_release_time)
+        _setter("backend_servers", backend_servers)
+        _setter("bandwidth", bandwidth)
+        _setter("create_time_stamp", create_time_stamp)
+        _setter("delete_protection", delete_protection)
+        _setter("end_time", end_time)
+        _setter("end_time_stamp", end_time_stamp)
+        _setter("id", id)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("listener_ports_and_protocals", listener_ports_and_protocals)
+        _setter("listener_ports_and_protocols", listener_ports_and_protocols)
+        _setter("load_balancer_id", load_balancer_id)
+        _setter("load_balancer_name", load_balancer_name)
+        _setter("load_balancer_spec", load_balancer_spec)
+        _setter("master_zone_id", master_zone_id)
+        _setter("modification_protection_reason", modification_protection_reason)
+        _setter("modification_protection_status", modification_protection_status)
+        _setter("network_type", network_type)
+        _setter("payment_type", payment_type)
+        _setter("region_id_alias", region_id_alias)
+        _setter("renewal_cyc_unit", renewal_cyc_unit)
+        _setter("renewal_duration", renewal_duration)
+        _setter("renewal_status", renewal_status)
+        _setter("resource_group_id", resource_group_id)
+        _setter("slave_zone_id", slave_zone_id)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -828,10 +1021,25 @@ class GetApplicationLoadBalancersBalancerBackendServerResult(dict):
         :param str type: The type of servers.
         :param int weight: The weight of servers.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "server_id", server_id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "weight", weight)
+        GetApplicationLoadBalancersBalancerBackendServerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            server_id=server_id,
+            type=type,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             server_id: str,
+             type: str,
+             weight: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("server_id", server_id)
+        _setter("type", type)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -875,8 +1083,19 @@ class GetApplicationLoadBalancersBalancerListenerPortsAndProtocalResult(dict):
         :param int listener_port: The listener port.
         :param str listener_protocal: The listener protoal.
         """
-        pulumi.set(__self__, "listener_port", listener_port)
-        pulumi.set(__self__, "listener_protocal", listener_protocal)
+        GetApplicationLoadBalancersBalancerListenerPortsAndProtocalResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            listener_port=listener_port,
+            listener_protocal=listener_protocal,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             listener_port: int,
+             listener_protocal: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("listener_port", listener_port)
+        _setter("listener_protocal", listener_protocal)
 
     @property
     @pulumi.getter(name="listenerPort")
@@ -910,11 +1129,28 @@ class GetApplicationLoadBalancersBalancerListenerPortsAndProtocolResult(dict):
         :param int listener_port: The listener port.
         :param str listener_protocol: The listener protocol.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "forward_port", forward_port)
-        pulumi.set(__self__, "listener_forward", listener_forward)
-        pulumi.set(__self__, "listener_port", listener_port)
-        pulumi.set(__self__, "listener_protocol", listener_protocol)
+        GetApplicationLoadBalancersBalancerListenerPortsAndProtocolResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            forward_port=forward_port,
+            listener_forward=listener_forward,
+            listener_port=listener_port,
+            listener_protocol=listener_protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             forward_port: int,
+             listener_forward: str,
+             listener_port: int,
+             listener_protocol: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("forward_port", forward_port)
+        _setter("listener_forward", listener_forward)
+        _setter("listener_port", listener_port)
+        _setter("listener_protocol", listener_protocol)
 
     @property
     @pulumi.getter
@@ -982,19 +1218,52 @@ class GetApplicationLoadBalancersSlbResult(dict):
         :param str vpc_id: ID of the VPC linked to the SLBs.
         :param str vswitch_id: ID of the VSwitch linked to the SLBs.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "internet", internet)
-        pulumi.set(__self__, "master_availability_zone", master_availability_zone)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "slave_availability_zone", slave_availability_zone)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetApplicationLoadBalancersSlbResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            creation_time=creation_time,
+            id=id,
+            internet=internet,
+            master_availability_zone=master_availability_zone,
+            name=name,
+            network_type=network_type,
+            region_id=region_id,
+            slave_availability_zone=slave_availability_zone,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             creation_time: str,
+             id: str,
+             internet: bool,
+             master_availability_zone: str,
+             name: str,
+             network_type: str,
+             region_id: str,
+             slave_availability_zone: str,
+             status: str,
+             tags: Mapping[str, Any],
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("creation_time", creation_time)
+        _setter("id", id)
+        _setter("internet", internet)
+        _setter("master_availability_zone", master_availability_zone)
+        _setter("name", name)
+        _setter("network_type", network_type)
+        _setter("region_id", region_id)
+        _setter("slave_availability_zone", slave_availability_zone)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -1092,8 +1361,19 @@ class GetAttachmentsSlbAttachmentResult(dict):
         :param str instance_id: ID of the attached ECS instance.
         :param int weight: Weight associated to the ECS instance.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "weight", weight)
+        GetAttachmentsSlbAttachmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: str,
+             weight: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -1123,9 +1403,22 @@ class GetBackendServersBackendServerResult(dict):
         :param str server_type: Type of the backend server.
         :param int weight: Weight associated to the ECS instance.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "server_type", server_type)
-        pulumi.set(__self__, "weight", weight)
+        GetBackendServersBackendServerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            server_type=server_type,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             server_type: str,
+             weight: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("server_type", server_type)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -1179,17 +1472,46 @@ class GetCaCertificatesCertificateResult(dict):
         :param str resource_group_id: The Id of resource group which ca certificates belongs.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "ca_certificate_id", ca_certificate_id)
-        pulumi.set(__self__, "ca_certificate_name", ca_certificate_name)
-        pulumi.set(__self__, "common_name", common_name)
-        pulumi.set(__self__, "created_timestamp", created_timestamp)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "expired_timestamp", expired_timestamp)
-        pulumi.set(__self__, "fingerprint", fingerprint)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "tags", tags)
+        GetCaCertificatesCertificateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_certificate_id=ca_certificate_id,
+            ca_certificate_name=ca_certificate_name,
+            common_name=common_name,
+            created_timestamp=created_timestamp,
+            expired_time=expired_time,
+            expired_timestamp=expired_timestamp,
+            fingerprint=fingerprint,
+            id=id,
+            name=name,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_certificate_id: str,
+             ca_certificate_name: str,
+             common_name: str,
+             created_timestamp: int,
+             expired_time: str,
+             expired_timestamp: int,
+             fingerprint: str,
+             id: str,
+             name: str,
+             resource_group_id: str,
+             tags: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ca_certificate_id", ca_certificate_id)
+        _setter("ca_certificate_name", ca_certificate_name)
+        _setter("common_name", common_name)
+        _setter("created_timestamp", created_timestamp)
+        _setter("expired_time", expired_time)
+        _setter("expired_timestamp", expired_timestamp)
+        _setter("fingerprint", fingerprint)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="caCertificateId")
@@ -1291,9 +1613,22 @@ class GetDomainExtensionsExtensionResult(dict):
         :param str id: The ID of the domain extension.
         :param str server_certificate_id: The ID of the certificate used by the domain name.
         """
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "server_certificate_id", server_certificate_id)
+        GetDomainExtensionsExtensionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            id=id,
+            server_certificate_id=server_certificate_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: str,
+             id: str,
+             server_certificate_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain", domain)
+        _setter("id", id)
+        _setter("server_certificate_id", server_certificate_id)
 
     @property
     @pulumi.getter
@@ -1404,46 +1739,133 @@ class GetListenersSlbListenerResult(dict):
         :param str x_forwarded_for_slb_ip: Indicate whether the HTTP header field "X-Forwarded-For_SLBIP" is added or not; it allows the backend server to know about the SLB IP address. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
         :param str x_forwarded_for_slb_proto: Indicate whether the HTTP header field "X-Forwarded-For_proto" is added or not; it allows the backend server to know about the user's protocol. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
         """
-        pulumi.set(__self__, "backend_port", backend_port)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "ca_certificate_id", ca_certificate_id)
-        pulumi.set(__self__, "cookie", cookie)
-        pulumi.set(__self__, "cookie_timeout", cookie_timeout)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enable_http2", enable_http2)
-        pulumi.set(__self__, "established_timeout", established_timeout)
-        pulumi.set(__self__, "frontend_port", frontend_port)
-        pulumi.set(__self__, "gzip", gzip)
-        pulumi.set(__self__, "health_check", health_check)
-        pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
-        pulumi.set(__self__, "health_check_connect_timeout", health_check_connect_timeout)
-        pulumi.set(__self__, "health_check_domain", health_check_domain)
-        pulumi.set(__self__, "health_check_http_code", health_check_http_code)
-        pulumi.set(__self__, "health_check_interval", health_check_interval)
-        pulumi.set(__self__, "health_check_timeout", health_check_timeout)
-        pulumi.set(__self__, "health_check_type", health_check_type)
-        pulumi.set(__self__, "health_check_uri", health_check_uri)
-        pulumi.set(__self__, "healthy_threshold", healthy_threshold)
-        pulumi.set(__self__, "idle_timeout", idle_timeout)
-        pulumi.set(__self__, "master_slave_server_group_id", master_slave_server_group_id)
-        pulumi.set(__self__, "persistence_timeout", persistence_timeout)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "proxy_protocol_v2_enabled", proxy_protocol_v2_enabled)
-        pulumi.set(__self__, "request_timeout", request_timeout)
-        pulumi.set(__self__, "scheduler", scheduler)
-        pulumi.set(__self__, "security_status", security_status)
-        pulumi.set(__self__, "server_certificate_id", server_certificate_id)
-        pulumi.set(__self__, "server_group_id", server_group_id)
-        pulumi.set(__self__, "ssl_certificate_id", ssl_certificate_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "sticky_session", sticky_session)
-        pulumi.set(__self__, "sticky_session_type", sticky_session_type)
-        pulumi.set(__self__, "tls_cipher_policy", tls_cipher_policy)
-        pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
-        pulumi.set(__self__, "x_forwarded_for", x_forwarded_for)
-        pulumi.set(__self__, "x_forwarded_for_slb_id", x_forwarded_for_slb_id)
-        pulumi.set(__self__, "x_forwarded_for_slb_ip", x_forwarded_for_slb_ip)
-        pulumi.set(__self__, "x_forwarded_for_slb_proto", x_forwarded_for_slb_proto)
+        GetListenersSlbListenerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_port=backend_port,
+            bandwidth=bandwidth,
+            ca_certificate_id=ca_certificate_id,
+            cookie=cookie,
+            cookie_timeout=cookie_timeout,
+            description=description,
+            enable_http2=enable_http2,
+            established_timeout=established_timeout,
+            frontend_port=frontend_port,
+            gzip=gzip,
+            health_check=health_check,
+            health_check_connect_port=health_check_connect_port,
+            health_check_connect_timeout=health_check_connect_timeout,
+            health_check_domain=health_check_domain,
+            health_check_http_code=health_check_http_code,
+            health_check_interval=health_check_interval,
+            health_check_timeout=health_check_timeout,
+            health_check_type=health_check_type,
+            health_check_uri=health_check_uri,
+            healthy_threshold=healthy_threshold,
+            idle_timeout=idle_timeout,
+            master_slave_server_group_id=master_slave_server_group_id,
+            persistence_timeout=persistence_timeout,
+            protocol=protocol,
+            proxy_protocol_v2_enabled=proxy_protocol_v2_enabled,
+            request_timeout=request_timeout,
+            scheduler=scheduler,
+            security_status=security_status,
+            server_certificate_id=server_certificate_id,
+            server_group_id=server_group_id,
+            ssl_certificate_id=ssl_certificate_id,
+            status=status,
+            sticky_session=sticky_session,
+            sticky_session_type=sticky_session_type,
+            tls_cipher_policy=tls_cipher_policy,
+            unhealthy_threshold=unhealthy_threshold,
+            x_forwarded_for=x_forwarded_for,
+            x_forwarded_for_slb_id=x_forwarded_for_slb_id,
+            x_forwarded_for_slb_ip=x_forwarded_for_slb_ip,
+            x_forwarded_for_slb_proto=x_forwarded_for_slb_proto,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_port: int,
+             bandwidth: int,
+             ca_certificate_id: str,
+             cookie: str,
+             cookie_timeout: int,
+             description: str,
+             enable_http2: str,
+             established_timeout: int,
+             frontend_port: int,
+             gzip: str,
+             health_check: str,
+             health_check_connect_port: int,
+             health_check_connect_timeout: int,
+             health_check_domain: str,
+             health_check_http_code: str,
+             health_check_interval: int,
+             health_check_timeout: int,
+             health_check_type: str,
+             health_check_uri: str,
+             healthy_threshold: int,
+             idle_timeout: int,
+             master_slave_server_group_id: str,
+             persistence_timeout: int,
+             protocol: str,
+             proxy_protocol_v2_enabled: bool,
+             request_timeout: int,
+             scheduler: str,
+             security_status: str,
+             server_certificate_id: str,
+             server_group_id: str,
+             ssl_certificate_id: str,
+             status: str,
+             sticky_session: str,
+             sticky_session_type: str,
+             tls_cipher_policy: str,
+             unhealthy_threshold: int,
+             x_forwarded_for: str,
+             x_forwarded_for_slb_id: str,
+             x_forwarded_for_slb_ip: str,
+             x_forwarded_for_slb_proto: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backend_port", backend_port)
+        _setter("bandwidth", bandwidth)
+        _setter("ca_certificate_id", ca_certificate_id)
+        _setter("cookie", cookie)
+        _setter("cookie_timeout", cookie_timeout)
+        _setter("description", description)
+        _setter("enable_http2", enable_http2)
+        _setter("established_timeout", established_timeout)
+        _setter("frontend_port", frontend_port)
+        _setter("gzip", gzip)
+        _setter("health_check", health_check)
+        _setter("health_check_connect_port", health_check_connect_port)
+        _setter("health_check_connect_timeout", health_check_connect_timeout)
+        _setter("health_check_domain", health_check_domain)
+        _setter("health_check_http_code", health_check_http_code)
+        _setter("health_check_interval", health_check_interval)
+        _setter("health_check_timeout", health_check_timeout)
+        _setter("health_check_type", health_check_type)
+        _setter("health_check_uri", health_check_uri)
+        _setter("healthy_threshold", healthy_threshold)
+        _setter("idle_timeout", idle_timeout)
+        _setter("master_slave_server_group_id", master_slave_server_group_id)
+        _setter("persistence_timeout", persistence_timeout)
+        _setter("protocol", protocol)
+        _setter("proxy_protocol_v2_enabled", proxy_protocol_v2_enabled)
+        _setter("request_timeout", request_timeout)
+        _setter("scheduler", scheduler)
+        _setter("security_status", security_status)
+        _setter("server_certificate_id", server_certificate_id)
+        _setter("server_group_id", server_group_id)
+        _setter("ssl_certificate_id", ssl_certificate_id)
+        _setter("status", status)
+        _setter("sticky_session", sticky_session)
+        _setter("sticky_session_type", sticky_session_type)
+        _setter("tls_cipher_policy", tls_cipher_policy)
+        _setter("unhealthy_threshold", unhealthy_threshold)
+        _setter("x_forwarded_for", x_forwarded_for)
+        _setter("x_forwarded_for_slb_id", x_forwarded_for_slb_id)
+        _setter("x_forwarded_for_slb_ip", x_forwarded_for_slb_ip)
+        _setter("x_forwarded_for_slb_proto", x_forwarded_for_slb_proto)
 
     @property
     @pulumi.getter(name="backendPort")
@@ -1817,38 +2239,109 @@ class GetLoadBalancersBalancerResult(dict):
         :param str vpc_id: ID of the VPC linked to the SLBs.
         :param str vswitch_id: ID of the VSwitch linked to the SLBs.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "address_ip_version", address_ip_version)
-        pulumi.set(__self__, "address_type", address_type)
-        pulumi.set(__self__, "auto_release_time", auto_release_time)
-        pulumi.set(__self__, "backend_servers", backend_servers)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "create_time_stamp", create_time_stamp)
-        pulumi.set(__self__, "delete_protection", delete_protection)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "end_time_stamp", end_time_stamp)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "listener_ports_and_protocals", listener_ports_and_protocals)
-        pulumi.set(__self__, "listener_ports_and_protocols", listener_ports_and_protocols)
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
-        pulumi.set(__self__, "load_balancer_name", load_balancer_name)
-        pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
-        pulumi.set(__self__, "master_zone_id", master_zone_id)
-        pulumi.set(__self__, "modification_protection_reason", modification_protection_reason)
-        pulumi.set(__self__, "modification_protection_status", modification_protection_status)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "region_id_alias", region_id_alias)
-        pulumi.set(__self__, "renewal_cyc_unit", renewal_cyc_unit)
-        pulumi.set(__self__, "renewal_duration", renewal_duration)
-        pulumi.set(__self__, "renewal_status", renewal_status)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "slave_zone_id", slave_zone_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetLoadBalancersBalancerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            address_ip_version=address_ip_version,
+            address_type=address_type,
+            auto_release_time=auto_release_time,
+            backend_servers=backend_servers,
+            bandwidth=bandwidth,
+            create_time_stamp=create_time_stamp,
+            delete_protection=delete_protection,
+            end_time=end_time,
+            end_time_stamp=end_time_stamp,
+            id=id,
+            internet_charge_type=internet_charge_type,
+            listener_ports_and_protocals=listener_ports_and_protocals,
+            listener_ports_and_protocols=listener_ports_and_protocols,
+            load_balancer_id=load_balancer_id,
+            load_balancer_name=load_balancer_name,
+            load_balancer_spec=load_balancer_spec,
+            master_zone_id=master_zone_id,
+            modification_protection_reason=modification_protection_reason,
+            modification_protection_status=modification_protection_status,
+            network_type=network_type,
+            payment_type=payment_type,
+            region_id_alias=region_id_alias,
+            renewal_cyc_unit=renewal_cyc_unit,
+            renewal_duration=renewal_duration,
+            renewal_status=renewal_status,
+            resource_group_id=resource_group_id,
+            slave_zone_id=slave_zone_id,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             address_ip_version: str,
+             address_type: str,
+             auto_release_time: int,
+             backend_servers: Sequence['outputs.GetLoadBalancersBalancerBackendServerResult'],
+             bandwidth: int,
+             create_time_stamp: int,
+             delete_protection: str,
+             end_time: str,
+             end_time_stamp: int,
+             id: str,
+             internet_charge_type: str,
+             listener_ports_and_protocals: Sequence['outputs.GetLoadBalancersBalancerListenerPortsAndProtocalResult'],
+             listener_ports_and_protocols: Sequence['outputs.GetLoadBalancersBalancerListenerPortsAndProtocolResult'],
+             load_balancer_id: str,
+             load_balancer_name: str,
+             load_balancer_spec: str,
+             master_zone_id: str,
+             modification_protection_reason: str,
+             modification_protection_status: str,
+             network_type: str,
+             payment_type: str,
+             region_id_alias: str,
+             renewal_cyc_unit: str,
+             renewal_duration: int,
+             renewal_status: str,
+             resource_group_id: str,
+             slave_zone_id: str,
+             status: str,
+             tags: Mapping[str, Any],
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("address_ip_version", address_ip_version)
+        _setter("address_type", address_type)
+        _setter("auto_release_time", auto_release_time)
+        _setter("backend_servers", backend_servers)
+        _setter("bandwidth", bandwidth)
+        _setter("create_time_stamp", create_time_stamp)
+        _setter("delete_protection", delete_protection)
+        _setter("end_time", end_time)
+        _setter("end_time_stamp", end_time_stamp)
+        _setter("id", id)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("listener_ports_and_protocals", listener_ports_and_protocals)
+        _setter("listener_ports_and_protocols", listener_ports_and_protocols)
+        _setter("load_balancer_id", load_balancer_id)
+        _setter("load_balancer_name", load_balancer_name)
+        _setter("load_balancer_spec", load_balancer_spec)
+        _setter("master_zone_id", master_zone_id)
+        _setter("modification_protection_reason", modification_protection_reason)
+        _setter("modification_protection_status", modification_protection_status)
+        _setter("network_type", network_type)
+        _setter("payment_type", payment_type)
+        _setter("region_id_alias", region_id_alias)
+        _setter("renewal_cyc_unit", renewal_cyc_unit)
+        _setter("renewal_duration", renewal_duration)
+        _setter("renewal_status", renewal_status)
+        _setter("resource_group_id", resource_group_id)
+        _setter("slave_zone_id", slave_zone_id)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -2051,10 +2544,25 @@ class GetLoadBalancersBalancerBackendServerResult(dict):
                  server_id: str,
                  type: str,
                  weight: int):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "server_id", server_id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "weight", weight)
+        GetLoadBalancersBalancerBackendServerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            server_id=server_id,
+            type=type,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             server_id: str,
+             type: str,
+             weight: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("server_id", server_id)
+        _setter("type", type)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -2082,8 +2590,19 @@ class GetLoadBalancersBalancerListenerPortsAndProtocalResult(dict):
     def __init__(__self__, *,
                  listener_port: int,
                  listener_protocal: str):
-        pulumi.set(__self__, "listener_port", listener_port)
-        pulumi.set(__self__, "listener_protocal", listener_protocal)
+        GetLoadBalancersBalancerListenerPortsAndProtocalResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            listener_port=listener_port,
+            listener_protocal=listener_protocal,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             listener_port: int,
+             listener_protocal: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("listener_port", listener_port)
+        _setter("listener_protocal", listener_protocal)
 
     @property
     @pulumi.getter(name="listenerPort")
@@ -2104,11 +2623,28 @@ class GetLoadBalancersBalancerListenerPortsAndProtocolResult(dict):
                  listener_forward: str,
                  listener_port: int,
                  listener_protocol: str):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "forward_port", forward_port)
-        pulumi.set(__self__, "listener_forward", listener_forward)
-        pulumi.set(__self__, "listener_port", listener_port)
-        pulumi.set(__self__, "listener_protocol", listener_protocol)
+        GetLoadBalancersBalancerListenerPortsAndProtocolResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            forward_port=forward_port,
+            listener_forward=listener_forward,
+            listener_port=listener_port,
+            listener_protocol=listener_protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             forward_port: int,
+             listener_forward: str,
+             listener_port: int,
+             listener_protocol: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("forward_port", forward_port)
+        _setter("listener_forward", listener_forward)
+        _setter("listener_port", listener_port)
+        _setter("listener_protocol", listener_protocol)
 
     @property
     @pulumi.getter
@@ -2176,19 +2712,52 @@ class GetLoadBalancersSlbResult(dict):
         :param str vpc_id: ID of the VPC linked to the SLBs.
         :param str vswitch_id: ID of the VSwitch linked to the SLBs.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "internet", internet)
-        pulumi.set(__self__, "master_availability_zone", master_availability_zone)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "slave_availability_zone", slave_availability_zone)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetLoadBalancersSlbResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            creation_time=creation_time,
+            id=id,
+            internet=internet,
+            master_availability_zone=master_availability_zone,
+            name=name,
+            network_type=network_type,
+            region_id=region_id,
+            slave_availability_zone=slave_availability_zone,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             creation_time: str,
+             id: str,
+             internet: bool,
+             master_availability_zone: str,
+             name: str,
+             network_type: str,
+             region_id: str,
+             slave_availability_zone: str,
+             status: str,
+             tags: Mapping[str, Any],
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("creation_time", creation_time)
+        _setter("id", id)
+        _setter("internet", internet)
+        _setter("master_availability_zone", master_availability_zone)
+        _setter("name", name)
+        _setter("network_type", network_type)
+        _setter("region_id", region_id)
+        _setter("slave_availability_zone", slave_availability_zone)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -2315,9 +2884,22 @@ class GetMasterSlaveServerGroupsGroupResult(dict):
         :param str name: master slave server group name.
         :param Sequence['GetMasterSlaveServerGroupsGroupServerArgs'] servers: ECS instances associated to the group. Each element contains the following attributes:
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "servers", servers)
+        GetMasterSlaveServerGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            servers=servers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             name: str,
+             servers: Sequence['outputs.GetMasterSlaveServerGroupsGroupServerResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("name", name)
+        _setter("servers", servers)
 
     @property
     @pulumi.getter
@@ -2359,11 +2941,28 @@ class GetMasterSlaveServerGroupsGroupServerResult(dict):
         :param str server_type: The server type of the attached ECS instance.
         :param int weight: Weight associated to the ECS instance.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "is_backup", is_backup)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server_type", server_type)
-        pulumi.set(__self__, "weight", weight)
+        GetMasterSlaveServerGroupsGroupServerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            is_backup=is_backup,
+            port=port,
+            server_type=server_type,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: str,
+             is_backup: int,
+             port: int,
+             server_type: str,
+             weight: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
+        _setter("is_backup", is_backup)
+        _setter("port", port)
+        _setter("server_type", server_type)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -2421,11 +3020,28 @@ class GetRulesSlbRuleResult(dict):
         :param str server_group_id: ID of the linked VServer group.
         :param str url: Path in the HTTP request where the rule applies (e.g. "/image").
         """
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "server_group_id", server_group_id)
-        pulumi.set(__self__, "url", url)
+        GetRulesSlbRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            id=id,
+            name=name,
+            server_group_id=server_group_id,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: str,
+             id: str,
+             name: str,
+             server_group_id: str,
+             url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain", domain)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("server_group_id", server_group_id)
+        _setter("url", url)
 
     @property
     @pulumi.getter
@@ -2501,22 +3117,57 @@ class GetServerCertificatesCertificateResult(dict):
         :param str resource_group_id: The Id of resource group which the slb server certificates belongs.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "alicloud_certificate_id", alicloud_certificate_id)
-        pulumi.set(__self__, "alicloud_certificate_name", alicloud_certificate_name)
-        pulumi.set(__self__, "common_name", common_name)
-        pulumi.set(__self__, "created_time", created_time)
-        pulumi.set(__self__, "created_timestamp", created_timestamp)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "expired_timestamp", expired_timestamp)
-        pulumi.set(__self__, "fingerprint", fingerprint)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_alicloud_certificate", is_alicloud_certificate)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "subject_alternative_names", subject_alternative_names)
+        GetServerCertificatesCertificateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alicloud_certificate_id=alicloud_certificate_id,
+            alicloud_certificate_name=alicloud_certificate_name,
+            common_name=common_name,
+            created_time=created_time,
+            created_timestamp=created_timestamp,
+            expired_time=expired_time,
+            expired_timestamp=expired_timestamp,
+            fingerprint=fingerprint,
+            id=id,
+            is_alicloud_certificate=is_alicloud_certificate,
+            name=name,
+            subject_alternative_names=subject_alternative_names,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alicloud_certificate_id: str,
+             alicloud_certificate_name: str,
+             common_name: str,
+             created_time: str,
+             created_timestamp: int,
+             expired_time: str,
+             expired_timestamp: int,
+             fingerprint: str,
+             id: str,
+             is_alicloud_certificate: bool,
+             name: str,
+             subject_alternative_names: Sequence[str],
+             resource_group_id: Optional[str] = None,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alicloud_certificate_id", alicloud_certificate_id)
+        _setter("alicloud_certificate_name", alicloud_certificate_name)
+        _setter("common_name", common_name)
+        _setter("created_time", created_time)
+        _setter("created_timestamp", created_timestamp)
+        _setter("expired_time", expired_time)
+        _setter("expired_timestamp", expired_timestamp)
+        _setter("fingerprint", fingerprint)
+        _setter("id", id)
+        _setter("is_alicloud_certificate", is_alicloud_certificate)
+        _setter("name", name)
+        _setter("subject_alternative_names", subject_alternative_names)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="alicloudCertificateId")
@@ -2642,9 +3293,22 @@ class GetServerGroupsSlbServerGroupResult(dict):
         :param str name: VServer group name.
         :param Sequence['GetServerGroupsSlbServerGroupServerArgs'] servers: ECS instances associated to the group. Each element contains the following attributes:
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "servers", servers)
+        GetServerGroupsSlbServerGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            servers=servers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             name: str,
+             servers: Sequence['outputs.GetServerGroupsSlbServerGroupServerResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("name", name)
+        _setter("servers", servers)
 
     @property
     @pulumi.getter
@@ -2680,8 +3344,19 @@ class GetServerGroupsSlbServerGroupServerResult(dict):
         :param str instance_id: ID of the attached ECS instance.
         :param int weight: Weight associated to the ECS instance.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "weight", weight)
+        GetServerGroupsSlbServerGroupServerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: str,
+             weight: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -2721,14 +3396,37 @@ class GetTlsCipherPoliciesPolicyResult(dict):
         :param str tls_cipher_policy_name: TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
         :param Sequence[str] tls_versions: The version of TLS protocol.
         """
-        pulumi.set(__self__, "ciphers", ciphers)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "relate_listeners", relate_listeners)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tls_cipher_policy_id", tls_cipher_policy_id)
-        pulumi.set(__self__, "tls_cipher_policy_name", tls_cipher_policy_name)
-        pulumi.set(__self__, "tls_versions", tls_versions)
+        GetTlsCipherPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ciphers=ciphers,
+            create_time=create_time,
+            id=id,
+            relate_listeners=relate_listeners,
+            status=status,
+            tls_cipher_policy_id=tls_cipher_policy_id,
+            tls_cipher_policy_name=tls_cipher_policy_name,
+            tls_versions=tls_versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ciphers: Sequence[str],
+             create_time: str,
+             id: str,
+             relate_listeners: Sequence['outputs.GetTlsCipherPoliciesPolicyRelateListenerResult'],
+             status: str,
+             tls_cipher_policy_id: str,
+             tls_cipher_policy_name: str,
+             tls_versions: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ciphers", ciphers)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("relate_listeners", relate_listeners)
+        _setter("status", status)
+        _setter("tls_cipher_policy_id", tls_cipher_policy_id)
+        _setter("tls_cipher_policy_name", tls_cipher_policy_name)
+        _setter("tls_versions", tls_versions)
 
     @property
     @pulumi.getter
@@ -2806,9 +3504,22 @@ class GetTlsCipherPoliciesPolicyRelateListenerResult(dict):
         :param int port: Listening port. Valid value: 1 to 65535.
         :param str protocol: Snooping protocols. Valid values: `TCP`, `UDP`, `HTTP`, or `HTTPS`.
         """
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "protocol", protocol)
+        GetTlsCipherPoliciesPolicyRelateListenerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            load_balancer_id=load_balancer_id,
+            port=port,
+            protocol=protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             load_balancer_id: str,
+             port: int,
+             protocol: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("load_balancer_id", load_balancer_id)
+        _setter("port", port)
+        _setter("protocol", protocol)
 
     @property
     @pulumi.getter(name="loadBalancerId")
@@ -2851,11 +3562,28 @@ class GetZonesZoneResult(dict):
                It has been deprecated from v1.157.0 and use `slave_zone_id` instead.
         :param Sequence['GetZonesZoneSupportedResourceArgs'] supported_resources: (Available in 1.154.0+)A list of available resource which the slb master zone supported.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "master_zone_id", master_zone_id)
-        pulumi.set(__self__, "slave_zone_id", slave_zone_id)
-        pulumi.set(__self__, "slb_slave_zone_ids", slb_slave_zone_ids)
-        pulumi.set(__self__, "supported_resources", supported_resources)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            master_zone_id=master_zone_id,
+            slave_zone_id=slave_zone_id,
+            slb_slave_zone_ids=slb_slave_zone_ids,
+            supported_resources=supported_resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             master_zone_id: str,
+             slave_zone_id: str,
+             slb_slave_zone_ids: Sequence[str],
+             supported_resources: Sequence['outputs.GetZonesZoneSupportedResourceResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("master_zone_id", master_zone_id)
+        _setter("slave_zone_id", slave_zone_id)
+        _setter("slb_slave_zone_ids", slb_slave_zone_ids)
+        _setter("supported_resources", supported_resources)
 
     @property
     @pulumi.getter
@@ -2911,8 +3639,19 @@ class GetZonesZoneSupportedResourceResult(dict):
         :param str address_ip_version: The type of IP address.
         :param str address_type: The type of network.
         """
-        pulumi.set(__self__, "address_ip_version", address_ip_version)
-        pulumi.set(__self__, "address_type", address_type)
+        GetZonesZoneSupportedResourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_ip_version=address_ip_version,
+            address_type=address_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_ip_version: str,
+             address_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address_ip_version", address_ip_version)
+        _setter("address_type", address_type)
 
     @property
     @pulumi.getter(name="addressIpVersion")

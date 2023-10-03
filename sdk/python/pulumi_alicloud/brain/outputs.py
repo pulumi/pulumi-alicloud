@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -38,16 +38,43 @@ class GetIndustrialPidLoopsLoopResult(dict):
         :param str pid_project_id: The pid project id.
         :param str status: The status of Pid Loop.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "pid_loop_configuration", pid_loop_configuration)
-        pulumi.set(__self__, "pid_loop_dcs_type", pid_loop_dcs_type)
-        pulumi.set(__self__, "pid_loop_desc", pid_loop_desc)
-        pulumi.set(__self__, "pid_loop_id", pid_loop_id)
-        pulumi.set(__self__, "pid_loop_is_crucial", pid_loop_is_crucial)
-        pulumi.set(__self__, "pid_loop_name", pid_loop_name)
-        pulumi.set(__self__, "pid_loop_type", pid_loop_type)
-        pulumi.set(__self__, "pid_project_id", pid_project_id)
-        pulumi.set(__self__, "status", status)
+        GetIndustrialPidLoopsLoopResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            pid_loop_configuration=pid_loop_configuration,
+            pid_loop_dcs_type=pid_loop_dcs_type,
+            pid_loop_desc=pid_loop_desc,
+            pid_loop_id=pid_loop_id,
+            pid_loop_is_crucial=pid_loop_is_crucial,
+            pid_loop_name=pid_loop_name,
+            pid_loop_type=pid_loop_type,
+            pid_project_id=pid_project_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             pid_loop_configuration: str,
+             pid_loop_dcs_type: str,
+             pid_loop_desc: str,
+             pid_loop_id: str,
+             pid_loop_is_crucial: bool,
+             pid_loop_name: str,
+             pid_loop_type: str,
+             pid_project_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("pid_loop_configuration", pid_loop_configuration)
+        _setter("pid_loop_dcs_type", pid_loop_dcs_type)
+        _setter("pid_loop_desc", pid_loop_desc)
+        _setter("pid_loop_id", pid_loop_id)
+        _setter("pid_loop_is_crucial", pid_loop_is_crucial)
+        _setter("pid_loop_name", pid_loop_name)
+        _setter("pid_loop_type", pid_loop_type)
+        _setter("pid_project_id", pid_project_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -139,11 +166,28 @@ class GetIndustrialPidOrganizationsOrganizationResult(dict):
         :param int pid_organization_level: The organization level.
         :param str pid_organization_name: The organization name.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "parent_pid_organization_id", parent_pid_organization_id)
-        pulumi.set(__self__, "pid_organization_id", pid_organization_id)
-        pulumi.set(__self__, "pid_organization_level", pid_organization_level)
-        pulumi.set(__self__, "pid_organization_name", pid_organization_name)
+        GetIndustrialPidOrganizationsOrganizationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            parent_pid_organization_id=parent_pid_organization_id,
+            pid_organization_id=pid_organization_id,
+            pid_organization_level=pid_organization_level,
+            pid_organization_name=pid_organization_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             parent_pid_organization_id: str,
+             pid_organization_id: str,
+             pid_organization_level: int,
+             pid_organization_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("parent_pid_organization_id", parent_pid_organization_id)
+        _setter("pid_organization_id", pid_organization_id)
+        _setter("pid_organization_level", pid_organization_level)
+        _setter("pid_organization_name", pid_organization_name)
 
     @property
     @pulumi.getter
@@ -201,11 +245,28 @@ class GetIndustrialPidProjectsProjectResult(dict):
         :param str pid_project_id: The ID of Pid Project.
         :param str pid_project_name: The name of Pid Project.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "pid_organization_id", pid_organization_id)
-        pulumi.set(__self__, "pid_project_desc", pid_project_desc)
-        pulumi.set(__self__, "pid_project_id", pid_project_id)
-        pulumi.set(__self__, "pid_project_name", pid_project_name)
+        GetIndustrialPidProjectsProjectResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            pid_organization_id=pid_organization_id,
+            pid_project_desc=pid_project_desc,
+            pid_project_id=pid_project_id,
+            pid_project_name=pid_project_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             pid_organization_id: str,
+             pid_project_desc: str,
+             pid_project_id: str,
+             pid_project_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("pid_organization_id", pid_organization_id)
+        _setter("pid_project_desc", pid_project_desc)
+        _setter("pid_project_id", pid_project_id)
+        _setter("pid_project_name", pid_project_name)
 
     @property
     @pulumi.getter

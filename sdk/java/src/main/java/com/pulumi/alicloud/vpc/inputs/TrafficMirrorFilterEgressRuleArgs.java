@@ -20,8 +20,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
      * Collection strategy for outbound rules. Value:
      * - accept: collects network traffic.
      * - drop: No network traffic is collected.
-     * - accept: collects network traffic.
-     * - drop: No network traffic is collected.
      * 
      */
     @Import(name="action", required=true)
@@ -29,8 +27,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
 
     /**
      * @return Collection strategy for outbound rules. Value:
-     * - accept: collects network traffic.
-     * - drop: No network traffic is collected.
      * - accept: collects network traffic.
      * - drop: No network traffic is collected.
      * 
@@ -57,7 +53,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
     /**
      * The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
      * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
      * 
      */
     @Import(name="destinationPortRange")
@@ -66,7 +61,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
     /**
      * @return The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
      * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
      * 
      */
     public Optional<Output<String>> destinationPortRange() {
@@ -94,10 +88,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
      * - ICMP: Network Control Message Protocol.
      * - TCP: Transmission Control Protocol.
      * - UDP: User Datagram Protocol.
-     * - ALL: ALL agreements.
-     * - ICMP: Network Control Message Protocol.
-     * - TCP: Transmission Control Protocol.
-     * - UDP: User Datagram Protocol.
      * 
      */
     @Import(name="protocol", required=true)
@@ -105,10 +95,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
 
     /**
      * @return The type of protocol used by the outbound network traffic to be mirrored. Value:
-     * - ALL: ALL agreements.
-     * - ICMP: Network Control Message Protocol.
-     * - TCP: Transmission Control Protocol.
-     * - UDP: User Datagram Protocol.
      * - ALL: ALL agreements.
      * - ICMP: Network Control Message Protocol.
      * - TCP: Transmission Control Protocol.
@@ -138,16 +124,12 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
      * The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
      * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
      * 
-     * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * 
      */
     @Import(name="sourcePortRange")
     private @Nullable Output<String> sourcePortRange;
 
     /**
      * @return The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-     * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * 
      * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
      * 
      */
@@ -197,8 +179,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
          * @param action Collection strategy for outbound rules. Value:
          * - accept: collects network traffic.
          * - drop: No network traffic is collected.
-         * - accept: collects network traffic.
-         * - drop: No network traffic is collected.
          * 
          * @return builder
          * 
@@ -210,8 +190,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
 
         /**
          * @param action Collection strategy for outbound rules. Value:
-         * - accept: collects network traffic.
-         * - drop: No network traffic is collected.
          * - accept: collects network traffic.
          * - drop: No network traffic is collected.
          * 
@@ -246,7 +224,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
         /**
          * @param destinationPortRange The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
          * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         * **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
          * 
          * @return builder
          * 
@@ -259,7 +236,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
         /**
          * @param destinationPortRange The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
          * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         * **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
          * 
          * @return builder
          * 
@@ -295,10 +271,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
          * - ICMP: Network Control Message Protocol.
          * - TCP: Transmission Control Protocol.
          * - UDP: User Datagram Protocol.
-         * - ALL: ALL agreements.
-         * - ICMP: Network Control Message Protocol.
-         * - TCP: Transmission Control Protocol.
-         * - UDP: User Datagram Protocol.
          * 
          * @return builder
          * 
@@ -310,10 +282,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
 
         /**
          * @param protocol The type of protocol used by the outbound network traffic to be mirrored. Value:
-         * - ALL: ALL agreements.
-         * - ICMP: Network Control Message Protocol.
-         * - TCP: Transmission Control Protocol.
-         * - UDP: User Datagram Protocol.
          * - ALL: ALL agreements.
          * - ICMP: Network Control Message Protocol.
          * - TCP: Transmission Control Protocol.
@@ -351,8 +319,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
          * @param sourcePortRange The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
          * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
          * 
-         * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         * 
          * @return builder
          * 
          */
@@ -363,8 +329,6 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
 
         /**
          * @param sourcePortRange The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-         * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         * 
          * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
          * 
          * @return builder

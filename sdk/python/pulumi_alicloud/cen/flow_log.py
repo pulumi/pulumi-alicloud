@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FlowLogArgs', 'FlowLog']
@@ -29,15 +29,34 @@ class FlowLogArgs:
         :param pulumi.Input[str] flow_log_name: The name of flowlog.
         :param pulumi.Input[str] status: The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
         """
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "log_store_name", log_store_name)
-        pulumi.set(__self__, "project_name", project_name)
+        FlowLogArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            log_store_name=log_store_name,
+            project_name=project_name,
+            description=description,
+            flow_log_name=flow_log_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: pulumi.Input[str],
+             log_store_name: pulumi.Input[str],
+             project_name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             flow_log_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cen_id", cen_id)
+        _setter("log_store_name", log_store_name)
+        _setter("project_name", project_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if flow_log_name is not None:
-            pulumi.set(__self__, "flow_log_name", flow_log_name)
+            _setter("flow_log_name", flow_log_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="cenId")
@@ -130,18 +149,37 @@ class _FlowLogState:
         :param pulumi.Input[str] project_name: The name of the SLS project.
         :param pulumi.Input[str] status: The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
         """
+        _FlowLogState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            description=description,
+            flow_log_name=flow_log_name,
+            log_store_name=log_store_name,
+            project_name=project_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             flow_log_name: Optional[pulumi.Input[str]] = None,
+             log_store_name: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cen_id is not None:
-            pulumi.set(__self__, "cen_id", cen_id)
+            _setter("cen_id", cen_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if flow_log_name is not None:
-            pulumi.set(__self__, "flow_log_name", flow_log_name)
+            _setter("flow_log_name", flow_log_name)
         if log_store_name is not None:
-            pulumi.set(__self__, "log_store_name", log_store_name)
+            _setter("log_store_name", log_store_name)
         if project_name is not None:
-            pulumi.set(__self__, "project_name", project_name)
+            _setter("project_name", project_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="cenId")
@@ -337,6 +375,10 @@ class FlowLog(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FlowLogArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

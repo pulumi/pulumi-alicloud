@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FcTriggerArgs', 'FcTrigger']
@@ -31,14 +31,35 @@ class FcTriggerArgs:
         :param pulumi.Input[str] trigger_arn: The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
         :param pulumi.Input[str] function_arn: The function arn. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`.
         """
-        pulumi.set(__self__, "event_meta_name", event_meta_name)
-        pulumi.set(__self__, "event_meta_version", event_meta_version)
-        pulumi.set(__self__, "notes", notes)
-        pulumi.set(__self__, "role_arn", role_arn)
-        pulumi.set(__self__, "source_arn", source_arn)
-        pulumi.set(__self__, "trigger_arn", trigger_arn)
+        FcTriggerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_meta_name=event_meta_name,
+            event_meta_version=event_meta_version,
+            notes=notes,
+            role_arn=role_arn,
+            source_arn=source_arn,
+            trigger_arn=trigger_arn,
+            function_arn=function_arn,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_meta_name: pulumi.Input[str],
+             event_meta_version: pulumi.Input[str],
+             notes: pulumi.Input[str],
+             role_arn: pulumi.Input[str],
+             source_arn: pulumi.Input[str],
+             trigger_arn: pulumi.Input[str],
+             function_arn: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("event_meta_name", event_meta_name)
+        _setter("event_meta_version", event_meta_version)
+        _setter("notes", notes)
+        _setter("role_arn", role_arn)
+        _setter("source_arn", source_arn)
+        _setter("trigger_arn", trigger_arn)
         if function_arn is not None:
-            pulumi.set(__self__, "function_arn", function_arn)
+            _setter("function_arn", function_arn)
 
     @property
     @pulumi.getter(name="eventMetaName")
@@ -145,20 +166,41 @@ class _FcTriggerState:
         :param pulumi.Input[str] source_arn: Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
         :param pulumi.Input[str] trigger_arn: The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
         """
+        _FcTriggerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_meta_name=event_meta_name,
+            event_meta_version=event_meta_version,
+            function_arn=function_arn,
+            notes=notes,
+            role_arn=role_arn,
+            source_arn=source_arn,
+            trigger_arn=trigger_arn,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_meta_name: Optional[pulumi.Input[str]] = None,
+             event_meta_version: Optional[pulumi.Input[str]] = None,
+             function_arn: Optional[pulumi.Input[str]] = None,
+             notes: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             source_arn: Optional[pulumi.Input[str]] = None,
+             trigger_arn: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if event_meta_name is not None:
-            pulumi.set(__self__, "event_meta_name", event_meta_name)
+            _setter("event_meta_name", event_meta_name)
         if event_meta_version is not None:
-            pulumi.set(__self__, "event_meta_version", event_meta_version)
+            _setter("event_meta_version", event_meta_version)
         if function_arn is not None:
-            pulumi.set(__self__, "function_arn", function_arn)
+            _setter("function_arn", function_arn)
         if notes is not None:
-            pulumi.set(__self__, "notes", notes)
+            _setter("notes", notes)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if source_arn is not None:
-            pulumi.set(__self__, "source_arn", source_arn)
+            _setter("source_arn", source_arn)
         if trigger_arn is not None:
-            pulumi.set(__self__, "trigger_arn", trigger_arn)
+            _setter("trigger_arn", trigger_arn)
 
     @property
     @pulumi.getter(name="eventMetaName")
@@ -352,6 +394,10 @@ class FcTrigger(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FcTriggerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

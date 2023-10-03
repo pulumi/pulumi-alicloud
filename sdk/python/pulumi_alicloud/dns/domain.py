@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DomainArgs', 'Domain']
@@ -23,12 +23,25 @@ class DomainArgs:
         :param pulumi.Input[str] name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the dns belongs.
         """
+        DomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            name=name,
+            resource_group_id=resource_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
 
     @property
     @pulumi.getter(name="groupId")
@@ -83,16 +96,33 @@ class _DomainState:
         :param pulumi.Input[str] name: Name of the domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the dns belongs.
         """
+        _DomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns_servers=dns_servers,
+            domain_id=domain_id,
+            group_id=group_id,
+            name=name,
+            resource_group_id=resource_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             domain_id: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dns_servers is not None:
-            pulumi.set(__self__, "dns_servers", dns_servers)
+            _setter("dns_servers", dns_servers)
         if domain_id is not None:
-            pulumi.set(__self__, "domain_id", domain_id)
+            _setter("domain_id", domain_id)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
 
     @property
     @pulumi.getter(name="dnsServers")
@@ -241,6 +271,10 @@ class Domain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

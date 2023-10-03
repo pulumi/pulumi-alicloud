@@ -32,14 +32,14 @@ public final class ApplicationScalingRuleScalingRuleTimerScheduleArgs extends co
     }
 
     /**
-     * Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+     * Maximum number of instances applied.
      * 
      */
     @Import(name="maxReplicas")
     private @Nullable Output<Integer> maxReplicas;
 
     /**
-     * @return Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+     * @return Maximum number of instances applied.
      * 
      */
     public Optional<Output<Integer>> maxReplicas() {
@@ -47,14 +47,14 @@ public final class ApplicationScalingRuleScalingRuleTimerScheduleArgs extends co
     }
 
     /**
-     * Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+     * Minimum number of instances applied.
      * 
      */
     @Import(name="minReplicas")
     private @Nullable Output<Integer> minReplicas;
 
     /**
-     * @return Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+     * @return Minimum number of instances applied.
      * 
      */
     public Optional<Output<Integer>> minReplicas() {
@@ -125,7 +125,7 @@ public final class ApplicationScalingRuleScalingRuleTimerScheduleArgs extends co
         }
 
         /**
-         * @param maxReplicas Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+         * @param maxReplicas Maximum number of instances applied.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ApplicationScalingRuleScalingRuleTimerScheduleArgs extends co
         }
 
         /**
-         * @param maxReplicas Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+         * @param maxReplicas Maximum number of instances applied.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ApplicationScalingRuleScalingRuleTimerScheduleArgs extends co
         }
 
         /**
-         * @param minReplicas Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+         * @param minReplicas Minimum number of instances applied.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ApplicationScalingRuleScalingRuleTimerScheduleArgs extends co
         }
 
         /**
-         * @param minReplicas Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+         * @param minReplicas Minimum number of instances applied.
          * 
          * @return builder
          * 

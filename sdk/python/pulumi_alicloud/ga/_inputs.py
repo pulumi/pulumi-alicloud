@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -34,10 +34,21 @@ class AclAclEntryArgs:
         :param pulumi.Input[str] entry: The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
         :param pulumi.Input[str] entry_description: The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
         """
+        AclAclEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entry=entry,
+            entry_description=entry_description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entry: Optional[pulumi.Input[str]] = None,
+             entry_description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if entry is not None:
-            pulumi.set(__self__, "entry", entry)
+            _setter("entry", entry)
         if entry_description is not None:
-            pulumi.set(__self__, "entry_description", entry_description)
+            _setter("entry_description", entry_description)
 
     @property
     @pulumi.getter
@@ -73,10 +84,21 @@ class CustomRoutingEndpointTrafficPolicyPortRangeArgs:
         :param pulumi.Input[int] from_port: The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
         :param pulumi.Input[int] to_port: The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
         """
+        CustomRoutingEndpointTrafficPolicyPortRangeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_port=from_port,
+            to_port=to_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_port: Optional[pulumi.Input[int]] = None,
+             to_port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if from_port is not None:
-            pulumi.set(__self__, "from_port", from_port)
+            _setter("from_port", from_port)
         if to_port is not None:
-            pulumi.set(__self__, "to_port", to_port)
+            _setter("to_port", to_port)
 
     @property
     @pulumi.getter(name="fromPort")
@@ -119,13 +141,30 @@ class EndpointGroupEndpointConfigurationArgs:
         :param pulumi.Input[bool] enable_clientip_preservation: Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
         :param pulumi.Input[bool] enable_proxy_protocol: Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
         """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "weight", weight)
+        EndpointGroupEndpointConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            type=type,
+            weight=weight,
+            enable_clientip_preservation=enable_clientip_preservation,
+            enable_proxy_protocol=enable_proxy_protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: pulumi.Input[str],
+             type: pulumi.Input[str],
+             weight: pulumi.Input[int],
+             enable_clientip_preservation: Optional[pulumi.Input[bool]] = None,
+             enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint", endpoint)
+        _setter("type", type)
+        _setter("weight", weight)
         if enable_clientip_preservation is not None:
-            pulumi.set(__self__, "enable_clientip_preservation", enable_clientip_preservation)
+            _setter("enable_clientip_preservation", enable_clientip_preservation)
         if enable_proxy_protocol is not None:
-            pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+            _setter("enable_proxy_protocol", enable_proxy_protocol)
 
     @property
     @pulumi.getter
@@ -198,10 +237,21 @@ class EndpointGroupPortOverridesArgs:
         :param pulumi.Input[int] endpoint_port: Forwarding port.
         :param pulumi.Input[int] listener_port: Listener port.
         """
+        EndpointGroupPortOverridesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint_port=endpoint_port,
+            listener_port=listener_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint_port: Optional[pulumi.Input[int]] = None,
+             listener_port: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if endpoint_port is not None:
-            pulumi.set(__self__, "endpoint_port", endpoint_port)
+            _setter("endpoint_port", endpoint_port)
         if listener_port is not None:
-            pulumi.set(__self__, "listener_port", listener_port)
+            _setter("listener_port", listener_port)
 
     @property
     @pulumi.getter(name="endpointPort")
@@ -242,12 +292,27 @@ class ForwardingRuleRuleActionArgs:
                > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
         :param pulumi.Input[str] rule_action_value: The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
         """
-        pulumi.set(__self__, "order", order)
-        pulumi.set(__self__, "rule_action_type", rule_action_type)
+        ForwardingRuleRuleActionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            order=order,
+            rule_action_type=rule_action_type,
+            forward_group_config=forward_group_config,
+            rule_action_value=rule_action_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             order: pulumi.Input[int],
+             rule_action_type: pulumi.Input[str],
+             forward_group_config: Optional[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigArgs']] = None,
+             rule_action_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("order", order)
+        _setter("rule_action_type", rule_action_type)
         if forward_group_config is not None:
-            pulumi.set(__self__, "forward_group_config", forward_group_config)
+            _setter("forward_group_config", forward_group_config)
         if rule_action_value is not None:
-            pulumi.set(__self__, "rule_action_value", rule_action_value)
+            _setter("rule_action_value", rule_action_value)
 
     @property
     @pulumi.getter
@@ -306,7 +371,16 @@ class ForwardingRuleRuleActionForwardGroupConfigArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs']]] server_group_tuples: The information about the endpoint group. See `server_group_tuples` below.
         """
-        pulumi.set(__self__, "server_group_tuples", server_group_tuples)
+        ForwardingRuleRuleActionForwardGroupConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_group_tuples=server_group_tuples,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_group_tuples: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("server_group_tuples", server_group_tuples)
 
     @property
     @pulumi.getter(name="serverGroupTuples")
@@ -328,7 +402,16 @@ class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs:
         """
         :param pulumi.Input[str] endpoint_group_id: The ID of the endpoint group.
         """
-        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+        ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint_group_id=endpoint_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint_group_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint_group_id", endpoint_group_id)
 
     @property
     @pulumi.getter(name="endpointGroupId")
@@ -354,11 +437,24 @@ class ForwardingRuleRuleConditionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]] host_configs: The configuration of the domain name. See `host_config` below.
         :param pulumi.Input['ForwardingRuleRuleConditionPathConfigArgs'] path_config: The configuration of the path. See `path_config` below.
         """
-        pulumi.set(__self__, "rule_condition_type", rule_condition_type)
+        ForwardingRuleRuleConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rule_condition_type=rule_condition_type,
+            host_configs=host_configs,
+            path_config=path_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rule_condition_type: pulumi.Input[str],
+             host_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]]] = None,
+             path_config: Optional[pulumi.Input['ForwardingRuleRuleConditionPathConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("rule_condition_type", rule_condition_type)
         if host_configs is not None:
-            pulumi.set(__self__, "host_configs", host_configs)
+            _setter("host_configs", host_configs)
         if path_config is not None:
-            pulumi.set(__self__, "path_config", path_config)
+            _setter("path_config", path_config)
 
     @property
     @pulumi.getter(name="ruleConditionType")
@@ -402,16 +498,25 @@ class ForwardingRuleRuleConditionHostConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
         """
+        ForwardingRuleRuleConditionHostConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+        The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
         """
         return pulumi.get(self, "values")
 
@@ -425,16 +530,25 @@ class ForwardingRuleRuleConditionPathConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
         """
+        ForwardingRuleRuleConditionPathConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+        The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
         """
         return pulumi.get(self, "values")
 
@@ -450,8 +564,17 @@ class ListenerCertificateArgs:
         """
         :param pulumi.Input[str] id: The id of the certificate.
         """
+        ListenerCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -481,16 +604,33 @@ class ListenerForwardedForConfigArgs:
         :param pulumi.Input[bool] forwarded_for_proto_enabled: Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
         :param pulumi.Input[bool] real_ip_enabled: Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
         """
+        ListenerForwardedForConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            forwarded_for_ga_ap_enabled=forwarded_for_ga_ap_enabled,
+            forwarded_for_ga_id_enabled=forwarded_for_ga_id_enabled,
+            forwarded_for_port_enabled=forwarded_for_port_enabled,
+            forwarded_for_proto_enabled=forwarded_for_proto_enabled,
+            real_ip_enabled=real_ip_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             forwarded_for_ga_ap_enabled: Optional[pulumi.Input[bool]] = None,
+             forwarded_for_ga_id_enabled: Optional[pulumi.Input[bool]] = None,
+             forwarded_for_port_enabled: Optional[pulumi.Input[bool]] = None,
+             forwarded_for_proto_enabled: Optional[pulumi.Input[bool]] = None,
+             real_ip_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if forwarded_for_ga_ap_enabled is not None:
-            pulumi.set(__self__, "forwarded_for_ga_ap_enabled", forwarded_for_ga_ap_enabled)
+            _setter("forwarded_for_ga_ap_enabled", forwarded_for_ga_ap_enabled)
         if forwarded_for_ga_id_enabled is not None:
-            pulumi.set(__self__, "forwarded_for_ga_id_enabled", forwarded_for_ga_id_enabled)
+            _setter("forwarded_for_ga_id_enabled", forwarded_for_ga_id_enabled)
         if forwarded_for_port_enabled is not None:
-            pulumi.set(__self__, "forwarded_for_port_enabled", forwarded_for_port_enabled)
+            _setter("forwarded_for_port_enabled", forwarded_for_port_enabled)
         if forwarded_for_proto_enabled is not None:
-            pulumi.set(__self__, "forwarded_for_proto_enabled", forwarded_for_proto_enabled)
+            _setter("forwarded_for_proto_enabled", forwarded_for_proto_enabled)
         if real_ip_enabled is not None:
-            pulumi.set(__self__, "real_ip_enabled", real_ip_enabled)
+            _setter("real_ip_enabled", real_ip_enabled)
 
     @property
     @pulumi.getter(name="forwardedForGaApEnabled")
@@ -562,8 +702,19 @@ class ListenerPortRangeArgs:
         :param pulumi.Input[int] from_port: The initial listening port used to receive requests and forward them to terminal nodes.
         :param pulumi.Input[int] to_port: The end listening port used to receive requests and forward them to terminal nodes.
         """
-        pulumi.set(__self__, "from_port", from_port)
-        pulumi.set(__self__, "to_port", to_port)
+        ListenerPortRangeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_port=from_port,
+            to_port=to_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_port: pulumi.Input[int],
+             to_port: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_port", from_port)
+        _setter("to_port", to_port)
 
     @property
     @pulumi.getter(name="fromPort")

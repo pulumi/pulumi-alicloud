@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -43,12 +43,29 @@ class GetConsumerGroupsGroupResult(dict):
         :param str remark: The remark of the consumer group.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the consumer group.
         """
-        pulumi.set(__self__, "consumer_id", consumer_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "remark", remark)
+        GetConsumerGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            consumer_id=consumer_id,
+            id=id,
+            instance_id=instance_id,
+            remark=remark,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             consumer_id: str,
+             id: str,
+             instance_id: str,
+             remark: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("consumer_id", consumer_id)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("remark", remark)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="consumerId")
@@ -115,16 +132,43 @@ class GetHistoryDeliveryJobsJobResult(dict):
         :param str trail_name: The name of the trail.
         :param str updated_time: The time when the task was updated.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "history_delivery_job_id", history_delivery_job_id)
-        pulumi.set(__self__, "home_region", home_region)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "job_statuses", job_statuses)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "trail_name", trail_name)
-        pulumi.set(__self__, "updated_time", updated_time)
+        GetHistoryDeliveryJobsJobResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            end_time=end_time,
+            history_delivery_job_id=history_delivery_job_id,
+            home_region=home_region,
+            id=id,
+            job_statuses=job_statuses,
+            start_time=start_time,
+            status=status,
+            trail_name=trail_name,
+            updated_time=updated_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             end_time: str,
+             history_delivery_job_id: str,
+             home_region: str,
+             id: str,
+             job_statuses: Sequence['outputs.GetHistoryDeliveryJobsJobJobStatusResult'],
+             start_time: str,
+             status: int,
+             trail_name: str,
+             updated_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("end_time", end_time)
+        _setter("history_delivery_job_id", history_delivery_job_id)
+        _setter("home_region", home_region)
+        _setter("id", id)
+        _setter("job_statuses", job_statuses)
+        _setter("start_time", start_time)
+        _setter("status", status)
+        _setter("trail_name", trail_name)
+        _setter("updated_time", updated_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -213,8 +257,19 @@ class GetHistoryDeliveryJobsJobJobStatusResult(dict):
         :param str region: The region of the delivery job.
         :param int status: The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
         """
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "status", status)
+        GetHistoryDeliveryJobsJobJobStatusResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region=region,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region: str,
+             status: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("region", region)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -296,36 +351,101 @@ class GetInstancesInstanceResult(dict):
         :param str zone_id: The ID of attaching zone to instance.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the instance.
         """
-        pulumi.set(__self__, "allowed_lists", allowed_lists)
-        pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "deploy_type", deploy_type)
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "disk_type", disk_type)
-        pulumi.set(__self__, "domain_endpoint", domain_endpoint)
-        pulumi.set(__self__, "eip_max", eip_max)
-        pulumi.set(__self__, "end_point", end_point)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "io_max", io_max)
-        pulumi.set(__self__, "msg_retain", msg_retain)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "paid_type", paid_type)
-        pulumi.set(__self__, "partition_num", partition_num)
-        pulumi.set(__self__, "sasl_domain_endpoint", sasl_domain_endpoint)
-        pulumi.set(__self__, "security_group", security_group)
-        pulumi.set(__self__, "service_status", service_status)
-        pulumi.set(__self__, "service_version", service_version)
-        pulumi.set(__self__, "spec_type", spec_type)
-        pulumi.set(__self__, "ssl_domain_endpoint", ssl_domain_endpoint)
-        pulumi.set(__self__, "ssl_end_point", ssl_end_point)
-        pulumi.set(__self__, "topic_quota", topic_quota)
-        pulumi.set(__self__, "upgrade_service_detail_infos", upgrade_service_detail_infos)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allowed_lists=allowed_lists,
+            config=config,
+            create_time=create_time,
+            deploy_type=deploy_type,
+            disk_size=disk_size,
+            disk_type=disk_type,
+            domain_endpoint=domain_endpoint,
+            eip_max=eip_max,
+            end_point=end_point,
+            expired_time=expired_time,
+            id=id,
+            io_max=io_max,
+            msg_retain=msg_retain,
+            name=name,
+            paid_type=paid_type,
+            partition_num=partition_num,
+            sasl_domain_endpoint=sasl_domain_endpoint,
+            security_group=security_group,
+            service_status=service_status,
+            service_version=service_version,
+            spec_type=spec_type,
+            ssl_domain_endpoint=ssl_domain_endpoint,
+            ssl_end_point=ssl_end_point,
+            topic_quota=topic_quota,
+            upgrade_service_detail_infos=upgrade_service_detail_infos,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allowed_lists: Sequence['outputs.GetInstancesInstanceAllowedListResult'],
+             config: str,
+             create_time: str,
+             deploy_type: int,
+             disk_size: int,
+             disk_type: int,
+             domain_endpoint: str,
+             eip_max: int,
+             end_point: str,
+             expired_time: int,
+             id: str,
+             io_max: int,
+             msg_retain: int,
+             name: str,
+             paid_type: str,
+             partition_num: int,
+             sasl_domain_endpoint: str,
+             security_group: str,
+             service_status: int,
+             service_version: str,
+             spec_type: str,
+             ssl_domain_endpoint: str,
+             ssl_end_point: str,
+             topic_quota: int,
+             upgrade_service_detail_infos: Sequence['outputs.GetInstancesInstanceUpgradeServiceDetailInfoResult'],
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allowed_lists", allowed_lists)
+        _setter("config", config)
+        _setter("create_time", create_time)
+        _setter("deploy_type", deploy_type)
+        _setter("disk_size", disk_size)
+        _setter("disk_type", disk_type)
+        _setter("domain_endpoint", domain_endpoint)
+        _setter("eip_max", eip_max)
+        _setter("end_point", end_point)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("io_max", io_max)
+        _setter("msg_retain", msg_retain)
+        _setter("name", name)
+        _setter("paid_type", paid_type)
+        _setter("partition_num", partition_num)
+        _setter("sasl_domain_endpoint", sasl_domain_endpoint)
+        _setter("security_group", security_group)
+        _setter("service_status", service_status)
+        _setter("service_version", service_version)
+        _setter("spec_type", spec_type)
+        _setter("ssl_domain_endpoint", ssl_domain_endpoint)
+        _setter("ssl_end_point", ssl_end_point)
+        _setter("topic_quota", topic_quota)
+        _setter("upgrade_service_detail_infos", upgrade_service_detail_infos)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="allowedLists")
@@ -571,9 +691,22 @@ class GetInstancesInstanceAllowedListResult(dict):
         :param Sequence['GetInstancesInstanceAllowedListInternetListArgs'] internet_lists: The internet list of the instance.
         :param Sequence['GetInstancesInstanceAllowedListVpcListArgs'] vpc_lists: The vpc list of the instance.
         """
-        pulumi.set(__self__, "deploy_type", deploy_type)
-        pulumi.set(__self__, "internet_lists", internet_lists)
-        pulumi.set(__self__, "vpc_lists", vpc_lists)
+        GetInstancesInstanceAllowedListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deploy_type=deploy_type,
+            internet_lists=internet_lists,
+            vpc_lists=vpc_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deploy_type: str,
+             internet_lists: Sequence['outputs.GetInstancesInstanceAllowedListInternetListResult'],
+             vpc_lists: Sequence['outputs.GetInstancesInstanceAllowedListVpcListResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("deploy_type", deploy_type)
+        _setter("internet_lists", internet_lists)
+        _setter("vpc_lists", vpc_lists)
 
     @property
     @pulumi.getter(name="deployType")
@@ -609,8 +742,19 @@ class GetInstancesInstanceAllowedListInternetListResult(dict):
         :param Sequence[str] allowed_ip_lists: The allowed ip list of the internet_list.
         :param str port_range: The port range of the internet_list.
         """
-        pulumi.set(__self__, "allowed_ip_lists", allowed_ip_lists)
-        pulumi.set(__self__, "port_range", port_range)
+        GetInstancesInstanceAllowedListInternetListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allowed_ip_lists=allowed_ip_lists,
+            port_range=port_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allowed_ip_lists: Sequence[str],
+             port_range: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allowed_ip_lists", allowed_ip_lists)
+        _setter("port_range", port_range)
 
     @property
     @pulumi.getter(name="allowedIpLists")
@@ -638,8 +782,19 @@ class GetInstancesInstanceAllowedListVpcListResult(dict):
         :param Sequence[str] allowed_ip_lists: The allowed ip list of the internet_list.
         :param str port_range: The port range of the internet_list.
         """
-        pulumi.set(__self__, "allowed_ip_lists", allowed_ip_lists)
-        pulumi.set(__self__, "port_range", port_range)
+        GetInstancesInstanceAllowedListVpcListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allowed_ip_lists=allowed_ip_lists,
+            port_range=port_range,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allowed_ip_lists: Sequence[str],
+             port_range: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allowed_ip_lists", allowed_ip_lists)
+        _setter("port_range", port_range)
 
     @property
     @pulumi.getter(name="allowedIpLists")
@@ -665,7 +820,16 @@ class GetInstancesInstanceUpgradeServiceDetailInfoResult(dict):
         """
         :param str current2_open_source_version: The Current2OpenSourceVersion of the instance.
         """
-        pulumi.set(__self__, "current2_open_source_version", current2_open_source_version)
+        GetInstancesInstanceUpgradeServiceDetailInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            current2_open_source_version=current2_open_source_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             current2_open_source_version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("current2_open_source_version", current2_open_source_version)
 
     @property
     @pulumi.getter(name="current2OpenSourceVersion")
@@ -693,12 +857,31 @@ class GetSaslAclsAclResult(dict):
         :param str host: The host of the sasl acl.
         :param str username: Get results for the specified username.
         """
-        pulumi.set(__self__, "acl_operation_type", acl_operation_type)
-        pulumi.set(__self__, "acl_resource_name", acl_resource_name)
-        pulumi.set(__self__, "acl_resource_pattern_type", acl_resource_pattern_type)
-        pulumi.set(__self__, "acl_resource_type", acl_resource_type)
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "username", username)
+        GetSaslAclsAclResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_operation_type=acl_operation_type,
+            acl_resource_name=acl_resource_name,
+            acl_resource_pattern_type=acl_resource_pattern_type,
+            acl_resource_type=acl_resource_type,
+            host=host,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_operation_type: str,
+             acl_resource_name: str,
+             acl_resource_pattern_type: str,
+             acl_resource_type: str,
+             host: str,
+             username: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("acl_operation_type", acl_operation_type)
+        _setter("acl_resource_name", acl_resource_name)
+        _setter("acl_resource_pattern_type", acl_resource_pattern_type)
+        _setter("acl_resource_type", acl_resource_type)
+        _setter("host", host)
+        _setter("username", username)
 
     @property
     @pulumi.getter(name="aclOperationType")
@@ -758,8 +941,19 @@ class GetSaslUsersUserResult(dict):
         :param str password: The password of the user.
         :param str username: The username of the user.
         """
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "username", username)
+        GetSaslUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            password=password,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             password: str,
+             username: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("password", password)
+        _setter("username", username)
 
     @property
     @pulumi.getter
@@ -805,18 +999,47 @@ class GetTopicsTopicResult(dict):
         :param str topic: A topic to filter results by the topic name.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the topic.
         """
-        pulumi.set(__self__, "compact_topic", compact_topic)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "local_topic", local_topic)
-        pulumi.set(__self__, "partition_num", partition_num)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "status_name", status_name)
-        pulumi.set(__self__, "topic", topic)
+        GetTopicsTopicResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compact_topic=compact_topic,
+            create_time=create_time,
+            id=id,
+            instance_id=instance_id,
+            local_topic=local_topic,
+            partition_num=partition_num,
+            remark=remark,
+            status=status,
+            status_name=status_name,
+            topic=topic,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compact_topic: bool,
+             create_time: str,
+             id: str,
+             instance_id: str,
+             local_topic: bool,
+             partition_num: int,
+             remark: str,
+             status: int,
+             status_name: str,
+             topic: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compact_topic", compact_topic)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("local_topic", local_topic)
+        _setter("partition_num", partition_num)
+        _setter("remark", remark)
+        _setter("status", status)
+        _setter("status_name", status_name)
+        _setter("topic", topic)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="compactTopic")
@@ -932,17 +1155,46 @@ class GetTrailsActiontrailResult(dict):
         :param str trail_name: The name of the ActionTrail Trail.
         :param str trail_region: The regions to which the trail is applied.
         """
-        pulumi.set(__self__, "event_rw", event_rw)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_organization_trail", is_organization_trail)
-        pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
-        pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
-        pulumi.set(__self__, "oss_write_role_arn", oss_write_role_arn)
-        pulumi.set(__self__, "sls_project_arn", sls_project_arn)
-        pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "trail_name", trail_name)
-        pulumi.set(__self__, "trail_region", trail_region)
+        GetTrailsActiontrailResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_rw=event_rw,
+            id=id,
+            is_organization_trail=is_organization_trail,
+            oss_bucket_name=oss_bucket_name,
+            oss_key_prefix=oss_key_prefix,
+            oss_write_role_arn=oss_write_role_arn,
+            sls_project_arn=sls_project_arn,
+            sls_write_role_arn=sls_write_role_arn,
+            status=status,
+            trail_name=trail_name,
+            trail_region=trail_region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_rw: str,
+             id: str,
+             is_organization_trail: bool,
+             oss_bucket_name: str,
+             oss_key_prefix: str,
+             oss_write_role_arn: str,
+             sls_project_arn: str,
+             sls_write_role_arn: str,
+             status: str,
+             trail_name: str,
+             trail_region: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("event_rw", event_rw)
+        _setter("id", id)
+        _setter("is_organization_trail", is_organization_trail)
+        _setter("oss_bucket_name", oss_bucket_name)
+        _setter("oss_key_prefix", oss_key_prefix)
+        _setter("oss_write_role_arn", oss_write_role_arn)
+        _setter("sls_project_arn", sls_project_arn)
+        _setter("sls_write_role_arn", sls_write_role_arn)
+        _setter("status", status)
+        _setter("trail_name", trail_name)
+        _setter("trail_region", trail_region)
 
     @property
     @pulumi.getter(name="eventRw")
@@ -1048,17 +1300,46 @@ class GetTrailsDeprecatedActiontrailResult(dict):
         :param str sls_project_arn: The unique ARN of the Log Service project.
         :param str sls_write_role_arn: The unique ARN of the Log Service role.
         """
-        pulumi.set(__self__, "event_rw", event_rw)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_organization_trail", is_organization_trail)
-        pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
-        pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
-        pulumi.set(__self__, "oss_write_role_arn", oss_write_role_arn)
-        pulumi.set(__self__, "sls_project_arn", sls_project_arn)
-        pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "trail_name", trail_name)
-        pulumi.set(__self__, "trail_region", trail_region)
+        GetTrailsDeprecatedActiontrailResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_rw=event_rw,
+            id=id,
+            is_organization_trail=is_organization_trail,
+            oss_bucket_name=oss_bucket_name,
+            oss_key_prefix=oss_key_prefix,
+            oss_write_role_arn=oss_write_role_arn,
+            sls_project_arn=sls_project_arn,
+            sls_write_role_arn=sls_write_role_arn,
+            status=status,
+            trail_name=trail_name,
+            trail_region=trail_region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_rw: str,
+             id: str,
+             is_organization_trail: bool,
+             oss_bucket_name: str,
+             oss_key_prefix: str,
+             oss_write_role_arn: str,
+             sls_project_arn: str,
+             sls_write_role_arn: str,
+             status: str,
+             trail_name: str,
+             trail_region: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("event_rw", event_rw)
+        _setter("id", id)
+        _setter("is_organization_trail", is_organization_trail)
+        _setter("oss_bucket_name", oss_bucket_name)
+        _setter("oss_key_prefix", oss_key_prefix)
+        _setter("oss_write_role_arn", oss_write_role_arn)
+        _setter("sls_project_arn", sls_project_arn)
+        _setter("sls_write_role_arn", sls_write_role_arn)
+        _setter("status", status)
+        _setter("trail_name", trail_name)
+        _setter("trail_region", trail_region)
 
     @property
     @pulumi.getter(name="eventRw")
@@ -1152,17 +1433,46 @@ class GetTrailsDeprecatedTrailResult(dict):
         :param str sls_project_arn: The unique ARN of the Log Service project.
         :param str sls_write_role_arn: The unique ARN of the Log Service role.
         """
-        pulumi.set(__self__, "event_rw", event_rw)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_organization_trail", is_organization_trail)
-        pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
-        pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
-        pulumi.set(__self__, "oss_write_role_arn", oss_write_role_arn)
-        pulumi.set(__self__, "sls_project_arn", sls_project_arn)
-        pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "trail_name", trail_name)
-        pulumi.set(__self__, "trail_region", trail_region)
+        GetTrailsDeprecatedTrailResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_rw=event_rw,
+            id=id,
+            is_organization_trail=is_organization_trail,
+            oss_bucket_name=oss_bucket_name,
+            oss_key_prefix=oss_key_prefix,
+            oss_write_role_arn=oss_write_role_arn,
+            sls_project_arn=sls_project_arn,
+            sls_write_role_arn=sls_write_role_arn,
+            status=status,
+            trail_name=trail_name,
+            trail_region=trail_region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_rw: str,
+             id: str,
+             is_organization_trail: bool,
+             oss_bucket_name: str,
+             oss_key_prefix: str,
+             oss_write_role_arn: str,
+             sls_project_arn: str,
+             sls_write_role_arn: str,
+             status: str,
+             trail_name: str,
+             trail_region: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("event_rw", event_rw)
+        _setter("id", id)
+        _setter("is_organization_trail", is_organization_trail)
+        _setter("oss_bucket_name", oss_bucket_name)
+        _setter("oss_key_prefix", oss_key_prefix)
+        _setter("oss_write_role_arn", oss_write_role_arn)
+        _setter("sls_project_arn", sls_project_arn)
+        _setter("sls_write_role_arn", sls_write_role_arn)
+        _setter("status", status)
+        _setter("trail_name", trail_name)
+        _setter("trail_region", trail_region)
 
     @property
     @pulumi.getter(name="eventRw")
@@ -1260,17 +1570,46 @@ class GetTrailsTrailResult(dict):
         :param str trail_name: The name of the ActionTrail Trail.
         :param str trail_region: The regions to which the trail is applied.
         """
-        pulumi.set(__self__, "event_rw", event_rw)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_organization_trail", is_organization_trail)
-        pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
-        pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
-        pulumi.set(__self__, "oss_write_role_arn", oss_write_role_arn)
-        pulumi.set(__self__, "sls_project_arn", sls_project_arn)
-        pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "trail_name", trail_name)
-        pulumi.set(__self__, "trail_region", trail_region)
+        GetTrailsTrailResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_rw=event_rw,
+            id=id,
+            is_organization_trail=is_organization_trail,
+            oss_bucket_name=oss_bucket_name,
+            oss_key_prefix=oss_key_prefix,
+            oss_write_role_arn=oss_write_role_arn,
+            sls_project_arn=sls_project_arn,
+            sls_write_role_arn=sls_write_role_arn,
+            status=status,
+            trail_name=trail_name,
+            trail_region=trail_region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_rw: str,
+             id: str,
+             is_organization_trail: bool,
+             oss_bucket_name: str,
+             oss_key_prefix: str,
+             oss_write_role_arn: str,
+             sls_project_arn: str,
+             sls_write_role_arn: str,
+             status: str,
+             trail_name: str,
+             trail_region: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("event_rw", event_rw)
+        _setter("id", id)
+        _setter("is_organization_trail", is_organization_trail)
+        _setter("oss_bucket_name", oss_bucket_name)
+        _setter("oss_key_prefix", oss_key_prefix)
+        _setter("oss_write_role_arn", oss_write_role_arn)
+        _setter("sls_project_arn", sls_project_arn)
+        _setter("sls_write_role_arn", sls_write_role_arn)
+        _setter("status", status)
+        _setter("trail_name", trail_name)
+        _setter("trail_region", trail_region)
 
     @property
     @pulumi.getter(name="eventRw")

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -38,16 +38,43 @@ class GetDeviceGroupsGroupResult(dict):
         :param str id: The ID of the device group.
         :param bool success: Whether the call is successful.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "device_active", device_active)
-        pulumi.set(__self__, "device_count", device_count)
-        pulumi.set(__self__, "device_online", device_online)
-        pulumi.set(__self__, "error_message", error_message)
-        pulumi.set(__self__, "group_desc", group_desc)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "success", success)
+        GetDeviceGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            device_active=device_active,
+            device_count=device_count,
+            device_online=device_online,
+            error_message=error_message,
+            group_desc=group_desc,
+            group_id=group_id,
+            group_name=group_name,
+            id=id,
+            success=success,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             device_active: str,
+             device_count: str,
+             device_online: str,
+             error_message: str,
+             group_desc: str,
+             group_id: str,
+             group_name: str,
+             id: str,
+             success: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("device_active", device_active)
+        _setter("device_count", device_count)
+        _setter("device_online", device_online)
+        _setter("error_message", error_message)
+        _setter("group_desc", group_desc)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
+        _setter("success", success)
 
     @property
     @pulumi.getter(name="createTime")

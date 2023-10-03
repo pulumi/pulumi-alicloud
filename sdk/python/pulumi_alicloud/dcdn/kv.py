@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['KvArgs', 'Kv']
@@ -23,9 +23,22 @@ class KvArgs:
         :param pulumi.Input[str] namespace: The name specified when the customer calls PutDcdnKvNamespace.
         :param pulumi.Input[str] value: The content of key, up to 2M(2*1000*1000).
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "value", value)
+        KvArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            namespace=namespace,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             namespace: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("namespace", namespace)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -76,12 +89,25 @@ class _KvState:
         :param pulumi.Input[str] namespace: The name specified when the customer calls PutDcdnKvNamespace.
         :param pulumi.Input[str] value: The content of key, up to 2M(2*1000*1000).
         """
+        _KvState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            namespace=namespace,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -223,6 +249,10 @@ class Kv(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KvArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

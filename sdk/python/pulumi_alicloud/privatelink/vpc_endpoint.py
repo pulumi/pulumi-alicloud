@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VpcEndpointArgs', 'VpcEndpoint']
@@ -31,18 +31,39 @@ class VpcEndpointArgs:
         :param pulumi.Input[str] service_name: The name of the terminal node service associated with the terminal node.
         :param pulumi.Input[str] vpc_endpoint_name: The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
         """
-        pulumi.set(__self__, "security_group_ids", security_group_ids)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        VpcEndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            security_group_ids=security_group_ids,
+            vpc_id=vpc_id,
+            dry_run=dry_run,
+            endpoint_description=endpoint_description,
+            service_id=service_id,
+            service_name=service_name,
+            vpc_endpoint_name=vpc_endpoint_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             vpc_id: pulumi.Input[str],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             endpoint_description: Optional[pulumi.Input[str]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("security_group_ids", security_group_ids)
+        _setter("vpc_id", vpc_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if endpoint_description is not None:
-            pulumi.set(__self__, "endpoint_description", endpoint_description)
+            _setter("endpoint_description", endpoint_description)
         if service_id is not None:
-            pulumi.set(__self__, "service_id", service_id)
+            _setter("service_id", service_id)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if vpc_endpoint_name is not None:
-            pulumi.set(__self__, "vpc_endpoint_name", vpc_endpoint_name)
+            _setter("vpc_endpoint_name", vpc_endpoint_name)
 
     @property
     @pulumi.getter(name="securityGroupIds")
@@ -159,30 +180,61 @@ class _VpcEndpointState:
         :param pulumi.Input[str] vpc_endpoint_name: The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
         :param pulumi.Input[str] vpc_id: The private network to which the terminal node belongs.
         """
+        _VpcEndpointState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            connection_status=connection_status,
+            dry_run=dry_run,
+            endpoint_business_status=endpoint_business_status,
+            endpoint_description=endpoint_description,
+            endpoint_domain=endpoint_domain,
+            security_group_ids=security_group_ids,
+            service_id=service_id,
+            service_name=service_name,
+            status=status,
+            vpc_endpoint_name=vpc_endpoint_name,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             connection_status: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             endpoint_business_status: Optional[pulumi.Input[str]] = None,
+             endpoint_description: Optional[pulumi.Input[str]] = None,
+             endpoint_domain: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_id: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if connection_status is not None:
-            pulumi.set(__self__, "connection_status", connection_status)
+            _setter("connection_status", connection_status)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if endpoint_business_status is not None:
-            pulumi.set(__self__, "endpoint_business_status", endpoint_business_status)
+            _setter("endpoint_business_status", endpoint_business_status)
         if endpoint_description is not None:
-            pulumi.set(__self__, "endpoint_description", endpoint_description)
+            _setter("endpoint_description", endpoint_description)
         if endpoint_domain is not None:
-            pulumi.set(__self__, "endpoint_domain", endpoint_domain)
+            _setter("endpoint_domain", endpoint_domain)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if service_id is not None:
-            pulumi.set(__self__, "service_id", service_id)
+            _setter("service_id", service_id)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vpc_endpoint_name is not None:
-            pulumi.set(__self__, "vpc_endpoint_name", vpc_endpoint_name)
+            _setter("vpc_endpoint_name", vpc_endpoint_name)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter
@@ -452,6 +504,10 @@ class VpcEndpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VpcEndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

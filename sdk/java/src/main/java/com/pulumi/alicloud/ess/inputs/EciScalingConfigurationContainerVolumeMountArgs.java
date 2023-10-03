@@ -19,7 +19,6 @@ public final class EciScalingConfigurationContainerVolumeMountArgs extends com.p
     /**
      * The directory of the mounted volume. Data under this directory will be overwritten by the
      * data in the volume.
-     * data in the volume.
      * 
      */
     @Import(name="mountPath")
@@ -28,7 +27,6 @@ public final class EciScalingConfigurationContainerVolumeMountArgs extends com.p
     /**
      * @return The directory of the mounted volume. Data under this directory will be overwritten by the
      * data in the volume.
-     * data in the volume.
      * 
      */
     public Optional<Output<String>> mountPath() {
@@ -36,14 +34,14 @@ public final class EciScalingConfigurationContainerVolumeMountArgs extends com.p
     }
 
     /**
-     * The name of the volume.
+     * The name of the mounted volume.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the volume.
+     * @return The name of the mounted volume.
      * 
      */
     public Optional<Output<String>> name() {
@@ -94,7 +92,6 @@ public final class EciScalingConfigurationContainerVolumeMountArgs extends com.p
         /**
          * @param mountPath The directory of the mounted volume. Data under this directory will be overwritten by the
          * data in the volume.
-         * data in the volume.
          * 
          * @return builder
          * 
@@ -107,7 +104,6 @@ public final class EciScalingConfigurationContainerVolumeMountArgs extends com.p
         /**
          * @param mountPath The directory of the mounted volume. Data under this directory will be overwritten by the
          * data in the volume.
-         * data in the volume.
          * 
          * @return builder
          * 
@@ -117,7 +113,7 @@ public final class EciScalingConfigurationContainerVolumeMountArgs extends com.p
         }
 
         /**
-         * @param name The name of the volume.
+         * @param name The name of the mounted volume.
          * 
          * @return builder
          * 
@@ -128,7 +124,7 @@ public final class EciScalingConfigurationContainerVolumeMountArgs extends com.p
         }
 
         /**
-         * @param name The name of the volume.
+         * @param name The name of the mounted volume.
          * 
          * @return builder
          * 

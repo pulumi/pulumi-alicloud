@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NasBackupPlanArgs', 'NasBackupPlan']
@@ -45,28 +45,61 @@ class NasBackupPlanArgs:
         :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`.
         :param pulumi.Input[str] options: This parameter specifies whether to use Windows VSS to define a backup path.
         """
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "nas_backup_plan_name", nas_backup_plan_name)
-        pulumi.set(__self__, "paths", paths)
-        pulumi.set(__self__, "retention", retention)
-        pulumi.set(__self__, "schedule", schedule)
-        pulumi.set(__self__, "vault_id", vault_id)
+        NasBackupPlanArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_type=backup_type,
+            file_system_id=file_system_id,
+            nas_backup_plan_name=nas_backup_plan_name,
+            paths=paths,
+            retention=retention,
+            schedule=schedule,
+            vault_id=vault_id,
+            create_time=create_time,
+            cross_account_role_name=cross_account_role_name,
+            cross_account_type=cross_account_type,
+            cross_account_user_id=cross_account_user_id,
+            disabled=disabled,
+            options=options,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_type: pulumi.Input[str],
+             file_system_id: pulumi.Input[str],
+             nas_backup_plan_name: pulumi.Input[str],
+             paths: pulumi.Input[Sequence[pulumi.Input[str]]],
+             retention: pulumi.Input[str],
+             schedule: pulumi.Input[str],
+             vault_id: pulumi.Input[str],
+             create_time: Optional[pulumi.Input[str]] = None,
+             cross_account_role_name: Optional[pulumi.Input[str]] = None,
+             cross_account_type: Optional[pulumi.Input[str]] = None,
+             cross_account_user_id: Optional[pulumi.Input[int]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             options: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_type", backup_type)
+        _setter("file_system_id", file_system_id)
+        _setter("nas_backup_plan_name", nas_backup_plan_name)
+        _setter("paths", paths)
+        _setter("retention", retention)
+        _setter("schedule", schedule)
+        _setter("vault_id", vault_id)
         if create_time is not None:
             warnings.warn("""Field 'create_time' has been deprecated from provider version 1.153.0.""", DeprecationWarning)
             pulumi.log.warn("""create_time is deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.""")
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if cross_account_role_name is not None:
-            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+            _setter("cross_account_role_name", cross_account_role_name)
         if cross_account_type is not None:
-            pulumi.set(__self__, "cross_account_type", cross_account_type)
+            _setter("cross_account_type", cross_account_type)
         if cross_account_user_id is not None:
-            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
+            _setter("cross_account_user_id", cross_account_user_id)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
 
     @property
     @pulumi.getter(name="backupType")
@@ -264,35 +297,68 @@ class _NasBackupPlanState:
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
+        _NasBackupPlanState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_type=backup_type,
+            create_time=create_time,
+            cross_account_role_name=cross_account_role_name,
+            cross_account_type=cross_account_type,
+            cross_account_user_id=cross_account_user_id,
+            disabled=disabled,
+            file_system_id=file_system_id,
+            nas_backup_plan_name=nas_backup_plan_name,
+            options=options,
+            paths=paths,
+            retention=retention,
+            schedule=schedule,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_type: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             cross_account_role_name: Optional[pulumi.Input[str]] = None,
+             cross_account_type: Optional[pulumi.Input[str]] = None,
+             cross_account_user_id: Optional[pulumi.Input[int]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             nas_backup_plan_name: Optional[pulumi.Input[str]] = None,
+             options: Optional[pulumi.Input[str]] = None,
+             paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             retention: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
+             vault_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backup_type is not None:
-            pulumi.set(__self__, "backup_type", backup_type)
+            _setter("backup_type", backup_type)
         if create_time is not None:
             warnings.warn("""Field 'create_time' has been deprecated from provider version 1.153.0.""", DeprecationWarning)
             pulumi.log.warn("""create_time is deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.""")
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if cross_account_role_name is not None:
-            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+            _setter("cross_account_role_name", cross_account_role_name)
         if cross_account_type is not None:
-            pulumi.set(__self__, "cross_account_type", cross_account_type)
+            _setter("cross_account_type", cross_account_type)
         if cross_account_user_id is not None:
-            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
+            _setter("cross_account_user_id", cross_account_user_id)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if file_system_id is not None:
-            pulumi.set(__self__, "file_system_id", file_system_id)
+            _setter("file_system_id", file_system_id)
         if nas_backup_plan_name is not None:
-            pulumi.set(__self__, "nas_backup_plan_name", nas_backup_plan_name)
+            _setter("nas_backup_plan_name", nas_backup_plan_name)
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
         if paths is not None:
-            pulumi.set(__self__, "paths", paths)
+            _setter("paths", paths)
         if retention is not None:
-            pulumi.set(__self__, "retention", retention)
+            _setter("retention", retention)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if vault_id is not None:
-            pulumi.set(__self__, "vault_id", vault_id)
+            _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupType")
@@ -587,6 +653,10 @@ class NasBackupPlan(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NasBackupPlanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -617,9 +687,6 @@ class NasBackupPlan(pulumi.CustomResource):
             if backup_type is None and not opts.urn:
                 raise TypeError("Missing required property 'backup_type'")
             __props__.__dict__["backup_type"] = backup_type
-            if create_time is not None and not opts.urn:
-                warnings.warn("""Field 'create_time' has been deprecated from provider version 1.153.0.""", DeprecationWarning)
-                pulumi.log.warn("""create_time is deprecated: Field 'create_time' has been deprecated from provider version 1.153.0.""")
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["cross_account_role_name"] = cross_account_role_name
             __props__.__dict__["cross_account_type"] = cross_account_type

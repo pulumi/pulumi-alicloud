@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SnapshotArgs', 'Snapshot']
@@ -27,15 +27,32 @@ class SnapshotArgs:
         :param pulumi.Input[int] retention_days: The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
         :param pulumi.Input[str] snapshot_name: The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
+        SnapshotArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            description=description,
+            force=force,
+            retention_days=retention_days,
+            snapshot_name=snapshot_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             retention_days: Optional[pulumi.Input[int]] = None,
+             snapshot_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if retention_days is not None:
-            pulumi.set(__self__, "retention_days", retention_days)
+            _setter("retention_days", retention_days)
         if snapshot_name is not None:
-            pulumi.set(__self__, "snapshot_name", snapshot_name)
+            _setter("snapshot_name", snapshot_name)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -116,18 +133,37 @@ class _SnapshotState:
         :param pulumi.Input[str] snapshot_name: The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
         :param pulumi.Input[str] status: The status of the Snapshot.
         """
+        _SnapshotState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            force=force,
+            instance_id=instance_id,
+            retention_days=retention_days,
+            snapshot_name=snapshot_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             retention_days: Optional[pulumi.Input[int]] = None,
+             snapshot_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if retention_days is not None:
-            pulumi.set(__self__, "retention_days", retention_days)
+            _setter("retention_days", retention_days)
         if snapshot_name is not None:
-            pulumi.set(__self__, "snapshot_name", snapshot_name)
+            _setter("snapshot_name", snapshot_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -369,6 +405,10 @@ class Snapshot(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SnapshotArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

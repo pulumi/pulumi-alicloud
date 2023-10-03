@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -72,33 +72,94 @@ class GetBackupPlansPlanResult(dict):
         :param str source_endpoint_user_name: The source endpoint username.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "backup_gateway_id", backup_gateway_id)
-        pulumi.set(__self__, "backup_method", backup_method)
-        pulumi.set(__self__, "backup_objects", backup_objects)
-        pulumi.set(__self__, "backup_period", backup_period)
-        pulumi.set(__self__, "backup_plan_id", backup_plan_id)
-        pulumi.set(__self__, "backup_plan_name", backup_plan_name)
-        pulumi.set(__self__, "backup_retention_period", backup_retention_period)
-        pulumi.set(__self__, "backup_start_time", backup_start_time)
-        pulumi.set(__self__, "backup_storage_type", backup_storage_type)
-        pulumi.set(__self__, "cross_aliyun_id", cross_aliyun_id)
-        pulumi.set(__self__, "cross_role_name", cross_role_name)
-        pulumi.set(__self__, "database_type", database_type)
-        pulumi.set(__self__, "duplication_archive_period", duplication_archive_period)
-        pulumi.set(__self__, "duplication_infrequent_access_period", duplication_infrequent_access_period)
-        pulumi.set(__self__, "enable_backup_log", enable_backup_log)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
-        pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
-        pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
-        pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
-        pulumi.set(__self__, "source_endpoint_sid", source_endpoint_sid)
-        pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
-        pulumi.set(__self__, "status", status)
+        GetBackupPlansPlanResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_gateway_id=backup_gateway_id,
+            backup_method=backup_method,
+            backup_objects=backup_objects,
+            backup_period=backup_period,
+            backup_plan_id=backup_plan_id,
+            backup_plan_name=backup_plan_name,
+            backup_retention_period=backup_retention_period,
+            backup_start_time=backup_start_time,
+            backup_storage_type=backup_storage_type,
+            cross_aliyun_id=cross_aliyun_id,
+            cross_role_name=cross_role_name,
+            database_type=database_type,
+            duplication_archive_period=duplication_archive_period,
+            duplication_infrequent_access_period=duplication_infrequent_access_period,
+            enable_backup_log=enable_backup_log,
+            id=id,
+            instance_class=instance_class,
+            oss_bucket_name=oss_bucket_name,
+            payment_type=payment_type,
+            resource_group_id=resource_group_id,
+            source_endpoint_database_name=source_endpoint_database_name,
+            source_endpoint_instance_id=source_endpoint_instance_id,
+            source_endpoint_instance_type=source_endpoint_instance_type,
+            source_endpoint_region=source_endpoint_region,
+            source_endpoint_sid=source_endpoint_sid,
+            source_endpoint_user_name=source_endpoint_user_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_gateway_id: str,
+             backup_method: str,
+             backup_objects: str,
+             backup_period: str,
+             backup_plan_id: str,
+             backup_plan_name: str,
+             backup_retention_period: int,
+             backup_start_time: str,
+             backup_storage_type: str,
+             cross_aliyun_id: str,
+             cross_role_name: str,
+             database_type: str,
+             duplication_archive_period: int,
+             duplication_infrequent_access_period: int,
+             enable_backup_log: bool,
+             id: str,
+             instance_class: str,
+             oss_bucket_name: str,
+             payment_type: str,
+             resource_group_id: str,
+             source_endpoint_database_name: str,
+             source_endpoint_instance_id: str,
+             source_endpoint_instance_type: str,
+             source_endpoint_region: str,
+             source_endpoint_sid: str,
+             source_endpoint_user_name: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_gateway_id", backup_gateway_id)
+        _setter("backup_method", backup_method)
+        _setter("backup_objects", backup_objects)
+        _setter("backup_period", backup_period)
+        _setter("backup_plan_id", backup_plan_id)
+        _setter("backup_plan_name", backup_plan_name)
+        _setter("backup_retention_period", backup_retention_period)
+        _setter("backup_start_time", backup_start_time)
+        _setter("backup_storage_type", backup_storage_type)
+        _setter("cross_aliyun_id", cross_aliyun_id)
+        _setter("cross_role_name", cross_role_name)
+        _setter("database_type", database_type)
+        _setter("duplication_archive_period", duplication_archive_period)
+        _setter("duplication_infrequent_access_period", duplication_infrequent_access_period)
+        _setter("enable_backup_log", enable_backup_log)
+        _setter("id", id)
+        _setter("instance_class", instance_class)
+        _setter("oss_bucket_name", oss_bucket_name)
+        _setter("payment_type", payment_type)
+        _setter("resource_group_id", resource_group_id)
+        _setter("source_endpoint_database_name", source_endpoint_database_name)
+        _setter("source_endpoint_instance_id", source_endpoint_instance_id)
+        _setter("source_endpoint_instance_type", source_endpoint_instance_type)
+        _setter("source_endpoint_region", source_endpoint_region)
+        _setter("source_endpoint_sid", source_endpoint_sid)
+        _setter("source_endpoint_user_name", source_endpoint_user_name)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="backupGatewayId")

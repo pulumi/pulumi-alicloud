@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['StorageCapacityUnitArgs', 'StorageCapacityUnit']
@@ -31,17 +31,36 @@ class StorageCapacityUnitArgs:
         :param pulumi.Input[str] start_time: The time when the Storage Capacity Unit takes effect. It cannot be earlier than or more than six months later than the time when the Storage Capacity Unit is created. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC. **NOTE:** This parameter is empty by default. The Storage Capacity Unit immediately takes effect after it is created.
         :param pulumi.Input[str] storage_capacity_unit_name: The name of the Storage Capacity Unit.
         """
-        pulumi.set(__self__, "capacity", capacity)
+        StorageCapacityUnitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capacity=capacity,
+            description=description,
+            period=period,
+            period_unit=period_unit,
+            start_time=start_time,
+            storage_capacity_unit_name=storage_capacity_unit_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capacity: pulumi.Input[int],
+             description: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             storage_capacity_unit_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("capacity", capacity)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if storage_capacity_unit_name is not None:
-            pulumi.set(__self__, "storage_capacity_unit_name", storage_capacity_unit_name)
+            _setter("storage_capacity_unit_name", storage_capacity_unit_name)
 
     @property
     @pulumi.getter
@@ -140,20 +159,41 @@ class _StorageCapacityUnitState:
         :param pulumi.Input[str] status: The status of Storage Capacity Unit.
         :param pulumi.Input[str] storage_capacity_unit_name: The name of the Storage Capacity Unit.
         """
+        _StorageCapacityUnitState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capacity=capacity,
+            description=description,
+            period=period,
+            period_unit=period_unit,
+            start_time=start_time,
+            status=status,
+            storage_capacity_unit_name=storage_capacity_unit_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capacity: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             start_time: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             storage_capacity_unit_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if capacity is not None:
-            pulumi.set(__self__, "capacity", capacity)
+            _setter("capacity", capacity)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if storage_capacity_unit_name is not None:
-            pulumi.set(__self__, "storage_capacity_unit_name", storage_capacity_unit_name)
+            _setter("storage_capacity_unit_name", storage_capacity_unit_name)
 
     @property
     @pulumi.getter
@@ -339,6 +379,10 @@ class StorageCapacityUnit(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            StorageCapacityUnitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

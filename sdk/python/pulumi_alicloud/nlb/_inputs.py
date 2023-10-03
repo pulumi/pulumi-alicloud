@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -33,18 +33,39 @@ class LoadBalancerZoneMappingArgs:
         :param pulumi.Input[str] private_ipv4_address: The private IPv4 address of the NLB instance.
         :param pulumi.Input[str] public_ipv4_address: The public IPv4 address of the NLB instance.
         """
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        LoadBalancerZoneMappingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+            allocation_id=allocation_id,
+            eni_id=eni_id,
+            ipv6_address=ipv6_address,
+            private_ipv4_address=private_ipv4_address,
+            public_ipv4_address=public_ipv4_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vswitch_id: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             allocation_id: Optional[pulumi.Input[str]] = None,
+             eni_id: Optional[pulumi.Input[str]] = None,
+             ipv6_address: Optional[pulumi.Input[str]] = None,
+             private_ipv4_address: Optional[pulumi.Input[str]] = None,
+             public_ipv4_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
         if allocation_id is not None:
-            pulumi.set(__self__, "allocation_id", allocation_id)
+            _setter("allocation_id", allocation_id)
         if eni_id is not None:
-            pulumi.set(__self__, "eni_id", eni_id)
+            _setter("eni_id", eni_id)
         if ipv6_address is not None:
-            pulumi.set(__self__, "ipv6_address", ipv6_address)
+            _setter("ipv6_address", ipv6_address)
         if private_ipv4_address is not None:
-            pulumi.set(__self__, "private_ipv4_address", private_ipv4_address)
+            _setter("private_ipv4_address", private_ipv4_address)
         if public_ipv4_address is not None:
-            pulumi.set(__self__, "public_ipv4_address", public_ipv4_address)
+            _setter("public_ipv4_address", public_ipv4_address)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -159,28 +180,57 @@ class ServerGroupHealthCheckArgs:
         :param pulumi.Input[str] http_check_method: The HTTP method that is used for health checks. Valid values: `GET` and `HEAD`. **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
         :param pulumi.Input[int] unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from success to fail. Valid values: 2 to 10. Default value: 2.
         """
+        ServerGroupHealthCheckArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            health_check_connect_port=health_check_connect_port,
+            health_check_connect_timeout=health_check_connect_timeout,
+            health_check_domain=health_check_domain,
+            health_check_enabled=health_check_enabled,
+            health_check_http_codes=health_check_http_codes,
+            health_check_interval=health_check_interval,
+            health_check_type=health_check_type,
+            health_check_url=health_check_url,
+            healthy_threshold=healthy_threshold,
+            http_check_method=http_check_method,
+            unhealthy_threshold=unhealthy_threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             health_check_connect_port: Optional[pulumi.Input[int]] = None,
+             health_check_connect_timeout: Optional[pulumi.Input[int]] = None,
+             health_check_domain: Optional[pulumi.Input[str]] = None,
+             health_check_enabled: Optional[pulumi.Input[bool]] = None,
+             health_check_http_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             health_check_interval: Optional[pulumi.Input[int]] = None,
+             health_check_type: Optional[pulumi.Input[str]] = None,
+             health_check_url: Optional[pulumi.Input[str]] = None,
+             healthy_threshold: Optional[pulumi.Input[int]] = None,
+             http_check_method: Optional[pulumi.Input[str]] = None,
+             unhealthy_threshold: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if health_check_connect_port is not None:
-            pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
+            _setter("health_check_connect_port", health_check_connect_port)
         if health_check_connect_timeout is not None:
-            pulumi.set(__self__, "health_check_connect_timeout", health_check_connect_timeout)
+            _setter("health_check_connect_timeout", health_check_connect_timeout)
         if health_check_domain is not None:
-            pulumi.set(__self__, "health_check_domain", health_check_domain)
+            _setter("health_check_domain", health_check_domain)
         if health_check_enabled is not None:
-            pulumi.set(__self__, "health_check_enabled", health_check_enabled)
+            _setter("health_check_enabled", health_check_enabled)
         if health_check_http_codes is not None:
-            pulumi.set(__self__, "health_check_http_codes", health_check_http_codes)
+            _setter("health_check_http_codes", health_check_http_codes)
         if health_check_interval is not None:
-            pulumi.set(__self__, "health_check_interval", health_check_interval)
+            _setter("health_check_interval", health_check_interval)
         if health_check_type is not None:
-            pulumi.set(__self__, "health_check_type", health_check_type)
+            _setter("health_check_type", health_check_type)
         if health_check_url is not None:
-            pulumi.set(__self__, "health_check_url", health_check_url)
+            _setter("health_check_url", health_check_url)
         if healthy_threshold is not None:
-            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+            _setter("healthy_threshold", healthy_threshold)
         if http_check_method is not None:
-            pulumi.set(__self__, "http_check_method", http_check_method)
+            _setter("http_check_method", http_check_method)
         if unhealthy_threshold is not None:
-            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+            _setter("unhealthy_threshold", unhealthy_threshold)
 
     @property
     @pulumi.getter(name="healthCheckConnectPort")

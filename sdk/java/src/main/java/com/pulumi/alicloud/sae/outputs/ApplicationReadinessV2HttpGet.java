@@ -29,7 +29,7 @@ public final class ApplicationReadinessV2HttpGet {
      */
     private @Nullable String path;
     /**
-     * @return The port that is used to check the status of TCP connections.
+     * @return The port.
      * 
      */
     private @Nullable Integer port;
@@ -62,7 +62,7 @@ public final class ApplicationReadinessV2HttpGet {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return The port that is used to check the status of TCP connections.
+     * @return The port.
      * 
      */
     public Optional<Integer> port() {

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HanaInstanceArgs', 'HanaInstance']
@@ -41,29 +41,60 @@ class HanaInstanceArgs:
         :param pulumi.Input[str] user_name: The username of the SYSTEMDB database.
         :param pulumi.Input[bool] validate_certificate: Specifies whether to verify the SSL certificate of the SAP HANA database.
         """
-        pulumi.set(__self__, "vault_id", vault_id)
+        HanaInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vault_id=vault_id,
+            alert_setting=alert_setting,
+            ecs_instance_ids=ecs_instance_ids,
+            hana_name=hana_name,
+            host=host,
+            instance_number=instance_number,
+            password=password,
+            resource_group_id=resource_group_id,
+            sid=sid,
+            use_ssl=use_ssl,
+            user_name=user_name,
+            validate_certificate=validate_certificate,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vault_id: pulumi.Input[str],
+             alert_setting: Optional[pulumi.Input[str]] = None,
+             ecs_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             hana_name: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             instance_number: Optional[pulumi.Input[int]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             sid: Optional[pulumi.Input[str]] = None,
+             use_ssl: Optional[pulumi.Input[bool]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             validate_certificate: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("vault_id", vault_id)
         if alert_setting is not None:
-            pulumi.set(__self__, "alert_setting", alert_setting)
+            _setter("alert_setting", alert_setting)
         if ecs_instance_ids is not None:
-            pulumi.set(__self__, "ecs_instance_ids", ecs_instance_ids)
+            _setter("ecs_instance_ids", ecs_instance_ids)
         if hana_name is not None:
-            pulumi.set(__self__, "hana_name", hana_name)
+            _setter("hana_name", hana_name)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if instance_number is not None:
-            pulumi.set(__self__, "instance_number", instance_number)
+            _setter("instance_number", instance_number)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if sid is not None:
-            pulumi.set(__self__, "sid", sid)
+            _setter("sid", sid)
         if use_ssl is not None:
-            pulumi.set(__self__, "use_ssl", use_ssl)
+            _setter("use_ssl", use_ssl)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
         if validate_certificate is not None:
-            pulumi.set(__self__, "validate_certificate", validate_certificate)
+            _setter("validate_certificate", validate_certificate)
 
     @property
     @pulumi.getter(name="vaultId")
@@ -244,34 +275,69 @@ class _HanaInstanceState:
         :param pulumi.Input[bool] validate_certificate: Specifies whether to verify the SSL certificate of the SAP HANA database.
         :param pulumi.Input[str] vault_id: The ID of the backup vault.
         """
+        _HanaInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_setting=alert_setting,
+            ecs_instance_ids=ecs_instance_ids,
+            hana_instance_id=hana_instance_id,
+            hana_name=hana_name,
+            host=host,
+            instance_number=instance_number,
+            password=password,
+            resource_group_id=resource_group_id,
+            sid=sid,
+            status=status,
+            use_ssl=use_ssl,
+            user_name=user_name,
+            validate_certificate=validate_certificate,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_setting: Optional[pulumi.Input[str]] = None,
+             ecs_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             hana_instance_id: Optional[pulumi.Input[str]] = None,
+             hana_name: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             instance_number: Optional[pulumi.Input[int]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             sid: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             use_ssl: Optional[pulumi.Input[bool]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             validate_certificate: Optional[pulumi.Input[bool]] = None,
+             vault_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alert_setting is not None:
-            pulumi.set(__self__, "alert_setting", alert_setting)
+            _setter("alert_setting", alert_setting)
         if ecs_instance_ids is not None:
-            pulumi.set(__self__, "ecs_instance_ids", ecs_instance_ids)
+            _setter("ecs_instance_ids", ecs_instance_ids)
         if hana_instance_id is not None:
-            pulumi.set(__self__, "hana_instance_id", hana_instance_id)
+            _setter("hana_instance_id", hana_instance_id)
         if hana_name is not None:
-            pulumi.set(__self__, "hana_name", hana_name)
+            _setter("hana_name", hana_name)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if instance_number is not None:
-            pulumi.set(__self__, "instance_number", instance_number)
+            _setter("instance_number", instance_number)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if sid is not None:
-            pulumi.set(__self__, "sid", sid)
+            _setter("sid", sid)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if use_ssl is not None:
-            pulumi.set(__self__, "use_ssl", use_ssl)
+            _setter("use_ssl", use_ssl)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
         if validate_certificate is not None:
-            pulumi.set(__self__, "validate_certificate", validate_certificate)
+            _setter("validate_certificate", validate_certificate)
         if vault_id is not None:
-            pulumi.set(__self__, "vault_id", vault_id)
+            _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="alertSetting")
@@ -573,6 +639,10 @@ class HanaInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HanaInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

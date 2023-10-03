@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -48,12 +48,25 @@ class DbInstanceDbInstanceIpArray(dict):
         :param str db_instance_ip_array_name: IP ADDRESS whitelist group name.
         :param str security_ips: IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
         """
+        DbInstanceDbInstanceIpArray._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_instance_ip_array_attribute=db_instance_ip_array_attribute,
+            db_instance_ip_array_name=db_instance_ip_array_name,
+            security_ips=security_ips,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_instance_ip_array_attribute: Optional[str] = None,
+             db_instance_ip_array_name: Optional[str] = None,
+             security_ips: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if db_instance_ip_array_attribute is not None:
-            pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
+            _setter("db_instance_ip_array_attribute", db_instance_ip_array_attribute)
         if db_instance_ip_array_name is not None:
-            pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
+            _setter("db_instance_ip_array_name", db_instance_ip_array_name)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
 
     @property
     @pulumi.getter(name="dbInstanceIpArrayAttribute")
@@ -151,39 +164,112 @@ class GetDbInstancesInstanceResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID of the resource.
         """
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "current_minor_version", current_minor_version)
-        pulumi.set(__self__, "db_instance_category", db_instance_category)
-        pulumi.set(__self__, "db_instance_cpu", db_instance_cpu)
-        pulumi.set(__self__, "db_instance_description", db_instance_description)
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "db_instance_ip_arrays", db_instance_ip_arrays)
-        pulumi.set(__self__, "db_instance_memory", db_instance_memory)
-        pulumi.set(__self__, "db_instance_network_type", db_instance_network_type)
-        pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
-        pulumi.set(__self__, "db_instance_type", db_instance_type)
-        pulumi.set(__self__, "db_node_class", db_node_class)
-        pulumi.set(__self__, "db_node_count", db_node_count)
-        pulumi.set(__self__, "db_node_storage", db_node_storage)
-        pulumi.set(__self__, "db_version", db_version)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "expired", expired)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "latest_minor_version", latest_minor_version)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "lock_reason", lock_reason)
-        pulumi.set(__self__, "maintain_time", maintain_time)
-        pulumi.set(__self__, "master_db_instance_id", master_db_instance_id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "public_connection_string", public_connection_string)
-        pulumi.set(__self__, "public_port", public_port)
-        pulumi.set(__self__, "read_only_db_instance_ids", read_only_db_instance_ids)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetDbInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_string=connection_string,
+            create_time=create_time,
+            current_minor_version=current_minor_version,
+            db_instance_category=db_instance_category,
+            db_instance_cpu=db_instance_cpu,
+            db_instance_description=db_instance_description,
+            db_instance_id=db_instance_id,
+            db_instance_ip_arrays=db_instance_ip_arrays,
+            db_instance_memory=db_instance_memory,
+            db_instance_network_type=db_instance_network_type,
+            db_instance_storage_type=db_instance_storage_type,
+            db_instance_type=db_instance_type,
+            db_node_class=db_node_class,
+            db_node_count=db_node_count,
+            db_node_storage=db_node_storage,
+            db_version=db_version,
+            expire_time=expire_time,
+            expired=expired,
+            id=id,
+            latest_minor_version=latest_minor_version,
+            lock_mode=lock_mode,
+            lock_reason=lock_reason,
+            maintain_time=maintain_time,
+            master_db_instance_id=master_db_instance_id,
+            payment_type=payment_type,
+            port=port,
+            public_connection_string=public_connection_string,
+            public_port=public_port,
+            read_only_db_instance_ids=read_only_db_instance_ids,
+            status=status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_string: str,
+             create_time: str,
+             current_minor_version: str,
+             db_instance_category: str,
+             db_instance_cpu: str,
+             db_instance_description: str,
+             db_instance_id: str,
+             db_instance_ip_arrays: Sequence['outputs.GetDbInstancesInstanceDbInstanceIpArrayResult'],
+             db_instance_memory: str,
+             db_instance_network_type: str,
+             db_instance_storage_type: str,
+             db_instance_type: str,
+             db_node_class: str,
+             db_node_count: str,
+             db_node_storage: str,
+             db_version: str,
+             expire_time: str,
+             expired: str,
+             id: str,
+             latest_minor_version: str,
+             lock_mode: str,
+             lock_reason: str,
+             maintain_time: str,
+             master_db_instance_id: str,
+             payment_type: str,
+             port: int,
+             public_connection_string: str,
+             public_port: int,
+             read_only_db_instance_ids: Sequence[str],
+             status: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("connection_string", connection_string)
+        _setter("create_time", create_time)
+        _setter("current_minor_version", current_minor_version)
+        _setter("db_instance_category", db_instance_category)
+        _setter("db_instance_cpu", db_instance_cpu)
+        _setter("db_instance_description", db_instance_description)
+        _setter("db_instance_id", db_instance_id)
+        _setter("db_instance_ip_arrays", db_instance_ip_arrays)
+        _setter("db_instance_memory", db_instance_memory)
+        _setter("db_instance_network_type", db_instance_network_type)
+        _setter("db_instance_storage_type", db_instance_storage_type)
+        _setter("db_instance_type", db_instance_type)
+        _setter("db_node_class", db_node_class)
+        _setter("db_node_count", db_node_count)
+        _setter("db_node_storage", db_node_storage)
+        _setter("db_version", db_version)
+        _setter("expire_time", expire_time)
+        _setter("expired", expired)
+        _setter("id", id)
+        _setter("latest_minor_version", latest_minor_version)
+        _setter("lock_mode", lock_mode)
+        _setter("lock_reason", lock_reason)
+        _setter("maintain_time", maintain_time)
+        _setter("master_db_instance_id", master_db_instance_id)
+        _setter("payment_type", payment_type)
+        _setter("port", port)
+        _setter("public_connection_string", public_connection_string)
+        _setter("public_port", public_port)
+        _setter("read_only_db_instance_ids", read_only_db_instance_ids)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -461,12 +547,25 @@ class GetDbInstancesInstanceDbInstanceIpArrayResult(dict):
         :param str db_instance_ip_array_name: IP ADDRESS whitelist group name.
         :param str security_ips: IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
         """
+        GetDbInstancesInstanceDbInstanceIpArrayResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_instance_ip_array_attribute=db_instance_ip_array_attribute,
+            db_instance_ip_array_name=db_instance_ip_array_name,
+            security_ips=security_ips,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_instance_ip_array_attribute: Optional[str] = None,
+             db_instance_ip_array_name: Optional[str] = None,
+             security_ips: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if db_instance_ip_array_attribute is not None:
-            pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
+            _setter("db_instance_ip_array_attribute", db_instance_ip_array_attribute)
         if db_instance_ip_array_name is not None:
-            pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
+            _setter("db_instance_ip_array_name", db_instance_ip_array_name)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
 
     @property
     @pulumi.getter(name="dbInstanceIpArrayAttribute")

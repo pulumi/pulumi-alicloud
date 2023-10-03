@@ -19,7 +19,7 @@ public final class ConnectionHealthCheckConfig {
      */
     private @Nullable String dip;
     /**
-     * @return Whether to enable Health Check.
+     * @return Whether to enable BGP.
      * 
      */
     private @Nullable Boolean enable;
@@ -48,7 +48,7 @@ public final class ConnectionHealthCheckConfig {
         return Optional.ofNullable(this.dip);
     }
     /**
-     * @return Whether to enable Health Check.
+     * @return Whether to enable BGP.
      * 
      */
     public Optional<Boolean> enable() {

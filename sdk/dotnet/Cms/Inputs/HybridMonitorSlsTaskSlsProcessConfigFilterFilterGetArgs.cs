@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.Cms.Inputs
         public Input<string>? Operator { get; set; }
 
         /// <summary>
-        /// The name of the key that is used to aggregate logs imported from Log Service.
+        /// The name of the key that is used to filter logs imported from Log Service.
         /// </summary>
         [Input("slsKeyName")]
         public Input<string>? SlsKeyName { get; set; }
 
         /// <summary>
-        /// The value of the key that is used to filter logs imported from Log Service.
+        /// The tag value of the metric.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

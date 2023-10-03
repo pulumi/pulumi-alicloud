@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TrailDeprecatedArgs', 'TrailDeprecated']
@@ -39,41 +39,74 @@ class TrailDeprecatedArgs:
                
                > **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         """
+        TrailDeprecatedArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_rw=event_rw,
+            is_organization_trail=is_organization_trail,
+            mns_topic_arn=mns_topic_arn,
+            name=name,
+            oss_bucket_name=oss_bucket_name,
+            oss_key_prefix=oss_key_prefix,
+            oss_write_role_arn=oss_write_role_arn,
+            role_name=role_name,
+            sls_project_arn=sls_project_arn,
+            sls_write_role_arn=sls_write_role_arn,
+            status=status,
+            trail_name=trail_name,
+            trail_region=trail_region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_rw: Optional[pulumi.Input[str]] = None,
+             is_organization_trail: Optional[pulumi.Input[bool]] = None,
+             mns_topic_arn: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             oss_bucket_name: Optional[pulumi.Input[str]] = None,
+             oss_key_prefix: Optional[pulumi.Input[str]] = None,
+             oss_write_role_arn: Optional[pulumi.Input[str]] = None,
+             role_name: Optional[pulumi.Input[str]] = None,
+             sls_project_arn: Optional[pulumi.Input[str]] = None,
+             sls_write_role_arn: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             trail_name: Optional[pulumi.Input[str]] = None,
+             trail_region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if event_rw is not None:
-            pulumi.set(__self__, "event_rw", event_rw)
+            _setter("event_rw", event_rw)
         if is_organization_trail is not None:
-            pulumi.set(__self__, "is_organization_trail", is_organization_trail)
+            _setter("is_organization_trail", is_organization_trail)
         if mns_topic_arn is not None:
             warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
             pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
         if mns_topic_arn is not None:
-            pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
+            _setter("mns_topic_arn", mns_topic_arn)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if oss_bucket_name is not None:
-            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+            _setter("oss_bucket_name", oss_bucket_name)
         if oss_key_prefix is not None:
-            pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
+            _setter("oss_key_prefix", oss_key_prefix)
         if oss_write_role_arn is not None:
-            pulumi.set(__self__, "oss_write_role_arn", oss_write_role_arn)
+            _setter("oss_write_role_arn", oss_write_role_arn)
         if role_name is not None:
             warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
             pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
         if role_name is not None:
-            pulumi.set(__self__, "role_name", role_name)
+            _setter("role_name", role_name)
         if sls_project_arn is not None:
-            pulumi.set(__self__, "sls_project_arn", sls_project_arn)
+            _setter("sls_project_arn", sls_project_arn)
         if sls_write_role_arn is not None:
-            pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
+            _setter("sls_write_role_arn", sls_write_role_arn)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if trail_name is not None:
-            pulumi.set(__self__, "trail_name", trail_name)
+            _setter("trail_name", trail_name)
         if trail_region is not None:
-            pulumi.set(__self__, "trail_region", trail_region)
+            _setter("trail_region", trail_region)
 
     @property
     @pulumi.getter(name="eventRw")
@@ -253,41 +286,74 @@ class _TrailDeprecatedState:
                
                > **NOTE:** `sls_project_arn` and `sls_write_role_arn` should be set or not set at the same time when actiontrail delivers logs.
         """
+        _TrailDeprecatedState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_rw=event_rw,
+            is_organization_trail=is_organization_trail,
+            mns_topic_arn=mns_topic_arn,
+            name=name,
+            oss_bucket_name=oss_bucket_name,
+            oss_key_prefix=oss_key_prefix,
+            oss_write_role_arn=oss_write_role_arn,
+            role_name=role_name,
+            sls_project_arn=sls_project_arn,
+            sls_write_role_arn=sls_write_role_arn,
+            status=status,
+            trail_name=trail_name,
+            trail_region=trail_region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_rw: Optional[pulumi.Input[str]] = None,
+             is_organization_trail: Optional[pulumi.Input[bool]] = None,
+             mns_topic_arn: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             oss_bucket_name: Optional[pulumi.Input[str]] = None,
+             oss_key_prefix: Optional[pulumi.Input[str]] = None,
+             oss_write_role_arn: Optional[pulumi.Input[str]] = None,
+             role_name: Optional[pulumi.Input[str]] = None,
+             sls_project_arn: Optional[pulumi.Input[str]] = None,
+             sls_write_role_arn: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             trail_name: Optional[pulumi.Input[str]] = None,
+             trail_region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if event_rw is not None:
-            pulumi.set(__self__, "event_rw", event_rw)
+            _setter("event_rw", event_rw)
         if is_organization_trail is not None:
-            pulumi.set(__self__, "is_organization_trail", is_organization_trail)
+            _setter("is_organization_trail", is_organization_trail)
         if mns_topic_arn is not None:
             warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
             pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
         if mns_topic_arn is not None:
-            pulumi.set(__self__, "mns_topic_arn", mns_topic_arn)
+            _setter("mns_topic_arn", mns_topic_arn)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if oss_bucket_name is not None:
-            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+            _setter("oss_bucket_name", oss_bucket_name)
         if oss_key_prefix is not None:
-            pulumi.set(__self__, "oss_key_prefix", oss_key_prefix)
+            _setter("oss_key_prefix", oss_key_prefix)
         if oss_write_role_arn is not None:
-            pulumi.set(__self__, "oss_write_role_arn", oss_write_role_arn)
+            _setter("oss_write_role_arn", oss_write_role_arn)
         if role_name is not None:
             warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
             pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
         if role_name is not None:
-            pulumi.set(__self__, "role_name", role_name)
+            _setter("role_name", role_name)
         if sls_project_arn is not None:
-            pulumi.set(__self__, "sls_project_arn", sls_project_arn)
+            _setter("sls_project_arn", sls_project_arn)
         if sls_write_role_arn is not None:
-            pulumi.set(__self__, "sls_write_role_arn", sls_write_role_arn)
+            _setter("sls_write_role_arn", sls_write_role_arn)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if trail_name is not None:
-            pulumi.set(__self__, "trail_name", trail_name)
+            _setter("trail_name", trail_name)
         if trail_region is not None:
-            pulumi.set(__self__, "trail_region", trail_region)
+            _setter("trail_region", trail_region)
 
     @property
     @pulumi.getter(name="eventRw")
@@ -549,6 +615,10 @@ class TrailDeprecated(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TrailDeprecatedArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -579,20 +649,11 @@ class TrailDeprecated(pulumi.CustomResource):
 
             __props__.__dict__["event_rw"] = event_rw
             __props__.__dict__["is_organization_trail"] = is_organization_trail
-            if mns_topic_arn is not None and not opts.urn:
-                warnings.warn("""Field 'mns_topic_arn' has been deprecated from version 1.118.0""", DeprecationWarning)
-                pulumi.log.warn("""mns_topic_arn is deprecated: Field 'mns_topic_arn' has been deprecated from version 1.118.0""")
             __props__.__dict__["mns_topic_arn"] = mns_topic_arn
-            if name is not None and not opts.urn:
-                warnings.warn("""Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead.""")
             __props__.__dict__["name"] = name
             __props__.__dict__["oss_bucket_name"] = oss_bucket_name
             __props__.__dict__["oss_key_prefix"] = oss_key_prefix
             __props__.__dict__["oss_write_role_arn"] = oss_write_role_arn
-            if role_name is not None and not opts.urn:
-                warnings.warn("""Field 'role_name' has been deprecated from version 1.118.0""", DeprecationWarning)
-                pulumi.log.warn("""role_name is deprecated: Field 'role_name' has been deprecated from version 1.118.0""")
             __props__.__dict__["role_name"] = role_name
             __props__.__dict__["sls_project_arn"] = sls_project_arn
             __props__.__dict__["sls_write_role_arn"] = sls_write_role_arn

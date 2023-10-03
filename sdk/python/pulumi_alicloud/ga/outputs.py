@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -88,10 +88,21 @@ class AclAclEntry(dict):
         :param str entry: The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
         :param str entry_description: The description of the IP entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
         """
+        AclAclEntry._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entry=entry,
+            entry_description=entry_description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entry: Optional[str] = None,
+             entry_description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if entry is not None:
-            pulumi.set(__self__, "entry", entry)
+            _setter("entry", entry)
         if entry_description is not None:
-            pulumi.set(__self__, "entry_description", entry_description)
+            _setter("entry_description", entry_description)
 
     @property
     @pulumi.getter
@@ -138,10 +149,21 @@ class CustomRoutingEndpointTrafficPolicyPortRange(dict):
         :param int from_port: The start port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
         :param int to_port: The end port of the port range of the traffic destination. The specified port must fall within the port range of the specified endpoint group.
         """
+        CustomRoutingEndpointTrafficPolicyPortRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_port=from_port,
+            to_port=to_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_port: Optional[int] = None,
+             to_port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if from_port is not None:
-            pulumi.set(__self__, "from_port", from_port)
+            _setter("from_port", from_port)
         if to_port is not None:
-            pulumi.set(__self__, "to_port", to_port)
+            _setter("to_port", to_port)
 
     @property
     @pulumi.getter(name="fromPort")
@@ -195,13 +217,30 @@ class EndpointGroupEndpointConfiguration(dict):
         :param bool enable_clientip_preservation: Indicates whether client IP addresses are reserved. Default Value: `false`. Valid values:
         :param bool enable_proxy_protocol: Specifies whether to preserve client IP addresses by using the ProxyProtocol module. Default Value: `false`. Valid values:
         """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "weight", weight)
+        EndpointGroupEndpointConfiguration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            type=type,
+            weight=weight,
+            enable_clientip_preservation=enable_clientip_preservation,
+            enable_proxy_protocol=enable_proxy_protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: str,
+             type: str,
+             weight: int,
+             enable_clientip_preservation: Optional[bool] = None,
+             enable_proxy_protocol: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint", endpoint)
+        _setter("type", type)
+        _setter("weight", weight)
         if enable_clientip_preservation is not None:
-            pulumi.set(__self__, "enable_clientip_preservation", enable_clientip_preservation)
+            _setter("enable_clientip_preservation", enable_clientip_preservation)
         if enable_proxy_protocol is not None:
-            pulumi.set(__self__, "enable_proxy_protocol", enable_proxy_protocol)
+            _setter("enable_proxy_protocol", enable_proxy_protocol)
 
     @property
     @pulumi.getter
@@ -273,10 +312,21 @@ class EndpointGroupPortOverrides(dict):
         :param int endpoint_port: Forwarding port.
         :param int listener_port: Listener port.
         """
+        EndpointGroupPortOverrides._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint_port=endpoint_port,
+            listener_port=listener_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint_port: Optional[int] = None,
+             listener_port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if endpoint_port is not None:
-            pulumi.set(__self__, "endpoint_port", endpoint_port)
+            _setter("endpoint_port", endpoint_port)
         if listener_port is not None:
-            pulumi.set(__self__, "listener_port", listener_port)
+            _setter("listener_port", listener_port)
 
     @property
     @pulumi.getter(name="endpointPort")
@@ -330,12 +380,27 @@ class ForwardingRuleRuleAction(dict):
                > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
         :param str rule_action_value: The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
         """
-        pulumi.set(__self__, "order", order)
-        pulumi.set(__self__, "rule_action_type", rule_action_type)
+        ForwardingRuleRuleAction._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            order=order,
+            rule_action_type=rule_action_type,
+            forward_group_config=forward_group_config,
+            rule_action_value=rule_action_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             order: int,
+             rule_action_type: str,
+             forward_group_config: Optional['outputs.ForwardingRuleRuleActionForwardGroupConfig'] = None,
+             rule_action_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("order", order)
+        _setter("rule_action_type", rule_action_type)
         if forward_group_config is not None:
-            pulumi.set(__self__, "forward_group_config", forward_group_config)
+            _setter("forward_group_config", forward_group_config)
         if rule_action_value is not None:
-            pulumi.set(__self__, "rule_action_value", rule_action_value)
+            _setter("rule_action_value", rule_action_value)
 
     @property
     @pulumi.getter
@@ -395,7 +460,16 @@ class ForwardingRuleRuleActionForwardGroupConfig(dict):
         """
         :param Sequence['ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs'] server_group_tuples: The information about the endpoint group. See `server_group_tuples` below.
         """
-        pulumi.set(__self__, "server_group_tuples", server_group_tuples)
+        ForwardingRuleRuleActionForwardGroupConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_group_tuples=server_group_tuples,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_group_tuples: Sequence['outputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("server_group_tuples", server_group_tuples)
 
     @property
     @pulumi.getter(name="serverGroupTuples")
@@ -430,7 +504,16 @@ class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(dict):
         """
         :param str endpoint_group_id: The ID of the endpoint group.
         """
-        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+        ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint_group_id=endpoint_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint_group_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint_group_id", endpoint_group_id)
 
     @property
     @pulumi.getter(name="endpointGroupId")
@@ -473,11 +556,24 @@ class ForwardingRuleRuleCondition(dict):
         :param Sequence['ForwardingRuleRuleConditionHostConfigArgs'] host_configs: The configuration of the domain name. See `host_config` below.
         :param 'ForwardingRuleRuleConditionPathConfigArgs' path_config: The configuration of the path. See `path_config` below.
         """
-        pulumi.set(__self__, "rule_condition_type", rule_condition_type)
+        ForwardingRuleRuleCondition._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rule_condition_type=rule_condition_type,
+            host_configs=host_configs,
+            path_config=path_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rule_condition_type: str,
+             host_configs: Optional[Sequence['outputs.ForwardingRuleRuleConditionHostConfig']] = None,
+             path_config: Optional['outputs.ForwardingRuleRuleConditionPathConfig'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("rule_condition_type", rule_condition_type)
         if host_configs is not None:
-            pulumi.set(__self__, "host_configs", host_configs)
+            _setter("host_configs", host_configs)
         if path_config is not None:
-            pulumi.set(__self__, "path_config", path_config)
+            _setter("path_config", path_config)
 
     @property
     @pulumi.getter(name="ruleConditionType")
@@ -509,16 +605,25 @@ class ForwardingRuleRuleConditionHostConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] values: The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+        :param Sequence[str] values: The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
         """
+        ForwardingRuleRuleConditionHostConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+        The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
         """
         return pulumi.get(self, "values")
 
@@ -528,16 +633,25 @@ class ForwardingRuleRuleConditionPathConfig(dict):
     def __init__(__self__, *,
                  values: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] values: The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+        :param Sequence[str] values: The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
         """
+        ForwardingRuleRuleConditionPathConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+        The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
         """
         return pulumi.get(self, "values")
 
@@ -549,8 +663,17 @@ class ListenerCertificate(dict):
         """
         :param str id: The id of the certificate.
         """
+        ListenerCertificate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
 
     @property
     @pulumi.getter
@@ -601,16 +724,33 @@ class ListenerForwardedForConfig(dict):
         :param bool forwarded_for_proto_enabled: Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
         :param bool real_ip_enabled: Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
         """
+        ListenerForwardedForConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            forwarded_for_ga_ap_enabled=forwarded_for_ga_ap_enabled,
+            forwarded_for_ga_id_enabled=forwarded_for_ga_id_enabled,
+            forwarded_for_port_enabled=forwarded_for_port_enabled,
+            forwarded_for_proto_enabled=forwarded_for_proto_enabled,
+            real_ip_enabled=real_ip_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             forwarded_for_ga_ap_enabled: Optional[bool] = None,
+             forwarded_for_ga_id_enabled: Optional[bool] = None,
+             forwarded_for_port_enabled: Optional[bool] = None,
+             forwarded_for_proto_enabled: Optional[bool] = None,
+             real_ip_enabled: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if forwarded_for_ga_ap_enabled is not None:
-            pulumi.set(__self__, "forwarded_for_ga_ap_enabled", forwarded_for_ga_ap_enabled)
+            _setter("forwarded_for_ga_ap_enabled", forwarded_for_ga_ap_enabled)
         if forwarded_for_ga_id_enabled is not None:
-            pulumi.set(__self__, "forwarded_for_ga_id_enabled", forwarded_for_ga_id_enabled)
+            _setter("forwarded_for_ga_id_enabled", forwarded_for_ga_id_enabled)
         if forwarded_for_port_enabled is not None:
-            pulumi.set(__self__, "forwarded_for_port_enabled", forwarded_for_port_enabled)
+            _setter("forwarded_for_port_enabled", forwarded_for_port_enabled)
         if forwarded_for_proto_enabled is not None:
-            pulumi.set(__self__, "forwarded_for_proto_enabled", forwarded_for_proto_enabled)
+            _setter("forwarded_for_proto_enabled", forwarded_for_proto_enabled)
         if real_ip_enabled is not None:
-            pulumi.set(__self__, "real_ip_enabled", real_ip_enabled)
+            _setter("real_ip_enabled", real_ip_enabled)
 
     @property
     @pulumi.getter(name="forwardedForGaApEnabled")
@@ -681,8 +821,19 @@ class ListenerPortRange(dict):
         :param int from_port: The initial listening port used to receive requests and forward them to terminal nodes.
         :param int to_port: The end listening port used to receive requests and forward them to terminal nodes.
         """
-        pulumi.set(__self__, "from_port", from_port)
-        pulumi.set(__self__, "to_port", to_port)
+        ListenerPortRange._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_port=from_port,
+            to_port=to_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_port: int,
+             to_port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_port", from_port)
+        _setter("to_port", to_port)
 
     @property
     @pulumi.getter(name="fromPort")
@@ -714,10 +865,25 @@ class GetAcceleratorSpareIpAttachmentsAttachmentResult(dict):
         :param str spare_ip: The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
         :param str status: The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "spare_ip", spare_ip)
-        pulumi.set(__self__, "status", status)
+        GetAcceleratorSpareIpAttachmentsAttachmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            id=id,
+            spare_ip=spare_ip,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: str,
+             id: str,
+             spare_ip: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("id", id)
+        _setter("spare_ip", spare_ip)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -785,20 +951,55 @@ class GetAcceleratorsAcceleratorResult(dict):
         :param str spec: The instance type of the GA instance.
         :param str status: The status of the GA instance.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "accelerator_name", accelerator_name)
-        pulumi.set(__self__, "basic_bandwidth_packages", basic_bandwidth_packages)
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "cross_domain_bandwidth_packages", cross_domain_bandwidth_packages)
-        pulumi.set(__self__, "ddos_id", ddos_id)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "dns_name", dns_name)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "second_dns_name", second_dns_name)
-        pulumi.set(__self__, "spec", spec)
-        pulumi.set(__self__, "status", status)
+        GetAcceleratorsAcceleratorResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            accelerator_name=accelerator_name,
+            basic_bandwidth_packages=basic_bandwidth_packages,
+            cen_id=cen_id,
+            cross_domain_bandwidth_packages=cross_domain_bandwidth_packages,
+            ddos_id=ddos_id,
+            description=description,
+            dns_name=dns_name,
+            expired_time=expired_time,
+            id=id,
+            payment_type=payment_type,
+            second_dns_name=second_dns_name,
+            spec=spec,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: str,
+             accelerator_name: str,
+             basic_bandwidth_packages: Sequence['outputs.GetAcceleratorsAcceleratorBasicBandwidthPackageResult'],
+             cen_id: str,
+             cross_domain_bandwidth_packages: Sequence['outputs.GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult'],
+             ddos_id: str,
+             description: str,
+             dns_name: str,
+             expired_time: int,
+             id: str,
+             payment_type: str,
+             second_dns_name: str,
+             spec: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("accelerator_name", accelerator_name)
+        _setter("basic_bandwidth_packages", basic_bandwidth_packages)
+        _setter("cen_id", cen_id)
+        _setter("cross_domain_bandwidth_packages", cross_domain_bandwidth_packages)
+        _setter("ddos_id", ddos_id)
+        _setter("description", description)
+        _setter("dns_name", dns_name)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("payment_type", payment_type)
+        _setter("second_dns_name", second_dns_name)
+        _setter("spec", spec)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -924,9 +1125,22 @@ class GetAcceleratorsAcceleratorBasicBandwidthPackageResult(dict):
         :param str bandwidth_type: The bandwidth type of the basic bandwidth package.
         :param str instance_id: Instance ID of the cross-domain acceleration package.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "bandwidth_type", bandwidth_type)
-        pulumi.set(__self__, "instance_id", instance_id)
+        GetAcceleratorsAcceleratorBasicBandwidthPackageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            bandwidth_type=bandwidth_type,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             bandwidth_type: str,
+             instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("bandwidth_type", bandwidth_type)
+        _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter
@@ -962,8 +1176,19 @@ class GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult(dict):
         :param int bandwidth: Bandwidth value of cross-domain acceleration package.
         :param str instance_id: Instance ID of the cross-domain acceleration package.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "instance_id", instance_id)
+        GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter
@@ -999,12 +1224,31 @@ class GetAclsAclResult(dict):
         :param str id: The ID of the Acl. Its value is same as `acl_id`.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "acl_entries", acl_entries)
-        pulumi.set(__self__, "acl_id", acl_id)
-        pulumi.set(__self__, "acl_name", acl_name)
-        pulumi.set(__self__, "address_ip_version", address_ip_version)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
+        GetAclsAclResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_entries=acl_entries,
+            acl_id=acl_id,
+            acl_name=acl_name,
+            address_ip_version=address_ip_version,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_entries: Sequence['outputs.GetAclsAclAclEntryResult'],
+             acl_id: str,
+             acl_name: str,
+             address_ip_version: str,
+             id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("acl_entries", acl_entries)
+        _setter("acl_id", acl_id)
+        _setter("acl_name", acl_name)
+        _setter("address_ip_version", address_ip_version)
+        _setter("id", id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="aclEntries")
@@ -1064,8 +1308,19 @@ class GetAclsAclAclEntryResult(dict):
         :param str entry: The IP entry that you want to add to the ACL.
         :param str entry_description: The description of the IP entry.
         """
-        pulumi.set(__self__, "entry", entry)
-        pulumi.set(__self__, "entry_description", entry_description)
+        GetAclsAclAclEntryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entry=entry,
+            entry_description=entry_description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entry: str,
+             entry_description: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entry", entry)
+        _setter("entry_description", entry_description)
 
     @property
     @pulumi.getter
@@ -1099,11 +1354,28 @@ class GetAdditionalCertificatesCertificateResult(dict):
         :param str id: The ID of the Additional Certificate. The value formats as `<accelerator_id>:<listener_id>:<domain>`.
         :param str listener_id: The ID of the listener. Only HTTPS listeners support this parameter.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "certificate_id", certificate_id)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "listener_id", listener_id)
+        GetAdditionalCertificatesCertificateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            certificate_id=certificate_id,
+            domain=domain,
+            id=id,
+            listener_id=listener_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: str,
+             certificate_id: str,
+             domain: str,
+             id: str,
+             listener_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("certificate_id", certificate_id)
+        _setter("domain", domain)
+        _setter("id", id)
+        _setter("listener_id", listener_id)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -1175,18 +1447,49 @@ class GetBandwidthPackagesPackageResult(dict):
         :param str status: The status of the bandwidth plan.
         :param str type: The type of the bandwidth packet. China station only supports return to basic.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
-        pulumi.set(__self__, "bandwidth_package_name", bandwidth_package_name)
-        pulumi.set(__self__, "bandwidth_type", bandwidth_type)
-        pulumi.set(__self__, "cbn_geographic_region_ida", cbn_geographic_region_ida)
-        pulumi.set(__self__, "cbn_geographic_region_idb", cbn_geographic_region_idb)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
+        GetBandwidthPackagesPackageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            bandwidth_package_id=bandwidth_package_id,
+            bandwidth_package_name=bandwidth_package_name,
+            bandwidth_type=bandwidth_type,
+            cbn_geographic_region_ida=cbn_geographic_region_ida,
+            cbn_geographic_region_idb=cbn_geographic_region_idb,
+            description=description,
+            expired_time=expired_time,
+            id=id,
+            payment_type=payment_type,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             bandwidth_package_id: str,
+             bandwidth_package_name: str,
+             bandwidth_type: str,
+             cbn_geographic_region_ida: str,
+             cbn_geographic_region_idb: str,
+             description: str,
+             expired_time: str,
+             id: str,
+             payment_type: str,
+             status: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("bandwidth_package_id", bandwidth_package_id)
+        _setter("bandwidth_package_name", bandwidth_package_name)
+        _setter("bandwidth_type", bandwidth_type)
+        _setter("cbn_geographic_region_ida", cbn_geographic_region_ida)
+        _setter("cbn_geographic_region_idb", cbn_geographic_region_idb)
+        _setter("description", description)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("payment_type", payment_type)
+        _setter("status", status)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1314,18 +1617,49 @@ class GetBasicAccelerateIpEndpointRelationsRelationResult(dict):
         :param str ip_address: The address of the Basic Accelerate IP.
         :param str status: The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
         """
-        pulumi.set(__self__, "accelerate_ip_id", accelerate_ip_id)
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "basic_endpoint_name", basic_endpoint_name)
-        pulumi.set(__self__, "endpoint_address", endpoint_address)
-        pulumi.set(__self__, "endpoint_id", endpoint_id)
-        pulumi.set(__self__, "endpoint_sub_address", endpoint_sub_address)
-        pulumi.set(__self__, "endpoint_sub_address_type", endpoint_sub_address_type)
-        pulumi.set(__self__, "endpoint_type", endpoint_type)
-        pulumi.set(__self__, "endpoint_zone_id", endpoint_zone_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "status", status)
+        GetBasicAccelerateIpEndpointRelationsRelationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerate_ip_id=accelerate_ip_id,
+            accelerator_id=accelerator_id,
+            basic_endpoint_name=basic_endpoint_name,
+            endpoint_address=endpoint_address,
+            endpoint_id=endpoint_id,
+            endpoint_sub_address=endpoint_sub_address,
+            endpoint_sub_address_type=endpoint_sub_address_type,
+            endpoint_type=endpoint_type,
+            endpoint_zone_id=endpoint_zone_id,
+            id=id,
+            ip_address=ip_address,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerate_ip_id: str,
+             accelerator_id: str,
+             basic_endpoint_name: str,
+             endpoint_address: str,
+             endpoint_id: str,
+             endpoint_sub_address: str,
+             endpoint_sub_address_type: str,
+             endpoint_type: str,
+             endpoint_zone_id: str,
+             id: str,
+             ip_address: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerate_ip_id", accelerate_ip_id)
+        _setter("accelerator_id", accelerator_id)
+        _setter("basic_endpoint_name", basic_endpoint_name)
+        _setter("endpoint_address", endpoint_address)
+        _setter("endpoint_id", endpoint_id)
+        _setter("endpoint_sub_address", endpoint_sub_address)
+        _setter("endpoint_sub_address_type", endpoint_sub_address_type)
+        _setter("endpoint_type", endpoint_type)
+        _setter("endpoint_zone_id", endpoint_zone_id)
+        _setter("id", id)
+        _setter("ip_address", ip_address)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accelerateIpId")
@@ -1441,12 +1775,31 @@ class GetBasicAccelerateIpsIpResult(dict):
         :param str ip_set_id: The ID of the Basic Ip Set.
         :param str status: The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
         """
-        pulumi.set(__self__, "accelerate_ip_address", accelerate_ip_address)
-        pulumi.set(__self__, "accelerate_ip_id", accelerate_ip_id)
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_set_id", ip_set_id)
-        pulumi.set(__self__, "status", status)
+        GetBasicAccelerateIpsIpResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerate_ip_address=accelerate_ip_address,
+            accelerate_ip_id=accelerate_ip_id,
+            accelerator_id=accelerator_id,
+            id=id,
+            ip_set_id=ip_set_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerate_ip_address: str,
+             accelerate_ip_id: str,
+             accelerator_id: str,
+             id: str,
+             ip_set_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerate_ip_address", accelerate_ip_address)
+        _setter("accelerate_ip_id", accelerate_ip_id)
+        _setter("accelerator_id", accelerator_id)
+        _setter("id", id)
+        _setter("ip_set_id", ip_set_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accelerateIpAddress")
@@ -1530,20 +1883,55 @@ class GetBasicAcceleratorsAcceleratorResult(dict):
         :param str region_id: The ID of the region where the Global Accelerator Basic Accelerator instance is deployed.
         :param str status: The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
         """
-        pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
-        pulumi.set(__self__, "basic_accelerator_id", basic_accelerator_id)
-        pulumi.set(__self__, "basic_accelerator_name", basic_accelerator_name)
-        pulumi.set(__self__, "basic_bandwidth_packages", basic_bandwidth_packages)
-        pulumi.set(__self__, "basic_endpoint_group_id", basic_endpoint_group_id)
-        pulumi.set(__self__, "basic_ip_set_id", basic_ip_set_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "cross_domain_bandwidth_packages", cross_domain_bandwidth_packages)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "status", status)
+        GetBasicAcceleratorsAcceleratorResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth_billing_type=bandwidth_billing_type,
+            basic_accelerator_id=basic_accelerator_id,
+            basic_accelerator_name=basic_accelerator_name,
+            basic_bandwidth_packages=basic_bandwidth_packages,
+            basic_endpoint_group_id=basic_endpoint_group_id,
+            basic_ip_set_id=basic_ip_set_id,
+            create_time=create_time,
+            cross_domain_bandwidth_packages=cross_domain_bandwidth_packages,
+            description=description,
+            expired_time=expired_time,
+            id=id,
+            instance_charge_type=instance_charge_type,
+            region_id=region_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth_billing_type: str,
+             basic_accelerator_id: str,
+             basic_accelerator_name: str,
+             basic_bandwidth_packages: Sequence['outputs.GetBasicAcceleratorsAcceleratorBasicBandwidthPackageResult'],
+             basic_endpoint_group_id: str,
+             basic_ip_set_id: str,
+             create_time: int,
+             cross_domain_bandwidth_packages: Sequence['outputs.GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageResult'],
+             description: str,
+             expired_time: int,
+             id: str,
+             instance_charge_type: str,
+             region_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth_billing_type", bandwidth_billing_type)
+        _setter("basic_accelerator_id", basic_accelerator_id)
+        _setter("basic_accelerator_name", basic_accelerator_name)
+        _setter("basic_bandwidth_packages", basic_bandwidth_packages)
+        _setter("basic_endpoint_group_id", basic_endpoint_group_id)
+        _setter("basic_ip_set_id", basic_ip_set_id)
+        _setter("create_time", create_time)
+        _setter("cross_domain_bandwidth_packages", cross_domain_bandwidth_packages)
+        _setter("description", description)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("instance_charge_type", instance_charge_type)
+        _setter("region_id", region_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="bandwidthBillingType")
@@ -1669,9 +2057,22 @@ class GetBasicAcceleratorsAcceleratorBasicBandwidthPackageResult(dict):
         :param str bandwidth_type: The type of the bandwidth that is provided by the basic bandwidth plan.
         :param str instance_id: The ID of the cross-region acceleration bandwidth plan.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "bandwidth_type", bandwidth_type)
-        pulumi.set(__self__, "instance_id", instance_id)
+        GetBasicAcceleratorsAcceleratorBasicBandwidthPackageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            bandwidth_type=bandwidth_type,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             bandwidth_type: str,
+             instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("bandwidth_type", bandwidth_type)
+        _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter
@@ -1707,8 +2108,19 @@ class GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageResult(dict):
         :param int bandwidth: The bandwidth value of the cross-region acceleration bandwidth plan. Unit: Mbit/s.
         :param str instance_id: The ID of the cross-region acceleration bandwidth plan.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "instance_id", instance_id)
+        GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter
@@ -1754,17 +2166,46 @@ class GetBasicEndpointsEndpointResult(dict):
         :param str id: The id of the Global Accelerator Basic Endpoint. It formats as `<endpoint_group_id>:<endpoint_id>`.
         :param str status: The status of the Global Accelerator Basic Endpoint. Valid Value: `init`, `active`, `updating`, `binding`, `unbinding`, `deleting`, `bound`.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "basic_endpoint_name", basic_endpoint_name)
-        pulumi.set(__self__, "endpoint_address", endpoint_address)
-        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
-        pulumi.set(__self__, "endpoint_id", endpoint_id)
-        pulumi.set(__self__, "endpoint_sub_address", endpoint_sub_address)
-        pulumi.set(__self__, "endpoint_sub_address_type", endpoint_sub_address_type)
-        pulumi.set(__self__, "endpoint_type", endpoint_type)
-        pulumi.set(__self__, "endpoint_zone_id", endpoint_zone_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
+        GetBasicEndpointsEndpointResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            basic_endpoint_name=basic_endpoint_name,
+            endpoint_address=endpoint_address,
+            endpoint_group_id=endpoint_group_id,
+            endpoint_id=endpoint_id,
+            endpoint_sub_address=endpoint_sub_address,
+            endpoint_sub_address_type=endpoint_sub_address_type,
+            endpoint_type=endpoint_type,
+            endpoint_zone_id=endpoint_zone_id,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: str,
+             basic_endpoint_name: str,
+             endpoint_address: str,
+             endpoint_group_id: str,
+             endpoint_id: str,
+             endpoint_sub_address: str,
+             endpoint_sub_address_type: str,
+             endpoint_type: str,
+             endpoint_zone_id: str,
+             id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("basic_endpoint_name", basic_endpoint_name)
+        _setter("endpoint_address", endpoint_address)
+        _setter("endpoint_group_id", endpoint_group_id)
+        _setter("endpoint_id", endpoint_id)
+        _setter("endpoint_sub_address", endpoint_sub_address)
+        _setter("endpoint_sub_address_type", endpoint_sub_address_type)
+        _setter("endpoint_type", endpoint_type)
+        _setter("endpoint_zone_id", endpoint_zone_id)
+        _setter("id", id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -1876,14 +2317,37 @@ class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestina
         :param Sequence[str] protocols: The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
         :param int to_port: The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "custom_routing_endpoint_group_destination_id", custom_routing_endpoint_group_destination_id)
-        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
-        pulumi.set(__self__, "from_port", from_port)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "listener_id", listener_id)
-        pulumi.set(__self__, "protocols", protocols)
-        pulumi.set(__self__, "to_port", to_port)
+        GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestinationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            custom_routing_endpoint_group_destination_id=custom_routing_endpoint_group_destination_id,
+            endpoint_group_id=endpoint_group_id,
+            from_port=from_port,
+            id=id,
+            listener_id=listener_id,
+            protocols=protocols,
+            to_port=to_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: str,
+             custom_routing_endpoint_group_destination_id: str,
+             endpoint_group_id: str,
+             from_port: int,
+             id: str,
+             listener_id: str,
+             protocols: Sequence[str],
+             to_port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("custom_routing_endpoint_group_destination_id", custom_routing_endpoint_group_destination_id)
+        _setter("endpoint_group_id", endpoint_group_id)
+        _setter("from_port", from_port)
+        _setter("id", id)
+        _setter("listener_id", listener_id)
+        _setter("protocols", protocols)
+        _setter("to_port", to_port)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -1975,16 +2439,43 @@ class GetCustomRoutingEndpointGroupsGroupResult(dict):
         :param str listener_id: The ID of the custom routing listener.
         :param str status: The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "custom_routing_endpoint_group_name", custom_routing_endpoint_group_name)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
-        pulumi.set(__self__, "endpoint_group_ip_lists", endpoint_group_ip_lists)
-        pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
-        pulumi.set(__self__, "endpoint_group_unconfirmed_ip_lists", endpoint_group_unconfirmed_ip_lists)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "listener_id", listener_id)
-        pulumi.set(__self__, "status", status)
+        GetCustomRoutingEndpointGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            custom_routing_endpoint_group_name=custom_routing_endpoint_group_name,
+            description=description,
+            endpoint_group_id=endpoint_group_id,
+            endpoint_group_ip_lists=endpoint_group_ip_lists,
+            endpoint_group_region=endpoint_group_region,
+            endpoint_group_unconfirmed_ip_lists=endpoint_group_unconfirmed_ip_lists,
+            id=id,
+            listener_id=listener_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: str,
+             custom_routing_endpoint_group_name: str,
+             description: str,
+             endpoint_group_id: str,
+             endpoint_group_ip_lists: Sequence[str],
+             endpoint_group_region: str,
+             endpoint_group_unconfirmed_ip_lists: Sequence[str],
+             id: str,
+             listener_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("custom_routing_endpoint_group_name", custom_routing_endpoint_group_name)
+        _setter("description", description)
+        _setter("endpoint_group_id", endpoint_group_id)
+        _setter("endpoint_group_ip_lists", endpoint_group_ip_lists)
+        _setter("endpoint_group_region", endpoint_group_region)
+        _setter("endpoint_group_unconfirmed_ip_lists", endpoint_group_unconfirmed_ip_lists)
+        _setter("id", id)
+        _setter("listener_id", listener_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -2088,14 +2579,37 @@ class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyR
         :param str listener_id: The ID of the listener to which the traffic policies belong.
         :param Sequence['GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeArgs'] port_ranges: The port range of the traffic policy.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "custom_routing_endpoint_traffic_policy_id", custom_routing_endpoint_traffic_policy_id)
-        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
-        pulumi.set(__self__, "endpoint_id", endpoint_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "listener_id", listener_id)
-        pulumi.set(__self__, "port_ranges", port_ranges)
+        GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            address=address,
+            custom_routing_endpoint_traffic_policy_id=custom_routing_endpoint_traffic_policy_id,
+            endpoint_group_id=endpoint_group_id,
+            endpoint_id=endpoint_id,
+            id=id,
+            listener_id=listener_id,
+            port_ranges=port_ranges,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: str,
+             address: str,
+             custom_routing_endpoint_traffic_policy_id: str,
+             endpoint_group_id: str,
+             endpoint_id: str,
+             id: str,
+             listener_id: str,
+             port_ranges: Sequence['outputs.GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("address", address)
+        _setter("custom_routing_endpoint_traffic_policy_id", custom_routing_endpoint_traffic_policy_id)
+        _setter("endpoint_group_id", endpoint_group_id)
+        _setter("endpoint_id", endpoint_id)
+        _setter("id", id)
+        _setter("listener_id", listener_id)
+        _setter("port_ranges", port_ranges)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -2171,8 +2685,19 @@ class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyP
         :param int from_port: The first port of the port range.
         :param int to_port: The last port of the port range.
         """
-        pulumi.set(__self__, "from_port", from_port)
-        pulumi.set(__self__, "to_port", to_port)
+        GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_port=from_port,
+            to_port=to_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_port: int,
+             to_port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_port", from_port)
+        _setter("to_port", to_port)
 
     @property
     @pulumi.getter(name="fromPort")
@@ -2212,14 +2737,37 @@ class GetCustomRoutingEndpointsCustomRoutingEndpointResult(dict):
         :param str traffic_to_endpoint_policy: The access policy of traffic for the specified endpoint.
         :param str type: The backend service type of the endpoint.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "custom_routing_endpoint_id", custom_routing_endpoint_id)
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "listener_id", listener_id)
-        pulumi.set(__self__, "traffic_to_endpoint_policy", traffic_to_endpoint_policy)
-        pulumi.set(__self__, "type", type)
+        GetCustomRoutingEndpointsCustomRoutingEndpointResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            custom_routing_endpoint_id=custom_routing_endpoint_id,
+            endpoint=endpoint,
+            endpoint_group_id=endpoint_group_id,
+            id=id,
+            listener_id=listener_id,
+            traffic_to_endpoint_policy=traffic_to_endpoint_policy,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: str,
+             custom_routing_endpoint_id: str,
+             endpoint: str,
+             endpoint_group_id: str,
+             id: str,
+             listener_id: str,
+             traffic_to_endpoint_policy: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("custom_routing_endpoint_id", custom_routing_endpoint_id)
+        _setter("endpoint", endpoint)
+        _setter("endpoint_group_id", endpoint_group_id)
+        _setter("id", id)
+        _setter("listener_id", listener_id)
+        _setter("traffic_to_endpoint_policy", traffic_to_endpoint_policy)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -2311,16 +2859,43 @@ class GetCustomRoutingPortMappingsCustomRoutingPortMappingResult(dict):
         :param str status: The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
         :param str vswitch: The ID of the endpoint (vSwitch).
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "accelerator_port", accelerator_port)
-        pulumi.set(__self__, "destination_socket_addresses", destination_socket_addresses)
-        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
-        pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
-        pulumi.set(__self__, "endpoint_id", endpoint_id)
-        pulumi.set(__self__, "listener_id", listener_id)
-        pulumi.set(__self__, "protocols", protocols)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vswitch", vswitch)
+        GetCustomRoutingPortMappingsCustomRoutingPortMappingResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            accelerator_port=accelerator_port,
+            destination_socket_addresses=destination_socket_addresses,
+            endpoint_group_id=endpoint_group_id,
+            endpoint_group_region=endpoint_group_region,
+            endpoint_id=endpoint_id,
+            listener_id=listener_id,
+            protocols=protocols,
+            status=status,
+            vswitch=vswitch,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: str,
+             accelerator_port: int,
+             destination_socket_addresses: Sequence['outputs.GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressResult'],
+             endpoint_group_id: str,
+             endpoint_group_region: str,
+             endpoint_id: str,
+             listener_id: str,
+             protocols: Sequence[str],
+             status: str,
+             vswitch: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("accelerator_port", accelerator_port)
+        _setter("destination_socket_addresses", destination_socket_addresses)
+        _setter("endpoint_group_id", endpoint_group_id)
+        _setter("endpoint_group_region", endpoint_group_region)
+        _setter("endpoint_id", endpoint_id)
+        _setter("listener_id", listener_id)
+        _setter("protocols", protocols)
+        _setter("status", status)
+        _setter("vswitch", vswitch)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -2412,8 +2987,19 @@ class GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddre
         :param str ip_address: The service IP address of the backend instance.
         :param int port: The service port of the backend instance.
         """
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "port", port)
+        GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_address=ip_address,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_address: str,
+             port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_address", ip_address)
+        _setter("port", port)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -2445,10 +3031,25 @@ class GetDomainsDomainResult(dict):
         :param str id: The ID of the Ga Domain.
         :param str status: The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
+        GetDomainsDomainResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            domain=domain,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: str,
+             domain: str,
+             id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("domain", domain)
+        _setter("id", id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -2518,21 +3119,58 @@ class GetEndpointGroupsGroupResult(dict):
         :param int threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy.
         :param int traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "endpoint_configurations", endpoint_configurations)
-        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
-        pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
-        pulumi.set(__self__, "health_check_interval_seconds", health_check_interval_seconds)
-        pulumi.set(__self__, "health_check_path", health_check_path)
-        pulumi.set(__self__, "health_check_port", health_check_port)
-        pulumi.set(__self__, "health_check_protocol", health_check_protocol)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "listener_id", listener_id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "port_overrides", port_overrides)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "threshold_count", threshold_count)
-        pulumi.set(__self__, "traffic_percentage", traffic_percentage)
+        GetEndpointGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            endpoint_configurations=endpoint_configurations,
+            endpoint_group_id=endpoint_group_id,
+            endpoint_group_region=endpoint_group_region,
+            health_check_interval_seconds=health_check_interval_seconds,
+            health_check_path=health_check_path,
+            health_check_port=health_check_port,
+            health_check_protocol=health_check_protocol,
+            id=id,
+            listener_id=listener_id,
+            name=name,
+            port_overrides=port_overrides,
+            status=status,
+            threshold_count=threshold_count,
+            traffic_percentage=traffic_percentage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             endpoint_configurations: Sequence['outputs.GetEndpointGroupsGroupEndpointConfigurationResult'],
+             endpoint_group_id: str,
+             endpoint_group_region: str,
+             health_check_interval_seconds: int,
+             health_check_path: str,
+             health_check_port: int,
+             health_check_protocol: str,
+             id: str,
+             listener_id: str,
+             name: str,
+             port_overrides: Sequence['outputs.GetEndpointGroupsGroupPortOverrideResult'],
+             status: str,
+             threshold_count: int,
+             traffic_percentage: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("endpoint_configurations", endpoint_configurations)
+        _setter("endpoint_group_id", endpoint_group_id)
+        _setter("endpoint_group_region", endpoint_group_region)
+        _setter("health_check_interval_seconds", health_check_interval_seconds)
+        _setter("health_check_path", health_check_path)
+        _setter("health_check_port", health_check_port)
+        _setter("health_check_protocol", health_check_protocol)
+        _setter("id", id)
+        _setter("listener_id", listener_id)
+        _setter("name", name)
+        _setter("port_overrides", port_overrides)
+        _setter("status", status)
+        _setter("threshold_count", threshold_count)
+        _setter("traffic_percentage", traffic_percentage)
 
     @property
     @pulumi.getter
@@ -2672,12 +3310,31 @@ class GetEndpointGroupsGroupEndpointConfigurationResult(dict):
         :param str type: The type of Endpoint N in the endpoint group.
         :param int weight: The weight of Endpoint N in the endpoint group.
         """
-        pulumi.set(__self__, "enable_clientip_preservation", enable_clientip_preservation)
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "probe_port", probe_port)
-        pulumi.set(__self__, "probe_protocol", probe_protocol)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "weight", weight)
+        GetEndpointGroupsGroupEndpointConfigurationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_clientip_preservation=enable_clientip_preservation,
+            endpoint=endpoint,
+            probe_port=probe_port,
+            probe_protocol=probe_protocol,
+            type=type,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_clientip_preservation: bool,
+             endpoint: str,
+             probe_port: int,
+             probe_protocol: str,
+             type: str,
+             weight: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enable_clientip_preservation", enable_clientip_preservation)
+        _setter("endpoint", endpoint)
+        _setter("probe_port", probe_port)
+        _setter("probe_protocol", probe_protocol)
+        _setter("type", type)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter(name="enableClientipPreservation")
@@ -2737,8 +3394,19 @@ class GetEndpointGroupsGroupPortOverrideResult(dict):
         :param int endpoint_port: Forwarding port.
         :param int listener_port: Listener port.
         """
-        pulumi.set(__self__, "endpoint_port", endpoint_port)
-        pulumi.set(__self__, "listener_port", listener_port)
+        GetEndpointGroupsGroupPortOverrideResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint_port=endpoint_port,
+            listener_port=listener_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint_port: int,
+             listener_port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint_port", endpoint_port)
+        _setter("listener_port", listener_port)
 
     @property
     @pulumi.getter(name="endpointPort")
@@ -2787,14 +3455,37 @@ class GetForwardingRulesForwardingRuleResult(dict):
                `host_config` - Domain name configuration information.
                `values` - The domain name is 3-128 characters long.
         """
-        pulumi.set(__self__, "forwarding_rule_id", forwarding_rule_id)
-        pulumi.set(__self__, "forwarding_rule_name", forwarding_rule_name)
-        pulumi.set(__self__, "forwarding_rule_status", forwarding_rule_status)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "listener_id", listener_id)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "rule_actions", rule_actions)
-        pulumi.set(__self__, "rule_conditions", rule_conditions)
+        GetForwardingRulesForwardingRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            forwarding_rule_id=forwarding_rule_id,
+            forwarding_rule_name=forwarding_rule_name,
+            forwarding_rule_status=forwarding_rule_status,
+            id=id,
+            listener_id=listener_id,
+            priority=priority,
+            rule_actions=rule_actions,
+            rule_conditions=rule_conditions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             forwarding_rule_id: str,
+             forwarding_rule_name: str,
+             forwarding_rule_status: str,
+             id: str,
+             listener_id: str,
+             priority: int,
+             rule_actions: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionResult'],
+             rule_conditions: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("forwarding_rule_id", forwarding_rule_id)
+        _setter("forwarding_rule_name", forwarding_rule_name)
+        _setter("forwarding_rule_status", forwarding_rule_status)
+        _setter("id", id)
+        _setter("listener_id", listener_id)
+        _setter("priority", priority)
+        _setter("rule_actions", rule_actions)
+        _setter("rule_conditions", rule_conditions)
 
     @property
     @pulumi.getter(name="forwardingRuleId")
@@ -2874,9 +3565,22 @@ class GetForwardingRulesForwardingRuleRuleActionResult(dict):
                  forward_group_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult'],
                  order: int,
                  rule_action_type: str):
-        pulumi.set(__self__, "forward_group_configs", forward_group_configs)
-        pulumi.set(__self__, "order", order)
-        pulumi.set(__self__, "rule_action_type", rule_action_type)
+        GetForwardingRulesForwardingRuleRuleActionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            forward_group_configs=forward_group_configs,
+            order=order,
+            rule_action_type=rule_action_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             forward_group_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult'],
+             order: int,
+             rule_action_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("forward_group_configs", forward_group_configs)
+        _setter("order", order)
+        _setter("rule_action_type", rule_action_type)
 
     @property
     @pulumi.getter(name="forwardGroupConfigs")
@@ -2898,7 +3602,16 @@ class GetForwardingRulesForwardingRuleRuleActionResult(dict):
 class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult(dict):
     def __init__(__self__, *,
                  server_group_tuples: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult']):
-        pulumi.set(__self__, "server_group_tuples", server_group_tuples)
+        GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_group_tuples=server_group_tuples,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_group_tuples: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("server_group_tuples", server_group_tuples)
 
     @property
     @pulumi.getter(name="serverGroupTuples")
@@ -2910,7 +3623,16 @@ class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult(dict):
 class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult(dict):
     def __init__(__self__, *,
                  endpoint_group_id: str):
-        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+        GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint_group_id=endpoint_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint_group_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint_group_id", endpoint_group_id)
 
     @property
     @pulumi.getter(name="endpointGroupId")
@@ -2924,9 +3646,22 @@ class GetForwardingRulesForwardingRuleRuleConditionResult(dict):
                  host_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionHostConfigResult'],
                  path_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionPathConfigResult'],
                  rule_condition_type: str):
-        pulumi.set(__self__, "host_configs", host_configs)
-        pulumi.set(__self__, "path_configs", path_configs)
-        pulumi.set(__self__, "rule_condition_type", rule_condition_type)
+        GetForwardingRulesForwardingRuleRuleConditionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_configs=host_configs,
+            path_configs=path_configs,
+            rule_condition_type=rule_condition_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionHostConfigResult'],
+             path_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionPathConfigResult'],
+             rule_condition_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("host_configs", host_configs)
+        _setter("path_configs", path_configs)
+        _setter("rule_condition_type", rule_condition_type)
 
     @property
     @pulumi.getter(name="hostConfigs")
@@ -2948,7 +3683,16 @@ class GetForwardingRulesForwardingRuleRuleConditionResult(dict):
 class GetForwardingRulesForwardingRuleRuleConditionHostConfigResult(dict):
     def __init__(__self__, *,
                  values: Sequence[str]):
-        pulumi.set(__self__, "values", values)
+        GetForwardingRulesForwardingRuleRuleConditionHostConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -2960,7 +3704,16 @@ class GetForwardingRulesForwardingRuleRuleConditionHostConfigResult(dict):
 class GetForwardingRulesForwardingRuleRuleConditionPathConfigResult(dict):
     def __init__(__self__, *,
                  values: Sequence[str]):
-        pulumi.set(__self__, "values", values)
+        GetForwardingRulesForwardingRuleRuleConditionPathConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -2987,13 +3740,34 @@ class GetIpSetsSetResult(dict):
         :param str ip_version: The IP protocol used by the GA instance.
         :param str status: The status of the acceleration region.
         """
-        pulumi.set(__self__, "accelerate_region_id", accelerate_region_id)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_address_lists", ip_address_lists)
-        pulumi.set(__self__, "ip_set_id", ip_set_id)
-        pulumi.set(__self__, "ip_version", ip_version)
-        pulumi.set(__self__, "status", status)
+        GetIpSetsSetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerate_region_id=accelerate_region_id,
+            bandwidth=bandwidth,
+            id=id,
+            ip_address_lists=ip_address_lists,
+            ip_set_id=ip_set_id,
+            ip_version=ip_version,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerate_region_id: str,
+             bandwidth: int,
+             id: str,
+             ip_address_lists: Sequence[str],
+             ip_set_id: str,
+             ip_version: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerate_region_id", accelerate_region_id)
+        _setter("bandwidth", bandwidth)
+        _setter("id", id)
+        _setter("ip_address_lists", ip_address_lists)
+        _setter("ip_set_id", ip_set_id)
+        _setter("ip_version", ip_version)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accelerateRegionId")
@@ -3075,15 +3849,40 @@ class GetListenersListenerResult(dict):
         :param str protocol: Type of network transport protocol monitored.
         :param str status: The status of the listener.
         """
-        pulumi.set(__self__, "certificates", certificates)
-        pulumi.set(__self__, "client_affinity", client_affinity)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "listener_id", listener_id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "port_ranges", port_ranges)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "status", status)
+        GetListenersListenerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificates=certificates,
+            client_affinity=client_affinity,
+            description=description,
+            id=id,
+            listener_id=listener_id,
+            name=name,
+            port_ranges=port_ranges,
+            protocol=protocol,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificates: Sequence['outputs.GetListenersListenerCertificateResult'],
+             client_affinity: str,
+             description: str,
+             id: str,
+             listener_id: str,
+             name: str,
+             port_ranges: Sequence['outputs.GetListenersListenerPortRangeResult'],
+             protocol: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("certificates", certificates)
+        _setter("client_affinity", client_affinity)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("listener_id", listener_id)
+        _setter("name", name)
+        _setter("port_ranges", port_ranges)
+        _setter("protocol", protocol)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -3167,8 +3966,19 @@ class GetListenersListenerCertificateResult(dict):
         :param str id: The ID of the Listener.
         :param str type: The type of the certificate.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "type", type)
+        GetListenersListenerCertificateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -3196,8 +4006,19 @@ class GetListenersListenerPortRangeResult(dict):
         :param int from_port: The initial listening port used to receive requests and forward them to terminal nodes.
         :param int to_port: The end listening port used to receive requests and forward them to terminal nodes.
         """
-        pulumi.set(__self__, "from_port", from_port)
-        pulumi.set(__self__, "to_port", to_port)
+        GetListenersListenerPortRangeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            from_port=from_port,
+            to_port=to_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             from_port: int,
+             to_port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("from_port", from_port)
+        _setter("to_port", to_port)
 
     @property
     @pulumi.getter(name="fromPort")

@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public Input<string>? MountPath { get; set; }
 
         /// <summary>
-        /// The name of the volume.
+        /// The name of the mounted volume.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Specifies whether the mount path is read-only. Default value: `false`.
+        /// Specifies whether the volume is read-only. Default value: `false`.
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }

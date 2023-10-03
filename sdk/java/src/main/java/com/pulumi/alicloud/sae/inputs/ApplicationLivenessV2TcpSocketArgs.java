@@ -16,14 +16,14 @@ public final class ApplicationLivenessV2TcpSocketArgs extends com.pulumi.resourc
     public static final ApplicationLivenessV2TcpSocketArgs Empty = new ApplicationLivenessV2TcpSocketArgs();
 
     /**
-     * The port that is used to check the status of TCP connections.
+     * The port.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port that is used to check the status of TCP connections.
+     * @return The port.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -55,7 +55,7 @@ public final class ApplicationLivenessV2TcpSocketArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param port The port that is used to check the status of TCP connections.
+         * @param port The port.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ApplicationLivenessV2TcpSocketArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param port The port that is used to check the status of TCP connections.
+         * @param port The port.
          * 
          * @return builder
          * 

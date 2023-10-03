@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -46,20 +46,55 @@ class GetBaseInstancesInstanceResult(dict):
         :param str status: The status of the resource.
         :param Sequence[str] zones: Information about the zone where the cluster is deployed.
         """
-        pulumi.set(__self__, "commodity_code", commodity_code)
-        pulumi.set(__self__, "cpu", cpu)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "node_num", node_num)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "series", series)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "zones", zones)
+        GetBaseInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            commodity_code=commodity_code,
+            cpu=cpu,
+            create_time=create_time,
+            disk_size=disk_size,
+            id=id,
+            instance_class=instance_class,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            node_num=node_num,
+            payment_type=payment_type,
+            resource_group_id=resource_group_id,
+            series=series,
+            status=status,
+            zones=zones,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             commodity_code: str,
+             cpu: int,
+             create_time: str,
+             disk_size: str,
+             id: str,
+             instance_class: str,
+             instance_id: str,
+             instance_name: str,
+             node_num: str,
+             payment_type: str,
+             resource_group_id: str,
+             series: str,
+             status: str,
+             zones: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("commodity_code", commodity_code)
+        _setter("cpu", cpu)
+        _setter("create_time", create_time)
+        _setter("disk_size", disk_size)
+        _setter("id", id)
+        _setter("instance_class", instance_class)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("node_num", node_num)
+        _setter("payment_type", payment_type)
+        _setter("resource_group_id", resource_group_id)
+        _setter("series", series)
+        _setter("status", status)
+        _setter("zones", zones)
 
     @property
     @pulumi.getter(name="commodityCode")

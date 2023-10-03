@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AttachmentArgs', 'Attachment']
@@ -29,16 +29,35 @@ class AttachmentArgs:
         :param pulumi.Input[str] server_type: Type of the instances. Valid value ecs, eni. Default to ecs.
         :param pulumi.Input[int] weight: Weight of the instances. Valid value range: [0-100]. Default to 100.
         """
-        pulumi.set(__self__, "instance_ids", instance_ids)
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        AttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_ids=instance_ids,
+            load_balancer_id=load_balancer_id,
+            backend_servers=backend_servers,
+            delete_protection_validation=delete_protection_validation,
+            server_type=server_type,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             load_balancer_id: pulumi.Input[str],
+             backend_servers: Optional[pulumi.Input[str]] = None,
+             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+             server_type: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_ids", instance_ids)
+        _setter("load_balancer_id", load_balancer_id)
         if backend_servers is not None:
-            pulumi.set(__self__, "backend_servers", backend_servers)
+            _setter("backend_servers", backend_servers)
         if delete_protection_validation is not None:
-            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+            _setter("delete_protection_validation", delete_protection_validation)
         if server_type is not None:
-            pulumi.set(__self__, "server_type", server_type)
+            _setter("server_type", server_type)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="instanceIds")
@@ -131,18 +150,37 @@ class _AttachmentState:
         :param pulumi.Input[str] server_type: Type of the instances. Valid value ecs, eni. Default to ecs.
         :param pulumi.Input[int] weight: Weight of the instances. Valid value range: [0-100]. Default to 100.
         """
+        _AttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_servers=backend_servers,
+            delete_protection_validation=delete_protection_validation,
+            instance_ids=instance_ids,
+            load_balancer_id=load_balancer_id,
+            server_type=server_type,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_servers: Optional[pulumi.Input[str]] = None,
+             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             server_type: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backend_servers is not None:
-            pulumi.set(__self__, "backend_servers", backend_servers)
+            _setter("backend_servers", backend_servers)
         if delete_protection_validation is not None:
-            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+            _setter("delete_protection_validation", delete_protection_validation)
         if instance_ids is not None:
-            pulumi.set(__self__, "instance_ids", instance_ids)
+            _setter("instance_ids", instance_ids)
         if load_balancer_id is not None:
-            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+            _setter("load_balancer_id", load_balancer_id)
         if server_type is not None:
-            pulumi.set(__self__, "server_type", server_type)
+            _setter("server_type", server_type)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="backendServers")
@@ -366,6 +404,10 @@ class Attachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

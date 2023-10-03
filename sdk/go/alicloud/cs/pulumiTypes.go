@@ -4298,7 +4298,7 @@ func (o ManagedKubernetesRrsaMetadataPtrOutput) RrsaOidcIssuerUrl() pulumi.Strin
 }
 
 type ManagedKubernetesRuntime struct {
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// This parameter specifies the name of the component.
 	Name *string `pulumi:"name"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version *string `pulumi:"version"`
@@ -4316,7 +4316,7 @@ type ManagedKubernetesRuntimeInput interface {
 }
 
 type ManagedKubernetesRuntimeArgs struct {
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// This parameter specifies the name of the component.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -4417,7 +4417,7 @@ func (o ManagedKubernetesRuntimeOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// This parameter specifies the name of the component.
 func (o ManagedKubernetesRuntimeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesRuntime) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -4457,7 +4457,7 @@ func (o ManagedKubernetesRuntimePtrOutput) Elem() ManagedKubernetesRuntimeOutput
 	}).(ManagedKubernetesRuntimeOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// This parameter specifies the name of the component.
 func (o ManagedKubernetesRuntimePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedKubernetesRuntime) *string {
 		if v == nil {
@@ -4917,7 +4917,7 @@ func (o ManagedKubernetesWorkerDataDiskArrayOutput) Index(i pulumi.IntInput) Man
 type ManagedKubernetesWorkerNode struct {
 	// (Deprecated from version 1.177.0) ID of the node.
 	Id *string `pulumi:"id"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// This parameter specifies the name of the component.
 	Name *string `pulumi:"name"`
 	// (Deprecated from version 1.177.0) The private IP address of node.
 	PrivateIp *string `pulumi:"privateIp"`
@@ -4937,7 +4937,7 @@ type ManagedKubernetesWorkerNodeInput interface {
 type ManagedKubernetesWorkerNodeArgs struct {
 	// (Deprecated from version 1.177.0) ID of the node.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// This parameter specifies the name of the component.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// (Deprecated from version 1.177.0) The private IP address of node.
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
@@ -5017,7 +5017,7 @@ func (o ManagedKubernetesWorkerNodeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerNode) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// This parameter specifies the name of the component.
 func (o ManagedKubernetesWorkerNodeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerNode) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

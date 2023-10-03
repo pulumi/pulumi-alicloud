@@ -17,7 +17,7 @@ public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
      */
     private @Nullable String content;
     /**
-     * @return The relative file path.
+     * @return The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
      * 
      */
     private @Nullable String path;
@@ -31,7 +31,7 @@ public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
         return Optional.ofNullable(this.content);
     }
     /**
-     * @return The relative file path.
+     * @return The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
      * 
      */
     public Optional<String> path() {

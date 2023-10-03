@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccessGroupArgs', 'AccessGroup']
@@ -29,18 +29,37 @@ class AccessGroupArgs:
         :param pulumi.Input[str] name: Replaced by `access_group_name` after version 1.92.0.
         :param pulumi.Input[str] type: Replaced by `access_group_type` after version 1.92.0.
         """
+        AccessGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_group_name=access_group_name,
+            access_group_type=access_group_type,
+            description=description,
+            file_system_type=file_system_type,
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_group_name: Optional[pulumi.Input[str]] = None,
+             access_group_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             file_system_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_group_name is not None:
-            pulumi.set(__self__, "access_group_name", access_group_name)
+            _setter("access_group_name", access_group_name)
         if access_group_type is not None:
-            pulumi.set(__self__, "access_group_type", access_group_type)
+            _setter("access_group_type", access_group_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if file_system_type is not None:
-            pulumi.set(__self__, "file_system_type", file_system_type)
+            _setter("file_system_type", file_system_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="accessGroupName")
@@ -133,18 +152,37 @@ class _AccessGroupState:
         :param pulumi.Input[str] name: Replaced by `access_group_name` after version 1.92.0.
         :param pulumi.Input[str] type: Replaced by `access_group_type` after version 1.92.0.
         """
+        _AccessGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_group_name=access_group_name,
+            access_group_type=access_group_type,
+            description=description,
+            file_system_type=file_system_type,
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_group_name: Optional[pulumi.Input[str]] = None,
+             access_group_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             file_system_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_group_name is not None:
-            pulumi.set(__self__, "access_group_name", access_group_name)
+            _setter("access_group_name", access_group_name)
         if access_group_type is not None:
-            pulumi.set(__self__, "access_group_type", access_group_type)
+            _setter("access_group_type", access_group_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if file_system_type is not None:
-            pulumi.set(__self__, "file_system_type", file_system_type)
+            _setter("file_system_type", file_system_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="accessGroupName")
@@ -318,6 +356,10 @@ class AccessGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

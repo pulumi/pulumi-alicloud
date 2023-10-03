@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceGrantArgs', 'InstanceGrant']
@@ -23,9 +23,22 @@ class InstanceGrantArgs:
         :param pulumi.Input[str] cen_owner_id: The owner UID of the  CEN which the child instance granted to.
         :param pulumi.Input[str] child_instance_id: The ID of the child instance to grant.
         """
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "cen_owner_id", cen_owner_id)
-        pulumi.set(__self__, "child_instance_id", child_instance_id)
+        InstanceGrantArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            cen_owner_id=cen_owner_id,
+            child_instance_id=child_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: pulumi.Input[str],
+             cen_owner_id: pulumi.Input[str],
+             child_instance_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cen_id", cen_id)
+        _setter("cen_owner_id", cen_owner_id)
+        _setter("child_instance_id", child_instance_id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -76,12 +89,25 @@ class _InstanceGrantState:
         :param pulumi.Input[str] cen_owner_id: The owner UID of the  CEN which the child instance granted to.
         :param pulumi.Input[str] child_instance_id: The ID of the child instance to grant.
         """
+        _InstanceGrantState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            cen_owner_id=cen_owner_id,
+            child_instance_id=child_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: Optional[pulumi.Input[str]] = None,
+             cen_owner_id: Optional[pulumi.Input[str]] = None,
+             child_instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cen_id is not None:
-            pulumi.set(__self__, "cen_id", cen_id)
+            _setter("cen_id", cen_id)
         if cen_owner_id is not None:
-            pulumi.set(__self__, "cen_owner_id", cen_owner_id)
+            _setter("cen_owner_id", cen_owner_id)
         if child_instance_id is not None:
-            pulumi.set(__self__, "child_instance_id", child_instance_id)
+            _setter("child_instance_id", child_instance_id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -283,6 +309,10 @@ class InstanceGrant(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceGrantArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

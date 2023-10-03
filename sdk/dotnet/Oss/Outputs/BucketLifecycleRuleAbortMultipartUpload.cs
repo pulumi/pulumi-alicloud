@@ -14,13 +14,11 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketLifecycleRuleAbortMultipartUpload
     {
         /// <summary>
-        /// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+        /// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
         /// </summary>
         public readonly string? CreatedBeforeDate;
         /// <summary>
-        /// Specifies the number of days after object creation when the specific rule action takes effect.
-        /// 
-        /// `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
+        /// Specifies the number of days noncurrent object versions transition.
         /// </summary>
         public readonly int? Days;
 

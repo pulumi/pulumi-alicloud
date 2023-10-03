@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -111,114 +111,211 @@ class LaunchTemplateArgs:
         :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
+        LaunchTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_release_time=auto_release_time,
+            data_disks=data_disks,
+            deployment_set_id=deployment_set_id,
+            description=description,
+            enable_vm_os_config=enable_vm_os_config,
+            host_name=host_name,
+            image_id=image_id,
+            image_owner_alias=image_owner_alias,
+            instance_charge_type=instance_charge_type,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            internet_charge_type=internet_charge_type,
+            internet_max_bandwidth_in=internet_max_bandwidth_in,
+            internet_max_bandwidth_out=internet_max_bandwidth_out,
+            io_optimized=io_optimized,
+            key_pair_name=key_pair_name,
+            launch_template_name=launch_template_name,
+            name=name,
+            network_interfaces=network_interfaces,
+            network_type=network_type,
+            password_inherit=password_inherit,
+            period=period,
+            private_ip_address=private_ip_address,
+            ram_role_name=ram_role_name,
+            resource_group_id=resource_group_id,
+            security_enhancement_strategy=security_enhancement_strategy,
+            security_group_id=security_group_id,
+            security_group_ids=security_group_ids,
+            spot_duration=spot_duration,
+            spot_price_limit=spot_price_limit,
+            spot_strategy=spot_strategy,
+            system_disk=system_disk,
+            system_disk_category=system_disk_category,
+            system_disk_description=system_disk_description,
+            system_disk_name=system_disk_name,
+            system_disk_size=system_disk_size,
+            tags=tags,
+            template_resource_group_id=template_resource_group_id,
+            template_tags=template_tags,
+            user_data=user_data,
+            userdata=userdata,
+            version_description=version_description,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_release_time: Optional[pulumi.Input[str]] = None,
+             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]]] = None,
+             deployment_set_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             image_owner_alias: Optional[pulumi.Input[str]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
+             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+             io_optimized: Optional[pulumi.Input[str]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             launch_template_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_interfaces: Optional[pulumi.Input['LaunchTemplateNetworkInterfacesArgs']] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             password_inherit: Optional[pulumi.Input[bool]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             private_ip_address: Optional[pulumi.Input[str]] = None,
+             ram_role_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             spot_duration: Optional[pulumi.Input[str]] = None,
+             spot_price_limit: Optional[pulumi.Input[float]] = None,
+             spot_strategy: Optional[pulumi.Input[str]] = None,
+             system_disk: Optional[pulumi.Input['LaunchTemplateSystemDiskArgs']] = None,
+             system_disk_category: Optional[pulumi.Input[str]] = None,
+             system_disk_description: Optional[pulumi.Input[str]] = None,
+             system_disk_name: Optional[pulumi.Input[str]] = None,
+             system_disk_size: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             template_resource_group_id: Optional[pulumi.Input[str]] = None,
+             template_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             userdata: Optional[pulumi.Input[str]] = None,
+             version_description: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_release_time is not None:
-            pulumi.set(__self__, "auto_release_time", auto_release_time)
+            _setter("auto_release_time", auto_release_time)
         if data_disks is not None:
-            pulumi.set(__self__, "data_disks", data_disks)
+            _setter("data_disks", data_disks)
         if deployment_set_id is not None:
-            pulumi.set(__self__, "deployment_set_id", deployment_set_id)
+            _setter("deployment_set_id", deployment_set_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_vm_os_config is not None:
-            pulumi.set(__self__, "enable_vm_os_config", enable_vm_os_config)
+            _setter("enable_vm_os_config", enable_vm_os_config)
         if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+            _setter("host_name", host_name)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if image_owner_alias is not None:
-            pulumi.set(__self__, "image_owner_alias", image_owner_alias)
+            _setter("image_owner_alias", image_owner_alias)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_in is not None:
-            pulumi.set(__self__, "internet_max_bandwidth_in", internet_max_bandwidth_in)
+            _setter("internet_max_bandwidth_in", internet_max_bandwidth_in)
         if internet_max_bandwidth_out is not None:
-            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+            _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
         if io_optimized is not None:
-            pulumi.set(__self__, "io_optimized", io_optimized)
+            _setter("io_optimized", io_optimized)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
         if launch_template_name is not None:
-            pulumi.set(__self__, "launch_template_name", launch_template_name)
+            _setter("launch_template_name", launch_template_name)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_interfaces is not None:
-            pulumi.set(__self__, "network_interfaces", network_interfaces)
+            _setter("network_interfaces", network_interfaces)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if password_inherit is not None:
-            pulumi.set(__self__, "password_inherit", password_inherit)
+            _setter("password_inherit", password_inherit)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if private_ip_address is not None:
-            pulumi.set(__self__, "private_ip_address", private_ip_address)
+            _setter("private_ip_address", private_ip_address)
         if ram_role_name is not None:
-            pulumi.set(__self__, "ram_role_name", ram_role_name)
+            _setter("ram_role_name", ram_role_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if security_enhancement_strategy is not None:
-            pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
+            _setter("security_enhancement_strategy", security_enhancement_strategy)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if spot_duration is not None:
-            pulumi.set(__self__, "spot_duration", spot_duration)
+            _setter("spot_duration", spot_duration)
         if spot_price_limit is not None:
-            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+            _setter("spot_price_limit", spot_price_limit)
         if spot_strategy is not None:
-            pulumi.set(__self__, "spot_strategy", spot_strategy)
+            _setter("spot_strategy", spot_strategy)
         if system_disk is not None:
-            pulumi.set(__self__, "system_disk", system_disk)
+            _setter("system_disk", system_disk)
         if system_disk_category is not None:
             warnings.warn("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
             pulumi.log.warn("""system_disk_category is deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
         if system_disk_category is not None:
-            pulumi.set(__self__, "system_disk_category", system_disk_category)
+            _setter("system_disk_category", system_disk_category)
         if system_disk_description is not None:
             warnings.warn("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
             pulumi.log.warn("""system_disk_description is deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
         if system_disk_description is not None:
-            pulumi.set(__self__, "system_disk_description", system_disk_description)
+            _setter("system_disk_description", system_disk_description)
         if system_disk_name is not None:
             warnings.warn("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
             pulumi.log.warn("""system_disk_name is deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
         if system_disk_name is not None:
-            pulumi.set(__self__, "system_disk_name", system_disk_name)
+            _setter("system_disk_name", system_disk_name)
         if system_disk_size is not None:
             warnings.warn("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
             pulumi.log.warn("""system_disk_size is deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
         if system_disk_size is not None:
-            pulumi.set(__self__, "system_disk_size", system_disk_size)
+            _setter("system_disk_size", system_disk_size)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template_resource_group_id is not None:
-            pulumi.set(__self__, "template_resource_group_id", template_resource_group_id)
+            _setter("template_resource_group_id", template_resource_group_id)
         if template_tags is not None:
-            pulumi.set(__self__, "template_tags", template_tags)
+            _setter("template_tags", template_tags)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if userdata is not None:
             warnings.warn("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""", DeprecationWarning)
             pulumi.log.warn("""userdata is deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
         if userdata is not None:
-            pulumi.set(__self__, "userdata", userdata)
+            _setter("userdata", userdata)
         if version_description is not None:
-            pulumi.set(__self__, "version_description", version_description)
+            _setter("version_description", version_description)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoReleaseTime")
@@ -847,114 +944,211 @@ class _LaunchTemplateState:
         :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
+        _LaunchTemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_release_time=auto_release_time,
+            data_disks=data_disks,
+            deployment_set_id=deployment_set_id,
+            description=description,
+            enable_vm_os_config=enable_vm_os_config,
+            host_name=host_name,
+            image_id=image_id,
+            image_owner_alias=image_owner_alias,
+            instance_charge_type=instance_charge_type,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            internet_charge_type=internet_charge_type,
+            internet_max_bandwidth_in=internet_max_bandwidth_in,
+            internet_max_bandwidth_out=internet_max_bandwidth_out,
+            io_optimized=io_optimized,
+            key_pair_name=key_pair_name,
+            launch_template_name=launch_template_name,
+            name=name,
+            network_interfaces=network_interfaces,
+            network_type=network_type,
+            password_inherit=password_inherit,
+            period=period,
+            private_ip_address=private_ip_address,
+            ram_role_name=ram_role_name,
+            resource_group_id=resource_group_id,
+            security_enhancement_strategy=security_enhancement_strategy,
+            security_group_id=security_group_id,
+            security_group_ids=security_group_ids,
+            spot_duration=spot_duration,
+            spot_price_limit=spot_price_limit,
+            spot_strategy=spot_strategy,
+            system_disk=system_disk,
+            system_disk_category=system_disk_category,
+            system_disk_description=system_disk_description,
+            system_disk_name=system_disk_name,
+            system_disk_size=system_disk_size,
+            tags=tags,
+            template_resource_group_id=template_resource_group_id,
+            template_tags=template_tags,
+            user_data=user_data,
+            userdata=userdata,
+            version_description=version_description,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_release_time: Optional[pulumi.Input[str]] = None,
+             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]]] = None,
+             deployment_set_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_vm_os_config: Optional[pulumi.Input[bool]] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             image_owner_alias: Optional[pulumi.Input[str]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
+             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+             io_optimized: Optional[pulumi.Input[str]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             launch_template_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_interfaces: Optional[pulumi.Input['LaunchTemplateNetworkInterfacesArgs']] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             password_inherit: Optional[pulumi.Input[bool]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             private_ip_address: Optional[pulumi.Input[str]] = None,
+             ram_role_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             spot_duration: Optional[pulumi.Input[str]] = None,
+             spot_price_limit: Optional[pulumi.Input[float]] = None,
+             spot_strategy: Optional[pulumi.Input[str]] = None,
+             system_disk: Optional[pulumi.Input['LaunchTemplateSystemDiskArgs']] = None,
+             system_disk_category: Optional[pulumi.Input[str]] = None,
+             system_disk_description: Optional[pulumi.Input[str]] = None,
+             system_disk_name: Optional[pulumi.Input[str]] = None,
+             system_disk_size: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             template_resource_group_id: Optional[pulumi.Input[str]] = None,
+             template_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             userdata: Optional[pulumi.Input[str]] = None,
+             version_description: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_release_time is not None:
-            pulumi.set(__self__, "auto_release_time", auto_release_time)
+            _setter("auto_release_time", auto_release_time)
         if data_disks is not None:
-            pulumi.set(__self__, "data_disks", data_disks)
+            _setter("data_disks", data_disks)
         if deployment_set_id is not None:
-            pulumi.set(__self__, "deployment_set_id", deployment_set_id)
+            _setter("deployment_set_id", deployment_set_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_vm_os_config is not None:
-            pulumi.set(__self__, "enable_vm_os_config", enable_vm_os_config)
+            _setter("enable_vm_os_config", enable_vm_os_config)
         if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+            _setter("host_name", host_name)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if image_owner_alias is not None:
-            pulumi.set(__self__, "image_owner_alias", image_owner_alias)
+            _setter("image_owner_alias", image_owner_alias)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_in is not None:
-            pulumi.set(__self__, "internet_max_bandwidth_in", internet_max_bandwidth_in)
+            _setter("internet_max_bandwidth_in", internet_max_bandwidth_in)
         if internet_max_bandwidth_out is not None:
-            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+            _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
         if io_optimized is not None:
-            pulumi.set(__self__, "io_optimized", io_optimized)
+            _setter("io_optimized", io_optimized)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
         if launch_template_name is not None:
-            pulumi.set(__self__, "launch_template_name", launch_template_name)
+            _setter("launch_template_name", launch_template_name)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_interfaces is not None:
-            pulumi.set(__self__, "network_interfaces", network_interfaces)
+            _setter("network_interfaces", network_interfaces)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if password_inherit is not None:
-            pulumi.set(__self__, "password_inherit", password_inherit)
+            _setter("password_inherit", password_inherit)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if private_ip_address is not None:
-            pulumi.set(__self__, "private_ip_address", private_ip_address)
+            _setter("private_ip_address", private_ip_address)
         if ram_role_name is not None:
-            pulumi.set(__self__, "ram_role_name", ram_role_name)
+            _setter("ram_role_name", ram_role_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if security_enhancement_strategy is not None:
-            pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
+            _setter("security_enhancement_strategy", security_enhancement_strategy)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if spot_duration is not None:
-            pulumi.set(__self__, "spot_duration", spot_duration)
+            _setter("spot_duration", spot_duration)
         if spot_price_limit is not None:
-            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+            _setter("spot_price_limit", spot_price_limit)
         if spot_strategy is not None:
-            pulumi.set(__self__, "spot_strategy", spot_strategy)
+            _setter("spot_strategy", spot_strategy)
         if system_disk is not None:
-            pulumi.set(__self__, "system_disk", system_disk)
+            _setter("system_disk", system_disk)
         if system_disk_category is not None:
             warnings.warn("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
             pulumi.log.warn("""system_disk_category is deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
         if system_disk_category is not None:
-            pulumi.set(__self__, "system_disk_category", system_disk_category)
+            _setter("system_disk_category", system_disk_category)
         if system_disk_description is not None:
             warnings.warn("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
             pulumi.log.warn("""system_disk_description is deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
         if system_disk_description is not None:
-            pulumi.set(__self__, "system_disk_description", system_disk_description)
+            _setter("system_disk_description", system_disk_description)
         if system_disk_name is not None:
             warnings.warn("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
             pulumi.log.warn("""system_disk_name is deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
         if system_disk_name is not None:
-            pulumi.set(__self__, "system_disk_name", system_disk_name)
+            _setter("system_disk_name", system_disk_name)
         if system_disk_size is not None:
             warnings.warn("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
             pulumi.log.warn("""system_disk_size is deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
         if system_disk_size is not None:
-            pulumi.set(__self__, "system_disk_size", system_disk_size)
+            _setter("system_disk_size", system_disk_size)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template_resource_group_id is not None:
-            pulumi.set(__self__, "template_resource_group_id", template_resource_group_id)
+            _setter("template_resource_group_id", template_resource_group_id)
         if template_tags is not None:
-            pulumi.set(__self__, "template_tags", template_tags)
+            _setter("template_tags", template_tags)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if userdata is not None:
             warnings.warn("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""", DeprecationWarning)
             pulumi.log.warn("""userdata is deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
         if userdata is not None:
-            pulumi.set(__self__, "userdata", userdata)
+            _setter("userdata", userdata)
         if version_description is not None:
-            pulumi.set(__self__, "version_description", version_description)
+            _setter("version_description", version_description)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoReleaseTime")
@@ -1748,6 +1942,10 @@ class LaunchTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LaunchTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1824,10 +2022,12 @@ class LaunchTemplate(pulumi.CustomResource):
             __props__.__dict__["io_optimized"] = io_optimized
             __props__.__dict__["key_pair_name"] = key_pair_name
             __props__.__dict__["launch_template_name"] = launch_template_name
-            if name is not None and not opts.urn:
-                warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
             __props__.__dict__["name"] = name
+            if network_interfaces is not None and not isinstance(network_interfaces, LaunchTemplateNetworkInterfacesArgs):
+                network_interfaces = network_interfaces or {}
+                def _setter(key, value):
+                    network_interfaces[key] = value
+                LaunchTemplateNetworkInterfacesArgs._configure(_setter, **network_interfaces)
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["network_type"] = network_type
             __props__.__dict__["password_inherit"] = password_inherit
@@ -1841,30 +2041,20 @@ class LaunchTemplate(pulumi.CustomResource):
             __props__.__dict__["spot_duration"] = spot_duration
             __props__.__dict__["spot_price_limit"] = spot_price_limit
             __props__.__dict__["spot_strategy"] = spot_strategy
+            if system_disk is not None and not isinstance(system_disk, LaunchTemplateSystemDiskArgs):
+                system_disk = system_disk or {}
+                def _setter(key, value):
+                    system_disk[key] = value
+                LaunchTemplateSystemDiskArgs._configure(_setter, **system_disk)
             __props__.__dict__["system_disk"] = system_disk
-            if system_disk_category is not None and not opts.urn:
-                warnings.warn("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-                pulumi.log.warn("""system_disk_category is deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
             __props__.__dict__["system_disk_category"] = system_disk_category
-            if system_disk_description is not None and not opts.urn:
-                warnings.warn("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-                pulumi.log.warn("""system_disk_description is deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
             __props__.__dict__["system_disk_description"] = system_disk_description
-            if system_disk_name is not None and not opts.urn:
-                warnings.warn("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-                pulumi.log.warn("""system_disk_name is deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
             __props__.__dict__["system_disk_name"] = system_disk_name
-            if system_disk_size is not None and not opts.urn:
-                warnings.warn("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
-                pulumi.log.warn("""system_disk_size is deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
             __props__.__dict__["system_disk_size"] = system_disk_size
             __props__.__dict__["tags"] = tags
             __props__.__dict__["template_resource_group_id"] = template_resource_group_id
             __props__.__dict__["template_tags"] = template_tags
             __props__.__dict__["user_data"] = user_data
-            if userdata is not None and not opts.urn:
-                warnings.warn("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""", DeprecationWarning)
-                pulumi.log.warn("""userdata is deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
             __props__.__dict__["userdata"] = userdata
             __props__.__dict__["version_description"] = version_description
             __props__.__dict__["vpc_id"] = vpc_id

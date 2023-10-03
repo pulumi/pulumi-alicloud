@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ResourceRecordArgs', 'ResourceRecord']
@@ -25,10 +25,25 @@ class ResourceRecordArgs:
         :param pulumi.Input[str] tag: The record's tag, can be used for search.
         :param pulumi.Input[str] value: The json value of record.
         """
-        pulumi.set(__self__, "record_id", record_id)
-        pulumi.set(__self__, "resource_name", resource_name)
-        pulumi.set(__self__, "tag", tag)
-        pulumi.set(__self__, "value", value)
+        ResourceRecordArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            record_id=record_id,
+            resource_name=resource_name,
+            tag=tag,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             record_id: pulumi.Input[str],
+             resource_name: pulumi.Input[str],
+             tag: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("record_id", record_id)
+        _setter("resource_name", resource_name)
+        _setter("tag", tag)
+        _setter("value", value)
 
     @property
     @pulumi.getter(name="recordId")
@@ -93,14 +108,29 @@ class _ResourceRecordState:
         :param pulumi.Input[str] tag: The record's tag, can be used for search.
         :param pulumi.Input[str] value: The json value of record.
         """
+        _ResourceRecordState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            record_id=record_id,
+            resource_name=resource_name,
+            tag=tag,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             record_id: Optional[pulumi.Input[str]] = None,
+             resource_name: Optional[pulumi.Input[str]] = None,
+             tag: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if record_id is not None:
-            pulumi.set(__self__, "record_id", record_id)
+            _setter("record_id", record_id)
         if resource_name is not None:
-            pulumi.set(__self__, "resource_name", resource_name)
+            _setter("resource_name", resource_name)
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter(name="recordId")
@@ -244,6 +274,10 @@ class ResourceRecord(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ResourceRecordArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

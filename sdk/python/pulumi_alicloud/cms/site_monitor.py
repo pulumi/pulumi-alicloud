@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,17 +33,38 @@ class SiteMonitorArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]] isp_cities: The detection points in a JSON array. For example, `[{"city":"546","isp":"465"},{"city":"572","isp":"465"},{"city":"738","isp":"465"}]` indicates the detection points in Beijing, Hangzhou, and Qingdao respectively. You can call the [DescribeSiteMonitorISPCityList](https://www.alibabacloud.com/help/en/doc-detail/115045.htm) operation to query detection point information. If this parameter is not specified, three detection points will be chosen randomly for monitoring. See `isp_cities` below.
         :param pulumi.Input[str] options_json: The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "task_name", task_name)
-        pulumi.set(__self__, "task_type", task_type)
+        SiteMonitorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            task_name=task_name,
+            task_type=task_type,
+            alert_ids=alert_ids,
+            interval=interval,
+            isp_cities=isp_cities,
+            options_json=options_json,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: pulumi.Input[str],
+             task_name: pulumi.Input[str],
+             task_type: pulumi.Input[str],
+             alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]] = None,
+             options_json: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("task_name", task_name)
+        _setter("task_type", task_type)
         if alert_ids is not None:
-            pulumi.set(__self__, "alert_ids", alert_ids)
+            _setter("alert_ids", alert_ids)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if isp_cities is not None:
-            pulumi.set(__self__, "isp_cities", isp_cities)
+            _setter("isp_cities", isp_cities)
         if options_json is not None:
-            pulumi.set(__self__, "options_json", options_json)
+            _setter("options_json", options_json)
 
     @property
     @pulumi.getter
@@ -156,26 +177,53 @@ class _SiteMonitorState:
         :param pulumi.Input[str] task_type: The protocol of the site monitoring task. Currently, site monitoring supports the following protocols: HTTP, PING, TCP, UDP, DNS, SMTP, POP3, and FTP.
         :param pulumi.Input[str] update_time: The time when the site monitoring task was updated.
         """
+        _SiteMonitorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            alert_ids=alert_ids,
+            create_time=create_time,
+            interval=interval,
+            isp_cities=isp_cities,
+            options_json=options_json,
+            task_name=task_name,
+            task_state=task_state,
+            task_type=task_type,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             alert_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             isp_cities: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorIspCityArgs']]]] = None,
+             options_json: Optional[pulumi.Input[str]] = None,
+             task_name: Optional[pulumi.Input[str]] = None,
+             task_state: Optional[pulumi.Input[str]] = None,
+             task_type: Optional[pulumi.Input[str]] = None,
+             update_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if alert_ids is not None:
-            pulumi.set(__self__, "alert_ids", alert_ids)
+            _setter("alert_ids", alert_ids)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if isp_cities is not None:
-            pulumi.set(__self__, "isp_cities", isp_cities)
+            _setter("isp_cities", isp_cities)
         if options_json is not None:
-            pulumi.set(__self__, "options_json", options_json)
+            _setter("options_json", options_json)
         if task_name is not None:
-            pulumi.set(__self__, "task_name", task_name)
+            _setter("task_name", task_name)
         if task_state is not None:
-            pulumi.set(__self__, "task_state", task_state)
+            _setter("task_state", task_state)
         if task_type is not None:
-            pulumi.set(__self__, "task_type", task_type)
+            _setter("task_type", task_type)
         if update_time is not None:
-            pulumi.set(__self__, "update_time", update_time)
+            _setter("update_time", update_time)
 
     @property
     @pulumi.getter
@@ -403,6 +451,10 @@ class SiteMonitor(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SiteMonitorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LoadBalancerCommonBandwidthPackageAttachmentArgs', 'LoadBalancerCommonBandwidthPackageAttachment']
@@ -23,10 +23,23 @@ class LoadBalancerCommonBandwidthPackageAttachmentArgs:
         :param pulumi.Input[str] load_balancer_id: The ID of the applied server load balancer instance.
         :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind the shared bandwidth package to the load balancing instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
         """
-        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        LoadBalancerCommonBandwidthPackageAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth_package_id=bandwidth_package_id,
+            load_balancer_id=load_balancer_id,
+            dry_run=dry_run,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth_package_id: pulumi.Input[str],
+             load_balancer_id: pulumi.Input[str],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth_package_id", bandwidth_package_id)
+        _setter("load_balancer_id", load_balancer_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
 
     @property
     @pulumi.getter(name="bandwidthPackageId")
@@ -79,14 +92,29 @@ class _LoadBalancerCommonBandwidthPackageAttachmentState:
         :param pulumi.Input[str] load_balancer_id: The ID of the applied server load balancer instance.
         :param pulumi.Input[str] status: The status of the Application Load balancing instance. Value:-**Inactive**: Stopped, indicating that the instance listener will no longer forward traffic.-**Active**: running.-**Provisioning**: The project is being created.-**Configuring**: The configuration is being changed.-**CreateFailed**: The instance cannot be deleted without any charge.
         """
+        _LoadBalancerCommonBandwidthPackageAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth_package_id=bandwidth_package_id,
+            dry_run=dry_run,
+            load_balancer_id=load_balancer_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bandwidth_package_id is not None:
-            pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+            _setter("bandwidth_package_id", bandwidth_package_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if load_balancer_id is not None:
-            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+            _setter("load_balancer_id", load_balancer_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="bandwidthPackageId")
@@ -198,6 +226,10 @@ class LoadBalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LoadBalancerCommonBandwidthPackageAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

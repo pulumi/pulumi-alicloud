@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -65,9 +65,20 @@ class AggregateCompliancePackConfigRule(dict):
         :param str managed_rule_identifier: The Managed Rule Identifier.
         :param Sequence['AggregateCompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of parameter rules. See `config_rule_parameters` below.
         """
-        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+        AggregateCompliancePackConfigRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            managed_rule_identifier=managed_rule_identifier,
+            config_rule_parameters=config_rule_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             managed_rule_identifier: str,
+             config_rule_parameters: Optional[Sequence['outputs.AggregateCompliancePackConfigRuleConfigRuleParameter']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
-            pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
+            _setter("config_rule_parameters", config_rule_parameters)
 
     @property
     @pulumi.getter(name="managedRuleIdentifier")
@@ -114,10 +125,21 @@ class AggregateCompliancePackConfigRuleConfigRuleParameter(dict):
         :param str parameter_name: The Parameter Name.
         :param str parameter_value: The Parameter Value.
         """
+        AggregateCompliancePackConfigRuleConfigRuleParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_name=parameter_name,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_name: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if parameter_name is not None:
-            pulumi.set(__self__, "parameter_name", parameter_name)
+            _setter("parameter_name", parameter_name)
         if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+            _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterName")
@@ -160,8 +182,17 @@ class AggregateCompliancePackConfigRuleId(dict):
         """
         :param str config_rule_id: The rule ID of Aggregate Config Rule.
         """
+        AggregateCompliancePackConfigRuleId._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_rule_id=config_rule_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_rule_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config_rule_id is not None:
-            pulumi.set(__self__, "config_rule_id", config_rule_id)
+            _setter("config_rule_id", config_rule_id)
 
     @property
     @pulumi.getter(name="configRuleId")
@@ -204,9 +235,22 @@ class AggregatorAggregatorAccount(dict):
         :param str account_name: Aggregator account name.
         :param str account_type: Aggregator account source type. Valid values: `ResourceDirectory`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_type", account_type)
+        AggregatorAggregatorAccount._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            account_name=account_name,
+            account_type=account_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             account_name: str,
+             account_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("account_name", account_name)
+        _setter("account_type", account_type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -261,9 +305,20 @@ class CompliancePackConfigRule(dict):
         :param str managed_rule_identifier: The Managed Rule Identifier.
         :param Sequence['CompliancePackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of Config Rule Parameters. See `config_rule_parameters` below.
         """
-        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+        CompliancePackConfigRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            managed_rule_identifier=managed_rule_identifier,
+            config_rule_parameters=config_rule_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             managed_rule_identifier: str,
+             config_rule_parameters: Optional[Sequence['outputs.CompliancePackConfigRuleConfigRuleParameter']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
-            pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
+            _setter("config_rule_parameters", config_rule_parameters)
 
     @property
     @pulumi.getter(name="managedRuleIdentifier")
@@ -310,10 +365,21 @@ class CompliancePackConfigRuleConfigRuleParameter(dict):
         :param str parameter_name: The parameter name.
         :param str parameter_value: The parameter value.
         """
+        CompliancePackConfigRuleConfigRuleParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_name=parameter_name,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_name: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if parameter_name is not None:
-            pulumi.set(__self__, "parameter_name", parameter_name)
+            _setter("parameter_name", parameter_name)
         if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+            _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterName")
@@ -356,8 +422,17 @@ class CompliancePackConfigRuleId(dict):
         """
         :param str config_rule_id: The rule ID of Config Rule.
         """
+        CompliancePackConfigRuleId._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_rule_id=config_rule_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_rule_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config_rule_id is not None:
-            pulumi.set(__self__, "config_rule_id", config_rule_id)
+            _setter("config_rule_id", config_rule_id)
 
     @property
     @pulumi.getter(name="configRuleId")
@@ -394,10 +469,21 @@ class RuleCompliance(dict):
         :param str compliance_type: The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
         :param int count: The count of compliance.
         """
+        RuleCompliance._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compliance_type=compliance_type,
+            count=count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compliance_type: Optional[str] = None,
+             count: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if compliance_type is not None:
-            pulumi.set(__self__, "compliance_type", compliance_type)
+            _setter("compliance_type", compliance_type)
         if count is not None:
-            pulumi.set(__self__, "count", count)
+            _setter("count", count)
 
     @property
     @pulumi.getter(name="complianceType")
@@ -439,15 +525,40 @@ class GetAggregateCompliancePacksPackResult(dict):
         :param int risk_level: The Risk Level.
         :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`, `INACTIVE`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "aggregate_compliance_pack_name", aggregate_compliance_pack_name)
-        pulumi.set(__self__, "aggregator_compliance_pack_id", aggregator_compliance_pack_id)
-        pulumi.set(__self__, "compliance_pack_template_id", compliance_pack_template_id)
-        pulumi.set(__self__, "config_rules", config_rules)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "risk_level", risk_level)
-        pulumi.set(__self__, "status", status)
+        GetAggregateCompliancePacksPackResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            aggregate_compliance_pack_name=aggregate_compliance_pack_name,
+            aggregator_compliance_pack_id=aggregator_compliance_pack_id,
+            compliance_pack_template_id=compliance_pack_template_id,
+            config_rules=config_rules,
+            description=description,
+            id=id,
+            risk_level=risk_level,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             aggregate_compliance_pack_name: str,
+             aggregator_compliance_pack_id: str,
+             compliance_pack_template_id: str,
+             config_rules: Sequence['outputs.GetAggregateCompliancePacksPackConfigRuleResult'],
+             description: str,
+             id: str,
+             risk_level: int,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("aggregate_compliance_pack_name", aggregate_compliance_pack_name)
+        _setter("aggregator_compliance_pack_id", aggregator_compliance_pack_id)
+        _setter("compliance_pack_template_id", compliance_pack_template_id)
+        _setter("config_rules", config_rules)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("risk_level", risk_level)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -533,9 +644,22 @@ class GetAggregateCompliancePacksPackConfigRuleResult(dict):
         :param Sequence['GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of parameter rules.
         :param str managed_rule_identifier: Managed Rule Identifier.
         """
-        pulumi.set(__self__, "config_rule_id", config_rule_id)
-        pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
-        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+        GetAggregateCompliancePacksPackConfigRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_rule_id=config_rule_id,
+            config_rule_parameters=config_rule_parameters,
+            managed_rule_identifier=managed_rule_identifier,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_rule_id: str,
+             config_rule_parameters: Sequence['outputs.GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult'],
+             managed_rule_identifier: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config_rule_id", config_rule_id)
+        _setter("config_rule_parameters", config_rule_parameters)
+        _setter("managed_rule_identifier", managed_rule_identifier)
 
     @property
     @pulumi.getter(name="configRuleId")
@@ -573,9 +697,22 @@ class GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult(dict):
         :param str parameter_value: The Parameter Value.
         :param bool required: Required.
         """
-        pulumi.set(__self__, "parameter_name", parameter_name)
-        pulumi.set(__self__, "parameter_value", parameter_value)
-        pulumi.set(__self__, "required", required)
+        GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_name=parameter_name,
+            parameter_value=parameter_value,
+            required=required,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_name: str,
+             parameter_value: str,
+             required: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parameter_name", parameter_name)
+        _setter("parameter_value", parameter_value)
+        _setter("required", required)
 
     @property
     @pulumi.getter(name="parameterName")
@@ -654,30 +791,85 @@ class GetAggregateConfigRulesRuleResult(dict):
         :param str tag_key_scope: The scope of tay key.
         :param str tag_value_scope: The scope of tay value.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "aggregate_config_rule_name", aggregate_config_rule_name)
-        pulumi.set(__self__, "aggregator_id", aggregator_id)
-        pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
-        pulumi.set(__self__, "compliances", compliances)
-        pulumi.set(__self__, "config_rule_arn", config_rule_arn)
-        pulumi.set(__self__, "config_rule_id", config_rule_id)
-        pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "event_source", event_source)
-        pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "input_parameters", input_parameters)
-        pulumi.set(__self__, "maximum_execution_frequency", maximum_execution_frequency)
-        pulumi.set(__self__, "modified_timestamp", modified_timestamp)
-        pulumi.set(__self__, "region_ids_scope", region_ids_scope)
-        pulumi.set(__self__, "resource_group_ids_scope", resource_group_ids_scope)
-        pulumi.set(__self__, "resource_types_scopes", resource_types_scopes)
-        pulumi.set(__self__, "risk_level", risk_level)
-        pulumi.set(__self__, "source_identifier", source_identifier)
-        pulumi.set(__self__, "source_owner", source_owner)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tag_key_scope", tag_key_scope)
-        pulumi.set(__self__, "tag_value_scope", tag_value_scope)
+        GetAggregateConfigRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            aggregate_config_rule_name=aggregate_config_rule_name,
+            aggregator_id=aggregator_id,
+            compliance_pack_id=compliance_pack_id,
+            compliances=compliances,
+            config_rule_arn=config_rule_arn,
+            config_rule_id=config_rule_id,
+            config_rule_trigger_types=config_rule_trigger_types,
+            description=description,
+            event_source=event_source,
+            exclude_resource_ids_scope=exclude_resource_ids_scope,
+            id=id,
+            input_parameters=input_parameters,
+            maximum_execution_frequency=maximum_execution_frequency,
+            modified_timestamp=modified_timestamp,
+            region_ids_scope=region_ids_scope,
+            resource_group_ids_scope=resource_group_ids_scope,
+            resource_types_scopes=resource_types_scopes,
+            risk_level=risk_level,
+            source_identifier=source_identifier,
+            source_owner=source_owner,
+            status=status,
+            tag_key_scope=tag_key_scope,
+            tag_value_scope=tag_value_scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             aggregate_config_rule_name: str,
+             aggregator_id: str,
+             compliance_pack_id: str,
+             compliances: Sequence['outputs.GetAggregateConfigRulesRuleComplianceResult'],
+             config_rule_arn: str,
+             config_rule_id: str,
+             config_rule_trigger_types: str,
+             description: str,
+             event_source: str,
+             exclude_resource_ids_scope: str,
+             id: str,
+             input_parameters: Mapping[str, Any],
+             maximum_execution_frequency: str,
+             modified_timestamp: str,
+             region_ids_scope: str,
+             resource_group_ids_scope: str,
+             resource_types_scopes: Sequence[str],
+             risk_level: int,
+             source_identifier: str,
+             source_owner: str,
+             status: str,
+             tag_key_scope: str,
+             tag_value_scope: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("aggregate_config_rule_name", aggregate_config_rule_name)
+        _setter("aggregator_id", aggregator_id)
+        _setter("compliance_pack_id", compliance_pack_id)
+        _setter("compliances", compliances)
+        _setter("config_rule_arn", config_rule_arn)
+        _setter("config_rule_id", config_rule_id)
+        _setter("config_rule_trigger_types", config_rule_trigger_types)
+        _setter("description", description)
+        _setter("event_source", event_source)
+        _setter("exclude_resource_ids_scope", exclude_resource_ids_scope)
+        _setter("id", id)
+        _setter("input_parameters", input_parameters)
+        _setter("maximum_execution_frequency", maximum_execution_frequency)
+        _setter("modified_timestamp", modified_timestamp)
+        _setter("region_ids_scope", region_ids_scope)
+        _setter("resource_group_ids_scope", resource_group_ids_scope)
+        _setter("resource_types_scopes", resource_types_scopes)
+        _setter("risk_level", risk_level)
+        _setter("source_identifier", source_identifier)
+        _setter("source_owner", source_owner)
+        _setter("status", status)
+        _setter("tag_key_scope", tag_key_scope)
+        _setter("tag_value_scope", tag_value_scope)
 
     @property
     @pulumi.getter(name="accountId")
@@ -878,8 +1070,19 @@ class GetAggregateConfigRulesRuleComplianceResult(dict):
         :param str compliance_type: The Compliance Type.
         :param int count: The Count.
         """
-        pulumi.set(__self__, "compliance_type", compliance_type)
-        pulumi.set(__self__, "count", count)
+        GetAggregateConfigRulesRuleComplianceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compliance_type=compliance_type,
+            count=count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compliance_type: str,
+             count: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compliance_type", compliance_type)
+        _setter("count", count)
 
     @property
     @pulumi.getter(name="complianceType")
@@ -933,21 +1136,58 @@ class GetAggregateDeliveriesDeliveryResult(dict):
         :param str oversized_data_oss_target_arn: The oss ARN of the delivery channel when the value data oversized limit.
         :param int status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "aggregator_id", aggregator_id)
-        pulumi.set(__self__, "configuration_item_change_notification", configuration_item_change_notification)
-        pulumi.set(__self__, "configuration_snapshot", configuration_snapshot)
-        pulumi.set(__self__, "delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
-        pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
-        pulumi.set(__self__, "delivery_channel_id", delivery_channel_id)
-        pulumi.set(__self__, "delivery_channel_name", delivery_channel_name)
-        pulumi.set(__self__, "delivery_channel_target_arn", delivery_channel_target_arn)
-        pulumi.set(__self__, "delivery_channel_type", delivery_channel_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "non_compliant_notification", non_compliant_notification)
-        pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
-        pulumi.set(__self__, "status", status)
+        GetAggregateDeliveriesDeliveryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            aggregator_id=aggregator_id,
+            configuration_item_change_notification=configuration_item_change_notification,
+            configuration_snapshot=configuration_snapshot,
+            delivery_channel_assume_role_arn=delivery_channel_assume_role_arn,
+            delivery_channel_condition=delivery_channel_condition,
+            delivery_channel_id=delivery_channel_id,
+            delivery_channel_name=delivery_channel_name,
+            delivery_channel_target_arn=delivery_channel_target_arn,
+            delivery_channel_type=delivery_channel_type,
+            description=description,
+            id=id,
+            non_compliant_notification=non_compliant_notification,
+            oversized_data_oss_target_arn=oversized_data_oss_target_arn,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             aggregator_id: str,
+             configuration_item_change_notification: bool,
+             configuration_snapshot: bool,
+             delivery_channel_assume_role_arn: str,
+             delivery_channel_condition: str,
+             delivery_channel_id: str,
+             delivery_channel_name: str,
+             delivery_channel_target_arn: str,
+             delivery_channel_type: str,
+             description: str,
+             id: str,
+             non_compliant_notification: bool,
+             oversized_data_oss_target_arn: str,
+             status: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("aggregator_id", aggregator_id)
+        _setter("configuration_item_change_notification", configuration_item_change_notification)
+        _setter("configuration_snapshot", configuration_snapshot)
+        _setter("delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
+        _setter("delivery_channel_condition", delivery_channel_condition)
+        _setter("delivery_channel_id", delivery_channel_id)
+        _setter("delivery_channel_name", delivery_channel_name)
+        _setter("delivery_channel_target_arn", delivery_channel_target_arn)
+        _setter("delivery_channel_type", delivery_channel_type)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("non_compliant_notification", non_compliant_notification)
+        _setter("oversized_data_oss_target_arn", oversized_data_oss_target_arn)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1091,14 +1331,37 @@ class GetAggregatorsAggregatorResult(dict):
         :param str id: The id of the aggregator.
         :param str status: The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "aggregator_accounts", aggregator_accounts)
-        pulumi.set(__self__, "aggregator_id", aggregator_id)
-        pulumi.set(__self__, "aggregator_name", aggregator_name)
-        pulumi.set(__self__, "aggregator_type", aggregator_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
+        GetAggregatorsAggregatorResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            aggregator_accounts=aggregator_accounts,
+            aggregator_id=aggregator_id,
+            aggregator_name=aggregator_name,
+            aggregator_type=aggregator_type,
+            description=description,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             aggregator_accounts: Sequence['outputs.GetAggregatorsAggregatorAggregatorAccountResult'],
+             aggregator_id: str,
+             aggregator_name: str,
+             aggregator_type: str,
+             description: str,
+             id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("aggregator_accounts", aggregator_accounts)
+        _setter("aggregator_id", aggregator_id)
+        _setter("aggregator_name", aggregator_name)
+        _setter("aggregator_type", aggregator_type)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1176,9 +1439,22 @@ class GetAggregatorsAggregatorAggregatorAccountResult(dict):
         :param str account_name: Aggregator account name.
         :param str account_type: Aggregator account source type.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_type", account_type)
+        GetAggregatorsAggregatorAggregatorAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            account_name=account_name,
+            account_type=account_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             account_name: str,
+             account_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("account_name", account_name)
+        _setter("account_type", account_type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1228,15 +1504,40 @@ class GetCompliancePacksPackResult(dict):
         :param int risk_level: The Ris Level.
         :param str status: The status of the resource. Valid values `ACTIVE`, `CREATING`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
-        pulumi.set(__self__, "compliance_pack_name", compliance_pack_name)
-        pulumi.set(__self__, "compliance_pack_template_id", compliance_pack_template_id)
-        pulumi.set(__self__, "config_rules", config_rules)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "risk_level", risk_level)
-        pulumi.set(__self__, "status", status)
+        GetCompliancePacksPackResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            compliance_pack_id=compliance_pack_id,
+            compliance_pack_name=compliance_pack_name,
+            compliance_pack_template_id=compliance_pack_template_id,
+            config_rules=config_rules,
+            description=description,
+            id=id,
+            risk_level=risk_level,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             compliance_pack_id: str,
+             compliance_pack_name: str,
+             compliance_pack_template_id: str,
+             config_rules: Sequence['outputs.GetCompliancePacksPackConfigRuleResult'],
+             description: str,
+             id: str,
+             risk_level: int,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("compliance_pack_id", compliance_pack_id)
+        _setter("compliance_pack_name", compliance_pack_name)
+        _setter("compliance_pack_template_id", compliance_pack_template_id)
+        _setter("config_rules", config_rules)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("risk_level", risk_level)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1322,9 +1623,22 @@ class GetCompliancePacksPackConfigRuleResult(dict):
         :param Sequence['GetCompliancePacksPackConfigRuleConfigRuleParameterArgs'] config_rule_parameters: A list of parameter rules.
         :param str managed_rule_identifier: Managed Rule Identifier.
         """
-        pulumi.set(__self__, "config_rule_id", config_rule_id)
-        pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
-        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+        GetCompliancePacksPackConfigRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_rule_id=config_rule_id,
+            config_rule_parameters=config_rule_parameters,
+            managed_rule_identifier=managed_rule_identifier,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_rule_id: str,
+             config_rule_parameters: Sequence['outputs.GetCompliancePacksPackConfigRuleConfigRuleParameterResult'],
+             managed_rule_identifier: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config_rule_id", config_rule_id)
+        _setter("config_rule_parameters", config_rule_parameters)
+        _setter("managed_rule_identifier", managed_rule_identifier)
 
     @property
     @pulumi.getter(name="configRuleId")
@@ -1362,9 +1676,22 @@ class GetCompliancePacksPackConfigRuleConfigRuleParameterResult(dict):
         :param str parameter_value: The Parameter Value.
         :param bool required: Required.
         """
-        pulumi.set(__self__, "parameter_name", parameter_name)
-        pulumi.set(__self__, "parameter_value", parameter_value)
-        pulumi.set(__self__, "required", required)
+        GetCompliancePacksPackConfigRuleConfigRuleParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_name=parameter_name,
+            parameter_value=parameter_value,
+            required=required,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_name: str,
+             parameter_value: str,
+             required: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parameter_name", parameter_name)
+        _setter("parameter_value", parameter_value)
+        _setter("required", required)
 
     @property
     @pulumi.getter(name="parameterName")
@@ -1408,12 +1735,31 @@ class GetConfigurationRecordersRecorderResult(dict):
         :param Sequence[str] resource_types: A list of resource types to be monitored.
         :param str status: Status of resource monitoring.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "organization_enable_status", organization_enable_status)
-        pulumi.set(__self__, "organization_master_id", organization_master_id)
-        pulumi.set(__self__, "resource_types", resource_types)
-        pulumi.set(__self__, "status", status)
+        GetConfigurationRecordersRecorderResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            id=id,
+            organization_enable_status=organization_enable_status,
+            organization_master_id=organization_master_id,
+            resource_types=resource_types,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             id: str,
+             organization_enable_status: str,
+             organization_master_id: int,
+             resource_types: Sequence[str],
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("id", id)
+        _setter("organization_enable_status", organization_enable_status)
+        _setter("organization_master_id", organization_master_id)
+        _setter("resource_types", resource_types)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1497,20 +1843,55 @@ class GetDeliveriesDeliveryResult(dict):
         :param str oversized_data_oss_target_arn: The oss ARN of the delivery channel when the value data oversized limit.
         :param int status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "configuration_item_change_notification", configuration_item_change_notification)
-        pulumi.set(__self__, "configuration_snapshot", configuration_snapshot)
-        pulumi.set(__self__, "delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
-        pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
-        pulumi.set(__self__, "delivery_channel_id", delivery_channel_id)
-        pulumi.set(__self__, "delivery_channel_name", delivery_channel_name)
-        pulumi.set(__self__, "delivery_channel_target_arn", delivery_channel_target_arn)
-        pulumi.set(__self__, "delivery_channel_type", delivery_channel_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "non_compliant_notification", non_compliant_notification)
-        pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
-        pulumi.set(__self__, "status", status)
+        GetDeliveriesDeliveryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            configuration_item_change_notification=configuration_item_change_notification,
+            configuration_snapshot=configuration_snapshot,
+            delivery_channel_assume_role_arn=delivery_channel_assume_role_arn,
+            delivery_channel_condition=delivery_channel_condition,
+            delivery_channel_id=delivery_channel_id,
+            delivery_channel_name=delivery_channel_name,
+            delivery_channel_target_arn=delivery_channel_target_arn,
+            delivery_channel_type=delivery_channel_type,
+            description=description,
+            id=id,
+            non_compliant_notification=non_compliant_notification,
+            oversized_data_oss_target_arn=oversized_data_oss_target_arn,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             configuration_item_change_notification: bool,
+             configuration_snapshot: bool,
+             delivery_channel_assume_role_arn: str,
+             delivery_channel_condition: str,
+             delivery_channel_id: str,
+             delivery_channel_name: str,
+             delivery_channel_target_arn: str,
+             delivery_channel_type: str,
+             description: str,
+             id: str,
+             non_compliant_notification: bool,
+             oversized_data_oss_target_arn: str,
+             status: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("configuration_item_change_notification", configuration_item_change_notification)
+        _setter("configuration_snapshot", configuration_snapshot)
+        _setter("delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
+        _setter("delivery_channel_condition", delivery_channel_condition)
+        _setter("delivery_channel_id", delivery_channel_id)
+        _setter("delivery_channel_name", delivery_channel_name)
+        _setter("delivery_channel_target_arn", delivery_channel_target_arn)
+        _setter("delivery_channel_type", delivery_channel_type)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("non_compliant_notification", non_compliant_notification)
+        _setter("oversized_data_oss_target_arn", oversized_data_oss_target_arn)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1648,15 +2029,40 @@ class GetDeliveryChannelsChannelResult(dict):
         :param str id: The ID of the Config Delivery Channel.
         :param int status: The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
         """
-        pulumi.set(__self__, "delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
-        pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
-        pulumi.set(__self__, "delivery_channel_id", delivery_channel_id)
-        pulumi.set(__self__, "delivery_channel_name", delivery_channel_name)
-        pulumi.set(__self__, "delivery_channel_target_arn", delivery_channel_target_arn)
-        pulumi.set(__self__, "delivery_channel_type", delivery_channel_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
+        GetDeliveryChannelsChannelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delivery_channel_assume_role_arn=delivery_channel_assume_role_arn,
+            delivery_channel_condition=delivery_channel_condition,
+            delivery_channel_id=delivery_channel_id,
+            delivery_channel_name=delivery_channel_name,
+            delivery_channel_target_arn=delivery_channel_target_arn,
+            delivery_channel_type=delivery_channel_type,
+            description=description,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delivery_channel_assume_role_arn: str,
+             delivery_channel_condition: str,
+             delivery_channel_id: str,
+             delivery_channel_name: str,
+             delivery_channel_target_arn: str,
+             delivery_channel_type: str,
+             description: str,
+             id: str,
+             status: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
+        _setter("delivery_channel_condition", delivery_channel_condition)
+        _setter("delivery_channel_id", delivery_channel_id)
+        _setter("delivery_channel_name", delivery_channel_name)
+        _setter("delivery_channel_target_arn", delivery_channel_target_arn)
+        _setter("delivery_channel_type", delivery_channel_type)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="deliveryChannelAssumeRoleArn")
@@ -1789,33 +2195,94 @@ class GetRulesRuleResult(dict):
         :param str tag_key_scope: (Available in 1.124.1+) The scope of tag key.
         :param str tag_value_scope: (Available in 1.124.1+) The scope of tag value.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "compliance_pack_id", compliance_pack_id)
-        pulumi.set(__self__, "compliances", compliances)
-        pulumi.set(__self__, "config_rule_arn", config_rule_arn)
-        pulumi.set(__self__, "config_rule_id", config_rule_id)
-        pulumi.set(__self__, "config_rule_state", config_rule_state)
-        pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "event_source", event_source)
-        pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "input_parameters", input_parameters)
-        pulumi.set(__self__, "maximum_execution_frequency", maximum_execution_frequency)
-        pulumi.set(__self__, "modified_timestamp", modified_timestamp)
-        pulumi.set(__self__, "region_ids_scope", region_ids_scope)
-        pulumi.set(__self__, "resource_group_ids_scope", resource_group_ids_scope)
-        pulumi.set(__self__, "resource_types_scopes", resource_types_scopes)
-        pulumi.set(__self__, "risk_level", risk_level)
-        pulumi.set(__self__, "rule_name", rule_name)
-        pulumi.set(__self__, "scope_compliance_resource_types", scope_compliance_resource_types)
-        pulumi.set(__self__, "source_detail_message_type", source_detail_message_type)
-        pulumi.set(__self__, "source_identifier", source_identifier)
-        pulumi.set(__self__, "source_maximum_execution_frequency", source_maximum_execution_frequency)
-        pulumi.set(__self__, "source_owner", source_owner)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tag_key_scope", tag_key_scope)
-        pulumi.set(__self__, "tag_value_scope", tag_value_scope)
+        GetRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            compliance_pack_id=compliance_pack_id,
+            compliances=compliances,
+            config_rule_arn=config_rule_arn,
+            config_rule_id=config_rule_id,
+            config_rule_state=config_rule_state,
+            config_rule_trigger_types=config_rule_trigger_types,
+            description=description,
+            event_source=event_source,
+            exclude_resource_ids_scope=exclude_resource_ids_scope,
+            id=id,
+            input_parameters=input_parameters,
+            maximum_execution_frequency=maximum_execution_frequency,
+            modified_timestamp=modified_timestamp,
+            region_ids_scope=region_ids_scope,
+            resource_group_ids_scope=resource_group_ids_scope,
+            resource_types_scopes=resource_types_scopes,
+            risk_level=risk_level,
+            rule_name=rule_name,
+            scope_compliance_resource_types=scope_compliance_resource_types,
+            source_detail_message_type=source_detail_message_type,
+            source_identifier=source_identifier,
+            source_maximum_execution_frequency=source_maximum_execution_frequency,
+            source_owner=source_owner,
+            status=status,
+            tag_key_scope=tag_key_scope,
+            tag_value_scope=tag_value_scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             compliance_pack_id: str,
+             compliances: Sequence['outputs.GetRulesRuleComplianceResult'],
+             config_rule_arn: str,
+             config_rule_id: str,
+             config_rule_state: str,
+             config_rule_trigger_types: str,
+             description: str,
+             event_source: str,
+             exclude_resource_ids_scope: str,
+             id: str,
+             input_parameters: Mapping[str, Any],
+             maximum_execution_frequency: str,
+             modified_timestamp: str,
+             region_ids_scope: str,
+             resource_group_ids_scope: str,
+             resource_types_scopes: Sequence[str],
+             risk_level: int,
+             rule_name: str,
+             scope_compliance_resource_types: Sequence[str],
+             source_detail_message_type: str,
+             source_identifier: str,
+             source_maximum_execution_frequency: str,
+             source_owner: str,
+             status: str,
+             tag_key_scope: str,
+             tag_value_scope: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("compliance_pack_id", compliance_pack_id)
+        _setter("compliances", compliances)
+        _setter("config_rule_arn", config_rule_arn)
+        _setter("config_rule_id", config_rule_id)
+        _setter("config_rule_state", config_rule_state)
+        _setter("config_rule_trigger_types", config_rule_trigger_types)
+        _setter("description", description)
+        _setter("event_source", event_source)
+        _setter("exclude_resource_ids_scope", exclude_resource_ids_scope)
+        _setter("id", id)
+        _setter("input_parameters", input_parameters)
+        _setter("maximum_execution_frequency", maximum_execution_frequency)
+        _setter("modified_timestamp", modified_timestamp)
+        _setter("region_ids_scope", region_ids_scope)
+        _setter("resource_group_ids_scope", resource_group_ids_scope)
+        _setter("resource_types_scopes", resource_types_scopes)
+        _setter("risk_level", risk_level)
+        _setter("rule_name", rule_name)
+        _setter("scope_compliance_resource_types", scope_compliance_resource_types)
+        _setter("source_detail_message_type", source_detail_message_type)
+        _setter("source_identifier", source_identifier)
+        _setter("source_maximum_execution_frequency", source_maximum_execution_frequency)
+        _setter("source_owner", source_owner)
+        _setter("status", status)
+        _setter("tag_key_scope", tag_key_scope)
+        _setter("tag_value_scope", tag_value_scope)
 
     @property
     @pulumi.getter(name="accountId")
@@ -2040,8 +2507,19 @@ class GetRulesRuleComplianceResult(dict):
         :param str compliance_type: The compliance evaluation result of the target resources.
         :param int count: The number of resources with the specified compliance evaluation result.
         """
-        pulumi.set(__self__, "compliance_type", compliance_type)
-        pulumi.set(__self__, "count", count)
+        GetRulesRuleComplianceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compliance_type=compliance_type,
+            count=count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compliance_type: str,
+             count: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compliance_type", compliance_type)
+        _setter("count", count)
 
     @property
     @pulumi.getter(name="complianceType")

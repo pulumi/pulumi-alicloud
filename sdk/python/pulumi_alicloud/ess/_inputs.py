@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -48,14 +48,29 @@ class EciScalingConfigurationAcrRegistryInfoArgs:
         :param pulumi.Input[str] region_id: The region ID of Container Registry Enterprise Edition instance. It is required
                when `acr_registry_info` is configured.
         """
+        EciScalingConfigurationAcrRegistryInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domains=domains,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             region_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if domains is not None:
-            pulumi.set(__self__, "domains", domains)
+            _setter("domains", domains)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if region_id is not None:
-            pulumi.set(__self__, "region_id", region_id)
+            _setter("region_id", region_id)
 
     @property
     @pulumi.getter
@@ -181,70 +196,141 @@ class EciScalingConfigurationContainerArgs:
                See `volume_mounts` below for details.
         :param pulumi.Input[str] working_dir: The working directory of the container.
         """
+        EciScalingConfigurationContainerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            args=args,
+            commands=commands,
+            cpu=cpu,
+            environment_vars=environment_vars,
+            gpu=gpu,
+            image=image,
+            image_pull_policy=image_pull_policy,
+            liveness_probe_exec_commands=liveness_probe_exec_commands,
+            liveness_probe_failure_threshold=liveness_probe_failure_threshold,
+            liveness_probe_http_get_path=liveness_probe_http_get_path,
+            liveness_probe_http_get_port=liveness_probe_http_get_port,
+            liveness_probe_http_get_scheme=liveness_probe_http_get_scheme,
+            liveness_probe_initial_delay_seconds=liveness_probe_initial_delay_seconds,
+            liveness_probe_period_seconds=liveness_probe_period_seconds,
+            liveness_probe_success_threshold=liveness_probe_success_threshold,
+            liveness_probe_tcp_socket_port=liveness_probe_tcp_socket_port,
+            liveness_probe_timeout_seconds=liveness_probe_timeout_seconds,
+            memory=memory,
+            name=name,
+            ports=ports,
+            readiness_probe_exec_commands=readiness_probe_exec_commands,
+            readiness_probe_failure_threshold=readiness_probe_failure_threshold,
+            readiness_probe_http_get_path=readiness_probe_http_get_path,
+            readiness_probe_http_get_port=readiness_probe_http_get_port,
+            readiness_probe_http_get_scheme=readiness_probe_http_get_scheme,
+            readiness_probe_initial_delay_seconds=readiness_probe_initial_delay_seconds,
+            readiness_probe_period_seconds=readiness_probe_period_seconds,
+            readiness_probe_success_threshold=readiness_probe_success_threshold,
+            readiness_probe_tcp_socket_port=readiness_probe_tcp_socket_port,
+            readiness_probe_timeout_seconds=readiness_probe_timeout_seconds,
+            volume_mounts=volume_mounts,
+            working_dir=working_dir,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cpu: Optional[pulumi.Input[float]] = None,
+             environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerEnvironmentVarArgs']]]] = None,
+             gpu: Optional[pulumi.Input[int]] = None,
+             image: Optional[pulumi.Input[str]] = None,
+             image_pull_policy: Optional[pulumi.Input[str]] = None,
+             liveness_probe_exec_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             liveness_probe_failure_threshold: Optional[pulumi.Input[int]] = None,
+             liveness_probe_http_get_path: Optional[pulumi.Input[str]] = None,
+             liveness_probe_http_get_port: Optional[pulumi.Input[int]] = None,
+             liveness_probe_http_get_scheme: Optional[pulumi.Input[str]] = None,
+             liveness_probe_initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+             liveness_probe_period_seconds: Optional[pulumi.Input[int]] = None,
+             liveness_probe_success_threshold: Optional[pulumi.Input[int]] = None,
+             liveness_probe_tcp_socket_port: Optional[pulumi.Input[int]] = None,
+             liveness_probe_timeout_seconds: Optional[pulumi.Input[int]] = None,
+             memory: Optional[pulumi.Input[float]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ports: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerPortArgs']]]] = None,
+             readiness_probe_exec_commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             readiness_probe_failure_threshold: Optional[pulumi.Input[int]] = None,
+             readiness_probe_http_get_path: Optional[pulumi.Input[str]] = None,
+             readiness_probe_http_get_port: Optional[pulumi.Input[int]] = None,
+             readiness_probe_http_get_scheme: Optional[pulumi.Input[str]] = None,
+             readiness_probe_initial_delay_seconds: Optional[pulumi.Input[int]] = None,
+             readiness_probe_period_seconds: Optional[pulumi.Input[int]] = None,
+             readiness_probe_success_threshold: Optional[pulumi.Input[int]] = None,
+             readiness_probe_tcp_socket_port: Optional[pulumi.Input[int]] = None,
+             readiness_probe_timeout_seconds: Optional[pulumi.Input[int]] = None,
+             volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationContainerVolumeMountArgs']]]] = None,
+             working_dir: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if args is not None:
-            pulumi.set(__self__, "args", args)
+            _setter("args", args)
         if commands is not None:
-            pulumi.set(__self__, "commands", commands)
+            _setter("commands", commands)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if environment_vars is not None:
-            pulumi.set(__self__, "environment_vars", environment_vars)
+            _setter("environment_vars", environment_vars)
         if gpu is not None:
-            pulumi.set(__self__, "gpu", gpu)
+            _setter("gpu", gpu)
         if image is not None:
-            pulumi.set(__self__, "image", image)
+            _setter("image", image)
         if image_pull_policy is not None:
-            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+            _setter("image_pull_policy", image_pull_policy)
         if liveness_probe_exec_commands is not None:
-            pulumi.set(__self__, "liveness_probe_exec_commands", liveness_probe_exec_commands)
+            _setter("liveness_probe_exec_commands", liveness_probe_exec_commands)
         if liveness_probe_failure_threshold is not None:
-            pulumi.set(__self__, "liveness_probe_failure_threshold", liveness_probe_failure_threshold)
+            _setter("liveness_probe_failure_threshold", liveness_probe_failure_threshold)
         if liveness_probe_http_get_path is not None:
-            pulumi.set(__self__, "liveness_probe_http_get_path", liveness_probe_http_get_path)
+            _setter("liveness_probe_http_get_path", liveness_probe_http_get_path)
         if liveness_probe_http_get_port is not None:
-            pulumi.set(__self__, "liveness_probe_http_get_port", liveness_probe_http_get_port)
+            _setter("liveness_probe_http_get_port", liveness_probe_http_get_port)
         if liveness_probe_http_get_scheme is not None:
-            pulumi.set(__self__, "liveness_probe_http_get_scheme", liveness_probe_http_get_scheme)
+            _setter("liveness_probe_http_get_scheme", liveness_probe_http_get_scheme)
         if liveness_probe_initial_delay_seconds is not None:
-            pulumi.set(__self__, "liveness_probe_initial_delay_seconds", liveness_probe_initial_delay_seconds)
+            _setter("liveness_probe_initial_delay_seconds", liveness_probe_initial_delay_seconds)
         if liveness_probe_period_seconds is not None:
-            pulumi.set(__self__, "liveness_probe_period_seconds", liveness_probe_period_seconds)
+            _setter("liveness_probe_period_seconds", liveness_probe_period_seconds)
         if liveness_probe_success_threshold is not None:
-            pulumi.set(__self__, "liveness_probe_success_threshold", liveness_probe_success_threshold)
+            _setter("liveness_probe_success_threshold", liveness_probe_success_threshold)
         if liveness_probe_tcp_socket_port is not None:
-            pulumi.set(__self__, "liveness_probe_tcp_socket_port", liveness_probe_tcp_socket_port)
+            _setter("liveness_probe_tcp_socket_port", liveness_probe_tcp_socket_port)
         if liveness_probe_timeout_seconds is not None:
-            pulumi.set(__self__, "liveness_probe_timeout_seconds", liveness_probe_timeout_seconds)
+            _setter("liveness_probe_timeout_seconds", liveness_probe_timeout_seconds)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ports is not None:
-            pulumi.set(__self__, "ports", ports)
+            _setter("ports", ports)
         if readiness_probe_exec_commands is not None:
-            pulumi.set(__self__, "readiness_probe_exec_commands", readiness_probe_exec_commands)
+            _setter("readiness_probe_exec_commands", readiness_probe_exec_commands)
         if readiness_probe_failure_threshold is not None:
-            pulumi.set(__self__, "readiness_probe_failure_threshold", readiness_probe_failure_threshold)
+            _setter("readiness_probe_failure_threshold", readiness_probe_failure_threshold)
         if readiness_probe_http_get_path is not None:
-            pulumi.set(__self__, "readiness_probe_http_get_path", readiness_probe_http_get_path)
+            _setter("readiness_probe_http_get_path", readiness_probe_http_get_path)
         if readiness_probe_http_get_port is not None:
-            pulumi.set(__self__, "readiness_probe_http_get_port", readiness_probe_http_get_port)
+            _setter("readiness_probe_http_get_port", readiness_probe_http_get_port)
         if readiness_probe_http_get_scheme is not None:
-            pulumi.set(__self__, "readiness_probe_http_get_scheme", readiness_probe_http_get_scheme)
+            _setter("readiness_probe_http_get_scheme", readiness_probe_http_get_scheme)
         if readiness_probe_initial_delay_seconds is not None:
-            pulumi.set(__self__, "readiness_probe_initial_delay_seconds", readiness_probe_initial_delay_seconds)
+            _setter("readiness_probe_initial_delay_seconds", readiness_probe_initial_delay_seconds)
         if readiness_probe_period_seconds is not None:
-            pulumi.set(__self__, "readiness_probe_period_seconds", readiness_probe_period_seconds)
+            _setter("readiness_probe_period_seconds", readiness_probe_period_seconds)
         if readiness_probe_success_threshold is not None:
-            pulumi.set(__self__, "readiness_probe_success_threshold", readiness_probe_success_threshold)
+            _setter("readiness_probe_success_threshold", readiness_probe_success_threshold)
         if readiness_probe_tcp_socket_port is not None:
-            pulumi.set(__self__, "readiness_probe_tcp_socket_port", readiness_probe_tcp_socket_port)
+            _setter("readiness_probe_tcp_socket_port", readiness_probe_tcp_socket_port)
         if readiness_probe_timeout_seconds is not None:
-            pulumi.set(__self__, "readiness_probe_timeout_seconds", readiness_probe_timeout_seconds)
+            _setter("readiness_probe_timeout_seconds", readiness_probe_timeout_seconds)
         if volume_mounts is not None:
-            pulumi.set(__self__, "volume_mounts", volume_mounts)
+            _setter("volume_mounts", volume_mounts)
         if working_dir is not None:
-            pulumi.set(__self__, "working_dir", working_dir)
+            _setter("working_dir", working_dir)
 
     @property
     @pulumi.getter
@@ -641,20 +727,29 @@ class EciScalingConfigurationContainerEnvironmentVarArgs:
         """
         :param pulumi.Input[str] key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
                digits, and underscores (_). It cannot start with a digit.
-               digits, and underscores (_). It cannot start with a digit.
         :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
         """
+        EciScalingConfigurationContainerEnvironmentVarArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-        digits, and underscores (_). It cannot start with a digit.
         digits, and underscores (_). It cannot start with a digit.
         """
         return pulumi.get(self, "key")
@@ -685,10 +780,21 @@ class EciScalingConfigurationContainerPortArgs:
         :param pulumi.Input[int] port: The port number. Valid values: 1 to 65535.
         :param pulumi.Input[str] protocol: Valid values: TCP and UDP.
         """
+        EciScalingConfigurationContainerPortArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            protocol=protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
 
     @property
     @pulumi.getter
@@ -724,23 +830,34 @@ class EciScalingConfigurationContainerVolumeMountArgs:
         """
         :param pulumi.Input[str] mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the
                data in the volume.
-               data in the volume.
-        :param pulumi.Input[str] name: The name of the volume.
+        :param pulumi.Input[str] name: The name of the mounted volume.
         :param pulumi.Input[bool] read_only: Default to `false`.
         """
+        EciScalingConfigurationContainerVolumeMountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mount_path=mount_path,
+            name=name,
+            read_only=read_only,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mount_path: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             read_only: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if mount_path is not None:
-            pulumi.set(__self__, "mount_path", mount_path)
+            _setter("mount_path", mount_path)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if read_only is not None:
-            pulumi.set(__self__, "read_only", read_only)
+            _setter("read_only", read_only)
 
     @property
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> Optional[pulumi.Input[str]]:
         """
         The directory of the mounted volume. Data under this directory will be overwritten by the
-        data in the volume.
         data in the volume.
         """
         return pulumi.get(self, "mount_path")
@@ -753,7 +870,7 @@ class EciScalingConfigurationContainerVolumeMountArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the volume.
+        The name of the mounted volume.
         """
         return pulumi.get(self, "name")
 
@@ -783,10 +900,21 @@ class EciScalingConfigurationHostAliasArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Adds a host name.
         :param pulumi.Input[str] ip: Adds an IP address.
         """
+        EciScalingConfigurationHostAliasArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hostnames=hostnames,
+            ip=ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hostnames is not None:
-            pulumi.set(__self__, "hostnames", hostnames)
+            _setter("hostnames", hostnames)
         if ip is not None:
-            pulumi.set(__self__, "ip", ip)
+            _setter("ip", ip)
 
     @property
     @pulumi.getter
@@ -827,12 +955,25 @@ class EciScalingConfigurationImageRegistryCredentialArgs:
         :param pulumi.Input[str] username: The username used to log on to the image repository. It is required
                when `image_registry_credential` is configured.
         """
+        EciScalingConfigurationImageRegistryCredentialArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            password=password,
+            server=server,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             password: Optional[pulumi.Input[str]] = None,
+             server: Optional[pulumi.Input[str]] = None,
+             username: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if server is not None:
-            pulumi.set(__self__, "server", server)
+            _setter("server", server)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter
@@ -904,30 +1045,61 @@ class EciScalingConfigurationInitContainerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgs']]] volume_mounts: The structure of volumeMounts. See `volume_mounts` below for details.
         :param pulumi.Input[str] working_dir: The working directory of the container.
         """
+        EciScalingConfigurationInitContainerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            args=args,
+            commands=commands,
+            cpu=cpu,
+            environment_vars=environment_vars,
+            gpu=gpu,
+            image=image,
+            image_pull_policy=image_pull_policy,
+            memory=memory,
+            name=name,
+            ports=ports,
+            volume_mounts=volume_mounts,
+            working_dir=working_dir,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cpu: Optional[pulumi.Input[float]] = None,
+             environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerEnvironmentVarArgs']]]] = None,
+             gpu: Optional[pulumi.Input[int]] = None,
+             image: Optional[pulumi.Input[str]] = None,
+             image_pull_policy: Optional[pulumi.Input[str]] = None,
+             memory: Optional[pulumi.Input[float]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ports: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerPortArgs']]]] = None,
+             volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerVolumeMountArgs']]]] = None,
+             working_dir: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if args is not None:
-            pulumi.set(__self__, "args", args)
+            _setter("args", args)
         if commands is not None:
-            pulumi.set(__self__, "commands", commands)
+            _setter("commands", commands)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if environment_vars is not None:
-            pulumi.set(__self__, "environment_vars", environment_vars)
+            _setter("environment_vars", environment_vars)
         if gpu is not None:
-            pulumi.set(__self__, "gpu", gpu)
+            _setter("gpu", gpu)
         if image is not None:
-            pulumi.set(__self__, "image", image)
+            _setter("image", image)
         if image_pull_policy is not None:
-            pulumi.set(__self__, "image_pull_policy", image_pull_policy)
+            _setter("image_pull_policy", image_pull_policy)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ports is not None:
-            pulumi.set(__self__, "ports", ports)
+            _setter("ports", ports)
         if volume_mounts is not None:
-            pulumi.set(__self__, "volume_mounts", volume_mounts)
+            _setter("volume_mounts", volume_mounts)
         if working_dir is not None:
-            pulumi.set(__self__, "working_dir", working_dir)
+            _setter("working_dir", working_dir)
 
     @property
     @pulumi.getter
@@ -1083,20 +1255,29 @@ class EciScalingConfigurationInitContainerEnvironmentVarArgs:
         """
         :param pulumi.Input[str] key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
                digits, and underscores (_). It cannot start with a digit.
-               digits, and underscores (_). It cannot start with a digit.
         :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
         """
+        EciScalingConfigurationInitContainerEnvironmentVarArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-        digits, and underscores (_). It cannot start with a digit.
         digits, and underscores (_). It cannot start with a digit.
         """
         return pulumi.get(self, "key")
@@ -1127,10 +1308,21 @@ class EciScalingConfigurationInitContainerPortArgs:
         :param pulumi.Input[int] port: The port number. Valid values: 1 to 65535.
         :param pulumi.Input[str] protocol: Valid values: TCP and UDP.
         """
+        EciScalingConfigurationInitContainerPortArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            protocol=protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
 
     @property
     @pulumi.getter
@@ -1166,23 +1358,34 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
         """
         :param pulumi.Input[str] mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the
                data in the volume.
-               data in the volume.
-        :param pulumi.Input[str] name: The name of the volume.
+        :param pulumi.Input[str] name: The name of the mounted volume.
         :param pulumi.Input[bool] read_only: Default to `false`.
         """
+        EciScalingConfigurationInitContainerVolumeMountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mount_path=mount_path,
+            name=name,
+            read_only=read_only,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mount_path: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             read_only: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if mount_path is not None:
-            pulumi.set(__self__, "mount_path", mount_path)
+            _setter("mount_path", mount_path)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if read_only is not None:
-            pulumi.set(__self__, "read_only", read_only)
+            _setter("read_only", read_only)
 
     @property
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> Optional[pulumi.Input[str]]:
         """
         The directory of the mounted volume. Data under this directory will be overwritten by the
-        data in the volume.
         data in the volume.
         """
         return pulumi.get(self, "mount_path")
@@ -1195,7 +1398,7 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the volume.
+        The name of the mounted volume.
         """
         return pulumi.get(self, "name")
 
@@ -1250,30 +1453,61 @@ class EciScalingConfigurationVolumeArgs:
                > **NOTE:** Every volume mounted must have a name and type attributes.
         :param pulumi.Input[str] type: The type of the volume.
         """
+        EciScalingConfigurationVolumeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_file_volume_config_file_to_paths=config_file_volume_config_file_to_paths,
+            disk_volume_disk_id=disk_volume_disk_id,
+            disk_volume_disk_size=disk_volume_disk_size,
+            disk_volume_fs_type=disk_volume_fs_type,
+            flex_volume_driver=flex_volume_driver,
+            flex_volume_fs_type=flex_volume_fs_type,
+            flex_volume_options=flex_volume_options,
+            name=name,
+            nfs_volume_path=nfs_volume_path,
+            nfs_volume_read_only=nfs_volume_read_only,
+            nfs_volume_server=nfs_volume_server,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_file_volume_config_file_to_paths: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs']]]] = None,
+             disk_volume_disk_id: Optional[pulumi.Input[str]] = None,
+             disk_volume_disk_size: Optional[pulumi.Input[int]] = None,
+             disk_volume_fs_type: Optional[pulumi.Input[str]] = None,
+             flex_volume_driver: Optional[pulumi.Input[str]] = None,
+             flex_volume_fs_type: Optional[pulumi.Input[str]] = None,
+             flex_volume_options: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             nfs_volume_path: Optional[pulumi.Input[str]] = None,
+             nfs_volume_read_only: Optional[pulumi.Input[bool]] = None,
+             nfs_volume_server: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config_file_volume_config_file_to_paths is not None:
-            pulumi.set(__self__, "config_file_volume_config_file_to_paths", config_file_volume_config_file_to_paths)
+            _setter("config_file_volume_config_file_to_paths", config_file_volume_config_file_to_paths)
         if disk_volume_disk_id is not None:
-            pulumi.set(__self__, "disk_volume_disk_id", disk_volume_disk_id)
+            _setter("disk_volume_disk_id", disk_volume_disk_id)
         if disk_volume_disk_size is not None:
-            pulumi.set(__self__, "disk_volume_disk_size", disk_volume_disk_size)
+            _setter("disk_volume_disk_size", disk_volume_disk_size)
         if disk_volume_fs_type is not None:
-            pulumi.set(__self__, "disk_volume_fs_type", disk_volume_fs_type)
+            _setter("disk_volume_fs_type", disk_volume_fs_type)
         if flex_volume_driver is not None:
-            pulumi.set(__self__, "flex_volume_driver", flex_volume_driver)
+            _setter("flex_volume_driver", flex_volume_driver)
         if flex_volume_fs_type is not None:
-            pulumi.set(__self__, "flex_volume_fs_type", flex_volume_fs_type)
+            _setter("flex_volume_fs_type", flex_volume_fs_type)
         if flex_volume_options is not None:
-            pulumi.set(__self__, "flex_volume_options", flex_volume_options)
+            _setter("flex_volume_options", flex_volume_options)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if nfs_volume_path is not None:
-            pulumi.set(__self__, "nfs_volume_path", nfs_volume_path)
+            _setter("nfs_volume_path", nfs_volume_path)
         if nfs_volume_read_only is not None:
-            pulumi.set(__self__, "nfs_volume_read_only", nfs_volume_read_only)
+            _setter("nfs_volume_read_only", nfs_volume_read_only)
         if nfs_volume_server is not None:
-            pulumi.set(__self__, "nfs_volume_server", nfs_volume_server)
+            _setter("nfs_volume_server", nfs_volume_server)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="configFileVolumeConfigFileToPaths")
@@ -1434,10 +1668,21 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs:
         :param pulumi.Input[str] content: The content of the configuration file. Maximum size: 32 KB.
         :param pulumi.Input[str] path: The relative file path.
         """
+        EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
 
     @property
     @pulumi.getter
@@ -1491,31 +1736,60 @@ class ScalingConfigurationDataDiskArgs:
         :param pulumi.Input[int] size: Size of data disk, in GB. The value ranges [5,2000] for a cloud disk, [5,1024] for an ephemeral disk, [5,800] for an ephemeral_ssd disk, [20,32768] for cloud_efficiency, cloud_ssd, cloud_essd disk.
         :param pulumi.Input[str] snapshot_id: Snapshot used for creating the data disk. If this parameter is specified, the size parameter is neglected, and the size of the created disk is the size of the snapshot.
         """
+        ScalingConfigurationDataDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            category=category,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            device=device,
+            encrypted=encrypted,
+            kms_key_id=kms_key_id,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             delete_with_instance: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             device: Optional[pulumi.Input[str]] = None,
+             encrypted: Optional[pulumi.Input[bool]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+            _setter("delete_with_instance", delete_with_instance)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if device is not None:
             warnings.warn("""Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.""", DeprecationWarning)
             pulumi.log.warn("""device is deprecated: Attribute device has been deprecated on disk attachment resource. Suggest to remove it from your template.""")
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -1666,14 +1940,29 @@ class ScalingConfigurationInstancePatternInfoArgs:
         :param pulumi.Input[float] max_price: The maximum hourly price for a pay-as-you-go instance or a preemptible instance in instancePatternInfo.
         :param pulumi.Input[float] memory: The memory size that is specified for an instance type in instancePatternInfo.
         """
+        ScalingConfigurationInstancePatternInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cores=cores,
+            instance_family_level=instance_family_level,
+            max_price=max_price,
+            memory=memory,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cores: Optional[pulumi.Input[int]] = None,
+             instance_family_level: Optional[pulumi.Input[str]] = None,
+             max_price: Optional[pulumi.Input[float]] = None,
+             memory: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cores is not None:
-            pulumi.set(__self__, "cores", cores)
+            _setter("cores", cores)
         if instance_family_level is not None:
-            pulumi.set(__self__, "instance_family_level", instance_family_level)
+            _setter("instance_family_level", instance_family_level)
         if max_price is not None:
-            pulumi.set(__self__, "max_price", max_price)
+            _setter("max_price", max_price)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
 
     @property
     @pulumi.getter
@@ -1733,10 +2022,21 @@ class ScalingConfigurationSpotPriceLimitArgs:
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
         :param pulumi.Input[float] price_limit: Price limit hourly of instance type, 2 decimals is allowed at most.
         """
+        ScalingConfigurationSpotPriceLimitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_type=instance_type,
+            price_limit=price_limit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_type: Optional[pulumi.Input[str]] = None,
+             price_limit: Optional[pulumi.Input[float]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if price_limit is not None:
-            pulumi.set(__self__, "price_limit", price_limit)
+            _setter("price_limit", price_limit)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -1772,8 +2072,19 @@ class ScalingGroupVServerGroupsVserverGroupArgs:
         :param pulumi.Input[str] loadbalancer_id: Loadbalancer server ID of VServer Group.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs']]] vserver_attributes: A list of VServer Group attributes. See `vserver_attributes` below.
         """
-        pulumi.set(__self__, "loadbalancer_id", loadbalancer_id)
-        pulumi.set(__self__, "vserver_attributes", vserver_attributes)
+        ScalingGroupVServerGroupsVserverGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            loadbalancer_id=loadbalancer_id,
+            vserver_attributes=vserver_attributes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             loadbalancer_id: pulumi.Input[str],
+             vserver_attributes: pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("loadbalancer_id", loadbalancer_id)
+        _setter("vserver_attributes", vserver_attributes)
 
     @property
     @pulumi.getter(name="loadbalancerId")
@@ -1811,9 +2122,22 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs:
         :param pulumi.Input[str] vserver_group_id: ID of VServer Group.
         :param pulumi.Input[int] weight: The weight of an ECS instance attached to the VServer Group.
         """
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "vserver_group_id", vserver_group_id)
-        pulumi.set(__self__, "weight", weight)
+        ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            vserver_group_id=vserver_group_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: pulumi.Input[int],
+             vserver_group_id: pulumi.Input[str],
+             weight: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port", port)
+        _setter("vserver_group_id", vserver_group_id)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -1863,12 +2187,25 @@ class ScalingRuleStepAdjustmentArgs:
         :param pulumi.Input[str] metric_interval_upper_bound: The upper bound of step.
         :param pulumi.Input[int] scaling_adjustment: The adjust value of step.
         """
+        ScalingRuleStepAdjustmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metric_interval_lower_bound=metric_interval_lower_bound,
+            metric_interval_upper_bound=metric_interval_upper_bound,
+            scaling_adjustment=scaling_adjustment,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metric_interval_lower_bound: Optional[pulumi.Input[str]] = None,
+             metric_interval_upper_bound: Optional[pulumi.Input[str]] = None,
+             scaling_adjustment: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if metric_interval_lower_bound is not None:
-            pulumi.set(__self__, "metric_interval_lower_bound", metric_interval_lower_bound)
+            _setter("metric_interval_lower_bound", metric_interval_lower_bound)
         if metric_interval_upper_bound is not None:
-            pulumi.set(__self__, "metric_interval_upper_bound", metric_interval_upper_bound)
+            _setter("metric_interval_upper_bound", metric_interval_upper_bound)
         if scaling_adjustment is not None:
-            pulumi.set(__self__, "scaling_adjustment", scaling_adjustment)
+            _setter("scaling_adjustment", scaling_adjustment)
 
     @property
     @pulumi.getter(name="metricIntervalLowerBound")

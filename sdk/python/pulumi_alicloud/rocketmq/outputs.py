@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -36,14 +36,37 @@ class GetGroupsGroupResult(dict):
         :param str remark: Remark of the group.
         :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
         """
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "group_type", group_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "independent_naming", independent_naming)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "owner", owner)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "tags", tags)
+        GetGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_name=group_name,
+            group_type=group_type,
+            id=id,
+            independent_naming=independent_naming,
+            instance_id=instance_id,
+            owner=owner,
+            remark=remark,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_name: str,
+             group_type: str,
+             id: str,
+             independent_naming: bool,
+             instance_id: str,
+             owner: str,
+             remark: str,
+             tags: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_name", group_name)
+        _setter("group_type", group_type)
+        _setter("id", id)
+        _setter("independent_naming", independent_naming)
+        _setter("instance_id", instance_id)
+        _setter("owner", owner)
+        _setter("remark", remark)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="groupName")
@@ -143,20 +166,55 @@ class GetInstancesInstanceResult(dict):
         :param Mapping[str, Any] tags: A map of tags assigned to the Ons instance.
         :param str tcp_endpoint: The TCP endpoint for the Message Queue for Apache RocketMQ instance.
         """
-        pulumi.set(__self__, "http_internal_endpoint", http_internal_endpoint)
-        pulumi.set(__self__, "http_internet_endpoint", http_internet_endpoint)
-        pulumi.set(__self__, "http_internet_secure_endpoint", http_internet_secure_endpoint)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "independent_naming", independent_naming)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_status", instance_status)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "release_time", release_time)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "tcp_endpoint", tcp_endpoint)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            http_internal_endpoint=http_internal_endpoint,
+            http_internet_endpoint=http_internet_endpoint,
+            http_internet_secure_endpoint=http_internet_secure_endpoint,
+            id=id,
+            independent_naming=independent_naming,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_status=instance_status,
+            instance_type=instance_type,
+            release_time=release_time,
+            remark=remark,
+            status=status,
+            tags=tags,
+            tcp_endpoint=tcp_endpoint,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             http_internal_endpoint: str,
+             http_internet_endpoint: str,
+             http_internet_secure_endpoint: str,
+             id: str,
+             independent_naming: bool,
+             instance_id: str,
+             instance_name: str,
+             instance_status: int,
+             instance_type: int,
+             release_time: str,
+             remark: str,
+             status: int,
+             tags: Mapping[str, Any],
+             tcp_endpoint: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("http_internal_endpoint", http_internal_endpoint)
+        _setter("http_internet_endpoint", http_internet_endpoint)
+        _setter("http_internet_secure_endpoint", http_internet_secure_endpoint)
+        _setter("id", id)
+        _setter("independent_naming", independent_naming)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("instance_status", instance_status)
+        _setter("instance_type", instance_type)
+        _setter("release_time", release_time)
+        _setter("remark", remark)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("tcp_endpoint", tcp_endpoint)
 
     @property
     @pulumi.getter(name="httpInternalEndpoint")
@@ -300,18 +358,49 @@ class GetTopicsTopicResult(dict):
         :param str topic: The name of the topic.
         :param str topic_name: The name of the topic.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "independent_naming", independent_naming)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "message_type", message_type)
-        pulumi.set(__self__, "owner", owner)
-        pulumi.set(__self__, "perm", perm)
-        pulumi.set(__self__, "relation", relation)
-        pulumi.set(__self__, "relation_name", relation_name)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "topic", topic)
-        pulumi.set(__self__, "topic_name", topic_name)
+        GetTopicsTopicResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            independent_naming=independent_naming,
+            instance_id=instance_id,
+            message_type=message_type,
+            owner=owner,
+            perm=perm,
+            relation=relation,
+            relation_name=relation_name,
+            remark=remark,
+            tags=tags,
+            topic=topic,
+            topic_name=topic_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             independent_naming: bool,
+             instance_id: str,
+             message_type: int,
+             owner: str,
+             perm: int,
+             relation: int,
+             relation_name: str,
+             remark: str,
+             tags: Mapping[str, Any],
+             topic: str,
+             topic_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("independent_naming", independent_naming)
+        _setter("instance_id", instance_id)
+        _setter("message_type", message_type)
+        _setter("owner", owner)
+        _setter("perm", perm)
+        _setter("relation", relation)
+        _setter("relation_name", relation_name)
+        _setter("remark", remark)
+        _setter("tags", tags)
+        _setter("topic", topic)
+        _setter("topic_name", topic_name)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -27,11 +27,28 @@ class GetNetworksNetworkResult(dict):
         :param bool is_default: IsDefault of the CCN instance.
         :param str name: Name of the CCN instance.
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_default", is_default)
-        pulumi.set(__self__, "name", name)
+        GetNetworksNetworkResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            description=description,
+            id=id,
+            is_default=is_default,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: str,
+             description: str,
+             id: str,
+             is_default: bool,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr_block", cidr_block)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("is_default", is_default)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="cidrBlock")

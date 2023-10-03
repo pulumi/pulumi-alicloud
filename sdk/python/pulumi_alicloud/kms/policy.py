@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PolicyArgs', 'Policy']
@@ -29,13 +29,32 @@ class PolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: The resources that the permission policy allows to access.Use "key/${KeyId}" or "key/*"  to specify a key or all keys.Use "secret/${SecretName}" or "secret/*" to specify a secret or all secrets.
         :param pulumi.Input[str] description: Description.
         """
-        pulumi.set(__self__, "access_control_rules", access_control_rules)
-        pulumi.set(__self__, "kms_instance_id", kms_instance_id)
-        pulumi.set(__self__, "permissions", permissions)
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "resources", resources)
+        PolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_control_rules=access_control_rules,
+            kms_instance_id=kms_instance_id,
+            permissions=permissions,
+            policy_name=policy_name,
+            resources=resources,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_control_rules: pulumi.Input[str],
+             kms_instance_id: pulumi.Input[str],
+             permissions: pulumi.Input[Sequence[pulumi.Input[str]]],
+             policy_name: pulumi.Input[str],
+             resources: pulumi.Input[Sequence[pulumi.Input[str]]],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_control_rules", access_control_rules)
+        _setter("kms_instance_id", kms_instance_id)
+        _setter("permissions", permissions)
+        _setter("policy_name", policy_name)
+        _setter("resources", resources)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="accessControlRules")
@@ -128,18 +147,37 @@ class _PolicyState:
         :param pulumi.Input[str] policy_name: Policy Name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: The resources that the permission policy allows to access.Use "key/${KeyId}" or "key/*"  to specify a key or all keys.Use "secret/${SecretName}" or "secret/*" to specify a secret or all secrets.
         """
+        _PolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_control_rules=access_control_rules,
+            description=description,
+            kms_instance_id=kms_instance_id,
+            permissions=permissions,
+            policy_name=policy_name,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_control_rules: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             kms_instance_id: Optional[pulumi.Input[str]] = None,
+             permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_control_rules is not None:
-            pulumi.set(__self__, "access_control_rules", access_control_rules)
+            _setter("access_control_rules", access_control_rules)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if kms_instance_id is not None:
-            pulumi.set(__self__, "kms_instance_id", kms_instance_id)
+            _setter("kms_instance_id", kms_instance_id)
         if permissions is not None:
-            pulumi.set(__self__, "permissions", permissions)
+            _setter("permissions", permissions)
         if policy_name is not None:
-            pulumi.set(__self__, "policy_name", policy_name)
+            _setter("policy_name", policy_name)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
 
     @property
     @pulumi.getter(name="accessControlRules")
@@ -281,6 +319,10 @@ class Policy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

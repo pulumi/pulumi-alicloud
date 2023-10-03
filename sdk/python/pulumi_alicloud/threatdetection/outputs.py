@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -61,11 +61,24 @@ class HoneypotPresetMeta(dict):
         :param bool portrait_option: Social traceability.
         :param str trojan_git: Git countered.
         """
-        pulumi.set(__self__, "burp", burp)
+        HoneypotPresetMeta._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            burp=burp,
+            portrait_option=portrait_option,
+            trojan_git=trojan_git,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             burp: str,
+             portrait_option: Optional[bool] = None,
+             trojan_git: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("burp", burp)
         if portrait_option is not None:
-            pulumi.set(__self__, "portrait_option", portrait_option)
+            _setter("portrait_option", portrait_option)
         if trojan_git is not None:
-            pulumi.set(__self__, "trojan_git", trojan_git)
+            _setter("trojan_git", trojan_git)
 
     @property
     @pulumi.getter
@@ -120,10 +133,21 @@ class HoneypotProbeHoneypotBindList(dict):
         :param Sequence['HoneypotProbeHoneypotBindListBindPortListArgs'] bind_port_lists: List of listening ports.See the following `Block BindPortList`.
         :param str honeypot_id: Honeypot ID.
         """
+        HoneypotProbeHoneypotBindList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bind_port_lists=bind_port_lists,
+            honeypot_id=honeypot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bind_port_lists: Optional[Sequence['outputs.HoneypotProbeHoneypotBindListBindPortList']] = None,
+             honeypot_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bind_port_lists is not None:
-            pulumi.set(__self__, "bind_port_lists", bind_port_lists)
+            _setter("bind_port_lists", bind_port_lists)
         if honeypot_id is not None:
-            pulumi.set(__self__, "honeypot_id", honeypot_id)
+            _setter("honeypot_id", honeypot_id)
 
     @property
     @pulumi.getter(name="bindPortLists")
@@ -180,16 +204,33 @@ class HoneypotProbeHoneypotBindListBindPortList(dict):
         :param int start_port: Start port.
         :param int target_port: Destination port.
         """
+        HoneypotProbeHoneypotBindListBindPortList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bind_port=bind_port,
+            end_port=end_port,
+            fixed=fixed,
+            start_port=start_port,
+            target_port=target_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bind_port: Optional[bool] = None,
+             end_port: Optional[int] = None,
+             fixed: Optional[bool] = None,
+             start_port: Optional[int] = None,
+             target_port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bind_port is not None:
-            pulumi.set(__self__, "bind_port", bind_port)
+            _setter("bind_port", bind_port)
         if end_port is not None:
-            pulumi.set(__self__, "end_port", end_port)
+            _setter("end_port", end_port)
         if fixed is not None:
-            pulumi.set(__self__, "fixed", fixed)
+            _setter("fixed", fixed)
         if start_port is not None:
-            pulumi.set(__self__, "start_port", start_port)
+            _setter("start_port", start_port)
         if target_port is not None:
-            pulumi.set(__self__, "target_port", target_port)
+            _setter("target_port", target_port)
 
     @property
     @pulumi.getter(name="bindPort")
@@ -253,14 +294,37 @@ class GetAntiBruteForceRulesRuleResult(dict):
         :param int span: The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
         :param Sequence[str] uuid_lists: An array consisting of the UUIDs of servers to which the defense rule is applied.
         """
-        pulumi.set(__self__, "anti_brute_force_rule_id", anti_brute_force_rule_id)
-        pulumi.set(__self__, "anti_brute_force_rule_name", anti_brute_force_rule_name)
-        pulumi.set(__self__, "default_rule", default_rule)
-        pulumi.set(__self__, "fail_count", fail_count)
-        pulumi.set(__self__, "forbidden_time", forbidden_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "span", span)
-        pulumi.set(__self__, "uuid_lists", uuid_lists)
+        GetAntiBruteForceRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            anti_brute_force_rule_id=anti_brute_force_rule_id,
+            anti_brute_force_rule_name=anti_brute_force_rule_name,
+            default_rule=default_rule,
+            fail_count=fail_count,
+            forbidden_time=forbidden_time,
+            id=id,
+            span=span,
+            uuid_lists=uuid_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             anti_brute_force_rule_id: str,
+             anti_brute_force_rule_name: str,
+             default_rule: bool,
+             fail_count: int,
+             forbidden_time: int,
+             id: str,
+             span: int,
+             uuid_lists: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("anti_brute_force_rule_id", anti_brute_force_rule_id)
+        _setter("anti_brute_force_rule_name", anti_brute_force_rule_name)
+        _setter("default_rule", default_rule)
+        _setter("fail_count", fail_count)
+        _setter("forbidden_time", forbidden_time)
+        _setter("id", id)
+        _setter("span", span)
+        _setter("uuid_lists", uuid_lists)
 
     @property
     @pulumi.getter(name="antiBruteForceRuleId")
@@ -338,9 +402,22 @@ class GetAssetsAssetResult(dict):
         :param str id: The ID of the instance.
         :param str uuid: The UUID of the instance.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "uuid", uuid)
+        GetAssetsAssetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            id=id,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             id: str,
+             uuid: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("uuid", uuid)
 
     @property
     @pulumi.getter(name="createTime")
@@ -388,14 +465,37 @@ class GetBackupPoliciesPolicyResult(dict):
         :param str status: The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
         :param Sequence[str] uuid_lists: The UUIDs of the servers to which the anti-ransomware policy is applied.
         """
-        pulumi.set(__self__, "backup_policy_id", backup_policy_id)
-        pulumi.set(__self__, "backup_policy_name", backup_policy_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "policy", policy)
-        pulumi.set(__self__, "policy_region_id", policy_region_id)
-        pulumi.set(__self__, "policy_version", policy_version)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "uuid_lists", uuid_lists)
+        GetBackupPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_policy_id=backup_policy_id,
+            backup_policy_name=backup_policy_name,
+            id=id,
+            policy=policy,
+            policy_region_id=policy_region_id,
+            policy_version=policy_version,
+            status=status,
+            uuid_lists=uuid_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_policy_id: int,
+             backup_policy_name: str,
+             id: int,
+             policy: str,
+             policy_region_id: str,
+             policy_version: str,
+             status: str,
+             uuid_lists: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_policy_id", backup_policy_id)
+        _setter("backup_policy_name", backup_policy_name)
+        _setter("id", id)
+        _setter("policy", policy)
+        _setter("policy_region_id", policy_region_id)
+        _setter("policy_version", policy_version)
+        _setter("status", status)
+        _setter("uuid_lists", uuid_lists)
 
     @property
     @pulumi.getter(name="backupPolicyId")
@@ -489,16 +589,43 @@ class GetBaselineStrategiesStrategyResult(dict):
         :param str id: The ID of the baseline check policy.
         :param str start_time: The baseline check policy start time.
         """
-        pulumi.set(__self__, "baseline_strategy_id", baseline_strategy_id)
-        pulumi.set(__self__, "baseline_strategy_name", baseline_strategy_name)
-        pulumi.set(__self__, "custom_type", custom_type)
-        pulumi.set(__self__, "cycle_days", cycle_days)
-        pulumi.set(__self__, "cycle_start_time", cycle_start_time)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "risk_sub_type_name", risk_sub_type_name)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "target_type", target_type)
+        GetBaselineStrategiesStrategyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            baseline_strategy_id=baseline_strategy_id,
+            baseline_strategy_name=baseline_strategy_name,
+            custom_type=custom_type,
+            cycle_days=cycle_days,
+            cycle_start_time=cycle_start_time,
+            end_time=end_time,
+            id=id,
+            risk_sub_type_name=risk_sub_type_name,
+            start_time=start_time,
+            target_type=target_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             baseline_strategy_id: str,
+             baseline_strategy_name: str,
+             custom_type: str,
+             cycle_days: int,
+             cycle_start_time: int,
+             end_time: str,
+             id: str,
+             risk_sub_type_name: str,
+             start_time: str,
+             target_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("baseline_strategy_id", baseline_strategy_id)
+        _setter("baseline_strategy_name", baseline_strategy_name)
+        _setter("custom_type", custom_type)
+        _setter("cycle_days", cycle_days)
+        _setter("cycle_start_time", cycle_start_time)
+        _setter("end_time", end_time)
+        _setter("id", id)
+        _setter("risk_sub_type_name", risk_sub_type_name)
+        _setter("start_time", start_time)
+        _setter("target_type", target_type)
 
     @property
     @pulumi.getter(name="baselineStrategyId")
@@ -602,15 +729,40 @@ class GetHoneyPotsPotResult(dict):
         :param Sequence[str] states: Honeypot status.
         :param str status: The status of the resource
         """
-        pulumi.set(__self__, "honeypot_id", honeypot_id)
-        pulumi.set(__self__, "honeypot_image_id", honeypot_image_id)
-        pulumi.set(__self__, "honeypot_image_name", honeypot_image_name)
-        pulumi.set(__self__, "honeypot_name", honeypot_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "node_id", node_id)
-        pulumi.set(__self__, "preset_id", preset_id)
-        pulumi.set(__self__, "states", states)
-        pulumi.set(__self__, "status", status)
+        GetHoneyPotsPotResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            honeypot_id=honeypot_id,
+            honeypot_image_id=honeypot_image_id,
+            honeypot_image_name=honeypot_image_name,
+            honeypot_name=honeypot_name,
+            id=id,
+            node_id=node_id,
+            preset_id=preset_id,
+            states=states,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             honeypot_id: str,
+             honeypot_image_id: str,
+             honeypot_image_name: str,
+             honeypot_name: str,
+             id: str,
+             node_id: str,
+             preset_id: str,
+             states: Sequence[str],
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("honeypot_id", honeypot_id)
+        _setter("honeypot_image_id", honeypot_image_id)
+        _setter("honeypot_image_name", honeypot_image_name)
+        _setter("honeypot_name", honeypot_name)
+        _setter("id", id)
+        _setter("node_id", node_id)
+        _setter("preset_id", preset_id)
+        _setter("states", states)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="honeypotId")
@@ -710,16 +862,43 @@ class GetHoneypotImagesImageResult(dict):
         :param str service_port: Honeypot service port.
         :param str template: Honeypot configuration parameter template.
         """
-        pulumi.set(__self__, "honeypot_image_display_name", honeypot_image_display_name)
-        pulumi.set(__self__, "honeypot_image_id", honeypot_image_id)
-        pulumi.set(__self__, "honeypot_image_name", honeypot_image_name)
-        pulumi.set(__self__, "honeypot_image_type", honeypot_image_type)
-        pulumi.set(__self__, "honeypot_image_version", honeypot_image_version)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "multiports", multiports)
-        pulumi.set(__self__, "proto", proto)
-        pulumi.set(__self__, "service_port", service_port)
-        pulumi.set(__self__, "template", template)
+        GetHoneypotImagesImageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            honeypot_image_display_name=honeypot_image_display_name,
+            honeypot_image_id=honeypot_image_id,
+            honeypot_image_name=honeypot_image_name,
+            honeypot_image_type=honeypot_image_type,
+            honeypot_image_version=honeypot_image_version,
+            id=id,
+            multiports=multiports,
+            proto=proto,
+            service_port=service_port,
+            template=template,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             honeypot_image_display_name: str,
+             honeypot_image_id: str,
+             honeypot_image_name: str,
+             honeypot_image_type: str,
+             honeypot_image_version: str,
+             id: str,
+             multiports: str,
+             proto: str,
+             service_port: str,
+             template: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("honeypot_image_display_name", honeypot_image_display_name)
+        _setter("honeypot_image_id", honeypot_image_id)
+        _setter("honeypot_image_name", honeypot_image_name)
+        _setter("honeypot_image_type", honeypot_image_type)
+        _setter("honeypot_image_version", honeypot_image_version)
+        _setter("id", id)
+        _setter("multiports", multiports)
+        _setter("proto", proto)
+        _setter("service_port", service_port)
+        _setter("template", template)
 
     @property
     @pulumi.getter(name="honeypotImageDisplayName")
@@ -821,14 +1000,37 @@ class GetHoneypotNodesNodeResult(dict):
         :param str node_name: The name of the management node.
         :param Sequence[str] security_group_probe_ip_lists: Release the collection of network segments.
         """
-        pulumi.set(__self__, "allow_honeypot_access_internet", allow_honeypot_access_internet)
-        pulumi.set(__self__, "available_probe_num", available_probe_num)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "node_id", node_id)
-        pulumi.set(__self__, "node_name", node_name)
-        pulumi.set(__self__, "security_group_probe_ip_lists", security_group_probe_ip_lists)
-        pulumi.set(__self__, "status", status)
+        GetHoneypotNodesNodeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_honeypot_access_internet=allow_honeypot_access_internet,
+            available_probe_num=available_probe_num,
+            create_time=create_time,
+            id=id,
+            node_id=node_id,
+            node_name=node_name,
+            security_group_probe_ip_lists=security_group_probe_ip_lists,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_honeypot_access_internet: bool,
+             available_probe_num: int,
+             create_time: str,
+             id: str,
+             node_id: str,
+             node_name: str,
+             security_group_probe_ip_lists: Sequence[str],
+             status: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allow_honeypot_access_internet", allow_honeypot_access_internet)
+        _setter("available_probe_num", available_probe_num)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("node_id", node_id)
+        _setter("node_name", node_name)
+        _setter("security_group_probe_ip_lists", security_group_probe_ip_lists)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="allowHoneypotAccessInternet")
@@ -906,12 +1108,31 @@ class GetHoneypotPresetsPresetResult(dict):
         :param str node_id: Unique id of management node
         :param str preset_name: Honeypot template custom name
         """
-        pulumi.set(__self__, "honeypot_image_name", honeypot_image_name)
-        pulumi.set(__self__, "honeypot_preset_id", honeypot_preset_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "metas", metas)
-        pulumi.set(__self__, "node_id", node_id)
-        pulumi.set(__self__, "preset_name", preset_name)
+        GetHoneypotPresetsPresetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            honeypot_image_name=honeypot_image_name,
+            honeypot_preset_id=honeypot_preset_id,
+            id=id,
+            metas=metas,
+            node_id=node_id,
+            preset_name=preset_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             honeypot_image_name: str,
+             honeypot_preset_id: str,
+             id: str,
+             metas: Sequence['outputs.GetHoneypotPresetsPresetMetaResult'],
+             node_id: str,
+             preset_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("honeypot_image_name", honeypot_image_name)
+        _setter("honeypot_preset_id", honeypot_preset_id)
+        _setter("id", id)
+        _setter("metas", metas)
+        _setter("node_id", node_id)
+        _setter("preset_name", preset_name)
 
     @property
     @pulumi.getter(name="honeypotImageName")
@@ -973,9 +1194,22 @@ class GetHoneypotPresetsPresetMetaResult(dict):
         :param bool portrait_option: Social traceability.
         :param str trojan_git: Git countered.
         """
-        pulumi.set(__self__, "burp", burp)
-        pulumi.set(__self__, "portrait_option", portrait_option)
-        pulumi.set(__self__, "trojan_git", trojan_git)
+        GetHoneypotPresetsPresetMetaResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            burp=burp,
+            portrait_option=portrait_option,
+            trojan_git=trojan_git,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             burp: str,
+             portrait_option: bool,
+             trojan_git: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("burp", burp)
+        _setter("portrait_option", portrait_option)
+        _setter("trojan_git", trojan_git)
 
     @property
     @pulumi.getter
@@ -1030,18 +1264,49 @@ class GetHoneypotProbesProbeResult(dict):
         :param str uuid: Machine uuid. Has a value when the type is `host_probe`.
         :param str vpc_id: The ID of the VPC. Has a value when the type is `vpc_black_hole_probe`.
         """
-        pulumi.set(__self__, "arp", arp)
-        pulumi.set(__self__, "control_node_id", control_node_id)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "honeypot_bind_lists", honeypot_bind_lists)
-        pulumi.set(__self__, "honeypot_probe_id", honeypot_probe_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ping", ping)
-        pulumi.set(__self__, "probe_type", probe_type)
-        pulumi.set(__self__, "service_ip_lists", service_ip_lists)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "uuid", uuid)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetHoneypotProbesProbeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arp=arp,
+            control_node_id=control_node_id,
+            display_name=display_name,
+            honeypot_bind_lists=honeypot_bind_lists,
+            honeypot_probe_id=honeypot_probe_id,
+            id=id,
+            ping=ping,
+            probe_type=probe_type,
+            service_ip_lists=service_ip_lists,
+            status=status,
+            uuid=uuid,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arp: bool,
+             control_node_id: str,
+             display_name: str,
+             honeypot_bind_lists: Sequence['outputs.GetHoneypotProbesProbeHoneypotBindListResult'],
+             honeypot_probe_id: str,
+             id: str,
+             ping: bool,
+             probe_type: str,
+             service_ip_lists: Sequence[str],
+             status: str,
+             uuid: str,
+             vpc_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("arp", arp)
+        _setter("control_node_id", control_node_id)
+        _setter("display_name", display_name)
+        _setter("honeypot_bind_lists", honeypot_bind_lists)
+        _setter("honeypot_probe_id", honeypot_probe_id)
+        _setter("id", id)
+        _setter("ping", ping)
+        _setter("probe_type", probe_type)
+        _setter("service_ip_lists", service_ip_lists)
+        _setter("status", status)
+        _setter("uuid", uuid)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter
@@ -1145,8 +1410,19 @@ class GetHoneypotProbesProbeHoneypotBindListResult(dict):
         """
         :param Sequence['GetHoneypotProbesProbeHoneypotBindListBindPortListArgs'] bind_port_lists: List of listening ports. Available when `enable_details` is on.
         """
-        pulumi.set(__self__, "bind_port_lists", bind_port_lists)
-        pulumi.set(__self__, "honeypot_id", honeypot_id)
+        GetHoneypotProbesProbeHoneypotBindListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bind_port_lists=bind_port_lists,
+            honeypot_id=honeypot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bind_port_lists: Sequence['outputs.GetHoneypotProbesProbeHoneypotBindListBindPortListResult'],
+             honeypot_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bind_port_lists", bind_port_lists)
+        _setter("honeypot_id", honeypot_id)
 
     @property
     @pulumi.getter(name="bindPortLists")
@@ -1177,11 +1453,28 @@ class GetHoneypotProbesProbeHoneypotBindListBindPortListResult(dict):
         :param int start_port: Start port.
         :param int target_port: Destination port.
         """
-        pulumi.set(__self__, "bind_port", bind_port)
-        pulumi.set(__self__, "end_port", end_port)
-        pulumi.set(__self__, "fixed", fixed)
-        pulumi.set(__self__, "start_port", start_port)
-        pulumi.set(__self__, "target_port", target_port)
+        GetHoneypotProbesProbeHoneypotBindListBindPortListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bind_port=bind_port,
+            end_port=end_port,
+            fixed=fixed,
+            start_port=start_port,
+            target_port=target_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bind_port: bool,
+             end_port: int,
+             fixed: bool,
+             start_port: int,
+             target_port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bind_port", bind_port)
+        _setter("end_port", end_port)
+        _setter("fixed", fixed)
+        _setter("start_port", start_port)
+        _setter("target_port", target_port)
 
     @property
     @pulumi.getter(name="bindPort")
@@ -1239,11 +1532,28 @@ class GetInstancesInstanceResult(dict):
         :param str payment_type: The payment type of the resource.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "status", status)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            id=id,
+            instance_id=instance_id,
+            payment_type=payment_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             id: str,
+             instance_id: str,
+             payment_type: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("payment_type", payment_type)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1301,11 +1611,28 @@ class GetVulWhitelistsWhitelistResult(dict):
         :param str vul_whitelist_id: The ID of the Vul Whitelist.
         :param str whitelist: Information about the vulnerability to be added to the whitelist.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "reason", reason)
-        pulumi.set(__self__, "target_info", target_info)
-        pulumi.set(__self__, "vul_whitelist_id", vul_whitelist_id)
-        pulumi.set(__self__, "whitelist", whitelist)
+        GetVulWhitelistsWhitelistResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            reason=reason,
+            target_info=target_info,
+            vul_whitelist_id=vul_whitelist_id,
+            whitelist=whitelist,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             reason: str,
+             target_info: str,
+             vul_whitelist_id: str,
+             whitelist: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("reason", reason)
+        _setter("target_info", target_info)
+        _setter("vul_whitelist_id", vul_whitelist_id)
+        _setter("whitelist", whitelist)
 
     @property
     @pulumi.getter
@@ -1373,16 +1700,43 @@ class GetWebLockConfigsConfigResult(dict):
         :param str mode: The protection mode of web tamper proofing.
         :param str uuid: The UUID of the server that has web tamper proofing enabled.
         """
-        pulumi.set(__self__, "defence_mode", defence_mode)
-        pulumi.set(__self__, "dir", dir)
-        pulumi.set(__self__, "exclusive_dir", exclusive_dir)
-        pulumi.set(__self__, "exclusive_file", exclusive_file)
-        pulumi.set(__self__, "exclusive_file_type", exclusive_file_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "inclusive_file_type", inclusive_file_type)
-        pulumi.set(__self__, "local_backup_dir", local_backup_dir)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "uuid", uuid)
+        GetWebLockConfigsConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            defence_mode=defence_mode,
+            dir=dir,
+            exclusive_dir=exclusive_dir,
+            exclusive_file=exclusive_file,
+            exclusive_file_type=exclusive_file_type,
+            id=id,
+            inclusive_file_type=inclusive_file_type,
+            local_backup_dir=local_backup_dir,
+            mode=mode,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             defence_mode: str,
+             dir: str,
+             exclusive_dir: str,
+             exclusive_file: str,
+             exclusive_file_type: str,
+             id: str,
+             inclusive_file_type: str,
+             local_backup_dir: str,
+             mode: str,
+             uuid: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("defence_mode", defence_mode)
+        _setter("dir", dir)
+        _setter("exclusive_dir", exclusive_dir)
+        _setter("exclusive_file", exclusive_file)
+        _setter("exclusive_file_type", exclusive_file_type)
+        _setter("id", id)
+        _setter("inclusive_file_type", inclusive_file_type)
+        _setter("local_backup_dir", local_backup_dir)
+        _setter("mode", mode)
+        _setter("uuid", uuid)
 
     @property
     @pulumi.getter(name="defenceMode")

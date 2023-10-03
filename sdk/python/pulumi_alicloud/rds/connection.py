@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ConnectionArgs', 'Connection']
@@ -27,13 +27,28 @@ class ConnectionArgs:
         :param pulumi.Input[str] connection_prefix: Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 40 characters. Default to <instance_id> + 'tf'.
         :param pulumi.Input[str] port: Internet connection port. Valid value: [1000-5999]. Default to 3306.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
+        ConnectionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            babelfish_port=babelfish_port,
+            connection_prefix=connection_prefix,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: pulumi.Input[str],
+             babelfish_port: Optional[pulumi.Input[str]] = None,
+             connection_prefix: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
         if babelfish_port is not None:
-            pulumi.set(__self__, "babelfish_port", babelfish_port)
+            _setter("babelfish_port", babelfish_port)
         if connection_prefix is not None:
-            pulumi.set(__self__, "connection_prefix", connection_prefix)
+            _setter("connection_prefix", connection_prefix)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -106,18 +121,37 @@ class _ConnectionState:
         :param pulumi.Input[str] ip_address: The ip address of connection string.
         :param pulumi.Input[str] port: Internet connection port. Valid value: [1000-5999]. Default to 3306.
         """
+        _ConnectionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            babelfish_port=babelfish_port,
+            connection_prefix=connection_prefix,
+            connection_string=connection_string,
+            instance_id=instance_id,
+            ip_address=ip_address,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             babelfish_port: Optional[pulumi.Input[str]] = None,
+             connection_prefix: Optional[pulumi.Input[str]] = None,
+             connection_string: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if babelfish_port is not None:
-            pulumi.set(__self__, "babelfish_port", babelfish_port)
+            _setter("babelfish_port", babelfish_port)
         if connection_prefix is not None:
-            pulumi.set(__self__, "connection_prefix", connection_prefix)
+            _setter("connection_prefix", connection_prefix)
         if connection_string is not None:
-            pulumi.set(__self__, "connection_string", connection_string)
+            _setter("connection_string", connection_string)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter(name="babelfishPort")
@@ -325,6 +359,10 @@ class Connection(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConnectionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

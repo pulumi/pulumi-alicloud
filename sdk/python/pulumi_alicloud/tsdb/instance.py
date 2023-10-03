@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -59,22 +59,49 @@ class InstanceArgs:
         :param pulumi.Input[str] instance_alias: The alias of the instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "instance_storage", instance_storage)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_class=instance_class,
+            instance_storage=instance_storage,
+            payment_type=payment_type,
+            vswitch_id=vswitch_id,
+            app_key=app_key,
+            disk_category=disk_category,
+            duration=duration,
+            engine_type=engine_type,
+            instance_alias=instance_alias,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_class: pulumi.Input[str],
+             instance_storage: pulumi.Input[str],
+             payment_type: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             app_key: Optional[pulumi.Input[str]] = None,
+             disk_category: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[str]] = None,
+             engine_type: Optional[pulumi.Input[str]] = None,
+             instance_alias: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_class", instance_class)
+        _setter("instance_storage", instance_storage)
+        _setter("payment_type", payment_type)
+        _setter("vswitch_id", vswitch_id)
         if app_key is not None:
-            pulumi.set(__self__, "app_key", app_key)
+            _setter("app_key", app_key)
         if disk_category is not None:
-            pulumi.set(__self__, "disk_category", disk_category)
+            _setter("disk_category", disk_category)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if engine_type is not None:
-            pulumi.set(__self__, "engine_type", engine_type)
+            _setter("engine_type", engine_type)
         if instance_alias is not None:
-            pulumi.set(__self__, "instance_alias", instance_alias)
+            _setter("instance_alias", instance_alias)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="instanceClass")
@@ -269,28 +296,57 @@ class _InstanceState:
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_key=app_key,
+            disk_category=disk_category,
+            duration=duration,
+            engine_type=engine_type,
+            instance_alias=instance_alias,
+            instance_class=instance_class,
+            instance_storage=instance_storage,
+            payment_type=payment_type,
+            status=status,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_key: Optional[pulumi.Input[str]] = None,
+             disk_category: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[str]] = None,
+             engine_type: Optional[pulumi.Input[str]] = None,
+             instance_alias: Optional[pulumi.Input[str]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             instance_storage: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if app_key is not None:
-            pulumi.set(__self__, "app_key", app_key)
+            _setter("app_key", app_key)
         if disk_category is not None:
-            pulumi.set(__self__, "disk_category", disk_category)
+            _setter("disk_category", disk_category)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if engine_type is not None:
-            pulumi.set(__self__, "engine_type", engine_type)
+            _setter("engine_type", engine_type)
         if instance_alias is not None:
-            pulumi.set(__self__, "instance_alias", instance_alias)
+            _setter("instance_alias", instance_alias)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if instance_storage is not None:
-            pulumi.set(__self__, "instance_storage", instance_storage)
+            _setter("instance_storage", instance_storage)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="appKey")
@@ -590,6 +646,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

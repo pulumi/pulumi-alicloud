@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RouterInterfaceArgs', 'RouterInterface']
@@ -65,49 +65,104 @@ class RouterInterfaceArgs:
         :param pulumi.Input[str] router_interface_name: The name of the resource.
         :param pulumi.Input[str] status: The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
         """
-        pulumi.set(__self__, "opposite_region_id", opposite_region_id)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "router_id", router_id)
-        pulumi.set(__self__, "router_type", router_type)
-        pulumi.set(__self__, "spec", spec)
+        RouterInterfaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            opposite_region_id=opposite_region_id,
+            role=role,
+            router_id=router_id,
+            router_type=router_type,
+            spec=spec,
+            access_point_id=access_point_id,
+            auto_pay=auto_pay,
+            delete_health_check_ip=delete_health_check_ip,
+            description=description,
+            hc_rate=hc_rate,
+            hc_threshold=hc_threshold,
+            health_check_source_ip=health_check_source_ip,
+            health_check_target_ip=health_check_target_ip,
+            opposite_access_point_id=opposite_access_point_id,
+            opposite_interface_id=opposite_interface_id,
+            opposite_interface_owner_id=opposite_interface_owner_id,
+            opposite_router_id=opposite_router_id,
+            opposite_router_type=opposite_router_type,
+            payment_type=payment_type,
+            period=period,
+            pricing_cycle=pricing_cycle,
+            router_interface_id=router_interface_id,
+            router_interface_name=router_interface_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             opposite_region_id: pulumi.Input[str],
+             role: pulumi.Input[str],
+             router_id: pulumi.Input[str],
+             router_type: pulumi.Input[str],
+             spec: pulumi.Input[str],
+             access_point_id: Optional[pulumi.Input[str]] = None,
+             auto_pay: Optional[pulumi.Input[bool]] = None,
+             delete_health_check_ip: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             hc_rate: Optional[pulumi.Input[int]] = None,
+             hc_threshold: Optional[pulumi.Input[str]] = None,
+             health_check_source_ip: Optional[pulumi.Input[str]] = None,
+             health_check_target_ip: Optional[pulumi.Input[str]] = None,
+             opposite_access_point_id: Optional[pulumi.Input[str]] = None,
+             opposite_interface_id: Optional[pulumi.Input[str]] = None,
+             opposite_interface_owner_id: Optional[pulumi.Input[str]] = None,
+             opposite_router_id: Optional[pulumi.Input[str]] = None,
+             opposite_router_type: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             pricing_cycle: Optional[pulumi.Input[str]] = None,
+             router_interface_id: Optional[pulumi.Input[str]] = None,
+             router_interface_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("opposite_region_id", opposite_region_id)
+        _setter("role", role)
+        _setter("router_id", router_id)
+        _setter("router_type", router_type)
+        _setter("spec", spec)
         if access_point_id is not None:
-            pulumi.set(__self__, "access_point_id", access_point_id)
+            _setter("access_point_id", access_point_id)
         if auto_pay is not None:
-            pulumi.set(__self__, "auto_pay", auto_pay)
+            _setter("auto_pay", auto_pay)
         if delete_health_check_ip is not None:
-            pulumi.set(__self__, "delete_health_check_ip", delete_health_check_ip)
+            _setter("delete_health_check_ip", delete_health_check_ip)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if hc_rate is not None:
-            pulumi.set(__self__, "hc_rate", hc_rate)
+            _setter("hc_rate", hc_rate)
         if hc_threshold is not None:
-            pulumi.set(__self__, "hc_threshold", hc_threshold)
+            _setter("hc_threshold", hc_threshold)
         if health_check_source_ip is not None:
-            pulumi.set(__self__, "health_check_source_ip", health_check_source_ip)
+            _setter("health_check_source_ip", health_check_source_ip)
         if health_check_target_ip is not None:
-            pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
+            _setter("health_check_target_ip", health_check_target_ip)
         if opposite_access_point_id is not None:
-            pulumi.set(__self__, "opposite_access_point_id", opposite_access_point_id)
+            _setter("opposite_access_point_id", opposite_access_point_id)
         if opposite_interface_id is not None:
-            pulumi.set(__self__, "opposite_interface_id", opposite_interface_id)
+            _setter("opposite_interface_id", opposite_interface_id)
         if opposite_interface_owner_id is not None:
-            pulumi.set(__self__, "opposite_interface_owner_id", opposite_interface_owner_id)
+            _setter("opposite_interface_owner_id", opposite_interface_owner_id)
         if opposite_router_id is not None:
-            pulumi.set(__self__, "opposite_router_id", opposite_router_id)
+            _setter("opposite_router_id", opposite_router_id)
         if opposite_router_type is not None:
-            pulumi.set(__self__, "opposite_router_type", opposite_router_type)
+            _setter("opposite_router_type", opposite_router_type)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if pricing_cycle is not None:
-            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+            _setter("pricing_cycle", pricing_cycle)
         if router_interface_id is not None:
-            pulumi.set(__self__, "router_interface_id", router_interface_id)
+            _setter("router_interface_id", router_interface_id)
         if router_interface_name is not None:
-            pulumi.set(__self__, "router_interface_name", router_interface_name)
+            _setter("router_interface_name", router_interface_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="oppositeRegionId")
@@ -486,88 +541,177 @@ class _RouterInterfaceState:
         :param pulumi.Input[str] status: The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
         :param pulumi.Input[str] vpc_instance_id: The vpc instance id of the resource.
         """
+        _RouterInterfaceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_point_id=access_point_id,
+            auto_pay=auto_pay,
+            bandwidth=bandwidth,
+            business_status=business_status,
+            connected_time=connected_time,
+            create_time=create_time,
+            cross_border=cross_border,
+            delete_health_check_ip=delete_health_check_ip,
+            description=description,
+            end_time=end_time,
+            has_reservation_data=has_reservation_data,
+            hc_rate=hc_rate,
+            hc_threshold=hc_threshold,
+            health_check_source_ip=health_check_source_ip,
+            health_check_target_ip=health_check_target_ip,
+            opposite_access_point_id=opposite_access_point_id,
+            opposite_bandwidth=opposite_bandwidth,
+            opposite_interface_business_status=opposite_interface_business_status,
+            opposite_interface_id=opposite_interface_id,
+            opposite_interface_owner_id=opposite_interface_owner_id,
+            opposite_interface_spec=opposite_interface_spec,
+            opposite_interface_status=opposite_interface_status,
+            opposite_region_id=opposite_region_id,
+            opposite_router_id=opposite_router_id,
+            opposite_router_type=opposite_router_type,
+            opposite_vpc_instance_id=opposite_vpc_instance_id,
+            payment_type=payment_type,
+            period=period,
+            pricing_cycle=pricing_cycle,
+            reservation_active_time=reservation_active_time,
+            reservation_bandwidth=reservation_bandwidth,
+            reservation_internet_charge_type=reservation_internet_charge_type,
+            reservation_order_type=reservation_order_type,
+            role=role,
+            router_id=router_id,
+            router_interface_id=router_interface_id,
+            router_interface_name=router_interface_name,
+            router_type=router_type,
+            spec=spec,
+            status=status,
+            vpc_instance_id=vpc_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_point_id: Optional[pulumi.Input[str]] = None,
+             auto_pay: Optional[pulumi.Input[bool]] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             business_status: Optional[pulumi.Input[str]] = None,
+             connected_time: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             cross_border: Optional[pulumi.Input[bool]] = None,
+             delete_health_check_ip: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             end_time: Optional[pulumi.Input[str]] = None,
+             has_reservation_data: Optional[pulumi.Input[str]] = None,
+             hc_rate: Optional[pulumi.Input[int]] = None,
+             hc_threshold: Optional[pulumi.Input[str]] = None,
+             health_check_source_ip: Optional[pulumi.Input[str]] = None,
+             health_check_target_ip: Optional[pulumi.Input[str]] = None,
+             opposite_access_point_id: Optional[pulumi.Input[str]] = None,
+             opposite_bandwidth: Optional[pulumi.Input[int]] = None,
+             opposite_interface_business_status: Optional[pulumi.Input[str]] = None,
+             opposite_interface_id: Optional[pulumi.Input[str]] = None,
+             opposite_interface_owner_id: Optional[pulumi.Input[str]] = None,
+             opposite_interface_spec: Optional[pulumi.Input[str]] = None,
+             opposite_interface_status: Optional[pulumi.Input[str]] = None,
+             opposite_region_id: Optional[pulumi.Input[str]] = None,
+             opposite_router_id: Optional[pulumi.Input[str]] = None,
+             opposite_router_type: Optional[pulumi.Input[str]] = None,
+             opposite_vpc_instance_id: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             pricing_cycle: Optional[pulumi.Input[str]] = None,
+             reservation_active_time: Optional[pulumi.Input[str]] = None,
+             reservation_bandwidth: Optional[pulumi.Input[str]] = None,
+             reservation_internet_charge_type: Optional[pulumi.Input[str]] = None,
+             reservation_order_type: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             router_id: Optional[pulumi.Input[str]] = None,
+             router_interface_id: Optional[pulumi.Input[str]] = None,
+             router_interface_name: Optional[pulumi.Input[str]] = None,
+             router_type: Optional[pulumi.Input[str]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpc_instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_point_id is not None:
-            pulumi.set(__self__, "access_point_id", access_point_id)
+            _setter("access_point_id", access_point_id)
         if auto_pay is not None:
-            pulumi.set(__self__, "auto_pay", auto_pay)
+            _setter("auto_pay", auto_pay)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if business_status is not None:
-            pulumi.set(__self__, "business_status", business_status)
+            _setter("business_status", business_status)
         if connected_time is not None:
-            pulumi.set(__self__, "connected_time", connected_time)
+            _setter("connected_time", connected_time)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if cross_border is not None:
-            pulumi.set(__self__, "cross_border", cross_border)
+            _setter("cross_border", cross_border)
         if delete_health_check_ip is not None:
-            pulumi.set(__self__, "delete_health_check_ip", delete_health_check_ip)
+            _setter("delete_health_check_ip", delete_health_check_ip)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if has_reservation_data is not None:
-            pulumi.set(__self__, "has_reservation_data", has_reservation_data)
+            _setter("has_reservation_data", has_reservation_data)
         if hc_rate is not None:
-            pulumi.set(__self__, "hc_rate", hc_rate)
+            _setter("hc_rate", hc_rate)
         if hc_threshold is not None:
-            pulumi.set(__self__, "hc_threshold", hc_threshold)
+            _setter("hc_threshold", hc_threshold)
         if health_check_source_ip is not None:
-            pulumi.set(__self__, "health_check_source_ip", health_check_source_ip)
+            _setter("health_check_source_ip", health_check_source_ip)
         if health_check_target_ip is not None:
-            pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
+            _setter("health_check_target_ip", health_check_target_ip)
         if opposite_access_point_id is not None:
-            pulumi.set(__self__, "opposite_access_point_id", opposite_access_point_id)
+            _setter("opposite_access_point_id", opposite_access_point_id)
         if opposite_bandwidth is not None:
-            pulumi.set(__self__, "opposite_bandwidth", opposite_bandwidth)
+            _setter("opposite_bandwidth", opposite_bandwidth)
         if opposite_interface_business_status is not None:
-            pulumi.set(__self__, "opposite_interface_business_status", opposite_interface_business_status)
+            _setter("opposite_interface_business_status", opposite_interface_business_status)
         if opposite_interface_id is not None:
-            pulumi.set(__self__, "opposite_interface_id", opposite_interface_id)
+            _setter("opposite_interface_id", opposite_interface_id)
         if opposite_interface_owner_id is not None:
-            pulumi.set(__self__, "opposite_interface_owner_id", opposite_interface_owner_id)
+            _setter("opposite_interface_owner_id", opposite_interface_owner_id)
         if opposite_interface_spec is not None:
-            pulumi.set(__self__, "opposite_interface_spec", opposite_interface_spec)
+            _setter("opposite_interface_spec", opposite_interface_spec)
         if opposite_interface_status is not None:
-            pulumi.set(__self__, "opposite_interface_status", opposite_interface_status)
+            _setter("opposite_interface_status", opposite_interface_status)
         if opposite_region_id is not None:
-            pulumi.set(__self__, "opposite_region_id", opposite_region_id)
+            _setter("opposite_region_id", opposite_region_id)
         if opposite_router_id is not None:
-            pulumi.set(__self__, "opposite_router_id", opposite_router_id)
+            _setter("opposite_router_id", opposite_router_id)
         if opposite_router_type is not None:
-            pulumi.set(__self__, "opposite_router_type", opposite_router_type)
+            _setter("opposite_router_type", opposite_router_type)
         if opposite_vpc_instance_id is not None:
-            pulumi.set(__self__, "opposite_vpc_instance_id", opposite_vpc_instance_id)
+            _setter("opposite_vpc_instance_id", opposite_vpc_instance_id)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if pricing_cycle is not None:
-            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+            _setter("pricing_cycle", pricing_cycle)
         if reservation_active_time is not None:
-            pulumi.set(__self__, "reservation_active_time", reservation_active_time)
+            _setter("reservation_active_time", reservation_active_time)
         if reservation_bandwidth is not None:
-            pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
+            _setter("reservation_bandwidth", reservation_bandwidth)
         if reservation_internet_charge_type is not None:
-            pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
+            _setter("reservation_internet_charge_type", reservation_internet_charge_type)
         if reservation_order_type is not None:
-            pulumi.set(__self__, "reservation_order_type", reservation_order_type)
+            _setter("reservation_order_type", reservation_order_type)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if router_id is not None:
-            pulumi.set(__self__, "router_id", router_id)
+            _setter("router_id", router_id)
         if router_interface_id is not None:
-            pulumi.set(__self__, "router_interface_id", router_interface_id)
+            _setter("router_interface_id", router_interface_id)
         if router_interface_name is not None:
-            pulumi.set(__self__, "router_interface_name", router_interface_name)
+            _setter("router_interface_name", router_interface_name)
         if router_type is not None:
-            pulumi.set(__self__, "router_type", router_type)
+            _setter("router_type", router_type)
         if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+            _setter("spec", spec)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vpc_instance_id is not None:
-            pulumi.set(__self__, "vpc_instance_id", vpc_instance_id)
+            _setter("vpc_instance_id", vpc_instance_id)
 
     @property
     @pulumi.getter(name="accessPointId")
@@ -1219,6 +1363,10 @@ class RouterInterface(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RouterInterfaceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

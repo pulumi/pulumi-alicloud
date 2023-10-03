@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -32,15 +32,34 @@ class K8sSlbAttachmentSlbConfigArgs:
         :param pulumi.Input[str] slb_id: The ID of your SLB instance, if value is empty which means EDAS will purchase an SLB instance with 'specification' field.
         :param pulumi.Input[str] specification: The instance specification of SLB, values can be found [here](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2#t4182.html), empty for 'slb.s1.small'.
         """
-        pulumi.set(__self__, "port_mappings", port_mappings)
-        pulumi.set(__self__, "scheduler", scheduler)
-        pulumi.set(__self__, "type", type)
+        K8sSlbAttachmentSlbConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port_mappings=port_mappings,
+            scheduler=scheduler,
+            type=type,
+            name=name,
+            slb_id=slb_id,
+            specification=specification,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port_mappings: pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingArgs']]],
+             scheduler: pulumi.Input[str],
+             type: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             slb_id: Optional[pulumi.Input[str]] = None,
+             specification: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port_mappings", port_mappings)
+        _setter("scheduler", scheduler)
+        _setter("type", type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if slb_id is not None:
-            pulumi.set(__self__, "slb_id", slb_id)
+            _setter("slb_id", slb_id)
         if specification is not None:
-            pulumi.set(__self__, "specification", specification)
+            _setter("specification", specification)
 
     @property
     @pulumi.getter(name="portMappings")
@@ -126,10 +145,23 @@ class K8sSlbAttachmentSlbConfigPortMappingArgs:
         :param pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingServicePortArgs'] service_port: The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
         :param pulumi.Input[str] cert_id: The ID of your tls certification, this is used for 'HTTPS' protocol only.
         """
-        pulumi.set(__self__, "loadbalancer_protocol", loadbalancer_protocol)
-        pulumi.set(__self__, "service_port", service_port)
+        K8sSlbAttachmentSlbConfigPortMappingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            loadbalancer_protocol=loadbalancer_protocol,
+            service_port=service_port,
+            cert_id=cert_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             loadbalancer_protocol: pulumi.Input[str],
+             service_port: pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingServicePortArgs'],
+             cert_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("loadbalancer_protocol", loadbalancer_protocol)
+        _setter("service_port", service_port)
         if cert_id is not None:
-            pulumi.set(__self__, "cert_id", cert_id)
+            _setter("cert_id", cert_id)
 
     @property
     @pulumi.getter(name="loadbalancerProtocol")
@@ -179,9 +211,22 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePortArgs:
         :param pulumi.Input[str] protocol: The protocol of k8s service, values can be 'TCP' or 'UDP'.
         :param pulumi.Input[int] target_port: The port of k8s pod, values should be within range [1, 65535].
         """
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "target_port", target_port)
+        K8sSlbAttachmentSlbConfigPortMappingServicePortArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            protocol=protocol,
+            target_port=target_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: pulumi.Input[int],
+             protocol: pulumi.Input[str],
+             target_port: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port", port)
+        _setter("protocol", protocol)
+        _setter("target_port", target_port)
 
     @property
     @pulumi.getter

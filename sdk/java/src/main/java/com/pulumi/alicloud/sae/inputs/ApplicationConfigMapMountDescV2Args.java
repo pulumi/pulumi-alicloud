@@ -46,14 +46,14 @@ public final class ApplicationConfigMapMountDescV2Args extends com.pulumi.resour
     }
 
     /**
-     * The path of the container in SAE.
+     * The mount path.
      * 
      */
     @Import(name="mountPath")
     private @Nullable Output<String> mountPath;
 
     /**
-     * @return The path of the container in SAE.
+     * @return The mount path.
      * 
      */
     public Optional<Output<String>> mountPath() {
@@ -129,7 +129,7 @@ public final class ApplicationConfigMapMountDescV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param mountPath The path of the container in SAE.
+         * @param mountPath The mount path.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ApplicationConfigMapMountDescV2Args extends com.pulumi.resour
         }
 
         /**
-         * @param mountPath The path of the container in SAE.
+         * @param mountPath The mount path.
          * 
          * @return builder
          * 

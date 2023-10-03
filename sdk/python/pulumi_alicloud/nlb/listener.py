@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ListenerArgs', 'Listener']
@@ -57,40 +57,85 @@ class ListenerArgs:
         :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: `0` ~ `65535`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`, `Stopped`.
         """
-        pulumi.set(__self__, "listener_port", listener_port)
-        pulumi.set(__self__, "listener_protocol", listener_protocol)
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
-        pulumi.set(__self__, "server_group_id", server_group_id)
+        ListenerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            listener_port=listener_port,
+            listener_protocol=listener_protocol,
+            load_balancer_id=load_balancer_id,
+            server_group_id=server_group_id,
+            alpn_enabled=alpn_enabled,
+            alpn_policy=alpn_policy,
+            ca_certificate_ids=ca_certificate_ids,
+            ca_enabled=ca_enabled,
+            certificate_ids=certificate_ids,
+            cps=cps,
+            end_port=end_port,
+            idle_timeout=idle_timeout,
+            listener_description=listener_description,
+            mss=mss,
+            proxy_protocol_enabled=proxy_protocol_enabled,
+            sec_sensor_enabled=sec_sensor_enabled,
+            security_policy_id=security_policy_id,
+            start_port=start_port,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             listener_port: pulumi.Input[int],
+             listener_protocol: pulumi.Input[str],
+             load_balancer_id: pulumi.Input[str],
+             server_group_id: pulumi.Input[str],
+             alpn_enabled: Optional[pulumi.Input[bool]] = None,
+             alpn_policy: Optional[pulumi.Input[str]] = None,
+             ca_certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ca_enabled: Optional[pulumi.Input[bool]] = None,
+             certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cps: Optional[pulumi.Input[int]] = None,
+             end_port: Optional[pulumi.Input[int]] = None,
+             idle_timeout: Optional[pulumi.Input[int]] = None,
+             listener_description: Optional[pulumi.Input[str]] = None,
+             mss: Optional[pulumi.Input[int]] = None,
+             proxy_protocol_enabled: Optional[pulumi.Input[bool]] = None,
+             sec_sensor_enabled: Optional[pulumi.Input[bool]] = None,
+             security_policy_id: Optional[pulumi.Input[str]] = None,
+             start_port: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("listener_port", listener_port)
+        _setter("listener_protocol", listener_protocol)
+        _setter("load_balancer_id", load_balancer_id)
+        _setter("server_group_id", server_group_id)
         if alpn_enabled is not None:
-            pulumi.set(__self__, "alpn_enabled", alpn_enabled)
+            _setter("alpn_enabled", alpn_enabled)
         if alpn_policy is not None:
-            pulumi.set(__self__, "alpn_policy", alpn_policy)
+            _setter("alpn_policy", alpn_policy)
         if ca_certificate_ids is not None:
-            pulumi.set(__self__, "ca_certificate_ids", ca_certificate_ids)
+            _setter("ca_certificate_ids", ca_certificate_ids)
         if ca_enabled is not None:
-            pulumi.set(__self__, "ca_enabled", ca_enabled)
+            _setter("ca_enabled", ca_enabled)
         if certificate_ids is not None:
-            pulumi.set(__self__, "certificate_ids", certificate_ids)
+            _setter("certificate_ids", certificate_ids)
         if cps is not None:
-            pulumi.set(__self__, "cps", cps)
+            _setter("cps", cps)
         if end_port is not None:
-            pulumi.set(__self__, "end_port", end_port)
+            _setter("end_port", end_port)
         if idle_timeout is not None:
-            pulumi.set(__self__, "idle_timeout", idle_timeout)
+            _setter("idle_timeout", idle_timeout)
         if listener_description is not None:
-            pulumi.set(__self__, "listener_description", listener_description)
+            _setter("listener_description", listener_description)
         if mss is not None:
-            pulumi.set(__self__, "mss", mss)
+            _setter("mss", mss)
         if proxy_protocol_enabled is not None:
-            pulumi.set(__self__, "proxy_protocol_enabled", proxy_protocol_enabled)
+            _setter("proxy_protocol_enabled", proxy_protocol_enabled)
         if sec_sensor_enabled is not None:
-            pulumi.set(__self__, "sec_sensor_enabled", sec_sensor_enabled)
+            _setter("sec_sensor_enabled", sec_sensor_enabled)
         if security_policy_id is not None:
-            pulumi.set(__self__, "security_policy_id", security_policy_id)
+            _setter("security_policy_id", security_policy_id)
         if start_port is not None:
-            pulumi.set(__self__, "start_port", start_port)
+            _setter("start_port", start_port)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="listenerPort")
@@ -369,44 +414,89 @@ class _ListenerState:
         :param pulumi.Input[int] start_port: Full Port listens to the starting port. Valid values: `0` ~ `65535`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Running`, `Stopped`.
         """
+        _ListenerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alpn_enabled=alpn_enabled,
+            alpn_policy=alpn_policy,
+            ca_certificate_ids=ca_certificate_ids,
+            ca_enabled=ca_enabled,
+            certificate_ids=certificate_ids,
+            cps=cps,
+            end_port=end_port,
+            idle_timeout=idle_timeout,
+            listener_description=listener_description,
+            listener_port=listener_port,
+            listener_protocol=listener_protocol,
+            load_balancer_id=load_balancer_id,
+            mss=mss,
+            proxy_protocol_enabled=proxy_protocol_enabled,
+            sec_sensor_enabled=sec_sensor_enabled,
+            security_policy_id=security_policy_id,
+            server_group_id=server_group_id,
+            start_port=start_port,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alpn_enabled: Optional[pulumi.Input[bool]] = None,
+             alpn_policy: Optional[pulumi.Input[str]] = None,
+             ca_certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ca_enabled: Optional[pulumi.Input[bool]] = None,
+             certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cps: Optional[pulumi.Input[int]] = None,
+             end_port: Optional[pulumi.Input[int]] = None,
+             idle_timeout: Optional[pulumi.Input[int]] = None,
+             listener_description: Optional[pulumi.Input[str]] = None,
+             listener_port: Optional[pulumi.Input[int]] = None,
+             listener_protocol: Optional[pulumi.Input[str]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             mss: Optional[pulumi.Input[int]] = None,
+             proxy_protocol_enabled: Optional[pulumi.Input[bool]] = None,
+             sec_sensor_enabled: Optional[pulumi.Input[bool]] = None,
+             security_policy_id: Optional[pulumi.Input[str]] = None,
+             server_group_id: Optional[pulumi.Input[str]] = None,
+             start_port: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alpn_enabled is not None:
-            pulumi.set(__self__, "alpn_enabled", alpn_enabled)
+            _setter("alpn_enabled", alpn_enabled)
         if alpn_policy is not None:
-            pulumi.set(__self__, "alpn_policy", alpn_policy)
+            _setter("alpn_policy", alpn_policy)
         if ca_certificate_ids is not None:
-            pulumi.set(__self__, "ca_certificate_ids", ca_certificate_ids)
+            _setter("ca_certificate_ids", ca_certificate_ids)
         if ca_enabled is not None:
-            pulumi.set(__self__, "ca_enabled", ca_enabled)
+            _setter("ca_enabled", ca_enabled)
         if certificate_ids is not None:
-            pulumi.set(__self__, "certificate_ids", certificate_ids)
+            _setter("certificate_ids", certificate_ids)
         if cps is not None:
-            pulumi.set(__self__, "cps", cps)
+            _setter("cps", cps)
         if end_port is not None:
-            pulumi.set(__self__, "end_port", end_port)
+            _setter("end_port", end_port)
         if idle_timeout is not None:
-            pulumi.set(__self__, "idle_timeout", idle_timeout)
+            _setter("idle_timeout", idle_timeout)
         if listener_description is not None:
-            pulumi.set(__self__, "listener_description", listener_description)
+            _setter("listener_description", listener_description)
         if listener_port is not None:
-            pulumi.set(__self__, "listener_port", listener_port)
+            _setter("listener_port", listener_port)
         if listener_protocol is not None:
-            pulumi.set(__self__, "listener_protocol", listener_protocol)
+            _setter("listener_protocol", listener_protocol)
         if load_balancer_id is not None:
-            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+            _setter("load_balancer_id", load_balancer_id)
         if mss is not None:
-            pulumi.set(__self__, "mss", mss)
+            _setter("mss", mss)
         if proxy_protocol_enabled is not None:
-            pulumi.set(__self__, "proxy_protocol_enabled", proxy_protocol_enabled)
+            _setter("proxy_protocol_enabled", proxy_protocol_enabled)
         if sec_sensor_enabled is not None:
-            pulumi.set(__self__, "sec_sensor_enabled", sec_sensor_enabled)
+            _setter("sec_sensor_enabled", sec_sensor_enabled)
         if security_policy_id is not None:
-            pulumi.set(__self__, "security_policy_id", security_policy_id)
+            _setter("security_policy_id", security_policy_id)
         if server_group_id is not None:
-            pulumi.set(__self__, "server_group_id", server_group_id)
+            _setter("server_group_id", server_group_id)
         if start_port is not None:
-            pulumi.set(__self__, "start_port", start_port)
+            _setter("start_port", start_port)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="alpnEnabled")
@@ -916,6 +1006,10 @@ class Listener(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ListenerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

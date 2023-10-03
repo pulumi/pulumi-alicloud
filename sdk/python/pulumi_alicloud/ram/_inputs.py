@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -27,9 +27,22 @@ class PolicyStatementArgs:
         :param pulumi.Input[str] effect: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
         """
-        pulumi.set(__self__, "actions", actions)
-        pulumi.set(__self__, "effect", effect)
-        pulumi.set(__self__, "resources", resources)
+        PolicyStatementArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+            effect=effect,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: pulumi.Input[Sequence[pulumi.Input[str]]],
+             effect: pulumi.Input[str],
+             resources: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("actions", actions)
+        _setter("effect", effect)
+        _setter("resources", resources)
 
     @property
     @pulumi.getter
@@ -83,15 +96,32 @@ class GetPolicyDocumentStatementArgs:
         :param Sequence['GetPolicyDocumentStatementPrincipalArgs'] principals: Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
         :param Sequence[str] resources: List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
         """
-        pulumi.set(__self__, "actions", actions)
+        GetPolicyDocumentStatementArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+            conditions=conditions,
+            effect=effect,
+            principals=principals,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: Sequence[str],
+             conditions: Optional[Sequence['GetPolicyDocumentStatementConditionArgs']] = None,
+             effect: Optional[str] = None,
+             principals: Optional[Sequence['GetPolicyDocumentStatementPrincipalArgs']] = None,
+             resources: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("actions", actions)
         if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+            _setter("conditions", conditions)
         if effect is not None:
-            pulumi.set(__self__, "effect", effect)
+            _setter("effect", effect)
         if principals is not None:
-            pulumi.set(__self__, "principals", principals)
+            _setter("principals", principals)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
 
     @property
     @pulumi.getter
@@ -165,9 +195,22 @@ class GetPolicyDocumentStatementConditionArgs:
         :param Sequence[str] values: The values of the condition.
         :param str variable: The variable of the condition.
         """
-        pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "values", values)
-        pulumi.set(__self__, "variable", variable)
+        GetPolicyDocumentStatementConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            operator=operator,
+            values=values,
+            variable=variable,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             operator: str,
+             values: Sequence[str],
+             variable: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("operator", operator)
+        _setter("values", values)
+        _setter("variable", variable)
 
     @property
     @pulumi.getter
@@ -215,8 +258,19 @@ class GetPolicyDocumentStatementPrincipalArgs:
         :param str entity: The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
         :param Sequence[str] identifiers: The identifiers of the principal.
         """
-        pulumi.set(__self__, "entity", entity)
-        pulumi.set(__self__, "identifiers", identifiers)
+        GetPolicyDocumentStatementPrincipalArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity=entity,
+            identifiers=identifiers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity: str,
+             identifiers: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity", entity)
+        _setter("identifiers", identifiers)
 
     @property
     @pulumi.getter

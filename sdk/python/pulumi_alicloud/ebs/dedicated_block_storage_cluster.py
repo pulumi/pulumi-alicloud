@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DedicatedBlockStorageClusterArgs', 'DedicatedBlockStorageCluster']
@@ -27,12 +27,29 @@ class DedicatedBlockStorageClusterArgs:
         :param pulumi.Input[str] zone_id: The zone ID  of the resource
         :param pulumi.Input[str] description: The description of the dedicated block storage cluster.
         """
-        pulumi.set(__self__, "dedicated_block_storage_cluster_name", dedicated_block_storage_cluster_name)
-        pulumi.set(__self__, "total_capacity", total_capacity)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "zone_id", zone_id)
+        DedicatedBlockStorageClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dedicated_block_storage_cluster_name=dedicated_block_storage_cluster_name,
+            total_capacity=total_capacity,
+            type=type,
+            zone_id=zone_id,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dedicated_block_storage_cluster_name: pulumi.Input[str],
+             total_capacity: pulumi.Input[str],
+             type: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dedicated_block_storage_cluster_name", dedicated_block_storage_cluster_name)
+        _setter("total_capacity", total_capacity)
+        _setter("type", type)
+        _setter("zone_id", zone_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="dedicatedBlockStorageClusterName")
@@ -133,38 +150,77 @@ class _DedicatedBlockStorageClusterState:
         :param pulumi.Input[str] used_capacity: The used (created disk) capacity of the current cluster, in GB
         :param pulumi.Input[str] zone_id: The zone ID  of the resource
         """
+        _DedicatedBlockStorageClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_capacity=available_capacity,
+            category=category,
+            create_time=create_time,
+            dedicated_block_storage_cluster_id=dedicated_block_storage_cluster_id,
+            dedicated_block_storage_cluster_name=dedicated_block_storage_cluster_name,
+            delivery_capacity=delivery_capacity,
+            description=description,
+            expired_time=expired_time,
+            performance_level=performance_level,
+            resource_group_id=resource_group_id,
+            status=status,
+            supported_category=supported_category,
+            total_capacity=total_capacity,
+            type=type,
+            used_capacity=used_capacity,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_capacity: Optional[pulumi.Input[str]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             dedicated_block_storage_cluster_id: Optional[pulumi.Input[str]] = None,
+             dedicated_block_storage_cluster_name: Optional[pulumi.Input[str]] = None,
+             delivery_capacity: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             expired_time: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             supported_category: Optional[pulumi.Input[str]] = None,
+             total_capacity: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             used_capacity: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if available_capacity is not None:
-            pulumi.set(__self__, "available_capacity", available_capacity)
+            _setter("available_capacity", available_capacity)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if dedicated_block_storage_cluster_id is not None:
-            pulumi.set(__self__, "dedicated_block_storage_cluster_id", dedicated_block_storage_cluster_id)
+            _setter("dedicated_block_storage_cluster_id", dedicated_block_storage_cluster_id)
         if dedicated_block_storage_cluster_name is not None:
-            pulumi.set(__self__, "dedicated_block_storage_cluster_name", dedicated_block_storage_cluster_name)
+            _setter("dedicated_block_storage_cluster_name", dedicated_block_storage_cluster_name)
         if delivery_capacity is not None:
-            pulumi.set(__self__, "delivery_capacity", delivery_capacity)
+            _setter("delivery_capacity", delivery_capacity)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expired_time is not None:
-            pulumi.set(__self__, "expired_time", expired_time)
+            _setter("expired_time", expired_time)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if supported_category is not None:
-            pulumi.set(__self__, "supported_category", supported_category)
+            _setter("supported_category", supported_category)
         if total_capacity is not None:
-            pulumi.set(__self__, "total_capacity", total_capacity)
+            _setter("total_capacity", total_capacity)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if used_capacity is not None:
-            pulumi.set(__self__, "used_capacity", used_capacity)
+            _setter("used_capacity", used_capacity)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="availableCapacity")
@@ -424,6 +480,10 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DedicatedBlockStorageClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

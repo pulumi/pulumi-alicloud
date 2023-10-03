@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -57,10 +57,23 @@ class AccessConfigurationPermissionPolicy(dict):
         :param str permission_policy_type: The Policy Type of policy. Valid values: `System`, `Inline`.
         :param str permission_policy_document: The Content of Policy.
         """
-        pulumi.set(__self__, "permission_policy_name", permission_policy_name)
-        pulumi.set(__self__, "permission_policy_type", permission_policy_type)
+        AccessConfigurationPermissionPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            permission_policy_name=permission_policy_name,
+            permission_policy_type=permission_policy_type,
+            permission_policy_document=permission_policy_document,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             permission_policy_name: str,
+             permission_policy_type: str,
+             permission_policy_document: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("permission_policy_name", permission_policy_name)
+        _setter("permission_policy_type", permission_policy_type)
         if permission_policy_document is not None:
-            pulumi.set(__self__, "permission_policy_document", permission_policy_document)
+            _setter("permission_policy_document", permission_policy_document)
 
     @property
     @pulumi.getter(name="permissionPolicyName")
@@ -115,10 +128,21 @@ class DirectorySamlIdentityProviderConfiguration(dict):
         :param str encoded_metadata_document: Base64 encoded IdP metadata document. **NOTE:** If the IdP Metadata has been uploaded, no update will be made if this parameter is not specified, otherwise the update will be made according to the parameter content. If IdP Metadata has not been uploaded, and the parameter `sso_status` is `Enabled`, this parameter must be provided. If the IdP Metadata has not been uploaded, and the parameter `sso_status` is `Disabled`, this parameter can be omitted, and the IdP Metadata will remain empty.
         :param str sso_status: SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
         """
+        DirectorySamlIdentityProviderConfiguration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encoded_metadata_document=encoded_metadata_document,
+            sso_status=sso_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encoded_metadata_document: Optional[str] = None,
+             sso_status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if encoded_metadata_document is not None:
-            pulumi.set(__self__, "encoded_metadata_document", encoded_metadata_document)
+            _setter("encoded_metadata_document", encoded_metadata_document)
         if sso_status is not None:
-            pulumi.set(__self__, "sso_status", sso_status)
+            _setter("sso_status", sso_status)
 
     @property
     @pulumi.getter(name="encodedMetadataDocument")
@@ -164,17 +188,46 @@ class GetAccessAssignmentsAssignmentResult(dict):
         :param str target_path_name: The path name of the task target in the resource directory.
         :param str target_type: The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
         """
-        pulumi.set(__self__, "access_configuration_id", access_configuration_id)
-        pulumi.set(__self__, "access_configuration_name", access_configuration_name)
-        pulumi.set(__self__, "directory_id", directory_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "principal_id", principal_id)
-        pulumi.set(__self__, "principal_name", principal_name)
-        pulumi.set(__self__, "principal_type", principal_type)
-        pulumi.set(__self__, "target_id", target_id)
-        pulumi.set(__self__, "target_name", target_name)
-        pulumi.set(__self__, "target_path_name", target_path_name)
-        pulumi.set(__self__, "target_type", target_type)
+        GetAccessAssignmentsAssignmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_configuration_id=access_configuration_id,
+            access_configuration_name=access_configuration_name,
+            directory_id=directory_id,
+            id=id,
+            principal_id=principal_id,
+            principal_name=principal_name,
+            principal_type=principal_type,
+            target_id=target_id,
+            target_name=target_name,
+            target_path_name=target_path_name,
+            target_type=target_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_configuration_id: str,
+             access_configuration_name: str,
+             directory_id: str,
+             id: str,
+             principal_id: str,
+             principal_name: str,
+             principal_type: str,
+             target_id: str,
+             target_name: str,
+             target_path_name: str,
+             target_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_configuration_id", access_configuration_id)
+        _setter("access_configuration_name", access_configuration_name)
+        _setter("directory_id", directory_id)
+        _setter("id", id)
+        _setter("principal_id", principal_id)
+        _setter("principal_name", principal_name)
+        _setter("principal_type", principal_type)
+        _setter("target_id", target_id)
+        _setter("target_name", target_name)
+        _setter("target_path_name", target_path_name)
+        _setter("target_type", target_type)
 
     @property
     @pulumi.getter(name="accessConfigurationId")
@@ -290,16 +343,43 @@ class GetAccessConfigurationsConfigurationResult(dict):
         :param int session_duration: The SessionDuration of the Access Configuration.
         :param Sequence[str] status_notifications: The StatusNotifications of the Access Configuration.
         """
-        pulumi.set(__self__, "access_configuration_id", access_configuration_id)
-        pulumi.set(__self__, "access_configuration_name", access_configuration_name)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "directory_id", directory_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "permission_policies", permission_policies)
-        pulumi.set(__self__, "relay_state", relay_state)
-        pulumi.set(__self__, "session_duration", session_duration)
-        pulumi.set(__self__, "status_notifications", status_notifications)
+        GetAccessConfigurationsConfigurationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_configuration_id=access_configuration_id,
+            access_configuration_name=access_configuration_name,
+            create_time=create_time,
+            description=description,
+            directory_id=directory_id,
+            id=id,
+            permission_policies=permission_policies,
+            relay_state=relay_state,
+            session_duration=session_duration,
+            status_notifications=status_notifications,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_configuration_id: str,
+             access_configuration_name: str,
+             create_time: str,
+             description: str,
+             directory_id: str,
+             id: str,
+             permission_policies: Sequence['outputs.GetAccessConfigurationsConfigurationPermissionPolicyResult'],
+             relay_state: str,
+             session_duration: int,
+             status_notifications: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_configuration_id", access_configuration_id)
+        _setter("access_configuration_name", access_configuration_name)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("directory_id", directory_id)
+        _setter("id", id)
+        _setter("permission_policies", permission_policies)
+        _setter("relay_state", relay_state)
+        _setter("session_duration", session_duration)
+        _setter("status_notifications", status_notifications)
 
     @property
     @pulumi.getter(name="accessConfigurationId")
@@ -395,10 +475,25 @@ class GetAccessConfigurationsConfigurationPermissionPolicyResult(dict):
         :param str permission_policy_name: The Policy Name of policy.
         :param str permission_policy_type: The Policy Type of policy. Valid values: `System`, `Inline`.
         """
-        pulumi.set(__self__, "add_time", add_time)
-        pulumi.set(__self__, "permission_policy_document", permission_policy_document)
-        pulumi.set(__self__, "permission_policy_name", permission_policy_name)
-        pulumi.set(__self__, "permission_policy_type", permission_policy_type)
+        GetAccessConfigurationsConfigurationPermissionPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            add_time=add_time,
+            permission_policy_document=permission_policy_document,
+            permission_policy_name=permission_policy_name,
+            permission_policy_type=permission_policy_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             add_time: str,
+             permission_policy_document: str,
+             permission_policy_name: str,
+             permission_policy_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("add_time", add_time)
+        _setter("permission_policy_document", permission_policy_document)
+        _setter("permission_policy_name", permission_policy_name)
+        _setter("permission_policy_type", permission_policy_type)
 
     @property
     @pulumi.getter(name="addTime")
@@ -456,15 +551,40 @@ class GetDirectoriesDirectoryResult(dict):
         :param str scim_synchronization_status: The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
         :param Sequence['GetDirectoriesDirectoryTaskArgs'] tasks: Asynchronous Task Information Array.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "directory_id", directory_id)
-        pulumi.set(__self__, "directory_name", directory_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mfa_authentication_status", mfa_authentication_status)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "saml_identity_provider_configurations", saml_identity_provider_configurations)
-        pulumi.set(__self__, "scim_synchronization_status", scim_synchronization_status)
-        pulumi.set(__self__, "tasks", tasks)
+        GetDirectoriesDirectoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            directory_id=directory_id,
+            directory_name=directory_name,
+            id=id,
+            mfa_authentication_status=mfa_authentication_status,
+            region=region,
+            saml_identity_provider_configurations=saml_identity_provider_configurations,
+            scim_synchronization_status=scim_synchronization_status,
+            tasks=tasks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             directory_id: str,
+             directory_name: str,
+             id: str,
+             mfa_authentication_status: str,
+             region: str,
+             saml_identity_provider_configurations: Sequence['outputs.GetDirectoriesDirectorySamlIdentityProviderConfigurationResult'],
+             scim_synchronization_status: str,
+             tasks: Sequence['outputs.GetDirectoriesDirectoryTaskResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("directory_id", directory_id)
+        _setter("directory_name", directory_name)
+        _setter("id", id)
+        _setter("mfa_authentication_status", mfa_authentication_status)
+        _setter("region", region)
+        _setter("saml_identity_provider_configurations", saml_identity_provider_configurations)
+        _setter("scim_synchronization_status", scim_synchronization_status)
+        _setter("tasks", tasks)
 
     @property
     @pulumi.getter(name="createTime")
@@ -554,11 +674,28 @@ class GetDirectoriesDirectorySamlIdentityProviderConfigurationResult(dict):
         :param str login_url: SAML IdP http-post Binding address.
         :param str sso_status: SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "encoded_metadata_document", encoded_metadata_document)
-        pulumi.set(__self__, "entity_id", entity_id)
-        pulumi.set(__self__, "login_url", login_url)
-        pulumi.set(__self__, "sso_status", sso_status)
+        GetDirectoriesDirectorySamlIdentityProviderConfigurationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            encoded_metadata_document=encoded_metadata_document,
+            entity_id=entity_id,
+            login_url=login_url,
+            sso_status=sso_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             encoded_metadata_document: str,
+             entity_id: str,
+             login_url: str,
+             sso_status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("encoded_metadata_document", encoded_metadata_document)
+        _setter("entity_id", entity_id)
+        _setter("login_url", login_url)
+        _setter("sso_status", sso_status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -636,21 +773,58 @@ class GetDirectoriesDirectoryTaskResult(dict):
         :param str task_id: The ID of the Task.
         :param str task_type: The Type of the Task.
         """
-        pulumi.set(__self__, "access_configuration_id", access_configuration_id)
-        pulumi.set(__self__, "access_configuration_name", access_configuration_name)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "failure_reason", failure_reason)
-        pulumi.set(__self__, "principal_id", principal_id)
-        pulumi.set(__self__, "principal_name", principal_name)
-        pulumi.set(__self__, "principal_type", principal_type)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "target_id", target_id)
-        pulumi.set(__self__, "target_name", target_name)
-        pulumi.set(__self__, "target_path", target_path)
-        pulumi.set(__self__, "target_type", target_type)
-        pulumi.set(__self__, "task_id", task_id)
-        pulumi.set(__self__, "task_type", task_type)
+        GetDirectoriesDirectoryTaskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_configuration_id=access_configuration_id,
+            access_configuration_name=access_configuration_name,
+            end_time=end_time,
+            failure_reason=failure_reason,
+            principal_id=principal_id,
+            principal_name=principal_name,
+            principal_type=principal_type,
+            start_time=start_time,
+            status=status,
+            target_id=target_id,
+            target_name=target_name,
+            target_path=target_path,
+            target_type=target_type,
+            task_id=task_id,
+            task_type=task_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_configuration_id: str,
+             access_configuration_name: str,
+             end_time: str,
+             failure_reason: str,
+             principal_id: str,
+             principal_name: str,
+             principal_type: str,
+             start_time: str,
+             status: str,
+             target_id: str,
+             target_name: str,
+             target_path: str,
+             target_type: str,
+             task_id: str,
+             task_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_configuration_id", access_configuration_id)
+        _setter("access_configuration_name", access_configuration_name)
+        _setter("end_time", end_time)
+        _setter("failure_reason", failure_reason)
+        _setter("principal_id", principal_id)
+        _setter("principal_name", principal_name)
+        _setter("principal_type", principal_type)
+        _setter("start_time", start_time)
+        _setter("status", status)
+        _setter("target_id", target_id)
+        _setter("target_name", target_name)
+        _setter("target_path", target_path)
+        _setter("target_type", target_type)
+        _setter("task_id", task_id)
+        _setter("task_type", task_type)
 
     @property
     @pulumi.getter(name="accessConfigurationId")
@@ -792,13 +966,34 @@ class GetGroupsGroupResult(dict):
         :param str id: The ID of the Group.
         :param str provision_type: The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "directory_id", directory_id)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "provision_type", provision_type)
+        GetGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            directory_id=directory_id,
+            group_id=group_id,
+            group_name=group_name,
+            id=id,
+            provision_type=provision_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             directory_id: str,
+             group_id: str,
+             group_name: str,
+             id: str,
+             provision_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("directory_id", directory_id)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
+        _setter("provision_type", provision_type)
 
     @property
     @pulumi.getter(name="createTime")
@@ -878,14 +1073,37 @@ class GetScimServerCredentialsCredentialResult(dict):
         :param str id: The ID of the SCIM Server Credential.
         :param str status: The Status of the resource. Valid values: `Disabled`, `Enabled`.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "credential_id", credential_id)
-        pulumi.set(__self__, "credential_secret", credential_secret)
-        pulumi.set(__self__, "credential_type", credential_type)
-        pulumi.set(__self__, "directory_id", directory_id)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
+        GetScimServerCredentialsCredentialResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            credential_id=credential_id,
+            credential_secret=credential_secret,
+            credential_type=credential_type,
+            directory_id=directory_id,
+            expire_time=expire_time,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             credential_id: str,
+             credential_secret: str,
+             credential_type: str,
+             directory_id: str,
+             expire_time: str,
+             id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("credential_id", credential_id)
+        _setter("credential_secret", credential_secret)
+        _setter("credential_type", credential_type)
+        _setter("directory_id", directory_id)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -983,19 +1201,52 @@ class GetUsersUserResult(dict):
         :param str user_id: The User ID of the group.
         :param str user_name: The name of user.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "directory_id", directory_id)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "first_name", first_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_name", last_name)
-        pulumi.set(__self__, "mfa_devices", mfa_devices)
-        pulumi.set(__self__, "provision_type", provision_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "user_name", user_name)
+        GetUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            directory_id=directory_id,
+            display_name=display_name,
+            email=email,
+            first_name=first_name,
+            id=id,
+            last_name=last_name,
+            mfa_devices=mfa_devices,
+            provision_type=provision_type,
+            status=status,
+            user_id=user_id,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             directory_id: str,
+             display_name: str,
+             email: str,
+             first_name: str,
+             id: str,
+             last_name: str,
+             mfa_devices: Sequence['outputs.GetUsersUserMfaDeviceResult'],
+             provision_type: str,
+             status: str,
+             user_id: str,
+             user_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("directory_id", directory_id)
+        _setter("display_name", display_name)
+        _setter("email", email)
+        _setter("first_name", first_name)
+        _setter("id", id)
+        _setter("last_name", last_name)
+        _setter("mfa_devices", mfa_devices)
+        _setter("provision_type", provision_type)
+        _setter("status", status)
+        _setter("user_id", user_id)
+        _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1115,10 +1366,25 @@ class GetUsersUserMfaDeviceResult(dict):
         :param str device_type: The MFA Device Type.
         :param str effective_time: The Effective Time of MFA Device.
         """
-        pulumi.set(__self__, "device_id", device_id)
-        pulumi.set(__self__, "device_name", device_name)
-        pulumi.set(__self__, "device_type", device_type)
-        pulumi.set(__self__, "effective_time", effective_time)
+        GetUsersUserMfaDeviceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device_id=device_id,
+            device_name=device_name,
+            device_type=device_type,
+            effective_time=effective_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device_id: str,
+             device_name: str,
+             device_type: str,
+             effective_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("device_id", device_id)
+        _setter("device_name", device_name)
+        _setter("device_type", device_type)
+        _setter("effective_time", effective_time)
 
     @property
     @pulumi.getter(name="deviceId")

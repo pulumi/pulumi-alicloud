@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RoleArgs', 'Role']
@@ -25,12 +25,27 @@ class RoleArgs:
         :param pulumi.Input[str] description: The description of the Resource Manager role.
         :param pulumi.Input[int] max_session_duration: Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
         """
-        pulumi.set(__self__, "assume_role_policy_document", assume_role_policy_document)
-        pulumi.set(__self__, "role_name", role_name)
+        RoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            assume_role_policy_document=assume_role_policy_document,
+            role_name=role_name,
+            description=description,
+            max_session_duration=max_session_duration,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             assume_role_policy_document: pulumi.Input[str],
+             role_name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             max_session_duration: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("assume_role_policy_document", assume_role_policy_document)
+        _setter("role_name", role_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if max_session_duration is not None:
-            pulumi.set(__self__, "max_session_duration", max_session_duration)
+            _setter("max_session_duration", max_session_duration)
 
     @property
     @pulumi.getter(name="assumeRolePolicyDocument")
@@ -101,20 +116,41 @@ class _RoleState:
         :param pulumi.Input[str] role_name: Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
         :param pulumi.Input[str] update_date: Role update time.
         """
+        _RoleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            assume_role_policy_document=assume_role_policy_document,
+            description=description,
+            max_session_duration=max_session_duration,
+            role_id=role_id,
+            role_name=role_name,
+            update_date=update_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[pulumi.Input[str]] = None,
+             assume_role_policy_document: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             max_session_duration: Optional[pulumi.Input[int]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             role_name: Optional[pulumi.Input[str]] = None,
+             update_date: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if assume_role_policy_document is not None:
-            pulumi.set(__self__, "assume_role_policy_document", assume_role_policy_document)
+            _setter("assume_role_policy_document", assume_role_policy_document)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if max_session_duration is not None:
-            pulumi.set(__self__, "max_session_duration", max_session_duration)
+            _setter("max_session_duration", max_session_duration)
         if role_id is not None:
-            pulumi.set(__self__, "role_id", role_id)
+            _setter("role_id", role_id)
         if role_name is not None:
-            pulumi.set(__self__, "role_name", role_name)
+            _setter("role_name", role_name)
         if update_date is not None:
-            pulumi.set(__self__, "update_date", update_date)
+            _setter("update_date", update_date)
 
     @property
     @pulumi.getter
@@ -322,6 +358,10 @@ class Role(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

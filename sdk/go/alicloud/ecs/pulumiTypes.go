@@ -829,9 +829,9 @@ func (o EcsInstanceSetNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) EcsI
 }
 
 type EcsLaunchTemplateDataDisk struct {
-	// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
+	// The category of the disk.
 	Category *string `pulumi:"category"`
-	// Specifies whether to release the system disk when the instance is released. Default to `true`.
+	// Indicates whether the data disk is released with the instance.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description *string `pulumi:"description"`
@@ -839,9 +839,9 @@ type EcsLaunchTemplateDataDisk struct {
 	Encrypted *bool `pulumi:"encrypted"`
 	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	Name *string `pulumi:"name"`
-	// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+	// The performance level of the ESSD used as the data disk.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// Size of the system disk, measured in GB. Value range: [20, 500].
+	// The size of the data disk.
 	Size *int `pulumi:"size"`
 	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
 	SnapshotId *string `pulumi:"snapshotId"`
@@ -859,9 +859,9 @@ type EcsLaunchTemplateDataDiskInput interface {
 }
 
 type EcsLaunchTemplateDataDiskArgs struct {
-	// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
+	// The category of the disk.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Specifies whether to release the system disk when the instance is released. Default to `true`.
+	// Indicates whether the data disk is released with the instance.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -869,9 +869,9 @@ type EcsLaunchTemplateDataDiskArgs struct {
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+	// The performance level of the ESSD used as the data disk.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// Size of the system disk, measured in GB. Value range: [20, 500].
+	// The size of the data disk.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 	// The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
@@ -946,12 +946,12 @@ func (o EcsLaunchTemplateDataDiskOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
-// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
+// The category of the disk.
 func (o EcsLaunchTemplateDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to release the system disk when the instance is released. Default to `true`.
+// Indicates whether the data disk is released with the instance.
 func (o EcsLaunchTemplateDataDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
@@ -971,12 +971,12 @@ func (o EcsLaunchTemplateDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+// The performance level of the ESSD used as the data disk.
 func (o EcsLaunchTemplateDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
-// Size of the system disk, measured in GB. Value range: [20, 500].
+// The size of the data disk.
 func (o EcsLaunchTemplateDataDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateDataDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -1250,9 +1250,9 @@ func (o EcsLaunchTemplateNetworkInterfacesPtrOutput) VswitchId() pulumi.StringPt
 }
 
 type EcsLaunchTemplateSystemDisk struct {
-	// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
+	// The category of the disk.
 	Category *string `pulumi:"category"`
-	// Specifies whether to release the system disk when the instance is released. Default to `true`.
+	// Indicates whether the data disk is released with the instance.
 	DeleteWithInstance *bool `pulumi:"deleteWithInstance"`
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description *string `pulumi:"description"`
@@ -1260,9 +1260,9 @@ type EcsLaunchTemplateSystemDisk struct {
 	Iops *string `pulumi:"iops"`
 	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	Name *string `pulumi:"name"`
-	// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+	// The performance level of the ESSD used as the data disk.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// Size of the system disk, measured in GB. Value range: [20, 500].
+	// The size of the data disk.
 	Size *int `pulumi:"size"`
 }
 
@@ -1278,9 +1278,9 @@ type EcsLaunchTemplateSystemDiskInput interface {
 }
 
 type EcsLaunchTemplateSystemDiskArgs struct {
-	// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
+	// The category of the disk.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Specifies whether to release the system disk when the instance is released. Default to `true`.
+	// Indicates whether the data disk is released with the instance.
 	DeleteWithInstance pulumi.BoolPtrInput `pulumi:"deleteWithInstance"`
 	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -1288,9 +1288,9 @@ type EcsLaunchTemplateSystemDiskArgs struct {
 	Iops pulumi.StringPtrInput `pulumi:"iops"`
 	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+	// The performance level of the ESSD used as the data disk.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// Size of the system disk, measured in GB. Value range: [20, 500].
+	// The size of the data disk.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -1389,12 +1389,12 @@ func (o EcsLaunchTemplateSystemDiskOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
+// The category of the disk.
 func (o EcsLaunchTemplateSystemDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to release the system disk when the instance is released. Default to `true`.
+// Indicates whether the data disk is released with the instance.
 func (o EcsLaunchTemplateSystemDiskOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *bool { return v.DeleteWithInstance }).(pulumi.BoolPtrOutput)
 }
@@ -1414,12 +1414,12 @@ func (o EcsLaunchTemplateSystemDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+// The performance level of the ESSD used as the data disk.
 func (o EcsLaunchTemplateSystemDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
-// Size of the system disk, measured in GB. Value range: [20, 500].
+// The size of the data disk.
 func (o EcsLaunchTemplateSystemDiskOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EcsLaunchTemplateSystemDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -1454,7 +1454,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Elem() EcsLaunchTemplateSystemDisk
 	}).(EcsLaunchTemplateSystemDiskOutput)
 }
 
-// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
+// The category of the disk.
 func (o EcsLaunchTemplateSystemDiskPtrOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -1464,7 +1464,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Category() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether to release the system disk when the instance is released. Default to `true`.
+// Indicates whether the data disk is released with the instance.
 func (o EcsLaunchTemplateSystemDiskPtrOutput) DeleteWithInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *bool {
 		if v == nil {
@@ -1504,7 +1504,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+// The performance level of the ESSD used as the data disk.
 func (o EcsLaunchTemplateSystemDiskPtrOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *string {
 		if v == nil {
@@ -1514,7 +1514,7 @@ func (o EcsLaunchTemplateSystemDiskPtrOutput) PerformanceLevel() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Size of the system disk, measured in GB. Value range: [20, 500].
+// The size of the data disk.
 func (o EcsLaunchTemplateSystemDiskPtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplateSystemDisk) *int {
 		if v == nil {

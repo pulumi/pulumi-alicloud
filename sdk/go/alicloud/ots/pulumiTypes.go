@@ -158,7 +158,7 @@ type SearchIndexSchemaFieldSchema struct {
 	Analyzer *string `pulumi:"analyzer"`
 	// Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enableSortAndAgg is set to true.
 	EnableSortAndAgg *bool `pulumi:"enableSortAndAgg"`
-	// Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+	// The name of the field that is used to sort data. only required if sorterType is FieldSort.
 	FieldName string `pulumi:"fieldName"`
 	// Specifies the type of the field. Use FieldType.XXX to set the type.
 	FieldType string `pulumi:"fieldType"`
@@ -186,7 +186,7 @@ type SearchIndexSchemaFieldSchemaArgs struct {
 	Analyzer pulumi.StringPtrInput `pulumi:"analyzer"`
 	// Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enableSortAndAgg is set to true.
 	EnableSortAndAgg pulumi.BoolPtrInput `pulumi:"enableSortAndAgg"`
-	// Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+	// The name of the field that is used to sort data. only required if sorterType is FieldSort.
 	FieldName pulumi.StringInput `pulumi:"fieldName"`
 	// Specifies the type of the field. Use FieldType.XXX to set the type.
 	FieldType pulumi.StringInput `pulumi:"fieldType"`
@@ -277,7 +277,7 @@ func (o SearchIndexSchemaFieldSchemaOutput) EnableSortAndAgg() pulumi.BoolPtrOut
 	return o.ApplyT(func(v SearchIndexSchemaFieldSchema) *bool { return v.EnableSortAndAgg }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+// The name of the field that is used to sort data. only required if sorterType is FieldSort.
 func (o SearchIndexSchemaFieldSchemaOutput) FieldName() pulumi.StringOutput {
 	return o.ApplyT(func(v SearchIndexSchemaFieldSchema) string { return v.FieldName }).(pulumi.StringOutput)
 }
@@ -571,7 +571,7 @@ func (o SearchIndexSchemaIndexSortArrayOutput) Index(i pulumi.IntInput) SearchIn
 }
 
 type SearchIndexSchemaIndexSortSorter struct {
-	// Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+	// The name of the field that is used to sort data. only required if sorterType is FieldSort.
 	FieldName *string `pulumi:"fieldName"`
 	// The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorterType is FieldSort.
 	Mode *string `pulumi:"mode"`
@@ -593,7 +593,7 @@ type SearchIndexSchemaIndexSortSorterInput interface {
 }
 
 type SearchIndexSchemaIndexSortSorterArgs struct {
-	// Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+	// The name of the field that is used to sort data. only required if sorterType is FieldSort.
 	FieldName pulumi.StringPtrInput `pulumi:"fieldName"`
 	// The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorterType is FieldSort.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
@@ -672,7 +672,7 @@ func (o SearchIndexSchemaIndexSortSorterOutput) ToOutput(ctx context.Context) pu
 	}
 }
 
-// Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+// The name of the field that is used to sort data. only required if sorterType is FieldSort.
 func (o SearchIndexSchemaIndexSortSorterOutput) FieldName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SearchIndexSchemaIndexSortSorter) *string { return v.FieldName }).(pulumi.StringPtrOutput)
 }

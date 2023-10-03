@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AlidnsInstanceArgs', 'AlidnsInstance']
@@ -31,17 +31,38 @@ class AlidnsInstanceArgs:
         :param pulumi.Input[int] renew_period: Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
         :param pulumi.Input[str] renewal_status: Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
         """
-        pulumi.set(__self__, "dns_security", dns_security)
-        pulumi.set(__self__, "domain_numbers", domain_numbers)
-        pulumi.set(__self__, "version_code", version_code)
+        AlidnsInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns_security=dns_security,
+            domain_numbers=domain_numbers,
+            version_code=version_code,
+            payment_type=payment_type,
+            period=period,
+            renew_period=renew_period,
+            renewal_status=renewal_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns_security: pulumi.Input[str],
+             domain_numbers: pulumi.Input[str],
+             version_code: pulumi.Input[str],
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             renew_period: Optional[pulumi.Input[int]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dns_security", dns_security)
+        _setter("domain_numbers", domain_numbers)
+        _setter("version_code", version_code)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if renew_period is not None:
-            pulumi.set(__self__, "renew_period", renew_period)
+            _setter("renew_period", renew_period)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
 
     @property
     @pulumi.getter(name="dnsSecurity")
@@ -150,22 +171,45 @@ class _AlidnsInstanceState:
         :param pulumi.Input[str] version_code: Paid package version. Valid values: `version_personal`, `version_enterprise_basic`, `version_enterprise_advanced`.
         :param pulumi.Input[str] version_name: Paid package version name.
         """
+        _AlidnsInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns_security=dns_security,
+            domain_numbers=domain_numbers,
+            payment_type=payment_type,
+            period=period,
+            renew_period=renew_period,
+            renewal_status=renewal_status,
+            version_code=version_code,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns_security: Optional[pulumi.Input[str]] = None,
+             domain_numbers: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             renew_period: Optional[pulumi.Input[int]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             version_code: Optional[pulumi.Input[str]] = None,
+             version_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dns_security is not None:
-            pulumi.set(__self__, "dns_security", dns_security)
+            _setter("dns_security", dns_security)
         if domain_numbers is not None:
-            pulumi.set(__self__, "domain_numbers", domain_numbers)
+            _setter("domain_numbers", domain_numbers)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if renew_period is not None:
-            pulumi.set(__self__, "renew_period", renew_period)
+            _setter("renew_period", renew_period)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if version_code is not None:
-            pulumi.set(__self__, "version_code", version_code)
+            _setter("version_code", version_code)
         if version_name is not None:
-            pulumi.set(__self__, "version_name", version_name)
+            _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="dnsSecurity")
@@ -363,6 +407,10 @@ class AlidnsInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AlidnsInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

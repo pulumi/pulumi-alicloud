@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AcceleratorSpareIpAttachmentArgs', 'AcceleratorSpareIpAttachment']
@@ -23,10 +23,23 @@ class AcceleratorSpareIpAttachmentArgs:
         :param pulumi.Input[str] spare_ip: The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
         :param pulumi.Input[bool] dry_run: The dry run.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "spare_ip", spare_ip)
+        AcceleratorSpareIpAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            spare_ip=spare_ip,
+            dry_run=dry_run,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: pulumi.Input[str],
+             spare_ip: pulumi.Input[str],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("spare_ip", spare_ip)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -79,14 +92,29 @@ class _AcceleratorSpareIpAttachmentState:
         :param pulumi.Input[str] spare_ip: The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
         :param pulumi.Input[str] status: The status of the standby CNAME IP address.
         """
+        _AcceleratorSpareIpAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            dry_run=dry_run,
+            spare_ip=spare_ip,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             spare_ip: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if accelerator_id is not None:
-            pulumi.set(__self__, "accelerator_id", accelerator_id)
+            _setter("accelerator_id", accelerator_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if spare_ip is not None:
-            pulumi.set(__self__, "spare_ip", spare_ip)
+            _setter("spare_ip", spare_ip)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -262,6 +290,10 @@ class AcceleratorSpareIpAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AcceleratorSpareIpAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

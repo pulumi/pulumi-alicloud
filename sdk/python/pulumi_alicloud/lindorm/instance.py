@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -101,88 +101,177 @@ class InstanceArgs:
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
-        pulumi.set(__self__, "disk_category", disk_category)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_category=disk_category,
+            payment_type=payment_type,
+            vswitch_id=vswitch_id,
+            arbiter_vswitch_id=arbiter_vswitch_id,
+            arbiter_zone_id=arbiter_zone_id,
+            arch_version=arch_version,
+            cold_storage=cold_storage,
+            core_single_storage=core_single_storage,
+            core_spec=core_spec,
+            deletion_proection=deletion_proection,
+            duration=duration,
+            file_engine_node_count=file_engine_node_count,
+            file_engine_specification=file_engine_specification,
+            instance_name=instance_name,
+            instance_storage=instance_storage,
+            ip_white_lists=ip_white_lists,
+            log_disk_category=log_disk_category,
+            log_num=log_num,
+            log_single_storage=log_single_storage,
+            log_spec=log_spec,
+            lts_node_count=lts_node_count,
+            lts_node_specification=lts_node_specification,
+            multi_zone_combination=multi_zone_combination,
+            pricing_cycle=pricing_cycle,
+            primary_vswitch_id=primary_vswitch_id,
+            primary_zone_id=primary_zone_id,
+            resource_group_id=resource_group_id,
+            search_engine_node_count=search_engine_node_count,
+            search_engine_specification=search_engine_specification,
+            standby_vswitch_id=standby_vswitch_id,
+            standby_zone_id=standby_zone_id,
+            stream_engine_node_count=stream_engine_node_count,
+            stream_engine_specification=stream_engine_specification,
+            table_engine_node_count=table_engine_node_count,
+            table_engine_specification=table_engine_specification,
+            tags=tags,
+            time_series_engine_node_count=time_series_engine_node_count,
+            time_series_engine_specification=time_series_engine_specification,
+            time_serires_engine_specification=time_serires_engine_specification,
+            vpc_id=vpc_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_category: pulumi.Input[str],
+             payment_type: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             arbiter_vswitch_id: Optional[pulumi.Input[str]] = None,
+             arbiter_zone_id: Optional[pulumi.Input[str]] = None,
+             arch_version: Optional[pulumi.Input[str]] = None,
+             cold_storage: Optional[pulumi.Input[int]] = None,
+             core_single_storage: Optional[pulumi.Input[int]] = None,
+             core_spec: Optional[pulumi.Input[str]] = None,
+             deletion_proection: Optional[pulumi.Input[bool]] = None,
+             duration: Optional[pulumi.Input[str]] = None,
+             file_engine_node_count: Optional[pulumi.Input[int]] = None,
+             file_engine_specification: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             instance_storage: Optional[pulumi.Input[str]] = None,
+             ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             log_disk_category: Optional[pulumi.Input[str]] = None,
+             log_num: Optional[pulumi.Input[int]] = None,
+             log_single_storage: Optional[pulumi.Input[int]] = None,
+             log_spec: Optional[pulumi.Input[str]] = None,
+             lts_node_count: Optional[pulumi.Input[int]] = None,
+             lts_node_specification: Optional[pulumi.Input[str]] = None,
+             multi_zone_combination: Optional[pulumi.Input[str]] = None,
+             pricing_cycle: Optional[pulumi.Input[str]] = None,
+             primary_vswitch_id: Optional[pulumi.Input[str]] = None,
+             primary_zone_id: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             search_engine_node_count: Optional[pulumi.Input[int]] = None,
+             search_engine_specification: Optional[pulumi.Input[str]] = None,
+             standby_vswitch_id: Optional[pulumi.Input[str]] = None,
+             standby_zone_id: Optional[pulumi.Input[str]] = None,
+             stream_engine_node_count: Optional[pulumi.Input[int]] = None,
+             stream_engine_specification: Optional[pulumi.Input[str]] = None,
+             table_engine_node_count: Optional[pulumi.Input[int]] = None,
+             table_engine_specification: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
+             time_series_engine_specification: Optional[pulumi.Input[str]] = None,
+             time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_category", disk_category)
+        _setter("payment_type", payment_type)
+        _setter("vswitch_id", vswitch_id)
         if arbiter_vswitch_id is not None:
-            pulumi.set(__self__, "arbiter_vswitch_id", arbiter_vswitch_id)
+            _setter("arbiter_vswitch_id", arbiter_vswitch_id)
         if arbiter_zone_id is not None:
-            pulumi.set(__self__, "arbiter_zone_id", arbiter_zone_id)
+            _setter("arbiter_zone_id", arbiter_zone_id)
         if arch_version is not None:
-            pulumi.set(__self__, "arch_version", arch_version)
+            _setter("arch_version", arch_version)
         if cold_storage is not None:
-            pulumi.set(__self__, "cold_storage", cold_storage)
+            _setter("cold_storage", cold_storage)
         if core_single_storage is not None:
-            pulumi.set(__self__, "core_single_storage", core_single_storage)
+            _setter("core_single_storage", core_single_storage)
         if core_spec is not None:
-            pulumi.set(__self__, "core_spec", core_spec)
+            _setter("core_spec", core_spec)
         if deletion_proection is not None:
-            pulumi.set(__self__, "deletion_proection", deletion_proection)
+            _setter("deletion_proection", deletion_proection)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if file_engine_node_count is not None:
-            pulumi.set(__self__, "file_engine_node_count", file_engine_node_count)
+            _setter("file_engine_node_count", file_engine_node_count)
         if file_engine_specification is not None:
-            pulumi.set(__self__, "file_engine_specification", file_engine_specification)
+            _setter("file_engine_specification", file_engine_specification)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if instance_storage is not None:
-            pulumi.set(__self__, "instance_storage", instance_storage)
+            _setter("instance_storage", instance_storage)
         if ip_white_lists is not None:
-            pulumi.set(__self__, "ip_white_lists", ip_white_lists)
+            _setter("ip_white_lists", ip_white_lists)
         if log_disk_category is not None:
-            pulumi.set(__self__, "log_disk_category", log_disk_category)
+            _setter("log_disk_category", log_disk_category)
         if log_num is not None:
-            pulumi.set(__self__, "log_num", log_num)
+            _setter("log_num", log_num)
         if log_single_storage is not None:
-            pulumi.set(__self__, "log_single_storage", log_single_storage)
+            _setter("log_single_storage", log_single_storage)
         if log_spec is not None:
-            pulumi.set(__self__, "log_spec", log_spec)
+            _setter("log_spec", log_spec)
         if lts_node_count is not None:
-            pulumi.set(__self__, "lts_node_count", lts_node_count)
+            _setter("lts_node_count", lts_node_count)
         if lts_node_specification is not None:
-            pulumi.set(__self__, "lts_node_specification", lts_node_specification)
+            _setter("lts_node_specification", lts_node_specification)
         if multi_zone_combination is not None:
-            pulumi.set(__self__, "multi_zone_combination", multi_zone_combination)
+            _setter("multi_zone_combination", multi_zone_combination)
         if pricing_cycle is not None:
-            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+            _setter("pricing_cycle", pricing_cycle)
         if primary_vswitch_id is not None:
-            pulumi.set(__self__, "primary_vswitch_id", primary_vswitch_id)
+            _setter("primary_vswitch_id", primary_vswitch_id)
         if primary_zone_id is not None:
-            pulumi.set(__self__, "primary_zone_id", primary_zone_id)
+            _setter("primary_zone_id", primary_zone_id)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if search_engine_node_count is not None:
-            pulumi.set(__self__, "search_engine_node_count", search_engine_node_count)
+            _setter("search_engine_node_count", search_engine_node_count)
         if search_engine_specification is not None:
-            pulumi.set(__self__, "search_engine_specification", search_engine_specification)
+            _setter("search_engine_specification", search_engine_specification)
         if standby_vswitch_id is not None:
-            pulumi.set(__self__, "standby_vswitch_id", standby_vswitch_id)
+            _setter("standby_vswitch_id", standby_vswitch_id)
         if standby_zone_id is not None:
-            pulumi.set(__self__, "standby_zone_id", standby_zone_id)
+            _setter("standby_zone_id", standby_zone_id)
         if stream_engine_node_count is not None:
-            pulumi.set(__self__, "stream_engine_node_count", stream_engine_node_count)
+            _setter("stream_engine_node_count", stream_engine_node_count)
         if stream_engine_specification is not None:
-            pulumi.set(__self__, "stream_engine_specification", stream_engine_specification)
+            _setter("stream_engine_specification", stream_engine_specification)
         if table_engine_node_count is not None:
-            pulumi.set(__self__, "table_engine_node_count", table_engine_node_count)
+            _setter("table_engine_node_count", table_engine_node_count)
         if table_engine_specification is not None:
-            pulumi.set(__self__, "table_engine_specification", table_engine_specification)
+            _setter("table_engine_specification", table_engine_specification)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if time_series_engine_node_count is not None:
-            pulumi.set(__self__, "time_series_engine_node_count", time_series_engine_node_count)
+            _setter("time_series_engine_node_count", time_series_engine_node_count)
         if time_series_engine_specification is not None:
-            pulumi.set(__self__, "time_series_engine_specification", time_series_engine_specification)
+            _setter("time_series_engine_specification", time_series_engine_specification)
         if time_serires_engine_specification is not None:
             warnings.warn("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""", DeprecationWarning)
             pulumi.log.warn("""time_serires_engine_specification is deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
         if time_serires_engine_specification is not None:
-            pulumi.set(__self__, "time_serires_engine_specification", time_serires_engine_specification)
+            _setter("time_serires_engine_specification", time_serires_engine_specification)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="diskCategory")
@@ -788,107 +877,212 @@ class _InstanceState:
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arbiter_vswitch_id=arbiter_vswitch_id,
+            arbiter_zone_id=arbiter_zone_id,
+            arch_version=arch_version,
+            cold_storage=cold_storage,
+            core_single_storage=core_single_storage,
+            core_spec=core_spec,
+            deletion_proection=deletion_proection,
+            disk_category=disk_category,
+            duration=duration,
+            enabled_file_engine=enabled_file_engine,
+            enabled_lts_engine=enabled_lts_engine,
+            enabled_search_engine=enabled_search_engine,
+            enabled_stream_engine=enabled_stream_engine,
+            enabled_table_engine=enabled_table_engine,
+            enabled_time_serires_engine=enabled_time_serires_engine,
+            file_engine_node_count=file_engine_node_count,
+            file_engine_specification=file_engine_specification,
+            instance_name=instance_name,
+            instance_storage=instance_storage,
+            ip_white_lists=ip_white_lists,
+            log_disk_category=log_disk_category,
+            log_num=log_num,
+            log_single_storage=log_single_storage,
+            log_spec=log_spec,
+            lts_node_count=lts_node_count,
+            lts_node_specification=lts_node_specification,
+            multi_zone_combination=multi_zone_combination,
+            payment_type=payment_type,
+            pricing_cycle=pricing_cycle,
+            primary_vswitch_id=primary_vswitch_id,
+            primary_zone_id=primary_zone_id,
+            resource_group_id=resource_group_id,
+            search_engine_node_count=search_engine_node_count,
+            search_engine_specification=search_engine_specification,
+            service_type=service_type,
+            standby_vswitch_id=standby_vswitch_id,
+            standby_zone_id=standby_zone_id,
+            status=status,
+            stream_engine_node_count=stream_engine_node_count,
+            stream_engine_specification=stream_engine_specification,
+            table_engine_node_count=table_engine_node_count,
+            table_engine_specification=table_engine_specification,
+            tags=tags,
+            time_series_engine_node_count=time_series_engine_node_count,
+            time_series_engine_specification=time_series_engine_specification,
+            time_serires_engine_specification=time_serires_engine_specification,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arbiter_vswitch_id: Optional[pulumi.Input[str]] = None,
+             arbiter_zone_id: Optional[pulumi.Input[str]] = None,
+             arch_version: Optional[pulumi.Input[str]] = None,
+             cold_storage: Optional[pulumi.Input[int]] = None,
+             core_single_storage: Optional[pulumi.Input[int]] = None,
+             core_spec: Optional[pulumi.Input[str]] = None,
+             deletion_proection: Optional[pulumi.Input[bool]] = None,
+             disk_category: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[str]] = None,
+             enabled_file_engine: Optional[pulumi.Input[bool]] = None,
+             enabled_lts_engine: Optional[pulumi.Input[bool]] = None,
+             enabled_search_engine: Optional[pulumi.Input[bool]] = None,
+             enabled_stream_engine: Optional[pulumi.Input[bool]] = None,
+             enabled_table_engine: Optional[pulumi.Input[bool]] = None,
+             enabled_time_serires_engine: Optional[pulumi.Input[bool]] = None,
+             file_engine_node_count: Optional[pulumi.Input[int]] = None,
+             file_engine_specification: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             instance_storage: Optional[pulumi.Input[str]] = None,
+             ip_white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             log_disk_category: Optional[pulumi.Input[str]] = None,
+             log_num: Optional[pulumi.Input[int]] = None,
+             log_single_storage: Optional[pulumi.Input[int]] = None,
+             log_spec: Optional[pulumi.Input[str]] = None,
+             lts_node_count: Optional[pulumi.Input[int]] = None,
+             lts_node_specification: Optional[pulumi.Input[str]] = None,
+             multi_zone_combination: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             pricing_cycle: Optional[pulumi.Input[str]] = None,
+             primary_vswitch_id: Optional[pulumi.Input[str]] = None,
+             primary_zone_id: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             search_engine_node_count: Optional[pulumi.Input[int]] = None,
+             search_engine_specification: Optional[pulumi.Input[str]] = None,
+             service_type: Optional[pulumi.Input[str]] = None,
+             standby_vswitch_id: Optional[pulumi.Input[str]] = None,
+             standby_zone_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             stream_engine_node_count: Optional[pulumi.Input[int]] = None,
+             stream_engine_specification: Optional[pulumi.Input[str]] = None,
+             table_engine_node_count: Optional[pulumi.Input[int]] = None,
+             table_engine_specification: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             time_series_engine_node_count: Optional[pulumi.Input[int]] = None,
+             time_series_engine_specification: Optional[pulumi.Input[str]] = None,
+             time_serires_engine_specification: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arbiter_vswitch_id is not None:
-            pulumi.set(__self__, "arbiter_vswitch_id", arbiter_vswitch_id)
+            _setter("arbiter_vswitch_id", arbiter_vswitch_id)
         if arbiter_zone_id is not None:
-            pulumi.set(__self__, "arbiter_zone_id", arbiter_zone_id)
+            _setter("arbiter_zone_id", arbiter_zone_id)
         if arch_version is not None:
-            pulumi.set(__self__, "arch_version", arch_version)
+            _setter("arch_version", arch_version)
         if cold_storage is not None:
-            pulumi.set(__self__, "cold_storage", cold_storage)
+            _setter("cold_storage", cold_storage)
         if core_single_storage is not None:
-            pulumi.set(__self__, "core_single_storage", core_single_storage)
+            _setter("core_single_storage", core_single_storage)
         if core_spec is not None:
-            pulumi.set(__self__, "core_spec", core_spec)
+            _setter("core_spec", core_spec)
         if deletion_proection is not None:
-            pulumi.set(__self__, "deletion_proection", deletion_proection)
+            _setter("deletion_proection", deletion_proection)
         if disk_category is not None:
-            pulumi.set(__self__, "disk_category", disk_category)
+            _setter("disk_category", disk_category)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if enabled_file_engine is not None:
-            pulumi.set(__self__, "enabled_file_engine", enabled_file_engine)
+            _setter("enabled_file_engine", enabled_file_engine)
         if enabled_lts_engine is not None:
-            pulumi.set(__self__, "enabled_lts_engine", enabled_lts_engine)
+            _setter("enabled_lts_engine", enabled_lts_engine)
         if enabled_search_engine is not None:
-            pulumi.set(__self__, "enabled_search_engine", enabled_search_engine)
+            _setter("enabled_search_engine", enabled_search_engine)
         if enabled_stream_engine is not None:
-            pulumi.set(__self__, "enabled_stream_engine", enabled_stream_engine)
+            _setter("enabled_stream_engine", enabled_stream_engine)
         if enabled_table_engine is not None:
-            pulumi.set(__self__, "enabled_table_engine", enabled_table_engine)
+            _setter("enabled_table_engine", enabled_table_engine)
         if enabled_time_serires_engine is not None:
-            pulumi.set(__self__, "enabled_time_serires_engine", enabled_time_serires_engine)
+            _setter("enabled_time_serires_engine", enabled_time_serires_engine)
         if file_engine_node_count is not None:
-            pulumi.set(__self__, "file_engine_node_count", file_engine_node_count)
+            _setter("file_engine_node_count", file_engine_node_count)
         if file_engine_specification is not None:
-            pulumi.set(__self__, "file_engine_specification", file_engine_specification)
+            _setter("file_engine_specification", file_engine_specification)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if instance_storage is not None:
-            pulumi.set(__self__, "instance_storage", instance_storage)
+            _setter("instance_storage", instance_storage)
         if ip_white_lists is not None:
-            pulumi.set(__self__, "ip_white_lists", ip_white_lists)
+            _setter("ip_white_lists", ip_white_lists)
         if log_disk_category is not None:
-            pulumi.set(__self__, "log_disk_category", log_disk_category)
+            _setter("log_disk_category", log_disk_category)
         if log_num is not None:
-            pulumi.set(__self__, "log_num", log_num)
+            _setter("log_num", log_num)
         if log_single_storage is not None:
-            pulumi.set(__self__, "log_single_storage", log_single_storage)
+            _setter("log_single_storage", log_single_storage)
         if log_spec is not None:
-            pulumi.set(__self__, "log_spec", log_spec)
+            _setter("log_spec", log_spec)
         if lts_node_count is not None:
-            pulumi.set(__self__, "lts_node_count", lts_node_count)
+            _setter("lts_node_count", lts_node_count)
         if lts_node_specification is not None:
-            pulumi.set(__self__, "lts_node_specification", lts_node_specification)
+            _setter("lts_node_specification", lts_node_specification)
         if multi_zone_combination is not None:
-            pulumi.set(__self__, "multi_zone_combination", multi_zone_combination)
+            _setter("multi_zone_combination", multi_zone_combination)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if pricing_cycle is not None:
-            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+            _setter("pricing_cycle", pricing_cycle)
         if primary_vswitch_id is not None:
-            pulumi.set(__self__, "primary_vswitch_id", primary_vswitch_id)
+            _setter("primary_vswitch_id", primary_vswitch_id)
         if primary_zone_id is not None:
-            pulumi.set(__self__, "primary_zone_id", primary_zone_id)
+            _setter("primary_zone_id", primary_zone_id)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if search_engine_node_count is not None:
-            pulumi.set(__self__, "search_engine_node_count", search_engine_node_count)
+            _setter("search_engine_node_count", search_engine_node_count)
         if search_engine_specification is not None:
-            pulumi.set(__self__, "search_engine_specification", search_engine_specification)
+            _setter("search_engine_specification", search_engine_specification)
         if service_type is not None:
-            pulumi.set(__self__, "service_type", service_type)
+            _setter("service_type", service_type)
         if standby_vswitch_id is not None:
-            pulumi.set(__self__, "standby_vswitch_id", standby_vswitch_id)
+            _setter("standby_vswitch_id", standby_vswitch_id)
         if standby_zone_id is not None:
-            pulumi.set(__self__, "standby_zone_id", standby_zone_id)
+            _setter("standby_zone_id", standby_zone_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if stream_engine_node_count is not None:
-            pulumi.set(__self__, "stream_engine_node_count", stream_engine_node_count)
+            _setter("stream_engine_node_count", stream_engine_node_count)
         if stream_engine_specification is not None:
-            pulumi.set(__self__, "stream_engine_specification", stream_engine_specification)
+            _setter("stream_engine_specification", stream_engine_specification)
         if table_engine_node_count is not None:
-            pulumi.set(__self__, "table_engine_node_count", table_engine_node_count)
+            _setter("table_engine_node_count", table_engine_node_count)
         if table_engine_specification is not None:
-            pulumi.set(__self__, "table_engine_specification", table_engine_specification)
+            _setter("table_engine_specification", table_engine_specification)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if time_series_engine_node_count is not None:
-            pulumi.set(__self__, "time_series_engine_node_count", time_series_engine_node_count)
+            _setter("time_series_engine_node_count", time_series_engine_node_count)
         if time_series_engine_specification is not None:
-            pulumi.set(__self__, "time_series_engine_specification", time_series_engine_specification)
+            _setter("time_series_engine_specification", time_series_engine_specification)
         if time_serires_engine_specification is not None:
             warnings.warn("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""", DeprecationWarning)
             pulumi.log.warn("""time_serires_engine_specification is deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
         if time_serires_engine_specification is not None:
-            pulumi.set(__self__, "time_serires_engine_specification", time_serires_engine_specification)
+            _setter("time_serires_engine_specification", time_serires_engine_specification)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="arbiterVswitchId")
@@ -1687,6 +1881,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1783,9 +1981,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["time_series_engine_node_count"] = time_series_engine_node_count
             __props__.__dict__["time_series_engine_specification"] = time_series_engine_specification
-            if time_serires_engine_specification is not None and not opts.urn:
-                warnings.warn("""Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""", DeprecationWarning)
-                pulumi.log.warn("""time_serires_engine_specification is deprecated: Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.""")
             __props__.__dict__["time_serires_engine_specification"] = time_serires_engine_specification
             __props__.__dict__["vpc_id"] = vpc_id
             if vswitch_id is None and not opts.urn:

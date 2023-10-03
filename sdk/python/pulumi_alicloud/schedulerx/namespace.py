@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NamespaceArgs', 'Namespace']
@@ -21,9 +21,20 @@ class NamespaceArgs:
         :param pulumi.Input[str] namespace_name: The name of the resource.
         :param pulumi.Input[str] description: The description of the resource.
         """
-        pulumi.set(__self__, "namespace_name", namespace_name)
+        NamespaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace_name=namespace_name,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace_name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("namespace_name", namespace_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="namespaceName")
@@ -60,10 +71,21 @@ class _NamespaceState:
         :param pulumi.Input[str] description: The description of the resource.
         :param pulumi.Input[str] namespace_name: The name of the resource.
         """
+        _NamespaceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            namespace_name=namespace_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             namespace_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if namespace_name is not None:
-            pulumi.set(__self__, "namespace_name", namespace_name)
+            _setter("namespace_name", namespace_name)
 
     @property
     @pulumi.getter
@@ -171,6 +193,10 @@ class Namespace(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NamespaceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

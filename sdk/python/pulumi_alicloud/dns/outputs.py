@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -71,9 +71,20 @@ class AccessStrategyDefaultAddrPool(dict):
         :param str addr_pool_id: The ID of the address pool in the primary address pool group.
         :param int lba_weight: The weight of the address pool in the primary address pool group.
         """
-        pulumi.set(__self__, "addr_pool_id", addr_pool_id)
+        AccessStrategyDefaultAddrPool._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addr_pool_id=addr_pool_id,
+            lba_weight=lba_weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addr_pool_id: str,
+             lba_weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("addr_pool_id", addr_pool_id)
         if lba_weight is not None:
-            pulumi.set(__self__, "lba_weight", lba_weight)
+            _setter("lba_weight", lba_weight)
 
     @property
     @pulumi.getter(name="addrPoolId")
@@ -120,10 +131,21 @@ class AccessStrategyFailoverAddrPool(dict):
         :param str addr_pool_id: The ID of the address pool in the secondary address pool group.
         :param int lba_weight: The weight of the address pool in the secondary address pool group.
         """
+        AccessStrategyFailoverAddrPool._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addr_pool_id=addr_pool_id,
+            lba_weight=lba_weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addr_pool_id: Optional[str] = None,
+             lba_weight: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if addr_pool_id is not None:
-            pulumi.set(__self__, "addr_pool_id", addr_pool_id)
+            _setter("addr_pool_id", addr_pool_id)
         if lba_weight is not None:
-            pulumi.set(__self__, "lba_weight", lba_weight)
+            _setter("lba_weight", lba_weight)
 
     @property
     @pulumi.getter(name="addrPoolId")
@@ -166,8 +188,17 @@ class AccessStrategyLine(dict):
         """
         :param str line_code: The line code of the source region.
         """
+        AccessStrategyLine._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            line_code=line_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             line_code: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if line_code is not None:
-            pulumi.set(__self__, "line_code", line_code)
+            _setter("line_code", line_code)
 
     @property
     @pulumi.getter(name="lineCode")
@@ -212,13 +243,30 @@ class AddressPoolAddress(dict):
         :param int lba_weight: The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
         :param str remark: The description of the address.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "attribute_info", attribute_info)
-        pulumi.set(__self__, "mode", mode)
+        AddressPoolAddress._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            attribute_info=attribute_info,
+            mode=mode,
+            lba_weight=lba_weight,
+            remark=remark,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             attribute_info: str,
+             mode: str,
+             lba_weight: Optional[int] = None,
+             remark: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("attribute_info", attribute_info)
+        _setter("mode", mode)
         if lba_weight is not None:
-            pulumi.set(__self__, "lba_weight", lba_weight)
+            _setter("lba_weight", lba_weight)
         if remark is not None:
-            pulumi.set(__self__, "remark", remark)
+            _setter("remark", remark)
 
     @property
     @pulumi.getter
@@ -289,8 +337,19 @@ class CustomLineIpSegmentList(dict):
         :param str end_ip: The end IP address of the CIDR block.
         :param str start_ip: The start IP address of the CIDR block.
         """
-        pulumi.set(__self__, "end_ip", end_ip)
-        pulumi.set(__self__, "start_ip", start_ip)
+        CustomLineIpSegmentList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end_ip=end_ip,
+            start_ip=start_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end_ip: str,
+             start_ip: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("end_ip", end_ip)
+        _setter("start_ip", start_ip)
 
     @property
     @pulumi.getter(name="endIp")
@@ -345,14 +404,29 @@ class GtmInstanceAlertConfig(dict):
         :param str notice_type: The Alarm Event Type.
         :param bool sms_notice: Whether to configure SMS notification. Valid values: `true`, `false`.
         """
+        GtmInstanceAlertConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dingtalk_notice=dingtalk_notice,
+            email_notice=email_notice,
+            notice_type=notice_type,
+            sms_notice=sms_notice,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dingtalk_notice: Optional[bool] = None,
+             email_notice: Optional[bool] = None,
+             notice_type: Optional[str] = None,
+             sms_notice: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dingtalk_notice is not None:
-            pulumi.set(__self__, "dingtalk_notice", dingtalk_notice)
+            _setter("dingtalk_notice", dingtalk_notice)
         if email_notice is not None:
-            pulumi.set(__self__, "email_notice", email_notice)
+            _setter("email_notice", email_notice)
         if notice_type is not None:
-            pulumi.set(__self__, "notice_type", notice_type)
+            _setter("notice_type", notice_type)
         if sms_notice is not None:
-            pulumi.set(__self__, "sms_notice", sms_notice)
+            _setter("sms_notice", sms_notice)
 
     @property
     @pulumi.getter(name="dingtalkNotice")
@@ -415,8 +489,19 @@ class MonitorConfigIspCityNode(dict):
         :param str city_code: The code of the city node to monitor.
         :param str isp_code: The code of the Internet provider service (ISP) node to monitor.
         """
-        pulumi.set(__self__, "city_code", city_code)
-        pulumi.set(__self__, "isp_code", isp_code)
+        MonitorConfigIspCityNode._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            city_code=city_code,
+            isp_code=isp_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             city_code: str,
+             isp_code: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("city_code", city_code)
+        _setter("isp_code", isp_code)
 
     @property
     @pulumi.getter(name="cityCode")
@@ -488,30 +573,85 @@ class GetAccessStrategiesStrategyResult(dict):
         :param str strategy_mode: The type of the access policy.
         :param str strategy_name: The name of the access policy.
         """
-        pulumi.set(__self__, "access_mode", access_mode)
-        pulumi.set(__self__, "access_strategy_id", access_strategy_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "create_timestamp", create_timestamp)
-        pulumi.set(__self__, "default_addr_pool_type", default_addr_pool_type)
-        pulumi.set(__self__, "default_addr_pools", default_addr_pools)
-        pulumi.set(__self__, "default_available_addr_num", default_available_addr_num)
-        pulumi.set(__self__, "default_latency_optimization", default_latency_optimization)
-        pulumi.set(__self__, "default_lba_strategy", default_lba_strategy)
-        pulumi.set(__self__, "default_max_return_addr_num", default_max_return_addr_num)
-        pulumi.set(__self__, "default_min_available_addr_num", default_min_available_addr_num)
-        pulumi.set(__self__, "effective_addr_pool_group_type", effective_addr_pool_group_type)
-        pulumi.set(__self__, "failover_addr_pool_type", failover_addr_pool_type)
-        pulumi.set(__self__, "failover_addr_pools", failover_addr_pools)
-        pulumi.set(__self__, "failover_available_addr_num", failover_available_addr_num)
-        pulumi.set(__self__, "failover_latency_optimization", failover_latency_optimization)
-        pulumi.set(__self__, "failover_lba_strategy", failover_lba_strategy)
-        pulumi.set(__self__, "failover_max_return_addr_num", failover_max_return_addr_num)
-        pulumi.set(__self__, "failover_min_available_addr_num", failover_min_available_addr_num)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "lines", lines)
-        pulumi.set(__self__, "strategy_mode", strategy_mode)
-        pulumi.set(__self__, "strategy_name", strategy_name)
+        GetAccessStrategiesStrategyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_mode=access_mode,
+            access_strategy_id=access_strategy_id,
+            create_time=create_time,
+            create_timestamp=create_timestamp,
+            default_addr_pool_type=default_addr_pool_type,
+            default_addr_pools=default_addr_pools,
+            default_available_addr_num=default_available_addr_num,
+            default_latency_optimization=default_latency_optimization,
+            default_lba_strategy=default_lba_strategy,
+            default_max_return_addr_num=default_max_return_addr_num,
+            default_min_available_addr_num=default_min_available_addr_num,
+            effective_addr_pool_group_type=effective_addr_pool_group_type,
+            failover_addr_pool_type=failover_addr_pool_type,
+            failover_addr_pools=failover_addr_pools,
+            failover_available_addr_num=failover_available_addr_num,
+            failover_latency_optimization=failover_latency_optimization,
+            failover_lba_strategy=failover_lba_strategy,
+            failover_max_return_addr_num=failover_max_return_addr_num,
+            failover_min_available_addr_num=failover_min_available_addr_num,
+            id=id,
+            instance_id=instance_id,
+            lines=lines,
+            strategy_mode=strategy_mode,
+            strategy_name=strategy_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_mode: str,
+             access_strategy_id: str,
+             create_time: str,
+             create_timestamp: str,
+             default_addr_pool_type: str,
+             default_addr_pools: Sequence['outputs.GetAccessStrategiesStrategyDefaultAddrPoolResult'],
+             default_available_addr_num: int,
+             default_latency_optimization: str,
+             default_lba_strategy: str,
+             default_max_return_addr_num: int,
+             default_min_available_addr_num: int,
+             effective_addr_pool_group_type: str,
+             failover_addr_pool_type: str,
+             failover_addr_pools: Sequence['outputs.GetAccessStrategiesStrategyFailoverAddrPoolResult'],
+             failover_available_addr_num: int,
+             failover_latency_optimization: str,
+             failover_lba_strategy: str,
+             failover_max_return_addr_num: int,
+             failover_min_available_addr_num: int,
+             id: str,
+             instance_id: str,
+             lines: Sequence['outputs.GetAccessStrategiesStrategyLineResult'],
+             strategy_mode: str,
+             strategy_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_mode", access_mode)
+        _setter("access_strategy_id", access_strategy_id)
+        _setter("create_time", create_time)
+        _setter("create_timestamp", create_timestamp)
+        _setter("default_addr_pool_type", default_addr_pool_type)
+        _setter("default_addr_pools", default_addr_pools)
+        _setter("default_available_addr_num", default_available_addr_num)
+        _setter("default_latency_optimization", default_latency_optimization)
+        _setter("default_lba_strategy", default_lba_strategy)
+        _setter("default_max_return_addr_num", default_max_return_addr_num)
+        _setter("default_min_available_addr_num", default_min_available_addr_num)
+        _setter("effective_addr_pool_group_type", effective_addr_pool_group_type)
+        _setter("failover_addr_pool_type", failover_addr_pool_type)
+        _setter("failover_addr_pools", failover_addr_pools)
+        _setter("failover_available_addr_num", failover_available_addr_num)
+        _setter("failover_latency_optimization", failover_latency_optimization)
+        _setter("failover_lba_strategy", failover_lba_strategy)
+        _setter("failover_max_return_addr_num", failover_max_return_addr_num)
+        _setter("failover_min_available_addr_num", failover_min_available_addr_num)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("lines", lines)
+        _setter("strategy_mode", strategy_mode)
+        _setter("strategy_name", strategy_name)
 
     @property
     @pulumi.getter(name="accessMode")
@@ -719,10 +859,25 @@ class GetAccessStrategiesStrategyDefaultAddrPoolResult(dict):
         :param int lba_weight: The weight of the address pool.
         :param str name: The name of the address pool.
         """
-        pulumi.set(__self__, "addr_count", addr_count)
-        pulumi.set(__self__, "addr_pool_id", addr_pool_id)
-        pulumi.set(__self__, "lba_weight", lba_weight)
-        pulumi.set(__self__, "name", name)
+        GetAccessStrategiesStrategyDefaultAddrPoolResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addr_count=addr_count,
+            addr_pool_id=addr_pool_id,
+            lba_weight=lba_weight,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addr_count: int,
+             addr_pool_id: str,
+             lba_weight: int,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("addr_count", addr_count)
+        _setter("addr_pool_id", addr_pool_id)
+        _setter("lba_weight", lba_weight)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="addrCount")
@@ -770,10 +925,25 @@ class GetAccessStrategiesStrategyFailoverAddrPoolResult(dict):
         :param int lba_weight: The weight of the address pool.
         :param str name: The name of the address pool.
         """
-        pulumi.set(__self__, "addr_count", addr_count)
-        pulumi.set(__self__, "addr_pool_id", addr_pool_id)
-        pulumi.set(__self__, "lba_weight", lba_weight)
-        pulumi.set(__self__, "name", name)
+        GetAccessStrategiesStrategyFailoverAddrPoolResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addr_count=addr_count,
+            addr_pool_id=addr_pool_id,
+            lba_weight=lba_weight,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addr_count: int,
+             addr_pool_id: str,
+             lba_weight: int,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("addr_count", addr_count)
+        _setter("addr_pool_id", addr_pool_id)
+        _setter("lba_weight", lba_weight)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="addrCount")
@@ -821,10 +991,25 @@ class GetAccessStrategiesStrategyLineResult(dict):
         :param str line_code: The line code of the source region.
         :param str line_name: The line name of the source region.
         """
-        pulumi.set(__self__, "group_code", group_code)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "line_code", line_code)
-        pulumi.set(__self__, "line_name", line_name)
+        GetAccessStrategiesStrategyLineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_code=group_code,
+            group_name=group_name,
+            line_code=line_code,
+            line_name=line_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_code: str,
+             group_name: str,
+             line_code: str,
+             line_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_code", group_code)
+        _setter("group_name", group_name)
+        _setter("line_code", line_code)
+        _setter("line_name", line_name)
 
     @property
     @pulumi.getter(name="groupCode")
@@ -890,19 +1075,52 @@ class GetAddressPoolsPoolResult(dict):
         :param str update_time: The time when the address pool was updated.
         :param str update_timestamp: The timestamp that indicates when the address pool was updated.
         """
-        pulumi.set(__self__, "address_pool_id", address_pool_id)
-        pulumi.set(__self__, "address_pool_name", address_pool_name)
-        pulumi.set(__self__, "addresses", addresses)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "create_timestamp", create_timestamp)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "lba_strategy", lba_strategy)
-        pulumi.set(__self__, "monitor_config_id", monitor_config_id)
-        pulumi.set(__self__, "monitor_status", monitor_status)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "update_time", update_time)
-        pulumi.set(__self__, "update_timestamp", update_timestamp)
+        GetAddressPoolsPoolResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_pool_id=address_pool_id,
+            address_pool_name=address_pool_name,
+            addresses=addresses,
+            create_time=create_time,
+            create_timestamp=create_timestamp,
+            id=id,
+            instance_id=instance_id,
+            lba_strategy=lba_strategy,
+            monitor_config_id=monitor_config_id,
+            monitor_status=monitor_status,
+            type=type,
+            update_time=update_time,
+            update_timestamp=update_timestamp,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_pool_id: str,
+             address_pool_name: str,
+             addresses: Sequence['outputs.GetAddressPoolsPoolAddressResult'],
+             create_time: str,
+             create_timestamp: str,
+             id: str,
+             instance_id: str,
+             lba_strategy: str,
+             monitor_config_id: str,
+             monitor_status: str,
+             type: str,
+             update_time: str,
+             update_timestamp: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address_pool_id", address_pool_id)
+        _setter("address_pool_name", address_pool_name)
+        _setter("addresses", addresses)
+        _setter("create_time", create_time)
+        _setter("create_timestamp", create_timestamp)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("lba_strategy", lba_strategy)
+        _setter("monitor_config_id", monitor_config_id)
+        _setter("monitor_status", monitor_status)
+        _setter("type", type)
+        _setter("update_time", update_time)
+        _setter("update_timestamp", update_timestamp)
 
     @property
     @pulumi.getter(name="addressPoolId")
@@ -1024,11 +1242,28 @@ class GetAddressPoolsPoolAddressResult(dict):
         :param str mode: The type of the address.
         :param str remark: The description of the address.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "attribute_info", attribute_info)
-        pulumi.set(__self__, "lba_weight", lba_weight)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "remark", remark)
+        GetAddressPoolsPoolAddressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            attribute_info=attribute_info,
+            lba_weight=lba_weight,
+            mode=mode,
+            remark=remark,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             attribute_info: str,
+             lba_weight: int,
+             mode: str,
+             remark: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("attribute_info", attribute_info)
+        _setter("lba_weight", lba_weight)
+        _setter("mode", mode)
+        _setter("remark", remark)
 
     @property
     @pulumi.getter
@@ -1084,10 +1319,25 @@ class GetAlidnsDomainGroupsGroupResult(dict):
         :param str group_name: The name of the domain group.
         :param str id: Id of the instance.
         """
-        pulumi.set(__self__, "domain_count", domain_count)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
+        GetAlidnsDomainGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_count=domain_count,
+            group_id=group_id,
+            group_name=group_name,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_count: int,
+             group_id: str,
+             group_name: str,
+             id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain_count", domain_count)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
 
     @property
     @pulumi.getter(name="domainCount")
@@ -1171,29 +1421,82 @@ class GetAlidnsDomainsDomainResult(dict):
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str version_code: Cloud analysis version code.
         """
-        pulumi.set(__self__, "ali_domain", ali_domain)
-        pulumi.set(__self__, "available_ttls", available_ttls)
-        pulumi.set(__self__, "dns_servers", dns_servers)
-        pulumi.set(__self__, "domain_id", domain_id)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "in_black_hole", in_black_hole)
-        pulumi.set(__self__, "in_clean", in_clean)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "line_type", line_type)
-        pulumi.set(__self__, "min_ttl", min_ttl)
-        pulumi.set(__self__, "puny_code", puny_code)
-        pulumi.set(__self__, "record_line_tree_json", record_line_tree_json)
-        pulumi.set(__self__, "record_lines", record_lines)
-        pulumi.set(__self__, "region_lines", region_lines)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "slave_dns", slave_dns)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "version_code", version_code)
-        pulumi.set(__self__, "version_name", version_name)
+        GetAlidnsDomainsDomainResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ali_domain=ali_domain,
+            available_ttls=available_ttls,
+            dns_servers=dns_servers,
+            domain_id=domain_id,
+            domain_name=domain_name,
+            group_id=group_id,
+            group_name=group_name,
+            id=id,
+            in_black_hole=in_black_hole,
+            in_clean=in_clean,
+            instance_id=instance_id,
+            line_type=line_type,
+            min_ttl=min_ttl,
+            puny_code=puny_code,
+            record_line_tree_json=record_line_tree_json,
+            record_lines=record_lines,
+            region_lines=region_lines,
+            remark=remark,
+            resource_group_id=resource_group_id,
+            slave_dns=slave_dns,
+            tags=tags,
+            version_code=version_code,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ali_domain: bool,
+             available_ttls: Sequence[int],
+             dns_servers: Sequence[str],
+             domain_id: str,
+             domain_name: str,
+             group_id: str,
+             group_name: str,
+             id: str,
+             in_black_hole: bool,
+             in_clean: bool,
+             instance_id: str,
+             line_type: str,
+             min_ttl: int,
+             puny_code: str,
+             record_line_tree_json: str,
+             record_lines: Sequence['outputs.GetAlidnsDomainsDomainRecordLineResult'],
+             region_lines: bool,
+             remark: str,
+             resource_group_id: str,
+             slave_dns: bool,
+             tags: Mapping[str, Any],
+             version_code: str,
+             version_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ali_domain", ali_domain)
+        _setter("available_ttls", available_ttls)
+        _setter("dns_servers", dns_servers)
+        _setter("domain_id", domain_id)
+        _setter("domain_name", domain_name)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
+        _setter("in_black_hole", in_black_hole)
+        _setter("in_clean", in_clean)
+        _setter("instance_id", instance_id)
+        _setter("line_type", line_type)
+        _setter("min_ttl", min_ttl)
+        _setter("puny_code", puny_code)
+        _setter("record_line_tree_json", record_line_tree_json)
+        _setter("record_lines", record_lines)
+        _setter("region_lines", region_lines)
+        _setter("remark", remark)
+        _setter("resource_group_id", resource_group_id)
+        _setter("slave_dns", slave_dns)
+        _setter("tags", tags)
+        _setter("version_code", version_code)
+        _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="aliDomain")
@@ -1387,10 +1690,25 @@ class GetAlidnsDomainsDomainRecordLineResult(dict):
         :param str line_display_name: Parent line display name.
         :param str line_name: Sub-line display name.
         """
-        pulumi.set(__self__, "father_code", father_code)
-        pulumi.set(__self__, "line_code", line_code)
-        pulumi.set(__self__, "line_display_name", line_display_name)
-        pulumi.set(__self__, "line_name", line_name)
+        GetAlidnsDomainsDomainRecordLineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            father_code=father_code,
+            line_code=line_code,
+            line_display_name=line_display_name,
+            line_name=line_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             father_code: str,
+             line_code: str,
+             line_display_name: str,
+             line_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("father_code", father_code)
+        _setter("line_code", line_code)
+        _setter("line_display_name", line_display_name)
+        _setter("line_name", line_name)
 
     @property
     @pulumi.getter(name="fatherCode")
@@ -1446,14 +1764,37 @@ class GetAlidnsInstancesInstanceResult(dict):
         :param str version_code: Paid package version.
         :param str version_name: Paid package version name.
         """
-        pulumi.set(__self__, "dns_security", dns_security)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "domain_numbers", domain_numbers)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "version_code", version_code)
-        pulumi.set(__self__, "version_name", version_name)
+        GetAlidnsInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns_security=dns_security,
+            domain=domain,
+            domain_numbers=domain_numbers,
+            id=id,
+            instance_id=instance_id,
+            payment_type=payment_type,
+            version_code=version_code,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns_security: str,
+             domain: str,
+             domain_numbers: str,
+             id: str,
+             instance_id: str,
+             payment_type: str,
+             version_code: str,
+             version_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dns_security", dns_security)
+        _setter("domain", domain)
+        _setter("domain_numbers", domain_numbers)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("payment_type", payment_type)
+        _setter("version_code", version_code)
+        _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="dnsSecurity")
@@ -1549,18 +1890,49 @@ class GetAlidnsRecordsRecordResult(dict):
         :param str type: Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
         :param str value: Host record value of the domain.
         """
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "line", line)
-        pulumi.set(__self__, "locked", locked)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "record_id", record_id)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "rr", rr)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "ttl", ttl)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
+        GetAlidnsRecordsRecordResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            id=id,
+            line=line,
+            locked=locked,
+            priority=priority,
+            record_id=record_id,
+            remark=remark,
+            rr=rr,
+            status=status,
+            ttl=ttl,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: str,
+             id: str,
+             line: str,
+             locked: bool,
+             priority: int,
+             record_id: str,
+             remark: str,
+             rr: str,
+             status: str,
+             ttl: int,
+             type: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain_name", domain_name)
+        _setter("id", id)
+        _setter("line", line)
+        _setter("locked", locked)
+        _setter("priority", priority)
+        _setter("record_id", record_id)
+        _setter("remark", remark)
+        _setter("rr", rr)
+        _setter("status", status)
+        _setter("ttl", ttl)
+        _setter("type", type)
+        _setter("value", value)
 
     @property
     @pulumi.getter(name="domainName")
@@ -1676,12 +2048,31 @@ class GetCustomLinesLineResult(dict):
         :param str id: The ID of the Custom Line.
         :param Sequence['GetCustomLinesLineIpSegmentListArgs'] ip_segment_lists: The IP segment list.
         """
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "custom_line_id", custom_line_id)
-        pulumi.set(__self__, "custom_line_name", custom_line_name)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_segment_lists", ip_segment_lists)
+        GetCustomLinesLineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            custom_line_id=custom_line_id,
+            custom_line_name=custom_line_name,
+            domain_name=domain_name,
+            id=id,
+            ip_segment_lists=ip_segment_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: str,
+             custom_line_id: str,
+             custom_line_name: str,
+             domain_name: str,
+             id: str,
+             ip_segment_lists: Sequence['outputs.GetCustomLinesLineIpSegmentListResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("code", code)
+        _setter("custom_line_id", custom_line_id)
+        _setter("custom_line_name", custom_line_name)
+        _setter("domain_name", domain_name)
+        _setter("id", id)
+        _setter("ip_segment_lists", ip_segment_lists)
 
     @property
     @pulumi.getter
@@ -1741,8 +2132,19 @@ class GetCustomLinesLineIpSegmentListResult(dict):
         :param str end_ip: The end IP address of the CIDR block.
         :param str start_ip: The start IP address of the CIDR block.
         """
-        pulumi.set(__self__, "end_ip", end_ip)
-        pulumi.set(__self__, "start_ip", start_ip)
+        GetCustomLinesLineIpSegmentListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end_ip=end_ip,
+            start_ip=start_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end_ip: str,
+             start_ip: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("end_ip", end_ip)
+        _setter("start_ip", start_ip)
 
     @property
     @pulumi.getter(name="endIp")
@@ -1766,8 +2168,19 @@ class GetDomainGroupsGroupResult(dict):
     def __init__(__self__, *,
                  group_id: str,
                  group_name: str):
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
+        GetDomainGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            group_name=group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: str,
+             group_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
 
     @property
     @pulumi.getter(name="groupId")
@@ -1793,16 +2206,43 @@ class GetDomainRecordsRecordResult(dict):
                  ttl: float,
                  type: str,
                  value: str):
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "host_record", host_record)
-        pulumi.set(__self__, "line", line)
-        pulumi.set(__self__, "locked", locked)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "record_id", record_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "ttl", ttl)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
+        GetDomainRecordsRecordResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            host_record=host_record,
+            line=line,
+            locked=locked,
+            priority=priority,
+            record_id=record_id,
+            status=status,
+            ttl=ttl,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: str,
+             host_record: str,
+             line: str,
+             locked: bool,
+             priority: int,
+             record_id: str,
+             status: str,
+             ttl: float,
+             type: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain_name", domain_name)
+        _setter("host_record", host_record)
+        _setter("line", line)
+        _setter("locked", locked)
+        _setter("priority", priority)
+        _setter("record_id", record_id)
+        _setter("status", status)
+        _setter("ttl", ttl)
+        _setter("type", type)
+        _setter("value", value)
 
     @property
     @pulumi.getter(name="domainName")
@@ -1902,29 +2342,82 @@ class GetDomainsDomainResult(dict):
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str version_code: Cloud analysis version code.
         """
-        pulumi.set(__self__, "ali_domain", ali_domain)
-        pulumi.set(__self__, "available_ttls", available_ttls)
-        pulumi.set(__self__, "dns_servers", dns_servers)
-        pulumi.set(__self__, "domain_id", domain_id)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "in_black_hole", in_black_hole)
-        pulumi.set(__self__, "in_clean", in_clean)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "line_type", line_type)
-        pulumi.set(__self__, "min_ttl", min_ttl)
-        pulumi.set(__self__, "puny_code", puny_code)
-        pulumi.set(__self__, "record_line_tree_json", record_line_tree_json)
-        pulumi.set(__self__, "record_lines", record_lines)
-        pulumi.set(__self__, "region_lines", region_lines)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "slave_dns", slave_dns)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "version_code", version_code)
-        pulumi.set(__self__, "version_name", version_name)
+        GetDomainsDomainResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ali_domain=ali_domain,
+            available_ttls=available_ttls,
+            dns_servers=dns_servers,
+            domain_id=domain_id,
+            domain_name=domain_name,
+            group_id=group_id,
+            group_name=group_name,
+            id=id,
+            in_black_hole=in_black_hole,
+            in_clean=in_clean,
+            instance_id=instance_id,
+            line_type=line_type,
+            min_ttl=min_ttl,
+            puny_code=puny_code,
+            record_line_tree_json=record_line_tree_json,
+            record_lines=record_lines,
+            region_lines=region_lines,
+            remark=remark,
+            resource_group_id=resource_group_id,
+            slave_dns=slave_dns,
+            tags=tags,
+            version_code=version_code,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ali_domain: bool,
+             available_ttls: Sequence[int],
+             dns_servers: Sequence[str],
+             domain_id: str,
+             domain_name: str,
+             group_id: str,
+             group_name: str,
+             id: str,
+             in_black_hole: bool,
+             in_clean: bool,
+             instance_id: str,
+             line_type: str,
+             min_ttl: int,
+             puny_code: str,
+             record_line_tree_json: str,
+             record_lines: Sequence['outputs.GetDomainsDomainRecordLineResult'],
+             region_lines: bool,
+             remark: str,
+             resource_group_id: str,
+             slave_dns: bool,
+             tags: Mapping[str, Any],
+             version_code: str,
+             version_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ali_domain", ali_domain)
+        _setter("available_ttls", available_ttls)
+        _setter("dns_servers", dns_servers)
+        _setter("domain_id", domain_id)
+        _setter("domain_name", domain_name)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
+        _setter("in_black_hole", in_black_hole)
+        _setter("in_clean", in_clean)
+        _setter("instance_id", instance_id)
+        _setter("line_type", line_type)
+        _setter("min_ttl", min_ttl)
+        _setter("puny_code", puny_code)
+        _setter("record_line_tree_json", record_line_tree_json)
+        _setter("record_lines", record_lines)
+        _setter("region_lines", region_lines)
+        _setter("remark", remark)
+        _setter("resource_group_id", resource_group_id)
+        _setter("slave_dns", slave_dns)
+        _setter("tags", tags)
+        _setter("version_code", version_code)
+        _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="aliDomain")
@@ -2106,10 +2599,25 @@ class GetDomainsDomainRecordLineResult(dict):
                  line_code: str,
                  line_display_name: str,
                  line_name: str):
-        pulumi.set(__self__, "father_code", father_code)
-        pulumi.set(__self__, "line_code", line_code)
-        pulumi.set(__self__, "line_display_name", line_display_name)
-        pulumi.set(__self__, "line_name", line_name)
+        GetDomainsDomainRecordLineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            father_code=father_code,
+            line_code=line_code,
+            line_display_name=line_display_name,
+            line_name=line_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             father_code: str,
+             line_code: str,
+             line_display_name: str,
+             line_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("father_code", father_code)
+        _setter("line_code", line_code)
+        _setter("line_display_name", line_display_name)
+        _setter("line_name", line_name)
 
     @property
     @pulumi.getter(name="fatherCode")
@@ -2141,8 +2649,19 @@ class GetGroupsGroupResult(dict):
         :param str group_id: Id of the group.
         :param str group_name: Name of the group.
         """
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
+        GetGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            group_name=group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: str,
+             group_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
 
     @property
     @pulumi.getter(name="groupId")
@@ -2200,23 +2719,64 @@ class GetGtmInstancesInstanceResult(dict):
         :param str strategy_mode: The type of the access policy.
         :param int ttl: The global time to live.
         """
-        pulumi.set(__self__, "alert_configs", alert_configs)
-        pulumi.set(__self__, "alert_groups", alert_groups)
-        pulumi.set(__self__, "cname_type", cname_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "package_edition", package_edition)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "public_cname_mode", public_cname_mode)
-        pulumi.set(__self__, "public_rr", public_rr)
-        pulumi.set(__self__, "public_user_domain_name", public_user_domain_name)
-        pulumi.set(__self__, "public_zone_name", public_zone_name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "strategy_mode", strategy_mode)
-        pulumi.set(__self__, "ttl", ttl)
+        GetGtmInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_configs=alert_configs,
+            alert_groups=alert_groups,
+            cname_type=cname_type,
+            create_time=create_time,
+            expire_time=expire_time,
+            id=id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            package_edition=package_edition,
+            payment_type=payment_type,
+            public_cname_mode=public_cname_mode,
+            public_rr=public_rr,
+            public_user_domain_name=public_user_domain_name,
+            public_zone_name=public_zone_name,
+            resource_group_id=resource_group_id,
+            strategy_mode=strategy_mode,
+            ttl=ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_configs: Sequence['outputs.GetGtmInstancesInstanceAlertConfigResult'],
+             alert_groups: Sequence[str],
+             cname_type: str,
+             create_time: str,
+             expire_time: str,
+             id: str,
+             instance_id: str,
+             instance_name: str,
+             package_edition: str,
+             payment_type: str,
+             public_cname_mode: str,
+             public_rr: str,
+             public_user_domain_name: str,
+             public_zone_name: str,
+             resource_group_id: str,
+             strategy_mode: str,
+             ttl: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alert_configs", alert_configs)
+        _setter("alert_groups", alert_groups)
+        _setter("cname_type", cname_type)
+        _setter("create_time", create_time)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("package_edition", package_edition)
+        _setter("payment_type", payment_type)
+        _setter("public_cname_mode", public_cname_mode)
+        _setter("public_rr", public_rr)
+        _setter("public_user_domain_name", public_user_domain_name)
+        _setter("public_zone_name", public_zone_name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("strategy_mode", strategy_mode)
+        _setter("ttl", ttl)
 
     @property
     @pulumi.getter(name="alertConfigs")
@@ -2368,10 +2928,25 @@ class GetGtmInstancesInstanceAlertConfigResult(dict):
         :param str notice_type: The Alarm Event Type.
         :param bool sms_notice: Whether to configure SMS notification.
         """
-        pulumi.set(__self__, "dingtalk_notice", dingtalk_notice)
-        pulumi.set(__self__, "email_notice", email_notice)
-        pulumi.set(__self__, "notice_type", notice_type)
-        pulumi.set(__self__, "sms_notice", sms_notice)
+        GetGtmInstancesInstanceAlertConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dingtalk_notice=dingtalk_notice,
+            email_notice=email_notice,
+            notice_type=notice_type,
+            sms_notice=sms_notice,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dingtalk_notice: bool,
+             email_notice: bool,
+             notice_type: str,
+             sms_notice: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dingtalk_notice", dingtalk_notice)
+        _setter("email_notice", email_notice)
+        _setter("notice_type", notice_type)
+        _setter("sms_notice", sms_notice)
 
     @property
     @pulumi.getter(name="dingtalkNotice")
@@ -2425,14 +3000,37 @@ class GetInstancesInstanceResult(dict):
         :param str version_code: Paid package version.
         :param str version_name: Paid package version name.
         """
-        pulumi.set(__self__, "dns_security", dns_security)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "domain_numbers", domain_numbers)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "version_code", version_code)
-        pulumi.set(__self__, "version_name", version_name)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns_security=dns_security,
+            domain=domain,
+            domain_numbers=domain_numbers,
+            id=id,
+            instance_id=instance_id,
+            payment_type=payment_type,
+            version_code=version_code,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns_security: str,
+             domain: str,
+             domain_numbers: str,
+             id: str,
+             instance_id: str,
+             payment_type: str,
+             version_code: str,
+             version_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dns_security", dns_security)
+        _setter("domain", domain)
+        _setter("domain_numbers", domain_numbers)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("payment_type", payment_type)
+        _setter("version_code", version_code)
+        _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="dnsSecurity")
@@ -2518,16 +3116,43 @@ class GetRecordsRecordResult(dict):
         :param str type: Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
         :param str value: Host record value of the domain.
         """
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "host_record", host_record)
-        pulumi.set(__self__, "line", line)
-        pulumi.set(__self__, "locked", locked)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "record_id", record_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "ttl", ttl)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
+        GetRecordsRecordResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            host_record=host_record,
+            line=line,
+            locked=locked,
+            priority=priority,
+            record_id=record_id,
+            status=status,
+            ttl=ttl,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: str,
+             host_record: str,
+             line: str,
+             locked: bool,
+             priority: int,
+             record_id: str,
+             status: str,
+             ttl: float,
+             type: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain_name", domain_name)
+        _setter("host_record", host_record)
+        _setter("line", line)
+        _setter("locked", locked)
+        _setter("priority", priority)
+        _setter("record_id", record_id)
+        _setter("status", status)
+        _setter("ttl", ttl)
+        _setter("type", type)
+        _setter("value", value)
 
     @property
     @pulumi.getter(name="domainName")
@@ -2620,9 +3245,22 @@ class GetResolutionLinesLineResult(dict):
         :param str line_display_name: Line display name.
         :param str line_name: Line name.
         """
-        pulumi.set(__self__, "line_code", line_code)
-        pulumi.set(__self__, "line_display_name", line_display_name)
-        pulumi.set(__self__, "line_name", line_name)
+        GetResolutionLinesLineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            line_code=line_code,
+            line_display_name=line_display_name,
+            line_name=line_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             line_code: str,
+             line_display_name: str,
+             line_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("line_code", line_code)
+        _setter("line_display_name", line_display_name)
+        _setter("line_name", line_name)
 
     @property
     @pulumi.getter(name="lineCode")

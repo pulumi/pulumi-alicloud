@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -96,9 +96,20 @@ class DhcpOptionsSetAssociateVpc(dict):
         :param str vpc_id: The ID of the VPC network that is associated with the DHCP options set.
         :param str associate_status: The status of the VPC associated with the DHCP option set.
         """
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        DhcpOptionsSetAssociateVpc._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vpc_id=vpc_id,
+            associate_status=associate_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vpc_id: str,
+             associate_status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("vpc_id", vpc_id)
         if associate_status is not None:
-            pulumi.set(__self__, "associate_status", associate_status)
+            _setter("associate_status", associate_status)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -145,8 +156,19 @@ class NetworkAclAttachmentResource(dict):
         :param str resource_id: The resource id that the network acl will associate with.
         :param str resource_type: The resource id that the network acl will associate with. Only support `VSwitch` now.
         """
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
+        NetworkAclAttachmentResource._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_id=resource_id,
+            resource_type=resource_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_id: str,
+             resource_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_id", resource_id)
+        _setter("resource_type", resource_type)
 
     @property
     @pulumi.getter(name="resourceId")
@@ -208,18 +230,37 @@ class NetworkAclEgressAclEntry(dict):
                - udp: User Datagram Protocol.
                - all: Supports all protocols.
         """
+        NetworkAclEgressAclEntry._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            destination_cidr_ip=destination_cidr_ip,
+            network_acl_entry_name=network_acl_entry_name,
+            policy=policy,
+            port=port,
+            protocol=protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             destination_cidr_ip: Optional[str] = None,
+             network_acl_entry_name: Optional[str] = None,
+             policy: Optional[str] = None,
+             port: Optional[str] = None,
+             protocol: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if destination_cidr_ip is not None:
-            pulumi.set(__self__, "destination_cidr_ip", destination_cidr_ip)
+            _setter("destination_cidr_ip", destination_cidr_ip)
         if network_acl_entry_name is not None:
-            pulumi.set(__self__, "network_acl_entry_name", network_acl_entry_name)
+            _setter("network_acl_entry_name", network_acl_entry_name)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
 
     @property
     @pulumi.getter
@@ -307,34 +348,55 @@ class NetworkAclEntriesEgress(dict):
                  port: Optional[str] = None,
                  protocol: Optional[str] = None):
         """
-        :param str description: The description of the ingress entry.
+        :param str description: The description of the egress entry.
         :param str destination_cidr_ip: The destination ip of the egress entry.
-        :param str entry_type: The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
-        :param str name: The name of the ingress entry.
-        :param str policy: The policy of the ingress entry. It must be `accept` or `drop`.
-        :param str port: The port of the ingress entry.
-        :param str protocol: The protocol of the ingress entry.
+        :param str entry_type: The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+        :param str name: The name of the egress entry.
+        :param str policy: The policy of the egress entry. It must be `accept` or `drop`.
+        :param str port: The port of the egress entry.
+        :param str protocol: The protocol of the egress entry.
         """
+        NetworkAclEntriesEgress._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            destination_cidr_ip=destination_cidr_ip,
+            entry_type=entry_type,
+            name=name,
+            policy=policy,
+            port=port,
+            protocol=protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             destination_cidr_ip: Optional[str] = None,
+             entry_type: Optional[str] = None,
+             name: Optional[str] = None,
+             policy: Optional[str] = None,
+             port: Optional[str] = None,
+             protocol: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if destination_cidr_ip is not None:
-            pulumi.set(__self__, "destination_cidr_ip", destination_cidr_ip)
+            _setter("destination_cidr_ip", destination_cidr_ip)
         if entry_type is not None:
-            pulumi.set(__self__, "entry_type", entry_type)
+            _setter("entry_type", entry_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the ingress entry.
+        The description of the egress entry.
         """
         return pulumi.get(self, "description")
 
@@ -350,7 +412,7 @@ class NetworkAclEntriesEgress(dict):
     @pulumi.getter(name="entryType")
     def entry_type(self) -> Optional[str]:
         """
-        The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+        The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
         """
         return pulumi.get(self, "entry_type")
 
@@ -358,7 +420,7 @@ class NetworkAclEntriesEgress(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the ingress entry.
+        The name of the egress entry.
         """
         return pulumi.get(self, "name")
 
@@ -366,7 +428,7 @@ class NetworkAclEntriesEgress(dict):
     @pulumi.getter
     def policy(self) -> Optional[str]:
         """
-        The policy of the ingress entry. It must be `accept` or `drop`.
+        The policy of the egress entry. It must be `accept` or `drop`.
         """
         return pulumi.get(self, "policy")
 
@@ -374,7 +436,7 @@ class NetworkAclEntriesEgress(dict):
     @pulumi.getter
     def port(self) -> Optional[str]:
         """
-        The port of the ingress entry.
+        The port of the egress entry.
         """
         return pulumi.get(self, "port")
 
@@ -382,7 +444,7 @@ class NetworkAclEntriesEgress(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        The protocol of the ingress entry.
+        The protocol of the egress entry.
         """
         return pulumi.get(self, "protocol")
 
@@ -417,34 +479,55 @@ class NetworkAclEntriesIngress(dict):
                  protocol: Optional[str] = None,
                  source_cidr_ip: Optional[str] = None):
         """
-        :param str description: The description of the ingress entry.
-        :param str entry_type: The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
-        :param str name: The name of the ingress entry.
-        :param str policy: The policy of the ingress entry. It must be `accept` or `drop`.
-        :param str port: The port of the ingress entry.
-        :param str protocol: The protocol of the ingress entry.
+        :param str description: The description of the egress entry.
+        :param str entry_type: The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
+        :param str name: The name of the egress entry.
+        :param str policy: The policy of the egress entry. It must be `accept` or `drop`.
+        :param str port: The port of the egress entry.
+        :param str protocol: The protocol of the egress entry.
         :param str source_cidr_ip: The source ip of the ingress entry.
         """
+        NetworkAclEntriesIngress._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            entry_type=entry_type,
+            name=name,
+            policy=policy,
+            port=port,
+            protocol=protocol,
+            source_cidr_ip=source_cidr_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             entry_type: Optional[str] = None,
+             name: Optional[str] = None,
+             policy: Optional[str] = None,
+             port: Optional[str] = None,
+             protocol: Optional[str] = None,
+             source_cidr_ip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if entry_type is not None:
-            pulumi.set(__self__, "entry_type", entry_type)
+            _setter("entry_type", entry_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if source_cidr_ip is not None:
-            pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
+            _setter("source_cidr_ip", source_cidr_ip)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the ingress entry.
+        The description of the egress entry.
         """
         return pulumi.get(self, "description")
 
@@ -452,7 +535,7 @@ class NetworkAclEntriesIngress(dict):
     @pulumi.getter(name="entryType")
     def entry_type(self) -> Optional[str]:
         """
-        The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+        The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
         """
         return pulumi.get(self, "entry_type")
 
@@ -460,7 +543,7 @@ class NetworkAclEntriesIngress(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the ingress entry.
+        The name of the egress entry.
         """
         return pulumi.get(self, "name")
 
@@ -468,7 +551,7 @@ class NetworkAclEntriesIngress(dict):
     @pulumi.getter
     def policy(self) -> Optional[str]:
         """
-        The policy of the ingress entry. It must be `accept` or `drop`.
+        The policy of the egress entry. It must be `accept` or `drop`.
         """
         return pulumi.get(self, "policy")
 
@@ -476,7 +559,7 @@ class NetworkAclEntriesIngress(dict):
     @pulumi.getter
     def port(self) -> Optional[str]:
         """
-        The port of the ingress entry.
+        The port of the egress entry.
         """
         return pulumi.get(self, "port")
 
@@ -484,7 +567,7 @@ class NetworkAclEntriesIngress(dict):
     @pulumi.getter
     def protocol(self) -> Optional[str]:
         """
-        The protocol of the ingress entry.
+        The protocol of the egress entry.
         """
         return pulumi.get(self, "protocol")
 
@@ -540,18 +623,37 @@ class NetworkAclIngressAclEntry(dict):
                - all: Supports all protocols.
         :param str source_cidr_ip: Source address network segment.
         """
+        NetworkAclIngressAclEntry._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            network_acl_entry_name=network_acl_entry_name,
+            policy=policy,
+            port=port,
+            protocol=protocol,
+            source_cidr_ip=source_cidr_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             network_acl_entry_name: Optional[str] = None,
+             policy: Optional[str] = None,
+             port: Optional[str] = None,
+             protocol: Optional[str] = None,
+             source_cidr_ip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if network_acl_entry_name is not None:
-            pulumi.set(__self__, "network_acl_entry_name", network_acl_entry_name)
+            _setter("network_acl_entry_name", network_acl_entry_name)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if source_cidr_ip is not None:
-            pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
+            _setter("source_cidr_ip", source_cidr_ip)
 
     @property
     @pulumi.getter
@@ -639,10 +741,23 @@ class NetworkAclResource(dict):
         :param str resource_type: The type of the associated resource.
         :param str status: The status of the associated resource.
         """
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
+        NetworkAclResource._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_id=resource_id,
+            resource_type=resource_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_id: str,
+             resource_type: str,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_id", resource_id)
+        _setter("resource_type", resource_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="resourceId")
@@ -702,10 +817,21 @@ class NetworkIpv6CidrBlock(dict):
                - **ChinaTelecom**: China Telecom (single line).
                > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         """
+        NetworkIpv6CidrBlock._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipv6_cidr_block=ipv6_cidr_block,
+            ipv6_isp=ipv6_isp,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipv6_cidr_block: Optional[str] = None,
+             ipv6_isp: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ipv6_cidr_block is not None:
-            pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
+            _setter("ipv6_cidr_block", ipv6_cidr_block)
         if ipv6_isp is not None:
-            pulumi.set(__self__, "ipv6_isp", ipv6_isp)
+            _setter("ipv6_isp", ipv6_isp)
 
     @property
     @pulumi.getter(name="ipv6CidrBlock")
@@ -738,10 +864,21 @@ class PrefixListEntry(dict):
         :param str cidr: The CIDR address block of the prefix list.
         :param str description: The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         """
+        PrefixListEntry._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr is not None:
-            pulumi.set(__self__, "cidr", cidr)
+            _setter("cidr", cidr)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -808,22 +945,45 @@ class PrefixListPrefixListAssociation(dict):
         :param str resource_uid: The ID of the Alibaba Cloud account (primary account) to which the resource bound to the prefix list belongs.
         :param str status: Resource attribute fields that represent the status of the resource.
         """
+        PrefixListPrefixListAssociation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            owner_id=owner_id,
+            prefix_list_id=prefix_list_id,
+            reason=reason,
+            region_id=region_id,
+            resource_id=resource_id,
+            resource_type=resource_type,
+            resource_uid=resource_uid,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             owner_id: Optional[str] = None,
+             prefix_list_id: Optional[str] = None,
+             reason: Optional[str] = None,
+             region_id: Optional[str] = None,
+             resource_id: Optional[str] = None,
+             resource_type: Optional[str] = None,
+             resource_uid: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if owner_id is not None:
-            pulumi.set(__self__, "owner_id", owner_id)
+            _setter("owner_id", owner_id)
         if prefix_list_id is not None:
-            pulumi.set(__self__, "prefix_list_id", prefix_list_id)
+            _setter("prefix_list_id", prefix_list_id)
         if reason is not None:
-            pulumi.set(__self__, "reason", reason)
+            _setter("reason", reason)
         if region_id is not None:
-            pulumi.set(__self__, "region_id", region_id)
+            _setter("region_id", region_id)
         if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
+            _setter("resource_id", resource_id)
         if resource_type is not None:
-            pulumi.set(__self__, "resource_type", resource_type)
+            _setter("resource_type", resource_type)
         if resource_uid is not None:
-            pulumi.set(__self__, "resource_uid", resource_uid)
+            _setter("resource_uid", resource_uid)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="ownerId")
@@ -930,13 +1090,7 @@ class TrafficMirrorFilterEgressRule(dict):
         :param str action: Collection strategy for outbound rules. Value:
                - accept: collects network traffic.
                - drop: No network traffic is collected.
-               - accept: collects network traffic.
-               - drop: No network traffic is collected.
         :param str protocol: The type of protocol used by the outbound network traffic to be mirrored. Value:
-               - ALL: ALL agreements.
-               - ICMP: Network Control Message Protocol.
-               - TCP: Transmission Control Protocol.
-               - UDP: User Datagram Protocol.
                - ALL: ALL agreements.
                - ICMP: Network Control Message Protocol.
                - TCP: Transmission Control Protocol.
@@ -944,36 +1098,54 @@ class TrafficMirrorFilterEgressRule(dict):
         :param str destination_cidr_block: DestinationCidrBlock.
         :param str destination_port_range: The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
                > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
         :param int priority: Priority.
         :param str source_cidr_block: The source address of the outbound rule network traffic.
         :param str source_port_range: The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
                > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-               
-               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "protocol", protocol)
+        TrafficMirrorFilterEgressRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            protocol=protocol,
+            destination_cidr_block=destination_cidr_block,
+            destination_port_range=destination_port_range,
+            priority=priority,
+            source_cidr_block=source_cidr_block,
+            source_port_range=source_port_range,
+            traffic_mirror_filter_rule_status=traffic_mirror_filter_rule_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             protocol: str,
+             destination_cidr_block: Optional[str] = None,
+             destination_port_range: Optional[str] = None,
+             priority: Optional[int] = None,
+             source_cidr_block: Optional[str] = None,
+             source_port_range: Optional[str] = None,
+             traffic_mirror_filter_rule_status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("protocol", protocol)
         if destination_cidr_block is not None:
-            pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
+            _setter("destination_cidr_block", destination_cidr_block)
         if destination_port_range is not None:
-            pulumi.set(__self__, "destination_port_range", destination_port_range)
+            _setter("destination_port_range", destination_port_range)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if source_cidr_block is not None:
-            pulumi.set(__self__, "source_cidr_block", source_cidr_block)
+            _setter("source_cidr_block", source_cidr_block)
         if source_port_range is not None:
-            pulumi.set(__self__, "source_port_range", source_port_range)
+            _setter("source_port_range", source_port_range)
         if traffic_mirror_filter_rule_status is not None:
-            pulumi.set(__self__, "traffic_mirror_filter_rule_status", traffic_mirror_filter_rule_status)
+            _setter("traffic_mirror_filter_rule_status", traffic_mirror_filter_rule_status)
 
     @property
     @pulumi.getter
     def action(self) -> str:
         """
         Collection strategy for outbound rules. Value:
-        - accept: collects network traffic.
-        - drop: No network traffic is collected.
         - accept: collects network traffic.
         - drop: No network traffic is collected.
         """
@@ -984,10 +1156,6 @@ class TrafficMirrorFilterEgressRule(dict):
     def protocol(self) -> str:
         """
         The type of protocol used by the outbound network traffic to be mirrored. Value:
-        - ALL: ALL agreements.
-        - ICMP: Network Control Message Protocol.
-        - TCP: Transmission Control Protocol.
-        - UDP: User Datagram Protocol.
         - ALL: ALL agreements.
         - ICMP: Network Control Message Protocol.
         - TCP: Transmission Control Protocol.
@@ -1008,7 +1176,6 @@ class TrafficMirrorFilterEgressRule(dict):
     def destination_port_range(self) -> Optional[str]:
         """
         The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
         > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
         """
         return pulumi.get(self, "destination_port_range")
@@ -1034,8 +1201,6 @@ class TrafficMirrorFilterEgressRule(dict):
     def source_port_range(self) -> Optional[str]:
         """
         The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-
         > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
         """
         return pulumi.get(self, "source_port_range")
@@ -1086,13 +1251,7 @@ class TrafficMirrorFilterIngressRule(dict):
         :param str action: Collection strategy for outbound rules. Value:
                - accept: collects network traffic.
                - drop: No network traffic is collected.
-               - accept: collects network traffic.
-               - drop: No network traffic is collected.
         :param str protocol: The type of protocol used by the outbound network traffic to be mirrored. Value:
-               - ALL: ALL agreements.
-               - ICMP: Network Control Message Protocol.
-               - TCP: Transmission Control Protocol.
-               - UDP: User Datagram Protocol.
                - ALL: ALL agreements.
                - ICMP: Network Control Message Protocol.
                - TCP: Transmission Control Protocol.
@@ -1100,36 +1259,54 @@ class TrafficMirrorFilterIngressRule(dict):
         :param str destination_cidr_block: DestinationCidrBlock.
         :param str destination_port_range: The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
                > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
         :param int priority: Priority.
         :param str source_cidr_block: The source address of the outbound rule network traffic.
         :param str source_port_range: The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
                > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-               
-               > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "protocol", protocol)
+        TrafficMirrorFilterIngressRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            protocol=protocol,
+            destination_cidr_block=destination_cidr_block,
+            destination_port_range=destination_port_range,
+            priority=priority,
+            source_cidr_block=source_cidr_block,
+            source_port_range=source_port_range,
+            traffic_mirror_filter_rule_status=traffic_mirror_filter_rule_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: str,
+             protocol: str,
+             destination_cidr_block: Optional[str] = None,
+             destination_port_range: Optional[str] = None,
+             priority: Optional[int] = None,
+             source_cidr_block: Optional[str] = None,
+             source_port_range: Optional[str] = None,
+             traffic_mirror_filter_rule_status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action", action)
+        _setter("protocol", protocol)
         if destination_cidr_block is not None:
-            pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
+            _setter("destination_cidr_block", destination_cidr_block)
         if destination_port_range is not None:
-            pulumi.set(__self__, "destination_port_range", destination_port_range)
+            _setter("destination_port_range", destination_port_range)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if source_cidr_block is not None:
-            pulumi.set(__self__, "source_cidr_block", source_cidr_block)
+            _setter("source_cidr_block", source_cidr_block)
         if source_port_range is not None:
-            pulumi.set(__self__, "source_port_range", source_port_range)
+            _setter("source_port_range", source_port_range)
         if traffic_mirror_filter_rule_status is not None:
-            pulumi.set(__self__, "traffic_mirror_filter_rule_status", traffic_mirror_filter_rule_status)
+            _setter("traffic_mirror_filter_rule_status", traffic_mirror_filter_rule_status)
 
     @property
     @pulumi.getter
     def action(self) -> str:
         """
         Collection strategy for outbound rules. Value:
-        - accept: collects network traffic.
-        - drop: No network traffic is collected.
         - accept: collects network traffic.
         - drop: No network traffic is collected.
         """
@@ -1140,10 +1317,6 @@ class TrafficMirrorFilterIngressRule(dict):
     def protocol(self) -> str:
         """
         The type of protocol used by the outbound network traffic to be mirrored. Value:
-        - ALL: ALL agreements.
-        - ICMP: Network Control Message Protocol.
-        - TCP: Transmission Control Protocol.
-        - UDP: User Datagram Protocol.
         - ALL: ALL agreements.
         - ICMP: Network Control Message Protocol.
         - TCP: Transmission Control Protocol.
@@ -1164,7 +1337,6 @@ class TrafficMirrorFilterIngressRule(dict):
     def destination_port_range(self) -> Optional[str]:
         """
         The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
         > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
         """
         return pulumi.get(self, "destination_port_range")
@@ -1190,8 +1362,6 @@ class TrafficMirrorFilterIngressRule(dict):
     def source_port_range(self) -> Optional[str]:
         """
         The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-        > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-
         > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
         """
         return pulumi.get(self, "source_port_range")
@@ -1233,19 +1403,52 @@ class GetBgpGroupsGroupResult(dict):
         :param str router_id: The ID of the VBR.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "auth_key", auth_key)
-        pulumi.set(__self__, "bgp_group_name", bgp_group_name)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "hold", hold)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_version", ip_version)
-        pulumi.set(__self__, "is_fake_asn", is_fake_asn)
-        pulumi.set(__self__, "keepalive", keepalive)
-        pulumi.set(__self__, "local_asn", local_asn)
-        pulumi.set(__self__, "peer_asn", peer_asn)
-        pulumi.set(__self__, "route_limit", route_limit)
-        pulumi.set(__self__, "router_id", router_id)
-        pulumi.set(__self__, "status", status)
+        GetBgpGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_key=auth_key,
+            bgp_group_name=bgp_group_name,
+            description=description,
+            hold=hold,
+            id=id,
+            ip_version=ip_version,
+            is_fake_asn=is_fake_asn,
+            keepalive=keepalive,
+            local_asn=local_asn,
+            peer_asn=peer_asn,
+            route_limit=route_limit,
+            router_id=router_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_key: str,
+             bgp_group_name: str,
+             description: str,
+             hold: str,
+             id: str,
+             ip_version: str,
+             is_fake_asn: bool,
+             keepalive: str,
+             local_asn: int,
+             peer_asn: int,
+             route_limit: str,
+             router_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auth_key", auth_key)
+        _setter("bgp_group_name", bgp_group_name)
+        _setter("description", description)
+        _setter("hold", hold)
+        _setter("id", id)
+        _setter("ip_version", ip_version)
+        _setter("is_fake_asn", is_fake_asn)
+        _setter("keepalive", keepalive)
+        _setter("local_asn", local_asn)
+        _setter("peer_asn", peer_asn)
+        _setter("route_limit", route_limit)
+        _setter("router_id", router_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="authKey")
@@ -1365,10 +1568,25 @@ class GetBgpNetworksNetworkResult(dict):
         :param str router_id: The ID of the vRouter.
         :param str status: The state of the advertised BGP network.
         """
-        pulumi.set(__self__, "dst_cidr_block", dst_cidr_block)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "router_id", router_id)
-        pulumi.set(__self__, "status", status)
+        GetBgpNetworksNetworkResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dst_cidr_block=dst_cidr_block,
+            id=id,
+            router_id=router_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dst_cidr_block: str,
+             id: str,
+             router_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dst_cidr_block", dst_cidr_block)
+        _setter("id", id)
+        _setter("router_id", router_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="dstCidrBlock")
@@ -1446,25 +1664,70 @@ class GetBgpPeersPeerResult(dict):
         :param str router_id: The ID of the router.
         :param str status: The status of the BGP peer.
         """
-        pulumi.set(__self__, "auth_key", auth_key)
-        pulumi.set(__self__, "bfd_multi_hop", bfd_multi_hop)
-        pulumi.set(__self__, "bgp_group_id", bgp_group_id)
-        pulumi.set(__self__, "bgp_peer_id", bgp_peer_id)
-        pulumi.set(__self__, "bgp_peer_name", bgp_peer_name)
-        pulumi.set(__self__, "bgp_status", bgp_status)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enable_bfd", enable_bfd)
-        pulumi.set(__self__, "hold", hold)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_version", ip_version)
-        pulumi.set(__self__, "is_fake", is_fake)
-        pulumi.set(__self__, "keepalive", keepalive)
-        pulumi.set(__self__, "local_asn", local_asn)
-        pulumi.set(__self__, "peer_asn", peer_asn)
-        pulumi.set(__self__, "peer_ip_address", peer_ip_address)
-        pulumi.set(__self__, "route_limit", route_limit)
-        pulumi.set(__self__, "router_id", router_id)
-        pulumi.set(__self__, "status", status)
+        GetBgpPeersPeerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_key=auth_key,
+            bfd_multi_hop=bfd_multi_hop,
+            bgp_group_id=bgp_group_id,
+            bgp_peer_id=bgp_peer_id,
+            bgp_peer_name=bgp_peer_name,
+            bgp_status=bgp_status,
+            description=description,
+            enable_bfd=enable_bfd,
+            hold=hold,
+            id=id,
+            ip_version=ip_version,
+            is_fake=is_fake,
+            keepalive=keepalive,
+            local_asn=local_asn,
+            peer_asn=peer_asn,
+            peer_ip_address=peer_ip_address,
+            route_limit=route_limit,
+            router_id=router_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_key: str,
+             bfd_multi_hop: int,
+             bgp_group_id: str,
+             bgp_peer_id: str,
+             bgp_peer_name: str,
+             bgp_status: str,
+             description: str,
+             enable_bfd: bool,
+             hold: str,
+             id: str,
+             ip_version: str,
+             is_fake: bool,
+             keepalive: str,
+             local_asn: str,
+             peer_asn: str,
+             peer_ip_address: str,
+             route_limit: str,
+             router_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auth_key", auth_key)
+        _setter("bfd_multi_hop", bfd_multi_hop)
+        _setter("bgp_group_id", bgp_group_id)
+        _setter("bgp_peer_id", bgp_peer_id)
+        _setter("bgp_peer_name", bgp_peer_name)
+        _setter("bgp_status", bgp_status)
+        _setter("description", description)
+        _setter("enable_bfd", enable_bfd)
+        _setter("hold", hold)
+        _setter("id", id)
+        _setter("ip_version", ip_version)
+        _setter("is_fake", is_fake)
+        _setter("keepalive", keepalive)
+        _setter("local_asn", local_asn)
+        _setter("peer_asn", peer_asn)
+        _setter("peer_ip_address", peer_ip_address)
+        _setter("route_limit", route_limit)
+        _setter("router_id", router_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="authKey")
@@ -1668,28 +1931,79 @@ class GetCommonBandwidthPackagesPackageResult(dict):
         :param int service_managed: The service managed.
         :param str status: The status of bandwidth package. Valid values: `Available` and `Pending`.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
-        pulumi.set(__self__, "bandwidth_package_name", bandwidth_package_name)
-        pulumi.set(__self__, "business_status", business_status)
-        pulumi.set(__self__, "deletion_protection", deletion_protection)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "isp", isp)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "public_ip_addresses", public_ip_addresses)
-        pulumi.set(__self__, "ratio", ratio)
-        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
-        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
-        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
-        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "service_managed", service_managed)
-        pulumi.set(__self__, "status", status)
+        GetCommonBandwidthPackagesPackageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            bandwidth_package_id=bandwidth_package_id,
+            bandwidth_package_name=bandwidth_package_name,
+            business_status=business_status,
+            deletion_protection=deletion_protection,
+            description=description,
+            expired_time=expired_time,
+            has_reservation_data=has_reservation_data,
+            id=id,
+            internet_charge_type=internet_charge_type,
+            isp=isp,
+            name=name,
+            payment_type=payment_type,
+            public_ip_addresses=public_ip_addresses,
+            ratio=ratio,
+            reservation_active_time=reservation_active_time,
+            reservation_bandwidth=reservation_bandwidth,
+            reservation_internet_charge_type=reservation_internet_charge_type,
+            reservation_order_type=reservation_order_type,
+            resource_group_id=resource_group_id,
+            service_managed=service_managed,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: str,
+             bandwidth_package_id: str,
+             bandwidth_package_name: str,
+             business_status: str,
+             deletion_protection: bool,
+             description: str,
+             expired_time: str,
+             has_reservation_data: bool,
+             id: str,
+             internet_charge_type: str,
+             isp: str,
+             name: str,
+             payment_type: str,
+             public_ip_addresses: Sequence['outputs.GetCommonBandwidthPackagesPackagePublicIpAddressResult'],
+             ratio: int,
+             reservation_active_time: str,
+             reservation_bandwidth: str,
+             reservation_internet_charge_type: str,
+             reservation_order_type: str,
+             resource_group_id: str,
+             service_managed: int,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("bandwidth_package_id", bandwidth_package_id)
+        _setter("bandwidth_package_name", bandwidth_package_name)
+        _setter("business_status", business_status)
+        _setter("deletion_protection", deletion_protection)
+        _setter("description", description)
+        _setter("expired_time", expired_time)
+        _setter("has_reservation_data", has_reservation_data)
+        _setter("id", id)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("isp", isp)
+        _setter("name", name)
+        _setter("payment_type", payment_type)
+        _setter("public_ip_addresses", public_ip_addresses)
+        _setter("ratio", ratio)
+        _setter("reservation_active_time", reservation_active_time)
+        _setter("reservation_bandwidth", reservation_bandwidth)
+        _setter("reservation_internet_charge_type", reservation_internet_charge_type)
+        _setter("reservation_order_type", reservation_order_type)
+        _setter("resource_group_id", resource_group_id)
+        _setter("service_managed", service_managed)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -1874,9 +2188,22 @@ class GetCommonBandwidthPackagesPackagePublicIpAddressResult(dict):
                  allocation_id: str,
                  bandwidth_package_ip_relation_status: str,
                  ip_address: str):
-        pulumi.set(__self__, "allocation_id", allocation_id)
-        pulumi.set(__self__, "bandwidth_package_ip_relation_status", bandwidth_package_ip_relation_status)
-        pulumi.set(__self__, "ip_address", ip_address)
+        GetCommonBandwidthPackagesPackagePublicIpAddressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocation_id=allocation_id,
+            bandwidth_package_ip_relation_status=bandwidth_package_ip_relation_status,
+            ip_address=ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocation_id: str,
+             bandwidth_package_ip_relation_status: str,
+             ip_address: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allocation_id", allocation_id)
+        _setter("bandwidth_package_ip_relation_status", bandwidth_package_ip_relation_status)
+        _setter("ip_address", ip_address)
 
     @property
     @pulumi.getter(name="allocationId")
@@ -1921,15 +2248,40 @@ class GetDhcpOptionsSetsSetResult(dict):
         :param str owner_id: The ID of the account to which the DHCP options set belongs.
         :param str status: The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
         """
-        pulumi.set(__self__, "associate_vpc_count", associate_vpc_count)
-        pulumi.set(__self__, "dhcp_options_set_description", dhcp_options_set_description)
-        pulumi.set(__self__, "dhcp_options_set_id", dhcp_options_set_id)
-        pulumi.set(__self__, "dhcp_options_set_name", dhcp_options_set_name)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "domain_name_servers", domain_name_servers)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "owner_id", owner_id)
-        pulumi.set(__self__, "status", status)
+        GetDhcpOptionsSetsSetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            associate_vpc_count=associate_vpc_count,
+            dhcp_options_set_description=dhcp_options_set_description,
+            dhcp_options_set_id=dhcp_options_set_id,
+            dhcp_options_set_name=dhcp_options_set_name,
+            domain_name=domain_name,
+            domain_name_servers=domain_name_servers,
+            id=id,
+            owner_id=owner_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             associate_vpc_count: int,
+             dhcp_options_set_description: str,
+             dhcp_options_set_id: str,
+             dhcp_options_set_name: str,
+             domain_name: str,
+             domain_name_servers: str,
+             id: str,
+             owner_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("associate_vpc_count", associate_vpc_count)
+        _setter("dhcp_options_set_description", dhcp_options_set_description)
+        _setter("dhcp_options_set_id", dhcp_options_set_id)
+        _setter("dhcp_options_set_name", dhcp_options_set_name)
+        _setter("domain_name", domain_name)
+        _setter("domain_name_servers", domain_name_servers)
+        _setter("id", id)
+        _setter("owner_id", owner_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="associateVpcCount")
@@ -2009,8 +2361,19 @@ class GetEnhancedNatAvailableZonesZoneResult(dict):
     def __init__(__self__, *,
                  local_name: str,
                  zone_id: str):
-        pulumi.set(__self__, "local_name", local_name)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetEnhancedNatAvailableZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_name=local_name,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_name: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("local_name", local_name)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="localName")
@@ -2048,16 +2411,43 @@ class GetForwardEntriesEntryResult(dict):
         :param str name: The forward entry name.
         :param str status: The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
         """
-        pulumi.set(__self__, "external_ip", external_ip)
-        pulumi.set(__self__, "external_port", external_port)
-        pulumi.set(__self__, "forward_entry_id", forward_entry_id)
-        pulumi.set(__self__, "forward_entry_name", forward_entry_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "internal_ip", internal_ip)
-        pulumi.set(__self__, "internal_port", internal_port)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "status", status)
+        GetForwardEntriesEntryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            external_ip=external_ip,
+            external_port=external_port,
+            forward_entry_id=forward_entry_id,
+            forward_entry_name=forward_entry_name,
+            id=id,
+            internal_ip=internal_ip,
+            internal_port=internal_port,
+            ip_protocol=ip_protocol,
+            name=name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             external_ip: str,
+             external_port: str,
+             forward_entry_id: str,
+             forward_entry_name: str,
+             id: str,
+             internal_ip: str,
+             internal_port: str,
+             ip_protocol: str,
+             name: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("external_ip", external_ip)
+        _setter("external_port", external_port)
+        _setter("forward_entry_id", forward_entry_id)
+        _setter("forward_entry_name", forward_entry_name)
+        _setter("id", id)
+        _setter("internal_ip", internal_ip)
+        _setter("internal_port", internal_port)
+        _setter("ip_protocol", ip_protocol)
+        _setter("name", name)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="externalIp")
@@ -2167,17 +2557,46 @@ class GetHavipsHavipResult(dict):
         :param str vpc_id: The VPC ID to which the HaVip instance belongs.
         :param str vswitch_id: The vswitch id.
         """
-        pulumi.set(__self__, "associated_eip_addresses", associated_eip_addresses)
-        pulumi.set(__self__, "associated_instances", associated_instances)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "havip_id", havip_id)
-        pulumi.set(__self__, "havip_name", havip_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "master_instance_id", master_instance_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetHavipsHavipResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            associated_eip_addresses=associated_eip_addresses,
+            associated_instances=associated_instances,
+            description=description,
+            havip_id=havip_id,
+            havip_name=havip_name,
+            id=id,
+            ip_address=ip_address,
+            master_instance_id=master_instance_id,
+            status=status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             associated_eip_addresses: Sequence[str],
+             associated_instances: Sequence[str],
+             description: str,
+             havip_id: str,
+             havip_name: str,
+             id: str,
+             ip_address: str,
+             master_instance_id: str,
+             status: str,
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("associated_eip_addresses", associated_eip_addresses)
+        _setter("associated_instances", associated_instances)
+        _setter("description", description)
+        _setter("havip_id", havip_id)
+        _setter("havip_name", havip_name)
+        _setter("id", id)
+        _setter("ip_address", ip_address)
+        _setter("master_instance_id", master_instance_id)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="associatedEipAddresses")
@@ -2307,23 +2726,64 @@ class GetIpsecServersServerResult(dict):
         :param bool psk_enabled: Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
         :param str vpn_gateway_id: The ID of the VPN gateway.
         """
-        pulumi.set(__self__, "client_ip_pool", client_ip_pool)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "effect_immediately", effect_immediately)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "idaas_instance_id", idaas_instance_id)
-        pulumi.set(__self__, "ike_configs", ike_configs)
-        pulumi.set(__self__, "internet_ip", internet_ip)
-        pulumi.set(__self__, "ipsec_configs", ipsec_configs)
-        pulumi.set(__self__, "ipsec_server_id", ipsec_server_id)
-        pulumi.set(__self__, "ipsec_server_name", ipsec_server_name)
-        pulumi.set(__self__, "local_subnet", local_subnet)
-        pulumi.set(__self__, "max_connections", max_connections)
-        pulumi.set(__self__, "multi_factor_auth_enabled", multi_factor_auth_enabled)
-        pulumi.set(__self__, "online_client_count", online_client_count)
-        pulumi.set(__self__, "psk", psk)
-        pulumi.set(__self__, "psk_enabled", psk_enabled)
-        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
+        GetIpsecServersServerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_ip_pool=client_ip_pool,
+            create_time=create_time,
+            effect_immediately=effect_immediately,
+            id=id,
+            idaas_instance_id=idaas_instance_id,
+            ike_configs=ike_configs,
+            internet_ip=internet_ip,
+            ipsec_configs=ipsec_configs,
+            ipsec_server_id=ipsec_server_id,
+            ipsec_server_name=ipsec_server_name,
+            local_subnet=local_subnet,
+            max_connections=max_connections,
+            multi_factor_auth_enabled=multi_factor_auth_enabled,
+            online_client_count=online_client_count,
+            psk=psk,
+            psk_enabled=psk_enabled,
+            vpn_gateway_id=vpn_gateway_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_ip_pool: str,
+             create_time: str,
+             effect_immediately: bool,
+             id: str,
+             idaas_instance_id: str,
+             ike_configs: Sequence['outputs.GetIpsecServersServerIkeConfigResult'],
+             internet_ip: str,
+             ipsec_configs: Sequence['outputs.GetIpsecServersServerIpsecConfigResult'],
+             ipsec_server_id: str,
+             ipsec_server_name: str,
+             local_subnet: str,
+             max_connections: int,
+             multi_factor_auth_enabled: bool,
+             online_client_count: int,
+             psk: str,
+             psk_enabled: bool,
+             vpn_gateway_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("client_ip_pool", client_ip_pool)
+        _setter("create_time", create_time)
+        _setter("effect_immediately", effect_immediately)
+        _setter("id", id)
+        _setter("idaas_instance_id", idaas_instance_id)
+        _setter("ike_configs", ike_configs)
+        _setter("internet_ip", internet_ip)
+        _setter("ipsec_configs", ipsec_configs)
+        _setter("ipsec_server_id", ipsec_server_id)
+        _setter("ipsec_server_name", ipsec_server_name)
+        _setter("local_subnet", local_subnet)
+        _setter("max_connections", max_connections)
+        _setter("multi_factor_auth_enabled", multi_factor_auth_enabled)
+        _setter("online_client_count", online_client_count)
+        _setter("psk", psk)
+        _setter("psk_enabled", psk_enabled)
+        _setter("vpn_gateway_id", vpn_gateway_id)
 
     @property
     @pulumi.getter(name="clientIpPool")
@@ -2483,14 +2943,37 @@ class GetIpsecServersServerIkeConfigResult(dict):
         :param str local_id: IPsec server identifier. Supports the format of FQDN and IP address. The public IP address of the VPN gateway is selected by default.
         :param str remote_id: The peer identifier. Supports the format of FQDN and IP address, which is empty by default.
         """
-        pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
-        pulumi.set(__self__, "ike_enc_alg", ike_enc_alg)
-        pulumi.set(__self__, "ike_lifetime", ike_lifetime)
-        pulumi.set(__self__, "ike_mode", ike_mode)
-        pulumi.set(__self__, "ike_pfs", ike_pfs)
-        pulumi.set(__self__, "ike_version", ike_version)
-        pulumi.set(__self__, "local_id", local_id)
-        pulumi.set(__self__, "remote_id", remote_id)
+        GetIpsecServersServerIkeConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ike_auth_alg=ike_auth_alg,
+            ike_enc_alg=ike_enc_alg,
+            ike_lifetime=ike_lifetime,
+            ike_mode=ike_mode,
+            ike_pfs=ike_pfs,
+            ike_version=ike_version,
+            local_id=local_id,
+            remote_id=remote_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ike_auth_alg: str,
+             ike_enc_alg: str,
+             ike_lifetime: int,
+             ike_mode: str,
+             ike_pfs: str,
+             ike_version: str,
+             local_id: str,
+             remote_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ike_auth_alg", ike_auth_alg)
+        _setter("ike_enc_alg", ike_enc_alg)
+        _setter("ike_lifetime", ike_lifetime)
+        _setter("ike_mode", ike_mode)
+        _setter("ike_pfs", ike_pfs)
+        _setter("ike_version", ike_version)
+        _setter("local_id", local_id)
+        _setter("remote_id", remote_id)
 
     @property
     @pulumi.getter(name="ikeAuthAlg")
@@ -2570,10 +3053,25 @@ class GetIpsecServersServerIpsecConfigResult(dict):
         :param int ipsec_lifetime: IPsec survival time. Unit: seconds.
         :param str ipsec_pfs: Diffie-Hellman key exchange algorithm.
         """
-        pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
-        pulumi.set(__self__, "ipsec_enc_alg", ipsec_enc_alg)
-        pulumi.set(__self__, "ipsec_lifetime", ipsec_lifetime)
-        pulumi.set(__self__, "ipsec_pfs", ipsec_pfs)
+        GetIpsecServersServerIpsecConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ipsec_auth_alg=ipsec_auth_alg,
+            ipsec_enc_alg=ipsec_enc_alg,
+            ipsec_lifetime=ipsec_lifetime,
+            ipsec_pfs=ipsec_pfs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ipsec_auth_alg: str,
+             ipsec_enc_alg: str,
+             ipsec_lifetime: int,
+             ipsec_pfs: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ipsec_auth_alg", ipsec_auth_alg)
+        _setter("ipsec_enc_alg", ipsec_enc_alg)
+        _setter("ipsec_lifetime", ipsec_lifetime)
+        _setter("ipsec_pfs", ipsec_pfs)
 
     @property
     @pulumi.getter(name="ipsecAuthAlg")
@@ -2631,15 +3129,40 @@ class GetIpv4GatewaysGatewayResult(dict):
         :param str status: The status of the resource.
         :param str vpc_id: The ID of the VPC associated with the IPv4 Gateway.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ipv4_gateway_description", ipv4_gateway_description)
-        pulumi.set(__self__, "ipv4_gateway_id", ipv4_gateway_id)
-        pulumi.set(__self__, "ipv4_gateway_name", ipv4_gateway_name)
-        pulumi.set(__self__, "ipv4_gateway_route_table_id", ipv4_gateway_route_table_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetIpv4GatewaysGatewayResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            enabled=enabled,
+            id=id,
+            ipv4_gateway_description=ipv4_gateway_description,
+            ipv4_gateway_id=ipv4_gateway_id,
+            ipv4_gateway_name=ipv4_gateway_name,
+            ipv4_gateway_route_table_id=ipv4_gateway_route_table_id,
+            status=status,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             enabled: bool,
+             id: str,
+             ipv4_gateway_description: str,
+             ipv4_gateway_id: str,
+             ipv4_gateway_name: str,
+             ipv4_gateway_route_table_id: str,
+             status: str,
+             vpc_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("enabled", enabled)
+        _setter("id", id)
+        _setter("ipv4_gateway_description", ipv4_gateway_description)
+        _setter("ipv4_gateway_id", ipv4_gateway_id)
+        _setter("ipv4_gateway_name", ipv4_gateway_name)
+        _setter("ipv4_gateway_route_table_id", ipv4_gateway_route_table_id)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -2743,18 +3266,49 @@ class GetIpv6AddressesAddressResult(dict):
         :param str vpc_id: The ID of the VPC to which the IPv6 address belongs.
         :param str vswitch_id: The ID of the vSwitch to which the IPv6 address belongs.
         """
-        pulumi.set(__self__, "associated_instance_id", associated_instance_id)
-        pulumi.set(__self__, "associated_instance_type", associated_instance_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ipv6_address", ipv6_address)
-        pulumi.set(__self__, "ipv6_address_id", ipv6_address_id)
-        pulumi.set(__self__, "ipv6_address_name", ipv6_address_name)
-        pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetIpv6AddressesAddressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            associated_instance_id=associated_instance_id,
+            associated_instance_type=associated_instance_type,
+            create_time=create_time,
+            id=id,
+            ipv6_address=ipv6_address,
+            ipv6_address_id=ipv6_address_id,
+            ipv6_address_name=ipv6_address_name,
+            ipv6_gateway_id=ipv6_gateway_id,
+            network_type=network_type,
+            status=status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             associated_instance_id: str,
+             associated_instance_type: str,
+             create_time: str,
+             id: str,
+             ipv6_address: str,
+             ipv6_address_id: str,
+             ipv6_address_name: str,
+             ipv6_gateway_id: str,
+             network_type: str,
+             status: str,
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("associated_instance_id", associated_instance_id)
+        _setter("associated_instance_type", associated_instance_type)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("ipv6_address", ipv6_address)
+        _setter("ipv6_address_id", ipv6_address_id)
+        _setter("ipv6_address_name", ipv6_address_name)
+        _setter("ipv6_gateway_id", ipv6_gateway_id)
+        _setter("network_type", network_type)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="associatedInstanceId")
@@ -2874,14 +3428,37 @@ class GetIpv6EgressRulesRuleResult(dict):
         :param str ipv6_gateway_id: The ID of the IPv6 gateway.
         :param str status: The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "ipv6_egress_rule_id", ipv6_egress_rule_id)
-        pulumi.set(__self__, "ipv6_egress_rule_name", ipv6_egress_rule_name)
-        pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
-        pulumi.set(__self__, "status", status)
+        GetIpv6EgressRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            instance_id=instance_id,
+            instance_type=instance_type,
+            ipv6_egress_rule_id=ipv6_egress_rule_id,
+            ipv6_egress_rule_name=ipv6_egress_rule_name,
+            ipv6_gateway_id=ipv6_gateway_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             id: str,
+             instance_id: str,
+             instance_type: str,
+             ipv6_egress_rule_id: str,
+             ipv6_egress_rule_name: str,
+             ipv6_gateway_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_type", instance_type)
+        _setter("ipv6_egress_rule_id", ipv6_egress_rule_id)
+        _setter("ipv6_egress_rule_name", ipv6_egress_rule_name)
+        _setter("ipv6_gateway_id", ipv6_gateway_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -2975,17 +3552,46 @@ class GetIpv6GatewaysGatewayResult(dict):
         :param str status: The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
         :param str vpc_id: The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
         """
-        pulumi.set(__self__, "business_status", business_status)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
-        pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
-        pulumi.set(__self__, "ipv6_gateway_name", ipv6_gateway_name)
-        pulumi.set(__self__, "spec", spec)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetIpv6GatewaysGatewayResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            business_status=business_status,
+            create_time=create_time,
+            description=description,
+            expired_time=expired_time,
+            id=id,
+            instance_charge_type=instance_charge_type,
+            ipv6_gateway_id=ipv6_gateway_id,
+            ipv6_gateway_name=ipv6_gateway_name,
+            spec=spec,
+            status=status,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             business_status: str,
+             create_time: str,
+             description: str,
+             expired_time: str,
+             id: str,
+             instance_charge_type: str,
+             ipv6_gateway_id: str,
+             ipv6_gateway_name: str,
+             spec: str,
+             status: str,
+             vpc_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("business_status", business_status)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("instance_charge_type", instance_charge_type)
+        _setter("ipv6_gateway_id", ipv6_gateway_id)
+        _setter("ipv6_gateway_name", ipv6_gateway_name)
+        _setter("spec", spec)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="businessStatus")
@@ -3097,14 +3703,37 @@ class GetIpv6InternetBandwidthsBandwidthResult(dict):
         :param str payment_type: The payment type of the resource.
         :param str status: The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "ipv6_address_id", ipv6_address_id)
-        pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
-        pulumi.set(__self__, "ipv6_internet_bandwidth_id", ipv6_internet_bandwidth_id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "status", status)
+        GetIpv6InternetBandwidthsBandwidthResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            id=id,
+            internet_charge_type=internet_charge_type,
+            ipv6_address_id=ipv6_address_id,
+            ipv6_gateway_id=ipv6_gateway_id,
+            ipv6_internet_bandwidth_id=ipv6_internet_bandwidth_id,
+            payment_type=payment_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             id: str,
+             internet_charge_type: str,
+             ipv6_address_id: str,
+             ipv6_gateway_id: str,
+             ipv6_internet_bandwidth_id: str,
+             payment_type: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("id", id)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("ipv6_address_id", ipv6_address_id)
+        _setter("ipv6_gateway_id", ipv6_gateway_id)
+        _setter("ipv6_internet_bandwidth_id", ipv6_internet_bandwidth_id)
+        _setter("payment_type", payment_type)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -3222,29 +3851,82 @@ class GetNatGatewaysGatewayResult(dict):
         :param str vpc_id: The ID of the VPC.
         :param str vswitch_id: The ID of the vSwitch to which the NAT gateway belongs.
         """
-        pulumi.set(__self__, "business_status", business_status)
-        pulumi.set(__self__, "deletion_protection", deletion_protection)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "ecs_metric_enabled", ecs_metric_enabled)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "forward_table_ids", forward_table_ids)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "ip_lists", ip_lists)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
-        pulumi.set(__self__, "nat_gateway_name", nat_gateway_name)
-        pulumi.set(__self__, "nat_type", nat_type)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "snat_table_ids", snat_table_ids)
-        pulumi.set(__self__, "spec", spec)
-        pulumi.set(__self__, "specification", specification)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetNatGatewaysGatewayResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            business_status=business_status,
+            deletion_protection=deletion_protection,
+            description=description,
+            ecs_metric_enabled=ecs_metric_enabled,
+            expired_time=expired_time,
+            forward_table_ids=forward_table_ids,
+            id=id,
+            internet_charge_type=internet_charge_type,
+            ip_lists=ip_lists,
+            name=name,
+            nat_gateway_id=nat_gateway_id,
+            nat_gateway_name=nat_gateway_name,
+            nat_type=nat_type,
+            network_type=network_type,
+            payment_type=payment_type,
+            resource_group_id=resource_group_id,
+            snat_table_ids=snat_table_ids,
+            spec=spec,
+            specification=specification,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             business_status: str,
+             deletion_protection: bool,
+             description: str,
+             ecs_metric_enabled: bool,
+             expired_time: str,
+             forward_table_ids: Sequence[str],
+             id: str,
+             internet_charge_type: str,
+             ip_lists: Sequence[str],
+             name: str,
+             nat_gateway_id: str,
+             nat_gateway_name: str,
+             nat_type: str,
+             network_type: str,
+             payment_type: str,
+             resource_group_id: str,
+             snat_table_ids: Sequence[str],
+             spec: str,
+             specification: str,
+             status: str,
+             tags: Mapping[str, Any],
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("business_status", business_status)
+        _setter("deletion_protection", deletion_protection)
+        _setter("description", description)
+        _setter("ecs_metric_enabled", ecs_metric_enabled)
+        _setter("expired_time", expired_time)
+        _setter("forward_table_ids", forward_table_ids)
+        _setter("id", id)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("ip_lists", ip_lists)
+        _setter("name", name)
+        _setter("nat_gateway_id", nat_gateway_id)
+        _setter("nat_gateway_name", nat_gateway_name)
+        _setter("nat_type", nat_type)
+        _setter("network_type", network_type)
+        _setter("payment_type", payment_type)
+        _setter("resource_group_id", resource_group_id)
+        _setter("snat_table_ids", snat_table_ids)
+        _setter("spec", spec)
+        _setter("specification", specification)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="businessStatus")
@@ -3454,15 +4136,40 @@ class GetNatIpCidrsCidrResult(dict):
         :param str nat_ip_cidr_name: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
         :param str status: The status of the CIDR block of the NAT gateway. If the value is `Available`, the CIDR block is available.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_default", is_default)
-        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
-        pulumi.set(__self__, "nat_ip_cidr", nat_ip_cidr)
-        pulumi.set(__self__, "nat_ip_cidr_description", nat_ip_cidr_description)
-        pulumi.set(__self__, "nat_ip_cidr_id", nat_ip_cidr_id)
-        pulumi.set(__self__, "nat_ip_cidr_name", nat_ip_cidr_name)
-        pulumi.set(__self__, "status", status)
+        GetNatIpCidrsCidrResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            id=id,
+            is_default=is_default,
+            nat_gateway_id=nat_gateway_id,
+            nat_ip_cidr=nat_ip_cidr,
+            nat_ip_cidr_description=nat_ip_cidr_description,
+            nat_ip_cidr_id=nat_ip_cidr_id,
+            nat_ip_cidr_name=nat_ip_cidr_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             id: str,
+             is_default: bool,
+             nat_gateway_id: str,
+             nat_ip_cidr: str,
+             nat_ip_cidr_description: str,
+             nat_ip_cidr_id: str,
+             nat_ip_cidr_name: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("is_default", is_default)
+        _setter("nat_gateway_id", nat_gateway_id)
+        _setter("nat_ip_cidr", nat_ip_cidr)
+        _setter("nat_ip_cidr_description", nat_ip_cidr_description)
+        _setter("nat_ip_cidr_id", nat_ip_cidr_id)
+        _setter("nat_ip_cidr_name", nat_ip_cidr_name)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -3560,15 +4267,40 @@ class GetNatIpsIpResult(dict):
         :param str nat_ip_name: The name of the NAT IP address.
         :param str status: The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_default", is_default)
-        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
-        pulumi.set(__self__, "nat_ip", nat_ip)
-        pulumi.set(__self__, "nat_ip_cidr", nat_ip_cidr)
-        pulumi.set(__self__, "nat_ip_description", nat_ip_description)
-        pulumi.set(__self__, "nat_ip_id", nat_ip_id)
-        pulumi.set(__self__, "nat_ip_name", nat_ip_name)
-        pulumi.set(__self__, "status", status)
+        GetNatIpsIpResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            is_default=is_default,
+            nat_gateway_id=nat_gateway_id,
+            nat_ip=nat_ip,
+            nat_ip_cidr=nat_ip_cidr,
+            nat_ip_description=nat_ip_description,
+            nat_ip_id=nat_ip_id,
+            nat_ip_name=nat_ip_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             is_default: bool,
+             nat_gateway_id: str,
+             nat_ip: str,
+             nat_ip_cidr: str,
+             nat_ip_description: str,
+             nat_ip_id: str,
+             nat_ip_name: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("is_default", is_default)
+        _setter("nat_gateway_id", nat_gateway_id)
+        _setter("nat_ip", nat_ip)
+        _setter("nat_ip_cidr", nat_ip_cidr)
+        _setter("nat_ip_description", nat_ip_description)
+        _setter("nat_ip_id", nat_ip_id)
+        _setter("nat_ip_name", nat_ip_name)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -3666,15 +4398,40 @@ class GetNetworkAclsAclResult(dict):
         :param str status: The state of the network ACL.
         :param str vpc_id: The ID of the associated VPC.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "egress_acl_entries", egress_acl_entries)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ingress_acl_entries", ingress_acl_entries)
-        pulumi.set(__self__, "network_acl_id", network_acl_id)
-        pulumi.set(__self__, "network_acl_name", network_acl_name)
-        pulumi.set(__self__, "resources", resources)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetNetworkAclsAclResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            egress_acl_entries=egress_acl_entries,
+            id=id,
+            ingress_acl_entries=ingress_acl_entries,
+            network_acl_id=network_acl_id,
+            network_acl_name=network_acl_name,
+            resources=resources,
+            status=status,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             egress_acl_entries: Sequence['outputs.GetNetworkAclsAclEgressAclEntryResult'],
+             id: str,
+             ingress_acl_entries: Sequence['outputs.GetNetworkAclsAclIngressAclEntryResult'],
+             network_acl_id: str,
+             network_acl_name: str,
+             resources: Sequence['outputs.GetNetworkAclsAclResourceResult'],
+             status: str,
+             vpc_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("egress_acl_entries", egress_acl_entries)
+        _setter("id", id)
+        _setter("ingress_acl_entries", ingress_acl_entries)
+        _setter("network_acl_id", network_acl_id)
+        _setter("network_acl_name", network_acl_name)
+        _setter("resources", resources)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter
@@ -3766,12 +4523,31 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
         :param str port: Source port range.
         :param str protocol: Transport layer protocol.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "destination_cidr_ip", destination_cidr_ip)
-        pulumi.set(__self__, "network_acl_entry_name", network_acl_entry_name)
-        pulumi.set(__self__, "policy", policy)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "protocol", protocol)
+        GetNetworkAclsAclEgressAclEntryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            destination_cidr_ip=destination_cidr_ip,
+            network_acl_entry_name=network_acl_entry_name,
+            policy=policy,
+            port=port,
+            protocol=protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             destination_cidr_ip: str,
+             network_acl_entry_name: str,
+             policy: str,
+             port: str,
+             protocol: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("destination_cidr_ip", destination_cidr_ip)
+        _setter("network_acl_entry_name", network_acl_entry_name)
+        _setter("policy", policy)
+        _setter("port", port)
+        _setter("protocol", protocol)
 
     @property
     @pulumi.getter
@@ -3839,12 +4615,31 @@ class GetNetworkAclsAclIngressAclEntryResult(dict):
         :param str protocol: Transport layer protocol.
         :param str source_cidr_ip: The source address field.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "network_acl_entry_name", network_acl_entry_name)
-        pulumi.set(__self__, "policy", policy)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
+        GetNetworkAclsAclIngressAclEntryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            network_acl_entry_name=network_acl_entry_name,
+            policy=policy,
+            port=port,
+            protocol=protocol,
+            source_cidr_ip=source_cidr_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             network_acl_entry_name: str,
+             policy: str,
+             port: str,
+             protocol: str,
+             source_cidr_ip: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("network_acl_entry_name", network_acl_entry_name)
+        _setter("policy", policy)
+        _setter("port", port)
+        _setter("protocol", protocol)
+        _setter("source_cidr_ip", source_cidr_ip)
 
     @property
     @pulumi.getter
@@ -3906,9 +4701,22 @@ class GetNetworkAclsAclResourceResult(dict):
         :param str resource_type: The type of the associated resource.
         :param str status: The state of the network ACL.
         """
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "status", status)
+        GetNetworkAclsAclResourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_id=resource_id,
+            resource_type=resource_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_id: str,
+             resource_type: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_id", resource_id)
+        _setter("resource_type", resource_type)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="resourceId")
@@ -3976,24 +4784,67 @@ class GetNetworksVpcResult(dict):
         :param str vrouter_id: ID of the VRouter.
         :param Sequence[str] vswitch_ids: List of VSwitch IDs in the specified VPC
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
-        pulumi.set(__self__, "is_default", is_default)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "route_table_id", route_table_id)
-        pulumi.set(__self__, "router_id", router_id)
-        pulumi.set(__self__, "secondary_cidr_blocks", secondary_cidr_blocks)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "user_cidrs", user_cidrs)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vpc_name", vpc_name)
-        pulumi.set(__self__, "vrouter_id", vrouter_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        GetNetworksVpcResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            creation_time=creation_time,
+            description=description,
+            id=id,
+            ipv6_cidr_block=ipv6_cidr_block,
+            is_default=is_default,
+            region_id=region_id,
+            resource_group_id=resource_group_id,
+            route_table_id=route_table_id,
+            router_id=router_id,
+            secondary_cidr_blocks=secondary_cidr_blocks,
+            status=status,
+            tags=tags,
+            user_cidrs=user_cidrs,
+            vpc_id=vpc_id,
+            vpc_name=vpc_name,
+            vrouter_id=vrouter_id,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: str,
+             creation_time: str,
+             description: str,
+             id: str,
+             ipv6_cidr_block: str,
+             is_default: bool,
+             region_id: str,
+             resource_group_id: str,
+             route_table_id: str,
+             router_id: str,
+             secondary_cidr_blocks: Sequence[str],
+             status: str,
+             tags: Mapping[str, Any],
+             user_cidrs: Sequence[str],
+             vpc_id: str,
+             vpc_name: str,
+             vrouter_id: str,
+             vswitch_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr_block", cidr_block)
+        _setter("creation_time", creation_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("ipv6_cidr_block", ipv6_cidr_block)
+        _setter("is_default", is_default)
+        _setter("region_id", region_id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("route_table_id", route_table_id)
+        _setter("router_id", router_id)
+        _setter("secondary_cidr_blocks", secondary_cidr_blocks)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("user_cidrs", user_cidrs)
+        _setter("vpc_id", vpc_id)
+        _setter("vpc_name", vpc_name)
+        _setter("vrouter_id", vrouter_id)
+        _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -4161,14 +5012,37 @@ class GetPbrRouteEntriesEntryResult(dict):
         :param str vpn_gateway_id: The ID of the VPN gateway.
         :param int weight: The weight of the policy-based route. Valid values: 0 and 100.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "next_hop", next_hop)
-        pulumi.set(__self__, "route_dest", route_dest)
-        pulumi.set(__self__, "route_source", route_source)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
-        pulumi.set(__self__, "weight", weight)
+        GetPbrRouteEntriesEntryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            id=id,
+            next_hop=next_hop,
+            route_dest=route_dest,
+            route_source=route_source,
+            status=status,
+            vpn_gateway_id=vpn_gateway_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             id: str,
+             next_hop: str,
+             route_dest: str,
+             route_source: str,
+             status: str,
+             vpn_gateway_id: str,
+             weight: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("next_hop", next_hop)
+        _setter("route_dest", route_dest)
+        _setter("route_source", route_source)
+        _setter("status", status)
+        _setter("vpn_gateway_id", vpn_gateway_id)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter(name="createTime")
@@ -4262,17 +5136,46 @@ class GetPeerConnectionsConnectionResult(dict):
         :param str status: The status of the resource.
         :param str vpc_id: The ID of the requester VPC.
         """
-        pulumi.set(__self__, "accepting_ali_uid", accepting_ali_uid)
-        pulumi.set(__self__, "accepting_region_id", accepting_region_id)
-        pulumi.set(__self__, "accepting_vpc_id", accepting_vpc_id)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "peer_connection_id", peer_connection_id)
-        pulumi.set(__self__, "peer_connection_name", peer_connection_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetPeerConnectionsConnectionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accepting_ali_uid=accepting_ali_uid,
+            accepting_region_id=accepting_region_id,
+            accepting_vpc_id=accepting_vpc_id,
+            bandwidth=bandwidth,
+            create_time=create_time,
+            description=description,
+            id=id,
+            peer_connection_id=peer_connection_id,
+            peer_connection_name=peer_connection_name,
+            status=status,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accepting_ali_uid: int,
+             accepting_region_id: str,
+             accepting_vpc_id: str,
+             bandwidth: int,
+             create_time: str,
+             description: str,
+             id: str,
+             peer_connection_id: str,
+             peer_connection_name: str,
+             status: str,
+             vpc_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accepting_ali_uid", accepting_ali_uid)
+        _setter("accepting_region_id", accepting_region_id)
+        _setter("accepting_vpc_id", accepting_vpc_id)
+        _setter("bandwidth", bandwidth)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("peer_connection_id", peer_connection_id)
+        _setter("peer_connection_name", peer_connection_name)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="acceptingAliUid")
@@ -4386,15 +5289,40 @@ class GetPrefixListsListResult(dict):
         :param str prefix_list_name: The name of the prefix list.
         :param str share_type: The share type of the prefix list.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "entrys", entrys)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_version", ip_version)
-        pulumi.set(__self__, "max_entries", max_entries)
-        pulumi.set(__self__, "prefix_list_description", prefix_list_description)
-        pulumi.set(__self__, "prefix_list_id", prefix_list_id)
-        pulumi.set(__self__, "prefix_list_name", prefix_list_name)
-        pulumi.set(__self__, "share_type", share_type)
+        GetPrefixListsListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            entrys=entrys,
+            id=id,
+            ip_version=ip_version,
+            max_entries=max_entries,
+            prefix_list_description=prefix_list_description,
+            prefix_list_id=prefix_list_id,
+            prefix_list_name=prefix_list_name,
+            share_type=share_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             entrys: Sequence['outputs.GetPrefixListsListEntryResult'],
+             id: str,
+             ip_version: str,
+             max_entries: int,
+             prefix_list_description: str,
+             prefix_list_id: str,
+             prefix_list_name: str,
+             share_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("entrys", entrys)
+        _setter("id", id)
+        _setter("ip_version", ip_version)
+        _setter("max_entries", max_entries)
+        _setter("prefix_list_description", prefix_list_description)
+        _setter("prefix_list_id", prefix_list_id)
+        _setter("prefix_list_name", prefix_list_name)
+        _setter("share_type", share_type)
 
     @property
     @pulumi.getter(name="createTime")
@@ -4478,8 +5406,19 @@ class GetPrefixListsListEntryResult(dict):
         :param str cidr: The CIDR address block of the prefix list.
         :param str description: The description of the cidr entry.
         """
-        pulumi.set(__self__, "cidr", cidr)
-        pulumi.set(__self__, "description", description)
+        GetPrefixListsListEntryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: str,
+             description: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr", cidr)
+        _setter("description", description)
 
     @property
     @pulumi.getter
@@ -4517,13 +5456,34 @@ class GetPublicIpAddressPoolCidrBlocksBlockResult(dict):
         :param int total_ip_num: The number of occupied IP addresses in the CIDR block.
         :param int used_ip_num: The total number of available IP addresses in the CIDR block.
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "total_ip_num", total_ip_num)
-        pulumi.set(__self__, "used_ip_num", used_ip_num)
+        GetPublicIpAddressPoolCidrBlocksBlockResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            create_time=create_time,
+            id=id,
+            public_ip_address_pool_id=public_ip_address_pool_id,
+            status=status,
+            total_ip_num=total_ip_num,
+            used_ip_num=used_ip_num,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: str,
+             create_time: str,
+             id: str,
+             public_ip_address_pool_id: str,
+             status: str,
+             total_ip_num: int,
+             used_ip_num: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr_block", cidr_block)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("public_ip_address_pool_id", public_ip_address_pool_id)
+        _setter("status", status)
+        _setter("total_ip_num", total_ip_num)
+        _setter("used_ip_num", used_ip_num)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -4611,18 +5571,49 @@ class GetPublicIpAddressPoolsPoolResult(dict):
         :param int used_ip_num: The number of occupied IP addresses in the Vpc Public Ip Address Pool.
         :param str user_type: The user type.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_address_remaining", ip_address_remaining)
-        pulumi.set(__self__, "isp", isp)
-        pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
-        pulumi.set(__self__, "public_ip_address_pool_name", public_ip_address_pool_name)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "total_ip_num", total_ip_num)
-        pulumi.set(__self__, "used_ip_num", used_ip_num)
-        pulumi.set(__self__, "user_type", user_type)
+        GetPublicIpAddressPoolsPoolResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            id=id,
+            ip_address_remaining=ip_address_remaining,
+            isp=isp,
+            public_ip_address_pool_id=public_ip_address_pool_id,
+            public_ip_address_pool_name=public_ip_address_pool_name,
+            region_id=region_id,
+            status=status,
+            total_ip_num=total_ip_num,
+            used_ip_num=used_ip_num,
+            user_type=user_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             id: str,
+             ip_address_remaining: bool,
+             isp: str,
+             public_ip_address_pool_id: str,
+             public_ip_address_pool_name: str,
+             region_id: str,
+             status: str,
+             total_ip_num: int,
+             used_ip_num: int,
+             user_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("ip_address_remaining", ip_address_remaining)
+        _setter("isp", isp)
+        _setter("public_ip_address_pool_id", public_ip_address_pool_id)
+        _setter("public_ip_address_pool_name", public_ip_address_pool_name)
+        _setter("region_id", region_id)
+        _setter("status", status)
+        _setter("total_ip_num", total_ip_num)
+        _setter("used_ip_num", used_ip_num)
+        _setter("user_type", user_type)
 
     @property
     @pulumi.getter(name="createTime")
@@ -4738,12 +5729,31 @@ class GetRouteEntriesEntryResult(dict):
         :param str status: The status of the route entry.
         :param str type: The type of the route entry.
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "next_hop_type", next_hop_type)
-        pulumi.set(__self__, "route_table_id", route_table_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
+        GetRouteEntriesEntryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            instance_id=instance_id,
+            next_hop_type=next_hop_type,
+            route_table_id=route_table_id,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: str,
+             instance_id: str,
+             next_hop_type: str,
+             route_table_id: str,
+             status: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr_block", cidr_block)
+        _setter("instance_id", instance_id)
+        _setter("next_hop_type", next_hop_type)
+        _setter("route_table_id", route_table_id)
+        _setter("status", status)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -4825,19 +5835,52 @@ class GetRouteTablesTableResult(dict):
         :param str vpc_id: Vpc id of the route table.
         :param Sequence[str] vswitch_ids: A list of vswitch id.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "route_table_id", route_table_id)
-        pulumi.set(__self__, "route_table_name", route_table_name)
-        pulumi.set(__self__, "route_table_type", route_table_type)
-        pulumi.set(__self__, "router_id", router_id)
-        pulumi.set(__self__, "router_type", router_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        GetRouteTablesTableResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            name=name,
+            resource_group_id=resource_group_id,
+            route_table_id=route_table_id,
+            route_table_name=route_table_name,
+            route_table_type=route_table_type,
+            router_id=router_id,
+            router_type=router_type,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             id: str,
+             name: str,
+             resource_group_id: str,
+             route_table_id: str,
+             route_table_name: str,
+             route_table_type: str,
+             router_id: str,
+             router_type: str,
+             status: str,
+             tags: Mapping[str, Any],
+             vpc_id: str,
+             vswitch_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("route_table_id", route_table_id)
+        _setter("route_table_name", route_table_name)
+        _setter("route_table_type", route_table_type)
+        _setter("router_id", router_id)
+        _setter("router_type", router_type)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter
@@ -4986,24 +6029,67 @@ class GetRouterInterfacesInterfaceResult(dict):
         :param str status: Expected status. Valid values are `Active`, `Inactive` and `Idle`.
         :param str vpc_id: ID of the VPC that owns the router in the local region.
         """
-        pulumi.set(__self__, "access_point_id", access_point_id)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "health_check_source_ip", health_check_source_ip)
-        pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "opposite_interface_id", opposite_interface_id)
-        pulumi.set(__self__, "opposite_interface_owner_id", opposite_interface_owner_id)
-        pulumi.set(__self__, "opposite_region_id", opposite_region_id)
-        pulumi.set(__self__, "opposite_router_id", opposite_router_id)
-        pulumi.set(__self__, "opposite_router_type", opposite_router_type)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "router_id", router_id)
-        pulumi.set(__self__, "router_type", router_type)
-        pulumi.set(__self__, "specification", specification)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetRouterInterfacesInterfaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_point_id=access_point_id,
+            creation_time=creation_time,
+            description=description,
+            health_check_source_ip=health_check_source_ip,
+            health_check_target_ip=health_check_target_ip,
+            id=id,
+            name=name,
+            opposite_interface_id=opposite_interface_id,
+            opposite_interface_owner_id=opposite_interface_owner_id,
+            opposite_region_id=opposite_region_id,
+            opposite_router_id=opposite_router_id,
+            opposite_router_type=opposite_router_type,
+            role=role,
+            router_id=router_id,
+            router_type=router_type,
+            specification=specification,
+            status=status,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_point_id: str,
+             creation_time: str,
+             description: str,
+             health_check_source_ip: str,
+             health_check_target_ip: str,
+             id: str,
+             name: str,
+             opposite_interface_id: str,
+             opposite_interface_owner_id: str,
+             opposite_region_id: str,
+             opposite_router_id: str,
+             opposite_router_type: str,
+             role: str,
+             router_id: str,
+             router_type: str,
+             specification: str,
+             status: str,
+             vpc_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_point_id", access_point_id)
+        _setter("creation_time", creation_time)
+        _setter("description", description)
+        _setter("health_check_source_ip", health_check_source_ip)
+        _setter("health_check_target_ip", health_check_target_ip)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("opposite_interface_id", opposite_interface_id)
+        _setter("opposite_interface_owner_id", opposite_interface_owner_id)
+        _setter("opposite_region_id", opposite_region_id)
+        _setter("opposite_router_id", opposite_router_id)
+        _setter("opposite_router_type", opposite_router_type)
+        _setter("role", role)
+        _setter("router_id", router_id)
+        _setter("router_type", router_type)
+        _setter("specification", specification)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="accessPointId")
@@ -5170,13 +6256,34 @@ class GetSnatEntriesEntryResult(dict):
         :param str source_vswitch_id: The source vswitch ID.
         :param str status: The status of the Snat Entry. Valid values: `Available`, `Deleting` and `Pending`.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "snat_entry_id", snat_entry_id)
-        pulumi.set(__self__, "snat_entry_name", snat_entry_name)
-        pulumi.set(__self__, "snat_ip", snat_ip)
-        pulumi.set(__self__, "source_cidr", source_cidr)
-        pulumi.set(__self__, "source_vswitch_id", source_vswitch_id)
-        pulumi.set(__self__, "status", status)
+        GetSnatEntriesEntryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            snat_entry_id=snat_entry_id,
+            snat_entry_name=snat_entry_name,
+            snat_ip=snat_ip,
+            source_cidr=source_cidr,
+            source_vswitch_id=source_vswitch_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             snat_entry_id: str,
+             snat_entry_name: str,
+             snat_ip: str,
+             source_cidr: str,
+             source_vswitch_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("snat_entry_id", snat_entry_id)
+        _setter("snat_entry_name", snat_entry_name)
+        _setter("snat_ip", snat_ip)
+        _setter("source_cidr", source_cidr)
+        _setter("source_vswitch_id", source_vswitch_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -5252,12 +6359,31 @@ class GetSslVpnClientCertsCertResult(dict):
         :param str ssl_vpn_server_id: Use the SSL-VPN server ID as the search key.
         :param str status: The status of the client certificate. valid value:expiring-soon, normal, expired.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "ssl_vpn_server_id", ssl_vpn_server_id)
-        pulumi.set(__self__, "status", status)
+        GetSslVpnClientCertsCertResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            end_time=end_time,
+            id=id,
+            name=name,
+            ssl_vpn_server_id=ssl_vpn_server_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             end_time: int,
+             id: str,
+             name: str,
+             ssl_vpn_server_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("end_time", end_time)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("ssl_vpn_server_id", ssl_vpn_server_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -5339,19 +6465,52 @@ class GetSslVpnServersServerResult(dict):
         :param str proto: The protocol used by the SSL-VPN server.
         :param str vpn_gateway_id: Use the VPN gateway ID as the search key.
         """
-        pulumi.set(__self__, "cipher", cipher)
-        pulumi.set(__self__, "client_ip_pool", client_ip_pool)
-        pulumi.set(__self__, "compress", compress)
-        pulumi.set(__self__, "connections", connections)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "internet_ip", internet_ip)
-        pulumi.set(__self__, "local_subnet", local_subnet)
-        pulumi.set(__self__, "max_connections", max_connections)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "proto", proto)
-        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
+        GetSslVpnServersServerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cipher=cipher,
+            client_ip_pool=client_ip_pool,
+            compress=compress,
+            connections=connections,
+            create_time=create_time,
+            id=id,
+            internet_ip=internet_ip,
+            local_subnet=local_subnet,
+            max_connections=max_connections,
+            name=name,
+            port=port,
+            proto=proto,
+            vpn_gateway_id=vpn_gateway_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cipher: str,
+             client_ip_pool: str,
+             compress: bool,
+             connections: int,
+             create_time: str,
+             id: str,
+             internet_ip: str,
+             local_subnet: str,
+             max_connections: int,
+             name: str,
+             port: int,
+             proto: str,
+             vpn_gateway_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cipher", cipher)
+        _setter("client_ip_pool", client_ip_pool)
+        _setter("compress", compress)
+        _setter("connections", connections)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("internet_ip", internet_ip)
+        _setter("local_subnet", local_subnet)
+        _setter("max_connections", max_connections)
+        _setter("name", name)
+        _setter("port", port)
+        _setter("proto", proto)
+        _setter("vpn_gateway_id", vpn_gateway_id)
 
     @property
     @pulumi.getter
@@ -5495,22 +6654,61 @@ class GetSwitchesVswitchResult(dict):
         :param str vswitch_name: The name of the VSwitch.
         :param str zone_id: The availability zone of the VSwitch.
         """
-        pulumi.set(__self__, "available_ip_address_count", available_ip_address_count)
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
-        pulumi.set(__self__, "is_default", is_default)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "route_table_id", route_table_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "vswitch_name", vswitch_name)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetSwitchesVswitchResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_ip_address_count=available_ip_address_count,
+            cidr_block=cidr_block,
+            creation_time=creation_time,
+            description=description,
+            id=id,
+            ipv6_cidr_block=ipv6_cidr_block,
+            is_default=is_default,
+            name=name,
+            resource_group_id=resource_group_id,
+            route_table_id=route_table_id,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            vswitch_name=vswitch_name,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_ip_address_count: int,
+             cidr_block: str,
+             creation_time: str,
+             description: str,
+             id: str,
+             ipv6_cidr_block: str,
+             is_default: bool,
+             name: str,
+             resource_group_id: str,
+             route_table_id: str,
+             status: str,
+             tags: Mapping[str, Any],
+             vpc_id: str,
+             vswitch_id: str,
+             vswitch_name: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("available_ip_address_count", available_ip_address_count)
+        _setter("cidr_block", cidr_block)
+        _setter("creation_time", creation_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("ipv6_cidr_block", ipv6_cidr_block)
+        _setter("is_default", is_default)
+        _setter("name", name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("route_table_id", route_table_id)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("vswitch_name", vswitch_name)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="availableIpAddressCount")
@@ -5668,17 +6866,46 @@ class GetTrafficMirrorFilterEgressRulesRuleResult(dict):
         :param str traffic_mirror_filter_id: The ID of the filter associated with the outbound rule.
         :param str traffic_mirror_filter_rule_id: The first ID of the resource.
         """
-        pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
-        pulumi.set(__self__, "destination_port_range", destination_port_range)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "rule_action", rule_action)
-        pulumi.set(__self__, "source_cidr_block", source_cidr_block)
-        pulumi.set(__self__, "source_port_range", source_port_range)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "traffic_mirror_filter_id", traffic_mirror_filter_id)
-        pulumi.set(__self__, "traffic_mirror_filter_rule_id", traffic_mirror_filter_rule_id)
+        GetTrafficMirrorFilterEgressRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination_cidr_block=destination_cidr_block,
+            destination_port_range=destination_port_range,
+            id=id,
+            priority=priority,
+            protocol=protocol,
+            rule_action=rule_action,
+            source_cidr_block=source_cidr_block,
+            source_port_range=source_port_range,
+            status=status,
+            traffic_mirror_filter_id=traffic_mirror_filter_id,
+            traffic_mirror_filter_rule_id=traffic_mirror_filter_rule_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination_cidr_block: str,
+             destination_port_range: str,
+             id: str,
+             priority: int,
+             protocol: str,
+             rule_action: str,
+             source_cidr_block: str,
+             source_port_range: str,
+             status: str,
+             traffic_mirror_filter_id: str,
+             traffic_mirror_filter_rule_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("destination_cidr_block", destination_cidr_block)
+        _setter("destination_port_range", destination_port_range)
+        _setter("id", id)
+        _setter("priority", priority)
+        _setter("protocol", protocol)
+        _setter("rule_action", rule_action)
+        _setter("source_cidr_block", source_cidr_block)
+        _setter("source_port_range", source_port_range)
+        _setter("status", status)
+        _setter("traffic_mirror_filter_id", traffic_mirror_filter_id)
+        _setter("traffic_mirror_filter_rule_id", traffic_mirror_filter_rule_id)
 
     @property
     @pulumi.getter(name="destinationCidrBlock")
@@ -5796,17 +7023,46 @@ class GetTrafficMirrorFilterIngressRulesRuleResult(dict):
         :param str traffic_mirror_filter_id: The ID of the filter associated with the inbound rule.
         :param str traffic_mirror_filter_rule_id: The first ID of the resource.
         """
-        pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
-        pulumi.set(__self__, "destination_port_range", destination_port_range)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "rule_action", rule_action)
-        pulumi.set(__self__, "source_cidr_block", source_cidr_block)
-        pulumi.set(__self__, "source_port_range", source_port_range)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "traffic_mirror_filter_id", traffic_mirror_filter_id)
-        pulumi.set(__self__, "traffic_mirror_filter_rule_id", traffic_mirror_filter_rule_id)
+        GetTrafficMirrorFilterIngressRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination_cidr_block=destination_cidr_block,
+            destination_port_range=destination_port_range,
+            id=id,
+            priority=priority,
+            protocol=protocol,
+            rule_action=rule_action,
+            source_cidr_block=source_cidr_block,
+            source_port_range=source_port_range,
+            status=status,
+            traffic_mirror_filter_id=traffic_mirror_filter_id,
+            traffic_mirror_filter_rule_id=traffic_mirror_filter_rule_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination_cidr_block: str,
+             destination_port_range: str,
+             id: str,
+             priority: int,
+             protocol: str,
+             rule_action: str,
+             source_cidr_block: str,
+             source_port_range: str,
+             status: str,
+             traffic_mirror_filter_id: str,
+             traffic_mirror_filter_rule_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("destination_cidr_block", destination_cidr_block)
+        _setter("destination_port_range", destination_port_range)
+        _setter("id", id)
+        _setter("priority", priority)
+        _setter("protocol", protocol)
+        _setter("rule_action", rule_action)
+        _setter("source_cidr_block", source_cidr_block)
+        _setter("source_port_range", source_port_range)
+        _setter("status", status)
+        _setter("traffic_mirror_filter_id", traffic_mirror_filter_id)
+        _setter("traffic_mirror_filter_rule_id", traffic_mirror_filter_rule_id)
 
     @property
     @pulumi.getter(name="destinationCidrBlock")
@@ -5912,11 +7168,28 @@ class GetTrafficMirrorFiltersFilterResult(dict):
         :param str traffic_mirror_filter_id: The ID of the filter.
         :param str traffic_mirror_filter_name: The name of the filter.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "traffic_mirror_filter_description", traffic_mirror_filter_description)
-        pulumi.set(__self__, "traffic_mirror_filter_id", traffic_mirror_filter_id)
-        pulumi.set(__self__, "traffic_mirror_filter_name", traffic_mirror_filter_name)
+        GetTrafficMirrorFiltersFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            status=status,
+            traffic_mirror_filter_description=traffic_mirror_filter_description,
+            traffic_mirror_filter_id=traffic_mirror_filter_id,
+            traffic_mirror_filter_name=traffic_mirror_filter_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             status: str,
+             traffic_mirror_filter_description: str,
+             traffic_mirror_filter_id: str,
+             traffic_mirror_filter_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("status", status)
+        _setter("traffic_mirror_filter_description", traffic_mirror_filter_description)
+        _setter("traffic_mirror_filter_id", traffic_mirror_filter_id)
+        _setter("traffic_mirror_filter_name", traffic_mirror_filter_name)
 
     @property
     @pulumi.getter
@@ -5992,20 +7265,55 @@ class GetTrafficMirrorSessionsSessionResult(dict):
         :param str traffic_mirror_target_type: The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
         :param int virtual_network_id: You can specify VNIs to distinguish different mirrored traffic.
         """
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "packet_length", packet_length)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "traffic_mirror_filter_id", traffic_mirror_filter_id)
-        pulumi.set(__self__, "traffic_mirror_session_business_status", traffic_mirror_session_business_status)
-        pulumi.set(__self__, "traffic_mirror_session_description", traffic_mirror_session_description)
-        pulumi.set(__self__, "traffic_mirror_session_id", traffic_mirror_session_id)
-        pulumi.set(__self__, "traffic_mirror_session_name", traffic_mirror_session_name)
-        pulumi.set(__self__, "traffic_mirror_source_ids", traffic_mirror_source_ids)
-        pulumi.set(__self__, "traffic_mirror_target_id", traffic_mirror_target_id)
-        pulumi.set(__self__, "traffic_mirror_target_type", traffic_mirror_target_type)
-        pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+        GetTrafficMirrorSessionsSessionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            id=id,
+            packet_length=packet_length,
+            priority=priority,
+            status=status,
+            traffic_mirror_filter_id=traffic_mirror_filter_id,
+            traffic_mirror_session_business_status=traffic_mirror_session_business_status,
+            traffic_mirror_session_description=traffic_mirror_session_description,
+            traffic_mirror_session_id=traffic_mirror_session_id,
+            traffic_mirror_session_name=traffic_mirror_session_name,
+            traffic_mirror_source_ids=traffic_mirror_source_ids,
+            traffic_mirror_target_id=traffic_mirror_target_id,
+            traffic_mirror_target_type=traffic_mirror_target_type,
+            virtual_network_id=virtual_network_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: bool,
+             id: str,
+             packet_length: int,
+             priority: int,
+             status: str,
+             traffic_mirror_filter_id: str,
+             traffic_mirror_session_business_status: str,
+             traffic_mirror_session_description: str,
+             traffic_mirror_session_id: str,
+             traffic_mirror_session_name: str,
+             traffic_mirror_source_ids: Sequence[str],
+             traffic_mirror_target_id: str,
+             traffic_mirror_target_type: str,
+             virtual_network_id: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enabled", enabled)
+        _setter("id", id)
+        _setter("packet_length", packet_length)
+        _setter("priority", priority)
+        _setter("status", status)
+        _setter("traffic_mirror_filter_id", traffic_mirror_filter_id)
+        _setter("traffic_mirror_session_business_status", traffic_mirror_session_business_status)
+        _setter("traffic_mirror_session_description", traffic_mirror_session_description)
+        _setter("traffic_mirror_session_id", traffic_mirror_session_id)
+        _setter("traffic_mirror_session_name", traffic_mirror_session_name)
+        _setter("traffic_mirror_source_ids", traffic_mirror_source_ids)
+        _setter("traffic_mirror_target_id", traffic_mirror_target_id)
+        _setter("traffic_mirror_target_type", traffic_mirror_target_type)
+        _setter("virtual_network_id", virtual_network_id)
 
     @property
     @pulumi.getter
@@ -6145,16 +7453,43 @@ class GetVpcFlowLogsLogResult(dict):
         :param str status: The status of flow log.
         :param str traffic_type: The traffic type.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "flow_log_id", flow_log_id)
-        pulumi.set(__self__, "flow_log_name", flow_log_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "log_store_name", log_store_name)
-        pulumi.set(__self__, "project_name", project_name)
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "traffic_type", traffic_type)
+        GetVpcFlowLogsLogResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            flow_log_id=flow_log_id,
+            flow_log_name=flow_log_name,
+            id=id,
+            log_store_name=log_store_name,
+            project_name=project_name,
+            resource_id=resource_id,
+            resource_type=resource_type,
+            status=status,
+            traffic_type=traffic_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             flow_log_id: str,
+             flow_log_name: str,
+             id: str,
+             log_store_name: str,
+             project_name: str,
+             resource_id: str,
+             resource_type: str,
+             status: str,
+             traffic_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("flow_log_id", flow_log_id)
+        _setter("flow_log_name", flow_log_name)
+        _setter("id", id)
+        _setter("log_store_name", log_store_name)
+        _setter("project_name", project_name)
+        _setter("resource_id", resource_id)
+        _setter("resource_type", resource_type)
+        _setter("status", status)
+        _setter("traffic_type", traffic_type)
 
     @property
     @pulumi.getter

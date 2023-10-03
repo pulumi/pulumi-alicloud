@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SnapshotPolicyArgs', 'SnapshotPolicy']
@@ -37,19 +37,42 @@ class SnapshotPolicyArgs:
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
         :param pulumi.Input[str] name: The snapshot policy name.
         """
-        pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
-        pulumi.set(__self__, "retention_days", retention_days)
-        pulumi.set(__self__, "time_points", time_points)
+        SnapshotPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            repeat_weekdays=repeat_weekdays,
+            retention_days=retention_days,
+            time_points=time_points,
+            copied_snapshots_retention_days=copied_snapshots_retention_days,
+            enable_cross_region_copy=enable_cross_region_copy,
+            name=name,
+            tags=tags,
+            target_copy_regions=target_copy_regions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             repeat_weekdays: pulumi.Input[Sequence[pulumi.Input[str]]],
+             retention_days: pulumi.Input[int],
+             time_points: pulumi.Input[Sequence[pulumi.Input[str]]],
+             copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+             enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("repeat_weekdays", repeat_weekdays)
+        _setter("retention_days", retention_days)
+        _setter("time_points", time_points)
         if copied_snapshots_retention_days is not None:
-            pulumi.set(__self__, "copied_snapshots_retention_days", copied_snapshots_retention_days)
+            _setter("copied_snapshots_retention_days", copied_snapshots_retention_days)
         if enable_cross_region_copy is not None:
-            pulumi.set(__self__, "enable_cross_region_copy", enable_cross_region_copy)
+            _setter("enable_cross_region_copy", enable_cross_region_copy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if target_copy_regions is not None:
-            pulumi.set(__self__, "target_copy_regions", target_copy_regions)
+            _setter("target_copy_regions", target_copy_regions)
 
     @property
     @pulumi.getter(name="repeatWeekdays")
@@ -171,24 +194,49 @@ class _SnapshotPolicyState:
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
         """
+        _SnapshotPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            copied_snapshots_retention_days=copied_snapshots_retention_days,
+            enable_cross_region_copy=enable_cross_region_copy,
+            name=name,
+            repeat_weekdays=repeat_weekdays,
+            retention_days=retention_days,
+            status=status,
+            tags=tags,
+            target_copy_regions=target_copy_regions,
+            time_points=time_points,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             copied_snapshots_retention_days: Optional[pulumi.Input[int]] = None,
+             enable_cross_region_copy: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             retention_days: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if copied_snapshots_retention_days is not None:
-            pulumi.set(__self__, "copied_snapshots_retention_days", copied_snapshots_retention_days)
+            _setter("copied_snapshots_retention_days", copied_snapshots_retention_days)
         if enable_cross_region_copy is not None:
-            pulumi.set(__self__, "enable_cross_region_copy", enable_cross_region_copy)
+            _setter("enable_cross_region_copy", enable_cross_region_copy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if repeat_weekdays is not None:
-            pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
+            _setter("repeat_weekdays", repeat_weekdays)
         if retention_days is not None:
-            pulumi.set(__self__, "retention_days", retention_days)
+            _setter("retention_days", retention_days)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if target_copy_regions is not None:
-            pulumi.set(__self__, "target_copy_regions", target_copy_regions)
+            _setter("target_copy_regions", target_copy_regions)
         if time_points is not None:
-            pulumi.set(__self__, "time_points", time_points)
+            _setter("time_points", time_points)
 
     @property
     @pulumi.getter(name="copiedSnapshotsRetentionDays")
@@ -411,6 +459,10 @@ class SnapshotPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SnapshotPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

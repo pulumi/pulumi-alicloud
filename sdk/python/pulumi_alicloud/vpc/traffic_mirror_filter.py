@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,20 +35,41 @@ class TrafficMirrorFilterArgs:
         :param pulumi.Input[str] traffic_mirror_filter_description: The description of the TrafficMirrorFilter.
         :param pulumi.Input[str] traffic_mirror_filter_name: The name of the TrafficMirrorFilter.
         """
+        TrafficMirrorFilterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dry_run=dry_run,
+            egress_rules=egress_rules,
+            ingress_rules=ingress_rules,
+            resource_group_id=resource_group_id,
+            tags=tags,
+            traffic_mirror_filter_description=traffic_mirror_filter_description,
+            traffic_mirror_filter_name=traffic_mirror_filter_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]] = None,
+             ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             traffic_mirror_filter_description: Optional[pulumi.Input[str]] = None,
+             traffic_mirror_filter_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if egress_rules is not None:
-            pulumi.set(__self__, "egress_rules", egress_rules)
+            _setter("egress_rules", egress_rules)
         if ingress_rules is not None:
-            pulumi.set(__self__, "ingress_rules", ingress_rules)
+            _setter("ingress_rules", ingress_rules)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if traffic_mirror_filter_description is not None:
-            pulumi.set(__self__, "traffic_mirror_filter_description", traffic_mirror_filter_description)
+            _setter("traffic_mirror_filter_description", traffic_mirror_filter_description)
         if traffic_mirror_filter_name is not None:
-            pulumi.set(__self__, "traffic_mirror_filter_name", traffic_mirror_filter_name)
+            _setter("traffic_mirror_filter_name", traffic_mirror_filter_name)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -161,22 +182,45 @@ class _TrafficMirrorFilterState:
         :param pulumi.Input[str] traffic_mirror_filter_description: The description of the TrafficMirrorFilter.
         :param pulumi.Input[str] traffic_mirror_filter_name: The name of the TrafficMirrorFilter.
         """
+        _TrafficMirrorFilterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dry_run=dry_run,
+            egress_rules=egress_rules,
+            ingress_rules=ingress_rules,
+            resource_group_id=resource_group_id,
+            status=status,
+            tags=tags,
+            traffic_mirror_filter_description=traffic_mirror_filter_description,
+            traffic_mirror_filter_name=traffic_mirror_filter_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             egress_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterEgressRuleArgs']]]] = None,
+             ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TrafficMirrorFilterIngressRuleArgs']]]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             traffic_mirror_filter_description: Optional[pulumi.Input[str]] = None,
+             traffic_mirror_filter_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if egress_rules is not None:
-            pulumi.set(__self__, "egress_rules", egress_rules)
+            _setter("egress_rules", egress_rules)
         if ingress_rules is not None:
-            pulumi.set(__self__, "ingress_rules", ingress_rules)
+            _setter("ingress_rules", ingress_rules)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if traffic_mirror_filter_description is not None:
-            pulumi.set(__self__, "traffic_mirror_filter_description", traffic_mirror_filter_description)
+            _setter("traffic_mirror_filter_description", traffic_mirror_filter_description)
         if traffic_mirror_filter_name is not None:
-            pulumi.set(__self__, "traffic_mirror_filter_name", traffic_mirror_filter_name)
+            _setter("traffic_mirror_filter_name", traffic_mirror_filter_name)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -432,6 +476,10 @@ class TrafficMirrorFilter(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TrafficMirrorFilterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

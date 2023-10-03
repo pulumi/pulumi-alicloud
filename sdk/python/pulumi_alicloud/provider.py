@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from ._inputs import *
 
@@ -63,72 +63,127 @@ class ProviderArgs:
                that are not public (yet).
         :param pulumi.Input[str] source_ip: The source ip for the assume role invoking.
         """
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_key=access_key,
+            account_id=account_id,
+            assume_role=assume_role,
+            client_connect_timeout=client_connect_timeout,
+            client_read_timeout=client_read_timeout,
+            configuration_source=configuration_source,
+            credentials_uri=credentials_uri,
+            ecs_role_name=ecs_role_name,
+            endpoints=endpoints,
+            fc=fc,
+            log_endpoint=log_endpoint,
+            max_retry_timeout=max_retry_timeout,
+            mns_endpoint=mns_endpoint,
+            ots_instance_name=ots_instance_name,
+            profile=profile,
+            protocol=protocol,
+            region=region,
+            secret_key=secret_key,
+            secure_transport=secure_transport,
+            security_token=security_token,
+            security_transport=security_transport,
+            shared_credentials_file=shared_credentials_file,
+            skip_region_validation=skip_region_validation,
+            source_ip=source_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_key: Optional[pulumi.Input[str]] = None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             assume_role: Optional[pulumi.Input['ProviderAssumeRoleArgs']] = None,
+             client_connect_timeout: Optional[pulumi.Input[int]] = None,
+             client_read_timeout: Optional[pulumi.Input[int]] = None,
+             configuration_source: Optional[pulumi.Input[str]] = None,
+             credentials_uri: Optional[pulumi.Input[str]] = None,
+             ecs_role_name: Optional[pulumi.Input[str]] = None,
+             endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]] = None,
+             fc: Optional[pulumi.Input[str]] = None,
+             log_endpoint: Optional[pulumi.Input[str]] = None,
+             max_retry_timeout: Optional[pulumi.Input[int]] = None,
+             mns_endpoint: Optional[pulumi.Input[str]] = None,
+             ots_instance_name: Optional[pulumi.Input[str]] = None,
+             profile: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             secret_key: Optional[pulumi.Input[str]] = None,
+             secure_transport: Optional[pulumi.Input[str]] = None,
+             security_token: Optional[pulumi.Input[str]] = None,
+             security_transport: Optional[pulumi.Input[str]] = None,
+             shared_credentials_file: Optional[pulumi.Input[str]] = None,
+             skip_region_validation: Optional[pulumi.Input[bool]] = None,
+             source_ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_key is not None:
-            pulumi.set(__self__, "access_key", access_key)
+            _setter("access_key", access_key)
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if assume_role is not None:
-            pulumi.set(__self__, "assume_role", assume_role)
+            _setter("assume_role", assume_role)
         if client_connect_timeout is not None:
-            pulumi.set(__self__, "client_connect_timeout", client_connect_timeout)
+            _setter("client_connect_timeout", client_connect_timeout)
         if client_read_timeout is not None:
-            pulumi.set(__self__, "client_read_timeout", client_read_timeout)
+            _setter("client_read_timeout", client_read_timeout)
         if configuration_source is not None:
-            pulumi.set(__self__, "configuration_source", configuration_source)
+            _setter("configuration_source", configuration_source)
         if credentials_uri is not None:
-            pulumi.set(__self__, "credentials_uri", credentials_uri)
+            _setter("credentials_uri", credentials_uri)
         if ecs_role_name is None:
             ecs_role_name = _utilities.get_env('ALICLOUD_ECS_ROLE_NAME')
         if ecs_role_name is not None:
-            pulumi.set(__self__, "ecs_role_name", ecs_role_name)
+            _setter("ecs_role_name", ecs_role_name)
         if endpoints is not None:
-            pulumi.set(__self__, "endpoints", endpoints)
+            _setter("endpoints", endpoints)
         if fc is not None:
             warnings.warn("""Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""", DeprecationWarning)
             pulumi.log.warn("""fc is deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""")
         if fc is not None:
-            pulumi.set(__self__, "fc", fc)
+            _setter("fc", fc)
         if log_endpoint is not None:
             warnings.warn("""Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""", DeprecationWarning)
             pulumi.log.warn("""log_endpoint is deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""")
         if log_endpoint is not None:
-            pulumi.set(__self__, "log_endpoint", log_endpoint)
+            _setter("log_endpoint", log_endpoint)
         if max_retry_timeout is not None:
-            pulumi.set(__self__, "max_retry_timeout", max_retry_timeout)
+            _setter("max_retry_timeout", max_retry_timeout)
         if mns_endpoint is not None:
             warnings.warn("""Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""", DeprecationWarning)
             pulumi.log.warn("""mns_endpoint is deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""")
         if mns_endpoint is not None:
-            pulumi.set(__self__, "mns_endpoint", mns_endpoint)
+            _setter("mns_endpoint", mns_endpoint)
         if ots_instance_name is not None:
             warnings.warn("""Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.""", DeprecationWarning)
             pulumi.log.warn("""ots_instance_name is deprecated: Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.""")
         if ots_instance_name is not None:
-            pulumi.set(__self__, "ots_instance_name", ots_instance_name)
+            _setter("ots_instance_name", ots_instance_name)
         if profile is None:
             profile = _utilities.get_env('ALICLOUD_PROFILE')
         if profile is not None:
-            pulumi.set(__self__, "profile", profile)
+            _setter("profile", profile)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if region is None:
             region = _utilities.get_env('ALICLOUD_REGION')
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if secret_key is not None:
-            pulumi.set(__self__, "secret_key", secret_key)
+            _setter("secret_key", secret_key)
         if secure_transport is not None:
-            pulumi.set(__self__, "secure_transport", secure_transport)
+            _setter("secure_transport", secure_transport)
         if security_token is not None:
-            pulumi.set(__self__, "security_token", security_token)
+            _setter("security_token", security_token)
         if security_transport is not None:
-            pulumi.set(__self__, "security_transport", security_transport)
+            _setter("security_transport", security_transport)
         if shared_credentials_file is not None:
-            pulumi.set(__self__, "shared_credentials_file", shared_credentials_file)
+            _setter("shared_credentials_file", shared_credentials_file)
         if skip_region_validation is not None:
-            pulumi.set(__self__, "skip_region_validation", skip_region_validation)
+            _setter("skip_region_validation", skip_region_validation)
         if source_ip is not None:
-            pulumi.set(__self__, "source_ip", source_ip)
+            _setter("source_ip", source_ip)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -494,6 +549,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -534,6 +593,11 @@ class Provider(pulumi.ProviderResource):
 
             __props__.__dict__["access_key"] = access_key
             __props__.__dict__["account_id"] = account_id
+            if assume_role is not None and not isinstance(assume_role, ProviderAssumeRoleArgs):
+                assume_role = assume_role or {}
+                def _setter(key, value):
+                    assume_role[key] = value
+                ProviderAssumeRoleArgs._configure(_setter, **assume_role)
             __props__.__dict__["assume_role"] = pulumi.Output.from_input(assume_role).apply(pulumi.runtime.to_json) if assume_role is not None else None
             __props__.__dict__["client_connect_timeout"] = pulumi.Output.from_input(client_connect_timeout).apply(pulumi.runtime.to_json) if client_connect_timeout is not None else None
             __props__.__dict__["client_read_timeout"] = pulumi.Output.from_input(client_read_timeout).apply(pulumi.runtime.to_json) if client_read_timeout is not None else None
@@ -543,22 +607,10 @@ class Provider(pulumi.ProviderResource):
                 ecs_role_name = _utilities.get_env('ALICLOUD_ECS_ROLE_NAME')
             __props__.__dict__["ecs_role_name"] = ecs_role_name
             __props__.__dict__["endpoints"] = pulumi.Output.from_input(endpoints).apply(pulumi.runtime.to_json) if endpoints is not None else None
-            if fc is not None and not opts.urn:
-                warnings.warn("""Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""", DeprecationWarning)
-                pulumi.log.warn("""fc is deprecated: Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""")
             __props__.__dict__["fc"] = fc
-            if log_endpoint is not None and not opts.urn:
-                warnings.warn("""Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""", DeprecationWarning)
-                pulumi.log.warn("""log_endpoint is deprecated: Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""")
             __props__.__dict__["log_endpoint"] = log_endpoint
             __props__.__dict__["max_retry_timeout"] = pulumi.Output.from_input(max_retry_timeout).apply(pulumi.runtime.to_json) if max_retry_timeout is not None else None
-            if mns_endpoint is not None and not opts.urn:
-                warnings.warn("""Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""", DeprecationWarning)
-                pulumi.log.warn("""mns_endpoint is deprecated: Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""")
             __props__.__dict__["mns_endpoint"] = mns_endpoint
-            if ots_instance_name is not None and not opts.urn:
-                warnings.warn("""Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.""", DeprecationWarning)
-                pulumi.log.warn("""ots_instance_name is deprecated: Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.""")
             __props__.__dict__["ots_instance_name"] = ots_instance_name
             if profile is None:
                 profile = _utilities.get_env('ALICLOUD_PROFILE')

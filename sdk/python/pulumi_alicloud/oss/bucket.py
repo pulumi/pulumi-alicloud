@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -54,45 +54,88 @@ class BucketArgs:
         :param pulumi.Input['BucketVersioningArgs'] versioning: A state of versioning. See `versioning` below.
         :param pulumi.Input['BucketWebsiteArgs'] website: A website configuration. See `website` below.
         """
+        BucketArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_monitor=access_monitor,
+            acl=acl,
+            bucket=bucket,
+            cors_rules=cors_rules,
+            force_destroy=force_destroy,
+            lifecycle_rule_allow_same_action_overlap=lifecycle_rule_allow_same_action_overlap,
+            lifecycle_rules=lifecycle_rules,
+            logging=logging,
+            logging_isenable=logging_isenable,
+            policy=policy,
+            redundancy_type=redundancy_type,
+            referer_config=referer_config,
+            server_side_encryption_rule=server_side_encryption_rule,
+            storage_class=storage_class,
+            tags=tags,
+            transfer_acceleration=transfer_acceleration,
+            versioning=versioning,
+            website=website,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_monitor: Optional[pulumi.Input['BucketAccessMonitorArgs']] = None,
+             acl: Optional[pulumi.Input[str]] = None,
+             bucket: Optional[pulumi.Input[str]] = None,
+             cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             lifecycle_rule_allow_same_action_overlap: Optional[pulumi.Input[bool]] = None,
+             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
+             logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
+             logging_isenable: Optional[pulumi.Input[bool]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             redundancy_type: Optional[pulumi.Input[str]] = None,
+             referer_config: Optional[pulumi.Input['BucketRefererConfigArgs']] = None,
+             server_side_encryption_rule: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']] = None,
+             storage_class: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             transfer_acceleration: Optional[pulumi.Input['BucketTransferAccelerationArgs']] = None,
+             versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
+             website: Optional[pulumi.Input['BucketWebsiteArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_monitor is not None:
-            pulumi.set(__self__, "access_monitor", access_monitor)
+            _setter("access_monitor", access_monitor)
         if acl is not None:
-            pulumi.set(__self__, "acl", acl)
+            _setter("acl", acl)
         if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
+            _setter("bucket", bucket)
         if cors_rules is not None:
-            pulumi.set(__self__, "cors_rules", cors_rules)
+            _setter("cors_rules", cors_rules)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if lifecycle_rule_allow_same_action_overlap is not None:
-            pulumi.set(__self__, "lifecycle_rule_allow_same_action_overlap", lifecycle_rule_allow_same_action_overlap)
+            _setter("lifecycle_rule_allow_same_action_overlap", lifecycle_rule_allow_same_action_overlap)
         if lifecycle_rules is not None:
-            pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
+            _setter("lifecycle_rules", lifecycle_rules)
         if logging is not None:
-            pulumi.set(__self__, "logging", logging)
+            _setter("logging", logging)
         if logging_isenable is not None:
             warnings.warn("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""", DeprecationWarning)
             pulumi.log.warn("""logging_isenable is deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
         if logging_isenable is not None:
-            pulumi.set(__self__, "logging_isenable", logging_isenable)
+            _setter("logging_isenable", logging_isenable)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if redundancy_type is not None:
-            pulumi.set(__self__, "redundancy_type", redundancy_type)
+            _setter("redundancy_type", redundancy_type)
         if referer_config is not None:
-            pulumi.set(__self__, "referer_config", referer_config)
+            _setter("referer_config", referer_config)
         if server_side_encryption_rule is not None:
-            pulumi.set(__self__, "server_side_encryption_rule", server_side_encryption_rule)
+            _setter("server_side_encryption_rule", server_side_encryption_rule)
         if storage_class is not None:
-            pulumi.set(__self__, "storage_class", storage_class)
+            _setter("storage_class", storage_class)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if transfer_acceleration is not None:
-            pulumi.set(__self__, "transfer_acceleration", transfer_acceleration)
+            _setter("transfer_acceleration", transfer_acceleration)
         if versioning is not None:
-            pulumi.set(__self__, "versioning", versioning)
+            _setter("versioning", versioning)
         if website is not None:
-            pulumi.set(__self__, "website", website)
+            _setter("website", website)
 
     @property
     @pulumi.getter(name="accessMonitor")
@@ -362,55 +405,108 @@ class _BucketState:
         :param pulumi.Input['BucketVersioningArgs'] versioning: A state of versioning. See `versioning` below.
         :param pulumi.Input['BucketWebsiteArgs'] website: A website configuration. See `website` below.
         """
+        _BucketState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_monitor=access_monitor,
+            acl=acl,
+            bucket=bucket,
+            cors_rules=cors_rules,
+            creation_date=creation_date,
+            extranet_endpoint=extranet_endpoint,
+            force_destroy=force_destroy,
+            intranet_endpoint=intranet_endpoint,
+            lifecycle_rule_allow_same_action_overlap=lifecycle_rule_allow_same_action_overlap,
+            lifecycle_rules=lifecycle_rules,
+            location=location,
+            logging=logging,
+            logging_isenable=logging_isenable,
+            owner=owner,
+            policy=policy,
+            redundancy_type=redundancy_type,
+            referer_config=referer_config,
+            server_side_encryption_rule=server_side_encryption_rule,
+            storage_class=storage_class,
+            tags=tags,
+            transfer_acceleration=transfer_acceleration,
+            versioning=versioning,
+            website=website,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_monitor: Optional[pulumi.Input['BucketAccessMonitorArgs']] = None,
+             acl: Optional[pulumi.Input[str]] = None,
+             bucket: Optional[pulumi.Input[str]] = None,
+             cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsRuleArgs']]]] = None,
+             creation_date: Optional[pulumi.Input[str]] = None,
+             extranet_endpoint: Optional[pulumi.Input[str]] = None,
+             force_destroy: Optional[pulumi.Input[bool]] = None,
+             intranet_endpoint: Optional[pulumi.Input[str]] = None,
+             lifecycle_rule_allow_same_action_overlap: Optional[pulumi.Input[bool]] = None,
+             lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketLifecycleRuleArgs']]]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             logging: Optional[pulumi.Input['BucketLoggingArgs']] = None,
+             logging_isenable: Optional[pulumi.Input[bool]] = None,
+             owner: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             redundancy_type: Optional[pulumi.Input[str]] = None,
+             referer_config: Optional[pulumi.Input['BucketRefererConfigArgs']] = None,
+             server_side_encryption_rule: Optional[pulumi.Input['BucketServerSideEncryptionRuleArgs']] = None,
+             storage_class: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             transfer_acceleration: Optional[pulumi.Input['BucketTransferAccelerationArgs']] = None,
+             versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
+             website: Optional[pulumi.Input['BucketWebsiteArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_monitor is not None:
-            pulumi.set(__self__, "access_monitor", access_monitor)
+            _setter("access_monitor", access_monitor)
         if acl is not None:
-            pulumi.set(__self__, "acl", acl)
+            _setter("acl", acl)
         if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
+            _setter("bucket", bucket)
         if cors_rules is not None:
-            pulumi.set(__self__, "cors_rules", cors_rules)
+            _setter("cors_rules", cors_rules)
         if creation_date is not None:
-            pulumi.set(__self__, "creation_date", creation_date)
+            _setter("creation_date", creation_date)
         if extranet_endpoint is not None:
-            pulumi.set(__self__, "extranet_endpoint", extranet_endpoint)
+            _setter("extranet_endpoint", extranet_endpoint)
         if force_destroy is not None:
-            pulumi.set(__self__, "force_destroy", force_destroy)
+            _setter("force_destroy", force_destroy)
         if intranet_endpoint is not None:
-            pulumi.set(__self__, "intranet_endpoint", intranet_endpoint)
+            _setter("intranet_endpoint", intranet_endpoint)
         if lifecycle_rule_allow_same_action_overlap is not None:
-            pulumi.set(__self__, "lifecycle_rule_allow_same_action_overlap", lifecycle_rule_allow_same_action_overlap)
+            _setter("lifecycle_rule_allow_same_action_overlap", lifecycle_rule_allow_same_action_overlap)
         if lifecycle_rules is not None:
-            pulumi.set(__self__, "lifecycle_rules", lifecycle_rules)
+            _setter("lifecycle_rules", lifecycle_rules)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if logging is not None:
-            pulumi.set(__self__, "logging", logging)
+            _setter("logging", logging)
         if logging_isenable is not None:
             warnings.warn("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""", DeprecationWarning)
             pulumi.log.warn("""logging_isenable is deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
         if logging_isenable is not None:
-            pulumi.set(__self__, "logging_isenable", logging_isenable)
+            _setter("logging_isenable", logging_isenable)
         if owner is not None:
-            pulumi.set(__self__, "owner", owner)
+            _setter("owner", owner)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if redundancy_type is not None:
-            pulumi.set(__self__, "redundancy_type", redundancy_type)
+            _setter("redundancy_type", redundancy_type)
         if referer_config is not None:
-            pulumi.set(__self__, "referer_config", referer_config)
+            _setter("referer_config", referer_config)
         if server_side_encryption_rule is not None:
-            pulumi.set(__self__, "server_side_encryption_rule", server_side_encryption_rule)
+            _setter("server_side_encryption_rule", server_side_encryption_rule)
         if storage_class is not None:
-            pulumi.set(__self__, "storage_class", storage_class)
+            _setter("storage_class", storage_class)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if transfer_acceleration is not None:
-            pulumi.set(__self__, "transfer_acceleration", transfer_acceleration)
+            _setter("transfer_acceleration", transfer_acceleration)
         if versioning is not None:
-            pulumi.set(__self__, "versioning", versioning)
+            _setter("versioning", versioning)
         if website is not None:
-            pulumi.set(__self__, "website", website)
+            _setter("website", website)
 
     @property
     @pulumi.getter(name="accessMonitor")
@@ -779,6 +875,10 @@ class Bucket(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BucketArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -811,6 +911,11 @@ class Bucket(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BucketArgs.__new__(BucketArgs)
 
+            if access_monitor is not None and not isinstance(access_monitor, BucketAccessMonitorArgs):
+                access_monitor = access_monitor or {}
+                def _setter(key, value):
+                    access_monitor[key] = value
+                BucketAccessMonitorArgs._configure(_setter, **access_monitor)
             __props__.__dict__["access_monitor"] = access_monitor
             __props__.__dict__["acl"] = acl
             __props__.__dict__["bucket"] = bucket
@@ -818,19 +923,46 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["lifecycle_rule_allow_same_action_overlap"] = lifecycle_rule_allow_same_action_overlap
             __props__.__dict__["lifecycle_rules"] = lifecycle_rules
+            if logging is not None and not isinstance(logging, BucketLoggingArgs):
+                logging = logging or {}
+                def _setter(key, value):
+                    logging[key] = value
+                BucketLoggingArgs._configure(_setter, **logging)
             __props__.__dict__["logging"] = logging
-            if logging_isenable is not None and not opts.urn:
-                warnings.warn("""Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""", DeprecationWarning)
-                pulumi.log.warn("""logging_isenable is deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.""")
             __props__.__dict__["logging_isenable"] = logging_isenable
             __props__.__dict__["policy"] = policy
             __props__.__dict__["redundancy_type"] = redundancy_type
+            if referer_config is not None and not isinstance(referer_config, BucketRefererConfigArgs):
+                referer_config = referer_config or {}
+                def _setter(key, value):
+                    referer_config[key] = value
+                BucketRefererConfigArgs._configure(_setter, **referer_config)
             __props__.__dict__["referer_config"] = referer_config
+            if server_side_encryption_rule is not None and not isinstance(server_side_encryption_rule, BucketServerSideEncryptionRuleArgs):
+                server_side_encryption_rule = server_side_encryption_rule or {}
+                def _setter(key, value):
+                    server_side_encryption_rule[key] = value
+                BucketServerSideEncryptionRuleArgs._configure(_setter, **server_side_encryption_rule)
             __props__.__dict__["server_side_encryption_rule"] = server_side_encryption_rule
             __props__.__dict__["storage_class"] = storage_class
             __props__.__dict__["tags"] = tags
+            if transfer_acceleration is not None and not isinstance(transfer_acceleration, BucketTransferAccelerationArgs):
+                transfer_acceleration = transfer_acceleration or {}
+                def _setter(key, value):
+                    transfer_acceleration[key] = value
+                BucketTransferAccelerationArgs._configure(_setter, **transfer_acceleration)
             __props__.__dict__["transfer_acceleration"] = transfer_acceleration
+            if versioning is not None and not isinstance(versioning, BucketVersioningArgs):
+                versioning = versioning or {}
+                def _setter(key, value):
+                    versioning[key] = value
+                BucketVersioningArgs._configure(_setter, **versioning)
             __props__.__dict__["versioning"] = versioning
+            if website is not None and not isinstance(website, BucketWebsiteArgs):
+                website = website or {}
+                def _setter(key, value):
+                    website[key] = value
+                BucketWebsiteArgs._configure(_setter, **website)
             __props__.__dict__["website"] = website
             __props__.__dict__["creation_date"] = None
             __props__.__dict__["extranet_endpoint"] = None

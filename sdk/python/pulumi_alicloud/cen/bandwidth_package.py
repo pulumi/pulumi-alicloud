@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BandwidthPackageArgs', 'BandwidthPackage']
@@ -42,34 +42,61 @@ class BandwidthPackageArgs:
         :param pulumi.Input[int] period: The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
+        BandwidthPackageArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            cen_bandwidth_package_name=cen_bandwidth_package_name,
+            charge_type=charge_type,
+            description=description,
+            geographic_region_a_id=geographic_region_a_id,
+            geographic_region_b_id=geographic_region_b_id,
+            geographic_region_ids=geographic_region_ids,
+            name=name,
+            payment_type=payment_type,
+            period=period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: pulumi.Input[int],
+             cen_bandwidth_package_name: Optional[pulumi.Input[str]] = None,
+             charge_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             geographic_region_a_id: Optional[pulumi.Input[str]] = None,
+             geographic_region_b_id: Optional[pulumi.Input[str]] = None,
+             geographic_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
         if cen_bandwidth_package_name is not None:
-            pulumi.set(__self__, "cen_bandwidth_package_name", cen_bandwidth_package_name)
+            _setter("cen_bandwidth_package_name", cen_bandwidth_package_name)
         if charge_type is not None:
             warnings.warn("""Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""", DeprecationWarning)
             pulumi.log.warn("""charge_type is deprecated: Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""")
         if charge_type is not None:
-            pulumi.set(__self__, "charge_type", charge_type)
+            _setter("charge_type", charge_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if geographic_region_a_id is not None:
-            pulumi.set(__self__, "geographic_region_a_id", geographic_region_a_id)
+            _setter("geographic_region_a_id", geographic_region_a_id)
         if geographic_region_b_id is not None:
-            pulumi.set(__self__, "geographic_region_b_id", geographic_region_b_id)
+            _setter("geographic_region_b_id", geographic_region_b_id)
         if geographic_region_ids is not None:
             warnings.warn("""Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""geographic_region_ids is deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""")
         if geographic_region_ids is not None:
-            pulumi.set(__self__, "geographic_region_ids", geographic_region_ids)
+            _setter("geographic_region_ids", geographic_region_ids)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
 
     @property
     @pulumi.getter
@@ -241,39 +268,70 @@ class _BandwidthPackageState:
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] status: The association status of the bandwidth package.
         """
+        _BandwidthPackageState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            cen_bandwidth_package_name=cen_bandwidth_package_name,
+            charge_type=charge_type,
+            description=description,
+            expired_time=expired_time,
+            geographic_region_a_id=geographic_region_a_id,
+            geographic_region_b_id=geographic_region_b_id,
+            geographic_region_ids=geographic_region_ids,
+            name=name,
+            payment_type=payment_type,
+            period=period,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             cen_bandwidth_package_name: Optional[pulumi.Input[str]] = None,
+             charge_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             expired_time: Optional[pulumi.Input[str]] = None,
+             geographic_region_a_id: Optional[pulumi.Input[str]] = None,
+             geographic_region_b_id: Optional[pulumi.Input[str]] = None,
+             geographic_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if cen_bandwidth_package_name is not None:
-            pulumi.set(__self__, "cen_bandwidth_package_name", cen_bandwidth_package_name)
+            _setter("cen_bandwidth_package_name", cen_bandwidth_package_name)
         if charge_type is not None:
             warnings.warn("""Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""", DeprecationWarning)
             pulumi.log.warn("""charge_type is deprecated: Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""")
         if charge_type is not None:
-            pulumi.set(__self__, "charge_type", charge_type)
+            _setter("charge_type", charge_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expired_time is not None:
-            pulumi.set(__self__, "expired_time", expired_time)
+            _setter("expired_time", expired_time)
         if geographic_region_a_id is not None:
-            pulumi.set(__self__, "geographic_region_a_id", geographic_region_a_id)
+            _setter("geographic_region_a_id", geographic_region_a_id)
         if geographic_region_b_id is not None:
-            pulumi.set(__self__, "geographic_region_b_id", geographic_region_b_id)
+            _setter("geographic_region_b_id", geographic_region_b_id)
         if geographic_region_ids is not None:
             warnings.warn("""Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""geographic_region_ids is deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""")
         if geographic_region_ids is not None:
-            pulumi.set(__self__, "geographic_region_ids", geographic_region_ids)
+            _setter("geographic_region_ids", geographic_region_ids)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -502,6 +560,10 @@ class BandwidthPackage(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BandwidthPackageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -530,20 +592,11 @@ class BandwidthPackage(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bandwidth'")
             __props__.__dict__["bandwidth"] = bandwidth
             __props__.__dict__["cen_bandwidth_package_name"] = cen_bandwidth_package_name
-            if charge_type is not None and not opts.urn:
-                warnings.warn("""Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""", DeprecationWarning)
-                pulumi.log.warn("""charge_type is deprecated: Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""")
             __props__.__dict__["charge_type"] = charge_type
             __props__.__dict__["description"] = description
             __props__.__dict__["geographic_region_a_id"] = geographic_region_a_id
             __props__.__dict__["geographic_region_b_id"] = geographic_region_b_id
-            if geographic_region_ids is not None and not opts.urn:
-                warnings.warn("""Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""", DeprecationWarning)
-                pulumi.log.warn("""geographic_region_ids is deprecated: Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""")
             __props__.__dict__["geographic_region_ids"] = geographic_region_ids
-            if name is not None and not opts.urn:
-                warnings.warn("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""")
             __props__.__dict__["name"] = name
             __props__.__dict__["payment_type"] = payment_type
             __props__.__dict__["period"] = period

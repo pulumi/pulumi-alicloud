@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,16 +27,31 @@ class ServerGroupArgs:
         :param pulumi.Input[str] name: Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
         :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
         """
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        ServerGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            load_balancer_id=load_balancer_id,
+            delete_protection_validation=delete_protection_validation,
+            name=name,
+            servers=servers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             load_balancer_id: pulumi.Input[str],
+             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("load_balancer_id", load_balancer_id)
         if delete_protection_validation is not None:
-            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+            _setter("delete_protection_validation", delete_protection_validation)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if servers is not None:
             warnings.warn("""Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""", DeprecationWarning)
             pulumi.log.warn("""servers is deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""")
         if servers is not None:
-            pulumi.set(__self__, "servers", servers)
+            _setter("servers", servers)
 
     @property
     @pulumi.getter(name="loadBalancerId")
@@ -104,17 +119,32 @@ class _ServerGroupState:
         :param pulumi.Input[str] name: Name of the virtual server group. Our plugin provides a default name: "tf-server-group".
         :param pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]] servers: A list of ECS instances to be added. **NOTE:** Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'. At most 20 ECS instances can be supported in one resource. It contains three sub-fields as `Block server` follows.
         """
+        _ServerGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delete_protection_validation=delete_protection_validation,
+            load_balancer_id=load_balancer_id,
+            name=name,
+            servers=servers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             servers: Optional[pulumi.Input[Sequence[pulumi.Input['ServerGroupServerArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if delete_protection_validation is not None:
-            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+            _setter("delete_protection_validation", delete_protection_validation)
         if load_balancer_id is not None:
-            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+            _setter("load_balancer_id", load_balancer_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if servers is not None:
             warnings.warn("""Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""", DeprecationWarning)
             pulumi.log.warn("""servers is deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""")
         if servers is not None:
-            pulumi.set(__self__, "servers", servers)
+            _setter("servers", servers)
 
     @property
     @pulumi.getter(name="deleteProtectionValidation")
@@ -317,6 +347,10 @@ class ServerGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServerGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -340,9 +374,6 @@ class ServerGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'load_balancer_id'")
             __props__.__dict__["load_balancer_id"] = load_balancer_id
             __props__.__dict__["name"] = name
-            if servers is not None and not opts.urn:
-                warnings.warn("""Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""", DeprecationWarning)
-                pulumi.log.warn("""servers is deprecated: Field 'servers' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_server_group_server_attachment'.""")
             __props__.__dict__["servers"] = servers
         super(ServerGroup, __self__).__init__(
             'alicloud:slb/serverGroup:ServerGroup',

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DdosBgpInstanceArgs', 'DdosBgpInstance']
@@ -33,18 +33,41 @@ class DdosBgpInstanceArgs:
         :param pulumi.Input[int] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         :param pulumi.Input[str] type: Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "ip_count", ip_count)
-        pulumi.set(__self__, "ip_type", ip_type)
-        pulumi.set(__self__, "normal_bandwidth", normal_bandwidth)
+        DdosBgpInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            ip_count=ip_count,
+            ip_type=ip_type,
+            normal_bandwidth=normal_bandwidth,
+            base_bandwidth=base_bandwidth,
+            name=name,
+            period=period,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: pulumi.Input[int],
+             ip_count: pulumi.Input[int],
+             ip_type: pulumi.Input[str],
+             normal_bandwidth: pulumi.Input[int],
+             base_bandwidth: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("ip_count", ip_count)
+        _setter("ip_type", ip_type)
+        _setter("normal_bandwidth", normal_bandwidth)
         if base_bandwidth is not None:
-            pulumi.set(__self__, "base_bandwidth", base_bandwidth)
+            _setter("base_bandwidth", base_bandwidth)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -165,22 +188,45 @@ class _DdosBgpInstanceState:
         :param pulumi.Input[int] period: The duration that you will buy Ddosbgp instance (in month). Valid values: [1~9], 12, 24, 36. Default to 12. At present, the provider does not support modify "period".
         :param pulumi.Input[str] type: Type of the instance. Valid values: `Enterprise`, `Professional`. Default to `Enterprise`
         """
+        _DdosBgpInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            base_bandwidth=base_bandwidth,
+            ip_count=ip_count,
+            ip_type=ip_type,
+            name=name,
+            normal_bandwidth=normal_bandwidth,
+            period=period,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             base_bandwidth: Optional[pulumi.Input[int]] = None,
+             ip_count: Optional[pulumi.Input[int]] = None,
+             ip_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             normal_bandwidth: Optional[pulumi.Input[int]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if base_bandwidth is not None:
-            pulumi.set(__self__, "base_bandwidth", base_bandwidth)
+            _setter("base_bandwidth", base_bandwidth)
         if ip_count is not None:
-            pulumi.set(__self__, "ip_count", ip_count)
+            _setter("ip_count", ip_count)
         if ip_type is not None:
-            pulumi.set(__self__, "ip_type", ip_type)
+            _setter("ip_type", ip_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if normal_bandwidth is not None:
-            pulumi.set(__self__, "normal_bandwidth", normal_bandwidth)
+            _setter("normal_bandwidth", normal_bandwidth)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -392,6 +438,10 @@ class DdosBgpInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DdosBgpInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -44,12 +44,25 @@ class StudioApplicationInstance(dict):
         :param str node_name: The name of the instance.
         :param str node_type: The type of the instance.
         """
+        StudioApplicationInstance._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            node_name=node_name,
+            node_type=node_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             node_name: Optional[str] = None,
+             node_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
         if node_type is not None:
-            pulumi.set(__self__, "node_type", node_type)
+            _setter("node_type", node_type)
 
     @property
     @pulumi.getter
@@ -97,14 +110,37 @@ class GetStudioApplicationsApplicationResult(dict):
         :param str status: The status of the Application. Valid values: `success`, `release`.
         :param str topo_url: The topo url of the Application.
         """
-        pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "application_name", application_name)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_url", image_url)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "topo_url", topo_url)
+        GetStudioApplicationsApplicationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            application_name=application_name,
+            create_time=create_time,
+            id=id,
+            image_url=image_url,
+            resource_group_id=resource_group_id,
+            status=status,
+            topo_url=topo_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: str,
+             application_name: str,
+             create_time: str,
+             id: str,
+             image_url: str,
+             resource_group_id: str,
+             status: str,
+             topo_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("application_id", application_id)
+        _setter("application_name", application_name)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("image_url", image_url)
+        _setter("resource_group_id", resource_group_id)
+        _setter("status", status)
+        _setter("topo_url", topo_url)
 
     @property
     @pulumi.getter(name="applicationId")

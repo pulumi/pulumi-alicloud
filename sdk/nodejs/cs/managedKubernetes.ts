@@ -180,7 +180,7 @@ export class ManagedKubernetes extends pulumi.CustomResource {
      */
     public readonly maintenanceWindow!: pulumi.Output<outputs.cs.ManagedKubernetesMaintenanceWindow>;
     /**
-     * The kubernetes cluster's name. It is unique in one Alicloud account.
+     * This parameter specifies the name of the component.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly namePrefix!: pulumi.Output<string | undefined>;
@@ -746,7 +746,7 @@ export interface ManagedKubernetesState {
      */
     maintenanceWindow?: pulumi.Input<inputs.cs.ManagedKubernetesMaintenanceWindow>;
     /**
-     * The kubernetes cluster's name. It is unique in one Alicloud account.
+     * This parameter specifies the name of the component.
      */
     name?: pulumi.Input<string>;
     namePrefix?: pulumi.Input<string>;
@@ -1123,7 +1123,7 @@ export interface ManagedKubernetesArgs {
      */
     maintenanceWindow?: pulumi.Input<inputs.cs.ManagedKubernetesMaintenanceWindow>;
     /**
-     * The kubernetes cluster's name. It is unique in one Alicloud account.
+     * This parameter specifies the name of the component.
      */
     name?: pulumi.Input<string>;
     namePrefix?: pulumi.Input<string>;

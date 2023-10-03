@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IntegrationExporterArgs', 'IntegrationExporter']
@@ -23,9 +23,22 @@ class IntegrationExporterArgs:
         :param pulumi.Input[str] integration_type: The type of prometheus integration.
         :param pulumi.Input[str] param: Exporter configuration parameter json string.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "integration_type", integration_type)
-        pulumi.set(__self__, "param", param)
+        IntegrationExporterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            integration_type=integration_type,
+            param=param,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: pulumi.Input[str],
+             integration_type: pulumi.Input[str],
+             param: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("integration_type", integration_type)
+        _setter("param", param)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -78,14 +91,29 @@ class _IntegrationExporterState:
         :param pulumi.Input[str] integration_type: The type of prometheus integration.
         :param pulumi.Input[str] param: Exporter configuration parameter json string.
         """
+        _IntegrationExporterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            instance_id=instance_id,
+            integration_type=integration_type,
+            param=param,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[int]] = None,
+             integration_type: Optional[pulumi.Input[str]] = None,
+             param: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if integration_type is not None:
-            pulumi.set(__self__, "integration_type", integration_type)
+            _setter("integration_type", integration_type)
         if param is not None:
-            pulumi.set(__self__, "param", param)
+            _setter("param", param)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -279,6 +307,10 @@ class IntegrationExporter(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IntegrationExporterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,14 +31,31 @@ class AppTemplateArgs:
                * standardRoom: Model Room.
         :param pulumi.Input[str] scene: Application Template scenario. Valid values: ["business", "classroom"].
         """
-        pulumi.set(__self__, "app_template_name", app_template_name)
-        pulumi.set(__self__, "component_lists", component_lists)
+        AppTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_template_name=app_template_name,
+            component_lists=component_lists,
+            config_lists=config_lists,
+            integration_mode=integration_mode,
+            scene=scene,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_template_name: pulumi.Input[str],
+             component_lists: pulumi.Input[Sequence[pulumi.Input[str]]],
+             config_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]] = None,
+             integration_mode: Optional[pulumi.Input[str]] = None,
+             scene: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_template_name", app_template_name)
+        _setter("component_lists", component_lists)
         if config_lists is not None:
-            pulumi.set(__self__, "config_lists", config_lists)
+            _setter("config_lists", config_lists)
         if integration_mode is not None:
-            pulumi.set(__self__, "integration_mode", integration_mode)
+            _setter("integration_mode", integration_mode)
         if scene is not None:
-            pulumi.set(__self__, "scene", scene)
+            _setter("scene", scene)
 
     @property
     @pulumi.getter(name="appTemplateName")
@@ -123,18 +140,37 @@ class _AppTemplateState:
         :param pulumi.Input[str] scene: Application Template scenario. Valid values: ["business", "classroom"].
         :param pulumi.Input[str] status: Application template usage status.
         """
+        _AppTemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_template_name=app_template_name,
+            component_lists=component_lists,
+            config_lists=config_lists,
+            integration_mode=integration_mode,
+            scene=scene,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_template_name: Optional[pulumi.Input[str]] = None,
+             component_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             config_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]] = None,
+             integration_mode: Optional[pulumi.Input[str]] = None,
+             scene: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if app_template_name is not None:
-            pulumi.set(__self__, "app_template_name", app_template_name)
+            _setter("app_template_name", app_template_name)
         if component_lists is not None:
-            pulumi.set(__self__, "component_lists", component_lists)
+            _setter("component_lists", component_lists)
         if config_lists is not None:
-            pulumi.set(__self__, "config_lists", config_lists)
+            _setter("config_lists", config_lists)
         if integration_mode is not None:
-            pulumi.set(__self__, "integration_mode", integration_mode)
+            _setter("integration_mode", integration_mode)
         if scene is not None:
-            pulumi.set(__self__, "scene", scene)
+            _setter("scene", scene)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="appTemplateName")
@@ -314,6 +350,10 @@ class AppTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AppTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

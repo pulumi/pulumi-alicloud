@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Cms.Inputs
     public sealed class HybridMonitorSlsTaskSlsProcessConfigExpressGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The alias of the aggregation result.
+        /// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         /// </summary>
         [Input("alias")]
         public Input<string>? Alias { get; set; }
 
         /// <summary>
-        /// The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
+        /// The extended field that specifies the result of basic operations that are performed on aggregation results.
         /// </summary>
         [Input("express")]
         public Input<string>? Express { get; set; }

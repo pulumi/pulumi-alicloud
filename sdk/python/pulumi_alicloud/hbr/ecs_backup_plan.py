@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsBackupPlanArgs', 'EcsBackupPlan']
@@ -51,37 +51,78 @@ class EcsBackupPlanArgs:
         :param pulumi.Input[str] speed_limit: Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         :param pulumi.Input[bool] update_paths: Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         """
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "ecs_backup_plan_name", ecs_backup_plan_name)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "retention", retention)
-        pulumi.set(__self__, "schedule", schedule)
-        pulumi.set(__self__, "vault_id", vault_id)
+        EcsBackupPlanArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_type=backup_type,
+            ecs_backup_plan_name=ecs_backup_plan_name,
+            instance_id=instance_id,
+            retention=retention,
+            schedule=schedule,
+            vault_id=vault_id,
+            cross_account_role_name=cross_account_role_name,
+            cross_account_type=cross_account_type,
+            cross_account_user_id=cross_account_user_id,
+            detail=detail,
+            disabled=disabled,
+            exclude=exclude,
+            include=include,
+            options=options,
+            paths=paths,
+            speed_limit=speed_limit,
+            update_paths=update_paths,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_type: pulumi.Input[str],
+             ecs_backup_plan_name: pulumi.Input[str],
+             instance_id: pulumi.Input[str],
+             retention: pulumi.Input[str],
+             schedule: pulumi.Input[str],
+             vault_id: pulumi.Input[str],
+             cross_account_role_name: Optional[pulumi.Input[str]] = None,
+             cross_account_type: Optional[pulumi.Input[str]] = None,
+             cross_account_user_id: Optional[pulumi.Input[int]] = None,
+             detail: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             exclude: Optional[pulumi.Input[str]] = None,
+             include: Optional[pulumi.Input[str]] = None,
+             options: Optional[pulumi.Input[str]] = None,
+             paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             speed_limit: Optional[pulumi.Input[str]] = None,
+             update_paths: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_type", backup_type)
+        _setter("ecs_backup_plan_name", ecs_backup_plan_name)
+        _setter("instance_id", instance_id)
+        _setter("retention", retention)
+        _setter("schedule", schedule)
+        _setter("vault_id", vault_id)
         if cross_account_role_name is not None:
-            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+            _setter("cross_account_role_name", cross_account_role_name)
         if cross_account_type is not None:
-            pulumi.set(__self__, "cross_account_type", cross_account_type)
+            _setter("cross_account_type", cross_account_type)
         if cross_account_user_id is not None:
-            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
+            _setter("cross_account_user_id", cross_account_user_id)
         if detail is not None:
-            pulumi.set(__self__, "detail", detail)
+            _setter("detail", detail)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if exclude is not None:
-            pulumi.set(__self__, "exclude", exclude)
+            _setter("exclude", exclude)
         if include is not None:
-            pulumi.set(__self__, "include", include)
+            _setter("include", include)
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
         if paths is not None:
-            pulumi.set(__self__, "paths", paths)
+            _setter("paths", paths)
         if speed_limit is not None:
-            pulumi.set(__self__, "speed_limit", speed_limit)
+            _setter("speed_limit", speed_limit)
         if update_paths is not None:
             warnings.warn("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""", DeprecationWarning)
             pulumi.log.warn("""update_paths is deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
         if update_paths is not None:
-            pulumi.set(__self__, "update_paths", update_paths)
+            _setter("update_paths", update_paths)
 
     @property
     @pulumi.getter(name="backupType")
@@ -331,43 +372,84 @@ class _EcsBackupPlanState:
         :param pulumi.Input[bool] update_paths: Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         :param pulumi.Input[str] vault_id: The ID of Backup vault.
         """
+        _EcsBackupPlanState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_type=backup_type,
+            cross_account_role_name=cross_account_role_name,
+            cross_account_type=cross_account_type,
+            cross_account_user_id=cross_account_user_id,
+            detail=detail,
+            disabled=disabled,
+            ecs_backup_plan_name=ecs_backup_plan_name,
+            exclude=exclude,
+            include=include,
+            instance_id=instance_id,
+            options=options,
+            paths=paths,
+            retention=retention,
+            schedule=schedule,
+            speed_limit=speed_limit,
+            update_paths=update_paths,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_type: Optional[pulumi.Input[str]] = None,
+             cross_account_role_name: Optional[pulumi.Input[str]] = None,
+             cross_account_type: Optional[pulumi.Input[str]] = None,
+             cross_account_user_id: Optional[pulumi.Input[int]] = None,
+             detail: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             ecs_backup_plan_name: Optional[pulumi.Input[str]] = None,
+             exclude: Optional[pulumi.Input[str]] = None,
+             include: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             options: Optional[pulumi.Input[str]] = None,
+             paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             retention: Optional[pulumi.Input[str]] = None,
+             schedule: Optional[pulumi.Input[str]] = None,
+             speed_limit: Optional[pulumi.Input[str]] = None,
+             update_paths: Optional[pulumi.Input[bool]] = None,
+             vault_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backup_type is not None:
-            pulumi.set(__self__, "backup_type", backup_type)
+            _setter("backup_type", backup_type)
         if cross_account_role_name is not None:
-            pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
+            _setter("cross_account_role_name", cross_account_role_name)
         if cross_account_type is not None:
-            pulumi.set(__self__, "cross_account_type", cross_account_type)
+            _setter("cross_account_type", cross_account_type)
         if cross_account_user_id is not None:
-            pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
+            _setter("cross_account_user_id", cross_account_user_id)
         if detail is not None:
-            pulumi.set(__self__, "detail", detail)
+            _setter("detail", detail)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if ecs_backup_plan_name is not None:
-            pulumi.set(__self__, "ecs_backup_plan_name", ecs_backup_plan_name)
+            _setter("ecs_backup_plan_name", ecs_backup_plan_name)
         if exclude is not None:
-            pulumi.set(__self__, "exclude", exclude)
+            _setter("exclude", exclude)
         if include is not None:
-            pulumi.set(__self__, "include", include)
+            _setter("include", include)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if options is not None:
-            pulumi.set(__self__, "options", options)
+            _setter("options", options)
         if paths is not None:
-            pulumi.set(__self__, "paths", paths)
+            _setter("paths", paths)
         if retention is not None:
-            pulumi.set(__self__, "retention", retention)
+            _setter("retention", retention)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if speed_limit is not None:
-            pulumi.set(__self__, "speed_limit", speed_limit)
+            _setter("speed_limit", speed_limit)
         if update_paths is not None:
             warnings.warn("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""", DeprecationWarning)
             pulumi.log.warn("""update_paths is deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
         if update_paths is not None:
-            pulumi.set(__self__, "update_paths", update_paths)
+            _setter("update_paths", update_paths)
         if vault_id is not None:
-            pulumi.set(__self__, "vault_id", vault_id)
+            _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupType")
@@ -796,6 +878,10 @@ class EcsBackupPlan(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EcsBackupPlanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -852,9 +938,6 @@ class EcsBackupPlan(pulumi.CustomResource):
                 raise TypeError("Missing required property 'schedule'")
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["speed_limit"] = speed_limit
-            if update_paths is not None and not opts.urn:
-                warnings.warn("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""", DeprecationWarning)
-                pulumi.log.warn("""update_paths is deprecated: Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
             __props__.__dict__["update_paths"] = update_paths
             if vault_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vault_id'")

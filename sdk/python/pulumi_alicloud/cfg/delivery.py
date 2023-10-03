@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DeliveryArgs', 'Delivery']
@@ -42,24 +42,51 @@ class DeliveryArgs:
                * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
         :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
         """
-        pulumi.set(__self__, "delivery_channel_target_arn", delivery_channel_target_arn)
-        pulumi.set(__self__, "delivery_channel_type", delivery_channel_type)
+        DeliveryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delivery_channel_target_arn=delivery_channel_target_arn,
+            delivery_channel_type=delivery_channel_type,
+            configuration_item_change_notification=configuration_item_change_notification,
+            configuration_snapshot=configuration_snapshot,
+            delivery_channel_condition=delivery_channel_condition,
+            delivery_channel_name=delivery_channel_name,
+            description=description,
+            non_compliant_notification=non_compliant_notification,
+            oversized_data_oss_target_arn=oversized_data_oss_target_arn,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delivery_channel_target_arn: pulumi.Input[str],
+             delivery_channel_type: pulumi.Input[str],
+             configuration_item_change_notification: Optional[pulumi.Input[bool]] = None,
+             configuration_snapshot: Optional[pulumi.Input[bool]] = None,
+             delivery_channel_condition: Optional[pulumi.Input[str]] = None,
+             delivery_channel_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             non_compliant_notification: Optional[pulumi.Input[bool]] = None,
+             oversized_data_oss_target_arn: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("delivery_channel_target_arn", delivery_channel_target_arn)
+        _setter("delivery_channel_type", delivery_channel_type)
         if configuration_item_change_notification is not None:
-            pulumi.set(__self__, "configuration_item_change_notification", configuration_item_change_notification)
+            _setter("configuration_item_change_notification", configuration_item_change_notification)
         if configuration_snapshot is not None:
-            pulumi.set(__self__, "configuration_snapshot", configuration_snapshot)
+            _setter("configuration_snapshot", configuration_snapshot)
         if delivery_channel_condition is not None:
-            pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
+            _setter("delivery_channel_condition", delivery_channel_condition)
         if delivery_channel_name is not None:
-            pulumi.set(__self__, "delivery_channel_name", delivery_channel_name)
+            _setter("delivery_channel_name", delivery_channel_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if non_compliant_notification is not None:
-            pulumi.set(__self__, "non_compliant_notification", non_compliant_notification)
+            _setter("non_compliant_notification", non_compliant_notification)
         if oversized_data_oss_target_arn is not None:
-            pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
+            _setter("oversized_data_oss_target_arn", oversized_data_oss_target_arn)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="deliveryChannelTargetArn")
@@ -218,26 +245,53 @@ class _DeliveryState:
                * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
         :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
         """
+        _DeliveryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            configuration_item_change_notification=configuration_item_change_notification,
+            configuration_snapshot=configuration_snapshot,
+            delivery_channel_condition=delivery_channel_condition,
+            delivery_channel_name=delivery_channel_name,
+            delivery_channel_target_arn=delivery_channel_target_arn,
+            delivery_channel_type=delivery_channel_type,
+            description=description,
+            non_compliant_notification=non_compliant_notification,
+            oversized_data_oss_target_arn=oversized_data_oss_target_arn,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             configuration_item_change_notification: Optional[pulumi.Input[bool]] = None,
+             configuration_snapshot: Optional[pulumi.Input[bool]] = None,
+             delivery_channel_condition: Optional[pulumi.Input[str]] = None,
+             delivery_channel_name: Optional[pulumi.Input[str]] = None,
+             delivery_channel_target_arn: Optional[pulumi.Input[str]] = None,
+             delivery_channel_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             non_compliant_notification: Optional[pulumi.Input[bool]] = None,
+             oversized_data_oss_target_arn: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if configuration_item_change_notification is not None:
-            pulumi.set(__self__, "configuration_item_change_notification", configuration_item_change_notification)
+            _setter("configuration_item_change_notification", configuration_item_change_notification)
         if configuration_snapshot is not None:
-            pulumi.set(__self__, "configuration_snapshot", configuration_snapshot)
+            _setter("configuration_snapshot", configuration_snapshot)
         if delivery_channel_condition is not None:
-            pulumi.set(__self__, "delivery_channel_condition", delivery_channel_condition)
+            _setter("delivery_channel_condition", delivery_channel_condition)
         if delivery_channel_name is not None:
-            pulumi.set(__self__, "delivery_channel_name", delivery_channel_name)
+            _setter("delivery_channel_name", delivery_channel_name)
         if delivery_channel_target_arn is not None:
-            pulumi.set(__self__, "delivery_channel_target_arn", delivery_channel_target_arn)
+            _setter("delivery_channel_target_arn", delivery_channel_target_arn)
         if delivery_channel_type is not None:
-            pulumi.set(__self__, "delivery_channel_type", delivery_channel_type)
+            _setter("delivery_channel_type", delivery_channel_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if non_compliant_notification is not None:
-            pulumi.set(__self__, "non_compliant_notification", non_compliant_notification)
+            _setter("non_compliant_notification", non_compliant_notification)
         if oversized_data_oss_target_arn is not None:
-            pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
+            _setter("oversized_data_oss_target_arn", oversized_data_oss_target_arn)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="configurationItemChangeNotification")
@@ -495,6 +549,10 @@ class Delivery(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DeliveryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

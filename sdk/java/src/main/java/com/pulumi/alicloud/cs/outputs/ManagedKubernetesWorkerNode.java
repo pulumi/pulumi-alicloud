@@ -17,7 +17,7 @@ public final class ManagedKubernetesWorkerNode {
      */
     private @Nullable String id;
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return This parameter specifies the name of the component.
      * 
      */
     private @Nullable String name;
@@ -36,7 +36,7 @@ public final class ManagedKubernetesWorkerNode {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return This parameter specifies the name of the component.
      * 
      */
     public Optional<String> name() {

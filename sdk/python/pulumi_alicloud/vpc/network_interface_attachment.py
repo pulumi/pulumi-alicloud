@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NetworkInterfaceAttachmentArgs', 'NetworkInterfaceAttachment']
@@ -23,12 +23,27 @@ class NetworkInterfaceAttachmentArgs:
         :param pulumi.Input[str] instance_id: The instance ID to attach.
         :param pulumi.Input[str] network_interface_id: The ENI ID to attach.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
+        NetworkInterfaceAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            network_interface_id=network_interface_id,
+            trunk_network_instance_id=trunk_network_instance_id,
+            wait_for_network_configuration_ready=wait_for_network_configuration_ready,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: pulumi.Input[str],
+             network_interface_id: pulumi.Input[str],
+             trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
+             wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
+        _setter("network_interface_id", network_interface_id)
         if trunk_network_instance_id is not None:
-            pulumi.set(__self__, "trunk_network_instance_id", trunk_network_instance_id)
+            _setter("trunk_network_instance_id", trunk_network_instance_id)
         if wait_for_network_configuration_ready is not None:
-            pulumi.set(__self__, "wait_for_network_configuration_ready", wait_for_network_configuration_ready)
+            _setter("wait_for_network_configuration_ready", wait_for_network_configuration_ready)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -85,14 +100,29 @@ class _NetworkInterfaceAttachmentState:
         :param pulumi.Input[str] instance_id: The instance ID to attach.
         :param pulumi.Input[str] network_interface_id: The ENI ID to attach.
         """
+        _NetworkInterfaceAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            network_interface_id=network_interface_id,
+            trunk_network_instance_id=trunk_network_instance_id,
+            wait_for_network_configuration_ready=wait_for_network_configuration_ready,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             network_interface_id: Optional[pulumi.Input[str]] = None,
+             trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
+             wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if network_interface_id is not None:
-            pulumi.set(__self__, "network_interface_id", network_interface_id)
+            _setter("network_interface_id", network_interface_id)
         if trunk_network_instance_id is not None:
-            pulumi.set(__self__, "trunk_network_instance_id", trunk_network_instance_id)
+            _setter("trunk_network_instance_id", trunk_network_instance_id)
         if wait_for_network_configuration_ready is not None:
-            pulumi.set(__self__, "wait_for_network_configuration_ready", wait_for_network_configuration_ready)
+            _setter("wait_for_network_configuration_ready", wait_for_network_configuration_ready)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -198,6 +228,10 @@ class NetworkInterfaceAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkInterfaceAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

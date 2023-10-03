@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InterRegionTrafficQosQueueArgs', 'InterRegionTrafficQosQueue']
@@ -27,13 +27,30 @@ class InterRegionTrafficQosQueueArgs:
         :param pulumi.Input[str] inter_region_traffic_qos_queue_description: The description information of the traffic scheduling policy.
         :param pulumi.Input[str] inter_region_traffic_qos_queue_name: The name of the traffic scheduling policy.
         """
-        pulumi.set(__self__, "dscps", dscps)
-        pulumi.set(__self__, "remain_bandwidth_percent", remain_bandwidth_percent)
-        pulumi.set(__self__, "traffic_qos_policy_id", traffic_qos_policy_id)
+        InterRegionTrafficQosQueueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dscps=dscps,
+            remain_bandwidth_percent=remain_bandwidth_percent,
+            traffic_qos_policy_id=traffic_qos_policy_id,
+            inter_region_traffic_qos_queue_description=inter_region_traffic_qos_queue_description,
+            inter_region_traffic_qos_queue_name=inter_region_traffic_qos_queue_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dscps: pulumi.Input[Sequence[pulumi.Input[str]]],
+             remain_bandwidth_percent: pulumi.Input[int],
+             traffic_qos_policy_id: pulumi.Input[str],
+             inter_region_traffic_qos_queue_description: Optional[pulumi.Input[str]] = None,
+             inter_region_traffic_qos_queue_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dscps", dscps)
+        _setter("remain_bandwidth_percent", remain_bandwidth_percent)
+        _setter("traffic_qos_policy_id", traffic_qos_policy_id)
         if inter_region_traffic_qos_queue_description is not None:
-            pulumi.set(__self__, "inter_region_traffic_qos_queue_description", inter_region_traffic_qos_queue_description)
+            _setter("inter_region_traffic_qos_queue_description", inter_region_traffic_qos_queue_description)
         if inter_region_traffic_qos_queue_name is not None:
-            pulumi.set(__self__, "inter_region_traffic_qos_queue_name", inter_region_traffic_qos_queue_name)
+            _setter("inter_region_traffic_qos_queue_name", inter_region_traffic_qos_queue_name)
 
     @property
     @pulumi.getter
@@ -114,18 +131,37 @@ class _InterRegionTrafficQosQueueState:
         :param pulumi.Input[str] status: The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
         :param pulumi.Input[str] traffic_qos_policy_id: The ID of the traffic scheduling policy.
         """
+        _InterRegionTrafficQosQueueState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dscps=dscps,
+            inter_region_traffic_qos_queue_description=inter_region_traffic_qos_queue_description,
+            inter_region_traffic_qos_queue_name=inter_region_traffic_qos_queue_name,
+            remain_bandwidth_percent=remain_bandwidth_percent,
+            status=status,
+            traffic_qos_policy_id=traffic_qos_policy_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dscps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             inter_region_traffic_qos_queue_description: Optional[pulumi.Input[str]] = None,
+             inter_region_traffic_qos_queue_name: Optional[pulumi.Input[str]] = None,
+             remain_bandwidth_percent: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             traffic_qos_policy_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dscps is not None:
-            pulumi.set(__self__, "dscps", dscps)
+            _setter("dscps", dscps)
         if inter_region_traffic_qos_queue_description is not None:
-            pulumi.set(__self__, "inter_region_traffic_qos_queue_description", inter_region_traffic_qos_queue_description)
+            _setter("inter_region_traffic_qos_queue_description", inter_region_traffic_qos_queue_description)
         if inter_region_traffic_qos_queue_name is not None:
-            pulumi.set(__self__, "inter_region_traffic_qos_queue_name", inter_region_traffic_qos_queue_name)
+            _setter("inter_region_traffic_qos_queue_name", inter_region_traffic_qos_queue_name)
         if remain_bandwidth_percent is not None:
-            pulumi.set(__self__, "remain_bandwidth_percent", remain_bandwidth_percent)
+            _setter("remain_bandwidth_percent", remain_bandwidth_percent)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if traffic_qos_policy_id is not None:
-            pulumi.set(__self__, "traffic_qos_policy_id", traffic_qos_policy_id)
+            _setter("traffic_qos_policy_id", traffic_qos_policy_id)
 
     @property
     @pulumi.getter
@@ -399,6 +435,10 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InterRegionTrafficQosQueueArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

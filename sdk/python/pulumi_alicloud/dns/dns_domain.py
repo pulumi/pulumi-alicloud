@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DnsDomainArgs', 'DnsDomain']
@@ -31,17 +31,36 @@ class DnsDomainArgs:
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
-        pulumi.set(__self__, "domain_name", domain_name)
+        DnsDomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            group_id=group_id,
+            lang=lang,
+            remark=remark,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: pulumi.Input[str],
+             group_id: Optional[pulumi.Input[str]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             remark: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain_name", domain_name)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if remark is not None:
-            pulumi.set(__self__, "remark", remark)
+            _setter("remark", remark)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="domainName")
@@ -143,26 +162,53 @@ class _DnsDomainState:
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         """
+        _DnsDomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns_servers=dns_servers,
+            domain_id=domain_id,
+            domain_name=domain_name,
+            group_id=group_id,
+            group_name=group_name,
+            lang=lang,
+            puny_code=puny_code,
+            remark=remark,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             domain_id: Optional[pulumi.Input[str]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             puny_code: Optional[pulumi.Input[str]] = None,
+             remark: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dns_servers is not None:
-            pulumi.set(__self__, "dns_servers", dns_servers)
+            _setter("dns_servers", dns_servers)
         if domain_id is not None:
-            pulumi.set(__self__, "domain_id", domain_id)
+            _setter("domain_id", domain_id)
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if puny_code is not None:
-            pulumi.set(__self__, "puny_code", puny_code)
+            _setter("puny_code", puny_code)
         if remark is not None:
-            pulumi.set(__self__, "remark", remark)
+            _setter("remark", remark)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="dnsServers")
@@ -383,6 +429,10 @@ class DnsDomain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DnsDomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

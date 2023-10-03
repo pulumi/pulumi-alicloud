@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['Ipv6GatewayArgs', 'Ipv6Gateway']
@@ -29,20 +29,39 @@ class Ipv6GatewayArgs:
         :param pulumi.Input[str] spec: IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags for the resource.
         """
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        Ipv6GatewayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vpc_id=vpc_id,
+            description=description,
+            ipv6_gateway_name=ipv6_gateway_name,
+            resource_group_id=resource_group_id,
+            spec=spec,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vpc_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             ipv6_gateway_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("vpc_id", vpc_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ipv6_gateway_name is not None:
-            pulumi.set(__self__, "ipv6_gateway_name", ipv6_gateway_name)
+            _setter("ipv6_gateway_name", ipv6_gateway_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if spec is not None:
             warnings.warn("""Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""", DeprecationWarning)
             pulumi.log.warn("""spec is deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""")
         if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+            _setter("spec", spec)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -150,33 +169,64 @@ class _Ipv6GatewayState:
         :param pulumi.Input[Mapping[str, Any]] tags: The tags for the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
         """
+        _Ipv6GatewayState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            business_status=business_status,
+            create_time=create_time,
+            description=description,
+            expired_time=expired_time,
+            instance_charge_type=instance_charge_type,
+            ipv6_gateway_id=ipv6_gateway_id,
+            ipv6_gateway_name=ipv6_gateway_name,
+            resource_group_id=resource_group_id,
+            spec=spec,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             business_status: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             expired_time: Optional[pulumi.Input[str]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             ipv6_gateway_id: Optional[pulumi.Input[str]] = None,
+             ipv6_gateway_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             spec: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if business_status is not None:
-            pulumi.set(__self__, "business_status", business_status)
+            _setter("business_status", business_status)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expired_time is not None:
-            pulumi.set(__self__, "expired_time", expired_time)
+            _setter("expired_time", expired_time)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if ipv6_gateway_id is not None:
-            pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
+            _setter("ipv6_gateway_id", ipv6_gateway_id)
         if ipv6_gateway_name is not None:
-            pulumi.set(__self__, "ipv6_gateway_name", ipv6_gateway_name)
+            _setter("ipv6_gateway_name", ipv6_gateway_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if spec is not None:
             warnings.warn("""Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""", DeprecationWarning)
             pulumi.log.warn("""spec is deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""")
         if spec is not None:
-            pulumi.set(__self__, "spec", spec)
+            _setter("spec", spec)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="businessStatus")
@@ -449,6 +499,10 @@ class Ipv6Gateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            Ipv6GatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -472,9 +526,6 @@ class Ipv6Gateway(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["ipv6_gateway_name"] = ipv6_gateway_name
             __props__.__dict__["resource_group_id"] = resource_group_id
-            if spec is not None and not opts.urn:
-                warnings.warn("""Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""", DeprecationWarning)
-                pulumi.log.warn("""spec is deprecated: Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.""")
             __props__.__dict__["spec"] = spec
             __props__.__dict__["tags"] = tags
             if vpc_id is None and not opts.urn:

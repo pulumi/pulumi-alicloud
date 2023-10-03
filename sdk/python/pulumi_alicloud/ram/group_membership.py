@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GroupMembershipArgs', 'GroupMembership']
@@ -21,8 +21,19 @@ class GroupMembershipArgs:
         :param pulumi.Input[str] group_name: Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_names: Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "user_names", user_names)
+        GroupMembershipArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_name=group_name,
+            user_names=user_names,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_name: pulumi.Input[str],
+             user_names: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_name", group_name)
+        _setter("user_names", user_names)
 
     @property
     @pulumi.getter(name="groupName")
@@ -59,10 +70,21 @@ class _GroupMembershipState:
         :param pulumi.Input[str] group_name: Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_names: Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
+        _GroupMembershipState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_name=group_name,
+            user_names=user_names,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_name: Optional[pulumi.Input[str]] = None,
+             user_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if user_names is not None:
-            pulumi.set(__self__, "user_names", user_names)
+            _setter("user_names", user_names)
 
     @property
     @pulumi.getter(name="groupName")
@@ -144,6 +166,10 @@ class GroupMembership(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupMembershipArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

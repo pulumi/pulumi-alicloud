@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DBAuditInstanceArgs', 'DBAuditInstance']
@@ -30,14 +30,33 @@ class DBAuditInstanceArgs:
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "period", period)
-        pulumi.set(__self__, "plan_code", plan_code)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        DBAuditInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            period=period,
+            plan_code=plan_code,
+            vswitch_id=vswitch_id,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: pulumi.Input[str],
+             period: pulumi.Input[int],
+             plan_code: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("period", period)
+        _setter("plan_code", plan_code)
+        _setter("vswitch_id", vswitch_id)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -132,18 +151,37 @@ class _DBAuditInstanceState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: vSwtich ID configured to audit
         """
+        _DBAuditInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            period=period,
+            plan_code=plan_code,
+            resource_group_id=resource_group_id,
+            tags=tags,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             plan_code: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if plan_code is not None:
-            pulumi.set(__self__, "plan_code", plan_code)
+            _setter("plan_code", plan_code)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -275,6 +313,10 @@ class DBAuditInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DBAuditInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

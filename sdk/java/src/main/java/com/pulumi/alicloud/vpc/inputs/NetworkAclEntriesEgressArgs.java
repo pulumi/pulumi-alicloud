@@ -16,14 +16,14 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
     public static final NetworkAclEntriesEgressArgs Empty = new NetworkAclEntriesEgressArgs();
 
     /**
-     * The description of the ingress entry.
+     * The description of the egress entry.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the ingress entry.
+     * @return The description of the egress entry.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,14 +46,14 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+     * The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
      * 
      */
     @Import(name="entryType")
     private @Nullable Output<String> entryType;
 
     /**
-     * @return The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+     * @return The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
      * 
      */
     public Optional<Output<String>> entryType() {
@@ -61,14 +61,14 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the ingress entry.
+     * The name of the egress entry.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the ingress entry.
+     * @return The name of the egress entry.
      * 
      */
     public Optional<Output<String>> name() {
@@ -76,14 +76,14 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The policy of the ingress entry. It must be `accept` or `drop`.
+     * The policy of the egress entry. It must be `accept` or `drop`.
      * 
      */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
     /**
-     * @return The policy of the ingress entry. It must be `accept` or `drop`.
+     * @return The policy of the egress entry. It must be `accept` or `drop`.
      * 
      */
     public Optional<Output<String>> policy() {
@@ -91,14 +91,14 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The port of the ingress entry.
+     * The port of the egress entry.
      * 
      */
     @Import(name="port")
     private @Nullable Output<String> port;
 
     /**
-     * @return The port of the ingress entry.
+     * @return The port of the egress entry.
      * 
      */
     public Optional<Output<String>> port() {
@@ -106,14 +106,14 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The protocol of the ingress entry.
+     * The protocol of the egress entry.
      * 
      */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
     /**
-     * @return The protocol of the ingress entry.
+     * @return The protocol of the egress entry.
      * 
      */
     public Optional<Output<String>> protocol() {
@@ -151,7 +151,7 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param description The description of the ingress entry.
+         * @param description The description of the egress entry.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param description The description of the ingress entry.
+         * @param description The description of the egress entry.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param entryType The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+         * @param entryType The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param entryType The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+         * @param entryType The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the ingress entry.
+         * @param name The name of the egress entry.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the ingress entry.
+         * @param name The name of the egress entry.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param policy The policy of the ingress entry. It must be `accept` or `drop`.
+         * @param policy The policy of the egress entry. It must be `accept` or `drop`.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param policy The policy of the ingress entry. It must be `accept` or `drop`.
+         * @param policy The policy of the egress entry. It must be `accept` or `drop`.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param port The port of the ingress entry.
+         * @param port The port of the egress entry.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param port The port of the ingress entry.
+         * @param port The port of the egress entry.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param protocol The protocol of the ingress entry.
+         * @param protocol The protocol of the egress entry.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class NetworkAclEntriesEgressArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param protocol The protocol of the ingress entry.
+         * @param protocol The protocol of the egress entry.
          * 
          * @return builder
          * 

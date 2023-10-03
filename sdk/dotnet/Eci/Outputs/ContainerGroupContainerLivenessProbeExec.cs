@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupContainerLivenessProbeExec
     {
         /// <summary>
-        /// The commands run by the init container.
+        /// Commands to be executed inside the container when performing health checks using the command line method.
         /// </summary>
         public readonly ImmutableArray<string> Commands;
 

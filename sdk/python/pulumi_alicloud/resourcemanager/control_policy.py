@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ControlPolicyArgs', 'ControlPolicy']
@@ -25,11 +25,26 @@ class ControlPolicyArgs:
         :param pulumi.Input[str] policy_document: The policy document of control policy.
         :param pulumi.Input[str] description: The description of control policy.
         """
-        pulumi.set(__self__, "control_policy_name", control_policy_name)
-        pulumi.set(__self__, "effect_scope", effect_scope)
-        pulumi.set(__self__, "policy_document", policy_document)
+        ControlPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            control_policy_name=control_policy_name,
+            effect_scope=effect_scope,
+            policy_document=policy_document,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             control_policy_name: pulumi.Input[str],
+             effect_scope: pulumi.Input[str],
+             policy_document: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("control_policy_name", control_policy_name)
+        _setter("effect_scope", effect_scope)
+        _setter("policy_document", policy_document)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="controlPolicyName")
@@ -94,14 +109,29 @@ class _ControlPolicyState:
         :param pulumi.Input[str] effect_scope: The effect scope. Valid values `RAM`.
         :param pulumi.Input[str] policy_document: The policy document of control policy.
         """
+        _ControlPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            control_policy_name=control_policy_name,
+            description=description,
+            effect_scope=effect_scope,
+            policy_document=policy_document,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             control_policy_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             effect_scope: Optional[pulumi.Input[str]] = None,
+             policy_document: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if control_policy_name is not None:
-            pulumi.set(__self__, "control_policy_name", control_policy_name)
+            _setter("control_policy_name", control_policy_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if effect_scope is not None:
-            pulumi.set(__self__, "effect_scope", effect_scope)
+            _setter("effect_scope", effect_scope)
         if policy_document is not None:
-            pulumi.set(__self__, "policy_document", policy_document)
+            _setter("policy_document", policy_document)
 
     @property
     @pulumi.getter(name="controlPolicyName")
@@ -283,6 +313,10 @@ class ControlPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ControlPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

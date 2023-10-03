@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -58,10 +58,21 @@ class ResourceGroupRegionStatus(dict):
         :param str region_id: The region ID.
         :param str status: The status of the regional resource group.
         """
+        ResourceGroupRegionStatus._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region_id=region_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region_id: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if region_id is not None:
-            pulumi.set(__self__, "region_id", region_id)
+            _setter("region_id", region_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="regionId")
@@ -91,9 +102,22 @@ class GetAccountDeletionCheckTaskAbandonAbleCheckResult(dict):
         :param str check_name: The name of the cloud service to which the check item belongs.
         :param str description: The description of the check item.
         """
-        pulumi.set(__self__, "check_id", check_id)
-        pulumi.set(__self__, "check_name", check_name)
-        pulumi.set(__self__, "description", description)
+        GetAccountDeletionCheckTaskAbandonAbleCheckResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            check_id=check_id,
+            check_name=check_name,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             check_id: str,
+             check_name: str,
+             description: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("check_id", check_id)
+        _setter("check_name", check_name)
+        _setter("description", description)
 
     @property
     @pulumi.getter(name="checkId")
@@ -131,9 +155,22 @@ class GetAccountDeletionCheckTaskNotAllowReasonResult(dict):
         :param str check_name: The name of the cloud service to which the check item belongs.
         :param str description: The description of the check item.
         """
-        pulumi.set(__self__, "check_id", check_id)
-        pulumi.set(__self__, "check_name", check_name)
-        pulumi.set(__self__, "description", description)
+        GetAccountDeletionCheckTaskNotAllowReasonResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            check_id=check_id,
+            check_name=check_name,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             check_id: str,
+             check_name: str,
+             description: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("check_id", check_id)
+        _setter("check_name", check_name)
+        _setter("description", description)
 
     @property
     @pulumi.getter(name="checkId")
@@ -189,18 +226,49 @@ class GetAccountsAccountResult(dict):
         :param str status: The status of account, valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, and `PromoteVerifying`.
         :param str type: The type of the member account.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "folder_id", folder_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "join_method", join_method)
-        pulumi.set(__self__, "join_time", join_time)
-        pulumi.set(__self__, "modify_time", modify_time)
-        pulumi.set(__self__, "payer_account_id", payer_account_id)
-        pulumi.set(__self__, "resource_directory_id", resource_directory_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
+        GetAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            account_name=account_name,
+            display_name=display_name,
+            folder_id=folder_id,
+            id=id,
+            join_method=join_method,
+            join_time=join_time,
+            modify_time=modify_time,
+            payer_account_id=payer_account_id,
+            resource_directory_id=resource_directory_id,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             account_name: str,
+             display_name: str,
+             folder_id: str,
+             id: str,
+             join_method: str,
+             join_time: str,
+             modify_time: str,
+             payer_account_id: str,
+             resource_directory_id: str,
+             status: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("account_name", account_name)
+        _setter("display_name", display_name)
+        _setter("folder_id", folder_id)
+        _setter("id", id)
+        _setter("join_method", join_method)
+        _setter("join_time", join_time)
+        _setter("modify_time", modify_time)
+        _setter("payer_account_id", payer_account_id)
+        _setter("resource_directory_id", resource_directory_id)
+        _setter("status", status)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -320,14 +388,37 @@ class GetControlPoliciesPolicyResult(dict):
         :param str policy_id: The ID of policy.
         :param str policy_type: The type of policy.
         """
-        pulumi.set(__self__, "attachment_count", attachment_count)
-        pulumi.set(__self__, "control_policy_name", control_policy_name)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "effect_scope", effect_scope)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "policy_document", policy_document)
-        pulumi.set(__self__, "policy_id", policy_id)
-        pulumi.set(__self__, "policy_type", policy_type)
+        GetControlPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attachment_count=attachment_count,
+            control_policy_name=control_policy_name,
+            description=description,
+            effect_scope=effect_scope,
+            id=id,
+            policy_document=policy_document,
+            policy_id=policy_id,
+            policy_type=policy_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attachment_count: int,
+             control_policy_name: str,
+             description: str,
+             effect_scope: str,
+             id: str,
+             policy_document: str,
+             policy_id: str,
+             policy_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attachment_count", attachment_count)
+        _setter("control_policy_name", control_policy_name)
+        _setter("description", description)
+        _setter("effect_scope", effect_scope)
+        _setter("id", id)
+        _setter("policy_document", policy_document)
+        _setter("policy_id", policy_id)
+        _setter("policy_type", policy_type)
 
     @property
     @pulumi.getter(name="attachmentCount")
@@ -411,12 +502,31 @@ class GetControlPolicyAttachmentsAttachmentResult(dict):
         :param str policy_name: The name of policy.
         :param str policy_type: The type of policy.
         """
-        pulumi.set(__self__, "attach_date", attach_date)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "policy_id", policy_id)
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "policy_type", policy_type)
+        GetControlPolicyAttachmentsAttachmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attach_date=attach_date,
+            description=description,
+            id=id,
+            policy_id=policy_id,
+            policy_name=policy_name,
+            policy_type=policy_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attach_date: str,
+             description: str,
+             id: str,
+             policy_id: str,
+             policy_name: str,
+             policy_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attach_date", attach_date)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("policy_id", policy_id)
+        _setter("policy_name", policy_name)
+        _setter("policy_type", policy_type)
 
     @property
     @pulumi.getter(name="attachDate")
@@ -480,10 +590,25 @@ class GetDelegatedAdministratorsAdministratorResult(dict):
         :param str id: The ID of the Delegated Administrator.
         :param str service_principal: The identity of the trusted service.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "delegation_enabled_time", delegation_enabled_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "service_principal", service_principal)
+        GetDelegatedAdministratorsAdministratorResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            delegation_enabled_time=delegation_enabled_time,
+            id=id,
+            service_principal=service_principal,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             delegation_enabled_time: str,
+             id: str,
+             service_principal: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("delegation_enabled_time", delegation_enabled_time)
+        _setter("id", id)
+        _setter("service_principal", service_principal)
 
     @property
     @pulumi.getter(name="accountId")
@@ -531,10 +656,25 @@ class GetFoldersFolderResult(dict):
         :param str id: The ID of the folder.
         :param str parent_folder_id: The ID of the parent folder.
         """
-        pulumi.set(__self__, "folder_id", folder_id)
-        pulumi.set(__self__, "folder_name", folder_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "parent_folder_id", parent_folder_id)
+        GetFoldersFolderResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            folder_id=folder_id,
+            folder_name=folder_name,
+            id=id,
+            parent_folder_id=parent_folder_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             folder_id: str,
+             folder_name: str,
+             id: str,
+             parent_folder_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("folder_id", folder_id)
+        _setter("folder_name", folder_name)
+        _setter("id", id)
+        _setter("parent_folder_id", parent_folder_id)
 
     @property
     @pulumi.getter(name="folderId")
@@ -600,19 +740,52 @@ class GetHandshakesHandshakeResult(dict):
         :param str target_entity: The ID or logon email address of the invited account.
         :param str target_type: The type of the invited account.
         """
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "handshake_id", handshake_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "invited_account_real_name", invited_account_real_name)
-        pulumi.set(__self__, "master_account_id", master_account_id)
-        pulumi.set(__self__, "master_account_name", master_account_name)
-        pulumi.set(__self__, "master_account_real_name", master_account_real_name)
-        pulumi.set(__self__, "modify_time", modify_time)
-        pulumi.set(__self__, "note", note)
-        pulumi.set(__self__, "resource_directory_id", resource_directory_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "target_entity", target_entity)
-        pulumi.set(__self__, "target_type", target_type)
+        GetHandshakesHandshakeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expire_time=expire_time,
+            handshake_id=handshake_id,
+            id=id,
+            invited_account_real_name=invited_account_real_name,
+            master_account_id=master_account_id,
+            master_account_name=master_account_name,
+            master_account_real_name=master_account_real_name,
+            modify_time=modify_time,
+            note=note,
+            resource_directory_id=resource_directory_id,
+            status=status,
+            target_entity=target_entity,
+            target_type=target_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expire_time: str,
+             handshake_id: str,
+             id: str,
+             invited_account_real_name: str,
+             master_account_id: str,
+             master_account_name: str,
+             master_account_real_name: str,
+             modify_time: str,
+             note: str,
+             resource_directory_id: str,
+             status: str,
+             target_entity: str,
+             target_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expire_time", expire_time)
+        _setter("handshake_id", handshake_id)
+        _setter("id", id)
+        _setter("invited_account_real_name", invited_account_real_name)
+        _setter("master_account_id", master_account_id)
+        _setter("master_account_name", master_account_name)
+        _setter("master_account_real_name", master_account_real_name)
+        _setter("modify_time", modify_time)
+        _setter("note", note)
+        _setter("resource_directory_id", resource_directory_id)
+        _setter("status", status)
+        _setter("target_entity", target_entity)
+        _setter("target_type", target_type)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -738,13 +911,34 @@ class GetPoliciesPolicyResult(dict):
         :param str policy_type: The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
         :param str update_date: The time when the policy was updated.
         """
-        pulumi.set(__self__, "attachment_count", attachment_count)
-        pulumi.set(__self__, "default_version", default_version)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "policy_type", policy_type)
-        pulumi.set(__self__, "update_date", update_date)
+        GetPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attachment_count=attachment_count,
+            default_version=default_version,
+            description=description,
+            id=id,
+            policy_name=policy_name,
+            policy_type=policy_type,
+            update_date=update_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attachment_count: int,
+             default_version: str,
+             description: str,
+             id: str,
+             policy_name: str,
+             policy_type: str,
+             update_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attachment_count", attachment_count)
+        _setter("default_version", default_version)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("policy_name", policy_name)
+        _setter("policy_type", policy_type)
+        _setter("update_date", update_date)
 
     @property
     @pulumi.getter(name="attachmentCount")
@@ -824,14 +1018,37 @@ class GetPolicyAttachmentsAttachmentResult(dict):
         :param str principal_type: The type of the object to which the policy is attached. If you do not specify this parameter, the system lists all types of objects. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
         :param str resource_group_id: The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs. If you do not specify this parameter, the system lists all policy attachment records under the current account.
         """
-        pulumi.set(__self__, "attach_date", attach_date)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "policy_type", policy_type)
-        pulumi.set(__self__, "principal_name", principal_name)
-        pulumi.set(__self__, "principal_type", principal_type)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        GetPolicyAttachmentsAttachmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attach_date=attach_date,
+            description=description,
+            id=id,
+            policy_name=policy_name,
+            policy_type=policy_type,
+            principal_name=principal_name,
+            principal_type=principal_type,
+            resource_group_id=resource_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attach_date: str,
+             description: str,
+             id: str,
+             policy_name: str,
+             policy_type: str,
+             principal_name: str,
+             principal_type: str,
+             resource_group_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attach_date", attach_date)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("policy_name", policy_name)
+        _setter("policy_type", policy_type)
+        _setter("principal_name", principal_name)
+        _setter("principal_type", principal_type)
+        _setter("resource_group_id", resource_group_id)
 
     @property
     @pulumi.getter(name="attachDate")
@@ -911,10 +1128,25 @@ class GetPolicyVersionsVersionResult(dict):
         :param str policy_document: (Available in v1.114.0+) The policy document of the policy version.
         :param str version_id: The ID of the policy version.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_default_version", is_default_version)
-        pulumi.set(__self__, "policy_document", policy_document)
-        pulumi.set(__self__, "version_id", version_id)
+        GetPolicyVersionsVersionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            is_default_version=is_default_version,
+            policy_document=policy_document,
+            version_id=version_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             is_default_version: bool,
+             policy_document: str,
+             version_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("is_default_version", is_default_version)
+        _setter("policy_document", policy_document)
+        _setter("version_id", version_id)
 
     @property
     @pulumi.getter
@@ -966,12 +1198,31 @@ class GetResourceDirectoriesDirectoryResult(dict):
         :param str root_folder_id: The ID of the root folder.
         :param str status: (Available in 1.120.0+.) The status of the control policy.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "master_account_id", master_account_id)
-        pulumi.set(__self__, "master_account_name", master_account_name)
-        pulumi.set(__self__, "resource_directory_id", resource_directory_id)
-        pulumi.set(__self__, "root_folder_id", root_folder_id)
-        pulumi.set(__self__, "status", status)
+        GetResourceDirectoriesDirectoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            master_account_id=master_account_id,
+            master_account_name=master_account_name,
+            resource_directory_id=resource_directory_id,
+            root_folder_id=root_folder_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             master_account_id: str,
+             master_account_name: str,
+             resource_directory_id: str,
+             root_folder_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("master_account_id", master_account_id)
+        _setter("master_account_name", master_account_name)
+        _setter("resource_directory_id", resource_directory_id)
+        _setter("root_folder_id", root_folder_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -1041,13 +1292,34 @@ class GetResourceGroupsGroupResult(dict):
         :param str resource_group_name: (Available since v1.114.0) The unique identifier of the resource group.
         :param str status: The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "region_statuses", region_statuses)
-        pulumi.set(__self__, "resource_group_name", resource_group_name)
-        pulumi.set(__self__, "status", status)
+        GetResourceGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            display_name=display_name,
+            id=id,
+            name=name,
+            region_statuses=region_statuses,
+            resource_group_name=resource_group_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             display_name: str,
+             id: str,
+             name: str,
+             region_statuses: Sequence['outputs.GetResourceGroupsGroupRegionStatusResult'],
+             resource_group_name: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("display_name", display_name)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("region_statuses", region_statuses)
+        _setter("resource_group_name", resource_group_name)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1115,8 +1387,19 @@ class GetResourceGroupsGroupRegionStatusResult(dict):
         :param str region_id: The region ID.
         :param str status: The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
         """
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "status", status)
+        GetResourceGroupsGroupRegionStatusResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region_id=region_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("region_id", region_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="regionId")
@@ -1150,11 +1433,28 @@ class GetResourceSharesShareResult(dict):
         :param str resource_share_owner: The owner of resource share.
         :param str status: The status of resource share.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_share_id", resource_share_id)
-        pulumi.set(__self__, "resource_share_name", resource_share_name)
-        pulumi.set(__self__, "resource_share_owner", resource_share_owner)
-        pulumi.set(__self__, "status", status)
+        GetResourceSharesShareResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            resource_share_id=resource_share_id,
+            resource_share_name=resource_share_name,
+            resource_share_owner=resource_share_owner,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             resource_share_id: str,
+             resource_share_name: str,
+             resource_share_owner: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("resource_share_id", resource_share_id)
+        _setter("resource_share_name", resource_share_name)
+        _setter("resource_share_owner", resource_share_owner)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -1218,14 +1518,37 @@ class GetRolesRoleResult(dict):
         :param str role_name: The name of the role.
         :param str update_date: The time when the RAM role was updated.
         """
-        pulumi.set(__self__, "arn", arn)
-        pulumi.set(__self__, "assume_role_policy_document", assume_role_policy_document)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "max_session_duration", max_session_duration)
-        pulumi.set(__self__, "role_id", role_id)
-        pulumi.set(__self__, "role_name", role_name)
-        pulumi.set(__self__, "update_date", update_date)
+        GetRolesRoleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            assume_role_policy_document=assume_role_policy_document,
+            description=description,
+            id=id,
+            max_session_duration=max_session_duration,
+            role_id=role_id,
+            role_name=role_name,
+            update_date=update_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: str,
+             assume_role_policy_document: str,
+             description: str,
+             id: str,
+             max_session_duration: int,
+             role_id: str,
+             role_name: str,
+             update_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("arn", arn)
+        _setter("assume_role_policy_document", assume_role_policy_document)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("max_session_duration", max_session_duration)
+        _setter("role_id", role_id)
+        _setter("role_name", role_name)
+        _setter("update_date", update_date)
 
     @property
     @pulumi.getter
@@ -1307,11 +1630,28 @@ class GetSharedResourcesResourceResult(dict):
         :param str resource_type: The type of shared resource.
         :param str status: The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_share_id", resource_share_id)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "status", status)
+        GetSharedResourcesResourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            resource_id=resource_id,
+            resource_share_id=resource_share_id,
+            resource_type=resource_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             resource_id: str,
+             resource_share_id: str,
+             resource_type: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("resource_id", resource_id)
+        _setter("resource_share_id", resource_share_id)
+        _setter("resource_type", resource_type)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -1367,10 +1707,25 @@ class GetSharedTargetsTargetResult(dict):
         :param str status: The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
         :param str target_id: The ID of the Shared Target.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_share_id", resource_share_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "target_id", target_id)
+        GetSharedTargetsTargetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            resource_share_id=resource_share_id,
+            status=status,
+            target_id=target_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             resource_share_id: str,
+             status: str,
+             target_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("resource_share_id", resource_share_id)
+        _setter("status", status)
+        _setter("target_id", target_id)
 
     @property
     @pulumi.getter

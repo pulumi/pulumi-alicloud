@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LoadBalancerSecurityGroupAttachmentArgs', 'LoadBalancerSecurityGroupAttachment']
@@ -23,10 +23,23 @@ class LoadBalancerSecurityGroupAttachmentArgs:
         :param pulumi.Input[str] security_group_id: The ID of security groups.
         :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
         """
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
-        pulumi.set(__self__, "security_group_id", security_group_id)
+        LoadBalancerSecurityGroupAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            load_balancer_id=load_balancer_id,
+            security_group_id=security_group_id,
+            dry_run=dry_run,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             load_balancer_id: pulumi.Input[str],
+             security_group_id: pulumi.Input[str],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("load_balancer_id", load_balancer_id)
+        _setter("security_group_id", security_group_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
 
     @property
     @pulumi.getter(name="loadBalancerId")
@@ -77,12 +90,25 @@ class _LoadBalancerSecurityGroupAttachmentState:
         :param pulumi.Input[str] load_balancer_id: The ID of the network-based server load balancer instance to be bound to the security group.
         :param pulumi.Input[str] security_group_id: The ID of security groups.
         """
+        _LoadBalancerSecurityGroupAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dry_run=dry_run,
+            load_balancer_id=load_balancer_id,
+            security_group_id=security_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if load_balancer_id is not None:
-            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+            _setter("load_balancer_id", load_balancer_id)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -290,6 +316,10 @@ class LoadBalancerSecurityGroupAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LoadBalancerSecurityGroupAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

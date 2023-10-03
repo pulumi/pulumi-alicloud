@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,14 +33,35 @@ class DbInstanceEndpointArgs:
         :param pulumi.Input[str] vswitch_id: The vSwitch ID of the internal endpoint.
         :param pulumi.Input[str] db_instance_endpoint_description: The user-defined description of the endpoint.
         """
-        pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "node_items", node_items)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        DbInstanceEndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_string_prefix=connection_string_prefix,
+            db_instance_id=db_instance_id,
+            node_items=node_items,
+            port=port,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            db_instance_endpoint_description=db_instance_endpoint_description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_string_prefix: pulumi.Input[str],
+             db_instance_id: pulumi.Input[str],
+             node_items: pulumi.Input[Sequence[pulumi.Input['DbInstanceEndpointNodeItemArgs']]],
+             port: pulumi.Input[str],
+             vpc_id: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             db_instance_endpoint_description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("connection_string_prefix", connection_string_prefix)
+        _setter("db_instance_id", db_instance_id)
+        _setter("node_items", node_items)
+        _setter("port", port)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
         if db_instance_endpoint_description is not None:
-            pulumi.set(__self__, "db_instance_endpoint_description", db_instance_endpoint_description)
+            _setter("db_instance_endpoint_description", db_instance_endpoint_description)
 
     @property
     @pulumi.getter(name="connectionStringPrefix")
@@ -157,30 +178,61 @@ class _DbInstanceEndpointState:
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the internal endpoint.
         :param pulumi.Input[str] vswitch_id: The vSwitch ID of the internal endpoint.
         """
+        _DbInstanceEndpointState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_string=connection_string,
+            connection_string_prefix=connection_string_prefix,
+            db_instance_endpoint_description=db_instance_endpoint_description,
+            db_instance_endpoint_id=db_instance_endpoint_id,
+            db_instance_endpoint_type=db_instance_endpoint_type,
+            db_instance_id=db_instance_id,
+            ip_type=ip_type,
+            node_items=node_items,
+            port=port,
+            private_ip_address=private_ip_address,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_string: Optional[pulumi.Input[str]] = None,
+             connection_string_prefix: Optional[pulumi.Input[str]] = None,
+             db_instance_endpoint_description: Optional[pulumi.Input[str]] = None,
+             db_instance_endpoint_id: Optional[pulumi.Input[str]] = None,
+             db_instance_endpoint_type: Optional[pulumi.Input[str]] = None,
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             ip_type: Optional[pulumi.Input[str]] = None,
+             node_items: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstanceEndpointNodeItemArgs']]]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             private_ip_address: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if connection_string is not None:
-            pulumi.set(__self__, "connection_string", connection_string)
+            _setter("connection_string", connection_string)
         if connection_string_prefix is not None:
-            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
+            _setter("connection_string_prefix", connection_string_prefix)
         if db_instance_endpoint_description is not None:
-            pulumi.set(__self__, "db_instance_endpoint_description", db_instance_endpoint_description)
+            _setter("db_instance_endpoint_description", db_instance_endpoint_description)
         if db_instance_endpoint_id is not None:
-            pulumi.set(__self__, "db_instance_endpoint_id", db_instance_endpoint_id)
+            _setter("db_instance_endpoint_id", db_instance_endpoint_id)
         if db_instance_endpoint_type is not None:
-            pulumi.set(__self__, "db_instance_endpoint_type", db_instance_endpoint_type)
+            _setter("db_instance_endpoint_type", db_instance_endpoint_type)
         if db_instance_id is not None:
-            pulumi.set(__self__, "db_instance_id", db_instance_id)
+            _setter("db_instance_id", db_instance_id)
         if ip_type is not None:
-            pulumi.set(__self__, "ip_type", ip_type)
+            _setter("ip_type", ip_type)
         if node_items is not None:
-            pulumi.set(__self__, "node_items", node_items)
+            _setter("node_items", node_items)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if private_ip_address is not None:
-            pulumi.set(__self__, "private_ip_address", private_ip_address)
+            _setter("private_ip_address", private_ip_address)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -512,6 +564,10 @@ class DbInstanceEndpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DbInstanceEndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

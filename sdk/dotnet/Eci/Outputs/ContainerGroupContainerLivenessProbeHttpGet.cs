@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupContainerLivenessProbeHttpGet
     {
         /// <summary>
-        /// The relative file path.
+        /// The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// The port number. Valid values: `1` to `65535`.
+        /// When using the HTTP request method for health check, the port number for HTTP Get request detection.
         /// </summary>
         public readonly int? Port;
         /// <summary>

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SystemGroupArgs', 'SystemGroup']
@@ -33,17 +33,40 @@ class SystemGroupArgs:
         :param pulumi.Input[str] description: The description of Group.
         :param pulumi.Input[bool] enabled: Whether to open Group.
         """
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "in_protocol", in_protocol)
-        pulumi.set(__self__, "out_protocol", out_protocol)
-        pulumi.set(__self__, "play_domain", play_domain)
-        pulumi.set(__self__, "push_domain", push_domain)
+        SystemGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_name=group_name,
+            in_protocol=in_protocol,
+            out_protocol=out_protocol,
+            play_domain=play_domain,
+            push_domain=push_domain,
+            callback=callback,
+            description=description,
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_name: pulumi.Input[str],
+             in_protocol: pulumi.Input[str],
+             out_protocol: pulumi.Input[str],
+             play_domain: pulumi.Input[str],
+             push_domain: pulumi.Input[str],
+             callback: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_name", group_name)
+        _setter("in_protocol", in_protocol)
+        _setter("out_protocol", out_protocol)
+        _setter("play_domain", play_domain)
+        _setter("push_domain", push_domain)
         if callback is not None:
-            pulumi.set(__self__, "callback", callback)
+            _setter("callback", callback)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter(name="groupName")
@@ -178,36 +201,73 @@ class _SystemGroupState:
         :param pulumi.Input[str] push_domain: The domain name of push streaming used by the group.
         :param pulumi.Input[bool] status: Whether to open Group. Valid values: `on`,`off`.
         """
+        _SystemGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            callback=callback,
+            capture_image=capture_image,
+            capture_interval=capture_interval,
+            capture_oss_bucket=capture_oss_bucket,
+            capture_oss_path=capture_oss_path,
+            capture_video=capture_video,
+            description=description,
+            enabled=enabled,
+            group_name=group_name,
+            in_protocol=in_protocol,
+            lazy_pull=lazy_pull,
+            out_protocol=out_protocol,
+            play_domain=play_domain,
+            push_domain=push_domain,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             callback: Optional[pulumi.Input[str]] = None,
+             capture_image: Optional[pulumi.Input[int]] = None,
+             capture_interval: Optional[pulumi.Input[int]] = None,
+             capture_oss_bucket: Optional[pulumi.Input[str]] = None,
+             capture_oss_path: Optional[pulumi.Input[str]] = None,
+             capture_video: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             group_name: Optional[pulumi.Input[str]] = None,
+             in_protocol: Optional[pulumi.Input[str]] = None,
+             lazy_pull: Optional[pulumi.Input[bool]] = None,
+             out_protocol: Optional[pulumi.Input[str]] = None,
+             play_domain: Optional[pulumi.Input[str]] = None,
+             push_domain: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if callback is not None:
-            pulumi.set(__self__, "callback", callback)
+            _setter("callback", callback)
         if capture_image is not None:
-            pulumi.set(__self__, "capture_image", capture_image)
+            _setter("capture_image", capture_image)
         if capture_interval is not None:
-            pulumi.set(__self__, "capture_interval", capture_interval)
+            _setter("capture_interval", capture_interval)
         if capture_oss_bucket is not None:
-            pulumi.set(__self__, "capture_oss_bucket", capture_oss_bucket)
+            _setter("capture_oss_bucket", capture_oss_bucket)
         if capture_oss_path is not None:
-            pulumi.set(__self__, "capture_oss_path", capture_oss_path)
+            _setter("capture_oss_path", capture_oss_path)
         if capture_video is not None:
-            pulumi.set(__self__, "capture_video", capture_video)
+            _setter("capture_video", capture_video)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if group_name is not None:
-            pulumi.set(__self__, "group_name", group_name)
+            _setter("group_name", group_name)
         if in_protocol is not None:
-            pulumi.set(__self__, "in_protocol", in_protocol)
+            _setter("in_protocol", in_protocol)
         if lazy_pull is not None:
-            pulumi.set(__self__, "lazy_pull", lazy_pull)
+            _setter("lazy_pull", lazy_pull)
         if out_protocol is not None:
-            pulumi.set(__self__, "out_protocol", out_protocol)
+            _setter("out_protocol", out_protocol)
         if play_domain is not None:
-            pulumi.set(__self__, "play_domain", play_domain)
+            _setter("play_domain", play_domain)
         if push_domain is not None:
-            pulumi.set(__self__, "push_domain", push_domain)
+            _setter("push_domain", push_domain)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -493,6 +553,10 @@ class SystemGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SystemGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

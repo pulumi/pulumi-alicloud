@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EngineNamespaceArgs', 'EngineNamespace']
@@ -25,11 +25,26 @@ class EngineNamespaceArgs:
         :param pulumi.Input[str] namespace_show_name: The name of the Engine Namespace.
         :param pulumi.Input[str] accept_language: The language type of the returned information. Valid values: `zh`, `en`.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "namespace_id", namespace_id)
-        pulumi.set(__self__, "namespace_show_name", namespace_show_name)
+        EngineNamespaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            namespace_id=namespace_id,
+            namespace_show_name=namespace_show_name,
+            accept_language=accept_language,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: pulumi.Input[str],
+             namespace_id: pulumi.Input[str],
+             namespace_show_name: pulumi.Input[str],
+             accept_language: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("namespace_id", namespace_id)
+        _setter("namespace_show_name", namespace_show_name)
         if accept_language is not None:
-            pulumi.set(__self__, "accept_language", accept_language)
+            _setter("accept_language", accept_language)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -94,14 +109,29 @@ class _EngineNamespaceState:
         :param pulumi.Input[str] namespace_id: The id of Namespace.
         :param pulumi.Input[str] namespace_show_name: The name of the Engine Namespace.
         """
+        _EngineNamespaceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accept_language=accept_language,
+            cluster_id=cluster_id,
+            namespace_id=namespace_id,
+            namespace_show_name=namespace_show_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accept_language: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             namespace_show_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if accept_language is not None:
-            pulumi.set(__self__, "accept_language", accept_language)
+            _setter("accept_language", accept_language)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if namespace_id is not None:
-            pulumi.set(__self__, "namespace_id", namespace_id)
+            _setter("namespace_id", namespace_id)
         if namespace_show_name is not None:
-            pulumi.set(__self__, "namespace_show_name", namespace_show_name)
+            _setter("namespace_show_name", namespace_show_name)
 
     @property
     @pulumi.getter(name="acceptLanguage")
@@ -285,6 +315,10 @@ class EngineNamespace(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EngineNamespaceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

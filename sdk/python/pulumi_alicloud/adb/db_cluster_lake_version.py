@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DBClusterLakeVersionArgs', 'DBClusterLakeVersion']
@@ -39,19 +39,46 @@ class DBClusterLakeVersionArgs:
                - IP addresses, such as 10.23.XX.XX.
                - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
         """
-        pulumi.set(__self__, "compute_resource", compute_resource)
-        pulumi.set(__self__, "db_cluster_version", db_cluster_version)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "storage_resource", storage_resource)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        DBClusterLakeVersionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_resource=compute_resource,
+            db_cluster_version=db_cluster_version,
+            payment_type=payment_type,
+            storage_resource=storage_resource,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+            db_cluster_description=db_cluster_description,
+            enable_default_resource_group=enable_default_resource_group,
+            security_ips=security_ips,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_resource: pulumi.Input[str],
+             db_cluster_version: pulumi.Input[str],
+             payment_type: pulumi.Input[str],
+             storage_resource: pulumi.Input[str],
+             vpc_id: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             db_cluster_description: Optional[pulumi.Input[str]] = None,
+             enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
+             security_ips: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compute_resource", compute_resource)
+        _setter("db_cluster_version", db_cluster_version)
+        _setter("payment_type", payment_type)
+        _setter("storage_resource", storage_resource)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
         if db_cluster_description is not None:
-            pulumi.set(__self__, "db_cluster_description", db_cluster_description)
+            _setter("db_cluster_description", db_cluster_description)
         if enable_default_resource_group is not None:
-            pulumi.set(__self__, "enable_default_resource_group", enable_default_resource_group)
+            _setter("enable_default_resource_group", enable_default_resource_group)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
 
     @property
     @pulumi.getter(name="computeResource")
@@ -228,50 +255,101 @@ class _DBClusterLakeVersionState:
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         :param pulumi.Input[str] zone_id: The zone ID of the resource.
         """
+        _DBClusterLakeVersionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            commodity_code=commodity_code,
+            compute_resource=compute_resource,
+            connection_string=connection_string,
+            create_time=create_time,
+            db_cluster_description=db_cluster_description,
+            db_cluster_version=db_cluster_version,
+            enable_default_resource_group=enable_default_resource_group,
+            engine=engine,
+            engine_version=engine_version,
+            expire_time=expire_time,
+            expired=expired,
+            lock_mode=lock_mode,
+            lock_reason=lock_reason,
+            payment_type=payment_type,
+            port=port,
+            resource_group_id=resource_group_id,
+            security_ips=security_ips,
+            status=status,
+            storage_resource=storage_resource,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             commodity_code: Optional[pulumi.Input[str]] = None,
+             compute_resource: Optional[pulumi.Input[str]] = None,
+             connection_string: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             db_cluster_description: Optional[pulumi.Input[str]] = None,
+             db_cluster_version: Optional[pulumi.Input[str]] = None,
+             enable_default_resource_group: Optional[pulumi.Input[bool]] = None,
+             engine: Optional[pulumi.Input[str]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             expire_time: Optional[pulumi.Input[str]] = None,
+             expired: Optional[pulumi.Input[str]] = None,
+             lock_mode: Optional[pulumi.Input[str]] = None,
+             lock_reason: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             security_ips: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             storage_resource: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if commodity_code is not None:
-            pulumi.set(__self__, "commodity_code", commodity_code)
+            _setter("commodity_code", commodity_code)
         if compute_resource is not None:
-            pulumi.set(__self__, "compute_resource", compute_resource)
+            _setter("compute_resource", compute_resource)
         if connection_string is not None:
-            pulumi.set(__self__, "connection_string", connection_string)
+            _setter("connection_string", connection_string)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if db_cluster_description is not None:
-            pulumi.set(__self__, "db_cluster_description", db_cluster_description)
+            _setter("db_cluster_description", db_cluster_description)
         if db_cluster_version is not None:
-            pulumi.set(__self__, "db_cluster_version", db_cluster_version)
+            _setter("db_cluster_version", db_cluster_version)
         if enable_default_resource_group is not None:
-            pulumi.set(__self__, "enable_default_resource_group", enable_default_resource_group)
+            _setter("enable_default_resource_group", enable_default_resource_group)
         if engine is not None:
-            pulumi.set(__self__, "engine", engine)
+            _setter("engine", engine)
         if engine_version is not None:
-            pulumi.set(__self__, "engine_version", engine_version)
+            _setter("engine_version", engine_version)
         if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
+            _setter("expire_time", expire_time)
         if expired is not None:
-            pulumi.set(__self__, "expired", expired)
+            _setter("expired", expired)
         if lock_mode is not None:
-            pulumi.set(__self__, "lock_mode", lock_mode)
+            _setter("lock_mode", lock_mode)
         if lock_reason is not None:
-            pulumi.set(__self__, "lock_reason", lock_reason)
+            _setter("lock_reason", lock_reason)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if storage_resource is not None:
-            pulumi.set(__self__, "storage_resource", storage_resource)
+            _setter("storage_resource", storage_resource)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="commodityCode")
@@ -683,6 +761,10 @@ class DBClusterLakeVersion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DBClusterLakeVersionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

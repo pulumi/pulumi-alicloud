@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccessKeyArgs', 'AccessKey']
@@ -25,14 +25,29 @@ class AccessKeyArgs:
         :param pulumi.Input[str] status: Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
         :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
+        AccessKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pgp_key=pgp_key,
+            secret_file=secret_file,
+            status=status,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pgp_key: Optional[pulumi.Input[str]] = None,
+             secret_file: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if pgp_key is not None:
-            pulumi.set(__self__, "pgp_key", pgp_key)
+            _setter("pgp_key", pgp_key)
         if secret_file is not None:
-            pulumi.set(__self__, "secret_file", secret_file)
+            _setter("secret_file", secret_file)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="pgpKey")
@@ -105,20 +120,41 @@ class _AccessKeyState:
         :param pulumi.Input[str] status: Status of access key. It must be `Active` or `Inactive`. Default value is `Active`.
         :param pulumi.Input[str] user_name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
+        _AccessKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            encrypted_secret=encrypted_secret,
+            key_fingerprint=key_fingerprint,
+            pgp_key=pgp_key,
+            secret=secret,
+            secret_file=secret_file,
+            status=status,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             encrypted_secret: Optional[pulumi.Input[str]] = None,
+             key_fingerprint: Optional[pulumi.Input[str]] = None,
+             pgp_key: Optional[pulumi.Input[str]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             secret_file: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if encrypted_secret is not None:
-            pulumi.set(__self__, "encrypted_secret", encrypted_secret)
+            _setter("encrypted_secret", encrypted_secret)
         if key_fingerprint is not None:
-            pulumi.set(__self__, "key_fingerprint", key_fingerprint)
+            _setter("key_fingerprint", key_fingerprint)
         if pgp_key is not None:
-            pulumi.set(__self__, "pgp_key", pgp_key)
+            _setter("pgp_key", pgp_key)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
         if secret_file is not None:
-            pulumi.set(__self__, "secret_file", secret_file)
+            _setter("secret_file", secret_file)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="encryptedSecret")
@@ -330,6 +366,10 @@ class AccessKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

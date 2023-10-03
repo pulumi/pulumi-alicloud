@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DdosCooInstanceArgs', 'DdosCooInstance']
@@ -36,17 +36,40 @@ class DdosCooInstanceArgs:
                - ddoscoo_intl: Only supports to international account.
                Default to ddoscoo.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "base_bandwidth", base_bandwidth)
-        pulumi.set(__self__, "domain_count", domain_count)
-        pulumi.set(__self__, "port_count", port_count)
-        pulumi.set(__self__, "service_bandwidth", service_bandwidth)
+        DdosCooInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            base_bandwidth=base_bandwidth,
+            domain_count=domain_count,
+            port_count=port_count,
+            service_bandwidth=service_bandwidth,
+            name=name,
+            period=period,
+            product_type=product_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: pulumi.Input[str],
+             base_bandwidth: pulumi.Input[str],
+             domain_count: pulumi.Input[str],
+             port_count: pulumi.Input[str],
+             service_bandwidth: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             product_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("base_bandwidth", base_bandwidth)
+        _setter("domain_count", domain_count)
+        _setter("port_count", port_count)
+        _setter("service_bandwidth", service_bandwidth)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if product_type is not None:
-            pulumi.set(__self__, "product_type", product_type)
+            _setter("product_type", product_type)
 
     @property
     @pulumi.getter
@@ -173,22 +196,45 @@ class _DdosCooInstanceState:
                Default to ddoscoo.
         :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         """
+        _DdosCooInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            base_bandwidth=base_bandwidth,
+            domain_count=domain_count,
+            name=name,
+            period=period,
+            port_count=port_count,
+            product_type=product_type,
+            service_bandwidth=service_bandwidth,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: Optional[pulumi.Input[str]] = None,
+             base_bandwidth: Optional[pulumi.Input[str]] = None,
+             domain_count: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             port_count: Optional[pulumi.Input[str]] = None,
+             product_type: Optional[pulumi.Input[str]] = None,
+             service_bandwidth: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if base_bandwidth is not None:
-            pulumi.set(__self__, "base_bandwidth", base_bandwidth)
+            _setter("base_bandwidth", base_bandwidth)
         if domain_count is not None:
-            pulumi.set(__self__, "domain_count", domain_count)
+            _setter("domain_count", domain_count)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if port_count is not None:
-            pulumi.set(__self__, "port_count", port_count)
+            _setter("port_count", port_count)
         if product_type is not None:
-            pulumi.set(__self__, "product_type", product_type)
+            _setter("product_type", product_type)
         if service_bandwidth is not None:
-            pulumi.set(__self__, "service_bandwidth", service_bandwidth)
+            _setter("service_bandwidth", service_bandwidth)
 
     @property
     @pulumi.getter
@@ -412,6 +458,10 @@ class DdosCooInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DdosCooInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

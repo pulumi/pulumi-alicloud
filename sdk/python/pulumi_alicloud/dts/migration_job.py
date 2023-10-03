@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['MigrationJobArgs', 'MigrationJob']
@@ -79,59 +79,128 @@ class MigrationJobArgs:
         :param pulumi.Input[str] source_endpoint_user_name: The username of database account.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
         """
-        pulumi.set(__self__, "data_initialization", data_initialization)
-        pulumi.set(__self__, "data_synchronization", data_synchronization)
-        pulumi.set(__self__, "db_list", db_list)
-        pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
-        pulumi.set(__self__, "destination_endpoint_instance_type", destination_endpoint_instance_type)
-        pulumi.set(__self__, "dts_instance_id", dts_instance_id)
-        pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
-        pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
-        pulumi.set(__self__, "structure_initialization", structure_initialization)
+        MigrationJobArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_initialization=data_initialization,
+            data_synchronization=data_synchronization,
+            db_list=db_list,
+            destination_endpoint_engine_name=destination_endpoint_engine_name,
+            destination_endpoint_instance_type=destination_endpoint_instance_type,
+            dts_instance_id=dts_instance_id,
+            source_endpoint_engine_name=source_endpoint_engine_name,
+            source_endpoint_instance_type=source_endpoint_instance_type,
+            structure_initialization=structure_initialization,
+            checkpoint=checkpoint,
+            destination_endpoint_database_name=destination_endpoint_database_name,
+            destination_endpoint_instance_id=destination_endpoint_instance_id,
+            destination_endpoint_ip=destination_endpoint_ip,
+            destination_endpoint_oracle_sid=destination_endpoint_oracle_sid,
+            destination_endpoint_password=destination_endpoint_password,
+            destination_endpoint_port=destination_endpoint_port,
+            destination_endpoint_region=destination_endpoint_region,
+            destination_endpoint_user_name=destination_endpoint_user_name,
+            dts_job_name=dts_job_name,
+            instance_class=instance_class,
+            source_endpoint_database_name=source_endpoint_database_name,
+            source_endpoint_instance_id=source_endpoint_instance_id,
+            source_endpoint_ip=source_endpoint_ip,
+            source_endpoint_oracle_sid=source_endpoint_oracle_sid,
+            source_endpoint_owner_id=source_endpoint_owner_id,
+            source_endpoint_password=source_endpoint_password,
+            source_endpoint_port=source_endpoint_port,
+            source_endpoint_region=source_endpoint_region,
+            source_endpoint_role=source_endpoint_role,
+            source_endpoint_user_name=source_endpoint_user_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_initialization: pulumi.Input[bool],
+             data_synchronization: pulumi.Input[bool],
+             db_list: pulumi.Input[str],
+             destination_endpoint_engine_name: pulumi.Input[str],
+             destination_endpoint_instance_type: pulumi.Input[str],
+             dts_instance_id: pulumi.Input[str],
+             source_endpoint_engine_name: pulumi.Input[str],
+             source_endpoint_instance_type: pulumi.Input[str],
+             structure_initialization: pulumi.Input[bool],
+             checkpoint: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_database_name: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_ip: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_password: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_port: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_region: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+             dts_job_name: Optional[pulumi.Input[str]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             source_endpoint_database_name: Optional[pulumi.Input[str]] = None,
+             source_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
+             source_endpoint_ip: Optional[pulumi.Input[str]] = None,
+             source_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
+             source_endpoint_owner_id: Optional[pulumi.Input[str]] = None,
+             source_endpoint_password: Optional[pulumi.Input[str]] = None,
+             source_endpoint_port: Optional[pulumi.Input[str]] = None,
+             source_endpoint_region: Optional[pulumi.Input[str]] = None,
+             source_endpoint_role: Optional[pulumi.Input[str]] = None,
+             source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("data_initialization", data_initialization)
+        _setter("data_synchronization", data_synchronization)
+        _setter("db_list", db_list)
+        _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
+        _setter("destination_endpoint_instance_type", destination_endpoint_instance_type)
+        _setter("dts_instance_id", dts_instance_id)
+        _setter("source_endpoint_engine_name", source_endpoint_engine_name)
+        _setter("source_endpoint_instance_type", source_endpoint_instance_type)
+        _setter("structure_initialization", structure_initialization)
         if checkpoint is not None:
-            pulumi.set(__self__, "checkpoint", checkpoint)
+            _setter("checkpoint", checkpoint)
         if destination_endpoint_database_name is not None:
-            pulumi.set(__self__, "destination_endpoint_database_name", destination_endpoint_database_name)
+            _setter("destination_endpoint_database_name", destination_endpoint_database_name)
         if destination_endpoint_instance_id is not None:
-            pulumi.set(__self__, "destination_endpoint_instance_id", destination_endpoint_instance_id)
+            _setter("destination_endpoint_instance_id", destination_endpoint_instance_id)
         if destination_endpoint_ip is not None:
-            pulumi.set(__self__, "destination_endpoint_ip", destination_endpoint_ip)
+            _setter("destination_endpoint_ip", destination_endpoint_ip)
         if destination_endpoint_oracle_sid is not None:
-            pulumi.set(__self__, "destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
+            _setter("destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
         if destination_endpoint_password is not None:
-            pulumi.set(__self__, "destination_endpoint_password", destination_endpoint_password)
+            _setter("destination_endpoint_password", destination_endpoint_password)
         if destination_endpoint_port is not None:
-            pulumi.set(__self__, "destination_endpoint_port", destination_endpoint_port)
+            _setter("destination_endpoint_port", destination_endpoint_port)
         if destination_endpoint_region is not None:
-            pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
+            _setter("destination_endpoint_region", destination_endpoint_region)
         if destination_endpoint_user_name is not None:
-            pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
+            _setter("destination_endpoint_user_name", destination_endpoint_user_name)
         if dts_job_name is not None:
-            pulumi.set(__self__, "dts_job_name", dts_job_name)
+            _setter("dts_job_name", dts_job_name)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if source_endpoint_database_name is not None:
-            pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
+            _setter("source_endpoint_database_name", source_endpoint_database_name)
         if source_endpoint_instance_id is not None:
-            pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
+            _setter("source_endpoint_instance_id", source_endpoint_instance_id)
         if source_endpoint_ip is not None:
-            pulumi.set(__self__, "source_endpoint_ip", source_endpoint_ip)
+            _setter("source_endpoint_ip", source_endpoint_ip)
         if source_endpoint_oracle_sid is not None:
-            pulumi.set(__self__, "source_endpoint_oracle_sid", source_endpoint_oracle_sid)
+            _setter("source_endpoint_oracle_sid", source_endpoint_oracle_sid)
         if source_endpoint_owner_id is not None:
-            pulumi.set(__self__, "source_endpoint_owner_id", source_endpoint_owner_id)
+            _setter("source_endpoint_owner_id", source_endpoint_owner_id)
         if source_endpoint_password is not None:
-            pulumi.set(__self__, "source_endpoint_password", source_endpoint_password)
+            _setter("source_endpoint_password", source_endpoint_password)
         if source_endpoint_port is not None:
-            pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
+            _setter("source_endpoint_port", source_endpoint_port)
         if source_endpoint_region is not None:
-            pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
+            _setter("source_endpoint_region", source_endpoint_region)
         if source_endpoint_role is not None:
-            pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
+            _setter("source_endpoint_role", source_endpoint_role)
         if source_endpoint_user_name is not None:
-            pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
+            _setter("source_endpoint_user_name", source_endpoint_user_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="dataInitialization")
@@ -574,68 +643,137 @@ class _MigrationJobState:
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
         :param pulumi.Input[bool] structure_initialization: Whether to perform a database table structure to migrate.
         """
+        _MigrationJobState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            checkpoint=checkpoint,
+            data_initialization=data_initialization,
+            data_synchronization=data_synchronization,
+            db_list=db_list,
+            destination_endpoint_database_name=destination_endpoint_database_name,
+            destination_endpoint_engine_name=destination_endpoint_engine_name,
+            destination_endpoint_instance_id=destination_endpoint_instance_id,
+            destination_endpoint_instance_type=destination_endpoint_instance_type,
+            destination_endpoint_ip=destination_endpoint_ip,
+            destination_endpoint_oracle_sid=destination_endpoint_oracle_sid,
+            destination_endpoint_password=destination_endpoint_password,
+            destination_endpoint_port=destination_endpoint_port,
+            destination_endpoint_region=destination_endpoint_region,
+            destination_endpoint_user_name=destination_endpoint_user_name,
+            dts_instance_id=dts_instance_id,
+            dts_job_name=dts_job_name,
+            instance_class=instance_class,
+            source_endpoint_database_name=source_endpoint_database_name,
+            source_endpoint_engine_name=source_endpoint_engine_name,
+            source_endpoint_instance_id=source_endpoint_instance_id,
+            source_endpoint_instance_type=source_endpoint_instance_type,
+            source_endpoint_ip=source_endpoint_ip,
+            source_endpoint_oracle_sid=source_endpoint_oracle_sid,
+            source_endpoint_owner_id=source_endpoint_owner_id,
+            source_endpoint_password=source_endpoint_password,
+            source_endpoint_port=source_endpoint_port,
+            source_endpoint_region=source_endpoint_region,
+            source_endpoint_role=source_endpoint_role,
+            source_endpoint_user_name=source_endpoint_user_name,
+            status=status,
+            structure_initialization=structure_initialization,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             checkpoint: Optional[pulumi.Input[str]] = None,
+             data_initialization: Optional[pulumi.Input[bool]] = None,
+             data_synchronization: Optional[pulumi.Input[bool]] = None,
+             db_list: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_database_name: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_ip: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_password: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_port: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_region: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+             dts_instance_id: Optional[pulumi.Input[str]] = None,
+             dts_job_name: Optional[pulumi.Input[str]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             source_endpoint_database_name: Optional[pulumi.Input[str]] = None,
+             source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
+             source_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
+             source_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
+             source_endpoint_ip: Optional[pulumi.Input[str]] = None,
+             source_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
+             source_endpoint_owner_id: Optional[pulumi.Input[str]] = None,
+             source_endpoint_password: Optional[pulumi.Input[str]] = None,
+             source_endpoint_port: Optional[pulumi.Input[str]] = None,
+             source_endpoint_region: Optional[pulumi.Input[str]] = None,
+             source_endpoint_role: Optional[pulumi.Input[str]] = None,
+             source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             structure_initialization: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if checkpoint is not None:
-            pulumi.set(__self__, "checkpoint", checkpoint)
+            _setter("checkpoint", checkpoint)
         if data_initialization is not None:
-            pulumi.set(__self__, "data_initialization", data_initialization)
+            _setter("data_initialization", data_initialization)
         if data_synchronization is not None:
-            pulumi.set(__self__, "data_synchronization", data_synchronization)
+            _setter("data_synchronization", data_synchronization)
         if db_list is not None:
-            pulumi.set(__self__, "db_list", db_list)
+            _setter("db_list", db_list)
         if destination_endpoint_database_name is not None:
-            pulumi.set(__self__, "destination_endpoint_database_name", destination_endpoint_database_name)
+            _setter("destination_endpoint_database_name", destination_endpoint_database_name)
         if destination_endpoint_engine_name is not None:
-            pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
+            _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
         if destination_endpoint_instance_id is not None:
-            pulumi.set(__self__, "destination_endpoint_instance_id", destination_endpoint_instance_id)
+            _setter("destination_endpoint_instance_id", destination_endpoint_instance_id)
         if destination_endpoint_instance_type is not None:
-            pulumi.set(__self__, "destination_endpoint_instance_type", destination_endpoint_instance_type)
+            _setter("destination_endpoint_instance_type", destination_endpoint_instance_type)
         if destination_endpoint_ip is not None:
-            pulumi.set(__self__, "destination_endpoint_ip", destination_endpoint_ip)
+            _setter("destination_endpoint_ip", destination_endpoint_ip)
         if destination_endpoint_oracle_sid is not None:
-            pulumi.set(__self__, "destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
+            _setter("destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
         if destination_endpoint_password is not None:
-            pulumi.set(__self__, "destination_endpoint_password", destination_endpoint_password)
+            _setter("destination_endpoint_password", destination_endpoint_password)
         if destination_endpoint_port is not None:
-            pulumi.set(__self__, "destination_endpoint_port", destination_endpoint_port)
+            _setter("destination_endpoint_port", destination_endpoint_port)
         if destination_endpoint_region is not None:
-            pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
+            _setter("destination_endpoint_region", destination_endpoint_region)
         if destination_endpoint_user_name is not None:
-            pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
+            _setter("destination_endpoint_user_name", destination_endpoint_user_name)
         if dts_instance_id is not None:
-            pulumi.set(__self__, "dts_instance_id", dts_instance_id)
+            _setter("dts_instance_id", dts_instance_id)
         if dts_job_name is not None:
-            pulumi.set(__self__, "dts_job_name", dts_job_name)
+            _setter("dts_job_name", dts_job_name)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if source_endpoint_database_name is not None:
-            pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
+            _setter("source_endpoint_database_name", source_endpoint_database_name)
         if source_endpoint_engine_name is not None:
-            pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
+            _setter("source_endpoint_engine_name", source_endpoint_engine_name)
         if source_endpoint_instance_id is not None:
-            pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
+            _setter("source_endpoint_instance_id", source_endpoint_instance_id)
         if source_endpoint_instance_type is not None:
-            pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
+            _setter("source_endpoint_instance_type", source_endpoint_instance_type)
         if source_endpoint_ip is not None:
-            pulumi.set(__self__, "source_endpoint_ip", source_endpoint_ip)
+            _setter("source_endpoint_ip", source_endpoint_ip)
         if source_endpoint_oracle_sid is not None:
-            pulumi.set(__self__, "source_endpoint_oracle_sid", source_endpoint_oracle_sid)
+            _setter("source_endpoint_oracle_sid", source_endpoint_oracle_sid)
         if source_endpoint_owner_id is not None:
-            pulumi.set(__self__, "source_endpoint_owner_id", source_endpoint_owner_id)
+            _setter("source_endpoint_owner_id", source_endpoint_owner_id)
         if source_endpoint_password is not None:
-            pulumi.set(__self__, "source_endpoint_password", source_endpoint_password)
+            _setter("source_endpoint_password", source_endpoint_password)
         if source_endpoint_port is not None:
-            pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
+            _setter("source_endpoint_port", source_endpoint_port)
         if source_endpoint_region is not None:
-            pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
+            _setter("source_endpoint_region", source_endpoint_region)
         if source_endpoint_role is not None:
-            pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
+            _setter("source_endpoint_role", source_endpoint_role)
         if source_endpoint_user_name is not None:
-            pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
+            _setter("source_endpoint_user_name", source_endpoint_user_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if structure_initialization is not None:
-            pulumi.set(__self__, "structure_initialization", structure_initialization)
+            _setter("structure_initialization", structure_initialization)
 
     @property
     @pulumi.getter
@@ -1145,6 +1283,10 @@ class MigrationJob(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MigrationJobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

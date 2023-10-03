@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -79,10 +79,21 @@ class TransitRouterVpcAttachmentZoneMapping(dict):
         :param str vswitch_id: The VSwitch id of attachment.
         :param str zone_id: The zone Id of VSwitch.
         """
+        TransitRouterVpcAttachmentZoneMapping._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vswitch_id: Optional[str] = None,
+             zone_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -125,7 +136,16 @@ class TransitRouterVpnAttachmentZone(dict):
         """
         :param str zone_id: The id of the zone.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        TransitRouterVpnAttachmentZone._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -151,11 +171,28 @@ class GetBandwidthLimitsLimitResult(dict):
         :param str opposite_region_id: ID of opposite region.
         :param str status: Status of the CEN Bandwidth Limit, including "Active" and "Modifying".
         """
-        pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "local_region_id", local_region_id)
-        pulumi.set(__self__, "opposite_region_id", opposite_region_id)
-        pulumi.set(__self__, "status", status)
+        GetBandwidthLimitsLimitResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth_limit=bandwidth_limit,
+            instance_id=instance_id,
+            local_region_id=local_region_id,
+            opposite_region_id=opposite_region_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth_limit: int,
+             instance_id: str,
+             local_region_id: str,
+             opposite_region_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth_limit", bandwidth_limit)
+        _setter("instance_id", instance_id)
+        _setter("local_region_id", local_region_id)
+        _setter("opposite_region_id", opposite_region_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="bandwidthLimit")
@@ -246,28 +283,79 @@ class GetBandwidthPackagesPackageResult(dict):
         :param str reservation_order_type: The type of the configuration change.
         :param str status: Status of the CEN Bandwidth Package in CEN instance, Valid value: `Idle` and `InUse`.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "bandwidth_package_charge_type", bandwidth_package_charge_type)
-        pulumi.set(__self__, "business_status", business_status)
-        pulumi.set(__self__, "cen_bandwidth_package_id", cen_bandwidth_package_id)
-        pulumi.set(__self__, "cen_bandwidth_package_name", cen_bandwidth_package_name)
-        pulumi.set(__self__, "cen_ids", cen_ids)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "geographic_region_a_id", geographic_region_a_id)
-        pulumi.set(__self__, "geographic_region_b_id", geographic_region_b_id)
-        pulumi.set(__self__, "geographic_span_id", geographic_span_id)
-        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "is_cross_border", is_cross_border)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
-        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
-        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
-        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
-        pulumi.set(__self__, "status", status)
+        GetBandwidthPackagesPackageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            bandwidth_package_charge_type=bandwidth_package_charge_type,
+            business_status=business_status,
+            cen_bandwidth_package_id=cen_bandwidth_package_id,
+            cen_bandwidth_package_name=cen_bandwidth_package_name,
+            cen_ids=cen_ids,
+            description=description,
+            expired_time=expired_time,
+            geographic_region_a_id=geographic_region_a_id,
+            geographic_region_b_id=geographic_region_b_id,
+            geographic_span_id=geographic_span_id,
+            has_reservation_data=has_reservation_data,
+            id=id,
+            instance_id=instance_id,
+            is_cross_border=is_cross_border,
+            name=name,
+            payment_type=payment_type,
+            reservation_active_time=reservation_active_time,
+            reservation_bandwidth=reservation_bandwidth,
+            reservation_internet_charge_type=reservation_internet_charge_type,
+            reservation_order_type=reservation_order_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             bandwidth_package_charge_type: str,
+             business_status: str,
+             cen_bandwidth_package_id: str,
+             cen_bandwidth_package_name: str,
+             cen_ids: Sequence[str],
+             description: str,
+             expired_time: str,
+             geographic_region_a_id: str,
+             geographic_region_b_id: str,
+             geographic_span_id: str,
+             has_reservation_data: str,
+             id: str,
+             instance_id: str,
+             is_cross_border: bool,
+             name: str,
+             payment_type: str,
+             reservation_active_time: str,
+             reservation_bandwidth: str,
+             reservation_internet_charge_type: str,
+             reservation_order_type: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("bandwidth_package_charge_type", bandwidth_package_charge_type)
+        _setter("business_status", business_status)
+        _setter("cen_bandwidth_package_id", cen_bandwidth_package_id)
+        _setter("cen_bandwidth_package_name", cen_bandwidth_package_name)
+        _setter("cen_ids", cen_ids)
+        _setter("description", description)
+        _setter("expired_time", expired_time)
+        _setter("geographic_region_a_id", geographic_region_a_id)
+        _setter("geographic_region_b_id", geographic_region_b_id)
+        _setter("geographic_span_id", geographic_span_id)
+        _setter("has_reservation_data", has_reservation_data)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("is_cross_border", is_cross_border)
+        _setter("name", name)
+        _setter("payment_type", payment_type)
+        _setter("reservation_active_time", reservation_active_time)
+        _setter("reservation_bandwidth", reservation_bandwidth)
+        _setter("reservation_internet_charge_type", reservation_internet_charge_type)
+        _setter("reservation_order_type", reservation_order_type)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -462,13 +550,34 @@ class GetChildInstanceRouteEntryToAttachmentsAttachmentResult(dict):
         :param str status: The status of the resource
         :param str transit_router_attachment_id: TransitRouterAttachmentId
         """
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "child_instance_route_table_id", child_instance_route_table_id)
-        pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "service_type", service_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        GetChildInstanceRouteEntryToAttachmentsAttachmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            child_instance_route_table_id=child_instance_route_table_id,
+            destination_cidr_block=destination_cidr_block,
+            id=id,
+            service_type=service_type,
+            status=status,
+            transit_router_attachment_id=transit_router_attachment_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: str,
+             child_instance_route_table_id: str,
+             destination_cidr_block: str,
+             id: str,
+             service_type: str,
+             status: str,
+             transit_router_attachment_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cen_id", cen_id)
+        _setter("child_instance_route_table_id", child_instance_route_table_id)
+        _setter("destination_cidr_block", destination_cidr_block)
+        _setter("id", id)
+        _setter("service_type", service_type)
+        _setter("status", status)
+        _setter("transit_router_attachment_id", transit_router_attachment_id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -548,14 +657,37 @@ class GetFlowlogsFlowlogResult(dict):
         :param str project_name: The name of the SLS project.
         :param str status: The status of flowlog. Valid values: ["Active", "Inactive"]. Default to "Active".
         """
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "flow_log_id", flow_log_id)
-        pulumi.set(__self__, "flow_log_name", flow_log_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "log_store_name", log_store_name)
-        pulumi.set(__self__, "project_name", project_name)
-        pulumi.set(__self__, "status", status)
+        GetFlowlogsFlowlogResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            description=description,
+            flow_log_id=flow_log_id,
+            flow_log_name=flow_log_name,
+            id=id,
+            log_store_name=log_store_name,
+            project_name=project_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: str,
+             description: str,
+             flow_log_id: str,
+             flow_log_name: str,
+             id: str,
+             log_store_name: str,
+             project_name: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cen_id", cen_id)
+        _setter("description", description)
+        _setter("flow_log_id", flow_log_id)
+        _setter("flow_log_name", flow_log_name)
+        _setter("id", id)
+        _setter("log_store_name", log_store_name)
+        _setter("project_name", project_name)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="cenId")
@@ -643,14 +775,37 @@ class GetInstanceAttachmentsAttachmentResult(dict):
         :param str instance_id: The ID of the CEN instance.
         :param str status: The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
         """
-        pulumi.set(__self__, "child_instance_attach_time", child_instance_attach_time)
-        pulumi.set(__self__, "child_instance_id", child_instance_id)
-        pulumi.set(__self__, "child_instance_owner_id", child_instance_owner_id)
-        pulumi.set(__self__, "child_instance_region_id", child_instance_region_id)
-        pulumi.set(__self__, "child_instance_type", child_instance_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "status", status)
+        GetInstanceAttachmentsAttachmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            child_instance_attach_time=child_instance_attach_time,
+            child_instance_id=child_instance_id,
+            child_instance_owner_id=child_instance_owner_id,
+            child_instance_region_id=child_instance_region_id,
+            child_instance_type=child_instance_type,
+            id=id,
+            instance_id=instance_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             child_instance_attach_time: str,
+             child_instance_id: str,
+             child_instance_owner_id: int,
+             child_instance_region_id: str,
+             child_instance_type: str,
+             id: str,
+             instance_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("child_instance_attach_time", child_instance_attach_time)
+        _setter("child_instance_id", child_instance_id)
+        _setter("child_instance_owner_id", child_instance_owner_id)
+        _setter("child_instance_region_id", child_instance_region_id)
+        _setter("child_instance_type", child_instance_type)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="childInstanceAttachTime")
@@ -742,16 +897,43 @@ class GetInstancesInstanceResult(dict):
         :param str status: The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "cen_bandwidth_package_ids", cen_bandwidth_package_ids)
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "cen_instance_name", cen_instance_name)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "protection_level", protection_level)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_bandwidth_package_ids=cen_bandwidth_package_ids,
+            cen_id=cen_id,
+            cen_instance_name=cen_instance_name,
+            create_time=create_time,
+            description=description,
+            id=id,
+            name=name,
+            protection_level=protection_level,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_bandwidth_package_ids: Sequence[str],
+             cen_id: str,
+             cen_instance_name: str,
+             create_time: str,
+             description: str,
+             id: str,
+             name: str,
+             protection_level: str,
+             status: str,
+             tags: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cen_bandwidth_package_ids", cen_bandwidth_package_ids)
+        _setter("cen_id", cen_id)
+        _setter("cen_instance_name", cen_instance_name)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("protection_level", protection_level)
+        _setter("status", status)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="cenBandwidthPackageIds")
@@ -853,13 +1035,34 @@ class GetInterRegionTrafficQosPoliciesPolicyResult(dict):
         :param str transit_router_attachment_id: The ID of the inter-region connection.
         :param str transit_router_id: The ID of the transit router.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
-        pulumi.set(__self__, "inter_region_traffic_qos_policy_id", inter_region_traffic_qos_policy_id)
-        pulumi.set(__self__, "inter_region_traffic_qos_policy_name", inter_region_traffic_qos_policy_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
-        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        GetInterRegionTrafficQosPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            inter_region_traffic_qos_policy_description=inter_region_traffic_qos_policy_description,
+            inter_region_traffic_qos_policy_id=inter_region_traffic_qos_policy_id,
+            inter_region_traffic_qos_policy_name=inter_region_traffic_qos_policy_name,
+            status=status,
+            transit_router_attachment_id=transit_router_attachment_id,
+            transit_router_id=transit_router_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             inter_region_traffic_qos_policy_description: str,
+             inter_region_traffic_qos_policy_id: str,
+             inter_region_traffic_qos_policy_name: str,
+             status: str,
+             transit_router_attachment_id: str,
+             transit_router_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
+        _setter("inter_region_traffic_qos_policy_id", inter_region_traffic_qos_policy_id)
+        _setter("inter_region_traffic_qos_policy_name", inter_region_traffic_qos_policy_name)
+        _setter("status", status)
+        _setter("transit_router_attachment_id", transit_router_attachment_id)
+        _setter("transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter
@@ -938,14 +1141,37 @@ class GetInterRegionTrafficQosQueuesQueueResult(dict):
         :param str status: The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
         :param str traffic_qos_policy_id: The ID of the traffic scheduling policy.
         """
-        pulumi.set(__self__, "dscps", dscps)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "inter_region_traffic_qos_queue_description", inter_region_traffic_qos_queue_description)
-        pulumi.set(__self__, "inter_region_traffic_qos_queue_id", inter_region_traffic_qos_queue_id)
-        pulumi.set(__self__, "inter_region_traffic_qos_queue_name", inter_region_traffic_qos_queue_name)
-        pulumi.set(__self__, "remain_bandwidth_percent", remain_bandwidth_percent)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "traffic_qos_policy_id", traffic_qos_policy_id)
+        GetInterRegionTrafficQosQueuesQueueResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dscps=dscps,
+            id=id,
+            inter_region_traffic_qos_queue_description=inter_region_traffic_qos_queue_description,
+            inter_region_traffic_qos_queue_id=inter_region_traffic_qos_queue_id,
+            inter_region_traffic_qos_queue_name=inter_region_traffic_qos_queue_name,
+            remain_bandwidth_percent=remain_bandwidth_percent,
+            status=status,
+            traffic_qos_policy_id=traffic_qos_policy_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dscps: Sequence[str],
+             id: str,
+             inter_region_traffic_qos_queue_description: str,
+             inter_region_traffic_qos_queue_id: str,
+             inter_region_traffic_qos_queue_name: str,
+             remain_bandwidth_percent: int,
+             status: str,
+             traffic_qos_policy_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dscps", dscps)
+        _setter("id", id)
+        _setter("inter_region_traffic_qos_queue_description", inter_region_traffic_qos_queue_description)
+        _setter("inter_region_traffic_qos_queue_id", inter_region_traffic_qos_queue_id)
+        _setter("inter_region_traffic_qos_queue_name", inter_region_traffic_qos_queue_name)
+        _setter("remain_bandwidth_percent", remain_bandwidth_percent)
+        _setter("status", status)
+        _setter("traffic_qos_policy_id", traffic_qos_policy_id)
 
     @property
     @pulumi.getter
@@ -1028,13 +1254,34 @@ class GetPrivateZonesZoneResult(dict):
         :param str private_zone_dns_servers: The DNS IP addresses of the PrivateZone service.
         :param str status: The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
         """
-        pulumi.set(__self__, "access_region_id", access_region_id)
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "host_region_id", host_region_id)
-        pulumi.set(__self__, "host_vpc_id", host_vpc_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "private_zone_dns_servers", private_zone_dns_servers)
-        pulumi.set(__self__, "status", status)
+        GetPrivateZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_region_id=access_region_id,
+            cen_id=cen_id,
+            host_region_id=host_region_id,
+            host_vpc_id=host_vpc_id,
+            id=id,
+            private_zone_dns_servers=private_zone_dns_servers,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_region_id: str,
+             cen_id: str,
+             host_region_id: str,
+             host_vpc_id: str,
+             id: str,
+             private_zone_dns_servers: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_region_id", access_region_id)
+        _setter("cen_id", cen_id)
+        _setter("host_region_id", host_region_id)
+        _setter("host_vpc_id", host_vpc_id)
+        _setter("id", id)
+        _setter("private_zone_dns_servers", private_zone_dns_servers)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accessRegionId")
@@ -1108,11 +1355,28 @@ class GetRegionRouteEntriesEntryResult(dict):
         :param str next_hop_type: Type of the next hop.
         :param str type: Type of the route entry.
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "next_hop_id", next_hop_id)
-        pulumi.set(__self__, "next_hop_region_id", next_hop_region_id)
-        pulumi.set(__self__, "next_hop_type", next_hop_type)
-        pulumi.set(__self__, "type", type)
+        GetRegionRouteEntriesEntryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            next_hop_id=next_hop_id,
+            next_hop_region_id=next_hop_region_id,
+            next_hop_type=next_hop_type,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: str,
+             next_hop_id: str,
+             next_hop_region_id: str,
+             next_hop_type: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr_block", cidr_block)
+        _setter("next_hop_id", next_hop_id)
+        _setter("next_hop_region_id", next_hop_region_id)
+        _setter("next_hop_type", next_hop_type)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -1176,14 +1440,37 @@ class GetRouteEntriesEntryResult(dict):
         :param str route_table_id: ID of the route table of the VPC or VBR.
         :param str route_type: Type of the route entry, including "System", "Custom" and "BGP".
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "conflicts", conflicts)
-        pulumi.set(__self__, "next_hop_id", next_hop_id)
-        pulumi.set(__self__, "next_hop_type", next_hop_type)
-        pulumi.set(__self__, "operational_mode", operational_mode)
-        pulumi.set(__self__, "publish_status", publish_status)
-        pulumi.set(__self__, "route_table_id", route_table_id)
-        pulumi.set(__self__, "route_type", route_type)
+        GetRouteEntriesEntryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            conflicts=conflicts,
+            next_hop_id=next_hop_id,
+            next_hop_type=next_hop_type,
+            operational_mode=operational_mode,
+            publish_status=publish_status,
+            route_table_id=route_table_id,
+            route_type=route_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: str,
+             conflicts: Sequence['outputs.GetRouteEntriesEntryConflictResult'],
+             next_hop_id: str,
+             next_hop_type: str,
+             operational_mode: bool,
+             publish_status: str,
+             route_table_id: str,
+             route_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr_block", cidr_block)
+        _setter("conflicts", conflicts)
+        _setter("next_hop_id", next_hop_id)
+        _setter("next_hop_type", next_hop_type)
+        _setter("operational_mode", operational_mode)
+        _setter("publish_status", publish_status)
+        _setter("route_table_id", route_table_id)
+        _setter("route_type", route_type)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -1265,11 +1552,28 @@ class GetRouteEntriesEntryConflictResult(dict):
         :param str region_id: ID of the region where the conflicted route entry is located.
         :param str status: Reasons of exceptions.
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "status", status)
+        GetRouteEntriesEntryConflictResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            instance_id=instance_id,
+            instance_type=instance_type,
+            region_id=region_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: str,
+             instance_id: str,
+             instance_type: str,
+             region_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr_block", cidr_block)
+        _setter("instance_id", instance_id)
+        _setter("instance_type", instance_type)
+        _setter("region_id", region_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -1377,36 +1681,103 @@ class GetRouteMapsMapResult(dict):
         :param str status: The status of the route map, including `Creating`, `Active` and `Deleting`.
         :param str transmit_direction: The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
         """
-        pulumi.set(__self__, "as_path_match_mode", as_path_match_mode)
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "cen_region_id", cen_region_id)
-        pulumi.set(__self__, "cidr_match_mode", cidr_match_mode)
-        pulumi.set(__self__, "community_match_mode", community_match_mode)
-        pulumi.set(__self__, "community_operate_mode", community_operate_mode)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "destination_child_instance_types", destination_child_instance_types)
-        pulumi.set(__self__, "destination_cidr_blocks", destination_cidr_blocks)
-        pulumi.set(__self__, "destination_instance_ids", destination_instance_ids)
-        pulumi.set(__self__, "destination_instance_ids_reverse_match", destination_instance_ids_reverse_match)
-        pulumi.set(__self__, "destination_route_table_ids", destination_route_table_ids)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "map_result", map_result)
-        pulumi.set(__self__, "match_asns", match_asns)
-        pulumi.set(__self__, "match_community_sets", match_community_sets)
-        pulumi.set(__self__, "next_priority", next_priority)
-        pulumi.set(__self__, "operate_community_sets", operate_community_sets)
-        pulumi.set(__self__, "preference", preference)
-        pulumi.set(__self__, "prepend_as_paths", prepend_as_paths)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "route_map_id", route_map_id)
-        pulumi.set(__self__, "route_types", route_types)
-        pulumi.set(__self__, "source_child_instance_types", source_child_instance_types)
-        pulumi.set(__self__, "source_instance_ids", source_instance_ids)
-        pulumi.set(__self__, "source_instance_ids_reverse_match", source_instance_ids_reverse_match)
-        pulumi.set(__self__, "source_region_ids", source_region_ids)
-        pulumi.set(__self__, "source_route_table_ids", source_route_table_ids)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transmit_direction", transmit_direction)
+        GetRouteMapsMapResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            as_path_match_mode=as_path_match_mode,
+            cen_id=cen_id,
+            cen_region_id=cen_region_id,
+            cidr_match_mode=cidr_match_mode,
+            community_match_mode=community_match_mode,
+            community_operate_mode=community_operate_mode,
+            description=description,
+            destination_child_instance_types=destination_child_instance_types,
+            destination_cidr_blocks=destination_cidr_blocks,
+            destination_instance_ids=destination_instance_ids,
+            destination_instance_ids_reverse_match=destination_instance_ids_reverse_match,
+            destination_route_table_ids=destination_route_table_ids,
+            id=id,
+            map_result=map_result,
+            match_asns=match_asns,
+            match_community_sets=match_community_sets,
+            next_priority=next_priority,
+            operate_community_sets=operate_community_sets,
+            preference=preference,
+            prepend_as_paths=prepend_as_paths,
+            priority=priority,
+            route_map_id=route_map_id,
+            route_types=route_types,
+            source_child_instance_types=source_child_instance_types,
+            source_instance_ids=source_instance_ids,
+            source_instance_ids_reverse_match=source_instance_ids_reverse_match,
+            source_region_ids=source_region_ids,
+            source_route_table_ids=source_route_table_ids,
+            status=status,
+            transmit_direction=transmit_direction,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             as_path_match_mode: str,
+             cen_id: str,
+             cen_region_id: str,
+             cidr_match_mode: str,
+             community_match_mode: str,
+             community_operate_mode: str,
+             description: str,
+             destination_child_instance_types: Sequence[str],
+             destination_cidr_blocks: Sequence[str],
+             destination_instance_ids: Sequence[str],
+             destination_instance_ids_reverse_match: bool,
+             destination_route_table_ids: Sequence[str],
+             id: str,
+             map_result: str,
+             match_asns: Sequence[str],
+             match_community_sets: Sequence[str],
+             next_priority: int,
+             operate_community_sets: Sequence[str],
+             preference: int,
+             prepend_as_paths: Sequence[str],
+             priority: int,
+             route_map_id: str,
+             route_types: Sequence[str],
+             source_child_instance_types: Sequence[str],
+             source_instance_ids: Sequence[str],
+             source_instance_ids_reverse_match: bool,
+             source_region_ids: Sequence[str],
+             source_route_table_ids: Sequence[str],
+             status: str,
+             transmit_direction: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("as_path_match_mode", as_path_match_mode)
+        _setter("cen_id", cen_id)
+        _setter("cen_region_id", cen_region_id)
+        _setter("cidr_match_mode", cidr_match_mode)
+        _setter("community_match_mode", community_match_mode)
+        _setter("community_operate_mode", community_operate_mode)
+        _setter("description", description)
+        _setter("destination_child_instance_types", destination_child_instance_types)
+        _setter("destination_cidr_blocks", destination_cidr_blocks)
+        _setter("destination_instance_ids", destination_instance_ids)
+        _setter("destination_instance_ids_reverse_match", destination_instance_ids_reverse_match)
+        _setter("destination_route_table_ids", destination_route_table_ids)
+        _setter("id", id)
+        _setter("map_result", map_result)
+        _setter("match_asns", match_asns)
+        _setter("match_community_sets", match_community_sets)
+        _setter("next_priority", next_priority)
+        _setter("operate_community_sets", operate_community_sets)
+        _setter("preference", preference)
+        _setter("prepend_as_paths", prepend_as_paths)
+        _setter("priority", priority)
+        _setter("route_map_id", route_map_id)
+        _setter("route_types", route_types)
+        _setter("source_child_instance_types", source_child_instance_types)
+        _setter("source_instance_ids", source_instance_ids)
+        _setter("source_instance_ids_reverse_match", source_instance_ids_reverse_match)
+        _setter("source_region_ids", source_region_ids)
+        _setter("source_route_table_ids", source_route_table_ids)
+        _setter("status", status)
+        _setter("transmit_direction", transmit_direction)
 
     @property
     @pulumi.getter(name="asPathMatchMode")
@@ -1674,16 +2045,43 @@ class GetRouteServicesServiceResult(dict):
         :param str status: The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
         :param str update_interval: The update interval. Default value: 5. The value cannot be modified.
         """
-        pulumi.set(__self__, "access_region_id", access_region_id)
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "cidrs", cidrs)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "host_region_id", host_region_id)
-        pulumi.set(__self__, "host_vpc_id", host_vpc_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "update_interval", update_interval)
+        GetRouteServicesServiceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_region_id=access_region_id,
+            cen_id=cen_id,
+            cidrs=cidrs,
+            description=description,
+            host=host,
+            host_region_id=host_region_id,
+            host_vpc_id=host_vpc_id,
+            id=id,
+            status=status,
+            update_interval=update_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_region_id: str,
+             cen_id: str,
+             cidrs: Sequence[str],
+             description: str,
+             host: str,
+             host_region_id: str,
+             host_vpc_id: str,
+             id: str,
+             status: str,
+             update_interval: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_region_id", access_region_id)
+        _setter("cen_id", cen_id)
+        _setter("cidrs", cidrs)
+        _setter("description", description)
+        _setter("host", host)
+        _setter("host_region_id", host_region_id)
+        _setter("host_vpc_id", host_vpc_id)
+        _setter("id", id)
+        _setter("status", status)
+        _setter("update_interval", update_interval)
 
     @property
     @pulumi.getter(name="accessRegionId")
@@ -1787,14 +2185,37 @@ class GetTrafficMarkingPoliciesPolicyResult(dict):
         :param str traffic_marking_policy_name: The name of the Traffic Marking Policy.
         :param str transit_router_id: The ID of the transit router.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "marking_dscp", marking_dscp)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "traffic_marking_policy_id", traffic_marking_policy_id)
-        pulumi.set(__self__, "traffic_marking_policy_name", traffic_marking_policy_name)
-        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        GetTrafficMarkingPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            marking_dscp=marking_dscp,
+            priority=priority,
+            status=status,
+            traffic_marking_policy_id=traffic_marking_policy_id,
+            traffic_marking_policy_name=traffic_marking_policy_name,
+            transit_router_id=transit_router_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             id: str,
+             marking_dscp: int,
+             priority: int,
+             status: str,
+             traffic_marking_policy_id: str,
+             traffic_marking_policy_name: str,
+             transit_router_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("id", id)
+        _setter("marking_dscp", marking_dscp)
+        _setter("priority", priority)
+        _setter("status", status)
+        _setter("traffic_marking_policy_id", traffic_marking_policy_id)
+        _setter("traffic_marking_policy_name", traffic_marking_policy_name)
+        _setter("transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter
@@ -1882,14 +2303,37 @@ class GetTransitRouteTableAggregationsTransitRouteTableAggregationResult(dict):
         :param str transit_route_table_aggregation_scope: The scope of networks that you want to advertise the aggregate route.
         :param str transit_route_table_id: The ID of the route table of the Enterprise Edition transit router.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "route_type", route_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
-        pulumi.set(__self__, "transit_route_table_aggregation_description", transit_route_table_aggregation_description)
-        pulumi.set(__self__, "transit_route_table_aggregation_name", transit_route_table_aggregation_name)
-        pulumi.set(__self__, "transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
-        pulumi.set(__self__, "transit_route_table_id", transit_route_table_id)
+        GetTransitRouteTableAggregationsTransitRouteTableAggregationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            route_type=route_type,
+            status=status,
+            transit_route_table_aggregation_cidr=transit_route_table_aggregation_cidr,
+            transit_route_table_aggregation_description=transit_route_table_aggregation_description,
+            transit_route_table_aggregation_name=transit_route_table_aggregation_name,
+            transit_route_table_aggregation_scope=transit_route_table_aggregation_scope,
+            transit_route_table_id=transit_route_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             route_type: str,
+             status: str,
+             transit_route_table_aggregation_cidr: str,
+             transit_route_table_aggregation_description: str,
+             transit_route_table_aggregation_name: str,
+             transit_route_table_aggregation_scope: str,
+             transit_route_table_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("route_type", route_type)
+        _setter("status", status)
+        _setter("transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
+        _setter("transit_route_table_aggregation_description", transit_route_table_aggregation_description)
+        _setter("transit_route_table_aggregation_name", transit_route_table_aggregation_name)
+        _setter("transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
+        _setter("transit_route_table_id", transit_route_table_id)
 
     @property
     @pulumi.getter
@@ -1965,8 +2409,19 @@ class GetTransitRouterAvailableResourcesResourceResult(dict):
         :param Sequence[str] master_zones: The list of primary zones.
         :param Sequence[str] slave_zones: The list of secondary zones.
         """
-        pulumi.set(__self__, "master_zones", master_zones)
-        pulumi.set(__self__, "slave_zones", slave_zones)
+        GetTransitRouterAvailableResourcesResourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            master_zones=master_zones,
+            slave_zones=slave_zones,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             master_zones: Sequence[str],
+             slave_zones: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("master_zones", master_zones)
+        _setter("slave_zones", slave_zones)
 
     @property
     @pulumi.getter(name="masterZones")
@@ -2006,14 +2461,37 @@ class GetTransitRouterCidrsCidrResult(dict):
         :param str transit_router_cidr_name: The name of the transit router.
         :param str transit_router_id: The ID of the transit router.
         """
-        pulumi.set(__self__, "cidr", cidr)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "family", family)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "publish_cidr_route", publish_cidr_route)
-        pulumi.set(__self__, "transit_router_cidr_id", transit_router_cidr_id)
-        pulumi.set(__self__, "transit_router_cidr_name", transit_router_cidr_name)
-        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        GetTransitRouterCidrsCidrResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            description=description,
+            family=family,
+            id=id,
+            publish_cidr_route=publish_cidr_route,
+            transit_router_cidr_id=transit_router_cidr_id,
+            transit_router_cidr_name=transit_router_cidr_name,
+            transit_router_id=transit_router_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: str,
+             description: str,
+             family: str,
+             id: str,
+             publish_cidr_route: bool,
+             transit_router_cidr_id: str,
+             transit_router_cidr_name: str,
+             transit_router_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr", cidr)
+        _setter("description", description)
+        _setter("family", family)
+        _setter("id", id)
+        _setter("publish_cidr_route", publish_cidr_route)
+        _setter("transit_router_cidr_id", transit_router_cidr_id)
+        _setter("transit_router_cidr_name", transit_router_cidr_name)
+        _setter("transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter
@@ -2101,14 +2579,37 @@ class GetTransitRouterMulticastDomainAssociationsAssociationResult(dict):
         :param str transit_router_multicast_domain_id: The ID of the multicast domain.
         :param str vswitch_id: The ID of the vSwitch.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_owner_id", resource_owner_id)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
-        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetTransitRouterMulticastDomainAssociationsAssociationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            resource_id=resource_id,
+            resource_owner_id=resource_owner_id,
+            resource_type=resource_type,
+            status=status,
+            transit_router_attachment_id=transit_router_attachment_id,
+            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             resource_id: str,
+             resource_owner_id: int,
+             resource_type: str,
+             status: str,
+             transit_router_attachment_id: str,
+             transit_router_multicast_domain_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("resource_id", resource_id)
+        _setter("resource_owner_id", resource_owner_id)
+        _setter("resource_type", resource_type)
+        _setter("status", status)
+        _setter("transit_router_attachment_id", transit_router_attachment_id)
+        _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -2192,12 +2693,31 @@ class GetTransitRouterMulticastDomainMembersMemberResult(dict):
         :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
         :param str vpc_id: The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
         """
-        pulumi.set(__self__, "group_ip_address", group_ip_address)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetTransitRouterMulticastDomainMembersMemberResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_ip_address=group_ip_address,
+            id=id,
+            network_interface_id=network_interface_id,
+            status=status,
+            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_ip_address: str,
+             id: str,
+             network_interface_id: str,
+             status: str,
+             transit_router_multicast_domain_id: str,
+             vpc_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_ip_address", group_ip_address)
+        _setter("id", id)
+        _setter("network_interface_id", network_interface_id)
+        _setter("status", status)
+        _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="groupIpAddress")
@@ -2263,11 +2783,28 @@ class GetTransitRouterMulticastDomainPeerMembersMemberResult(dict):
         :param str status: The status of the resource
         :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
         """
-        pulumi.set(__self__, "group_ip_address", group_ip_address)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "peer_transit_router_multicast_domain_id", peer_transit_router_multicast_domain_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        GetTransitRouterMulticastDomainPeerMembersMemberResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_ip_address=group_ip_address,
+            id=id,
+            peer_transit_router_multicast_domain_id=peer_transit_router_multicast_domain_id,
+            status=status,
+            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_ip_address: str,
+             id: str,
+             peer_transit_router_multicast_domain_id: str,
+             status: str,
+             transit_router_multicast_domain_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_ip_address", group_ip_address)
+        _setter("id", id)
+        _setter("peer_transit_router_multicast_domain_id", peer_transit_router_multicast_domain_id)
+        _setter("status", status)
+        _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
 
     @property
     @pulumi.getter(name="groupIpAddress")
@@ -2326,12 +2863,31 @@ class GetTransitRouterMulticastDomainSourcesSourceResult(dict):
         :param str transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast source belongs.
         :param str vpc_id: The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
         """
-        pulumi.set(__self__, "group_ip_address", group_ip_address)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetTransitRouterMulticastDomainSourcesSourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_ip_address=group_ip_address,
+            id=id,
+            network_interface_id=network_interface_id,
+            status=status,
+            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_ip_address: str,
+             id: str,
+             network_interface_id: str,
+             status: str,
+             transit_router_multicast_domain_id: str,
+             vpc_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_ip_address", group_ip_address)
+        _setter("id", id)
+        _setter("network_interface_id", network_interface_id)
+        _setter("status", status)
+        _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="groupIpAddress")
@@ -2396,12 +2952,31 @@ class GetTransitRouterMulticastDomainsDomainResult(dict):
         :param str transit_router_multicast_domain_id: The ID of the multicast domain.
         :param str transit_router_multicast_domain_name: The name of the Transit Router Multicast Domain.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_id", transit_router_id)
-        pulumi.set(__self__, "transit_router_multicast_domain_description", transit_router_multicast_domain_description)
-        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
-        pulumi.set(__self__, "transit_router_multicast_domain_name", transit_router_multicast_domain_name)
+        GetTransitRouterMulticastDomainsDomainResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            status=status,
+            transit_router_id=transit_router_id,
+            transit_router_multicast_domain_description=transit_router_multicast_domain_description,
+            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
+            transit_router_multicast_domain_name=transit_router_multicast_domain_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             status: str,
+             transit_router_id: str,
+             transit_router_multicast_domain_description: str,
+             transit_router_multicast_domain_id: str,
+             transit_router_multicast_domain_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("status", status)
+        _setter("transit_router_id", transit_router_id)
+        _setter("transit_router_multicast_domain_description", transit_router_multicast_domain_description)
+        _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        _setter("transit_router_multicast_domain_name", transit_router_multicast_domain_name)
 
     @property
     @pulumi.getter
@@ -2485,20 +3060,55 @@ class GetTransitRouterPeerAttachmentsAttachmentResult(dict):
         :param str transit_router_attachment_name: Name of the transit router attachment.
         :param str transit_router_id: The ID of transit router.
         """
-        pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "cen_bandwidth_package_id", cen_bandwidth_package_id)
-        pulumi.set(__self__, "geographic_span_id", geographic_span_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "peer_transit_router_id", peer_transit_router_id)
-        pulumi.set(__self__, "peer_transit_router_owner_id", peer_transit_router_owner_id)
-        pulumi.set(__self__, "peer_transit_router_region_id", peer_transit_router_region_id)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
-        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
-        pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
-        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        GetTransitRouterPeerAttachmentsAttachmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_publish_route_enabled=auto_publish_route_enabled,
+            bandwidth=bandwidth,
+            cen_bandwidth_package_id=cen_bandwidth_package_id,
+            geographic_span_id=geographic_span_id,
+            id=id,
+            peer_transit_router_id=peer_transit_router_id,
+            peer_transit_router_owner_id=peer_transit_router_owner_id,
+            peer_transit_router_region_id=peer_transit_router_region_id,
+            resource_type=resource_type,
+            status=status,
+            transit_router_attachment_description=transit_router_attachment_description,
+            transit_router_attachment_id=transit_router_attachment_id,
+            transit_router_attachment_name=transit_router_attachment_name,
+            transit_router_id=transit_router_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_publish_route_enabled: bool,
+             bandwidth: int,
+             cen_bandwidth_package_id: str,
+             geographic_span_id: str,
+             id: str,
+             peer_transit_router_id: str,
+             peer_transit_router_owner_id: str,
+             peer_transit_router_region_id: str,
+             resource_type: str,
+             status: str,
+             transit_router_attachment_description: str,
+             transit_router_attachment_id: str,
+             transit_router_attachment_name: str,
+             transit_router_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_publish_route_enabled", auto_publish_route_enabled)
+        _setter("bandwidth", bandwidth)
+        _setter("cen_bandwidth_package_id", cen_bandwidth_package_id)
+        _setter("geographic_span_id", geographic_span_id)
+        _setter("id", id)
+        _setter("peer_transit_router_id", peer_transit_router_id)
+        _setter("peer_transit_router_owner_id", peer_transit_router_owner_id)
+        _setter("peer_transit_router_region_id", peer_transit_router_region_id)
+        _setter("resource_type", resource_type)
+        _setter("status", status)
+        _setter("transit_router_attachment_description", transit_router_attachment_description)
+        _setter("transit_router_attachment_id", transit_router_attachment_id)
+        _setter("transit_router_attachment_name", transit_router_attachment_name)
+        _setter("transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter(name="autoPublishRouteEnabled")
@@ -2636,15 +3246,40 @@ class GetTransitRouterPrefixListAssociationsAssociationResult(dict):
         :param str transit_router_id: The ID of the transit router.
         :param str transit_router_table_id: The ID of the route table of the transit router.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "next_hop", next_hop)
-        pulumi.set(__self__, "next_hop_instance_id", next_hop_instance_id)
-        pulumi.set(__self__, "next_hop_type", next_hop_type)
-        pulumi.set(__self__, "owner_uid", owner_uid)
-        pulumi.set(__self__, "prefix_list_id", prefix_list_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_id", transit_router_id)
-        pulumi.set(__self__, "transit_router_table_id", transit_router_table_id)
+        GetTransitRouterPrefixListAssociationsAssociationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            next_hop=next_hop,
+            next_hop_instance_id=next_hop_instance_id,
+            next_hop_type=next_hop_type,
+            owner_uid=owner_uid,
+            prefix_list_id=prefix_list_id,
+            status=status,
+            transit_router_id=transit_router_id,
+            transit_router_table_id=transit_router_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             next_hop: str,
+             next_hop_instance_id: str,
+             next_hop_type: str,
+             owner_uid: int,
+             prefix_list_id: str,
+             status: str,
+             transit_router_id: str,
+             transit_router_table_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("next_hop", next_hop)
+        _setter("next_hop_instance_id", next_hop_instance_id)
+        _setter("next_hop_type", next_hop_type)
+        _setter("owner_uid", owner_uid)
+        _setter("prefix_list_id", prefix_list_id)
+        _setter("status", status)
+        _setter("transit_router_id", transit_router_id)
+        _setter("transit_router_table_id", transit_router_table_id)
 
     @property
     @pulumi.getter
@@ -2737,15 +3372,40 @@ class GetTransitRouterRouteEntriesEntryResult(dict):
         :param str transit_router_route_entry_next_hop_type: Type of the next hop.
         :param str transit_router_route_entry_type: Type of the route entry.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_route_entry_description", transit_router_route_entry_description)
-        pulumi.set(__self__, "transit_router_route_entry_destination_cidr_block", transit_router_route_entry_destination_cidr_block)
-        pulumi.set(__self__, "transit_router_route_entry_id", transit_router_route_entry_id)
-        pulumi.set(__self__, "transit_router_route_entry_name", transit_router_route_entry_name)
-        pulumi.set(__self__, "transit_router_route_entry_next_hop_id", transit_router_route_entry_next_hop_id)
-        pulumi.set(__self__, "transit_router_route_entry_next_hop_type", transit_router_route_entry_next_hop_type)
-        pulumi.set(__self__, "transit_router_route_entry_type", transit_router_route_entry_type)
+        GetTransitRouterRouteEntriesEntryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            status=status,
+            transit_router_route_entry_description=transit_router_route_entry_description,
+            transit_router_route_entry_destination_cidr_block=transit_router_route_entry_destination_cidr_block,
+            transit_router_route_entry_id=transit_router_route_entry_id,
+            transit_router_route_entry_name=transit_router_route_entry_name,
+            transit_router_route_entry_next_hop_id=transit_router_route_entry_next_hop_id,
+            transit_router_route_entry_next_hop_type=transit_router_route_entry_next_hop_type,
+            transit_router_route_entry_type=transit_router_route_entry_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             status: str,
+             transit_router_route_entry_description: str,
+             transit_router_route_entry_destination_cidr_block: str,
+             transit_router_route_entry_id: str,
+             transit_router_route_entry_name: str,
+             transit_router_route_entry_next_hop_id: str,
+             transit_router_route_entry_next_hop_type: str,
+             transit_router_route_entry_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("status", status)
+        _setter("transit_router_route_entry_description", transit_router_route_entry_description)
+        _setter("transit_router_route_entry_destination_cidr_block", transit_router_route_entry_destination_cidr_block)
+        _setter("transit_router_route_entry_id", transit_router_route_entry_id)
+        _setter("transit_router_route_entry_name", transit_router_route_entry_name)
+        _setter("transit_router_route_entry_next_hop_id", transit_router_route_entry_next_hop_id)
+        _setter("transit_router_route_entry_next_hop_type", transit_router_route_entry_next_hop_type)
+        _setter("transit_router_route_entry_type", transit_router_route_entry_type)
 
     @property
     @pulumi.getter
@@ -2821,12 +3481,31 @@ class GetTransitRouterRouteTableAssociationsAssociationResult(dict):
         :param str transit_router_attachment_id: The ID of the network instance connection.
         :param str transit_router_route_table_id: The ID of the route table of the Enterprise Edition transit router.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
-        pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
+        GetTransitRouterRouteTableAssociationsAssociationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            resource_id=resource_id,
+            resource_type=resource_type,
+            status=status,
+            transit_router_attachment_id=transit_router_attachment_id,
+            transit_router_route_table_id=transit_router_route_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             resource_id: str,
+             resource_type: str,
+             status: str,
+             transit_router_attachment_id: str,
+             transit_router_route_table_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("resource_id", resource_id)
+        _setter("resource_type", resource_type)
+        _setter("status", status)
+        _setter("transit_router_attachment_id", transit_router_attachment_id)
+        _setter("transit_router_route_table_id", transit_router_route_table_id)
 
     @property
     @pulumi.getter
@@ -2888,11 +3567,28 @@ class GetTransitRouterRouteTablePropagationsPropagationResult(dict):
         :param str status: The status of the route table, including `Active`, `Enabling`, `Disabling`, `Deleted`.
         :param str transit_router_attachment_id: ID of the cen transit router attachment.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        GetTransitRouterRouteTablePropagationsPropagationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            resource_id=resource_id,
+            resource_type=resource_type,
+            status=status,
+            transit_router_attachment_id=transit_router_attachment_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             resource_id: str,
+             resource_type: str,
+             status: str,
+             transit_router_attachment_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("resource_id", resource_id)
+        _setter("resource_type", resource_type)
+        _setter("status", status)
+        _setter("transit_router_attachment_id", transit_router_attachment_id)
 
     @property
     @pulumi.getter
@@ -2948,12 +3644,31 @@ class GetTransitRouterRouteTablesTableResult(dict):
         :param str transit_router_route_table_name: Name of the transit router route table.
         :param str transit_router_route_table_type: The type of the transit router route table to query. Valid values `Creating`, `Active` and `Deleting`..
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_route_table_description", transit_router_route_table_description)
-        pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
-        pulumi.set(__self__, "transit_router_route_table_name", transit_router_route_table_name)
-        pulumi.set(__self__, "transit_router_route_table_type", transit_router_route_table_type)
+        GetTransitRouterRouteTablesTableResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            status=status,
+            transit_router_route_table_description=transit_router_route_table_description,
+            transit_router_route_table_id=transit_router_route_table_id,
+            transit_router_route_table_name=transit_router_route_table_name,
+            transit_router_route_table_type=transit_router_route_table_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             status: str,
+             transit_router_route_table_description: str,
+             transit_router_route_table_id: str,
+             transit_router_route_table_name: str,
+             transit_router_route_table_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("status", status)
+        _setter("transit_router_route_table_description", transit_router_route_table_description)
+        _setter("transit_router_route_table_id", transit_router_route_table_id)
+        _setter("transit_router_route_table_name", transit_router_route_table_name)
+        _setter("transit_router_route_table_type", transit_router_route_table_type)
 
     @property
     @pulumi.getter
@@ -3022,15 +3737,40 @@ class GetTransitRouterVbrAttachmentsAttachmentResult(dict):
         :param str vbr_id: ID of the VBR.
         :param str vbr_owner_id: The Owner ID of the VBR.
         """
-        pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
-        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
-        pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
-        pulumi.set(__self__, "vbr_id", vbr_id)
-        pulumi.set(__self__, "vbr_owner_id", vbr_owner_id)
+        GetTransitRouterVbrAttachmentsAttachmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_publish_route_enabled=auto_publish_route_enabled,
+            id=id,
+            resource_type=resource_type,
+            status=status,
+            transit_router_attachment_description=transit_router_attachment_description,
+            transit_router_attachment_id=transit_router_attachment_id,
+            transit_router_attachment_name=transit_router_attachment_name,
+            vbr_id=vbr_id,
+            vbr_owner_id=vbr_owner_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_publish_route_enabled: bool,
+             id: str,
+             resource_type: str,
+             status: str,
+             transit_router_attachment_description: str,
+             transit_router_attachment_id: str,
+             transit_router_attachment_name: str,
+             vbr_id: str,
+             vbr_owner_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_publish_route_enabled", auto_publish_route_enabled)
+        _setter("id", id)
+        _setter("resource_type", resource_type)
+        _setter("status", status)
+        _setter("transit_router_attachment_description", transit_router_attachment_description)
+        _setter("transit_router_attachment_id", transit_router_attachment_id)
+        _setter("transit_router_attachment_name", transit_router_attachment_name)
+        _setter("vbr_id", vbr_id)
+        _setter("vbr_owner_id", vbr_owner_id)
 
     @property
     @pulumi.getter(name="autoPublishRouteEnabled")
@@ -3124,16 +3864,43 @@ class GetTransitRouterVpcAttachmentsAttachmentResult(dict):
         :param str vpc_owner_id: The Owner ID of the VPC.
         :param Sequence['GetTransitRouterVpcAttachmentsAttachmentZoneMappingArgs'] zone_mappings: The mappings of zone
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
-        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
-        pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vpc_owner_id", vpc_owner_id)
-        pulumi.set(__self__, "zone_mappings", zone_mappings)
+        GetTransitRouterVpcAttachmentsAttachmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            payment_type=payment_type,
+            resource_type=resource_type,
+            status=status,
+            transit_router_attachment_description=transit_router_attachment_description,
+            transit_router_attachment_id=transit_router_attachment_id,
+            transit_router_attachment_name=transit_router_attachment_name,
+            vpc_id=vpc_id,
+            vpc_owner_id=vpc_owner_id,
+            zone_mappings=zone_mappings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             payment_type: str,
+             resource_type: str,
+             status: str,
+             transit_router_attachment_description: str,
+             transit_router_attachment_id: str,
+             transit_router_attachment_name: str,
+             vpc_id: str,
+             vpc_owner_id: str,
+             zone_mappings: Sequence['outputs.GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("payment_type", payment_type)
+        _setter("resource_type", resource_type)
+        _setter("status", status)
+        _setter("transit_router_attachment_description", transit_router_attachment_description)
+        _setter("transit_router_attachment_id", transit_router_attachment_id)
+        _setter("transit_router_attachment_name", transit_router_attachment_name)
+        _setter("vpc_id", vpc_id)
+        _setter("vpc_owner_id", vpc_owner_id)
+        _setter("zone_mappings", zone_mappings)
 
     @property
     @pulumi.getter
@@ -3225,8 +3992,19 @@ class GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult(dict):
         :param str vswitch_id: The VSwitch ID.
         :param str zone_id: The zone ID.
         """
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetTransitRouterVpcAttachmentsAttachmentZoneMappingResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -3272,18 +4050,49 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
         :param str vpn_owner_id: The owner id of vpn.
         :param Sequence['GetTransitRouterVpnAttachmentsAttachmentZoneArgs'] zones: The list of zone mapping.
         """
-        pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
-        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
-        pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
-        pulumi.set(__self__, "transit_router_id", transit_router_id)
-        pulumi.set(__self__, "vpn_id", vpn_id)
-        pulumi.set(__self__, "vpn_owner_id", vpn_owner_id)
-        pulumi.set(__self__, "zones", zones)
+        GetTransitRouterVpnAttachmentsAttachmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_publish_route_enabled=auto_publish_route_enabled,
+            create_time=create_time,
+            id=id,
+            resource_type=resource_type,
+            status=status,
+            transit_router_attachment_description=transit_router_attachment_description,
+            transit_router_attachment_id=transit_router_attachment_id,
+            transit_router_attachment_name=transit_router_attachment_name,
+            transit_router_id=transit_router_id,
+            vpn_id=vpn_id,
+            vpn_owner_id=vpn_owner_id,
+            zones=zones,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_publish_route_enabled: bool,
+             create_time: str,
+             id: str,
+             resource_type: str,
+             status: str,
+             transit_router_attachment_description: str,
+             transit_router_attachment_id: str,
+             transit_router_attachment_name: str,
+             transit_router_id: str,
+             vpn_id: str,
+             vpn_owner_id: str,
+             zones: Sequence['outputs.GetTransitRouterVpnAttachmentsAttachmentZoneResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_publish_route_enabled", auto_publish_route_enabled)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("resource_type", resource_type)
+        _setter("status", status)
+        _setter("transit_router_attachment_description", transit_router_attachment_description)
+        _setter("transit_router_attachment_id", transit_router_attachment_id)
+        _setter("transit_router_attachment_name", transit_router_attachment_name)
+        _setter("transit_router_id", transit_router_id)
+        _setter("vpn_id", vpn_id)
+        _setter("vpn_owner_id", vpn_owner_id)
+        _setter("zones", zones)
 
     @property
     @pulumi.getter(name="autoPublishRouteEnabled")
@@ -3383,7 +4192,16 @@ class GetTransitRouterVpnAttachmentsAttachmentZoneResult(dict):
         """
         :param str zone_id: The id of the zone.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetTransitRouterVpnAttachmentsAttachmentZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -3417,15 +4235,40 @@ class GetTransitRoutersTransitRouterResult(dict):
         :param str type: The Type of the transit router.
         :param str xgw_vip: The vip of the XGW.
         """
-        pulumi.set(__self__, "ali_uid", ali_uid)
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "transit_router_description", transit_router_description)
-        pulumi.set(__self__, "transit_router_id", transit_router_id)
-        pulumi.set(__self__, "transit_router_name", transit_router_name)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "xgw_vip", xgw_vip)
+        GetTransitRoutersTransitRouterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ali_uid=ali_uid,
+            cen_id=cen_id,
+            id=id,
+            status=status,
+            transit_router_description=transit_router_description,
+            transit_router_id=transit_router_id,
+            transit_router_name=transit_router_name,
+            type=type,
+            xgw_vip=xgw_vip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ali_uid: str,
+             cen_id: str,
+             id: str,
+             status: str,
+             transit_router_description: str,
+             transit_router_id: str,
+             transit_router_name: str,
+             type: str,
+             xgw_vip: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ali_uid", ali_uid)
+        _setter("cen_id", cen_id)
+        _setter("id", id)
+        _setter("status", status)
+        _setter("transit_router_description", transit_router_description)
+        _setter("transit_router_id", transit_router_id)
+        _setter("transit_router_name", transit_router_name)
+        _setter("type", type)
+        _setter("xgw_vip", xgw_vip)
 
     @property
     @pulumi.getter(name="aliUid")
@@ -3521,14 +4364,37 @@ class GetVbrHealthChecksCheckResult(dict):
         :param str vbr_instance_id: The ID of the VBR instance.
         :param str vbr_instance_region_id: The ID of the region where the VBR instance is deployed.
         """
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "health_check_interval", health_check_interval)
-        pulumi.set(__self__, "health_check_source_ip", health_check_source_ip)
-        pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
-        pulumi.set(__self__, "healthy_threshold", healthy_threshold)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "vbr_instance_id", vbr_instance_id)
-        pulumi.set(__self__, "vbr_instance_region_id", vbr_instance_region_id)
+        GetVbrHealthChecksCheckResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            health_check_interval=health_check_interval,
+            health_check_source_ip=health_check_source_ip,
+            health_check_target_ip=health_check_target_ip,
+            healthy_threshold=healthy_threshold,
+            id=id,
+            vbr_instance_id=vbr_instance_id,
+            vbr_instance_region_id=vbr_instance_region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: str,
+             health_check_interval: int,
+             health_check_source_ip: str,
+             health_check_target_ip: str,
+             healthy_threshold: int,
+             id: str,
+             vbr_instance_id: str,
+             vbr_instance_region_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cen_id", cen_id)
+        _setter("health_check_interval", health_check_interval)
+        _setter("health_check_source_ip", health_check_source_ip)
+        _setter("health_check_target_ip", health_check_target_ip)
+        _setter("healthy_threshold", healthy_threshold)
+        _setter("id", id)
+        _setter("vbr_instance_id", vbr_instance_id)
+        _setter("vbr_instance_region_id", vbr_instance_region_id)
 
     @property
     @pulumi.getter(name="cenId")

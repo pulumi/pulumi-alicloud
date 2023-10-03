@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -39,16 +39,43 @@ class GetAppsAppResult(dict):
         :param str product_id: The ID of the Product.
         :param str type: The type of the App. Valid values: `Android` and `iOS`.
         """
-        pulumi.set(__self__, "app_key", app_key)
-        pulumi.set(__self__, "app_name", app_name)
-        pulumi.set(__self__, "bundle_id", bundle_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "encoded_icon", encoded_icon)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "industry_id", industry_id)
-        pulumi.set(__self__, "package_name", package_name)
-        pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "type", type)
+        GetAppsAppResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_key=app_key,
+            app_name=app_name,
+            bundle_id=bundle_id,
+            create_time=create_time,
+            encoded_icon=encoded_icon,
+            id=id,
+            industry_id=industry_id,
+            package_name=package_name,
+            product_id=product_id,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_key: str,
+             app_name: str,
+             bundle_id: str,
+             create_time: str,
+             encoded_icon: str,
+             id: str,
+             industry_id: str,
+             package_name: str,
+             product_id: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_key", app_key)
+        _setter("app_name", app_name)
+        _setter("bundle_id", bundle_id)
+        _setter("create_time", create_time)
+        _setter("encoded_icon", encoded_icon)
+        _setter("id", id)
+        _setter("industry_id", industry_id)
+        _setter("package_name", package_name)
+        _setter("product_id", product_id)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="appKey")
@@ -142,9 +169,22 @@ class GetProductsProductResult(dict):
         :param str product_id: The ID of the Product.
         :param str product_name: The name of the Product.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "product_name", product_name)
+        GetProductsProductResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            product_id=product_id,
+            product_name=product_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             product_id: str,
+             product_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("product_id", product_id)
+        _setter("product_name", product_name)
 
     @property
     @pulumi.getter

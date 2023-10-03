@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MscSubSubscriptionArgs', 'MscSubSubscription']
@@ -36,21 +36,44 @@ class MscSubSubscriptionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] webhook_ids: The ids of subscribed webhooks.
         :param pulumi.Input[int] webhook_status: The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
-        pulumi.set(__self__, "item_name", item_name)
+        MscSubSubscriptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            item_name=item_name,
+            contact_ids=contact_ids,
+            email_status=email_status,
+            pmsg_status=pmsg_status,
+            sms_status=sms_status,
+            tts_status=tts_status,
+            webhook_ids=webhook_ids,
+            webhook_status=webhook_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             item_name: pulumi.Input[str],
+             contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             email_status: Optional[pulumi.Input[int]] = None,
+             pmsg_status: Optional[pulumi.Input[int]] = None,
+             sms_status: Optional[pulumi.Input[int]] = None,
+             tts_status: Optional[pulumi.Input[int]] = None,
+             webhook_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             webhook_status: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("item_name", item_name)
         if contact_ids is not None:
-            pulumi.set(__self__, "contact_ids", contact_ids)
+            _setter("contact_ids", contact_ids)
         if email_status is not None:
-            pulumi.set(__self__, "email_status", email_status)
+            _setter("email_status", email_status)
         if pmsg_status is not None:
-            pulumi.set(__self__, "pmsg_status", pmsg_status)
+            _setter("pmsg_status", pmsg_status)
         if sms_status is not None:
-            pulumi.set(__self__, "sms_status", sms_status)
+            _setter("sms_status", sms_status)
         if tts_status is not None:
-            pulumi.set(__self__, "tts_status", tts_status)
+            _setter("tts_status", tts_status)
         if webhook_ids is not None:
-            pulumi.set(__self__, "webhook_ids", webhook_ids)
+            _setter("webhook_ids", webhook_ids)
         if webhook_status is not None:
-            pulumi.set(__self__, "webhook_status", webhook_status)
+            _setter("webhook_status", webhook_status)
 
     @property
     @pulumi.getter(name="itemName")
@@ -181,26 +204,53 @@ class _MscSubSubscriptionState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] webhook_ids: The ids of subscribed webhooks.
         :param pulumi.Input[int] webhook_status: The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
+        _MscSubSubscriptionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel=channel,
+            contact_ids=contact_ids,
+            description=description,
+            email_status=email_status,
+            item_name=item_name,
+            pmsg_status=pmsg_status,
+            sms_status=sms_status,
+            tts_status=tts_status,
+            webhook_ids=webhook_ids,
+            webhook_status=webhook_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel: Optional[pulumi.Input[str]] = None,
+             contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             email_status: Optional[pulumi.Input[int]] = None,
+             item_name: Optional[pulumi.Input[str]] = None,
+             pmsg_status: Optional[pulumi.Input[int]] = None,
+             sms_status: Optional[pulumi.Input[int]] = None,
+             tts_status: Optional[pulumi.Input[int]] = None,
+             webhook_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             webhook_status: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if channel is not None:
-            pulumi.set(__self__, "channel", channel)
+            _setter("channel", channel)
         if contact_ids is not None:
-            pulumi.set(__self__, "contact_ids", contact_ids)
+            _setter("contact_ids", contact_ids)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if email_status is not None:
-            pulumi.set(__self__, "email_status", email_status)
+            _setter("email_status", email_status)
         if item_name is not None:
-            pulumi.set(__self__, "item_name", item_name)
+            _setter("item_name", item_name)
         if pmsg_status is not None:
-            pulumi.set(__self__, "pmsg_status", pmsg_status)
+            _setter("pmsg_status", pmsg_status)
         if sms_status is not None:
-            pulumi.set(__self__, "sms_status", sms_status)
+            _setter("sms_status", sms_status)
         if tts_status is not None:
-            pulumi.set(__self__, "tts_status", tts_status)
+            _setter("tts_status", tts_status)
         if webhook_ids is not None:
-            pulumi.set(__self__, "webhook_ids", webhook_ids)
+            _setter("webhook_ids", webhook_ids)
         if webhook_status is not None:
-            pulumi.set(__self__, "webhook_status", webhook_status)
+            _setter("webhook_status", webhook_status)
 
     @property
     @pulumi.getter
@@ -430,6 +480,10 @@ class MscSubSubscription(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MscSubSubscriptionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

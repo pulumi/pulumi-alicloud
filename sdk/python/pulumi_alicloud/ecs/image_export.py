@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ImageExportArgs', 'ImageExport']
@@ -23,10 +23,23 @@ class ImageExportArgs:
         :param pulumi.Input[str] oss_bucket: Save the exported OSS bucket.
         :param pulumi.Input[str] oss_prefix: The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
         """
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "oss_bucket", oss_bucket)
+        ImageExportArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_id=image_id,
+            oss_bucket=oss_bucket,
+            oss_prefix=oss_prefix,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_id: pulumi.Input[str],
+             oss_bucket: pulumi.Input[str],
+             oss_prefix: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("image_id", image_id)
+        _setter("oss_bucket", oss_bucket)
         if oss_prefix is not None:
-            pulumi.set(__self__, "oss_prefix", oss_prefix)
+            _setter("oss_prefix", oss_prefix)
 
     @property
     @pulumi.getter(name="imageId")
@@ -77,12 +90,25 @@ class _ImageExportState:
         :param pulumi.Input[str] oss_bucket: Save the exported OSS bucket.
         :param pulumi.Input[str] oss_prefix: The prefix of your OSS Object. It can be composed of numbers or letters, and the character length is 1 ~ 30.
         """
+        _ImageExportState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_id=image_id,
+            oss_bucket=oss_bucket,
+            oss_prefix=oss_prefix,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_id: Optional[pulumi.Input[str]] = None,
+             oss_bucket: Optional[pulumi.Input[str]] = None,
+             oss_prefix: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if oss_bucket is not None:
-            pulumi.set(__self__, "oss_bucket", oss_bucket)
+            _setter("oss_bucket", oss_bucket)
         if oss_prefix is not None:
-            pulumi.set(__self__, "oss_prefix", oss_prefix)
+            _setter("oss_prefix", oss_prefix)
 
     @property
     @pulumi.getter(name="imageId")
@@ -268,6 +294,10 @@ class ImageExport(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ImageExportArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

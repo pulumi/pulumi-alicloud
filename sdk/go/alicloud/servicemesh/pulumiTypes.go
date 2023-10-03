@@ -783,9 +783,9 @@ func (o ServiceMeshMeshConfigPtrOutput) Tracing() pulumi.BoolPtrOutput {
 }
 
 type ServiceMeshMeshConfigAccessLog struct {
-	// Whether to enable of the access logging. Valid values: `true` and `false`.
+	// Whether to enable Service grid audit.
 	Enabled *bool `pulumi:"enabled"`
-	// The SLS Project of the access logging.
+	// The Service grid audit that to the project.
 	Project *string `pulumi:"project"`
 }
 
@@ -801,9 +801,9 @@ type ServiceMeshMeshConfigAccessLogInput interface {
 }
 
 type ServiceMeshMeshConfigAccessLogArgs struct {
-	// Whether to enable of the access logging. Valid values: `true` and `false`.
+	// Whether to enable Service grid audit.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The SLS Project of the access logging.
+	// The Service grid audit that to the project.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
@@ -902,12 +902,12 @@ func (o ServiceMeshMeshConfigAccessLogOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
-// Whether to enable of the access logging. Valid values: `true` and `false`.
+// Whether to enable Service grid audit.
 func (o ServiceMeshMeshConfigAccessLogOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The SLS Project of the access logging.
+// The Service grid audit that to the project.
 func (o ServiceMeshMeshConfigAccessLogOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -942,7 +942,7 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) Elem() ServiceMeshMeshConfigAcc
 	}).(ServiceMeshMeshConfigAccessLogOutput)
 }
 
-// Whether to enable of the access logging. Valid values: `true` and `false`.
+// Whether to enable Service grid audit.
 func (o ServiceMeshMeshConfigAccessLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAccessLog) *bool {
 		if v == nil {
@@ -952,7 +952,7 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) Enabled() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The SLS Project of the access logging.
+// The Service grid audit that to the project.
 func (o ServiceMeshMeshConfigAccessLogPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAccessLog) *string {
 		if v == nil {
@@ -963,9 +963,9 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) Project() pulumi.StringPtrOutpu
 }
 
 type ServiceMeshMeshConfigAudit struct {
-	// Whether to enable of the access logging. Valid values: `true` and `false`.
+	// Whether to enable Service grid audit.
 	Enabled *bool `pulumi:"enabled"`
-	// The SLS Project of the access logging.
+	// The Service grid audit that to the project.
 	Project *string `pulumi:"project"`
 }
 
@@ -981,9 +981,9 @@ type ServiceMeshMeshConfigAuditInput interface {
 }
 
 type ServiceMeshMeshConfigAuditArgs struct {
-	// Whether to enable of the access logging. Valid values: `true` and `false`.
+	// Whether to enable Service grid audit.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The SLS Project of the access logging.
+	// The Service grid audit that to the project.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
@@ -1082,12 +1082,12 @@ func (o ServiceMeshMeshConfigAuditOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// Whether to enable of the access logging. Valid values: `true` and `false`.
+// Whether to enable Service grid audit.
 func (o ServiceMeshMeshConfigAuditOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAudit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The SLS Project of the access logging.
+// The Service grid audit that to the project.
 func (o ServiceMeshMeshConfigAuditOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAudit) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -1122,7 +1122,7 @@ func (o ServiceMeshMeshConfigAuditPtrOutput) Elem() ServiceMeshMeshConfigAuditOu
 	}).(ServiceMeshMeshConfigAuditOutput)
 }
 
-// Whether to enable of the access logging. Valid values: `true` and `false`.
+// Whether to enable Service grid audit.
 func (o ServiceMeshMeshConfigAuditPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAudit) *bool {
 		if v == nil {
@@ -1132,7 +1132,7 @@ func (o ServiceMeshMeshConfigAuditPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The SLS Project of the access logging.
+// The Service grid audit that to the project.
 func (o ServiceMeshMeshConfigAuditPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAudit) *string {
 		if v == nil {
@@ -1143,9 +1143,9 @@ func (o ServiceMeshMeshConfigAuditPtrOutput) Project() pulumi.StringPtrOutput {
 }
 
 type ServiceMeshMeshConfigControlPlaneLog struct {
-	// Whether to enable of the access logging. Valid values: `true` and `false`.
+	// Whether to enable Service grid audit.
 	Enabled *bool `pulumi:"enabled"`
-	// The SLS Project of the access logging.
+	// The Service grid audit that to the project.
 	Project *string `pulumi:"project"`
 }
 
@@ -1161,9 +1161,9 @@ type ServiceMeshMeshConfigControlPlaneLogInput interface {
 }
 
 type ServiceMeshMeshConfigControlPlaneLogArgs struct {
-	// Whether to enable of the access logging. Valid values: `true` and `false`.
+	// Whether to enable Service grid audit.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The SLS Project of the access logging.
+	// The Service grid audit that to the project.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
@@ -1262,12 +1262,12 @@ func (o ServiceMeshMeshConfigControlPlaneLogOutput) ToOutput(ctx context.Context
 	}
 }
 
-// Whether to enable of the access logging. Valid values: `true` and `false`.
+// Whether to enable Service grid audit.
 func (o ServiceMeshMeshConfigControlPlaneLogOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigControlPlaneLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The SLS Project of the access logging.
+// The Service grid audit that to the project.
 func (o ServiceMeshMeshConfigControlPlaneLogOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigControlPlaneLog) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -1302,7 +1302,7 @@ func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Elem() ServiceMeshMeshCon
 	}).(ServiceMeshMeshConfigControlPlaneLogOutput)
 }
 
-// Whether to enable of the access logging. Valid values: `true` and `false`.
+// Whether to enable Service grid audit.
 func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigControlPlaneLog) *bool {
 		if v == nil {
@@ -1312,7 +1312,7 @@ func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Enabled() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The SLS Project of the access logging.
+// The Service grid audit that to the project.
 func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigControlPlaneLog) *string {
 		if v == nil {
@@ -1323,7 +1323,7 @@ func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Project() pulumi.StringPt
 }
 
 type ServiceMeshMeshConfigKiali struct {
-	// Whether to enable of the access logging. Valid values: `true` and `false`.
+	// Whether to enable Service grid audit.
 	Enabled *bool `pulumi:"enabled"`
 }
 
@@ -1339,7 +1339,7 @@ type ServiceMeshMeshConfigKialiInput interface {
 }
 
 type ServiceMeshMeshConfigKialiArgs struct {
-	// Whether to enable of the access logging. Valid values: `true` and `false`.
+	// Whether to enable Service grid audit.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 }
 
@@ -1438,7 +1438,7 @@ func (o ServiceMeshMeshConfigKialiOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// Whether to enable of the access logging. Valid values: `true` and `false`.
+// Whether to enable Service grid audit.
 func (o ServiceMeshMeshConfigKialiOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigKiali) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1473,7 +1473,7 @@ func (o ServiceMeshMeshConfigKialiPtrOutput) Elem() ServiceMeshMeshConfigKialiOu
 	}).(ServiceMeshMeshConfigKialiOutput)
 }
 
-// Whether to enable of the access logging. Valid values: `true` and `false`.
+// Whether to enable Service grid audit.
 func (o ServiceMeshMeshConfigKialiPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigKiali) *bool {
 		if v == nil {
@@ -1484,17 +1484,17 @@ func (o ServiceMeshMeshConfigKialiPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type ServiceMeshMeshConfigOpa struct {
-	// Whether to enable of the access logging. Valid values: `true` and `false`.
+	// Whether to enable Service grid audit.
 	Enabled *bool `pulumi:"enabled"`
-	// The limit cpu of the Sidecar injector Pods.
+	// The CPU resource  of the limitsOPA proxy container.
 	LimitCpu *string `pulumi:"limitCpu"`
-	// Sidecar injector Pods on the throttle.
+	// The memory resource limit of the OPA proxy container.
 	LimitMemory *string `pulumi:"limitMemory"`
 	// The log level of the OPA proxy container .
 	LogLevel *string `pulumi:"logLevel"`
-	// The requested cpu the Sidecar injector Pods.
+	// The CPU resource request of the OPA proxy container.
 	RequestCpu *string `pulumi:"requestCpu"`
-	// The requested memory the Sidecar injector Pods.
+	// The memory resource request of the OPA proxy container.
 	RequestMemory *string `pulumi:"requestMemory"`
 }
 
@@ -1510,17 +1510,17 @@ type ServiceMeshMeshConfigOpaInput interface {
 }
 
 type ServiceMeshMeshConfigOpaArgs struct {
-	// Whether to enable of the access logging. Valid values: `true` and `false`.
+	// Whether to enable Service grid audit.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The limit cpu of the Sidecar injector Pods.
+	// The CPU resource  of the limitsOPA proxy container.
 	LimitCpu pulumi.StringPtrInput `pulumi:"limitCpu"`
-	// Sidecar injector Pods on the throttle.
+	// The memory resource limit of the OPA proxy container.
 	LimitMemory pulumi.StringPtrInput `pulumi:"limitMemory"`
 	// The log level of the OPA proxy container .
 	LogLevel pulumi.StringPtrInput `pulumi:"logLevel"`
-	// The requested cpu the Sidecar injector Pods.
+	// The CPU resource request of the OPA proxy container.
 	RequestCpu pulumi.StringPtrInput `pulumi:"requestCpu"`
-	// The requested memory the Sidecar injector Pods.
+	// The memory resource request of the OPA proxy container.
 	RequestMemory pulumi.StringPtrInput `pulumi:"requestMemory"`
 }
 
@@ -1619,17 +1619,17 @@ func (o ServiceMeshMeshConfigOpaOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// Whether to enable of the access logging. Valid values: `true` and `false`.
+// Whether to enable Service grid audit.
 func (o ServiceMeshMeshConfigOpaOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The limit cpu of the Sidecar injector Pods.
+// The CPU resource  of the limitsOPA proxy container.
 func (o ServiceMeshMeshConfigOpaOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.LimitCpu }).(pulumi.StringPtrOutput)
 }
 
-// Sidecar injector Pods on the throttle.
+// The memory resource limit of the OPA proxy container.
 func (o ServiceMeshMeshConfigOpaOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.LimitMemory }).(pulumi.StringPtrOutput)
 }
@@ -1639,12 +1639,12 @@ func (o ServiceMeshMeshConfigOpaOutput) LogLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.LogLevel }).(pulumi.StringPtrOutput)
 }
 
-// The requested cpu the Sidecar injector Pods.
+// The CPU resource request of the OPA proxy container.
 func (o ServiceMeshMeshConfigOpaOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.RequestCpu }).(pulumi.StringPtrOutput)
 }
 
-// The requested memory the Sidecar injector Pods.
+// The memory resource request of the OPA proxy container.
 func (o ServiceMeshMeshConfigOpaOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.RequestMemory }).(pulumi.StringPtrOutput)
 }
@@ -1679,7 +1679,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) Elem() ServiceMeshMeshConfigOpaOutput
 	}).(ServiceMeshMeshConfigOpaOutput)
 }
 
-// Whether to enable of the access logging. Valid values: `true` and `false`.
+// Whether to enable Service grid audit.
 func (o ServiceMeshMeshConfigOpaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *bool {
 		if v == nil {
@@ -1689,7 +1689,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The limit cpu of the Sidecar injector Pods.
+// The CPU resource  of the limitsOPA proxy container.
 func (o ServiceMeshMeshConfigOpaPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1699,7 +1699,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Sidecar injector Pods on the throttle.
+// The memory resource limit of the OPA proxy container.
 func (o ServiceMeshMeshConfigOpaPtrOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1719,7 +1719,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) LogLevel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The requested cpu the Sidecar injector Pods.
+// The CPU resource request of the OPA proxy container.
 func (o ServiceMeshMeshConfigOpaPtrOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1729,7 +1729,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) RequestCpu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The requested memory the Sidecar injector Pods.
+// The memory resource request of the OPA proxy container.
 func (o ServiceMeshMeshConfigOpaPtrOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1920,13 +1920,13 @@ func (o ServiceMeshMeshConfigPilotPtrOutput) TraceSampling() pulumi.Float64PtrOu
 }
 
 type ServiceMeshMeshConfigProxy struct {
-	// The limit cpu of the Sidecar injector Pods.
+	// The CPU resource  of the limitsOPA proxy container.
 	LimitCpu *string `pulumi:"limitCpu"`
-	// Sidecar injector Pods on the throttle.
+	// The memory resource limit of the OPA proxy container.
 	LimitMemory *string `pulumi:"limitMemory"`
-	// The requested cpu the Sidecar injector Pods.
+	// The CPU resource request of the OPA proxy container.
 	RequestCpu *string `pulumi:"requestCpu"`
-	// The requested memory the Sidecar injector Pods.
+	// The memory resource request of the OPA proxy container.
 	RequestMemory *string `pulumi:"requestMemory"`
 }
 
@@ -1942,13 +1942,13 @@ type ServiceMeshMeshConfigProxyInput interface {
 }
 
 type ServiceMeshMeshConfigProxyArgs struct {
-	// The limit cpu of the Sidecar injector Pods.
+	// The CPU resource  of the limitsOPA proxy container.
 	LimitCpu pulumi.StringPtrInput `pulumi:"limitCpu"`
-	// Sidecar injector Pods on the throttle.
+	// The memory resource limit of the OPA proxy container.
 	LimitMemory pulumi.StringPtrInput `pulumi:"limitMemory"`
-	// The requested cpu the Sidecar injector Pods.
+	// The CPU resource request of the OPA proxy container.
 	RequestCpu pulumi.StringPtrInput `pulumi:"requestCpu"`
-	// The requested memory the Sidecar injector Pods.
+	// The memory resource request of the OPA proxy container.
 	RequestMemory pulumi.StringPtrInput `pulumi:"requestMemory"`
 }
 
@@ -2047,22 +2047,22 @@ func (o ServiceMeshMeshConfigProxyOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// The limit cpu of the Sidecar injector Pods.
+// The CPU resource  of the limitsOPA proxy container.
 func (o ServiceMeshMeshConfigProxyOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.LimitCpu }).(pulumi.StringPtrOutput)
 }
 
-// Sidecar injector Pods on the throttle.
+// The memory resource limit of the OPA proxy container.
 func (o ServiceMeshMeshConfigProxyOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.LimitMemory }).(pulumi.StringPtrOutput)
 }
 
-// The requested cpu the Sidecar injector Pods.
+// The CPU resource request of the OPA proxy container.
 func (o ServiceMeshMeshConfigProxyOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.RequestCpu }).(pulumi.StringPtrOutput)
 }
 
-// The requested memory the Sidecar injector Pods.
+// The memory resource request of the OPA proxy container.
 func (o ServiceMeshMeshConfigProxyOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.RequestMemory }).(pulumi.StringPtrOutput)
 }
@@ -2097,7 +2097,7 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) Elem() ServiceMeshMeshConfigProxyOu
 	}).(ServiceMeshMeshConfigProxyOutput)
 }
 
-// The limit cpu of the Sidecar injector Pods.
+// The CPU resource  of the limitsOPA proxy container.
 func (o ServiceMeshMeshConfigProxyPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {
@@ -2107,7 +2107,7 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Sidecar injector Pods on the throttle.
+// The memory resource limit of the OPA proxy container.
 func (o ServiceMeshMeshConfigProxyPtrOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {
@@ -2117,7 +2117,7 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) LimitMemory() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The requested cpu the Sidecar injector Pods.
+// The CPU resource request of the OPA proxy container.
 func (o ServiceMeshMeshConfigProxyPtrOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {
@@ -2127,7 +2127,7 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) RequestCpu() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The requested memory the Sidecar injector Pods.
+// The memory resource request of the OPA proxy container.
 func (o ServiceMeshMeshConfigProxyPtrOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {
@@ -2142,13 +2142,13 @@ type ServiceMeshMeshConfigSidecarInjector struct {
 	AutoInjectionPolicyEnabled *bool `pulumi:"autoInjectionPolicyEnabled"`
 	// Whether it is the all namespaces you turn on the auto injection capabilities.
 	EnableNamespacesByDefault *bool `pulumi:"enableNamespacesByDefault"`
-	// The limit cpu of the Sidecar injector Pods.
+	// The CPU resource  of the limitsOPA proxy container.
 	LimitCpu *string `pulumi:"limitCpu"`
-	// Sidecar injector Pods on the throttle.
+	// The memory resource limit of the OPA proxy container.
 	LimitMemory *string `pulumi:"limitMemory"`
-	// The requested cpu the Sidecar injector Pods.
+	// The CPU resource request of the OPA proxy container.
 	RequestCpu *string `pulumi:"requestCpu"`
-	// The requested memory the Sidecar injector Pods.
+	// The memory resource request of the OPA proxy container.
 	RequestMemory *string `pulumi:"requestMemory"`
 }
 
@@ -2168,13 +2168,13 @@ type ServiceMeshMeshConfigSidecarInjectorArgs struct {
 	AutoInjectionPolicyEnabled pulumi.BoolPtrInput `pulumi:"autoInjectionPolicyEnabled"`
 	// Whether it is the all namespaces you turn on the auto injection capabilities.
 	EnableNamespacesByDefault pulumi.BoolPtrInput `pulumi:"enableNamespacesByDefault"`
-	// The limit cpu of the Sidecar injector Pods.
+	// The CPU resource  of the limitsOPA proxy container.
 	LimitCpu pulumi.StringPtrInput `pulumi:"limitCpu"`
-	// Sidecar injector Pods on the throttle.
+	// The memory resource limit of the OPA proxy container.
 	LimitMemory pulumi.StringPtrInput `pulumi:"limitMemory"`
-	// The requested cpu the Sidecar injector Pods.
+	// The CPU resource request of the OPA proxy container.
 	RequestCpu pulumi.StringPtrInput `pulumi:"requestCpu"`
-	// The requested memory the Sidecar injector Pods.
+	// The memory resource request of the OPA proxy container.
 	RequestMemory pulumi.StringPtrInput `pulumi:"requestMemory"`
 }
 
@@ -2283,22 +2283,22 @@ func (o ServiceMeshMeshConfigSidecarInjectorOutput) EnableNamespacesByDefault() 
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *bool { return v.EnableNamespacesByDefault }).(pulumi.BoolPtrOutput)
 }
 
-// The limit cpu of the Sidecar injector Pods.
+// The CPU resource  of the limitsOPA proxy container.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *string { return v.LimitCpu }).(pulumi.StringPtrOutput)
 }
 
-// Sidecar injector Pods on the throttle.
+// The memory resource limit of the OPA proxy container.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *string { return v.LimitMemory }).(pulumi.StringPtrOutput)
 }
 
-// The requested cpu the Sidecar injector Pods.
+// The CPU resource request of the OPA proxy container.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *string { return v.RequestCpu }).(pulumi.StringPtrOutput)
 }
 
-// The requested memory the Sidecar injector Pods.
+// The memory resource request of the OPA proxy container.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *string { return v.RequestMemory }).(pulumi.StringPtrOutput)
 }
@@ -2353,7 +2353,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) EnableNamespacesByDefault
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The limit cpu of the Sidecar injector Pods.
+// The CPU resource  of the limitsOPA proxy container.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *string {
 		if v == nil {
@@ -2363,7 +2363,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) LimitCpu() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Sidecar injector Pods on the throttle.
+// The memory resource limit of the OPA proxy container.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *string {
 		if v == nil {
@@ -2373,7 +2373,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) LimitMemory() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The requested cpu the Sidecar injector Pods.
+// The CPU resource request of the OPA proxy container.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *string {
 		if v == nil {
@@ -2383,7 +2383,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) RequestCpu() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// The requested memory the Sidecar injector Pods.
+// The memory resource request of the OPA proxy container.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *string {
 		if v == nil {

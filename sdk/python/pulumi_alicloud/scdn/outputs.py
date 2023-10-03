@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -62,16 +62,33 @@ class DomainCertInfo(dict):
         :param str ssl_protocol: Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
         :param str ssl_pub: If You Enable HTTPS Here Key.
         """
+        DomainCertInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert_name=cert_name,
+            cert_type=cert_type,
+            ssl_pri=ssl_pri,
+            ssl_protocol=ssl_protocol,
+            ssl_pub=ssl_pub,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert_name: Optional[str] = None,
+             cert_type: Optional[str] = None,
+             ssl_pri: Optional[str] = None,
+             ssl_protocol: Optional[str] = None,
+             ssl_pub: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cert_name is not None:
-            pulumi.set(__self__, "cert_name", cert_name)
+            _setter("cert_name", cert_name)
         if cert_type is not None:
-            pulumi.set(__self__, "cert_type", cert_type)
+            _setter("cert_type", cert_type)
         if ssl_pri is not None:
-            pulumi.set(__self__, "ssl_pri", ssl_pri)
+            _setter("ssl_pri", ssl_pri)
         if ssl_protocol is not None:
-            pulumi.set(__self__, "ssl_protocol", ssl_protocol)
+            _setter("ssl_protocol", ssl_protocol)
         if ssl_pub is not None:
-            pulumi.set(__self__, "ssl_pub", ssl_pub)
+            _setter("ssl_pub", ssl_pub)
 
     @property
     @pulumi.getter(name="certName")
@@ -145,8 +162,19 @@ class DomainConfigFunctionArg(dict):
         :param str arg_name: The name of arg.
         :param str arg_value: The value of arg.
         """
-        pulumi.set(__self__, "arg_name", arg_name)
-        pulumi.set(__self__, "arg_value", arg_value)
+        DomainConfigFunctionArg._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arg_name=arg_name,
+            arg_value=arg_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arg_name: str,
+             arg_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("arg_name", arg_name)
+        _setter("arg_value", arg_value)
 
     @property
     @pulumi.getter(name="argName")
@@ -183,12 +211,29 @@ class DomainSource(dict):
                * oss: OSS Bucket as a Source Station.
         :param str enabled: The source status. Valid values: online, offline.
         """
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "type", type)
+        DomainSource._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            port=port,
+            priority=priority,
+            type=type,
+            enabled=enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: str,
+             port: int,
+             priority: str,
+             type: str,
+             enabled: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("content", content)
+        _setter("port", port)
+        _setter("priority", priority)
+        _setter("type", type)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
 
     @property
     @pulumi.getter
@@ -259,16 +304,43 @@ class GetDomainsDomainResult(dict):
         :param Sequence['GetDomainsDomainSourceArgs'] sources: the Origin Server Information.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "cert_infos", cert_infos)
-        pulumi.set(__self__, "cname", cname)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "gmt_modified", gmt_modified)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "sources", sources)
-        pulumi.set(__self__, "status", status)
+        GetDomainsDomainResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert_infos=cert_infos,
+            cname=cname,
+            create_time=create_time,
+            description=description,
+            domain_name=domain_name,
+            gmt_modified=gmt_modified,
+            id=id,
+            resource_group_id=resource_group_id,
+            sources=sources,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert_infos: Sequence['outputs.GetDomainsDomainCertInfoResult'],
+             cname: str,
+             create_time: str,
+             description: str,
+             domain_name: str,
+             gmt_modified: str,
+             id: str,
+             resource_group_id: str,
+             sources: Sequence['outputs.GetDomainsDomainSourceResult'],
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cert_infos", cert_infos)
+        _setter("cname", cname)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("domain_name", domain_name)
+        _setter("gmt_modified", gmt_modified)
+        _setter("id", id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("sources", sources)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="certInfos")
@@ -364,10 +436,25 @@ class GetDomainsDomainCertInfoResult(dict):
         :param str ssl_protocol: Whether to Enable SSL Certificate. Valid Values: on, off.
         :param str ssl_pub: If You Enable HTTPS Here Key.
         """
-        pulumi.set(__self__, "cert_name", cert_name)
-        pulumi.set(__self__, "cert_type", cert_type)
-        pulumi.set(__self__, "ssl_protocol", ssl_protocol)
-        pulumi.set(__self__, "ssl_pub", ssl_pub)
+        GetDomainsDomainCertInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert_name=cert_name,
+            cert_type=cert_type,
+            ssl_protocol=ssl_protocol,
+            ssl_pub=ssl_pub,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert_name: str,
+             cert_type: str,
+             ssl_protocol: str,
+             ssl_pub: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cert_name", cert_name)
+        _setter("cert_type", cert_type)
+        _setter("ssl_protocol", ssl_protocol)
+        _setter("ssl_pub", ssl_pub)
 
     @property
     @pulumi.getter(name="certName")
@@ -417,11 +504,28 @@ class GetDomainsDomainSourceResult(dict):
         :param str priority: Priority.
         :param str type: the Origin Server Type. Valid Values: Ipaddr: IP Source Station Domain: the Domain Name, See Extra Domain Quota OSS: OSS Bucket as a Source Station.
         """
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "type", type)
+        GetDomainsDomainSourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            enabled=enabled,
+            port=port,
+            priority=priority,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: str,
+             enabled: str,
+             port: int,
+             priority: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("content", content)
+        _setter("enabled", enabled)
+        _setter("port", port)
+        _setter("priority", priority)
+        _setter("type", type)
 
     @property
     @pulumi.getter

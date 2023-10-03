@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['QueueArgs', 'Queue']
@@ -29,18 +29,37 @@ class QueueArgs:
         :param pulumi.Input[int] polling_wait_seconds: Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out. Valid value range: 0-30 seconds. Default value to 0.
         :param pulumi.Input[int] visibility_timeout: The VisibilityTimeout attribute of the queue. A dequeued messages will change from active (visible) status to inactive (invisible) status, and this attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period. Valid value range: 1-43200 seconds, i.e., 1 seconds to 12 hours. Default value to 30.
         """
+        QueueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delay_seconds=delay_seconds,
+            maximum_message_size=maximum_message_size,
+            message_retention_period=message_retention_period,
+            name=name,
+            polling_wait_seconds=polling_wait_seconds,
+            visibility_timeout=visibility_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delay_seconds: Optional[pulumi.Input[int]] = None,
+             maximum_message_size: Optional[pulumi.Input[int]] = None,
+             message_retention_period: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             polling_wait_seconds: Optional[pulumi.Input[int]] = None,
+             visibility_timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if delay_seconds is not None:
-            pulumi.set(__self__, "delay_seconds", delay_seconds)
+            _setter("delay_seconds", delay_seconds)
         if maximum_message_size is not None:
-            pulumi.set(__self__, "maximum_message_size", maximum_message_size)
+            _setter("maximum_message_size", maximum_message_size)
         if message_retention_period is not None:
-            pulumi.set(__self__, "message_retention_period", message_retention_period)
+            _setter("message_retention_period", message_retention_period)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if polling_wait_seconds is not None:
-            pulumi.set(__self__, "polling_wait_seconds", polling_wait_seconds)
+            _setter("polling_wait_seconds", polling_wait_seconds)
         if visibility_timeout is not None:
-            pulumi.set(__self__, "visibility_timeout", visibility_timeout)
+            _setter("visibility_timeout", visibility_timeout)
 
     @property
     @pulumi.getter(name="delaySeconds")
@@ -133,18 +152,37 @@ class _QueueState:
         :param pulumi.Input[int] polling_wait_seconds: Long polling is measured in seconds. When this attribute is set to 0, long polling is disabled. When it is not set to 0, long polling is enabled and message dequeue requests will be processed only when valid messages are received or when long polling times out. Valid value range: 0-30 seconds. Default value to 0.
         :param pulumi.Input[int] visibility_timeout: The VisibilityTimeout attribute of the queue. A dequeued messages will change from active (visible) status to inactive (invisible) status, and this attribute defines the length of time, in seconds, that messages remain invisible. Messages return to active status after the set period. Valid value range: 1-43200 seconds, i.e., 1 seconds to 12 hours. Default value to 30.
         """
+        _QueueState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            delay_seconds=delay_seconds,
+            maximum_message_size=maximum_message_size,
+            message_retention_period=message_retention_period,
+            name=name,
+            polling_wait_seconds=polling_wait_seconds,
+            visibility_timeout=visibility_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             delay_seconds: Optional[pulumi.Input[int]] = None,
+             maximum_message_size: Optional[pulumi.Input[int]] = None,
+             message_retention_period: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             polling_wait_seconds: Optional[pulumi.Input[int]] = None,
+             visibility_timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if delay_seconds is not None:
-            pulumi.set(__self__, "delay_seconds", delay_seconds)
+            _setter("delay_seconds", delay_seconds)
         if maximum_message_size is not None:
-            pulumi.set(__self__, "maximum_message_size", maximum_message_size)
+            _setter("maximum_message_size", maximum_message_size)
         if message_retention_period is not None:
-            pulumi.set(__self__, "message_retention_period", message_retention_period)
+            _setter("message_retention_period", message_retention_period)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if polling_wait_seconds is not None:
-            pulumi.set(__self__, "polling_wait_seconds", polling_wait_seconds)
+            _setter("polling_wait_seconds", polling_wait_seconds)
         if visibility_timeout is not None:
-            pulumi.set(__self__, "visibility_timeout", visibility_timeout)
+            _setter("visibility_timeout", visibility_timeout)
 
     @property
     @pulumi.getter(name="delaySeconds")
@@ -306,6 +344,10 @@ class Queue(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QueueArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

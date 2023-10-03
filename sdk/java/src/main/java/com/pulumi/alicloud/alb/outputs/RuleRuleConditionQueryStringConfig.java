@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RuleRuleConditionQueryStringConfig {
     /**
-     * @return The values of the cookie. See `values` below.
+     * @return Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
      * 
      */
     private @Nullable List<RuleRuleConditionQueryStringConfigValue> values;
 
     private RuleRuleConditionQueryStringConfig() {}
     /**
-     * @return The values of the cookie. See `values` below.
+     * @return Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
      * 
      */
     public List<RuleRuleConditionQueryStringConfigValue> values() {

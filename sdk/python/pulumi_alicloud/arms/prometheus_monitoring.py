@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PrometheusMonitoringArgs', 'PrometheusMonitoring']
@@ -25,11 +25,26 @@ class PrometheusMonitoringArgs:
         :param pulumi.Input[str] type: Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
         :param pulumi.Input[str] status: Valid values: `stop`, `run`.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "config_yaml", config_yaml)
-        pulumi.set(__self__, "type", type)
+        PrometheusMonitoringArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            config_yaml=config_yaml,
+            type=type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: pulumi.Input[str],
+             config_yaml: pulumi.Input[str],
+             type: pulumi.Input[str],
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("config_yaml", config_yaml)
+        _setter("type", type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -96,16 +111,33 @@ class _PrometheusMonitoringState:
         :param pulumi.Input[str] status: Valid values: `stop`, `run`.
         :param pulumi.Input[str] type: Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
         """
+        _PrometheusMonitoringState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            config_yaml=config_yaml,
+            monitoring_name=monitoring_name,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             config_yaml: Optional[pulumi.Input[str]] = None,
+             monitoring_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if config_yaml is not None:
-            pulumi.set(__self__, "config_yaml", config_yaml)
+            _setter("config_yaml", config_yaml)
         if monitoring_name is not None:
-            pulumi.set(__self__, "monitoring_name", monitoring_name)
+            _setter("monitoring_name", monitoring_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -231,6 +263,10 @@ class PrometheusMonitoring(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PrometheusMonitoringArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

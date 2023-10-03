@@ -18,7 +18,7 @@ public final class RuleRuleConditionHeaderConfig {
      */
     private @Nullable String key;
     /**
-     * @return The values of the cookie. See `values` below.
+     * @return Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
      * 
      */
     private @Nullable List<String> values;
@@ -32,7 +32,7 @@ public final class RuleRuleConditionHeaderConfig {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The values of the cookie. See `values` below.
+     * @return Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
      * 
      */
     public List<String> values() {

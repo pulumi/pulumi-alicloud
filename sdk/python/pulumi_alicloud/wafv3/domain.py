@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,12 +29,29 @@ class DomainArgs:
         :param pulumi.Input['DomainRedirectArgs'] redirect: Configure forwarding information. See `redirect` below.
         :param pulumi.Input[str] access_type: The access type of the WAF instance. Value: **share** (default): CNAME access.
         """
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "listen", listen)
-        pulumi.set(__self__, "redirect", redirect)
+        DomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            instance_id=instance_id,
+            listen=listen,
+            redirect=redirect,
+            access_type=access_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: pulumi.Input[str],
+             instance_id: pulumi.Input[str],
+             listen: pulumi.Input['DomainListenArgs'],
+             redirect: pulumi.Input['DomainRedirectArgs'],
+             access_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain", domain)
+        _setter("instance_id", instance_id)
+        _setter("listen", listen)
+        _setter("redirect", redirect)
         if access_type is not None:
-            pulumi.set(__self__, "access_type", access_type)
+            _setter("access_type", access_type)
 
     @property
     @pulumi.getter
@@ -117,20 +134,41 @@ class _DomainState:
         :param pulumi.Input[str] resource_manager_resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
         """
+        _DomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_type=access_type,
+            domain=domain,
+            instance_id=instance_id,
+            listen=listen,
+            redirect=redirect,
+            resource_manager_resource_group_id=resource_manager_resource_group_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_type: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             listen: Optional[pulumi.Input['DomainListenArgs']] = None,
+             redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None,
+             resource_manager_resource_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_type is not None:
-            pulumi.set(__self__, "access_type", access_type)
+            _setter("access_type", access_type)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if listen is not None:
-            pulumi.set(__self__, "listen", listen)
+            _setter("listen", listen)
         if redirect is not None:
-            pulumi.set(__self__, "redirect", redirect)
+            _setter("redirect", redirect)
         if resource_manager_resource_group_id is not None:
-            pulumi.set(__self__, "resource_manager_resource_group_id", resource_manager_resource_group_id)
+            _setter("resource_manager_resource_group_id", resource_manager_resource_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accessType")
@@ -282,6 +320,10 @@ class Domain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -308,9 +350,19 @@ class Domain(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            if listen is not None and not isinstance(listen, DomainListenArgs):
+                listen = listen or {}
+                def _setter(key, value):
+                    listen[key] = value
+                DomainListenArgs._configure(_setter, **listen)
             if listen is None and not opts.urn:
                 raise TypeError("Missing required property 'listen'")
             __props__.__dict__["listen"] = listen
+            if redirect is not None and not isinstance(redirect, DomainRedirectArgs):
+                redirect = redirect or {}
+                def _setter(key, value):
+                    redirect[key] = value
+                DomainRedirectArgs._configure(_setter, **redirect)
             if redirect is None and not opts.urn:
                 raise TypeError("Missing required property 'redirect'")
             __props__.__dict__["redirect"] = redirect

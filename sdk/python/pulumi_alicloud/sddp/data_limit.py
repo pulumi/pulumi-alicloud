@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DataLimitArgs', 'DataLimit']
@@ -37,25 +37,52 @@ class DataLimitArgs:
         :param pulumi.Input[str] service_region_id: The region ID of the data asset.
         :param pulumi.Input[str] user_name: The name of the service to which the data asset belongs.
         """
-        pulumi.set(__self__, "resource_type", resource_type)
+        DataLimitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_type=resource_type,
+            audit_status=audit_status,
+            engine_type=engine_type,
+            lang=lang,
+            log_store_day=log_store_day,
+            parent_id=parent_id,
+            password=password,
+            port=port,
+            service_region_id=service_region_id,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_type: pulumi.Input[str],
+             audit_status: Optional[pulumi.Input[int]] = None,
+             engine_type: Optional[pulumi.Input[str]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             log_store_day: Optional[pulumi.Input[int]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             service_region_id: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_type", resource_type)
         if audit_status is not None:
-            pulumi.set(__self__, "audit_status", audit_status)
+            _setter("audit_status", audit_status)
         if engine_type is not None:
-            pulumi.set(__self__, "engine_type", engine_type)
+            _setter("engine_type", engine_type)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if log_store_day is not None:
-            pulumi.set(__self__, "log_store_day", log_store_day)
+            _setter("log_store_day", log_store_day)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if service_region_id is not None:
-            pulumi.set(__self__, "service_region_id", service_region_id)
+            _setter("service_region_id", service_region_id)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="resourceType")
@@ -204,26 +231,53 @@ class _DataLimitState:
         :param pulumi.Input[str] service_region_id: The region ID of the data asset.
         :param pulumi.Input[str] user_name: The name of the service to which the data asset belongs.
         """
+        _DataLimitState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audit_status=audit_status,
+            engine_type=engine_type,
+            lang=lang,
+            log_store_day=log_store_day,
+            parent_id=parent_id,
+            password=password,
+            port=port,
+            resource_type=resource_type,
+            service_region_id=service_region_id,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audit_status: Optional[pulumi.Input[int]] = None,
+             engine_type: Optional[pulumi.Input[str]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             log_store_day: Optional[pulumi.Input[int]] = None,
+             parent_id: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
+             service_region_id: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if audit_status is not None:
-            pulumi.set(__self__, "audit_status", audit_status)
+            _setter("audit_status", audit_status)
         if engine_type is not None:
-            pulumi.set(__self__, "engine_type", engine_type)
+            _setter("engine_type", engine_type)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if log_store_day is not None:
-            pulumi.set(__self__, "log_store_day", log_store_day)
+            _setter("log_store_day", log_store_day)
         if parent_id is not None:
-            pulumi.set(__self__, "parent_id", parent_id)
+            _setter("parent_id", parent_id)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if resource_type is not None:
-            pulumi.set(__self__, "resource_type", resource_type)
+            _setter("resource_type", resource_type)
         if service_region_id is not None:
-            pulumi.set(__self__, "service_region_id", service_region_id)
+            _setter("service_region_id", service_region_id)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="auditStatus")
@@ -421,6 +475,10 @@ class DataLimit(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DataLimitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

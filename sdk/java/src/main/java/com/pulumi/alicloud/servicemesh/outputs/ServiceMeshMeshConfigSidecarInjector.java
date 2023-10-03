@@ -23,22 +23,22 @@ public final class ServiceMeshMeshConfigSidecarInjector {
      */
     private @Nullable Boolean enableNamespacesByDefault;
     /**
-     * @return The limit cpu of the Sidecar injector Pods.
+     * @return The CPU resource  of the limitsOPA proxy container.
      * 
      */
     private @Nullable String limitCpu;
     /**
-     * @return Sidecar injector Pods on the throttle.
+     * @return The memory resource limit of the OPA proxy container.
      * 
      */
     private @Nullable String limitMemory;
     /**
-     * @return The requested cpu the Sidecar injector Pods.
+     * @return The CPU resource request of the OPA proxy container.
      * 
      */
     private @Nullable String requestCpu;
     /**
-     * @return The requested memory the Sidecar injector Pods.
+     * @return The memory resource request of the OPA proxy container.
      * 
      */
     private @Nullable String requestMemory;
@@ -59,28 +59,28 @@ public final class ServiceMeshMeshConfigSidecarInjector {
         return Optional.ofNullable(this.enableNamespacesByDefault);
     }
     /**
-     * @return The limit cpu of the Sidecar injector Pods.
+     * @return The CPU resource  of the limitsOPA proxy container.
      * 
      */
     public Optional<String> limitCpu() {
         return Optional.ofNullable(this.limitCpu);
     }
     /**
-     * @return Sidecar injector Pods on the throttle.
+     * @return The memory resource limit of the OPA proxy container.
      * 
      */
     public Optional<String> limitMemory() {
         return Optional.ofNullable(this.limitMemory);
     }
     /**
-     * @return The requested cpu the Sidecar injector Pods.
+     * @return The CPU resource request of the OPA proxy container.
      * 
      */
     public Optional<String> requestCpu() {
         return Optional.ofNullable(this.requestCpu);
     }
     /**
-     * @return The requested memory the Sidecar injector Pods.
+     * @return The memory resource request of the OPA proxy container.
      * 
      */
     public Optional<String> requestMemory() {

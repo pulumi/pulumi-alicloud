@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -35,13 +35,30 @@ class DispatchRuleGroupRuleArgs:
         :param pulumi.Input[int] group_id: The ID of the group rule.
         :param pulumi.Input[int] repeat_interval: The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
         """
-        pulumi.set(__self__, "group_interval", group_interval)
-        pulumi.set(__self__, "group_wait_time", group_wait_time)
-        pulumi.set(__self__, "grouping_fields", grouping_fields)
+        DispatchRuleGroupRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_interval=group_interval,
+            group_wait_time=group_wait_time,
+            grouping_fields=grouping_fields,
+            group_id=group_id,
+            repeat_interval=repeat_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_interval: pulumi.Input[int],
+             group_wait_time: pulumi.Input[int],
+             grouping_fields: pulumi.Input[Sequence[pulumi.Input[str]]],
+             group_id: Optional[pulumi.Input[int]] = None,
+             repeat_interval: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_interval", group_interval)
+        _setter("group_wait_time", group_wait_time)
+        _setter("grouping_fields", grouping_fields)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if repeat_interval is not None:
-            pulumi.set(__self__, "repeat_interval", repeat_interval)
+            _setter("repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="groupInterval")
@@ -111,7 +128,16 @@ class DispatchRuleLabelMatchExpressionGridArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs']]] label_match_expression_groups: Sets the dispatch rule. See `label_match_expression_groups` below.
         """
-        pulumi.set(__self__, "label_match_expression_groups", label_match_expression_groups)
+        DispatchRuleLabelMatchExpressionGridArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label_match_expression_groups=label_match_expression_groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label_match_expression_groups: pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label_match_expression_groups", label_match_expression_groups)
 
     @property
     @pulumi.getter(name="labelMatchExpressionGroups")
@@ -133,7 +159,16 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs']]] label_match_expressions: Sets the dispatch rule. See `label_match_expressions` below.
         """
-        pulumi.set(__self__, "label_match_expressions", label_match_expressions)
+        DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label_match_expressions=label_match_expressions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label_match_expressions: pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label_match_expressions", label_match_expressions)
 
     @property
     @pulumi.getter(name="labelMatchExpressions")
@@ -169,9 +204,22 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
                * re: matches a regular expression.
         :param pulumi.Input[str] value: The value of the tag.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "value", value)
+        DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            operator=operator,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             operator: pulumi.Input[str],
+             value: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("operator", operator)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -229,8 +277,19 @@ class DispatchRuleNotifyRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notify_channels: The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
         :param pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]] notify_objects: Sets the notification object. See `notify_objects` below.
         """
-        pulumi.set(__self__, "notify_channels", notify_channels)
-        pulumi.set(__self__, "notify_objects", notify_objects)
+        DispatchRuleNotifyRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            notify_channels=notify_channels,
+            notify_objects=notify_objects,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             notify_channels: pulumi.Input[Sequence[pulumi.Input[str]]],
+             notify_objects: pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("notify_channels", notify_channels)
+        _setter("notify_objects", notify_objects)
 
     @property
     @pulumi.getter(name="notifyChannels")
@@ -268,9 +327,22 @@ class DispatchRuleNotifyRuleNotifyObjectArgs:
         :param pulumi.Input[str] notify_object_id: The ID of the contact or contact group.
         :param pulumi.Input[str] notify_type: The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "notify_object_id", notify_object_id)
-        pulumi.set(__self__, "notify_type", notify_type)
+        DispatchRuleNotifyRuleNotifyObjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            notify_object_id=notify_object_id,
+            notify_type=notify_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             notify_object_id: pulumi.Input[str],
+             notify_type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("notify_object_id", notify_object_id)
+        _setter("notify_type", notify_type)
 
     @property
     @pulumi.getter
@@ -318,10 +390,21 @@ class PrometheusAlertRuleAnnotationArgs:
         :param pulumi.Input[str] name: The name of the annotation.
         :param pulumi.Input[str] value: The value of the annotation.
         """
+        PrometheusAlertRuleAnnotationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -357,10 +440,21 @@ class PrometheusAlertRuleLabelArgs:
         :param pulumi.Input[str] name: The name of the label.
         :param pulumi.Input[str] value: The value of the label.
         """
+        PrometheusAlertRuleLabelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter

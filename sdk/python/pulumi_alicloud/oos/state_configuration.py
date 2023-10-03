@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['StateConfigurationArgs', 'StateConfiguration']
@@ -37,22 +37,49 @@ class StateConfigurationArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] template_version: The version number. If you do not specify this parameter, the system uses the latest version.
         """
-        pulumi.set(__self__, "schedule_expression", schedule_expression)
-        pulumi.set(__self__, "schedule_type", schedule_type)
-        pulumi.set(__self__, "targets", targets)
-        pulumi.set(__self__, "template_name", template_name)
+        StateConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            schedule_expression=schedule_expression,
+            schedule_type=schedule_type,
+            targets=targets,
+            template_name=template_name,
+            configure_mode=configure_mode,
+            description=description,
+            parameters=parameters,
+            resource_group_id=resource_group_id,
+            tags=tags,
+            template_version=template_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             schedule_expression: pulumi.Input[str],
+             schedule_type: pulumi.Input[str],
+             targets: pulumi.Input[str],
+             template_name: pulumi.Input[str],
+             configure_mode: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             template_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("schedule_expression", schedule_expression)
+        _setter("schedule_type", schedule_type)
+        _setter("targets", targets)
+        _setter("template_name", template_name)
         if configure_mode is not None:
-            pulumi.set(__self__, "configure_mode", configure_mode)
+            _setter("configure_mode", configure_mode)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if template_version is not None:
-            pulumi.set(__self__, "template_version", template_version)
+            _setter("template_version", template_version)
 
     @property
     @pulumi.getter(name="scheduleExpression")
@@ -201,26 +228,53 @@ class _StateConfigurationState:
         :param pulumi.Input[str] template_name: The name of the template.
         :param pulumi.Input[str] template_version: The version number. If you do not specify this parameter, the system uses the latest version.
         """
+        _StateConfigurationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            configure_mode=configure_mode,
+            description=description,
+            parameters=parameters,
+            resource_group_id=resource_group_id,
+            schedule_expression=schedule_expression,
+            schedule_type=schedule_type,
+            tags=tags,
+            targets=targets,
+            template_name=template_name,
+            template_version=template_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             configure_mode: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             schedule_expression: Optional[pulumi.Input[str]] = None,
+             schedule_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             targets: Optional[pulumi.Input[str]] = None,
+             template_name: Optional[pulumi.Input[str]] = None,
+             template_version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if configure_mode is not None:
-            pulumi.set(__self__, "configure_mode", configure_mode)
+            _setter("configure_mode", configure_mode)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if schedule_expression is not None:
-            pulumi.set(__self__, "schedule_expression", schedule_expression)
+            _setter("schedule_expression", schedule_expression)
         if schedule_type is not None:
-            pulumi.set(__self__, "schedule_type", schedule_type)
+            _setter("schedule_type", schedule_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if targets is not None:
-            pulumi.set(__self__, "targets", targets)
+            _setter("targets", targets)
         if template_name is not None:
-            pulumi.set(__self__, "template_name", template_name)
+            _setter("template_name", template_name)
         if template_version is not None:
-            pulumi.set(__self__, "template_version", template_version)
+            _setter("template_version", template_version)
 
     @property
     @pulumi.getter(name="configureMode")
@@ -466,6 +520,10 @@ class StateConfiguration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            StateConfigurationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

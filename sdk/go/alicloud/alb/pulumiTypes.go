@@ -3166,7 +3166,7 @@ type RuleRuleActionFixedResponseConfig struct {
 	Content string `pulumi:"content"`
 	// The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
 	ContentType *string `pulumi:"contentType"`
-	// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+	// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 	HttpCode *string `pulumi:"httpCode"`
 }
 
@@ -3186,7 +3186,7 @@ type RuleRuleActionFixedResponseConfigArgs struct {
 	Content pulumi.StringInput `pulumi:"content"`
 	// The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
 	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
-	// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+	// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 	HttpCode pulumi.StringPtrInput `pulumi:"httpCode"`
 }
 
@@ -3295,7 +3295,7 @@ func (o RuleRuleActionFixedResponseConfigOutput) ContentType() pulumi.StringPtrO
 	return o.ApplyT(func(v RuleRuleActionFixedResponseConfig) *string { return v.ContentType }).(pulumi.StringPtrOutput)
 }
 
-// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 func (o RuleRuleActionFixedResponseConfigOutput) HttpCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionFixedResponseConfig) *string { return v.HttpCode }).(pulumi.StringPtrOutput)
 }
@@ -3350,7 +3350,7 @@ func (o RuleRuleActionFixedResponseConfigPtrOutput) ContentType() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 func (o RuleRuleActionFixedResponseConfigPtrOutput) HttpCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionFixedResponseConfig) *string {
 		if v == nil {
@@ -4058,17 +4058,17 @@ func (o RuleRuleActionInsertHeaderConfigPtrOutput) ValueType() pulumi.StringPtrO
 }
 
 type RuleRuleActionRedirectConfig struct {
-	// The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 	Host *string `pulumi:"host"`
-	// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+	// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 	HttpCode *string `pulumi:"httpCode"`
-	// The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+	// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 	Path *string `pulumi:"path"`
 	// The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
 	Port *string `pulumi:"port"`
 	// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
 	Protocol *string `pulumi:"protocol"`
-	// The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 	Query *string `pulumi:"query"`
 }
 
@@ -4084,17 +4084,17 @@ type RuleRuleActionRedirectConfigInput interface {
 }
 
 type RuleRuleActionRedirectConfigArgs struct {
-	// The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+	// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 	HttpCode pulumi.StringPtrInput `pulumi:"httpCode"`
-	// The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+	// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
 	Port pulumi.StringPtrInput `pulumi:"port"`
 	// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 	Query pulumi.StringPtrInput `pulumi:"query"`
 }
 
@@ -4193,17 +4193,17 @@ func (o RuleRuleActionRedirectConfigOutput) ToOutput(ctx context.Context) pulumi
 	}
 }
 
-// The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 func (o RuleRuleActionRedirectConfigOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 func (o RuleRuleActionRedirectConfigOutput) HttpCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.HttpCode }).(pulumi.StringPtrOutput)
 }
 
-// The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRedirectConfigOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -4218,7 +4218,7 @@ func (o RuleRuleActionRedirectConfigOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRedirectConfigOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
@@ -4253,7 +4253,7 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Elem() RuleRuleActionRedirectConf
 	}).(RuleRuleActionRedirectConfigOutput)
 }
 
-// The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 func (o RuleRuleActionRedirectConfigPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -4263,7 +4263,7 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 func (o RuleRuleActionRedirectConfigPtrOutput) HttpCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -4273,7 +4273,7 @@ func (o RuleRuleActionRedirectConfigPtrOutput) HttpCode() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRedirectConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -4303,7 +4303,7 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Protocol() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRedirectConfigPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -4314,11 +4314,11 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Query() pulumi.StringPtrOutput {
 }
 
 type RuleRuleActionRewriteConfig struct {
-	// The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 	Host *string `pulumi:"host"`
-	// The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+	// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 	Path *string `pulumi:"path"`
-	// The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 	Query *string `pulumi:"query"`
 }
 
@@ -4334,11 +4334,11 @@ type RuleRuleActionRewriteConfigInput interface {
 }
 
 type RuleRuleActionRewriteConfigArgs struct {
-	// The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+	// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 	Query pulumi.StringPtrInput `pulumi:"query"`
 }
 
@@ -4437,17 +4437,17 @@ func (o RuleRuleActionRewriteConfigOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 func (o RuleRuleActionRewriteConfigOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRewriteConfigOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRewriteConfigOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
@@ -4482,7 +4482,7 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Elem() RuleRuleActionRewriteConfig
 	}).(RuleRuleActionRewriteConfigOutput)
 }
 
-// The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 func (o RuleRuleActionRewriteConfigPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) *string {
 		if v == nil {
@@ -4492,7 +4492,7 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRewriteConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) *string {
 		if v == nil {
@@ -4502,7 +4502,7 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRewriteConfigPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) *string {
 		if v == nil {
@@ -5326,7 +5326,7 @@ func (o RuleRuleConditionArrayOutput) Index(i pulumi.IntInput) RuleRuleCondition
 }
 
 type RuleRuleConditionCookieConfig struct {
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []RuleRuleConditionCookieConfigValue `pulumi:"values"`
 }
 
@@ -5342,7 +5342,7 @@ type RuleRuleConditionCookieConfigInput interface {
 }
 
 type RuleRuleConditionCookieConfigArgs struct {
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values RuleRuleConditionCookieConfigValueArrayInput `pulumi:"values"`
 }
 
@@ -5441,7 +5441,7 @@ func (o RuleRuleConditionCookieConfigOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionCookieConfigOutput) Values() RuleRuleConditionCookieConfigValueArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionCookieConfig) []RuleRuleConditionCookieConfigValue { return v.Values }).(RuleRuleConditionCookieConfigValueArrayOutput)
 }
@@ -5476,7 +5476,7 @@ func (o RuleRuleConditionCookieConfigPtrOutput) Elem() RuleRuleConditionCookieCo
 	}).(RuleRuleConditionCookieConfigOutput)
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionCookieConfigPtrOutput) Values() RuleRuleConditionCookieConfigValueArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionCookieConfig) []RuleRuleConditionCookieConfigValue {
 		if v == nil {
@@ -5622,7 +5622,7 @@ func (o RuleRuleConditionCookieConfigValueArrayOutput) Index(i pulumi.IntInput) 
 type RuleRuleConditionHeaderConfig struct {
 	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
 	Key *string `pulumi:"key"`
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -5640,7 +5640,7 @@ type RuleRuleConditionHeaderConfigInput interface {
 type RuleRuleConditionHeaderConfigArgs struct {
 	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5744,7 +5744,7 @@ func (o RuleRuleConditionHeaderConfigOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionHeaderConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionHeaderConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -5789,7 +5789,7 @@ func (o RuleRuleConditionHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionHeaderConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionHeaderConfig) []string {
 		if v == nil {
@@ -5800,7 +5800,7 @@ func (o RuleRuleConditionHeaderConfigPtrOutput) Values() pulumi.StringArrayOutpu
 }
 
 type RuleRuleConditionHostConfig struct {
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -5816,7 +5816,7 @@ type RuleRuleConditionHostConfigInput interface {
 }
 
 type RuleRuleConditionHostConfigArgs struct {
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5915,7 +5915,7 @@ func (o RuleRuleConditionHostConfigOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionHostConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionHostConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -5950,7 +5950,7 @@ func (o RuleRuleConditionHostConfigPtrOutput) Elem() RuleRuleConditionHostConfig
 	}).(RuleRuleConditionHostConfigOutput)
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionHostConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionHostConfig) []string {
 		if v == nil {
@@ -5961,7 +5961,7 @@ func (o RuleRuleConditionHostConfigPtrOutput) Values() pulumi.StringArrayOutput 
 }
 
 type RuleRuleConditionMethodConfig struct {
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -5977,7 +5977,7 @@ type RuleRuleConditionMethodConfigInput interface {
 }
 
 type RuleRuleConditionMethodConfigArgs struct {
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -6076,7 +6076,7 @@ func (o RuleRuleConditionMethodConfigOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionMethodConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionMethodConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -6111,7 +6111,7 @@ func (o RuleRuleConditionMethodConfigPtrOutput) Elem() RuleRuleConditionMethodCo
 	}).(RuleRuleConditionMethodConfigOutput)
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionMethodConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionMethodConfig) []string {
 		if v == nil {
@@ -6122,7 +6122,7 @@ func (o RuleRuleConditionMethodConfigPtrOutput) Values() pulumi.StringArrayOutpu
 }
 
 type RuleRuleConditionPathConfig struct {
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -6138,7 +6138,7 @@ type RuleRuleConditionPathConfigInput interface {
 }
 
 type RuleRuleConditionPathConfigArgs struct {
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -6237,7 +6237,7 @@ func (o RuleRuleConditionPathConfigOutput) ToOutput(ctx context.Context) pulumix
 	}
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionPathConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionPathConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -6272,7 +6272,7 @@ func (o RuleRuleConditionPathConfigPtrOutput) Elem() RuleRuleConditionPathConfig
 	}).(RuleRuleConditionPathConfigOutput)
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionPathConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionPathConfig) []string {
 		if v == nil {
@@ -6283,7 +6283,7 @@ func (o RuleRuleConditionPathConfigPtrOutput) Values() pulumi.StringArrayOutput 
 }
 
 type RuleRuleConditionQueryStringConfig struct {
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []RuleRuleConditionQueryStringConfigValue `pulumi:"values"`
 }
 
@@ -6299,7 +6299,7 @@ type RuleRuleConditionQueryStringConfigInput interface {
 }
 
 type RuleRuleConditionQueryStringConfigArgs struct {
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values RuleRuleConditionQueryStringConfigValueArrayInput `pulumi:"values"`
 }
 
@@ -6398,7 +6398,7 @@ func (o RuleRuleConditionQueryStringConfigOutput) ToOutput(ctx context.Context) 
 	}
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionQueryStringConfigOutput) Values() RuleRuleConditionQueryStringConfigValueArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionQueryStringConfig) []RuleRuleConditionQueryStringConfigValue { return v.Values }).(RuleRuleConditionQueryStringConfigValueArrayOutput)
 }
@@ -6433,7 +6433,7 @@ func (o RuleRuleConditionQueryStringConfigPtrOutput) Elem() RuleRuleConditionQue
 	}).(RuleRuleConditionQueryStringConfigOutput)
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionQueryStringConfigPtrOutput) Values() RuleRuleConditionQueryStringConfigValueArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionQueryStringConfig) []RuleRuleConditionQueryStringConfigValue {
 		if v == nil {
@@ -6577,7 +6577,7 @@ func (o RuleRuleConditionQueryStringConfigValueArrayOutput) Index(i pulumi.IntIn
 }
 
 type RuleRuleConditionSourceIpConfig struct {
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -6593,7 +6593,7 @@ type RuleRuleConditionSourceIpConfigInput interface {
 }
 
 type RuleRuleConditionSourceIpConfigArgs struct {
-	// The values of the cookie. See `values` below.
+	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -6692,7 +6692,7 @@ func (o RuleRuleConditionSourceIpConfigOutput) ToOutput(ctx context.Context) pul
 	}
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionSourceIpConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionSourceIpConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -6727,7 +6727,7 @@ func (o RuleRuleConditionSourceIpConfigPtrOutput) Elem() RuleRuleConditionSource
 	}).(RuleRuleConditionSourceIpConfigOutput)
 }
 
-// The values of the cookie. See `values` below.
+// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionSourceIpConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionSourceIpConfig) []string {
 		if v == nil {

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransitRouterCidrArgs', 'TransitRouterCidr']
@@ -27,14 +27,31 @@ class TransitRouterCidrArgs:
         :param pulumi.Input[bool] publish_cidr_route: Whether to allow automatically adding Transit Router Cidr in Transit Router Route Table. Valid values: `true` and `false`. Default value: `true`.
         :param pulumi.Input[str] transit_router_cidr_name: The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         """
-        pulumi.set(__self__, "cidr", cidr)
-        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        TransitRouterCidrArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            transit_router_id=transit_router_id,
+            description=description,
+            publish_cidr_route=publish_cidr_route,
+            transit_router_cidr_name=transit_router_cidr_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: pulumi.Input[str],
+             transit_router_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             publish_cidr_route: Optional[pulumi.Input[bool]] = None,
+             transit_router_cidr_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr", cidr)
+        _setter("transit_router_id", transit_router_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if publish_cidr_route is not None:
-            pulumi.set(__self__, "publish_cidr_route", publish_cidr_route)
+            _setter("publish_cidr_route", publish_cidr_route)
         if transit_router_cidr_name is not None:
-            pulumi.set(__self__, "transit_router_cidr_name", transit_router_cidr_name)
+            _setter("transit_router_cidr_name", transit_router_cidr_name)
 
     @property
     @pulumi.getter
@@ -115,18 +132,37 @@ class _TransitRouterCidrState:
         :param pulumi.Input[str] transit_router_cidr_name: The name of the transit router. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         """
+        _TransitRouterCidrState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            description=description,
+            publish_cidr_route=publish_cidr_route,
+            transit_router_cidr_id=transit_router_cidr_id,
+            transit_router_cidr_name=transit_router_cidr_name,
+            transit_router_id=transit_router_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             publish_cidr_route: Optional[pulumi.Input[bool]] = None,
+             transit_router_cidr_id: Optional[pulumi.Input[str]] = None,
+             transit_router_cidr_name: Optional[pulumi.Input[str]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr is not None:
-            pulumi.set(__self__, "cidr", cidr)
+            _setter("cidr", cidr)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if publish_cidr_route is not None:
-            pulumi.set(__self__, "publish_cidr_route", publish_cidr_route)
+            _setter("publish_cidr_route", publish_cidr_route)
         if transit_router_cidr_id is not None:
-            pulumi.set(__self__, "transit_router_cidr_id", transit_router_cidr_id)
+            _setter("transit_router_cidr_id", transit_router_cidr_id)
         if transit_router_cidr_name is not None:
-            pulumi.set(__self__, "transit_router_cidr_name", transit_router_cidr_name)
+            _setter("transit_router_cidr_name", transit_router_cidr_name)
         if transit_router_id is not None:
-            pulumi.set(__self__, "transit_router_id", transit_router_id)
+            _setter("transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter
@@ -310,6 +346,10 @@ class TransitRouterCidr(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TransitRouterCidrArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

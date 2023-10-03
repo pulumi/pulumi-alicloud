@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AliasArgs', 'Alias']
@@ -27,8 +27,19 @@ class AliasArgs:
                
                > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
         """
-        pulumi.set(__self__, "alias_name", alias_name)
-        pulumi.set(__self__, "key_id", key_id)
+        AliasArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias_name=alias_name,
+            key_id=key_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias_name: pulumi.Input[str],
+             key_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alias_name", alias_name)
+        _setter("key_id", key_id)
 
     @property
     @pulumi.getter(name="aliasName")
@@ -77,10 +88,21 @@ class _AliasState:
                
                > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
         """
+        _AliasState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias_name=alias_name,
+            key_id=key_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias_name: Optional[pulumi.Input[str]] = None,
+             key_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alias_name is not None:
-            pulumi.set(__self__, "alias_name", alias_name)
+            _setter("alias_name", alias_name)
         if key_id is not None:
-            pulumi.set(__self__, "key_id", key_id)
+            _setter("key_id", key_id)
 
     @property
     @pulumi.getter(name="aliasName")
@@ -202,6 +224,10 @@ class Alias(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AliasArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

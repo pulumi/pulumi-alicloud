@@ -17,12 +17,12 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
      */
     private @Nullable String operator;
     /**
-     * @return The name of the key that is used to aggregate logs imported from Log Service.
+     * @return The name of the key that is used to filter logs imported from Log Service.
      * 
      */
     private @Nullable String slsKeyName;
     /**
-     * @return The value of the key that is used to filter logs imported from Log Service.
+     * @return The tag value of the metric.
      * 
      */
     private @Nullable String value;
@@ -36,14 +36,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
         return Optional.ofNullable(this.operator);
     }
     /**
-     * @return The name of the key that is used to aggregate logs imported from Log Service.
+     * @return The name of the key that is used to filter logs imported from Log Service.
      * 
      */
     public Optional<String> slsKeyName() {
         return Optional.ofNullable(this.slsKeyName);
     }
     /**
-     * @return The value of the key that is used to filter logs imported from Log Service.
+     * @return The tag value of the metric.
      * 
      */
     public Optional<String> value() {

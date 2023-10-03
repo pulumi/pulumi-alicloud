@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -31,11 +31,24 @@ class SearchIndexSchemaArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSettingArgs']]] index_settings: The settings of the search index, including routingFields. See `index_setting` below.
         :param pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSortArgs']]] index_sorts: The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
         """
-        pulumi.set(__self__, "field_schemas", field_schemas)
+        SearchIndexSchemaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            field_schemas=field_schemas,
+            index_settings=index_settings,
+            index_sorts=index_sorts,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             field_schemas: pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaFieldSchemaArgs']]],
+             index_settings: Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSettingArgs']]]] = None,
+             index_sorts: Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSortArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("field_schemas", field_schemas)
         if index_settings is not None:
-            pulumi.set(__self__, "index_settings", index_settings)
+            _setter("index_settings", index_settings)
         if index_sorts is not None:
-            pulumi.set(__self__, "index_sorts", index_sorts)
+            _setter("index_sorts", index_sorts)
 
     @property
     @pulumi.getter(name="fieldSchemas")
@@ -85,7 +98,7 @@ class SearchIndexSchemaFieldSchemaArgs:
                  is_array: Optional[pulumi.Input[bool]] = None,
                  store: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] field_name: Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+        :param pulumi.Input[str] field_name: The name of the field that is used to sort data. only required if sorter_type is FieldSort.
         :param pulumi.Input[str] field_type: Specifies the type of the field. Use FieldType.XXX to set the type.
         :param pulumi.Input[str] analyzer: Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
         :param pulumi.Input[bool] enable_sort_and_agg: Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
@@ -93,24 +106,45 @@ class SearchIndexSchemaFieldSchemaArgs:
         :param pulumi.Input[bool] is_array: Specifies whether the value is an array. Type: Boolean.
         :param pulumi.Input[bool] store: Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
         """
-        pulumi.set(__self__, "field_name", field_name)
-        pulumi.set(__self__, "field_type", field_type)
+        SearchIndexSchemaFieldSchemaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            field_name=field_name,
+            field_type=field_type,
+            analyzer=analyzer,
+            enable_sort_and_agg=enable_sort_and_agg,
+            index=index,
+            is_array=is_array,
+            store=store,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             field_name: pulumi.Input[str],
+             field_type: pulumi.Input[str],
+             analyzer: Optional[pulumi.Input[str]] = None,
+             enable_sort_and_agg: Optional[pulumi.Input[bool]] = None,
+             index: Optional[pulumi.Input[bool]] = None,
+             is_array: Optional[pulumi.Input[bool]] = None,
+             store: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("field_name", field_name)
+        _setter("field_type", field_type)
         if analyzer is not None:
-            pulumi.set(__self__, "analyzer", analyzer)
+            _setter("analyzer", analyzer)
         if enable_sort_and_agg is not None:
-            pulumi.set(__self__, "enable_sort_and_agg", enable_sort_and_agg)
+            _setter("enable_sort_and_agg", enable_sort_and_agg)
         if index is not None:
-            pulumi.set(__self__, "index", index)
+            _setter("index", index)
         if is_array is not None:
-            pulumi.set(__self__, "is_array", is_array)
+            _setter("is_array", is_array)
         if store is not None:
-            pulumi.set(__self__, "store", store)
+            _setter("store", store)
 
     @property
     @pulumi.getter(name="fieldName")
     def field_name(self) -> pulumi.Input[str]:
         """
-        Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+        The name of the field that is used to sort data. only required if sorter_type is FieldSort.
         """
         return pulumi.get(self, "field_name")
 
@@ -198,8 +232,17 @@ class SearchIndexSchemaIndexSettingArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] routing_fields: Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
         """
+        SearchIndexSchemaIndexSettingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            routing_fields=routing_fields,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             routing_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if routing_fields is not None:
-            pulumi.set(__self__, "routing_fields", routing_fields)
+            _setter("routing_fields", routing_fields)
 
     @property
     @pulumi.getter(name="routingFields")
@@ -221,7 +264,16 @@ class SearchIndexSchemaIndexSortArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSortSorterArgs']]] sorters: Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
         """
-        pulumi.set(__self__, "sorters", sorters)
+        SearchIndexSchemaIndexSortArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sorters=sorters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sorters: pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSortSorterArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("sorters", sorters)
 
     @property
     @pulumi.getter
@@ -244,25 +296,40 @@ class SearchIndexSchemaIndexSortSorterArgs:
                  order: Optional[pulumi.Input[str]] = None,
                  sorter_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] field_name: Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+        :param pulumi.Input[str] field_name: The name of the field that is used to sort data. only required if sorter_type is FieldSort.
         :param pulumi.Input[str] mode: The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
         :param pulumi.Input[str] order: The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
         :param pulumi.Input[str] sorter_type: Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
         """
+        SearchIndexSchemaIndexSortSorterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            field_name=field_name,
+            mode=mode,
+            order=order,
+            sorter_type=sorter_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             field_name: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             order: Optional[pulumi.Input[str]] = None,
+             sorter_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if field_name is not None:
-            pulumi.set(__self__, "field_name", field_name)
+            _setter("field_name", field_name)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if order is not None:
-            pulumi.set(__self__, "order", order)
+            _setter("order", order)
         if sorter_type is not None:
-            pulumi.set(__self__, "sorter_type", sorter_type)
+            _setter("sorter_type", sorter_type)
 
     @property
     @pulumi.getter(name="fieldName")
     def field_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+        The name of the field that is used to sort data. only required if sorter_type is FieldSort.
         """
         return pulumi.get(self, "field_name")
 
@@ -316,8 +383,19 @@ class TableDefinedColumnArgs:
         :param pulumi.Input[str] name: Name for defined column.
         :param pulumi.Input[str] type: Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        TableDefinedColumnArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -353,8 +431,19 @@ class TablePrimaryKeyArgs:
         :param pulumi.Input[str] name: Name for primary key.
         :param pulumi.Input[str] type: Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        TablePrimaryKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -396,16 +485,33 @@ class TunnelChannelArgs:
         :param pulumi.Input[str] channel_type: The type of the channel, valid values: `BaseData`, `Stream`.
         :param pulumi.Input[str] client_id: The client id of the channel.
         """
+        TunnelChannelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel_id=channel_id,
+            channel_rpo=channel_rpo,
+            channel_status=channel_status,
+            channel_type=channel_type,
+            client_id=client_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel_id: Optional[pulumi.Input[str]] = None,
+             channel_rpo: Optional[pulumi.Input[int]] = None,
+             channel_status: Optional[pulumi.Input[str]] = None,
+             channel_type: Optional[pulumi.Input[str]] = None,
+             client_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if channel_id is not None:
-            pulumi.set(__self__, "channel_id", channel_id)
+            _setter("channel_id", channel_id)
         if channel_rpo is not None:
-            pulumi.set(__self__, "channel_rpo", channel_rpo)
+            _setter("channel_rpo", channel_rpo)
         if channel_status is not None:
-            pulumi.set(__self__, "channel_status", channel_status)
+            _setter("channel_status", channel_status)
         if channel_type is not None:
-            pulumi.set(__self__, "channel_type", channel_type)
+            _setter("channel_type", channel_type)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
 
     @property
     @pulumi.getter(name="channelId")

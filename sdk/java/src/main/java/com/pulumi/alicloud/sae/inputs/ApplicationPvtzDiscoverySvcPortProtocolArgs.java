@@ -17,14 +17,14 @@ public final class ApplicationPvtzDiscoverySvcPortProtocolArgs extends com.pulum
     public static final ApplicationPvtzDiscoverySvcPortProtocolArgs Empty = new ApplicationPvtzDiscoverySvcPortProtocolArgs();
 
     /**
-     * The port that is used to check the status of TCP connections.
+     * The port.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port that is used to check the status of TCP connections.
+     * @return The port.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -72,7 +72,7 @@ public final class ApplicationPvtzDiscoverySvcPortProtocolArgs extends com.pulum
         }
 
         /**
-         * @param port The port that is used to check the status of TCP connections.
+         * @param port The port.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ApplicationPvtzDiscoverySvcPortProtocolArgs extends com.pulum
         }
 
         /**
-         * @param port The port that is used to check the status of TCP connections.
+         * @param port The port.
          * 
          * @return builder
          * 

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ModelArgs', 'Model']
@@ -25,11 +25,26 @@ class ModelArgs:
         :param pulumi.Input[str] schema: The schema of the model.
         :param pulumi.Input[str] description: The description of the model.
         """
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "model_name", model_name)
-        pulumi.set(__self__, "schema", schema)
+        ModelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            model_name=model_name,
+            schema=schema,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: pulumi.Input[str],
+             model_name: pulumi.Input[str],
+             schema: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_id", group_id)
+        _setter("model_name", model_name)
+        _setter("schema", schema)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="groupId")
@@ -94,14 +109,29 @@ class _ModelState:
         :param pulumi.Input[str] model_name: The name of the model.
         :param pulumi.Input[str] schema: The schema of the model.
         """
+        _ModelState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            group_id=group_id,
+            model_name=model_name,
+            schema=schema,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             model_name: Optional[pulumi.Input[str]] = None,
+             schema: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if model_name is not None:
-            pulumi.set(__self__, "model_name", model_name)
+            _setter("model_name", model_name)
         if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+            _setter("schema", schema)
 
     @property
     @pulumi.getter
@@ -247,6 +277,10 @@ class Model(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ModelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

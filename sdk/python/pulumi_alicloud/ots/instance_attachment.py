@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceAttachmentArgs', 'InstanceAttachment']
@@ -23,9 +23,22 @@ class InstanceAttachmentArgs:
         :param pulumi.Input[str] vpc_name: The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
         :param pulumi.Input[str] vswitch_id: The ID of attaching VSwitch to instance.
         """
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "vpc_name", vpc_name)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        InstanceAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_name=instance_name,
+            vpc_name=vpc_name,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_name: pulumi.Input[str],
+             vpc_name: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_name", instance_name)
+        _setter("vpc_name", vpc_name)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -78,14 +91,29 @@ class _InstanceAttachmentState:
         :param pulumi.Input[str] vpc_name: The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
         :param pulumi.Input[str] vswitch_id: The ID of attaching VSwitch to instance.
         """
+        _InstanceAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_name=instance_name,
+            vpc_id=vpc_id,
+            vpc_name=vpc_name,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_name: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vpc_name: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vpc_name is not None:
-            pulumi.set(__self__, "vpc_name", vpc_name)
+            _setter("vpc_name", vpc_name)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -241,6 +269,10 @@ class InstanceAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

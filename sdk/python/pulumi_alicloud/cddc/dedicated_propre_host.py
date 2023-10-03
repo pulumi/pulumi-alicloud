@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -74,37 +74,82 @@ class DedicatedPropreHostArgs:
         :param pulumi.Input[str] period: Duration of purchase.
         :param pulumi.Input[str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
         """
-        pulumi.set(__self__, "ecs_class_lists", ecs_class_lists)
-        pulumi.set(__self__, "ecs_zone_id", ecs_zone_id)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        DedicatedPropreHostArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ecs_class_lists=ecs_class_lists,
+            ecs_zone_id=ecs_zone_id,
+            engine=engine,
+            payment_type=payment_type,
+            security_group_id=security_group_id,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            auto_renew=auto_renew,
+            dedicated_host_group_id=dedicated_host_group_id,
+            ecs_deployment_set_id=ecs_deployment_set_id,
+            ecs_host_name=ecs_host_name,
+            ecs_instance_name=ecs_instance_name,
+            ecs_unique_suffix=ecs_unique_suffix,
+            image_id=image_id,
+            key_pair_name=key_pair_name,
+            os_password=os_password,
+            password_inherit=password_inherit,
+            period=period,
+            period_type=period_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ecs_class_lists: pulumi.Input[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]],
+             ecs_zone_id: pulumi.Input[str],
+             engine: pulumi.Input[str],
+             payment_type: pulumi.Input[str],
+             security_group_id: pulumi.Input[str],
+             vpc_id: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             auto_renew: Optional[pulumi.Input[str]] = None,
+             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+             ecs_deployment_set_id: Optional[pulumi.Input[str]] = None,
+             ecs_host_name: Optional[pulumi.Input[str]] = None,
+             ecs_instance_name: Optional[pulumi.Input[str]] = None,
+             ecs_unique_suffix: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             os_password: Optional[pulumi.Input[str]] = None,
+             password_inherit: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[str]] = None,
+             period_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ecs_class_lists", ecs_class_lists)
+        _setter("ecs_zone_id", ecs_zone_id)
+        _setter("engine", engine)
+        _setter("payment_type", payment_type)
+        _setter("security_group_id", security_group_id)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if dedicated_host_group_id is not None:
-            pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
+            _setter("dedicated_host_group_id", dedicated_host_group_id)
         if ecs_deployment_set_id is not None:
-            pulumi.set(__self__, "ecs_deployment_set_id", ecs_deployment_set_id)
+            _setter("ecs_deployment_set_id", ecs_deployment_set_id)
         if ecs_host_name is not None:
-            pulumi.set(__self__, "ecs_host_name", ecs_host_name)
+            _setter("ecs_host_name", ecs_host_name)
         if ecs_instance_name is not None:
-            pulumi.set(__self__, "ecs_instance_name", ecs_instance_name)
+            _setter("ecs_instance_name", ecs_instance_name)
         if ecs_unique_suffix is not None:
-            pulumi.set(__self__, "ecs_unique_suffix", ecs_unique_suffix)
+            _setter("ecs_unique_suffix", ecs_unique_suffix)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
         if os_password is not None:
-            pulumi.set(__self__, "os_password", os_password)
+            _setter("os_password", os_password)
         if password_inherit is not None:
-            pulumi.set(__self__, "password_inherit", password_inherit)
+            _setter("password_inherit", password_inherit)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_type is not None:
-            pulumi.set(__self__, "period_type", period_type)
+            _setter("period_type", period_type)
 
     @property
     @pulumi.getter(name="ecsClassLists")
@@ -415,46 +460,93 @@ class _DedicatedPropreHostState:
         :param pulumi.Input[str] vpc_id: VPCID of the VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the virtual switch.
         """
+        _DedicatedPropreHostState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            dedicated_host_group_id=dedicated_host_group_id,
+            ecs_class_lists=ecs_class_lists,
+            ecs_deployment_set_id=ecs_deployment_set_id,
+            ecs_host_name=ecs_host_name,
+            ecs_instance_id=ecs_instance_id,
+            ecs_instance_name=ecs_instance_name,
+            ecs_unique_suffix=ecs_unique_suffix,
+            ecs_zone_id=ecs_zone_id,
+            engine=engine,
+            image_id=image_id,
+            key_pair_name=key_pair_name,
+            os_password=os_password,
+            password_inherit=password_inherit,
+            payment_type=payment_type,
+            period=period,
+            period_type=period_type,
+            security_group_id=security_group_id,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: Optional[pulumi.Input[str]] = None,
+             dedicated_host_group_id: Optional[pulumi.Input[str]] = None,
+             ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]]] = None,
+             ecs_deployment_set_id: Optional[pulumi.Input[str]] = None,
+             ecs_host_name: Optional[pulumi.Input[str]] = None,
+             ecs_instance_id: Optional[pulumi.Input[str]] = None,
+             ecs_instance_name: Optional[pulumi.Input[str]] = None,
+             ecs_unique_suffix: Optional[pulumi.Input[str]] = None,
+             ecs_zone_id: Optional[pulumi.Input[str]] = None,
+             engine: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             os_password: Optional[pulumi.Input[str]] = None,
+             password_inherit: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[str]] = None,
+             period_type: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if dedicated_host_group_id is not None:
-            pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
+            _setter("dedicated_host_group_id", dedicated_host_group_id)
         if ecs_class_lists is not None:
-            pulumi.set(__self__, "ecs_class_lists", ecs_class_lists)
+            _setter("ecs_class_lists", ecs_class_lists)
         if ecs_deployment_set_id is not None:
-            pulumi.set(__self__, "ecs_deployment_set_id", ecs_deployment_set_id)
+            _setter("ecs_deployment_set_id", ecs_deployment_set_id)
         if ecs_host_name is not None:
-            pulumi.set(__self__, "ecs_host_name", ecs_host_name)
+            _setter("ecs_host_name", ecs_host_name)
         if ecs_instance_id is not None:
-            pulumi.set(__self__, "ecs_instance_id", ecs_instance_id)
+            _setter("ecs_instance_id", ecs_instance_id)
         if ecs_instance_name is not None:
-            pulumi.set(__self__, "ecs_instance_name", ecs_instance_name)
+            _setter("ecs_instance_name", ecs_instance_name)
         if ecs_unique_suffix is not None:
-            pulumi.set(__self__, "ecs_unique_suffix", ecs_unique_suffix)
+            _setter("ecs_unique_suffix", ecs_unique_suffix)
         if ecs_zone_id is not None:
-            pulumi.set(__self__, "ecs_zone_id", ecs_zone_id)
+            _setter("ecs_zone_id", ecs_zone_id)
         if engine is not None:
-            pulumi.set(__self__, "engine", engine)
+            _setter("engine", engine)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
         if os_password is not None:
-            pulumi.set(__self__, "os_password", os_password)
+            _setter("os_password", os_password)
         if password_inherit is not None:
-            pulumi.set(__self__, "password_inherit", password_inherit)
+            _setter("password_inherit", password_inherit)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_type is not None:
-            pulumi.set(__self__, "period_type", period_type)
+            _setter("period_type", period_type)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -812,6 +904,10 @@ class DedicatedPropreHost(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DedicatedPropreHostArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

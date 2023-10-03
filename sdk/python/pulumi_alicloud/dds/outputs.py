@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -38,25 +38,70 @@ class GetMongoInstancesInstanceResult(dict):
                  status: str,
                  storage: int,
                  tags: Mapping[str, Any]):
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "charge_type", charge_type)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "expiration_time", expiration_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "mongos", mongos)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "replication", replication)
-        pulumi.set(__self__, "shards", shards)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage", storage)
-        pulumi.set(__self__, "tags", tags)
+        GetMongoInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zone=availability_zone,
+            charge_type=charge_type,
+            creation_time=creation_time,
+            engine=engine,
+            engine_version=engine_version,
+            expiration_time=expiration_time,
+            id=id,
+            instance_class=instance_class,
+            instance_type=instance_type,
+            lock_mode=lock_mode,
+            mongos=mongos,
+            name=name,
+            network_type=network_type,
+            region_id=region_id,
+            replication=replication,
+            shards=shards,
+            status=status,
+            storage=storage,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zone: str,
+             charge_type: str,
+             creation_time: str,
+             engine: str,
+             engine_version: str,
+             expiration_time: str,
+             id: str,
+             instance_class: str,
+             instance_type: str,
+             lock_mode: str,
+             mongos: Sequence['outputs.GetMongoInstancesInstanceMongoResult'],
+             name: str,
+             network_type: str,
+             region_id: str,
+             replication: str,
+             shards: Sequence['outputs.GetMongoInstancesInstanceShardResult'],
+             status: str,
+             storage: int,
+             tags: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("availability_zone", availability_zone)
+        _setter("charge_type", charge_type)
+        _setter("creation_time", creation_time)
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("expiration_time", expiration_time)
+        _setter("id", id)
+        _setter("instance_class", instance_class)
+        _setter("instance_type", instance_type)
+        _setter("lock_mode", lock_mode)
+        _setter("mongos", mongos)
+        _setter("name", name)
+        _setter("network_type", network_type)
+        _setter("region_id", region_id)
+        _setter("replication", replication)
+        _setter("shards", shards)
+        _setter("status", status)
+        _setter("storage", storage)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -160,9 +205,22 @@ class GetMongoInstancesInstanceMongoResult(dict):
                  class_: str,
                  description: str,
                  node_id: str):
-        pulumi.set(__self__, "class_", class_)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "node_id", node_id)
+        GetMongoInstancesInstanceMongoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            class_=class_,
+            description=description,
+            node_id=node_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             class_: str,
+             description: str,
+             node_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("class_", class_)
+        _setter("description", description)
+        _setter("node_id", node_id)
 
     @property
     @pulumi.getter(name="class")
@@ -187,10 +245,25 @@ class GetMongoInstancesInstanceShardResult(dict):
                  description: str,
                  node_id: str,
                  storage: int):
-        pulumi.set(__self__, "class_", class_)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "node_id", node_id)
-        pulumi.set(__self__, "storage", storage)
+        GetMongoInstancesInstanceShardResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            class_=class_,
+            description=description,
+            node_id=node_id,
+            storage=storage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             class_: str,
+             description: str,
+             node_id: str,
+             storage: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("class_", class_)
+        _setter("description", description)
+        _setter("node_id", node_id)
+        _setter("storage", storage)
 
     @property
     @pulumi.getter(name="class")

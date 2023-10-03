@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsDiskAttachmentArgs', 'EcsDiskAttachment']
@@ -29,16 +29,35 @@ class EcsDiskAttachmentArgs:
         :param pulumi.Input[str] key_pair_name: The name of key pair
         :param pulumi.Input[str] password: When mounting the system disk, setting the user name and password of the instance is only effective for the administrator and root user names, and other user names are not effective.
         """
-        pulumi.set(__self__, "disk_id", disk_id)
-        pulumi.set(__self__, "instance_id", instance_id)
+        EcsDiskAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_id=disk_id,
+            instance_id=instance_id,
+            bootable=bootable,
+            delete_with_instance=delete_with_instance,
+            key_pair_name=key_pair_name,
+            password=password,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_id: pulumi.Input[str],
+             instance_id: pulumi.Input[str],
+             bootable: Optional[pulumi.Input[bool]] = None,
+             delete_with_instance: Optional[pulumi.Input[bool]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_id", disk_id)
+        _setter("instance_id", instance_id)
         if bootable is not None:
-            pulumi.set(__self__, "bootable", bootable)
+            _setter("bootable", bootable)
         if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+            _setter("delete_with_instance", delete_with_instance)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
 
     @property
     @pulumi.getter(name="diskId")
@@ -132,20 +151,41 @@ class _EcsDiskAttachmentState:
         :param pulumi.Input[str] key_pair_name: The name of key pair
         :param pulumi.Input[str] password: When mounting the system disk, setting the user name and password of the instance is only effective for the administrator and root user names, and other user names are not effective.
         """
+        _EcsDiskAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bootable=bootable,
+            delete_with_instance=delete_with_instance,
+            device=device,
+            disk_id=disk_id,
+            instance_id=instance_id,
+            key_pair_name=key_pair_name,
+            password=password,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bootable: Optional[pulumi.Input[bool]] = None,
+             delete_with_instance: Optional[pulumi.Input[bool]] = None,
+             device: Optional[pulumi.Input[str]] = None,
+             disk_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bootable is not None:
-            pulumi.set(__self__, "bootable", bootable)
+            _setter("bootable", bootable)
         if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+            _setter("delete_with_instance", delete_with_instance)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if disk_id is not None:
-            pulumi.set(__self__, "disk_id", disk_id)
+            _setter("disk_id", disk_id)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
 
     @property
     @pulumi.getter
@@ -358,6 +398,10 @@ class EcsDiskAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EcsDiskAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -65,8 +65,19 @@ class ChangeSetParameter(dict):
         :param str parameter_key: The parameter key.
         :param str parameter_value: The parameter value.
         """
-        pulumi.set(__self__, "parameter_key", parameter_key)
-        pulumi.set(__self__, "parameter_value", parameter_value)
+        ChangeSetParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_key=parameter_key,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_key: str,
+             parameter_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parameter_key", parameter_key)
+        _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
@@ -113,10 +124,21 @@ class StackGroupParameter(dict):
         :param str parameter_key: The parameter key.
         :param str parameter_value: The parameter value.
         """
+        StackGroupParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_key=parameter_key,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_key: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if parameter_key is not None:
-            pulumi.set(__self__, "parameter_key", parameter_key)
+            _setter("parameter_key", parameter_key)
         if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+            _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
@@ -163,10 +185,21 @@ class StackInstanceParameterOverride(dict):
         :param str parameter_key: The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
         :param str parameter_value: The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
         """
+        StackInstanceParameterOverride._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_key=parameter_key,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_key: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if parameter_key is not None:
-            pulumi.set(__self__, "parameter_key", parameter_key)
+            _setter("parameter_key", parameter_key)
         if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+            _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
@@ -213,9 +246,20 @@ class StackParameter(dict):
         :param str parameter_value: The parameter value.
         :param str parameter_key: The parameter key.
         """
-        pulumi.set(__self__, "parameter_value", parameter_value)
+        StackParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_value=parameter_value,
+            parameter_key=parameter_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_value: str,
+             parameter_key: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parameter_value", parameter_value)
         if parameter_key is not None:
-            pulumi.set(__self__, "parameter_key", parameter_key)
+            _setter("parameter_key", parameter_key)
 
     @property
     @pulumi.getter(name="parameterValue")
@@ -262,8 +306,19 @@ class TemplateScratchPreferenceParameter(dict):
         :param str parameter_key: Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
         :param str parameter_value: Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
         """
-        pulumi.set(__self__, "parameter_key", parameter_key)
-        pulumi.set(__self__, "parameter_value", parameter_value)
+        TemplateScratchPreferenceParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_key=parameter_key,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_key: str,
+             parameter_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parameter_key", parameter_key)
+        _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
@@ -310,8 +365,19 @@ class TemplateScratchSourceResource(dict):
         :param str resource_id: The ID of the Source Resource.
         :param str resource_type: The type of the Source resource.
         """
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
+        TemplateScratchSourceResource._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_id=resource_id,
+            resource_type=resource_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_id: str,
+             resource_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_id", resource_id)
+        _setter("resource_type", resource_type)
 
     @property
     @pulumi.getter(name="resourceId")
@@ -358,9 +424,20 @@ class TemplateScratchSourceResourceGroup(dict):
         :param str resource_group_id: The ID of the Source Resource Group.
         :param Sequence[str] resource_type_filters: Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
         """
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
+        TemplateScratchSourceResourceGroup._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_group_id=resource_group_id,
+            resource_type_filters=resource_type_filters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_group_id: str,
+             resource_type_filters: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_group_id", resource_group_id)
         if resource_type_filters is not None:
-            pulumi.set(__self__, "resource_type_filters", resource_type_filters)
+            _setter("resource_type_filters", resource_type_filters)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -407,9 +484,20 @@ class TemplateScratchSourceTag(dict):
         :param Mapping[str, Any] resource_tags: Source label. **NOTE:** A maximum of 10 source labels can be configured.
         :param Sequence[str] resource_type_filters: Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
         """
-        pulumi.set(__self__, "resource_tags", resource_tags)
+        TemplateScratchSourceTag._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_tags=resource_tags,
+            resource_type_filters=resource_type_filters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_tags: Mapping[str, Any],
+             resource_type_filters: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_tags", resource_tags)
         if resource_type_filters is not None:
-            pulumi.set(__self__, "resource_type_filters", resource_type_filters)
+            _setter("resource_type_filters", resource_type_filters)
 
     @property
     @pulumi.getter(name="resourceTags")
@@ -459,19 +547,52 @@ class GetChangeSetsSetResult(dict):
         :param str template_body: The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
         :param int timeout_in_minutes: Timeout In Minutes.
         """
-        pulumi.set(__self__, "change_set_id", change_set_id)
-        pulumi.set(__self__, "change_set_name", change_set_name)
-        pulumi.set(__self__, "change_set_type", change_set_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "disable_rollback", disable_rollback)
-        pulumi.set(__self__, "execution_status", execution_status)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "stack_id", stack_id)
-        pulumi.set(__self__, "stack_name", stack_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "template_body", template_body)
-        pulumi.set(__self__, "timeout_in_minutes", timeout_in_minutes)
+        GetChangeSetsSetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            change_set_id=change_set_id,
+            change_set_name=change_set_name,
+            change_set_type=change_set_type,
+            description=description,
+            disable_rollback=disable_rollback,
+            execution_status=execution_status,
+            id=id,
+            parameters=parameters,
+            stack_id=stack_id,
+            stack_name=stack_name,
+            status=status,
+            template_body=template_body,
+            timeout_in_minutes=timeout_in_minutes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             change_set_id: str,
+             change_set_name: str,
+             change_set_type: str,
+             description: str,
+             disable_rollback: bool,
+             execution_status: str,
+             id: str,
+             parameters: Sequence['outputs.GetChangeSetsSetParameterResult'],
+             stack_id: str,
+             stack_name: str,
+             status: str,
+             template_body: str,
+             timeout_in_minutes: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("change_set_id", change_set_id)
+        _setter("change_set_name", change_set_name)
+        _setter("change_set_type", change_set_type)
+        _setter("description", description)
+        _setter("disable_rollback", disable_rollback)
+        _setter("execution_status", execution_status)
+        _setter("id", id)
+        _setter("parameters", parameters)
+        _setter("stack_id", stack_id)
+        _setter("stack_name", stack_name)
+        _setter("status", status)
+        _setter("template_body", template_body)
+        _setter("timeout_in_minutes", timeout_in_minutes)
 
     @property
     @pulumi.getter(name="changeSetId")
@@ -587,8 +708,19 @@ class GetChangeSetsSetParameterResult(dict):
         :param str parameter_key: The parameters.
         :param str parameter_value: The parameters.
         """
-        pulumi.set(__self__, "parameter_key", parameter_key)
-        pulumi.set(__self__, "parameter_value", parameter_value)
+        GetChangeSetsSetParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_key=parameter_key,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_key: str,
+             parameter_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parameter_key", parameter_key)
+        _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
@@ -618,9 +750,22 @@ class GetRegionsRegionResult(dict):
         :param str region_endpoint: The endpoint of the region.
         :param str region_id: The ID of the region.
         """
-        pulumi.set(__self__, "local_name", local_name)
-        pulumi.set(__self__, "region_endpoint", region_endpoint)
-        pulumi.set(__self__, "region_id", region_id)
+        GetRegionsRegionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_name=local_name,
+            region_endpoint=region_endpoint,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_name: str,
+             region_endpoint: str,
+             region_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("local_name", local_name)
+        _setter("region_endpoint", region_endpoint)
+        _setter("region_id", region_id)
 
     @property
     @pulumi.getter(name="localName")
@@ -670,15 +815,40 @@ class GetStackGroupsGroupResult(dict):
         :param str status: The status of Stack Group.
         :param str template_body: The structure that contains the template body.
         """
-        pulumi.set(__self__, "administration_role_name", administration_role_name)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "execution_role_name", execution_role_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "stack_group_id", stack_group_id)
-        pulumi.set(__self__, "stack_group_name", stack_group_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "template_body", template_body)
+        GetStackGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            administration_role_name=administration_role_name,
+            description=description,
+            execution_role_name=execution_role_name,
+            id=id,
+            parameters=parameters,
+            stack_group_id=stack_group_id,
+            stack_group_name=stack_group_name,
+            status=status,
+            template_body=template_body,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             administration_role_name: str,
+             description: str,
+             execution_role_name: str,
+             id: str,
+             parameters: Sequence['outputs.GetStackGroupsGroupParameterResult'],
+             stack_group_id: str,
+             stack_group_name: str,
+             status: str,
+             template_body: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("administration_role_name", administration_role_name)
+        _setter("description", description)
+        _setter("execution_role_name", execution_role_name)
+        _setter("id", id)
+        _setter("parameters", parameters)
+        _setter("stack_group_id", stack_group_id)
+        _setter("stack_group_name", stack_group_name)
+        _setter("status", status)
+        _setter("template_body", template_body)
 
     @property
     @pulumi.getter(name="administrationRoleName")
@@ -762,8 +932,19 @@ class GetStackGroupsGroupParameterResult(dict):
         :param str parameter_key: The parameter key.
         :param str parameter_value: The parameter value.
         """
-        pulumi.set(__self__, "parameter_key", parameter_key)
-        pulumi.set(__self__, "parameter_value", parameter_value)
+        GetStackGroupsGroupParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_key=parameter_key,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_key: str,
+             parameter_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parameter_key", parameter_key)
+        _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
@@ -805,15 +986,40 @@ class GetStackInstancesInstanceResult(dict):
         :param str status: The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
         :param str status_reason: The reason why the stack is in its current state.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "parameter_overrides", parameter_overrides)
-        pulumi.set(__self__, "stack_group_id", stack_group_id)
-        pulumi.set(__self__, "stack_group_name", stack_group_name)
-        pulumi.set(__self__, "stack_id", stack_id)
-        pulumi.set(__self__, "stack_instance_account_id", stack_instance_account_id)
-        pulumi.set(__self__, "stack_instance_region_id", stack_instance_region_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "status_reason", status_reason)
+        GetStackInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            parameter_overrides=parameter_overrides,
+            stack_group_id=stack_group_id,
+            stack_group_name=stack_group_name,
+            stack_id=stack_id,
+            stack_instance_account_id=stack_instance_account_id,
+            stack_instance_region_id=stack_instance_region_id,
+            status=status,
+            status_reason=status_reason,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             parameter_overrides: Sequence['outputs.GetStackInstancesInstanceParameterOverrideResult'],
+             stack_group_id: str,
+             stack_group_name: str,
+             stack_id: str,
+             stack_instance_account_id: str,
+             stack_instance_region_id: str,
+             status: str,
+             status_reason: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("parameter_overrides", parameter_overrides)
+        _setter("stack_group_id", stack_group_id)
+        _setter("stack_group_name", stack_group_name)
+        _setter("stack_id", stack_id)
+        _setter("stack_instance_account_id", stack_instance_account_id)
+        _setter("stack_instance_region_id", stack_instance_region_id)
+        _setter("status", status)
+        _setter("status_reason", status_reason)
 
     @property
     @pulumi.getter
@@ -897,8 +1103,19 @@ class GetStackInstancesInstanceParameterOverrideResult(dict):
         :param str parameter_key: The key of override parameter.
         :param str parameter_value: The value of override parameter.
         """
-        pulumi.set(__self__, "parameter_key", parameter_key)
-        pulumi.set(__self__, "parameter_value", parameter_value)
+        GetStackInstancesInstanceParameterOverrideResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_key=parameter_key,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_key: str,
+             parameter_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parameter_key", parameter_key)
+        _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
@@ -958,24 +1175,67 @@ class GetStacksStackResult(dict):
         :param str template_description: Template Description.
         :param int timeout_in_minutes: Specifies whether to use the values that were passed last time for the parameters that you do not specify in the current request.
         """
-        pulumi.set(__self__, "deletion_protection", deletion_protection)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "disable_rollback", disable_rollback)
-        pulumi.set(__self__, "drift_detection_time", drift_detection_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "parent_stack_id", parent_stack_id)
-        pulumi.set(__self__, "ram_role_name", ram_role_name)
-        pulumi.set(__self__, "root_stack_id", root_stack_id)
-        pulumi.set(__self__, "stack_drift_status", stack_drift_status)
-        pulumi.set(__self__, "stack_id", stack_id)
-        pulumi.set(__self__, "stack_name", stack_name)
-        pulumi.set(__self__, "stack_policy_body", stack_policy_body)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "status_reason", status_reason)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "template_description", template_description)
-        pulumi.set(__self__, "timeout_in_minutes", timeout_in_minutes)
+        GetStacksStackResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deletion_protection=deletion_protection,
+            description=description,
+            disable_rollback=disable_rollback,
+            drift_detection_time=drift_detection_time,
+            id=id,
+            parameters=parameters,
+            parent_stack_id=parent_stack_id,
+            ram_role_name=ram_role_name,
+            root_stack_id=root_stack_id,
+            stack_drift_status=stack_drift_status,
+            stack_id=stack_id,
+            stack_name=stack_name,
+            stack_policy_body=stack_policy_body,
+            status=status,
+            status_reason=status_reason,
+            tags=tags,
+            template_description=template_description,
+            timeout_in_minutes=timeout_in_minutes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deletion_protection: str,
+             description: str,
+             disable_rollback: bool,
+             drift_detection_time: str,
+             id: str,
+             parameters: Sequence['outputs.GetStacksStackParameterResult'],
+             parent_stack_id: str,
+             ram_role_name: str,
+             root_stack_id: str,
+             stack_drift_status: str,
+             stack_id: str,
+             stack_name: str,
+             stack_policy_body: str,
+             status: str,
+             status_reason: str,
+             tags: Mapping[str, Any],
+             template_description: str,
+             timeout_in_minutes: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("deletion_protection", deletion_protection)
+        _setter("description", description)
+        _setter("disable_rollback", disable_rollback)
+        _setter("drift_detection_time", drift_detection_time)
+        _setter("id", id)
+        _setter("parameters", parameters)
+        _setter("parent_stack_id", parent_stack_id)
+        _setter("ram_role_name", ram_role_name)
+        _setter("root_stack_id", root_stack_id)
+        _setter("stack_drift_status", stack_drift_status)
+        _setter("stack_id", stack_id)
+        _setter("stack_name", stack_name)
+        _setter("stack_policy_body", stack_policy_body)
+        _setter("status", status)
+        _setter("status_reason", status_reason)
+        _setter("tags", tags)
+        _setter("template_description", template_description)
+        _setter("timeout_in_minutes", timeout_in_minutes)
 
     @property
     @pulumi.getter(name="deletionProtection")
@@ -1131,8 +1391,19 @@ class GetStacksStackParameterResult(dict):
         :param str parameter_key: The key of parameters.
         :param str parameter_value: The value of parameters.
         """
-        pulumi.set(__self__, "parameter_key", parameter_key)
-        pulumi.set(__self__, "parameter_value", parameter_value)
+        GetStacksStackParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_key=parameter_key,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_key: str,
+             parameter_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parameter_key", parameter_key)
+        _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
@@ -1180,18 +1451,49 @@ class GetTemplateScratchesScratchResult(dict):
         :param str template_scratch_id: The ID of the Template Scratch.
         :param str template_scratch_type: The type of the Template Scratch.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "logical_id_strategy", logical_id_strategy)
-        pulumi.set(__self__, "preference_parameters", preference_parameters)
-        pulumi.set(__self__, "source_resource_groups", source_resource_groups)
-        pulumi.set(__self__, "source_resources", source_resources)
-        pulumi.set(__self__, "source_tags", source_tags)
-        pulumi.set(__self__, "stacks", stacks)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "template_scratch_id", template_scratch_id)
-        pulumi.set(__self__, "template_scratch_type", template_scratch_type)
+        GetTemplateScratchesScratchResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            id=id,
+            logical_id_strategy=logical_id_strategy,
+            preference_parameters=preference_parameters,
+            source_resource_groups=source_resource_groups,
+            source_resources=source_resources,
+            source_tags=source_tags,
+            stacks=stacks,
+            status=status,
+            template_scratch_id=template_scratch_id,
+            template_scratch_type=template_scratch_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             id: str,
+             logical_id_strategy: str,
+             preference_parameters: Sequence['outputs.GetTemplateScratchesScratchPreferenceParameterResult'],
+             source_resource_groups: Sequence['outputs.GetTemplateScratchesScratchSourceResourceGroupResult'],
+             source_resources: Sequence['outputs.GetTemplateScratchesScratchSourceResourceResult'],
+             source_tags: Sequence['outputs.GetTemplateScratchesScratchSourceTagResult'],
+             stacks: Sequence['outputs.GetTemplateScratchesScratchStackResult'],
+             status: str,
+             template_scratch_id: str,
+             template_scratch_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("logical_id_strategy", logical_id_strategy)
+        _setter("preference_parameters", preference_parameters)
+        _setter("source_resource_groups", source_resource_groups)
+        _setter("source_resources", source_resources)
+        _setter("source_tags", source_tags)
+        _setter("stacks", stacks)
+        _setter("status", status)
+        _setter("template_scratch_id", template_scratch_id)
+        _setter("template_scratch_type", template_scratch_type)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1299,8 +1601,19 @@ class GetTemplateScratchesScratchPreferenceParameterResult(dict):
         :param str parameter_key: Priority parameter key.
         :param str parameter_value: Priority parameter value.
         """
-        pulumi.set(__self__, "parameter_key", parameter_key)
-        pulumi.set(__self__, "parameter_value", parameter_value)
+        GetTemplateScratchesScratchPreferenceParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_key=parameter_key,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_key: str,
+             parameter_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parameter_key", parameter_key)
+        _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
@@ -1328,8 +1641,19 @@ class GetTemplateScratchesScratchSourceResourceResult(dict):
         :param str resource_id: The ID of the Source Resource.
         :param str resource_type: The type of the Source resource.
         """
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
+        GetTemplateScratchesScratchSourceResourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_id=resource_id,
+            resource_type=resource_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_id: str,
+             resource_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_id", resource_id)
+        _setter("resource_type", resource_type)
 
     @property
     @pulumi.getter(name="resourceId")
@@ -1357,8 +1681,19 @@ class GetTemplateScratchesScratchSourceResourceGroupResult(dict):
         :param str resource_group_id: The ID of the Source Resource Group.
         :param Sequence[str] resource_type_filters: Source resource type filter list.
         """
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "resource_type_filters", resource_type_filters)
+        GetTemplateScratchesScratchSourceResourceGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_group_id=resource_group_id,
+            resource_type_filters=resource_type_filters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_group_id: str,
+             resource_type_filters: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_group_id", resource_group_id)
+        _setter("resource_type_filters", resource_type_filters)
 
     @property
     @pulumi.getter(name="resourceGroupId")
@@ -1386,8 +1721,19 @@ class GetTemplateScratchesScratchSourceTagResult(dict):
         :param Mapping[str, Any] resource_tags: Source label.
         :param Sequence[str] resource_type_filters: Source resource type filter list.
         """
-        pulumi.set(__self__, "resource_tags", resource_tags)
-        pulumi.set(__self__, "resource_type_filters", resource_type_filters)
+        GetTemplateScratchesScratchSourceTagResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_tags=resource_tags,
+            resource_type_filters=resource_type_filters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_tags: Mapping[str, Any],
+             resource_type_filters: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_tags", resource_tags)
+        _setter("resource_type_filters", resource_type_filters)
 
     @property
     @pulumi.getter(name="resourceTags")
@@ -1413,7 +1759,16 @@ class GetTemplateScratchesScratchStackResult(dict):
         """
         :param str stack_id: The ID of the Resource stack.
         """
-        pulumi.set(__self__, "stack_id", stack_id)
+        GetTemplateScratchesScratchStackResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            stack_id=stack_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             stack_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("stack_id", stack_id)
 
     @property
     @pulumi.getter(name="stackId")
@@ -1451,17 +1806,46 @@ class GetTemplatesTemplateResult(dict):
         :param str template_name: The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
         :param str template_version: Template Version.
         """
-        pulumi.set(__self__, "change_set_id", change_set_id)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "share_type", share_type)
-        pulumi.set(__self__, "stack_group_name", stack_group_name)
-        pulumi.set(__self__, "stack_id", stack_id)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "template_body", template_body)
-        pulumi.set(__self__, "template_id", template_id)
-        pulumi.set(__self__, "template_name", template_name)
-        pulumi.set(__self__, "template_version", template_version)
+        GetTemplatesTemplateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            change_set_id=change_set_id,
+            description=description,
+            id=id,
+            share_type=share_type,
+            stack_group_name=stack_group_name,
+            stack_id=stack_id,
+            tags=tags,
+            template_body=template_body,
+            template_id=template_id,
+            template_name=template_name,
+            template_version=template_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             change_set_id: str,
+             description: str,
+             id: str,
+             share_type: str,
+             stack_group_name: str,
+             stack_id: str,
+             tags: Mapping[str, Any],
+             template_body: str,
+             template_id: str,
+             template_name: str,
+             template_version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("change_set_id", change_set_id)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("share_type", share_type)
+        _setter("stack_group_name", stack_group_name)
+        _setter("stack_id", stack_id)
+        _setter("tags", tags)
+        _setter("template_body", template_body)
+        _setter("template_id", template_id)
+        _setter("template_name", template_name)
+        _setter("template_version", template_version)
 
     @property
     @pulumi.getter(name="changeSetId")

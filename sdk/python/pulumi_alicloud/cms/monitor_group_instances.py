@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,8 +23,19 @@ class MonitorGroupInstancesArgs:
         :param pulumi.Input[str] group_id: The id of Cms Group.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]] instances: Instance information added to the Cms Group. See `instances` below.
         """
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "instances", instances)
+        MonitorGroupInstancesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            instances=instances,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: pulumi.Input[str],
+             instances: pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_id", group_id)
+        _setter("instances", instances)
 
     @property
     @pulumi.getter(name="groupId")
@@ -61,10 +72,21 @@ class _MonitorGroupInstancesState:
         :param pulumi.Input[str] group_id: The id of Cms Group.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]] instances: Instance information added to the Cms Group. See `instances` below.
         """
+        _MonitorGroupInstancesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            instances=instances,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: Optional[pulumi.Input[str]] = None,
+             instances: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if instances is not None:
-            pulumi.set(__self__, "instances", instances)
+            _setter("instances", instances)
 
     @property
     @pulumi.getter(name="groupId")
@@ -204,6 +226,10 @@ class MonitorGroupInstances(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MonitorGroupInstancesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

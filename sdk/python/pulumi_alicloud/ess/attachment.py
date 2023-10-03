@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AttachmentArgs', 'Attachment']
@@ -33,10 +33,23 @@ class AttachmentArgs:
                - The attached ECS instances has not been attached to other scaling groups.
                - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
         """
-        pulumi.set(__self__, "instance_ids", instance_ids)
-        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        AttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_ids=instance_ids,
+            scaling_group_id=scaling_group_id,
+            force=force,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             scaling_group_id: pulumi.Input[str],
+             force: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_ids", instance_ids)
+        _setter("scaling_group_id", scaling_group_id)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
 
     @property
     @pulumi.getter(name="instanceIds")
@@ -107,12 +120,25 @@ class _AttachmentState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling configuration.
         """
+        _AttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            force=force,
+            instance_ids=instance_ids,
+            scaling_group_id=scaling_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             force: Optional[pulumi.Input[bool]] = None,
+             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if instance_ids is not None:
-            pulumi.set(__self__, "instance_ids", instance_ids)
+            _setter("instance_ids", instance_ids)
         if scaling_group_id is not None:
-            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+            _setter("scaling_group_id", scaling_group_id)
 
     @property
     @pulumi.getter
@@ -384,6 +410,10 @@ class Attachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

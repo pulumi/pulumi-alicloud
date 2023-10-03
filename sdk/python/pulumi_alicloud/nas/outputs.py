@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -43,13 +43,34 @@ class GetAccessGroupsGroupResult(dict):
         :param int rule_count: RuleCount of the AccessGroup.
         :param str type: Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
         """
-        pulumi.set(__self__, "access_group_name", access_group_name)
-        pulumi.set(__self__, "access_group_type", access_group_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mount_target_count", mount_target_count)
-        pulumi.set(__self__, "rule_count", rule_count)
-        pulumi.set(__self__, "type", type)
+        GetAccessGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_group_name=access_group_name,
+            access_group_type=access_group_type,
+            description=description,
+            id=id,
+            mount_target_count=mount_target_count,
+            rule_count=rule_count,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_group_name: str,
+             access_group_type: str,
+             description: str,
+             id: str,
+             mount_target_count: int,
+             rule_count: int,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_group_name", access_group_name)
+        _setter("access_group_type", access_group_type)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("mount_target_count", mount_target_count)
+        _setter("rule_count", rule_count)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="accessGroupName")
@@ -123,11 +144,28 @@ class GetAccessRulesRuleResult(dict):
         :param str source_cidr_ip: Filter results by a specific SourceCidrIp.
         :param str user_access: Filter results by a specific UserAccess.
         """
-        pulumi.set(__self__, "access_rule_id", access_rule_id)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "rw_access", rw_access)
-        pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
-        pulumi.set(__self__, "user_access", user_access)
+        GetAccessRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_rule_id=access_rule_id,
+            priority=priority,
+            rw_access=rw_access,
+            source_cidr_ip=source_cidr_ip,
+            user_access=user_access,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_rule_id: str,
+             priority: int,
+             rw_access: str,
+             source_cidr_ip: str,
+             user_access: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_rule_id", access_rule_id)
+        _setter("priority", priority)
+        _setter("rw_access", rw_access)
+        _setter("source_cidr_ip", source_cidr_ip)
+        _setter("user_access", user_access)
 
     @property
     @pulumi.getter(name="accessRuleId")
@@ -193,15 +231,40 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
         :param str status: The status of the automatic snapshot policy. Valid values: `Creating`, `Available`.
         :param Sequence[str] time_points: The point in time at which an auto snapshot was created. Unit: hours.
         """
-        pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
-        pulumi.set(__self__, "auto_snapshot_policy_name", auto_snapshot_policy_name)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "file_system_nums", file_system_nums)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
-        pulumi.set(__self__, "retention_days", retention_days)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "time_points", time_points)
+        GetAutoSnapshotPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            auto_snapshot_policy_name=auto_snapshot_policy_name,
+            create_time=create_time,
+            file_system_nums=file_system_nums,
+            id=id,
+            repeat_weekdays=repeat_weekdays,
+            retention_days=retention_days,
+            status=status,
+            time_points=time_points,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_id: str,
+             auto_snapshot_policy_name: str,
+             create_time: str,
+             file_system_nums: int,
+             id: str,
+             repeat_weekdays: Sequence[str],
+             retention_days: int,
+             status: str,
+             time_points: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
+        _setter("auto_snapshot_policy_name", auto_snapshot_policy_name)
+        _setter("create_time", create_time)
+        _setter("file_system_nums", file_system_nums)
+        _setter("id", id)
+        _setter("repeat_weekdays", repeat_weekdays)
+        _setter("retention_days", retention_days)
+        _setter("status", status)
+        _setter("time_points", time_points)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -307,19 +370,52 @@ class GetDataFlowsFlowResult(dict):
         :param str status: The status of the Data flow.
         :param int throughput: The maximum transmission bandwidth of data flow, unit: `MB/s`.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "data_flow_id", data_flow_id)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "error_message", error_message)
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "file_system_path", file_system_path)
-        pulumi.set(__self__, "fset_description", fset_description)
-        pulumi.set(__self__, "fset_id", fset_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "source_security_type", source_security_type)
-        pulumi.set(__self__, "source_storage", source_storage)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "throughput", throughput)
+        GetDataFlowsFlowResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            data_flow_id=data_flow_id,
+            description=description,
+            error_message=error_message,
+            file_system_id=file_system_id,
+            file_system_path=file_system_path,
+            fset_description=fset_description,
+            fset_id=fset_id,
+            id=id,
+            source_security_type=source_security_type,
+            source_storage=source_storage,
+            status=status,
+            throughput=throughput,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             data_flow_id: str,
+             description: str,
+             error_message: str,
+             file_system_id: str,
+             file_system_path: str,
+             fset_description: str,
+             fset_id: str,
+             id: str,
+             source_security_type: str,
+             source_storage: str,
+             status: str,
+             throughput: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("data_flow_id", data_flow_id)
+        _setter("description", description)
+        _setter("error_message", error_message)
+        _setter("file_system_id", file_system_id)
+        _setter("file_system_path", file_system_path)
+        _setter("fset_description", fset_description)
+        _setter("fset_id", fset_id)
+        _setter("id", id)
+        _setter("source_security_type", source_security_type)
+        _setter("source_storage", source_storage)
+        _setter("status", status)
+        _setter("throughput", throughput)
 
     @property
     @pulumi.getter(name="createTime")
@@ -463,18 +559,49 @@ class GetFileSystemsSystemResult(dict):
                * Valid values:
         :param str zone_id: (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
         """
-        pulumi.set(__self__, "capacity", capacity)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "encrypt_type", encrypt_type)
-        pulumi.set(__self__, "file_system_type", file_system_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "kms_key_id", kms_key_id)
-        pulumi.set(__self__, "metered_size", metered_size)
-        pulumi.set(__self__, "protocol_type", protocol_type)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "storage_type", storage_type)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetFileSystemsSystemResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capacity=capacity,
+            create_time=create_time,
+            description=description,
+            encrypt_type=encrypt_type,
+            file_system_type=file_system_type,
+            id=id,
+            kms_key_id=kms_key_id,
+            metered_size=metered_size,
+            protocol_type=protocol_type,
+            region_id=region_id,
+            storage_type=storage_type,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capacity: int,
+             create_time: str,
+             description: str,
+             encrypt_type: int,
+             file_system_type: str,
+             id: str,
+             kms_key_id: str,
+             metered_size: int,
+             protocol_type: str,
+             region_id: str,
+             storage_type: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("capacity", capacity)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("encrypt_type", encrypt_type)
+        _setter("file_system_type", file_system_type)
+        _setter("id", id)
+        _setter("kms_key_id", kms_key_id)
+        _setter("metered_size", metered_size)
+        _setter("protocol_type", protocol_type)
+        _setter("region_id", region_id)
+        _setter("storage_type", storage_type)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -602,14 +729,37 @@ class GetFilesetsFilesetResult(dict):
         :param str status: The status of the fileset.
         :param str update_time: The latest update time of Fileset.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "file_system_path", file_system_path)
-        pulumi.set(__self__, "fileset_id", fileset_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "update_time", update_time)
+        GetFilesetsFilesetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            file_system_id=file_system_id,
+            file_system_path=file_system_path,
+            fileset_id=fileset_id,
+            id=id,
+            status=status,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             file_system_id: str,
+             file_system_path: str,
+             fileset_id: str,
+             id: str,
+             status: str,
+             update_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("file_system_id", file_system_id)
+        _setter("file_system_path", file_system_path)
+        _setter("fileset_id", fileset_id)
+        _setter("id", id)
+        _setter("status", status)
+        _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="createTime")
@@ -695,13 +845,34 @@ class GetLifecyclePoliciesPolicyResult(dict):
         :param Sequence[str] paths: The list of absolute paths for multiple directories. In this case, you can associate a lifecycle management policy with each directory.
         :param str storage_type: The storage type of the data that is dumped to the IA storage medium.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "lifecycle_policy_name", lifecycle_policy_name)
-        pulumi.set(__self__, "lifecycle_rule_name", lifecycle_rule_name)
-        pulumi.set(__self__, "paths", paths)
-        pulumi.set(__self__, "storage_type", storage_type)
+        GetLifecyclePoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            file_system_id=file_system_id,
+            id=id,
+            lifecycle_policy_name=lifecycle_policy_name,
+            lifecycle_rule_name=lifecycle_rule_name,
+            paths=paths,
+            storage_type=storage_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             file_system_id: str,
+             id: str,
+             lifecycle_policy_name: str,
+             lifecycle_rule_name: str,
+             paths: Sequence[str],
+             storage_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("file_system_id", file_system_id)
+        _setter("id", id)
+        _setter("lifecycle_policy_name", lifecycle_policy_name)
+        _setter("lifecycle_rule_name", lifecycle_rule_name)
+        _setter("paths", paths)
+        _setter("storage_type", storage_type)
 
     @property
     @pulumi.getter(name="createTime")
@@ -781,14 +952,37 @@ class GetMountTargetsTargetResult(dict):
         :param str vpc_id: Filter results by a specific VpcId.
         :param str vswitch_id: Filter results by a specific VSwitchId.
         """
-        pulumi.set(__self__, "access_group_name", access_group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mount_target_domain", mount_target_domain)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetMountTargetsTargetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_group_name=access_group_name,
+            id=id,
+            mount_target_domain=mount_target_domain,
+            network_type=network_type,
+            status=status,
+            type=type,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_group_name: str,
+             id: str,
+             mount_target_domain: str,
+             network_type: str,
+             status: str,
+             type: str,
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_group_name", access_group_name)
+        _setter("id", id)
+        _setter("mount_target_domain", mount_target_domain)
+        _setter("network_type", network_type)
+        _setter("status", status)
+        _setter("type", type)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="accessGroupName")
@@ -886,19 +1080,52 @@ class GetSnapshotsSnapshotResult(dict):
         :param str source_file_system_version: The version of the source file system.
         :param str status: The status of the snapshot.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "encrypt_type", encrypt_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "progress", progress)
-        pulumi.set(__self__, "remain_time", remain_time)
-        pulumi.set(__self__, "retention_days", retention_days)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
-        pulumi.set(__self__, "snapshot_name", snapshot_name)
-        pulumi.set(__self__, "source_file_system_id", source_file_system_id)
-        pulumi.set(__self__, "source_file_system_size", source_file_system_size)
-        pulumi.set(__self__, "source_file_system_version", source_file_system_version)
-        pulumi.set(__self__, "status", status)
+        GetSnapshotsSnapshotResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            encrypt_type=encrypt_type,
+            id=id,
+            progress=progress,
+            remain_time=remain_time,
+            retention_days=retention_days,
+            snapshot_id=snapshot_id,
+            snapshot_name=snapshot_name,
+            source_file_system_id=source_file_system_id,
+            source_file_system_size=source_file_system_size,
+            source_file_system_version=source_file_system_version,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             encrypt_type: int,
+             id: str,
+             progress: str,
+             remain_time: int,
+             retention_days: int,
+             snapshot_id: str,
+             snapshot_name: str,
+             source_file_system_id: str,
+             source_file_system_size: str,
+             source_file_system_version: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("encrypt_type", encrypt_type)
+        _setter("id", id)
+        _setter("progress", progress)
+        _setter("remain_time", remain_time)
+        _setter("retention_days", retention_days)
+        _setter("snapshot_id", snapshot_id)
+        _setter("snapshot_name", snapshot_name)
+        _setter("source_file_system_id", source_file_system_id)
+        _setter("source_file_system_size", source_file_system_size)
+        _setter("source_file_system_version", source_file_system_version)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1014,8 +1241,19 @@ class GetZonesZoneResult(dict):
         :param Sequence['GetZonesZoneInstanceTypeArgs'] instance_types: A list of instance type information collection
         :param str zone_id: String to filter results by zone id.
         """
-        pulumi.set(__self__, "instance_types", instance_types)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_types=instance_types,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_types: Sequence['outputs.GetZonesZoneInstanceTypeResult'],
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_types", instance_types)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="instanceTypes")
@@ -1043,8 +1281,19 @@ class GetZonesZoneInstanceTypeResult(dict):
         :param str protocol_type: File transfer protocol type. Valid values:
         :param str storage_type: The storage type of the nas zones. Valid values:
         """
-        pulumi.set(__self__, "protocol_type", protocol_type)
-        pulumi.set(__self__, "storage_type", storage_type)
+        GetZonesZoneInstanceTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            protocol_type=protocol_type,
+            storage_type=storage_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             protocol_type: str,
+             storage_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("protocol_type", protocol_type)
+        _setter("storage_type", storage_type)
 
     @property
     @pulumi.getter(name="protocolType")

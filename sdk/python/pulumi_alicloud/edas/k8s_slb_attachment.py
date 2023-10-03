@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,9 +23,20 @@ class K8sSlbAttachmentArgs:
         :param pulumi.Input[str] app_id: The ID of the EDAS k8s application to which you want to bind SLB instances.
         :param pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
-        pulumi.set(__self__, "app_id", app_id)
+        K8sSlbAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            slb_configs=slb_configs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: pulumi.Input[str],
+             slb_configs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_id", app_id)
         if slb_configs is not None:
-            pulumi.set(__self__, "slb_configs", slb_configs)
+            _setter("slb_configs", slb_configs)
 
     @property
     @pulumi.getter(name="appId")
@@ -62,10 +73,21 @@ class _K8sSlbAttachmentState:
         :param pulumi.Input[str] app_id: The ID of the EDAS k8s application to which you want to bind SLB instances.
         :param pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]] slb_configs: The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
+        _K8sSlbAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            slb_configs=slb_configs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             slb_configs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if slb_configs is not None:
-            pulumi.set(__self__, "slb_configs", slb_configs)
+            _setter("slb_configs", slb_configs)
 
     @property
     @pulumi.getter(name="appId")
@@ -151,6 +173,10 @@ class K8sSlbAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            K8sSlbAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

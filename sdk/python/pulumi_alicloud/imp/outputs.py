@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -27,10 +27,21 @@ class AppTemplateConfigList(dict):
                
                > **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
         """
+        AppTemplateConfigList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -80,18 +91,49 @@ class GetAppTemplatesTemplateResult(dict):
         :param str standard_room_info: Model room information.
         :param str status: Application template usage status.
         """
-        pulumi.set(__self__, "app_template_creator", app_template_creator)
-        pulumi.set(__self__, "app_template_id", app_template_id)
-        pulumi.set(__self__, "app_template_name", app_template_name)
-        pulumi.set(__self__, "component_lists", component_lists)
-        pulumi.set(__self__, "config_lists", config_lists)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "integration_mode", integration_mode)
-        pulumi.set(__self__, "scene", scene)
-        pulumi.set(__self__, "sdk_info", sdk_info)
-        pulumi.set(__self__, "standard_room_info", standard_room_info)
-        pulumi.set(__self__, "status", status)
+        GetAppTemplatesTemplateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_template_creator=app_template_creator,
+            app_template_id=app_template_id,
+            app_template_name=app_template_name,
+            component_lists=component_lists,
+            config_lists=config_lists,
+            create_time=create_time,
+            id=id,
+            integration_mode=integration_mode,
+            scene=scene,
+            sdk_info=sdk_info,
+            standard_room_info=standard_room_info,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_template_creator: str,
+             app_template_id: str,
+             app_template_name: str,
+             component_lists: Sequence[str],
+             config_lists: Sequence['outputs.GetAppTemplatesTemplateConfigListResult'],
+             create_time: str,
+             id: str,
+             integration_mode: str,
+             scene: str,
+             sdk_info: str,
+             standard_room_info: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_template_creator", app_template_creator)
+        _setter("app_template_id", app_template_id)
+        _setter("app_template_name", app_template_name)
+        _setter("component_lists", component_lists)
+        _setter("config_lists", config_lists)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("integration_mode", integration_mode)
+        _setter("scene", scene)
+        _setter("sdk_info", sdk_info)
+        _setter("standard_room_info", standard_room_info)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="appTemplateCreator")
@@ -199,8 +241,19 @@ class GetAppTemplatesTemplateConfigListResult(dict):
         :param str key: Config key.
         :param str value: Config Value.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetAppTemplatesTemplateConfigListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter

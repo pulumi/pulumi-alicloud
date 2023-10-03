@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RegistryEnterpriseSyncRuleArgs', 'RegistryEnterpriseSyncRule']
@@ -35,18 +35,43 @@ class RegistryEnterpriseSyncRuleArgs:
         :param pulumi.Input[str] repo_name: Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
         :param pulumi.Input[str] target_repo_name: Name of the target repository.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "namespace_name", namespace_name)
-        pulumi.set(__self__, "tag_filter", tag_filter)
-        pulumi.set(__self__, "target_instance_id", target_instance_id)
-        pulumi.set(__self__, "target_namespace_name", target_namespace_name)
-        pulumi.set(__self__, "target_region_id", target_region_id)
+        RegistryEnterpriseSyncRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            namespace_name=namespace_name,
+            tag_filter=tag_filter,
+            target_instance_id=target_instance_id,
+            target_namespace_name=target_namespace_name,
+            target_region_id=target_region_id,
+            name=name,
+            repo_name=repo_name,
+            target_repo_name=target_repo_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: pulumi.Input[str],
+             namespace_name: pulumi.Input[str],
+             tag_filter: pulumi.Input[str],
+             target_instance_id: pulumi.Input[str],
+             target_namespace_name: pulumi.Input[str],
+             target_region_id: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             repo_name: Optional[pulumi.Input[str]] = None,
+             target_repo_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
+        _setter("namespace_name", namespace_name)
+        _setter("tag_filter", tag_filter)
+        _setter("target_instance_id", target_instance_id)
+        _setter("target_namespace_name", target_namespace_name)
+        _setter("target_region_id", target_region_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if repo_name is not None:
-            pulumi.set(__self__, "repo_name", repo_name)
+            _setter("repo_name", repo_name)
         if target_repo_name is not None:
-            pulumi.set(__self__, "target_repo_name", target_repo_name)
+            _setter("target_repo_name", target_repo_name)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -187,30 +212,61 @@ class _RegistryEnterpriseSyncRuleState:
         :param pulumi.Input[str] target_region_id: The target region to be synchronized.
         :param pulumi.Input[str] target_repo_name: Name of the target repository.
         """
+        _RegistryEnterpriseSyncRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            name=name,
+            namespace_name=namespace_name,
+            repo_name=repo_name,
+            rule_id=rule_id,
+            sync_direction=sync_direction,
+            sync_scope=sync_scope,
+            tag_filter=tag_filter,
+            target_instance_id=target_instance_id,
+            target_namespace_name=target_namespace_name,
+            target_region_id=target_region_id,
+            target_repo_name=target_repo_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             namespace_name: Optional[pulumi.Input[str]] = None,
+             repo_name: Optional[pulumi.Input[str]] = None,
+             rule_id: Optional[pulumi.Input[str]] = None,
+             sync_direction: Optional[pulumi.Input[str]] = None,
+             sync_scope: Optional[pulumi.Input[str]] = None,
+             tag_filter: Optional[pulumi.Input[str]] = None,
+             target_instance_id: Optional[pulumi.Input[str]] = None,
+             target_namespace_name: Optional[pulumi.Input[str]] = None,
+             target_region_id: Optional[pulumi.Input[str]] = None,
+             target_repo_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if namespace_name is not None:
-            pulumi.set(__self__, "namespace_name", namespace_name)
+            _setter("namespace_name", namespace_name)
         if repo_name is not None:
-            pulumi.set(__self__, "repo_name", repo_name)
+            _setter("repo_name", repo_name)
         if rule_id is not None:
-            pulumi.set(__self__, "rule_id", rule_id)
+            _setter("rule_id", rule_id)
         if sync_direction is not None:
-            pulumi.set(__self__, "sync_direction", sync_direction)
+            _setter("sync_direction", sync_direction)
         if sync_scope is not None:
-            pulumi.set(__self__, "sync_scope", sync_scope)
+            _setter("sync_scope", sync_scope)
         if tag_filter is not None:
-            pulumi.set(__self__, "tag_filter", tag_filter)
+            _setter("tag_filter", tag_filter)
         if target_instance_id is not None:
-            pulumi.set(__self__, "target_instance_id", target_instance_id)
+            _setter("target_instance_id", target_instance_id)
         if target_namespace_name is not None:
-            pulumi.set(__self__, "target_namespace_name", target_namespace_name)
+            _setter("target_namespace_name", target_namespace_name)
         if target_region_id is not None:
-            pulumi.set(__self__, "target_region_id", target_region_id)
+            _setter("target_region_id", target_region_id)
         if target_repo_name is not None:
-            pulumi.set(__self__, "target_repo_name", target_repo_name)
+            _setter("target_repo_name", target_repo_name)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -550,6 +606,10 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RegistryEnterpriseSyncRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

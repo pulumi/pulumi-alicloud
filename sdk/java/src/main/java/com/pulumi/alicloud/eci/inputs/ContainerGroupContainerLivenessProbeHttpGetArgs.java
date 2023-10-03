@@ -17,14 +17,14 @@ public final class ContainerGroupContainerLivenessProbeHttpGetArgs extends com.p
     public static final ContainerGroupContainerLivenessProbeHttpGetArgs Empty = new ContainerGroupContainerLivenessProbeHttpGetArgs();
 
     /**
-     * The relative file path.
+     * The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return The relative file path.
+     * @return The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
      * 
      */
     public Optional<Output<String>> path() {
@@ -32,14 +32,14 @@ public final class ContainerGroupContainerLivenessProbeHttpGetArgs extends com.p
     }
 
     /**
-     * The port number. Valid values: `1` to `65535`.
+     * When using the HTTP request method for health check, the port number for HTTP Get request detection.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port number. Valid values: `1` to `65535`.
+     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -88,7 +88,7 @@ public final class ContainerGroupContainerLivenessProbeHttpGetArgs extends com.p
         }
 
         /**
-         * @param path The relative file path.
+         * @param path The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ContainerGroupContainerLivenessProbeHttpGetArgs extends com.p
         }
 
         /**
-         * @param path The relative file path.
+         * @param path The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class ContainerGroupContainerLivenessProbeHttpGetArgs extends com.p
         }
 
         /**
-         * @param port The port number. Valid values: `1` to `65535`.
+         * @param port When using the HTTP request method for health check, the port number for HTTP Get request detection.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ContainerGroupContainerLivenessProbeHttpGetArgs extends com.p
         }
 
         /**
-         * @param port The port number. Valid values: `1` to `65535`.
+         * @param port When using the HTTP request method for health check, the port number for HTTP Get request detection.
          * 
          * @return builder
          * 

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,8 +23,19 @@ class ShardingNetworkPublicAddressArgs:
         :param pulumi.Input[str] db_instance_id: The ID of the instance.
         :param pulumi.Input[str] node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
         """
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "node_id", node_id)
+        ShardingNetworkPublicAddressArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_instance_id=db_instance_id,
+            node_id=node_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_instance_id: pulumi.Input[str],
+             node_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_instance_id", db_instance_id)
+        _setter("node_id", node_id)
 
     @property
     @pulumi.getter(name="dbInstanceId")
@@ -63,12 +74,25 @@ class _ShardingNetworkPublicAddressState:
         :param pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPublicAddressNetworkAddressArgs']]] network_addresses: The endpoint of the instance.
         :param pulumi.Input[str] node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
         """
+        _ShardingNetworkPublicAddressState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_instance_id=db_instance_id,
+            network_addresses=network_addresses,
+            node_id=node_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             network_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPublicAddressNetworkAddressArgs']]]] = None,
+             node_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if db_instance_id is not None:
-            pulumi.set(__self__, "db_instance_id", db_instance_id)
+            _setter("db_instance_id", db_instance_id)
         if network_addresses is not None:
-            pulumi.set(__self__, "network_addresses", network_addresses)
+            _setter("network_addresses", network_addresses)
         if node_id is not None:
-            pulumi.set(__self__, "node_id", node_id)
+            _setter("node_id", node_id)
 
     @property
     @pulumi.getter(name="dbInstanceId")
@@ -272,6 +296,10 @@ class ShardingNetworkPublicAddress(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ShardingNetworkPublicAddressArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

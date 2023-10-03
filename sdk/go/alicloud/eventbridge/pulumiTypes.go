@@ -1386,9 +1386,9 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput) Que
 type ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter struct {
 	// Specifies whether to enable authentication.
 	IsValueSecret *string `pulumi:"isValueSecret"`
-	// The key of the request header.
+	// The key of the request path.
 	Key *string `pulumi:"key"`
-	// The value of the request header.
+	// The key of the request path.
 	Value *string `pulumi:"value"`
 }
 
@@ -1406,9 +1406,9 @@ type ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterInpu
 type ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs struct {
 	// Specifies whether to enable authentication.
 	IsValueSecret pulumi.StringPtrInput `pulumi:"isValueSecret"`
-	// The key of the request header.
+	// The key of the request path.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of the request header.
+	// The key of the request path.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1488,12 +1488,12 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The key of the request header.
+// The key of the request path.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value of the request header.
+// The key of the request path.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter) *string {
 		return v.Value
@@ -1529,9 +1529,9 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterA
 type ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter struct {
 	// Specifies whether to enable authentication.
 	IsValueSecret *string `pulumi:"isValueSecret"`
-	// The key of the request header.
+	// The key of the request path.
 	Key *string `pulumi:"key"`
-	// The value of the request header.
+	// The key of the request path.
 	Value *string `pulumi:"value"`
 }
 
@@ -1549,9 +1549,9 @@ type ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterIn
 type ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs struct {
 	// Specifies whether to enable authentication.
 	IsValueSecret pulumi.StringPtrInput `pulumi:"isValueSecret"`
-	// The key of the request header.
+	// The key of the request path.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of the request header.
+	// The key of the request path.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1631,14 +1631,14 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParamete
 	}).(pulumi.StringPtrOutput)
 }
 
-// The key of the request header.
+// The key of the request path.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter) *string {
 		return v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
-// The value of the request header.
+// The key of the request path.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter) *string {
 		return v.Value
@@ -1674,9 +1674,9 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParamete
 type ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter struct {
 	// Specifies whether to enable authentication.
 	IsValueSecret *string `pulumi:"isValueSecret"`
-	// The key of the request header.
+	// The key of the request path.
 	Key *string `pulumi:"key"`
-	// The value of the request header.
+	// The key of the request path.
 	Value *string `pulumi:"value"`
 }
 
@@ -1694,9 +1694,9 @@ type ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParame
 type ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs struct {
 	// Specifies whether to enable authentication.
 	IsValueSecret pulumi.StringPtrInput `pulumi:"isValueSecret"`
-	// The key of the request header.
+	// The key of the request path.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of the request header.
+	// The key of the request path.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1776,14 +1776,14 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringPar
 	}).(pulumi.StringPtrOutput)
 }
 
-// The key of the request header.
+// The key of the request path.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter) *string {
 		return v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
-// The value of the request header.
+// The key of the request path.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter) *string {
 		return v.Value

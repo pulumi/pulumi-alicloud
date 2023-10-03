@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['KeyArgs', 'Key']
@@ -58,43 +58,78 @@ class KeyArgs:
         :param pulumi.Input[str] status: The status of CMK. Default value: `Enabled`. Valid Values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        KeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            automatic_rotation=automatic_rotation,
+            deletion_window_in_days=deletion_window_in_days,
+            description=description,
+            dkms_instance_id=dkms_instance_id,
+            is_enabled=is_enabled,
+            key_spec=key_spec,
+            key_state=key_state,
+            key_usage=key_usage,
+            origin=origin,
+            pending_window_in_days=pending_window_in_days,
+            protection_level=protection_level,
+            rotation_interval=rotation_interval,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             automatic_rotation: Optional[pulumi.Input[str]] = None,
+             deletion_window_in_days: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dkms_instance_id: Optional[pulumi.Input[str]] = None,
+             is_enabled: Optional[pulumi.Input[bool]] = None,
+             key_spec: Optional[pulumi.Input[str]] = None,
+             key_state: Optional[pulumi.Input[str]] = None,
+             key_usage: Optional[pulumi.Input[str]] = None,
+             origin: Optional[pulumi.Input[str]] = None,
+             pending_window_in_days: Optional[pulumi.Input[int]] = None,
+             protection_level: Optional[pulumi.Input[str]] = None,
+             rotation_interval: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if automatic_rotation is not None:
-            pulumi.set(__self__, "automatic_rotation", automatic_rotation)
+            _setter("automatic_rotation", automatic_rotation)
         if deletion_window_in_days is not None:
             warnings.warn("""Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""", DeprecationWarning)
             pulumi.log.warn("""deletion_window_in_days is deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""")
         if deletion_window_in_days is not None:
-            pulumi.set(__self__, "deletion_window_in_days", deletion_window_in_days)
+            _setter("deletion_window_in_days", deletion_window_in_days)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dkms_instance_id is not None:
-            pulumi.set(__self__, "dkms_instance_id", dkms_instance_id)
+            _setter("dkms_instance_id", dkms_instance_id)
         if is_enabled is not None:
             warnings.warn("""Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""", DeprecationWarning)
             pulumi.log.warn("""is_enabled is deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""")
         if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
+            _setter("is_enabled", is_enabled)
         if key_spec is not None:
-            pulumi.set(__self__, "key_spec", key_spec)
+            _setter("key_spec", key_spec)
         if key_state is not None:
             warnings.warn("""Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.""", DeprecationWarning)
             pulumi.log.warn("""key_state is deprecated: Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.""")
         if key_state is not None:
-            pulumi.set(__self__, "key_state", key_state)
+            _setter("key_state", key_state)
         if key_usage is not None:
-            pulumi.set(__self__, "key_usage", key_usage)
+            _setter("key_usage", key_usage)
         if origin is not None:
-            pulumi.set(__self__, "origin", origin)
+            _setter("origin", origin)
         if pending_window_in_days is not None:
-            pulumi.set(__self__, "pending_window_in_days", pending_window_in_days)
+            _setter("pending_window_in_days", pending_window_in_days)
         if protection_level is not None:
-            pulumi.set(__self__, "protection_level", protection_level)
+            _setter("protection_level", protection_level)
         if rotation_interval is not None:
-            pulumi.set(__self__, "rotation_interval", rotation_interval)
+            _setter("rotation_interval", rotation_interval)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="automaticRotation")
@@ -350,59 +385,110 @@ class _KeyState:
         :param pulumi.Input[str] status: The status of CMK. Default value: `Enabled`. Valid Values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        _KeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            automatic_rotation=automatic_rotation,
+            creation_date=creation_date,
+            creator=creator,
+            delete_date=delete_date,
+            deletion_window_in_days=deletion_window_in_days,
+            description=description,
+            dkms_instance_id=dkms_instance_id,
+            is_enabled=is_enabled,
+            key_spec=key_spec,
+            key_state=key_state,
+            key_usage=key_usage,
+            last_rotation_date=last_rotation_date,
+            material_expire_time=material_expire_time,
+            next_rotation_date=next_rotation_date,
+            origin=origin,
+            pending_window_in_days=pending_window_in_days,
+            primary_key_version=primary_key_version,
+            protection_level=protection_level,
+            rotation_interval=rotation_interval,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[pulumi.Input[str]] = None,
+             automatic_rotation: Optional[pulumi.Input[str]] = None,
+             creation_date: Optional[pulumi.Input[str]] = None,
+             creator: Optional[pulumi.Input[str]] = None,
+             delete_date: Optional[pulumi.Input[str]] = None,
+             deletion_window_in_days: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dkms_instance_id: Optional[pulumi.Input[str]] = None,
+             is_enabled: Optional[pulumi.Input[bool]] = None,
+             key_spec: Optional[pulumi.Input[str]] = None,
+             key_state: Optional[pulumi.Input[str]] = None,
+             key_usage: Optional[pulumi.Input[str]] = None,
+             last_rotation_date: Optional[pulumi.Input[str]] = None,
+             material_expire_time: Optional[pulumi.Input[str]] = None,
+             next_rotation_date: Optional[pulumi.Input[str]] = None,
+             origin: Optional[pulumi.Input[str]] = None,
+             pending_window_in_days: Optional[pulumi.Input[int]] = None,
+             primary_key_version: Optional[pulumi.Input[str]] = None,
+             protection_level: Optional[pulumi.Input[str]] = None,
+             rotation_interval: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if automatic_rotation is not None:
-            pulumi.set(__self__, "automatic_rotation", automatic_rotation)
+            _setter("automatic_rotation", automatic_rotation)
         if creation_date is not None:
-            pulumi.set(__self__, "creation_date", creation_date)
+            _setter("creation_date", creation_date)
         if creator is not None:
-            pulumi.set(__self__, "creator", creator)
+            _setter("creator", creator)
         if delete_date is not None:
-            pulumi.set(__self__, "delete_date", delete_date)
+            _setter("delete_date", delete_date)
         if deletion_window_in_days is not None:
             warnings.warn("""Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""", DeprecationWarning)
             pulumi.log.warn("""deletion_window_in_days is deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""")
         if deletion_window_in_days is not None:
-            pulumi.set(__self__, "deletion_window_in_days", deletion_window_in_days)
+            _setter("deletion_window_in_days", deletion_window_in_days)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dkms_instance_id is not None:
-            pulumi.set(__self__, "dkms_instance_id", dkms_instance_id)
+            _setter("dkms_instance_id", dkms_instance_id)
         if is_enabled is not None:
             warnings.warn("""Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""", DeprecationWarning)
             pulumi.log.warn("""is_enabled is deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""")
         if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
+            _setter("is_enabled", is_enabled)
         if key_spec is not None:
-            pulumi.set(__self__, "key_spec", key_spec)
+            _setter("key_spec", key_spec)
         if key_state is not None:
             warnings.warn("""Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.""", DeprecationWarning)
             pulumi.log.warn("""key_state is deprecated: Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.""")
         if key_state is not None:
-            pulumi.set(__self__, "key_state", key_state)
+            _setter("key_state", key_state)
         if key_usage is not None:
-            pulumi.set(__self__, "key_usage", key_usage)
+            _setter("key_usage", key_usage)
         if last_rotation_date is not None:
-            pulumi.set(__self__, "last_rotation_date", last_rotation_date)
+            _setter("last_rotation_date", last_rotation_date)
         if material_expire_time is not None:
-            pulumi.set(__self__, "material_expire_time", material_expire_time)
+            _setter("material_expire_time", material_expire_time)
         if next_rotation_date is not None:
-            pulumi.set(__self__, "next_rotation_date", next_rotation_date)
+            _setter("next_rotation_date", next_rotation_date)
         if origin is not None:
-            pulumi.set(__self__, "origin", origin)
+            _setter("origin", origin)
         if pending_window_in_days is not None:
-            pulumi.set(__self__, "pending_window_in_days", pending_window_in_days)
+            _setter("pending_window_in_days", pending_window_in_days)
         if primary_key_version is not None:
-            pulumi.set(__self__, "primary_key_version", primary_key_version)
+            _setter("primary_key_version", primary_key_version)
         if protection_level is not None:
-            pulumi.set(__self__, "protection_level", protection_level)
+            _setter("protection_level", protection_level)
         if rotation_interval is not None:
-            pulumi.set(__self__, "rotation_interval", rotation_interval)
+            _setter("rotation_interval", rotation_interval)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -811,6 +897,10 @@ class Key(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -840,20 +930,11 @@ class Key(pulumi.CustomResource):
             __props__ = KeyArgs.__new__(KeyArgs)
 
             __props__.__dict__["automatic_rotation"] = automatic_rotation
-            if deletion_window_in_days is not None and not opts.urn:
-                warnings.warn("""Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""", DeprecationWarning)
-                pulumi.log.warn("""deletion_window_in_days is deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""")
             __props__.__dict__["deletion_window_in_days"] = deletion_window_in_days
             __props__.__dict__["description"] = description
             __props__.__dict__["dkms_instance_id"] = dkms_instance_id
-            if is_enabled is not None and not opts.urn:
-                warnings.warn("""Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""", DeprecationWarning)
-                pulumi.log.warn("""is_enabled is deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""")
             __props__.__dict__["is_enabled"] = is_enabled
             __props__.__dict__["key_spec"] = key_spec
-            if key_state is not None and not opts.urn:
-                warnings.warn("""Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.""", DeprecationWarning)
-                pulumi.log.warn("""key_state is deprecated: Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.""")
             __props__.__dict__["key_state"] = key_state
             __props__.__dict__["key_usage"] = key_usage
             __props__.__dict__["origin"] = origin

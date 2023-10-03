@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -30,19 +30,52 @@ class GetInstancesInstanceResult(dict):
                  updated_at: str,
                  version: str,
                  vswitch_id: str):
-        pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "data_node_amount", data_node_amount)
-        pulumi.set(__self__, "data_node_disk_size", data_node_disk_size)
-        pulumi.set(__self__, "data_node_disk_type", data_node_disk_type)
-        pulumi.set(__self__, "data_node_spec", data_node_spec)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "updated_at", updated_at)
-        pulumi.set(__self__, "version", version)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            data_node_amount=data_node_amount,
+            data_node_disk_size=data_node_disk_size,
+            data_node_disk_type=data_node_disk_type,
+            data_node_spec=data_node_spec,
+            description=description,
+            id=id,
+            instance_charge_type=instance_charge_type,
+            status=status,
+            tags=tags,
+            updated_at=updated_at,
+            version=version,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: str,
+             data_node_amount: int,
+             data_node_disk_size: int,
+             data_node_disk_type: str,
+             data_node_spec: str,
+             description: str,
+             id: str,
+             instance_charge_type: str,
+             status: str,
+             tags: Mapping[str, Any],
+             updated_at: str,
+             version: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("created_at", created_at)
+        _setter("data_node_amount", data_node_amount)
+        _setter("data_node_disk_size", data_node_disk_size)
+        _setter("data_node_disk_type", data_node_disk_type)
+        _setter("data_node_spec", data_node_spec)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("instance_charge_type", instance_charge_type)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("updated_at", updated_at)
+        _setter("version", version)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -119,8 +152,19 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            multi_zone_ids=multi_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             multi_zone_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

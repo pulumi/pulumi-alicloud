@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SynchronizationInstanceArgs', 'SynchronizationInstance']
@@ -45,29 +45,64 @@ class SynchronizationInstanceArgs:
         :param pulumi.Input[int] quantity: The number of instances purchased.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `oneway`, `bidirectional`.
         """
-        pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
-        pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
-        pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
+        SynchronizationInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination_endpoint_engine_name=destination_endpoint_engine_name,
+            destination_endpoint_region=destination_endpoint_region,
+            payment_type=payment_type,
+            source_endpoint_engine_name=source_endpoint_engine_name,
+            source_endpoint_region=source_endpoint_region,
+            auto_pay=auto_pay,
+            auto_start=auto_start,
+            compute_unit=compute_unit,
+            database_count=database_count,
+            instance_class=instance_class,
+            payment_duration=payment_duration,
+            payment_duration_unit=payment_duration_unit,
+            quantity=quantity,
+            sync_architecture=sync_architecture,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination_endpoint_engine_name: pulumi.Input[str],
+             destination_endpoint_region: pulumi.Input[str],
+             payment_type: pulumi.Input[str],
+             source_endpoint_engine_name: pulumi.Input[str],
+             source_endpoint_region: pulumi.Input[str],
+             auto_pay: Optional[pulumi.Input[str]] = None,
+             auto_start: Optional[pulumi.Input[str]] = None,
+             compute_unit: Optional[pulumi.Input[int]] = None,
+             database_count: Optional[pulumi.Input[int]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             payment_duration: Optional[pulumi.Input[int]] = None,
+             payment_duration_unit: Optional[pulumi.Input[str]] = None,
+             quantity: Optional[pulumi.Input[int]] = None,
+             sync_architecture: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
+        _setter("destination_endpoint_region", destination_endpoint_region)
+        _setter("payment_type", payment_type)
+        _setter("source_endpoint_engine_name", source_endpoint_engine_name)
+        _setter("source_endpoint_region", source_endpoint_region)
         if auto_pay is not None:
-            pulumi.set(__self__, "auto_pay", auto_pay)
+            _setter("auto_pay", auto_pay)
         if auto_start is not None:
-            pulumi.set(__self__, "auto_start", auto_start)
+            _setter("auto_start", auto_start)
         if compute_unit is not None:
-            pulumi.set(__self__, "compute_unit", compute_unit)
+            _setter("compute_unit", compute_unit)
         if database_count is not None:
-            pulumi.set(__self__, "database_count", database_count)
+            _setter("database_count", database_count)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if payment_duration is not None:
-            pulumi.set(__self__, "payment_duration", payment_duration)
+            _setter("payment_duration", payment_duration)
         if payment_duration_unit is not None:
-            pulumi.set(__self__, "payment_duration_unit", payment_duration_unit)
+            _setter("payment_duration_unit", payment_duration_unit)
         if quantity is not None:
-            pulumi.set(__self__, "quantity", quantity)
+            _setter("quantity", quantity)
         if sync_architecture is not None:
-            pulumi.set(__self__, "sync_architecture", sync_architecture)
+            _setter("sync_architecture", sync_architecture)
 
     @property
     @pulumi.getter(name="destinationEndpointEngineName")
@@ -274,36 +309,73 @@ class _SynchronizationInstanceState:
         :param pulumi.Input[str] status: The status.
         :param pulumi.Input[str] sync_architecture: The sync architecture. Valid values: `oneway`, `bidirectional`.
         """
+        _SynchronizationInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_pay=auto_pay,
+            auto_start=auto_start,
+            compute_unit=compute_unit,
+            database_count=database_count,
+            destination_endpoint_engine_name=destination_endpoint_engine_name,
+            destination_endpoint_region=destination_endpoint_region,
+            instance_class=instance_class,
+            payment_duration=payment_duration,
+            payment_duration_unit=payment_duration_unit,
+            payment_type=payment_type,
+            quantity=quantity,
+            source_endpoint_engine_name=source_endpoint_engine_name,
+            source_endpoint_region=source_endpoint_region,
+            status=status,
+            sync_architecture=sync_architecture,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_pay: Optional[pulumi.Input[str]] = None,
+             auto_start: Optional[pulumi.Input[str]] = None,
+             compute_unit: Optional[pulumi.Input[int]] = None,
+             database_count: Optional[pulumi.Input[int]] = None,
+             destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_region: Optional[pulumi.Input[str]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             payment_duration: Optional[pulumi.Input[int]] = None,
+             payment_duration_unit: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             quantity: Optional[pulumi.Input[int]] = None,
+             source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
+             source_endpoint_region: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             sync_architecture: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_pay is not None:
-            pulumi.set(__self__, "auto_pay", auto_pay)
+            _setter("auto_pay", auto_pay)
         if auto_start is not None:
-            pulumi.set(__self__, "auto_start", auto_start)
+            _setter("auto_start", auto_start)
         if compute_unit is not None:
-            pulumi.set(__self__, "compute_unit", compute_unit)
+            _setter("compute_unit", compute_unit)
         if database_count is not None:
-            pulumi.set(__self__, "database_count", database_count)
+            _setter("database_count", database_count)
         if destination_endpoint_engine_name is not None:
-            pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
+            _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
         if destination_endpoint_region is not None:
-            pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
+            _setter("destination_endpoint_region", destination_endpoint_region)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if payment_duration is not None:
-            pulumi.set(__self__, "payment_duration", payment_duration)
+            _setter("payment_duration", payment_duration)
         if payment_duration_unit is not None:
-            pulumi.set(__self__, "payment_duration_unit", payment_duration_unit)
+            _setter("payment_duration_unit", payment_duration_unit)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if quantity is not None:
-            pulumi.set(__self__, "quantity", quantity)
+            _setter("quantity", quantity)
         if source_endpoint_engine_name is not None:
-            pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
+            _setter("source_endpoint_engine_name", source_endpoint_engine_name)
         if source_endpoint_region is not None:
-            pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
+            _setter("source_endpoint_region", source_endpoint_region)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if sync_architecture is not None:
-            pulumi.set(__self__, "sync_architecture", sync_architecture)
+            _setter("sync_architecture", sync_architecture)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -607,6 +679,10 @@ class SynchronizationInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SynchronizationInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

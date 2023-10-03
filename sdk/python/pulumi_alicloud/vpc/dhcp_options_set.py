@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -41,29 +41,56 @@ class DhcpOptionsSetArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: Tags of the current resource.
         """
+        DhcpOptionsSetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            associate_vpcs=associate_vpcs,
+            dhcp_options_set_description=dhcp_options_set_description,
+            dhcp_options_set_name=dhcp_options_set_name,
+            domain_name=domain_name,
+            domain_name_servers=domain_name_servers,
+            dry_run=dry_run,
+            ipv6_lease_time=ipv6_lease_time,
+            lease_time=lease_time,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             associate_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]] = None,
+             dhcp_options_set_description: Optional[pulumi.Input[str]] = None,
+             dhcp_options_set_name: Optional[pulumi.Input[str]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             domain_name_servers: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             ipv6_lease_time: Optional[pulumi.Input[str]] = None,
+             lease_time: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if associate_vpcs is not None:
             warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
             pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
         if associate_vpcs is not None:
-            pulumi.set(__self__, "associate_vpcs", associate_vpcs)
+            _setter("associate_vpcs", associate_vpcs)
         if dhcp_options_set_description is not None:
-            pulumi.set(__self__, "dhcp_options_set_description", dhcp_options_set_description)
+            _setter("dhcp_options_set_description", dhcp_options_set_description)
         if dhcp_options_set_name is not None:
-            pulumi.set(__self__, "dhcp_options_set_name", dhcp_options_set_name)
+            _setter("dhcp_options_set_name", dhcp_options_set_name)
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
         if domain_name_servers is not None:
-            pulumi.set(__self__, "domain_name_servers", domain_name_servers)
+            _setter("domain_name_servers", domain_name_servers)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if ipv6_lease_time is not None:
-            pulumi.set(__self__, "ipv6_lease_time", ipv6_lease_time)
+            _setter("ipv6_lease_time", ipv6_lease_time)
         if lease_time is not None:
-            pulumi.set(__self__, "lease_time", lease_time)
+            _setter("lease_time", lease_time)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="associateVpcs")
@@ -223,33 +250,64 @@ class _DhcpOptionsSetState:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: Tags of the current resource.
         """
+        _DhcpOptionsSetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            associate_vpcs=associate_vpcs,
+            dhcp_options_set_description=dhcp_options_set_description,
+            dhcp_options_set_name=dhcp_options_set_name,
+            domain_name=domain_name,
+            domain_name_servers=domain_name_servers,
+            dry_run=dry_run,
+            ipv6_lease_time=ipv6_lease_time,
+            lease_time=lease_time,
+            owner_id=owner_id,
+            resource_group_id=resource_group_id,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             associate_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]] = None,
+             dhcp_options_set_description: Optional[pulumi.Input[str]] = None,
+             dhcp_options_set_name: Optional[pulumi.Input[str]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             domain_name_servers: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             ipv6_lease_time: Optional[pulumi.Input[str]] = None,
+             lease_time: Optional[pulumi.Input[str]] = None,
+             owner_id: Optional[pulumi.Input[int]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if associate_vpcs is not None:
             warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
             pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
         if associate_vpcs is not None:
-            pulumi.set(__self__, "associate_vpcs", associate_vpcs)
+            _setter("associate_vpcs", associate_vpcs)
         if dhcp_options_set_description is not None:
-            pulumi.set(__self__, "dhcp_options_set_description", dhcp_options_set_description)
+            _setter("dhcp_options_set_description", dhcp_options_set_description)
         if dhcp_options_set_name is not None:
-            pulumi.set(__self__, "dhcp_options_set_name", dhcp_options_set_name)
+            _setter("dhcp_options_set_name", dhcp_options_set_name)
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
         if domain_name_servers is not None:
-            pulumi.set(__self__, "domain_name_servers", domain_name_servers)
+            _setter("domain_name_servers", domain_name_servers)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if ipv6_lease_time is not None:
-            pulumi.set(__self__, "ipv6_lease_time", ipv6_lease_time)
+            _setter("ipv6_lease_time", ipv6_lease_time)
         if lease_time is not None:
-            pulumi.set(__self__, "lease_time", lease_time)
+            _setter("lease_time", lease_time)
         if owner_id is not None:
-            pulumi.set(__self__, "owner_id", owner_id)
+            _setter("owner_id", owner_id)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="associateVpcs")
@@ -522,6 +580,10 @@ class DhcpOptionsSet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DhcpOptionsSetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -546,9 +608,6 @@ class DhcpOptionsSet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DhcpOptionsSetArgs.__new__(DhcpOptionsSetArgs)
 
-            if associate_vpcs is not None and not opts.urn:
-                warnings.warn("""Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""", DeprecationWarning)
-                pulumi.log.warn("""associate_vpcs is deprecated: Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
             __props__.__dict__["associate_vpcs"] = associate_vpcs
             __props__.__dict__["dhcp_options_set_description"] = dhcp_options_set_description
             __props__.__dict__["dhcp_options_set_name"] = dhcp_options_set_name

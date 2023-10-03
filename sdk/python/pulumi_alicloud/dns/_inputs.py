@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -28,9 +28,20 @@ class AccessStrategyDefaultAddrPoolArgs:
         :param pulumi.Input[str] addr_pool_id: The ID of the address pool in the primary address pool group.
         :param pulumi.Input[int] lba_weight: The weight of the address pool in the primary address pool group.
         """
-        pulumi.set(__self__, "addr_pool_id", addr_pool_id)
+        AccessStrategyDefaultAddrPoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addr_pool_id=addr_pool_id,
+            lba_weight=lba_weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addr_pool_id: pulumi.Input[str],
+             lba_weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("addr_pool_id", addr_pool_id)
         if lba_weight is not None:
-            pulumi.set(__self__, "lba_weight", lba_weight)
+            _setter("lba_weight", lba_weight)
 
     @property
     @pulumi.getter(name="addrPoolId")
@@ -66,10 +77,21 @@ class AccessStrategyFailoverAddrPoolArgs:
         :param pulumi.Input[str] addr_pool_id: The ID of the address pool in the secondary address pool group.
         :param pulumi.Input[int] lba_weight: The weight of the address pool in the secondary address pool group.
         """
+        AccessStrategyFailoverAddrPoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addr_pool_id=addr_pool_id,
+            lba_weight=lba_weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addr_pool_id: Optional[pulumi.Input[str]] = None,
+             lba_weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if addr_pool_id is not None:
-            pulumi.set(__self__, "addr_pool_id", addr_pool_id)
+            _setter("addr_pool_id", addr_pool_id)
         if lba_weight is not None:
-            pulumi.set(__self__, "lba_weight", lba_weight)
+            _setter("lba_weight", lba_weight)
 
     @property
     @pulumi.getter(name="addrPoolId")
@@ -103,8 +125,17 @@ class AccessStrategyLineArgs:
         """
         :param pulumi.Input[str] line_code: The line code of the source region.
         """
+        AccessStrategyLineArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            line_code=line_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             line_code: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if line_code is not None:
-            pulumi.set(__self__, "line_code", line_code)
+            _setter("line_code", line_code)
 
     @property
     @pulumi.getter(name="lineCode")
@@ -134,13 +165,30 @@ class AddressPoolAddressArgs:
         :param pulumi.Input[int] lba_weight: The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
         :param pulumi.Input[str] remark: The description of the address.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "attribute_info", attribute_info)
-        pulumi.set(__self__, "mode", mode)
+        AddressPoolAddressArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            attribute_info=attribute_info,
+            mode=mode,
+            lba_weight=lba_weight,
+            remark=remark,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: pulumi.Input[str],
+             attribute_info: pulumi.Input[str],
+             mode: pulumi.Input[str],
+             lba_weight: Optional[pulumi.Input[int]] = None,
+             remark: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("attribute_info", attribute_info)
+        _setter("mode", mode)
         if lba_weight is not None:
-            pulumi.set(__self__, "lba_weight", lba_weight)
+            _setter("lba_weight", lba_weight)
         if remark is not None:
-            pulumi.set(__self__, "remark", remark)
+            _setter("remark", remark)
 
     @property
     @pulumi.getter
@@ -212,8 +260,19 @@ class CustomLineIpSegmentListArgs:
         :param pulumi.Input[str] end_ip: The end IP address of the CIDR block.
         :param pulumi.Input[str] start_ip: The start IP address of the CIDR block.
         """
-        pulumi.set(__self__, "end_ip", end_ip)
-        pulumi.set(__self__, "start_ip", start_ip)
+        CustomLineIpSegmentListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end_ip=end_ip,
+            start_ip=start_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end_ip: pulumi.Input[str],
+             start_ip: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("end_ip", end_ip)
+        _setter("start_ip", start_ip)
 
     @property
     @pulumi.getter(name="endIp")
@@ -253,14 +312,29 @@ class GtmInstanceAlertConfigArgs:
         :param pulumi.Input[str] notice_type: The Alarm Event Type.
         :param pulumi.Input[bool] sms_notice: Whether to configure SMS notification. Valid values: `true`, `false`.
         """
+        GtmInstanceAlertConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dingtalk_notice=dingtalk_notice,
+            email_notice=email_notice,
+            notice_type=notice_type,
+            sms_notice=sms_notice,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dingtalk_notice: Optional[pulumi.Input[bool]] = None,
+             email_notice: Optional[pulumi.Input[bool]] = None,
+             notice_type: Optional[pulumi.Input[str]] = None,
+             sms_notice: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dingtalk_notice is not None:
-            pulumi.set(__self__, "dingtalk_notice", dingtalk_notice)
+            _setter("dingtalk_notice", dingtalk_notice)
         if email_notice is not None:
-            pulumi.set(__self__, "email_notice", email_notice)
+            _setter("email_notice", email_notice)
         if notice_type is not None:
-            pulumi.set(__self__, "notice_type", notice_type)
+            _setter("notice_type", notice_type)
         if sms_notice is not None:
-            pulumi.set(__self__, "sms_notice", sms_notice)
+            _setter("sms_notice", sms_notice)
 
     @property
     @pulumi.getter(name="dingtalkNotice")
@@ -320,8 +394,19 @@ class MonitorConfigIspCityNodeArgs:
         :param pulumi.Input[str] city_code: The code of the city node to monitor.
         :param pulumi.Input[str] isp_code: The code of the Internet provider service (ISP) node to monitor.
         """
-        pulumi.set(__self__, "city_code", city_code)
-        pulumi.set(__self__, "isp_code", isp_code)
+        MonitorConfigIspCityNodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            city_code=city_code,
+            isp_code=isp_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             city_code: pulumi.Input[str],
+             isp_code: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("city_code", city_code)
+        _setter("isp_code", isp_code)
 
     @property
     @pulumi.getter(name="cityCode")

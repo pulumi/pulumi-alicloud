@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -49,31 +49,68 @@ class ApiArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         :param pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
-        pulumi.set(__self__, "auth_type", auth_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "request_config", request_config)
-        pulumi.set(__self__, "service_type", service_type)
+        ApiArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_type=auth_type,
+            description=description,
+            group_id=group_id,
+            request_config=request_config,
+            service_type=service_type,
+            constant_parameters=constant_parameters,
+            fc_service_config=fc_service_config,
+            force_nonce_check=force_nonce_check,
+            http_service_config=http_service_config,
+            http_vpc_service_config=http_vpc_service_config,
+            mock_service_config=mock_service_config,
+            name=name,
+            request_parameters=request_parameters,
+            stage_names=stage_names,
+            system_parameters=system_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_type: pulumi.Input[str],
+             description: pulumi.Input[str],
+             group_id: pulumi.Input[str],
+             request_config: pulumi.Input['ApiRequestConfigArgs'],
+             service_type: pulumi.Input[str],
+             constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]]] = None,
+             fc_service_config: Optional[pulumi.Input['ApiFcServiceConfigArgs']] = None,
+             force_nonce_check: Optional[pulumi.Input[bool]] = None,
+             http_service_config: Optional[pulumi.Input['ApiHttpServiceConfigArgs']] = None,
+             http_vpc_service_config: Optional[pulumi.Input['ApiHttpVpcServiceConfigArgs']] = None,
+             mock_service_config: Optional[pulumi.Input['ApiMockServiceConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             request_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]]] = None,
+             stage_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auth_type", auth_type)
+        _setter("description", description)
+        _setter("group_id", group_id)
+        _setter("request_config", request_config)
+        _setter("service_type", service_type)
         if constant_parameters is not None:
-            pulumi.set(__self__, "constant_parameters", constant_parameters)
+            _setter("constant_parameters", constant_parameters)
         if fc_service_config is not None:
-            pulumi.set(__self__, "fc_service_config", fc_service_config)
+            _setter("fc_service_config", fc_service_config)
         if force_nonce_check is not None:
-            pulumi.set(__self__, "force_nonce_check", force_nonce_check)
+            _setter("force_nonce_check", force_nonce_check)
         if http_service_config is not None:
-            pulumi.set(__self__, "http_service_config", http_service_config)
+            _setter("http_service_config", http_service_config)
         if http_vpc_service_config is not None:
-            pulumi.set(__self__, "http_vpc_service_config", http_vpc_service_config)
+            _setter("http_vpc_service_config", http_vpc_service_config)
         if mock_service_config is not None:
-            pulumi.set(__self__, "mock_service_config", mock_service_config)
+            _setter("mock_service_config", mock_service_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if request_parameters is not None:
-            pulumi.set(__self__, "request_parameters", request_parameters)
+            _setter("request_parameters", request_parameters)
         if stage_names is not None:
-            pulumi.set(__self__, "stage_names", stage_names)
+            _setter("stage_names", stage_names)
         if system_parameters is not None:
-            pulumi.set(__self__, "system_parameters", system_parameters)
+            _setter("system_parameters", system_parameters)
 
     @property
     @pulumi.getter(name="authType")
@@ -294,38 +331,77 @@ class _ApiState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] stage_names: Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
         :param pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]] system_parameters: system_parameters defines the system parameters of the api. See `system_parameters` below.
         """
+        _ApiState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_id=api_id,
+            auth_type=auth_type,
+            constant_parameters=constant_parameters,
+            description=description,
+            fc_service_config=fc_service_config,
+            force_nonce_check=force_nonce_check,
+            group_id=group_id,
+            http_service_config=http_service_config,
+            http_vpc_service_config=http_vpc_service_config,
+            mock_service_config=mock_service_config,
+            name=name,
+            request_config=request_config,
+            request_parameters=request_parameters,
+            service_type=service_type,
+            stage_names=stage_names,
+            system_parameters=system_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_id: Optional[pulumi.Input[str]] = None,
+             auth_type: Optional[pulumi.Input[str]] = None,
+             constant_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiConstantParameterArgs']]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             fc_service_config: Optional[pulumi.Input['ApiFcServiceConfigArgs']] = None,
+             force_nonce_check: Optional[pulumi.Input[bool]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             http_service_config: Optional[pulumi.Input['ApiHttpServiceConfigArgs']] = None,
+             http_vpc_service_config: Optional[pulumi.Input['ApiHttpVpcServiceConfigArgs']] = None,
+             mock_service_config: Optional[pulumi.Input['ApiMockServiceConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             request_config: Optional[pulumi.Input['ApiRequestConfigArgs']] = None,
+             request_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]]] = None,
+             service_type: Optional[pulumi.Input[str]] = None,
+             stage_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_id is not None:
-            pulumi.set(__self__, "api_id", api_id)
+            _setter("api_id", api_id)
         if auth_type is not None:
-            pulumi.set(__self__, "auth_type", auth_type)
+            _setter("auth_type", auth_type)
         if constant_parameters is not None:
-            pulumi.set(__self__, "constant_parameters", constant_parameters)
+            _setter("constant_parameters", constant_parameters)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if fc_service_config is not None:
-            pulumi.set(__self__, "fc_service_config", fc_service_config)
+            _setter("fc_service_config", fc_service_config)
         if force_nonce_check is not None:
-            pulumi.set(__self__, "force_nonce_check", force_nonce_check)
+            _setter("force_nonce_check", force_nonce_check)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if http_service_config is not None:
-            pulumi.set(__self__, "http_service_config", http_service_config)
+            _setter("http_service_config", http_service_config)
         if http_vpc_service_config is not None:
-            pulumi.set(__self__, "http_vpc_service_config", http_vpc_service_config)
+            _setter("http_vpc_service_config", http_vpc_service_config)
         if mock_service_config is not None:
-            pulumi.set(__self__, "mock_service_config", mock_service_config)
+            _setter("mock_service_config", mock_service_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if request_config is not None:
-            pulumi.set(__self__, "request_config", request_config)
+            _setter("request_config", request_config)
         if request_parameters is not None:
-            pulumi.set(__self__, "request_parameters", request_parameters)
+            _setter("request_parameters", request_parameters)
         if service_type is not None:
-            pulumi.set(__self__, "service_type", service_type)
+            _setter("service_type", service_type)
         if stage_names is not None:
-            pulumi.set(__self__, "stage_names", stage_names)
+            _setter("stage_names", stage_names)
         if system_parameters is not None:
-            pulumi.set(__self__, "system_parameters", system_parameters)
+            _setter("system_parameters", system_parameters)
 
     @property
     @pulumi.getter(name="apiId")
@@ -677,6 +753,10 @@ class Api(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApiArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -713,15 +793,40 @@ class Api(pulumi.CustomResource):
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
+            if fc_service_config is not None and not isinstance(fc_service_config, ApiFcServiceConfigArgs):
+                fc_service_config = fc_service_config or {}
+                def _setter(key, value):
+                    fc_service_config[key] = value
+                ApiFcServiceConfigArgs._configure(_setter, **fc_service_config)
             __props__.__dict__["fc_service_config"] = fc_service_config
             __props__.__dict__["force_nonce_check"] = force_nonce_check
             if group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_id'")
             __props__.__dict__["group_id"] = group_id
+            if http_service_config is not None and not isinstance(http_service_config, ApiHttpServiceConfigArgs):
+                http_service_config = http_service_config or {}
+                def _setter(key, value):
+                    http_service_config[key] = value
+                ApiHttpServiceConfigArgs._configure(_setter, **http_service_config)
             __props__.__dict__["http_service_config"] = http_service_config
+            if http_vpc_service_config is not None and not isinstance(http_vpc_service_config, ApiHttpVpcServiceConfigArgs):
+                http_vpc_service_config = http_vpc_service_config or {}
+                def _setter(key, value):
+                    http_vpc_service_config[key] = value
+                ApiHttpVpcServiceConfigArgs._configure(_setter, **http_vpc_service_config)
             __props__.__dict__["http_vpc_service_config"] = http_vpc_service_config
+            if mock_service_config is not None and not isinstance(mock_service_config, ApiMockServiceConfigArgs):
+                mock_service_config = mock_service_config or {}
+                def _setter(key, value):
+                    mock_service_config[key] = value
+                ApiMockServiceConfigArgs._configure(_setter, **mock_service_config)
             __props__.__dict__["mock_service_config"] = mock_service_config
             __props__.__dict__["name"] = name
+            if request_config is not None and not isinstance(request_config, ApiRequestConfigArgs):
+                request_config = request_config or {}
+                def _setter(key, value):
+                    request_config[key] = value
+                ApiRequestConfigArgs._configure(_setter, **request_config)
             if request_config is None and not opts.urn:
                 raise TypeError("Missing required property 'request_config'")
             __props__.__dict__["request_config"] = request_config

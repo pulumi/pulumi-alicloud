@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['IngestionArgs', 'Ingestion']
@@ -35,17 +35,42 @@ class IngestionArgs:
         :param pulumi.Input[str] description: Ingestion job description.
         :param pulumi.Input[str] time_zone: Which time zone is the log time imported in, e.g. `+0800`.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "ingestion_name", ingestion_name)
-        pulumi.set(__self__, "interval", interval)
-        pulumi.set(__self__, "logstore", logstore)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "run_immediately", run_immediately)
-        pulumi.set(__self__, "source", source)
+        IngestionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            ingestion_name=ingestion_name,
+            interval=interval,
+            logstore=logstore,
+            project=project,
+            run_immediately=run_immediately,
+            source=source,
+            description=description,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: pulumi.Input[str],
+             ingestion_name: pulumi.Input[str],
+             interval: pulumi.Input[str],
+             logstore: pulumi.Input[str],
+             project: pulumi.Input[str],
+             run_immediately: pulumi.Input[bool],
+             source: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
+        _setter("ingestion_name", ingestion_name)
+        _setter("interval", interval)
+        _setter("logstore", logstore)
+        _setter("project", project)
+        _setter("run_immediately", run_immediately)
+        _setter("source", source)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter(name="displayName")
@@ -180,24 +205,49 @@ class _IngestionState:
         :param pulumi.Input[str] source: Data source and data format details. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
         :param pulumi.Input[str] time_zone: Which time zone is the log time imported in, e.g. `+0800`.
         """
+        _IngestionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            display_name=display_name,
+            ingestion_name=ingestion_name,
+            interval=interval,
+            logstore=logstore,
+            project=project,
+            run_immediately=run_immediately,
+            source=source,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             ingestion_name: Optional[pulumi.Input[str]] = None,
+             interval: Optional[pulumi.Input[str]] = None,
+             logstore: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             run_immediately: Optional[pulumi.Input[bool]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             time_zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if ingestion_name is not None:
-            pulumi.set(__self__, "ingestion_name", ingestion_name)
+            _setter("ingestion_name", ingestion_name)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if logstore is not None:
-            pulumi.set(__self__, "logstore", logstore)
+            _setter("logstore", logstore)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if run_immediately is not None:
-            pulumi.set(__self__, "run_immediately", run_immediately)
+            _setter("run_immediately", run_immediately)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter
@@ -497,6 +547,10 @@ class Ingestion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            IngestionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

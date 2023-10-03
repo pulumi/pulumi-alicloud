@@ -31,14 +31,14 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersQue
     }
 
     /**
-     * The key of the request header.
+     * The key of the request path.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return The key of the request header.
+     * @return The key of the request path.
      * 
      */
     public Optional<Output<String>> key() {
@@ -46,14 +46,14 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersQue
     }
 
     /**
-     * The value of the request header.
+     * The key of the request path.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the request header.
+     * @return The key of the request path.
      * 
      */
     public Optional<Output<String>> value() {
@@ -108,7 +108,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersQue
         }
 
         /**
-         * @param key The key of the request header.
+         * @param key The key of the request path.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersQue
         }
 
         /**
-         * @param key The key of the request header.
+         * @param key The key of the request path.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersQue
         }
 
         /**
-         * @param value The value of the request header.
+         * @param value The key of the request path.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersQue
         }
 
         /**
-         * @param value The value of the request header.
+         * @param value The key of the request path.
          * 
          * @return builder
          * 

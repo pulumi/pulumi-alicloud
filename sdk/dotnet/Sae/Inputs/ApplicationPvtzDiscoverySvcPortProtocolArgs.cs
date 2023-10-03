@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
     public sealed class ApplicationPvtzDiscoverySvcPortProtocolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The port that is used to check the status of TCP connections.
+        /// The port.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

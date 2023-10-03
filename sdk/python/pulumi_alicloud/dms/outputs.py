@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -58,23 +58,64 @@ class GetEnterpriseDatabasesDatabaseResult(dict):
         :param str sid: Database SID.> only Oracle Database Display.
         :param str state: Library status, value description:-**NORMAL**: NORMAL-**DISABLE**: Disabled-**OFFLINE**: OFFLINE-**NOT_EXIST**: does not exist
         """
-        pulumi.set(__self__, "catalog_name", catalog_name)
-        pulumi.set(__self__, "database_id", database_id)
-        pulumi.set(__self__, "db_type", db_type)
-        pulumi.set(__self__, "dba_id", dba_id)
-        pulumi.set(__self__, "dba_name", dba_name)
-        pulumi.set(__self__, "encoding", encoding)
-        pulumi.set(__self__, "env_type", env_type)
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "owner_id_lists", owner_id_lists)
-        pulumi.set(__self__, "owner_name_lists", owner_name_lists)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "schema_name", schema_name)
-        pulumi.set(__self__, "search_name", search_name)
-        pulumi.set(__self__, "sid", sid)
-        pulumi.set(__self__, "state", state)
+        GetEnterpriseDatabasesDatabaseResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            catalog_name=catalog_name,
+            database_id=database_id,
+            db_type=db_type,
+            dba_id=dba_id,
+            dba_name=dba_name,
+            encoding=encoding,
+            env_type=env_type,
+            host=host,
+            id=id,
+            instance_id=instance_id,
+            owner_id_lists=owner_id_lists,
+            owner_name_lists=owner_name_lists,
+            port=port,
+            schema_name=schema_name,
+            search_name=search_name,
+            sid=sid,
+            state=state,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             catalog_name: str,
+             database_id: str,
+             db_type: str,
+             dba_id: str,
+             dba_name: str,
+             encoding: str,
+             env_type: str,
+             host: str,
+             id: str,
+             instance_id: str,
+             owner_id_lists: Sequence[str],
+             owner_name_lists: Sequence[str],
+             port: int,
+             schema_name: str,
+             search_name: str,
+             sid: str,
+             state: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("catalog_name", catalog_name)
+        _setter("database_id", database_id)
+        _setter("db_type", db_type)
+        _setter("dba_id", dba_id)
+        _setter("dba_name", dba_name)
+        _setter("encoding", encoding)
+        _setter("env_type", env_type)
+        _setter("host", host)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("owner_id_lists", owner_id_lists)
+        _setter("owner_name_lists", owner_name_lists)
+        _setter("port", port)
+        _setter("schema_name", schema_name)
+        _setter("search_name", search_name)
+        _setter("sid", sid)
+        _setter("state", state)
 
     @property
     @pulumi.getter(name="catalogName")
@@ -264,30 +305,85 @@ class GetEnterpriseInstancesInstanceResult(dict):
         :param int use_dsql: Indicates whether cross-database query was enabled for the database instance.
         :param str vpc_id: The ID of the Virtual Private Cloud (VPC) to which the database instance belongs.
         """
-        pulumi.set(__self__, "data_link_name", data_link_name)
-        pulumi.set(__self__, "database_password", database_password)
-        pulumi.set(__self__, "database_user", database_user)
-        pulumi.set(__self__, "dba_id", dba_id)
-        pulumi.set(__self__, "dba_nick_name", dba_nick_name)
-        pulumi.set(__self__, "ddl_online", ddl_online)
-        pulumi.set(__self__, "ecs_instance_id", ecs_instance_id)
-        pulumi.set(__self__, "ecs_region", ecs_region)
-        pulumi.set(__self__, "env_type", env_type)
-        pulumi.set(__self__, "export_timeout", export_timeout)
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_alias", instance_alias)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_source", instance_source)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "query_timeout", query_timeout)
-        pulumi.set(__self__, "safe_rule_id", safe_rule_id)
-        pulumi.set(__self__, "sid", sid)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "use_dsql", use_dsql)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetEnterpriseInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_link_name=data_link_name,
+            database_password=database_password,
+            database_user=database_user,
+            dba_id=dba_id,
+            dba_nick_name=dba_nick_name,
+            ddl_online=ddl_online,
+            ecs_instance_id=ecs_instance_id,
+            ecs_region=ecs_region,
+            env_type=env_type,
+            export_timeout=export_timeout,
+            host=host,
+            id=id,
+            instance_alias=instance_alias,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_source=instance_source,
+            instance_type=instance_type,
+            port=port,
+            query_timeout=query_timeout,
+            safe_rule_id=safe_rule_id,
+            sid=sid,
+            status=status,
+            use_dsql=use_dsql,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_link_name: str,
+             database_password: str,
+             database_user: str,
+             dba_id: str,
+             dba_nick_name: str,
+             ddl_online: int,
+             ecs_instance_id: str,
+             ecs_region: str,
+             env_type: str,
+             export_timeout: int,
+             host: str,
+             id: str,
+             instance_alias: str,
+             instance_id: str,
+             instance_name: str,
+             instance_source: str,
+             instance_type: str,
+             port: int,
+             query_timeout: int,
+             safe_rule_id: str,
+             sid: str,
+             status: str,
+             use_dsql: int,
+             vpc_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("data_link_name", data_link_name)
+        _setter("database_password", database_password)
+        _setter("database_user", database_user)
+        _setter("dba_id", dba_id)
+        _setter("dba_nick_name", dba_nick_name)
+        _setter("ddl_online", ddl_online)
+        _setter("ecs_instance_id", ecs_instance_id)
+        _setter("ecs_region", ecs_region)
+        _setter("env_type", env_type)
+        _setter("export_timeout", export_timeout)
+        _setter("host", host)
+        _setter("id", id)
+        _setter("instance_alias", instance_alias)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("instance_source", instance_source)
+        _setter("instance_type", instance_type)
+        _setter("port", port)
+        _setter("query_timeout", query_timeout)
+        _setter("safe_rule_id", safe_rule_id)
+        _setter("sid", sid)
+        _setter("status", status)
+        _setter("use_dsql", use_dsql)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="dataLinkName")
@@ -503,17 +599,46 @@ class GetEnterpriseLogicDatabasesDatabaseResult(dict):
         :param str schema_name: Logical Library name.
         :param str search_name: Logical library search name.
         """
-        pulumi.set(__self__, "alias", alias)
-        pulumi.set(__self__, "database_ids", database_ids)
-        pulumi.set(__self__, "db_type", db_type)
-        pulumi.set(__self__, "env_type", env_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "logic", logic)
-        pulumi.set(__self__, "logic_database_id", logic_database_id)
-        pulumi.set(__self__, "owner_id_lists", owner_id_lists)
-        pulumi.set(__self__, "owner_name_lists", owner_name_lists)
-        pulumi.set(__self__, "schema_name", schema_name)
-        pulumi.set(__self__, "search_name", search_name)
+        GetEnterpriseLogicDatabasesDatabaseResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias=alias,
+            database_ids=database_ids,
+            db_type=db_type,
+            env_type=env_type,
+            id=id,
+            logic=logic,
+            logic_database_id=logic_database_id,
+            owner_id_lists=owner_id_lists,
+            owner_name_lists=owner_name_lists,
+            schema_name=schema_name,
+            search_name=search_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias: str,
+             database_ids: Sequence[str],
+             db_type: str,
+             env_type: str,
+             id: str,
+             logic: bool,
+             logic_database_id: str,
+             owner_id_lists: Sequence[str],
+             owner_name_lists: Sequence[str],
+             schema_name: str,
+             search_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alias", alias)
+        _setter("database_ids", database_ids)
+        _setter("db_type", db_type)
+        _setter("env_type", env_type)
+        _setter("id", id)
+        _setter("logic", logic)
+        _setter("logic_database_id", logic_database_id)
+        _setter("owner_id_lists", owner_id_lists)
+        _setter("owner_name_lists", owner_name_lists)
+        _setter("schema_name", schema_name)
+        _setter("search_name", search_name)
 
     @property
     @pulumi.getter
@@ -633,18 +758,49 @@ class GetEnterpriseProxiesProxyResult(dict):
         :param bool public_enable: Indicates whether the public endpoint is enabled.
         :param str public_host: The public endpoint. A public endpoint is returned no matter whether the public endpoint is enabled or disabled. **Note:** When the public network address is in the **true** state, the returned public network address is a valid address with DNS resolution capability. When the public address is in the **false** state, the returned Public address is an invalid address without DNS resolution.
         """
-        pulumi.set(__self__, "creator_id", creator_id)
-        pulumi.set(__self__, "creator_name", creator_name)
-        pulumi.set(__self__, "https_port", https_port)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "private_enable", private_enable)
-        pulumi.set(__self__, "private_host", private_host)
-        pulumi.set(__self__, "protocol_port", protocol_port)
-        pulumi.set(__self__, "protocol_type", protocol_type)
-        pulumi.set(__self__, "proxy_id", proxy_id)
-        pulumi.set(__self__, "public_enable", public_enable)
-        pulumi.set(__self__, "public_host", public_host)
+        GetEnterpriseProxiesProxyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            creator_id=creator_id,
+            creator_name=creator_name,
+            https_port=https_port,
+            id=id,
+            instance_id=instance_id,
+            private_enable=private_enable,
+            private_host=private_host,
+            protocol_port=protocol_port,
+            protocol_type=protocol_type,
+            proxy_id=proxy_id,
+            public_enable=public_enable,
+            public_host=public_host,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             creator_id: str,
+             creator_name: str,
+             https_port: int,
+             id: str,
+             instance_id: str,
+             private_enable: bool,
+             private_host: str,
+             protocol_port: int,
+             protocol_type: str,
+             proxy_id: str,
+             public_enable: bool,
+             public_host: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("creator_id", creator_id)
+        _setter("creator_name", creator_name)
+        _setter("https_port", https_port)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("private_enable", private_enable)
+        _setter("private_host", private_host)
+        _setter("protocol_port", protocol_port)
+        _setter("protocol_type", protocol_type)
+        _setter("proxy_id", proxy_id)
+        _setter("public_enable", public_enable)
+        _setter("public_host", public_host)
 
     @property
     @pulumi.getter(name="creatorId")
@@ -770,18 +926,49 @@ class GetEnterpriseProxyAccessesAccessResult(dict):
         :param str user_name: User nickname.
         :param str user_uid: User UID.
         """
-        pulumi.set(__self__, "access_id", access_id)
-        pulumi.set(__self__, "access_secret", access_secret)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "indep_account", indep_account)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "origin_info", origin_info)
-        pulumi.set(__self__, "proxy_access_id", proxy_access_id)
-        pulumi.set(__self__, "proxy_id", proxy_id)
-        pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "user_name", user_name)
-        pulumi.set(__self__, "user_uid", user_uid)
+        GetEnterpriseProxyAccessesAccessResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_id=access_id,
+            access_secret=access_secret,
+            create_time=create_time,
+            id=id,
+            indep_account=indep_account,
+            instance_id=instance_id,
+            origin_info=origin_info,
+            proxy_access_id=proxy_access_id,
+            proxy_id=proxy_id,
+            user_id=user_id,
+            user_name=user_name,
+            user_uid=user_uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_id: str,
+             access_secret: str,
+             create_time: str,
+             id: str,
+             indep_account: str,
+             instance_id: str,
+             origin_info: str,
+             proxy_access_id: str,
+             proxy_id: str,
+             user_id: str,
+             user_name: str,
+             user_uid: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_id", access_id)
+        _setter("access_secret", access_secret)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("indep_account", indep_account)
+        _setter("instance_id", instance_id)
+        _setter("origin_info", origin_info)
+        _setter("proxy_access_id", proxy_access_id)
+        _setter("proxy_id", proxy_id)
+        _setter("user_id", user_id)
+        _setter("user_name", user_name)
+        _setter("user_uid", user_uid)
 
     @property
     @pulumi.getter(name="accessId")
@@ -898,16 +1085,43 @@ class GetEnterpriseUsersUserResult(dict):
         :param str user_id: The ID of the user.
         :param str user_name: The nickname of the user.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mobile", mobile)
-        pulumi.set(__self__, "nick_name", nick_name)
-        pulumi.set(__self__, "parent_uid", parent_uid)
-        pulumi.set(__self__, "role_ids", role_ids)
-        pulumi.set(__self__, "role_names", role_names)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "uid", uid)
-        pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "user_name", user_name)
+        GetEnterpriseUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            mobile=mobile,
+            nick_name=nick_name,
+            parent_uid=parent_uid,
+            role_ids=role_ids,
+            role_names=role_names,
+            status=status,
+            uid=uid,
+            user_id=user_id,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             mobile: str,
+             nick_name: str,
+             parent_uid: int,
+             role_ids: Sequence[int],
+             role_names: Sequence[str],
+             status: str,
+             uid: str,
+             user_id: str,
+             user_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("mobile", mobile)
+        _setter("nick_name", nick_name)
+        _setter("parent_uid", parent_uid)
+        _setter("role_ids", role_ids)
+        _setter("role_names", role_names)
+        _setter("status", status)
+        _setter("uid", uid)
+        _setter("user_id", user_id)
+        _setter("user_name", user_name)
 
     @property
     @pulumi.getter
@@ -1000,10 +1214,25 @@ class GetUserTenantsTenantResult(dict):
         :param str tenant_name: The name of the user tenant.
         :param str tid: The user tenant id. Same as id.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tenant_name", tenant_name)
-        pulumi.set(__self__, "tid", tid)
+        GetUserTenantsTenantResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            status=status,
+            tenant_name=tenant_name,
+            tid=tid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             status: str,
+             tenant_name: str,
+             tid: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("status", status)
+        _setter("tenant_name", tenant_name)
+        _setter("tid", tid)
 
     @property
     @pulumi.getter

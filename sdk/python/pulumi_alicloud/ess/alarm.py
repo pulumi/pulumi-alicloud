@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AlarmArgs', 'Alarm']
@@ -45,30 +45,65 @@ class AlarmArgs:
         :param pulumi.Input[int] period: The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
         :param pulumi.Input[str] statistics: The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
         """
-        pulumi.set(__self__, "alarm_actions", alarm_actions)
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
-        pulumi.set(__self__, "threshold", threshold)
+        AlarmArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alarm_actions=alarm_actions,
+            metric_name=metric_name,
+            scaling_group_id=scaling_group_id,
+            threshold=threshold,
+            cloud_monitor_group_id=cloud_monitor_group_id,
+            comparison_operator=comparison_operator,
+            description=description,
+            dimensions=dimensions,
+            enable=enable,
+            evaluation_count=evaluation_count,
+            metric_type=metric_type,
+            name=name,
+            period=period,
+            statistics=statistics,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alarm_actions: pulumi.Input[Sequence[pulumi.Input[str]]],
+             metric_name: pulumi.Input[str],
+             scaling_group_id: pulumi.Input[str],
+             threshold: pulumi.Input[str],
+             cloud_monitor_group_id: Optional[pulumi.Input[int]] = None,
+             comparison_operator: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             enable: Optional[pulumi.Input[bool]] = None,
+             evaluation_count: Optional[pulumi.Input[int]] = None,
+             metric_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             statistics: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alarm_actions", alarm_actions)
+        _setter("metric_name", metric_name)
+        _setter("scaling_group_id", scaling_group_id)
+        _setter("threshold", threshold)
         if cloud_monitor_group_id is not None:
-            pulumi.set(__self__, "cloud_monitor_group_id", cloud_monitor_group_id)
+            _setter("cloud_monitor_group_id", cloud_monitor_group_id)
         if comparison_operator is not None:
-            pulumi.set(__self__, "comparison_operator", comparison_operator)
+            _setter("comparison_operator", comparison_operator)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if evaluation_count is not None:
-            pulumi.set(__self__, "evaluation_count", evaluation_count)
+            _setter("evaluation_count", evaluation_count)
         if metric_type is not None:
-            pulumi.set(__self__, "metric_type", metric_type)
+            _setter("metric_type", metric_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
 
     @property
     @pulumi.getter(name="alarmActions")
@@ -278,36 +313,73 @@ class _AlarmState:
         :param pulumi.Input[str] statistics: The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
         :param pulumi.Input[str] threshold: The value against which the specified statistics is compared.
         """
+        _AlarmState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alarm_actions=alarm_actions,
+            cloud_monitor_group_id=cloud_monitor_group_id,
+            comparison_operator=comparison_operator,
+            description=description,
+            dimensions=dimensions,
+            enable=enable,
+            evaluation_count=evaluation_count,
+            metric_name=metric_name,
+            metric_type=metric_type,
+            name=name,
+            period=period,
+            scaling_group_id=scaling_group_id,
+            state=state,
+            statistics=statistics,
+            threshold=threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alarm_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cloud_monitor_group_id: Optional[pulumi.Input[int]] = None,
+             comparison_operator: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             enable: Optional[pulumi.Input[bool]] = None,
+             evaluation_count: Optional[pulumi.Input[int]] = None,
+             metric_name: Optional[pulumi.Input[str]] = None,
+             metric_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             statistics: Optional[pulumi.Input[str]] = None,
+             threshold: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alarm_actions is not None:
-            pulumi.set(__self__, "alarm_actions", alarm_actions)
+            _setter("alarm_actions", alarm_actions)
         if cloud_monitor_group_id is not None:
-            pulumi.set(__self__, "cloud_monitor_group_id", cloud_monitor_group_id)
+            _setter("cloud_monitor_group_id", cloud_monitor_group_id)
         if comparison_operator is not None:
-            pulumi.set(__self__, "comparison_operator", comparison_operator)
+            _setter("comparison_operator", comparison_operator)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if evaluation_count is not None:
-            pulumi.set(__self__, "evaluation_count", evaluation_count)
+            _setter("evaluation_count", evaluation_count)
         if metric_name is not None:
-            pulumi.set(__self__, "metric_name", metric_name)
+            _setter("metric_name", metric_name)
         if metric_type is not None:
-            pulumi.set(__self__, "metric_type", metric_type)
+            _setter("metric_type", metric_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if scaling_group_id is not None:
-            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+            _setter("scaling_group_id", scaling_group_id)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
 
     @property
     @pulumi.getter(name="alarmActions")
@@ -730,6 +802,10 @@ class Alarm(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AlarmArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

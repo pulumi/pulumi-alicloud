@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RemoteWriteArgs', 'RemoteWrite']
@@ -21,8 +21,19 @@ class RemoteWriteArgs:
         :param pulumi.Input[str] cluster_id: The ID of the Prometheus instance.
         :param pulumi.Input[str] remote_write_yaml: The details of the Remote Write configuration item. Specify the value in the YAML format.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "remote_write_yaml", remote_write_yaml)
+        RemoteWriteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            remote_write_yaml=remote_write_yaml,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: pulumi.Input[str],
+             remote_write_yaml: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("remote_write_yaml", remote_write_yaml)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -61,12 +72,25 @@ class _RemoteWriteState:
         :param pulumi.Input[str] remote_write_name: The name of the Remote Write configuration item.
         :param pulumi.Input[str] remote_write_yaml: The details of the Remote Write configuration item. Specify the value in the YAML format.
         """
+        _RemoteWriteState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            remote_write_name=remote_write_name,
+            remote_write_yaml=remote_write_yaml,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             remote_write_name: Optional[pulumi.Input[str]] = None,
+             remote_write_yaml: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if remote_write_name is not None:
-            pulumi.set(__self__, "remote_write_name", remote_write_name)
+            _setter("remote_write_name", remote_write_name)
         if remote_write_yaml is not None:
-            pulumi.set(__self__, "remote_write_yaml", remote_write_yaml)
+            _setter("remote_write_yaml", remote_write_yaml)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -264,6 +288,10 @@ class RemoteWrite(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RemoteWriteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

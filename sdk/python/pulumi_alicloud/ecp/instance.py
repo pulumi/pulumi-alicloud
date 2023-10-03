@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -59,36 +59,77 @@ class InstanceArgs:
         :param pulumi.Input[str] vnc_password: Cloud mobile phone VNC password. The password must be six characters in length and must
                contain only uppercase, lowercase English letters and Arabic numerals.
         """
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_id=image_id,
+            instance_type=instance_type,
+            security_group_id=security_group_id,
+            vswitch_id=vswitch_id,
+            auto_pay=auto_pay,
+            auto_renew=auto_renew,
+            description=description,
+            eip_bandwidth=eip_bandwidth,
+            force=force,
+            instance_name=instance_name,
+            key_pair_name=key_pair_name,
+            payment_type=payment_type,
+            period=period,
+            period_unit=period_unit,
+            resolution=resolution,
+            status=status,
+            vnc_password=vnc_password,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_id: pulumi.Input[str],
+             instance_type: pulumi.Input[str],
+             security_group_id: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             auto_pay: Optional[pulumi.Input[bool]] = None,
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             eip_bandwidth: Optional[pulumi.Input[int]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[str]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             resolution: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vnc_password: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("image_id", image_id)
+        _setter("instance_type", instance_type)
+        _setter("security_group_id", security_group_id)
+        _setter("vswitch_id", vswitch_id)
         if auto_pay is not None:
-            pulumi.set(__self__, "auto_pay", auto_pay)
+            _setter("auto_pay", auto_pay)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if eip_bandwidth is not None:
-            pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
+            _setter("eip_bandwidth", eip_bandwidth)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if resolution is not None:
-            pulumi.set(__self__, "resolution", resolution)
+            _setter("resolution", resolution)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vnc_password is not None:
-            pulumi.set(__self__, "vnc_password", vnc_password)
+            _setter("vnc_password", vnc_password)
 
     @property
     @pulumi.getter(name="imageId")
@@ -351,40 +392,81 @@ class _InstanceState:
                contain only uppercase, lowercase English letters and Arabic numerals.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_pay=auto_pay,
+            auto_renew=auto_renew,
+            description=description,
+            eip_bandwidth=eip_bandwidth,
+            force=force,
+            image_id=image_id,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            key_pair_name=key_pair_name,
+            payment_type=payment_type,
+            period=period,
+            period_unit=period_unit,
+            resolution=resolution,
+            security_group_id=security_group_id,
+            status=status,
+            vnc_password=vnc_password,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_pay: Optional[pulumi.Input[bool]] = None,
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             eip_bandwidth: Optional[pulumi.Input[int]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[str]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             resolution: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vnc_password: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_pay is not None:
-            pulumi.set(__self__, "auto_pay", auto_pay)
+            _setter("auto_pay", auto_pay)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if eip_bandwidth is not None:
-            pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
+            _setter("eip_bandwidth", eip_bandwidth)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if resolution is not None:
-            pulumi.set(__self__, "resolution", resolution)
+            _setter("resolution", resolution)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vnc_password is not None:
-            pulumi.set(__self__, "vnc_password", vnc_password)
+            _setter("vnc_password", vnc_password)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -774,6 +856,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

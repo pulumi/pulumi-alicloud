@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -62,11 +62,24 @@ class SearchIndexSchema(dict):
         :param Sequence['SearchIndexSchemaIndexSettingArgs'] index_settings: The settings of the search index, including routingFields. See `index_setting` below.
         :param Sequence['SearchIndexSchemaIndexSortArgs'] index_sorts: The presorting settings of the search index, including sorters. If no value is specified for the indexSort parameter, field values are sorted by primary key by default. See `index_sort` below.
         """
-        pulumi.set(__self__, "field_schemas", field_schemas)
+        SearchIndexSchema._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            field_schemas=field_schemas,
+            index_settings=index_settings,
+            index_sorts=index_sorts,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             field_schemas: Sequence['outputs.SearchIndexSchemaFieldSchema'],
+             index_settings: Optional[Sequence['outputs.SearchIndexSchemaIndexSetting']] = None,
+             index_sorts: Optional[Sequence['outputs.SearchIndexSchemaIndexSort']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("field_schemas", field_schemas)
         if index_settings is not None:
-            pulumi.set(__self__, "index_settings", index_settings)
+            _setter("index_settings", index_settings)
         if index_sorts is not None:
-            pulumi.set(__self__, "index_sorts", index_sorts)
+            _setter("index_sorts", index_sorts)
 
     @property
     @pulumi.getter(name="fieldSchemas")
@@ -127,7 +140,7 @@ class SearchIndexSchemaFieldSchema(dict):
                  is_array: Optional[bool] = None,
                  store: Optional[bool] = None):
         """
-        :param str field_name: Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+        :param str field_name: The name of the field that is used to sort data. only required if sorter_type is FieldSort.
         :param str field_type: Specifies the type of the field. Use FieldType.XXX to set the type.
         :param str analyzer: Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
         :param bool enable_sort_and_agg: Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
@@ -135,24 +148,45 @@ class SearchIndexSchemaFieldSchema(dict):
         :param bool is_array: Specifies whether the value is an array. Type: Boolean.
         :param bool store: Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
         """
-        pulumi.set(__self__, "field_name", field_name)
-        pulumi.set(__self__, "field_type", field_type)
+        SearchIndexSchemaFieldSchema._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            field_name=field_name,
+            field_type=field_type,
+            analyzer=analyzer,
+            enable_sort_and_agg=enable_sort_and_agg,
+            index=index,
+            is_array=is_array,
+            store=store,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             field_name: str,
+             field_type: str,
+             analyzer: Optional[str] = None,
+             enable_sort_and_agg: Optional[bool] = None,
+             index: Optional[bool] = None,
+             is_array: Optional[bool] = None,
+             store: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("field_name", field_name)
+        _setter("field_type", field_type)
         if analyzer is not None:
-            pulumi.set(__self__, "analyzer", analyzer)
+            _setter("analyzer", analyzer)
         if enable_sort_and_agg is not None:
-            pulumi.set(__self__, "enable_sort_and_agg", enable_sort_and_agg)
+            _setter("enable_sort_and_agg", enable_sort_and_agg)
         if index is not None:
-            pulumi.set(__self__, "index", index)
+            _setter("index", index)
         if is_array is not None:
-            pulumi.set(__self__, "is_array", is_array)
+            _setter("is_array", is_array)
         if store is not None:
-            pulumi.set(__self__, "store", store)
+            _setter("store", store)
 
     @property
     @pulumi.getter(name="fieldName")
     def field_name(self) -> str:
         """
-        Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+        The name of the field that is used to sort data. only required if sorter_type is FieldSort.
         """
         return pulumi.get(self, "field_name")
 
@@ -229,8 +263,17 @@ class SearchIndexSchemaIndexSetting(dict):
         """
         :param Sequence[str] routing_fields: Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
         """
+        SearchIndexSchemaIndexSetting._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            routing_fields=routing_fields,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             routing_fields: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if routing_fields is not None:
-            pulumi.set(__self__, "routing_fields", routing_fields)
+            _setter("routing_fields", routing_fields)
 
     @property
     @pulumi.getter(name="routingFields")
@@ -248,7 +291,16 @@ class SearchIndexSchemaIndexSort(dict):
         """
         :param Sequence['SearchIndexSchemaIndexSortSorterArgs'] sorters: Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
         """
-        pulumi.set(__self__, "sorters", sorters)
+        SearchIndexSchemaIndexSort._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sorters=sorters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sorters: Sequence['outputs.SearchIndexSchemaIndexSortSorter'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("sorters", sorters)
 
     @property
     @pulumi.getter
@@ -286,25 +338,40 @@ class SearchIndexSchemaIndexSortSorter(dict):
                  order: Optional[str] = None,
                  sorter_type: Optional[str] = None):
         """
-        :param str field_name: Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+        :param str field_name: The name of the field that is used to sort data. only required if sorter_type is FieldSort.
         :param str mode: The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
         :param str order: The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
         :param str sorter_type: Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
         """
+        SearchIndexSchemaIndexSortSorter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            field_name=field_name,
+            mode=mode,
+            order=order,
+            sorter_type=sorter_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             field_name: Optional[str] = None,
+             mode: Optional[str] = None,
+             order: Optional[str] = None,
+             sorter_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if field_name is not None:
-            pulumi.set(__self__, "field_name", field_name)
+            _setter("field_name", field_name)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if order is not None:
-            pulumi.set(__self__, "order", order)
+            _setter("order", order)
         if sorter_type is not None:
-            pulumi.set(__self__, "sorter_type", sorter_type)
+            _setter("sorter_type", sorter_type)
 
     @property
     @pulumi.getter(name="fieldName")
     def field_name(self) -> Optional[str]:
         """
-        Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+        The name of the field that is used to sort data. only required if sorter_type is FieldSort.
         """
         return pulumi.get(self, "field_name")
 
@@ -342,8 +409,19 @@ class TableDefinedColumn(dict):
         :param str name: Name for defined column.
         :param str type: Type for defined column. `Integer`, `String`, `Binary`, `Double`, `Boolean` is allowed.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        TableDefinedColumn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -371,8 +449,19 @@ class TablePrimaryKey(dict):
         :param str name: Name for primary key.
         :param str type: Type for primary key. Only `Integer`, `String` or `Binary` is allowed.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        TablePrimaryKey._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -431,16 +520,33 @@ class TunnelChannel(dict):
         :param str channel_type: The type of the channel, valid values: `BaseData`, `Stream`.
         :param str client_id: The client id of the channel.
         """
+        TunnelChannel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel_id=channel_id,
+            channel_rpo=channel_rpo,
+            channel_status=channel_status,
+            channel_type=channel_type,
+            client_id=client_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel_id: Optional[str] = None,
+             channel_rpo: Optional[int] = None,
+             channel_status: Optional[str] = None,
+             channel_type: Optional[str] = None,
+             client_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if channel_id is not None:
-            pulumi.set(__self__, "channel_id", channel_id)
+            _setter("channel_id", channel_id)
         if channel_rpo is not None:
-            pulumi.set(__self__, "channel_rpo", channel_rpo)
+            _setter("channel_rpo", channel_rpo)
         if channel_status is not None:
-            pulumi.set(__self__, "channel_status", channel_status)
+            _setter("channel_status", channel_status)
         if channel_type is not None:
-            pulumi.set(__self__, "channel_type", channel_type)
+            _setter("channel_type", channel_type)
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
 
     @property
     @pulumi.getter(name="channelId")
@@ -502,13 +608,34 @@ class GetInstanceAttachmentsAttachmentResult(dict):
         :param str vpc_id: The ID of attaching VPC to instance.
         :param str vpc_name: The name of attaching VPC to instance.
         """
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vpc_name", vpc_name)
+        GetInstanceAttachmentsAttachmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            endpoint=endpoint,
+            id=id,
+            instance_name=instance_name,
+            region=region,
+            vpc_id=vpc_id,
+            vpc_name=vpc_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: str,
+             endpoint: str,
+             id: str,
+             instance_name: str,
+             region: str,
+             vpc_id: str,
+             vpc_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain", domain)
+        _setter("endpoint", endpoint)
+        _setter("id", id)
+        _setter("instance_name", instance_name)
+        _setter("region", region)
+        _setter("vpc_id", vpc_id)
+        _setter("vpc_name", vpc_name)
 
     @property
     @pulumi.getter
@@ -605,18 +732,49 @@ class GetInstancesInstanceResult(dict):
         :param str user_id: The user id of the instance.
         :param int write_capacity: The maximum adjustable write capacity unit of the instance.
         """
-        pulumi.set(__self__, "cluster_type", cluster_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "entity_quota", entity_quota)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "read_capacity", read_capacity)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "write_capacity", write_capacity)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_type=cluster_type,
+            create_time=create_time,
+            description=description,
+            entity_quota=entity_quota,
+            id=id,
+            name=name,
+            network=network,
+            read_capacity=read_capacity,
+            status=status,
+            tags=tags,
+            user_id=user_id,
+            write_capacity=write_capacity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_type: str,
+             create_time: str,
+             description: str,
+             entity_quota: int,
+             id: str,
+             name: str,
+             network: str,
+             read_capacity: int,
+             status: str,
+             tags: Mapping[str, Any],
+             user_id: str,
+             write_capacity: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_type", cluster_type)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("entity_quota", entity_quota)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("network", network)
+        _setter("read_capacity", read_capacity)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("user_id", user_id)
+        _setter("write_capacity", write_capacity)
 
     @property
     @pulumi.getter(name="clusterType")
@@ -755,19 +913,52 @@ class GetSearchIndexesIndexResult(dict):
         :param str table_name: The name of OTS table.
         :param int time_to_live: TTL of index.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "current_sync_timestamp", current_sync_timestamp)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "index_name", index_name)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "metering_last_update_time", metering_last_update_time)
-        pulumi.set(__self__, "reserved_read_cu", reserved_read_cu)
-        pulumi.set(__self__, "row_count", row_count)
-        pulumi.set(__self__, "schema", schema)
-        pulumi.set(__self__, "storage_size", storage_size)
-        pulumi.set(__self__, "sync_phase", sync_phase)
-        pulumi.set(__self__, "table_name", table_name)
-        pulumi.set(__self__, "time_to_live", time_to_live)
+        GetSearchIndexesIndexResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            current_sync_timestamp=current_sync_timestamp,
+            id=id,
+            index_name=index_name,
+            instance_name=instance_name,
+            metering_last_update_time=metering_last_update_time,
+            reserved_read_cu=reserved_read_cu,
+            row_count=row_count,
+            schema=schema,
+            storage_size=storage_size,
+            sync_phase=sync_phase,
+            table_name=table_name,
+            time_to_live=time_to_live,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: int,
+             current_sync_timestamp: int,
+             id: str,
+             index_name: str,
+             instance_name: str,
+             metering_last_update_time: int,
+             reserved_read_cu: int,
+             row_count: int,
+             schema: str,
+             storage_size: int,
+             sync_phase: str,
+             table_name: str,
+             time_to_live: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("current_sync_timestamp", current_sync_timestamp)
+        _setter("id", id)
+        _setter("index_name", index_name)
+        _setter("instance_name", instance_name)
+        _setter("metering_last_update_time", metering_last_update_time)
+        _setter("reserved_read_cu", reserved_read_cu)
+        _setter("row_count", row_count)
+        _setter("schema", schema)
+        _setter("storage_size", storage_size)
+        _setter("sync_phase", sync_phase)
+        _setter("table_name", table_name)
+        _setter("time_to_live", time_to_live)
 
     @property
     @pulumi.getter(name="createTime")
@@ -893,13 +1084,34 @@ class GetSecondaryIndexesIndexResult(dict):
         :param Sequence[str] primary_keys: A list of primary keys for index, referenced from Table's primary keys or predefined columns.
         :param str table_name: The name of OTS table.
         """
-        pulumi.set(__self__, "defined_columns", defined_columns)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "index_name", index_name)
-        pulumi.set(__self__, "index_type", index_type)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "primary_keys", primary_keys)
-        pulumi.set(__self__, "table_name", table_name)
+        GetSecondaryIndexesIndexResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            defined_columns=defined_columns,
+            id=id,
+            index_name=index_name,
+            index_type=index_type,
+            instance_name=instance_name,
+            primary_keys=primary_keys,
+            table_name=table_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             defined_columns: Sequence[str],
+             id: str,
+             index_name: str,
+             index_type: str,
+             instance_name: str,
+             primary_keys: Sequence[str],
+             table_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("defined_columns", defined_columns)
+        _setter("id", id)
+        _setter("index_name", index_name)
+        _setter("index_type", index_type)
+        _setter("instance_name", instance_name)
+        _setter("primary_keys", primary_keys)
+        _setter("table_name", table_name)
 
     @property
     @pulumi.getter(name="definedColumns")
@@ -976,13 +1188,34 @@ class GetTablesTableResult(dict):
         :param str table_name: The table name of the OTS which could not be changed.
         :param int time_to_live: The retention time of data stored in this table.
         """
-        pulumi.set(__self__, "defined_columns", defined_columns)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "max_version", max_version)
-        pulumi.set(__self__, "primary_keys", primary_keys)
-        pulumi.set(__self__, "table_name", table_name)
-        pulumi.set(__self__, "time_to_live", time_to_live)
+        GetTablesTableResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            defined_columns=defined_columns,
+            id=id,
+            instance_name=instance_name,
+            max_version=max_version,
+            primary_keys=primary_keys,
+            table_name=table_name,
+            time_to_live=time_to_live,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             defined_columns: Sequence['outputs.GetTablesTableDefinedColumnResult'],
+             id: str,
+             instance_name: str,
+             max_version: int,
+             primary_keys: Sequence['outputs.GetTablesTablePrimaryKeyResult'],
+             table_name: str,
+             time_to_live: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("defined_columns", defined_columns)
+        _setter("id", id)
+        _setter("instance_name", instance_name)
+        _setter("max_version", max_version)
+        _setter("primary_keys", primary_keys)
+        _setter("table_name", table_name)
+        _setter("time_to_live", time_to_live)
 
     @property
     @pulumi.getter(name="definedColumns")
@@ -1043,8 +1276,19 @@ class GetTablesTableDefinedColumnResult(dict):
     def __init__(__self__, *,
                  name: str,
                  type: str):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        GetTablesTableDefinedColumnResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1062,8 +1306,19 @@ class GetTablesTablePrimaryKeyResult(dict):
     def __init__(__self__, *,
                  name: str,
                  type: str):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        GetTablesTablePrimaryKeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1103,17 +1358,46 @@ class GetTunnelsTunnelResult(dict):
         :param str tunnel_stage: The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
         :param str tunnel_type: The type of the OTS tunnel, valid values: `BaseAndStream`, `BaseData`, `Stream`.
         """
-        pulumi.set(__self__, "channels", channels)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "expired", expired)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "table_name", table_name)
-        pulumi.set(__self__, "tunnel_id", tunnel_id)
-        pulumi.set(__self__, "tunnel_name", tunnel_name)
-        pulumi.set(__self__, "tunnel_rpo", tunnel_rpo)
-        pulumi.set(__self__, "tunnel_stage", tunnel_stage)
-        pulumi.set(__self__, "tunnel_type", tunnel_type)
+        GetTunnelsTunnelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channels=channels,
+            create_time=create_time,
+            expired=expired,
+            id=id,
+            instance_name=instance_name,
+            table_name=table_name,
+            tunnel_id=tunnel_id,
+            tunnel_name=tunnel_name,
+            tunnel_rpo=tunnel_rpo,
+            tunnel_stage=tunnel_stage,
+            tunnel_type=tunnel_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channels: Sequence['outputs.GetTunnelsTunnelChannelResult'],
+             create_time: int,
+             expired: bool,
+             id: str,
+             instance_name: str,
+             table_name: str,
+             tunnel_id: str,
+             tunnel_name: str,
+             tunnel_rpo: int,
+             tunnel_stage: str,
+             tunnel_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("channels", channels)
+        _setter("create_time", create_time)
+        _setter("expired", expired)
+        _setter("id", id)
+        _setter("instance_name", instance_name)
+        _setter("table_name", table_name)
+        _setter("tunnel_id", tunnel_id)
+        _setter("tunnel_name", tunnel_name)
+        _setter("tunnel_rpo", tunnel_rpo)
+        _setter("tunnel_stage", tunnel_stage)
+        _setter("tunnel_type", tunnel_type)
 
     @property
     @pulumi.getter
@@ -1219,11 +1503,28 @@ class GetTunnelsTunnelChannelResult(dict):
         :param str channel_type: The type of the channel, valid values: `BaseData`, `Stream`.
         :param str client_id: The client id of the channel.
         """
-        pulumi.set(__self__, "channel_id", channel_id)
-        pulumi.set(__self__, "channel_rpo", channel_rpo)
-        pulumi.set(__self__, "channel_status", channel_status)
-        pulumi.set(__self__, "channel_type", channel_type)
-        pulumi.set(__self__, "client_id", client_id)
+        GetTunnelsTunnelChannelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel_id=channel_id,
+            channel_rpo=channel_rpo,
+            channel_status=channel_status,
+            channel_type=channel_type,
+            client_id=client_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel_id: str,
+             channel_rpo: int,
+             channel_status: str,
+             channel_type: str,
+             client_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("channel_id", channel_id)
+        _setter("channel_rpo", channel_rpo)
+        _setter("channel_status", channel_status)
+        _setter("channel_type", channel_type)
+        _setter("client_id", client_id)
 
     @property
     @pulumi.getter(name="channelId")

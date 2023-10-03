@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['Ipv6InternetBandwidthArgs', 'Ipv6InternetBandwidth']
@@ -25,11 +25,26 @@ class Ipv6InternetBandwidthArgs:
         :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway to which the IPv6 address belongs.
         :param pulumi.Input[str] internet_charge_type: The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "ipv6_address_id", ipv6_address_id)
-        pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
+        Ipv6InternetBandwidthArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            ipv6_address_id=ipv6_address_id,
+            ipv6_gateway_id=ipv6_gateway_id,
+            internet_charge_type=internet_charge_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: pulumi.Input[int],
+             ipv6_address_id: pulumi.Input[str],
+             ipv6_gateway_id: pulumi.Input[str],
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("ipv6_address_id", ipv6_address_id)
+        _setter("ipv6_gateway_id", ipv6_gateway_id)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
 
     @property
     @pulumi.getter
@@ -96,16 +111,33 @@ class _Ipv6InternetBandwidthState:
         :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway to which the IPv6 address belongs.
         :param pulumi.Input[str] status: The status of the resource.
         """
+        _Ipv6InternetBandwidthState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            internet_charge_type=internet_charge_type,
+            ipv6_address_id=ipv6_address_id,
+            ipv6_gateway_id=ipv6_gateway_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             ipv6_address_id: Optional[pulumi.Input[str]] = None,
+             ipv6_gateway_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
         if ipv6_address_id is not None:
-            pulumi.set(__self__, "ipv6_address_id", ipv6_address_id)
+            _setter("ipv6_address_id", ipv6_address_id)
         if ipv6_gateway_id is not None:
-            pulumi.set(__self__, "ipv6_gateway_id", ipv6_gateway_id)
+            _setter("ipv6_gateway_id", ipv6_gateway_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -339,6 +371,10 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            Ipv6InternetBandwidthArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

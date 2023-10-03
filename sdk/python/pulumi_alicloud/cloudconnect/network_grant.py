@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NetworkGrantArgs', 'NetworkGrant']
@@ -23,9 +23,22 @@ class NetworkGrantArgs:
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[str] cen_uid: The ID of the account to which the CEN instance belongs.
         """
-        pulumi.set(__self__, "ccn_id", ccn_id)
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "cen_uid", cen_uid)
+        NetworkGrantArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ccn_id=ccn_id,
+            cen_id=cen_id,
+            cen_uid=cen_uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ccn_id: pulumi.Input[str],
+             cen_id: pulumi.Input[str],
+             cen_uid: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ccn_id", ccn_id)
+        _setter("cen_id", cen_id)
+        _setter("cen_uid", cen_uid)
 
     @property
     @pulumi.getter(name="ccnId")
@@ -76,12 +89,25 @@ class _NetworkGrantState:
         :param pulumi.Input[str] cen_id: The ID of the CEN instance.
         :param pulumi.Input[str] cen_uid: The ID of the account to which the CEN instance belongs.
         """
+        _NetworkGrantState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ccn_id=ccn_id,
+            cen_id=cen_id,
+            cen_uid=cen_uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ccn_id: Optional[pulumi.Input[str]] = None,
+             cen_id: Optional[pulumi.Input[str]] = None,
+             cen_uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ccn_id is not None:
-            pulumi.set(__self__, "ccn_id", ccn_id)
+            _setter("ccn_id", ccn_id)
         if cen_id is not None:
-            pulumi.set(__self__, "cen_id", cen_id)
+            _setter("cen_id", cen_id)
         if cen_uid is not None:
-            pulumi.set(__self__, "cen_uid", cen_uid)
+            _setter("cen_uid", cen_uid)
 
     @property
     @pulumi.getter(name="ccnId")
@@ -271,6 +297,10 @@ class NetworkGrant(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkGrantArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

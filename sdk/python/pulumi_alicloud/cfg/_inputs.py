@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -29,9 +29,20 @@ class AggregateCompliancePackConfigRuleArgs:
         :param pulumi.Input[str] managed_rule_identifier: The Managed Rule Identifier.
         :param pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]] config_rule_parameters: A list of parameter rules. See `config_rule_parameters` below.
         """
-        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+        AggregateCompliancePackConfigRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            managed_rule_identifier=managed_rule_identifier,
+            config_rule_parameters=config_rule_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             managed_rule_identifier: pulumi.Input[str],
+             config_rule_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
-            pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
+            _setter("config_rule_parameters", config_rule_parameters)
 
     @property
     @pulumi.getter(name="managedRuleIdentifier")
@@ -67,10 +78,21 @@ class AggregateCompliancePackConfigRuleConfigRuleParameterArgs:
         :param pulumi.Input[str] parameter_name: The Parameter Name.
         :param pulumi.Input[str] parameter_value: The Parameter Value.
         """
+        AggregateCompliancePackConfigRuleConfigRuleParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_name=parameter_name,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_name: Optional[pulumi.Input[str]] = None,
+             parameter_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if parameter_name is not None:
-            pulumi.set(__self__, "parameter_name", parameter_name)
+            _setter("parameter_name", parameter_name)
         if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+            _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterName")
@@ -104,8 +126,17 @@ class AggregateCompliancePackConfigRuleIdArgs:
         """
         :param pulumi.Input[str] config_rule_id: The rule ID of Aggregate Config Rule.
         """
+        AggregateCompliancePackConfigRuleIdArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_rule_id=config_rule_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_rule_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config_rule_id is not None:
-            pulumi.set(__self__, "config_rule_id", config_rule_id)
+            _setter("config_rule_id", config_rule_id)
 
     @property
     @pulumi.getter(name="configRuleId")
@@ -131,9 +162,22 @@ class AggregatorAggregatorAccountArgs:
         :param pulumi.Input[str] account_name: Aggregator account name.
         :param pulumi.Input[str] account_type: Aggregator account source type. Valid values: `ResourceDirectory`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_type", account_type)
+        AggregatorAggregatorAccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            account_name=account_name,
+            account_type=account_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             account_name: pulumi.Input[str],
+             account_type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("account_name", account_name)
+        _setter("account_type", account_type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -181,9 +225,20 @@ class CompliancePackConfigRuleArgs:
         :param pulumi.Input[str] managed_rule_identifier: The Managed Rule Identifier.
         :param pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]] config_rule_parameters: A list of Config Rule Parameters. See `config_rule_parameters` below.
         """
-        pulumi.set(__self__, "managed_rule_identifier", managed_rule_identifier)
+        CompliancePackConfigRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            managed_rule_identifier=managed_rule_identifier,
+            config_rule_parameters=config_rule_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             managed_rule_identifier: pulumi.Input[str],
+             config_rule_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
-            pulumi.set(__self__, "config_rule_parameters", config_rule_parameters)
+            _setter("config_rule_parameters", config_rule_parameters)
 
     @property
     @pulumi.getter(name="managedRuleIdentifier")
@@ -219,10 +274,21 @@ class CompliancePackConfigRuleConfigRuleParameterArgs:
         :param pulumi.Input[str] parameter_name: The parameter name.
         :param pulumi.Input[str] parameter_value: The parameter value.
         """
+        CompliancePackConfigRuleConfigRuleParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_name=parameter_name,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_name: Optional[pulumi.Input[str]] = None,
+             parameter_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if parameter_name is not None:
-            pulumi.set(__self__, "parameter_name", parameter_name)
+            _setter("parameter_name", parameter_name)
         if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+            _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterName")
@@ -256,8 +322,17 @@ class CompliancePackConfigRuleIdArgs:
         """
         :param pulumi.Input[str] config_rule_id: The rule ID of Config Rule.
         """
+        CompliancePackConfigRuleIdArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_rule_id=config_rule_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_rule_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config_rule_id is not None:
-            pulumi.set(__self__, "config_rule_id", config_rule_id)
+            _setter("config_rule_id", config_rule_id)
 
     @property
     @pulumi.getter(name="configRuleId")
@@ -281,10 +356,21 @@ class RuleComplianceArgs:
         :param pulumi.Input[str] compliance_type: The type of compliance. Valid values: `COMPLIANT`, `NON_COMPLIANT`, `NOT_APPLICABLE`, `INSUFFICIENT_DATA`.
         :param pulumi.Input[int] count: The count of compliance.
         """
+        RuleComplianceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compliance_type=compliance_type,
+            count=count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compliance_type: Optional[pulumi.Input[str]] = None,
+             count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if compliance_type is not None:
-            pulumi.set(__self__, "compliance_type", compliance_type)
+            _setter("compliance_type", compliance_type)
         if count is not None:
-            pulumi.set(__self__, "count", count)
+            _setter("count", count)
 
     @property
     @pulumi.getter(name="complianceType")

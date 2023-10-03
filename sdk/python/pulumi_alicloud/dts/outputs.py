@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -38,13 +38,34 @@ class GetConsumerChannelsChannelResult(dict):
         :param int message_delay: The message delay time, for the current time data subscription channel in the earliest time of unconsumed messages of the difference, in Unix timestamp format, which is measured in seconds.
         :param int unconsumed_data: The total number of unconsumed messages.
         """
-        pulumi.set(__self__, "consumer_group_id", consumer_group_id)
-        pulumi.set(__self__, "consumer_group_name", consumer_group_name)
-        pulumi.set(__self__, "consumer_group_user_name", consumer_group_user_name)
-        pulumi.set(__self__, "consumption_checkpoint", consumption_checkpoint)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "message_delay", message_delay)
-        pulumi.set(__self__, "unconsumed_data", unconsumed_data)
+        GetConsumerChannelsChannelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            consumer_group_id=consumer_group_id,
+            consumer_group_name=consumer_group_name,
+            consumer_group_user_name=consumer_group_user_name,
+            consumption_checkpoint=consumption_checkpoint,
+            id=id,
+            message_delay=message_delay,
+            unconsumed_data=unconsumed_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             consumer_group_id: str,
+             consumer_group_name: str,
+             consumer_group_user_name: str,
+             consumption_checkpoint: str,
+             id: str,
+             message_delay: int,
+             unconsumed_data: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("consumer_group_id", consumer_group_id)
+        _setter("consumer_group_name", consumer_group_name)
+        _setter("consumer_group_user_name", consumer_group_user_name)
+        _setter("consumption_checkpoint", consumption_checkpoint)
+        _setter("id", id)
+        _setter("message_delay", message_delay)
+        _setter("unconsumed_data", unconsumed_data)
 
     @property
     @pulumi.getter(name="consumerGroupId")
@@ -135,21 +156,56 @@ class GetInstancesInstanceResult(dict):
         :param str type: The instance type. Valid values: -**MIGRATION**: MIGRATION.-**SYNC**: synchronization.-**SUBSCRIBE**: SUBSCRIBE.
         :param Mapping[str, Any] tags: The tag value corresponding to the tag key.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
-        pulumi.set(__self__, "destination_region", destination_region)
-        pulumi.set(__self__, "dts_instance_id", dts_instance_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
-        pulumi.set(__self__, "source_region", source_region)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            destination_endpoint_engine_name=destination_endpoint_engine_name,
+            destination_region=destination_region,
+            dts_instance_id=dts_instance_id,
+            id=id,
+            instance_class=instance_class,
+            instance_name=instance_name,
+            payment_type=payment_type,
+            resource_group_id=resource_group_id,
+            source_endpoint_engine_name=source_endpoint_engine_name,
+            source_region=source_region,
+            status=status,
+            type=type,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             destination_endpoint_engine_name: str,
+             destination_region: str,
+             dts_instance_id: str,
+             id: str,
+             instance_class: str,
+             instance_name: str,
+             payment_type: str,
+             resource_group_id: str,
+             source_endpoint_engine_name: str,
+             source_region: str,
+             status: str,
+             type: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
+        _setter("destination_region", destination_region)
+        _setter("dts_instance_id", dts_instance_id)
+        _setter("id", id)
+        _setter("instance_class", instance_class)
+        _setter("instance_name", instance_name)
+        _setter("payment_type", payment_type)
+        _setter("resource_group_id", resource_group_id)
+        _setter("source_endpoint_engine_name", source_endpoint_engine_name)
+        _setter("source_region", source_region)
+        _setter("status", status)
+        _setter("type", type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="createTime")
@@ -326,36 +382,103 @@ class GetMigrationJobsJobResult(dict):
         :param str status: The status of the resource.
         :param bool structure_initialization: Whether to perform a database table structure to migrate or initialization.
         """
-        pulumi.set(__self__, "data_initialization", data_initialization)
-        pulumi.set(__self__, "data_synchronization", data_synchronization)
-        pulumi.set(__self__, "db_list", db_list)
-        pulumi.set(__self__, "destination_endpoint_data_base_name", destination_endpoint_data_base_name)
-        pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
-        pulumi.set(__self__, "destination_endpoint_instance_id", destination_endpoint_instance_id)
-        pulumi.set(__self__, "destination_endpoint_instance_type", destination_endpoint_instance_type)
-        pulumi.set(__self__, "destination_endpoint_ip", destination_endpoint_ip)
-        pulumi.set(__self__, "destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
-        pulumi.set(__self__, "destination_endpoint_port", destination_endpoint_port)
-        pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
-        pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
-        pulumi.set(__self__, "dts_instance_id", dts_instance_id)
-        pulumi.set(__self__, "dts_job_id", dts_job_id)
-        pulumi.set(__self__, "dts_job_name", dts_job_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
-        pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
-        pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
-        pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
-        pulumi.set(__self__, "source_endpoint_ip", source_endpoint_ip)
-        pulumi.set(__self__, "source_endpoint_oracle_sid", source_endpoint_oracle_sid)
-        pulumi.set(__self__, "source_endpoint_owner_id", source_endpoint_owner_id)
-        pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
-        pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
-        pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
-        pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "structure_initialization", structure_initialization)
+        GetMigrationJobsJobResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_initialization=data_initialization,
+            data_synchronization=data_synchronization,
+            db_list=db_list,
+            destination_endpoint_data_base_name=destination_endpoint_data_base_name,
+            destination_endpoint_engine_name=destination_endpoint_engine_name,
+            destination_endpoint_instance_id=destination_endpoint_instance_id,
+            destination_endpoint_instance_type=destination_endpoint_instance_type,
+            destination_endpoint_ip=destination_endpoint_ip,
+            destination_endpoint_oracle_sid=destination_endpoint_oracle_sid,
+            destination_endpoint_port=destination_endpoint_port,
+            destination_endpoint_region=destination_endpoint_region,
+            destination_endpoint_user_name=destination_endpoint_user_name,
+            dts_instance_id=dts_instance_id,
+            dts_job_id=dts_job_id,
+            dts_job_name=dts_job_name,
+            id=id,
+            payment_type=payment_type,
+            source_endpoint_database_name=source_endpoint_database_name,
+            source_endpoint_engine_name=source_endpoint_engine_name,
+            source_endpoint_instance_id=source_endpoint_instance_id,
+            source_endpoint_instance_type=source_endpoint_instance_type,
+            source_endpoint_ip=source_endpoint_ip,
+            source_endpoint_oracle_sid=source_endpoint_oracle_sid,
+            source_endpoint_owner_id=source_endpoint_owner_id,
+            source_endpoint_port=source_endpoint_port,
+            source_endpoint_region=source_endpoint_region,
+            source_endpoint_role=source_endpoint_role,
+            source_endpoint_user_name=source_endpoint_user_name,
+            status=status,
+            structure_initialization=structure_initialization,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_initialization: bool,
+             data_synchronization: bool,
+             db_list: str,
+             destination_endpoint_data_base_name: str,
+             destination_endpoint_engine_name: str,
+             destination_endpoint_instance_id: str,
+             destination_endpoint_instance_type: str,
+             destination_endpoint_ip: str,
+             destination_endpoint_oracle_sid: str,
+             destination_endpoint_port: str,
+             destination_endpoint_region: str,
+             destination_endpoint_user_name: str,
+             dts_instance_id: str,
+             dts_job_id: str,
+             dts_job_name: str,
+             id: str,
+             payment_type: str,
+             source_endpoint_database_name: str,
+             source_endpoint_engine_name: str,
+             source_endpoint_instance_id: str,
+             source_endpoint_instance_type: str,
+             source_endpoint_ip: str,
+             source_endpoint_oracle_sid: str,
+             source_endpoint_owner_id: str,
+             source_endpoint_port: str,
+             source_endpoint_region: str,
+             source_endpoint_role: str,
+             source_endpoint_user_name: str,
+             status: str,
+             structure_initialization: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("data_initialization", data_initialization)
+        _setter("data_synchronization", data_synchronization)
+        _setter("db_list", db_list)
+        _setter("destination_endpoint_data_base_name", destination_endpoint_data_base_name)
+        _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
+        _setter("destination_endpoint_instance_id", destination_endpoint_instance_id)
+        _setter("destination_endpoint_instance_type", destination_endpoint_instance_type)
+        _setter("destination_endpoint_ip", destination_endpoint_ip)
+        _setter("destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
+        _setter("destination_endpoint_port", destination_endpoint_port)
+        _setter("destination_endpoint_region", destination_endpoint_region)
+        _setter("destination_endpoint_user_name", destination_endpoint_user_name)
+        _setter("dts_instance_id", dts_instance_id)
+        _setter("dts_job_id", dts_job_id)
+        _setter("dts_job_name", dts_job_name)
+        _setter("id", id)
+        _setter("payment_type", payment_type)
+        _setter("source_endpoint_database_name", source_endpoint_database_name)
+        _setter("source_endpoint_engine_name", source_endpoint_engine_name)
+        _setter("source_endpoint_instance_id", source_endpoint_instance_id)
+        _setter("source_endpoint_instance_type", source_endpoint_instance_type)
+        _setter("source_endpoint_ip", source_endpoint_ip)
+        _setter("source_endpoint_oracle_sid", source_endpoint_oracle_sid)
+        _setter("source_endpoint_owner_id", source_endpoint_owner_id)
+        _setter("source_endpoint_port", source_endpoint_port)
+        _setter("source_endpoint_region", source_endpoint_region)
+        _setter("source_endpoint_role", source_endpoint_role)
+        _setter("source_endpoint_user_name", source_endpoint_user_name)
+        _setter("status", status)
+        _setter("structure_initialization", structure_initialization)
 
     @property
     @pulumi.getter(name="dataInitialization")
@@ -659,34 +782,97 @@ class GetSubscriptionJobsJobResult(dict):
         :param str subscription_instance_vswitch_id: The ID of subscription instance vswitch.
         :param Mapping[str, Any] tags: The tag of the resource.
         """
-        pulumi.set(__self__, "checkpoint", checkpoint)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_list", db_list)
-        pulumi.set(__self__, "dts_instance_id", dts_instance_id)
-        pulumi.set(__self__, "dts_job_id", dts_job_id)
-        pulumi.set(__self__, "dts_job_name", dts_job_name)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
-        pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
-        pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
-        pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
-        pulumi.set(__self__, "source_endpoint_ip", source_endpoint_ip)
-        pulumi.set(__self__, "source_endpoint_oracle_sid", source_endpoint_oracle_sid)
-        pulumi.set(__self__, "source_endpoint_owner_id", source_endpoint_owner_id)
-        pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
-        pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
-        pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
-        pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "subscription_data_type_ddl", subscription_data_type_ddl)
-        pulumi.set(__self__, "subscription_data_type_dml", subscription_data_type_dml)
-        pulumi.set(__self__, "subscription_hosts", subscription_hosts)
-        pulumi.set(__self__, "subscription_instance_network_type", subscription_instance_network_type)
-        pulumi.set(__self__, "subscription_instance_vpc_id", subscription_instance_vpc_id)
-        pulumi.set(__self__, "subscription_instance_vswitch_id", subscription_instance_vswitch_id)
-        pulumi.set(__self__, "tags", tags)
+        GetSubscriptionJobsJobResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            checkpoint=checkpoint,
+            create_time=create_time,
+            db_list=db_list,
+            dts_instance_id=dts_instance_id,
+            dts_job_id=dts_job_id,
+            dts_job_name=dts_job_name,
+            expire_time=expire_time,
+            id=id,
+            payment_type=payment_type,
+            source_endpoint_database_name=source_endpoint_database_name,
+            source_endpoint_engine_name=source_endpoint_engine_name,
+            source_endpoint_instance_id=source_endpoint_instance_id,
+            source_endpoint_instance_type=source_endpoint_instance_type,
+            source_endpoint_ip=source_endpoint_ip,
+            source_endpoint_oracle_sid=source_endpoint_oracle_sid,
+            source_endpoint_owner_id=source_endpoint_owner_id,
+            source_endpoint_port=source_endpoint_port,
+            source_endpoint_region=source_endpoint_region,
+            source_endpoint_role=source_endpoint_role,
+            source_endpoint_user_name=source_endpoint_user_name,
+            status=status,
+            subscription_data_type_ddl=subscription_data_type_ddl,
+            subscription_data_type_dml=subscription_data_type_dml,
+            subscription_hosts=subscription_hosts,
+            subscription_instance_network_type=subscription_instance_network_type,
+            subscription_instance_vpc_id=subscription_instance_vpc_id,
+            subscription_instance_vswitch_id=subscription_instance_vswitch_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             checkpoint: str,
+             create_time: str,
+             db_list: str,
+             dts_instance_id: str,
+             dts_job_id: str,
+             dts_job_name: str,
+             expire_time: str,
+             id: str,
+             payment_type: str,
+             source_endpoint_database_name: str,
+             source_endpoint_engine_name: str,
+             source_endpoint_instance_id: str,
+             source_endpoint_instance_type: str,
+             source_endpoint_ip: str,
+             source_endpoint_oracle_sid: str,
+             source_endpoint_owner_id: str,
+             source_endpoint_port: str,
+             source_endpoint_region: str,
+             source_endpoint_role: str,
+             source_endpoint_user_name: str,
+             status: str,
+             subscription_data_type_ddl: bool,
+             subscription_data_type_dml: bool,
+             subscription_hosts: Sequence['outputs.GetSubscriptionJobsJobSubscriptionHostResult'],
+             subscription_instance_network_type: str,
+             subscription_instance_vpc_id: str,
+             subscription_instance_vswitch_id: str,
+             tags: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("checkpoint", checkpoint)
+        _setter("create_time", create_time)
+        _setter("db_list", db_list)
+        _setter("dts_instance_id", dts_instance_id)
+        _setter("dts_job_id", dts_job_id)
+        _setter("dts_job_name", dts_job_name)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("payment_type", payment_type)
+        _setter("source_endpoint_database_name", source_endpoint_database_name)
+        _setter("source_endpoint_engine_name", source_endpoint_engine_name)
+        _setter("source_endpoint_instance_id", source_endpoint_instance_id)
+        _setter("source_endpoint_instance_type", source_endpoint_instance_type)
+        _setter("source_endpoint_ip", source_endpoint_ip)
+        _setter("source_endpoint_oracle_sid", source_endpoint_oracle_sid)
+        _setter("source_endpoint_owner_id", source_endpoint_owner_id)
+        _setter("source_endpoint_port", source_endpoint_port)
+        _setter("source_endpoint_region", source_endpoint_region)
+        _setter("source_endpoint_role", source_endpoint_role)
+        _setter("source_endpoint_user_name", source_endpoint_user_name)
+        _setter("status", status)
+        _setter("subscription_data_type_ddl", subscription_data_type_ddl)
+        _setter("subscription_data_type_dml", subscription_data_type_dml)
+        _setter("subscription_hosts", subscription_hosts)
+        _setter("subscription_instance_network_type", subscription_instance_network_type)
+        _setter("subscription_instance_vpc_id", subscription_instance_vpc_id)
+        _setter("subscription_instance_vswitch_id", subscription_instance_vswitch_id)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -924,9 +1110,22 @@ class GetSubscriptionJobsJobSubscriptionHostResult(dict):
         :param str public_host: Public network address.
         :param str vpc_host: VPC network address.
         """
-        pulumi.set(__self__, "private_host", private_host)
-        pulumi.set(__self__, "public_host", public_host)
-        pulumi.set(__self__, "vpc_host", vpc_host)
+        GetSubscriptionJobsJobSubscriptionHostResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            private_host=private_host,
+            public_host=public_host,
+            vpc_host=vpc_host,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             private_host: str,
+             public_host: str,
+             vpc_host: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("private_host", private_host)
+        _setter("public_host", public_host)
+        _setter("vpc_host", vpc_host)
 
     @property
     @pulumi.getter(name="privateHost")
@@ -1020,39 +1219,112 @@ class GetSynchronizationJobsJobResult(dict):
         :param bool structure_initialization: Whether to perform a database table structure to migrate or initialization values include:
         :param str synchronization_direction: Synchronization direction. Valid values: `Forward`, `Reverse`. Only when the property `sync_architecture` of the `dts.SynchronizationInstance` was `bidirectional` this parameter should be passed, otherwise this parameter should not be specified.
         """
-        pulumi.set(__self__, "checkpoint", checkpoint)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "data_initialization", data_initialization)
-        pulumi.set(__self__, "data_synchronization", data_synchronization)
-        pulumi.set(__self__, "db_list", db_list)
-        pulumi.set(__self__, "destination_endpoint_data_base_name", destination_endpoint_data_base_name)
-        pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
-        pulumi.set(__self__, "destination_endpoint_instance_id", destination_endpoint_instance_id)
-        pulumi.set(__self__, "destination_endpoint_instance_type", destination_endpoint_instance_type)
-        pulumi.set(__self__, "destination_endpoint_ip", destination_endpoint_ip)
-        pulumi.set(__self__, "destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
-        pulumi.set(__self__, "destination_endpoint_port", destination_endpoint_port)
-        pulumi.set(__self__, "destination_endpoint_region", destination_endpoint_region)
-        pulumi.set(__self__, "destination_endpoint_user_name", destination_endpoint_user_name)
-        pulumi.set(__self__, "dts_instance_id", dts_instance_id)
-        pulumi.set(__self__, "dts_job_id", dts_job_id)
-        pulumi.set(__self__, "dts_job_name", dts_job_name)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
-        pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
-        pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
-        pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
-        pulumi.set(__self__, "source_endpoint_ip", source_endpoint_ip)
-        pulumi.set(__self__, "source_endpoint_oracle_sid", source_endpoint_oracle_sid)
-        pulumi.set(__self__, "source_endpoint_owner_id", source_endpoint_owner_id)
-        pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
-        pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
-        pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
-        pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "structure_initialization", structure_initialization)
-        pulumi.set(__self__, "synchronization_direction", synchronization_direction)
+        GetSynchronizationJobsJobResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            checkpoint=checkpoint,
+            create_time=create_time,
+            data_initialization=data_initialization,
+            data_synchronization=data_synchronization,
+            db_list=db_list,
+            destination_endpoint_data_base_name=destination_endpoint_data_base_name,
+            destination_endpoint_engine_name=destination_endpoint_engine_name,
+            destination_endpoint_instance_id=destination_endpoint_instance_id,
+            destination_endpoint_instance_type=destination_endpoint_instance_type,
+            destination_endpoint_ip=destination_endpoint_ip,
+            destination_endpoint_oracle_sid=destination_endpoint_oracle_sid,
+            destination_endpoint_port=destination_endpoint_port,
+            destination_endpoint_region=destination_endpoint_region,
+            destination_endpoint_user_name=destination_endpoint_user_name,
+            dts_instance_id=dts_instance_id,
+            dts_job_id=dts_job_id,
+            dts_job_name=dts_job_name,
+            expire_time=expire_time,
+            id=id,
+            source_endpoint_database_name=source_endpoint_database_name,
+            source_endpoint_engine_name=source_endpoint_engine_name,
+            source_endpoint_instance_id=source_endpoint_instance_id,
+            source_endpoint_instance_type=source_endpoint_instance_type,
+            source_endpoint_ip=source_endpoint_ip,
+            source_endpoint_oracle_sid=source_endpoint_oracle_sid,
+            source_endpoint_owner_id=source_endpoint_owner_id,
+            source_endpoint_port=source_endpoint_port,
+            source_endpoint_region=source_endpoint_region,
+            source_endpoint_role=source_endpoint_role,
+            source_endpoint_user_name=source_endpoint_user_name,
+            status=status,
+            structure_initialization=structure_initialization,
+            synchronization_direction=synchronization_direction,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             checkpoint: str,
+             create_time: str,
+             data_initialization: bool,
+             data_synchronization: bool,
+             db_list: str,
+             destination_endpoint_data_base_name: str,
+             destination_endpoint_engine_name: str,
+             destination_endpoint_instance_id: str,
+             destination_endpoint_instance_type: str,
+             destination_endpoint_ip: str,
+             destination_endpoint_oracle_sid: str,
+             destination_endpoint_port: str,
+             destination_endpoint_region: str,
+             destination_endpoint_user_name: str,
+             dts_instance_id: str,
+             dts_job_id: str,
+             dts_job_name: str,
+             expire_time: str,
+             id: str,
+             source_endpoint_database_name: str,
+             source_endpoint_engine_name: str,
+             source_endpoint_instance_id: str,
+             source_endpoint_instance_type: str,
+             source_endpoint_ip: str,
+             source_endpoint_oracle_sid: str,
+             source_endpoint_owner_id: str,
+             source_endpoint_port: str,
+             source_endpoint_region: str,
+             source_endpoint_role: str,
+             source_endpoint_user_name: str,
+             status: str,
+             structure_initialization: bool,
+             synchronization_direction: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("checkpoint", checkpoint)
+        _setter("create_time", create_time)
+        _setter("data_initialization", data_initialization)
+        _setter("data_synchronization", data_synchronization)
+        _setter("db_list", db_list)
+        _setter("destination_endpoint_data_base_name", destination_endpoint_data_base_name)
+        _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
+        _setter("destination_endpoint_instance_id", destination_endpoint_instance_id)
+        _setter("destination_endpoint_instance_type", destination_endpoint_instance_type)
+        _setter("destination_endpoint_ip", destination_endpoint_ip)
+        _setter("destination_endpoint_oracle_sid", destination_endpoint_oracle_sid)
+        _setter("destination_endpoint_port", destination_endpoint_port)
+        _setter("destination_endpoint_region", destination_endpoint_region)
+        _setter("destination_endpoint_user_name", destination_endpoint_user_name)
+        _setter("dts_instance_id", dts_instance_id)
+        _setter("dts_job_id", dts_job_id)
+        _setter("dts_job_name", dts_job_name)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("source_endpoint_database_name", source_endpoint_database_name)
+        _setter("source_endpoint_engine_name", source_endpoint_engine_name)
+        _setter("source_endpoint_instance_id", source_endpoint_instance_id)
+        _setter("source_endpoint_instance_type", source_endpoint_instance_type)
+        _setter("source_endpoint_ip", source_endpoint_ip)
+        _setter("source_endpoint_oracle_sid", source_endpoint_oracle_sid)
+        _setter("source_endpoint_owner_id", source_endpoint_owner_id)
+        _setter("source_endpoint_port", source_endpoint_port)
+        _setter("source_endpoint_region", source_endpoint_region)
+        _setter("source_endpoint_role", source_endpoint_role)
+        _setter("source_endpoint_user_name", source_endpoint_user_name)
+        _setter("status", status)
+        _setter("structure_initialization", structure_initialization)
+        _setter("synchronization_direction", synchronization_direction)
 
     @property
     @pulumi.getter

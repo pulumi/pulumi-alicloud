@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BackupPolicyArgs', 'BackupPolicy']
@@ -25,11 +25,26 @@ class BackupPolicyArgs:
         :param pulumi.Input[str] preferred_backup_time: DBCluster backup time, in the format of `HH:mmZ-HH:mmZ`. Time setting interval is one hour. China time is 8 hours behind it.
         :param pulumi.Input[int] backup_retention_period: Data backup days. Valid values: `7` to `730`.
         """
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
-        pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
+        BackupPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_id=db_cluster_id,
+            preferred_backup_periods=preferred_backup_periods,
+            preferred_backup_time=preferred_backup_time,
+            backup_retention_period=backup_retention_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_id: pulumi.Input[str],
+             preferred_backup_periods: pulumi.Input[Sequence[pulumi.Input[str]]],
+             preferred_backup_time: pulumi.Input[str],
+             backup_retention_period: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_cluster_id", db_cluster_id)
+        _setter("preferred_backup_periods", preferred_backup_periods)
+        _setter("preferred_backup_time", preferred_backup_time)
         if backup_retention_period is not None:
-            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+            _setter("backup_retention_period", backup_retention_period)
 
     @property
     @pulumi.getter(name="dbClusterId")
@@ -96,16 +111,33 @@ class _BackupPolicyState:
         :param pulumi.Input[str] preferred_backup_time: DBCluster backup time, in the format of `HH:mmZ-HH:mmZ`. Time setting interval is one hour. China time is 8 hours behind it.
         :param pulumi.Input[str] status: The status of the resource.
         """
+        _BackupPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_retention_period=backup_retention_period,
+            db_cluster_id=db_cluster_id,
+            preferred_backup_periods=preferred_backup_periods,
+            preferred_backup_time=preferred_backup_time,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_retention_period: Optional[pulumi.Input[int]] = None,
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
+             preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preferred_backup_time: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backup_retention_period is not None:
-            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+            _setter("backup_retention_period", backup_retention_period)
         if db_cluster_id is not None:
-            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+            _setter("db_cluster_id", db_cluster_id)
         if preferred_backup_periods is not None:
-            pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
+            _setter("preferred_backup_periods", preferred_backup_periods)
         if preferred_backup_time is not None:
-            pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
+            _setter("preferred_backup_time", preferred_backup_time)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
@@ -321,6 +353,10 @@ class BackupPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BackupPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

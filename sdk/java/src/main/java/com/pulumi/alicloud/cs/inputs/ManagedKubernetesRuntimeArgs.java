@@ -16,14 +16,14 @@ public final class ManagedKubernetesRuntimeArgs extends com.pulumi.resources.Res
     public static final ManagedKubernetesRuntimeArgs Empty = new ManagedKubernetesRuntimeArgs();
 
     /**
-     * The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * This parameter specifies the name of the component.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return This parameter specifies the name of the component.
      * 
      */
     public Optional<Output<String>> name() {
@@ -71,7 +71,7 @@ public final class ManagedKubernetesRuntimeArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name This parameter specifies the name of the component.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ManagedKubernetesRuntimeArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+         * @param name This parameter specifies the name of the component.
          * 
          * @return builder
          * 

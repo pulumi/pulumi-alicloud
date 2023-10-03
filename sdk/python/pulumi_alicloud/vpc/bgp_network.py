@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BgpNetworkArgs', 'BgpNetwork']
@@ -21,8 +21,19 @@ class BgpNetworkArgs:
         :param pulumi.Input[str] dst_cidr_block: The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
         :param pulumi.Input[str] router_id: The ID of the vRouter associated with the router interface.
         """
-        pulumi.set(__self__, "dst_cidr_block", dst_cidr_block)
-        pulumi.set(__self__, "router_id", router_id)
+        BgpNetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dst_cidr_block=dst_cidr_block,
+            router_id=router_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dst_cidr_block: pulumi.Input[str],
+             router_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dst_cidr_block", dst_cidr_block)
+        _setter("router_id", router_id)
 
     @property
     @pulumi.getter(name="dstCidrBlock")
@@ -61,12 +72,25 @@ class _BgpNetworkState:
         :param pulumi.Input[str] router_id: The ID of the vRouter associated with the router interface.
         :param pulumi.Input[str] status: The state of the advertised BGP network.
         """
+        _BgpNetworkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dst_cidr_block=dst_cidr_block,
+            router_id=router_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dst_cidr_block: Optional[pulumi.Input[str]] = None,
+             router_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dst_cidr_block is not None:
-            pulumi.set(__self__, "dst_cidr_block", dst_cidr_block)
+            _setter("dst_cidr_block", dst_cidr_block)
         if router_id is not None:
-            pulumi.set(__self__, "router_id", router_id)
+            _setter("router_id", router_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="dstCidrBlock")
@@ -228,6 +252,10 @@ class BgpNetwork(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BgpNetworkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

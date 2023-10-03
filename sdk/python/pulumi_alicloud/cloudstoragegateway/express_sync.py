@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ExpressSyncArgs', 'ExpressSync']
@@ -27,13 +27,30 @@ class ExpressSyncArgs:
         :param pulumi.Input[str] bucket_prefix: The prefix of the OSS Bucket.
         :param pulumi.Input[str] description: The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
         """
-        pulumi.set(__self__, "bucket_name", bucket_name)
-        pulumi.set(__self__, "bucket_region", bucket_region)
-        pulumi.set(__self__, "express_sync_name", express_sync_name)
+        ExpressSyncArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_name=bucket_name,
+            bucket_region=bucket_region,
+            express_sync_name=express_sync_name,
+            bucket_prefix=bucket_prefix,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_name: pulumi.Input[str],
+             bucket_region: pulumi.Input[str],
+             express_sync_name: pulumi.Input[str],
+             bucket_prefix: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bucket_name", bucket_name)
+        _setter("bucket_region", bucket_region)
+        _setter("express_sync_name", express_sync_name)
         if bucket_prefix is not None:
-            pulumi.set(__self__, "bucket_prefix", bucket_prefix)
+            _setter("bucket_prefix", bucket_prefix)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -112,16 +129,33 @@ class _ExpressSyncState:
         :param pulumi.Input[str] description: The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
         :param pulumi.Input[str] express_sync_name: The name of the ExpressSync. The length of the name is limited to `1` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, English periods (.), underscores (_), or hyphens (-), and must start with  letters.
         """
+        _ExpressSyncState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_name=bucket_name,
+            bucket_prefix=bucket_prefix,
+            bucket_region=bucket_region,
+            description=description,
+            express_sync_name=express_sync_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_name: Optional[pulumi.Input[str]] = None,
+             bucket_prefix: Optional[pulumi.Input[str]] = None,
+             bucket_region: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             express_sync_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
+            _setter("bucket_name", bucket_name)
         if bucket_prefix is not None:
-            pulumi.set(__self__, "bucket_prefix", bucket_prefix)
+            _setter("bucket_prefix", bucket_prefix)
         if bucket_region is not None:
-            pulumi.set(__self__, "bucket_region", bucket_region)
+            _setter("bucket_region", bucket_region)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if express_sync_name is not None:
-            pulumi.set(__self__, "express_sync_name", express_sync_name)
+            _setter("express_sync_name", express_sync_name)
 
     @property
     @pulumi.getter(name="bucketName")
@@ -249,6 +283,10 @@ class ExpressSync(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ExpressSyncArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

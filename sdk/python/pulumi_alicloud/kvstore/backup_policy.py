@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BackupPolicyArgs', 'BackupPolicy']
@@ -23,11 +23,24 @@ class BackupPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: Backup Cycle. Allowed values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
         :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z
         """
-        pulumi.set(__self__, "instance_id", instance_id)
+        BackupPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            backup_periods=backup_periods,
+            backup_time=backup_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: pulumi.Input[str],
+             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             backup_time: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
         if backup_periods is not None:
-            pulumi.set(__self__, "backup_periods", backup_periods)
+            _setter("backup_periods", backup_periods)
         if backup_time is not None:
-            pulumi.set(__self__, "backup_time", backup_time)
+            _setter("backup_time", backup_time)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -78,12 +91,25 @@ class _BackupPolicyState:
         :param pulumi.Input[str] backup_time: Backup time, in the format of HH:mmZ- HH:mm Z
         :param pulumi.Input[str] instance_id: The id of ApsaraDB for Redis or Memcache intance.
         """
+        _BackupPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_periods=backup_periods,
+            backup_time=backup_time,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             backup_time: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backup_periods is not None:
-            pulumi.set(__self__, "backup_periods", backup_periods)
+            _setter("backup_periods", backup_periods)
         if backup_time is not None:
-            pulumi.set(__self__, "backup_time", backup_time)
+            _setter("backup_time", backup_time)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter(name="backupPeriods")
@@ -271,6 +297,10 @@ class BackupPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BackupPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerGroupContainerLivenessProbeHttpGet {
     /**
-     * @return The relative file path.
+     * @return The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
      * 
      */
     private @Nullable String path;
     /**
-     * @return The port number. Valid values: `1` to `65535`.
+     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
      * 
      */
     private @Nullable Integer port;
@@ -30,14 +30,14 @@ public final class ContainerGroupContainerLivenessProbeHttpGet {
 
     private ContainerGroupContainerLivenessProbeHttpGet() {}
     /**
-     * @return The relative file path.
+     * @return The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
      * 
      */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
     /**
-     * @return The port number. Valid values: `1` to `65535`.
+     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
      * 
      */
     public Optional<Integer> port() {

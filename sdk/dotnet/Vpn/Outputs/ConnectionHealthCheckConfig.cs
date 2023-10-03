@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// </summary>
         public readonly string? Dip;
         /// <summary>
-        /// Whether to enable Health Check.
+        /// Whether to enable BGP.
         /// </summary>
         public readonly bool? Enable;
         /// <summary>

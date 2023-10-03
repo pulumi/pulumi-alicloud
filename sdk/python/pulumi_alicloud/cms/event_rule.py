@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,16 +31,35 @@ class EventRuleArgs:
         :param pulumi.Input[int] silence_time: The silence time.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `ENABLED`, `DISABLED`.
         """
-        pulumi.set(__self__, "event_pattern", event_pattern)
-        pulumi.set(__self__, "rule_name", rule_name)
+        EventRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_pattern=event_pattern,
+            rule_name=rule_name,
+            description=description,
+            group_id=group_id,
+            silence_time=silence_time,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_pattern: pulumi.Input['EventRuleEventPatternArgs'],
+             rule_name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             silence_time: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("event_pattern", event_pattern)
+        _setter("rule_name", rule_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if silence_time is not None:
-            pulumi.set(__self__, "silence_time", silence_time)
+            _setter("silence_time", silence_time)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="eventPattern")
@@ -133,18 +152,37 @@ class _EventRuleState:
         :param pulumi.Input[int] silence_time: The silence time.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `ENABLED`, `DISABLED`.
         """
+        _EventRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            event_pattern=event_pattern,
+            group_id=group_id,
+            rule_name=rule_name,
+            silence_time=silence_time,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             event_pattern: Optional[pulumi.Input['EventRuleEventPatternArgs']] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             rule_name: Optional[pulumi.Input[str]] = None,
+             silence_time: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if event_pattern is not None:
-            pulumi.set(__self__, "event_pattern", event_pattern)
+            _setter("event_pattern", event_pattern)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if rule_name is not None:
-            pulumi.set(__self__, "rule_name", rule_name)
+            _setter("rule_name", rule_name)
         if silence_time is not None:
-            pulumi.set(__self__, "silence_time", silence_time)
+            _setter("silence_time", silence_time)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -342,6 +380,10 @@ class EventRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EventRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -363,6 +405,11 @@ class EventRule(pulumi.CustomResource):
             __props__ = EventRuleArgs.__new__(EventRuleArgs)
 
             __props__.__dict__["description"] = description
+            if event_pattern is not None and not isinstance(event_pattern, EventRuleEventPatternArgs):
+                event_pattern = event_pattern or {}
+                def _setter(key, value):
+                    event_pattern[key] = value
+                EventRuleEventPatternArgs._configure(_setter, **event_pattern)
             if event_pattern is None and not opts.urn:
                 raise TypeError("Missing required property 'event_pattern'")
             __props__.__dict__["event_pattern"] = event_pattern

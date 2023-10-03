@@ -15,7 +15,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ConnectionBgpConfig struct {
-	// Whether to enable Health Check.
+	// Whether to enable BGP.
 	Enable *bool `pulumi:"enable"`
 	// The ASN on the Alibaba Cloud side.
 	LocalAsn *string `pulumi:"localAsn"`
@@ -37,7 +37,7 @@ type ConnectionBgpConfigInput interface {
 }
 
 type ConnectionBgpConfigArgs struct {
-	// Whether to enable Health Check.
+	// Whether to enable BGP.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// The ASN on the Alibaba Cloud side.
 	LocalAsn pulumi.StringPtrInput `pulumi:"localAsn"`
@@ -142,7 +142,7 @@ func (o ConnectionBgpConfigOutput) ToOutput(ctx context.Context) pulumix.Output[
 	}
 }
 
-// Whether to enable Health Check.
+// Whether to enable BGP.
 func (o ConnectionBgpConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionBgpConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -192,7 +192,7 @@ func (o ConnectionBgpConfigPtrOutput) Elem() ConnectionBgpConfigOutput {
 	}).(ConnectionBgpConfigOutput)
 }
 
-// Whether to enable Health Check.
+// Whether to enable BGP.
 func (o ConnectionBgpConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionBgpConfig) *bool {
 		if v == nil {
@@ -235,7 +235,7 @@ func (o ConnectionBgpConfigPtrOutput) TunnelCidr() pulumi.StringPtrOutput {
 type ConnectionHealthCheckConfig struct {
 	// The destination IP address.
 	Dip *string `pulumi:"dip"`
-	// Whether to enable Health Check.
+	// Whether to enable BGP.
 	Enable *bool `pulumi:"enable"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	Interval *int `pulumi:"interval"`
@@ -259,7 +259,7 @@ type ConnectionHealthCheckConfigInput interface {
 type ConnectionHealthCheckConfigArgs struct {
 	// The destination IP address.
 	Dip pulumi.StringPtrInput `pulumi:"dip"`
-	// Whether to enable Health Check.
+	// Whether to enable BGP.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
 	// The interval between two consecutive health checks. Unit: seconds.
 	Interval pulumi.IntPtrInput `pulumi:"interval"`
@@ -369,7 +369,7 @@ func (o ConnectionHealthCheckConfigOutput) Dip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionHealthCheckConfig) *string { return v.Dip }).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable Health Check.
+// Whether to enable BGP.
 func (o ConnectionHealthCheckConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionHealthCheckConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
@@ -429,7 +429,7 @@ func (o ConnectionHealthCheckConfigPtrOutput) Dip() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable Health Check.
+// Whether to enable BGP.
 func (o ConnectionHealthCheckConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConnectionHealthCheckConfig) *bool {
 		if v == nil {

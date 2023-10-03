@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -40,8 +40,19 @@ class InstanceParameter(dict):
         :param str name: The name of the parameter.
         :param str value: The value of the parameter.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        InstanceParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -108,20 +119,41 @@ class InstanceReplicaSet(dict):
         :param str vpc_id: The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
         :param str vswitch_id: The virtual switch ID to launch DB instances in one VPC.
         """
+        InstanceReplicaSet._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_domain=connection_domain,
+            connection_port=connection_port,
+            network_type=network_type,
+            replica_set_role=replica_set_role,
+            vpc_cloud_instance_id=vpc_cloud_instance_id,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_domain: Optional[str] = None,
+             connection_port: Optional[str] = None,
+             network_type: Optional[str] = None,
+             replica_set_role: Optional[str] = None,
+             vpc_cloud_instance_id: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if connection_domain is not None:
-            pulumi.set(__self__, "connection_domain", connection_domain)
+            _setter("connection_domain", connection_domain)
         if connection_port is not None:
-            pulumi.set(__self__, "connection_port", connection_port)
+            _setter("connection_port", connection_port)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if replica_set_role is not None:
-            pulumi.set(__self__, "replica_set_role", replica_set_role)
+            _setter("replica_set_role", replica_set_role)
         if vpc_cloud_instance_id is not None:
-            pulumi.set(__self__, "vpc_cloud_instance_id", vpc_cloud_instance_id)
+            _setter("vpc_cloud_instance_id", vpc_cloud_instance_id)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="connectionDomain")
@@ -212,12 +244,25 @@ class ServerlessInstanceSecurityIpGroup(dict):
         :param str security_ip_group_name: The name of the IP whitelist.
         :param str security_ip_list: The IP addresses in the whitelist.
         """
+        ServerlessInstanceSecurityIpGroup._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            security_ip_group_attribute=security_ip_group_attribute,
+            security_ip_group_name=security_ip_group_name,
+            security_ip_list=security_ip_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             security_ip_group_attribute: Optional[str] = None,
+             security_ip_group_name: Optional[str] = None,
+             security_ip_list: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if security_ip_group_attribute is not None:
-            pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
+            _setter("security_ip_group_attribute", security_ip_group_attribute)
         if security_ip_group_name is not None:
-            pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
+            _setter("security_ip_group_name", security_ip_group_name)
         if security_ip_list is not None:
-            pulumi.set(__self__, "security_ip_list", security_ip_list)
+            _setter("security_ip_list", security_ip_list)
 
     @property
     @pulumi.getter(name="securityIpGroupAttribute")
@@ -294,22 +339,45 @@ class ShardingInstanceConfigServerList(dict):
         :param int node_storage: The node storage of the Config Server node.
         :param int port: The connection port of the Config Server node.
         """
+        ShardingInstanceConfigServerList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connect_string=connect_string,
+            max_connections=max_connections,
+            max_iops=max_iops,
+            node_class=node_class,
+            node_description=node_description,
+            node_id=node_id,
+            node_storage=node_storage,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connect_string: Optional[str] = None,
+             max_connections: Optional[int] = None,
+             max_iops: Optional[int] = None,
+             node_class: Optional[str] = None,
+             node_description: Optional[str] = None,
+             node_id: Optional[str] = None,
+             node_storage: Optional[int] = None,
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if connect_string is not None:
-            pulumi.set(__self__, "connect_string", connect_string)
+            _setter("connect_string", connect_string)
         if max_connections is not None:
-            pulumi.set(__self__, "max_connections", max_connections)
+            _setter("max_connections", max_connections)
         if max_iops is not None:
-            pulumi.set(__self__, "max_iops", max_iops)
+            _setter("max_iops", max_iops)
         if node_class is not None:
-            pulumi.set(__self__, "node_class", node_class)
+            _setter("node_class", node_class)
         if node_description is not None:
-            pulumi.set(__self__, "node_description", node_description)
+            _setter("node_description", node_description)
         if node_id is not None:
-            pulumi.set(__self__, "node_id", node_id)
+            _setter("node_id", node_id)
         if node_storage is not None:
-            pulumi.set(__self__, "node_storage", node_storage)
+            _setter("node_storage", node_storage)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter(name="connectString")
@@ -410,13 +478,28 @@ class ShardingInstanceMongoList(dict):
         :param str node_id: The ID of the mongo-node.
         :param int port: Mongo node port.
         """
-        pulumi.set(__self__, "node_class", node_class)
+        ShardingInstanceMongoList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_class=node_class,
+            connect_string=connect_string,
+            node_id=node_id,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_class: str,
+             connect_string: Optional[str] = None,
+             node_id: Optional[str] = None,
+             port: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("node_class", node_class)
         if connect_string is not None:
-            pulumi.set(__self__, "connect_string", connect_string)
+            _setter("connect_string", connect_string)
         if node_id is not None:
-            pulumi.set(__self__, "node_id", node_id)
+            _setter("node_id", node_id)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
 
     @property
     @pulumi.getter(name="nodeClass")
@@ -488,12 +571,27 @@ class ShardingInstanceShardList(dict):
         :param str node_id: The ID of the shard-node.
         :param int readonly_replicas: The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
         """
-        pulumi.set(__self__, "node_class", node_class)
-        pulumi.set(__self__, "node_storage", node_storage)
+        ShardingInstanceShardList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_class=node_class,
+            node_storage=node_storage,
+            node_id=node_id,
+            readonly_replicas=readonly_replicas,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_class: str,
+             node_storage: int,
+             node_id: Optional[str] = None,
+             readonly_replicas: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("node_class", node_class)
+        _setter("node_storage", node_storage)
         if node_id is not None:
-            pulumi.set(__self__, "node_id", node_id)
+            _setter("node_id", node_id)
         if readonly_replicas is not None:
-            pulumi.set(__self__, "readonly_replicas", readonly_replicas)
+            _setter("readonly_replicas", readonly_replicas)
 
     @property
     @pulumi.getter(name="nodeClass")
@@ -585,26 +683,53 @@ class ShardingNetworkPrivateAddressNetworkAddress(dict):
         :param str vpc_id: The ID of the VPC.
         :param str vswitch_id: The vSwitch ID of the VPC.
         """
+        ShardingNetworkPrivateAddressNetworkAddress._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expired_time=expired_time,
+            ip_address=ip_address,
+            network_address=network_address,
+            network_type=network_type,
+            node_id=node_id,
+            node_type=node_type,
+            port=port,
+            role=role,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expired_time: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             network_address: Optional[str] = None,
+             network_type: Optional[str] = None,
+             node_id: Optional[str] = None,
+             node_type: Optional[str] = None,
+             port: Optional[str] = None,
+             role: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if expired_time is not None:
-            pulumi.set(__self__, "expired_time", expired_time)
+            _setter("expired_time", expired_time)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if network_address is not None:
-            pulumi.set(__self__, "network_address", network_address)
+            _setter("network_address", network_address)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if node_id is not None:
-            pulumi.set(__self__, "node_id", node_id)
+            _setter("node_id", node_id)
         if node_type is not None:
-            pulumi.set(__self__, "node_type", node_type)
+            _setter("node_type", node_type)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="expiredTime")
@@ -743,26 +868,53 @@ class ShardingNetworkPublicAddressNetworkAddress(dict):
         :param str vpc_id: The ID of the VPC.
         :param str vswitch_id: The vSwitch ID of the VPC.
         """
+        ShardingNetworkPublicAddressNetworkAddress._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expired_time=expired_time,
+            ip_address=ip_address,
+            network_address=network_address,
+            network_type=network_type,
+            node_id=node_id,
+            node_type=node_type,
+            port=port,
+            role=role,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expired_time: Optional[str] = None,
+             ip_address: Optional[str] = None,
+             network_address: Optional[str] = None,
+             network_type: Optional[str] = None,
+             node_id: Optional[str] = None,
+             node_type: Optional[str] = None,
+             port: Optional[str] = None,
+             role: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if expired_time is not None:
-            pulumi.set(__self__, "expired_time", expired_time)
+            _setter("expired_time", expired_time)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if network_address is not None:
-            pulumi.set(__self__, "network_address", network_address)
+            _setter("network_address", network_address)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if node_id is not None:
-            pulumi.set(__self__, "node_id", node_id)
+            _setter("node_id", node_id)
         if node_type is not None:
-            pulumi.set(__self__, "node_type", node_type)
+            _setter("node_type", node_type)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="expiredTime")
@@ -862,12 +1014,31 @@ class GetAccountsAccountResult(dict):
         :param str instance_id: The id of the instance to which the account belongs.
         :param str status: The status of the account. Valid values: `Unavailable`, `Available`.
         """
-        pulumi.set(__self__, "account_description", account_description)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "character_type", character_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "status", status)
+        GetAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_description=account_description,
+            account_name=account_name,
+            character_type=character_type,
+            id=id,
+            instance_id=instance_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_description: str,
+             account_name: str,
+             character_type: str,
+             id: str,
+             instance_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_description", account_description)
+        _setter("account_name", account_name)
+        _setter("character_type", character_type)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountDescription")
@@ -929,9 +1100,22 @@ class GetAuditPoliciesPolicyResult(dict):
         :param str db_instance_id: The ID of the instance.
         :param str id: The ID of the Audit Policy.
         """
-        pulumi.set(__self__, "audit_status", audit_status)
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "id", id)
+        GetAuditPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audit_status=audit_status,
+            db_instance_id=db_instance_id,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audit_status: str,
+             db_instance_id: str,
+             id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("audit_status", audit_status)
+        _setter("db_instance_id", db_instance_id)
+        _setter("id", id)
 
     @property
     @pulumi.getter(name="auditStatus")
@@ -1001,25 +1185,70 @@ class GetInstancesInstanceResult(dict):
         :param int storage: Shard disk.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "charge_type", charge_type)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "expiration_time", expiration_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "mongos", mongos)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "replication", replication)
-        pulumi.set(__self__, "shards", shards)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage", storage)
-        pulumi.set(__self__, "tags", tags)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zone=availability_zone,
+            charge_type=charge_type,
+            creation_time=creation_time,
+            engine=engine,
+            engine_version=engine_version,
+            expiration_time=expiration_time,
+            id=id,
+            instance_class=instance_class,
+            instance_type=instance_type,
+            lock_mode=lock_mode,
+            mongos=mongos,
+            name=name,
+            network_type=network_type,
+            region_id=region_id,
+            replication=replication,
+            shards=shards,
+            status=status,
+            storage=storage,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zone: str,
+             charge_type: str,
+             creation_time: str,
+             engine: str,
+             engine_version: str,
+             expiration_time: str,
+             id: str,
+             instance_class: str,
+             instance_type: str,
+             lock_mode: str,
+             mongos: Sequence['outputs.GetInstancesInstanceMongoResult'],
+             name: str,
+             network_type: str,
+             region_id: str,
+             replication: str,
+             shards: Sequence['outputs.GetInstancesInstanceShardResult'],
+             status: str,
+             storage: int,
+             tags: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("availability_zone", availability_zone)
+        _setter("charge_type", charge_type)
+        _setter("creation_time", creation_time)
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("expiration_time", expiration_time)
+        _setter("id", id)
+        _setter("instance_class", instance_class)
+        _setter("instance_type", instance_type)
+        _setter("lock_mode", lock_mode)
+        _setter("mongos", mongos)
+        _setter("name", name)
+        _setter("network_type", network_type)
+        _setter("region_id", region_id)
+        _setter("replication", replication)
+        _setter("shards", shards)
+        _setter("status", status)
+        _setter("storage", storage)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -1185,9 +1414,22 @@ class GetInstancesInstanceMongoResult(dict):
         :param str description: Shard instance description.
         :param str node_id: Shard instance ID.
         """
-        pulumi.set(__self__, "class_", class_)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "node_id", node_id)
+        GetInstancesInstanceMongoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            class_=class_,
+            description=description,
+            node_id=node_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             class_: str,
+             description: str,
+             node_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("class_", class_)
+        _setter("description", description)
+        _setter("node_id", node_id)
 
     @property
     @pulumi.getter(name="class")
@@ -1227,10 +1469,25 @@ class GetInstancesInstanceShardResult(dict):
         :param str node_id: Shard instance ID.
         :param int storage: Shard disk.
         """
-        pulumi.set(__self__, "class_", class_)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "node_id", node_id)
-        pulumi.set(__self__, "storage", storage)
+        GetInstancesInstanceShardResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            class_=class_,
+            description=description,
+            node_id=node_id,
+            storage=storage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             class_: str,
+             description: str,
+             node_id: str,
+             storage: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("class_", class_)
+        _setter("description", description)
+        _setter("node_id", node_id)
+        _setter("storage", storage)
 
     @property
     @pulumi.getter(name="class")
@@ -1326,34 +1583,97 @@ class GetServerlessInstancesInstanceResult(dict):
         :param str vswitch_id: The id of the vswitch.
         :param str zone_id: The ID of the zone.
         """
-        pulumi.set(__self__, "capacity_unit", capacity_unit)
-        pulumi.set(__self__, "db_instance_class", db_instance_class)
-        pulumi.set(__self__, "db_instance_description", db_instance_description)
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "db_instance_release_protection", db_instance_release_protection)
-        pulumi.set(__self__, "db_instance_storage", db_instance_storage)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "kind_code", kind_code)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "maintain_end_time", maintain_end_time)
-        pulumi.set(__self__, "maintain_start_time", maintain_start_time)
-        pulumi.set(__self__, "max_connections", max_connections)
-        pulumi.set(__self__, "max_iops", max_iops)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "protocol_type", protocol_type)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "security_ip_groups", security_ip_groups)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_engine", storage_engine)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_auth_mode", vpc_auth_mode)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetServerlessInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capacity_unit=capacity_unit,
+            db_instance_class=db_instance_class,
+            db_instance_description=db_instance_description,
+            db_instance_id=db_instance_id,
+            db_instance_release_protection=db_instance_release_protection,
+            db_instance_storage=db_instance_storage,
+            engine=engine,
+            engine_version=engine_version,
+            expire_time=expire_time,
+            id=id,
+            kind_code=kind_code,
+            lock_mode=lock_mode,
+            maintain_end_time=maintain_end_time,
+            maintain_start_time=maintain_start_time,
+            max_connections=max_connections,
+            max_iops=max_iops,
+            network_type=network_type,
+            payment_type=payment_type,
+            protocol_type=protocol_type,
+            resource_group_id=resource_group_id,
+            security_ip_groups=security_ip_groups,
+            status=status,
+            storage_engine=storage_engine,
+            tags=tags,
+            vpc_auth_mode=vpc_auth_mode,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capacity_unit: int,
+             db_instance_class: str,
+             db_instance_description: str,
+             db_instance_id: str,
+             db_instance_release_protection: bool,
+             db_instance_storage: int,
+             engine: str,
+             engine_version: str,
+             expire_time: str,
+             id: str,
+             kind_code: str,
+             lock_mode: str,
+             maintain_end_time: str,
+             maintain_start_time: str,
+             max_connections: int,
+             max_iops: int,
+             network_type: str,
+             payment_type: str,
+             protocol_type: str,
+             resource_group_id: str,
+             security_ip_groups: Sequence['outputs.GetServerlessInstancesInstanceSecurityIpGroupResult'],
+             status: str,
+             storage_engine: str,
+             tags: Mapping[str, Any],
+             vpc_auth_mode: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("capacity_unit", capacity_unit)
+        _setter("db_instance_class", db_instance_class)
+        _setter("db_instance_description", db_instance_description)
+        _setter("db_instance_id", db_instance_id)
+        _setter("db_instance_release_protection", db_instance_release_protection)
+        _setter("db_instance_storage", db_instance_storage)
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("kind_code", kind_code)
+        _setter("lock_mode", lock_mode)
+        _setter("maintain_end_time", maintain_end_time)
+        _setter("maintain_start_time", maintain_start_time)
+        _setter("max_connections", max_connections)
+        _setter("max_iops", max_iops)
+        _setter("network_type", network_type)
+        _setter("payment_type", payment_type)
+        _setter("protocol_type", protocol_type)
+        _setter("resource_group_id", resource_group_id)
+        _setter("security_ip_groups", security_ip_groups)
+        _setter("status", status)
+        _setter("storage_engine", storage_engine)
+        _setter("tags", tags)
+        _setter("vpc_auth_mode", vpc_auth_mode)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="capacityUnit")
@@ -1591,9 +1911,22 @@ class GetServerlessInstancesInstanceSecurityIpGroupResult(dict):
         :param str security_ip_group_name: The name of the IP whitelist.
         :param str security_ip_list: The IP addresses in the whitelist.
         """
-        pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
-        pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
-        pulumi.set(__self__, "security_ip_list", security_ip_list)
+        GetServerlessInstancesInstanceSecurityIpGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            security_ip_group_attribute=security_ip_group_attribute,
+            security_ip_group_name=security_ip_group_name,
+            security_ip_list=security_ip_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             security_ip_group_attribute: str,
+             security_ip_group_name: str,
+             security_ip_list: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("security_ip_group_attribute", security_ip_group_attribute)
+        _setter("security_ip_group_name", security_ip_group_name)
+        _setter("security_ip_list", security_ip_list)
 
     @property
     @pulumi.getter(name="securityIpGroupAttribute")
@@ -1647,17 +1980,46 @@ class GetShardingNetworkPrivateAddressesAddressResult(dict):
         :param str vpc_id: The ID of the VPC.
         :param str vswitch_id: The vSwitch ID of the VPC.
         """
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "network_address", network_address)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "node_id", node_id)
-        pulumi.set(__self__, "node_type", node_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetShardingNetworkPrivateAddressesAddressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_instance_id=db_instance_id,
+            expired_time=expired_time,
+            ip_address=ip_address,
+            network_address=network_address,
+            network_type=network_type,
+            node_id=node_id,
+            node_type=node_type,
+            port=port,
+            role=role,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_instance_id: str,
+             expired_time: str,
+             ip_address: str,
+             network_address: str,
+             network_type: str,
+             node_id: str,
+             node_type: str,
+             port: str,
+             role: str,
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_instance_id", db_instance_id)
+        _setter("expired_time", expired_time)
+        _setter("ip_address", ip_address)
+        _setter("network_address", network_address)
+        _setter("network_type", network_type)
+        _setter("node_id", node_id)
+        _setter("node_type", node_type)
+        _setter("port", port)
+        _setter("role", role)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="dbInstanceId")
@@ -1775,17 +2137,46 @@ class GetShardingNetworkPublicAddressesAddressResult(dict):
         :param str vpc_id: The ID of the VPC.
         :param str vswitch_id: The vSwitch ID of the VPC.
         """
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "network_address", network_address)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "node_id", node_id)
-        pulumi.set(__self__, "node_type", node_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetShardingNetworkPublicAddressesAddressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_instance_id=db_instance_id,
+            expired_time=expired_time,
+            ip_address=ip_address,
+            network_address=network_address,
+            network_type=network_type,
+            node_id=node_id,
+            node_type=node_type,
+            port=port,
+            role=role,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_instance_id: str,
+             expired_time: str,
+             ip_address: str,
+             network_address: str,
+             network_type: str,
+             node_id: str,
+             node_type: str,
+             port: str,
+             role: str,
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_instance_id", db_instance_id)
+        _setter("expired_time", expired_time)
+        _setter("ip_address", ip_address)
+        _setter("network_address", network_address)
+        _setter("network_type", network_type)
+        _setter("node_id", node_id)
+        _setter("node_type", node_type)
+        _setter("port", port)
+        _setter("role", role)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="dbInstanceId")
@@ -1885,8 +2276,19 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            multi_zone_ids=multi_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             multi_zone_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

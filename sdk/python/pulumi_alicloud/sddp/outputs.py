@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -33,12 +33,31 @@ class GetConfigsConfigResult(dict):
         :param str id: The ID of the Config.
         :param str value: The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
         """
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "config_id", config_id)
-        pulumi.set(__self__, "default_value", default_value)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "value", value)
+        GetConfigsConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            config_id=config_id,
+            default_value=default_value,
+            description=description,
+            id=id,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: str,
+             config_id: str,
+             default_value: str,
+             description: str,
+             id: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("code", code)
+        _setter("config_id", config_id)
+        _setter("default_value", default_value)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -116,17 +135,46 @@ class GetDataLimitsLimitResult(dict):
         :param str resource_type: The type of the service to which the data asset belongs.
         :param str user_name: The name of the user who owns the data asset.
         """
-        pulumi.set(__self__, "audit_status", audit_status)
-        pulumi.set(__self__, "check_status", check_status)
-        pulumi.set(__self__, "data_limit_id", data_limit_id)
-        pulumi.set(__self__, "engine_type", engine_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_name", local_name)
-        pulumi.set(__self__, "log_store_day", log_store_day)
-        pulumi.set(__self__, "parent_id", parent_id)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "user_name", user_name)
+        GetDataLimitsLimitResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            audit_status=audit_status,
+            check_status=check_status,
+            data_limit_id=data_limit_id,
+            engine_type=engine_type,
+            id=id,
+            local_name=local_name,
+            log_store_day=log_store_day,
+            parent_id=parent_id,
+            port=port,
+            resource_type=resource_type,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             audit_status: int,
+             check_status: int,
+             data_limit_id: str,
+             engine_type: str,
+             id: str,
+             local_name: str,
+             log_store_day: int,
+             parent_id: str,
+             port: int,
+             resource_type: str,
+             user_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("audit_status", audit_status)
+        _setter("check_status", check_status)
+        _setter("data_limit_id", data_limit_id)
+        _setter("engine_type", engine_type)
+        _setter("id", id)
+        _setter("local_name", local_name)
+        _setter("log_store_day", log_store_day)
+        _setter("parent_id", parent_id)
+        _setter("port", port)
+        _setter("resource_type", resource_type)
+        _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="auditStatus")
@@ -241,16 +289,43 @@ class GetInstancesInstanceResult(dict):
         :param bool rds_set: Whether the authorized rds assets.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "authed", authed)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_num", instance_num)
-        pulumi.set(__self__, "odps_set", odps_set)
-        pulumi.set(__self__, "oss_bucket_set", oss_bucket_set)
-        pulumi.set(__self__, "oss_size", oss_size)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "rds_set", rds_set)
-        pulumi.set(__self__, "status", status)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authed=authed,
+            id=id,
+            instance_id=instance_id,
+            instance_num=instance_num,
+            odps_set=odps_set,
+            oss_bucket_set=oss_bucket_set,
+            oss_size=oss_size,
+            payment_type=payment_type,
+            rds_set=rds_set,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authed: bool,
+             id: str,
+             instance_id: str,
+             instance_num: str,
+             odps_set: bool,
+             oss_bucket_set: bool,
+             oss_size: str,
+             payment_type: str,
+             rds_set: bool,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("authed", authed)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_num", instance_num)
+        _setter("odps_set", odps_set)
+        _setter("oss_bucket_set", oss_bucket_set)
+        _setter("oss_size", oss_size)
+        _setter("payment_type", payment_type)
+        _setter("rds_set", rds_set)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -381,29 +456,82 @@ class GetRulesRuleResult(dict):
         :param str user_id: The User ID.
         :param int warn_level: The Level of Risk.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "category_name", category_name)
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "content_category", content_category)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "custom_type", custom_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "gmt_modified", gmt_modified)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "login_name", login_name)
-        pulumi.set(__self__, "major_key", major_key)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "risk_level_id", risk_level_id)
-        pulumi.set(__self__, "risk_level_name", risk_level_name)
-        pulumi.set(__self__, "rule_id", rule_id)
-        pulumi.set(__self__, "stat_express", stat_express)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "target", target)
-        pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "warn_level", warn_level)
+        GetRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            category_name=category_name,
+            content=content,
+            content_category=content_category,
+            create_time=create_time,
+            custom_type=custom_type,
+            description=description,
+            display_name=display_name,
+            gmt_modified=gmt_modified,
+            id=id,
+            login_name=login_name,
+            major_key=major_key,
+            name=name,
+            product_code=product_code,
+            product_id=product_id,
+            risk_level_id=risk_level_id,
+            risk_level_name=risk_level_name,
+            rule_id=rule_id,
+            stat_express=stat_express,
+            status=status,
+            target=target,
+            user_id=user_id,
+            warn_level=warn_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: int,
+             category_name: str,
+             content: str,
+             content_category: str,
+             create_time: str,
+             custom_type: int,
+             description: str,
+             display_name: str,
+             gmt_modified: str,
+             id: str,
+             login_name: str,
+             major_key: str,
+             name: str,
+             product_code: str,
+             product_id: str,
+             risk_level_id: str,
+             risk_level_name: str,
+             rule_id: str,
+             stat_express: str,
+             status: int,
+             target: str,
+             user_id: str,
+             warn_level: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("category_name", category_name)
+        _setter("content", content)
+        _setter("content_category", content_category)
+        _setter("create_time", create_time)
+        _setter("custom_type", custom_type)
+        _setter("description", description)
+        _setter("display_name", display_name)
+        _setter("gmt_modified", gmt_modified)
+        _setter("id", id)
+        _setter("login_name", login_name)
+        _setter("major_key", major_key)
+        _setter("name", name)
+        _setter("product_code", product_code)
+        _setter("product_id", product_id)
+        _setter("risk_level_id", risk_level_id)
+        _setter("risk_level_name", risk_level_name)
+        _setter("rule_id", rule_id)
+        _setter("stat_express", stat_express)
+        _setter("status", status)
+        _setter("target", target)
+        _setter("user_id", user_id)
+        _setter("warn_level", warn_level)
 
     @property
     @pulumi.getter

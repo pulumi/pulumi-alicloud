@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -65,12 +65,25 @@ class ClusterDbClusterIpArray(dict):
                **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
         :param Sequence[str] security_ips: List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
+        ClusterDbClusterIpArray._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_ip_array_name=db_cluster_ip_array_name,
+            modify_mode=modify_mode,
+            security_ips=security_ips,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_ip_array_name: Optional[str] = None,
+             modify_mode: Optional[str] = None,
+             security_ips: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if db_cluster_ip_array_name is not None:
-            pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
+            _setter("db_cluster_ip_array_name", db_cluster_ip_array_name)
         if modify_mode is not None:
-            pulumi.set(__self__, "modify_mode", modify_mode)
+            _setter("modify_mode", modify_mode)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
 
     @property
     @pulumi.getter(name="dbClusterIpArrayName")
@@ -108,8 +121,19 @@ class ClusterParameter(dict):
         :param str name: Kernel parameter name.
         :param str value: Kernel parameter value.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        ClusterParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -156,8 +180,19 @@ class ParameterGroupParameter(dict):
         :param str param_name: The name of a parameter in the parameter template.
         :param str param_value: The value of a parameter in the parameter template.
         """
-        pulumi.set(__self__, "param_name", param_name)
-        pulumi.set(__self__, "param_value", param_value)
+        ParameterGroupParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            param_name=param_name,
+            param_value=param_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             param_name: str,
+             param_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("param_name", param_name)
+        _setter("param_value", param_value)
 
     @property
     @pulumi.getter(name="paramName")
@@ -193,12 +228,31 @@ class GetAccountsAccountResult(dict):
         :param str account_type: Account type, Valid values are `Normal`, `Super`.
         :param Sequence['GetAccountsAccountDatabasePrivilegeArgs'] database_privileges: A list of database privilege. Each element contains the following attributes.
         """
-        pulumi.set(__self__, "account_description", account_description)
-        pulumi.set(__self__, "account_lock_state", account_lock_state)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_status", account_status)
-        pulumi.set(__self__, "account_type", account_type)
-        pulumi.set(__self__, "database_privileges", database_privileges)
+        GetAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_description=account_description,
+            account_lock_state=account_lock_state,
+            account_name=account_name,
+            account_status=account_status,
+            account_type=account_type,
+            database_privileges=database_privileges,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_description: str,
+             account_lock_state: str,
+             account_name: str,
+             account_status: str,
+             account_type: str,
+             database_privileges: Sequence['outputs.GetAccountsAccountDatabasePrivilegeResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_description", account_description)
+        _setter("account_lock_state", account_lock_state)
+        _setter("account_name", account_name)
+        _setter("account_status", account_status)
+        _setter("account_type", account_type)
+        _setter("database_privileges", database_privileges)
 
     @property
     @pulumi.getter(name="accountDescription")
@@ -258,8 +312,19 @@ class GetAccountsAccountDatabasePrivilegeResult(dict):
         :param str account_privilege: Account privilege of database
         :param str db_name: The account owned database name
         """
-        pulumi.set(__self__, "account_privilege", account_privilege)
-        pulumi.set(__self__, "db_name", db_name)
+        GetAccountsAccountDatabasePrivilegeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_privilege=account_privilege,
+            db_name=db_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_privilege: str,
+             db_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_privilege", account_privilege)
+        _setter("db_name", db_name)
 
     @property
     @pulumi.getter(name="accountPrivilege")
@@ -327,28 +392,79 @@ class GetClustersClusterResult(dict):
         :param str vpc_id: ID of the VPC the cluster belongs to.
         :param str zone_id: The zone_id of the db_nodes.
         """
-        pulumi.set(__self__, "charge_type", charge_type)
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_node_class", db_node_class)
-        pulumi.set(__self__, "db_node_number", db_node_number)
-        pulumi.set(__self__, "db_nodes", db_nodes)
-        pulumi.set(__self__, "db_type", db_type)
-        pulumi.set(__self__, "db_version", db_version)
-        pulumi.set(__self__, "delete_lock", delete_lock)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "expired", expired)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_used", storage_used)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            charge_type=charge_type,
+            connection_string=connection_string,
+            create_time=create_time,
+            db_node_class=db_node_class,
+            db_node_number=db_node_number,
+            db_nodes=db_nodes,
+            db_type=db_type,
+            db_version=db_version,
+            delete_lock=delete_lock,
+            description=description,
+            engine=engine,
+            expire_time=expire_time,
+            expired=expired,
+            id=id,
+            lock_mode=lock_mode,
+            network_type=network_type,
+            port=port,
+            region_id=region_id,
+            status=status,
+            storage_used=storage_used,
+            vpc_id=vpc_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             charge_type: str,
+             connection_string: str,
+             create_time: str,
+             db_node_class: str,
+             db_node_number: int,
+             db_nodes: Sequence['outputs.GetClustersClusterDbNodeResult'],
+             db_type: str,
+             db_version: str,
+             delete_lock: int,
+             description: str,
+             engine: str,
+             expire_time: str,
+             expired: str,
+             id: str,
+             lock_mode: str,
+             network_type: str,
+             port: str,
+             region_id: str,
+             status: str,
+             storage_used: int,
+             vpc_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("charge_type", charge_type)
+        _setter("connection_string", connection_string)
+        _setter("create_time", create_time)
+        _setter("db_node_class", db_node_class)
+        _setter("db_node_number", db_node_number)
+        _setter("db_nodes", db_nodes)
+        _setter("db_type", db_type)
+        _setter("db_version", db_version)
+        _setter("delete_lock", delete_lock)
+        _setter("description", description)
+        _setter("engine", engine)
+        _setter("expire_time", expire_time)
+        _setter("expired", expired)
+        _setter("id", id)
+        _setter("lock_mode", lock_mode)
+        _setter("network_type", network_type)
+        _setter("port", port)
+        _setter("region_id", region_id)
+        _setter("status", status)
+        _setter("storage_used", storage_used)
+        _setter("vpc_id", vpc_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="chargeType")
@@ -550,15 +666,40 @@ class GetClustersClusterDbNodeResult(dict):
         :param str region_id: The region_id of the db_nodes.
         :param str zone_id: The zone_id of the db_nodes.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_node_class", db_node_class)
-        pulumi.set(__self__, "db_node_id", db_node_id)
-        pulumi.set(__self__, "db_node_role", db_node_role)
-        pulumi.set(__self__, "db_node_status", db_node_status)
-        pulumi.set(__self__, "max_connections", max_connections)
-        pulumi.set(__self__, "max_iops", max_iops)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetClustersClusterDbNodeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            db_node_class=db_node_class,
+            db_node_id=db_node_id,
+            db_node_role=db_node_role,
+            db_node_status=db_node_status,
+            max_connections=max_connections,
+            max_iops=max_iops,
+            region_id=region_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             db_node_class: str,
+             db_node_id: str,
+             db_node_role: str,
+             db_node_status: str,
+             max_connections: int,
+             max_iops: int,
+             region_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("db_node_class", db_node_class)
+        _setter("db_node_id", db_node_id)
+        _setter("db_node_role", db_node_role)
+        _setter("db_node_status", db_node_status)
+        _setter("max_connections", max_connections)
+        _setter("max_iops", max_iops)
+        _setter("region_id", region_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -650,12 +791,31 @@ class GetDatabasesDatabaseResult(dict):
         :param str db_status: The status of database.
         :param str engine: The engine of database.
         """
-        pulumi.set(__self__, "accounts", accounts)
-        pulumi.set(__self__, "character_set_name", character_set_name)
-        pulumi.set(__self__, "db_description", db_description)
-        pulumi.set(__self__, "db_name", db_name)
-        pulumi.set(__self__, "db_status", db_status)
-        pulumi.set(__self__, "engine", engine)
+        GetDatabasesDatabaseResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accounts=accounts,
+            character_set_name=character_set_name,
+            db_description=db_description,
+            db_name=db_name,
+            db_status=db_status,
+            engine=engine,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accounts: Sequence['outputs.GetDatabasesDatabaseAccountResult'],
+             character_set_name: str,
+             db_description: str,
+             db_name: str,
+             db_status: str,
+             engine: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accounts", accounts)
+        _setter("character_set_name", character_set_name)
+        _setter("db_description", db_description)
+        _setter("db_name", db_name)
+        _setter("db_status", db_status)
+        _setter("engine", engine)
 
     @property
     @pulumi.getter
@@ -717,9 +877,22 @@ class GetDatabasesDatabaseAccountResult(dict):
         :param str account_status: Account status.
         :param str privilege_status: The privilege status of account.
         """
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_status", account_status)
-        pulumi.set(__self__, "privilege_status", privilege_status)
+        GetDatabasesDatabaseAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_name=account_name,
+            account_status=account_status,
+            privilege_status=privilege_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_name: str,
+             account_status: str,
+             privilege_status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_name", account_name)
+        _setter("account_status", account_status)
+        _setter("privilege_status", privilege_status)
 
     @property
     @pulumi.getter(name="accountName")
@@ -765,13 +938,34 @@ class GetEndpointsEndpointResult(dict):
         :param str nodes: A list of nodes that connect to the address configuration.
         :param str read_write_mode: Read-write mode:`ReadWrite`: readable and writable (automatic read-write separation).`ReadOnly`: ReadOnly.
         """
-        pulumi.set(__self__, "address_items", address_items)
-        pulumi.set(__self__, "auto_add_new_nodes", auto_add_new_nodes)
-        pulumi.set(__self__, "db_endpoint_id", db_endpoint_id)
-        pulumi.set(__self__, "endpoint_config", endpoint_config)
-        pulumi.set(__self__, "endpoint_type", endpoint_type)
-        pulumi.set(__self__, "nodes", nodes)
-        pulumi.set(__self__, "read_write_mode", read_write_mode)
+        GetEndpointsEndpointResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_items=address_items,
+            auto_add_new_nodes=auto_add_new_nodes,
+            db_endpoint_id=db_endpoint_id,
+            endpoint_config=endpoint_config,
+            endpoint_type=endpoint_type,
+            nodes=nodes,
+            read_write_mode=read_write_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_items: Sequence['outputs.GetEndpointsEndpointAddressItemResult'],
+             auto_add_new_nodes: str,
+             db_endpoint_id: str,
+             endpoint_config: str,
+             endpoint_type: str,
+             nodes: str,
+             read_write_mode: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address_items", address_items)
+        _setter("auto_add_new_nodes", auto_add_new_nodes)
+        _setter("db_endpoint_id", db_endpoint_id)
+        _setter("endpoint_config", endpoint_config)
+        _setter("endpoint_type", endpoint_type)
+        _setter("nodes", nodes)
+        _setter("read_write_mode", read_write_mode)
 
     @property
     @pulumi.getter(name="addressItems")
@@ -847,12 +1041,31 @@ class GetEndpointsEndpointAddressItemResult(dict):
         :param str vpc_id: ID of the VPC the instance belongs to.
         :param str vswitch_id: ID of the VSwitch the cluster belongs to.
         """
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "net_type", net_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetEndpointsEndpointAddressItemResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_string=connection_string,
+            ip_address=ip_address,
+            net_type=net_type,
+            port=port,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_string: str,
+             ip_address: str,
+             net_type: str,
+             port: str,
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("connection_string", connection_string)
+        _setter("ip_address", ip_address)
+        _setter("net_type", net_type)
+        _setter("port", port)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -924,14 +1137,37 @@ class GetGlobalDatabaseNetworksNetworkResult(dict):
         :param str id: The ID of the Global Database Network.
         :param str status: The status of the Global Database Network. Valid values:
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_clusters", db_clusters)
-        pulumi.set(__self__, "db_type", db_type)
-        pulumi.set(__self__, "db_version", db_version)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "gdn_id", gdn_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
+        GetGlobalDatabaseNetworksNetworkResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            db_clusters=db_clusters,
+            db_type=db_type,
+            db_version=db_version,
+            description=description,
+            gdn_id=gdn_id,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             db_clusters: Sequence['outputs.GetGlobalDatabaseNetworksNetworkDbClusterResult'],
+             db_type: str,
+             db_version: str,
+             description: str,
+             gdn_id: str,
+             id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("db_clusters", db_clusters)
+        _setter("db_type", db_type)
+        _setter("db_version", db_version)
+        _setter("description", description)
+        _setter("gdn_id", gdn_id)
+        _setter("id", id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1009,9 +1245,22 @@ class GetGlobalDatabaseNetworksNetworkDbClusterResult(dict):
         :param str region_id: The region ID of the cluster.
         :param str role: The role of the cluster.
         """
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "role", role)
+        GetGlobalDatabaseNetworksNetworkDbClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_id=db_cluster_id,
+            region_id=region_id,
+            role=role,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_id: str,
+             region_id: str,
+             role: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_cluster_id", db_cluster_id)
+        _setter("region_id", region_id)
+        _setter("role", role)
 
     @property
     @pulumi.getter(name="dbClusterId")
@@ -1047,8 +1296,19 @@ class GetNodeClassesClassResult(dict):
         :param Sequence['GetNodeClassesClassSupportedEngineArgs'] supported_engines: A list of PolarDB node classes in the zone.
         :param str zone_id: The Zone to launch the PolarDB cluster.
         """
-        pulumi.set(__self__, "supported_engines", supported_engines)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetNodeClassesClassResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            supported_engines=supported_engines,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             supported_engines: Sequence['outputs.GetNodeClassesClassSupportedEngineResult'],
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("supported_engines", supported_engines)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="supportedEngines")
@@ -1076,8 +1336,19 @@ class GetNodeClassesClassSupportedEngineResult(dict):
         :param Sequence['GetNodeClassesClassSupportedEngineAvailableResourceArgs'] available_resources: A list of PolarDB node available classes.
         :param str engine: In the zone, the database type supports classes in the following available_resources.
         """
-        pulumi.set(__self__, "available_resources", available_resources)
-        pulumi.set(__self__, "engine", engine)
+        GetNodeClassesClassSupportedEngineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_resources=available_resources,
+            engine=engine,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_resources: Sequence['outputs.GetNodeClassesClassSupportedEngineAvailableResourceResult'],
+             engine: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("available_resources", available_resources)
+        _setter("engine", engine)
 
     @property
     @pulumi.getter(name="availableResources")
@@ -1103,7 +1374,16 @@ class GetNodeClassesClassSupportedEngineAvailableResourceResult(dict):
         """
         :param str db_node_class: The PolarDB node class type by the user.
         """
-        pulumi.set(__self__, "db_node_class", db_node_class)
+        GetNodeClassesClassSupportedEngineAvailableResourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_node_class=db_node_class,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_node_class: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_node_class", db_node_class)
 
     @property
     @pulumi.getter(name="dbNodeClass")
@@ -1139,16 +1419,43 @@ class GetParameterGroupsGroupResult(dict):
         :param str parameter_group_name: The name of the parameter template.
         :param str parameter_group_type: The type of the parameter template.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_type", db_type)
-        pulumi.set(__self__, "db_version", db_version)
-        pulumi.set(__self__, "force_restart", force_restart)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "parameter_counts", parameter_counts)
-        pulumi.set(__self__, "parameter_group_desc", parameter_group_desc)
-        pulumi.set(__self__, "parameter_group_id", parameter_group_id)
-        pulumi.set(__self__, "parameter_group_name", parameter_group_name)
-        pulumi.set(__self__, "parameter_group_type", parameter_group_type)
+        GetParameterGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            db_type=db_type,
+            db_version=db_version,
+            force_restart=force_restart,
+            id=id,
+            parameter_counts=parameter_counts,
+            parameter_group_desc=parameter_group_desc,
+            parameter_group_id=parameter_group_id,
+            parameter_group_name=parameter_group_name,
+            parameter_group_type=parameter_group_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             db_type: str,
+             db_version: str,
+             force_restart: str,
+             id: str,
+             parameter_counts: int,
+             parameter_group_desc: str,
+             parameter_group_id: str,
+             parameter_group_name: str,
+             parameter_group_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("db_type", db_type)
+        _setter("db_version", db_version)
+        _setter("force_restart", force_restart)
+        _setter("id", id)
+        _setter("parameter_counts", parameter_counts)
+        _setter("parameter_group_desc", parameter_group_desc)
+        _setter("parameter_group_id", parameter_group_id)
+        _setter("parameter_group_name", parameter_group_name)
+        _setter("parameter_group_type", parameter_group_type)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1240,8 +1547,19 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            multi_zone_ids=multi_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             multi_zone_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

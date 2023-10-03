@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PublishTaskArgs', 'PublishTask']
@@ -23,11 +23,24 @@ class PublishTaskArgs:
         :param pulumi.Input[str] agent_key: The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] data_id_lists: Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
         """
-        pulumi.set(__self__, "biz_type", biz_type)
+        PublishTaskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            biz_type=biz_type,
+            agent_key=agent_key,
+            data_id_lists=data_id_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             biz_type: pulumi.Input[str],
+             agent_key: Optional[pulumi.Input[str]] = None,
+             data_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("biz_type", biz_type)
         if agent_key is not None:
-            pulumi.set(__self__, "agent_key", agent_key)
+            _setter("agent_key", agent_key)
         if data_id_lists is not None:
-            pulumi.set(__self__, "data_id_lists", data_id_lists)
+            _setter("data_id_lists", data_id_lists)
 
     @property
     @pulumi.getter(name="bizType")
@@ -84,18 +97,37 @@ class _PublishTaskState:
         :param pulumi.Input[str] modify_time: UTC time for task modification
         :param pulumi.Input[str] status: The status of the task.
         """
+        _PublishTaskState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            agent_key=agent_key,
+            biz_type=biz_type,
+            create_time=create_time,
+            data_id_lists=data_id_lists,
+            modify_time=modify_time,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             agent_key: Optional[pulumi.Input[str]] = None,
+             biz_type: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             data_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             modify_time: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if agent_key is not None:
-            pulumi.set(__self__, "agent_key", agent_key)
+            _setter("agent_key", agent_key)
         if biz_type is not None:
-            pulumi.set(__self__, "biz_type", biz_type)
+            _setter("biz_type", biz_type)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if data_id_lists is not None:
-            pulumi.set(__self__, "data_id_lists", data_id_lists)
+            _setter("data_id_lists", data_id_lists)
         if modify_time is not None:
-            pulumi.set(__self__, "modify_time", modify_time)
+            _setter("modify_time", modify_time)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="agentKey")
@@ -259,6 +291,10 @@ class PublishTask(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PublishTaskArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

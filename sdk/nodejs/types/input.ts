@@ -443,7 +443,7 @@ export namespace alb {
          */
         contentType?: pulumi.Input<string>;
         /**
-         * The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+         * The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
          */
         httpCode?: pulumi.Input<string>;
     }
@@ -499,15 +499,15 @@ export namespace alb {
 
     export interface RuleRuleActionRedirectConfig {
         /**
-         * The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         * The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
          */
         host?: pulumi.Input<string>;
         /**
-         * The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+         * The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
          */
         httpCode?: pulumi.Input<string>;
         /**
-         * The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
          */
         path?: pulumi.Input<string>;
         /**
@@ -519,22 +519,22 @@ export namespace alb {
          */
         protocol?: pulumi.Input<string>;
         /**
-         * The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+         * The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
          */
         query?: pulumi.Input<string>;
     }
 
     export interface RuleRuleActionRewriteConfig {
         /**
-         * The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+         * The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
          */
         host?: pulumi.Input<string>;
         /**
-         * The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
          */
         path?: pulumi.Input<string>;
         /**
-         * The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+         * The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
          */
         query?: pulumi.Input<string>;
     }
@@ -608,7 +608,7 @@ export namespace alb {
 
     export interface RuleRuleConditionCookieConfig {
         /**
-         * The values of the cookie. See `values` below.
+         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
          */
         values?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleConditionCookieConfigValue>[]>;
     }
@@ -631,35 +631,35 @@ export namespace alb {
          */
         key?: pulumi.Input<string>;
         /**
-         * The values of the cookie. See `values` below.
+         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
          */
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface RuleRuleConditionHostConfig {
         /**
-         * The values of the cookie. See `values` below.
+         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
          */
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface RuleRuleConditionMethodConfig {
         /**
-         * The values of the cookie. See `values` below.
+         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
          */
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface RuleRuleConditionPathConfig {
         /**
-         * The values of the cookie. See `values` below.
+         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
          */
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface RuleRuleConditionQueryStringConfig {
         /**
-         * The values of the cookie. See `values` below.
+         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
          */
         values?: pulumi.Input<pulumi.Input<inputs.alb.RuleRuleConditionQueryStringConfigValue>[]>;
     }
@@ -678,7 +678,7 @@ export namespace alb {
 
     export interface RuleRuleConditionSourceIpConfig {
         /**
-         * The values of the cookie. See `values` below.
+         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
          */
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -1910,57 +1910,57 @@ export namespace cms {
 
     export interface GroupMetricRuleEscalationsCritical {
         /**
-         * The comparison operator of the threshold for critical-level alerts.
+         * The comparison operator of the threshold for warn-level alerts.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * The statistical aggregation method for critical-level alerts.
+         * The statistical aggregation method for warn-level alerts.
          */
         statistics?: pulumi.Input<string>;
         /**
-         * The threshold for critical-level alerts.
+         * The threshold for warn-level alerts.
          */
         threshold?: pulumi.Input<string>;
         /**
-         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times?: pulumi.Input<number>;
     }
 
     export interface GroupMetricRuleEscalationsInfo {
         /**
-         * The comparison operator of the threshold for critical-level alerts.
+         * The comparison operator of the threshold for warn-level alerts.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * The statistical aggregation method for critical-level alerts.
+         * The statistical aggregation method for warn-level alerts.
          */
         statistics?: pulumi.Input<string>;
         /**
-         * The threshold for critical-level alerts.
+         * The threshold for warn-level alerts.
          */
         threshold?: pulumi.Input<string>;
         /**
-         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times?: pulumi.Input<number>;
     }
 
     export interface GroupMetricRuleEscalationsWarn {
         /**
-         * The comparison operator of the threshold for critical-level alerts.
+         * The comparison operator of the threshold for warn-level alerts.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * The statistical aggregation method for critical-level alerts.
+         * The statistical aggregation method for warn-level alerts.
          */
         statistics?: pulumi.Input<string>;
         /**
-         * The threshold for critical-level alerts.
+         * The threshold for warn-level alerts.
          */
         threshold?: pulumi.Input<string>;
         /**
-         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
          */
         times?: pulumi.Input<number>;
     }
@@ -2018,11 +2018,11 @@ export namespace cms {
 
     export interface HybridMonitorSlsTaskSlsProcessConfigExpress {
         /**
-         * The alias of the aggregation result.
+         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
          */
         alias?: pulumi.Input<string>;
         /**
-         * The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
+         * The extended field that specifies the result of basic operations that are performed on aggregation results.
          */
         express?: pulumi.Input<string>;
     }
@@ -2044,29 +2044,29 @@ export namespace cms {
          */
         operator?: pulumi.Input<string>;
         /**
-         * The name of the key that is used to aggregate logs imported from Log Service.
+         * The name of the key that is used to filter logs imported from Log Service.
          */
         slsKeyName?: pulumi.Input<string>;
         /**
-         * The value of the key that is used to filter logs imported from Log Service.
+         * The tag value of the metric.
          */
         value?: pulumi.Input<string>;
     }
 
     export interface HybridMonitorSlsTaskSlsProcessConfigGroupBy {
         /**
-         * The alias of the aggregation result.
+         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
          */
         alias?: pulumi.Input<string>;
         /**
-         * The name of the key that is used to aggregate logs imported from Log Service.
+         * The name of the key that is used to filter logs imported from Log Service.
          */
         slsKeyName?: pulumi.Input<string>;
     }
 
     export interface HybridMonitorSlsTaskSlsProcessConfigStatistic {
         /**
-         * The alias of the aggregation result.
+         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
          */
         alias?: pulumi.Input<string>;
         /**
@@ -2084,7 +2084,7 @@ export namespace cms {
          */
         parameterTwo?: pulumi.Input<string>;
         /**
-         * The name of the key that is used to aggregate logs imported from Log Service.
+         * The name of the key that is used to filter logs imported from Log Service.
          */
         slsKeyName?: pulumi.Input<string>;
     }
@@ -2148,57 +2148,57 @@ export namespace cms {
 
     export interface MetricRuleTemplateAlertTemplateEscalationsCritical {
         /**
-         * The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * The statistical aggregation method for warn-level alerts.
+         * The statistical aggregation method for critical-level alerts.
          */
         statistics?: pulumi.Input<string>;
         /**
-         * The threshold for warn-level alerts.
+         * The threshold for critical-level alerts.
          */
         threshold?: pulumi.Input<string>;
         /**
-         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
          */
         times?: pulumi.Input<string>;
     }
 
     export interface MetricRuleTemplateAlertTemplateEscalationsInfo {
         /**
-         * The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * The statistical aggregation method for warn-level alerts.
+         * The statistical aggregation method for critical-level alerts.
          */
         statistics?: pulumi.Input<string>;
         /**
-         * The threshold for warn-level alerts.
+         * The threshold for critical-level alerts.
          */
         threshold?: pulumi.Input<string>;
         /**
-         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
          */
         times?: pulumi.Input<string>;
     }
 
     export interface MetricRuleTemplateAlertTemplateEscalationsWarn {
         /**
-         * The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
          */
         comparisonOperator?: pulumi.Input<string>;
         /**
-         * The statistical aggregation method for warn-level alerts.
+         * The statistical aggregation method for critical-level alerts.
          */
         statistics?: pulumi.Input<string>;
         /**
-         * The threshold for warn-level alerts.
+         * The threshold for critical-level alerts.
          */
         threshold?: pulumi.Input<string>;
         /**
-         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
          */
         times?: pulumi.Input<string>;
     }
@@ -2944,7 +2944,7 @@ export namespace cs {
 
     export interface ManagedKubernetesRuntime {
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * This parameter specifies the name of the component.
          */
         name?: pulumi.Input<string>;
         /**
@@ -3033,7 +3033,7 @@ export namespace cs {
          */
         id?: pulumi.Input<string>;
         /**
-         * The kubernetes cluster's name. It is unique in one Alicloud account.
+         * This parameter specifies the name of the component.
          */
         name?: pulumi.Input<string>;
         /**
@@ -4387,7 +4387,7 @@ export namespace eci {
          */
         key?: pulumi.Input<string>;
         /**
-         * The variable value of the security context that the container group runs.
+         * The value of the variable. The value can be 0 to 256 characters in length.
          */
         value?: pulumi.Input<string>;
     }
@@ -4429,18 +4429,18 @@ export namespace eci {
 
     export interface ContainerGroupContainerLivenessProbeExec {
         /**
-         * The commands run by the init container.
+         * Commands to be executed inside the container when performing health checks using the command line method.
          */
         commands?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ContainerGroupContainerLivenessProbeHttpGet {
         /**
-         * The relative file path.
+         * The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
          */
         path?: pulumi.Input<string>;
         /**
-         * The port number. Valid values: `1` to `65535`.
+         * When using the HTTP request method for health check, the port number for HTTP Get request detection.
          */
         port?: pulumi.Input<number>;
         /**
@@ -4451,14 +4451,14 @@ export namespace eci {
 
     export interface ContainerGroupContainerLivenessProbeTcpSocket {
         /**
-         * The port number. Valid values: `1` to `65535`.
+         * When using the HTTP request method for health check, the port number for HTTP Get request detection.
          */
         port?: pulumi.Input<number>;
     }
 
     export interface ContainerGroupContainerPort {
         /**
-         * The port number. Valid values: `1` to `65535`.
+         * When using the HTTP request method for health check, the port number for HTTP Get request detection.
          */
         port?: pulumi.Input<number>;
         /**
@@ -4504,18 +4504,18 @@ export namespace eci {
 
     export interface ContainerGroupContainerReadinessProbeExec {
         /**
-         * The commands run by the init container.
+         * Commands to be executed inside the container when performing health checks using the command line method.
          */
         commands?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ContainerGroupContainerReadinessProbeHttpGet {
         /**
-         * The relative file path.
+         * The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
          */
         path?: pulumi.Input<string>;
         /**
-         * The port number. Valid values: `1` to `65535`.
+         * When using the HTTP request method for health check, the port number for HTTP Get request detection.
          */
         port?: pulumi.Input<number>;
         /**
@@ -4526,7 +4526,7 @@ export namespace eci {
 
     export interface ContainerGroupContainerReadinessProbeTcpSocket {
         /**
-         * The port number. Valid values: `1` to `65535`.
+         * When using the HTTP request method for health check, the port number for HTTP Get request detection.
          */
         port?: pulumi.Input<number>;
     }
@@ -4537,11 +4537,11 @@ export namespace eci {
          */
         mountPath?: pulumi.Input<string>;
         /**
-         * The name of the volume.
+         * The name of the mounted volume.
          */
         name?: pulumi.Input<string>;
         /**
-         * Specifies whether the mount path is read-only. Default value: `false`.
+         * Specifies whether the volume is read-only. Default value: `false`.
          */
         readOnly?: pulumi.Input<boolean>;
     }
@@ -4563,11 +4563,11 @@ export namespace eci {
 
     export interface ContainerGroupDnsConfigOption {
         /**
-         * The name of the volume.
+         * The name of the mounted volume.
          */
         name?: pulumi.Input<string>;
         /**
-         * The variable value of the security context that the container group runs.
+         * The value of the variable. The value can be 0 to 256 characters in length.
          */
         value?: pulumi.Input<string>;
     }
@@ -4581,11 +4581,11 @@ export namespace eci {
 
     export interface ContainerGroupEciSecurityContextSysctl {
         /**
-         * The name of the volume.
+         * The name of the mounted volume.
          */
         name?: pulumi.Input<string>;
         /**
-         * The variable value of the security context that the container group runs.
+         * The value of the variable. The value can be 0 to 256 characters in length.
          */
         value?: pulumi.Input<string>;
     }
@@ -4681,14 +4681,14 @@ export namespace eci {
          */
         key?: pulumi.Input<string>;
         /**
-         * The variable value of the security context that the container group runs.
+         * The value of the variable. The value can be 0 to 256 characters in length.
          */
         value?: pulumi.Input<string>;
     }
 
     export interface ContainerGroupInitContainerPort {
         /**
-         * The port number. Valid values: `1` to `65535`.
+         * When using the HTTP request method for health check, the port number for HTTP Get request detection.
          */
         port?: pulumi.Input<number>;
         /**
@@ -4703,11 +4703,11 @@ export namespace eci {
          */
         mountPath?: pulumi.Input<string>;
         /**
-         * The name of the volume.
+         * The name of the mounted volume.
          */
         name?: pulumi.Input<string>;
         /**
-         * Specifies whether the mount path is read-only. Default value: `false`.
+         * Specifies whether the volume is read-only. Default value: `false`.
          */
         readOnly?: pulumi.Input<boolean>;
     }
@@ -4766,7 +4766,7 @@ export namespace eci {
          */
         content?: pulumi.Input<string>;
         /**
-         * The relative file path.
+         * The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
          */
         path?: pulumi.Input<string>;
     }
@@ -4910,11 +4910,11 @@ export namespace ecs {
 
     export interface EcsLaunchTemplateDataDisk {
         /**
-         * The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
+         * The category of the disk.
          */
         category?: pulumi.Input<string>;
         /**
-         * Specifies whether to release the system disk when the instance is released. Default to `true`.
+         * Indicates whether the data disk is released with the instance.
          */
         deleteWithInstance?: pulumi.Input<boolean>;
         /**
@@ -4930,11 +4930,11 @@ export namespace ecs {
          */
         name?: pulumi.Input<string>;
         /**
-         * The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+         * The performance level of the ESSD used as the data disk.
          */
         performanceLevel?: pulumi.Input<string>;
         /**
-         * Size of the system disk, measured in GB. Value range: [20, 500].
+         * The size of the data disk.
          */
         size?: pulumi.Input<number>;
         /**
@@ -4968,11 +4968,11 @@ export namespace ecs {
 
     export interface EcsLaunchTemplateSystemDisk {
         /**
-         * The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
+         * The category of the disk.
          */
         category?: pulumi.Input<string>;
         /**
-         * Specifies whether to release the system disk when the instance is released. Default to `true`.
+         * Indicates whether the data disk is released with the instance.
          */
         deleteWithInstance?: pulumi.Input<boolean>;
         /**
@@ -4988,11 +4988,11 @@ export namespace ecs {
          */
         name?: pulumi.Input<string>;
         /**
-         * The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+         * The performance level of the ESSD used as the data disk.
          */
         performanceLevel?: pulumi.Input<string>;
         /**
-         * Size of the system disk, measured in GB. Value range: [20, 500].
+         * The size of the data disk.
          */
         size?: pulumi.Input<number>;
     }
@@ -6119,7 +6119,6 @@ export namespace ess {
         /**
          * The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
          * digits, and underscores (_). It cannot start with a digit.
-         * digits, and underscores (_). It cannot start with a digit.
          */
         key?: pulumi.Input<string>;
         /**
@@ -6143,11 +6142,10 @@ export namespace ess {
         /**
          * The directory of the mounted volume. Data under this directory will be overwritten by the
          * data in the volume.
-         * data in the volume.
          */
         mountPath?: pulumi.Input<string>;
         /**
-         * The name of the volume.
+         * The name of the mounted volume.
          */
         name?: pulumi.Input<string>;
         /**
@@ -6241,7 +6239,6 @@ export namespace ess {
         /**
          * The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
          * digits, and underscores (_). It cannot start with a digit.
-         * digits, and underscores (_). It cannot start with a digit.
          */
         key?: pulumi.Input<string>;
         /**
@@ -6265,11 +6262,10 @@ export namespace ess {
         /**
          * The directory of the mounted volume. Data under this directory will be overwritten by the
          * data in the volume.
-         * data in the volume.
          */
         mountPath?: pulumi.Input<string>;
         /**
-         * The name of the volume.
+         * The name of the mounted volume.
          */
         name?: pulumi.Input<string>;
         /**
@@ -6570,11 +6566,11 @@ export namespace eventbridge {
          */
         isValueSecret?: pulumi.Input<string>;
         /**
-         * The key of the request header.
+         * The key of the request path.
          */
         key?: pulumi.Input<string>;
         /**
-         * The value of the request header.
+         * The key of the request path.
          */
         value?: pulumi.Input<string>;
     }
@@ -6585,11 +6581,11 @@ export namespace eventbridge {
          */
         isValueSecret?: pulumi.Input<string>;
         /**
-         * The key of the request header.
+         * The key of the request path.
          */
         key?: pulumi.Input<string>;
         /**
-         * The value of the request header.
+         * The key of the request path.
          */
         value?: pulumi.Input<string>;
     }
@@ -6600,11 +6596,11 @@ export namespace eventbridge {
          */
         isValueSecret?: pulumi.Input<string>;
         /**
-         * The key of the request header.
+         * The key of the request path.
          */
         key?: pulumi.Input<string>;
         /**
-         * The value of the request header.
+         * The key of the request path.
          */
         value?: pulumi.Input<string>;
     }
@@ -7135,14 +7131,14 @@ export namespace ga {
 
     export interface ForwardingRuleRuleConditionHostConfig {
         /**
-         * The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+         * The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
          */
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ForwardingRuleRuleConditionPathConfig {
         /**
-         * The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+         * The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
          */
         values?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -8526,20 +8522,18 @@ export namespace oss {
 
     export interface BucketLifecycleRuleAbortMultipartUpload {
         /**
-         * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+         * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
          */
         createdBeforeDate?: pulumi.Input<string>;
         /**
-         * Specifies the number of days after object creation when the specific rule action takes effect.
-         *
-         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+         * Specifies the number of days noncurrent object versions transition.
          */
         days?: pulumi.Input<number>;
     }
 
     export interface BucketLifecycleRuleExpiration {
         /**
-         * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+         * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
          */
         createdBeforeDate?: pulumi.Input<string>;
         /**
@@ -8547,9 +8541,7 @@ export namespace oss {
          */
         date?: pulumi.Input<string>;
         /**
-         * Specifies the number of days after object creation when the specific rule action takes effect.
-         *
-         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+         * Specifies the number of days noncurrent object versions transition.
          */
         days?: pulumi.Input<number>;
         /**
@@ -8577,7 +8569,7 @@ export namespace oss {
 
     export interface BucketLifecycleRuleFilterNot {
         /**
-         * Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+         * The prefix in the names of the objects to which the lifecycle rule does not apply.
          */
         prefix?: pulumi.Input<string>;
         /**
@@ -8599,18 +8591,14 @@ export namespace oss {
 
     export interface BucketLifecycleRuleNoncurrentVersionExpiration {
         /**
-         * Specifies the number of days after object creation when the specific rule action takes effect.
-         *
-         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+         * Specifies the number of days noncurrent object versions transition.
          */
         days: pulumi.Input<number>;
     }
 
     export interface BucketLifecycleRuleNoncurrentVersionTransition {
         /**
-         * Specifies the number of days after object creation when the specific rule action takes effect.
-         *
-         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+         * Specifies the number of days noncurrent object versions transition.
          */
         days: pulumi.Input<number>;
         /**
@@ -8619,7 +8607,6 @@ export namespace oss {
         isAccessTime?: pulumi.Input<boolean>;
         /**
          * Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
          */
         returnToStdWhenVisit?: pulumi.Input<boolean>;
         /**
@@ -8630,13 +8617,11 @@ export namespace oss {
 
     export interface BucketLifecycleRuleTransition {
         /**
-         * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+         * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
          */
         createdBeforeDate?: pulumi.Input<string>;
         /**
-         * Specifies the number of days after object creation when the specific rule action takes effect.
-         *
-         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+         * Specifies the number of days noncurrent object versions transition.
          */
         days?: pulumi.Input<number>;
         /**
@@ -8645,7 +8630,6 @@ export namespace oss {
         isAccessTime?: pulumi.Input<boolean>;
         /**
          * Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-         * `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
          */
         returnToStdWhenVisit?: pulumi.Input<boolean>;
         /**
@@ -8797,7 +8781,7 @@ export namespace ots {
          */
         enableSortAndAgg?: pulumi.Input<boolean>;
         /**
-         * Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+         * The name of the field that is used to sort data. only required if sorterType is FieldSort.
          */
         fieldName: pulumi.Input<string>;
         /**
@@ -8834,7 +8818,7 @@ export namespace ots {
 
     export interface SearchIndexSchemaIndexSortSorter {
         /**
-         * Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+         * The name of the field that is used to sort data. only required if sorterType is FieldSort.
          */
         fieldName?: pulumi.Input<string>;
         /**
@@ -9803,7 +9787,7 @@ export namespace sae {
          */
         key?: pulumi.Input<string>;
         /**
-         * The path of the container in SAE.
+         * The mount path.
          */
         mountPath?: pulumi.Input<string>;
     }
@@ -9897,7 +9881,7 @@ export namespace sae {
          */
         path?: pulumi.Input<string>;
         /**
-         * The port that is used to check the status of TCP connections.
+         * The port.
          */
         port?: pulumi.Input<number>;
         /**
@@ -9908,7 +9892,7 @@ export namespace sae {
 
     export interface ApplicationLivenessV2TcpSocket {
         /**
-         * The port that is used to check the status of TCP connections.
+         * The port.
          */
         port?: pulumi.Input<number>;
     }
@@ -9946,11 +9930,11 @@ export namespace sae {
          */
         bucketPath?: pulumi.Input<string>;
         /**
-         * The path of the container in SAE.
+         * The mount path.
          */
         mountPath?: pulumi.Input<string>;
         /**
-         * Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+         * Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
          */
         readOnly?: pulumi.Input<boolean>;
     }
@@ -10004,7 +9988,7 @@ export namespace sae {
 
     export interface ApplicationPvtzDiscoverySvcPortProtocol {
         /**
-         * The port that is used to check the status of TCP connections.
+         * The port.
          */
         port?: pulumi.Input<number>;
         /**
@@ -10061,7 +10045,7 @@ export namespace sae {
          */
         path?: pulumi.Input<string>;
         /**
-         * The port that is used to check the status of TCP connections.
+         * The port.
          */
         port?: pulumi.Input<number>;
         /**
@@ -10072,7 +10056,7 @@ export namespace sae {
 
     export interface ApplicationReadinessV2TcpSocket {
         /**
-         * The port that is used to check the status of TCP connections.
+         * The port.
          */
         port?: pulumi.Input<number>;
     }
@@ -10192,11 +10176,11 @@ export namespace sae {
          */
         atTime?: pulumi.Input<string>;
         /**
-         * Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+         * Maximum number of instances applied.
          */
         maxReplicas?: pulumi.Input<number>;
         /**
-         * Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+         * Minimum number of instances applied.
          */
         minReplicas?: pulumi.Input<number>;
         /**
@@ -10215,7 +10199,7 @@ export namespace sae {
          */
         maxThreads?: pulumi.Input<number>;
         /**
-         * The port that is used to check the status of TCP connections.
+         * The port.
          */
         port?: pulumi.Input<number>;
         /**
@@ -10617,55 +10601,55 @@ export namespace servicemesh {
 
     export interface ServiceMeshMeshConfigAccessLog {
         /**
-         * Whether to enable of the access logging. Valid values: `true` and `false`.
+         * Whether to enable Service grid audit.
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * The SLS Project of the access logging.
+         * The Service grid audit that to the project.
          */
         project?: pulumi.Input<string>;
     }
 
     export interface ServiceMeshMeshConfigAudit {
         /**
-         * Whether to enable of the access logging. Valid values: `true` and `false`.
+         * Whether to enable Service grid audit.
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * The SLS Project of the access logging.
+         * The Service grid audit that to the project.
          */
         project?: pulumi.Input<string>;
     }
 
     export interface ServiceMeshMeshConfigControlPlaneLog {
         /**
-         * Whether to enable of the access logging. Valid values: `true` and `false`.
+         * Whether to enable Service grid audit.
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * The SLS Project of the access logging.
+         * The Service grid audit that to the project.
          */
         project?: pulumi.Input<string>;
     }
 
     export interface ServiceMeshMeshConfigKiali {
         /**
-         * Whether to enable of the access logging. Valid values: `true` and `false`.
+         * Whether to enable Service grid audit.
          */
         enabled?: pulumi.Input<boolean>;
     }
 
     export interface ServiceMeshMeshConfigOpa {
         /**
-         * Whether to enable of the access logging. Valid values: `true` and `false`.
+         * Whether to enable Service grid audit.
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * The limit cpu of the Sidecar injector Pods.
+         * The CPU resource  of the limitsOPA proxy container.
          */
         limitCpu?: pulumi.Input<string>;
         /**
-         * Sidecar injector Pods on the throttle.
+         * The memory resource limit of the OPA proxy container.
          */
         limitMemory?: pulumi.Input<string>;
         /**
@@ -10673,11 +10657,11 @@ export namespace servicemesh {
          */
         logLevel?: pulumi.Input<string>;
         /**
-         * The requested cpu the Sidecar injector Pods.
+         * The CPU resource request of the OPA proxy container.
          */
         requestCpu?: pulumi.Input<string>;
         /**
-         * The requested memory the Sidecar injector Pods.
+         * The memory resource request of the OPA proxy container.
          */
         requestMemory?: pulumi.Input<string>;
     }
@@ -10695,19 +10679,19 @@ export namespace servicemesh {
 
     export interface ServiceMeshMeshConfigProxy {
         /**
-         * The limit cpu of the Sidecar injector Pods.
+         * The CPU resource  of the limitsOPA proxy container.
          */
         limitCpu?: pulumi.Input<string>;
         /**
-         * Sidecar injector Pods on the throttle.
+         * The memory resource limit of the OPA proxy container.
          */
         limitMemory?: pulumi.Input<string>;
         /**
-         * The requested cpu the Sidecar injector Pods.
+         * The CPU resource request of the OPA proxy container.
          */
         requestCpu?: pulumi.Input<string>;
         /**
-         * The requested memory the Sidecar injector Pods.
+         * The memory resource request of the OPA proxy container.
          */
         requestMemory?: pulumi.Input<string>;
     }
@@ -10722,19 +10706,19 @@ export namespace servicemesh {
          */
         enableNamespacesByDefault?: pulumi.Input<boolean>;
         /**
-         * The limit cpu of the Sidecar injector Pods.
+         * The CPU resource  of the limitsOPA proxy container.
          */
         limitCpu?: pulumi.Input<string>;
         /**
-         * Sidecar injector Pods on the throttle.
+         * The memory resource limit of the OPA proxy container.
          */
         limitMemory?: pulumi.Input<string>;
         /**
-         * The requested cpu the Sidecar injector Pods.
+         * The CPU resource request of the OPA proxy container.
          */
         requestCpu?: pulumi.Input<string>;
         /**
-         * The requested memory the Sidecar injector Pods.
+         * The memory resource request of the OPA proxy container.
          */
         requestMemory?: pulumi.Input<string>;
     }
@@ -10970,7 +10954,7 @@ export namespace vpc {
 
     export interface NetworkAclEntriesEgress {
         /**
-         * The description of the ingress entry.
+         * The description of the egress entry.
          */
         description?: pulumi.Input<string>;
         /**
@@ -10978,50 +10962,50 @@ export namespace vpc {
          */
         destinationCidrIp?: pulumi.Input<string>;
         /**
-         * The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+         * The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
          */
         entryType?: pulumi.Input<string>;
         /**
-         * The name of the ingress entry.
+         * The name of the egress entry.
          */
         name?: pulumi.Input<string>;
         /**
-         * The policy of the ingress entry. It must be `accept` or `drop`.
+         * The policy of the egress entry. It must be `accept` or `drop`.
          */
         policy?: pulumi.Input<string>;
         /**
-         * The port of the ingress entry.
+         * The port of the egress entry.
          */
         port?: pulumi.Input<string>;
         /**
-         * The protocol of the ingress entry.
+         * The protocol of the egress entry.
          */
         protocol?: pulumi.Input<string>;
     }
 
     export interface NetworkAclEntriesIngress {
         /**
-         * The description of the ingress entry.
+         * The description of the egress entry.
          */
         description?: pulumi.Input<string>;
         /**
-         * The entry type of the ingress entry. It must be `custom` or `system`. Default value is `custom`.
+         * The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
          */
         entryType?: pulumi.Input<string>;
         /**
-         * The name of the ingress entry.
+         * The name of the egress entry.
          */
         name?: pulumi.Input<string>;
         /**
-         * The policy of the ingress entry. It must be `accept` or `drop`.
+         * The policy of the egress entry. It must be `accept` or `drop`.
          */
         policy?: pulumi.Input<string>;
         /**
-         * The port of the ingress entry.
+         * The port of the egress entry.
          */
         port?: pulumi.Input<string>;
         /**
-         * The protocol of the ingress entry.
+         * The protocol of the egress entry.
          */
         protocol?: pulumi.Input<string>;
         /**
@@ -11146,8 +11130,6 @@ export namespace vpc {
          * Collection strategy for outbound rules. Value:
          * - accept: collects network traffic.
          * - drop: No network traffic is collected.
-         * - accept: collects network traffic.
-         * - drop: No network traffic is collected.
          */
         action: pulumi.Input<string>;
         /**
@@ -11156,7 +11138,6 @@ export namespace vpc {
         destinationCidrBlock?: pulumi.Input<string>;
         /**
          * The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
          * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
          */
         destinationPortRange?: pulumi.Input<string>;
@@ -11170,10 +11151,6 @@ export namespace vpc {
          * - ICMP: Network Control Message Protocol.
          * - TCP: Transmission Control Protocol.
          * - UDP: User Datagram Protocol.
-         * - ALL: ALL agreements.
-         * - ICMP: Network Control Message Protocol.
-         * - TCP: Transmission Control Protocol.
-         * - UDP: User Datagram Protocol.
          */
         protocol: pulumi.Input<string>;
         /**
@@ -11182,8 +11159,6 @@ export namespace vpc {
         sourceCidrBlock?: pulumi.Input<string>;
         /**
          * The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         *
          * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
          */
         sourcePortRange?: pulumi.Input<string>;
@@ -11195,8 +11170,6 @@ export namespace vpc {
          * Collection strategy for outbound rules. Value:
          * - accept: collects network traffic.
          * - drop: No network traffic is collected.
-         * - accept: collects network traffic.
-         * - drop: No network traffic is collected.
          */
         action: pulumi.Input<string>;
         /**
@@ -11205,7 +11178,6 @@ export namespace vpc {
         destinationCidrBlock?: pulumi.Input<string>;
         /**
          * The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
          * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
          */
         destinationPortRange?: pulumi.Input<string>;
@@ -11219,10 +11191,6 @@ export namespace vpc {
          * - ICMP: Network Control Message Protocol.
          * - TCP: Transmission Control Protocol.
          * - UDP: User Datagram Protocol.
-         * - ALL: ALL agreements.
-         * - ICMP: Network Control Message Protocol.
-         * - TCP: Transmission Control Protocol.
-         * - UDP: User Datagram Protocol.
          */
         protocol: pulumi.Input<string>;
         /**
@@ -11231,8 +11199,6 @@ export namespace vpc {
         sourceCidrBlock?: pulumi.Input<string>;
         /**
          * The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         *
          * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
          */
         sourcePortRange?: pulumi.Input<string>;
@@ -11243,7 +11209,7 @@ export namespace vpc {
 export namespace vpn {
     export interface ConnectionBgpConfig {
         /**
-         * Whether to enable Health Check.
+         * Whether to enable BGP.
          */
         enable?: pulumi.Input<boolean>;
         /**
@@ -11266,7 +11232,7 @@ export namespace vpn {
          */
         dip?: pulumi.Input<string>;
         /**
-         * Whether to enable Health Check.
+         * Whether to enable BGP.
          */
         enable?: pulumi.Input<boolean>;
         /**

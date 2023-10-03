@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -127,13 +127,30 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
                  weighted_capacity: str,
                  instance_type: Optional[str] = None,
                  priority: Optional[str] = None):
-        pulumi.set(__self__, "max_price", max_price)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "weighted_capacity", weighted_capacity)
+        AutoProvisioningGroupLaunchTemplateConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_price=max_price,
+            vswitch_id=vswitch_id,
+            weighted_capacity=weighted_capacity,
+            instance_type=instance_type,
+            priority=priority,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_price: str,
+             vswitch_id: str,
+             weighted_capacity: str,
+             instance_type: Optional[str] = None,
+             priority: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max_price", max_price)
+        _setter("vswitch_id", vswitch_id)
+        _setter("weighted_capacity", weighted_capacity)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
 
     @property
     @pulumi.getter(name="maxPrice")
@@ -189,10 +206,21 @@ class DedicatedHostNetworkAttribute(dict):
         :param int slb_udp_timeout: The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds. Valid values: 15 to 310.
         :param int udp_timeout: The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds. Valid values: 15 to 310.
         """
+        DedicatedHostNetworkAttribute._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            slb_udp_timeout=slb_udp_timeout,
+            udp_timeout=udp_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             slb_udp_timeout: Optional[int] = None,
+             udp_timeout: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if slb_udp_timeout is not None:
-            pulumi.set(__self__, "slb_udp_timeout", slb_udp_timeout)
+            _setter("slb_udp_timeout", slb_udp_timeout)
         if udp_timeout is not None:
-            pulumi.set(__self__, "udp_timeout", udp_timeout)
+            _setter("udp_timeout", udp_timeout)
 
     @property
     @pulumi.getter(name="slbUdpTimeout")
@@ -269,23 +297,48 @@ class EcsInstanceSetDataDisk(dict):
         :param str performance_level: The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
-        pulumi.set(__self__, "disk_size", disk_size)
+        EcsInstanceSetDataDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_size=disk_size,
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            disk_category=disk_category,
+            disk_description=disk_description,
+            disk_name=disk_name,
+            encrypted=encrypted,
+            kms_key_id=kms_key_id,
+            performance_level=performance_level,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_size: int,
+             auto_snapshot_policy_id: Optional[str] = None,
+             disk_category: Optional[str] = None,
+             disk_description: Optional[str] = None,
+             disk_name: Optional[str] = None,
+             encrypted: Optional[bool] = None,
+             kms_key_id: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             snapshot_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_size", disk_size)
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if disk_category is not None:
-            pulumi.set(__self__, "disk_category", disk_category)
+            _setter("disk_category", disk_category)
         if disk_description is not None:
-            pulumi.set(__self__, "disk_description", disk_description)
+            _setter("disk_description", disk_description)
         if disk_name is not None:
-            pulumi.set(__self__, "disk_name", disk_name)
+            _setter("disk_name", disk_name)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="diskSize")
@@ -373,8 +426,19 @@ class EcsInstanceSetExcludeInstanceFilter(dict):
         :param str key: The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
         :param Sequence[str] values: The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "values", values)
+        EcsInstanceSetExcludeInstanceFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -431,15 +495,32 @@ class EcsInstanceSetNetworkInterface(dict):
         :param str primary_ip_address: The primary private IP address of ENI.
         :param str vswitch_id: The ID of the vSwitch to which to connect ENI.
         """
-        pulumi.set(__self__, "security_group_id", security_group_id)
+        EcsInstanceSetNetworkInterface._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            security_group_id=security_group_id,
+            description=description,
+            network_interface_name=network_interface_name,
+            primary_ip_address=primary_ip_address,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             security_group_id: str,
+             description: Optional[str] = None,
+             network_interface_name: Optional[str] = None,
+             primary_ip_address: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("security_group_id", security_group_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if network_interface_name is not None:
-            pulumi.set(__self__, "network_interface_name", network_interface_name)
+            _setter("network_interface_name", network_interface_name)
         if primary_ip_address is not None:
-            pulumi.set(__self__, "primary_ip_address", primary_ip_address)
+            _setter("primary_ip_address", primary_ip_address)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="securityGroupId")
@@ -515,37 +596,60 @@ class EcsLaunchTemplateDataDisk(dict):
                  size: Optional[int] = None,
                  snapshot_id: Optional[str] = None):
         """
-        :param str category: The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
-        :param bool delete_with_instance: Specifies whether to release the system disk when the instance is released. Default to `true`.
+        :param str category: The category of the disk.
+        :param bool delete_with_instance: Indicates whether the data disk is released with the instance.
         :param str description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param bool encrypted: Encrypted the data in this disk.
         :param str name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
-        :param str performance_level: The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
-        :param int size: Size of the system disk, measured in GB. Value range: [20, 500].
+        :param str performance_level: The performance level of the ESSD used as the data disk.
+        :param int size: The size of the data disk.
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
+        EcsLaunchTemplateDataDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            encrypted=encrypted,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[str] = None,
+             delete_with_instance: Optional[bool] = None,
+             description: Optional[str] = None,
+             encrypted: Optional[bool] = None,
+             name: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             size: Optional[int] = None,
+             snapshot_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+            _setter("delete_with_instance", delete_with_instance)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
     def category(self) -> Optional[str]:
         """
-        The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+        The category of the disk.
         """
         return pulumi.get(self, "category")
 
@@ -553,7 +657,7 @@ class EcsLaunchTemplateDataDisk(dict):
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[bool]:
         """
-        Specifies whether to release the system disk when the instance is released. Default to `true`.
+        Indicates whether the data disk is released with the instance.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -585,7 +689,7 @@ class EcsLaunchTemplateDataDisk(dict):
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[str]:
         """
-        The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+        The performance level of the ESSD used as the data disk.
         """
         return pulumi.get(self, "performance_level")
 
@@ -593,7 +697,7 @@ class EcsLaunchTemplateDataDisk(dict):
     @pulumi.getter
     def size(self) -> Optional[int]:
         """
-        Size of the system disk, measured in GB. Value range: [20, 500].
+        The size of the data disk.
         """
         return pulumi.get(self, "size")
 
@@ -642,16 +746,33 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
         :param str security_group_id: The security group ID.
         :param str vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         """
+        EcsLaunchTemplateNetworkInterfaces._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            name=name,
+            primary_ip=primary_ip,
+            security_group_id=security_group_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             name: Optional[str] = None,
+             primary_ip: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if primary_ip is not None:
-            pulumi.set(__self__, "primary_ip", primary_ip)
+            _setter("primary_ip", primary_ip)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -724,34 +845,55 @@ class EcsLaunchTemplateSystemDisk(dict):
                  performance_level: Optional[str] = None,
                  size: Optional[int] = None):
         """
-        :param str category: The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
-        :param bool delete_with_instance: Specifies whether to release the system disk when the instance is released. Default to `true`.
+        :param str category: The category of the disk.
+        :param bool delete_with_instance: Indicates whether the data disk is released with the instance.
         :param str description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param str iops: The Iops.
         :param str name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
-        :param str performance_level: The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
-        :param int size: Size of the system disk, measured in GB. Value range: [20, 500].
+        :param str performance_level: The performance level of the ESSD used as the data disk.
+        :param int size: The size of the data disk.
         """
+        EcsLaunchTemplateSystemDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            iops=iops,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[str] = None,
+             delete_with_instance: Optional[bool] = None,
+             description: Optional[str] = None,
+             iops: Optional[str] = None,
+             name: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             size: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+            _setter("delete_with_instance", delete_with_instance)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if iops is not None:
-            pulumi.set(__self__, "iops", iops)
+            _setter("iops", iops)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
 
     @property
     @pulumi.getter
     def category(self) -> Optional[str]:
         """
-        The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+        The category of the disk.
         """
         return pulumi.get(self, "category")
 
@@ -759,7 +901,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[bool]:
         """
-        Specifies whether to release the system disk when the instance is released. Default to `true`.
+        Indicates whether the data disk is released with the instance.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -791,7 +933,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[str]:
         """
-        The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+        The performance level of the ESSD used as the data disk.
         """
         return pulumi.get(self, "performance_level")
 
@@ -799,7 +941,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def size(self) -> Optional[int]:
         """
-        Size of the system disk, measured in GB. Value range: [20, 500].
+        The size of the data disk.
         """
         return pulumi.get(self, "size")
 
@@ -819,10 +961,21 @@ class EcsPrefixListEntry(dict):
                * For more information about CIDR blocks, see the "What is CIDR block?" section of the [Network FAQ](https://www.alibabacloud.com/help/doc-detail/40637.htm) topic.  * The total number of entries must not exceed the `max_entries` value.
         :param str description: The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
         """
+        EcsPrefixListEntry._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr is not None:
-            pulumi.set(__self__, "cidr", cidr)
+            _setter("cidr", cidr)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter
@@ -879,14 +1032,29 @@ class ImageDiskDeviceMapping(dict):
         :param int size: Specifies the size of a disk in the combined custom image, in GiB. Value range: 5 to 2000.
         :param str snapshot_id: Specifies a snapshot that is used to create a combined custom image.
         """
+        ImageDiskDeviceMapping._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device=device,
+            disk_type=disk_type,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device: Optional[str] = None,
+             disk_type: Optional[str] = None,
+             size: Optional[int] = None,
+             snapshot_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -959,16 +1127,33 @@ class ImageImportDiskDeviceMapping(dict):
                
                > **NOTE:** The disk_device_mapping is a list and it's first item will be used to system disk and other items are used to data disks.
         """
+        ImageImportDiskDeviceMapping._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device=device,
+            disk_image_size=disk_image_size,
+            format=format,
+            oss_bucket=oss_bucket,
+            oss_object=oss_object,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device: Optional[str] = None,
+             disk_image_size: Optional[int] = None,
+             format: Optional[str] = None,
+             oss_bucket: Optional[str] = None,
+             oss_object: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if disk_image_size is not None:
-            pulumi.set(__self__, "disk_image_size", disk_image_size)
+            _setter("disk_image_size", disk_image_size)
         if format is not None:
-            pulumi.set(__self__, "format", format)
+            _setter("format", format)
         if oss_bucket is not None:
-            pulumi.set(__self__, "oss_bucket", oss_bucket)
+            _setter("oss_bucket", oss_bucket)
         if oss_object is not None:
-            pulumi.set(__self__, "oss_object", oss_object)
+            _setter("oss_object", oss_object)
 
     @property
     @pulumi.getter
@@ -1070,27 +1255,56 @@ class InstanceDataDisk(dict):
         :param str performance_level: The performance level of the ESSD used as data disk:
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
-        pulumi.set(__self__, "size", size)
+        InstanceDataDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            size=size,
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            category=category,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            device=device,
+            encrypted=encrypted,
+            kms_key_id=kms_key_id,
+            name=name,
+            performance_level=performance_level,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             size: int,
+             auto_snapshot_policy_id: Optional[str] = None,
+             category: Optional[str] = None,
+             delete_with_instance: Optional[bool] = None,
+             description: Optional[str] = None,
+             device: Optional[str] = None,
+             encrypted: Optional[bool] = None,
+             kms_key_id: Optional[str] = None,
+             name: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             snapshot_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("size", size)
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+            _setter("delete_with_instance", delete_with_instance)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -1214,10 +1428,21 @@ class InstanceMaintenanceTime(dict):
         :param str end_time: The end time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
         :param str start_time: The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `start_time` and `end_time` parameters must be specified at the same time. The `end_time` value must be 1 to 23 hours later than the `start_time` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
         """
+        InstanceMaintenanceTime._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end_time=end_time,
+            start_time=start_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end_time: Optional[str] = None,
+             start_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
 
     @property
     @pulumi.getter(name="endTime")
@@ -1293,22 +1518,45 @@ class LaunchTemplateDataDisk(dict):
                - ephemeral_ssd: [5, 800]
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
+        LaunchTemplateDataDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            encrypted=encrypted,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[str] = None,
+             delete_with_instance: Optional[bool] = None,
+             description: Optional[str] = None,
+             encrypted: Optional[bool] = None,
+             name: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             size: Optional[int] = None,
+             snapshot_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+            _setter("delete_with_instance", delete_with_instance)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -1424,16 +1672,33 @@ class LaunchTemplateNetworkInterfaces(dict):
         :param str security_group_id: The security group ID must be one in the same VPC.
         :param str vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
+        LaunchTemplateNetworkInterfaces._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            name=name,
+            primary_ip=primary_ip,
+            security_group_id=security_group_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             name: Optional[str] = None,
+             primary_ip: Optional[str] = None,
+             security_group_id: Optional[str] = None,
+             vswitch_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if primary_ip is not None:
-            pulumi.set(__self__, "primary_ip", primary_ip)
+            _setter("primary_ip", primary_ip)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -1526,20 +1791,41 @@ class LaunchTemplateSystemDisk(dict):
                - cloud_essd：[20, 32768]
                - ephemeral_ssd: [5, 800]
         """
+        LaunchTemplateSystemDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            iops=iops,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[str] = None,
+             delete_with_instance: Optional[bool] = None,
+             description: Optional[str] = None,
+             iops: Optional[str] = None,
+             name: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             size: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if delete_with_instance is not None:
-            pulumi.set(__self__, "delete_with_instance", delete_with_instance)
+            _setter("delete_with_instance", delete_with_instance)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if iops is not None:
-            pulumi.set(__self__, "iops", iops)
+            _setter("iops", iops)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
 
     @property
     @pulumi.getter
@@ -1630,8 +1916,17 @@ class ReservedInstanceOperationLock(dict):
         """
         :param str lock_reason: The reason why the reserved instance was locked.
         """
+        ReservedInstanceOperationLock._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lock_reason=lock_reason,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lock_reason: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if lock_reason is not None:
-            pulumi.set(__self__, "lock_reason", lock_reason)
+            _setter("lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -1669,17 +1964,46 @@ class GetActivationsActivationResult(dict):
         :param int registered_count: The number of instances that were registered.
         :param int time_to_live_in_hours: The validity period of the activation code. Unit: hours.
         """
-        pulumi.set(__self__, "activation_id", activation_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "deregistered_count", deregistered_count)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "disabled", disabled)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_count", instance_count)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "ip_address_range", ip_address_range)
-        pulumi.set(__self__, "registered_count", registered_count)
-        pulumi.set(__self__, "time_to_live_in_hours", time_to_live_in_hours)
+        GetActivationsActivationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            activation_id=activation_id,
+            create_time=create_time,
+            deregistered_count=deregistered_count,
+            description=description,
+            disabled=disabled,
+            id=id,
+            instance_count=instance_count,
+            instance_name=instance_name,
+            ip_address_range=ip_address_range,
+            registered_count=registered_count,
+            time_to_live_in_hours=time_to_live_in_hours,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             activation_id: str,
+             create_time: str,
+             deregistered_count: int,
+             description: str,
+             disabled: bool,
+             id: str,
+             instance_count: int,
+             instance_name: str,
+             ip_address_range: str,
+             registered_count: int,
+             time_to_live_in_hours: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("activation_id", activation_id)
+        _setter("create_time", create_time)
+        _setter("deregistered_count", deregistered_count)
+        _setter("description", description)
+        _setter("disabled", disabled)
+        _setter("id", id)
+        _setter("instance_count", instance_count)
+        _setter("instance_name", instance_name)
+        _setter("ip_address_range", ip_address_range)
+        _setter("registered_count", registered_count)
+        _setter("time_to_live_in_hours", time_to_live_in_hours)
 
     @property
     @pulumi.getter(name="activationId")
@@ -1801,19 +2125,52 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
         :param Sequence[str] time_points: The automatic snapshot creation schedule, and the unit of measurement is hour.
         :param int volume_nums: The number of extended volumes on which this policy is enabled.
         """
-        pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
-        pulumi.set(__self__, "copied_snapshots_retention_days", copied_snapshots_retention_days)
-        pulumi.set(__self__, "disk_nums", disk_nums)
-        pulumi.set(__self__, "enable_cross_region_copy", enable_cross_region_copy)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
-        pulumi.set(__self__, "retention_days", retention_days)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "target_copy_regions", target_copy_regions)
-        pulumi.set(__self__, "time_points", time_points)
-        pulumi.set(__self__, "volume_nums", volume_nums)
+        GetAutoSnapshotPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            copied_snapshots_retention_days=copied_snapshots_retention_days,
+            disk_nums=disk_nums,
+            enable_cross_region_copy=enable_cross_region_copy,
+            id=id,
+            name=name,
+            repeat_weekdays=repeat_weekdays,
+            retention_days=retention_days,
+            status=status,
+            tags=tags,
+            target_copy_regions=target_copy_regions,
+            time_points=time_points,
+            volume_nums=volume_nums,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_id: str,
+             copied_snapshots_retention_days: int,
+             disk_nums: int,
+             enable_cross_region_copy: bool,
+             id: str,
+             name: str,
+             repeat_weekdays: Sequence[str],
+             retention_days: int,
+             status: str,
+             tags: Mapping[str, Any],
+             target_copy_regions: Sequence[str],
+             time_points: Sequence[str],
+             volume_nums: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
+        _setter("copied_snapshots_retention_days", copied_snapshots_retention_days)
+        _setter("disk_nums", disk_nums)
+        _setter("enable_cross_region_copy", enable_cross_region_copy)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("repeat_weekdays", repeat_weekdays)
+        _setter("retention_days", retention_days)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("target_copy_regions", target_copy_regions)
+        _setter("time_points", time_points)
+        _setter("volume_nums", volume_nums)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -1961,25 +2318,68 @@ class GetCapacityReservationsReservationResult(dict):
         :param Sequence[str] zone_ids: The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         :param Mapping[str, Any] tags: The tag of the resource.
         """
-        pulumi.set(__self__, "capacity_reservation_id", capacity_reservation_id)
-        pulumi.set(__self__, "capacity_reservation_name", capacity_reservation_name)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "end_time_type", end_time_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_amount", instance_amount)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "match_criteria", match_criteria)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "platform", platform)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "start_time_type", start_time_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "time_slot", time_slot)
-        pulumi.set(__self__, "zone_ids", zone_ids)
+        GetCapacityReservationsReservationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capacity_reservation_id=capacity_reservation_id,
+            capacity_reservation_name=capacity_reservation_name,
+            description=description,
+            end_time=end_time,
+            end_time_type=end_time_type,
+            id=id,
+            instance_amount=instance_amount,
+            instance_type=instance_type,
+            match_criteria=match_criteria,
+            payment_type=payment_type,
+            platform=platform,
+            resource_group_id=resource_group_id,
+            start_time=start_time,
+            start_time_type=start_time_type,
+            status=status,
+            time_slot=time_slot,
+            zone_ids=zone_ids,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capacity_reservation_id: str,
+             capacity_reservation_name: str,
+             description: str,
+             end_time: str,
+             end_time_type: str,
+             id: str,
+             instance_amount: str,
+             instance_type: str,
+             match_criteria: str,
+             payment_type: str,
+             platform: str,
+             resource_group_id: str,
+             start_time: str,
+             start_time_type: str,
+             status: str,
+             time_slot: str,
+             zone_ids: Sequence[str],
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("capacity_reservation_id", capacity_reservation_id)
+        _setter("capacity_reservation_name", capacity_reservation_name)
+        _setter("description", description)
+        _setter("end_time", end_time)
+        _setter("end_time_type", end_time_type)
+        _setter("id", id)
+        _setter("instance_amount", instance_amount)
+        _setter("instance_type", instance_type)
+        _setter("match_criteria", match_criteria)
+        _setter("payment_type", payment_type)
+        _setter("platform", platform)
+        _setter("resource_group_id", resource_group_id)
+        _setter("start_time", start_time)
+        _setter("start_time_type", start_time_type)
+        _setter("status", status)
+        _setter("time_slot", time_slot)
+        _setter("zone_ids", zone_ids)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="capacityReservationId")
@@ -2151,16 +2551,43 @@ class GetCommandsCommandResult(dict):
         :param str type: The command type.
         :param str working_dir: The execution path of the command in the ECS instance.
         """
-        pulumi.set(__self__, "command_content", command_content)
-        pulumi.set(__self__, "command_id", command_id)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enable_parameter", enable_parameter)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "parameter_names", parameter_names)
-        pulumi.set(__self__, "timeout", timeout)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "working_dir", working_dir)
+        GetCommandsCommandResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            command_content=command_content,
+            command_id=command_id,
+            description=description,
+            enable_parameter=enable_parameter,
+            id=id,
+            name=name,
+            parameter_names=parameter_names,
+            timeout=timeout,
+            type=type,
+            working_dir=working_dir,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             command_content: str,
+             command_id: str,
+             description: str,
+             enable_parameter: bool,
+             id: str,
+             name: str,
+             parameter_names: Sequence[str],
+             timeout: int,
+             type: str,
+             working_dir: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("command_content", command_content)
+        _setter("command_id", command_id)
+        _setter("description", description)
+        _setter("enable_parameter", enable_parameter)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("parameter_names", parameter_names)
+        _setter("timeout", timeout)
+        _setter("type", type)
+        _setter("working_dir", working_dir)
 
     @property
     @pulumi.getter(name="commandContent")
@@ -2302,33 +2729,94 @@ class GetDedicatedHostsHostResult(dict):
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str zone_id: The zone ID of the ECS Dedicated Host.
         """
-        pulumi.set(__self__, "action_on_maintenance", action_on_maintenance)
-        pulumi.set(__self__, "auto_placement", auto_placement)
-        pulumi.set(__self__, "auto_release_time", auto_release_time)
-        pulumi.set(__self__, "capacities", capacities)
-        pulumi.set(__self__, "cores", cores)
-        pulumi.set(__self__, "cpu_over_commit_ratio", cpu_over_commit_ratio)
-        pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
-        pulumi.set(__self__, "dedicated_host_name", dedicated_host_name)
-        pulumi.set(__self__, "dedicated_host_type", dedicated_host_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "gpu_spec", gpu_spec)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "machine_id", machine_id)
-        pulumi.set(__self__, "network_attributes", network_attributes)
-        pulumi.set(__self__, "operation_locks", operation_locks)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "physical_gpus", physical_gpus)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "sale_cycle", sale_cycle)
-        pulumi.set(__self__, "sockets", sockets)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "supported_custom_instance_type_families", supported_custom_instance_type_families)
-        pulumi.set(__self__, "supported_instance_type_families", supported_instance_type_families)
-        pulumi.set(__self__, "supported_instance_types_lists", supported_instance_types_lists)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetDedicatedHostsHostResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action_on_maintenance=action_on_maintenance,
+            auto_placement=auto_placement,
+            auto_release_time=auto_release_time,
+            capacities=capacities,
+            cores=cores,
+            cpu_over_commit_ratio=cpu_over_commit_ratio,
+            dedicated_host_id=dedicated_host_id,
+            dedicated_host_name=dedicated_host_name,
+            dedicated_host_type=dedicated_host_type,
+            description=description,
+            expired_time=expired_time,
+            gpu_spec=gpu_spec,
+            id=id,
+            machine_id=machine_id,
+            network_attributes=network_attributes,
+            operation_locks=operation_locks,
+            payment_type=payment_type,
+            physical_gpus=physical_gpus,
+            resource_group_id=resource_group_id,
+            sale_cycle=sale_cycle,
+            sockets=sockets,
+            status=status,
+            supported_custom_instance_type_families=supported_custom_instance_type_families,
+            supported_instance_type_families=supported_instance_type_families,
+            supported_instance_types_lists=supported_instance_types_lists,
+            tags=tags,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action_on_maintenance: str,
+             auto_placement: str,
+             auto_release_time: str,
+             capacities: Sequence['outputs.GetDedicatedHostsHostCapacityResult'],
+             cores: int,
+             cpu_over_commit_ratio: float,
+             dedicated_host_id: str,
+             dedicated_host_name: str,
+             dedicated_host_type: str,
+             description: str,
+             expired_time: str,
+             gpu_spec: str,
+             id: str,
+             machine_id: str,
+             network_attributes: Sequence['outputs.GetDedicatedHostsHostNetworkAttributeResult'],
+             operation_locks: Sequence['outputs.GetDedicatedHostsHostOperationLockResult'],
+             payment_type: str,
+             physical_gpus: int,
+             resource_group_id: str,
+             sale_cycle: str,
+             sockets: int,
+             status: str,
+             supported_custom_instance_type_families: Sequence[str],
+             supported_instance_type_families: Sequence[str],
+             supported_instance_types_lists: Sequence[str],
+             tags: Mapping[str, Any],
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("action_on_maintenance", action_on_maintenance)
+        _setter("auto_placement", auto_placement)
+        _setter("auto_release_time", auto_release_time)
+        _setter("capacities", capacities)
+        _setter("cores", cores)
+        _setter("cpu_over_commit_ratio", cpu_over_commit_ratio)
+        _setter("dedicated_host_id", dedicated_host_id)
+        _setter("dedicated_host_name", dedicated_host_name)
+        _setter("dedicated_host_type", dedicated_host_type)
+        _setter("description", description)
+        _setter("expired_time", expired_time)
+        _setter("gpu_spec", gpu_spec)
+        _setter("id", id)
+        _setter("machine_id", machine_id)
+        _setter("network_attributes", network_attributes)
+        _setter("operation_locks", operation_locks)
+        _setter("payment_type", payment_type)
+        _setter("physical_gpus", physical_gpus)
+        _setter("resource_group_id", resource_group_id)
+        _setter("sale_cycle", sale_cycle)
+        _setter("sockets", sockets)
+        _setter("status", status)
+        _setter("supported_custom_instance_type_families", supported_custom_instance_type_families)
+        _setter("supported_instance_type_families", supported_instance_type_families)
+        _setter("supported_instance_types_lists", supported_instance_types_lists)
+        _setter("tags", tags)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="actionOnMaintenance")
@@ -2570,15 +3058,40 @@ class GetDedicatedHostsHostCapacityResult(dict):
         :param int total_vcpus: The total number of vCPU cores.
         :param int total_vgpus: The total number of virtual GPUs.
         """
-        pulumi.set(__self__, "available_local_storage", available_local_storage)
-        pulumi.set(__self__, "available_memory", available_memory)
-        pulumi.set(__self__, "available_vcpus", available_vcpus)
-        pulumi.set(__self__, "available_vgpus", available_vgpus)
-        pulumi.set(__self__, "local_storage_category", local_storage_category)
-        pulumi.set(__self__, "total_local_storage", total_local_storage)
-        pulumi.set(__self__, "total_memory", total_memory)
-        pulumi.set(__self__, "total_vcpus", total_vcpus)
-        pulumi.set(__self__, "total_vgpus", total_vgpus)
+        GetDedicatedHostsHostCapacityResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_local_storage=available_local_storage,
+            available_memory=available_memory,
+            available_vcpus=available_vcpus,
+            available_vgpus=available_vgpus,
+            local_storage_category=local_storage_category,
+            total_local_storage=total_local_storage,
+            total_memory=total_memory,
+            total_vcpus=total_vcpus,
+            total_vgpus=total_vgpus,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_local_storage: int,
+             available_memory: float,
+             available_vcpus: int,
+             available_vgpus: int,
+             local_storage_category: str,
+             total_local_storage: int,
+             total_memory: float,
+             total_vcpus: int,
+             total_vgpus: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("available_local_storage", available_local_storage)
+        _setter("available_memory", available_memory)
+        _setter("available_vcpus", available_vcpus)
+        _setter("available_vgpus", available_vgpus)
+        _setter("local_storage_category", local_storage_category)
+        _setter("total_local_storage", total_local_storage)
+        _setter("total_memory", total_memory)
+        _setter("total_vcpus", total_vcpus)
+        _setter("total_vgpus", total_vgpus)
 
     @property
     @pulumi.getter(name="availableLocalStorage")
@@ -2662,8 +3175,19 @@ class GetDedicatedHostsHostNetworkAttributeResult(dict):
         :param int slb_udp_timeout: The timeout period for a UDP session between Server Load Balancer (SLB) and the dedicated host. Unit: seconds.
         :param int udp_timeout: (Available in 1.123.1+) The timeout period for a UDP session between a user and an Alibaba Cloud service on the dedicated host. Unit: seconds.
         """
-        pulumi.set(__self__, "slb_udp_timeout", slb_udp_timeout)
-        pulumi.set(__self__, "udp_timeout", udp_timeout)
+        GetDedicatedHostsHostNetworkAttributeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            slb_udp_timeout=slb_udp_timeout,
+            udp_timeout=udp_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             slb_udp_timeout: int,
+             udp_timeout: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("slb_udp_timeout", slb_udp_timeout)
+        _setter("udp_timeout", udp_timeout)
 
     @property
     @pulumi.getter(name="slbUdpTimeout")
@@ -2689,7 +3213,16 @@ class GetDedicatedHostsHostOperationLockResult(dict):
         """
         :param str lock_reason: The reason why the dedicated host resource is locked.
         """
-        pulumi.set(__self__, "lock_reason", lock_reason)
+        GetDedicatedHostsHostOperationLockResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lock_reason=lock_reason,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lock_reason: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -2707,8 +3240,17 @@ class GetDedicatedHostsOperationLockResult(dict):
         """
         :param str lock_reason: The reason why the dedicated host resource is locked.
         """
+        GetDedicatedHostsOperationLockResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lock_reason=lock_reason,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lock_reason: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if lock_reason is not None:
-            pulumi.set(__self__, "lock_reason", lock_reason)
+            _setter("lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -2791,46 +3333,133 @@ class GetDisksDiskResult(dict):
                ```
         :param str type: Disk type. Possible values: `system` and `data`.
         """
-        pulumi.set(__self__, "attached_time", attached_time)
-        pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
-        pulumi.set(__self__, "delete_with_instance", delete_with_instance)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "detached_time", detached_time)
-        pulumi.set(__self__, "device", device)
-        pulumi.set(__self__, "disk_id", disk_id)
-        pulumi.set(__self__, "disk_name", disk_name)
-        pulumi.set(__self__, "disk_type", disk_type)
-        pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
-        pulumi.set(__self__, "enable_automated_snapshot_policy", enable_automated_snapshot_policy)
-        pulumi.set(__self__, "encrypted", encrypted)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "iops", iops)
-        pulumi.set(__self__, "iops_read", iops_read)
-        pulumi.set(__self__, "iops_write", iops_write)
-        pulumi.set(__self__, "kms_key_id", kms_key_id)
-        pulumi.set(__self__, "mount_instance_num", mount_instance_num)
-        pulumi.set(__self__, "mount_instances", mount_instances)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "operation_locks", operation_locks)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "performance_level", performance_level)
-        pulumi.set(__self__, "portable", portable)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetDisksDiskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attached_time=attached_time,
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            availability_zone=availability_zone,
+            category=category,
+            creation_time=creation_time,
+            delete_auto_snapshot=delete_auto_snapshot,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            detached_time=detached_time,
+            device=device,
+            disk_id=disk_id,
+            disk_name=disk_name,
+            disk_type=disk_type,
+            enable_auto_snapshot=enable_auto_snapshot,
+            enable_automated_snapshot_policy=enable_automated_snapshot_policy,
+            encrypted=encrypted,
+            expired_time=expired_time,
+            id=id,
+            image_id=image_id,
+            instance_id=instance_id,
+            iops=iops,
+            iops_read=iops_read,
+            iops_write=iops_write,
+            kms_key_id=kms_key_id,
+            mount_instance_num=mount_instance_num,
+            mount_instances=mount_instances,
+            name=name,
+            operation_locks=operation_locks,
+            payment_type=payment_type,
+            performance_level=performance_level,
+            portable=portable,
+            product_code=product_code,
+            region_id=region_id,
+            resource_group_id=resource_group_id,
+            size=size,
+            snapshot_id=snapshot_id,
+            status=status,
+            tags=tags,
+            type=type,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attached_time: str,
+             auto_snapshot_policy_id: str,
+             availability_zone: str,
+             category: str,
+             creation_time: str,
+             delete_auto_snapshot: bool,
+             delete_with_instance: bool,
+             description: str,
+             detached_time: str,
+             device: str,
+             disk_id: str,
+             disk_name: str,
+             disk_type: str,
+             enable_auto_snapshot: bool,
+             enable_automated_snapshot_policy: bool,
+             encrypted: str,
+             expired_time: str,
+             id: str,
+             image_id: str,
+             instance_id: str,
+             iops: int,
+             iops_read: int,
+             iops_write: int,
+             kms_key_id: str,
+             mount_instance_num: int,
+             mount_instances: Sequence['outputs.GetDisksDiskMountInstanceResult'],
+             name: str,
+             operation_locks: Sequence['outputs.GetDisksDiskOperationLockResult'],
+             payment_type: str,
+             performance_level: str,
+             portable: bool,
+             product_code: str,
+             region_id: str,
+             resource_group_id: str,
+             size: int,
+             snapshot_id: str,
+             status: str,
+             tags: Mapping[str, Any],
+             type: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attached_time", attached_time)
+        _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
+        _setter("availability_zone", availability_zone)
+        _setter("category", category)
+        _setter("creation_time", creation_time)
+        _setter("delete_auto_snapshot", delete_auto_snapshot)
+        _setter("delete_with_instance", delete_with_instance)
+        _setter("description", description)
+        _setter("detached_time", detached_time)
+        _setter("device", device)
+        _setter("disk_id", disk_id)
+        _setter("disk_name", disk_name)
+        _setter("disk_type", disk_type)
+        _setter("enable_auto_snapshot", enable_auto_snapshot)
+        _setter("enable_automated_snapshot_policy", enable_automated_snapshot_policy)
+        _setter("encrypted", encrypted)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("instance_id", instance_id)
+        _setter("iops", iops)
+        _setter("iops_read", iops_read)
+        _setter("iops_write", iops_write)
+        _setter("kms_key_id", kms_key_id)
+        _setter("mount_instance_num", mount_instance_num)
+        _setter("mount_instances", mount_instances)
+        _setter("name", name)
+        _setter("operation_locks", operation_locks)
+        _setter("payment_type", payment_type)
+        _setter("performance_level", performance_level)
+        _setter("portable", portable)
+        _setter("product_code", product_code)
+        _setter("region_id", region_id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("size", size)
+        _setter("snapshot_id", snapshot_id)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("type", type)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="attachedTime")
@@ -3106,9 +3735,22 @@ class GetDisksDiskMountInstanceResult(dict):
         :param str attached_time: Disk attachment time.
         :param str instance_id: Filter the results by the specified ECS instance ID.
         """
-        pulumi.set(__self__, "attached_time", attached_time)
-        pulumi.set(__self__, "device", device)
-        pulumi.set(__self__, "instance_id", instance_id)
+        GetDisksDiskMountInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attached_time=attached_time,
+            device=device,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attached_time: str,
+             device: str,
+             instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attached_time", attached_time)
+        _setter("device", device)
+        _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter(name="attachedTime")
@@ -3136,7 +3778,16 @@ class GetDisksDiskMountInstanceResult(dict):
 class GetDisksDiskOperationLockResult(dict):
     def __init__(__self__, *,
                  lock_reason: str):
-        pulumi.set(__self__, "lock_reason", lock_reason)
+        GetDisksDiskOperationLockResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lock_reason=lock_reason,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lock_reason: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -3148,8 +3799,17 @@ class GetDisksDiskOperationLockResult(dict):
 class GetDisksOperationLockResult(dict):
     def __init__(__self__, *,
                  lock_reason: Optional[str] = None):
+        GetDisksOperationLockResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lock_reason=lock_reason,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lock_reason: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if lock_reason is not None:
-            pulumi.set(__self__, "lock_reason", lock_reason)
+            _setter("lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -3180,15 +3840,40 @@ class GetEcsDedicatedHostClustersClusterResult(dict):
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str zone_id: The zone ID of the dedicated host cluster.
         """
-        pulumi.set(__self__, "dedicated_host_cluster_capacities", dedicated_host_cluster_capacities)
-        pulumi.set(__self__, "dedicated_host_cluster_id", dedicated_host_cluster_id)
-        pulumi.set(__self__, "dedicated_host_cluster_name", dedicated_host_cluster_name)
-        pulumi.set(__self__, "dedicated_host_ids", dedicated_host_ids)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetEcsDedicatedHostClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dedicated_host_cluster_capacities=dedicated_host_cluster_capacities,
+            dedicated_host_cluster_id=dedicated_host_cluster_id,
+            dedicated_host_cluster_name=dedicated_host_cluster_name,
+            dedicated_host_ids=dedicated_host_ids,
+            description=description,
+            id=id,
+            resource_group_id=resource_group_id,
+            tags=tags,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dedicated_host_cluster_capacities: Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult'],
+             dedicated_host_cluster_id: str,
+             dedicated_host_cluster_name: str,
+             dedicated_host_ids: Sequence[str],
+             description: str,
+             id: str,
+             resource_group_id: str,
+             tags: Mapping[str, Any],
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dedicated_host_cluster_capacities", dedicated_host_cluster_capacities)
+        _setter("dedicated_host_cluster_id", dedicated_host_cluster_id)
+        _setter("dedicated_host_cluster_name", dedicated_host_cluster_name)
+        _setter("dedicated_host_ids", dedicated_host_ids)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("tags", tags)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="dedicatedHostClusterCapacities")
@@ -3278,11 +3963,28 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult(dict)
         :param int total_memory: The total memory size. Unit: `GiB`.
         :param int total_vcpus: The total number of vCPUs.
         """
-        pulumi.set(__self__, "available_memory", available_memory)
-        pulumi.set(__self__, "available_vcpus", available_vcpus)
-        pulumi.set(__self__, "local_storage_capacities", local_storage_capacities)
-        pulumi.set(__self__, "total_memory", total_memory)
-        pulumi.set(__self__, "total_vcpus", total_vcpus)
+        GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_memory=available_memory,
+            available_vcpus=available_vcpus,
+            local_storage_capacities=local_storage_capacities,
+            total_memory=total_memory,
+            total_vcpus=total_vcpus,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_memory: int,
+             available_vcpus: int,
+             local_storage_capacities: Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult'],
+             total_memory: int,
+             total_vcpus: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("available_memory", available_memory)
+        _setter("available_vcpus", available_vcpus)
+        _setter("local_storage_capacities", local_storage_capacities)
+        _setter("total_memory", total_memory)
+        _setter("total_vcpus", total_vcpus)
 
     @property
     @pulumi.getter(name="availableMemory")
@@ -3336,9 +4038,22 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorage
         :param str data_disk_category: The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
         :param int total_disk: The total capacity of the local disk. Unit: `GiB`.
         """
-        pulumi.set(__self__, "available_disk", available_disk)
-        pulumi.set(__self__, "data_disk_category", data_disk_category)
-        pulumi.set(__self__, "total_disk", total_disk)
+        GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_disk=available_disk,
+            data_disk_category=data_disk_category,
+            total_disk=total_disk,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_disk: int,
+             data_disk_category: str,
+             total_disk: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("available_disk", available_disk)
+        _setter("data_disk_category", data_disk_category)
+        _setter("total_disk", total_disk)
 
     @property
     @pulumi.getter(name="availableDisk")
@@ -3390,16 +4105,43 @@ class GetEcsDeploymentSetsSetResult(dict):
         :param Sequence[str] instance_ids: The IDs of the instances in the deployment set.
         :param str strategy: The deployment strategy.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "deployment_set_id", deployment_set_id)
-        pulumi.set(__self__, "deployment_set_name", deployment_set_name)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "granularity", granularity)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_amount", instance_amount)
-        pulumi.set(__self__, "instance_ids", instance_ids)
-        pulumi.set(__self__, "strategy", strategy)
+        GetEcsDeploymentSetsSetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            deployment_set_id=deployment_set_id,
+            deployment_set_name=deployment_set_name,
+            description=description,
+            domain=domain,
+            granularity=granularity,
+            id=id,
+            instance_amount=instance_amount,
+            instance_ids=instance_ids,
+            strategy=strategy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             deployment_set_id: str,
+             deployment_set_name: str,
+             description: str,
+             domain: str,
+             granularity: str,
+             id: str,
+             instance_amount: int,
+             instance_ids: Sequence[str],
+             strategy: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("deployment_set_id", deployment_set_id)
+        _setter("deployment_set_name", deployment_set_name)
+        _setter("description", description)
+        _setter("domain", domain)
+        _setter("granularity", granularity)
+        _setter("id", id)
+        _setter("instance_amount", instance_amount)
+        _setter("instance_ids", instance_ids)
+        _setter("strategy", strategy)
 
     @property
     @pulumi.getter(name="createTime")
@@ -3562,46 +4304,133 @@ class GetEcsDisksDiskResult(dict):
         :param str type: Disk type.
         :param str zone_id: The zone id.
         """
-        pulumi.set(__self__, "attached_time", attached_time)
-        pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "delete_auto_snapshot", delete_auto_snapshot)
-        pulumi.set(__self__, "delete_with_instance", delete_with_instance)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "detached_time", detached_time)
-        pulumi.set(__self__, "device", device)
-        pulumi.set(__self__, "disk_id", disk_id)
-        pulumi.set(__self__, "disk_name", disk_name)
-        pulumi.set(__self__, "disk_type", disk_type)
-        pulumi.set(__self__, "enable_auto_snapshot", enable_auto_snapshot)
-        pulumi.set(__self__, "enable_automated_snapshot_policy", enable_automated_snapshot_policy)
-        pulumi.set(__self__, "encrypted", encrypted)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "iops", iops)
-        pulumi.set(__self__, "iops_read", iops_read)
-        pulumi.set(__self__, "iops_write", iops_write)
-        pulumi.set(__self__, "kms_key_id", kms_key_id)
-        pulumi.set(__self__, "mount_instance_num", mount_instance_num)
-        pulumi.set(__self__, "mount_instances", mount_instances)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "operation_locks", operation_locks)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "performance_level", performance_level)
-        pulumi.set(__self__, "portable", portable)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetEcsDisksDiskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attached_time=attached_time,
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            availability_zone=availability_zone,
+            category=category,
+            creation_time=creation_time,
+            delete_auto_snapshot=delete_auto_snapshot,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            detached_time=detached_time,
+            device=device,
+            disk_id=disk_id,
+            disk_name=disk_name,
+            disk_type=disk_type,
+            enable_auto_snapshot=enable_auto_snapshot,
+            enable_automated_snapshot_policy=enable_automated_snapshot_policy,
+            encrypted=encrypted,
+            expired_time=expired_time,
+            id=id,
+            image_id=image_id,
+            instance_id=instance_id,
+            iops=iops,
+            iops_read=iops_read,
+            iops_write=iops_write,
+            kms_key_id=kms_key_id,
+            mount_instance_num=mount_instance_num,
+            mount_instances=mount_instances,
+            name=name,
+            operation_locks=operation_locks,
+            payment_type=payment_type,
+            performance_level=performance_level,
+            portable=portable,
+            product_code=product_code,
+            region_id=region_id,
+            resource_group_id=resource_group_id,
+            size=size,
+            snapshot_id=snapshot_id,
+            status=status,
+            tags=tags,
+            type=type,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attached_time: str,
+             auto_snapshot_policy_id: str,
+             availability_zone: str,
+             category: str,
+             creation_time: str,
+             delete_auto_snapshot: bool,
+             delete_with_instance: bool,
+             description: str,
+             detached_time: str,
+             device: str,
+             disk_id: str,
+             disk_name: str,
+             disk_type: str,
+             enable_auto_snapshot: bool,
+             enable_automated_snapshot_policy: bool,
+             encrypted: str,
+             expired_time: str,
+             id: str,
+             image_id: str,
+             instance_id: str,
+             iops: int,
+             iops_read: int,
+             iops_write: int,
+             kms_key_id: str,
+             mount_instance_num: int,
+             mount_instances: Sequence['outputs.GetEcsDisksDiskMountInstanceResult'],
+             name: str,
+             operation_locks: Sequence['outputs.GetEcsDisksDiskOperationLockResult'],
+             payment_type: str,
+             performance_level: str,
+             portable: bool,
+             product_code: str,
+             region_id: str,
+             resource_group_id: str,
+             size: int,
+             snapshot_id: str,
+             status: str,
+             tags: Mapping[str, Any],
+             type: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attached_time", attached_time)
+        _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
+        _setter("availability_zone", availability_zone)
+        _setter("category", category)
+        _setter("creation_time", creation_time)
+        _setter("delete_auto_snapshot", delete_auto_snapshot)
+        _setter("delete_with_instance", delete_with_instance)
+        _setter("description", description)
+        _setter("detached_time", detached_time)
+        _setter("device", device)
+        _setter("disk_id", disk_id)
+        _setter("disk_name", disk_name)
+        _setter("disk_type", disk_type)
+        _setter("enable_auto_snapshot", enable_auto_snapshot)
+        _setter("enable_automated_snapshot_policy", enable_automated_snapshot_policy)
+        _setter("encrypted", encrypted)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("instance_id", instance_id)
+        _setter("iops", iops)
+        _setter("iops_read", iops_read)
+        _setter("iops_write", iops_write)
+        _setter("kms_key_id", kms_key_id)
+        _setter("mount_instance_num", mount_instance_num)
+        _setter("mount_instances", mount_instances)
+        _setter("name", name)
+        _setter("operation_locks", operation_locks)
+        _setter("payment_type", payment_type)
+        _setter("performance_level", performance_level)
+        _setter("portable", portable)
+        _setter("product_code", product_code)
+        _setter("region_id", region_id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("size", size)
+        _setter("snapshot_id", snapshot_id)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("type", type)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="attachedTime")
@@ -3920,9 +4749,22 @@ class GetEcsDisksDiskMountInstanceResult(dict):
         :param str device: The mount point of the disk.
         :param str instance_id: The instance ID of the disk mount.
         """
-        pulumi.set(__self__, "attached_time", attached_time)
-        pulumi.set(__self__, "device", device)
-        pulumi.set(__self__, "instance_id", instance_id)
+        GetEcsDisksDiskMountInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attached_time=attached_time,
+            device=device,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attached_time: str,
+             device: str,
+             instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attached_time", attached_time)
+        _setter("device", device)
+        _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter(name="attachedTime")
@@ -3953,7 +4795,16 @@ class GetEcsDisksDiskMountInstanceResult(dict):
 class GetEcsDisksDiskOperationLockResult(dict):
     def __init__(__self__, *,
                  lock_reason: str):
-        pulumi.set(__self__, "lock_reason", lock_reason)
+        GetEcsDisksDiskOperationLockResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lock_reason=lock_reason,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lock_reason: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -3965,8 +4816,17 @@ class GetEcsDisksDiskOperationLockResult(dict):
 class GetEcsDisksOperationLockResult(dict):
     def __init__(__self__, *,
                  lock_reason: Optional[str] = None):
+        GetEcsDisksOperationLockResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lock_reason=lock_reason,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lock_reason: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if lock_reason is not None:
-            pulumi.set(__self__, "lock_reason", lock_reason)
+            _setter("lock_reason", lock_reason)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -4001,17 +4861,46 @@ class GetEcsImageComponentsComponentResult(dict):
         :param str system_type: The operating system type supported by the image component.
         :param Mapping[str, Any] tags: List of label key-value pairs.
         """
-        pulumi.set(__self__, "component_type", component_type)
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_component_id", image_component_id)
-        pulumi.set(__self__, "image_component_name", image_component_name)
-        pulumi.set(__self__, "owner", owner)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "system_type", system_type)
-        pulumi.set(__self__, "tags", tags)
+        GetEcsImageComponentsComponentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            component_type=component_type,
+            content=content,
+            create_time=create_time,
+            description=description,
+            id=id,
+            image_component_id=image_component_id,
+            image_component_name=image_component_name,
+            owner=owner,
+            resource_group_id=resource_group_id,
+            system_type=system_type,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             component_type: str,
+             content: str,
+             create_time: str,
+             description: str,
+             id: str,
+             image_component_id: str,
+             image_component_name: str,
+             owner: str,
+             resource_group_id: str,
+             system_type: str,
+             tags: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("component_type", component_type)
+        _setter("content", content)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("image_component_id", image_component_id)
+        _setter("image_component_name", image_component_name)
+        _setter("owner", owner)
+        _setter("resource_group_id", resource_group_id)
+        _setter("system_type", system_type)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="componentType")
@@ -4143,25 +5032,68 @@ class GetEcsImagePipelinePipelineResult(dict):
         :param str vswitch_id: The vswitch id.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "add_accounts", add_accounts)
-        pulumi.set(__self__, "base_image", base_image)
-        pulumi.set(__self__, "base_image_type", base_image_type)
-        pulumi.set(__self__, "build_content", build_content)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "delete_instance_on_failure", delete_instance_on_failure)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_name", image_name)
-        pulumi.set(__self__, "image_pipeline_id", image_pipeline_id)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "system_disk_size", system_disk_size)
-        pulumi.set(__self__, "to_region_ids", to_region_ids)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetEcsImagePipelinePipelineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            add_accounts=add_accounts,
+            base_image=base_image,
+            base_image_type=base_image_type,
+            build_content=build_content,
+            creation_time=creation_time,
+            delete_instance_on_failure=delete_instance_on_failure,
+            description=description,
+            id=id,
+            image_name=image_name,
+            image_pipeline_id=image_pipeline_id,
+            instance_type=instance_type,
+            internet_max_bandwidth_out=internet_max_bandwidth_out,
+            name=name,
+            resource_group_id=resource_group_id,
+            system_disk_size=system_disk_size,
+            to_region_ids=to_region_ids,
+            vswitch_id=vswitch_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             add_accounts: Sequence[str],
+             base_image: str,
+             base_image_type: str,
+             build_content: str,
+             creation_time: str,
+             delete_instance_on_failure: bool,
+             description: str,
+             id: str,
+             image_name: str,
+             image_pipeline_id: str,
+             instance_type: str,
+             internet_max_bandwidth_out: int,
+             name: str,
+             resource_group_id: str,
+             system_disk_size: int,
+             to_region_ids: Sequence[str],
+             vswitch_id: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("add_accounts", add_accounts)
+        _setter("base_image", base_image)
+        _setter("base_image_type", base_image_type)
+        _setter("build_content", build_content)
+        _setter("creation_time", creation_time)
+        _setter("delete_instance_on_failure", delete_instance_on_failure)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("image_name", image_name)
+        _setter("image_pipeline_id", image_pipeline_id)
+        _setter("instance_type", instance_type)
+        _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
+        _setter("name", name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("system_disk_size", system_disk_size)
+        _setter("to_region_ids", to_region_ids)
+        _setter("vswitch_id", vswitch_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="addAccounts")
@@ -4345,21 +5277,58 @@ class GetEcsInvocationsInvocationResult(dict):
                * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
         :param str username: The username that was used to run the command on the instance.
         """
-        pulumi.set(__self__, "command_content", command_content)
-        pulumi.set(__self__, "command_id", command_id)
-        pulumi.set(__self__, "command_name", command_name)
-        pulumi.set(__self__, "command_type", command_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "frequency", frequency)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "invocation_id", invocation_id)
-        pulumi.set(__self__, "invocation_status", invocation_status)
-        pulumi.set(__self__, "invoke_instances", invoke_instances)
-        pulumi.set(__self__, "invoke_status", invoke_status)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "repeat_mode", repeat_mode)
-        pulumi.set(__self__, "timed", timed)
-        pulumi.set(__self__, "username", username)
+        GetEcsInvocationsInvocationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            command_content=command_content,
+            command_id=command_id,
+            command_name=command_name,
+            command_type=command_type,
+            create_time=create_time,
+            frequency=frequency,
+            id=id,
+            invocation_id=invocation_id,
+            invocation_status=invocation_status,
+            invoke_instances=invoke_instances,
+            invoke_status=invoke_status,
+            parameters=parameters,
+            repeat_mode=repeat_mode,
+            timed=timed,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             command_content: str,
+             command_id: str,
+             command_name: str,
+             command_type: str,
+             create_time: str,
+             frequency: str,
+             id: str,
+             invocation_id: str,
+             invocation_status: str,
+             invoke_instances: Sequence['outputs.GetEcsInvocationsInvocationInvokeInstanceResult'],
+             invoke_status: str,
+             parameters: str,
+             repeat_mode: str,
+             timed: bool,
+             username: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("command_content", command_content)
+        _setter("command_id", command_id)
+        _setter("command_name", command_name)
+        _setter("command_type", command_type)
+        _setter("create_time", create_time)
+        _setter("frequency", frequency)
+        _setter("id", id)
+        _setter("invocation_id", invocation_id)
+        _setter("invocation_status", invocation_status)
+        _setter("invoke_instances", invoke_instances)
+        _setter("invoke_status", invoke_status)
+        _setter("parameters", parameters)
+        _setter("repeat_mode", repeat_mode)
+        _setter("timed", timed)
+        _setter("username", username)
 
     @property
     @pulumi.getter(name="commandContent")
@@ -4519,21 +5488,58 @@ class GetEcsInvocationsInvocationInvokeInstanceResult(dict):
                * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
         :param str update_time: The time when the execution state was updated.
         """
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "dropped", dropped)
-        pulumi.set(__self__, "error_code", error_code)
-        pulumi.set(__self__, "error_info", error_info)
-        pulumi.set(__self__, "exit_code", exit_code)
-        pulumi.set(__self__, "finish_time", finish_time)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_invoke_status", instance_invoke_status)
-        pulumi.set(__self__, "invocation_status", invocation_status)
-        pulumi.set(__self__, "output", output)
-        pulumi.set(__self__, "repeats", repeats)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "stop_time", stop_time)
-        pulumi.set(__self__, "timed", timed)
-        pulumi.set(__self__, "update_time", update_time)
+        GetEcsInvocationsInvocationInvokeInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            creation_time=creation_time,
+            dropped=dropped,
+            error_code=error_code,
+            error_info=error_info,
+            exit_code=exit_code,
+            finish_time=finish_time,
+            instance_id=instance_id,
+            instance_invoke_status=instance_invoke_status,
+            invocation_status=invocation_status,
+            output=output,
+            repeats=repeats,
+            start_time=start_time,
+            stop_time=stop_time,
+            timed=timed,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             creation_time: str,
+             dropped: int,
+             error_code: str,
+             error_info: str,
+             exit_code: int,
+             finish_time: str,
+             instance_id: str,
+             instance_invoke_status: str,
+             invocation_status: str,
+             output: str,
+             repeats: int,
+             start_time: str,
+             stop_time: str,
+             timed: bool,
+             update_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("creation_time", creation_time)
+        _setter("dropped", dropped)
+        _setter("error_code", error_code)
+        _setter("error_info", error_info)
+        _setter("exit_code", exit_code)
+        _setter("finish_time", finish_time)
+        _setter("instance_id", instance_id)
+        _setter("instance_invoke_status", instance_invoke_status)
+        _setter("invocation_status", invocation_status)
+        _setter("output", output)
+        _setter("repeats", repeats)
+        _setter("start_time", start_time)
+        _setter("stop_time", stop_time)
+        _setter("timed", timed)
+        _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -4670,13 +5676,34 @@ class GetEcsKeyPairsKeyPairResult(dict):
         :param str resource_group_id: The Resource Group Id.
         :param Mapping[str, Any] tags: The tags.
         """
-        pulumi.set(__self__, "finger_print", finger_print)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instances", instances)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "key_pair_name", key_pair_name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "tags", tags)
+        GetEcsKeyPairsKeyPairResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            finger_print=finger_print,
+            id=id,
+            instances=instances,
+            key_name=key_name,
+            key_pair_name=key_pair_name,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             finger_print: str,
+             id: str,
+             instances: Sequence['outputs.GetEcsKeyPairsKeyPairInstanceResult'],
+             key_name: str,
+             key_pair_name: str,
+             resource_group_id: str,
+             tags: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("finger_print", finger_print)
+        _setter("id", id)
+        _setter("instances", instances)
+        _setter("key_name", key_name)
+        _setter("key_pair_name", key_pair_name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="fingerPrint")
@@ -4756,18 +5783,49 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
         :param str public_ip: The public IP address or EIP of the ECS instance.
         :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
         """
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "private_ip", private_ip)
-        pulumi.set(__self__, "public_ip", public_ip)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetEcsKeyPairsKeyPairInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zone=availability_zone,
+            description=description,
+            image_id=image_id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            key_name=key_name,
+            private_ip=private_ip,
+            public_ip=public_ip,
+            region_id=region_id,
+            status=status,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zone: str,
+             description: str,
+             image_id: str,
+             instance_id: str,
+             instance_name: str,
+             instance_type: str,
+             key_name: str,
+             private_ip: str,
+             public_ip: str,
+             region_id: str,
+             status: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("availability_zone", availability_zone)
+        _setter("description", description)
+        _setter("image_id", image_id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("instance_type", instance_type)
+        _setter("key_name", key_name)
+        _setter("private_ip", private_ip)
+        _setter("public_ip", public_ip)
+        _setter("region_id", region_id)
+        _setter("status", status)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -4869,13 +5927,34 @@ class GetEcsKeyPairsPairResult(dict):
         :param str resource_group_id: The Resource Group Id.
         :param Mapping[str, Any] tags: The tags.
         """
-        pulumi.set(__self__, "finger_print", finger_print)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instances", instances)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "key_pair_name", key_pair_name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "tags", tags)
+        GetEcsKeyPairsPairResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            finger_print=finger_print,
+            id=id,
+            instances=instances,
+            key_name=key_name,
+            key_pair_name=key_pair_name,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             finger_print: str,
+             id: str,
+             instances: Sequence['outputs.GetEcsKeyPairsPairInstanceResult'],
+             key_name: str,
+             key_pair_name: str,
+             resource_group_id: str,
+             tags: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("finger_print", finger_print)
+        _setter("id", id)
+        _setter("instances", instances)
+        _setter("key_name", key_name)
+        _setter("key_pair_name", key_pair_name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="fingerPrint")
@@ -4955,18 +6034,49 @@ class GetEcsKeyPairsPairInstanceResult(dict):
         :param str public_ip: The public IP address or EIP of the ECS instance.
         :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
         """
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "private_ip", private_ip)
-        pulumi.set(__self__, "public_ip", public_ip)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetEcsKeyPairsPairInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zone=availability_zone,
+            description=description,
+            image_id=image_id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            key_name=key_name,
+            private_ip=private_ip,
+            public_ip=public_ip,
+            region_id=region_id,
+            status=status,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zone: str,
+             description: str,
+             image_id: str,
+             instance_id: str,
+             instance_name: str,
+             instance_type: str,
+             key_name: str,
+             private_ip: str,
+             public_ip: str,
+             region_id: str,
+             status: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("availability_zone", availability_zone)
+        _setter("description", description)
+        _setter("image_id", image_id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("instance_type", instance_type)
+        _setter("key_name", key_name)
+        _setter("private_ip", private_ip)
+        _setter("public_ip", public_ip)
+        _setter("region_id", region_id)
+        _setter("status", status)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -5141,49 +6251,142 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The Zone Id.
         """
-        pulumi.set(__self__, "auto_release_time", auto_release_time)
-        pulumi.set(__self__, "created_by", created_by)
-        pulumi.set(__self__, "data_disks", data_disks)
-        pulumi.set(__self__, "default_version_number", default_version_number)
-        pulumi.set(__self__, "deployment_set_id", deployment_set_id)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enable_vm_os_config", enable_vm_os_config)
-        pulumi.set(__self__, "host_name", host_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "image_owner_alias", image_owner_alias)
-        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "internet_max_bandwidth_in", internet_max_bandwidth_in)
-        pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
-        pulumi.set(__self__, "io_optimized", io_optimized)
-        pulumi.set(__self__, "key_pair_name", key_pair_name)
-        pulumi.set(__self__, "latest_version_number", latest_version_number)
-        pulumi.set(__self__, "launch_template_id", launch_template_id)
-        pulumi.set(__self__, "launch_template_name", launch_template_name)
-        pulumi.set(__self__, "modified_time", modified_time)
-        pulumi.set(__self__, "network_interfaces", network_interfaces)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "password_inherit", password_inherit)
-        pulumi.set(__self__, "period", period)
-        pulumi.set(__self__, "private_ip_address", private_ip_address)
-        pulumi.set(__self__, "ram_role_name", ram_role_name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "security_group_ids", security_group_ids)
-        pulumi.set(__self__, "spot_duration", spot_duration)
-        pulumi.set(__self__, "spot_price_limit", spot_price_limit)
-        pulumi.set(__self__, "spot_strategy", spot_strategy)
-        pulumi.set(__self__, "system_disks", system_disks)
-        pulumi.set(__self__, "template_tags", template_tags)
-        pulumi.set(__self__, "user_data", user_data)
-        pulumi.set(__self__, "version_description", version_description)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetEcsLaunchTemplatesTemplateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_release_time=auto_release_time,
+            created_by=created_by,
+            data_disks=data_disks,
+            default_version_number=default_version_number,
+            deployment_set_id=deployment_set_id,
+            description=description,
+            enable_vm_os_config=enable_vm_os_config,
+            host_name=host_name,
+            id=id,
+            image_id=image_id,
+            image_owner_alias=image_owner_alias,
+            instance_charge_type=instance_charge_type,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            internet_charge_type=internet_charge_type,
+            internet_max_bandwidth_in=internet_max_bandwidth_in,
+            internet_max_bandwidth_out=internet_max_bandwidth_out,
+            io_optimized=io_optimized,
+            key_pair_name=key_pair_name,
+            latest_version_number=latest_version_number,
+            launch_template_id=launch_template_id,
+            launch_template_name=launch_template_name,
+            modified_time=modified_time,
+            network_interfaces=network_interfaces,
+            network_type=network_type,
+            password_inherit=password_inherit,
+            period=period,
+            private_ip_address=private_ip_address,
+            ram_role_name=ram_role_name,
+            resource_group_id=resource_group_id,
+            security_enhancement_strategy=security_enhancement_strategy,
+            security_group_id=security_group_id,
+            security_group_ids=security_group_ids,
+            spot_duration=spot_duration,
+            spot_price_limit=spot_price_limit,
+            spot_strategy=spot_strategy,
+            system_disks=system_disks,
+            template_tags=template_tags,
+            user_data=user_data,
+            version_description=version_description,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_release_time: str,
+             created_by: str,
+             data_disks: Sequence['outputs.GetEcsLaunchTemplatesTemplateDataDiskResult'],
+             default_version_number: int,
+             deployment_set_id: str,
+             description: str,
+             enable_vm_os_config: bool,
+             host_name: str,
+             id: str,
+             image_id: str,
+             image_owner_alias: str,
+             instance_charge_type: str,
+             instance_name: str,
+             instance_type: str,
+             internet_charge_type: str,
+             internet_max_bandwidth_in: int,
+             internet_max_bandwidth_out: int,
+             io_optimized: str,
+             key_pair_name: str,
+             latest_version_number: int,
+             launch_template_id: str,
+             launch_template_name: str,
+             modified_time: str,
+             network_interfaces: Sequence['outputs.GetEcsLaunchTemplatesTemplateNetworkInterfaceResult'],
+             network_type: str,
+             password_inherit: bool,
+             period: int,
+             private_ip_address: str,
+             ram_role_name: str,
+             resource_group_id: str,
+             security_enhancement_strategy: str,
+             security_group_id: str,
+             security_group_ids: Sequence[str],
+             spot_duration: str,
+             spot_price_limit: float,
+             spot_strategy: str,
+             system_disks: Sequence['outputs.GetEcsLaunchTemplatesTemplateSystemDiskResult'],
+             template_tags: Mapping[str, Any],
+             user_data: str,
+             version_description: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_release_time", auto_release_time)
+        _setter("created_by", created_by)
+        _setter("data_disks", data_disks)
+        _setter("default_version_number", default_version_number)
+        _setter("deployment_set_id", deployment_set_id)
+        _setter("description", description)
+        _setter("enable_vm_os_config", enable_vm_os_config)
+        _setter("host_name", host_name)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("image_owner_alias", image_owner_alias)
+        _setter("instance_charge_type", instance_charge_type)
+        _setter("instance_name", instance_name)
+        _setter("instance_type", instance_type)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("internet_max_bandwidth_in", internet_max_bandwidth_in)
+        _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
+        _setter("io_optimized", io_optimized)
+        _setter("key_pair_name", key_pair_name)
+        _setter("latest_version_number", latest_version_number)
+        _setter("launch_template_id", launch_template_id)
+        _setter("launch_template_name", launch_template_name)
+        _setter("modified_time", modified_time)
+        _setter("network_interfaces", network_interfaces)
+        _setter("network_type", network_type)
+        _setter("password_inherit", password_inherit)
+        _setter("period", period)
+        _setter("private_ip_address", private_ip_address)
+        _setter("ram_role_name", ram_role_name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("security_enhancement_strategy", security_enhancement_strategy)
+        _setter("security_group_id", security_group_id)
+        _setter("security_group_ids", security_group_ids)
+        _setter("spot_duration", spot_duration)
+        _setter("spot_price_limit", spot_price_limit)
+        _setter("spot_strategy", spot_strategy)
+        _setter("system_disks", system_disks)
+        _setter("template_tags", template_tags)
+        _setter("user_data", user_data)
+        _setter("version_description", version_description)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoReleaseTime")
@@ -5551,14 +6754,37 @@ class GetEcsLaunchTemplatesTemplateDataDiskResult(dict):
         :param int size: Size of the system disk, measured in GB.
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "delete_with_instance", delete_with_instance)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "encrypted", encrypted)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "performance_level", performance_level)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        GetEcsLaunchTemplatesTemplateDataDiskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            encrypted=encrypted,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             delete_with_instance: bool,
+             description: str,
+             encrypted: bool,
+             name: str,
+             performance_level: str,
+             size: int,
+             snapshot_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("delete_with_instance", delete_with_instance)
+        _setter("description", description)
+        _setter("encrypted", encrypted)
+        _setter("name", name)
+        _setter("performance_level", performance_level)
+        _setter("size", size)
+        _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -5640,11 +6866,28 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
         :param str security_group_id: The security group ID.
         :param str vswitch_id: The vswitch id.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "primary_ip", primary_ip)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetEcsLaunchTemplatesTemplateNetworkInterfaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            name=name,
+            primary_ip=primary_ip,
+            security_group_id=security_group_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             name: str,
+             primary_ip: str,
+             security_group_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("name", name)
+        _setter("primary_ip", primary_ip)
+        _setter("security_group_id", security_group_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -5706,13 +6949,34 @@ class GetEcsLaunchTemplatesTemplateSystemDiskResult(dict):
         :param str performance_level: The performance level of the ESSD used as the system disk.
         :param int size: Size of the system disk, measured in GB.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "delete_with_instance", delete_with_instance)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "iops", iops)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "performance_level", performance_level)
-        pulumi.set(__self__, "size", size)
+        GetEcsLaunchTemplatesTemplateSystemDiskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            delete_with_instance=delete_with_instance,
+            description=description,
+            iops=iops,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             delete_with_instance: bool,
+             description: str,
+             iops: str,
+             name: str,
+             performance_level: str,
+             size: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("delete_with_instance", delete_with_instance)
+        _setter("description", description)
+        _setter("iops", iops)
+        _setter("name", name)
+        _setter("performance_level", performance_level)
+        _setter("size", size)
 
     @property
     @pulumi.getter
@@ -5790,13 +7054,34 @@ class GetEcsNetworkInterfacePermissionsPermissionResult(dict):
         :param str service_name: Alibaba Cloud service name.
         :param str status: The Status of the Network Interface Permissions.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "network_interface_permission_id", network_interface_permission_id)
-        pulumi.set(__self__, "permission", permission)
-        pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "status", status)
+        GetEcsNetworkInterfacePermissionsPermissionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            id=id,
+            network_interface_id=network_interface_id,
+            network_interface_permission_id=network_interface_permission_id,
+            permission=permission,
+            service_name=service_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             id: str,
+             network_interface_id: str,
+             network_interface_permission_id: str,
+             permission: str,
+             service_name: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("id", id)
+        _setter("network_interface_id", network_interface_id)
+        _setter("network_interface_permission_id", network_interface_permission_id)
+        _setter("permission", permission)
+        _setter("service_name", service_name)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -5913,33 +7198,94 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone id.
         """
-        pulumi.set(__self__, "associated_public_ips", associated_public_ips)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "mac", mac)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "network_interface_name", network_interface_name)
-        pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
-        pulumi.set(__self__, "owner_id", owner_id)
-        pulumi.set(__self__, "primary_ip_address", primary_ip_address)
-        pulumi.set(__self__, "private_ip", private_ip)
-        pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
-        pulumi.set(__self__, "private_ips", private_ips)
-        pulumi.set(__self__, "queue_number", queue_number)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "security_group_ids", security_group_ids)
-        pulumi.set(__self__, "security_groups", security_groups)
-        pulumi.set(__self__, "service_id", service_id)
-        pulumi.set(__self__, "service_managed", service_managed)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetEcsNetworkInterfacesInterfaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            associated_public_ips=associated_public_ips,
+            creation_time=creation_time,
+            description=description,
+            id=id,
+            instance_id=instance_id,
+            mac=mac,
+            name=name,
+            network_interface_id=network_interface_id,
+            network_interface_name=network_interface_name,
+            network_interface_traffic_mode=network_interface_traffic_mode,
+            owner_id=owner_id,
+            primary_ip_address=primary_ip_address,
+            private_ip=private_ip,
+            private_ip_addresses=private_ip_addresses,
+            private_ips=private_ips,
+            queue_number=queue_number,
+            resource_group_id=resource_group_id,
+            security_group_ids=security_group_ids,
+            security_groups=security_groups,
+            service_id=service_id,
+            service_managed=service_managed,
+            status=status,
+            tags=tags,
+            type=type,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             associated_public_ips: Sequence['outputs.GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult'],
+             creation_time: str,
+             description: str,
+             id: str,
+             instance_id: str,
+             mac: str,
+             name: str,
+             network_interface_id: str,
+             network_interface_name: str,
+             network_interface_traffic_mode: str,
+             owner_id: str,
+             primary_ip_address: str,
+             private_ip: str,
+             private_ip_addresses: Sequence[str],
+             private_ips: Sequence[str],
+             queue_number: int,
+             resource_group_id: str,
+             security_group_ids: Sequence[str],
+             security_groups: Sequence[str],
+             service_id: int,
+             service_managed: bool,
+             status: str,
+             tags: Mapping[str, Any],
+             type: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("associated_public_ips", associated_public_ips)
+        _setter("creation_time", creation_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("mac", mac)
+        _setter("name", name)
+        _setter("network_interface_id", network_interface_id)
+        _setter("network_interface_name", network_interface_name)
+        _setter("network_interface_traffic_mode", network_interface_traffic_mode)
+        _setter("owner_id", owner_id)
+        _setter("primary_ip_address", primary_ip_address)
+        _setter("private_ip", private_ip)
+        _setter("private_ip_addresses", private_ip_addresses)
+        _setter("private_ips", private_ips)
+        _setter("queue_number", queue_number)
+        _setter("resource_group_id", resource_group_id)
+        _setter("security_group_ids", security_group_ids)
+        _setter("security_groups", security_groups)
+        _setter("service_id", service_id)
+        _setter("service_managed", service_managed)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("type", type)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="associatedPublicIps")
@@ -6162,7 +7508,16 @@ class GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult(dict):
         """
         :param str public_ip_address: The EIP of the ENI.
         """
-        pulumi.set(__self__, "public_ip_address", public_ip_address)
+        GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_ip_address=public_ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_ip_address: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("public_ip_address", public_ip_address)
 
     @property
     @pulumi.getter(name="publicIpAddress")
@@ -6195,15 +7550,40 @@ class GetEcsPrefixListsListResult(dict):
         :param str prefix_list_id: The ID of the prefix list.
         :param str prefix_list_name: The name of the prefix list.
         """
-        pulumi.set(__self__, "address_family", address_family)
-        pulumi.set(__self__, "association_count", association_count)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "entries", entries)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "max_entries", max_entries)
-        pulumi.set(__self__, "prefix_list_id", prefix_list_id)
-        pulumi.set(__self__, "prefix_list_name", prefix_list_name)
+        GetEcsPrefixListsListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_family=address_family,
+            association_count=association_count,
+            create_time=create_time,
+            description=description,
+            entries=entries,
+            id=id,
+            max_entries=max_entries,
+            prefix_list_id=prefix_list_id,
+            prefix_list_name=prefix_list_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_family: str,
+             association_count: int,
+             create_time: str,
+             description: str,
+             entries: Sequence['outputs.GetEcsPrefixListsListEntryResult'],
+             id: str,
+             max_entries: int,
+             prefix_list_id: str,
+             prefix_list_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address_family", address_family)
+        _setter("association_count", association_count)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("entries", entries)
+        _setter("id", id)
+        _setter("max_entries", max_entries)
+        _setter("prefix_list_id", prefix_list_id)
+        _setter("prefix_list_name", prefix_list_name)
 
     @property
     @pulumi.getter(name="addressFamily")
@@ -6283,8 +7663,19 @@ class GetEcsPrefixListsListEntryResult(dict):
         """
         :param str description: The description of the prefix list.
         """
-        pulumi.set(__self__, "cidr", cidr)
-        pulumi.set(__self__, "description", description)
+        GetEcsPrefixListsListEntryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: str,
+             description: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr", cidr)
+        _setter("description", description)
 
     @property
     @pulumi.getter
@@ -6321,15 +7712,38 @@ class GetEcsSnapshotGroupsGroupResult(dict):
         :param str status: The status of the resource.
         :param Mapping[str, Any] tags: List of label key-value pairs.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "snapshot_group_id", snapshot_group_id)
-        pulumi.set(__self__, "snapshot_group_name", snapshot_group_name)
-        pulumi.set(__self__, "status", status)
+        GetEcsSnapshotGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            instance_id=instance_id,
+            resource_group_id=resource_group_id,
+            snapshot_group_id=snapshot_group_id,
+            snapshot_group_name=snapshot_group_name,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             id: str,
+             instance_id: str,
+             resource_group_id: str,
+             snapshot_group_id: str,
+             snapshot_group_name: str,
+             status: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("snapshot_group_id", snapshot_group_id)
+        _setter("snapshot_group_name", snapshot_group_name)
+        _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -6449,32 +7863,91 @@ class GetEcsSnapshotsSnapshotResult(dict):
         :param Mapping[str, Any] tags: The tags.
         :param str usage: A resource type that has a reference relationship.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "disk_id", disk_id)
-        pulumi.set(__self__, "encrypted", encrypted)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instant_access", instant_access)
-        pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "progress", progress)
-        pulumi.set(__self__, "remain_time", remain_time)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "retention_days", retention_days)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
-        pulumi.set(__self__, "snapshot_name", snapshot_name)
-        pulumi.set(__self__, "snapshot_sn", snapshot_sn)
-        pulumi.set(__self__, "snapshot_type", snapshot_type)
-        pulumi.set(__self__, "source_disk_id", source_disk_id)
-        pulumi.set(__self__, "source_disk_size", source_disk_size)
-        pulumi.set(__self__, "source_disk_type", source_disk_type)
-        pulumi.set(__self__, "source_storage_type", source_storage_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "usage", usage)
+        GetEcsSnapshotsSnapshotResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            creation_time=creation_time,
+            description=description,
+            disk_id=disk_id,
+            encrypted=encrypted,
+            id=id,
+            instant_access=instant_access,
+            instant_access_retention_days=instant_access_retention_days,
+            name=name,
+            product_code=product_code,
+            progress=progress,
+            remain_time=remain_time,
+            resource_group_id=resource_group_id,
+            retention_days=retention_days,
+            snapshot_id=snapshot_id,
+            snapshot_name=snapshot_name,
+            snapshot_sn=snapshot_sn,
+            snapshot_type=snapshot_type,
+            source_disk_id=source_disk_id,
+            source_disk_size=source_disk_size,
+            source_disk_type=source_disk_type,
+            source_storage_type=source_storage_type,
+            status=status,
+            tags=tags,
+            type=type,
+            usage=usage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             creation_time: str,
+             description: str,
+             disk_id: str,
+             encrypted: bool,
+             id: str,
+             instant_access: bool,
+             instant_access_retention_days: int,
+             name: str,
+             product_code: str,
+             progress: str,
+             remain_time: int,
+             resource_group_id: str,
+             retention_days: int,
+             snapshot_id: str,
+             snapshot_name: str,
+             snapshot_sn: str,
+             snapshot_type: str,
+             source_disk_id: str,
+             source_disk_size: str,
+             source_disk_type: str,
+             source_storage_type: str,
+             status: str,
+             tags: Mapping[str, Any],
+             type: str,
+             usage: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("creation_time", creation_time)
+        _setter("description", description)
+        _setter("disk_id", disk_id)
+        _setter("encrypted", encrypted)
+        _setter("id", id)
+        _setter("instant_access", instant_access)
+        _setter("instant_access_retention_days", instant_access_retention_days)
+        _setter("name", name)
+        _setter("product_code", product_code)
+        _setter("progress", progress)
+        _setter("remain_time", remain_time)
+        _setter("resource_group_id", resource_group_id)
+        _setter("retention_days", retention_days)
+        _setter("snapshot_id", snapshot_id)
+        _setter("snapshot_name", snapshot_name)
+        _setter("snapshot_sn", snapshot_sn)
+        _setter("snapshot_type", snapshot_type)
+        _setter("source_disk_id", source_disk_id)
+        _setter("source_disk_size", source_disk_size)
+        _setter("source_disk_type", source_disk_type)
+        _setter("source_storage_type", source_storage_type)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("type", type)
+        _setter("usage", usage)
 
     @property
     @pulumi.getter
@@ -6698,16 +8171,43 @@ class GetEcsStorageCapacityUnitsUnitResult(dict):
         :param str storage_capacity_unit_id: The ID of Storage Capacity Unit.
         :param str storage_capacity_unit_name: The name of the Storage Capacity Unit.
         """
-        pulumi.set(__self__, "allocation_status", allocation_status)
-        pulumi.set(__self__, "capacity", capacity)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_capacity_unit_id", storage_capacity_unit_id)
-        pulumi.set(__self__, "storage_capacity_unit_name", storage_capacity_unit_name)
+        GetEcsStorageCapacityUnitsUnitResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocation_status=allocation_status,
+            capacity=capacity,
+            create_time=create_time,
+            description=description,
+            expired_time=expired_time,
+            id=id,
+            start_time=start_time,
+            status=status,
+            storage_capacity_unit_id=storage_capacity_unit_id,
+            storage_capacity_unit_name=storage_capacity_unit_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocation_status: str,
+             capacity: int,
+             create_time: str,
+             description: str,
+             expired_time: str,
+             id: str,
+             start_time: str,
+             status: str,
+             storage_capacity_unit_id: str,
+             storage_capacity_unit_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allocation_status", allocation_status)
+        _setter("capacity", capacity)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("start_time", start_time)
+        _setter("status", status)
+        _setter("storage_capacity_unit_id", storage_capacity_unit_id)
+        _setter("storage_capacity_unit_name", storage_capacity_unit_name)
 
     @property
     @pulumi.getter(name="allocationStatus")
@@ -6857,37 +8357,106 @@ class GetEipAddressesAddressResult(dict):
         :param str status: The status of the EIP.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "address_name", address_name)
-        pulumi.set(__self__, "allocation_id", allocation_id)
-        pulumi.set(__self__, "available_regions", available_regions)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
-        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
-        pulumi.set(__self__, "bandwidth_package_type", bandwidth_package_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "deletion_protection", deletion_protection)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
-        pulumi.set(__self__, "hd_monitor_status", hd_monitor_status)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_region_id", instance_region_id)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "isp", isp)
-        pulumi.set(__self__, "operation_locks", operation_locks)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
-        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
-        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
-        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "second_limited", second_limited)
-        pulumi.set(__self__, "segment_instance_id", segment_instance_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
+        GetEipAddressesAddressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_name=address_name,
+            allocation_id=allocation_id,
+            available_regions=available_regions,
+            bandwidth=bandwidth,
+            bandwidth_package_bandwidth=bandwidth_package_bandwidth,
+            bandwidth_package_id=bandwidth_package_id,
+            bandwidth_package_type=bandwidth_package_type,
+            create_time=create_time,
+            deletion_protection=deletion_protection,
+            description=description,
+            expired_time=expired_time,
+            has_reservation_data=has_reservation_data,
+            hd_monitor_status=hd_monitor_status,
+            id=id,
+            instance_id=instance_id,
+            instance_region_id=instance_region_id,
+            instance_type=instance_type,
+            internet_charge_type=internet_charge_type,
+            ip_address=ip_address,
+            isp=isp,
+            operation_locks=operation_locks,
+            payment_type=payment_type,
+            reservation_active_time=reservation_active_time,
+            reservation_bandwidth=reservation_bandwidth,
+            reservation_internet_charge_type=reservation_internet_charge_type,
+            reservation_order_type=reservation_order_type,
+            resource_group_id=resource_group_id,
+            second_limited=second_limited,
+            segment_instance_id=segment_instance_id,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_name: str,
+             allocation_id: str,
+             available_regions: Sequence[str],
+             bandwidth: str,
+             bandwidth_package_bandwidth: str,
+             bandwidth_package_id: str,
+             bandwidth_package_type: str,
+             create_time: str,
+             deletion_protection: bool,
+             description: str,
+             expired_time: str,
+             has_reservation_data: str,
+             hd_monitor_status: str,
+             id: str,
+             instance_id: str,
+             instance_region_id: str,
+             instance_type: str,
+             internet_charge_type: str,
+             ip_address: str,
+             isp: str,
+             operation_locks: Sequence[str],
+             payment_type: str,
+             reservation_active_time: str,
+             reservation_bandwidth: str,
+             reservation_internet_charge_type: str,
+             reservation_order_type: str,
+             resource_group_id: str,
+             second_limited: bool,
+             segment_instance_id: str,
+             status: str,
+             tags: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address_name", address_name)
+        _setter("allocation_id", allocation_id)
+        _setter("available_regions", available_regions)
+        _setter("bandwidth", bandwidth)
+        _setter("bandwidth_package_bandwidth", bandwidth_package_bandwidth)
+        _setter("bandwidth_package_id", bandwidth_package_id)
+        _setter("bandwidth_package_type", bandwidth_package_type)
+        _setter("create_time", create_time)
+        _setter("deletion_protection", deletion_protection)
+        _setter("description", description)
+        _setter("expired_time", expired_time)
+        _setter("has_reservation_data", has_reservation_data)
+        _setter("hd_monitor_status", hd_monitor_status)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_region_id", instance_region_id)
+        _setter("instance_type", instance_type)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("ip_address", ip_address)
+        _setter("isp", isp)
+        _setter("operation_locks", operation_locks)
+        _setter("payment_type", payment_type)
+        _setter("reservation_active_time", reservation_active_time)
+        _setter("reservation_bandwidth", reservation_bandwidth)
+        _setter("reservation_internet_charge_type", reservation_internet_charge_type)
+        _setter("reservation_order_type", reservation_order_type)
+        _setter("resource_group_id", resource_group_id)
+        _setter("second_limited", second_limited)
+        _setter("segment_instance_id", segment_instance_id)
+        _setter("status", status)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="addressName")
@@ -7160,15 +8729,40 @@ class GetEipAddressesEipResult(dict):
         :param str ip_address: The IP address of the EIP.
         :param str status: The status of the EIP.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "deletion_protection", deletion_protection)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "status", status)
+        GetEipAddressesEipResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            creation_time=creation_time,
+            deletion_protection=deletion_protection,
+            id=id,
+            instance_id=instance_id,
+            instance_type=instance_type,
+            internet_charge_type=internet_charge_type,
+            ip_address=ip_address,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: str,
+             creation_time: str,
+             deletion_protection: bool,
+             id: str,
+             instance_id: str,
+             instance_type: str,
+             internet_charge_type: str,
+             ip_address: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("creation_time", creation_time)
+        _setter("deletion_protection", deletion_protection)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_type", instance_type)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("ip_address", ip_address)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -7286,37 +8880,106 @@ class GetEipsAddressResult(dict):
         :param str status: EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "address_name", address_name)
-        pulumi.set(__self__, "allocation_id", allocation_id)
-        pulumi.set(__self__, "available_regions", available_regions)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
-        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
-        pulumi.set(__self__, "bandwidth_package_type", bandwidth_package_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "deletion_protection", deletion_protection)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
-        pulumi.set(__self__, "hd_monitor_status", hd_monitor_status)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_region_id", instance_region_id)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "isp", isp)
-        pulumi.set(__self__, "operation_locks", operation_locks)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
-        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
-        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
-        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "second_limited", second_limited)
-        pulumi.set(__self__, "segment_instance_id", segment_instance_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
+        GetEipsAddressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_name=address_name,
+            allocation_id=allocation_id,
+            available_regions=available_regions,
+            bandwidth=bandwidth,
+            bandwidth_package_bandwidth=bandwidth_package_bandwidth,
+            bandwidth_package_id=bandwidth_package_id,
+            bandwidth_package_type=bandwidth_package_type,
+            create_time=create_time,
+            deletion_protection=deletion_protection,
+            description=description,
+            expired_time=expired_time,
+            has_reservation_data=has_reservation_data,
+            hd_monitor_status=hd_monitor_status,
+            id=id,
+            instance_id=instance_id,
+            instance_region_id=instance_region_id,
+            instance_type=instance_type,
+            internet_charge_type=internet_charge_type,
+            ip_address=ip_address,
+            isp=isp,
+            operation_locks=operation_locks,
+            payment_type=payment_type,
+            reservation_active_time=reservation_active_time,
+            reservation_bandwidth=reservation_bandwidth,
+            reservation_internet_charge_type=reservation_internet_charge_type,
+            reservation_order_type=reservation_order_type,
+            resource_group_id=resource_group_id,
+            second_limited=second_limited,
+            segment_instance_id=segment_instance_id,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_name: str,
+             allocation_id: str,
+             available_regions: Sequence[str],
+             bandwidth: str,
+             bandwidth_package_bandwidth: str,
+             bandwidth_package_id: str,
+             bandwidth_package_type: str,
+             create_time: str,
+             deletion_protection: bool,
+             description: str,
+             expired_time: str,
+             has_reservation_data: str,
+             hd_monitor_status: str,
+             id: str,
+             instance_id: str,
+             instance_region_id: str,
+             instance_type: str,
+             internet_charge_type: str,
+             ip_address: str,
+             isp: str,
+             operation_locks: Sequence[str],
+             payment_type: str,
+             reservation_active_time: str,
+             reservation_bandwidth: str,
+             reservation_internet_charge_type: str,
+             reservation_order_type: str,
+             resource_group_id: str,
+             second_limited: bool,
+             segment_instance_id: str,
+             status: str,
+             tags: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address_name", address_name)
+        _setter("allocation_id", allocation_id)
+        _setter("available_regions", available_regions)
+        _setter("bandwidth", bandwidth)
+        _setter("bandwidth_package_bandwidth", bandwidth_package_bandwidth)
+        _setter("bandwidth_package_id", bandwidth_package_id)
+        _setter("bandwidth_package_type", bandwidth_package_type)
+        _setter("create_time", create_time)
+        _setter("deletion_protection", deletion_protection)
+        _setter("description", description)
+        _setter("expired_time", expired_time)
+        _setter("has_reservation_data", has_reservation_data)
+        _setter("hd_monitor_status", hd_monitor_status)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_region_id", instance_region_id)
+        _setter("instance_type", instance_type)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("ip_address", ip_address)
+        _setter("isp", isp)
+        _setter("operation_locks", operation_locks)
+        _setter("payment_type", payment_type)
+        _setter("reservation_active_time", reservation_active_time)
+        _setter("reservation_bandwidth", reservation_bandwidth)
+        _setter("reservation_internet_charge_type", reservation_internet_charge_type)
+        _setter("reservation_order_type", reservation_order_type)
+        _setter("resource_group_id", resource_group_id)
+        _setter("second_limited", second_limited)
+        _setter("segment_instance_id", segment_instance_id)
+        _setter("status", status)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="addressName")
@@ -7527,15 +9190,40 @@ class GetEipsEipResult(dict):
         :param str ip_address: Public IP Address of the the EIP.
         :param str status: EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "deletion_protection", deletion_protection)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "status", status)
+        GetEipsEipResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            creation_time=creation_time,
+            deletion_protection=deletion_protection,
+            id=id,
+            instance_id=instance_id,
+            instance_type=instance_type,
+            internet_charge_type=internet_charge_type,
+            ip_address=ip_address,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: str,
+             creation_time: str,
+             deletion_protection: bool,
+             id: str,
+             instance_id: str,
+             instance_type: str,
+             internet_charge_type: str,
+             ip_address: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("creation_time", creation_time)
+        _setter("deletion_protection", deletion_protection)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_type", instance_type)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("ip_address", ip_address)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -7647,23 +9335,62 @@ class GetElasticityAssurancesAssuranceResult(dict):
         :param int used_assurance_times: This parameter is not yet available.
         :param Mapping[str, Any] tags: The tag key-value pair information bound by the elastic guarantee service.
         """
-        pulumi.set(__self__, "allocated_resources", allocated_resources)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "elasticity_assurance_id", elasticity_assurance_id)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
-        pulumi.set(__self__, "private_pool_options_id", private_pool_options_id)
-        pulumi.set(__self__, "private_pool_options_match_criteria", private_pool_options_match_criteria)
-        pulumi.set(__self__, "private_pool_options_name", private_pool_options_name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "start_time_type", start_time_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "total_assurance_times", total_assurance_times)
-        pulumi.set(__self__, "used_assurance_times", used_assurance_times)
+        GetElasticityAssurancesAssuranceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocated_resources=allocated_resources,
+            description=description,
+            elasticity_assurance_id=elasticity_assurance_id,
+            end_time=end_time,
+            id=id,
+            instance_charge_type=instance_charge_type,
+            private_pool_options_id=private_pool_options_id,
+            private_pool_options_match_criteria=private_pool_options_match_criteria,
+            private_pool_options_name=private_pool_options_name,
+            resource_group_id=resource_group_id,
+            start_time=start_time,
+            start_time_type=start_time_type,
+            status=status,
+            total_assurance_times=total_assurance_times,
+            used_assurance_times=used_assurance_times,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocated_resources: Sequence['outputs.GetElasticityAssurancesAssuranceAllocatedResourceResult'],
+             description: str,
+             elasticity_assurance_id: str,
+             end_time: str,
+             id: str,
+             instance_charge_type: str,
+             private_pool_options_id: str,
+             private_pool_options_match_criteria: str,
+             private_pool_options_name: str,
+             resource_group_id: str,
+             start_time: str,
+             start_time_type: str,
+             status: str,
+             total_assurance_times: str,
+             used_assurance_times: int,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allocated_resources", allocated_resources)
+        _setter("description", description)
+        _setter("elasticity_assurance_id", elasticity_assurance_id)
+        _setter("end_time", end_time)
+        _setter("id", id)
+        _setter("instance_charge_type", instance_charge_type)
+        _setter("private_pool_options_id", private_pool_options_id)
+        _setter("private_pool_options_match_criteria", private_pool_options_match_criteria)
+        _setter("private_pool_options_name", private_pool_options_name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("start_time", start_time)
+        _setter("start_time_type", start_time_type)
+        _setter("status", status)
+        _setter("total_assurance_times", total_assurance_times)
+        _setter("used_assurance_times", used_assurance_times)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="allocatedResources")
@@ -7807,10 +9534,25 @@ class GetElasticityAssurancesAssuranceAllocatedResourceResult(dict):
         :param int used_amount: The number of instances that have been used.
         :param str zone_id: The zone ID.
         """
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "total_amount", total_amount)
-        pulumi.set(__self__, "used_amount", used_amount)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetElasticityAssurancesAssuranceAllocatedResourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_type=instance_type,
+            total_amount=total_amount,
+            used_amount=used_amount,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_type: str,
+             total_amount: int,
+             used_amount: int,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_type", instance_type)
+        _setter("total_amount", total_amount)
+        _setter("used_amount", used_amount)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -7858,10 +9600,25 @@ class GetHpcClustersClusterResult(dict):
         :param str id: The ID of the Hpc Cluster.
         :param str name: The name of ECS Hpc Cluster.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "hpc_cluster_id", hpc_cluster_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
+        GetHpcClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            hpc_cluster_id=hpc_cluster_id,
+            id=id,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             hpc_cluster_id: str,
+             id: str,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("hpc_cluster_id", hpc_cluster_id)
+        _setter("id", id)
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -7944,31 +9701,86 @@ class GetImagesImageResult(dict):
         :param str usage: Specifies whether to check the validity of the request without actually making the request. Valid values:
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "architecture", architecture)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "disk_device_mappings", disk_device_mappings)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "image_owner_alias", image_owner_alias)
-        pulumi.set(__self__, "image_version", image_version)
-        pulumi.set(__self__, "is_copied", is_copied)
-        pulumi.set(__self__, "is_self_shared", is_self_shared)
-        pulumi.set(__self__, "is_subscribed", is_subscribed)
-        pulumi.set(__self__, "is_support_io_optimized", is_support_io_optimized)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "os_name", os_name)
-        pulumi.set(__self__, "os_name_en", os_name_en)
-        pulumi.set(__self__, "os_type", os_type)
-        pulumi.set(__self__, "platform", platform)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "progress", progress)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "state", state)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "usage", usage)
+        GetImagesImageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            architecture=architecture,
+            creation_time=creation_time,
+            description=description,
+            disk_device_mappings=disk_device_mappings,
+            id=id,
+            image_id=image_id,
+            image_owner_alias=image_owner_alias,
+            image_version=image_version,
+            is_copied=is_copied,
+            is_self_shared=is_self_shared,
+            is_subscribed=is_subscribed,
+            is_support_io_optimized=is_support_io_optimized,
+            name=name,
+            os_name=os_name,
+            os_name_en=os_name_en,
+            os_type=os_type,
+            platform=platform,
+            product_code=product_code,
+            progress=progress,
+            size=size,
+            state=state,
+            status=status,
+            usage=usage,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             architecture: str,
+             creation_time: str,
+             description: str,
+             disk_device_mappings: Sequence['outputs.GetImagesImageDiskDeviceMappingResult'],
+             id: str,
+             image_id: str,
+             image_owner_alias: str,
+             image_version: str,
+             is_copied: bool,
+             is_self_shared: str,
+             is_subscribed: bool,
+             is_support_io_optimized: bool,
+             name: str,
+             os_name: str,
+             os_name_en: str,
+             os_type: str,
+             platform: str,
+             product_code: str,
+             progress: str,
+             size: int,
+             state: str,
+             status: str,
+             usage: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("architecture", architecture)
+        _setter("creation_time", creation_time)
+        _setter("description", description)
+        _setter("disk_device_mappings", disk_device_mappings)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("image_owner_alias", image_owner_alias)
+        _setter("image_version", image_version)
+        _setter("is_copied", is_copied)
+        _setter("is_self_shared", is_self_shared)
+        _setter("is_subscribed", is_subscribed)
+        _setter("is_support_io_optimized", is_support_io_optimized)
+        _setter("name", name)
+        _setter("os_name", os_name)
+        _setter("os_name_en", os_name_en)
+        _setter("os_type", os_type)
+        _setter("platform", platform)
+        _setter("product_code", product_code)
+        _setter("progress", progress)
+        _setter("size", size)
+        _setter("state", state)
+        _setter("status", status)
+        _setter("usage", usage)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -8159,9 +9971,22 @@ class GetImagesImageDiskDeviceMappingResult(dict):
         :param str size: Size of the created disk.
         :param str snapshot_id: The ID of the snapshot used to create the custom image.
         """
-        pulumi.set(__self__, "device", device)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
+        GetImagesImageDiskDeviceMappingResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device=device,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device: str,
+             size: str,
+             snapshot_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("device", device)
+        _setter("size", size)
+        _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter
@@ -8199,9 +10024,22 @@ class GetInstanceTypeFamiliesFamilyResult(dict):
         :param str id: ID of the instance type family.
         :param Sequence[str] zone_ids: A list of Zone to launch the instance.
         """
-        pulumi.set(__self__, "generation", generation)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "zone_ids", zone_ids)
+        GetInstanceTypeFamiliesFamilyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            generation=generation,
+            id=id,
+            zone_ids=zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             generation: str,
+             id: str,
+             zone_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("generation", generation)
+        _setter("id", id)
+        _setter("zone_ids", zone_ids)
 
     @property
     @pulumi.getter
@@ -8263,17 +10101,46 @@ class GetInstanceTypesInstanceTypeResult(dict):
                - required: The cloud disk can be attached by using the NVMe protocol.
                - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
         """
-        pulumi.set(__self__, "availability_zones", availability_zones)
-        pulumi.set(__self__, "burstable_instance", burstable_instance)
-        pulumi.set(__self__, "cpu_core_count", cpu_core_count)
-        pulumi.set(__self__, "eni_amount", eni_amount)
-        pulumi.set(__self__, "family", family)
-        pulumi.set(__self__, "gpu", gpu)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_storage", local_storage)
-        pulumi.set(__self__, "memory_size", memory_size)
-        pulumi.set(__self__, "nvme_support", nvme_support)
-        pulumi.set(__self__, "price", price)
+        GetInstanceTypesInstanceTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zones=availability_zones,
+            burstable_instance=burstable_instance,
+            cpu_core_count=cpu_core_count,
+            eni_amount=eni_amount,
+            family=family,
+            gpu=gpu,
+            id=id,
+            local_storage=local_storage,
+            memory_size=memory_size,
+            nvme_support=nvme_support,
+            price=price,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zones: Sequence[str],
+             burstable_instance: 'outputs.GetInstanceTypesInstanceTypeBurstableInstanceResult',
+             cpu_core_count: int,
+             eni_amount: int,
+             family: str,
+             gpu: 'outputs.GetInstanceTypesInstanceTypeGpuResult',
+             id: str,
+             local_storage: 'outputs.GetInstanceTypesInstanceTypeLocalStorageResult',
+             memory_size: float,
+             nvme_support: str,
+             price: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("availability_zones", availability_zones)
+        _setter("burstable_instance", burstable_instance)
+        _setter("cpu_core_count", cpu_core_count)
+        _setter("eni_amount", eni_amount)
+        _setter("family", family)
+        _setter("gpu", gpu)
+        _setter("id", id)
+        _setter("local_storage", local_storage)
+        _setter("memory_size", memory_size)
+        _setter("nvme_support", nvme_support)
+        _setter("price", price)
 
     @property
     @pulumi.getter(name="availabilityZones")
@@ -8375,8 +10242,19 @@ class GetInstanceTypesInstanceTypeBurstableInstanceResult(dict):
     def __init__(__self__, *,
                  baseline_credit: str,
                  initial_credit: str):
-        pulumi.set(__self__, "baseline_credit", baseline_credit)
-        pulumi.set(__self__, "initial_credit", initial_credit)
+        GetInstanceTypesInstanceTypeBurstableInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            baseline_credit=baseline_credit,
+            initial_credit=initial_credit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             baseline_credit: str,
+             initial_credit: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("baseline_credit", baseline_credit)
+        _setter("initial_credit", initial_credit)
 
     @property
     @pulumi.getter(name="baselineCredit")
@@ -8394,8 +10272,19 @@ class GetInstanceTypesInstanceTypeGpuResult(dict):
     def __init__(__self__, *,
                  amount: str,
                  category: str):
-        pulumi.set(__self__, "amount", amount)
-        pulumi.set(__self__, "category", category)
+        GetInstanceTypesInstanceTypeGpuResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            amount=amount,
+            category=category,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             amount: str,
+             category: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("amount", amount)
+        _setter("category", category)
 
     @property
     @pulumi.getter
@@ -8414,9 +10303,22 @@ class GetInstanceTypesInstanceTypeLocalStorageResult(dict):
                  amount: str,
                  capacity: str,
                  category: str):
-        pulumi.set(__self__, "amount", amount)
-        pulumi.set(__self__, "capacity", capacity)
-        pulumi.set(__self__, "category", category)
+        GetInstanceTypesInstanceTypeLocalStorageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            amount=amount,
+            capacity=capacity,
+            category=category,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             amount: str,
+             capacity: str,
+             category: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("amount", amount)
+        _setter("capacity", capacity)
+        _setter("category", category)
 
     @property
     @pulumi.getter
@@ -8496,31 +10398,86 @@ class GetInstancesInstanceResult(dict):
                })
                ```
         """
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "disk_device_mappings", disk_device_mappings)
-        pulumi.set(__self__, "eip", eip)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_charge_type", instance_charge_type)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "private_ip", private_ip)
-        pulumi.set(__self__, "public_ip", public_ip)
-        pulumi.set(__self__, "ram_role_name", ram_role_name)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "security_groups", security_groups)
-        pulumi.set(__self__, "spot_strategy", spot_strategy)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zone=availability_zone,
+            creation_time=creation_time,
+            description=description,
+            disk_device_mappings=disk_device_mappings,
+            eip=eip,
+            id=id,
+            image_id=image_id,
+            instance_charge_type=instance_charge_type,
+            instance_type=instance_type,
+            internet_charge_type=internet_charge_type,
+            internet_max_bandwidth_out=internet_max_bandwidth_out,
+            key_name=key_name,
+            name=name,
+            private_ip=private_ip,
+            public_ip=public_ip,
+            ram_role_name=ram_role_name,
+            region_id=region_id,
+            resource_group_id=resource_group_id,
+            security_groups=security_groups,
+            spot_strategy=spot_strategy,
+            status=status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zone: str,
+             creation_time: str,
+             description: str,
+             disk_device_mappings: Sequence['outputs.GetInstancesInstanceDiskDeviceMappingResult'],
+             eip: str,
+             id: str,
+             image_id: str,
+             instance_charge_type: str,
+             instance_type: str,
+             internet_charge_type: str,
+             internet_max_bandwidth_out: int,
+             key_name: str,
+             name: str,
+             private_ip: str,
+             public_ip: str,
+             ram_role_name: str,
+             region_id: str,
+             resource_group_id: str,
+             security_groups: Sequence[str],
+             spot_strategy: str,
+             status: str,
+             vpc_id: str,
+             vswitch_id: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("availability_zone", availability_zone)
+        _setter("creation_time", creation_time)
+        _setter("description", description)
+        _setter("disk_device_mappings", disk_device_mappings)
+        _setter("eip", eip)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("instance_charge_type", instance_charge_type)
+        _setter("instance_type", instance_type)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
+        _setter("key_name", key_name)
+        _setter("name", name)
+        _setter("private_ip", private_ip)
+        _setter("public_ip", public_ip)
+        _setter("ram_role_name", ram_role_name)
+        _setter("region_id", region_id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("security_groups", security_groups)
+        _setter("spot_strategy", spot_strategy)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -8741,12 +10698,31 @@ class GetInstancesInstanceDiskDeviceMappingResult(dict):
         :param int size: Size of the created disk.
         :param str type: Cloud disk type: system disk or data disk.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "device", device)
-        pulumi.set(__self__, "disk_id", disk_id)
-        pulumi.set(__self__, "disk_name", disk_name)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "type", type)
+        GetInstancesInstanceDiskDeviceMappingResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            device=device,
+            disk_id=disk_id,
+            disk_name=disk_name,
+            size=size,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             device: str,
+             disk_id: str,
+             disk_name: str,
+             size: int,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("device", device)
+        _setter("disk_id", disk_id)
+        _setter("disk_name", disk_name)
+        _setter("size", size)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -8815,13 +10791,34 @@ class GetKeyPairsKeyPairResult(dict):
         :param str resource_group_id: The Id of resource group which the key pair belongs.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "finger_print", finger_print)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instances", instances)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "key_pair_name", key_pair_name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "tags", tags)
+        GetKeyPairsKeyPairResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            finger_print=finger_print,
+            id=id,
+            instances=instances,
+            key_name=key_name,
+            key_pair_name=key_pair_name,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             finger_print: str,
+             id: str,
+             instances: Sequence['outputs.GetKeyPairsKeyPairInstanceResult'],
+             key_name: str,
+             key_pair_name: str,
+             resource_group_id: str,
+             tags: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("finger_print", finger_print)
+        _setter("id", id)
+        _setter("instances", instances)
+        _setter("key_name", key_name)
+        _setter("key_pair_name", key_pair_name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="fingerPrint")
@@ -8901,18 +10898,49 @@ class GetKeyPairsKeyPairInstanceResult(dict):
         :param str public_ip: The public IP address or EIP of the ECS instance.
         :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
         """
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "private_ip", private_ip)
-        pulumi.set(__self__, "public_ip", public_ip)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetKeyPairsKeyPairInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zone=availability_zone,
+            description=description,
+            image_id=image_id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            key_name=key_name,
+            private_ip=private_ip,
+            public_ip=public_ip,
+            region_id=region_id,
+            status=status,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zone: str,
+             description: str,
+             image_id: str,
+             instance_id: str,
+             instance_name: str,
+             instance_type: str,
+             key_name: str,
+             private_ip: str,
+             public_ip: str,
+             region_id: str,
+             status: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("availability_zone", availability_zone)
+        _setter("description", description)
+        _setter("image_id", image_id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("instance_type", instance_type)
+        _setter("key_name", key_name)
+        _setter("private_ip", private_ip)
+        _setter("public_ip", public_ip)
+        _setter("region_id", region_id)
+        _setter("status", status)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -9014,13 +11042,34 @@ class GetKeyPairsPairResult(dict):
         :param str resource_group_id: The Id of resource group which the key pair belongs.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "finger_print", finger_print)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instances", instances)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "key_pair_name", key_pair_name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "tags", tags)
+        GetKeyPairsPairResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            finger_print=finger_print,
+            id=id,
+            instances=instances,
+            key_name=key_name,
+            key_pair_name=key_pair_name,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             finger_print: str,
+             id: str,
+             instances: Sequence['outputs.GetKeyPairsPairInstanceResult'],
+             key_name: str,
+             key_pair_name: str,
+             resource_group_id: str,
+             tags: Mapping[str, Any],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("finger_print", finger_print)
+        _setter("id", id)
+        _setter("instances", instances)
+        _setter("key_name", key_name)
+        _setter("key_pair_name", key_pair_name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="fingerPrint")
@@ -9100,18 +11149,49 @@ class GetKeyPairsPairInstanceResult(dict):
         :param str public_ip: The public IP address or EIP of the ECS instance.
         :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
         """
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "private_ip", private_ip)
-        pulumi.set(__self__, "public_ip", public_ip)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetKeyPairsPairInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zone=availability_zone,
+            description=description,
+            image_id=image_id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            key_name=key_name,
+            private_ip=private_ip,
+            public_ip=public_ip,
+            region_id=region_id,
+            status=status,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zone: str,
+             description: str,
+             image_id: str,
+             instance_id: str,
+             instance_name: str,
+             instance_type: str,
+             key_name: str,
+             private_ip: str,
+             public_ip: str,
+             region_id: str,
+             status: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("availability_zone", availability_zone)
+        _setter("description", description)
+        _setter("image_id", image_id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("instance_type", instance_type)
+        _setter("key_name", key_name)
+        _setter("private_ip", private_ip)
+        _setter("public_ip", public_ip)
+        _setter("region_id", region_id)
+        _setter("status", status)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -9242,33 +11322,94 @@ class GetNetworkInterfacesInterfaceResult(dict):
         :param str vswitch_id: ID of the VSwitch that the ENI is linked to.
         :param str zone_id: ID of the availability zone that the ENI belongs to.
         """
-        pulumi.set(__self__, "associated_public_ips", associated_public_ips)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "mac", mac)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "network_interface_name", network_interface_name)
-        pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
-        pulumi.set(__self__, "owner_id", owner_id)
-        pulumi.set(__self__, "primary_ip_address", primary_ip_address)
-        pulumi.set(__self__, "private_ip", private_ip)
-        pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
-        pulumi.set(__self__, "private_ips", private_ips)
-        pulumi.set(__self__, "queue_number", queue_number)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "security_group_ids", security_group_ids)
-        pulumi.set(__self__, "security_groups", security_groups)
-        pulumi.set(__self__, "service_id", service_id)
-        pulumi.set(__self__, "service_managed", service_managed)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetNetworkInterfacesInterfaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            associated_public_ips=associated_public_ips,
+            creation_time=creation_time,
+            description=description,
+            id=id,
+            instance_id=instance_id,
+            mac=mac,
+            name=name,
+            network_interface_id=network_interface_id,
+            network_interface_name=network_interface_name,
+            network_interface_traffic_mode=network_interface_traffic_mode,
+            owner_id=owner_id,
+            primary_ip_address=primary_ip_address,
+            private_ip=private_ip,
+            private_ip_addresses=private_ip_addresses,
+            private_ips=private_ips,
+            queue_number=queue_number,
+            resource_group_id=resource_group_id,
+            security_group_ids=security_group_ids,
+            security_groups=security_groups,
+            service_id=service_id,
+            service_managed=service_managed,
+            status=status,
+            tags=tags,
+            type=type,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             associated_public_ips: Sequence['outputs.GetNetworkInterfacesInterfaceAssociatedPublicIpResult'],
+             creation_time: str,
+             description: str,
+             id: str,
+             instance_id: str,
+             mac: str,
+             name: str,
+             network_interface_id: str,
+             network_interface_name: str,
+             network_interface_traffic_mode: str,
+             owner_id: str,
+             primary_ip_address: str,
+             private_ip: str,
+             private_ip_addresses: Sequence[str],
+             private_ips: Sequence[str],
+             queue_number: int,
+             resource_group_id: str,
+             security_group_ids: Sequence[str],
+             security_groups: Sequence[str],
+             service_id: int,
+             service_managed: bool,
+             status: str,
+             tags: Mapping[str, Any],
+             type: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("associated_public_ips", associated_public_ips)
+        _setter("creation_time", creation_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("mac", mac)
+        _setter("name", name)
+        _setter("network_interface_id", network_interface_id)
+        _setter("network_interface_name", network_interface_name)
+        _setter("network_interface_traffic_mode", network_interface_traffic_mode)
+        _setter("owner_id", owner_id)
+        _setter("primary_ip_address", primary_ip_address)
+        _setter("private_ip", private_ip)
+        _setter("private_ip_addresses", private_ip_addresses)
+        _setter("private_ips", private_ips)
+        _setter("queue_number", queue_number)
+        _setter("resource_group_id", resource_group_id)
+        _setter("security_group_ids", security_group_ids)
+        _setter("security_groups", security_groups)
+        _setter("service_id", service_id)
+        _setter("service_managed", service_managed)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("type", type)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="associatedPublicIps")
@@ -9455,7 +11596,16 @@ class GetNetworkInterfacesInterfaceResult(dict):
 class GetNetworkInterfacesInterfaceAssociatedPublicIpResult(dict):
     def __init__(__self__, *,
                  public_ip_address: str):
-        pulumi.set(__self__, "public_ip_address", public_ip_address)
+        GetNetworkInterfacesInterfaceAssociatedPublicIpResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_ip_address=public_ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_ip_address: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("public_ip_address", public_ip_address)
 
     @property
     @pulumi.getter(name="publicIpAddress")
@@ -9494,19 +11644,52 @@ class GetSecurityGroupRulesRuleResult(dict):
         :param str source_group_id: Source security group ID for ingress authorization.
         :param str source_group_owner_account: Alibaba Cloud account of the source security group.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "dest_cidr_ip", dest_cidr_ip)
-        pulumi.set(__self__, "dest_group_id", dest_group_id)
-        pulumi.set(__self__, "dest_group_owner_account", dest_group_owner_account)
-        pulumi.set(__self__, "direction", direction)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "nic_type", nic_type)
-        pulumi.set(__self__, "policy", policy)
-        pulumi.set(__self__, "port_range", port_range)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "source_cidr_ip", source_cidr_ip)
-        pulumi.set(__self__, "source_group_id", source_group_id)
-        pulumi.set(__self__, "source_group_owner_account", source_group_owner_account)
+        GetSecurityGroupRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            dest_cidr_ip=dest_cidr_ip,
+            dest_group_id=dest_group_id,
+            dest_group_owner_account=dest_group_owner_account,
+            direction=direction,
+            ip_protocol=ip_protocol,
+            nic_type=nic_type,
+            policy=policy,
+            port_range=port_range,
+            priority=priority,
+            source_cidr_ip=source_cidr_ip,
+            source_group_id=source_group_id,
+            source_group_owner_account=source_group_owner_account,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             dest_cidr_ip: str,
+             dest_group_id: str,
+             dest_group_owner_account: str,
+             direction: str,
+             ip_protocol: str,
+             nic_type: str,
+             policy: str,
+             port_range: str,
+             priority: int,
+             source_cidr_ip: str,
+             source_group_id: str,
+             source_group_owner_account: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("dest_cidr_ip", dest_cidr_ip)
+        _setter("dest_group_id", dest_group_id)
+        _setter("dest_group_owner_account", dest_group_owner_account)
+        _setter("direction", direction)
+        _setter("ip_protocol", ip_protocol)
+        _setter("nic_type", nic_type)
+        _setter("policy", policy)
+        _setter("port_range", port_range)
+        _setter("priority", priority)
+        _setter("source_cidr_ip", source_cidr_ip)
+        _setter("source_group_id", source_group_id)
+        _setter("source_group_owner_account", source_group_owner_account)
 
     @property
     @pulumi.getter
@@ -9645,16 +11828,41 @@ class GetSecurityGroupsGroupResult(dict):
                })
                ```
         """
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "inner_access", inner_access)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "security_group_type", security_group_type)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetSecurityGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            creation_time=creation_time,
+            description=description,
+            id=id,
+            inner_access=inner_access,
+            name=name,
+            resource_group_id=resource_group_id,
+            security_group_type=security_group_type,
+            vpc_id=vpc_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             creation_time: str,
+             description: str,
+             id: str,
+             inner_access: bool,
+             name: str,
+             resource_group_id: str,
+             security_group_type: str,
+             vpc_id: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("creation_time", creation_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("inner_access", inner_access)
+        _setter("name", name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("security_group_type", security_group_type)
+        _setter("vpc_id", vpc_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -9784,32 +11992,91 @@ class GetSnapshotsSnapshotResult(dict):
         :param Mapping[str, Any] tags: A map of tags assigned to the snapshot.
         :param str usage: Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "disk_id", disk_id)
-        pulumi.set(__self__, "encrypted", encrypted)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instant_access", instant_access)
-        pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "progress", progress)
-        pulumi.set(__self__, "remain_time", remain_time)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "retention_days", retention_days)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
-        pulumi.set(__self__, "snapshot_name", snapshot_name)
-        pulumi.set(__self__, "snapshot_sn", snapshot_sn)
-        pulumi.set(__self__, "snapshot_type", snapshot_type)
-        pulumi.set(__self__, "source_disk_id", source_disk_id)
-        pulumi.set(__self__, "source_disk_size", source_disk_size)
-        pulumi.set(__self__, "source_disk_type", source_disk_type)
-        pulumi.set(__self__, "source_storage_type", source_storage_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "usage", usage)
+        GetSnapshotsSnapshotResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            creation_time=creation_time,
+            description=description,
+            disk_id=disk_id,
+            encrypted=encrypted,
+            id=id,
+            instant_access=instant_access,
+            instant_access_retention_days=instant_access_retention_days,
+            name=name,
+            product_code=product_code,
+            progress=progress,
+            remain_time=remain_time,
+            resource_group_id=resource_group_id,
+            retention_days=retention_days,
+            snapshot_id=snapshot_id,
+            snapshot_name=snapshot_name,
+            snapshot_sn=snapshot_sn,
+            snapshot_type=snapshot_type,
+            source_disk_id=source_disk_id,
+            source_disk_size=source_disk_size,
+            source_disk_type=source_disk_type,
+            source_storage_type=source_storage_type,
+            status=status,
+            tags=tags,
+            type=type,
+            usage=usage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             creation_time: str,
+             description: str,
+             disk_id: str,
+             encrypted: bool,
+             id: str,
+             instant_access: bool,
+             instant_access_retention_days: int,
+             name: str,
+             product_code: str,
+             progress: str,
+             remain_time: int,
+             resource_group_id: str,
+             retention_days: int,
+             snapshot_id: str,
+             snapshot_name: str,
+             snapshot_sn: str,
+             snapshot_type: str,
+             source_disk_id: str,
+             source_disk_size: str,
+             source_disk_type: str,
+             source_storage_type: str,
+             status: str,
+             tags: Mapping[str, Any],
+             type: str,
+             usage: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("creation_time", creation_time)
+        _setter("description", description)
+        _setter("disk_id", disk_id)
+        _setter("encrypted", encrypted)
+        _setter("id", id)
+        _setter("instant_access", instant_access)
+        _setter("instant_access_retention_days", instant_access_retention_days)
+        _setter("name", name)
+        _setter("product_code", product_code)
+        _setter("progress", progress)
+        _setter("remain_time", remain_time)
+        _setter("resource_group_id", resource_group_id)
+        _setter("retention_days", retention_days)
+        _setter("snapshot_id", snapshot_id)
+        _setter("snapshot_name", snapshot_name)
+        _setter("snapshot_sn", snapshot_sn)
+        _setter("snapshot_type", snapshot_type)
+        _setter("source_disk_id", source_disk_id)
+        _setter("source_disk_size", source_disk_size)
+        _setter("source_disk_type", source_disk_type)
+        _setter("source_storage_type", source_storage_type)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("type", type)
+        _setter("usage", usage)
 
     @property
     @pulumi.getter

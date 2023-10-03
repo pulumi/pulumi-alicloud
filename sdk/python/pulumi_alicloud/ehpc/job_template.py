@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['JobTemplateArgs', 'JobTemplate']
@@ -51,38 +51,79 @@ class JobTemplateArgs:
         :param pulumi.Input[int] thread: A Single Task and the Number of Required Threads.
         :param pulumi.Input[str] variables: The Job of the Environment Variable.
         """
-        pulumi.set(__self__, "command_line", command_line)
-        pulumi.set(__self__, "job_template_name", job_template_name)
+        JobTemplateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            command_line=command_line,
+            job_template_name=job_template_name,
+            array_request=array_request,
+            clock_time=clock_time,
+            gpu=gpu,
+            mem=mem,
+            node=node,
+            package_path=package_path,
+            priority=priority,
+            queue=queue,
+            re_runable=re_runable,
+            runas_user=runas_user,
+            stderr_redirect_path=stderr_redirect_path,
+            stdout_redirect_path=stdout_redirect_path,
+            task=task,
+            thread=thread,
+            variables=variables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             command_line: pulumi.Input[str],
+             job_template_name: pulumi.Input[str],
+             array_request: Optional[pulumi.Input[str]] = None,
+             clock_time: Optional[pulumi.Input[str]] = None,
+             gpu: Optional[pulumi.Input[int]] = None,
+             mem: Optional[pulumi.Input[str]] = None,
+             node: Optional[pulumi.Input[int]] = None,
+             package_path: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             queue: Optional[pulumi.Input[str]] = None,
+             re_runable: Optional[pulumi.Input[bool]] = None,
+             runas_user: Optional[pulumi.Input[str]] = None,
+             stderr_redirect_path: Optional[pulumi.Input[str]] = None,
+             stdout_redirect_path: Optional[pulumi.Input[str]] = None,
+             task: Optional[pulumi.Input[int]] = None,
+             thread: Optional[pulumi.Input[int]] = None,
+             variables: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("command_line", command_line)
+        _setter("job_template_name", job_template_name)
         if array_request is not None:
-            pulumi.set(__self__, "array_request", array_request)
+            _setter("array_request", array_request)
         if clock_time is not None:
-            pulumi.set(__self__, "clock_time", clock_time)
+            _setter("clock_time", clock_time)
         if gpu is not None:
-            pulumi.set(__self__, "gpu", gpu)
+            _setter("gpu", gpu)
         if mem is not None:
-            pulumi.set(__self__, "mem", mem)
+            _setter("mem", mem)
         if node is not None:
-            pulumi.set(__self__, "node", node)
+            _setter("node", node)
         if package_path is not None:
-            pulumi.set(__self__, "package_path", package_path)
+            _setter("package_path", package_path)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if queue is not None:
-            pulumi.set(__self__, "queue", queue)
+            _setter("queue", queue)
         if re_runable is not None:
-            pulumi.set(__self__, "re_runable", re_runable)
+            _setter("re_runable", re_runable)
         if runas_user is not None:
-            pulumi.set(__self__, "runas_user", runas_user)
+            _setter("runas_user", runas_user)
         if stderr_redirect_path is not None:
-            pulumi.set(__self__, "stderr_redirect_path", stderr_redirect_path)
+            _setter("stderr_redirect_path", stderr_redirect_path)
         if stdout_redirect_path is not None:
-            pulumi.set(__self__, "stdout_redirect_path", stdout_redirect_path)
+            _setter("stdout_redirect_path", stdout_redirect_path)
         if task is not None:
-            pulumi.set(__self__, "task", task)
+            _setter("task", task)
         if thread is not None:
-            pulumi.set(__self__, "thread", thread)
+            _setter("thread", thread)
         if variables is not None:
-            pulumi.set(__self__, "variables", variables)
+            _setter("variables", variables)
 
     @property
     @pulumi.getter(name="commandLine")
@@ -329,40 +370,81 @@ class _JobTemplateState:
         :param pulumi.Input[int] thread: A Single Task and the Number of Required Threads.
         :param pulumi.Input[str] variables: The Job of the Environment Variable.
         """
+        _JobTemplateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            array_request=array_request,
+            clock_time=clock_time,
+            command_line=command_line,
+            gpu=gpu,
+            job_template_name=job_template_name,
+            mem=mem,
+            node=node,
+            package_path=package_path,
+            priority=priority,
+            queue=queue,
+            re_runable=re_runable,
+            runas_user=runas_user,
+            stderr_redirect_path=stderr_redirect_path,
+            stdout_redirect_path=stdout_redirect_path,
+            task=task,
+            thread=thread,
+            variables=variables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             array_request: Optional[pulumi.Input[str]] = None,
+             clock_time: Optional[pulumi.Input[str]] = None,
+             command_line: Optional[pulumi.Input[str]] = None,
+             gpu: Optional[pulumi.Input[int]] = None,
+             job_template_name: Optional[pulumi.Input[str]] = None,
+             mem: Optional[pulumi.Input[str]] = None,
+             node: Optional[pulumi.Input[int]] = None,
+             package_path: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             queue: Optional[pulumi.Input[str]] = None,
+             re_runable: Optional[pulumi.Input[bool]] = None,
+             runas_user: Optional[pulumi.Input[str]] = None,
+             stderr_redirect_path: Optional[pulumi.Input[str]] = None,
+             stdout_redirect_path: Optional[pulumi.Input[str]] = None,
+             task: Optional[pulumi.Input[int]] = None,
+             thread: Optional[pulumi.Input[int]] = None,
+             variables: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if array_request is not None:
-            pulumi.set(__self__, "array_request", array_request)
+            _setter("array_request", array_request)
         if clock_time is not None:
-            pulumi.set(__self__, "clock_time", clock_time)
+            _setter("clock_time", clock_time)
         if command_line is not None:
-            pulumi.set(__self__, "command_line", command_line)
+            _setter("command_line", command_line)
         if gpu is not None:
-            pulumi.set(__self__, "gpu", gpu)
+            _setter("gpu", gpu)
         if job_template_name is not None:
-            pulumi.set(__self__, "job_template_name", job_template_name)
+            _setter("job_template_name", job_template_name)
         if mem is not None:
-            pulumi.set(__self__, "mem", mem)
+            _setter("mem", mem)
         if node is not None:
-            pulumi.set(__self__, "node", node)
+            _setter("node", node)
         if package_path is not None:
-            pulumi.set(__self__, "package_path", package_path)
+            _setter("package_path", package_path)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if queue is not None:
-            pulumi.set(__self__, "queue", queue)
+            _setter("queue", queue)
         if re_runable is not None:
-            pulumi.set(__self__, "re_runable", re_runable)
+            _setter("re_runable", re_runable)
         if runas_user is not None:
-            pulumi.set(__self__, "runas_user", runas_user)
+            _setter("runas_user", runas_user)
         if stderr_redirect_path is not None:
-            pulumi.set(__self__, "stderr_redirect_path", stderr_redirect_path)
+            _setter("stderr_redirect_path", stderr_redirect_path)
         if stdout_redirect_path is not None:
-            pulumi.set(__self__, "stdout_redirect_path", stdout_redirect_path)
+            _setter("stdout_redirect_path", stdout_redirect_path)
         if task is not None:
-            pulumi.set(__self__, "task", task)
+            _setter("task", task)
         if thread is not None:
-            pulumi.set(__self__, "thread", thread)
+            _setter("thread", thread)
         if variables is not None:
-            pulumi.set(__self__, "variables", variables)
+            _setter("variables", variables)
 
     @property
     @pulumi.getter(name="arrayRequest")
@@ -684,6 +766,10 @@ class JobTemplate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            JobTemplateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

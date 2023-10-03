@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceMemberArgs', 'InstanceMember']
@@ -21,9 +21,20 @@ class InstanceMemberArgs:
         :param pulumi.Input[str] member_uid: The UID of the cloud firewall member account.
         :param pulumi.Input[str] member_desc: Remarks of cloud firewall member accounts.
         """
-        pulumi.set(__self__, "member_uid", member_uid)
+        InstanceMemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            member_uid=member_uid,
+            member_desc=member_desc,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             member_uid: pulumi.Input[str],
+             member_desc: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("member_uid", member_uid)
         if member_desc is not None:
-            pulumi.set(__self__, "member_desc", member_desc)
+            _setter("member_desc", member_desc)
 
     @property
     @pulumi.getter(name="memberUid")
@@ -68,18 +79,37 @@ class _InstanceMemberState:
         :param pulumi.Input[int] modify_time: The last modification time of the cloud firewall member account.> use second-level timestamp format.
         :param pulumi.Input[str] status: The resource attribute field that represents the resource status.
         """
+        _InstanceMemberState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            member_desc=member_desc,
+            member_display_name=member_display_name,
+            member_uid=member_uid,
+            modify_time=modify_time,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[int]] = None,
+             member_desc: Optional[pulumi.Input[str]] = None,
+             member_display_name: Optional[pulumi.Input[str]] = None,
+             member_uid: Optional[pulumi.Input[str]] = None,
+             modify_time: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if member_desc is not None:
-            pulumi.set(__self__, "member_desc", member_desc)
+            _setter("member_desc", member_desc)
         if member_display_name is not None:
-            pulumi.set(__self__, "member_display_name", member_display_name)
+            _setter("member_display_name", member_display_name)
         if member_uid is not None:
-            pulumi.set(__self__, "member_uid", member_uid)
+            _setter("member_uid", member_uid)
         if modify_time is not None:
-            pulumi.set(__self__, "modify_time", modify_time)
+            _setter("modify_time", modify_time)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -249,6 +279,10 @@ class InstanceMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

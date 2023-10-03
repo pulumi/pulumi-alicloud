@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// The relative file path.
+        /// The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

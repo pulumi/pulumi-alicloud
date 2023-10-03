@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -162,171 +162,316 @@ class ApplicationArgs:
         :param pulumi.Input[str] war_start_options: WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         :param pulumi.Input[str] web_container: The version of tomcat that the deployment package depends on. Image type applications are not supported.
         """
-        pulumi.set(__self__, "app_name", app_name)
-        pulumi.set(__self__, "package_type", package_type)
-        pulumi.set(__self__, "replicas", replicas)
+        ApplicationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_name=app_name,
+            package_type=package_type,
+            replicas=replicas,
+            acr_assume_role_arn=acr_assume_role_arn,
+            acr_instance_id=acr_instance_id,
+            app_description=app_description,
+            auto_config=auto_config,
+            auto_enable_application_scaling_rule=auto_enable_application_scaling_rule,
+            batch_wait_time=batch_wait_time,
+            change_order_desc=change_order_desc,
+            command=command,
+            command_args=command_args,
+            command_args_v2s=command_args_v2s,
+            config_map_mount_desc=config_map_mount_desc,
+            config_map_mount_desc_v2s=config_map_mount_desc_v2s,
+            cpu=cpu,
+            custom_host_alias=custom_host_alias,
+            custom_host_alias_v2s=custom_host_alias_v2s,
+            deploy=deploy,
+            edas_container_version=edas_container_version,
+            enable_ahas=enable_ahas,
+            enable_grey_tag_route=enable_grey_tag_route,
+            envs=envs,
+            image_pull_secrets=image_pull_secrets,
+            image_url=image_url,
+            jar_start_args=jar_start_args,
+            jar_start_options=jar_start_options,
+            jdk=jdk,
+            kafka_configs=kafka_configs,
+            liveness=liveness,
+            liveness_v2=liveness_v2,
+            memory=memory,
+            micro_registration=micro_registration,
+            min_ready_instance_ratio=min_ready_instance_ratio,
+            min_ready_instances=min_ready_instances,
+            namespace_id=namespace_id,
+            nas_configs=nas_configs,
+            oss_ak_id=oss_ak_id,
+            oss_ak_secret=oss_ak_secret,
+            oss_mount_descs=oss_mount_descs,
+            oss_mount_descs_v2s=oss_mount_descs_v2s,
+            package_url=package_url,
+            package_version=package_version,
+            php=php,
+            php_arms_config_location=php_arms_config_location,
+            php_config=php_config,
+            php_config_location=php_config_location,
+            post_start=post_start,
+            post_start_v2=post_start_v2,
+            pre_stop=pre_stop,
+            pre_stop_v2=pre_stop_v2,
+            programming_language=programming_language,
+            pvtz_discovery_svc=pvtz_discovery_svc,
+            readiness=readiness,
+            readiness_v2=readiness_v2,
+            security_group_id=security_group_id,
+            sls_configs=sls_configs,
+            status=status,
+            tags=tags,
+            termination_grace_period_seconds=termination_grace_period_seconds,
+            timezone=timezone,
+            tomcat_config=tomcat_config,
+            tomcat_config_v2=tomcat_config_v2,
+            update_strategy=update_strategy,
+            update_strategy_v2=update_strategy_v2,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            war_start_options=war_start_options,
+            web_container=web_container,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_name: pulumi.Input[str],
+             package_type: pulumi.Input[str],
+             replicas: pulumi.Input[int],
+             acr_assume_role_arn: Optional[pulumi.Input[str]] = None,
+             acr_instance_id: Optional[pulumi.Input[str]] = None,
+             app_description: Optional[pulumi.Input[str]] = None,
+             auto_config: Optional[pulumi.Input[bool]] = None,
+             auto_enable_application_scaling_rule: Optional[pulumi.Input[bool]] = None,
+             batch_wait_time: Optional[pulumi.Input[int]] = None,
+             change_order_desc: Optional[pulumi.Input[str]] = None,
+             command: Optional[pulumi.Input[str]] = None,
+             command_args: Optional[pulumi.Input[str]] = None,
+             command_args_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             config_map_mount_desc: Optional[pulumi.Input[str]] = None,
+             config_map_mount_desc_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]] = None,
+             cpu: Optional[pulumi.Input[int]] = None,
+             custom_host_alias: Optional[pulumi.Input[str]] = None,
+             custom_host_alias_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]] = None,
+             deploy: Optional[pulumi.Input[bool]] = None,
+             edas_container_version: Optional[pulumi.Input[str]] = None,
+             enable_ahas: Optional[pulumi.Input[str]] = None,
+             enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
+             envs: Optional[pulumi.Input[str]] = None,
+             image_pull_secrets: Optional[pulumi.Input[str]] = None,
+             image_url: Optional[pulumi.Input[str]] = None,
+             jar_start_args: Optional[pulumi.Input[str]] = None,
+             jar_start_options: Optional[pulumi.Input[str]] = None,
+             jdk: Optional[pulumi.Input[str]] = None,
+             kafka_configs: Optional[pulumi.Input['ApplicationKafkaConfigsArgs']] = None,
+             liveness: Optional[pulumi.Input[str]] = None,
+             liveness_v2: Optional[pulumi.Input['ApplicationLivenessV2Args']] = None,
+             memory: Optional[pulumi.Input[int]] = None,
+             micro_registration: Optional[pulumi.Input[str]] = None,
+             min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
+             min_ready_instances: Optional[pulumi.Input[int]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             nas_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]] = None,
+             oss_ak_id: Optional[pulumi.Input[str]] = None,
+             oss_ak_secret: Optional[pulumi.Input[str]] = None,
+             oss_mount_descs: Optional[pulumi.Input[str]] = None,
+             oss_mount_descs_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]] = None,
+             package_url: Optional[pulumi.Input[str]] = None,
+             package_version: Optional[pulumi.Input[str]] = None,
+             php: Optional[pulumi.Input[str]] = None,
+             php_arms_config_location: Optional[pulumi.Input[str]] = None,
+             php_config: Optional[pulumi.Input[str]] = None,
+             php_config_location: Optional[pulumi.Input[str]] = None,
+             post_start: Optional[pulumi.Input[str]] = None,
+             post_start_v2: Optional[pulumi.Input['ApplicationPostStartV2Args']] = None,
+             pre_stop: Optional[pulumi.Input[str]] = None,
+             pre_stop_v2: Optional[pulumi.Input['ApplicationPreStopV2Args']] = None,
+             programming_language: Optional[pulumi.Input[str]] = None,
+             pvtz_discovery_svc: Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']] = None,
+             readiness: Optional[pulumi.Input[str]] = None,
+             readiness_v2: Optional[pulumi.Input['ApplicationReadinessV2Args']] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             sls_configs: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             tomcat_config: Optional[pulumi.Input[str]] = None,
+             tomcat_config_v2: Optional[pulumi.Input['ApplicationTomcatConfigV2Args']] = None,
+             update_strategy: Optional[pulumi.Input[str]] = None,
+             update_strategy_v2: Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             war_start_options: Optional[pulumi.Input[str]] = None,
+             web_container: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_name", app_name)
+        _setter("package_type", package_type)
+        _setter("replicas", replicas)
         if acr_assume_role_arn is not None:
-            pulumi.set(__self__, "acr_assume_role_arn", acr_assume_role_arn)
+            _setter("acr_assume_role_arn", acr_assume_role_arn)
         if acr_instance_id is not None:
-            pulumi.set(__self__, "acr_instance_id", acr_instance_id)
+            _setter("acr_instance_id", acr_instance_id)
         if app_description is not None:
-            pulumi.set(__self__, "app_description", app_description)
+            _setter("app_description", app_description)
         if auto_config is not None:
-            pulumi.set(__self__, "auto_config", auto_config)
+            _setter("auto_config", auto_config)
         if auto_enable_application_scaling_rule is not None:
-            pulumi.set(__self__, "auto_enable_application_scaling_rule", auto_enable_application_scaling_rule)
+            _setter("auto_enable_application_scaling_rule", auto_enable_application_scaling_rule)
         if batch_wait_time is not None:
-            pulumi.set(__self__, "batch_wait_time", batch_wait_time)
+            _setter("batch_wait_time", batch_wait_time)
         if change_order_desc is not None:
-            pulumi.set(__self__, "change_order_desc", change_order_desc)
+            _setter("change_order_desc", change_order_desc)
         if command is not None:
-            pulumi.set(__self__, "command", command)
+            _setter("command", command)
         if command_args is not None:
             warnings.warn("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""command_args is deprecated: Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
         if command_args is not None:
-            pulumi.set(__self__, "command_args", command_args)
+            _setter("command_args", command_args)
         if command_args_v2s is not None:
-            pulumi.set(__self__, "command_args_v2s", command_args_v2s)
+            _setter("command_args_v2s", command_args_v2s)
         if config_map_mount_desc is not None:
             warnings.warn("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""config_map_mount_desc is deprecated: Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
         if config_map_mount_desc is not None:
-            pulumi.set(__self__, "config_map_mount_desc", config_map_mount_desc)
+            _setter("config_map_mount_desc", config_map_mount_desc)
         if config_map_mount_desc_v2s is not None:
-            pulumi.set(__self__, "config_map_mount_desc_v2s", config_map_mount_desc_v2s)
+            _setter("config_map_mount_desc_v2s", config_map_mount_desc_v2s)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if custom_host_alias is not None:
             warnings.warn("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""custom_host_alias is deprecated: Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
         if custom_host_alias is not None:
-            pulumi.set(__self__, "custom_host_alias", custom_host_alias)
+            _setter("custom_host_alias", custom_host_alias)
         if custom_host_alias_v2s is not None:
-            pulumi.set(__self__, "custom_host_alias_v2s", custom_host_alias_v2s)
+            _setter("custom_host_alias_v2s", custom_host_alias_v2s)
         if deploy is not None:
-            pulumi.set(__self__, "deploy", deploy)
+            _setter("deploy", deploy)
         if edas_container_version is not None:
-            pulumi.set(__self__, "edas_container_version", edas_container_version)
+            _setter("edas_container_version", edas_container_version)
         if enable_ahas is not None:
-            pulumi.set(__self__, "enable_ahas", enable_ahas)
+            _setter("enable_ahas", enable_ahas)
         if enable_grey_tag_route is not None:
-            pulumi.set(__self__, "enable_grey_tag_route", enable_grey_tag_route)
+            _setter("enable_grey_tag_route", enable_grey_tag_route)
         if envs is not None:
-            pulumi.set(__self__, "envs", envs)
+            _setter("envs", envs)
         if image_pull_secrets is not None:
-            pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
+            _setter("image_pull_secrets", image_pull_secrets)
         if image_url is not None:
-            pulumi.set(__self__, "image_url", image_url)
+            _setter("image_url", image_url)
         if jar_start_args is not None:
-            pulumi.set(__self__, "jar_start_args", jar_start_args)
+            _setter("jar_start_args", jar_start_args)
         if jar_start_options is not None:
-            pulumi.set(__self__, "jar_start_options", jar_start_options)
+            _setter("jar_start_options", jar_start_options)
         if jdk is not None:
-            pulumi.set(__self__, "jdk", jdk)
+            _setter("jdk", jdk)
         if kafka_configs is not None:
-            pulumi.set(__self__, "kafka_configs", kafka_configs)
+            _setter("kafka_configs", kafka_configs)
         if liveness is not None:
             warnings.warn("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""liveness is deprecated: Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
         if liveness is not None:
-            pulumi.set(__self__, "liveness", liveness)
+            _setter("liveness", liveness)
         if liveness_v2 is not None:
-            pulumi.set(__self__, "liveness_v2", liveness_v2)
+            _setter("liveness_v2", liveness_v2)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if micro_registration is not None:
-            pulumi.set(__self__, "micro_registration", micro_registration)
+            _setter("micro_registration", micro_registration)
         if min_ready_instance_ratio is not None:
-            pulumi.set(__self__, "min_ready_instance_ratio", min_ready_instance_ratio)
+            _setter("min_ready_instance_ratio", min_ready_instance_ratio)
         if min_ready_instances is not None:
-            pulumi.set(__self__, "min_ready_instances", min_ready_instances)
+            _setter("min_ready_instances", min_ready_instances)
         if namespace_id is not None:
-            pulumi.set(__self__, "namespace_id", namespace_id)
+            _setter("namespace_id", namespace_id)
         if nas_configs is not None:
-            pulumi.set(__self__, "nas_configs", nas_configs)
+            _setter("nas_configs", nas_configs)
         if oss_ak_id is not None:
-            pulumi.set(__self__, "oss_ak_id", oss_ak_id)
+            _setter("oss_ak_id", oss_ak_id)
         if oss_ak_secret is not None:
-            pulumi.set(__self__, "oss_ak_secret", oss_ak_secret)
+            _setter("oss_ak_secret", oss_ak_secret)
         if oss_mount_descs is not None:
             warnings.warn("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""oss_mount_descs is deprecated: Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
         if oss_mount_descs is not None:
-            pulumi.set(__self__, "oss_mount_descs", oss_mount_descs)
+            _setter("oss_mount_descs", oss_mount_descs)
         if oss_mount_descs_v2s is not None:
-            pulumi.set(__self__, "oss_mount_descs_v2s", oss_mount_descs_v2s)
+            _setter("oss_mount_descs_v2s", oss_mount_descs_v2s)
         if package_url is not None:
-            pulumi.set(__self__, "package_url", package_url)
+            _setter("package_url", package_url)
         if package_version is not None:
-            pulumi.set(__self__, "package_version", package_version)
+            _setter("package_version", package_version)
         if php is not None:
-            pulumi.set(__self__, "php", php)
+            _setter("php", php)
         if php_arms_config_location is not None:
-            pulumi.set(__self__, "php_arms_config_location", php_arms_config_location)
+            _setter("php_arms_config_location", php_arms_config_location)
         if php_config is not None:
-            pulumi.set(__self__, "php_config", php_config)
+            _setter("php_config", php_config)
         if php_config_location is not None:
-            pulumi.set(__self__, "php_config_location", php_config_location)
+            _setter("php_config_location", php_config_location)
         if post_start is not None:
             warnings.warn("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""post_start is deprecated: Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
         if post_start is not None:
-            pulumi.set(__self__, "post_start", post_start)
+            _setter("post_start", post_start)
         if post_start_v2 is not None:
-            pulumi.set(__self__, "post_start_v2", post_start_v2)
+            _setter("post_start_v2", post_start_v2)
         if pre_stop is not None:
             warnings.warn("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""pre_stop is deprecated: Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
         if pre_stop is not None:
-            pulumi.set(__self__, "pre_stop", pre_stop)
+            _setter("pre_stop", pre_stop)
         if pre_stop_v2 is not None:
-            pulumi.set(__self__, "pre_stop_v2", pre_stop_v2)
+            _setter("pre_stop_v2", pre_stop_v2)
         if programming_language is not None:
-            pulumi.set(__self__, "programming_language", programming_language)
+            _setter("programming_language", programming_language)
         if pvtz_discovery_svc is not None:
-            pulumi.set(__self__, "pvtz_discovery_svc", pvtz_discovery_svc)
+            _setter("pvtz_discovery_svc", pvtz_discovery_svc)
         if readiness is not None:
             warnings.warn("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""readiness is deprecated: Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
         if readiness is not None:
-            pulumi.set(__self__, "readiness", readiness)
+            _setter("readiness", readiness)
         if readiness_v2 is not None:
-            pulumi.set(__self__, "readiness_v2", readiness_v2)
+            _setter("readiness_v2", readiness_v2)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if sls_configs is not None:
-            pulumi.set(__self__, "sls_configs", sls_configs)
+            _setter("sls_configs", sls_configs)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if termination_grace_period_seconds is not None:
-            pulumi.set(__self__, "termination_grace_period_seconds", termination_grace_period_seconds)
+            _setter("termination_grace_period_seconds", termination_grace_period_seconds)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if tomcat_config is not None:
             warnings.warn("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""tomcat_config is deprecated: Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
         if tomcat_config is not None:
-            pulumi.set(__self__, "tomcat_config", tomcat_config)
+            _setter("tomcat_config", tomcat_config)
         if tomcat_config_v2 is not None:
-            pulumi.set(__self__, "tomcat_config_v2", tomcat_config_v2)
+            _setter("tomcat_config_v2", tomcat_config_v2)
         if update_strategy is not None:
             warnings.warn("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""update_strategy is deprecated: Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
         if update_strategy is not None:
-            pulumi.set(__self__, "update_strategy", update_strategy)
+            _setter("update_strategy", update_strategy)
         if update_strategy_v2 is not None:
-            pulumi.set(__self__, "update_strategy_v2", update_strategy_v2)
+            _setter("update_strategy_v2", update_strategy_v2)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if war_start_options is not None:
-            pulumi.set(__self__, "war_start_options", war_start_options)
+            _setter("war_start_options", war_start_options)
         if web_container is not None:
-            pulumi.set(__self__, "web_container", web_container)
+            _setter("web_container", web_container)
 
     @property
     @pulumi.getter(name="appName")
@@ -1341,174 +1486,319 @@ class _ApplicationState:
         :param pulumi.Input[str] war_start_options: WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap "$@" start.
         :param pulumi.Input[str] web_container: The version of tomcat that the deployment package depends on. Image type applications are not supported.
         """
+        _ApplicationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acr_assume_role_arn=acr_assume_role_arn,
+            acr_instance_id=acr_instance_id,
+            app_description=app_description,
+            app_name=app_name,
+            auto_config=auto_config,
+            auto_enable_application_scaling_rule=auto_enable_application_scaling_rule,
+            batch_wait_time=batch_wait_time,
+            change_order_desc=change_order_desc,
+            command=command,
+            command_args=command_args,
+            command_args_v2s=command_args_v2s,
+            config_map_mount_desc=config_map_mount_desc,
+            config_map_mount_desc_v2s=config_map_mount_desc_v2s,
+            cpu=cpu,
+            custom_host_alias=custom_host_alias,
+            custom_host_alias_v2s=custom_host_alias_v2s,
+            deploy=deploy,
+            edas_container_version=edas_container_version,
+            enable_ahas=enable_ahas,
+            enable_grey_tag_route=enable_grey_tag_route,
+            envs=envs,
+            image_pull_secrets=image_pull_secrets,
+            image_url=image_url,
+            jar_start_args=jar_start_args,
+            jar_start_options=jar_start_options,
+            jdk=jdk,
+            kafka_configs=kafka_configs,
+            liveness=liveness,
+            liveness_v2=liveness_v2,
+            memory=memory,
+            micro_registration=micro_registration,
+            min_ready_instance_ratio=min_ready_instance_ratio,
+            min_ready_instances=min_ready_instances,
+            namespace_id=namespace_id,
+            nas_configs=nas_configs,
+            oss_ak_id=oss_ak_id,
+            oss_ak_secret=oss_ak_secret,
+            oss_mount_descs=oss_mount_descs,
+            oss_mount_descs_v2s=oss_mount_descs_v2s,
+            package_type=package_type,
+            package_url=package_url,
+            package_version=package_version,
+            php=php,
+            php_arms_config_location=php_arms_config_location,
+            php_config=php_config,
+            php_config_location=php_config_location,
+            post_start=post_start,
+            post_start_v2=post_start_v2,
+            pre_stop=pre_stop,
+            pre_stop_v2=pre_stop_v2,
+            programming_language=programming_language,
+            pvtz_discovery_svc=pvtz_discovery_svc,
+            readiness=readiness,
+            readiness_v2=readiness_v2,
+            replicas=replicas,
+            security_group_id=security_group_id,
+            sls_configs=sls_configs,
+            status=status,
+            tags=tags,
+            termination_grace_period_seconds=termination_grace_period_seconds,
+            timezone=timezone,
+            tomcat_config=tomcat_config,
+            tomcat_config_v2=tomcat_config_v2,
+            update_strategy=update_strategy,
+            update_strategy_v2=update_strategy_v2,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            war_start_options=war_start_options,
+            web_container=web_container,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acr_assume_role_arn: Optional[pulumi.Input[str]] = None,
+             acr_instance_id: Optional[pulumi.Input[str]] = None,
+             app_description: Optional[pulumi.Input[str]] = None,
+             app_name: Optional[pulumi.Input[str]] = None,
+             auto_config: Optional[pulumi.Input[bool]] = None,
+             auto_enable_application_scaling_rule: Optional[pulumi.Input[bool]] = None,
+             batch_wait_time: Optional[pulumi.Input[int]] = None,
+             change_order_desc: Optional[pulumi.Input[str]] = None,
+             command: Optional[pulumi.Input[str]] = None,
+             command_args: Optional[pulumi.Input[str]] = None,
+             command_args_v2s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             config_map_mount_desc: Optional[pulumi.Input[str]] = None,
+             config_map_mount_desc_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationConfigMapMountDescV2Args']]]] = None,
+             cpu: Optional[pulumi.Input[int]] = None,
+             custom_host_alias: Optional[pulumi.Input[str]] = None,
+             custom_host_alias_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationCustomHostAliasV2Args']]]] = None,
+             deploy: Optional[pulumi.Input[bool]] = None,
+             edas_container_version: Optional[pulumi.Input[str]] = None,
+             enable_ahas: Optional[pulumi.Input[str]] = None,
+             enable_grey_tag_route: Optional[pulumi.Input[bool]] = None,
+             envs: Optional[pulumi.Input[str]] = None,
+             image_pull_secrets: Optional[pulumi.Input[str]] = None,
+             image_url: Optional[pulumi.Input[str]] = None,
+             jar_start_args: Optional[pulumi.Input[str]] = None,
+             jar_start_options: Optional[pulumi.Input[str]] = None,
+             jdk: Optional[pulumi.Input[str]] = None,
+             kafka_configs: Optional[pulumi.Input['ApplicationKafkaConfigsArgs']] = None,
+             liveness: Optional[pulumi.Input[str]] = None,
+             liveness_v2: Optional[pulumi.Input['ApplicationLivenessV2Args']] = None,
+             memory: Optional[pulumi.Input[int]] = None,
+             micro_registration: Optional[pulumi.Input[str]] = None,
+             min_ready_instance_ratio: Optional[pulumi.Input[int]] = None,
+             min_ready_instances: Optional[pulumi.Input[int]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             nas_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationNasConfigArgs']]]] = None,
+             oss_ak_id: Optional[pulumi.Input[str]] = None,
+             oss_ak_secret: Optional[pulumi.Input[str]] = None,
+             oss_mount_descs: Optional[pulumi.Input[str]] = None,
+             oss_mount_descs_v2s: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOssMountDescsV2Args']]]] = None,
+             package_type: Optional[pulumi.Input[str]] = None,
+             package_url: Optional[pulumi.Input[str]] = None,
+             package_version: Optional[pulumi.Input[str]] = None,
+             php: Optional[pulumi.Input[str]] = None,
+             php_arms_config_location: Optional[pulumi.Input[str]] = None,
+             php_config: Optional[pulumi.Input[str]] = None,
+             php_config_location: Optional[pulumi.Input[str]] = None,
+             post_start: Optional[pulumi.Input[str]] = None,
+             post_start_v2: Optional[pulumi.Input['ApplicationPostStartV2Args']] = None,
+             pre_stop: Optional[pulumi.Input[str]] = None,
+             pre_stop_v2: Optional[pulumi.Input['ApplicationPreStopV2Args']] = None,
+             programming_language: Optional[pulumi.Input[str]] = None,
+             pvtz_discovery_svc: Optional[pulumi.Input['ApplicationPvtzDiscoverySvcArgs']] = None,
+             readiness: Optional[pulumi.Input[str]] = None,
+             readiness_v2: Optional[pulumi.Input['ApplicationReadinessV2Args']] = None,
+             replicas: Optional[pulumi.Input[int]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             sls_configs: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             termination_grace_period_seconds: Optional[pulumi.Input[int]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             tomcat_config: Optional[pulumi.Input[str]] = None,
+             tomcat_config_v2: Optional[pulumi.Input['ApplicationTomcatConfigV2Args']] = None,
+             update_strategy: Optional[pulumi.Input[str]] = None,
+             update_strategy_v2: Optional[pulumi.Input['ApplicationUpdateStrategyV2Args']] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             war_start_options: Optional[pulumi.Input[str]] = None,
+             web_container: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acr_assume_role_arn is not None:
-            pulumi.set(__self__, "acr_assume_role_arn", acr_assume_role_arn)
+            _setter("acr_assume_role_arn", acr_assume_role_arn)
         if acr_instance_id is not None:
-            pulumi.set(__self__, "acr_instance_id", acr_instance_id)
+            _setter("acr_instance_id", acr_instance_id)
         if app_description is not None:
-            pulumi.set(__self__, "app_description", app_description)
+            _setter("app_description", app_description)
         if app_name is not None:
-            pulumi.set(__self__, "app_name", app_name)
+            _setter("app_name", app_name)
         if auto_config is not None:
-            pulumi.set(__self__, "auto_config", auto_config)
+            _setter("auto_config", auto_config)
         if auto_enable_application_scaling_rule is not None:
-            pulumi.set(__self__, "auto_enable_application_scaling_rule", auto_enable_application_scaling_rule)
+            _setter("auto_enable_application_scaling_rule", auto_enable_application_scaling_rule)
         if batch_wait_time is not None:
-            pulumi.set(__self__, "batch_wait_time", batch_wait_time)
+            _setter("batch_wait_time", batch_wait_time)
         if change_order_desc is not None:
-            pulumi.set(__self__, "change_order_desc", change_order_desc)
+            _setter("change_order_desc", change_order_desc)
         if command is not None:
-            pulumi.set(__self__, "command", command)
+            _setter("command", command)
         if command_args is not None:
             warnings.warn("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""command_args is deprecated: Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
         if command_args is not None:
-            pulumi.set(__self__, "command_args", command_args)
+            _setter("command_args", command_args)
         if command_args_v2s is not None:
-            pulumi.set(__self__, "command_args_v2s", command_args_v2s)
+            _setter("command_args_v2s", command_args_v2s)
         if config_map_mount_desc is not None:
             warnings.warn("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""config_map_mount_desc is deprecated: Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
         if config_map_mount_desc is not None:
-            pulumi.set(__self__, "config_map_mount_desc", config_map_mount_desc)
+            _setter("config_map_mount_desc", config_map_mount_desc)
         if config_map_mount_desc_v2s is not None:
-            pulumi.set(__self__, "config_map_mount_desc_v2s", config_map_mount_desc_v2s)
+            _setter("config_map_mount_desc_v2s", config_map_mount_desc_v2s)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if custom_host_alias is not None:
             warnings.warn("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""custom_host_alias is deprecated: Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
         if custom_host_alias is not None:
-            pulumi.set(__self__, "custom_host_alias", custom_host_alias)
+            _setter("custom_host_alias", custom_host_alias)
         if custom_host_alias_v2s is not None:
-            pulumi.set(__self__, "custom_host_alias_v2s", custom_host_alias_v2s)
+            _setter("custom_host_alias_v2s", custom_host_alias_v2s)
         if deploy is not None:
-            pulumi.set(__self__, "deploy", deploy)
+            _setter("deploy", deploy)
         if edas_container_version is not None:
-            pulumi.set(__self__, "edas_container_version", edas_container_version)
+            _setter("edas_container_version", edas_container_version)
         if enable_ahas is not None:
-            pulumi.set(__self__, "enable_ahas", enable_ahas)
+            _setter("enable_ahas", enable_ahas)
         if enable_grey_tag_route is not None:
-            pulumi.set(__self__, "enable_grey_tag_route", enable_grey_tag_route)
+            _setter("enable_grey_tag_route", enable_grey_tag_route)
         if envs is not None:
-            pulumi.set(__self__, "envs", envs)
+            _setter("envs", envs)
         if image_pull_secrets is not None:
-            pulumi.set(__self__, "image_pull_secrets", image_pull_secrets)
+            _setter("image_pull_secrets", image_pull_secrets)
         if image_url is not None:
-            pulumi.set(__self__, "image_url", image_url)
+            _setter("image_url", image_url)
         if jar_start_args is not None:
-            pulumi.set(__self__, "jar_start_args", jar_start_args)
+            _setter("jar_start_args", jar_start_args)
         if jar_start_options is not None:
-            pulumi.set(__self__, "jar_start_options", jar_start_options)
+            _setter("jar_start_options", jar_start_options)
         if jdk is not None:
-            pulumi.set(__self__, "jdk", jdk)
+            _setter("jdk", jdk)
         if kafka_configs is not None:
-            pulumi.set(__self__, "kafka_configs", kafka_configs)
+            _setter("kafka_configs", kafka_configs)
         if liveness is not None:
             warnings.warn("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""liveness is deprecated: Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
         if liveness is not None:
-            pulumi.set(__self__, "liveness", liveness)
+            _setter("liveness", liveness)
         if liveness_v2 is not None:
-            pulumi.set(__self__, "liveness_v2", liveness_v2)
+            _setter("liveness_v2", liveness_v2)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if micro_registration is not None:
-            pulumi.set(__self__, "micro_registration", micro_registration)
+            _setter("micro_registration", micro_registration)
         if min_ready_instance_ratio is not None:
-            pulumi.set(__self__, "min_ready_instance_ratio", min_ready_instance_ratio)
+            _setter("min_ready_instance_ratio", min_ready_instance_ratio)
         if min_ready_instances is not None:
-            pulumi.set(__self__, "min_ready_instances", min_ready_instances)
+            _setter("min_ready_instances", min_ready_instances)
         if namespace_id is not None:
-            pulumi.set(__self__, "namespace_id", namespace_id)
+            _setter("namespace_id", namespace_id)
         if nas_configs is not None:
-            pulumi.set(__self__, "nas_configs", nas_configs)
+            _setter("nas_configs", nas_configs)
         if oss_ak_id is not None:
-            pulumi.set(__self__, "oss_ak_id", oss_ak_id)
+            _setter("oss_ak_id", oss_ak_id)
         if oss_ak_secret is not None:
-            pulumi.set(__self__, "oss_ak_secret", oss_ak_secret)
+            _setter("oss_ak_secret", oss_ak_secret)
         if oss_mount_descs is not None:
             warnings.warn("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""oss_mount_descs is deprecated: Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
         if oss_mount_descs is not None:
-            pulumi.set(__self__, "oss_mount_descs", oss_mount_descs)
+            _setter("oss_mount_descs", oss_mount_descs)
         if oss_mount_descs_v2s is not None:
-            pulumi.set(__self__, "oss_mount_descs_v2s", oss_mount_descs_v2s)
+            _setter("oss_mount_descs_v2s", oss_mount_descs_v2s)
         if package_type is not None:
-            pulumi.set(__self__, "package_type", package_type)
+            _setter("package_type", package_type)
         if package_url is not None:
-            pulumi.set(__self__, "package_url", package_url)
+            _setter("package_url", package_url)
         if package_version is not None:
-            pulumi.set(__self__, "package_version", package_version)
+            _setter("package_version", package_version)
         if php is not None:
-            pulumi.set(__self__, "php", php)
+            _setter("php", php)
         if php_arms_config_location is not None:
-            pulumi.set(__self__, "php_arms_config_location", php_arms_config_location)
+            _setter("php_arms_config_location", php_arms_config_location)
         if php_config is not None:
-            pulumi.set(__self__, "php_config", php_config)
+            _setter("php_config", php_config)
         if php_config_location is not None:
-            pulumi.set(__self__, "php_config_location", php_config_location)
+            _setter("php_config_location", php_config_location)
         if post_start is not None:
             warnings.warn("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""post_start is deprecated: Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
         if post_start is not None:
-            pulumi.set(__self__, "post_start", post_start)
+            _setter("post_start", post_start)
         if post_start_v2 is not None:
-            pulumi.set(__self__, "post_start_v2", post_start_v2)
+            _setter("post_start_v2", post_start_v2)
         if pre_stop is not None:
             warnings.warn("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""pre_stop is deprecated: Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
         if pre_stop is not None:
-            pulumi.set(__self__, "pre_stop", pre_stop)
+            _setter("pre_stop", pre_stop)
         if pre_stop_v2 is not None:
-            pulumi.set(__self__, "pre_stop_v2", pre_stop_v2)
+            _setter("pre_stop_v2", pre_stop_v2)
         if programming_language is not None:
-            pulumi.set(__self__, "programming_language", programming_language)
+            _setter("programming_language", programming_language)
         if pvtz_discovery_svc is not None:
-            pulumi.set(__self__, "pvtz_discovery_svc", pvtz_discovery_svc)
+            _setter("pvtz_discovery_svc", pvtz_discovery_svc)
         if readiness is not None:
             warnings.warn("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""readiness is deprecated: Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
         if readiness is not None:
-            pulumi.set(__self__, "readiness", readiness)
+            _setter("readiness", readiness)
         if readiness_v2 is not None:
-            pulumi.set(__self__, "readiness_v2", readiness_v2)
+            _setter("readiness_v2", readiness_v2)
         if replicas is not None:
-            pulumi.set(__self__, "replicas", replicas)
+            _setter("replicas", replicas)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if sls_configs is not None:
-            pulumi.set(__self__, "sls_configs", sls_configs)
+            _setter("sls_configs", sls_configs)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if termination_grace_period_seconds is not None:
-            pulumi.set(__self__, "termination_grace_period_seconds", termination_grace_period_seconds)
+            _setter("termination_grace_period_seconds", termination_grace_period_seconds)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if tomcat_config is not None:
             warnings.warn("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""tomcat_config is deprecated: Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
         if tomcat_config is not None:
-            pulumi.set(__self__, "tomcat_config", tomcat_config)
+            _setter("tomcat_config", tomcat_config)
         if tomcat_config_v2 is not None:
-            pulumi.set(__self__, "tomcat_config_v2", tomcat_config_v2)
+            _setter("tomcat_config_v2", tomcat_config_v2)
         if update_strategy is not None:
             warnings.warn("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""", DeprecationWarning)
             pulumi.log.warn("""update_strategy is deprecated: Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
         if update_strategy is not None:
-            pulumi.set(__self__, "update_strategy", update_strategy)
+            _setter("update_strategy", update_strategy)
         if update_strategy_v2 is not None:
-            pulumi.set(__self__, "update_strategy_v2", update_strategy_v2)
+            _setter("update_strategy_v2", update_strategy_v2)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if war_start_options is not None:
-            pulumi.set(__self__, "war_start_options", war_start_options)
+            _setter("war_start_options", war_start_options)
         if web_container is not None:
-            pulumi.set(__self__, "web_container", web_container)
+            _setter("web_container", web_container)
 
     @property
     @pulumi.getter(name="acrAssumeRoleArn")
@@ -2664,6 +2954,10 @@ class Application(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -2758,20 +3052,11 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["batch_wait_time"] = batch_wait_time
             __props__.__dict__["change_order_desc"] = change_order_desc
             __props__.__dict__["command"] = command
-            if command_args is not None and not opts.urn:
-                warnings.warn("""Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""", DeprecationWarning)
-                pulumi.log.warn("""command_args is deprecated: Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.""")
             __props__.__dict__["command_args"] = command_args
             __props__.__dict__["command_args_v2s"] = command_args_v2s
-            if config_map_mount_desc is not None and not opts.urn:
-                warnings.warn("""Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""", DeprecationWarning)
-                pulumi.log.warn("""config_map_mount_desc is deprecated: Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.""")
             __props__.__dict__["config_map_mount_desc"] = config_map_mount_desc
             __props__.__dict__["config_map_mount_desc_v2s"] = config_map_mount_desc_v2s
             __props__.__dict__["cpu"] = cpu
-            if custom_host_alias is not None and not opts.urn:
-                warnings.warn("""Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""", DeprecationWarning)
-                pulumi.log.warn("""custom_host_alias is deprecated: Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.""")
             __props__.__dict__["custom_host_alias"] = custom_host_alias
             __props__.__dict__["custom_host_alias_v2s"] = custom_host_alias_v2s
             __props__.__dict__["deploy"] = deploy
@@ -2784,11 +3069,18 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["jar_start_args"] = jar_start_args
             __props__.__dict__["jar_start_options"] = jar_start_options
             __props__.__dict__["jdk"] = jdk
+            if kafka_configs is not None and not isinstance(kafka_configs, ApplicationKafkaConfigsArgs):
+                kafka_configs = kafka_configs or {}
+                def _setter(key, value):
+                    kafka_configs[key] = value
+                ApplicationKafkaConfigsArgs._configure(_setter, **kafka_configs)
             __props__.__dict__["kafka_configs"] = kafka_configs
-            if liveness is not None and not opts.urn:
-                warnings.warn("""Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""", DeprecationWarning)
-                pulumi.log.warn("""liveness is deprecated: Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.""")
             __props__.__dict__["liveness"] = liveness
+            if liveness_v2 is not None and not isinstance(liveness_v2, ApplicationLivenessV2Args):
+                liveness_v2 = liveness_v2 or {}
+                def _setter(key, value):
+                    liveness_v2[key] = value
+                ApplicationLivenessV2Args._configure(_setter, **liveness_v2)
             __props__.__dict__["liveness_v2"] = liveness_v2
             __props__.__dict__["memory"] = memory
             __props__.__dict__["micro_registration"] = micro_registration
@@ -2798,9 +3090,6 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["nas_configs"] = nas_configs
             __props__.__dict__["oss_ak_id"] = None if oss_ak_id is None else pulumi.Output.secret(oss_ak_id)
             __props__.__dict__["oss_ak_secret"] = None if oss_ak_secret is None else pulumi.Output.secret(oss_ak_secret)
-            if oss_mount_descs is not None and not opts.urn:
-                warnings.warn("""Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""", DeprecationWarning)
-                pulumi.log.warn("""oss_mount_descs is deprecated: Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.""")
             __props__.__dict__["oss_mount_descs"] = oss_mount_descs
             __props__.__dict__["oss_mount_descs_v2s"] = oss_mount_descs_v2s
             if package_type is None and not opts.urn:
@@ -2812,22 +3101,33 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["php_arms_config_location"] = php_arms_config_location
             __props__.__dict__["php_config"] = php_config
             __props__.__dict__["php_config_location"] = php_config_location
-            if post_start is not None and not opts.urn:
-                warnings.warn("""Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""", DeprecationWarning)
-                pulumi.log.warn("""post_start is deprecated: Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.""")
             __props__.__dict__["post_start"] = post_start
+            if post_start_v2 is not None and not isinstance(post_start_v2, ApplicationPostStartV2Args):
+                post_start_v2 = post_start_v2 or {}
+                def _setter(key, value):
+                    post_start_v2[key] = value
+                ApplicationPostStartV2Args._configure(_setter, **post_start_v2)
             __props__.__dict__["post_start_v2"] = post_start_v2
-            if pre_stop is not None and not opts.urn:
-                warnings.warn("""Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""", DeprecationWarning)
-                pulumi.log.warn("""pre_stop is deprecated: Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.""")
             __props__.__dict__["pre_stop"] = pre_stop
+            if pre_stop_v2 is not None and not isinstance(pre_stop_v2, ApplicationPreStopV2Args):
+                pre_stop_v2 = pre_stop_v2 or {}
+                def _setter(key, value):
+                    pre_stop_v2[key] = value
+                ApplicationPreStopV2Args._configure(_setter, **pre_stop_v2)
             __props__.__dict__["pre_stop_v2"] = pre_stop_v2
             __props__.__dict__["programming_language"] = programming_language
+            if pvtz_discovery_svc is not None and not isinstance(pvtz_discovery_svc, ApplicationPvtzDiscoverySvcArgs):
+                pvtz_discovery_svc = pvtz_discovery_svc or {}
+                def _setter(key, value):
+                    pvtz_discovery_svc[key] = value
+                ApplicationPvtzDiscoverySvcArgs._configure(_setter, **pvtz_discovery_svc)
             __props__.__dict__["pvtz_discovery_svc"] = pvtz_discovery_svc
-            if readiness is not None and not opts.urn:
-                warnings.warn("""Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""", DeprecationWarning)
-                pulumi.log.warn("""readiness is deprecated: Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.""")
             __props__.__dict__["readiness"] = readiness
+            if readiness_v2 is not None and not isinstance(readiness_v2, ApplicationReadinessV2Args):
+                readiness_v2 = readiness_v2 or {}
+                def _setter(key, value):
+                    readiness_v2[key] = value
+                ApplicationReadinessV2Args._configure(_setter, **readiness_v2)
             __props__.__dict__["readiness_v2"] = readiness_v2
             if replicas is None and not opts.urn:
                 raise TypeError("Missing required property 'replicas'")
@@ -2838,15 +3138,19 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["termination_grace_period_seconds"] = termination_grace_period_seconds
             __props__.__dict__["timezone"] = timezone
-            if tomcat_config is not None and not opts.urn:
-                warnings.warn("""Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""", DeprecationWarning)
-                pulumi.log.warn("""tomcat_config is deprecated: Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.""")
             __props__.__dict__["tomcat_config"] = tomcat_config
+            if tomcat_config_v2 is not None and not isinstance(tomcat_config_v2, ApplicationTomcatConfigV2Args):
+                tomcat_config_v2 = tomcat_config_v2 or {}
+                def _setter(key, value):
+                    tomcat_config_v2[key] = value
+                ApplicationTomcatConfigV2Args._configure(_setter, **tomcat_config_v2)
             __props__.__dict__["tomcat_config_v2"] = tomcat_config_v2
-            if update_strategy is not None and not opts.urn:
-                warnings.warn("""Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""", DeprecationWarning)
-                pulumi.log.warn("""update_strategy is deprecated: Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.""")
             __props__.__dict__["update_strategy"] = update_strategy
+            if update_strategy_v2 is not None and not isinstance(update_strategy_v2, ApplicationUpdateStrategyV2Args):
+                update_strategy_v2 = update_strategy_v2 or {}
+                def _setter(key, value):
+                    update_strategy_v2[key] = value
+                ApplicationUpdateStrategyV2Args._configure(_setter, **update_strategy_v2)
             __props__.__dict__["update_strategy_v2"] = update_strategy_v2
             __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["vswitch_id"] = vswitch_id

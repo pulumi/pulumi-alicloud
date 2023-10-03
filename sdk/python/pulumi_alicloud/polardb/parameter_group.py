@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,13 +29,30 @@ class ParameterGroupArgs:
         :param pulumi.Input[str] description: The description of the parameter template. It must be 0 to 200 characters in length.
         :param pulumi.Input[str] name: The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
         """
-        pulumi.set(__self__, "db_type", db_type)
-        pulumi.set(__self__, "db_version", db_version)
-        pulumi.set(__self__, "parameters", parameters)
+        ParameterGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_type=db_type,
+            db_version=db_version,
+            parameters=parameters,
+            description=description,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_type: pulumi.Input[str],
+             db_version: pulumi.Input[str],
+             parameters: pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]],
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_type", db_type)
+        _setter("db_version", db_version)
+        _setter("parameters", parameters)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="dbType")
@@ -114,16 +131,33 @@ class _ParameterGroupState:
         :param pulumi.Input[str] name: The name of the parameter template. It must be 8 to 64 characters in length, and can contain letters, digits, and underscores (_). It must start with a letter and cannot contain Chinese characters.
         :param pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]] parameters: The parameter template. See the following `Block parameters`.
         """
+        _ParameterGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_type=db_type,
+            db_version=db_version,
+            description=description,
+            name=name,
+            parameters=parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_type: Optional[pulumi.Input[str]] = None,
+             db_version: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ParameterGroupParameterArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if db_type is not None:
-            pulumi.set(__self__, "db_type", db_type)
+            _setter("db_type", db_type)
         if db_version is not None:
-            pulumi.set(__self__, "db_version", db_version)
+            _setter("db_version", db_version)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
 
     @property
     @pulumi.getter(name="dbType")
@@ -287,6 +321,10 @@ class ParameterGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ParameterGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

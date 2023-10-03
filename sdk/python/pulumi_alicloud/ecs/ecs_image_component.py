@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsImageComponentArgs', 'EcsImageComponent']
@@ -31,19 +31,40 @@ class EcsImageComponentArgs:
         :param pulumi.Input[str] system_type: The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "content", content)
+        EcsImageComponentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            component_type=component_type,
+            description=description,
+            image_component_name=image_component_name,
+            resource_group_id=resource_group_id,
+            system_type=system_type,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: pulumi.Input[str],
+             component_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             image_component_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             system_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("content", content)
         if component_type is not None:
-            pulumi.set(__self__, "component_type", component_type)
+            _setter("component_type", component_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if image_component_name is not None:
-            pulumi.set(__self__, "image_component_name", image_component_name)
+            _setter("image_component_name", image_component_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if system_type is not None:
-            pulumi.set(__self__, "system_type", system_type)
+            _setter("system_type", system_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -150,20 +171,41 @@ class _EcsImageComponentState:
         :param pulumi.Input[str] system_type: The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        _EcsImageComponentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            component_type=component_type,
+            content=content,
+            description=description,
+            image_component_name=image_component_name,
+            resource_group_id=resource_group_id,
+            system_type=system_type,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             component_type: Optional[pulumi.Input[str]] = None,
+             content: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             image_component_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             system_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if component_type is not None:
-            pulumi.set(__self__, "component_type", component_type)
+            _setter("component_type", component_type)
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if image_component_name is not None:
-            pulumi.set(__self__, "image_component_name", image_component_name)
+            _setter("image_component_name", image_component_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if system_type is not None:
-            pulumi.set(__self__, "system_type", system_type)
+            _setter("system_type", system_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="componentType")
@@ -361,6 +403,10 @@ class EcsImageComponent(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EcsImageComponentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

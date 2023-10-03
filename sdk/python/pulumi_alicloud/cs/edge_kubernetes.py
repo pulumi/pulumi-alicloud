@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -108,89 +108,176 @@ class EdgeKubernetesArgs:
                You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kube_config.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
         """
-        pulumi.set(__self__, "worker_instance_types", worker_instance_types)
-        pulumi.set(__self__, "worker_number", worker_number)
-        pulumi.set(__self__, "worker_vswitch_ids", worker_vswitch_ids)
+        EdgeKubernetesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            worker_instance_types=worker_instance_types,
+            worker_number=worker_number,
+            worker_vswitch_ids=worker_vswitch_ids,
+            addons=addons,
+            availability_zone=availability_zone,
+            client_cert=client_cert,
+            client_key=client_key,
+            cluster_ca_cert=cluster_ca_cert,
+            cluster_spec=cluster_spec,
+            deletion_protection=deletion_protection,
+            force_update=force_update,
+            install_cloud_monitor=install_cloud_monitor,
+            is_enterprise_security_group=is_enterprise_security_group,
+            key_name=key_name,
+            kube_config=kube_config,
+            load_balancer_spec=load_balancer_spec,
+            log_config=log_config,
+            name=name,
+            name_prefix=name_prefix,
+            new_nat_gateway=new_nat_gateway,
+            node_cidr_mask=node_cidr_mask,
+            password=password,
+            pod_cidr=pod_cidr,
+            proxy_mode=proxy_mode,
+            rds_instances=rds_instances,
+            resource_group_id=resource_group_id,
+            retain_resources=retain_resources,
+            runtime=runtime,
+            security_group_id=security_group_id,
+            service_cidr=service_cidr,
+            slb_internet_enabled=slb_internet_enabled,
+            tags=tags,
+            user_data=user_data,
+            version=version,
+            worker_data_disks=worker_data_disks,
+            worker_disk_category=worker_disk_category,
+            worker_disk_performance_level=worker_disk_performance_level,
+            worker_disk_size=worker_disk_size,
+            worker_disk_snapshot_policy_id=worker_disk_snapshot_policy_id,
+            worker_instance_charge_type=worker_instance_charge_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             worker_instance_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+             worker_number: pulumi.Input[int],
+             worker_vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             addons: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesAddonArgs']]]] = None,
+             availability_zone: Optional[pulumi.Input[str]] = None,
+             client_cert: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+             cluster_spec: Optional[pulumi.Input[str]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             force_update: Optional[pulumi.Input[bool]] = None,
+             install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
+             is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
+             key_name: Optional[pulumi.Input[str]] = None,
+             kube_config: Optional[pulumi.Input[str]] = None,
+             load_balancer_spec: Optional[pulumi.Input[str]] = None,
+             log_config: Optional[pulumi.Input['EdgeKubernetesLogConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             new_nat_gateway: Optional[pulumi.Input[bool]] = None,
+             node_cidr_mask: Optional[pulumi.Input[int]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             pod_cidr: Optional[pulumi.Input[str]] = None,
+             proxy_mode: Optional[pulumi.Input[str]] = None,
+             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             runtime: Optional[pulumi.Input['EdgeKubernetesRuntimeArgs']] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             service_cidr: Optional[pulumi.Input[str]] = None,
+             slb_internet_enabled: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesWorkerDataDiskArgs']]]] = None,
+             worker_disk_category: Optional[pulumi.Input[str]] = None,
+             worker_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             worker_disk_size: Optional[pulumi.Input[int]] = None,
+             worker_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("worker_instance_types", worker_instance_types)
+        _setter("worker_number", worker_number)
+        _setter("worker_vswitch_ids", worker_vswitch_ids)
         if addons is not None:
-            pulumi.set(__self__, "addons", addons)
+            _setter("addons", addons)
         if availability_zone is not None:
-            pulumi.set(__self__, "availability_zone", availability_zone)
+            _setter("availability_zone", availability_zone)
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if cluster_ca_cert is not None:
-            pulumi.set(__self__, "cluster_ca_cert", cluster_ca_cert)
+            _setter("cluster_ca_cert", cluster_ca_cert)
         if cluster_spec is not None:
-            pulumi.set(__self__, "cluster_spec", cluster_spec)
+            _setter("cluster_spec", cluster_spec)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if force_update is not None:
-            pulumi.set(__self__, "force_update", force_update)
+            _setter("force_update", force_update)
         if install_cloud_monitor is not None:
-            pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
+            _setter("install_cloud_monitor", install_cloud_monitor)
         if is_enterprise_security_group is not None:
-            pulumi.set(__self__, "is_enterprise_security_group", is_enterprise_security_group)
+            _setter("is_enterprise_security_group", is_enterprise_security_group)
         if key_name is not None:
-            pulumi.set(__self__, "key_name", key_name)
+            _setter("key_name", key_name)
         if kube_config is not None:
             warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
             pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
         if kube_config is not None:
-            pulumi.set(__self__, "kube_config", kube_config)
+            _setter("kube_config", kube_config)
         if load_balancer_spec is not None:
-            pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
+            _setter("load_balancer_spec", load_balancer_spec)
         if log_config is not None:
             warnings.warn("""Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""log_config is deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""")
         if log_config is not None:
-            pulumi.set(__self__, "log_config", log_config)
+            _setter("log_config", log_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if new_nat_gateway is not None:
-            pulumi.set(__self__, "new_nat_gateway", new_nat_gateway)
+            _setter("new_nat_gateway", new_nat_gateway)
         if node_cidr_mask is not None:
-            pulumi.set(__self__, "node_cidr_mask", node_cidr_mask)
+            _setter("node_cidr_mask", node_cidr_mask)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if pod_cidr is not None:
-            pulumi.set(__self__, "pod_cidr", pod_cidr)
+            _setter("pod_cidr", pod_cidr)
         if proxy_mode is not None:
-            pulumi.set(__self__, "proxy_mode", proxy_mode)
+            _setter("proxy_mode", proxy_mode)
         if rds_instances is not None:
-            pulumi.set(__self__, "rds_instances", rds_instances)
+            _setter("rds_instances", rds_instances)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if retain_resources is not None:
-            pulumi.set(__self__, "retain_resources", retain_resources)
+            _setter("retain_resources", retain_resources)
         if runtime is not None:
-            pulumi.set(__self__, "runtime", runtime)
+            _setter("runtime", runtime)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if service_cidr is not None:
-            pulumi.set(__self__, "service_cidr", service_cidr)
+            _setter("service_cidr", service_cidr)
         if slb_internet_enabled is not None:
-            pulumi.set(__self__, "slb_internet_enabled", slb_internet_enabled)
+            _setter("slb_internet_enabled", slb_internet_enabled)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if worker_data_disks is not None:
-            pulumi.set(__self__, "worker_data_disks", worker_data_disks)
+            _setter("worker_data_disks", worker_data_disks)
         if worker_disk_category is not None:
-            pulumi.set(__self__, "worker_disk_category", worker_disk_category)
+            _setter("worker_disk_category", worker_disk_category)
         if worker_disk_performance_level is not None:
-            pulumi.set(__self__, "worker_disk_performance_level", worker_disk_performance_level)
+            _setter("worker_disk_performance_level", worker_disk_performance_level)
         if worker_disk_size is not None:
-            pulumi.set(__self__, "worker_disk_size", worker_disk_size)
+            _setter("worker_disk_size", worker_disk_size)
         if worker_disk_snapshot_policy_id is not None:
-            pulumi.set(__self__, "worker_disk_snapshot_policy_id", worker_disk_snapshot_policy_id)
+            _setter("worker_disk_snapshot_policy_id", worker_disk_snapshot_policy_id)
         if worker_instance_charge_type is not None:
-            pulumi.set(__self__, "worker_instance_charge_type", worker_instance_charge_type)
+            _setter("worker_instance_charge_type", worker_instance_charge_type)
 
     @property
     @pulumi.getter(name="workerInstanceTypes")
@@ -795,108 +882,211 @@ class _EdgeKubernetesState:
         :param pulumi.Input[str] worker_ram_role_name: The RamRole Name attached to worker node.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by workers.
         """
+        _EdgeKubernetesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addons=addons,
+            availability_zone=availability_zone,
+            certificate_authority=certificate_authority,
+            client_cert=client_cert,
+            client_key=client_key,
+            cluster_ca_cert=cluster_ca_cert,
+            cluster_spec=cluster_spec,
+            connections=connections,
+            deletion_protection=deletion_protection,
+            force_update=force_update,
+            install_cloud_monitor=install_cloud_monitor,
+            is_enterprise_security_group=is_enterprise_security_group,
+            key_name=key_name,
+            kube_config=kube_config,
+            load_balancer_spec=load_balancer_spec,
+            log_config=log_config,
+            name=name,
+            name_prefix=name_prefix,
+            nat_gateway_id=nat_gateway_id,
+            new_nat_gateway=new_nat_gateway,
+            node_cidr_mask=node_cidr_mask,
+            password=password,
+            pod_cidr=pod_cidr,
+            proxy_mode=proxy_mode,
+            rds_instances=rds_instances,
+            resource_group_id=resource_group_id,
+            retain_resources=retain_resources,
+            runtime=runtime,
+            security_group_id=security_group_id,
+            service_cidr=service_cidr,
+            slb_internet=slb_internet,
+            slb_internet_enabled=slb_internet_enabled,
+            slb_intranet=slb_intranet,
+            tags=tags,
+            user_data=user_data,
+            version=version,
+            vpc_id=vpc_id,
+            worker_data_disks=worker_data_disks,
+            worker_disk_category=worker_disk_category,
+            worker_disk_performance_level=worker_disk_performance_level,
+            worker_disk_size=worker_disk_size,
+            worker_disk_snapshot_policy_id=worker_disk_snapshot_policy_id,
+            worker_instance_charge_type=worker_instance_charge_type,
+            worker_instance_types=worker_instance_types,
+            worker_nodes=worker_nodes,
+            worker_number=worker_number,
+            worker_ram_role_name=worker_ram_role_name,
+            worker_vswitch_ids=worker_vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addons: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesAddonArgs']]]] = None,
+             availability_zone: Optional[pulumi.Input[str]] = None,
+             certificate_authority: Optional[pulumi.Input['EdgeKubernetesCertificateAuthorityArgs']] = None,
+             client_cert: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+             cluster_spec: Optional[pulumi.Input[str]] = None,
+             connections: Optional[pulumi.Input['EdgeKubernetesConnectionsArgs']] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             force_update: Optional[pulumi.Input[bool]] = None,
+             install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
+             is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
+             key_name: Optional[pulumi.Input[str]] = None,
+             kube_config: Optional[pulumi.Input[str]] = None,
+             load_balancer_spec: Optional[pulumi.Input[str]] = None,
+             log_config: Optional[pulumi.Input['EdgeKubernetesLogConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             nat_gateway_id: Optional[pulumi.Input[str]] = None,
+             new_nat_gateway: Optional[pulumi.Input[bool]] = None,
+             node_cidr_mask: Optional[pulumi.Input[int]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             pod_cidr: Optional[pulumi.Input[str]] = None,
+             proxy_mode: Optional[pulumi.Input[str]] = None,
+             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             runtime: Optional[pulumi.Input['EdgeKubernetesRuntimeArgs']] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             service_cidr: Optional[pulumi.Input[str]] = None,
+             slb_internet: Optional[pulumi.Input[str]] = None,
+             slb_internet_enabled: Optional[pulumi.Input[bool]] = None,
+             slb_intranet: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesWorkerDataDiskArgs']]]] = None,
+             worker_disk_category: Optional[pulumi.Input[str]] = None,
+             worker_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             worker_disk_size: Optional[pulumi.Input[int]] = None,
+             worker_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
+             worker_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             worker_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesWorkerNodeArgs']]]] = None,
+             worker_number: Optional[pulumi.Input[int]] = None,
+             worker_ram_role_name: Optional[pulumi.Input[str]] = None,
+             worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if addons is not None:
-            pulumi.set(__self__, "addons", addons)
+            _setter("addons", addons)
         if availability_zone is not None:
-            pulumi.set(__self__, "availability_zone", availability_zone)
+            _setter("availability_zone", availability_zone)
         if certificate_authority is not None:
-            pulumi.set(__self__, "certificate_authority", certificate_authority)
+            _setter("certificate_authority", certificate_authority)
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if cluster_ca_cert is not None:
-            pulumi.set(__self__, "cluster_ca_cert", cluster_ca_cert)
+            _setter("cluster_ca_cert", cluster_ca_cert)
         if cluster_spec is not None:
-            pulumi.set(__self__, "cluster_spec", cluster_spec)
+            _setter("cluster_spec", cluster_spec)
         if connections is not None:
-            pulumi.set(__self__, "connections", connections)
+            _setter("connections", connections)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if force_update is not None:
-            pulumi.set(__self__, "force_update", force_update)
+            _setter("force_update", force_update)
         if install_cloud_monitor is not None:
-            pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
+            _setter("install_cloud_monitor", install_cloud_monitor)
         if is_enterprise_security_group is not None:
-            pulumi.set(__self__, "is_enterprise_security_group", is_enterprise_security_group)
+            _setter("is_enterprise_security_group", is_enterprise_security_group)
         if key_name is not None:
-            pulumi.set(__self__, "key_name", key_name)
+            _setter("key_name", key_name)
         if kube_config is not None:
             warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
             pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
         if kube_config is not None:
-            pulumi.set(__self__, "kube_config", kube_config)
+            _setter("kube_config", kube_config)
         if load_balancer_spec is not None:
-            pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
+            _setter("load_balancer_spec", load_balancer_spec)
         if log_config is not None:
             warnings.warn("""Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""log_config is deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""")
         if log_config is not None:
-            pulumi.set(__self__, "log_config", log_config)
+            _setter("log_config", log_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if nat_gateway_id is not None:
-            pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
+            _setter("nat_gateway_id", nat_gateway_id)
         if new_nat_gateway is not None:
-            pulumi.set(__self__, "new_nat_gateway", new_nat_gateway)
+            _setter("new_nat_gateway", new_nat_gateway)
         if node_cidr_mask is not None:
-            pulumi.set(__self__, "node_cidr_mask", node_cidr_mask)
+            _setter("node_cidr_mask", node_cidr_mask)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if pod_cidr is not None:
-            pulumi.set(__self__, "pod_cidr", pod_cidr)
+            _setter("pod_cidr", pod_cidr)
         if proxy_mode is not None:
-            pulumi.set(__self__, "proxy_mode", proxy_mode)
+            _setter("proxy_mode", proxy_mode)
         if rds_instances is not None:
-            pulumi.set(__self__, "rds_instances", rds_instances)
+            _setter("rds_instances", rds_instances)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if retain_resources is not None:
-            pulumi.set(__self__, "retain_resources", retain_resources)
+            _setter("retain_resources", retain_resources)
         if runtime is not None:
-            pulumi.set(__self__, "runtime", runtime)
+            _setter("runtime", runtime)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if service_cidr is not None:
-            pulumi.set(__self__, "service_cidr", service_cidr)
+            _setter("service_cidr", service_cidr)
         if slb_internet is not None:
-            pulumi.set(__self__, "slb_internet", slb_internet)
+            _setter("slb_internet", slb_internet)
         if slb_internet_enabled is not None:
-            pulumi.set(__self__, "slb_internet_enabled", slb_internet_enabled)
+            _setter("slb_internet_enabled", slb_internet_enabled)
         if slb_intranet is not None:
-            pulumi.set(__self__, "slb_intranet", slb_intranet)
+            _setter("slb_intranet", slb_intranet)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if worker_data_disks is not None:
-            pulumi.set(__self__, "worker_data_disks", worker_data_disks)
+            _setter("worker_data_disks", worker_data_disks)
         if worker_disk_category is not None:
-            pulumi.set(__self__, "worker_disk_category", worker_disk_category)
+            _setter("worker_disk_category", worker_disk_category)
         if worker_disk_performance_level is not None:
-            pulumi.set(__self__, "worker_disk_performance_level", worker_disk_performance_level)
+            _setter("worker_disk_performance_level", worker_disk_performance_level)
         if worker_disk_size is not None:
-            pulumi.set(__self__, "worker_disk_size", worker_disk_size)
+            _setter("worker_disk_size", worker_disk_size)
         if worker_disk_snapshot_policy_id is not None:
-            pulumi.set(__self__, "worker_disk_snapshot_policy_id", worker_disk_snapshot_policy_id)
+            _setter("worker_disk_snapshot_policy_id", worker_disk_snapshot_policy_id)
         if worker_instance_charge_type is not None:
-            pulumi.set(__self__, "worker_instance_charge_type", worker_instance_charge_type)
+            _setter("worker_instance_charge_type", worker_instance_charge_type)
         if worker_instance_types is not None:
-            pulumi.set(__self__, "worker_instance_types", worker_instance_types)
+            _setter("worker_instance_types", worker_instance_types)
         if worker_nodes is not None:
-            pulumi.set(__self__, "worker_nodes", worker_nodes)
+            _setter("worker_nodes", worker_nodes)
         if worker_number is not None:
-            pulumi.set(__self__, "worker_number", worker_number)
+            _setter("worker_number", worker_number)
         if worker_ram_role_name is not None:
-            pulumi.set(__self__, "worker_ram_role_name", worker_ram_role_name)
+            _setter("worker_ram_role_name", worker_ram_role_name)
         if worker_vswitch_ids is not None:
-            pulumi.set(__self__, "worker_vswitch_ids", worker_vswitch_ids)
+            _setter("worker_vswitch_ids", worker_vswitch_ids)
 
     @property
     @pulumi.getter
@@ -1856,6 +2046,10 @@ class EdgeKubernetes(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EdgeKubernetesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1921,14 +2115,13 @@ class EdgeKubernetes(pulumi.CustomResource):
             __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
             __props__.__dict__["is_enterprise_security_group"] = is_enterprise_security_group
             __props__.__dict__["key_name"] = key_name
-            if kube_config is not None and not opts.urn:
-                warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
-                pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
             __props__.__dict__["kube_config"] = kube_config
             __props__.__dict__["load_balancer_spec"] = load_balancer_spec
-            if log_config is not None and not opts.urn:
-                warnings.warn("""Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""", DeprecationWarning)
-                pulumi.log.warn("""log_config is deprecated: Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.""")
+            if log_config is not None and not isinstance(log_config, EdgeKubernetesLogConfigArgs):
+                log_config = log_config or {}
+                def _setter(key, value):
+                    log_config[key] = value
+                EdgeKubernetesLogConfigArgs._configure(_setter, **log_config)
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
@@ -1940,6 +2133,11 @@ class EdgeKubernetes(pulumi.CustomResource):
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["retain_resources"] = retain_resources
+            if runtime is not None and not isinstance(runtime, EdgeKubernetesRuntimeArgs):
+                runtime = runtime or {}
+                def _setter(key, value):
+                    runtime[key] = value
+                EdgeKubernetesRuntimeArgs._configure(_setter, **runtime)
             __props__.__dict__["runtime"] = runtime
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["service_cidr"] = service_cidr

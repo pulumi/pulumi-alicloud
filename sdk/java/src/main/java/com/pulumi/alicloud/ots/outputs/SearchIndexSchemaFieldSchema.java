@@ -23,7 +23,7 @@ public final class SearchIndexSchemaFieldSchema {
      */
     private @Nullable Boolean enableSortAndAgg;
     /**
-     * @return Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
      * 
      */
     private String fieldName;
@@ -64,7 +64,7 @@ public final class SearchIndexSchemaFieldSchema {
         return Optional.ofNullable(this.enableSortAndAgg);
     }
     /**
-     * @return Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+     * @return The name of the field that is used to sort data. only required if sorter_type is FieldSort.
      * 
      */
     public String fieldName() {

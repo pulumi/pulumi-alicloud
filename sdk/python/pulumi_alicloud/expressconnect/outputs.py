@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -48,16 +48,43 @@ class GetAccessPointsPointResult(dict):
         :param str status: The Physical Connection to Which the Access Point State.
         :param str type: The Physical Connection to Which the Network Type.
         """
-        pulumi.set(__self__, "access_point_feature_models", access_point_feature_models)
-        pulumi.set(__self__, "access_point_id", access_point_id)
-        pulumi.set(__self__, "access_point_name", access_point_name)
-        pulumi.set(__self__, "attached_region_no", attached_region_no)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "host_operator", host_operator)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
+        GetAccessPointsPointResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_point_feature_models=access_point_feature_models,
+            access_point_id=access_point_id,
+            access_point_name=access_point_name,
+            attached_region_no=attached_region_no,
+            description=description,
+            host_operator=host_operator,
+            id=id,
+            location=location,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_point_feature_models: Sequence['outputs.GetAccessPointsPointAccessPointFeatureModelResult'],
+             access_point_id: str,
+             access_point_name: str,
+             attached_region_no: str,
+             description: str,
+             host_operator: str,
+             id: str,
+             location: str,
+             status: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_point_feature_models", access_point_feature_models)
+        _setter("access_point_id", access_point_id)
+        _setter("access_point_name", access_point_name)
+        _setter("attached_region_no", attached_region_no)
+        _setter("description", description)
+        _setter("host_operator", host_operator)
+        _setter("id", id)
+        _setter("location", location)
+        _setter("status", status)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="accessPointFeatureModels")
@@ -149,8 +176,19 @@ class GetAccessPointsPointAccessPointFeatureModelResult(dict):
         :param str feature_key: The Access Point Properties.
         :param str feature_value: The Access Point Characteristic Value.
         """
-        pulumi.set(__self__, "feature_key", feature_key)
-        pulumi.set(__self__, "feature_value", feature_value)
+        GetAccessPointsPointAccessPointFeatureModelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            feature_key=feature_key,
+            feature_value=feature_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             feature_key: str,
+             feature_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("feature_key", feature_key)
+        _setter("feature_value", feature_value)
 
     @property
     @pulumi.getter(name="featureKey")
@@ -182,10 +220,25 @@ class GetGrantRuleToCensCenResult(dict):
         :param str create_time: The time when the instance was created.
         :param str id: The ID of the Grant Rule To Cen. It formats as `<cen_id>:<cen_owner_id>:<instance_id>`.
         """
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "cen_owner_id", cen_owner_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
+        GetGrantRuleToCensCenResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            cen_owner_id=cen_owner_id,
+            create_time=create_time,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: str,
+             cen_owner_id: int,
+             create_time: str,
+             id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cen_id", cen_id)
+        _setter("cen_owner_id", cen_owner_id)
+        _setter("create_time", create_time)
+        _setter("id", id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -277,32 +330,91 @@ class GetPhysicalConnectionsConnectionResult(dict):
         :param str status: Resources on Behalf of a State of the Resource Attribute Field.
         :param str type: Physical Private Line of Type. Default Value: VPC.
         """
-        pulumi.set(__self__, "access_point_id", access_point_id)
-        pulumi.set(__self__, "ad_location", ad_location)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "business_status", business_status)
-        pulumi.set(__self__, "circuit_code", circuit_code)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enabled_time", enabled_time)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "line_operator", line_operator)
-        pulumi.set(__self__, "loa_status", loa_status)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "peer_location", peer_location)
-        pulumi.set(__self__, "physical_connection_id", physical_connection_id)
-        pulumi.set(__self__, "physical_connection_name", physical_connection_name)
-        pulumi.set(__self__, "port_number", port_number)
-        pulumi.set(__self__, "port_type", port_type)
-        pulumi.set(__self__, "redundant_physical_connection_id", redundant_physical_connection_id)
-        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
-        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
-        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
-        pulumi.set(__self__, "spec", spec)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
+        GetPhysicalConnectionsConnectionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_point_id=access_point_id,
+            ad_location=ad_location,
+            bandwidth=bandwidth,
+            business_status=business_status,
+            circuit_code=circuit_code,
+            create_time=create_time,
+            description=description,
+            enabled_time=enabled_time,
+            end_time=end_time,
+            has_reservation_data=has_reservation_data,
+            id=id,
+            line_operator=line_operator,
+            loa_status=loa_status,
+            payment_type=payment_type,
+            peer_location=peer_location,
+            physical_connection_id=physical_connection_id,
+            physical_connection_name=physical_connection_name,
+            port_number=port_number,
+            port_type=port_type,
+            redundant_physical_connection_id=redundant_physical_connection_id,
+            reservation_active_time=reservation_active_time,
+            reservation_internet_charge_type=reservation_internet_charge_type,
+            reservation_order_type=reservation_order_type,
+            spec=spec,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_point_id: str,
+             ad_location: str,
+             bandwidth: str,
+             business_status: str,
+             circuit_code: str,
+             create_time: str,
+             description: str,
+             enabled_time: str,
+             end_time: str,
+             has_reservation_data: str,
+             id: str,
+             line_operator: str,
+             loa_status: str,
+             payment_type: str,
+             peer_location: str,
+             physical_connection_id: str,
+             physical_connection_name: str,
+             port_number: str,
+             port_type: str,
+             redundant_physical_connection_id: str,
+             reservation_active_time: str,
+             reservation_internet_charge_type: str,
+             reservation_order_type: str,
+             spec: str,
+             status: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_point_id", access_point_id)
+        _setter("ad_location", ad_location)
+        _setter("bandwidth", bandwidth)
+        _setter("business_status", business_status)
+        _setter("circuit_code", circuit_code)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("enabled_time", enabled_time)
+        _setter("end_time", end_time)
+        _setter("has_reservation_data", has_reservation_data)
+        _setter("id", id)
+        _setter("line_operator", line_operator)
+        _setter("loa_status", loa_status)
+        _setter("payment_type", payment_type)
+        _setter("peer_location", peer_location)
+        _setter("physical_connection_id", physical_connection_id)
+        _setter("physical_connection_name", physical_connection_name)
+        _setter("port_number", port_number)
+        _setter("port_type", port_type)
+        _setter("redundant_physical_connection_id", redundant_physical_connection_id)
+        _setter("reservation_active_time", reservation_active_time)
+        _setter("reservation_internet_charge_type", reservation_internet_charge_type)
+        _setter("reservation_order_type", reservation_order_type)
+        _setter("spec", spec)
+        _setter("status", status)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="accessPointId")
@@ -518,10 +630,21 @@ class GetRouterInterfacesFilterResult(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
+        GetRouterInterfacesFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -614,44 +737,127 @@ class GetRouterInterfacesInterfaceResult(dict):
         :param str status: The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
         :param str vpc_instance_id: The vpc instance id of the resource.
         """
-        pulumi.set(__self__, "access_point_id", access_point_id)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "business_status", business_status)
-        pulumi.set(__self__, "connected_time", connected_time)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "cross_border", cross_border)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "has_reservation_data", has_reservation_data)
-        pulumi.set(__self__, "hc_rate", hc_rate)
-        pulumi.set(__self__, "hc_threshold", hc_threshold)
-        pulumi.set(__self__, "health_check_source_ip", health_check_source_ip)
-        pulumi.set(__self__, "health_check_target_ip", health_check_target_ip)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "opposite_access_point_id", opposite_access_point_id)
-        pulumi.set(__self__, "opposite_bandwidth", opposite_bandwidth)
-        pulumi.set(__self__, "opposite_interface_business_status", opposite_interface_business_status)
-        pulumi.set(__self__, "opposite_interface_id", opposite_interface_id)
-        pulumi.set(__self__, "opposite_interface_owner_id", opposite_interface_owner_id)
-        pulumi.set(__self__, "opposite_interface_spec", opposite_interface_spec)
-        pulumi.set(__self__, "opposite_interface_status", opposite_interface_status)
-        pulumi.set(__self__, "opposite_region_id", opposite_region_id)
-        pulumi.set(__self__, "opposite_router_id", opposite_router_id)
-        pulumi.set(__self__, "opposite_router_type", opposite_router_type)
-        pulumi.set(__self__, "opposite_vpc_instance_id", opposite_vpc_instance_id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "reservation_active_time", reservation_active_time)
-        pulumi.set(__self__, "reservation_bandwidth", reservation_bandwidth)
-        pulumi.set(__self__, "reservation_internet_charge_type", reservation_internet_charge_type)
-        pulumi.set(__self__, "reservation_order_type", reservation_order_type)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "router_id", router_id)
-        pulumi.set(__self__, "router_interface_id", router_interface_id)
-        pulumi.set(__self__, "router_interface_name", router_interface_name)
-        pulumi.set(__self__, "router_type", router_type)
-        pulumi.set(__self__, "spec", spec)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_instance_id", vpc_instance_id)
+        GetRouterInterfacesInterfaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_point_id=access_point_id,
+            bandwidth=bandwidth,
+            business_status=business_status,
+            connected_time=connected_time,
+            create_time=create_time,
+            cross_border=cross_border,
+            description=description,
+            end_time=end_time,
+            has_reservation_data=has_reservation_data,
+            hc_rate=hc_rate,
+            hc_threshold=hc_threshold,
+            health_check_source_ip=health_check_source_ip,
+            health_check_target_ip=health_check_target_ip,
+            id=id,
+            opposite_access_point_id=opposite_access_point_id,
+            opposite_bandwidth=opposite_bandwidth,
+            opposite_interface_business_status=opposite_interface_business_status,
+            opposite_interface_id=opposite_interface_id,
+            opposite_interface_owner_id=opposite_interface_owner_id,
+            opposite_interface_spec=opposite_interface_spec,
+            opposite_interface_status=opposite_interface_status,
+            opposite_region_id=opposite_region_id,
+            opposite_router_id=opposite_router_id,
+            opposite_router_type=opposite_router_type,
+            opposite_vpc_instance_id=opposite_vpc_instance_id,
+            payment_type=payment_type,
+            reservation_active_time=reservation_active_time,
+            reservation_bandwidth=reservation_bandwidth,
+            reservation_internet_charge_type=reservation_internet_charge_type,
+            reservation_order_type=reservation_order_type,
+            role=role,
+            router_id=router_id,
+            router_interface_id=router_interface_id,
+            router_interface_name=router_interface_name,
+            router_type=router_type,
+            spec=spec,
+            status=status,
+            vpc_instance_id=vpc_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_point_id: str,
+             bandwidth: int,
+             business_status: str,
+             connected_time: str,
+             create_time: str,
+             cross_border: bool,
+             description: str,
+             end_time: str,
+             has_reservation_data: str,
+             hc_rate: int,
+             hc_threshold: str,
+             health_check_source_ip: str,
+             health_check_target_ip: str,
+             id: str,
+             opposite_access_point_id: str,
+             opposite_bandwidth: int,
+             opposite_interface_business_status: str,
+             opposite_interface_id: str,
+             opposite_interface_owner_id: str,
+             opposite_interface_spec: str,
+             opposite_interface_status: str,
+             opposite_region_id: str,
+             opposite_router_id: str,
+             opposite_router_type: str,
+             opposite_vpc_instance_id: str,
+             payment_type: str,
+             reservation_active_time: str,
+             reservation_bandwidth: str,
+             reservation_internet_charge_type: str,
+             reservation_order_type: str,
+             role: str,
+             router_id: str,
+             router_interface_id: str,
+             router_interface_name: str,
+             router_type: str,
+             spec: str,
+             status: str,
+             vpc_instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_point_id", access_point_id)
+        _setter("bandwidth", bandwidth)
+        _setter("business_status", business_status)
+        _setter("connected_time", connected_time)
+        _setter("create_time", create_time)
+        _setter("cross_border", cross_border)
+        _setter("description", description)
+        _setter("end_time", end_time)
+        _setter("has_reservation_data", has_reservation_data)
+        _setter("hc_rate", hc_rate)
+        _setter("hc_threshold", hc_threshold)
+        _setter("health_check_source_ip", health_check_source_ip)
+        _setter("health_check_target_ip", health_check_target_ip)
+        _setter("id", id)
+        _setter("opposite_access_point_id", opposite_access_point_id)
+        _setter("opposite_bandwidth", opposite_bandwidth)
+        _setter("opposite_interface_business_status", opposite_interface_business_status)
+        _setter("opposite_interface_id", opposite_interface_id)
+        _setter("opposite_interface_owner_id", opposite_interface_owner_id)
+        _setter("opposite_interface_spec", opposite_interface_spec)
+        _setter("opposite_interface_status", opposite_interface_status)
+        _setter("opposite_region_id", opposite_region_id)
+        _setter("opposite_router_id", opposite_router_id)
+        _setter("opposite_router_type", opposite_router_type)
+        _setter("opposite_vpc_instance_id", opposite_vpc_instance_id)
+        _setter("payment_type", payment_type)
+        _setter("reservation_active_time", reservation_active_time)
+        _setter("reservation_bandwidth", reservation_bandwidth)
+        _setter("reservation_internet_charge_type", reservation_internet_charge_type)
+        _setter("reservation_order_type", reservation_order_type)
+        _setter("role", role)
+        _setter("router_id", router_id)
+        _setter("router_interface_id", router_interface_id)
+        _setter("router_interface_name", router_interface_name)
+        _setter("router_type", router_type)
+        _setter("spec", spec)
+        _setter("status", status)
+        _setter("vpc_instance_id", vpc_instance_id)
 
     @property
     @pulumi.getter(name="accessPointId")
@@ -986,19 +1192,52 @@ class GetVbrPconnAssociationsAssociationResult(dict):
         :param str vbr_id: The ID of the VBR instance.
         :param int vlan_id: VLAN ID of the VBR.
         """
-        pulumi.set(__self__, "circuit_code", circuit_code)
-        pulumi.set(__self__, "enable_ipv6", enable_ipv6)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_gateway_ip", local_gateway_ip)
-        pulumi.set(__self__, "local_ipv6_gateway_ip", local_ipv6_gateway_ip)
-        pulumi.set(__self__, "peer_gateway_ip", peer_gateway_ip)
-        pulumi.set(__self__, "peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
-        pulumi.set(__self__, "peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
-        pulumi.set(__self__, "peering_subnet_mask", peering_subnet_mask)
-        pulumi.set(__self__, "physical_connection_id", physical_connection_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vbr_id", vbr_id)
-        pulumi.set(__self__, "vlan_id", vlan_id)
+        GetVbrPconnAssociationsAssociationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            circuit_code=circuit_code,
+            enable_ipv6=enable_ipv6,
+            id=id,
+            local_gateway_ip=local_gateway_ip,
+            local_ipv6_gateway_ip=local_ipv6_gateway_ip,
+            peer_gateway_ip=peer_gateway_ip,
+            peer_ipv6_gateway_ip=peer_ipv6_gateway_ip,
+            peering_ipv6_subnet_mask=peering_ipv6_subnet_mask,
+            peering_subnet_mask=peering_subnet_mask,
+            physical_connection_id=physical_connection_id,
+            status=status,
+            vbr_id=vbr_id,
+            vlan_id=vlan_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             circuit_code: str,
+             enable_ipv6: bool,
+             id: str,
+             local_gateway_ip: str,
+             local_ipv6_gateway_ip: str,
+             peer_gateway_ip: str,
+             peer_ipv6_gateway_ip: str,
+             peering_ipv6_subnet_mask: str,
+             peering_subnet_mask: str,
+             physical_connection_id: str,
+             status: str,
+             vbr_id: str,
+             vlan_id: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("circuit_code", circuit_code)
+        _setter("enable_ipv6", enable_ipv6)
+        _setter("id", id)
+        _setter("local_gateway_ip", local_gateway_ip)
+        _setter("local_ipv6_gateway_ip", local_ipv6_gateway_ip)
+        _setter("peer_gateway_ip", peer_gateway_ip)
+        _setter("peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
+        _setter("peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
+        _setter("peering_subnet_mask", peering_subnet_mask)
+        _setter("physical_connection_id", physical_connection_id)
+        _setter("status", status)
+        _setter("vbr_id", vbr_id)
+        _setter("vlan_id", vlan_id)
 
     @property
     @pulumi.getter(name="circuitCode")
@@ -1115,10 +1354,21 @@ class GetVirtualBorderRoutersFilterResult(dict):
                [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
         :param Sequence[str] values: Set of values that are accepted for the given field.
         """
+        GetVirtualBorderRoutersFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -1207,38 +1457,109 @@ class GetVirtualBorderRoutersRouterResult(dict):
         :param int vlan_id: The VLAN ID of the VBR. Value range: 0~2999.
         :param str vlan_interface_id: The ID of the Router Interface.
         """
-        pulumi.set(__self__, "access_point_id", access_point_id)
-        pulumi.set(__self__, "activation_time", activation_time)
-        pulumi.set(__self__, "circuit_code", circuit_code)
-        pulumi.set(__self__, "cloud_box_instance_id", cloud_box_instance_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "detect_multiplier", detect_multiplier)
-        pulumi.set(__self__, "ecc_id", ecc_id)
-        pulumi.set(__self__, "enable_ipv6", enable_ipv6)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_gateway_ip", local_gateway_ip)
-        pulumi.set(__self__, "local_ipv6_gateway_ip", local_ipv6_gateway_ip)
-        pulumi.set(__self__, "min_rx_interval", min_rx_interval)
-        pulumi.set(__self__, "min_tx_interval", min_tx_interval)
-        pulumi.set(__self__, "payment_vbr_expire_time", payment_vbr_expire_time)
-        pulumi.set(__self__, "peer_gateway_ip", peer_gateway_ip)
-        pulumi.set(__self__, "peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
-        pulumi.set(__self__, "peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
-        pulumi.set(__self__, "peering_subnet_mask", peering_subnet_mask)
-        pulumi.set(__self__, "physical_connection_business_status", physical_connection_business_status)
-        pulumi.set(__self__, "physical_connection_id", physical_connection_id)
-        pulumi.set(__self__, "physical_connection_owner_uid", physical_connection_owner_uid)
-        pulumi.set(__self__, "physical_connection_status", physical_connection_status)
-        pulumi.set(__self__, "recovery_time", recovery_time)
-        pulumi.set(__self__, "route_table_id", route_table_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "termination_time", termination_time)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "virtual_border_router_id", virtual_border_router_id)
-        pulumi.set(__self__, "virtual_border_router_name", virtual_border_router_name)
-        pulumi.set(__self__, "vlan_id", vlan_id)
-        pulumi.set(__self__, "vlan_interface_id", vlan_interface_id)
+        GetVirtualBorderRoutersRouterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_point_id=access_point_id,
+            activation_time=activation_time,
+            circuit_code=circuit_code,
+            cloud_box_instance_id=cloud_box_instance_id,
+            create_time=create_time,
+            description=description,
+            detect_multiplier=detect_multiplier,
+            ecc_id=ecc_id,
+            enable_ipv6=enable_ipv6,
+            id=id,
+            local_gateway_ip=local_gateway_ip,
+            local_ipv6_gateway_ip=local_ipv6_gateway_ip,
+            min_rx_interval=min_rx_interval,
+            min_tx_interval=min_tx_interval,
+            payment_vbr_expire_time=payment_vbr_expire_time,
+            peer_gateway_ip=peer_gateway_ip,
+            peer_ipv6_gateway_ip=peer_ipv6_gateway_ip,
+            peering_ipv6_subnet_mask=peering_ipv6_subnet_mask,
+            peering_subnet_mask=peering_subnet_mask,
+            physical_connection_business_status=physical_connection_business_status,
+            physical_connection_id=physical_connection_id,
+            physical_connection_owner_uid=physical_connection_owner_uid,
+            physical_connection_status=physical_connection_status,
+            recovery_time=recovery_time,
+            route_table_id=route_table_id,
+            status=status,
+            termination_time=termination_time,
+            type=type,
+            virtual_border_router_id=virtual_border_router_id,
+            virtual_border_router_name=virtual_border_router_name,
+            vlan_id=vlan_id,
+            vlan_interface_id=vlan_interface_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_point_id: str,
+             activation_time: str,
+             circuit_code: str,
+             cloud_box_instance_id: str,
+             create_time: str,
+             description: str,
+             detect_multiplier: int,
+             ecc_id: str,
+             enable_ipv6: bool,
+             id: str,
+             local_gateway_ip: str,
+             local_ipv6_gateway_ip: str,
+             min_rx_interval: int,
+             min_tx_interval: int,
+             payment_vbr_expire_time: str,
+             peer_gateway_ip: str,
+             peer_ipv6_gateway_ip: str,
+             peering_ipv6_subnet_mask: str,
+             peering_subnet_mask: str,
+             physical_connection_business_status: str,
+             physical_connection_id: str,
+             physical_connection_owner_uid: str,
+             physical_connection_status: str,
+             recovery_time: str,
+             route_table_id: str,
+             status: str,
+             termination_time: str,
+             type: str,
+             virtual_border_router_id: str,
+             virtual_border_router_name: str,
+             vlan_id: int,
+             vlan_interface_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_point_id", access_point_id)
+        _setter("activation_time", activation_time)
+        _setter("circuit_code", circuit_code)
+        _setter("cloud_box_instance_id", cloud_box_instance_id)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("detect_multiplier", detect_multiplier)
+        _setter("ecc_id", ecc_id)
+        _setter("enable_ipv6", enable_ipv6)
+        _setter("id", id)
+        _setter("local_gateway_ip", local_gateway_ip)
+        _setter("local_ipv6_gateway_ip", local_ipv6_gateway_ip)
+        _setter("min_rx_interval", min_rx_interval)
+        _setter("min_tx_interval", min_tx_interval)
+        _setter("payment_vbr_expire_time", payment_vbr_expire_time)
+        _setter("peer_gateway_ip", peer_gateway_ip)
+        _setter("peer_ipv6_gateway_ip", peer_ipv6_gateway_ip)
+        _setter("peering_ipv6_subnet_mask", peering_ipv6_subnet_mask)
+        _setter("peering_subnet_mask", peering_subnet_mask)
+        _setter("physical_connection_business_status", physical_connection_business_status)
+        _setter("physical_connection_id", physical_connection_id)
+        _setter("physical_connection_owner_uid", physical_connection_owner_uid)
+        _setter("physical_connection_status", physical_connection_status)
+        _setter("recovery_time", recovery_time)
+        _setter("route_table_id", route_table_id)
+        _setter("status", status)
+        _setter("termination_time", termination_time)
+        _setter("type", type)
+        _setter("virtual_border_router_id", virtual_border_router_id)
+        _setter("virtual_border_router_name", virtual_border_router_name)
+        _setter("vlan_id", vlan_id)
+        _setter("vlan_interface_id", vlan_interface_id)
 
     @property
     @pulumi.getter(name="accessPointId")
@@ -1564,34 +1885,97 @@ class GetVirtualPhysicalConnectionsConnectionResult(dict):
         :param int vlan_id: The VLAN ID of the shared leased line.
         :param str vpconn_ali_uid: The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
         """
-        pulumi.set(__self__, "access_point_id", access_point_id)
-        pulumi.set(__self__, "ad_location", ad_location)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "business_status", business_status)
-        pulumi.set(__self__, "circuit_code", circuit_code)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enabled_time", enabled_time)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "expect_spec", expect_spec)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "line_operator", line_operator)
-        pulumi.set(__self__, "loa_status", loa_status)
-        pulumi.set(__self__, "order_mode", order_mode)
-        pulumi.set(__self__, "parent_physical_connection_ali_uid", parent_physical_connection_ali_uid)
-        pulumi.set(__self__, "parent_physical_connection_id", parent_physical_connection_id)
-        pulumi.set(__self__, "peer_location", peer_location)
-        pulumi.set(__self__, "port_number", port_number)
-        pulumi.set(__self__, "port_type", port_type)
-        pulumi.set(__self__, "redundant_physical_connection_id", redundant_physical_connection_id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "spec", spec)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "virtual_physical_connection_id", virtual_physical_connection_id)
-        pulumi.set(__self__, "virtual_physical_connection_name", virtual_physical_connection_name)
-        pulumi.set(__self__, "virtual_physical_connection_status", virtual_physical_connection_status)
-        pulumi.set(__self__, "vlan_id", vlan_id)
-        pulumi.set(__self__, "vpconn_ali_uid", vpconn_ali_uid)
+        GetVirtualPhysicalConnectionsConnectionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_point_id=access_point_id,
+            ad_location=ad_location,
+            bandwidth=bandwidth,
+            business_status=business_status,
+            circuit_code=circuit_code,
+            create_time=create_time,
+            description=description,
+            enabled_time=enabled_time,
+            end_time=end_time,
+            expect_spec=expect_spec,
+            id=id,
+            line_operator=line_operator,
+            loa_status=loa_status,
+            order_mode=order_mode,
+            parent_physical_connection_ali_uid=parent_physical_connection_ali_uid,
+            parent_physical_connection_id=parent_physical_connection_id,
+            peer_location=peer_location,
+            port_number=port_number,
+            port_type=port_type,
+            redundant_physical_connection_id=redundant_physical_connection_id,
+            resource_group_id=resource_group_id,
+            spec=spec,
+            status=status,
+            virtual_physical_connection_id=virtual_physical_connection_id,
+            virtual_physical_connection_name=virtual_physical_connection_name,
+            virtual_physical_connection_status=virtual_physical_connection_status,
+            vlan_id=vlan_id,
+            vpconn_ali_uid=vpconn_ali_uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_point_id: str,
+             ad_location: str,
+             bandwidth: str,
+             business_status: str,
+             circuit_code: str,
+             create_time: str,
+             description: str,
+             enabled_time: str,
+             end_time: str,
+             expect_spec: str,
+             id: str,
+             line_operator: str,
+             loa_status: str,
+             order_mode: str,
+             parent_physical_connection_ali_uid: str,
+             parent_physical_connection_id: str,
+             peer_location: str,
+             port_number: str,
+             port_type: str,
+             redundant_physical_connection_id: str,
+             resource_group_id: str,
+             spec: str,
+             status: str,
+             virtual_physical_connection_id: str,
+             virtual_physical_connection_name: str,
+             virtual_physical_connection_status: str,
+             vlan_id: int,
+             vpconn_ali_uid: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_point_id", access_point_id)
+        _setter("ad_location", ad_location)
+        _setter("bandwidth", bandwidth)
+        _setter("business_status", business_status)
+        _setter("circuit_code", circuit_code)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("enabled_time", enabled_time)
+        _setter("end_time", end_time)
+        _setter("expect_spec", expect_spec)
+        _setter("id", id)
+        _setter("line_operator", line_operator)
+        _setter("loa_status", loa_status)
+        _setter("order_mode", order_mode)
+        _setter("parent_physical_connection_ali_uid", parent_physical_connection_ali_uid)
+        _setter("parent_physical_connection_id", parent_physical_connection_id)
+        _setter("peer_location", peer_location)
+        _setter("port_number", port_number)
+        _setter("port_type", port_type)
+        _setter("redundant_physical_connection_id", redundant_physical_connection_id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("spec", spec)
+        _setter("status", status)
+        _setter("virtual_physical_connection_id", virtual_physical_connection_id)
+        _setter("virtual_physical_connection_name", virtual_physical_connection_name)
+        _setter("virtual_physical_connection_status", virtual_physical_connection_status)
+        _setter("vlan_id", vlan_id)
+        _setter("vpconn_ali_uid", vpconn_ali_uid)
 
     @property
     @pulumi.getter(name="accessPointId")

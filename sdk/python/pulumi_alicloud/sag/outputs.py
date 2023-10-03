@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -23,8 +23,19 @@ class GetAclsAclResult(dict):
         :param str id: The ID of the ACL. For example "acl-xxx".
         :param str name: The name of the Acl.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
+        GetAclsAclResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -80,22 +91,61 @@ class GetSmartagFlowLogsLogResult(dict):
         :param str status: The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
         :param int total_sag_num: The number of Smart Access gateway (SAG) instances with which the flow log is associated.
         """
-        pulumi.set(__self__, "active_aging", active_aging)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "flow_log_id", flow_log_id)
-        pulumi.set(__self__, "flow_log_name", flow_log_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "inactive_aging", inactive_aging)
-        pulumi.set(__self__, "logstore_name", logstore_name)
-        pulumi.set(__self__, "netflow_server_ip", netflow_server_ip)
-        pulumi.set(__self__, "netflow_server_port", netflow_server_port)
-        pulumi.set(__self__, "netflow_version", netflow_version)
-        pulumi.set(__self__, "output_type", output_type)
-        pulumi.set(__self__, "project_name", project_name)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "sls_region_id", sls_region_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "total_sag_num", total_sag_num)
+        GetSmartagFlowLogsLogResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active_aging=active_aging,
+            description=description,
+            flow_log_id=flow_log_id,
+            flow_log_name=flow_log_name,
+            id=id,
+            inactive_aging=inactive_aging,
+            logstore_name=logstore_name,
+            netflow_server_ip=netflow_server_ip,
+            netflow_server_port=netflow_server_port,
+            netflow_version=netflow_version,
+            output_type=output_type,
+            project_name=project_name,
+            resource_group_id=resource_group_id,
+            sls_region_id=sls_region_id,
+            status=status,
+            total_sag_num=total_sag_num,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active_aging: int,
+             description: str,
+             flow_log_id: str,
+             flow_log_name: str,
+             id: str,
+             inactive_aging: int,
+             logstore_name: str,
+             netflow_server_ip: str,
+             netflow_server_port: int,
+             netflow_version: str,
+             output_type: str,
+             project_name: str,
+             resource_group_id: str,
+             sls_region_id: str,
+             status: str,
+             total_sag_num: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("active_aging", active_aging)
+        _setter("description", description)
+        _setter("flow_log_id", flow_log_id)
+        _setter("flow_log_name", flow_log_name)
+        _setter("id", id)
+        _setter("inactive_aging", inactive_aging)
+        _setter("logstore_name", logstore_name)
+        _setter("netflow_server_ip", netflow_server_ip)
+        _setter("netflow_server_port", netflow_server_port)
+        _setter("netflow_version", netflow_version)
+        _setter("output_type", output_type)
+        _setter("project_name", project_name)
+        _setter("resource_group_id", resource_group_id)
+        _setter("sls_region_id", sls_region_id)
+        _setter("status", status)
+        _setter("total_sag_num", total_sag_num)
 
     @property
     @pulumi.getter(name="activeAging")

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
@@ -48,19 +48,52 @@ class GetMscSubContactsContactResult(dict):
         :param str mobile: The User's Telephone.
         :param str position: The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
         """
-        pulumi.set(__self__, "account_uid", account_uid)
-        pulumi.set(__self__, "contact_id", contact_id)
-        pulumi.set(__self__, "contact_name", contact_name)
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_account", is_account)
-        pulumi.set(__self__, "is_obsolete", is_obsolete)
-        pulumi.set(__self__, "is_verified_email", is_verified_email)
-        pulumi.set(__self__, "is_verified_mobile", is_verified_mobile)
-        pulumi.set(__self__, "last_email_verification_time_stamp", last_email_verification_time_stamp)
-        pulumi.set(__self__, "last_mobile_verification_time_stamp", last_mobile_verification_time_stamp)
-        pulumi.set(__self__, "mobile", mobile)
-        pulumi.set(__self__, "position", position)
+        GetMscSubContactsContactResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_uid=account_uid,
+            contact_id=contact_id,
+            contact_name=contact_name,
+            email=email,
+            id=id,
+            is_account=is_account,
+            is_obsolete=is_obsolete,
+            is_verified_email=is_verified_email,
+            is_verified_mobile=is_verified_mobile,
+            last_email_verification_time_stamp=last_email_verification_time_stamp,
+            last_mobile_verification_time_stamp=last_mobile_verification_time_stamp,
+            mobile=mobile,
+            position=position,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_uid: str,
+             contact_id: str,
+             contact_name: str,
+             email: str,
+             id: str,
+             is_account: bool,
+             is_obsolete: bool,
+             is_verified_email: bool,
+             is_verified_mobile: bool,
+             last_email_verification_time_stamp: str,
+             last_mobile_verification_time_stamp: str,
+             mobile: str,
+             position: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_uid", account_uid)
+        _setter("contact_id", contact_id)
+        _setter("contact_name", contact_name)
+        _setter("email", email)
+        _setter("id", id)
+        _setter("is_account", is_account)
+        _setter("is_obsolete", is_obsolete)
+        _setter("is_verified_email", is_verified_email)
+        _setter("is_verified_mobile", is_verified_mobile)
+        _setter("last_email_verification_time_stamp", last_email_verification_time_stamp)
+        _setter("last_mobile_verification_time_stamp", last_mobile_verification_time_stamp)
+        _setter("mobile", mobile)
+        _setter("position", position)
 
     @property
     @pulumi.getter(name="accountUid")
@@ -196,18 +229,49 @@ class GetMscSubSubscriptionsSubscriptionResult(dict):
         :param Sequence[int] webhook_ids: The ids of subscribed webhooks.
         :param int webhook_status: The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
         """
-        pulumi.set(__self__, "channel", channel)
-        pulumi.set(__self__, "contact_ids", contact_ids)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "email_status", email_status)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "item_id", item_id)
-        pulumi.set(__self__, "item_name", item_name)
-        pulumi.set(__self__, "pmsg_status", pmsg_status)
-        pulumi.set(__self__, "sms_status", sms_status)
-        pulumi.set(__self__, "tts_status", tts_status)
-        pulumi.set(__self__, "webhook_ids", webhook_ids)
-        pulumi.set(__self__, "webhook_status", webhook_status)
+        GetMscSubSubscriptionsSubscriptionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            channel=channel,
+            contact_ids=contact_ids,
+            description=description,
+            email_status=email_status,
+            id=id,
+            item_id=item_id,
+            item_name=item_name,
+            pmsg_status=pmsg_status,
+            sms_status=sms_status,
+            tts_status=tts_status,
+            webhook_ids=webhook_ids,
+            webhook_status=webhook_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             channel: str,
+             contact_ids: Sequence[int],
+             description: str,
+             email_status: int,
+             id: str,
+             item_id: str,
+             item_name: str,
+             pmsg_status: int,
+             sms_status: int,
+             tts_status: int,
+             webhook_ids: Sequence[int],
+             webhook_status: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("channel", channel)
+        _setter("contact_ids", contact_ids)
+        _setter("description", description)
+        _setter("email_status", email_status)
+        _setter("id", id)
+        _setter("item_id", item_id)
+        _setter("item_name", item_name)
+        _setter("pmsg_status", pmsg_status)
+        _setter("sms_status", sms_status)
+        _setter("tts_status", tts_status)
+        _setter("webhook_ids", webhook_ids)
+        _setter("webhook_status", webhook_status)
 
     @property
     @pulumi.getter
@@ -319,10 +383,25 @@ class GetMscSubWebhooksWebhookResult(dict):
         :param str webhook_id: The first ID of the resource.
         :param str webhook_name: The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "server_url", server_url)
-        pulumi.set(__self__, "webhook_id", webhook_id)
-        pulumi.set(__self__, "webhook_name", webhook_name)
+        GetMscSubWebhooksWebhookResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            server_url=server_url,
+            webhook_id=webhook_id,
+            webhook_name=webhook_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             server_url: str,
+             webhook_id: str,
+             webhook_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("server_url", server_url)
+        _setter("webhook_id", webhook_id)
+        _setter("webhook_name", webhook_name)
 
     @property
     @pulumi.getter
@@ -367,9 +446,22 @@ class GetRegionsRegionResult(dict):
         :param str id: ID of the region.
         :param str local_name: Name of the region in the local language.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_name", local_name)
-        pulumi.set(__self__, "region_id", region_id)
+        GetRegionsRegionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            local_name=local_name,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             local_name: str,
+             region_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("local_name", local_name)
+        _setter("region_id", region_id)
 
     @property
     @pulumi.getter
@@ -416,13 +508,34 @@ class GetZonesZoneResult(dict):
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         :param Sequence[str] slb_slave_zone_ids: A list of slb slave zone ids in which the slb master zone.
         """
-        pulumi.set(__self__, "available_disk_categories", available_disk_categories)
-        pulumi.set(__self__, "available_instance_types", available_instance_types)
-        pulumi.set(__self__, "available_resource_creations", available_resource_creations)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_name", local_name)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
-        pulumi.set(__self__, "slb_slave_zone_ids", slb_slave_zone_ids)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_disk_categories=available_disk_categories,
+            available_instance_types=available_instance_types,
+            available_resource_creations=available_resource_creations,
+            id=id,
+            local_name=local_name,
+            multi_zone_ids=multi_zone_ids,
+            slb_slave_zone_ids=slb_slave_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_disk_categories: Sequence[str],
+             available_instance_types: Sequence[str],
+             available_resource_creations: Sequence[str],
+             id: str,
+             local_name: str,
+             multi_zone_ids: Sequence[str],
+             slb_slave_zone_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("available_disk_categories", available_disk_categories)
+        _setter("available_instance_types", available_instance_types)
+        _setter("available_resource_creations", available_resource_creations)
+        _setter("id", id)
+        _setter("local_name", local_name)
+        _setter("multi_zone_ids", multi_zone_ids)
+        _setter("slb_slave_zone_ids", slb_slave_zone_ids)
 
     @property
     @pulumi.getter(name="availableDiskCategories")

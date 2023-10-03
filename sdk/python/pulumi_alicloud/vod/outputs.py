@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -52,11 +52,26 @@ class DomainSource(dict):
         :param str source_type: The type of the origin server. Valid values:
         :param str source_priority: The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
         """
-        pulumi.set(__self__, "source_content", source_content)
-        pulumi.set(__self__, "source_port", source_port)
-        pulumi.set(__self__, "source_type", source_type)
+        DomainSource._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_content=source_content,
+            source_port=source_port,
+            source_type=source_type,
+            source_priority=source_priority,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_content: str,
+             source_port: str,
+             source_type: str,
+             source_priority: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_content", source_content)
+        _setter("source_port", source_port)
+        _setter("source_type", source_type)
         if source_priority is not None:
-            pulumi.set(__self__, "source_priority", source_priority)
+            _setter("source_priority", source_priority)
 
     @property
     @pulumi.getter(name="sourceContent")
@@ -116,16 +131,43 @@ class GetDomainsDomainResult(dict):
         :param str ssl_protocol: Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "cname", cname)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "gmt_created", gmt_created)
-        pulumi.set(__self__, "gmt_modified", gmt_modified)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "sand_box", sand_box)
-        pulumi.set(__self__, "sources", sources)
-        pulumi.set(__self__, "ssl_protocol", ssl_protocol)
-        pulumi.set(__self__, "status", status)
+        GetDomainsDomainResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cname=cname,
+            description=description,
+            domain_name=domain_name,
+            gmt_created=gmt_created,
+            gmt_modified=gmt_modified,
+            id=id,
+            sand_box=sand_box,
+            sources=sources,
+            ssl_protocol=ssl_protocol,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cname: str,
+             description: str,
+             domain_name: str,
+             gmt_created: str,
+             gmt_modified: str,
+             id: str,
+             sand_box: str,
+             sources: Sequence['outputs.GetDomainsDomainSourceResult'],
+             ssl_protocol: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cname", cname)
+        _setter("description", description)
+        _setter("domain_name", domain_name)
+        _setter("gmt_created", gmt_created)
+        _setter("gmt_modified", gmt_modified)
+        _setter("id", id)
+        _setter("sand_box", sand_box)
+        _setter("sources", sources)
+        _setter("ssl_protocol", ssl_protocol)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -215,10 +257,25 @@ class GetDomainsDomainSourceResult(dict):
                  source_port: str,
                  source_priority: str,
                  source_type: str):
-        pulumi.set(__self__, "source_content", source_content)
-        pulumi.set(__self__, "source_port", source_port)
-        pulumi.set(__self__, "source_priority", source_priority)
-        pulumi.set(__self__, "source_type", source_type)
+        GetDomainsDomainSourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_content=source_content,
+            source_port=source_port,
+            source_priority=source_priority,
+            source_type=source_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_content: str,
+             source_port: str,
+             source_priority: str,
+             source_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_content", source_content)
+        _setter("source_port", source_port)
+        _setter("source_priority", source_priority)
+        _setter("source_type", source_type)
 
     @property
     @pulumi.getter(name="sourceContent")

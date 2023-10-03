@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,15 +35,38 @@ class MonitorConfigArgs:
         :param pulumi.Input[int] timeout: The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
         :param pulumi.Input[str] lang: The lang.
         """
-        pulumi.set(__self__, "addr_pool_id", addr_pool_id)
-        pulumi.set(__self__, "evaluation_count", evaluation_count)
-        pulumi.set(__self__, "interval", interval)
-        pulumi.set(__self__, "isp_city_nodes", isp_city_nodes)
-        pulumi.set(__self__, "monitor_extend_info", monitor_extend_info)
-        pulumi.set(__self__, "protocol_type", protocol_type)
-        pulumi.set(__self__, "timeout", timeout)
+        MonitorConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addr_pool_id=addr_pool_id,
+            evaluation_count=evaluation_count,
+            interval=interval,
+            isp_city_nodes=isp_city_nodes,
+            monitor_extend_info=monitor_extend_info,
+            protocol_type=protocol_type,
+            timeout=timeout,
+            lang=lang,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addr_pool_id: pulumi.Input[str],
+             evaluation_count: pulumi.Input[int],
+             interval: pulumi.Input[int],
+             isp_city_nodes: pulumi.Input[Sequence[pulumi.Input['MonitorConfigIspCityNodeArgs']]],
+             monitor_extend_info: pulumi.Input[str],
+             protocol_type: pulumi.Input[str],
+             timeout: pulumi.Input[int],
+             lang: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("addr_pool_id", addr_pool_id)
+        _setter("evaluation_count", evaluation_count)
+        _setter("interval", interval)
+        _setter("isp_city_nodes", isp_city_nodes)
+        _setter("monitor_extend_info", monitor_extend_info)
+        _setter("protocol_type", protocol_type)
+        _setter("timeout", timeout)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
 
     @property
     @pulumi.getter(name="addrPoolId")
@@ -164,22 +187,45 @@ class _MonitorConfigState:
         :param pulumi.Input[str] protocol_type: The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
         :param pulumi.Input[int] timeout: The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
         """
+        _MonitorConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addr_pool_id=addr_pool_id,
+            evaluation_count=evaluation_count,
+            interval=interval,
+            isp_city_nodes=isp_city_nodes,
+            lang=lang,
+            monitor_extend_info=monitor_extend_info,
+            protocol_type=protocol_type,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addr_pool_id: Optional[pulumi.Input[str]] = None,
+             evaluation_count: Optional[pulumi.Input[int]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorConfigIspCityNodeArgs']]]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             monitor_extend_info: Optional[pulumi.Input[str]] = None,
+             protocol_type: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if addr_pool_id is not None:
-            pulumi.set(__self__, "addr_pool_id", addr_pool_id)
+            _setter("addr_pool_id", addr_pool_id)
         if evaluation_count is not None:
-            pulumi.set(__self__, "evaluation_count", evaluation_count)
+            _setter("evaluation_count", evaluation_count)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if isp_city_nodes is not None:
-            pulumi.set(__self__, "isp_city_nodes", isp_city_nodes)
+            _setter("isp_city_nodes", isp_city_nodes)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if monitor_extend_info is not None:
-            pulumi.set(__self__, "monitor_extend_info", monitor_extend_info)
+            _setter("monitor_extend_info", monitor_extend_info)
         if protocol_type is not None:
-            pulumi.set(__self__, "protocol_type", protocol_type)
+            _setter("protocol_type", protocol_type)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter(name="addrPoolId")
@@ -473,6 +519,10 @@ class MonitorConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MonitorConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ConfigurationRecorderArgs', 'ConfigurationRecorder']
@@ -23,10 +23,21 @@ class ConfigurationRecorderArgs:
                * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
                * If you use an enterprise account, the `resource_types` does not support updating.
         """
+        ConfigurationRecorderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enterprise_edition=enterprise_edition,
+            resource_types=resource_types,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enterprise_edition: Optional[pulumi.Input[bool]] = None,
+             resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enterprise_edition is not None:
-            pulumi.set(__self__, "enterprise_edition", enterprise_edition)
+            _setter("enterprise_edition", enterprise_edition)
         if resource_types is not None:
-            pulumi.set(__self__, "resource_types", resource_types)
+            _setter("resource_types", resource_types)
 
     @property
     @pulumi.getter(name="enterpriseEdition")
@@ -73,16 +84,33 @@ class _ConfigurationRecorderState:
                * If you use an enterprise account, the `resource_types` does not support updating.
         :param pulumi.Input[str] status: Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
         """
+        _ConfigurationRecorderState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enterprise_edition=enterprise_edition,
+            organization_enable_status=organization_enable_status,
+            organization_master_id=organization_master_id,
+            resource_types=resource_types,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enterprise_edition: Optional[pulumi.Input[bool]] = None,
+             organization_enable_status: Optional[pulumi.Input[str]] = None,
+             organization_master_id: Optional[pulumi.Input[int]] = None,
+             resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enterprise_edition is not None:
-            pulumi.set(__self__, "enterprise_edition", enterprise_edition)
+            _setter("enterprise_edition", enterprise_edition)
         if organization_enable_status is not None:
-            pulumi.set(__self__, "organization_enable_status", organization_enable_status)
+            _setter("organization_enable_status", organization_enable_status)
         if organization_master_id is not None:
-            pulumi.set(__self__, "organization_master_id", organization_master_id)
+            _setter("organization_master_id", organization_master_id)
         if resource_types is not None:
-            pulumi.set(__self__, "resource_types", resource_types)
+            _setter("resource_types", resource_types)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="enterpriseEdition")
@@ -234,6 +262,10 @@ class ConfigurationRecorder(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConfigurationRecorderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

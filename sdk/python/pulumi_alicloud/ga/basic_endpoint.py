@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BasicEndpointArgs', 'BasicEndpoint']
@@ -33,18 +33,41 @@ class BasicEndpointArgs:
         :param pulumi.Input[str] endpoint_sub_address_type: The sub address type of the Basic Endpoint. Valid values: `primary`, `secondary`.
         :param pulumi.Input[str] endpoint_zone_id: The zone id of the Basic Endpoint.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "endpoint_address", endpoint_address)
-        pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
-        pulumi.set(__self__, "endpoint_type", endpoint_type)
+        BasicEndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            endpoint_address=endpoint_address,
+            endpoint_group_id=endpoint_group_id,
+            endpoint_type=endpoint_type,
+            basic_endpoint_name=basic_endpoint_name,
+            endpoint_sub_address=endpoint_sub_address,
+            endpoint_sub_address_type=endpoint_sub_address_type,
+            endpoint_zone_id=endpoint_zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: pulumi.Input[str],
+             endpoint_address: pulumi.Input[str],
+             endpoint_group_id: pulumi.Input[str],
+             endpoint_type: pulumi.Input[str],
+             basic_endpoint_name: Optional[pulumi.Input[str]] = None,
+             endpoint_sub_address: Optional[pulumi.Input[str]] = None,
+             endpoint_sub_address_type: Optional[pulumi.Input[str]] = None,
+             endpoint_zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("endpoint_address", endpoint_address)
+        _setter("endpoint_group_id", endpoint_group_id)
+        _setter("endpoint_type", endpoint_type)
         if basic_endpoint_name is not None:
-            pulumi.set(__self__, "basic_endpoint_name", basic_endpoint_name)
+            _setter("basic_endpoint_name", basic_endpoint_name)
         if endpoint_sub_address is not None:
-            pulumi.set(__self__, "endpoint_sub_address", endpoint_sub_address)
+            _setter("endpoint_sub_address", endpoint_sub_address)
         if endpoint_sub_address_type is not None:
-            pulumi.set(__self__, "endpoint_sub_address_type", endpoint_sub_address_type)
+            _setter("endpoint_sub_address_type", endpoint_sub_address_type)
         if endpoint_zone_id is not None:
-            pulumi.set(__self__, "endpoint_zone_id", endpoint_zone_id)
+            _setter("endpoint_zone_id", endpoint_zone_id)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -169,26 +192,53 @@ class _BasicEndpointState:
         :param pulumi.Input[str] endpoint_zone_id: The zone id of the Basic Endpoint.
         :param pulumi.Input[str] status: The status of the Basic Endpoint.
         """
+        _BasicEndpointState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            basic_endpoint_name=basic_endpoint_name,
+            endpoint_address=endpoint_address,
+            endpoint_group_id=endpoint_group_id,
+            endpoint_id=endpoint_id,
+            endpoint_sub_address=endpoint_sub_address,
+            endpoint_sub_address_type=endpoint_sub_address_type,
+            endpoint_type=endpoint_type,
+            endpoint_zone_id=endpoint_zone_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             basic_endpoint_name: Optional[pulumi.Input[str]] = None,
+             endpoint_address: Optional[pulumi.Input[str]] = None,
+             endpoint_group_id: Optional[pulumi.Input[str]] = None,
+             endpoint_id: Optional[pulumi.Input[str]] = None,
+             endpoint_sub_address: Optional[pulumi.Input[str]] = None,
+             endpoint_sub_address_type: Optional[pulumi.Input[str]] = None,
+             endpoint_type: Optional[pulumi.Input[str]] = None,
+             endpoint_zone_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if accelerator_id is not None:
-            pulumi.set(__self__, "accelerator_id", accelerator_id)
+            _setter("accelerator_id", accelerator_id)
         if basic_endpoint_name is not None:
-            pulumi.set(__self__, "basic_endpoint_name", basic_endpoint_name)
+            _setter("basic_endpoint_name", basic_endpoint_name)
         if endpoint_address is not None:
-            pulumi.set(__self__, "endpoint_address", endpoint_address)
+            _setter("endpoint_address", endpoint_address)
         if endpoint_group_id is not None:
-            pulumi.set(__self__, "endpoint_group_id", endpoint_group_id)
+            _setter("endpoint_group_id", endpoint_group_id)
         if endpoint_id is not None:
-            pulumi.set(__self__, "endpoint_id", endpoint_id)
+            _setter("endpoint_id", endpoint_id)
         if endpoint_sub_address is not None:
-            pulumi.set(__self__, "endpoint_sub_address", endpoint_sub_address)
+            _setter("endpoint_sub_address", endpoint_sub_address)
         if endpoint_sub_address_type is not None:
-            pulumi.set(__self__, "endpoint_sub_address_type", endpoint_sub_address_type)
+            _setter("endpoint_sub_address_type", endpoint_sub_address_type)
         if endpoint_type is not None:
-            pulumi.set(__self__, "endpoint_type", endpoint_type)
+            _setter("endpoint_type", endpoint_type)
         if endpoint_zone_id is not None:
-            pulumi.set(__self__, "endpoint_zone_id", endpoint_zone_id)
+            _setter("endpoint_zone_id", endpoint_zone_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -496,6 +546,10 @@ class BasicEndpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BasicEndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

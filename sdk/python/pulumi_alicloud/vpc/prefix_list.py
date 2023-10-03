@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,20 +33,41 @@ class PrefixListArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the PrefixList belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
         """
+        PrefixListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entrys=entrys,
+            ip_version=ip_version,
+            max_entries=max_entries,
+            prefix_list_description=prefix_list_description,
+            prefix_list_name=prefix_list_name,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entrys: Optional[pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             max_entries: Optional[pulumi.Input[int]] = None,
+             prefix_list_description: Optional[pulumi.Input[str]] = None,
+             prefix_list_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if entrys is not None:
-            pulumi.set(__self__, "entrys", entrys)
+            _setter("entrys", entrys)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if max_entries is not None:
-            pulumi.set(__self__, "max_entries", max_entries)
+            _setter("max_entries", max_entries)
         if prefix_list_description is not None:
-            pulumi.set(__self__, "prefix_list_description", prefix_list_description)
+            _setter("prefix_list_description", prefix_list_description)
         if prefix_list_name is not None:
-            pulumi.set(__self__, "prefix_list_name", prefix_list_name)
+            _setter("prefix_list_name", prefix_list_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -163,30 +184,61 @@ class _PrefixListState:
         :param pulumi.Input[str] status: Resource attribute fields that represent the status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
         """
+        _PrefixListState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            entrys=entrys,
+            ip_version=ip_version,
+            max_entries=max_entries,
+            prefix_list_associations=prefix_list_associations,
+            prefix_list_description=prefix_list_description,
+            prefix_list_id=prefix_list_id,
+            prefix_list_name=prefix_list_name,
+            resource_group_id=resource_group_id,
+            share_type=share_type,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             entrys: Optional[pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             max_entries: Optional[pulumi.Input[int]] = None,
+             prefix_list_associations: Optional[pulumi.Input[Sequence[pulumi.Input['PrefixListPrefixListAssociationArgs']]]] = None,
+             prefix_list_description: Optional[pulumi.Input[str]] = None,
+             prefix_list_id: Optional[pulumi.Input[str]] = None,
+             prefix_list_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             share_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if entrys is not None:
-            pulumi.set(__self__, "entrys", entrys)
+            _setter("entrys", entrys)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if max_entries is not None:
-            pulumi.set(__self__, "max_entries", max_entries)
+            _setter("max_entries", max_entries)
         if prefix_list_associations is not None:
-            pulumi.set(__self__, "prefix_list_associations", prefix_list_associations)
+            _setter("prefix_list_associations", prefix_list_associations)
         if prefix_list_description is not None:
-            pulumi.set(__self__, "prefix_list_description", prefix_list_description)
+            _setter("prefix_list_description", prefix_list_description)
         if prefix_list_id is not None:
-            pulumi.set(__self__, "prefix_list_id", prefix_list_id)
+            _setter("prefix_list_id", prefix_list_id)
         if prefix_list_name is not None:
-            pulumi.set(__self__, "prefix_list_name", prefix_list_name)
+            _setter("prefix_list_name", prefix_list_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if share_type is not None:
-            pulumi.set(__self__, "share_type", share_type)
+            _setter("share_type", share_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="createTime")
@@ -462,6 +514,10 @@ class PrefixList(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PrefixListArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

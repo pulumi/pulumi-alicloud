@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -34,18 +34,37 @@ class ClusterBootstrapActionArgs:
         :param pulumi.Input[str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param pulumi.Input[str] path: bootstrap action path, e.g. "oss://bucket/path".
         """
+        ClusterBootstrapActionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arg=arg,
+            execution_fail_strategy=execution_fail_strategy,
+            execution_moment=execution_moment,
+            execution_target=execution_target,
+            name=name,
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arg: Optional[pulumi.Input[str]] = None,
+             execution_fail_strategy: Optional[pulumi.Input[str]] = None,
+             execution_moment: Optional[pulumi.Input[str]] = None,
+             execution_target: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arg is not None:
-            pulumi.set(__self__, "arg", arg)
+            _setter("arg", arg)
         if execution_fail_strategy is not None:
-            pulumi.set(__self__, "execution_fail_strategy", execution_fail_strategy)
+            _setter("execution_fail_strategy", execution_fail_strategy)
         if execution_moment is not None:
-            pulumi.set(__self__, "execution_moment", execution_moment)
+            _setter("execution_moment", execution_moment)
         if execution_target is not None:
-            pulumi.set(__self__, "execution_target", execution_target)
+            _setter("execution_target", execution_target)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
 
     @property
     @pulumi.getter
@@ -133,10 +152,25 @@ class ClusterConfigArgs:
         :param pulumi.Input[str] file_name: Custom configuration service file name, e.g. ’hdfs-site’.
         :param pulumi.Input[str] service_name: Custom configuration service name, e.g. ’HDFS’.
         """
-        pulumi.set(__self__, "config_key", config_key)
-        pulumi.set(__self__, "config_value", config_value)
-        pulumi.set(__self__, "file_name", file_name)
-        pulumi.set(__self__, "service_name", service_name)
+        ClusterConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_key=config_key,
+            config_value=config_value,
+            file_name=file_name,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_key: pulumi.Input[str],
+             config_value: pulumi.Input[str],
+             file_name: pulumi.Input[str],
+             service_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config_key", config_key)
+        _setter("config_value", config_value)
+        _setter("file_name", file_name)
+        _setter("service_name", service_name)
 
     @property
     @pulumi.getter(name="configKey")
@@ -223,38 +257,77 @@ class ClusterHostGroupArgs:
         :param pulumi.Input[str] sys_disk_capacity: System disk capacity.
         :param pulumi.Input[str] sys_disk_type: System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
         """
+        ClusterHostGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            charge_type=charge_type,
+            decommission_timeout=decommission_timeout,
+            disk_capacity=disk_capacity,
+            disk_count=disk_count,
+            disk_type=disk_type,
+            enable_graceful_decommission=enable_graceful_decommission,
+            gpu_driver=gpu_driver,
+            host_group_name=host_group_name,
+            host_group_type=host_group_type,
+            instance_list=instance_list,
+            instance_type=instance_type,
+            node_count=node_count,
+            period=period,
+            sys_disk_capacity=sys_disk_capacity,
+            sys_disk_type=sys_disk_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             charge_type: Optional[pulumi.Input[str]] = None,
+             decommission_timeout: Optional[pulumi.Input[int]] = None,
+             disk_capacity: Optional[pulumi.Input[str]] = None,
+             disk_count: Optional[pulumi.Input[str]] = None,
+             disk_type: Optional[pulumi.Input[str]] = None,
+             enable_graceful_decommission: Optional[pulumi.Input[bool]] = None,
+             gpu_driver: Optional[pulumi.Input[str]] = None,
+             host_group_name: Optional[pulumi.Input[str]] = None,
+             host_group_type: Optional[pulumi.Input[str]] = None,
+             instance_list: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             node_count: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             sys_disk_capacity: Optional[pulumi.Input[str]] = None,
+             sys_disk_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if charge_type is not None:
-            pulumi.set(__self__, "charge_type", charge_type)
+            _setter("charge_type", charge_type)
         if decommission_timeout is not None:
-            pulumi.set(__self__, "decommission_timeout", decommission_timeout)
+            _setter("decommission_timeout", decommission_timeout)
         if disk_capacity is not None:
-            pulumi.set(__self__, "disk_capacity", disk_capacity)
+            _setter("disk_capacity", disk_capacity)
         if disk_count is not None:
-            pulumi.set(__self__, "disk_count", disk_count)
+            _setter("disk_count", disk_count)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if enable_graceful_decommission is not None:
-            pulumi.set(__self__, "enable_graceful_decommission", enable_graceful_decommission)
+            _setter("enable_graceful_decommission", enable_graceful_decommission)
         if gpu_driver is not None:
-            pulumi.set(__self__, "gpu_driver", gpu_driver)
+            _setter("gpu_driver", gpu_driver)
         if host_group_name is not None:
-            pulumi.set(__self__, "host_group_name", host_group_name)
+            _setter("host_group_name", host_group_name)
         if host_group_type is not None:
-            pulumi.set(__self__, "host_group_type", host_group_type)
+            _setter("host_group_type", host_group_type)
         if instance_list is not None:
-            pulumi.set(__self__, "instance_list", instance_list)
+            _setter("instance_list", instance_list)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
+            _setter("node_count", node_count)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if sys_disk_capacity is not None:
-            pulumi.set(__self__, "sys_disk_capacity", sys_disk_capacity)
+            _setter("sys_disk_capacity", sys_disk_capacity)
         if sys_disk_type is not None:
-            pulumi.set(__self__, "sys_disk_type", sys_disk_type)
+            _setter("sys_disk_type", sys_disk_type)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -457,9 +530,22 @@ class ClusterMetaStoreConfArgs:
         :param pulumi.Input[str] db_url: Custom rds database connection url.
         :param pulumi.Input[str] db_user_name: Custom rds database user name.
         """
-        pulumi.set(__self__, "db_password", db_password)
-        pulumi.set(__self__, "db_url", db_url)
-        pulumi.set(__self__, "db_user_name", db_user_name)
+        ClusterMetaStoreConfArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_password=db_password,
+            db_url=db_url,
+            db_user_name=db_user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_password: pulumi.Input[str],
+             db_url: pulumi.Input[str],
+             db_user_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_password", db_password)
+        _setter("db_url", db_url)
+        _setter("db_user_name", db_user_name)
 
     @property
     @pulumi.getter(name="dbPassword")
@@ -521,22 +607,47 @@ class ClusterModifyClusterServiceConfigArgs:
         :param pulumi.Input[str] host_instance_id: Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
         :param pulumi.Input[bool] refresh_host_config: Cluster service configuration modification refresh host config, ’true’ or ’false’.
         """
-        pulumi.set(__self__, "config_params", config_params)
-        pulumi.set(__self__, "service_name", service_name)
+        ClusterModifyClusterServiceConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_params=config_params,
+            service_name=service_name,
+            comment=comment,
+            config_type=config_type,
+            custom_config_params=custom_config_params,
+            gateway_cluster_id_lists=gateway_cluster_id_lists,
+            group_id=group_id,
+            host_instance_id=host_instance_id,
+            refresh_host_config=refresh_host_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_params: pulumi.Input[str],
+             service_name: pulumi.Input[str],
+             comment: Optional[pulumi.Input[str]] = None,
+             config_type: Optional[pulumi.Input[str]] = None,
+             custom_config_params: Optional[pulumi.Input[str]] = None,
+             gateway_cluster_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             host_instance_id: Optional[pulumi.Input[str]] = None,
+             refresh_host_config: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config_params", config_params)
+        _setter("service_name", service_name)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if config_type is not None:
-            pulumi.set(__self__, "config_type", config_type)
+            _setter("config_type", config_type)
         if custom_config_params is not None:
-            pulumi.set(__self__, "custom_config_params", custom_config_params)
+            _setter("custom_config_params", custom_config_params)
         if gateway_cluster_id_lists is not None:
-            pulumi.set(__self__, "gateway_cluster_id_lists", gateway_cluster_id_lists)
+            _setter("gateway_cluster_id_lists", gateway_cluster_id_lists)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if host_instance_id is not None:
-            pulumi.set(__self__, "host_instance_id", host_instance_id)
+            _setter("host_instance_id", host_instance_id)
         if refresh_host_config is not None:
-            pulumi.set(__self__, "refresh_host_config", refresh_host_config)
+            _setter("refresh_host_config", refresh_host_config)
 
     @property
     @pulumi.getter(name="configParams")

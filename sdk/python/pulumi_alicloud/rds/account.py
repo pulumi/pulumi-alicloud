@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccountArgs', 'Account']
@@ -41,47 +41,80 @@ class AccountArgs:
                
                Default to Normal.
         """
+        AccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_description=account_description,
+            account_name=account_name,
+            account_password=account_password,
+            account_type=account_type,
+            db_instance_id=db_instance_id,
+            description=description,
+            instance_id=instance_id,
+            kms_encrypted_password=kms_encrypted_password,
+            kms_encryption_context=kms_encryption_context,
+            name=name,
+            password=password,
+            reset_permission_flag=reset_permission_flag,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_description: Optional[pulumi.Input[str]] = None,
+             account_name: Optional[pulumi.Input[str]] = None,
+             account_password: Optional[pulumi.Input[str]] = None,
+             account_type: Optional[pulumi.Input[str]] = None,
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             reset_permission_flag: Optional[pulumi.Input[bool]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_description is not None:
-            pulumi.set(__self__, "account_description", account_description)
+            _setter("account_description", account_description)
         if account_name is not None:
-            pulumi.set(__self__, "account_name", account_name)
+            _setter("account_name", account_name)
         if account_password is not None:
-            pulumi.set(__self__, "account_password", account_password)
+            _setter("account_password", account_password)
         if account_type is not None:
-            pulumi.set(__self__, "account_type", account_type)
+            _setter("account_type", account_type)
         if db_instance_id is not None:
-            pulumi.set(__self__, "db_instance_id", db_instance_id)
+            _setter("db_instance_id", db_instance_id)
         if description is not None:
             warnings.warn("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""", DeprecationWarning)
             pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if instance_id is not None:
             warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if kms_encrypted_password is not None:
-            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+            _setter("kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+            _setter("kms_encryption_context", kms_encryption_context)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
             warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
             pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if reset_permission_flag is not None:
-            pulumi.set(__self__, "reset_permission_flag", reset_permission_flag)
+            _setter("reset_permission_flag", reset_permission_flag)
         if type is not None:
             warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="accountDescription")
@@ -272,49 +305,84 @@ class _AccountState:
                
                Default to Normal.
         """
+        _AccountState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_description=account_description,
+            account_name=account_name,
+            account_password=account_password,
+            account_type=account_type,
+            db_instance_id=db_instance_id,
+            description=description,
+            instance_id=instance_id,
+            kms_encrypted_password=kms_encrypted_password,
+            kms_encryption_context=kms_encryption_context,
+            name=name,
+            password=password,
+            reset_permission_flag=reset_permission_flag,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_description: Optional[pulumi.Input[str]] = None,
+             account_name: Optional[pulumi.Input[str]] = None,
+             account_password: Optional[pulumi.Input[str]] = None,
+             account_type: Optional[pulumi.Input[str]] = None,
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             reset_permission_flag: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_description is not None:
-            pulumi.set(__self__, "account_description", account_description)
+            _setter("account_description", account_description)
         if account_name is not None:
-            pulumi.set(__self__, "account_name", account_name)
+            _setter("account_name", account_name)
         if account_password is not None:
-            pulumi.set(__self__, "account_password", account_password)
+            _setter("account_password", account_password)
         if account_type is not None:
-            pulumi.set(__self__, "account_type", account_type)
+            _setter("account_type", account_type)
         if db_instance_id is not None:
-            pulumi.set(__self__, "db_instance_id", db_instance_id)
+            _setter("db_instance_id", db_instance_id)
         if description is not None:
             warnings.warn("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""", DeprecationWarning)
             pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if instance_id is not None:
             warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if kms_encrypted_password is not None:
-            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+            _setter("kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+            _setter("kms_encryption_context", kms_encryption_context)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if password is not None:
             warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
             pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if reset_permission_flag is not None:
-            pulumi.set(__self__, "reset_permission_flag", reset_permission_flag)
+            _setter("reset_permission_flag", reset_permission_flag)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if type is not None:
             warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
             pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="accountDescription")
@@ -626,6 +694,10 @@ class Account(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -658,28 +730,13 @@ class Account(pulumi.CustomResource):
             __props__.__dict__["account_password"] = None if account_password is None else pulumi.Output.secret(account_password)
             __props__.__dict__["account_type"] = account_type
             __props__.__dict__["db_instance_id"] = db_instance_id
-            if description is not None and not opts.urn:
-                warnings.warn("""Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""", DeprecationWarning)
-                pulumi.log.warn("""description is deprecated: Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.""")
             __props__.__dict__["description"] = description
-            if instance_id is not None and not opts.urn:
-                warnings.warn("""Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""", DeprecationWarning)
-                pulumi.log.warn("""instance_id is deprecated: Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.""")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
-            if name is not None and not opts.urn:
-                warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.""")
             __props__.__dict__["name"] = name
-            if password is not None and not opts.urn:
-                warnings.warn("""Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""", DeprecationWarning)
-                pulumi.log.warn("""password is deprecated: Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.""")
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["reset_permission_flag"] = reset_permission_flag
-            if type is not None and not opts.urn:
-                warnings.warn("""Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""", DeprecationWarning)
-                pulumi.log.warn("""type is deprecated: Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.""")
             __props__.__dict__["type"] = type
             __props__.__dict__["status"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accountPassword", "password"])

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LayerVersionArgs', 'LayerVersion']
@@ -33,18 +33,39 @@ class LayerVersionArgs:
                
                > **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         """
-        pulumi.set(__self__, "compatible_runtimes", compatible_runtimes)
-        pulumi.set(__self__, "layer_name", layer_name)
+        LayerVersionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compatible_runtimes=compatible_runtimes,
+            layer_name=layer_name,
+            description=description,
+            oss_bucket_name=oss_bucket_name,
+            oss_object_name=oss_object_name,
+            skip_destroy=skip_destroy,
+            zip_file=zip_file,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compatible_runtimes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             layer_name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             oss_bucket_name: Optional[pulumi.Input[str]] = None,
+             oss_object_name: Optional[pulumi.Input[str]] = None,
+             skip_destroy: Optional[pulumi.Input[bool]] = None,
+             zip_file: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compatible_runtimes", compatible_runtimes)
+        _setter("layer_name", layer_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if oss_bucket_name is not None:
-            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+            _setter("oss_bucket_name", oss_bucket_name)
         if oss_object_name is not None:
-            pulumi.set(__self__, "oss_object_name", oss_object_name)
+            _setter("oss_object_name", oss_object_name)
         if skip_destroy is not None:
-            pulumi.set(__self__, "skip_destroy", skip_destroy)
+            _setter("skip_destroy", skip_destroy)
         if zip_file is not None:
-            pulumi.set(__self__, "zip_file", zip_file)
+            _setter("zip_file", zip_file)
 
     @property
     @pulumi.getter(name="compatibleRuntimes")
@@ -163,28 +184,57 @@ class _LayerVersionState:
                
                > **NOTE:** `zip_file` and `oss_bucket_name`, `oss_object_name` cannot be used together.
         """
+        _LayerVersionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl=acl,
+            arn=arn,
+            code_check_sum=code_check_sum,
+            compatible_runtimes=compatible_runtimes,
+            description=description,
+            layer_name=layer_name,
+            oss_bucket_name=oss_bucket_name,
+            oss_object_name=oss_object_name,
+            skip_destroy=skip_destroy,
+            version=version,
+            zip_file=zip_file,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl: Optional[pulumi.Input[str]] = None,
+             arn: Optional[pulumi.Input[str]] = None,
+             code_check_sum: Optional[pulumi.Input[str]] = None,
+             compatible_runtimes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             layer_name: Optional[pulumi.Input[str]] = None,
+             oss_bucket_name: Optional[pulumi.Input[str]] = None,
+             oss_object_name: Optional[pulumi.Input[str]] = None,
+             skip_destroy: Optional[pulumi.Input[bool]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             zip_file: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acl is not None:
-            pulumi.set(__self__, "acl", acl)
+            _setter("acl", acl)
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if code_check_sum is not None:
-            pulumi.set(__self__, "code_check_sum", code_check_sum)
+            _setter("code_check_sum", code_check_sum)
         if compatible_runtimes is not None:
-            pulumi.set(__self__, "compatible_runtimes", compatible_runtimes)
+            _setter("compatible_runtimes", compatible_runtimes)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if layer_name is not None:
-            pulumi.set(__self__, "layer_name", layer_name)
+            _setter("layer_name", layer_name)
         if oss_bucket_name is not None:
-            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+            _setter("oss_bucket_name", oss_bucket_name)
         if oss_object_name is not None:
-            pulumi.set(__self__, "oss_object_name", oss_object_name)
+            _setter("oss_object_name", oss_object_name)
         if skip_destroy is not None:
-            pulumi.set(__self__, "skip_destroy", skip_destroy)
+            _setter("skip_destroy", skip_destroy)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if zip_file is not None:
-            pulumi.set(__self__, "zip_file", zip_file)
+            _setter("zip_file", zip_file)
 
     @property
     @pulumi.getter
@@ -438,6 +488,10 @@ class LayerVersion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LayerVersionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

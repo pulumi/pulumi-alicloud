@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BasicAccelerateIpArgs', 'BasicAccelerateIp']
@@ -21,8 +21,19 @@ class BasicAccelerateIpArgs:
         :param pulumi.Input[str] accelerator_id: The ID of the Basic GA instance.
         :param pulumi.Input[str] ip_set_id: The ID of the Basic Ip Set.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "ip_set_id", ip_set_id)
+        BasicAccelerateIpArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            ip_set_id=ip_set_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: pulumi.Input[str],
+             ip_set_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("ip_set_id", ip_set_id)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -63,14 +74,29 @@ class _BasicAccelerateIpState:
         :param pulumi.Input[str] ip_set_id: The ID of the Basic Ip Set.
         :param pulumi.Input[str] status: The status of the Basic Accelerate IP instance.
         """
+        _BasicAccelerateIpState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerate_ip_address=accelerate_ip_address,
+            accelerator_id=accelerator_id,
+            ip_set_id=ip_set_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerate_ip_address: Optional[pulumi.Input[str]] = None,
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             ip_set_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if accelerate_ip_address is not None:
-            pulumi.set(__self__, "accelerate_ip_address", accelerate_ip_address)
+            _setter("accelerate_ip_address", accelerate_ip_address)
         if accelerator_id is not None:
-            pulumi.set(__self__, "accelerator_id", accelerator_id)
+            _setter("accelerator_id", accelerator_id)
         if ip_set_id is not None:
-            pulumi.set(__self__, "ip_set_id", ip_set_id)
+            _setter("ip_set_id", ip_set_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accelerateIpAddress")
@@ -238,6 +264,10 @@ class BasicAccelerateIp(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BasicAccelerateIpArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

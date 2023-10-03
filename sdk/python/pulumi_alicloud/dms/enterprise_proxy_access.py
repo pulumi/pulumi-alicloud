@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EnterpriseProxyAccessArgs', 'EnterpriseProxyAccess']
@@ -27,14 +27,31 @@ class EnterpriseProxyAccessArgs:
         :param pulumi.Input[str] indep_password: Database password.
         :param pulumi.Input[str] proxy_access_id: Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
         """
-        pulumi.set(__self__, "proxy_id", proxy_id)
-        pulumi.set(__self__, "user_id", user_id)
+        EnterpriseProxyAccessArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            proxy_id=proxy_id,
+            user_id=user_id,
+            indep_account=indep_account,
+            indep_password=indep_password,
+            proxy_access_id=proxy_access_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             proxy_id: pulumi.Input[str],
+             user_id: pulumi.Input[str],
+             indep_account: Optional[pulumi.Input[str]] = None,
+             indep_password: Optional[pulumi.Input[str]] = None,
+             proxy_access_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("proxy_id", proxy_id)
+        _setter("user_id", user_id)
         if indep_account is not None:
-            pulumi.set(__self__, "indep_account", indep_account)
+            _setter("indep_account", indep_account)
         if indep_password is not None:
-            pulumi.set(__self__, "indep_password", indep_password)
+            _setter("indep_password", indep_password)
         if proxy_access_id is not None:
-            pulumi.set(__self__, "proxy_access_id", proxy_access_id)
+            _setter("proxy_access_id", proxy_access_id)
 
     @property
     @pulumi.getter(name="proxyId")
@@ -128,30 +145,61 @@ class _EnterpriseProxyAccessState:
         :param pulumi.Input[str] user_name: User nickname.
         :param pulumi.Input[str] user_uid: User UID.
         """
+        _EnterpriseProxyAccessState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_id=access_id,
+            access_secret=access_secret,
+            create_time=create_time,
+            indep_account=indep_account,
+            indep_password=indep_password,
+            instance_id=instance_id,
+            origin_info=origin_info,
+            proxy_access_id=proxy_access_id,
+            proxy_id=proxy_id,
+            user_id=user_id,
+            user_name=user_name,
+            user_uid=user_uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_id: Optional[pulumi.Input[str]] = None,
+             access_secret: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             indep_account: Optional[pulumi.Input[str]] = None,
+             indep_password: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             origin_info: Optional[pulumi.Input[str]] = None,
+             proxy_access_id: Optional[pulumi.Input[str]] = None,
+             proxy_id: Optional[pulumi.Input[str]] = None,
+             user_id: Optional[pulumi.Input[str]] = None,
+             user_name: Optional[pulumi.Input[str]] = None,
+             user_uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_id is not None:
-            pulumi.set(__self__, "access_id", access_id)
+            _setter("access_id", access_id)
         if access_secret is not None:
-            pulumi.set(__self__, "access_secret", access_secret)
+            _setter("access_secret", access_secret)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if indep_account is not None:
-            pulumi.set(__self__, "indep_account", indep_account)
+            _setter("indep_account", indep_account)
         if indep_password is not None:
-            pulumi.set(__self__, "indep_password", indep_password)
+            _setter("indep_password", indep_password)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if origin_info is not None:
-            pulumi.set(__self__, "origin_info", origin_info)
+            _setter("origin_info", origin_info)
         if proxy_access_id is not None:
-            pulumi.set(__self__, "proxy_access_id", proxy_access_id)
+            _setter("proxy_access_id", proxy_access_id)
         if proxy_id is not None:
-            pulumi.set(__self__, "proxy_id", proxy_id)
+            _setter("proxy_id", proxy_id)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
         if user_name is not None:
-            pulumi.set(__self__, "user_name", user_name)
+            _setter("user_name", user_name)
         if user_uid is not None:
-            pulumi.set(__self__, "user_uid", user_uid)
+            _setter("user_uid", user_uid)
 
     @property
     @pulumi.getter(name="accessId")
@@ -392,6 +440,10 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EnterpriseProxyAccessArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -27,13 +27,30 @@ class InstanceArgs:
         :param pulumi.Input[bool] force: Whether to force deletion when the instance status does not meet the deletion conditions. Valid values: `true` and `false`.
         :param pulumi.Input[str] instance_name: The name of the instance.
         """
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_type=instance_type,
+            security_group_id=security_group_id,
+            vswitch_id=vswitch_id,
+            force=force,
+            instance_name=instance_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_type: pulumi.Input[str],
+             security_group_id: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             force: Optional[pulumi.Input[bool]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_type", instance_type)
+        _setter("security_group_id", security_group_id)
+        _setter("vswitch_id", vswitch_id)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -114,18 +131,37 @@ class _InstanceState:
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
         :param pulumi.Input[str] vswitch_id: The ID of the vswitch.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            force=force,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            security_group_id=security_group_id,
+            status=status,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             force: Optional[pulumi.Input[bool]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -325,6 +361,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -83,49 +83,142 @@ class GetClustersClusterResult(dict):
         :param str vpc_id: ID of the VPC the cluster belongs to.
         :param str zone_id: The ZoneId of the ADB cluster.
         """
-        pulumi.set(__self__, "auto_renew_period", auto_renew_period)
-        pulumi.set(__self__, "charge_type", charge_type)
-        pulumi.set(__self__, "commodity_code", commodity_code)
-        pulumi.set(__self__, "compute_resource", compute_resource)
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_cluster_category", db_cluster_category)
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "db_cluster_network_type", db_cluster_network_type)
-        pulumi.set(__self__, "db_cluster_type", db_cluster_type)
-        pulumi.set(__self__, "db_cluster_version", db_cluster_version)
-        pulumi.set(__self__, "db_node_class", db_node_class)
-        pulumi.set(__self__, "db_node_count", db_node_count)
-        pulumi.set(__self__, "db_node_storage", db_node_storage)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "disk_type", disk_type)
-        pulumi.set(__self__, "dts_job_id", dts_job_id)
-        pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "executor_count", executor_count)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "expired", expired)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "lock_reason", lock_reason)
-        pulumi.set(__self__, "maintain_time", maintain_time)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "rds_instance_id", rds_instance_id)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "renewal_status", renewal_status)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "security_ips", security_ips)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_resource", storage_resource)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_cloud_instance_id", vpc_cloud_instance_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew_period=auto_renew_period,
+            charge_type=charge_type,
+            commodity_code=commodity_code,
+            compute_resource=compute_resource,
+            connection_string=connection_string,
+            create_time=create_time,
+            db_cluster_category=db_cluster_category,
+            db_cluster_id=db_cluster_id,
+            db_cluster_network_type=db_cluster_network_type,
+            db_cluster_type=db_cluster_type,
+            db_cluster_version=db_cluster_version,
+            db_node_class=db_node_class,
+            db_node_count=db_node_count,
+            db_node_storage=db_node_storage,
+            description=description,
+            disk_type=disk_type,
+            dts_job_id=dts_job_id,
+            elastic_io_resource=elastic_io_resource,
+            engine=engine,
+            engine_version=engine_version,
+            executor_count=executor_count,
+            expire_time=expire_time,
+            expired=expired,
+            id=id,
+            lock_mode=lock_mode,
+            lock_reason=lock_reason,
+            maintain_time=maintain_time,
+            mode=mode,
+            network_type=network_type,
+            payment_type=payment_type,
+            port=port,
+            rds_instance_id=rds_instance_id,
+            region_id=region_id,
+            renewal_status=renewal_status,
+            resource_group_id=resource_group_id,
+            security_ips=security_ips,
+            status=status,
+            storage_resource=storage_resource,
+            tags=tags,
+            vpc_cloud_instance_id=vpc_cloud_instance_id,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew_period: int,
+             charge_type: str,
+             commodity_code: str,
+             compute_resource: str,
+             connection_string: str,
+             create_time: str,
+             db_cluster_category: str,
+             db_cluster_id: str,
+             db_cluster_network_type: str,
+             db_cluster_type: str,
+             db_cluster_version: str,
+             db_node_class: str,
+             db_node_count: int,
+             db_node_storage: int,
+             description: str,
+             disk_type: str,
+             dts_job_id: str,
+             elastic_io_resource: int,
+             engine: str,
+             engine_version: str,
+             executor_count: str,
+             expire_time: str,
+             expired: str,
+             id: str,
+             lock_mode: str,
+             lock_reason: str,
+             maintain_time: str,
+             mode: str,
+             network_type: str,
+             payment_type: str,
+             port: int,
+             rds_instance_id: str,
+             region_id: str,
+             renewal_status: str,
+             resource_group_id: str,
+             security_ips: Sequence[str],
+             status: str,
+             storage_resource: str,
+             tags: Mapping[str, Any],
+             vpc_cloud_instance_id: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_renew_period", auto_renew_period)
+        _setter("charge_type", charge_type)
+        _setter("commodity_code", commodity_code)
+        _setter("compute_resource", compute_resource)
+        _setter("connection_string", connection_string)
+        _setter("create_time", create_time)
+        _setter("db_cluster_category", db_cluster_category)
+        _setter("db_cluster_id", db_cluster_id)
+        _setter("db_cluster_network_type", db_cluster_network_type)
+        _setter("db_cluster_type", db_cluster_type)
+        _setter("db_cluster_version", db_cluster_version)
+        _setter("db_node_class", db_node_class)
+        _setter("db_node_count", db_node_count)
+        _setter("db_node_storage", db_node_storage)
+        _setter("description", description)
+        _setter("disk_type", disk_type)
+        _setter("dts_job_id", dts_job_id)
+        _setter("elastic_io_resource", elastic_io_resource)
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("executor_count", executor_count)
+        _setter("expire_time", expire_time)
+        _setter("expired", expired)
+        _setter("id", id)
+        _setter("lock_mode", lock_mode)
+        _setter("lock_reason", lock_reason)
+        _setter("maintain_time", maintain_time)
+        _setter("mode", mode)
+        _setter("network_type", network_type)
+        _setter("payment_type", payment_type)
+        _setter("port", port)
+        _setter("rds_instance_id", rds_instance_id)
+        _setter("region_id", region_id)
+        _setter("renewal_status", renewal_status)
+        _setter("resource_group_id", resource_group_id)
+        _setter("security_ips", security_ips)
+        _setter("status", status)
+        _setter("storage_resource", storage_resource)
+        _setter("tags", tags)
+        _setter("vpc_cloud_instance_id", vpc_cloud_instance_id)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
@@ -440,27 +533,76 @@ class GetDBClusterLakeVersionsVersionResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID  of the resource.
         """
-        pulumi.set(__self__, "commodity_code", commodity_code)
-        pulumi.set(__self__, "compute_resource", compute_resource)
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "db_cluster_version", db_cluster_version)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "expired", expired)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "lock_reason", lock_reason)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_resource", storage_resource)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetDBClusterLakeVersionsVersionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            commodity_code=commodity_code,
+            compute_resource=compute_resource,
+            connection_string=connection_string,
+            create_time=create_time,
+            db_cluster_id=db_cluster_id,
+            db_cluster_version=db_cluster_version,
+            engine=engine,
+            engine_version=engine_version,
+            expire_time=expire_time,
+            expired=expired,
+            id=id,
+            lock_mode=lock_mode,
+            lock_reason=lock_reason,
+            payment_type=payment_type,
+            port=port,
+            resource_group_id=resource_group_id,
+            status=status,
+            storage_resource=storage_resource,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             commodity_code: str,
+             compute_resource: str,
+             connection_string: str,
+             create_time: str,
+             db_cluster_id: str,
+             db_cluster_version: str,
+             engine: str,
+             engine_version: str,
+             expire_time: str,
+             expired: str,
+             id: str,
+             lock_mode: str,
+             lock_reason: str,
+             payment_type: str,
+             port: str,
+             resource_group_id: str,
+             status: str,
+             storage_resource: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("commodity_code", commodity_code)
+        _setter("compute_resource", compute_resource)
+        _setter("connection_string", connection_string)
+        _setter("create_time", create_time)
+        _setter("db_cluster_id", db_cluster_id)
+        _setter("db_cluster_version", db_cluster_version)
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("expire_time", expire_time)
+        _setter("expired", expired)
+        _setter("id", id)
+        _setter("lock_mode", lock_mode)
+        _setter("lock_reason", lock_reason)
+        _setter("payment_type", payment_type)
+        _setter("port", port)
+        _setter("resource_group_id", resource_group_id)
+        _setter("status", status)
+        _setter("storage_resource", storage_resource)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="commodityCode")
@@ -722,49 +864,142 @@ class GetDBClustersClusterResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID  of the resource.
         """
-        pulumi.set(__self__, "auto_renew_period", auto_renew_period)
-        pulumi.set(__self__, "charge_type", charge_type)
-        pulumi.set(__self__, "commodity_code", commodity_code)
-        pulumi.set(__self__, "compute_resource", compute_resource)
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_cluster_category", db_cluster_category)
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "db_cluster_network_type", db_cluster_network_type)
-        pulumi.set(__self__, "db_cluster_type", db_cluster_type)
-        pulumi.set(__self__, "db_cluster_version", db_cluster_version)
-        pulumi.set(__self__, "db_node_class", db_node_class)
-        pulumi.set(__self__, "db_node_count", db_node_count)
-        pulumi.set(__self__, "db_node_storage", db_node_storage)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "disk_type", disk_type)
-        pulumi.set(__self__, "dts_job_id", dts_job_id)
-        pulumi.set(__self__, "elastic_io_resource", elastic_io_resource)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "executor_count", executor_count)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "expired", expired)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "lock_reason", lock_reason)
-        pulumi.set(__self__, "maintain_time", maintain_time)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "rds_instance_id", rds_instance_id)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "renewal_status", renewal_status)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "security_ips", security_ips)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_resource", storage_resource)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_cloud_instance_id", vpc_cloud_instance_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetDBClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew_period=auto_renew_period,
+            charge_type=charge_type,
+            commodity_code=commodity_code,
+            compute_resource=compute_resource,
+            connection_string=connection_string,
+            create_time=create_time,
+            db_cluster_category=db_cluster_category,
+            db_cluster_id=db_cluster_id,
+            db_cluster_network_type=db_cluster_network_type,
+            db_cluster_type=db_cluster_type,
+            db_cluster_version=db_cluster_version,
+            db_node_class=db_node_class,
+            db_node_count=db_node_count,
+            db_node_storage=db_node_storage,
+            description=description,
+            disk_type=disk_type,
+            dts_job_id=dts_job_id,
+            elastic_io_resource=elastic_io_resource,
+            engine=engine,
+            engine_version=engine_version,
+            executor_count=executor_count,
+            expire_time=expire_time,
+            expired=expired,
+            id=id,
+            lock_mode=lock_mode,
+            lock_reason=lock_reason,
+            maintain_time=maintain_time,
+            mode=mode,
+            network_type=network_type,
+            payment_type=payment_type,
+            port=port,
+            rds_instance_id=rds_instance_id,
+            region_id=region_id,
+            renewal_status=renewal_status,
+            resource_group_id=resource_group_id,
+            security_ips=security_ips,
+            status=status,
+            storage_resource=storage_resource,
+            tags=tags,
+            vpc_cloud_instance_id=vpc_cloud_instance_id,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew_period: int,
+             charge_type: str,
+             commodity_code: str,
+             compute_resource: str,
+             connection_string: str,
+             create_time: str,
+             db_cluster_category: str,
+             db_cluster_id: str,
+             db_cluster_network_type: str,
+             db_cluster_type: str,
+             db_cluster_version: str,
+             db_node_class: str,
+             db_node_count: int,
+             db_node_storage: int,
+             description: str,
+             disk_type: str,
+             dts_job_id: str,
+             elastic_io_resource: int,
+             engine: str,
+             engine_version: str,
+             executor_count: str,
+             expire_time: str,
+             expired: str,
+             id: str,
+             lock_mode: str,
+             lock_reason: str,
+             maintain_time: str,
+             mode: str,
+             network_type: str,
+             payment_type: str,
+             port: int,
+             rds_instance_id: str,
+             region_id: str,
+             renewal_status: str,
+             resource_group_id: str,
+             security_ips: Sequence[str],
+             status: str,
+             storage_resource: str,
+             tags: Mapping[str, Any],
+             vpc_cloud_instance_id: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_renew_period", auto_renew_period)
+        _setter("charge_type", charge_type)
+        _setter("commodity_code", commodity_code)
+        _setter("compute_resource", compute_resource)
+        _setter("connection_string", connection_string)
+        _setter("create_time", create_time)
+        _setter("db_cluster_category", db_cluster_category)
+        _setter("db_cluster_id", db_cluster_id)
+        _setter("db_cluster_network_type", db_cluster_network_type)
+        _setter("db_cluster_type", db_cluster_type)
+        _setter("db_cluster_version", db_cluster_version)
+        _setter("db_node_class", db_node_class)
+        _setter("db_node_count", db_node_count)
+        _setter("db_node_storage", db_node_storage)
+        _setter("description", description)
+        _setter("disk_type", disk_type)
+        _setter("dts_job_id", dts_job_id)
+        _setter("elastic_io_resource", elastic_io_resource)
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("executor_count", executor_count)
+        _setter("expire_time", expire_time)
+        _setter("expired", expired)
+        _setter("id", id)
+        _setter("lock_mode", lock_mode)
+        _setter("lock_reason", lock_reason)
+        _setter("maintain_time", maintain_time)
+        _setter("mode", mode)
+        _setter("network_type", network_type)
+        _setter("payment_type", payment_type)
+        _setter("port", port)
+        _setter("rds_instance_id", rds_instance_id)
+        _setter("region_id", region_id)
+        _setter("renewal_status", renewal_status)
+        _setter("resource_group_id", resource_group_id)
+        _setter("security_ips", security_ips)
+        _setter("status", status)
+        _setter("storage_resource", storage_resource)
+        _setter("tags", tags)
+        _setter("vpc_cloud_instance_id", vpc_cloud_instance_id)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoRenewPeriod")
@@ -1133,13 +1368,34 @@ class GetResourceGroupsGroupResult(dict):
         :param int node_num: The number of nodes. The default number of nodes is 0. The number of nodes must be less than or equal to the number of nodes whose resource name is USER_DEFAULT.
         :param str user: Binding User.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "group_type", group_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "node_num", node_num)
-        pulumi.set(__self__, "user", user)
+        GetResourceGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            db_cluster_id=db_cluster_id,
+            group_name=group_name,
+            group_type=group_type,
+            id=id,
+            node_num=node_num,
+            user=user,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             db_cluster_id: str,
+             group_name: str,
+             group_type: str,
+             id: str,
+             node_num: int,
+             user: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("db_cluster_id", db_cluster_id)
+        _setter("group_name", group_name)
+        _setter("group_type", group_type)
+        _setter("id", id)
+        _setter("node_num", node_num)
+        _setter("user", user)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1210,8 +1466,19 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            multi_zone_ids=multi_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             multi_zone_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

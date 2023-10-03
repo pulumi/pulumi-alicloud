@@ -13,9 +13,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
     public sealed class BucketLifecycleRuleNoncurrentVersionTransitionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the number of days after object creation when the specific rule action takes effect.
-        /// 
-        /// `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
+        /// Specifies the number of days noncurrent object versions transition.
         /// </summary>
         [Input("days", required: true)]
         public Input<int> Days { get; set; } = null!;
@@ -28,7 +26,6 @@ namespace Pulumi.AliCloud.Oss.Inputs
 
         /// <summary>
         /// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-        /// `NOTE`: One and only one of "created_before_date" and "days" can be specified in one transition configuration.
         /// </summary>
         [Input("returnToStdWhenVisit")]
         public Input<bool>? ReturnToStdWhenVisit { get; set; }

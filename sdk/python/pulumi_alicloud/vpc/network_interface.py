@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NetworkInterfaceArgs', 'NetworkInterface']
@@ -43,54 +43,95 @@ class NetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        NetworkInterfaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vswitch_id=vswitch_id,
+            description=description,
+            ipv6_address_count=ipv6_address_count,
+            ipv6_addresses=ipv6_addresses,
+            name=name,
+            network_interface_name=network_interface_name,
+            primary_ip_address=primary_ip_address,
+            private_ip=private_ip,
+            private_ip_addresses=private_ip_addresses,
+            private_ips=private_ips,
+            private_ips_count=private_ips_count,
+            queue_number=queue_number,
+            resource_group_id=resource_group_id,
+            secondary_private_ip_address_count=secondary_private_ip_address_count,
+            security_group_ids=security_group_ids,
+            security_groups=security_groups,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vswitch_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             ipv6_address_count: Optional[pulumi.Input[int]] = None,
+             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_interface_name: Optional[pulumi.Input[str]] = None,
+             primary_ip_address: Optional[pulumi.Input[str]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             private_ips_count: Optional[pulumi.Input[int]] = None,
+             queue_number: Optional[pulumi.Input[int]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("vswitch_id", vswitch_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ipv6_address_count is not None:
-            pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
+            _setter("ipv6_address_count", ipv6_address_count)
         if ipv6_addresses is not None:
-            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
+            _setter("ipv6_addresses", ipv6_addresses)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_interface_name is not None:
-            pulumi.set(__self__, "network_interface_name", network_interface_name)
+            _setter("network_interface_name", network_interface_name)
         if primary_ip_address is not None:
-            pulumi.set(__self__, "primary_ip_address", primary_ip_address)
+            _setter("primary_ip_address", primary_ip_address)
         if private_ip is not None:
             warnings.warn("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""", DeprecationWarning)
             pulumi.log.warn("""private_ip is deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
         if private_ip_addresses is not None:
-            pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
+            _setter("private_ip_addresses", private_ip_addresses)
         if private_ips is not None:
             warnings.warn("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""", DeprecationWarning)
             pulumi.log.warn("""private_ips is deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
         if private_ips is not None:
-            pulumi.set(__self__, "private_ips", private_ips)
+            _setter("private_ips", private_ips)
         if private_ips_count is not None:
             warnings.warn("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""", DeprecationWarning)
             pulumi.log.warn("""private_ips_count is deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
         if private_ips_count is not None:
-            pulumi.set(__self__, "private_ips_count", private_ips_count)
+            _setter("private_ips_count", private_ips_count)
         if queue_number is not None:
-            pulumi.set(__self__, "queue_number", queue_number)
+            _setter("queue_number", queue_number)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if secondary_private_ip_address_count is not None:
-            pulumi.set(__self__, "secondary_private_ip_address_count", secondary_private_ip_address_count)
+            _setter("secondary_private_ip_address_count", secondary_private_ip_address_count)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if security_groups is not None:
             warnings.warn("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""", DeprecationWarning)
             pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
         if security_groups is not None:
-            pulumi.set(__self__, "security_groups", security_groups)
+            _setter("security_groups", security_groups)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -323,59 +364,104 @@ class _NetworkInterfaceState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The VSwitch to create the ENI in.
         """
+        _NetworkInterfaceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            ipv6_address_count=ipv6_address_count,
+            ipv6_addresses=ipv6_addresses,
+            mac=mac,
+            name=name,
+            network_interface_name=network_interface_name,
+            primary_ip_address=primary_ip_address,
+            private_ip=private_ip,
+            private_ip_addresses=private_ip_addresses,
+            private_ips=private_ips,
+            private_ips_count=private_ips_count,
+            queue_number=queue_number,
+            resource_group_id=resource_group_id,
+            secondary_private_ip_address_count=secondary_private_ip_address_count,
+            security_group_ids=security_group_ids,
+            security_groups=security_groups,
+            status=status,
+            tags=tags,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             ipv6_address_count: Optional[pulumi.Input[int]] = None,
+             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             mac: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_interface_name: Optional[pulumi.Input[str]] = None,
+             primary_ip_address: Optional[pulumi.Input[str]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             private_ips_count: Optional[pulumi.Input[int]] = None,
+             queue_number: Optional[pulumi.Input[int]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ipv6_address_count is not None:
-            pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
+            _setter("ipv6_address_count", ipv6_address_count)
         if ipv6_addresses is not None:
-            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
+            _setter("ipv6_addresses", ipv6_addresses)
         if mac is not None:
-            pulumi.set(__self__, "mac", mac)
+            _setter("mac", mac)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_interface_name is not None:
-            pulumi.set(__self__, "network_interface_name", network_interface_name)
+            _setter("network_interface_name", network_interface_name)
         if primary_ip_address is not None:
-            pulumi.set(__self__, "primary_ip_address", primary_ip_address)
+            _setter("primary_ip_address", primary_ip_address)
         if private_ip is not None:
             warnings.warn("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""", DeprecationWarning)
             pulumi.log.warn("""private_ip is deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
         if private_ip_addresses is not None:
-            pulumi.set(__self__, "private_ip_addresses", private_ip_addresses)
+            _setter("private_ip_addresses", private_ip_addresses)
         if private_ips is not None:
             warnings.warn("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""", DeprecationWarning)
             pulumi.log.warn("""private_ips is deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
         if private_ips is not None:
-            pulumi.set(__self__, "private_ips", private_ips)
+            _setter("private_ips", private_ips)
         if private_ips_count is not None:
             warnings.warn("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""", DeprecationWarning)
             pulumi.log.warn("""private_ips_count is deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
         if private_ips_count is not None:
-            pulumi.set(__self__, "private_ips_count", private_ips_count)
+            _setter("private_ips_count", private_ips_count)
         if queue_number is not None:
-            pulumi.set(__self__, "queue_number", queue_number)
+            _setter("queue_number", queue_number)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if secondary_private_ip_address_count is not None:
-            pulumi.set(__self__, "secondary_private_ip_address_count", secondary_private_ip_address_count)
+            _setter("secondary_private_ip_address_count", secondary_private_ip_address_count)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if security_groups is not None:
             warnings.warn("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""", DeprecationWarning)
             pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
         if security_groups is not None:
-            pulumi.set(__self__, "security_groups", security_groups)
+            _setter("security_groups", security_groups)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -733,6 +819,10 @@ class NetworkInterface(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkInterfaceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -767,32 +857,17 @@ class NetworkInterface(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["ipv6_address_count"] = ipv6_address_count
             __props__.__dict__["ipv6_addresses"] = ipv6_addresses
-            if name is not None and not opts.urn:
-                warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interface_name"] = network_interface_name
             __props__.__dict__["primary_ip_address"] = primary_ip_address
-            if private_ip is not None and not opts.urn:
-                warnings.warn("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""", DeprecationWarning)
-                pulumi.log.warn("""private_ip is deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
             __props__.__dict__["private_ip"] = private_ip
             __props__.__dict__["private_ip_addresses"] = private_ip_addresses
-            if private_ips is not None and not opts.urn:
-                warnings.warn("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""", DeprecationWarning)
-                pulumi.log.warn("""private_ips is deprecated: Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
             __props__.__dict__["private_ips"] = private_ips
-            if private_ips_count is not None and not opts.urn:
-                warnings.warn("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""", DeprecationWarning)
-                pulumi.log.warn("""private_ips_count is deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
             __props__.__dict__["private_ips_count"] = private_ips_count
             __props__.__dict__["queue_number"] = queue_number
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["secondary_private_ip_address_count"] = secondary_private_ip_address_count
             __props__.__dict__["security_group_ids"] = security_group_ids
-            if security_groups is not None and not opts.urn:
-                warnings.warn("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""", DeprecationWarning)
-                pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
             __props__.__dict__["security_groups"] = security_groups
             __props__.__dict__["tags"] = tags
             if vswitch_id is None and not opts.urn:

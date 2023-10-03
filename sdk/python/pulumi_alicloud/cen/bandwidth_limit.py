@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BandwidthLimitArgs', 'BandwidthLimit']
@@ -25,9 +25,22 @@ class BandwidthLimitArgs:
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
-        pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "region_ids", region_ids)
+        BandwidthLimitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth_limit=bandwidth_limit,
+            instance_id=instance_id,
+            region_ids=region_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth_limit: pulumi.Input[int],
+             instance_id: pulumi.Input[str],
+             region_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth_limit", bandwidth_limit)
+        _setter("instance_id", instance_id)
+        _setter("region_ids", region_ids)
 
     @property
     @pulumi.getter(name="bandwidthLimit")
@@ -82,12 +95,25 @@ class _BandwidthLimitState:
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] region_ids: List of the two regions to interconnect. Must be two different regions.
         """
+        _BandwidthLimitState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth_limit=bandwidth_limit,
+            instance_id=instance_id,
+            region_ids=region_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth_limit: Optional[pulumi.Input[int]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bandwidth_limit is not None:
-            pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
+            _setter("bandwidth_limit", bandwidth_limit)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if region_ids is not None:
-            pulumi.set(__self__, "region_ids", region_ids)
+            _setter("region_ids", region_ids)
 
     @property
     @pulumi.getter(name="bandwidthLimit")
@@ -305,6 +331,10 @@ class BandwidthLimit(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BandwidthLimitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -45,16 +45,43 @@ class GetApplicationGroupsGroupResult(dict):
         :param str import_tag_value: Label value.
         :param str update_time: The Update time of the resource.
         """
-        pulumi.set(__self__, "application_group_name", application_group_name)
-        pulumi.set(__self__, "application_name", application_name)
-        pulumi.set(__self__, "cms_group_id", cms_group_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "deploy_region_id", deploy_region_id)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "import_tag_key", import_tag_key)
-        pulumi.set(__self__, "import_tag_value", import_tag_value)
-        pulumi.set(__self__, "update_time", update_time)
+        GetApplicationGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_group_name=application_group_name,
+            application_name=application_name,
+            cms_group_id=cms_group_id,
+            create_time=create_time,
+            deploy_region_id=deploy_region_id,
+            description=description,
+            id=id,
+            import_tag_key=import_tag_key,
+            import_tag_value=import_tag_value,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_group_name: str,
+             application_name: str,
+             cms_group_id: str,
+             create_time: str,
+             deploy_region_id: str,
+             description: str,
+             id: str,
+             import_tag_key: str,
+             import_tag_value: str,
+             update_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("application_group_name", application_group_name)
+        _setter("application_name", application_name)
+        _setter("cms_group_id", cms_group_id)
+        _setter("create_time", create_time)
+        _setter("deploy_region_id", deploy_region_id)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("import_tag_key", import_tag_key)
+        _setter("import_tag_value", import_tag_value)
+        _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="applicationGroupName")
@@ -156,13 +183,34 @@ class GetApplicationsApplicationResult(dict):
         :param Mapping[str, Any] tags: The tag of the resource.
         :param str update_time: The Updated time of the application.
         """
-        pulumi.set(__self__, "application_name", application_name)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "update_time", update_time)
+        GetApplicationsApplicationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_name=application_name,
+            create_time=create_time,
+            description=description,
+            id=id,
+            resource_group_id=resource_group_id,
+            tags=tags,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_name: str,
+             create_time: str,
+             description: str,
+             id: str,
+             resource_group_id: str,
+             tags: Mapping[str, Any],
+             update_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("application_name", application_name)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("tags", tags)
+        _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="applicationName")
@@ -268,27 +316,76 @@ class GetExecutionsExecutionResult(dict):
         :param str template_version: The version of execution template.
         :param str update_date: The time when the template was updated.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "counters", counters)
-        pulumi.set(__self__, "create_date", create_date)
-        pulumi.set(__self__, "end_date", end_date)
-        pulumi.set(__self__, "executed_by", executed_by)
-        pulumi.set(__self__, "execution_id", execution_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_parent", is_parent)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "outputs", outputs)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "parent_execution_id", parent_execution_id)
-        pulumi.set(__self__, "ram_role", ram_role)
-        pulumi.set(__self__, "start_date", start_date)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "status_message", status_message)
-        pulumi.set(__self__, "status_reason", status_reason)
-        pulumi.set(__self__, "template_id", template_id)
-        pulumi.set(__self__, "template_name", template_name)
-        pulumi.set(__self__, "template_version", template_version)
-        pulumi.set(__self__, "update_date", update_date)
+        GetExecutionsExecutionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            counters=counters,
+            create_date=create_date,
+            end_date=end_date,
+            executed_by=executed_by,
+            execution_id=execution_id,
+            id=id,
+            is_parent=is_parent,
+            mode=mode,
+            outputs=outputs,
+            parameters=parameters,
+            parent_execution_id=parent_execution_id,
+            ram_role=ram_role,
+            start_date=start_date,
+            status=status,
+            status_message=status_message,
+            status_reason=status_reason,
+            template_id=template_id,
+            template_name=template_name,
+            template_version=template_version,
+            update_date=update_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             counters: str,
+             create_date: str,
+             end_date: str,
+             executed_by: str,
+             execution_id: str,
+             id: str,
+             is_parent: bool,
+             mode: str,
+             outputs: str,
+             parameters: str,
+             parent_execution_id: str,
+             ram_role: str,
+             start_date: str,
+             status: str,
+             status_message: str,
+             status_reason: str,
+             template_id: str,
+             template_name: str,
+             template_version: str,
+             update_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("counters", counters)
+        _setter("create_date", create_date)
+        _setter("end_date", end_date)
+        _setter("executed_by", executed_by)
+        _setter("execution_id", execution_id)
+        _setter("id", id)
+        _setter("is_parent", is_parent)
+        _setter("mode", mode)
+        _setter("outputs", outputs)
+        _setter("parameters", parameters)
+        _setter("parent_execution_id", parent_execution_id)
+        _setter("ram_role", ram_role)
+        _setter("start_date", start_date)
+        _setter("status", status)
+        _setter("status_message", status_message)
+        _setter("status_reason", status_reason)
+        _setter("template_id", template_id)
+        _setter("template_name", template_name)
+        _setter("template_version", template_version)
+        _setter("update_date", update_date)
 
     @property
     @pulumi.getter
@@ -494,21 +591,58 @@ class GetParametersParameterResult(dict):
         :param str updated_date: The time when the common parameter was updated.
         :param str value: The value of the common parameter.
         """
-        pulumi.set(__self__, "constraints", constraints)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "created_by", created_by)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "parameter_id", parameter_id)
-        pulumi.set(__self__, "parameter_name", parameter_name)
-        pulumi.set(__self__, "parameter_version", parameter_version)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "share_type", share_type)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "updated_by", updated_by)
-        pulumi.set(__self__, "updated_date", updated_date)
-        pulumi.set(__self__, "value", value)
+        GetParametersParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            constraints=constraints,
+            create_time=create_time,
+            created_by=created_by,
+            description=description,
+            id=id,
+            parameter_id=parameter_id,
+            parameter_name=parameter_name,
+            parameter_version=parameter_version,
+            resource_group_id=resource_group_id,
+            share_type=share_type,
+            tags=tags,
+            type=type,
+            updated_by=updated_by,
+            updated_date=updated_date,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             constraints: str,
+             create_time: str,
+             created_by: str,
+             description: str,
+             id: str,
+             parameter_id: str,
+             parameter_name: str,
+             parameter_version: int,
+             resource_group_id: str,
+             share_type: str,
+             tags: Mapping[str, Any],
+             type: str,
+             updated_by: str,
+             updated_date: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("constraints", constraints)
+        _setter("create_time", create_time)
+        _setter("created_by", created_by)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("parameter_id", parameter_id)
+        _setter("parameter_name", parameter_name)
+        _setter("parameter_version", parameter_version)
+        _setter("resource_group_id", resource_group_id)
+        _setter("share_type", share_type)
+        _setter("tags", tags)
+        _setter("type", type)
+        _setter("updated_by", updated_by)
+        _setter("updated_date", updated_date)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -660,18 +794,49 @@ class GetPatchBaselinesBaselineResult(dict):
         :param str updated_by: The user who updated the patch baselines.
         :param str updated_date: The update time of patch baselines.
         """
-        pulumi.set(__self__, "approval_rules", approval_rules)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "created_by", created_by)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_default", is_default)
-        pulumi.set(__self__, "operation_system", operation_system)
-        pulumi.set(__self__, "patch_baseline_id", patch_baseline_id)
-        pulumi.set(__self__, "patch_baseline_name", patch_baseline_name)
-        pulumi.set(__self__, "share_type", share_type)
-        pulumi.set(__self__, "updated_by", updated_by)
-        pulumi.set(__self__, "updated_date", updated_date)
+        GetPatchBaselinesBaselineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            approval_rules=approval_rules,
+            create_time=create_time,
+            created_by=created_by,
+            description=description,
+            id=id,
+            is_default=is_default,
+            operation_system=operation_system,
+            patch_baseline_id=patch_baseline_id,
+            patch_baseline_name=patch_baseline_name,
+            share_type=share_type,
+            updated_by=updated_by,
+            updated_date=updated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             approval_rules: str,
+             create_time: str,
+             created_by: str,
+             description: str,
+             id: str,
+             is_default: bool,
+             operation_system: str,
+             patch_baseline_id: str,
+             patch_baseline_name: str,
+             share_type: str,
+             updated_by: str,
+             updated_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("approval_rules", approval_rules)
+        _setter("create_time", create_time)
+        _setter("created_by", created_by)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("is_default", is_default)
+        _setter("operation_system", operation_system)
+        _setter("patch_baseline_id", patch_baseline_id)
+        _setter("patch_baseline_name", patch_baseline_name)
+        _setter("share_type", share_type)
+        _setter("updated_by", updated_by)
+        _setter("updated_date", updated_date)
 
     @property
     @pulumi.getter(name="approvalRules")
@@ -805,21 +970,58 @@ class GetSecretParametersParameterResult(dict):
         :param str updated_by: The user who updated the encryption parameter.
         :param str updated_date: The time when the encryption parameter was updated.
         """
-        pulumi.set(__self__, "constraints", constraints)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "created_by", created_by)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "key_id", key_id)
-        pulumi.set(__self__, "parameter_version", parameter_version)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "secret_parameter_id", secret_parameter_id)
-        pulumi.set(__self__, "secret_parameter_name", secret_parameter_name)
-        pulumi.set(__self__, "share_type", share_type)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "updated_by", updated_by)
-        pulumi.set(__self__, "updated_date", updated_date)
+        GetSecretParametersParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            constraints=constraints,
+            create_time=create_time,
+            created_by=created_by,
+            description=description,
+            id=id,
+            key_id=key_id,
+            parameter_version=parameter_version,
+            resource_group_id=resource_group_id,
+            secret_parameter_id=secret_parameter_id,
+            secret_parameter_name=secret_parameter_name,
+            share_type=share_type,
+            tags=tags,
+            type=type,
+            updated_by=updated_by,
+            updated_date=updated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             constraints: str,
+             create_time: str,
+             created_by: str,
+             description: str,
+             id: str,
+             key_id: str,
+             parameter_version: int,
+             resource_group_id: str,
+             secret_parameter_id: str,
+             secret_parameter_name: str,
+             share_type: str,
+             tags: Mapping[str, Any],
+             type: str,
+             updated_by: str,
+             updated_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("constraints", constraints)
+        _setter("create_time", create_time)
+        _setter("created_by", created_by)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("key_id", key_id)
+        _setter("parameter_version", parameter_version)
+        _setter("resource_group_id", resource_group_id)
+        _setter("secret_parameter_id", secret_parameter_id)
+        _setter("secret_parameter_name", secret_parameter_name)
+        _setter("share_type", share_type)
+        _setter("tags", tags)
+        _setter("type", type)
+        _setter("updated_by", updated_by)
+        _setter("updated_date", updated_date)
 
     @property
     @pulumi.getter
@@ -977,21 +1179,58 @@ class GetStateConfigurationsConfigurationResult(dict):
         :param str template_version: The version of the template.
         :param str update_time: The time when the configuration is updated.
         """
-        pulumi.set(__self__, "configure_mode", configure_mode)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "schedule_expression", schedule_expression)
-        pulumi.set(__self__, "schedule_type", schedule_type)
-        pulumi.set(__self__, "state_configuration_id", state_configuration_id)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "targets", targets)
-        pulumi.set(__self__, "template_id", template_id)
-        pulumi.set(__self__, "template_name", template_name)
-        pulumi.set(__self__, "template_version", template_version)
-        pulumi.set(__self__, "update_time", update_time)
+        GetStateConfigurationsConfigurationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            configure_mode=configure_mode,
+            create_time=create_time,
+            description=description,
+            id=id,
+            parameters=parameters,
+            resource_group_id=resource_group_id,
+            schedule_expression=schedule_expression,
+            schedule_type=schedule_type,
+            state_configuration_id=state_configuration_id,
+            tags=tags,
+            targets=targets,
+            template_id=template_id,
+            template_name=template_name,
+            template_version=template_version,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             configure_mode: str,
+             create_time: str,
+             description: str,
+             id: str,
+             parameters: str,
+             resource_group_id: str,
+             schedule_expression: str,
+             schedule_type: str,
+             state_configuration_id: str,
+             tags: Mapping[str, Any],
+             targets: str,
+             template_id: str,
+             template_name: str,
+             template_version: str,
+             update_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("configure_mode", configure_mode)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("parameters", parameters)
+        _setter("resource_group_id", resource_group_id)
+        _setter("schedule_expression", schedule_expression)
+        _setter("schedule_type", schedule_type)
+        _setter("state_configuration_id", state_configuration_id)
+        _setter("tags", tags)
+        _setter("targets", targets)
+        _setter("template_id", template_id)
+        _setter("template_name", template_name)
+        _setter("template_version", template_version)
+        _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="configureMode")
@@ -1149,21 +1388,58 @@ class GetTemplatesTemplateResult(dict):
         :param str updated_by: The user who updated the template.
         :param str updated_date: The time when the template was updated.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "created_by", created_by)
-        pulumi.set(__self__, "created_date", created_date)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "has_trigger", has_trigger)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "share_type", share_type)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "template_format", template_format)
-        pulumi.set(__self__, "template_id", template_id)
-        pulumi.set(__self__, "template_name", template_name)
-        pulumi.set(__self__, "template_type", template_type)
-        pulumi.set(__self__, "template_version", template_version)
-        pulumi.set(__self__, "updated_by", updated_by)
-        pulumi.set(__self__, "updated_date", updated_date)
+        GetTemplatesTemplateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            created_by=created_by,
+            created_date=created_date,
+            description=description,
+            has_trigger=has_trigger,
+            id=id,
+            share_type=share_type,
+            tags=tags,
+            template_format=template_format,
+            template_id=template_id,
+            template_name=template_name,
+            template_type=template_type,
+            template_version=template_version,
+            updated_by=updated_by,
+            updated_date=updated_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             created_by: str,
+             created_date: str,
+             description: str,
+             has_trigger: bool,
+             id: str,
+             share_type: str,
+             tags: Mapping[str, Any],
+             template_format: str,
+             template_id: str,
+             template_name: str,
+             template_type: str,
+             template_version: str,
+             updated_by: str,
+             updated_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("created_by", created_by)
+        _setter("created_date", created_date)
+        _setter("description", description)
+        _setter("has_trigger", has_trigger)
+        _setter("id", id)
+        _setter("share_type", share_type)
+        _setter("tags", tags)
+        _setter("template_format", template_format)
+        _setter("template_id", template_id)
+        _setter("template_name", template_name)
+        _setter("template_type", template_type)
+        _setter("template_version", template_version)
+        _setter("updated_by", updated_by)
+        _setter("updated_date", updated_date)
 
     @property
     @pulumi.getter

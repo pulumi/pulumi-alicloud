@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SnapshotArgs', 'Snapshot']
@@ -26,13 +26,28 @@ class SnapshotArgs:
                * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         :param pulumi.Input[str] snapshot_name: SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
         """
-        pulumi.set(__self__, "file_system_id", file_system_id)
+        SnapshotArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            file_system_id=file_system_id,
+            description=description,
+            retention_days=retention_days,
+            snapshot_name=snapshot_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             file_system_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             retention_days: Optional[pulumi.Input[int]] = None,
+             snapshot_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("file_system_id", file_system_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if retention_days is not None:
-            pulumi.set(__self__, "retention_days", retention_days)
+            _setter("retention_days", retention_days)
         if snapshot_name is not None:
-            pulumi.set(__self__, "snapshot_name", snapshot_name)
+            _setter("snapshot_name", snapshot_name)
 
     @property
     @pulumi.getter(name="fileSystemId")
@@ -101,16 +116,33 @@ class _SnapshotState:
         :param pulumi.Input[str] snapshot_name: SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
         :param pulumi.Input[str] status: The status of the snapshot.
         """
+        _SnapshotState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            file_system_id=file_system_id,
+            retention_days=retention_days,
+            snapshot_name=snapshot_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             retention_days: Optional[pulumi.Input[int]] = None,
+             snapshot_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if file_system_id is not None:
-            pulumi.set(__self__, "file_system_id", file_system_id)
+            _setter("file_system_id", file_system_id)
         if retention_days is not None:
-            pulumi.set(__self__, "retention_days", retention_days)
+            _setter("retention_days", retention_days)
         if snapshot_name is not None:
-            pulumi.set(__self__, "snapshot_name", snapshot_name)
+            _setter("snapshot_name", snapshot_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -296,6 +328,10 @@ class Snapshot(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SnapshotArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

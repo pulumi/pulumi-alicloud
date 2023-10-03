@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CaCertificateArgs', 'CaCertificate']
@@ -27,18 +27,35 @@ class CaCertificateArgs:
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "ca_certificate", ca_certificate)
+        CaCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_certificate=ca_certificate,
+            ca_certificate_name=ca_certificate_name,
+            name=name,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_certificate: pulumi.Input[str],
+             ca_certificate_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ca_certificate", ca_certificate)
         if ca_certificate_name is not None:
-            pulumi.set(__self__, "ca_certificate_name", ca_certificate_name)
+            _setter("ca_certificate_name", ca_certificate_name)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="caCertificate")
@@ -120,19 +137,36 @@ class _CaCertificateState:
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        _CaCertificateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_certificate=ca_certificate,
+            ca_certificate_name=ca_certificate_name,
+            name=name,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_certificate: Optional[pulumi.Input[str]] = None,
+             ca_certificate_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ca_certificate is not None:
-            pulumi.set(__self__, "ca_certificate", ca_certificate)
+            _setter("ca_certificate", ca_certificate)
         if ca_certificate_name is not None:
-            pulumi.set(__self__, "ca_certificate_name", ca_certificate_name)
+            _setter("ca_certificate_name", ca_certificate_name)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="caCertificate")
@@ -351,6 +385,10 @@ class CaCertificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CaCertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -374,9 +412,6 @@ class CaCertificate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'ca_certificate'")
             __props__.__dict__["ca_certificate"] = ca_certificate
             __props__.__dict__["ca_certificate_name"] = ca_certificate_name
-            if name is not None and not opts.urn:
-                warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""")
             __props__.__dict__["name"] = name
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags

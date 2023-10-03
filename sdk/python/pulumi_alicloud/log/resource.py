@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ResourceArgs', 'Resource']
@@ -27,14 +27,31 @@ class ResourceArgs:
         :param pulumi.Input[str] ext_info: The ext info of meta store.
         :param pulumi.Input[str] name: The meta store's name, can be used as table name.
         """
-        pulumi.set(__self__, "schema", schema)
-        pulumi.set(__self__, "type", type)
+        ResourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            schema=schema,
+            type=type,
+            description=description,
+            ext_info=ext_info,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             schema: pulumi.Input[str],
+             type: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             ext_info: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("schema", schema)
+        _setter("type", type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ext_info is not None:
-            pulumi.set(__self__, "ext_info", ext_info)
+            _setter("ext_info", ext_info)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -113,16 +130,33 @@ class _ResourceState:
         :param pulumi.Input[str] schema: The meta store's schema info, which is json string format, used to define table's fields.
         :param pulumi.Input[str] type: The meta store's type, userdefine e.g.
         """
+        _ResourceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            ext_info=ext_info,
+            name=name,
+            schema=schema,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             ext_info: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             schema: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ext_info is not None:
-            pulumi.set(__self__, "ext_info", ext_info)
+            _setter("ext_info", ext_info)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+            _setter("schema", schema)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -280,6 +314,10 @@ class Resource(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ResourceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TriggerArgs', 'Trigger']
@@ -39,21 +39,46 @@ class TriggerArgs:
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         :param pulumi.Input[str] source_arn: Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         """
-        pulumi.set(__self__, "function", function)
-        pulumi.set(__self__, "service", service)
-        pulumi.set(__self__, "type", type)
+        TriggerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            function=function,
+            service=service,
+            type=type,
+            config=config,
+            config_mns=config_mns,
+            name=name,
+            name_prefix=name_prefix,
+            role=role,
+            source_arn=source_arn,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             function: pulumi.Input[str],
+             service: pulumi.Input[str],
+             type: pulumi.Input[str],
+             config: Optional[pulumi.Input[str]] = None,
+             config_mns: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             source_arn: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("function", function)
+        _setter("service", service)
+        _setter("type", type)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if config_mns is not None:
-            pulumi.set(__self__, "config_mns", config_mns)
+            _setter("config_mns", config_mns)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if source_arn is not None:
-            pulumi.set(__self__, "source_arn", source_arn)
+            _setter("source_arn", source_arn)
 
     @property
     @pulumi.getter
@@ -200,28 +225,57 @@ class _TriggerState:
                > **NOTE:** type = cdn_events, available in 1.47.0+.
                > **NOTE:** type = eventbridge, available in 1.173.0+.
         """
+        _TriggerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            config_mns=config_mns,
+            function=function,
+            last_modified=last_modified,
+            name=name,
+            name_prefix=name_prefix,
+            role=role,
+            service=service,
+            source_arn=source_arn,
+            trigger_id=trigger_id,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[str]] = None,
+             config_mns: Optional[pulumi.Input[str]] = None,
+             function: Optional[pulumi.Input[str]] = None,
+             last_modified: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             source_arn: Optional[pulumi.Input[str]] = None,
+             trigger_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if config_mns is not None:
-            pulumi.set(__self__, "config_mns", config_mns)
+            _setter("config_mns", config_mns)
         if function is not None:
-            pulumi.set(__self__, "function", function)
+            _setter("function", function)
         if last_modified is not None:
-            pulumi.set(__self__, "last_modified", last_modified)
+            _setter("last_modified", last_modified)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if role is not None:
-            pulumi.set(__self__, "role", role)
+            _setter("role", role)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
         if source_arn is not None:
-            pulumi.set(__self__, "source_arn", source_arn)
+            _setter("source_arn", source_arn)
         if trigger_id is not None:
-            pulumi.set(__self__, "trigger_id", trigger_id)
+            _setter("trigger_id", trigger_id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1279,6 +1333,10 @@ class Trigger(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TriggerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

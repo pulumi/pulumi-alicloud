@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -81,19 +81,42 @@ class DedicatedPropreHostEcsClassList(dict):
                - **cloud_auto**: ESSD AutoPL cloud disk.
         :param str system_disk_performance_level: System disk PL level.
         """
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "sys_disk_capacity", sys_disk_capacity)
-        pulumi.set(__self__, "sys_disk_type", sys_disk_type)
+        DedicatedPropreHostEcsClassList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_type=instance_type,
+            sys_disk_capacity=sys_disk_capacity,
+            sys_disk_type=sys_disk_type,
+            data_disk_performance_level=data_disk_performance_level,
+            disk_capacity=disk_capacity,
+            disk_count=disk_count,
+            disk_type=disk_type,
+            system_disk_performance_level=system_disk_performance_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_type: str,
+             sys_disk_capacity: int,
+             sys_disk_type: str,
+             data_disk_performance_level: Optional[str] = None,
+             disk_capacity: Optional[int] = None,
+             disk_count: Optional[int] = None,
+             disk_type: Optional[str] = None,
+             system_disk_performance_level: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_type", instance_type)
+        _setter("sys_disk_capacity", sys_disk_capacity)
+        _setter("sys_disk_type", sys_disk_type)
         if data_disk_performance_level is not None:
-            pulumi.set(__self__, "data_disk_performance_level", data_disk_performance_level)
+            _setter("data_disk_performance_level", data_disk_performance_level)
         if disk_capacity is not None:
-            pulumi.set(__self__, "disk_capacity", disk_capacity)
+            _setter("disk_capacity", disk_capacity)
         if disk_count is not None:
-            pulumi.set(__self__, "disk_count", disk_count)
+            _setter("disk_count", disk_count)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if system_disk_performance_level is not None:
-            pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+            _setter("system_disk_performance_level", system_disk_performance_level)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -179,9 +202,22 @@ class GetDedicatedHostAccountsAccountResult(dict):
         :param str dedicated_host_id: The ID of the Dedicated host.
         :param str id: The ID of the Dedicated Host Account. The value formats as `<dedicated_host_id>:<account_name>`.
         """
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
-        pulumi.set(__self__, "id", id)
+        GetDedicatedHostAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_name=account_name,
+            dedicated_host_id=dedicated_host_id,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_name: str,
+             dedicated_host_id: str,
+             id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_name", account_name)
+        _setter("dedicated_host_id", dedicated_host_id)
+        _setter("id", id)
 
     @property
     @pulumi.getter(name="accountName")
@@ -269,34 +305,97 @@ class GetDedicatedHostGroupsGroupResult(dict):
         :param str vpc_id: The virtual private cloud (VPC) ID of the dedicated cluster.
         :param Sequence['GetDedicatedHostGroupsGroupZoneIdListArgs'] zone_id_lists: The ZoneIDList of the Dedicated Host Group.
         """
-        pulumi.set(__self__, "allocation_policy", allocation_policy)
-        pulumi.set(__self__, "bastion_instance_id", bastion_instance_id)
-        pulumi.set(__self__, "cpu_allocate_ration", cpu_allocate_ration)
-        pulumi.set(__self__, "cpu_allocated_amount", cpu_allocated_amount)
-        pulumi.set(__self__, "cpu_allocation_ratio", cpu_allocation_ratio)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "dedicated_host_count_group_by_host_types", dedicated_host_count_group_by_host_types)
-        pulumi.set(__self__, "dedicated_host_group_desc", dedicated_host_group_desc)
-        pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
-        pulumi.set(__self__, "deploy_type", deploy_type)
-        pulumi.set(__self__, "disk_allocate_ration", disk_allocate_ration)
-        pulumi.set(__self__, "disk_allocated_amount", disk_allocated_amount)
-        pulumi.set(__self__, "disk_allocation_ratio", disk_allocation_ratio)
-        pulumi.set(__self__, "disk_used_amount", disk_used_amount)
-        pulumi.set(__self__, "disk_utility", disk_utility)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "host_number", host_number)
-        pulumi.set(__self__, "host_replace_policy", host_replace_policy)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_number", instance_number)
-        pulumi.set(__self__, "mem_allocate_ration", mem_allocate_ration)
-        pulumi.set(__self__, "mem_allocated_amount", mem_allocated_amount)
-        pulumi.set(__self__, "mem_allocation_ratio", mem_allocation_ratio)
-        pulumi.set(__self__, "mem_used_amount", mem_used_amount)
-        pulumi.set(__self__, "mem_utility", mem_utility)
-        pulumi.set(__self__, "text", text)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "zone_id_lists", zone_id_lists)
+        GetDedicatedHostGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocation_policy=allocation_policy,
+            bastion_instance_id=bastion_instance_id,
+            cpu_allocate_ration=cpu_allocate_ration,
+            cpu_allocated_amount=cpu_allocated_amount,
+            cpu_allocation_ratio=cpu_allocation_ratio,
+            create_time=create_time,
+            dedicated_host_count_group_by_host_types=dedicated_host_count_group_by_host_types,
+            dedicated_host_group_desc=dedicated_host_group_desc,
+            dedicated_host_group_id=dedicated_host_group_id,
+            deploy_type=deploy_type,
+            disk_allocate_ration=disk_allocate_ration,
+            disk_allocated_amount=disk_allocated_amount,
+            disk_allocation_ratio=disk_allocation_ratio,
+            disk_used_amount=disk_used_amount,
+            disk_utility=disk_utility,
+            engine=engine,
+            host_number=host_number,
+            host_replace_policy=host_replace_policy,
+            id=id,
+            instance_number=instance_number,
+            mem_allocate_ration=mem_allocate_ration,
+            mem_allocated_amount=mem_allocated_amount,
+            mem_allocation_ratio=mem_allocation_ratio,
+            mem_used_amount=mem_used_amount,
+            mem_utility=mem_utility,
+            text=text,
+            vpc_id=vpc_id,
+            zone_id_lists=zone_id_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocation_policy: str,
+             bastion_instance_id: str,
+             cpu_allocate_ration: float,
+             cpu_allocated_amount: float,
+             cpu_allocation_ratio: int,
+             create_time: str,
+             dedicated_host_count_group_by_host_types: Sequence['outputs.GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult'],
+             dedicated_host_group_desc: str,
+             dedicated_host_group_id: str,
+             deploy_type: str,
+             disk_allocate_ration: float,
+             disk_allocated_amount: float,
+             disk_allocation_ratio: int,
+             disk_used_amount: float,
+             disk_utility: float,
+             engine: str,
+             host_number: int,
+             host_replace_policy: str,
+             id: str,
+             instance_number: int,
+             mem_allocate_ration: float,
+             mem_allocated_amount: float,
+             mem_allocation_ratio: int,
+             mem_used_amount: float,
+             mem_utility: float,
+             text: str,
+             vpc_id: str,
+             zone_id_lists: Sequence['outputs.GetDedicatedHostGroupsGroupZoneIdListResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allocation_policy", allocation_policy)
+        _setter("bastion_instance_id", bastion_instance_id)
+        _setter("cpu_allocate_ration", cpu_allocate_ration)
+        _setter("cpu_allocated_amount", cpu_allocated_amount)
+        _setter("cpu_allocation_ratio", cpu_allocation_ratio)
+        _setter("create_time", create_time)
+        _setter("dedicated_host_count_group_by_host_types", dedicated_host_count_group_by_host_types)
+        _setter("dedicated_host_group_desc", dedicated_host_group_desc)
+        _setter("dedicated_host_group_id", dedicated_host_group_id)
+        _setter("deploy_type", deploy_type)
+        _setter("disk_allocate_ration", disk_allocate_ration)
+        _setter("disk_allocated_amount", disk_allocated_amount)
+        _setter("disk_allocation_ratio", disk_allocation_ratio)
+        _setter("disk_used_amount", disk_used_amount)
+        _setter("disk_utility", disk_utility)
+        _setter("engine", engine)
+        _setter("host_number", host_number)
+        _setter("host_replace_policy", host_replace_policy)
+        _setter("id", id)
+        _setter("instance_number", instance_number)
+        _setter("mem_allocate_ration", mem_allocate_ration)
+        _setter("mem_allocated_amount", mem_allocated_amount)
+        _setter("mem_allocation_ratio", mem_allocation_ratio)
+        _setter("mem_used_amount", mem_used_amount)
+        _setter("mem_utility", mem_utility)
+        _setter("text", text)
+        _setter("vpc_id", vpc_id)
+        _setter("zone_id_lists", zone_id_lists)
 
     @property
     @pulumi.getter(name="allocationPolicy")
@@ -527,7 +626,16 @@ class GetDedicatedHostGroupsGroupResult(dict):
 class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult(dict):
     def __init__(__self__, *,
                  place_holder: str):
-        pulumi.set(__self__, "place_holder", place_holder)
+        GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            place_holder=place_holder,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             place_holder: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("place_holder", place_holder)
 
     @property
     @pulumi.getter(name="placeHolder")
@@ -542,7 +650,16 @@ class GetDedicatedHostGroupsGroupZoneIdListResult(dict):
         """
         :param Sequence[str] zone_id_lists: The ZoneIDList of the Dedicated Host Group.
         """
-        pulumi.set(__self__, "zone_id_lists", zone_id_lists)
+        GetDedicatedHostGroupsGroupZoneIdListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id_lists=zone_id_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id_lists: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone_id_lists", zone_id_lists)
 
     @property
     @pulumi.getter(name="zoneIdLists")
@@ -618,36 +735,103 @@ class GetDedicatedHostsHostResult(dict):
         :param str vswitch_id: The ID of the vSwitch.
         :param str zone_id: The zone ID of the host.
         """
-        pulumi.set(__self__, "allocation_status", allocation_status)
-        pulumi.set(__self__, "bastion_instance_id", bastion_instance_id)
-        pulumi.set(__self__, "cpu_allocation_ratio", cpu_allocation_ratio)
-        pulumi.set(__self__, "cpu_used", cpu_used)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "dedicated_host_group_id", dedicated_host_group_id)
-        pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
-        pulumi.set(__self__, "disk_allocation_ratio", disk_allocation_ratio)
-        pulumi.set(__self__, "ecs_class_code", ecs_class_code)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "host_class", host_class)
-        pulumi.set(__self__, "host_cpu", host_cpu)
-        pulumi.set(__self__, "host_mem", host_mem)
-        pulumi.set(__self__, "host_name", host_name)
-        pulumi.set(__self__, "host_storage", host_storage)
-        pulumi.set(__self__, "host_type", host_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_category", image_category)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "mem_allocation_ratio", mem_allocation_ratio)
-        pulumi.set(__self__, "memory_used", memory_used)
-        pulumi.set(__self__, "open_permission", open_permission)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_used", storage_used)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetDedicatedHostsHostResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocation_status=allocation_status,
+            bastion_instance_id=bastion_instance_id,
+            cpu_allocation_ratio=cpu_allocation_ratio,
+            cpu_used=cpu_used,
+            create_time=create_time,
+            dedicated_host_group_id=dedicated_host_group_id,
+            dedicated_host_id=dedicated_host_id,
+            disk_allocation_ratio=disk_allocation_ratio,
+            ecs_class_code=ecs_class_code,
+            end_time=end_time,
+            engine=engine,
+            expired_time=expired_time,
+            host_class=host_class,
+            host_cpu=host_cpu,
+            host_mem=host_mem,
+            host_name=host_name,
+            host_storage=host_storage,
+            host_type=host_type,
+            id=id,
+            image_category=image_category,
+            ip_address=ip_address,
+            mem_allocation_ratio=mem_allocation_ratio,
+            memory_used=memory_used,
+            open_permission=open_permission,
+            status=status,
+            storage_used=storage_used,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocation_status: str,
+             bastion_instance_id: str,
+             cpu_allocation_ratio: str,
+             cpu_used: str,
+             create_time: str,
+             dedicated_host_group_id: str,
+             dedicated_host_id: str,
+             disk_allocation_ratio: str,
+             ecs_class_code: str,
+             end_time: str,
+             engine: str,
+             expired_time: str,
+             host_class: str,
+             host_cpu: str,
+             host_mem: str,
+             host_name: str,
+             host_storage: str,
+             host_type: str,
+             id: str,
+             image_category: str,
+             ip_address: str,
+             mem_allocation_ratio: str,
+             memory_used: str,
+             open_permission: str,
+             status: str,
+             storage_used: str,
+             tags: Mapping[str, Any],
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allocation_status", allocation_status)
+        _setter("bastion_instance_id", bastion_instance_id)
+        _setter("cpu_allocation_ratio", cpu_allocation_ratio)
+        _setter("cpu_used", cpu_used)
+        _setter("create_time", create_time)
+        _setter("dedicated_host_group_id", dedicated_host_group_id)
+        _setter("dedicated_host_id", dedicated_host_id)
+        _setter("disk_allocation_ratio", disk_allocation_ratio)
+        _setter("ecs_class_code", ecs_class_code)
+        _setter("end_time", end_time)
+        _setter("engine", engine)
+        _setter("expired_time", expired_time)
+        _setter("host_class", host_class)
+        _setter("host_cpu", host_cpu)
+        _setter("host_mem", host_mem)
+        _setter("host_name", host_name)
+        _setter("host_storage", host_storage)
+        _setter("host_type", host_type)
+        _setter("id", id)
+        _setter("image_category", image_category)
+        _setter("ip_address", ip_address)
+        _setter("mem_allocation_ratio", mem_allocation_ratio)
+        _setter("memory_used", memory_used)
+        _setter("open_permission", open_permission)
+        _setter("status", status)
+        _setter("storage_used", storage_used)
+        _setter("tags", tags)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="allocationStatus")
@@ -903,10 +1087,25 @@ class GetHostEcsLevelInfosInfoResult(dict):
         :param str ecs_class_code: The Elastic Compute Service (ECS) instance type.
         :param str res_class_code: The ApsaraDB RDS instance type of the host ecs level info.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "ecs_class", ecs_class)
-        pulumi.set(__self__, "ecs_class_code", ecs_class_code)
-        pulumi.set(__self__, "res_class_code", res_class_code)
+        GetHostEcsLevelInfosInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            ecs_class=ecs_class,
+            ecs_class_code=ecs_class_code,
+            res_class_code=res_class_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             ecs_class: str,
+             ecs_class_code: str,
+             res_class_code: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("ecs_class", ecs_class)
+        _setter("ecs_class_code", ecs_class_code)
+        _setter("res_class_code", res_class_code)
 
     @property
     @pulumi.getter
@@ -952,9 +1151,22 @@ class GetZonesZoneResult(dict):
         :param str region_id: The ID of the region.
         :param str zone_id: The ID of the zone.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            region_id=region_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             region_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("region_id", region_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter

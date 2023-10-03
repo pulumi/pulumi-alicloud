@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -48,10 +48,21 @@ class ChainChainConfig(dict):
                > **NOTE:** The `from` and `to` fields are all fixed, and their structure and the value of `node_name` are fixed. You can refer to the template given in the example for configuration.
         :param Sequence['ChainChainConfigRouterArgs'] routers: Execution sequence relationship between delivery chain nodes. See `routers` below.
         """
+        ChainChainConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            nodes=nodes,
+            routers=routers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             nodes: Optional[Sequence['outputs.ChainChainConfigNode']] = None,
+             routers: Optional[Sequence['outputs.ChainChainConfigRouter']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if nodes is not None:
-            pulumi.set(__self__, "nodes", nodes)
+            _setter("nodes", nodes)
         if routers is not None:
-            pulumi.set(__self__, "routers", routers)
+            _setter("routers", routers)
 
     @property
     @pulumi.getter
@@ -102,12 +113,25 @@ class ChainChainConfigNode(dict):
         :param Sequence['ChainChainConfigNodeNodeConfigArgs'] node_configs: The configuration of delivery chain node. See `node_config` below.
         :param str node_name: The name of delivery chain node.
         """
+        ChainChainConfigNode._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable=enable,
+            node_configs=node_configs,
+            node_name=node_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable: Optional[bool] = None,
+             node_configs: Optional[Sequence['outputs.ChainChainConfigNodeNodeConfig']] = None,
+             node_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if node_configs is not None:
-            pulumi.set(__self__, "node_configs", node_configs)
+            _setter("node_configs", node_configs)
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
 
     @property
     @pulumi.getter
@@ -158,8 +182,17 @@ class ChainChainConfigNodeNodeConfig(dict):
         """
         :param Sequence['ChainChainConfigNodeNodeConfigDenyPolicyArgs'] deny_policies: Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
         """
+        ChainChainConfigNodeNodeConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deny_policies=deny_policies,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deny_policies: Optional[Sequence['outputs.ChainChainConfigNodeNodeConfigDenyPolicy']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if deny_policies is not None:
-            pulumi.set(__self__, "deny_policies", deny_policies)
+            _setter("deny_policies", deny_policies)
 
     @property
     @pulumi.getter(name="denyPolicies")
@@ -202,14 +235,29 @@ class ChainChainConfigNodeNodeConfigDenyPolicy(dict):
         :param str issue_level: The level of scanning vulnerability that triggers blocking. Valid values: `LOW`, `MEDIUM`, `HIGH`, `UNKNOWN`.
         :param str logic: The logic of trigger blocking. Valid values: `AND`, `OR`.
         """
+        ChainChainConfigNodeNodeConfigDenyPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            issue_count=issue_count,
+            issue_level=issue_level,
+            logic=logic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[str] = None,
+             issue_count: Optional[str] = None,
+             issue_level: Optional[str] = None,
+             logic: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if issue_count is not None:
-            pulumi.set(__self__, "issue_count", issue_count)
+            _setter("issue_count", issue_count)
         if issue_level is not None:
-            pulumi.set(__self__, "issue_level", issue_level)
+            _setter("issue_level", issue_level)
         if logic is not None:
-            pulumi.set(__self__, "logic", logic)
+            _setter("logic", logic)
 
     @property
     @pulumi.getter
@@ -253,10 +301,21 @@ class ChainChainConfigRouter(dict):
         :param Sequence['ChainChainConfigRouterFromArgs'] froms: Source node. See `from` below.
         :param Sequence['ChainChainConfigRouterToArgs'] tos: Destination node. See `to` below.
         """
+        ChainChainConfigRouter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            froms=froms,
+            tos=tos,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             froms: Optional[Sequence['outputs.ChainChainConfigRouterFrom']] = None,
+             tos: Optional[Sequence['outputs.ChainChainConfigRouterTo']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if froms is not None:
-            pulumi.set(__self__, "froms", froms)
+            _setter("froms", froms)
         if tos is not None:
-            pulumi.set(__self__, "tos", tos)
+            _setter("tos", tos)
 
     @property
     @pulumi.getter
@@ -299,8 +358,17 @@ class ChainChainConfigRouterFrom(dict):
         """
         :param str node_name: The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
         """
+        ChainChainConfigRouterFrom._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_name=node_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
 
     @property
     @pulumi.getter(name="nodeName")
@@ -335,8 +403,17 @@ class ChainChainConfigRouterTo(dict):
         """
         :param str node_name: The name of node. Valid values: `DOCKER_IMAGE_BUILD`, `DOCKER_IMAGE_PUSH`, `VULNERABILITY_SCANNING`, `ACTIVATE_REPLICATION`, `TRIGGER`, `SNAPSHOT`, `TRIGGER_SNAPSHOT`.
         """
+        ChainChainConfigRouterTo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_name=node_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if node_name is not None:
-            pulumi.set(__self__, "node_name", node_name)
+            _setter("node_name", node_name)
 
     @property
     @pulumi.getter(name="nodeName")
@@ -358,12 +435,25 @@ class RepoDomainList(dict):
         :param str public: Domain of public endpoint.
         :param str vpc: Domain of vpc endpoint.
         """
+        RepoDomainList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            internal=internal,
+            public=public,
+            vpc=vpc,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             internal: Optional[str] = None,
+             public: Optional[str] = None,
+             vpc: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if internal is not None:
-            pulumi.set(__self__, "internal", internal)
+            _setter("internal", internal)
         if public is not None:
-            pulumi.set(__self__, "public", public)
+            _setter("public", public)
         if vpc is not None:
-            pulumi.set(__self__, "vpc", vpc)
+            _setter("vpc", vpc)
 
     @property
     @pulumi.getter
@@ -415,16 +505,43 @@ class GetChainsChainResult(dict):
         :param str scope_id: Delivery chain scope ID.
         :param str scope_type: Delivery chain scope type.
         """
-        pulumi.set(__self__, "chain_configs", chain_configs)
-        pulumi.set(__self__, "chain_id", chain_id)
-        pulumi.set(__self__, "chain_name", chain_name)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "modified_time", modified_time)
-        pulumi.set(__self__, "scope_id", scope_id)
-        pulumi.set(__self__, "scope_type", scope_type)
+        GetChainsChainResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            chain_configs=chain_configs,
+            chain_id=chain_id,
+            chain_name=chain_name,
+            create_time=create_time,
+            description=description,
+            id=id,
+            instance_id=instance_id,
+            modified_time=modified_time,
+            scope_id=scope_id,
+            scope_type=scope_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             chain_configs: Sequence['outputs.GetChainsChainChainConfigResult'],
+             chain_id: str,
+             chain_name: str,
+             create_time: str,
+             description: str,
+             id: str,
+             instance_id: str,
+             modified_time: str,
+             scope_id: str,
+             scope_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("chain_configs", chain_configs)
+        _setter("chain_id", chain_id)
+        _setter("chain_name", chain_name)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("modified_time", modified_time)
+        _setter("scope_id", scope_id)
+        _setter("scope_type", scope_type)
 
     @property
     @pulumi.getter(name="chainConfigs")
@@ -516,8 +633,19 @@ class GetChainsChainChainConfigResult(dict):
         :param Sequence['GetChainsChainChainConfigNodeArgs'] nodes: Each node in the delivery chain.
         :param Sequence['GetChainsChainChainConfigRouterArgs'] routers: Execution sequence relationship between delivery chain nodes.
         """
-        pulumi.set(__self__, "nodes", nodes)
-        pulumi.set(__self__, "routers", routers)
+        GetChainsChainChainConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            nodes=nodes,
+            routers=routers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             nodes: Sequence['outputs.GetChainsChainChainConfigNodeResult'],
+             routers: Sequence['outputs.GetChainsChainChainConfigRouterResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("nodes", nodes)
+        _setter("routers", routers)
 
     @property
     @pulumi.getter
@@ -547,9 +675,22 @@ class GetChainsChainChainConfigNodeResult(dict):
         :param Sequence['GetChainsChainChainConfigNodeNodeConfigArgs'] node_configs: The configuration of delivery chain node.
         :param str node_name: The name of delivery chain node.
         """
-        pulumi.set(__self__, "enable", enable)
-        pulumi.set(__self__, "node_configs", node_configs)
-        pulumi.set(__self__, "node_name", node_name)
+        GetChainsChainChainConfigNodeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable=enable,
+            node_configs=node_configs,
+            node_name=node_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable: bool,
+             node_configs: Sequence['outputs.GetChainsChainChainConfigNodeNodeConfigResult'],
+             node_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enable", enable)
+        _setter("node_configs", node_configs)
+        _setter("node_name", node_name)
 
     @property
     @pulumi.getter
@@ -583,7 +724,16 @@ class GetChainsChainChainConfigNodeNodeConfigResult(dict):
         """
         :param Sequence['GetChainsChainChainConfigNodeNodeConfigDenyPolicyArgs'] deny_policies: Blocking rules for scanning nodes in delivery chain nodes. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
         """
-        pulumi.set(__self__, "deny_policies", deny_policies)
+        GetChainsChainChainConfigNodeNodeConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deny_policies=deny_policies,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deny_policies: Sequence['outputs.GetChainsChainChainConfigNodeNodeConfigDenyPolicyResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("deny_policies", deny_policies)
 
     @property
     @pulumi.getter(name="denyPolicies")
@@ -607,11 +757,26 @@ class GetChainsChainChainConfigNodeNodeConfigDenyPolicyResult(dict):
         :param str logic: The logic of trigger blocking. Valid values: `AND`, `OR`.
         :param str action: The action of trigger blocking. Valid values: `BLOCK`, `BLOCK_RETAG`, `BLOCK_DELETE_TAG`. While `Block` means block the delivery chain from continuing to execute, `BLOCK_RETAG` means block overwriting push image tag, `BLOCK_DELETE_TAG` means block deletion of mirror tags.
         """
-        pulumi.set(__self__, "issue_count", issue_count)
-        pulumi.set(__self__, "issue_level", issue_level)
-        pulumi.set(__self__, "logic", logic)
+        GetChainsChainChainConfigNodeNodeConfigDenyPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            issue_count=issue_count,
+            issue_level=issue_level,
+            logic=logic,
+            action=action,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             issue_count: str,
+             issue_level: str,
+             logic: str,
+             action: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("issue_count", issue_count)
+        _setter("issue_level", issue_level)
+        _setter("logic", logic)
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
 
     @property
     @pulumi.getter(name="issueCount")
@@ -655,8 +820,19 @@ class GetChainsChainChainConfigRouterResult(dict):
         :param Sequence['GetChainsChainChainConfigRouterFromArgs'] froms: Source node.
         :param Sequence['GetChainsChainChainConfigRouterToArgs'] tos: Destination node.
         """
-        pulumi.set(__self__, "froms", froms)
-        pulumi.set(__self__, "tos", tos)
+        GetChainsChainChainConfigRouterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            froms=froms,
+            tos=tos,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             froms: Sequence['outputs.GetChainsChainChainConfigRouterFromResult'],
+             tos: Sequence['outputs.GetChainsChainChainConfigRouterToResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("froms", froms)
+        _setter("tos", tos)
 
     @property
     @pulumi.getter
@@ -682,7 +858,16 @@ class GetChainsChainChainConfigRouterFromResult(dict):
         """
         :param str node_name: The name of delivery chain node.
         """
-        pulumi.set(__self__, "node_name", node_name)
+        GetChainsChainChainConfigRouterFromResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_name=node_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("node_name", node_name)
 
     @property
     @pulumi.getter(name="nodeName")
@@ -700,7 +885,16 @@ class GetChainsChainChainConfigRouterToResult(dict):
         """
         :param str node_name: The name of delivery chain node.
         """
-        pulumi.set(__self__, "node_name", node_name)
+        GetChainsChainChainConfigRouterToResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_name=node_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("node_name", node_name)
 
     @property
     @pulumi.getter(name="nodeName")
@@ -728,12 +922,31 @@ class GetChartNamespacesNamespaceResult(dict):
         :param str instance_id: The ID of the namespace.
         :param str namespace_name: The name of the namespace.
         """
-        pulumi.set(__self__, "auto_create_repo", auto_create_repo)
-        pulumi.set(__self__, "chart_namespace_id", chart_namespace_id)
-        pulumi.set(__self__, "default_repo_type", default_repo_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "namespace_name", namespace_name)
+        GetChartNamespacesNamespaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_create_repo=auto_create_repo,
+            chart_namespace_id=chart_namespace_id,
+            default_repo_type=default_repo_type,
+            id=id,
+            instance_id=instance_id,
+            namespace_name=namespace_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_create_repo: bool,
+             chart_namespace_id: str,
+             default_repo_type: str,
+             id: str,
+             instance_id: str,
+             namespace_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_create_repo", auto_create_repo)
+        _setter("chart_namespace_id", chart_namespace_id)
+        _setter("default_repo_type", default_repo_type)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("namespace_name", namespace_name)
 
     @property
     @pulumi.getter(name="autoCreateRepo")
@@ -805,14 +1018,37 @@ class GetChartRepositoriesRepositoryResult(dict):
         :param str repo_type: The type of the repository. Valid values: `PUBLIC`,`PRIVATE`.
         :param str summary: The summary about the repository.
         """
-        pulumi.set(__self__, "chart_repository_id", chart_repository_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "repo_name", repo_name)
-        pulumi.set(__self__, "repo_namespace_name", repo_namespace_name)
-        pulumi.set(__self__, "repo_type", repo_type)
-        pulumi.set(__self__, "summary", summary)
+        GetChartRepositoriesRepositoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            chart_repository_id=chart_repository_id,
+            create_time=create_time,
+            id=id,
+            instance_id=instance_id,
+            repo_name=repo_name,
+            repo_namespace_name=repo_namespace_name,
+            repo_type=repo_type,
+            summary=summary,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             chart_repository_id: str,
+             create_time: str,
+             id: str,
+             instance_id: str,
+             repo_name: str,
+             repo_namespace_name: str,
+             repo_type: str,
+             summary: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("chart_repository_id", chart_repository_id)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("repo_name", repo_name)
+        _setter("repo_namespace_name", repo_namespace_name)
+        _setter("repo_type", repo_type)
+        _setter("summary", summary)
 
     @property
     @pulumi.getter(name="chartRepositoryId")
@@ -894,11 +1130,28 @@ class GetEndpointAclPoliciesPolicyResult(dict):
         :param str id: The ID of the Endpoint Acl Policy.
         :param str instance_id: The ID of the CR Instance.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "endpoint_type", endpoint_type)
-        pulumi.set(__self__, "entry", entry)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
+        GetEndpointAclPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            endpoint_type=endpoint_type,
+            entry=entry,
+            id=id,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             endpoint_type: str,
+             entry: str,
+             id: str,
+             instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("endpoint_type", endpoint_type)
+        _setter("entry", entry)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter
@@ -952,9 +1205,22 @@ class GetNamespacesNamespaceResult(dict):
         :param str default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
         :param str name: Name of Container Registry namespace.
         """
-        pulumi.set(__self__, "auto_create", auto_create)
-        pulumi.set(__self__, "default_visibility", default_visibility)
-        pulumi.set(__self__, "name", name)
+        GetNamespacesNamespaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_create=auto_create,
+            default_visibility=default_visibility,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_create: bool,
+             default_visibility: str,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_create", auto_create)
+        _setter("default_visibility", default_visibility)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="autoCreate")
@@ -998,12 +1264,31 @@ class GetReposRepoResult(dict):
         :param str summary: The repository general information.
         :param Sequence['GetReposRepoTagArgs'] tags: A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
         """
-        pulumi.set(__self__, "domain_list", domain_list)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "repo_type", repo_type)
-        pulumi.set(__self__, "summary", summary)
-        pulumi.set(__self__, "tags", tags)
+        GetReposRepoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_list=domain_list,
+            name=name,
+            namespace=namespace,
+            repo_type=repo_type,
+            summary=summary,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_list: 'outputs.GetReposRepoDomainListResult',
+             name: str,
+             namespace: str,
+             repo_type: str,
+             summary: str,
+             tags: Sequence['outputs.GetReposRepoTagResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain_list", domain_list)
+        _setter("name", name)
+        _setter("namespace", namespace)
+        _setter("repo_type", repo_type)
+        _setter("summary", summary)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter(name="domainList")
@@ -1065,9 +1350,22 @@ class GetReposRepoDomainListResult(dict):
         :param str public: Domain of public endpoint.
         :param str vpc: Domain of vpc endpoint.
         """
-        pulumi.set(__self__, "internal", internal)
-        pulumi.set(__self__, "public", public)
-        pulumi.set(__self__, "vpc", vpc)
+        GetReposRepoDomainListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            internal=internal,
+            public=public,
+            vpc=vpc,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             internal: str,
+             public: str,
+             vpc: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("internal", internal)
+        _setter("public", public)
+        _setter("vpc", vpc)
 
     @property
     @pulumi.getter
@@ -1113,13 +1411,34 @@ class GetReposRepoTagResult(dict):
         :param str status: Status of this image.
         :param str tag: Tag of this image.
         """
-        pulumi.set(__self__, "digest", digest)
-        pulumi.set(__self__, "image_create", image_create)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "image_size", image_size)
-        pulumi.set(__self__, "image_update", image_update)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tag", tag)
+        GetReposRepoTagResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            digest=digest,
+            image_create=image_create,
+            image_id=image_id,
+            image_size=image_size,
+            image_update=image_update,
+            status=status,
+            tag=tag,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             digest: str,
+             image_create: int,
+             image_id: str,
+             image_size: int,
+             image_update: int,
+             status: str,
+             tag: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("digest", digest)
+        _setter("image_create", image_create)
+        _setter("image_id", image_id)
+        _setter("image_size", image_size)
+        _setter("image_update", image_update)
+        _setter("status", status)
+        _setter("tag", tag)
 
     @property
     @pulumi.getter
@@ -1199,14 +1518,37 @@ class GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcResult(dict):
         :param str vpc_id: The ID of the VPC.
         :param str vswitch_id: The ID of the vSwitch.
         """
-        pulumi.set(__self__, "default_access", default_access)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "ip", ip)
-        pulumi.set(__self__, "module_name", module_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetVpcEndpointLinkedVpcsVpcEndpointLinkedVpcResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            default_access=default_access,
+            id=id,
+            instance_id=instance_id,
+            ip=ip,
+            module_name=module_name,
+            status=status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             default_access: bool,
+             id: str,
+             instance_id: str,
+             ip: str,
+             module_name: str,
+             status: str,
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("default_access", default_access)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("ip", ip)
+        _setter("module_name", module_name)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="defaultAccess")

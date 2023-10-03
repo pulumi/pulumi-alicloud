@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ListenerAclAttachmentArgs', 'ListenerAclAttachment']
@@ -25,9 +25,22 @@ class ListenerAclAttachmentArgs:
                - **Black**: All requests from IP addresses or address segments in the selected access control list are not forwarded. Blacklists are applicable to scenarios where only certain IP addresses are restricted. If blacklist access is enabled and no IP is added to the access policy group, the server load balancer listener forwards all requests.
         :param pulumi.Input[str] listener_id: Listener instance ID.
         """
-        pulumi.set(__self__, "acl_id", acl_id)
-        pulumi.set(__self__, "acl_type", acl_type)
-        pulumi.set(__self__, "listener_id", listener_id)
+        ListenerAclAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_id=acl_id,
+            acl_type=acl_type,
+            listener_id=listener_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_id: pulumi.Input[str],
+             acl_type: pulumi.Input[str],
+             listener_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("acl_id", acl_id)
+        _setter("acl_type", acl_type)
+        _setter("listener_id", listener_id)
 
     @property
     @pulumi.getter(name="aclId")
@@ -84,14 +97,29 @@ class _ListenerAclAttachmentState:
         :param pulumi.Input[str] listener_id: Listener instance ID.
         :param pulumi.Input[str] status: Listener Status.
         """
+        _ListenerAclAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_id=acl_id,
+            acl_type=acl_type,
+            listener_id=listener_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_id: Optional[pulumi.Input[str]] = None,
+             acl_type: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acl_id is not None:
-            pulumi.set(__self__, "acl_id", acl_id)
+            _setter("acl_id", acl_id)
         if acl_type is not None:
-            pulumi.set(__self__, "acl_type", acl_type)
+            _setter("acl_type", acl_type)
         if listener_id is not None:
-            pulumi.set(__self__, "listener_id", listener_id)
+            _setter("listener_id", listener_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="aclId")
@@ -215,6 +243,10 @@ class ListenerAclAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ListenerAclAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

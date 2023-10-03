@@ -32,14 +32,14 @@ public final class RuleRuleConditionHeaderConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * The values of the cookie. See `values` below.
+     * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return The values of the cookie. See `values` below.
+     * @return Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
      * 
      */
     public Optional<Output<List<String>>> values() {
@@ -93,7 +93,7 @@ public final class RuleRuleConditionHeaderConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param values The values of the cookie. See `values` below.
+         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class RuleRuleConditionHeaderConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param values The values of the cookie. See `values` below.
+         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class RuleRuleConditionHeaderConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param values The values of the cookie. See `values` below.
+         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
          * 
          * @return builder
          * 

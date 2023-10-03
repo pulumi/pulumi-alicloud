@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -29,18 +29,37 @@ class UserArgs:
         :param pulumi.Input[str] mobile: Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
         :param pulumi.Input[str] name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
+        UserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comments=comments,
+            display_name=display_name,
+            email=email,
+            force=force,
+            mobile=mobile,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comments: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             mobile: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comments is not None:
-            pulumi.set(__self__, "comments", comments)
+            _setter("comments", comments)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if mobile is not None:
-            pulumi.set(__self__, "mobile", mobile)
+            _setter("mobile", mobile)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -133,18 +152,37 @@ class _UserState:
         :param pulumi.Input[str] mobile: Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
         :param pulumi.Input[str] name: Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
         """
+        _UserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comments=comments,
+            display_name=display_name,
+            email=email,
+            force=force,
+            mobile=mobile,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comments: Optional[pulumi.Input[str]] = None,
+             display_name: Optional[pulumi.Input[str]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             mobile: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comments is not None:
-            pulumi.set(__self__, "comments", comments)
+            _setter("comments", comments)
         if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+            _setter("display_name", display_name)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if mobile is not None:
-            pulumi.set(__self__, "mobile", mobile)
+            _setter("mobile", mobile)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -322,6 +360,10 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

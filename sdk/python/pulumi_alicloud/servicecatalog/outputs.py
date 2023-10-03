@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -60,12 +60,25 @@ class ProvisionedProductOutput(dict):
         :param str output_key: The name of the output value defined in the template.
         :param str output_value: The content of the output value defined in the template.
         """
+        ProvisionedProductOutput._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            output_key=output_key,
+            output_value=output_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             output_key: Optional[str] = None,
+             output_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if output_key is not None:
-            pulumi.set(__self__, "output_key", output_key)
+            _setter("output_key", output_key)
         if output_value is not None:
-            pulumi.set(__self__, "output_value", output_value)
+            _setter("output_value", output_value)
 
     @property
     @pulumi.getter
@@ -120,10 +133,21 @@ class ProvisionedProductParameter(dict):
         :param str parameter_key: The name of the parameter defined in the template.
         :param str parameter_value: The Template parameter value entered by the user.
         """
+        ProvisionedProductParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_key=parameter_key,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_key: Optional[str] = None,
+             parameter_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if parameter_key is not None:
-            pulumi.set(__self__, "parameter_key", parameter_key)
+            _setter("parameter_key", parameter_key)
         if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+            _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
@@ -165,15 +189,40 @@ class GetEndUserProductsEndUserProductResult(dict):
         :param str product_type: Type of product.The value is Ros, which indicates the resource orchestration service (ROS).
         :param str provider_name: Product provider.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "has_default_launch_option", has_default_launch_option)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "product_arn", product_arn)
-        pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "product_name", product_name)
-        pulumi.set(__self__, "product_type", product_type)
-        pulumi.set(__self__, "provider_name", provider_name)
+        GetEndUserProductsEndUserProductResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            has_default_launch_option=has_default_launch_option,
+            id=id,
+            product_arn=product_arn,
+            product_id=product_id,
+            product_name=product_name,
+            product_type=product_type,
+            provider_name=provider_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             has_default_launch_option: bool,
+             id: str,
+             product_arn: str,
+             product_id: str,
+             product_name: str,
+             product_type: str,
+             provider_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("has_default_launch_option", has_default_launch_option)
+        _setter("id", id)
+        _setter("product_arn", product_arn)
+        _setter("product_id", product_id)
+        _setter("product_name", product_name)
+        _setter("product_type", product_type)
+        _setter("provider_name", provider_name)
 
     @property
     @pulumi.getter(name="createTime")
@@ -261,10 +310,25 @@ class GetLaunchOptionsLaunchOptionResult(dict):
         :param str portfolio_id: Product mix ID.
         :param str portfolio_name: Product portfolio name.
         """
-        pulumi.set(__self__, "constraint_summaries", constraint_summaries)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "portfolio_id", portfolio_id)
-        pulumi.set(__self__, "portfolio_name", portfolio_name)
+        GetLaunchOptionsLaunchOptionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            constraint_summaries=constraint_summaries,
+            id=id,
+            portfolio_id=portfolio_id,
+            portfolio_name=portfolio_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             constraint_summaries: Sequence['outputs.GetLaunchOptionsLaunchOptionConstraintSummaryResult'],
+             id: str,
+             portfolio_id: str,
+             portfolio_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("constraint_summaries", constraint_summaries)
+        _setter("id", id)
+        _setter("portfolio_id", portfolio_id)
+        _setter("portfolio_name", portfolio_name)
 
     @property
     @pulumi.getter(name="constraintSummaries")
@@ -308,8 +372,19 @@ class GetLaunchOptionsLaunchOptionConstraintSummaryResult(dict):
         :param str constraint_type: Constraint type.The value is Launch, which indicates that the constraint is started.
         :param str description: Constraint description.
         """
-        pulumi.set(__self__, "constraint_type", constraint_type)
-        pulumi.set(__self__, "description", description)
+        GetLaunchOptionsLaunchOptionConstraintSummaryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            constraint_type=constraint_type,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             constraint_type: str,
+             description: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("constraint_type", constraint_type)
+        _setter("description", description)
 
     @property
     @pulumi.getter(name="constraintType")
@@ -341,10 +416,25 @@ class GetLaunchOptionsOptionResult(dict):
         :param str portfolio_id: Product mix ID.
         :param str portfolio_name: Product portfolio name.
         """
-        pulumi.set(__self__, "constraint_summaries", constraint_summaries)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "portfolio_id", portfolio_id)
-        pulumi.set(__self__, "portfolio_name", portfolio_name)
+        GetLaunchOptionsOptionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            constraint_summaries=constraint_summaries,
+            id=id,
+            portfolio_id=portfolio_id,
+            portfolio_name=portfolio_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             constraint_summaries: Sequence['outputs.GetLaunchOptionsOptionConstraintSummaryResult'],
+             id: str,
+             portfolio_id: str,
+             portfolio_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("constraint_summaries", constraint_summaries)
+        _setter("id", id)
+        _setter("portfolio_id", portfolio_id)
+        _setter("portfolio_name", portfolio_name)
 
     @property
     @pulumi.getter(name="constraintSummaries")
@@ -388,8 +478,19 @@ class GetLaunchOptionsOptionConstraintSummaryResult(dict):
         :param str constraint_type: Constraint type.The value is Launch, which indicates that the constraint is started.
         :param str description: Constraint description.
         """
-        pulumi.set(__self__, "constraint_type", constraint_type)
-        pulumi.set(__self__, "description", description)
+        GetLaunchOptionsOptionConstraintSummaryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            constraint_type=constraint_type,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             constraint_type: str,
+             description: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("constraint_type", constraint_type)
+        _setter("description", description)
 
     @property
     @pulumi.getter(name="constraintType")
@@ -427,13 +528,34 @@ class GetPortfoliosPortfolioResult(dict):
         :param str portfolio_name: The name of the portfolio
         :param str provider_name: The provider name of the portfolio
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "portfolio_arn", portfolio_arn)
-        pulumi.set(__self__, "portfolio_id", portfolio_id)
-        pulumi.set(__self__, "portfolio_name", portfolio_name)
-        pulumi.set(__self__, "provider_name", provider_name)
+        GetPortfoliosPortfolioResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            id=id,
+            portfolio_arn=portfolio_arn,
+            portfolio_id=portfolio_id,
+            portfolio_name=portfolio_name,
+            provider_name=provider_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             id: str,
+             portfolio_arn: str,
+             portfolio_id: str,
+             portfolio_name: str,
+             provider_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("portfolio_arn", portfolio_arn)
+        _setter("portfolio_id", portfolio_id)
+        _setter("portfolio_name", portfolio_name)
+        _setter("provider_name", provider_name)
 
     @property
     @pulumi.getter(name="createTime")
@@ -515,15 +637,40 @@ class GetProductAsEndUsersUserResult(dict):
         :param str product_type: Type of product.The value is Ros, which indicates the resource orchestration service (ROS).
         :param str provider_name: Product provider.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "has_default_launch_option", has_default_launch_option)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "product_arn", product_arn)
-        pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "product_name", product_name)
-        pulumi.set(__self__, "product_type", product_type)
-        pulumi.set(__self__, "provider_name", provider_name)
+        GetProductAsEndUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            has_default_launch_option=has_default_launch_option,
+            id=id,
+            product_arn=product_arn,
+            product_id=product_id,
+            product_name=product_name,
+            product_type=product_type,
+            provider_name=provider_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             has_default_launch_option: bool,
+             id: str,
+             product_arn: str,
+             product_id: str,
+             product_name: str,
+             product_type: str,
+             provider_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("has_default_launch_option", has_default_launch_option)
+        _setter("id", id)
+        _setter("product_arn", product_arn)
+        _setter("product_id", product_id)
+        _setter("product_name", product_name)
+        _setter("product_type", product_type)
+        _setter("provider_name", provider_name)
 
     @property
     @pulumi.getter(name="createTime")
@@ -623,16 +770,43 @@ class GetProductVersionsProductVersionResult(dict):
         :param str template_type: Template Type
         :param str template_url: Template URL
         """
-        pulumi.set(__self__, "active", active)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "guidance", guidance)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "product_version_id", product_version_id)
-        pulumi.set(__self__, "product_version_name", product_version_name)
-        pulumi.set(__self__, "template_type", template_type)
-        pulumi.set(__self__, "template_url", template_url)
+        GetProductVersionsProductVersionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            create_time=create_time,
+            description=description,
+            guidance=guidance,
+            id=id,
+            product_id=product_id,
+            product_version_id=product_version_id,
+            product_version_name=product_version_name,
+            template_type=template_type,
+            template_url=template_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: bool,
+             create_time: str,
+             description: str,
+             guidance: str,
+             id: str,
+             product_id: str,
+             product_version_id: str,
+             product_version_name: str,
+             template_type: str,
+             template_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("active", active)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("guidance", guidance)
+        _setter("id", id)
+        _setter("product_id", product_id)
+        _setter("product_version_id", product_version_id)
+        _setter("product_version_name", product_version_name)
+        _setter("template_type", template_type)
+        _setter("template_url", template_url)
 
     @property
     @pulumi.getter
@@ -740,16 +914,43 @@ class GetProductVersionsVersionResult(dict):
         :param str template_type: Template Type
         :param str template_url: Template URL
         """
-        pulumi.set(__self__, "active", active)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "guidance", guidance)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "product_version_id", product_version_id)
-        pulumi.set(__self__, "product_version_name", product_version_name)
-        pulumi.set(__self__, "template_type", template_type)
-        pulumi.set(__self__, "template_url", template_url)
+        GetProductVersionsVersionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            create_time=create_time,
+            description=description,
+            guidance=guidance,
+            id=id,
+            product_id=product_id,
+            product_version_id=product_version_id,
+            product_version_name=product_version_name,
+            template_type=template_type,
+            template_url=template_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: bool,
+             create_time: str,
+             description: str,
+             guidance: str,
+             id: str,
+             product_id: str,
+             product_version_id: str,
+             product_version_name: str,
+             template_type: str,
+             template_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("active", active)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("guidance", guidance)
+        _setter("id", id)
+        _setter("product_id", product_id)
+        _setter("product_version_id", product_version_id)
+        _setter("product_version_name", product_version_name)
+        _setter("template_type", template_type)
+        _setter("template_url", template_url)
 
     @property
     @pulumi.getter
@@ -879,30 +1080,83 @@ class GetProvisionedProductsProductResult(dict):
         :param str status: Instance status
         :param str status_message: The status message of the product instance
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_provisioning_task_id", last_provisioning_task_id)
-        pulumi.set(__self__, "last_successful_provisioning_task_id", last_successful_provisioning_task_id)
-        pulumi.set(__self__, "last_task_id", last_task_id)
-        pulumi.set(__self__, "outputs", outputs)
-        pulumi.set(__self__, "owner_principal_id", owner_principal_id)
-        pulumi.set(__self__, "owner_principal_type", owner_principal_type)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "portfolio_id", portfolio_id)
-        pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "product_name", product_name)
-        pulumi.set(__self__, "product_version_id", product_version_id)
-        pulumi.set(__self__, "product_version_name", product_version_name)
-        pulumi.set(__self__, "provisioned_product_arn", provisioned_product_arn)
-        pulumi.set(__self__, "provisioned_product_id", provisioned_product_id)
-        pulumi.set(__self__, "provisioned_product_name", provisioned_product_name)
-        pulumi.set(__self__, "provisioned_product_type", provisioned_product_type)
-        pulumi.set(__self__, "stack_id", stack_id)
-        pulumi.set(__self__, "stack_region_id", stack_region_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "status_message", status_message)
+        GetProvisionedProductsProductResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            id=id,
+            last_provisioning_task_id=last_provisioning_task_id,
+            last_successful_provisioning_task_id=last_successful_provisioning_task_id,
+            last_task_id=last_task_id,
+            outputs=outputs,
+            owner_principal_id=owner_principal_id,
+            owner_principal_type=owner_principal_type,
+            parameters=parameters,
+            portfolio_id=portfolio_id,
+            product_id=product_id,
+            product_name=product_name,
+            product_version_id=product_version_id,
+            product_version_name=product_version_name,
+            provisioned_product_arn=provisioned_product_arn,
+            provisioned_product_id=provisioned_product_id,
+            provisioned_product_name=provisioned_product_name,
+            provisioned_product_type=provisioned_product_type,
+            stack_id=stack_id,
+            stack_region_id=stack_region_id,
+            status=status,
+            status_message=status_message,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             id: str,
+             last_provisioning_task_id: str,
+             last_successful_provisioning_task_id: str,
+             last_task_id: str,
+             outputs: Sequence['outputs.GetProvisionedProductsProductOutputResult'],
+             owner_principal_id: str,
+             owner_principal_type: str,
+             parameters: Sequence['outputs.GetProvisionedProductsProductParameterResult'],
+             portfolio_id: str,
+             product_id: str,
+             product_name: str,
+             product_version_id: str,
+             product_version_name: str,
+             provisioned_product_arn: str,
+             provisioned_product_id: str,
+             provisioned_product_name: str,
+             provisioned_product_type: str,
+             stack_id: str,
+             stack_region_id: str,
+             status: str,
+             status_message: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("last_provisioning_task_id", last_provisioning_task_id)
+        _setter("last_successful_provisioning_task_id", last_successful_provisioning_task_id)
+        _setter("last_task_id", last_task_id)
+        _setter("outputs", outputs)
+        _setter("owner_principal_id", owner_principal_id)
+        _setter("owner_principal_type", owner_principal_type)
+        _setter("parameters", parameters)
+        _setter("portfolio_id", portfolio_id)
+        _setter("product_id", product_id)
+        _setter("product_name", product_name)
+        _setter("product_version_id", product_version_id)
+        _setter("product_version_name", product_version_name)
+        _setter("provisioned_product_arn", provisioned_product_arn)
+        _setter("provisioned_product_id", provisioned_product_id)
+        _setter("provisioned_product_name", provisioned_product_name)
+        _setter("provisioned_product_type", provisioned_product_type)
+        _setter("stack_id", stack_id)
+        _setter("stack_region_id", stack_region_id)
+        _setter("status", status)
+        _setter("status_message", status_message)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1083,9 +1337,22 @@ class GetProvisionedProductsProductOutputResult(dict):
                  description: str,
                  output_key: str,
                  output_value: str):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "output_key", output_key)
-        pulumi.set(__self__, "output_value", output_value)
+        GetProvisionedProductsProductOutputResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            output_key=output_key,
+            output_value=output_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             output_key: str,
+             output_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("output_key", output_key)
+        _setter("output_value", output_value)
 
     @property
     @pulumi.getter
@@ -1108,8 +1375,19 @@ class GetProvisionedProductsProductParameterResult(dict):
     def __init__(__self__, *,
                  parameter_key: str,
                  parameter_value: str):
-        pulumi.set(__self__, "parameter_key", parameter_key)
-        pulumi.set(__self__, "parameter_value", parameter_value)
+        GetProvisionedProductsProductParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_key=parameter_key,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_key: str,
+             parameter_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parameter_key", parameter_key)
+        _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
@@ -1169,30 +1447,83 @@ class GetProvisionedProductsProvisionedProductResult(dict):
         :param str status: Instance status
         :param str status_message: The status message of the product instance
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_provisioning_task_id", last_provisioning_task_id)
-        pulumi.set(__self__, "last_successful_provisioning_task_id", last_successful_provisioning_task_id)
-        pulumi.set(__self__, "last_task_id", last_task_id)
-        pulumi.set(__self__, "outputs", outputs)
-        pulumi.set(__self__, "owner_principal_id", owner_principal_id)
-        pulumi.set(__self__, "owner_principal_type", owner_principal_type)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "portfolio_id", portfolio_id)
-        pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "product_name", product_name)
-        pulumi.set(__self__, "product_version_id", product_version_id)
-        pulumi.set(__self__, "product_version_name", product_version_name)
-        pulumi.set(__self__, "provisioned_product_arn", provisioned_product_arn)
-        pulumi.set(__self__, "provisioned_product_id", provisioned_product_id)
-        pulumi.set(__self__, "provisioned_product_name", provisioned_product_name)
-        pulumi.set(__self__, "provisioned_product_type", provisioned_product_type)
-        pulumi.set(__self__, "stack_id", stack_id)
-        pulumi.set(__self__, "stack_region_id", stack_region_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "status_message", status_message)
+        GetProvisionedProductsProvisionedProductResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            id=id,
+            last_provisioning_task_id=last_provisioning_task_id,
+            last_successful_provisioning_task_id=last_successful_provisioning_task_id,
+            last_task_id=last_task_id,
+            outputs=outputs,
+            owner_principal_id=owner_principal_id,
+            owner_principal_type=owner_principal_type,
+            parameters=parameters,
+            portfolio_id=portfolio_id,
+            product_id=product_id,
+            product_name=product_name,
+            product_version_id=product_version_id,
+            product_version_name=product_version_name,
+            provisioned_product_arn=provisioned_product_arn,
+            provisioned_product_id=provisioned_product_id,
+            provisioned_product_name=provisioned_product_name,
+            provisioned_product_type=provisioned_product_type,
+            stack_id=stack_id,
+            stack_region_id=stack_region_id,
+            status=status,
+            status_message=status_message,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             id: str,
+             last_provisioning_task_id: str,
+             last_successful_provisioning_task_id: str,
+             last_task_id: str,
+             outputs: Sequence['outputs.GetProvisionedProductsProvisionedProductOutputResult'],
+             owner_principal_id: str,
+             owner_principal_type: str,
+             parameters: Sequence['outputs.GetProvisionedProductsProvisionedProductParameterResult'],
+             portfolio_id: str,
+             product_id: str,
+             product_name: str,
+             product_version_id: str,
+             product_version_name: str,
+             provisioned_product_arn: str,
+             provisioned_product_id: str,
+             provisioned_product_name: str,
+             provisioned_product_type: str,
+             stack_id: str,
+             stack_region_id: str,
+             status: str,
+             status_message: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("last_provisioning_task_id", last_provisioning_task_id)
+        _setter("last_successful_provisioning_task_id", last_successful_provisioning_task_id)
+        _setter("last_task_id", last_task_id)
+        _setter("outputs", outputs)
+        _setter("owner_principal_id", owner_principal_id)
+        _setter("owner_principal_type", owner_principal_type)
+        _setter("parameters", parameters)
+        _setter("portfolio_id", portfolio_id)
+        _setter("product_id", product_id)
+        _setter("product_name", product_name)
+        _setter("product_version_id", product_version_id)
+        _setter("product_version_name", product_version_name)
+        _setter("provisioned_product_arn", provisioned_product_arn)
+        _setter("provisioned_product_id", provisioned_product_id)
+        _setter("provisioned_product_name", provisioned_product_name)
+        _setter("provisioned_product_type", provisioned_product_type)
+        _setter("stack_id", stack_id)
+        _setter("stack_region_id", stack_region_id)
+        _setter("status", status)
+        _setter("status_message", status_message)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1373,9 +1704,22 @@ class GetProvisionedProductsProvisionedProductOutputResult(dict):
                  description: str,
                  output_key: str,
                  output_value: str):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "output_key", output_key)
-        pulumi.set(__self__, "output_value", output_value)
+        GetProvisionedProductsProvisionedProductOutputResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            output_key=output_key,
+            output_value=output_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             output_key: str,
+             output_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("output_key", output_key)
+        _setter("output_value", output_value)
 
     @property
     @pulumi.getter
@@ -1398,8 +1742,19 @@ class GetProvisionedProductsProvisionedProductParameterResult(dict):
     def __init__(__self__, *,
                  parameter_key: str,
                  parameter_value: str):
-        pulumi.set(__self__, "parameter_key", parameter_key)
-        pulumi.set(__self__, "parameter_value", parameter_value)
+        GetProvisionedProductsProvisionedProductParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            parameter_key=parameter_key,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             parameter_key: str,
+             parameter_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("parameter_key", parameter_key)
+        _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")

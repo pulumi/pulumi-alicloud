@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketLifecycleRuleFilterNot {
     /**
-     * @return Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+     * @return The prefix in the names of the objects to which the lifecycle rule does not apply.
      * 
      */
     private @Nullable String prefix;
@@ -25,7 +25,7 @@ public final class BucketLifecycleRuleFilterNot {
 
     private BucketLifecycleRuleFilterNot() {}
     /**
-     * @return Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+     * @return The prefix in the names of the objects to which the lifecycle rule does not apply.
      * 
      */
     public Optional<String> prefix() {

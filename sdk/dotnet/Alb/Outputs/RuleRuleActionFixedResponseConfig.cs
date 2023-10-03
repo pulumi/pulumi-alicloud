@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string? ContentType;
         /// <summary>
-        /// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+        /// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
         /// </summary>
         public readonly string? HttpCode;
 

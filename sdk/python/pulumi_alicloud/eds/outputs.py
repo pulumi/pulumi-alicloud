@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -71,10 +71,21 @@ class CustomPropertyPropertyValue(dict):
         :param str property_value: The value of an attribute.
         :param str property_value_id: The value of an attribute id.
         """
+        CustomPropertyPropertyValue._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property_value=property_value,
+            property_value_id=property_value_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property_value: Optional[str] = None,
+             property_value_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if property_value is not None:
-            pulumi.set(__self__, "property_value", property_value)
+            _setter("property_value", property_value)
         if property_value_id is not None:
-            pulumi.set(__self__, "property_value_id", property_value_id)
+            _setter("property_value_id", property_value_id)
 
     @property
     @pulumi.getter(name="propertyValue")
@@ -119,10 +130,21 @@ class EcdPolicyGroupAuthorizeAccessPolicyRule(dict):
         :param str cidr_ip: The cidrip of authorize access rule.
         :param str description: The description of authorize access rule.
         """
+        EcdPolicyGroupAuthorizeAccessPolicyRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_ip=cidr_ip,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_ip: Optional[str] = None,
+             description: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr_ip is not None:
-            pulumi.set(__self__, "cidr_ip", cidr_ip)
+            _setter("cidr_ip", cidr_ip)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="cidrIp")
@@ -181,20 +203,41 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRule(dict):
         :param str priority: The priority of security rules.
         :param str type: The type of security rules.
         """
+        EcdPolicyGroupAuthorizeSecurityPolicyRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_ip=cidr_ip,
+            description=description,
+            ip_protocol=ip_protocol,
+            policy=policy,
+            port_range=port_range,
+            priority=priority,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_ip: Optional[str] = None,
+             description: Optional[str] = None,
+             ip_protocol: Optional[str] = None,
+             policy: Optional[str] = None,
+             port_range: Optional[str] = None,
+             priority: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr_ip is not None:
-            pulumi.set(__self__, "cidr_ip", cidr_ip)
+            _setter("cidr_ip", cidr_ip)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
+            _setter("ip_protocol", ip_protocol)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if port_range is not None:
-            pulumi.set(__self__, "port_range", port_range)
+            _setter("port_range", port_range)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="cidrIp")
@@ -296,25 +339,70 @@ class GetAdConnectorDirectoriesDirectoryResult(dict):
         :param str vpc_id: The ID of the vpc.
         :param Sequence[str] vswitch_ids: List of VSwitch IDs in the directory.
         """
-        pulumi.set(__self__, "ad_connector_directory_id", ad_connector_directory_id)
-        pulumi.set(__self__, "ad_connectors", ad_connectors)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "custom_security_group_id", custom_security_group_id)
-        pulumi.set(__self__, "directory_name", directory_name)
-        pulumi.set(__self__, "directory_type", directory_type)
-        pulumi.set(__self__, "dns_addresses", dns_addresses)
-        pulumi.set(__self__, "dns_user_name", dns_user_name)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "domain_user_name", domain_user_name)
-        pulumi.set(__self__, "enable_admin_access", enable_admin_access)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mfa_enabled", mfa_enabled)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "sub_dns_addresses", sub_dns_addresses)
-        pulumi.set(__self__, "sub_domain_name", sub_domain_name)
-        pulumi.set(__self__, "trust_password", trust_password)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        GetAdConnectorDirectoriesDirectoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ad_connector_directory_id=ad_connector_directory_id,
+            ad_connectors=ad_connectors,
+            create_time=create_time,
+            custom_security_group_id=custom_security_group_id,
+            directory_name=directory_name,
+            directory_type=directory_type,
+            dns_addresses=dns_addresses,
+            dns_user_name=dns_user_name,
+            domain_name=domain_name,
+            domain_user_name=domain_user_name,
+            enable_admin_access=enable_admin_access,
+            id=id,
+            mfa_enabled=mfa_enabled,
+            status=status,
+            sub_dns_addresses=sub_dns_addresses,
+            sub_domain_name=sub_domain_name,
+            trust_password=trust_password,
+            vpc_id=vpc_id,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ad_connector_directory_id: str,
+             ad_connectors: Sequence['outputs.GetAdConnectorDirectoriesDirectoryAdConnectorResult'],
+             create_time: str,
+             custom_security_group_id: str,
+             directory_name: str,
+             directory_type: str,
+             dns_addresses: Sequence[str],
+             dns_user_name: str,
+             domain_name: str,
+             domain_user_name: str,
+             enable_admin_access: bool,
+             id: str,
+             mfa_enabled: bool,
+             status: str,
+             sub_dns_addresses: Sequence[str],
+             sub_domain_name: str,
+             trust_password: str,
+             vpc_id: str,
+             vswitch_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ad_connector_directory_id", ad_connector_directory_id)
+        _setter("ad_connectors", ad_connectors)
+        _setter("create_time", create_time)
+        _setter("custom_security_group_id", custom_security_group_id)
+        _setter("directory_name", directory_name)
+        _setter("directory_type", directory_type)
+        _setter("dns_addresses", dns_addresses)
+        _setter("dns_user_name", dns_user_name)
+        _setter("domain_name", domain_name)
+        _setter("domain_user_name", domain_user_name)
+        _setter("enable_admin_access", enable_admin_access)
+        _setter("id", id)
+        _setter("mfa_enabled", mfa_enabled)
+        _setter("status", status)
+        _setter("sub_dns_addresses", sub_dns_addresses)
+        _setter("sub_domain_name", sub_domain_name)
+        _setter("trust_password", trust_password)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter(name="adConnectorDirectoryId")
@@ -486,12 +574,31 @@ class GetAdConnectorDirectoriesDirectoryAdConnectorResult(dict):
         :param str trust_key: The AD Connector control trust password.
         :param str vswitch_id: The ID of VSwitch.
         """
-        pulumi.set(__self__, "ad_connector_address", ad_connector_address)
-        pulumi.set(__self__, "connector_status", connector_status)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "specification", specification)
-        pulumi.set(__self__, "trust_key", trust_key)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetAdConnectorDirectoriesDirectoryAdConnectorResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ad_connector_address=ad_connector_address,
+            connector_status=connector_status,
+            network_interface_id=network_interface_id,
+            specification=specification,
+            trust_key=trust_key,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ad_connector_address: str,
+             connector_status: str,
+             network_interface_id: str,
+             specification: str,
+             trust_key: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ad_connector_address", ad_connector_address)
+        _setter("connector_status", connector_status)
+        _setter("network_interface_id", network_interface_id)
+        _setter("specification", specification)
+        _setter("trust_key", trust_key)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="adConnectorAddress")
@@ -607,36 +714,103 @@ class GetAdConnectorOfficeSitesSiteResult(dict):
         :param str vpc_id: Security Office VPC ID.
         :param Sequence[str] vswitch_ids: The vswitch ids.
         """
-        pulumi.set(__self__, "ad_connector_office_site_name", ad_connector_office_site_name)
-        pulumi.set(__self__, "ad_connectors", ad_connectors)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "custom_security_group_id", custom_security_group_id)
-        pulumi.set(__self__, "desktop_access_type", desktop_access_type)
-        pulumi.set(__self__, "desktop_vpc_endpoint", desktop_vpc_endpoint)
-        pulumi.set(__self__, "dns_addresses", dns_addresses)
-        pulumi.set(__self__, "dns_user_name", dns_user_name)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "domain_user_name", domain_user_name)
-        pulumi.set(__self__, "enable_admin_access", enable_admin_access)
-        pulumi.set(__self__, "enable_cross_desktop_access", enable_cross_desktop_access)
-        pulumi.set(__self__, "enable_internet_access", enable_internet_access)
-        pulumi.set(__self__, "file_system_ids", file_system_ids)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "logs", logs)
-        pulumi.set(__self__, "mfa_enabled", mfa_enabled)
-        pulumi.set(__self__, "network_package_id", network_package_id)
-        pulumi.set(__self__, "office_site_id", office_site_id)
-        pulumi.set(__self__, "office_site_type", office_site_type)
-        pulumi.set(__self__, "sso_enabled", sso_enabled)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "sub_domain_dns_addresses", sub_domain_dns_addresses)
-        pulumi.set(__self__, "sub_domain_name", sub_domain_name)
-        pulumi.set(__self__, "trust_password", trust_password)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        GetAdConnectorOfficeSitesSiteResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ad_connector_office_site_name=ad_connector_office_site_name,
+            ad_connectors=ad_connectors,
+            bandwidth=bandwidth,
+            cen_id=cen_id,
+            cidr_block=cidr_block,
+            create_time=create_time,
+            custom_security_group_id=custom_security_group_id,
+            desktop_access_type=desktop_access_type,
+            desktop_vpc_endpoint=desktop_vpc_endpoint,
+            dns_addresses=dns_addresses,
+            dns_user_name=dns_user_name,
+            domain_name=domain_name,
+            domain_user_name=domain_user_name,
+            enable_admin_access=enable_admin_access,
+            enable_cross_desktop_access=enable_cross_desktop_access,
+            enable_internet_access=enable_internet_access,
+            file_system_ids=file_system_ids,
+            id=id,
+            logs=logs,
+            mfa_enabled=mfa_enabled,
+            network_package_id=network_package_id,
+            office_site_id=office_site_id,
+            office_site_type=office_site_type,
+            sso_enabled=sso_enabled,
+            status=status,
+            sub_domain_dns_addresses=sub_domain_dns_addresses,
+            sub_domain_name=sub_domain_name,
+            trust_password=trust_password,
+            vpc_id=vpc_id,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ad_connector_office_site_name: str,
+             ad_connectors: Sequence['outputs.GetAdConnectorOfficeSitesSiteAdConnectorResult'],
+             bandwidth: int,
+             cen_id: str,
+             cidr_block: str,
+             create_time: str,
+             custom_security_group_id: str,
+             desktop_access_type: str,
+             desktop_vpc_endpoint: str,
+             dns_addresses: Sequence[str],
+             dns_user_name: str,
+             domain_name: str,
+             domain_user_name: str,
+             enable_admin_access: bool,
+             enable_cross_desktop_access: bool,
+             enable_internet_access: bool,
+             file_system_ids: Sequence[str],
+             id: str,
+             logs: Sequence['outputs.GetAdConnectorOfficeSitesSiteLogResult'],
+             mfa_enabled: bool,
+             network_package_id: str,
+             office_site_id: str,
+             office_site_type: str,
+             sso_enabled: bool,
+             status: str,
+             sub_domain_dns_addresses: Sequence[str],
+             sub_domain_name: str,
+             trust_password: str,
+             vpc_id: str,
+             vswitch_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ad_connector_office_site_name", ad_connector_office_site_name)
+        _setter("ad_connectors", ad_connectors)
+        _setter("bandwidth", bandwidth)
+        _setter("cen_id", cen_id)
+        _setter("cidr_block", cidr_block)
+        _setter("create_time", create_time)
+        _setter("custom_security_group_id", custom_security_group_id)
+        _setter("desktop_access_type", desktop_access_type)
+        _setter("desktop_vpc_endpoint", desktop_vpc_endpoint)
+        _setter("dns_addresses", dns_addresses)
+        _setter("dns_user_name", dns_user_name)
+        _setter("domain_name", domain_name)
+        _setter("domain_user_name", domain_user_name)
+        _setter("enable_admin_access", enable_admin_access)
+        _setter("enable_cross_desktop_access", enable_cross_desktop_access)
+        _setter("enable_internet_access", enable_internet_access)
+        _setter("file_system_ids", file_system_ids)
+        _setter("id", id)
+        _setter("logs", logs)
+        _setter("mfa_enabled", mfa_enabled)
+        _setter("network_package_id", network_package_id)
+        _setter("office_site_id", office_site_id)
+        _setter("office_site_type", office_site_type)
+        _setter("sso_enabled", sso_enabled)
+        _setter("status", status)
+        _setter("sub_domain_dns_addresses", sub_domain_dns_addresses)
+        _setter("sub_domain_name", sub_domain_name)
+        _setter("trust_password", trust_password)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter(name="adConnectorOfficeSiteName")
@@ -892,10 +1066,25 @@ class GetAdConnectorOfficeSitesSiteAdConnectorResult(dict):
         :param str network_interface_id: AD Connector Mount of the Card ID.
         :param str vswitch_id: AD Connector in the Network Corresponding to the ID of the VSwitch in.
         """
-        pulumi.set(__self__, "ad_connector_address", ad_connector_address)
-        pulumi.set(__self__, "connector_status", connector_status)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetAdConnectorOfficeSitesSiteAdConnectorResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ad_connector_address=ad_connector_address,
+            connector_status=connector_status,
+            network_interface_id=network_interface_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ad_connector_address: str,
+             connector_status: str,
+             network_interface_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ad_connector_address", ad_connector_address)
+        _setter("connector_status", connector_status)
+        _setter("network_interface_id", network_interface_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="adConnectorAddress")
@@ -943,10 +1132,25 @@ class GetAdConnectorOfficeSitesSiteLogResult(dict):
         :param str step: Log Information Corresponding to the Step.
         :param str time_stamp: Log Print Time.
         """
-        pulumi.set(__self__, "level", level)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "step", step)
-        pulumi.set(__self__, "time_stamp", time_stamp)
+        GetAdConnectorOfficeSitesSiteLogResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            level=level,
+            message=message,
+            step=step,
+            time_stamp=time_stamp,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             level: str,
+             message: str,
+             step: str,
+             time_stamp: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("level", level)
+        _setter("message", message)
+        _setter("step", step)
+        _setter("time_stamp", time_stamp)
 
     @property
     @pulumi.getter
@@ -1006,16 +1210,43 @@ class GetBundlesBundleResult(dict):
         :param str image_id: The image id attribute of the bundle.
         :param str os_type: The os type attribute of the bundle.
         """
-        pulumi.set(__self__, "bundle_id", bundle_id)
-        pulumi.set(__self__, "bundle_name", bundle_name)
-        pulumi.set(__self__, "bundle_type", bundle_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "desktop_type", desktop_type)
-        pulumi.set(__self__, "desktop_type_attributes", desktop_type_attributes)
-        pulumi.set(__self__, "disks", disks)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "os_type", os_type)
+        GetBundlesBundleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bundle_id=bundle_id,
+            bundle_name=bundle_name,
+            bundle_type=bundle_type,
+            description=description,
+            desktop_type=desktop_type,
+            desktop_type_attributes=desktop_type_attributes,
+            disks=disks,
+            id=id,
+            image_id=image_id,
+            os_type=os_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bundle_id: str,
+             bundle_name: str,
+             bundle_type: str,
+             description: str,
+             desktop_type: str,
+             desktop_type_attributes: Sequence['outputs.GetBundlesBundleDesktopTypeAttributeResult'],
+             disks: Sequence['outputs.GetBundlesBundleDiskResult'],
+             id: str,
+             image_id: str,
+             os_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bundle_id", bundle_id)
+        _setter("bundle_name", bundle_name)
+        _setter("bundle_type", bundle_type)
+        _setter("description", description)
+        _setter("desktop_type", desktop_type)
+        _setter("desktop_type_attributes", desktop_type_attributes)
+        _setter("disks", disks)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("os_type", os_type)
 
     @property
     @pulumi.getter(name="bundleId")
@@ -1111,10 +1342,25 @@ class GetBundlesBundleDesktopTypeAttributeResult(dict):
         :param str gpu_spec: The gpu spec attribute of the bundle.
         :param str memory_size: The memory size attribute of the bundle.
         """
-        pulumi.set(__self__, "cpu_count", cpu_count)
-        pulumi.set(__self__, "gpu_count", gpu_count)
-        pulumi.set(__self__, "gpu_spec", gpu_spec)
-        pulumi.set(__self__, "memory_size", memory_size)
+        GetBundlesBundleDesktopTypeAttributeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_count=cpu_count,
+            gpu_count=gpu_count,
+            gpu_spec=gpu_spec,
+            memory_size=memory_size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_count: int,
+             gpu_count: str,
+             gpu_spec: str,
+             memory_size: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cpu_count", cpu_count)
+        _setter("gpu_count", gpu_count)
+        _setter("gpu_spec", gpu_spec)
+        _setter("memory_size", memory_size)
 
     @property
     @pulumi.getter(name="cpuCount")
@@ -1158,8 +1404,19 @@ class GetBundlesBundleDiskResult(dict):
         :param str disk_size: The disk size attribute of the bundle.
         :param str disk_type: The disk type attribute of the bundle.
         """
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "disk_type", disk_type)
+        GetBundlesBundleDiskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_size=disk_size,
+            disk_type=disk_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_size: str,
+             disk_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_size", disk_size)
+        _setter("disk_type", disk_type)
 
     @property
     @pulumi.getter(name="diskSize")
@@ -1197,13 +1454,34 @@ class GetCommandsCommandResult(dict):
         :param str invoke_id: The invoke id of the Command.
         :param str status: Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
         """
-        pulumi.set(__self__, "command_content", command_content)
-        pulumi.set(__self__, "command_type", command_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "invoke_desktops", invoke_desktops)
-        pulumi.set(__self__, "invoke_id", invoke_id)
-        pulumi.set(__self__, "status", status)
+        GetCommandsCommandResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            command_content=command_content,
+            command_type=command_type,
+            create_time=create_time,
+            id=id,
+            invoke_desktops=invoke_desktops,
+            invoke_id=invoke_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             command_content: str,
+             command_type: str,
+             create_time: str,
+             id: str,
+             invoke_desktops: Sequence['outputs.GetCommandsCommandInvokeDesktopResult'],
+             invoke_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("command_content", command_content)
+        _setter("command_type", command_type)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("invoke_desktops", invoke_desktops)
+        _setter("invoke_id", invoke_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="commandContent")
@@ -1289,17 +1567,46 @@ class GetCommandsCommandInvokeDesktopResult(dict):
         :param str start_time: The Script Process on the Desktop, in the Start Timing of the Execution.
         :param str stop_time: If You Use the invocation Indicates That the Call of the Time.
         """
-        pulumi.set(__self__, "desktop_id", desktop_id)
-        pulumi.set(__self__, "dropped", dropped)
-        pulumi.set(__self__, "error_code", error_code)
-        pulumi.set(__self__, "error_info", error_info)
-        pulumi.set(__self__, "exit_code", exit_code)
-        pulumi.set(__self__, "finish_time", finish_time)
-        pulumi.set(__self__, "invocation_status", invocation_status)
-        pulumi.set(__self__, "output", output)
-        pulumi.set(__self__, "repeats", repeats)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "stop_time", stop_time)
+        GetCommandsCommandInvokeDesktopResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            desktop_id=desktop_id,
+            dropped=dropped,
+            error_code=error_code,
+            error_info=error_info,
+            exit_code=exit_code,
+            finish_time=finish_time,
+            invocation_status=invocation_status,
+            output=output,
+            repeats=repeats,
+            start_time=start_time,
+            stop_time=stop_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             desktop_id: str,
+             dropped: int,
+             error_code: str,
+             error_info: str,
+             exit_code: str,
+             finish_time: str,
+             invocation_status: str,
+             output: str,
+             repeats: int,
+             start_time: str,
+             stop_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("desktop_id", desktop_id)
+        _setter("dropped", dropped)
+        _setter("error_code", error_code)
+        _setter("error_info", error_info)
+        _setter("exit_code", exit_code)
+        _setter("finish_time", finish_time)
+        _setter("invocation_status", invocation_status)
+        _setter("output", output)
+        _setter("repeats", repeats)
+        _setter("start_time", start_time)
+        _setter("stop_time", stop_time)
 
     @property
     @pulumi.getter(name="desktopId")
@@ -1403,10 +1710,25 @@ class GetCustomPropertiesPropertyResult(dict):
         :param str property_key: The Custom attribute key.
         :param Sequence['GetCustomPropertiesPropertyPropertyValueArgs'] property_values: Custom attribute sets the value of.
         """
-        pulumi.set(__self__, "custom_property_id", custom_property_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "property_key", property_key)
-        pulumi.set(__self__, "property_values", property_values)
+        GetCustomPropertiesPropertyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_property_id=custom_property_id,
+            id=id,
+            property_key=property_key,
+            property_values=property_values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_property_id: str,
+             id: str,
+             property_key: str,
+             property_values: Sequence['outputs.GetCustomPropertiesPropertyPropertyValueResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("custom_property_id", custom_property_id)
+        _setter("id", id)
+        _setter("property_key", property_key)
+        _setter("property_values", property_values)
 
     @property
     @pulumi.getter(name="customPropertyId")
@@ -1450,8 +1772,19 @@ class GetCustomPropertiesPropertyPropertyValueResult(dict):
         :param str property_value: The value of an attribute.
         :param str property_value_id: The value of an attribute id.
         """
-        pulumi.set(__self__, "property_value", property_value)
-        pulumi.set(__self__, "property_value_id", property_value_id)
+        GetCustomPropertiesPropertyPropertyValueResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property_value=property_value,
+            property_value_id=property_value_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property_value: str,
+             property_value_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("property_value", property_value)
+        _setter("property_value_id", property_value_id)
 
     @property
     @pulumi.getter(name="propertyValue")
@@ -1495,16 +1828,43 @@ class GetDesktopTypesTypeResult(dict):
         :param str status: The status of the resource.
         :param str system_disk_size: The size of the system disk. Unit: GiB.
         """
-        pulumi.set(__self__, "cpu_count", cpu_count)
-        pulumi.set(__self__, "data_disk_size", data_disk_size)
-        pulumi.set(__self__, "desktop_type_id", desktop_type_id)
-        pulumi.set(__self__, "gpu_count", gpu_count)
-        pulumi.set(__self__, "gpu_spec", gpu_spec)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_type_family", instance_type_family)
-        pulumi.set(__self__, "memory_size", memory_size)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "system_disk_size", system_disk_size)
+        GetDesktopTypesTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_count=cpu_count,
+            data_disk_size=data_disk_size,
+            desktop_type_id=desktop_type_id,
+            gpu_count=gpu_count,
+            gpu_spec=gpu_spec,
+            id=id,
+            instance_type_family=instance_type_family,
+            memory_size=memory_size,
+            status=status,
+            system_disk_size=system_disk_size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_count: str,
+             data_disk_size: str,
+             desktop_type_id: str,
+             gpu_count: float,
+             gpu_spec: str,
+             id: str,
+             instance_type_family: str,
+             memory_size: str,
+             status: str,
+             system_disk_size: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cpu_count", cpu_count)
+        _setter("data_disk_size", data_disk_size)
+        _setter("desktop_type_id", desktop_type_id)
+        _setter("gpu_count", gpu_count)
+        _setter("gpu_spec", gpu_spec)
+        _setter("id", id)
+        _setter("instance_type_family", instance_type_family)
+        _setter("memory_size", memory_size)
+        _setter("status", status)
+        _setter("system_disk_size", system_disk_size)
 
     @property
     @pulumi.getter(name="cpuCount")
@@ -1624,22 +1984,61 @@ class GetDesktopsDesktopResult(dict):
         :param str status: The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
         :param int system_disk_size: The system disk size of the Desktop.
         """
-        pulumi.set(__self__, "cpu", cpu)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "desktop_id", desktop_id)
-        pulumi.set(__self__, "desktop_name", desktop_name)
-        pulumi.set(__self__, "desktop_type", desktop_type)
-        pulumi.set(__self__, "directory_id", directory_id)
-        pulumi.set(__self__, "end_user_ids", end_user_ids)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "memory", memory)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "policy_group_id", policy_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "system_disk_size", system_disk_size)
+        GetDesktopsDesktopResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu=cpu,
+            create_time=create_time,
+            desktop_id=desktop_id,
+            desktop_name=desktop_name,
+            desktop_type=desktop_type,
+            directory_id=directory_id,
+            end_user_ids=end_user_ids,
+            expired_time=expired_time,
+            id=id,
+            image_id=image_id,
+            memory=memory,
+            network_interface_id=network_interface_id,
+            payment_type=payment_type,
+            policy_group_id=policy_group_id,
+            status=status,
+            system_disk_size=system_disk_size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu: int,
+             create_time: str,
+             desktop_id: str,
+             desktop_name: str,
+             desktop_type: str,
+             directory_id: str,
+             end_user_ids: Sequence[str],
+             expired_time: str,
+             id: str,
+             image_id: str,
+             memory: str,
+             network_interface_id: str,
+             payment_type: str,
+             policy_group_id: str,
+             status: str,
+             system_disk_size: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cpu", cpu)
+        _setter("create_time", create_time)
+        _setter("desktop_id", desktop_id)
+        _setter("desktop_name", desktop_name)
+        _setter("desktop_type", desktop_type)
+        _setter("directory_id", directory_id)
+        _setter("end_user_ids", end_user_ids)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("memory", memory)
+        _setter("network_interface_id", network_interface_id)
+        _setter("payment_type", payment_type)
+        _setter("policy_group_id", policy_group_id)
+        _setter("status", status)
+        _setter("system_disk_size", system_disk_size)
 
     @property
     @pulumi.getter
@@ -1799,18 +2198,49 @@ class GetImagesImageResult(dict):
         :param int size: The size of the image.
         :param str status: The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "data_disk_size", data_disk_size)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "gpu_category", gpu_category)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "image_name", image_name)
-        pulumi.set(__self__, "image_type", image_type)
-        pulumi.set(__self__, "os_type", os_type)
-        pulumi.set(__self__, "progress", progress)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "status", status)
+        GetImagesImageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            data_disk_size=data_disk_size,
+            description=description,
+            gpu_category=gpu_category,
+            id=id,
+            image_id=image_id,
+            image_name=image_name,
+            image_type=image_type,
+            os_type=os_type,
+            progress=progress,
+            size=size,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             data_disk_size: int,
+             description: str,
+             gpu_category: bool,
+             id: str,
+             image_id: str,
+             image_name: str,
+             image_type: str,
+             os_type: str,
+             progress: str,
+             size: int,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("data_disk_size", data_disk_size)
+        _setter("description", description)
+        _setter("gpu_category", gpu_category)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("image_name", image_name)
+        _setter("image_type", image_type)
+        _setter("os_type", os_type)
+        _setter("progress", progress)
+        _setter("size", size)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1946,22 +2376,61 @@ class GetNasFileSystemsSystemResult(dict):
         :param bool support_acl: Whether to support Acl.
         :param str zone_id: The zone id of nas file system.
         """
-        pulumi.set(__self__, "capacity", capacity)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "file_system_type", file_system_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "metered_size", metered_size)
-        pulumi.set(__self__, "mount_target_domain", mount_target_domain)
-        pulumi.set(__self__, "mount_target_status", mount_target_status)
-        pulumi.set(__self__, "nas_file_system_name", nas_file_system_name)
-        pulumi.set(__self__, "office_site_id", office_site_id)
-        pulumi.set(__self__, "office_site_name", office_site_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_type", storage_type)
-        pulumi.set(__self__, "support_acl", support_acl)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetNasFileSystemsSystemResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            capacity=capacity,
+            create_time=create_time,
+            description=description,
+            file_system_id=file_system_id,
+            file_system_type=file_system_type,
+            id=id,
+            metered_size=metered_size,
+            mount_target_domain=mount_target_domain,
+            mount_target_status=mount_target_status,
+            nas_file_system_name=nas_file_system_name,
+            office_site_id=office_site_id,
+            office_site_name=office_site_name,
+            status=status,
+            storage_type=storage_type,
+            support_acl=support_acl,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             capacity: str,
+             create_time: str,
+             description: str,
+             file_system_id: str,
+             file_system_type: str,
+             id: str,
+             metered_size: str,
+             mount_target_domain: str,
+             mount_target_status: str,
+             nas_file_system_name: str,
+             office_site_id: str,
+             office_site_name: str,
+             status: str,
+             storage_type: str,
+             support_acl: bool,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("capacity", capacity)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("file_system_id", file_system_id)
+        _setter("file_system_type", file_system_type)
+        _setter("id", id)
+        _setter("metered_size", metered_size)
+        _setter("mount_target_domain", mount_target_domain)
+        _setter("mount_target_status", mount_target_status)
+        _setter("nas_file_system_name", nas_file_system_name)
+        _setter("office_site_id", office_site_id)
+        _setter("office_site_name", office_site_name)
+        _setter("status", status)
+        _setter("storage_type", storage_type)
+        _setter("support_acl", support_acl)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -2117,16 +2586,43 @@ class GetNetworkPackagesPackageResult(dict):
         :param str office_site_name: The name of office site.
         :param str status: The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "eip_addresses", eip_addresses)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "network_package_id", network_package_id)
-        pulumi.set(__self__, "office_site_id", office_site_id)
-        pulumi.set(__self__, "office_site_name", office_site_name)
-        pulumi.set(__self__, "status", status)
+        GetNetworkPackagesPackageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            create_time=create_time,
+            eip_addresses=eip_addresses,
+            expired_time=expired_time,
+            id=id,
+            internet_charge_type=internet_charge_type,
+            network_package_id=network_package_id,
+            office_site_id=office_site_id,
+            office_site_name=office_site_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             create_time: str,
+             eip_addresses: Sequence[str],
+             expired_time: str,
+             id: str,
+             internet_charge_type: str,
+             network_package_id: str,
+             office_site_id: str,
+             office_site_name: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("create_time", create_time)
+        _setter("eip_addresses", eip_addresses)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("network_package_id", network_package_id)
+        _setter("office_site_id", office_site_id)
+        _setter("office_site_name", office_site_name)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -2260,29 +2756,82 @@ class GetPolicyGroupsGroupResult(dict):
         :param str watermark_transparency: The watermark transparency.
         :param str watermark_type: The type of watemark.
         """
-        pulumi.set(__self__, "authorize_access_policy_rules", authorize_access_policy_rules)
-        pulumi.set(__self__, "authorize_security_policy_rules", authorize_security_policy_rules)
-        pulumi.set(__self__, "camera_redirect", camera_redirect)
-        pulumi.set(__self__, "clipboard", clipboard)
-        pulumi.set(__self__, "domain_list", domain_list)
-        pulumi.set(__self__, "eds_count", eds_count)
-        pulumi.set(__self__, "html_access", html_access)
-        pulumi.set(__self__, "html_file_transfer", html_file_transfer)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_drive", local_drive)
-        pulumi.set(__self__, "policy_group_id", policy_group_id)
-        pulumi.set(__self__, "policy_group_name", policy_group_name)
-        pulumi.set(__self__, "policy_group_type", policy_group_type)
-        pulumi.set(__self__, "recording", recording)
-        pulumi.set(__self__, "recording_end_time", recording_end_time)
-        pulumi.set(__self__, "recording_fps", recording_fps)
-        pulumi.set(__self__, "recording_start_time", recording_start_time)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "usb_redirect", usb_redirect)
-        pulumi.set(__self__, "visual_quality", visual_quality)
-        pulumi.set(__self__, "watermark", watermark)
-        pulumi.set(__self__, "watermark_transparency", watermark_transparency)
-        pulumi.set(__self__, "watermark_type", watermark_type)
+        GetPolicyGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorize_access_policy_rules=authorize_access_policy_rules,
+            authorize_security_policy_rules=authorize_security_policy_rules,
+            camera_redirect=camera_redirect,
+            clipboard=clipboard,
+            domain_list=domain_list,
+            eds_count=eds_count,
+            html_access=html_access,
+            html_file_transfer=html_file_transfer,
+            id=id,
+            local_drive=local_drive,
+            policy_group_id=policy_group_id,
+            policy_group_name=policy_group_name,
+            policy_group_type=policy_group_type,
+            recording=recording,
+            recording_end_time=recording_end_time,
+            recording_fps=recording_fps,
+            recording_start_time=recording_start_time,
+            status=status,
+            usb_redirect=usb_redirect,
+            visual_quality=visual_quality,
+            watermark=watermark,
+            watermark_transparency=watermark_transparency,
+            watermark_type=watermark_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorize_access_policy_rules: Sequence['outputs.GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult'],
+             authorize_security_policy_rules: Sequence['outputs.GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult'],
+             camera_redirect: str,
+             clipboard: str,
+             domain_list: str,
+             eds_count: int,
+             html_access: str,
+             html_file_transfer: str,
+             id: str,
+             local_drive: str,
+             policy_group_id: str,
+             policy_group_name: str,
+             policy_group_type: str,
+             recording: str,
+             recording_end_time: str,
+             recording_fps: int,
+             recording_start_time: str,
+             status: str,
+             usb_redirect: str,
+             visual_quality: str,
+             watermark: str,
+             watermark_transparency: str,
+             watermark_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("authorize_access_policy_rules", authorize_access_policy_rules)
+        _setter("authorize_security_policy_rules", authorize_security_policy_rules)
+        _setter("camera_redirect", camera_redirect)
+        _setter("clipboard", clipboard)
+        _setter("domain_list", domain_list)
+        _setter("eds_count", eds_count)
+        _setter("html_access", html_access)
+        _setter("html_file_transfer", html_file_transfer)
+        _setter("id", id)
+        _setter("local_drive", local_drive)
+        _setter("policy_group_id", policy_group_id)
+        _setter("policy_group_name", policy_group_name)
+        _setter("policy_group_type", policy_group_type)
+        _setter("recording", recording)
+        _setter("recording_end_time", recording_end_time)
+        _setter("recording_fps", recording_fps)
+        _setter("recording_start_time", recording_start_time)
+        _setter("status", status)
+        _setter("usb_redirect", usb_redirect)
+        _setter("visual_quality", visual_quality)
+        _setter("watermark", watermark)
+        _setter("watermark_transparency", watermark_transparency)
+        _setter("watermark_type", watermark_type)
 
     @property
     @pulumi.getter(name="authorizeAccessPolicyRules")
@@ -2478,8 +3027,19 @@ class GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult(dict):
         :param str cidr_ip: The cidrip of security rules.
         :param str description: The description of security rules.
         """
-        pulumi.set(__self__, "cidr_ip", cidr_ip)
-        pulumi.set(__self__, "description", description)
+        GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_ip=cidr_ip,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_ip: str,
+             description: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr_ip", cidr_ip)
+        _setter("description", description)
 
     @property
     @pulumi.getter(name="cidrIp")
@@ -2517,13 +3077,34 @@ class GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult(dict):
         :param str priority: The priority of security rules.
         :param str type: The type of security rules.
         """
-        pulumi.set(__self__, "cidr_ip", cidr_ip)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
-        pulumi.set(__self__, "policy", policy)
-        pulumi.set(__self__, "port_range", port_range)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "type", type)
+        GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_ip=cidr_ip,
+            description=description,
+            ip_protocol=ip_protocol,
+            policy=policy,
+            port_range=port_range,
+            priority=priority,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_ip: str,
+             description: str,
+             ip_protocol: str,
+             policy: str,
+             port_range: str,
+             priority: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr_ip", cidr_ip)
+        _setter("description", description)
+        _setter("ip_protocol", ip_protocol)
+        _setter("policy", policy)
+        _setter("port_range", port_range)
+        _setter("priority", priority)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="cidrIp")
@@ -2641,33 +3222,94 @@ class GetRamDirectoriesDirectoryResult(dict):
         :param str vpc_id: The ID of the vpc.
         :param Sequence[str] vswitch_ids: List of VSwitch IDs in the directory.
         """
-        pulumi.set(__self__, "ad_connectors", ad_connectors)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "custom_security_group_id", custom_security_group_id)
-        pulumi.set(__self__, "desktop_access_type", desktop_access_type)
-        pulumi.set(__self__, "desktop_vpc_endpoint", desktop_vpc_endpoint)
-        pulumi.set(__self__, "directory_type", directory_type)
-        pulumi.set(__self__, "dns_addresses", dns_addresses)
-        pulumi.set(__self__, "dns_user_name", dns_user_name)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "domain_password", domain_password)
-        pulumi.set(__self__, "domain_user_name", domain_user_name)
-        pulumi.set(__self__, "enable_admin_access", enable_admin_access)
-        pulumi.set(__self__, "enable_cross_desktop_access", enable_cross_desktop_access)
-        pulumi.set(__self__, "enable_internet_access", enable_internet_access)
-        pulumi.set(__self__, "file_system_ids", file_system_ids)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "logs", logs)
-        pulumi.set(__self__, "mfa_enabled", mfa_enabled)
-        pulumi.set(__self__, "ram_directory_id", ram_directory_id)
-        pulumi.set(__self__, "ram_directory_name", ram_directory_name)
-        pulumi.set(__self__, "sso_enabled", sso_enabled)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "sub_dns_addresses", sub_dns_addresses)
-        pulumi.set(__self__, "sub_domain_name", sub_domain_name)
-        pulumi.set(__self__, "trust_password", trust_password)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        GetRamDirectoriesDirectoryResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ad_connectors=ad_connectors,
+            create_time=create_time,
+            custom_security_group_id=custom_security_group_id,
+            desktop_access_type=desktop_access_type,
+            desktop_vpc_endpoint=desktop_vpc_endpoint,
+            directory_type=directory_type,
+            dns_addresses=dns_addresses,
+            dns_user_name=dns_user_name,
+            domain_name=domain_name,
+            domain_password=domain_password,
+            domain_user_name=domain_user_name,
+            enable_admin_access=enable_admin_access,
+            enable_cross_desktop_access=enable_cross_desktop_access,
+            enable_internet_access=enable_internet_access,
+            file_system_ids=file_system_ids,
+            id=id,
+            logs=logs,
+            mfa_enabled=mfa_enabled,
+            ram_directory_id=ram_directory_id,
+            ram_directory_name=ram_directory_name,
+            sso_enabled=sso_enabled,
+            status=status,
+            sub_dns_addresses=sub_dns_addresses,
+            sub_domain_name=sub_domain_name,
+            trust_password=trust_password,
+            vpc_id=vpc_id,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ad_connectors: Sequence['outputs.GetRamDirectoriesDirectoryAdConnectorResult'],
+             create_time: str,
+             custom_security_group_id: str,
+             desktop_access_type: str,
+             desktop_vpc_endpoint: str,
+             directory_type: str,
+             dns_addresses: Sequence[str],
+             dns_user_name: str,
+             domain_name: str,
+             domain_password: str,
+             domain_user_name: str,
+             enable_admin_access: bool,
+             enable_cross_desktop_access: bool,
+             enable_internet_access: bool,
+             file_system_ids: Sequence[str],
+             id: str,
+             logs: Sequence['outputs.GetRamDirectoriesDirectoryLogResult'],
+             mfa_enabled: bool,
+             ram_directory_id: str,
+             ram_directory_name: str,
+             sso_enabled: bool,
+             status: str,
+             sub_dns_addresses: Sequence[str],
+             sub_domain_name: str,
+             trust_password: str,
+             vpc_id: str,
+             vswitch_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ad_connectors", ad_connectors)
+        _setter("create_time", create_time)
+        _setter("custom_security_group_id", custom_security_group_id)
+        _setter("desktop_access_type", desktop_access_type)
+        _setter("desktop_vpc_endpoint", desktop_vpc_endpoint)
+        _setter("directory_type", directory_type)
+        _setter("dns_addresses", dns_addresses)
+        _setter("dns_user_name", dns_user_name)
+        _setter("domain_name", domain_name)
+        _setter("domain_password", domain_password)
+        _setter("domain_user_name", domain_user_name)
+        _setter("enable_admin_access", enable_admin_access)
+        _setter("enable_cross_desktop_access", enable_cross_desktop_access)
+        _setter("enable_internet_access", enable_internet_access)
+        _setter("file_system_ids", file_system_ids)
+        _setter("id", id)
+        _setter("logs", logs)
+        _setter("mfa_enabled", mfa_enabled)
+        _setter("ram_directory_id", ram_directory_id)
+        _setter("ram_directory_name", ram_directory_name)
+        _setter("sso_enabled", sso_enabled)
+        _setter("status", status)
+        _setter("sub_dns_addresses", sub_dns_addresses)
+        _setter("sub_domain_name", sub_domain_name)
+        _setter("trust_password", trust_password)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter(name="adConnectors")
@@ -2899,10 +3541,25 @@ class GetRamDirectoriesDirectoryAdConnectorResult(dict):
         :param str network_interface_id: The ID of the network interface.
         :param str vswitch_id: The ID of VSwitch.
         """
-        pulumi.set(__self__, "ad_connector_address", ad_connector_address)
-        pulumi.set(__self__, "connector_status", connector_status)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetRamDirectoriesDirectoryAdConnectorResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ad_connector_address=ad_connector_address,
+            connector_status=connector_status,
+            network_interface_id=network_interface_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ad_connector_address: str,
+             connector_status: str,
+             network_interface_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ad_connector_address", ad_connector_address)
+        _setter("connector_status", connector_status)
+        _setter("network_interface_id", network_interface_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="adConnectorAddress")
@@ -2950,10 +3607,25 @@ class GetRamDirectoriesDirectoryLogResult(dict):
         :param str step: The step of log.
         :param str time_stamp: The time stamp of log.
         """
-        pulumi.set(__self__, "level", level)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "step", step)
-        pulumi.set(__self__, "time_stamp", time_stamp)
+        GetRamDirectoriesDirectoryLogResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            level=level,
+            message=message,
+            step=step,
+            time_stamp=time_stamp,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             level: str,
+             message: str,
+             step: str,
+             time_stamp: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("level", level)
+        _setter("message", message)
+        _setter("step", step)
+        _setter("time_stamp", time_stamp)
 
     @property
     @pulumi.getter
@@ -3053,36 +3725,103 @@ class GetSimpleOfficeSitesSiteResult(dict):
         :param str vpc_id: Security Office VPC ID.
         :param Sequence[str] vswitch_ids: The vswitch ids.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "custom_security_group_id", custom_security_group_id)
-        pulumi.set(__self__, "desktop_access_type", desktop_access_type)
-        pulumi.set(__self__, "desktop_vpc_endpoint", desktop_vpc_endpoint)
-        pulumi.set(__self__, "dns_addresses", dns_addresses)
-        pulumi.set(__self__, "dns_user_name", dns_user_name)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "domain_password", domain_password)
-        pulumi.set(__self__, "domain_user_name", domain_user_name)
-        pulumi.set(__self__, "enable_admin_access", enable_admin_access)
-        pulumi.set(__self__, "enable_cross_desktop_access", enable_cross_desktop_access)
-        pulumi.set(__self__, "enable_internet_access", enable_internet_access)
-        pulumi.set(__self__, "file_system_ids", file_system_ids)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mfa_enabled", mfa_enabled)
-        pulumi.set(__self__, "network_package_id", network_package_id)
-        pulumi.set(__self__, "office_site_id", office_site_id)
-        pulumi.set(__self__, "office_site_type", office_site_type)
-        pulumi.set(__self__, "simple_office_site_name", simple_office_site_name)
-        pulumi.set(__self__, "sso_enabled", sso_enabled)
-        pulumi.set(__self__, "sso_status", sso_status)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "sub_dns_addresses", sub_dns_addresses)
-        pulumi.set(__self__, "sub_domain_name", sub_domain_name)
-        pulumi.set(__self__, "trust_password", trust_password)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        GetSimpleOfficeSitesSiteResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            cen_id=cen_id,
+            cidr_block=cidr_block,
+            create_time=create_time,
+            custom_security_group_id=custom_security_group_id,
+            desktop_access_type=desktop_access_type,
+            desktop_vpc_endpoint=desktop_vpc_endpoint,
+            dns_addresses=dns_addresses,
+            dns_user_name=dns_user_name,
+            domain_name=domain_name,
+            domain_password=domain_password,
+            domain_user_name=domain_user_name,
+            enable_admin_access=enable_admin_access,
+            enable_cross_desktop_access=enable_cross_desktop_access,
+            enable_internet_access=enable_internet_access,
+            file_system_ids=file_system_ids,
+            id=id,
+            mfa_enabled=mfa_enabled,
+            network_package_id=network_package_id,
+            office_site_id=office_site_id,
+            office_site_type=office_site_type,
+            simple_office_site_name=simple_office_site_name,
+            sso_enabled=sso_enabled,
+            sso_status=sso_status,
+            status=status,
+            sub_dns_addresses=sub_dns_addresses,
+            sub_domain_name=sub_domain_name,
+            trust_password=trust_password,
+            vpc_id=vpc_id,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             cen_id: str,
+             cidr_block: str,
+             create_time: str,
+             custom_security_group_id: str,
+             desktop_access_type: str,
+             desktop_vpc_endpoint: str,
+             dns_addresses: Sequence[str],
+             dns_user_name: str,
+             domain_name: str,
+             domain_password: str,
+             domain_user_name: str,
+             enable_admin_access: bool,
+             enable_cross_desktop_access: bool,
+             enable_internet_access: bool,
+             file_system_ids: Sequence[str],
+             id: str,
+             mfa_enabled: bool,
+             network_package_id: str,
+             office_site_id: str,
+             office_site_type: str,
+             simple_office_site_name: str,
+             sso_enabled: bool,
+             sso_status: bool,
+             status: str,
+             sub_dns_addresses: Sequence[str],
+             sub_domain_name: str,
+             trust_password: str,
+             vpc_id: str,
+             vswitch_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("cen_id", cen_id)
+        _setter("cidr_block", cidr_block)
+        _setter("create_time", create_time)
+        _setter("custom_security_group_id", custom_security_group_id)
+        _setter("desktop_access_type", desktop_access_type)
+        _setter("desktop_vpc_endpoint", desktop_vpc_endpoint)
+        _setter("dns_addresses", dns_addresses)
+        _setter("dns_user_name", dns_user_name)
+        _setter("domain_name", domain_name)
+        _setter("domain_password", domain_password)
+        _setter("domain_user_name", domain_user_name)
+        _setter("enable_admin_access", enable_admin_access)
+        _setter("enable_cross_desktop_access", enable_cross_desktop_access)
+        _setter("enable_internet_access", enable_internet_access)
+        _setter("file_system_ids", file_system_ids)
+        _setter("id", id)
+        _setter("mfa_enabled", mfa_enabled)
+        _setter("network_package_id", network_package_id)
+        _setter("office_site_id", office_site_id)
+        _setter("office_site_type", office_site_type)
+        _setter("simple_office_site_name", simple_office_site_name)
+        _setter("sso_enabled", sso_enabled)
+        _setter("sso_status", sso_status)
+        _setter("status", status)
+        _setter("sub_dns_addresses", sub_dns_addresses)
+        _setter("sub_domain_name", sub_domain_name)
+        _setter("trust_password", trust_password)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter
@@ -3360,18 +4099,49 @@ class GetSnapshotsSnapshotResult(dict):
         :param str source_disk_type: The type of the source disk.
         :param str status: The status of the snapshot.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "desktop_id", desktop_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "progress", progress)
-        pulumi.set(__self__, "remain_time", remain_time)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
-        pulumi.set(__self__, "snapshot_name", snapshot_name)
-        pulumi.set(__self__, "snapshot_type", snapshot_type)
-        pulumi.set(__self__, "source_disk_size", source_disk_size)
-        pulumi.set(__self__, "source_disk_type", source_disk_type)
-        pulumi.set(__self__, "status", status)
+        GetSnapshotsSnapshotResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            desktop_id=desktop_id,
+            id=id,
+            progress=progress,
+            remain_time=remain_time,
+            snapshot_id=snapshot_id,
+            snapshot_name=snapshot_name,
+            snapshot_type=snapshot_type,
+            source_disk_size=source_disk_size,
+            source_disk_type=source_disk_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             desktop_id: str,
+             id: str,
+             progress: str,
+             remain_time: int,
+             snapshot_id: str,
+             snapshot_name: str,
+             snapshot_type: str,
+             source_disk_size: str,
+             source_disk_type: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("desktop_id", desktop_id)
+        _setter("id", id)
+        _setter("progress", progress)
+        _setter("remain_time", remain_time)
+        _setter("snapshot_id", snapshot_id)
+        _setter("snapshot_name", snapshot_name)
+        _setter("snapshot_type", snapshot_type)
+        _setter("source_disk_size", source_disk_size)
+        _setter("source_disk_type", source_disk_type)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -3485,11 +4255,28 @@ class GetUsersUserResult(dict):
         :param str phone: The phone of the mobile phone number.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "end_user_id", end_user_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "phone", phone)
-        pulumi.set(__self__, "status", status)
+        GetUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            email=email,
+            end_user_id=end_user_id,
+            id=id,
+            phone=phone,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             email: str,
+             end_user_id: str,
+             id: str,
+             phone: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("email", email)
+        _setter("end_user_id", end_user_id)
+        _setter("id", id)
+        _setter("phone", phone)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -3539,7 +4326,16 @@ class GetZonesZoneResult(dict):
         """
         :param str zone_id: String to filter results by zone id.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="zoneId")

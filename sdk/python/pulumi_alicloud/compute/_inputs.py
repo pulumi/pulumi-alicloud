@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -24,10 +24,21 @@ class NestServiceInstanceCommodityArgs:
         :param pulumi.Input[int] pay_period: Length of purchase.
         :param pulumi.Input[str] pay_period_unit: Duration unit. Valid values: `Year`, `Month`, `Day`.
         """
+        NestServiceInstanceCommodityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pay_period=pay_period,
+            pay_period_unit=pay_period_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pay_period: Optional[pulumi.Input[int]] = None,
+             pay_period_unit: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if pay_period is not None:
-            pulumi.set(__self__, "pay_period", pay_period)
+            _setter("pay_period", pay_period)
         if pay_period_unit is not None:
-            pulumi.set(__self__, "pay_period_unit", pay_period_unit)
+            _setter("pay_period_unit", pay_period_unit)
 
     @property
     @pulumi.getter(name="payPeriod")
@@ -67,14 +78,29 @@ class NestServiceInstanceOperationMetadataArgs:
         :param pulumi.Input[str] operation_start_time: The start time of O&M.
         :param pulumi.Input[str] resources: The list of imported resources.
         """
+        NestServiceInstanceOperationMetadataArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            operated_service_instance_id=operated_service_instance_id,
+            operation_end_time=operation_end_time,
+            operation_start_time=operation_start_time,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             operated_service_instance_id: Optional[pulumi.Input[str]] = None,
+             operation_end_time: Optional[pulumi.Input[str]] = None,
+             operation_start_time: Optional[pulumi.Input[str]] = None,
+             resources: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if operated_service_instance_id is not None:
-            pulumi.set(__self__, "operated_service_instance_id", operated_service_instance_id)
+            _setter("operated_service_instance_id", operated_service_instance_id)
         if operation_end_time is not None:
-            pulumi.set(__self__, "operation_end_time", operation_end_time)
+            _setter("operation_end_time", operation_end_time)
         if operation_start_time is not None:
-            pulumi.set(__self__, "operation_start_time", operation_start_time)
+            _setter("operation_start_time", operation_start_time)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
 
     @property
     @pulumi.getter(name="operatedServiceInstanceId")
@@ -134,10 +160,21 @@ class GetNestServiceInstancesFilterArgs:
         :param str name: The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
         :param Sequence[str] values: Set of values that are accepted for the given field.
         """
+        GetNestServiceInstancesFilterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter

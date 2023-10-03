@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,11 +25,24 @@ class NetworkAclEntriesArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]] egresses: List of the egress entries of the network acl. The order of the egress entries determines the priority. The details see Block Egress.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
         """
-        pulumi.set(__self__, "network_acl_id", network_acl_id)
+        NetworkAclEntriesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_acl_id=network_acl_id,
+            egresses=egresses,
+            ingresses=ingresses,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_acl_id: pulumi.Input[str],
+             egresses: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]]] = None,
+             ingresses: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network_acl_id", network_acl_id)
         if egresses is not None:
-            pulumi.set(__self__, "egresses", egresses)
+            _setter("egresses", egresses)
         if ingresses is not None:
-            pulumi.set(__self__, "ingresses", ingresses)
+            _setter("ingresses", ingresses)
 
     @property
     @pulumi.getter(name="networkAclId")
@@ -80,12 +93,25 @@ class _NetworkAclEntriesState:
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]] ingresses: List of the ingress entries of the network acl. The order of the ingress entries determines the priority. The details see Block Ingress.
         :param pulumi.Input[str] network_acl_id: The id of the network acl, the field can't be changed.
         """
+        _NetworkAclEntriesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            egresses=egresses,
+            ingresses=ingresses,
+            network_acl_id=network_acl_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             egresses: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesEgressArgs']]]] = None,
+             ingresses: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclEntriesIngressArgs']]]] = None,
+             network_acl_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if egresses is not None:
-            pulumi.set(__self__, "egresses", egresses)
+            _setter("egresses", egresses)
         if ingresses is not None:
-            pulumi.set(__self__, "ingresses", ingresses)
+            _setter("ingresses", ingresses)
         if network_acl_id is not None:
-            pulumi.set(__self__, "network_acl_id", network_acl_id)
+            _setter("network_acl_id", network_acl_id)
 
     @property
     @pulumi.getter
@@ -271,6 +297,10 @@ class NetworkAclEntries(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkAclEntriesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

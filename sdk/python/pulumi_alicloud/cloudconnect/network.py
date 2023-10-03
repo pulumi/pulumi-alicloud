@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NetworkArgs', 'Network']
@@ -25,13 +25,28 @@ class NetworkArgs:
         :param pulumi.Input[str] description: The description of the CCN instance. The description can contain 2 to 256 characters. The description must start with English letters, but cannot start with http:// or https://.
         :param pulumi.Input[str] name: The name of the CCN instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
         """
-        pulumi.set(__self__, "is_default", is_default)
+        NetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            is_default=is_default,
+            cidr_block=cidr_block,
+            description=description,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             is_default: pulumi.Input[bool],
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("is_default", is_default)
         if cidr_block is not None:
-            pulumi.set(__self__, "cidr_block", cidr_block)
+            _setter("cidr_block", cidr_block)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="isDefault")
@@ -96,14 +111,29 @@ class _NetworkState:
         :param pulumi.Input[bool] is_default: Created by default. If the client does not have ccn in the binding, it will create a ccn for the user to replace.
         :param pulumi.Input[str] name: The name of the CCN instance. The name can contain 2 to 128 characters including a-z, A-Z, 0-9, periods, underlines, and hyphens. The name must start with an English letter, but cannot start with http:// or https://.
         """
+        _NetworkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            description=description,
+            is_default=is_default,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             is_default: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr_block is not None:
-            pulumi.set(__self__, "cidr_block", cidr_block)
+            _setter("cidr_block", cidr_block)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if is_default is not None:
-            pulumi.set(__self__, "is_default", is_default)
+            _setter("is_default", is_default)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -257,6 +287,10 @@ class Network(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

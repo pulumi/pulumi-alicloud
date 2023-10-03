@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VpcEndpointLinkedVpcArgs', 'VpcEndpointLinkedVpc']
@@ -27,12 +27,29 @@ class VpcEndpointLinkedVpcArgs:
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         :param pulumi.Input[bool] enable_create_dns_record_in_pvzt: Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "module_name", module_name)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        VpcEndpointLinkedVpcArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            module_name=module_name,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            enable_create_dns_record_in_pvzt=enable_create_dns_record_in_pvzt,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: pulumi.Input[str],
+             module_name: pulumi.Input[str],
+             vpc_id: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             enable_create_dns_record_in_pvzt: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
+        _setter("module_name", module_name)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
         if enable_create_dns_record_in_pvzt is not None:
-            pulumi.set(__self__, "enable_create_dns_record_in_pvzt", enable_create_dns_record_in_pvzt)
+            _setter("enable_create_dns_record_in_pvzt", enable_create_dns_record_in_pvzt)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -113,18 +130,37 @@ class _VpcEndpointLinkedVpcState:
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch.
         """
+        _VpcEndpointLinkedVpcState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_create_dns_record_in_pvzt=enable_create_dns_record_in_pvzt,
+            instance_id=instance_id,
+            module_name=module_name,
+            status=status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_create_dns_record_in_pvzt: Optional[pulumi.Input[bool]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             module_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enable_create_dns_record_in_pvzt is not None:
-            pulumi.set(__self__, "enable_create_dns_record_in_pvzt", enable_create_dns_record_in_pvzt)
+            _setter("enable_create_dns_record_in_pvzt", enable_create_dns_record_in_pvzt)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if module_name is not None:
-            pulumi.set(__self__, "module_name", module_name)
+            _setter("module_name", module_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="enableCreateDnsRecordInPvzt")
@@ -336,6 +372,10 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VpcEndpointLinkedVpcArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

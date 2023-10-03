@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -23,10 +23,21 @@ class DomainLogHeader(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
+        DomainLogHeader._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -58,14 +69,37 @@ class GetCertificatesCertificateResult(dict):
         :param str id: The ID of the Certificate.
         :param str instance_id: WAF instance ID.
         """
-        pulumi.set(__self__, "certificate_id", certificate_id)
-        pulumi.set(__self__, "certificate_name", certificate_name)
-        pulumi.set(__self__, "common_name", common_name)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "is_using", is_using)
-        pulumi.set(__self__, "sans", sans)
+        GetCertificatesCertificateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_id=certificate_id,
+            certificate_name=certificate_name,
+            common_name=common_name,
+            domain=domain,
+            id=id,
+            instance_id=instance_id,
+            is_using=is_using,
+            sans=sans,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_id: str,
+             certificate_name: str,
+             common_name: str,
+             domain: str,
+             id: str,
+             instance_id: str,
+             is_using: bool,
+             sans: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("certificate_id", certificate_id)
+        _setter("certificate_name", certificate_name)
+        _setter("common_name", common_name)
+        _setter("domain", domain)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("is_using", is_using)
+        _setter("sans", sans)
 
     @property
     @pulumi.getter(name="certificateId")
@@ -169,25 +203,70 @@ class GetDomainsDomainResult(dict):
         :param int version: The system data identifier that is used to control optimistic locking.
         :param int write_time: The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
         """
-        pulumi.set(__self__, "cluster_type", cluster_type)
-        pulumi.set(__self__, "cname", cname)
-        pulumi.set(__self__, "connection_time", connection_time)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "http2_ports", http2_ports)
-        pulumi.set(__self__, "http_ports", http_ports)
-        pulumi.set(__self__, "http_to_user_ip", http_to_user_ip)
-        pulumi.set(__self__, "https_ports", https_ports)
-        pulumi.set(__self__, "https_redirect", https_redirect)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_access_product", is_access_product)
-        pulumi.set(__self__, "load_balancing", load_balancing)
-        pulumi.set(__self__, "log_headers", log_headers)
-        pulumi.set(__self__, "read_time", read_time)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "source_ips", source_ips)
-        pulumi.set(__self__, "version", version)
-        pulumi.set(__self__, "write_time", write_time)
+        GetDomainsDomainResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_type=cluster_type,
+            cname=cname,
+            connection_time=connection_time,
+            domain=domain,
+            domain_name=domain_name,
+            http2_ports=http2_ports,
+            http_ports=http_ports,
+            http_to_user_ip=http_to_user_ip,
+            https_ports=https_ports,
+            https_redirect=https_redirect,
+            id=id,
+            is_access_product=is_access_product,
+            load_balancing=load_balancing,
+            log_headers=log_headers,
+            read_time=read_time,
+            resource_group_id=resource_group_id,
+            source_ips=source_ips,
+            version=version,
+            write_time=write_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_type: str,
+             cname: str,
+             connection_time: int,
+             domain: str,
+             domain_name: str,
+             http2_ports: Sequence[str],
+             http_ports: Sequence[str],
+             http_to_user_ip: str,
+             https_ports: Sequence[str],
+             https_redirect: str,
+             id: str,
+             is_access_product: str,
+             load_balancing: str,
+             log_headers: Sequence['outputs.GetDomainsDomainLogHeaderResult'],
+             read_time: int,
+             resource_group_id: str,
+             source_ips: Sequence[str],
+             version: int,
+             write_time: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_type", cluster_type)
+        _setter("cname", cname)
+        _setter("connection_time", connection_time)
+        _setter("domain", domain)
+        _setter("domain_name", domain_name)
+        _setter("http2_ports", http2_ports)
+        _setter("http_ports", http_ports)
+        _setter("http_to_user_ip", http_to_user_ip)
+        _setter("https_ports", https_ports)
+        _setter("https_redirect", https_redirect)
+        _setter("id", id)
+        _setter("is_access_product", is_access_product)
+        _setter("load_balancing", load_balancing)
+        _setter("log_headers", log_headers)
+        _setter("read_time", read_time)
+        _setter("resource_group_id", resource_group_id)
+        _setter("source_ips", source_ips)
+        _setter("version", version)
+        _setter("write_time", write_time)
 
     @property
     @pulumi.getter(name="clusterType")
@@ -351,8 +430,19 @@ class GetDomainsDomainLogHeaderResult(dict):
         :param str key: The key of label.
         :param str value: The value of label.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetDomainsDomainLogHeaderResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -391,14 +481,37 @@ class GetInstancesInstanceResult(dict):
         :param int status: The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
         :param int trial: Indicates whether this is a trial instance.
         """
-        pulumi.set(__self__, "end_date", end_date)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "in_debt", in_debt)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "remain_day", remain_day)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "subscription_type", subscription_type)
-        pulumi.set(__self__, "trial", trial)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end_date=end_date,
+            id=id,
+            in_debt=in_debt,
+            instance_id=instance_id,
+            remain_day=remain_day,
+            status=status,
+            subscription_type=subscription_type,
+            trial=trial,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end_date: int,
+             id: str,
+             in_debt: int,
+             instance_id: str,
+             remain_day: int,
+             status: int,
+             subscription_type: str,
+             trial: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("end_date", end_date)
+        _setter("id", id)
+        _setter("in_debt", in_debt)
+        _setter("instance_id", instance_id)
+        _setter("remain_day", remain_day)
+        _setter("status", status)
+        _setter("subscription_type", subscription_type)
+        _setter("trial", trial)
 
     @property
     @pulumi.getter(name="endDate")

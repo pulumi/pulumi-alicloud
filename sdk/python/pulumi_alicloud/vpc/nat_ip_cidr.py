@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NatIpCidrArgs', 'NatIpCidr']
@@ -27,15 +27,32 @@ class NatIpCidrArgs:
         :param pulumi.Input[str] nat_ip_cidr_description: The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] nat_ip_cidr_name: The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
         """
-        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
+        NatIpCidrArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            nat_gateway_id=nat_gateway_id,
+            dry_run=dry_run,
+            nat_ip_cidr=nat_ip_cidr,
+            nat_ip_cidr_description=nat_ip_cidr_description,
+            nat_ip_cidr_name=nat_ip_cidr_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             nat_gateway_id: pulumi.Input[str],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             nat_ip_cidr: Optional[pulumi.Input[str]] = None,
+             nat_ip_cidr_description: Optional[pulumi.Input[str]] = None,
+             nat_ip_cidr_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("nat_gateway_id", nat_gateway_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if nat_ip_cidr is not None:
-            pulumi.set(__self__, "nat_ip_cidr", nat_ip_cidr)
+            _setter("nat_ip_cidr", nat_ip_cidr)
         if nat_ip_cidr_description is not None:
-            pulumi.set(__self__, "nat_ip_cidr_description", nat_ip_cidr_description)
+            _setter("nat_ip_cidr_description", nat_ip_cidr_description)
         if nat_ip_cidr_name is not None:
-            pulumi.set(__self__, "nat_ip_cidr_name", nat_ip_cidr_name)
+            _setter("nat_ip_cidr_name", nat_ip_cidr_name)
 
     @property
     @pulumi.getter(name="natGatewayId")
@@ -116,18 +133,37 @@ class _NatIpCidrState:
         :param pulumi.Input[str] nat_ip_cidr_name: The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] status: The status of the CIDR block of the NAT gateway. Valid values: `Available`.
         """
+        _NatIpCidrState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dry_run=dry_run,
+            nat_gateway_id=nat_gateway_id,
+            nat_ip_cidr=nat_ip_cidr,
+            nat_ip_cidr_description=nat_ip_cidr_description,
+            nat_ip_cidr_name=nat_ip_cidr_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             nat_gateway_id: Optional[pulumi.Input[str]] = None,
+             nat_ip_cidr: Optional[pulumi.Input[str]] = None,
+             nat_ip_cidr_description: Optional[pulumi.Input[str]] = None,
+             nat_ip_cidr_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if nat_gateway_id is not None:
-            pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
+            _setter("nat_gateway_id", nat_gateway_id)
         if nat_ip_cidr is not None:
-            pulumi.set(__self__, "nat_ip_cidr", nat_ip_cidr)
+            _setter("nat_ip_cidr", nat_ip_cidr)
         if nat_ip_cidr_description is not None:
-            pulumi.set(__self__, "nat_ip_cidr_description", nat_ip_cidr_description)
+            _setter("nat_ip_cidr_description", nat_ip_cidr_description)
         if nat_ip_cidr_name is not None:
-            pulumi.set(__self__, "nat_ip_cidr_name", nat_ip_cidr_name)
+            _setter("nat_ip_cidr_name", nat_ip_cidr_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -329,6 +365,10 @@ class NatIpCidr(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NatIpCidrArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

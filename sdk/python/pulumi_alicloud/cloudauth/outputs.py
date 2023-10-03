@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -24,9 +24,22 @@ class GetFaceConfigsConfigResult(dict):
         :param str biz_type: Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
         :param str gmt_updated: The Update Time.
         """
-        pulumi.set(__self__, "biz_name", biz_name)
-        pulumi.set(__self__, "biz_type", biz_type)
-        pulumi.set(__self__, "gmt_updated", gmt_updated)
+        GetFaceConfigsConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            biz_name=biz_name,
+            biz_type=biz_type,
+            gmt_updated=gmt_updated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             biz_name: str,
+             biz_type: str,
+             gmt_updated: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("biz_name", biz_name)
+        _setter("biz_type", biz_type)
+        _setter("gmt_updated", gmt_updated)
 
     @property
     @pulumi.getter(name="bizName")

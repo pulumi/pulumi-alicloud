@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApplicationPvtzDiscoverySvcPortProtocol {
     /**
-     * @return The port that is used to check the status of TCP connections.
+     * @return The port.
      * 
      */
     private @Nullable Integer port;
@@ -25,7 +25,7 @@ public final class ApplicationPvtzDiscoverySvcPortProtocol {
 
     private ApplicationPvtzDiscoverySvcPortProtocol() {}
     /**
-     * @return The port that is used to check the status of TCP connections.
+     * @return The port.
      * 
      */
     public Optional<Integer> port() {

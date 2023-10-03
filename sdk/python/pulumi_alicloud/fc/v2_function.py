@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,50 +43,105 @@ class V2FunctionArgs:
         """
         The set of arguments for constructing a V2Function resource.
         """
-        pulumi.set(__self__, "function_name", function_name)
-        pulumi.set(__self__, "handler", handler)
-        pulumi.set(__self__, "runtime", runtime)
-        pulumi.set(__self__, "service_name", service_name)
+        V2FunctionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            function_name=function_name,
+            handler=handler,
+            runtime=runtime,
+            service_name=service_name,
+            ca_port=ca_port,
+            code=code,
+            code_checksum=code_checksum,
+            cpu=cpu,
+            custom_container_config=custom_container_config,
+            custom_dns=custom_dns,
+            custom_health_check_config=custom_health_check_config,
+            custom_runtime_config=custom_runtime_config,
+            description=description,
+            disk_size=disk_size,
+            environment_variables=environment_variables,
+            gpu_memory_size=gpu_memory_size,
+            initialization_timeout=initialization_timeout,
+            initializer=initializer,
+            instance_concurrency=instance_concurrency,
+            instance_lifecycle_config=instance_lifecycle_config,
+            instance_type=instance_type,
+            layers=layers,
+            memory_size=memory_size,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             function_name: pulumi.Input[str],
+             handler: pulumi.Input[str],
+             runtime: pulumi.Input[str],
+             service_name: pulumi.Input[str],
+             ca_port: Optional[pulumi.Input[int]] = None,
+             code: Optional[pulumi.Input['V2FunctionCodeArgs']] = None,
+             code_checksum: Optional[pulumi.Input[str]] = None,
+             cpu: Optional[pulumi.Input[float]] = None,
+             custom_container_config: Optional[pulumi.Input['V2FunctionCustomContainerConfigArgs']] = None,
+             custom_dns: Optional[pulumi.Input['V2FunctionCustomDnsArgs']] = None,
+             custom_health_check_config: Optional[pulumi.Input['V2FunctionCustomHealthCheckConfigArgs']] = None,
+             custom_runtime_config: Optional[pulumi.Input['V2FunctionCustomRuntimeConfigArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disk_size: Optional[pulumi.Input[int]] = None,
+             environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             gpu_memory_size: Optional[pulumi.Input[int]] = None,
+             initialization_timeout: Optional[pulumi.Input[int]] = None,
+             initializer: Optional[pulumi.Input[str]] = None,
+             instance_concurrency: Optional[pulumi.Input[int]] = None,
+             instance_lifecycle_config: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigArgs']] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             memory_size: Optional[pulumi.Input[int]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("function_name", function_name)
+        _setter("handler", handler)
+        _setter("runtime", runtime)
+        _setter("service_name", service_name)
         if ca_port is not None:
-            pulumi.set(__self__, "ca_port", ca_port)
+            _setter("ca_port", ca_port)
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
         if code_checksum is not None:
-            pulumi.set(__self__, "code_checksum", code_checksum)
+            _setter("code_checksum", code_checksum)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if custom_container_config is not None:
-            pulumi.set(__self__, "custom_container_config", custom_container_config)
+            _setter("custom_container_config", custom_container_config)
         if custom_dns is not None:
-            pulumi.set(__self__, "custom_dns", custom_dns)
+            _setter("custom_dns", custom_dns)
         if custom_health_check_config is not None:
-            pulumi.set(__self__, "custom_health_check_config", custom_health_check_config)
+            _setter("custom_health_check_config", custom_health_check_config)
         if custom_runtime_config is not None:
-            pulumi.set(__self__, "custom_runtime_config", custom_runtime_config)
+            _setter("custom_runtime_config", custom_runtime_config)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_size is not None:
-            pulumi.set(__self__, "disk_size", disk_size)
+            _setter("disk_size", disk_size)
         if environment_variables is not None:
-            pulumi.set(__self__, "environment_variables", environment_variables)
+            _setter("environment_variables", environment_variables)
         if gpu_memory_size is not None:
-            pulumi.set(__self__, "gpu_memory_size", gpu_memory_size)
+            _setter("gpu_memory_size", gpu_memory_size)
         if initialization_timeout is not None:
-            pulumi.set(__self__, "initialization_timeout", initialization_timeout)
+            _setter("initialization_timeout", initialization_timeout)
         if initializer is not None:
-            pulumi.set(__self__, "initializer", initializer)
+            _setter("initializer", initializer)
         if instance_concurrency is not None:
-            pulumi.set(__self__, "instance_concurrency", instance_concurrency)
+            _setter("instance_concurrency", instance_concurrency)
         if instance_lifecycle_config is not None:
-            pulumi.set(__self__, "instance_lifecycle_config", instance_lifecycle_config)
+            _setter("instance_lifecycle_config", instance_lifecycle_config)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if layers is not None:
-            pulumi.set(__self__, "layers", layers)
+            _setter("layers", layers)
         if memory_size is not None:
-            pulumi.set(__self__, "memory_size", memory_size)
+            _setter("memory_size", memory_size)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter(name="functionName")
@@ -336,56 +391,113 @@ class _V2FunctionState:
         """
         Input properties used for looking up and filtering V2Function resources.
         """
+        _V2FunctionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_port=ca_port,
+            code=code,
+            code_checksum=code_checksum,
+            cpu=cpu,
+            create_time=create_time,
+            custom_container_config=custom_container_config,
+            custom_dns=custom_dns,
+            custom_health_check_config=custom_health_check_config,
+            custom_runtime_config=custom_runtime_config,
+            description=description,
+            disk_size=disk_size,
+            environment_variables=environment_variables,
+            function_name=function_name,
+            gpu_memory_size=gpu_memory_size,
+            handler=handler,
+            initialization_timeout=initialization_timeout,
+            initializer=initializer,
+            instance_concurrency=instance_concurrency,
+            instance_lifecycle_config=instance_lifecycle_config,
+            instance_type=instance_type,
+            layers=layers,
+            memory_size=memory_size,
+            runtime=runtime,
+            service_name=service_name,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_port: Optional[pulumi.Input[int]] = None,
+             code: Optional[pulumi.Input['V2FunctionCodeArgs']] = None,
+             code_checksum: Optional[pulumi.Input[str]] = None,
+             cpu: Optional[pulumi.Input[float]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             custom_container_config: Optional[pulumi.Input['V2FunctionCustomContainerConfigArgs']] = None,
+             custom_dns: Optional[pulumi.Input['V2FunctionCustomDnsArgs']] = None,
+             custom_health_check_config: Optional[pulumi.Input['V2FunctionCustomHealthCheckConfigArgs']] = None,
+             custom_runtime_config: Optional[pulumi.Input['V2FunctionCustomRuntimeConfigArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disk_size: Optional[pulumi.Input[int]] = None,
+             environment_variables: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             function_name: Optional[pulumi.Input[str]] = None,
+             gpu_memory_size: Optional[pulumi.Input[int]] = None,
+             handler: Optional[pulumi.Input[str]] = None,
+             initialization_timeout: Optional[pulumi.Input[int]] = None,
+             initializer: Optional[pulumi.Input[str]] = None,
+             instance_concurrency: Optional[pulumi.Input[int]] = None,
+             instance_lifecycle_config: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigArgs']] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             memory_size: Optional[pulumi.Input[int]] = None,
+             runtime: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ca_port is not None:
-            pulumi.set(__self__, "ca_port", ca_port)
+            _setter("ca_port", ca_port)
         if code is not None:
-            pulumi.set(__self__, "code", code)
+            _setter("code", code)
         if code_checksum is not None:
-            pulumi.set(__self__, "code_checksum", code_checksum)
+            _setter("code_checksum", code_checksum)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if custom_container_config is not None:
-            pulumi.set(__self__, "custom_container_config", custom_container_config)
+            _setter("custom_container_config", custom_container_config)
         if custom_dns is not None:
-            pulumi.set(__self__, "custom_dns", custom_dns)
+            _setter("custom_dns", custom_dns)
         if custom_health_check_config is not None:
-            pulumi.set(__self__, "custom_health_check_config", custom_health_check_config)
+            _setter("custom_health_check_config", custom_health_check_config)
         if custom_runtime_config is not None:
-            pulumi.set(__self__, "custom_runtime_config", custom_runtime_config)
+            _setter("custom_runtime_config", custom_runtime_config)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_size is not None:
-            pulumi.set(__self__, "disk_size", disk_size)
+            _setter("disk_size", disk_size)
         if environment_variables is not None:
-            pulumi.set(__self__, "environment_variables", environment_variables)
+            _setter("environment_variables", environment_variables)
         if function_name is not None:
-            pulumi.set(__self__, "function_name", function_name)
+            _setter("function_name", function_name)
         if gpu_memory_size is not None:
-            pulumi.set(__self__, "gpu_memory_size", gpu_memory_size)
+            _setter("gpu_memory_size", gpu_memory_size)
         if handler is not None:
-            pulumi.set(__self__, "handler", handler)
+            _setter("handler", handler)
         if initialization_timeout is not None:
-            pulumi.set(__self__, "initialization_timeout", initialization_timeout)
+            _setter("initialization_timeout", initialization_timeout)
         if initializer is not None:
-            pulumi.set(__self__, "initializer", initializer)
+            _setter("initializer", initializer)
         if instance_concurrency is not None:
-            pulumi.set(__self__, "instance_concurrency", instance_concurrency)
+            _setter("instance_concurrency", instance_concurrency)
         if instance_lifecycle_config is not None:
-            pulumi.set(__self__, "instance_lifecycle_config", instance_lifecycle_config)
+            _setter("instance_lifecycle_config", instance_lifecycle_config)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if layers is not None:
-            pulumi.set(__self__, "layers", layers)
+            _setter("layers", layers)
         if memory_size is not None:
-            pulumi.set(__self__, "memory_size", memory_size)
+            _setter("memory_size", memory_size)
         if runtime is not None:
-            pulumi.set(__self__, "runtime", runtime)
+            _setter("runtime", runtime)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter(name="caPort")
@@ -666,6 +778,10 @@ class V2Function(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            V2FunctionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -705,12 +821,37 @@ class V2Function(pulumi.CustomResource):
             __props__ = V2FunctionArgs.__new__(V2FunctionArgs)
 
             __props__.__dict__["ca_port"] = ca_port
+            if code is not None and not isinstance(code, V2FunctionCodeArgs):
+                code = code or {}
+                def _setter(key, value):
+                    code[key] = value
+                V2FunctionCodeArgs._configure(_setter, **code)
             __props__.__dict__["code"] = code
             __props__.__dict__["code_checksum"] = code_checksum
             __props__.__dict__["cpu"] = cpu
+            if custom_container_config is not None and not isinstance(custom_container_config, V2FunctionCustomContainerConfigArgs):
+                custom_container_config = custom_container_config or {}
+                def _setter(key, value):
+                    custom_container_config[key] = value
+                V2FunctionCustomContainerConfigArgs._configure(_setter, **custom_container_config)
             __props__.__dict__["custom_container_config"] = custom_container_config
+            if custom_dns is not None and not isinstance(custom_dns, V2FunctionCustomDnsArgs):
+                custom_dns = custom_dns or {}
+                def _setter(key, value):
+                    custom_dns[key] = value
+                V2FunctionCustomDnsArgs._configure(_setter, **custom_dns)
             __props__.__dict__["custom_dns"] = custom_dns
+            if custom_health_check_config is not None and not isinstance(custom_health_check_config, V2FunctionCustomHealthCheckConfigArgs):
+                custom_health_check_config = custom_health_check_config or {}
+                def _setter(key, value):
+                    custom_health_check_config[key] = value
+                V2FunctionCustomHealthCheckConfigArgs._configure(_setter, **custom_health_check_config)
             __props__.__dict__["custom_health_check_config"] = custom_health_check_config
+            if custom_runtime_config is not None and not isinstance(custom_runtime_config, V2FunctionCustomRuntimeConfigArgs):
+                custom_runtime_config = custom_runtime_config or {}
+                def _setter(key, value):
+                    custom_runtime_config[key] = value
+                V2FunctionCustomRuntimeConfigArgs._configure(_setter, **custom_runtime_config)
             __props__.__dict__["custom_runtime_config"] = custom_runtime_config
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_size"] = disk_size
@@ -725,6 +866,11 @@ class V2Function(pulumi.CustomResource):
             __props__.__dict__["initialization_timeout"] = initialization_timeout
             __props__.__dict__["initializer"] = initializer
             __props__.__dict__["instance_concurrency"] = instance_concurrency
+            if instance_lifecycle_config is not None and not isinstance(instance_lifecycle_config, V2FunctionInstanceLifecycleConfigArgs):
+                instance_lifecycle_config = instance_lifecycle_config or {}
+                def _setter(key, value):
+                    instance_lifecycle_config[key] = value
+                V2FunctionInstanceLifecycleConfigArgs._configure(_setter, **instance_lifecycle_config)
             __props__.__dict__["instance_lifecycle_config"] = instance_lifecycle_config
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["layers"] = layers

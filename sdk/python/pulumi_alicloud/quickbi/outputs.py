@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -38,16 +38,43 @@ class GetUsersUserResult(dict):
         :param str user_id: The ID of the User.
         :param str user_type: The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "admin_user", admin_user)
-        pulumi.set(__self__, "auth_admin_user", auth_admin_user)
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "nick_name", nick_name)
-        pulumi.set(__self__, "phone", phone)
-        pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "user_type", user_type)
+        GetUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            account_name=account_name,
+            admin_user=admin_user,
+            auth_admin_user=auth_admin_user,
+            email=email,
+            id=id,
+            nick_name=nick_name,
+            phone=phone,
+            user_id=user_id,
+            user_type=user_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: str,
+             account_name: str,
+             admin_user: bool,
+             auth_admin_user: bool,
+             email: str,
+             id: str,
+             nick_name: str,
+             phone: str,
+             user_id: str,
+             user_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("account_name", account_name)
+        _setter("admin_user", admin_user)
+        _setter("auth_admin_user", auth_admin_user)
+        _setter("email", email)
+        _setter("id", id)
+        _setter("nick_name", nick_name)
+        _setter("phone", phone)
+        _setter("user_id", user_id)
+        _setter("user_type", user_type)
 
     @property
     @pulumi.getter(name="accountId")

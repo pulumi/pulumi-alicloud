@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -84,14 +84,29 @@ class ApplicationService(dict):
                  name: Optional[str] = None,
                  status: Optional[str] = None,
                  version: Optional[str] = None):
+        ApplicationService._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            status=status,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             status: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -139,16 +154,33 @@ class ClusterNode(dict):
                  name: Optional[str] = None,
                  private_ip: Optional[str] = None,
                  status: Optional[str] = None):
+        ClusterNode._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            eip=eip,
+            id=id,
+            name=name,
+            private_ip=private_ip,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             eip: Optional[str] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             private_ip: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if eip is not None:
-            pulumi.set(__self__, "eip", eip)
+            _setter("eip", eip)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -189,12 +221,25 @@ class EdgeKubernetesAddon(dict):
                The following example is the definition of addons block, The type of this field is list:
         :param str name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
+        EdgeKubernetesAddon._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            disabled=disabled,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[str] = None,
+             disabled: Optional[bool] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -255,12 +300,25 @@ class EdgeKubernetesCertificateAuthority(dict):
         :param str client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
+        EdgeKubernetesCertificateAuthority._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_cert=client_cert,
+            client_key=client_key,
+            cluster_cert=cluster_cert,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_cert: Optional[str] = None,
+             client_key: Optional[str] = None,
+             cluster_cert: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if cluster_cert is not None:
-            pulumi.set(__self__, "cluster_cert", cluster_cert)
+            _setter("cluster_cert", cluster_cert)
 
     @property
     @pulumi.getter(name="clientCert")
@@ -323,14 +381,29 @@ class EdgeKubernetesConnections(dict):
         :param str master_public_ip: Master node SSH IP address.
         :param str service_domain: Service Access Domain.
         """
+        EdgeKubernetesConnections._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_server_internet=api_server_internet,
+            api_server_intranet=api_server_intranet,
+            master_public_ip=master_public_ip,
+            service_domain=service_domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_server_internet: Optional[str] = None,
+             api_server_intranet: Optional[str] = None,
+             master_public_ip: Optional[str] = None,
+             service_domain: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_server_internet is not None:
-            pulumi.set(__self__, "api_server_internet", api_server_internet)
+            _setter("api_server_internet", api_server_internet)
         if api_server_intranet is not None:
-            pulumi.set(__self__, "api_server_intranet", api_server_intranet)
+            _setter("api_server_intranet", api_server_intranet)
         if master_public_ip is not None:
-            pulumi.set(__self__, "master_public_ip", master_public_ip)
+            _setter("master_public_ip", master_public_ip)
         if service_domain is not None:
-            pulumi.set(__self__, "service_domain", service_domain)
+            _setter("service_domain", service_domain)
 
     @property
     @pulumi.getter(name="apiServerInternet")
@@ -374,9 +447,20 @@ class EdgeKubernetesLogConfig(dict):
         :param str type: Type of collecting logs, only `SLS` are supported currently.
         :param str project: Log Service project name, cluster logs will output to this project.
         """
-        pulumi.set(__self__, "type", type)
+        EdgeKubernetesLogConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             project: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -404,10 +488,21 @@ class EdgeKubernetesRuntime(dict):
         :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param str version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         """
+        EdgeKubernetesRuntime._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -472,24 +567,49 @@ class EdgeKubernetesWorkerDataDisk(dict):
         :param str size: The size of a data disk, at least 40. Unit: GiB.
         :param str snapshot_id: The id of snapshot.
         """
+        EdgeKubernetesWorkerDataDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            category=category,
+            device=device,
+            encrypted=encrypted,
+            kms_key_id=kms_key_id,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_id: Optional[str] = None,
+             category: Optional[str] = None,
+             device: Optional[str] = None,
+             encrypted: Optional[str] = None,
+             kms_key_id: Optional[str] = None,
+             name: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             size: Optional[str] = None,
+             snapshot_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -592,12 +712,25 @@ class EdgeKubernetesWorkerNode(dict):
         :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param str private_ip: The private IP address of node.
         """
+        EdgeKubernetesWorkerNode._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            private_ip=private_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             private_ip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
 
     @property
     @pulumi.getter
@@ -637,12 +770,25 @@ class KubernetesAddon(dict):
                The following example is the definition of addons block, The type of this field is list:
         :param str name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
+        KubernetesAddon._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            disabled=disabled,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[str] = None,
+             disabled: Optional[bool] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -682,12 +828,25 @@ class KubernetesAutoscalerNodepool(dict):
         :param str labels: The labels for the nodes in scaling group.
         :param str taints: The taints for the nodes in scaling group.
         """
+        KubernetesAutoscalerNodepool._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            labels=labels,
+            taints=taints,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             labels: Optional[str] = None,
+             taints: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if taints is not None:
-            pulumi.set(__self__, "taints", taints)
+            _setter("taints", taints)
 
     @property
     @pulumi.getter
@@ -746,12 +905,25 @@ class KubernetesCertificateAuthority(dict):
         :param str client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
+        KubernetesCertificateAuthority._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_cert=client_cert,
+            client_key=client_key,
+            cluster_cert=cluster_cert,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_cert: Optional[str] = None,
+             client_key: Optional[str] = None,
+             cluster_cert: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if cluster_cert is not None:
-            pulumi.set(__self__, "cluster_cert", cluster_cert)
+            _setter("cluster_cert", cluster_cert)
 
     @property
     @pulumi.getter(name="clientCert")
@@ -814,14 +986,29 @@ class KubernetesConnections(dict):
         :param str master_public_ip: Master node SSH IP address.
         :param str service_domain: Service Access Domain.
         """
+        KubernetesConnections._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_server_internet=api_server_internet,
+            api_server_intranet=api_server_intranet,
+            master_public_ip=master_public_ip,
+            service_domain=service_domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_server_internet: Optional[str] = None,
+             api_server_intranet: Optional[str] = None,
+             master_public_ip: Optional[str] = None,
+             service_domain: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_server_internet is not None:
-            pulumi.set(__self__, "api_server_internet", api_server_internet)
+            _setter("api_server_internet", api_server_internet)
         if api_server_intranet is not None:
-            pulumi.set(__self__, "api_server_intranet", api_server_intranet)
+            _setter("api_server_intranet", api_server_intranet)
         if master_public_ip is not None:
-            pulumi.set(__self__, "master_public_ip", master_public_ip)
+            _setter("master_public_ip", master_public_ip)
         if service_domain is not None:
-            pulumi.set(__self__, "service_domain", service_domain)
+            _setter("service_domain", service_domain)
 
     @property
     @pulumi.getter(name="apiServerInternet")
@@ -884,12 +1071,25 @@ class KubernetesMasterNode(dict):
         :param str name: The name of a node.
         :param str private_ip: The private ip of a node.
         """
+        KubernetesMasterNode._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            private_ip=private_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             private_ip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
 
     @property
     @pulumi.getter
@@ -956,15 +1156,34 @@ class KubernetesPermissionPermission(dict):
         :param bool is_ram_role: Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
         :param str namespace: The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
         """
-        pulumi.set(__self__, "cluster", cluster)
-        pulumi.set(__self__, "role_name", role_name)
-        pulumi.set(__self__, "role_type", role_type)
+        KubernetesPermissionPermission._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster=cluster,
+            role_name=role_name,
+            role_type=role_type,
+            is_custom=is_custom,
+            is_ram_role=is_ram_role,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster: str,
+             role_name: str,
+             role_type: str,
+             is_custom: Optional[bool] = None,
+             is_ram_role: Optional[bool] = None,
+             namespace: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster", cluster)
+        _setter("role_name", role_name)
+        _setter("role_type", role_type)
         if is_custom is not None:
-            pulumi.set(__self__, "is_custom", is_custom)
+            _setter("is_custom", is_custom)
         if is_ram_role is not None:
-            pulumi.set(__self__, "is_ram_role", is_ram_role)
+            _setter("is_ram_role", is_ram_role)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
 
     @property
     @pulumi.getter
@@ -1024,10 +1243,21 @@ class KubernetesRuntime(dict):
         :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param str version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         """
+        KubernetesRuntime._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -1057,12 +1287,25 @@ class KubernetesTaint(dict):
         :param str key: The key of a taint.
         :param str value: The key of a taint.
         """
+        KubernetesTaint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            effect=effect,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             effect: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if effect is not None:
-            pulumi.set(__self__, "effect", effect)
+            _setter("effect", effect)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1135,24 +1378,49 @@ class KubernetesWorkerDataDisk(dict):
         :param str size: The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
         :param str snapshot_id: The id of snapshot.
         """
+        KubernetesWorkerDataDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            category=category,
+            device=device,
+            encrypted=encrypted,
+            kms_key_id=kms_key_id,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_id: Optional[str] = None,
+             category: Optional[str] = None,
+             device: Optional[str] = None,
+             encrypted: Optional[str] = None,
+             kms_key_id: Optional[str] = None,
+             name: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             size: Optional[str] = None,
+             snapshot_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -1255,12 +1523,25 @@ class KubernetesWorkerNode(dict):
         :param str name: Node name.
         :param str private_ip: The private IP address of node.
         """
+        KubernetesWorkerNode._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            private_ip=private_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             private_ip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
 
     @property
     @pulumi.getter
@@ -1311,12 +1592,25 @@ class ManagedKubernetesAddon(dict):
                The `varibales.tf`:
         :param str name: This parameter specifies the name of the component.
         """
+        ManagedKubernetesAddon._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            disabled=disabled,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[str] = None,
+             disabled: Optional[bool] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -1388,12 +1682,25 @@ class ManagedKubernetesCertificateAuthority(dict):
         :param str client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
+        ManagedKubernetesCertificateAuthority._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_cert=client_cert,
+            client_key=client_key,
+            cluster_cert=cluster_cert,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_cert: Optional[str] = None,
+             client_key: Optional[str] = None,
+             cluster_cert: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if cluster_cert is not None:
-            pulumi.set(__self__, "cluster_cert", cluster_cert)
+            _setter("cluster_cert", cluster_cert)
 
     @property
     @pulumi.getter(name="clientCert")
@@ -1456,14 +1763,29 @@ class ManagedKubernetesConnections(dict):
         :param str master_public_ip: Master node SSH IP address.
         :param str service_domain: Service Access Domain.
         """
+        ManagedKubernetesConnections._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_server_internet=api_server_internet,
+            api_server_intranet=api_server_intranet,
+            master_public_ip=master_public_ip,
+            service_domain=service_domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_server_internet: Optional[str] = None,
+             api_server_intranet: Optional[str] = None,
+             master_public_ip: Optional[str] = None,
+             service_domain: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_server_internet is not None:
-            pulumi.set(__self__, "api_server_internet", api_server_internet)
+            _setter("api_server_internet", api_server_internet)
         if api_server_intranet is not None:
-            pulumi.set(__self__, "api_server_intranet", api_server_intranet)
+            _setter("api_server_intranet", api_server_intranet)
         if master_public_ip is not None:
-            pulumi.set(__self__, "master_public_ip", master_public_ip)
+            _setter("master_public_ip", master_public_ip)
         if service_domain is not None:
-            pulumi.set(__self__, "service_domain", service_domain)
+            _setter("service_domain", service_domain)
 
     @property
     @pulumi.getter(name="apiServerInternet")
@@ -1535,10 +1857,25 @@ class ManagedKubernetesMaintenanceWindow(dict):
                import pulumi
                ```
         """
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "enable", enable)
-        pulumi.set(__self__, "maintenance_time", maintenance_time)
-        pulumi.set(__self__, "weekly_period", weekly_period)
+        ManagedKubernetesMaintenanceWindow._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            duration=duration,
+            enable=enable,
+            maintenance_time=maintenance_time,
+            weekly_period=weekly_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             duration: str,
+             enable: bool,
+             maintenance_time: str,
+             weekly_period: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("duration", duration)
+        _setter("enable", enable)
+        _setter("maintenance_time", maintenance_time)
+        _setter("weekly_period", weekly_period)
 
     @property
     @pulumi.getter
@@ -1612,14 +1949,29 @@ class ManagedKubernetesRrsaMetadata(dict):
         :param str ram_oidc_provider_name: The name of OIDC Provider that was registered in RAM.
         :param str rrsa_oidc_issuer_url: The issuer URL of RRSA OIDC Token.
         """
+        ManagedKubernetesRrsaMetadata._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            ram_oidc_provider_arn=ram_oidc_provider_arn,
+            ram_oidc_provider_name=ram_oidc_provider_name,
+            rrsa_oidc_issuer_url=rrsa_oidc_issuer_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             ram_oidc_provider_arn: Optional[str] = None,
+             ram_oidc_provider_name: Optional[str] = None,
+             rrsa_oidc_issuer_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if ram_oidc_provider_arn is not None:
-            pulumi.set(__self__, "ram_oidc_provider_arn", ram_oidc_provider_arn)
+            _setter("ram_oidc_provider_arn", ram_oidc_provider_arn)
         if ram_oidc_provider_name is not None:
-            pulumi.set(__self__, "ram_oidc_provider_name", ram_oidc_provider_name)
+            _setter("ram_oidc_provider_name", ram_oidc_provider_name)
         if rrsa_oidc_issuer_url is not None:
-            pulumi.set(__self__, "rrsa_oidc_issuer_url", rrsa_oidc_issuer_url)
+            _setter("rrsa_oidc_issuer_url", rrsa_oidc_issuer_url)
 
     @property
     @pulumi.getter
@@ -1660,19 +2012,30 @@ class ManagedKubernetesRuntime(dict):
                  name: Optional[str] = None,
                  version: Optional[str] = None):
         """
-        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param str name: This parameter specifies the name of the component.
         :param str version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         """
+        ManagedKubernetesRuntime._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             version: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        This parameter specifies the name of the component.
         """
         return pulumi.get(self, "name")
 
@@ -1716,12 +2079,25 @@ class ManagedKubernetesTaint(dict):
         :param str key: The taint key.
         :param str value: The taint value.
         """
+        ManagedKubernetesTaint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            effect=effect,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             effect: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if effect is not None:
-            pulumi.set(__self__, "effect", effect)
+            _setter("effect", effect)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1814,24 +2190,49 @@ class ManagedKubernetesWorkerDataDisk(dict):
         :param str size: (Optional)The size of a data disk, at least 40. Unit: GiB.
         :param str snapshot_id: The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
         """
+        ManagedKubernetesWorkerDataDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            category=category,
+            device=device,
+            encrypted=encrypted,
+            kms_key_id=kms_key_id,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_id: Optional[str] = None,
+             category: Optional[str] = None,
+             device: Optional[str] = None,
+             encrypted: Optional[str] = None,
+             kms_key_id: Optional[str] = None,
+             name: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             size: Optional[str] = None,
+             snapshot_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -1931,15 +2332,28 @@ class ManagedKubernetesWorkerNode(dict):
                  private_ip: Optional[str] = None):
         """
         :param str id: (Deprecated from version 1.177.0) ID of the node.
-        :param str name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param str name: This parameter specifies the name of the component.
         :param str private_ip: (Deprecated from version 1.177.0) The private IP address of node.
         """
+        ManagedKubernetesWorkerNode._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            private_ip=private_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             private_ip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
 
     @property
     @pulumi.getter
@@ -1953,7 +2367,7 @@ class ManagedKubernetesWorkerNode(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        This parameter specifies the name of the component.
         """
         return pulumi.get(self, "name")
 
@@ -2012,24 +2426,49 @@ class NodePoolDataDisk(dict):
         :param int size: The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
         :param str snapshot_id: The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
         """
+        NodePoolDataDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            category=category,
+            device=device,
+            encrypted=encrypted,
+            kms_key_id=kms_key_id,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_id: Optional[str] = None,
+             category: Optional[str] = None,
+             device: Optional[str] = None,
+             encrypted: Optional[str] = None,
+             kms_key_id: Optional[str] = None,
+             name: Optional[str] = None,
+             performance_level: Optional[str] = None,
+             size: Optional[int] = None,
+             snapshot_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -2176,32 +2615,65 @@ class NodePoolKubeletConfiguration(dict):
         :param str serialize_image_pulls: Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
         :param Mapping[str, Any] system_reserved: Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
         """
+        NodePoolKubeletConfiguration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_manager_policy=cpu_manager_policy,
+            event_burst=event_burst,
+            event_record_qps=event_record_qps,
+            eviction_hard=eviction_hard,
+            eviction_soft=eviction_soft,
+            eviction_soft_grace_period=eviction_soft_grace_period,
+            kube_api_burst=kube_api_burst,
+            kube_api_qps=kube_api_qps,
+            kube_reserved=kube_reserved,
+            registry_burst=registry_burst,
+            registry_pull_qps=registry_pull_qps,
+            serialize_image_pulls=serialize_image_pulls,
+            system_reserved=system_reserved,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_manager_policy: Optional[str] = None,
+             event_burst: Optional[str] = None,
+             event_record_qps: Optional[str] = None,
+             eviction_hard: Optional[Mapping[str, Any]] = None,
+             eviction_soft: Optional[Mapping[str, Any]] = None,
+             eviction_soft_grace_period: Optional[Mapping[str, Any]] = None,
+             kube_api_burst: Optional[str] = None,
+             kube_api_qps: Optional[str] = None,
+             kube_reserved: Optional[Mapping[str, Any]] = None,
+             registry_burst: Optional[str] = None,
+             registry_pull_qps: Optional[str] = None,
+             serialize_image_pulls: Optional[str] = None,
+             system_reserved: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cpu_manager_policy is not None:
-            pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+            _setter("cpu_manager_policy", cpu_manager_policy)
         if event_burst is not None:
-            pulumi.set(__self__, "event_burst", event_burst)
+            _setter("event_burst", event_burst)
         if event_record_qps is not None:
-            pulumi.set(__self__, "event_record_qps", event_record_qps)
+            _setter("event_record_qps", event_record_qps)
         if eviction_hard is not None:
-            pulumi.set(__self__, "eviction_hard", eviction_hard)
+            _setter("eviction_hard", eviction_hard)
         if eviction_soft is not None:
-            pulumi.set(__self__, "eviction_soft", eviction_soft)
+            _setter("eviction_soft", eviction_soft)
         if eviction_soft_grace_period is not None:
-            pulumi.set(__self__, "eviction_soft_grace_period", eviction_soft_grace_period)
+            _setter("eviction_soft_grace_period", eviction_soft_grace_period)
         if kube_api_burst is not None:
-            pulumi.set(__self__, "kube_api_burst", kube_api_burst)
+            _setter("kube_api_burst", kube_api_burst)
         if kube_api_qps is not None:
-            pulumi.set(__self__, "kube_api_qps", kube_api_qps)
+            _setter("kube_api_qps", kube_api_qps)
         if kube_reserved is not None:
-            pulumi.set(__self__, "kube_reserved", kube_reserved)
+            _setter("kube_reserved", kube_reserved)
         if registry_burst is not None:
-            pulumi.set(__self__, "registry_burst", registry_burst)
+            _setter("registry_burst", registry_burst)
         if registry_pull_qps is not None:
-            pulumi.set(__self__, "registry_pull_qps", registry_pull_qps)
+            _setter("registry_pull_qps", registry_pull_qps)
         if serialize_image_pulls is not None:
-            pulumi.set(__self__, "serialize_image_pulls", serialize_image_pulls)
+            _setter("serialize_image_pulls", serialize_image_pulls)
         if system_reserved is not None:
-            pulumi.set(__self__, "system_reserved", system_reserved)
+            _setter("system_reserved", system_reserved)
 
     @property
     @pulumi.getter(name="cpuManagerPolicy")
@@ -2317,9 +2789,20 @@ class NodePoolLabel(dict):
         :param str key: The label key.
         :param str value: The label value.
         """
-        pulumi.set(__self__, "key", key)
+        NodePoolLabel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -2376,15 +2859,32 @@ class NodePoolManagement(dict):
         :param int surge: Number of additional nodes. You have to specify one of surge, surge_percentage.
         :param int surge_percentage: Proportion of additional nodes. You have to specify one of surge, surge_percentage.
         """
-        pulumi.set(__self__, "max_unavailable", max_unavailable)
+        NodePoolManagement._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_unavailable=max_unavailable,
+            auto_repair=auto_repair,
+            auto_upgrade=auto_upgrade,
+            surge=surge,
+            surge_percentage=surge_percentage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_unavailable: int,
+             auto_repair: Optional[bool] = None,
+             auto_upgrade: Optional[bool] = None,
+             surge: Optional[int] = None,
+             surge_percentage: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max_unavailable", max_unavailable)
         if auto_repair is not None:
-            pulumi.set(__self__, "auto_repair", auto_repair)
+            _setter("auto_repair", auto_repair)
         if auto_upgrade is not None:
-            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+            _setter("auto_upgrade", auto_upgrade)
         if surge is not None:
-            pulumi.set(__self__, "surge", surge)
+            _setter("surge", surge)
         if surge_percentage is not None:
-            pulumi.set(__self__, "surge_percentage", surge_percentage)
+            _setter("surge_percentage", surge_percentage)
 
     @property
     @pulumi.getter(name="maxUnavailable")
@@ -2451,8 +2951,17 @@ class NodePoolRollingPolicy(dict):
         """
         :param int max_parallelism: Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
         """
+        NodePoolRollingPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_parallelism=max_parallelism,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_parallelism: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_parallelism is not None:
-            pulumi.set(__self__, "max_parallelism", max_parallelism)
+            _setter("max_parallelism", max_parallelism)
 
     @property
     @pulumi.getter(name="maxParallelism")
@@ -2487,8 +2996,17 @@ class NodePoolRolloutPolicy(dict):
         """
         :param int max_unavailable: Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
         """
+        NodePoolRolloutPolicy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_unavailable=max_unavailable,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_unavailable: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_unavailable is not None:
-            pulumi.set(__self__, "max_unavailable", max_unavailable)
+            _setter("max_unavailable", max_unavailable)
 
     @property
     @pulumi.getter(name="maxUnavailable")
@@ -2541,16 +3059,35 @@ class NodePoolScalingConfig(dict):
         :param bool is_bond_eip: Whether to bind EIP for an instance. Default: `false`.
         :param str type: Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
         """
-        pulumi.set(__self__, "max_size", max_size)
-        pulumi.set(__self__, "min_size", min_size)
+        NodePoolScalingConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_size=max_size,
+            min_size=min_size,
+            eip_bandwidth=eip_bandwidth,
+            eip_internet_charge_type=eip_internet_charge_type,
+            is_bond_eip=is_bond_eip,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_size: int,
+             min_size: int,
+             eip_bandwidth: Optional[int] = None,
+             eip_internet_charge_type: Optional[str] = None,
+             is_bond_eip: Optional[bool] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max_size", max_size)
+        _setter("min_size", min_size)
         if eip_bandwidth is not None:
-            pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
+            _setter("eip_bandwidth", eip_bandwidth)
         if eip_internet_charge_type is not None:
-            pulumi.set(__self__, "eip_internet_charge_type", eip_internet_charge_type)
+            _setter("eip_internet_charge_type", eip_internet_charge_type)
         if is_bond_eip is not None:
-            pulumi.set(__self__, "is_bond_eip", is_bond_eip)
+            _setter("is_bond_eip", is_bond_eip)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="maxSize")
@@ -2629,10 +3166,21 @@ class NodePoolSpotPriceLimit(dict):
         :param str instance_type: Spot instance type.
         :param str price_limit: The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
         """
+        NodePoolSpotPriceLimit._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_type=instance_type,
+            price_limit=price_limit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_type: Optional[str] = None,
+             price_limit: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if price_limit is not None:
-            pulumi.set(__self__, "price_limit", price_limit)
+            _setter("price_limit", price_limit)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -2662,11 +3210,24 @@ class NodePoolTaint(dict):
         :param str effect: The scheduling policy.
         :param str value: The value of a taint.
         """
-        pulumi.set(__self__, "key", key)
+        NodePoolTaint._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            effect=effect,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             effect: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
         if effect is not None:
-            pulumi.set(__self__, "effect", effect)
+            _setter("effect", effect)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -2706,12 +3267,25 @@ class ServerlessKubernetesAddon(dict):
                The following example is the definition of addons block, The type of this field is list:
         :param str name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
+        ServerlessKubernetesAddon._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            disabled=disabled,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[str] = None,
+             disabled: Optional[bool] = None,
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -2774,14 +3348,29 @@ class ServerlessKubernetesRrsaMetadata(dict):
         :param str ram_oidc_provider_name: The name of OIDC Provider that was registered in RAM.
         :param str rrsa_oidc_issuer_url: The issuer URL of RRSA OIDC Token.
         """
+        ServerlessKubernetesRrsaMetadata._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            ram_oidc_provider_arn=ram_oidc_provider_arn,
+            ram_oidc_provider_name=ram_oidc_provider_name,
+            rrsa_oidc_issuer_url=rrsa_oidc_issuer_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[bool] = None,
+             ram_oidc_provider_arn: Optional[str] = None,
+             ram_oidc_provider_name: Optional[str] = None,
+             rrsa_oidc_issuer_url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if ram_oidc_provider_arn is not None:
-            pulumi.set(__self__, "ram_oidc_provider_arn", ram_oidc_provider_arn)
+            _setter("ram_oidc_provider_arn", ram_oidc_provider_arn)
         if ram_oidc_provider_name is not None:
-            pulumi.set(__self__, "ram_oidc_provider_name", ram_oidc_provider_name)
+            _setter("ram_oidc_provider_name", ram_oidc_provider_name)
         if rrsa_oidc_issuer_url is not None:
-            pulumi.set(__self__, "rrsa_oidc_issuer_url", rrsa_oidc_issuer_url)
+            _setter("rrsa_oidc_issuer_url", rrsa_oidc_issuer_url)
 
     @property
     @pulumi.getter
@@ -2841,16 +3430,33 @@ class SwarmNode(dict):
                  name: Optional[str] = None,
                  private_ip: Optional[str] = None,
                  status: Optional[str] = None):
+        SwarmNode._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            eip=eip,
+            id=id,
+            name=name,
+            private_ip=private_ip,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             eip: Optional[str] = None,
+             id: Optional[str] = None,
+             name: Optional[str] = None,
+             private_ip: Optional[str] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if eip is not None:
-            pulumi.set(__self__, "eip", eip)
+            _setter("eip", eip)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -2889,9 +3495,22 @@ class GetClusterCredentialCertificateAuthorityResult(dict):
         :param str client_key: The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kube config file for your cluster.
         :param str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kube config file for your cluster.
         """
-        pulumi.set(__self__, "client_cert", client_cert)
-        pulumi.set(__self__, "client_key", client_key)
-        pulumi.set(__self__, "cluster_cert", cluster_cert)
+        GetClusterCredentialCertificateAuthorityResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_cert=client_cert,
+            client_key=client_key,
+            cluster_cert=cluster_cert,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_cert: str,
+             client_key: str,
+             cluster_cert: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("client_cert", client_cert)
+        _setter("client_key", client_key)
+        _setter("cluster_cert", cluster_cert)
 
     @property
     @pulumi.getter(name="clientCert")
@@ -2939,14 +3558,37 @@ class GetEdgeKubernetesClustersClusterResult(dict):
         :param str vpc_id: The ID of VPC where the current cluster is located.
         :param Sequence['GetEdgeKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
         """
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "connections", connections)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "worker_nodes", worker_nodes)
+        GetEdgeKubernetesClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zone=availability_zone,
+            connections=connections,
+            id=id,
+            name=name,
+            nat_gateway_id=nat_gateway_id,
+            security_group_id=security_group_id,
+            vpc_id=vpc_id,
+            worker_nodes=worker_nodes,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zone: str,
+             connections: 'outputs.GetEdgeKubernetesClustersClusterConnectionsResult',
+             id: str,
+             name: str,
+             nat_gateway_id: str,
+             security_group_id: str,
+             vpc_id: str,
+             worker_nodes: Sequence['outputs.GetEdgeKubernetesClustersClusterWorkerNodeResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("availability_zone", availability_zone)
+        _setter("connections", connections)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("nat_gateway_id", nat_gateway_id)
+        _setter("security_group_id", security_group_id)
+        _setter("vpc_id", vpc_id)
+        _setter("worker_nodes", worker_nodes)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -3022,8 +3664,19 @@ class GetEdgeKubernetesClustersClusterConnectionsResult(dict):
         :param str api_server_internet: API Server Internet endpoint.
         :param str api_server_intranet: API Server Intranet endpoint.
         """
-        pulumi.set(__self__, "api_server_internet", api_server_internet)
-        pulumi.set(__self__, "api_server_intranet", api_server_intranet)
+        GetEdgeKubernetesClustersClusterConnectionsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_server_internet=api_server_internet,
+            api_server_intranet=api_server_intranet,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_server_internet: str,
+             api_server_intranet: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_server_internet", api_server_internet)
+        _setter("api_server_intranet", api_server_intranet)
 
     @property
     @pulumi.getter(name="apiServerInternet")
@@ -3053,9 +3706,22 @@ class GetEdgeKubernetesClustersClusterWorkerNodeResult(dict):
         :param str name: Node name.
         :param str private_ip: The private IP address of node.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "private_ip", private_ip)
+        GetEdgeKubernetesClustersClusterWorkerNodeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            private_ip=private_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             name: str,
+             private_ip: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("name", name)
+        _setter("private_ip", private_ip)
 
     @property
     @pulumi.getter
@@ -3097,11 +3763,28 @@ class GetKubernetesAddonsAddonResult(dict):
         :param str next_version: The next version of this addon can be upgraded to.
         :param bool required: Whether the addon is a system addon.
         """
-        pulumi.set(__self__, "current_config", current_config)
-        pulumi.set(__self__, "current_version", current_version)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "next_version", next_version)
-        pulumi.set(__self__, "required", required)
+        GetKubernetesAddonsAddonResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            current_config=current_config,
+            current_version=current_version,
+            name=name,
+            next_version=next_version,
+            required=required,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             current_config: str,
+             current_version: str,
+             name: str,
+             next_version: str,
+             required: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("current_config", current_config)
+        _setter("current_version", current_version)
+        _setter("name", name)
+        _setter("next_version", next_version)
+        _setter("required", required)
 
     @property
     @pulumi.getter(name="currentConfig")
@@ -3210,43 +3893,124 @@ class GetKubernetesClustersClusterResult(dict):
         :param Sequence['GetKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
         :param Sequence[int] worker_numbers: The ECS instance node number in the current container cluster.
         """
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "cluster_network_type", cluster_network_type)
-        pulumi.set(__self__, "connections", connections)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "log_configs", log_configs)
-        pulumi.set(__self__, "master_auto_renew", master_auto_renew)
-        pulumi.set(__self__, "master_auto_renew_period", master_auto_renew_period)
-        pulumi.set(__self__, "master_disk_category", master_disk_category)
-        pulumi.set(__self__, "master_disk_size", master_disk_size)
-        pulumi.set(__self__, "master_instance_charge_type", master_instance_charge_type)
-        pulumi.set(__self__, "master_instance_types", master_instance_types)
-        pulumi.set(__self__, "master_nodes", master_nodes)
-        pulumi.set(__self__, "master_period", master_period)
-        pulumi.set(__self__, "master_period_unit", master_period_unit)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
-        pulumi.set(__self__, "node_cidr_mask", node_cidr_mask)
-        pulumi.set(__self__, "pod_cidr", pod_cidr)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "service_cidr", service_cidr)
-        pulumi.set(__self__, "slb_internet_enabled", slb_internet_enabled)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
-        pulumi.set(__self__, "worker_auto_renew", worker_auto_renew)
-        pulumi.set(__self__, "worker_auto_renew_period", worker_auto_renew_period)
-        pulumi.set(__self__, "worker_data_disk_category", worker_data_disk_category)
-        pulumi.set(__self__, "worker_data_disk_size", worker_data_disk_size)
-        pulumi.set(__self__, "worker_disk_category", worker_disk_category)
-        pulumi.set(__self__, "worker_disk_size", worker_disk_size)
-        pulumi.set(__self__, "worker_instance_charge_type", worker_instance_charge_type)
-        pulumi.set(__self__, "worker_instance_types", worker_instance_types)
-        pulumi.set(__self__, "worker_nodes", worker_nodes)
-        pulumi.set(__self__, "worker_numbers", worker_numbers)
-        pulumi.set(__self__, "worker_period", worker_period)
-        pulumi.set(__self__, "worker_period_unit", worker_period_unit)
+        GetKubernetesClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zone=availability_zone,
+            cluster_network_type=cluster_network_type,
+            connections=connections,
+            id=id,
+            image_id=image_id,
+            key_name=key_name,
+            log_configs=log_configs,
+            master_auto_renew=master_auto_renew,
+            master_auto_renew_period=master_auto_renew_period,
+            master_disk_category=master_disk_category,
+            master_disk_size=master_disk_size,
+            master_instance_charge_type=master_instance_charge_type,
+            master_instance_types=master_instance_types,
+            master_nodes=master_nodes,
+            master_period=master_period,
+            master_period_unit=master_period_unit,
+            name=name,
+            nat_gateway_id=nat_gateway_id,
+            node_cidr_mask=node_cidr_mask,
+            pod_cidr=pod_cidr,
+            security_group_id=security_group_id,
+            service_cidr=service_cidr,
+            slb_internet_enabled=slb_internet_enabled,
+            vpc_id=vpc_id,
+            vswitch_ids=vswitch_ids,
+            worker_auto_renew=worker_auto_renew,
+            worker_auto_renew_period=worker_auto_renew_period,
+            worker_data_disk_category=worker_data_disk_category,
+            worker_data_disk_size=worker_data_disk_size,
+            worker_disk_category=worker_disk_category,
+            worker_disk_size=worker_disk_size,
+            worker_instance_charge_type=worker_instance_charge_type,
+            worker_instance_types=worker_instance_types,
+            worker_nodes=worker_nodes,
+            worker_numbers=worker_numbers,
+            worker_period=worker_period,
+            worker_period_unit=worker_period_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zone: str,
+             cluster_network_type: str,
+             connections: 'outputs.GetKubernetesClustersClusterConnectionsResult',
+             id: str,
+             image_id: str,
+             key_name: str,
+             log_configs: Sequence['outputs.GetKubernetesClustersClusterLogConfigResult'],
+             master_auto_renew: bool,
+             master_auto_renew_period: int,
+             master_disk_category: str,
+             master_disk_size: int,
+             master_instance_charge_type: str,
+             master_instance_types: Sequence[str],
+             master_nodes: Sequence['outputs.GetKubernetesClustersClusterMasterNodeResult'],
+             master_period: int,
+             master_period_unit: str,
+             name: str,
+             nat_gateway_id: str,
+             node_cidr_mask: int,
+             pod_cidr: str,
+             security_group_id: str,
+             service_cidr: str,
+             slb_internet_enabled: bool,
+             vpc_id: str,
+             vswitch_ids: Sequence[str],
+             worker_auto_renew: bool,
+             worker_auto_renew_period: int,
+             worker_data_disk_category: str,
+             worker_data_disk_size: int,
+             worker_disk_category: str,
+             worker_disk_size: int,
+             worker_instance_charge_type: str,
+             worker_instance_types: Sequence[str],
+             worker_nodes: Sequence['outputs.GetKubernetesClustersClusterWorkerNodeResult'],
+             worker_numbers: Sequence[int],
+             worker_period: int,
+             worker_period_unit: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("availability_zone", availability_zone)
+        _setter("cluster_network_type", cluster_network_type)
+        _setter("connections", connections)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("key_name", key_name)
+        _setter("log_configs", log_configs)
+        _setter("master_auto_renew", master_auto_renew)
+        _setter("master_auto_renew_period", master_auto_renew_period)
+        _setter("master_disk_category", master_disk_category)
+        _setter("master_disk_size", master_disk_size)
+        _setter("master_instance_charge_type", master_instance_charge_type)
+        _setter("master_instance_types", master_instance_types)
+        _setter("master_nodes", master_nodes)
+        _setter("master_period", master_period)
+        _setter("master_period_unit", master_period_unit)
+        _setter("name", name)
+        _setter("nat_gateway_id", nat_gateway_id)
+        _setter("node_cidr_mask", node_cidr_mask)
+        _setter("pod_cidr", pod_cidr)
+        _setter("security_group_id", security_group_id)
+        _setter("service_cidr", service_cidr)
+        _setter("slb_internet_enabled", slb_internet_enabled)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_ids", vswitch_ids)
+        _setter("worker_auto_renew", worker_auto_renew)
+        _setter("worker_auto_renew_period", worker_auto_renew_period)
+        _setter("worker_data_disk_category", worker_data_disk_category)
+        _setter("worker_data_disk_size", worker_data_disk_size)
+        _setter("worker_disk_category", worker_disk_category)
+        _setter("worker_disk_size", worker_disk_size)
+        _setter("worker_instance_charge_type", worker_instance_charge_type)
+        _setter("worker_instance_types", worker_instance_types)
+        _setter("worker_nodes", worker_nodes)
+        _setter("worker_numbers", worker_numbers)
+        _setter("worker_period", worker_period)
+        _setter("worker_period_unit", worker_period_unit)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -3519,10 +4283,25 @@ class GetKubernetesClustersClusterConnectionsResult(dict):
         :param str master_public_ip: Master node SSH IP address.
         :param str service_domain: Service Access Domain.
         """
-        pulumi.set(__self__, "api_server_internet", api_server_internet)
-        pulumi.set(__self__, "api_server_intranet", api_server_intranet)
-        pulumi.set(__self__, "master_public_ip", master_public_ip)
-        pulumi.set(__self__, "service_domain", service_domain)
+        GetKubernetesClustersClusterConnectionsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_server_internet=api_server_internet,
+            api_server_intranet=api_server_intranet,
+            master_public_ip=master_public_ip,
+            service_domain=service_domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_server_internet: str,
+             api_server_intranet: str,
+             master_public_ip: str,
+             service_domain: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_server_internet", api_server_internet)
+        _setter("api_server_intranet", api_server_intranet)
+        _setter("master_public_ip", master_public_ip)
+        _setter("service_domain", service_domain)
 
     @property
     @pulumi.getter(name="apiServerInternet")
@@ -3566,8 +4345,19 @@ class GetKubernetesClustersClusterLogConfigResult(dict):
         :param str project: Log Service project name.
         :param str type: Type of collecting logs.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "type", type)
+        GetKubernetesClustersClusterLogConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project", project)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -3597,9 +4387,22 @@ class GetKubernetesClustersClusterMasterNodeResult(dict):
         :param str name: Node name.
         :param str private_ip: The private IP address of node.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "private_ip", private_ip)
+        GetKubernetesClustersClusterMasterNodeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            private_ip=private_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             name: str,
+             private_ip: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("name", name)
+        _setter("private_ip", private_ip)
 
     @property
     @pulumi.getter
@@ -3637,9 +4440,22 @@ class GetKubernetesClustersClusterWorkerNodeResult(dict):
         :param str name: Node name.
         :param str private_ip: The private IP address of node.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "private_ip", private_ip)
+        GetKubernetesClustersClusterWorkerNodeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            private_ip=private_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             name: str,
+             private_ip: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("name", name)
+        _setter("private_ip", private_ip)
 
     @property
     @pulumi.getter
@@ -3683,15 +4499,34 @@ class GetKubernetesPermissionPermissionResult(dict):
         :param bool is_ram_role: Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
         :param str role_type: The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
         """
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "role_name", role_name)
+        GetKubernetesPermissionPermissionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_id=resource_id,
+            resource_type=resource_type,
+            role_name=role_name,
+            is_owner=is_owner,
+            is_ram_role=is_ram_role,
+            role_type=role_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_id: str,
+             resource_type: str,
+             role_name: str,
+             is_owner: Optional[bool] = None,
+             is_ram_role: Optional[bool] = None,
+             role_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_id", resource_id)
+        _setter("resource_type", resource_type)
+        _setter("role_name", role_name)
         if is_owner is not None:
-            pulumi.set(__self__, "is_owner", is_owner)
+            _setter("is_owner", is_owner)
         if is_ram_role is not None:
-            pulumi.set(__self__, "is_ram_role", is_ram_role)
+            _setter("is_ram_role", is_ram_role)
         if role_type is not None:
-            pulumi.set(__self__, "role_type", role_type)
+            _setter("role_type", role_type)
 
     @property
     @pulumi.getter(name="resourceId")
@@ -3751,8 +4586,19 @@ class GetKubernetesVersionMetadataResult(dict):
         :param Sequence['GetKubernetesVersionMetadataRuntimeArgs'] runtimes: The list of supported runtime.
         :param str version: The runtime version.
         """
-        pulumi.set(__self__, "runtimes", runtimes)
-        pulumi.set(__self__, "version", version)
+        GetKubernetesVersionMetadataResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            runtimes=runtimes,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             runtimes: Sequence['outputs.GetKubernetesVersionMetadataRuntimeResult'],
+             version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("runtimes", runtimes)
+        _setter("version", version)
 
     @property
     @pulumi.getter
@@ -3780,8 +4626,19 @@ class GetKubernetesVersionMetadataRuntimeResult(dict):
         :param str name: The runtime name.
         :param str version: The runtime version.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "version", version)
+        GetKubernetesVersionMetadataRuntimeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("version", version)
 
     @property
     @pulumi.getter
@@ -3844,33 +4701,94 @@ class GetManagedKubernetesClustersClusterResult(dict):
         :param Sequence['GetManagedKubernetesClustersClusterWorkerNodeArgs'] worker_nodes: List of cluster worker nodes. It contains several attributes to `Block Nodes`.
         :param Sequence[int] worker_numbers: The ECS instance node number in the current container cluster.
         """
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "cluster_network_type", cluster_network_type)
-        pulumi.set(__self__, "connections", connections)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "log_configs", log_configs)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
-        pulumi.set(__self__, "pod_cidr", pod_cidr)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "service_cidr", service_cidr)
-        pulumi.set(__self__, "slb_internet_enabled", slb_internet_enabled)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
-        pulumi.set(__self__, "worker_auto_renew", worker_auto_renew)
-        pulumi.set(__self__, "worker_auto_renew_period", worker_auto_renew_period)
-        pulumi.set(__self__, "worker_data_disk_category", worker_data_disk_category)
-        pulumi.set(__self__, "worker_data_disk_size", worker_data_disk_size)
-        pulumi.set(__self__, "worker_disk_category", worker_disk_category)
-        pulumi.set(__self__, "worker_disk_size", worker_disk_size)
-        pulumi.set(__self__, "worker_instance_charge_type", worker_instance_charge_type)
-        pulumi.set(__self__, "worker_instance_types", worker_instance_types)
-        pulumi.set(__self__, "worker_nodes", worker_nodes)
-        pulumi.set(__self__, "worker_numbers", worker_numbers)
-        pulumi.set(__self__, "worker_period", worker_period)
-        pulumi.set(__self__, "worker_period_unit", worker_period_unit)
+        GetManagedKubernetesClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zone=availability_zone,
+            cluster_network_type=cluster_network_type,
+            connections=connections,
+            id=id,
+            image_id=image_id,
+            key_name=key_name,
+            log_configs=log_configs,
+            name=name,
+            nat_gateway_id=nat_gateway_id,
+            pod_cidr=pod_cidr,
+            security_group_id=security_group_id,
+            service_cidr=service_cidr,
+            slb_internet_enabled=slb_internet_enabled,
+            vpc_id=vpc_id,
+            vswitch_ids=vswitch_ids,
+            worker_auto_renew=worker_auto_renew,
+            worker_auto_renew_period=worker_auto_renew_period,
+            worker_data_disk_category=worker_data_disk_category,
+            worker_data_disk_size=worker_data_disk_size,
+            worker_disk_category=worker_disk_category,
+            worker_disk_size=worker_disk_size,
+            worker_instance_charge_type=worker_instance_charge_type,
+            worker_instance_types=worker_instance_types,
+            worker_nodes=worker_nodes,
+            worker_numbers=worker_numbers,
+            worker_period=worker_period,
+            worker_period_unit=worker_period_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zone: str,
+             cluster_network_type: str,
+             connections: 'outputs.GetManagedKubernetesClustersClusterConnectionsResult',
+             id: str,
+             image_id: str,
+             key_name: str,
+             log_configs: Sequence['outputs.GetManagedKubernetesClustersClusterLogConfigResult'],
+             name: str,
+             nat_gateway_id: str,
+             pod_cidr: str,
+             security_group_id: str,
+             service_cidr: str,
+             slb_internet_enabled: bool,
+             vpc_id: str,
+             vswitch_ids: Sequence[str],
+             worker_auto_renew: bool,
+             worker_auto_renew_period: int,
+             worker_data_disk_category: str,
+             worker_data_disk_size: int,
+             worker_disk_category: str,
+             worker_disk_size: int,
+             worker_instance_charge_type: str,
+             worker_instance_types: Sequence[str],
+             worker_nodes: Sequence['outputs.GetManagedKubernetesClustersClusterWorkerNodeResult'],
+             worker_numbers: Sequence[int],
+             worker_period: int,
+             worker_period_unit: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("availability_zone", availability_zone)
+        _setter("cluster_network_type", cluster_network_type)
+        _setter("connections", connections)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("key_name", key_name)
+        _setter("log_configs", log_configs)
+        _setter("name", name)
+        _setter("nat_gateway_id", nat_gateway_id)
+        _setter("pod_cidr", pod_cidr)
+        _setter("security_group_id", security_group_id)
+        _setter("service_cidr", service_cidr)
+        _setter("slb_internet_enabled", slb_internet_enabled)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_ids", vswitch_ids)
+        _setter("worker_auto_renew", worker_auto_renew)
+        _setter("worker_auto_renew_period", worker_auto_renew_period)
+        _setter("worker_data_disk_category", worker_data_disk_category)
+        _setter("worker_data_disk_size", worker_data_disk_size)
+        _setter("worker_disk_category", worker_disk_category)
+        _setter("worker_disk_size", worker_disk_size)
+        _setter("worker_instance_charge_type", worker_instance_charge_type)
+        _setter("worker_instance_types", worker_instance_types)
+        _setter("worker_nodes", worker_nodes)
+        _setter("worker_numbers", worker_numbers)
+        _setter("worker_period", worker_period)
+        _setter("worker_period_unit", worker_period_unit)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -4057,10 +4975,25 @@ class GetManagedKubernetesClustersClusterConnectionsResult(dict):
         :param str master_public_ip: Master node SSH IP address.
         :param str service_domain: Service Access Domain.
         """
-        pulumi.set(__self__, "api_server_internet", api_server_internet)
-        pulumi.set(__self__, "api_server_intranet", api_server_intranet)
-        pulumi.set(__self__, "master_public_ip", master_public_ip)
-        pulumi.set(__self__, "service_domain", service_domain)
+        GetManagedKubernetesClustersClusterConnectionsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_server_internet=api_server_internet,
+            api_server_intranet=api_server_intranet,
+            master_public_ip=master_public_ip,
+            service_domain=service_domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_server_internet: str,
+             api_server_intranet: str,
+             master_public_ip: str,
+             service_domain: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_server_internet", api_server_internet)
+        _setter("api_server_intranet", api_server_intranet)
+        _setter("master_public_ip", master_public_ip)
+        _setter("service_domain", service_domain)
 
     @property
     @pulumi.getter(name="apiServerInternet")
@@ -4104,8 +5037,19 @@ class GetManagedKubernetesClustersClusterLogConfigResult(dict):
         :param str project: Log Service project name.
         :param str type: Type of collecting logs.
         """
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "type", type)
+        GetManagedKubernetesClustersClusterLogConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project=project,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project", project)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -4135,9 +5079,22 @@ class GetManagedKubernetesClustersClusterWorkerNodeResult(dict):
         :param str name: Node name.
         :param str private_ip: The private IP address of node.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "private_ip", private_ip)
+        GetManagedKubernetesClustersClusterWorkerNodeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            private_ip=private_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             name: str,
+             private_ip: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("name", name)
+        _setter("private_ip", private_ip)
 
     @property
     @pulumi.getter
@@ -4193,18 +5150,49 @@ class GetRegistryEnterpriseInstancesInstanceResult(dict):
         :param str temp_username: The username that was used to log on to the registry.
         :param Sequence[str] vpc_endpoints: A list of domains for access on vpc network.
         """
-        pulumi.set(__self__, "authorization_token", authorization_token)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "namespace_quota", namespace_quota)
-        pulumi.set(__self__, "namespace_usage", namespace_usage)
-        pulumi.set(__self__, "public_endpoints", public_endpoints)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "repo_quota", repo_quota)
-        pulumi.set(__self__, "repo_usage", repo_usage)
-        pulumi.set(__self__, "specification", specification)
-        pulumi.set(__self__, "temp_username", temp_username)
-        pulumi.set(__self__, "vpc_endpoints", vpc_endpoints)
+        GetRegistryEnterpriseInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorization_token=authorization_token,
+            id=id,
+            name=name,
+            namespace_quota=namespace_quota,
+            namespace_usage=namespace_usage,
+            public_endpoints=public_endpoints,
+            region=region,
+            repo_quota=repo_quota,
+            repo_usage=repo_usage,
+            specification=specification,
+            temp_username=temp_username,
+            vpc_endpoints=vpc_endpoints,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorization_token: str,
+             id: str,
+             name: str,
+             namespace_quota: str,
+             namespace_usage: str,
+             public_endpoints: Sequence[str],
+             region: str,
+             repo_quota: str,
+             repo_usage: str,
+             specification: str,
+             temp_username: str,
+             vpc_endpoints: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("authorization_token", authorization_token)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("namespace_quota", namespace_quota)
+        _setter("namespace_usage", namespace_usage)
+        _setter("public_endpoints", public_endpoints)
+        _setter("region", region)
+        _setter("repo_quota", repo_quota)
+        _setter("repo_usage", repo_usage)
+        _setter("specification", specification)
+        _setter("temp_username", temp_username)
+        _setter("vpc_endpoints", vpc_endpoints)
 
     @property
     @pulumi.getter(name="authorizationToken")
@@ -4322,13 +5310,34 @@ class GetRegistryEnterpriseNamespacesNamespaceResult(dict):
         :param str namespace_id: Container Registry Enterprise Edition namespace id. It is a uuid.
         :param str namespace_name: Name of Container Registry Enterprise Edition namespace.
         """
-        pulumi.set(__self__, "auto_create", auto_create)
-        pulumi.set(__self__, "default_visibility", default_visibility)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "namespace_id", namespace_id)
-        pulumi.set(__self__, "namespace_name", namespace_name)
+        GetRegistryEnterpriseNamespacesNamespaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_create=auto_create,
+            default_visibility=default_visibility,
+            id=id,
+            instance_id=instance_id,
+            name=name,
+            namespace_id=namespace_id,
+            namespace_name=namespace_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_create: bool,
+             default_visibility: str,
+             id: str,
+             instance_id: str,
+             name: str,
+             namespace_id: str,
+             namespace_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_create", auto_create)
+        _setter("default_visibility", default_visibility)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("name", name)
+        _setter("namespace_id", namespace_id)
+        _setter("namespace_name", namespace_name)
 
     @property
     @pulumi.getter(name="autoCreate")
@@ -4406,13 +5415,34 @@ class GetRegistryEnterpriseReposRepoResult(dict):
         :param str summary: The repository general information.
         :param Sequence['GetRegistryEnterpriseReposRepoTagArgs'] tags: A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "repo_type", repo_type)
-        pulumi.set(__self__, "summary", summary)
-        pulumi.set(__self__, "tags", tags)
+        GetRegistryEnterpriseReposRepoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            instance_id=instance_id,
+            name=name,
+            namespace=namespace,
+            repo_type=repo_type,
+            summary=summary,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             instance_id: str,
+             name: str,
+             namespace: str,
+             repo_type: str,
+             summary: str,
+             tags: Sequence['outputs.GetRegistryEnterpriseReposRepoTagResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("name", name)
+        _setter("namespace", namespace)
+        _setter("repo_type", repo_type)
+        _setter("summary", summary)
+        _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -4490,13 +5520,34 @@ class GetRegistryEnterpriseReposRepoTagResult(dict):
         :param str status: Status of this image.
         :param str tag: Tag of this image.
         """
-        pulumi.set(__self__, "digest", digest)
-        pulumi.set(__self__, "image_create", image_create)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "image_size", image_size)
-        pulumi.set(__self__, "image_update", image_update)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tag", tag)
+        GetRegistryEnterpriseReposRepoTagResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            digest=digest,
+            image_create=image_create,
+            image_id=image_id,
+            image_size=image_size,
+            image_update=image_update,
+            status=status,
+            tag=tag,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             digest: str,
+             image_create: str,
+             image_id: str,
+             image_size: int,
+             image_update: str,
+             status: str,
+             tag: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("digest", digest)
+        _setter("image_create", image_create)
+        _setter("image_id", image_id)
+        _setter("image_size", image_size)
+        _setter("image_update", image_update)
+        _setter("status", status)
+        _setter("tag", tag)
 
     @property
     @pulumi.getter
@@ -4588,20 +5639,55 @@ class GetRegistryEnterpriseSyncRulesRuleResult(dict):
         :param str target_region_id: Region of Container Registry Enterprise Edition target instance.
         :param str target_repo_name: Name of Container Registry Enterprise Edition target repo.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "namespace_name", namespace_name)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "repo_name", repo_name)
-        pulumi.set(__self__, "sync_direction", sync_direction)
-        pulumi.set(__self__, "sync_scope", sync_scope)
-        pulumi.set(__self__, "sync_trigger", sync_trigger)
-        pulumi.set(__self__, "tag_filter", tag_filter)
-        pulumi.set(__self__, "target_instance_id", target_instance_id)
-        pulumi.set(__self__, "target_namespace_name", target_namespace_name)
-        pulumi.set(__self__, "target_region_id", target_region_id)
-        pulumi.set(__self__, "target_repo_name", target_repo_name)
+        GetRegistryEnterpriseSyncRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            instance_id=instance_id,
+            name=name,
+            namespace_name=namespace_name,
+            region_id=region_id,
+            repo_name=repo_name,
+            sync_direction=sync_direction,
+            sync_scope=sync_scope,
+            sync_trigger=sync_trigger,
+            tag_filter=tag_filter,
+            target_instance_id=target_instance_id,
+            target_namespace_name=target_namespace_name,
+            target_region_id=target_region_id,
+            target_repo_name=target_repo_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             instance_id: str,
+             name: str,
+             namespace_name: str,
+             region_id: str,
+             repo_name: str,
+             sync_direction: str,
+             sync_scope: str,
+             sync_trigger: str,
+             tag_filter: str,
+             target_instance_id: str,
+             target_namespace_name: str,
+             target_region_id: str,
+             target_repo_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("name", name)
+        _setter("namespace_name", namespace_name)
+        _setter("region_id", region_id)
+        _setter("repo_name", repo_name)
+        _setter("sync_direction", sync_direction)
+        _setter("sync_scope", sync_scope)
+        _setter("sync_trigger", sync_trigger)
+        _setter("tag_filter", tag_filter)
+        _setter("target_instance_id", target_instance_id)
+        _setter("target_namespace_name", target_namespace_name)
+        _setter("target_region_id", target_region_id)
+        _setter("target_repo_name", target_repo_name)
 
     @property
     @pulumi.getter
@@ -4739,16 +5825,43 @@ class GetServerlessKubernetesClustersClusterResult(dict):
         :param str vpc_id: The ID of VPC where the current cluster is located.
         :param str vswitch_id: The ID of VSwitch where the current cluster is located.
         """
-        pulumi.set(__self__, "connections", connections)
-        pulumi.set(__self__, "deletion_protection", deletion_protection)
-        pulumi.set(__self__, "endpoint_public_access_enabled", endpoint_public_access_enabled)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetServerlessKubernetesClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connections=connections,
+            deletion_protection=deletion_protection,
+            endpoint_public_access_enabled=endpoint_public_access_enabled,
+            id=id,
+            name=name,
+            nat_gateway_id=nat_gateway_id,
+            security_group_id=security_group_id,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connections: 'outputs.GetServerlessKubernetesClustersClusterConnectionsResult',
+             deletion_protection: bool,
+             endpoint_public_access_enabled: bool,
+             id: str,
+             name: str,
+             nat_gateway_id: str,
+             security_group_id: str,
+             tags: Mapping[str, Any],
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("connections", connections)
+        _setter("deletion_protection", deletion_protection)
+        _setter("endpoint_public_access_enabled", endpoint_public_access_enabled)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("nat_gateway_id", nat_gateway_id)
+        _setter("security_group_id", security_group_id)
+        _setter("tags", tags)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -4836,9 +5949,22 @@ class GetServerlessKubernetesClustersClusterConnectionsResult(dict):
         :param str api_server_intranet: API Server Intranet endpoint.
         :param str master_public_ip: Master node SSH IP address.
         """
-        pulumi.set(__self__, "api_server_internet", api_server_internet)
-        pulumi.set(__self__, "api_server_intranet", api_server_intranet)
-        pulumi.set(__self__, "master_public_ip", master_public_ip)
+        GetServerlessKubernetesClustersClusterConnectionsResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_server_internet=api_server_internet,
+            api_server_intranet=api_server_intranet,
+            master_public_ip=master_public_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_server_internet: str,
+             api_server_intranet: str,
+             master_public_ip: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("api_server_internet", api_server_internet)
+        _setter("api_server_intranet", api_server_intranet)
+        _setter("master_public_ip", master_public_ip)
 
     @property
     @pulumi.getter(name="apiServerInternet")

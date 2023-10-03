@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// The values of the cookie. See `values` below.
+        /// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

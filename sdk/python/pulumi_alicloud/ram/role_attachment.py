@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RoleAttachmentArgs', 'RoleAttachment']
@@ -21,8 +21,19 @@ class RoleAttachmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] role_name: The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
-        pulumi.set(__self__, "instance_ids", instance_ids)
-        pulumi.set(__self__, "role_name", role_name)
+        RoleAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_ids=instance_ids,
+            role_name=role_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             role_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_ids", instance_ids)
+        _setter("role_name", role_name)
 
     @property
     @pulumi.getter(name="instanceIds")
@@ -59,10 +70,21 @@ class _RoleAttachmentState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] role_name: The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-", "_", and must not begin with a hyphen.
         """
+        _RoleAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_ids=instance_ids,
+            role_name=role_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if instance_ids is not None:
-            pulumi.set(__self__, "instance_ids", instance_ids)
+            _setter("instance_ids", instance_ids)
         if role_name is not None:
-            pulumi.set(__self__, "role_name", role_name)
+            _setter("role_name", role_name)
 
     @property
     @pulumi.getter(name="instanceIds")
@@ -266,6 +288,10 @@ class RoleAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RoleAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

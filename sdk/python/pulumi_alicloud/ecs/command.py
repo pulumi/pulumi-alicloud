@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CommandArgs', 'Command']
@@ -31,18 +31,39 @@ class CommandArgs:
         :param pulumi.Input[int] timeout: The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. Default to: `60`.
         :param pulumi.Input[str] working_dir: The execution path of the command in the ECS instance.
         """
-        pulumi.set(__self__, "command_content", command_content)
-        pulumi.set(__self__, "type", type)
+        CommandArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            command_content=command_content,
+            type=type,
+            description=description,
+            enable_parameter=enable_parameter,
+            name=name,
+            timeout=timeout,
+            working_dir=working_dir,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             command_content: pulumi.Input[str],
+             type: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             enable_parameter: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             working_dir: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("command_content", command_content)
+        _setter("type", type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_parameter is not None:
-            pulumi.set(__self__, "enable_parameter", enable_parameter)
+            _setter("enable_parameter", enable_parameter)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if working_dir is not None:
-            pulumi.set(__self__, "working_dir", working_dir)
+            _setter("working_dir", working_dir)
 
     @property
     @pulumi.getter(name="commandContent")
@@ -149,20 +170,41 @@ class _CommandState:
         :param pulumi.Input[str] type: The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
         :param pulumi.Input[str] working_dir: The execution path of the command in the ECS instance.
         """
+        _CommandState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            command_content=command_content,
+            description=description,
+            enable_parameter=enable_parameter,
+            name=name,
+            timeout=timeout,
+            type=type,
+            working_dir=working_dir,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             command_content: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enable_parameter: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             working_dir: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if command_content is not None:
-            pulumi.set(__self__, "command_content", command_content)
+            _setter("command_content", command_content)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enable_parameter is not None:
-            pulumi.set(__self__, "enable_parameter", enable_parameter)
+            _setter("enable_parameter", enable_parameter)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if working_dir is not None:
-            pulumi.set(__self__, "working_dir", working_dir)
+            _setter("working_dir", working_dir)
 
     @property
     @pulumi.getter(name="commandContent")
@@ -348,6 +390,10 @@ class Command(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CommandArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

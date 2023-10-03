@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -91,67 +91,138 @@ class InstanceArgs:
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
-        pulumi.set(__self__, "db_instance_class", db_instance_class)
-        pulumi.set(__self__, "db_instance_storage", db_instance_storage)
-        pulumi.set(__self__, "engine_version", engine_version)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_instance_class=db_instance_class,
+            db_instance_storage=db_instance_storage,
+            engine_version=engine_version,
+            account_password=account_password,
+            auto_renew=auto_renew,
+            backup_periods=backup_periods,
+            backup_time=backup_time,
+            hidden_zone_id=hidden_zone_id,
+            instance_charge_type=instance_charge_type,
+            kms_encrypted_password=kms_encrypted_password,
+            kms_encryption_context=kms_encryption_context,
+            maintain_end_time=maintain_end_time,
+            maintain_start_time=maintain_start_time,
+            name=name,
+            network_type=network_type,
+            order_type=order_type,
+            parameters=parameters,
+            period=period,
+            readonly_replicas=readonly_replicas,
+            replication_factor=replication_factor,
+            resource_group_id=resource_group_id,
+            secondary_zone_id=secondary_zone_id,
+            security_group_id=security_group_id,
+            security_ip_lists=security_ip_lists,
+            ssl_action=ssl_action,
+            storage_engine=storage_engine,
+            storage_type=storage_type,
+            tags=tags,
+            tde_status=tde_status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_instance_class: pulumi.Input[str],
+             db_instance_storage: pulumi.Input[int],
+             engine_version: pulumi.Input[str],
+             account_password: Optional[pulumi.Input[str]] = None,
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             backup_time: Optional[pulumi.Input[str]] = None,
+             hidden_zone_id: Optional[pulumi.Input[str]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             maintain_end_time: Optional[pulumi.Input[str]] = None,
+             maintain_start_time: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             order_type: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             readonly_replicas: Optional[pulumi.Input[int]] = None,
+             replication_factor: Optional[pulumi.Input[int]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             secondary_zone_id: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ssl_action: Optional[pulumi.Input[str]] = None,
+             storage_engine: Optional[pulumi.Input[str]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             tde_status: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_instance_class", db_instance_class)
+        _setter("db_instance_storage", db_instance_storage)
+        _setter("engine_version", engine_version)
         if account_password is not None:
-            pulumi.set(__self__, "account_password", account_password)
+            _setter("account_password", account_password)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if backup_periods is not None:
-            pulumi.set(__self__, "backup_periods", backup_periods)
+            _setter("backup_periods", backup_periods)
         if backup_time is not None:
-            pulumi.set(__self__, "backup_time", backup_time)
+            _setter("backup_time", backup_time)
         if hidden_zone_id is not None:
-            pulumi.set(__self__, "hidden_zone_id", hidden_zone_id)
+            _setter("hidden_zone_id", hidden_zone_id)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if kms_encrypted_password is not None:
-            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+            _setter("kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+            _setter("kms_encryption_context", kms_encryption_context)
         if maintain_end_time is not None:
-            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+            _setter("maintain_end_time", maintain_end_time)
         if maintain_start_time is not None:
-            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
+            _setter("maintain_start_time", maintain_start_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if order_type is not None:
-            pulumi.set(__self__, "order_type", order_type)
+            _setter("order_type", order_type)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if readonly_replicas is not None:
-            pulumi.set(__self__, "readonly_replicas", readonly_replicas)
+            _setter("readonly_replicas", readonly_replicas)
         if replication_factor is not None:
-            pulumi.set(__self__, "replication_factor", replication_factor)
+            _setter("replication_factor", replication_factor)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if secondary_zone_id is not None:
-            pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
+            _setter("secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if security_ip_lists is not None:
-            pulumi.set(__self__, "security_ip_lists", security_ip_lists)
+            _setter("security_ip_lists", security_ip_lists)
         if ssl_action is not None:
-            pulumi.set(__self__, "ssl_action", ssl_action)
+            _setter("ssl_action", ssl_action)
         if storage_engine is not None:
-            pulumi.set(__self__, "storage_engine", storage_engine)
+            _setter("storage_engine", storage_engine)
         if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
+            _setter("storage_type", storage_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tde_status is not None:
-            pulumi.set(__self__, "tde_status", tde_status)
+            _setter("tde_status", tde_status)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="dbInstanceClass")
@@ -632,78 +703,157 @@ class _InstanceState:
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_password=account_password,
+            auto_renew=auto_renew,
+            backup_periods=backup_periods,
+            backup_time=backup_time,
+            db_instance_class=db_instance_class,
+            db_instance_storage=db_instance_storage,
+            engine_version=engine_version,
+            hidden_zone_id=hidden_zone_id,
+            instance_charge_type=instance_charge_type,
+            kms_encrypted_password=kms_encrypted_password,
+            kms_encryption_context=kms_encryption_context,
+            maintain_end_time=maintain_end_time,
+            maintain_start_time=maintain_start_time,
+            name=name,
+            network_type=network_type,
+            order_type=order_type,
+            parameters=parameters,
+            period=period,
+            readonly_replicas=readonly_replicas,
+            replica_set_name=replica_set_name,
+            replica_sets=replica_sets,
+            replication_factor=replication_factor,
+            resource_group_id=resource_group_id,
+            retention_period=retention_period,
+            secondary_zone_id=secondary_zone_id,
+            security_group_id=security_group_id,
+            security_ip_lists=security_ip_lists,
+            ssl_action=ssl_action,
+            ssl_status=ssl_status,
+            storage_engine=storage_engine,
+            storage_type=storage_type,
+            tags=tags,
+            tde_status=tde_status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_password: Optional[pulumi.Input[str]] = None,
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             backup_time: Optional[pulumi.Input[str]] = None,
+             db_instance_class: Optional[pulumi.Input[str]] = None,
+             db_instance_storage: Optional[pulumi.Input[int]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             hidden_zone_id: Optional[pulumi.Input[str]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             maintain_end_time: Optional[pulumi.Input[str]] = None,
+             maintain_start_time: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             order_type: Optional[pulumi.Input[str]] = None,
+             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             readonly_replicas: Optional[pulumi.Input[int]] = None,
+             replica_set_name: Optional[pulumi.Input[str]] = None,
+             replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceReplicaSetArgs']]]] = None,
+             replication_factor: Optional[pulumi.Input[int]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             retention_period: Optional[pulumi.Input[int]] = None,
+             secondary_zone_id: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ssl_action: Optional[pulumi.Input[str]] = None,
+             ssl_status: Optional[pulumi.Input[str]] = None,
+             storage_engine: Optional[pulumi.Input[str]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             tde_status: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_password is not None:
-            pulumi.set(__self__, "account_password", account_password)
+            _setter("account_password", account_password)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if backup_periods is not None:
-            pulumi.set(__self__, "backup_periods", backup_periods)
+            _setter("backup_periods", backup_periods)
         if backup_time is not None:
-            pulumi.set(__self__, "backup_time", backup_time)
+            _setter("backup_time", backup_time)
         if db_instance_class is not None:
-            pulumi.set(__self__, "db_instance_class", db_instance_class)
+            _setter("db_instance_class", db_instance_class)
         if db_instance_storage is not None:
-            pulumi.set(__self__, "db_instance_storage", db_instance_storage)
+            _setter("db_instance_storage", db_instance_storage)
         if engine_version is not None:
-            pulumi.set(__self__, "engine_version", engine_version)
+            _setter("engine_version", engine_version)
         if hidden_zone_id is not None:
-            pulumi.set(__self__, "hidden_zone_id", hidden_zone_id)
+            _setter("hidden_zone_id", hidden_zone_id)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if kms_encrypted_password is not None:
-            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+            _setter("kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+            _setter("kms_encryption_context", kms_encryption_context)
         if maintain_end_time is not None:
-            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+            _setter("maintain_end_time", maintain_end_time)
         if maintain_start_time is not None:
-            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
+            _setter("maintain_start_time", maintain_start_time)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if order_type is not None:
-            pulumi.set(__self__, "order_type", order_type)
+            _setter("order_type", order_type)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if readonly_replicas is not None:
-            pulumi.set(__self__, "readonly_replicas", readonly_replicas)
+            _setter("readonly_replicas", readonly_replicas)
         if replica_set_name is not None:
-            pulumi.set(__self__, "replica_set_name", replica_set_name)
+            _setter("replica_set_name", replica_set_name)
         if replica_sets is not None:
-            pulumi.set(__self__, "replica_sets", replica_sets)
+            _setter("replica_sets", replica_sets)
         if replication_factor is not None:
-            pulumi.set(__self__, "replication_factor", replication_factor)
+            _setter("replication_factor", replication_factor)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if retention_period is not None:
-            pulumi.set(__self__, "retention_period", retention_period)
+            _setter("retention_period", retention_period)
         if secondary_zone_id is not None:
-            pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
+            _setter("secondary_zone_id", secondary_zone_id)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if security_ip_lists is not None:
-            pulumi.set(__self__, "security_ip_lists", security_ip_lists)
+            _setter("security_ip_lists", security_ip_lists)
         if ssl_action is not None:
-            pulumi.set(__self__, "ssl_action", ssl_action)
+            _setter("ssl_action", ssl_action)
         if ssl_status is not None:
-            pulumi.set(__self__, "ssl_status", ssl_status)
+            _setter("ssl_status", ssl_status)
         if storage_engine is not None:
-            pulumi.set(__self__, "storage_engine", storage_engine)
+            _setter("storage_engine", storage_engine)
         if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
+            _setter("storage_type", storage_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if tde_status is not None:
-            pulumi.set(__self__, "tde_status", tde_status)
+            _setter("tde_status", tde_status)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountPassword")
@@ -1365,6 +1515,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

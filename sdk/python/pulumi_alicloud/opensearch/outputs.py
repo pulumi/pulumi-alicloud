@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -47,12 +47,25 @@ class AppGroupOrder(dict):
         :param int duration: Order cycle. The minimum value is not less than 0.
         :param str pricing_cycle: Order cycle unit. Valid values: `Year` and `Month`.
         """
+        AppGroupOrder._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            duration=duration,
+            pricing_cycle=pricing_cycle,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: Optional[bool] = None,
+             duration: Optional[int] = None,
+             pricing_cycle: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if pricing_cycle is not None:
-            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+            _setter("pricing_cycle", pricing_cycle)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -118,11 +131,26 @@ class AppGroupQuota(dict):
                * `opensearch.private.storage`: Exclusive storage type
         :param int qps: Search request. Unit: times/second.
         """
-        pulumi.set(__self__, "compute_resource", compute_resource)
-        pulumi.set(__self__, "doc_size", doc_size)
-        pulumi.set(__self__, "spec", spec)
+        AppGroupQuota._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_resource=compute_resource,
+            doc_size=doc_size,
+            spec=spec,
+            qps=qps,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_resource: int,
+             doc_size: int,
+             spec: str,
+             qps: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compute_resource", compute_resource)
+        _setter("doc_size", doc_size)
+        _setter("spec", spec)
         if qps is not None:
-            pulumi.set(__self__, "qps", qps)
+            _setter("qps", qps)
 
     @property
     @pulumi.getter(name="computeResource")
@@ -220,32 +248,91 @@ class GetAppGroupsGroupResult(dict):
         :param int switched_time: The Switched time.
         :param str type: Application type. Valid Values: `standard`, `enhanced`.
         """
-        pulumi.set(__self__, "app_group_id", app_group_id)
-        pulumi.set(__self__, "app_group_name", app_group_name)
-        pulumi.set(__self__, "charge_way", charge_way)
-        pulumi.set(__self__, "commodity_code", commodity_code)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "current_version", current_version)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "expire_on", expire_on)
-        pulumi.set(__self__, "first_rank_algo_deployment_id", first_rank_algo_deployment_id)
-        pulumi.set(__self__, "has_pending_quota_review_task", has_pending_quota_review_task)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "locked_by_expiration", locked_by_expiration)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "pending_second_rank_algo_deployment_id", pending_second_rank_algo_deployment_id)
-        pulumi.set(__self__, "processing_order_id", processing_order_id)
-        pulumi.set(__self__, "produced", produced)
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "quotas", quotas)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "second_rank_algo_deployment_id", second_rank_algo_deployment_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "switched_time", switched_time)
-        pulumi.set(__self__, "type", type)
+        GetAppGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_group_id=app_group_id,
+            app_group_name=app_group_name,
+            charge_way=charge_way,
+            commodity_code=commodity_code,
+            create_time=create_time,
+            current_version=current_version,
+            description=description,
+            domain=domain,
+            expire_on=expire_on,
+            first_rank_algo_deployment_id=first_rank_algo_deployment_id,
+            has_pending_quota_review_task=has_pending_quota_review_task,
+            id=id,
+            instance_id=instance_id,
+            lock_mode=lock_mode,
+            locked_by_expiration=locked_by_expiration,
+            payment_type=payment_type,
+            pending_second_rank_algo_deployment_id=pending_second_rank_algo_deployment_id,
+            processing_order_id=processing_order_id,
+            produced=produced,
+            project_id=project_id,
+            quotas=quotas,
+            resource_group_id=resource_group_id,
+            second_rank_algo_deployment_id=second_rank_algo_deployment_id,
+            status=status,
+            switched_time=switched_time,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_group_id: str,
+             app_group_name: str,
+             charge_way: int,
+             commodity_code: str,
+             create_time: int,
+             current_version: str,
+             description: str,
+             domain: str,
+             expire_on: str,
+             first_rank_algo_deployment_id: int,
+             has_pending_quota_review_task: int,
+             id: str,
+             instance_id: str,
+             lock_mode: str,
+             locked_by_expiration: int,
+             payment_type: str,
+             pending_second_rank_algo_deployment_id: int,
+             processing_order_id: str,
+             produced: int,
+             project_id: str,
+             quotas: Sequence['outputs.GetAppGroupsGroupQuotaResult'],
+             resource_group_id: str,
+             second_rank_algo_deployment_id: int,
+             status: str,
+             switched_time: int,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_group_id", app_group_id)
+        _setter("app_group_name", app_group_name)
+        _setter("charge_way", charge_way)
+        _setter("commodity_code", commodity_code)
+        _setter("create_time", create_time)
+        _setter("current_version", current_version)
+        _setter("description", description)
+        _setter("domain", domain)
+        _setter("expire_on", expire_on)
+        _setter("first_rank_algo_deployment_id", first_rank_algo_deployment_id)
+        _setter("has_pending_quota_review_task", has_pending_quota_review_task)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("lock_mode", lock_mode)
+        _setter("locked_by_expiration", locked_by_expiration)
+        _setter("payment_type", payment_type)
+        _setter("pending_second_rank_algo_deployment_id", pending_second_rank_algo_deployment_id)
+        _setter("processing_order_id", processing_order_id)
+        _setter("produced", produced)
+        _setter("project_id", project_id)
+        _setter("quotas", quotas)
+        _setter("resource_group_id", resource_group_id)
+        _setter("second_rank_algo_deployment_id", second_rank_algo_deployment_id)
+        _setter("status", status)
+        _setter("switched_time", switched_time)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="appGroupId")
@@ -471,9 +558,22 @@ class GetAppGroupsGroupQuotaResult(dict):
                * `opensearch.private.compute`: Exclusive computing type.
                * `opensearch.private.storage`: Exclusive storage type
         """
-        pulumi.set(__self__, "compute_resource", compute_resource)
-        pulumi.set(__self__, "doc_size", doc_size)
-        pulumi.set(__self__, "spec", spec)
+        GetAppGroupsGroupQuotaResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_resource=compute_resource,
+            doc_size=doc_size,
+            spec=spec,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_resource: str,
+             doc_size: str,
+             spec: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compute_resource", compute_resource)
+        _setter("doc_size", doc_size)
+        _setter("spec", spec)
 
     @property
     @pulumi.getter(name="computeResource")

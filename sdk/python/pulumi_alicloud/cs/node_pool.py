@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -134,129 +134,250 @@ class NodePoolArgs:
         :param pulumi.Input[bool] unschedulable: Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
         :param pulumi.Input[str] user_data: Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "instance_types", instance_types)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        NodePoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            instance_types=instance_types,
+            vswitch_ids=vswitch_ids,
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            cis_enabled=cis_enabled,
+            cpu_policy=cpu_policy,
+            data_disks=data_disks,
+            deployment_set_id=deployment_set_id,
+            desired_size=desired_size,
+            format_disk=format_disk,
+            image_id=image_id,
+            image_type=image_type,
+            install_cloud_monitor=install_cloud_monitor,
+            instance_charge_type=instance_charge_type,
+            instances=instances,
+            internet_charge_type=internet_charge_type,
+            internet_max_bandwidth_out=internet_max_bandwidth_out,
+            keep_instance_name=keep_instance_name,
+            key_name=key_name,
+            kms_encrypted_password=kms_encrypted_password,
+            kms_encryption_context=kms_encryption_context,
+            kubelet_configuration=kubelet_configuration,
+            labels=labels,
+            management=management,
+            name=name,
+            node_count=node_count,
+            node_name_mode=node_name_mode,
+            password=password,
+            period=period,
+            period_unit=period_unit,
+            platform=platform,
+            polardb_ids=polardb_ids,
+            rds_instances=rds_instances,
+            resource_group_id=resource_group_id,
+            rolling_policy=rolling_policy,
+            rollout_policy=rollout_policy,
+            runtime_name=runtime_name,
+            runtime_version=runtime_version,
+            scaling_config=scaling_config,
+            scaling_policy=scaling_policy,
+            security_group_id=security_group_id,
+            security_group_ids=security_group_ids,
+            soc_enabled=soc_enabled,
+            spot_price_limits=spot_price_limits,
+            spot_strategy=spot_strategy,
+            system_disk_category=system_disk_category,
+            system_disk_encrypt_algorithm=system_disk_encrypt_algorithm,
+            system_disk_encrypted=system_disk_encrypted,
+            system_disk_kms_key=system_disk_kms_key,
+            system_disk_performance_level=system_disk_performance_level,
+            system_disk_size=system_disk_size,
+            system_disk_snapshot_policy_id=system_disk_snapshot_policy_id,
+            tags=tags,
+            taints=taints,
+            unschedulable=unschedulable,
+            user_data=user_data,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: pulumi.Input[str],
+             instance_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+             vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             cis_enabled: Optional[pulumi.Input[bool]] = None,
+             cpu_policy: Optional[pulumi.Input[str]] = None,
+             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
+             deployment_set_id: Optional[pulumi.Input[str]] = None,
+             desired_size: Optional[pulumi.Input[int]] = None,
+             format_disk: Optional[pulumi.Input[bool]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             image_type: Optional[pulumi.Input[str]] = None,
+             install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+             keep_instance_name: Optional[pulumi.Input[bool]] = None,
+             key_name: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             kubelet_configuration: Optional[pulumi.Input['NodePoolKubeletConfigurationArgs']] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]] = None,
+             management: Optional[pulumi.Input['NodePoolManagementArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_count: Optional[pulumi.Input[int]] = None,
+             node_name_mode: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             platform: Optional[pulumi.Input[str]] = None,
+             polardb_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             rolling_policy: Optional[pulumi.Input['NodePoolRollingPolicyArgs']] = None,
+             rollout_policy: Optional[pulumi.Input['NodePoolRolloutPolicyArgs']] = None,
+             runtime_name: Optional[pulumi.Input[str]] = None,
+             runtime_version: Optional[pulumi.Input[str]] = None,
+             scaling_config: Optional[pulumi.Input['NodePoolScalingConfigArgs']] = None,
+             scaling_policy: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             soc_enabled: Optional[pulumi.Input[bool]] = None,
+             spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]] = None,
+             spot_strategy: Optional[pulumi.Input[str]] = None,
+             system_disk_category: Optional[pulumi.Input[str]] = None,
+             system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+             system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+             system_disk_kms_key: Optional[pulumi.Input[str]] = None,
+             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             system_disk_size: Optional[pulumi.Input[int]] = None,
+             system_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]] = None,
+             unschedulable: Optional[pulumi.Input[bool]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("instance_types", instance_types)
+        _setter("vswitch_ids", vswitch_ids)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if cis_enabled is not None:
-            pulumi.set(__self__, "cis_enabled", cis_enabled)
+            _setter("cis_enabled", cis_enabled)
         if cpu_policy is not None:
-            pulumi.set(__self__, "cpu_policy", cpu_policy)
+            _setter("cpu_policy", cpu_policy)
         if data_disks is not None:
-            pulumi.set(__self__, "data_disks", data_disks)
+            _setter("data_disks", data_disks)
         if deployment_set_id is not None:
-            pulumi.set(__self__, "deployment_set_id", deployment_set_id)
+            _setter("deployment_set_id", deployment_set_id)
         if desired_size is not None:
-            pulumi.set(__self__, "desired_size", desired_size)
+            _setter("desired_size", desired_size)
         if format_disk is not None:
-            pulumi.set(__self__, "format_disk", format_disk)
+            _setter("format_disk", format_disk)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if image_type is not None:
-            pulumi.set(__self__, "image_type", image_type)
+            _setter("image_type", image_type)
         if install_cloud_monitor is not None:
-            pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
+            _setter("install_cloud_monitor", install_cloud_monitor)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if instances is not None:
-            pulumi.set(__self__, "instances", instances)
+            _setter("instances", instances)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_out is not None:
-            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+            _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
         if keep_instance_name is not None:
-            pulumi.set(__self__, "keep_instance_name", keep_instance_name)
+            _setter("keep_instance_name", keep_instance_name)
         if key_name is not None:
-            pulumi.set(__self__, "key_name", key_name)
+            _setter("key_name", key_name)
         if kms_encrypted_password is not None:
-            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+            _setter("kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+            _setter("kms_encryption_context", kms_encryption_context)
         if kubelet_configuration is not None:
-            pulumi.set(__self__, "kubelet_configuration", kubelet_configuration)
+            _setter("kubelet_configuration", kubelet_configuration)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if management is not None:
-            pulumi.set(__self__, "management", management)
+            _setter("management", management)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_count is not None:
             warnings.warn("""Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""", DeprecationWarning)
             pulumi.log.warn("""node_count is deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""")
         if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
+            _setter("node_count", node_count)
         if node_name_mode is not None:
-            pulumi.set(__self__, "node_name_mode", node_name_mode)
+            _setter("node_name_mode", node_name_mode)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if platform is not None:
             warnings.warn("""Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""", DeprecationWarning)
             pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""")
         if platform is not None:
-            pulumi.set(__self__, "platform", platform)
+            _setter("platform", platform)
         if polardb_ids is not None:
-            pulumi.set(__self__, "polardb_ids", polardb_ids)
+            _setter("polardb_ids", polardb_ids)
         if rds_instances is not None:
-            pulumi.set(__self__, "rds_instances", rds_instances)
+            _setter("rds_instances", rds_instances)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if rolling_policy is not None:
-            pulumi.set(__self__, "rolling_policy", rolling_policy)
+            _setter("rolling_policy", rolling_policy)
         if rollout_policy is not None:
             warnings.warn("""Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""", DeprecationWarning)
             pulumi.log.warn("""rollout_policy is deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""")
         if rollout_policy is not None:
-            pulumi.set(__self__, "rollout_policy", rollout_policy)
+            _setter("rollout_policy", rollout_policy)
         if runtime_name is not None:
-            pulumi.set(__self__, "runtime_name", runtime_name)
+            _setter("runtime_name", runtime_name)
         if runtime_version is not None:
-            pulumi.set(__self__, "runtime_version", runtime_version)
+            _setter("runtime_version", runtime_version)
         if scaling_config is not None:
-            pulumi.set(__self__, "scaling_config", scaling_config)
+            _setter("scaling_config", scaling_config)
         if scaling_policy is not None:
-            pulumi.set(__self__, "scaling_policy", scaling_policy)
+            _setter("scaling_policy", scaling_policy)
         if security_group_id is not None:
             warnings.warn("""Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""", DeprecationWarning)
             pulumi.log.warn("""security_group_id is deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""")
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if soc_enabled is not None:
-            pulumi.set(__self__, "soc_enabled", soc_enabled)
+            _setter("soc_enabled", soc_enabled)
         if spot_price_limits is not None:
-            pulumi.set(__self__, "spot_price_limits", spot_price_limits)
+            _setter("spot_price_limits", spot_price_limits)
         if spot_strategy is not None:
-            pulumi.set(__self__, "spot_strategy", spot_strategy)
+            _setter("spot_strategy", spot_strategy)
         if system_disk_category is not None:
-            pulumi.set(__self__, "system_disk_category", system_disk_category)
+            _setter("system_disk_category", system_disk_category)
         if system_disk_encrypt_algorithm is not None:
-            pulumi.set(__self__, "system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
+            _setter("system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
         if system_disk_encrypted is not None:
-            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+            _setter("system_disk_encrypted", system_disk_encrypted)
         if system_disk_kms_key is not None:
-            pulumi.set(__self__, "system_disk_kms_key", system_disk_kms_key)
+            _setter("system_disk_kms_key", system_disk_kms_key)
         if system_disk_performance_level is not None:
-            pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+            _setter("system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
-            pulumi.set(__self__, "system_disk_size", system_disk_size)
+            _setter("system_disk_size", system_disk_size)
         if system_disk_snapshot_policy_id is not None:
-            pulumi.set(__self__, "system_disk_snapshot_policy_id", system_disk_snapshot_policy_id)
+            _setter("system_disk_snapshot_policy_id", system_disk_snapshot_policy_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if taints is not None:
-            pulumi.set(__self__, "taints", taints)
+            _setter("taints", taints)
         if unschedulable is not None:
-            pulumi.set(__self__, "unschedulable", unschedulable)
+            _setter("unschedulable", unschedulable)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -1081,136 +1202,261 @@ class _NodePoolState:
         :param pulumi.Input[str] vpc_id: The VPC of the nodes in the node pool.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: The vswitches used by node pool workers.
         """
+        _NodePoolState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            cis_enabled=cis_enabled,
+            cluster_id=cluster_id,
+            cpu_policy=cpu_policy,
+            data_disks=data_disks,
+            deployment_set_id=deployment_set_id,
+            desired_size=desired_size,
+            format_disk=format_disk,
+            image_id=image_id,
+            image_type=image_type,
+            install_cloud_monitor=install_cloud_monitor,
+            instance_charge_type=instance_charge_type,
+            instance_types=instance_types,
+            instances=instances,
+            internet_charge_type=internet_charge_type,
+            internet_max_bandwidth_out=internet_max_bandwidth_out,
+            keep_instance_name=keep_instance_name,
+            key_name=key_name,
+            kms_encrypted_password=kms_encrypted_password,
+            kms_encryption_context=kms_encryption_context,
+            kubelet_configuration=kubelet_configuration,
+            labels=labels,
+            management=management,
+            name=name,
+            node_count=node_count,
+            node_name_mode=node_name_mode,
+            password=password,
+            period=period,
+            period_unit=period_unit,
+            platform=platform,
+            polardb_ids=polardb_ids,
+            rds_instances=rds_instances,
+            resource_group_id=resource_group_id,
+            rolling_policy=rolling_policy,
+            rollout_policy=rollout_policy,
+            runtime_name=runtime_name,
+            runtime_version=runtime_version,
+            scaling_config=scaling_config,
+            scaling_group_id=scaling_group_id,
+            scaling_policy=scaling_policy,
+            security_group_id=security_group_id,
+            security_group_ids=security_group_ids,
+            soc_enabled=soc_enabled,
+            spot_price_limits=spot_price_limits,
+            spot_strategy=spot_strategy,
+            system_disk_category=system_disk_category,
+            system_disk_encrypt_algorithm=system_disk_encrypt_algorithm,
+            system_disk_encrypted=system_disk_encrypted,
+            system_disk_kms_key=system_disk_kms_key,
+            system_disk_performance_level=system_disk_performance_level,
+            system_disk_size=system_disk_size,
+            system_disk_snapshot_policy_id=system_disk_snapshot_policy_id,
+            tags=tags,
+            taints=taints,
+            unschedulable=unschedulable,
+            user_data=user_data,
+            vpc_id=vpc_id,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             cis_enabled: Optional[pulumi.Input[bool]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             cpu_policy: Optional[pulumi.Input[str]] = None,
+             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolDataDiskArgs']]]] = None,
+             deployment_set_id: Optional[pulumi.Input[str]] = None,
+             desired_size: Optional[pulumi.Input[int]] = None,
+             format_disk: Optional[pulumi.Input[bool]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             image_type: Optional[pulumi.Input[str]] = None,
+             install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+             keep_instance_name: Optional[pulumi.Input[bool]] = None,
+             key_name: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             kubelet_configuration: Optional[pulumi.Input['NodePoolKubeletConfigurationArgs']] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolLabelArgs']]]] = None,
+             management: Optional[pulumi.Input['NodePoolManagementArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             node_count: Optional[pulumi.Input[int]] = None,
+             node_name_mode: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             platform: Optional[pulumi.Input[str]] = None,
+             polardb_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             rolling_policy: Optional[pulumi.Input['NodePoolRollingPolicyArgs']] = None,
+             rollout_policy: Optional[pulumi.Input['NodePoolRolloutPolicyArgs']] = None,
+             runtime_name: Optional[pulumi.Input[str]] = None,
+             runtime_version: Optional[pulumi.Input[str]] = None,
+             scaling_config: Optional[pulumi.Input['NodePoolScalingConfigArgs']] = None,
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
+             scaling_policy: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             soc_enabled: Optional[pulumi.Input[bool]] = None,
+             spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolSpotPriceLimitArgs']]]] = None,
+             spot_strategy: Optional[pulumi.Input[str]] = None,
+             system_disk_category: Optional[pulumi.Input[str]] = None,
+             system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+             system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+             system_disk_kms_key: Optional[pulumi.Input[str]] = None,
+             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             system_disk_size: Optional[pulumi.Input[int]] = None,
+             system_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolTaintArgs']]]] = None,
+             unschedulable: Optional[pulumi.Input[bool]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if cis_enabled is not None:
-            pulumi.set(__self__, "cis_enabled", cis_enabled)
+            _setter("cis_enabled", cis_enabled)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if cpu_policy is not None:
-            pulumi.set(__self__, "cpu_policy", cpu_policy)
+            _setter("cpu_policy", cpu_policy)
         if data_disks is not None:
-            pulumi.set(__self__, "data_disks", data_disks)
+            _setter("data_disks", data_disks)
         if deployment_set_id is not None:
-            pulumi.set(__self__, "deployment_set_id", deployment_set_id)
+            _setter("deployment_set_id", deployment_set_id)
         if desired_size is not None:
-            pulumi.set(__self__, "desired_size", desired_size)
+            _setter("desired_size", desired_size)
         if format_disk is not None:
-            pulumi.set(__self__, "format_disk", format_disk)
+            _setter("format_disk", format_disk)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if image_type is not None:
-            pulumi.set(__self__, "image_type", image_type)
+            _setter("image_type", image_type)
         if install_cloud_monitor is not None:
-            pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
+            _setter("install_cloud_monitor", install_cloud_monitor)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if instance_types is not None:
-            pulumi.set(__self__, "instance_types", instance_types)
+            _setter("instance_types", instance_types)
         if instances is not None:
-            pulumi.set(__self__, "instances", instances)
+            _setter("instances", instances)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_out is not None:
-            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+            _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
         if keep_instance_name is not None:
-            pulumi.set(__self__, "keep_instance_name", keep_instance_name)
+            _setter("keep_instance_name", keep_instance_name)
         if key_name is not None:
-            pulumi.set(__self__, "key_name", key_name)
+            _setter("key_name", key_name)
         if kms_encrypted_password is not None:
-            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+            _setter("kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+            _setter("kms_encryption_context", kms_encryption_context)
         if kubelet_configuration is not None:
-            pulumi.set(__self__, "kubelet_configuration", kubelet_configuration)
+            _setter("kubelet_configuration", kubelet_configuration)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if management is not None:
-            pulumi.set(__self__, "management", management)
+            _setter("management", management)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if node_count is not None:
             warnings.warn("""Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""", DeprecationWarning)
             pulumi.log.warn("""node_count is deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""")
         if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
+            _setter("node_count", node_count)
         if node_name_mode is not None:
-            pulumi.set(__self__, "node_name_mode", node_name_mode)
+            _setter("node_name_mode", node_name_mode)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if platform is not None:
             warnings.warn("""Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""", DeprecationWarning)
             pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""")
         if platform is not None:
-            pulumi.set(__self__, "platform", platform)
+            _setter("platform", platform)
         if polardb_ids is not None:
-            pulumi.set(__self__, "polardb_ids", polardb_ids)
+            _setter("polardb_ids", polardb_ids)
         if rds_instances is not None:
-            pulumi.set(__self__, "rds_instances", rds_instances)
+            _setter("rds_instances", rds_instances)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if rolling_policy is not None:
-            pulumi.set(__self__, "rolling_policy", rolling_policy)
+            _setter("rolling_policy", rolling_policy)
         if rollout_policy is not None:
             warnings.warn("""Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""", DeprecationWarning)
             pulumi.log.warn("""rollout_policy is deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""")
         if rollout_policy is not None:
-            pulumi.set(__self__, "rollout_policy", rollout_policy)
+            _setter("rollout_policy", rollout_policy)
         if runtime_name is not None:
-            pulumi.set(__self__, "runtime_name", runtime_name)
+            _setter("runtime_name", runtime_name)
         if runtime_version is not None:
-            pulumi.set(__self__, "runtime_version", runtime_version)
+            _setter("runtime_version", runtime_version)
         if scaling_config is not None:
-            pulumi.set(__self__, "scaling_config", scaling_config)
+            _setter("scaling_config", scaling_config)
         if scaling_group_id is not None:
-            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+            _setter("scaling_group_id", scaling_group_id)
         if scaling_policy is not None:
-            pulumi.set(__self__, "scaling_policy", scaling_policy)
+            _setter("scaling_policy", scaling_policy)
         if security_group_id is not None:
             warnings.warn("""Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""", DeprecationWarning)
             pulumi.log.warn("""security_group_id is deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""")
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if soc_enabled is not None:
-            pulumi.set(__self__, "soc_enabled", soc_enabled)
+            _setter("soc_enabled", soc_enabled)
         if spot_price_limits is not None:
-            pulumi.set(__self__, "spot_price_limits", spot_price_limits)
+            _setter("spot_price_limits", spot_price_limits)
         if spot_strategy is not None:
-            pulumi.set(__self__, "spot_strategy", spot_strategy)
+            _setter("spot_strategy", spot_strategy)
         if system_disk_category is not None:
-            pulumi.set(__self__, "system_disk_category", system_disk_category)
+            _setter("system_disk_category", system_disk_category)
         if system_disk_encrypt_algorithm is not None:
-            pulumi.set(__self__, "system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
+            _setter("system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
         if system_disk_encrypted is not None:
-            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+            _setter("system_disk_encrypted", system_disk_encrypted)
         if system_disk_kms_key is not None:
-            pulumi.set(__self__, "system_disk_kms_key", system_disk_kms_key)
+            _setter("system_disk_kms_key", system_disk_kms_key)
         if system_disk_performance_level is not None:
-            pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+            _setter("system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
-            pulumi.set(__self__, "system_disk_size", system_disk_size)
+            _setter("system_disk_size", system_disk_size)
         if system_disk_snapshot_policy_id is not None:
-            pulumi.set(__self__, "system_disk_snapshot_policy_id", system_disk_snapshot_policy_id)
+            _setter("system_disk_snapshot_policy_id", system_disk_snapshot_policy_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if taints is not None:
-            pulumi.set(__self__, "taints", taints)
+            _setter("taints", taints)
         if unschedulable is not None:
-            pulumi.set(__self__, "unschedulable", unschedulable)
+            _setter("unschedulable", unschedulable)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_ids is not None:
-            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+            _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -2092,6 +2338,10 @@ class NodePool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NodePoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -2188,37 +2438,50 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
+            if kubelet_configuration is not None and not isinstance(kubelet_configuration, NodePoolKubeletConfigurationArgs):
+                kubelet_configuration = kubelet_configuration or {}
+                def _setter(key, value):
+                    kubelet_configuration[key] = value
+                NodePoolKubeletConfigurationArgs._configure(_setter, **kubelet_configuration)
             __props__.__dict__["kubelet_configuration"] = kubelet_configuration
             __props__.__dict__["labels"] = labels
+            if management is not None and not isinstance(management, NodePoolManagementArgs):
+                management = management or {}
+                def _setter(key, value):
+                    management[key] = value
+                NodePoolManagementArgs._configure(_setter, **management)
             __props__.__dict__["management"] = management
             __props__.__dict__["name"] = name
-            if node_count is not None and not opts.urn:
-                warnings.warn("""Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""", DeprecationWarning)
-                pulumi.log.warn("""node_count is deprecated: Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead.""")
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["node_name_mode"] = node_name_mode
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["period"] = period
             __props__.__dict__["period_unit"] = period_unit
-            if platform is not None and not opts.urn:
-                warnings.warn("""Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""", DeprecationWarning)
-                pulumi.log.warn("""platform is deprecated: Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead""")
             __props__.__dict__["platform"] = platform
             __props__.__dict__["polardb_ids"] = polardb_ids
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
+            if rolling_policy is not None and not isinstance(rolling_policy, NodePoolRollingPolicyArgs):
+                rolling_policy = rolling_policy or {}
+                def _setter(key, value):
+                    rolling_policy[key] = value
+                NodePoolRollingPolicyArgs._configure(_setter, **rolling_policy)
             __props__.__dict__["rolling_policy"] = rolling_policy
-            if rollout_policy is not None and not opts.urn:
-                warnings.warn("""Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""", DeprecationWarning)
-                pulumi.log.warn("""rollout_policy is deprecated: Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect""")
+            if rollout_policy is not None and not isinstance(rollout_policy, NodePoolRolloutPolicyArgs):
+                rollout_policy = rollout_policy or {}
+                def _setter(key, value):
+                    rollout_policy[key] = value
+                NodePoolRolloutPolicyArgs._configure(_setter, **rollout_policy)
             __props__.__dict__["rollout_policy"] = rollout_policy
             __props__.__dict__["runtime_name"] = runtime_name
             __props__.__dict__["runtime_version"] = runtime_version
+            if scaling_config is not None and not isinstance(scaling_config, NodePoolScalingConfigArgs):
+                scaling_config = scaling_config or {}
+                def _setter(key, value):
+                    scaling_config[key] = value
+                NodePoolScalingConfigArgs._configure(_setter, **scaling_config)
             __props__.__dict__["scaling_config"] = scaling_config
             __props__.__dict__["scaling_policy"] = scaling_policy
-            if security_group_id is not None and not opts.urn:
-                warnings.warn("""Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""", DeprecationWarning)
-                pulumi.log.warn("""security_group_id is deprecated: Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead""")
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["soc_enabled"] = soc_enabled

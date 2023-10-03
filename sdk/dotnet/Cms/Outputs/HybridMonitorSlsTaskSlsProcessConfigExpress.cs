@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class HybridMonitorSlsTaskSlsProcessConfigExpress
     {
         /// <summary>
-        /// The alias of the aggregation result.
+        /// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         /// </summary>
         public readonly string? Alias;
         /// <summary>
-        /// The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
+        /// The extended field that specifies the result of basic operations that are performed on aggregation results.
         /// </summary>
         public readonly string? Express;
 

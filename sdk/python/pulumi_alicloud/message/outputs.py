@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -50,21 +50,58 @@ class GetServiceQueuesQueueResult(dict):
         :param str queue_url: The url of the queue.
         :param int visibility_timeout: The invisibility period for which the received message remains the Inactive state. Unit: seconds.
         """
-        pulumi.set(__self__, "active_messages", active_messages)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "delay_messages", delay_messages)
-        pulumi.set(__self__, "delay_seconds", delay_seconds)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "inactive_messages", inactive_messages)
-        pulumi.set(__self__, "last_modify_time", last_modify_time)
-        pulumi.set(__self__, "logging_enabled", logging_enabled)
-        pulumi.set(__self__, "maximum_message_size", maximum_message_size)
-        pulumi.set(__self__, "message_retention_period", message_retention_period)
-        pulumi.set(__self__, "polling_wait_seconds", polling_wait_seconds)
-        pulumi.set(__self__, "queue_internal_url", queue_internal_url)
-        pulumi.set(__self__, "queue_name", queue_name)
-        pulumi.set(__self__, "queue_url", queue_url)
-        pulumi.set(__self__, "visibility_timeout", visibility_timeout)
+        GetServiceQueuesQueueResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active_messages=active_messages,
+            create_time=create_time,
+            delay_messages=delay_messages,
+            delay_seconds=delay_seconds,
+            id=id,
+            inactive_messages=inactive_messages,
+            last_modify_time=last_modify_time,
+            logging_enabled=logging_enabled,
+            maximum_message_size=maximum_message_size,
+            message_retention_period=message_retention_period,
+            polling_wait_seconds=polling_wait_seconds,
+            queue_internal_url=queue_internal_url,
+            queue_name=queue_name,
+            queue_url=queue_url,
+            visibility_timeout=visibility_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active_messages: int,
+             create_time: int,
+             delay_messages: int,
+             delay_seconds: int,
+             id: str,
+             inactive_messages: int,
+             last_modify_time: int,
+             logging_enabled: bool,
+             maximum_message_size: int,
+             message_retention_period: int,
+             polling_wait_seconds: int,
+             queue_internal_url: str,
+             queue_name: str,
+             queue_url: str,
+             visibility_timeout: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("active_messages", active_messages)
+        _setter("create_time", create_time)
+        _setter("delay_messages", delay_messages)
+        _setter("delay_seconds", delay_seconds)
+        _setter("id", id)
+        _setter("inactive_messages", inactive_messages)
+        _setter("last_modify_time", last_modify_time)
+        _setter("logging_enabled", logging_enabled)
+        _setter("maximum_message_size", maximum_message_size)
+        _setter("message_retention_period", message_retention_period)
+        _setter("polling_wait_seconds", polling_wait_seconds)
+        _setter("queue_internal_url", queue_internal_url)
+        _setter("queue_name", queue_name)
+        _setter("queue_url", queue_url)
+        _setter("visibility_timeout", visibility_timeout)
 
     @property
     @pulumi.getter(name="activeMessages")
@@ -214,17 +251,46 @@ class GetServiceSubscriptionsSubscriptionResult(dict):
         :param str topic_name: The name of the topic.
         :param str topic_owner: The account ID of the topic owner.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "filter_tag", filter_tag)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_modify_time", last_modify_time)
-        pulumi.set(__self__, "notify_content_format", notify_content_format)
-        pulumi.set(__self__, "notify_strategy", notify_strategy)
-        pulumi.set(__self__, "subscription_name", subscription_name)
-        pulumi.set(__self__, "subscription_url", subscription_url)
-        pulumi.set(__self__, "topic_name", topic_name)
-        pulumi.set(__self__, "topic_owner", topic_owner)
+        GetServiceSubscriptionsSubscriptionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            endpoint=endpoint,
+            filter_tag=filter_tag,
+            id=id,
+            last_modify_time=last_modify_time,
+            notify_content_format=notify_content_format,
+            notify_strategy=notify_strategy,
+            subscription_name=subscription_name,
+            subscription_url=subscription_url,
+            topic_name=topic_name,
+            topic_owner=topic_owner,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: int,
+             endpoint: str,
+             filter_tag: str,
+             id: str,
+             last_modify_time: int,
+             notify_content_format: str,
+             notify_strategy: str,
+             subscription_name: str,
+             subscription_url: str,
+             topic_name: str,
+             topic_owner: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("endpoint", endpoint)
+        _setter("filter_tag", filter_tag)
+        _setter("id", id)
+        _setter("last_modify_time", last_modify_time)
+        _setter("notify_content_format", notify_content_format)
+        _setter("notify_strategy", notify_strategy)
+        _setter("subscription_name", subscription_name)
+        _setter("subscription_url", subscription_url)
+        _setter("topic_name", topic_name)
+        _setter("topic_owner", topic_owner)
 
     @property
     @pulumi.getter(name="createTime")
@@ -340,16 +406,43 @@ class GetServiceTopicsTopicResult(dict):
         :param str topic_name: The name of the topic.
         :param str topic_url: The url of the topic.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_modify_time", last_modify_time)
-        pulumi.set(__self__, "logging_enabled", logging_enabled)
-        pulumi.set(__self__, "max_message_size", max_message_size)
-        pulumi.set(__self__, "message_count", message_count)
-        pulumi.set(__self__, "message_retention_period", message_retention_period)
-        pulumi.set(__self__, "topic_inner_url", topic_inner_url)
-        pulumi.set(__self__, "topic_name", topic_name)
-        pulumi.set(__self__, "topic_url", topic_url)
+        GetServiceTopicsTopicResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            id=id,
+            last_modify_time=last_modify_time,
+            logging_enabled=logging_enabled,
+            max_message_size=max_message_size,
+            message_count=message_count,
+            message_retention_period=message_retention_period,
+            topic_inner_url=topic_inner_url,
+            topic_name=topic_name,
+            topic_url=topic_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: int,
+             id: str,
+             last_modify_time: int,
+             logging_enabled: bool,
+             max_message_size: int,
+             message_count: int,
+             message_retention_period: int,
+             topic_inner_url: str,
+             topic_name: str,
+             topic_url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("last_modify_time", last_modify_time)
+        _setter("logging_enabled", logging_enabled)
+        _setter("max_message_size", max_message_size)
+        _setter("message_count", message_count)
+        _setter("message_retention_period", message_retention_period)
+        _setter("topic_inner_url", topic_inner_url)
+        _setter("topic_name", topic_name)
+        _setter("topic_url", topic_url)
 
     @property
     @pulumi.getter(name="createTime")

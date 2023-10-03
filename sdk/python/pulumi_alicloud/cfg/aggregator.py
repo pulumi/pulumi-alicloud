@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,12 +27,27 @@ class AggregatorArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]] aggregator_accounts: The information of account in aggregator. If the aggregator_type is RD, it is optional and means add all members in the resource directory to the account group. See `aggregator_accounts` below.  **NOTE:** the field `aggregator_accounts` is not required from version 1.148.0.
         :param pulumi.Input[str] aggregator_type: The type of aggregator. Valid values: `CUSTOM`, `RD`. The Default value: `CUSTOM`.
         """
-        pulumi.set(__self__, "aggregator_name", aggregator_name)
-        pulumi.set(__self__, "description", description)
+        AggregatorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aggregator_name=aggregator_name,
+            description=description,
+            aggregator_accounts=aggregator_accounts,
+            aggregator_type=aggregator_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aggregator_name: pulumi.Input[str],
+             description: pulumi.Input[str],
+             aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]] = None,
+             aggregator_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("aggregator_name", aggregator_name)
+        _setter("description", description)
         if aggregator_accounts is not None:
-            pulumi.set(__self__, "aggregator_accounts", aggregator_accounts)
+            _setter("aggregator_accounts", aggregator_accounts)
         if aggregator_type is not None:
-            pulumi.set(__self__, "aggregator_type", aggregator_type)
+            _setter("aggregator_type", aggregator_type)
 
     @property
     @pulumi.getter(name="aggregatorName")
@@ -99,16 +114,33 @@ class _AggregatorState:
         :param pulumi.Input[str] description: The description of aggregator.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `0`: creating `1`: normal `2`: deleting.
         """
+        _AggregatorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aggregator_accounts=aggregator_accounts,
+            aggregator_name=aggregator_name,
+            aggregator_type=aggregator_type,
+            description=description,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aggregator_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['AggregatorAggregatorAccountArgs']]]] = None,
+             aggregator_name: Optional[pulumi.Input[str]] = None,
+             aggregator_type: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if aggregator_accounts is not None:
-            pulumi.set(__self__, "aggregator_accounts", aggregator_accounts)
+            _setter("aggregator_accounts", aggregator_accounts)
         if aggregator_name is not None:
-            pulumi.set(__self__, "aggregator_name", aggregator_name)
+            _setter("aggregator_name", aggregator_name)
         if aggregator_type is not None:
-            pulumi.set(__self__, "aggregator_type", aggregator_type)
+            _setter("aggregator_type", aggregator_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="aggregatorAccounts")
@@ -282,6 +314,10 @@ class Aggregator(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AggregatorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

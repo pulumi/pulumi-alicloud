@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['OrganizationArgs', 'Organization']
@@ -25,12 +25,27 @@ class OrganizationArgs:
         :param pulumi.Input[int] desired_member_count: The desired member count.
         :param pulumi.Input[str] real_pk: User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
         """
-        pulumi.set(__self__, "organization_name", organization_name)
-        pulumi.set(__self__, "source", source)
+        OrganizationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            organization_name=organization_name,
+            source=source,
+            desired_member_count=desired_member_count,
+            real_pk=real_pk,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             organization_name: pulumi.Input[str],
+             source: pulumi.Input[str],
+             desired_member_count: Optional[pulumi.Input[int]] = None,
+             real_pk: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("organization_name", organization_name)
+        _setter("source", source)
         if desired_member_count is not None:
-            pulumi.set(__self__, "desired_member_count", desired_member_count)
+            _setter("desired_member_count", desired_member_count)
         if real_pk is not None:
-            pulumi.set(__self__, "real_pk", real_pk)
+            _setter("real_pk", real_pk)
 
     @property
     @pulumi.getter(name="organizationName")
@@ -95,14 +110,29 @@ class _OrganizationState:
         :param pulumi.Input[str] real_pk: User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
         :param pulumi.Input[str] source: This is organization source information
         """
+        _OrganizationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            desired_member_count=desired_member_count,
+            organization_name=organization_name,
+            real_pk=real_pk,
+            source=source,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             desired_member_count: Optional[pulumi.Input[int]] = None,
+             organization_name: Optional[pulumi.Input[str]] = None,
+             real_pk: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if desired_member_count is not None:
-            pulumi.set(__self__, "desired_member_count", desired_member_count)
+            _setter("desired_member_count", desired_member_count)
         if organization_name is not None:
-            pulumi.set(__self__, "organization_name", organization_name)
+            _setter("organization_name", organization_name)
         if real_pk is not None:
-            pulumi.set(__self__, "real_pk", real_pk)
+            _setter("real_pk", real_pk)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
 
     @property
     @pulumi.getter(name="desiredMemberCount")
@@ -242,6 +272,10 @@ class Organization(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OrganizationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

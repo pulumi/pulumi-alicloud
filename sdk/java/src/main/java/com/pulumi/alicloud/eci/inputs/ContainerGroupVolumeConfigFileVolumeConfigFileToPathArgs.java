@@ -31,14 +31,14 @@ public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs exte
     }
 
     /**
-     * The relative file path.
+     * The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return The relative file path.
+     * @return The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
      * 
      */
     public Optional<Output<String>> path() {
@@ -92,7 +92,7 @@ public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs exte
         }
 
         /**
-         * @param path The relative file path.
+         * @param path The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs exte
         }
 
         /**
-         * @param path The relative file path.
+         * @param path The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
          * 
          * @return builder
          * 

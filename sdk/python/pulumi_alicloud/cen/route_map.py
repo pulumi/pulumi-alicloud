@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RouteMapArgs', 'RouteMap']
@@ -73,57 +73,120 @@ class RouteMapArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_route_table_ids: A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
         :param pulumi.Input[str] transit_router_route_table_id: The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
         """
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "cen_region_id", cen_region_id)
-        pulumi.set(__self__, "map_result", map_result)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "transmit_direction", transmit_direction)
+        RouteMapArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            cen_region_id=cen_region_id,
+            map_result=map_result,
+            priority=priority,
+            transmit_direction=transmit_direction,
+            as_path_match_mode=as_path_match_mode,
+            cidr_match_mode=cidr_match_mode,
+            community_match_mode=community_match_mode,
+            community_operate_mode=community_operate_mode,
+            description=description,
+            destination_child_instance_types=destination_child_instance_types,
+            destination_cidr_blocks=destination_cidr_blocks,
+            destination_instance_ids=destination_instance_ids,
+            destination_instance_ids_reverse_match=destination_instance_ids_reverse_match,
+            destination_route_table_ids=destination_route_table_ids,
+            match_asns=match_asns,
+            match_community_sets=match_community_sets,
+            next_priority=next_priority,
+            operate_community_sets=operate_community_sets,
+            preference=preference,
+            prepend_as_paths=prepend_as_paths,
+            route_types=route_types,
+            source_child_instance_types=source_child_instance_types,
+            source_instance_ids=source_instance_ids,
+            source_instance_ids_reverse_match=source_instance_ids_reverse_match,
+            source_region_ids=source_region_ids,
+            source_route_table_ids=source_route_table_ids,
+            transit_router_route_table_id=transit_router_route_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: pulumi.Input[str],
+             cen_region_id: pulumi.Input[str],
+             map_result: pulumi.Input[str],
+             priority: pulumi.Input[int],
+             transmit_direction: pulumi.Input[str],
+             as_path_match_mode: Optional[pulumi.Input[str]] = None,
+             cidr_match_mode: Optional[pulumi.Input[str]] = None,
+             community_match_mode: Optional[pulumi.Input[str]] = None,
+             community_operate_mode: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             destination_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             destination_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             destination_instance_ids_reverse_match: Optional[pulumi.Input[bool]] = None,
+             destination_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             match_asns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             match_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             next_priority: Optional[pulumi.Input[int]] = None,
+             operate_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preference: Optional[pulumi.Input[int]] = None,
+             prepend_as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             route_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             source_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             source_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             source_instance_ids_reverse_match: Optional[pulumi.Input[bool]] = None,
+             source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cen_id", cen_id)
+        _setter("cen_region_id", cen_region_id)
+        _setter("map_result", map_result)
+        _setter("priority", priority)
+        _setter("transmit_direction", transmit_direction)
         if as_path_match_mode is not None:
-            pulumi.set(__self__, "as_path_match_mode", as_path_match_mode)
+            _setter("as_path_match_mode", as_path_match_mode)
         if cidr_match_mode is not None:
-            pulumi.set(__self__, "cidr_match_mode", cidr_match_mode)
+            _setter("cidr_match_mode", cidr_match_mode)
         if community_match_mode is not None:
-            pulumi.set(__self__, "community_match_mode", community_match_mode)
+            _setter("community_match_mode", community_match_mode)
         if community_operate_mode is not None:
-            pulumi.set(__self__, "community_operate_mode", community_operate_mode)
+            _setter("community_operate_mode", community_operate_mode)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if destination_child_instance_types is not None:
-            pulumi.set(__self__, "destination_child_instance_types", destination_child_instance_types)
+            _setter("destination_child_instance_types", destination_child_instance_types)
         if destination_cidr_blocks is not None:
-            pulumi.set(__self__, "destination_cidr_blocks", destination_cidr_blocks)
+            _setter("destination_cidr_blocks", destination_cidr_blocks)
         if destination_instance_ids is not None:
-            pulumi.set(__self__, "destination_instance_ids", destination_instance_ids)
+            _setter("destination_instance_ids", destination_instance_ids)
         if destination_instance_ids_reverse_match is not None:
-            pulumi.set(__self__, "destination_instance_ids_reverse_match", destination_instance_ids_reverse_match)
+            _setter("destination_instance_ids_reverse_match", destination_instance_ids_reverse_match)
         if destination_route_table_ids is not None:
-            pulumi.set(__self__, "destination_route_table_ids", destination_route_table_ids)
+            _setter("destination_route_table_ids", destination_route_table_ids)
         if match_asns is not None:
-            pulumi.set(__self__, "match_asns", match_asns)
+            _setter("match_asns", match_asns)
         if match_community_sets is not None:
-            pulumi.set(__self__, "match_community_sets", match_community_sets)
+            _setter("match_community_sets", match_community_sets)
         if next_priority is not None:
-            pulumi.set(__self__, "next_priority", next_priority)
+            _setter("next_priority", next_priority)
         if operate_community_sets is not None:
-            pulumi.set(__self__, "operate_community_sets", operate_community_sets)
+            _setter("operate_community_sets", operate_community_sets)
         if preference is not None:
-            pulumi.set(__self__, "preference", preference)
+            _setter("preference", preference)
         if prepend_as_paths is not None:
-            pulumi.set(__self__, "prepend_as_paths", prepend_as_paths)
+            _setter("prepend_as_paths", prepend_as_paths)
         if route_types is not None:
-            pulumi.set(__self__, "route_types", route_types)
+            _setter("route_types", route_types)
         if source_child_instance_types is not None:
-            pulumi.set(__self__, "source_child_instance_types", source_child_instance_types)
+            _setter("source_child_instance_types", source_child_instance_types)
         if source_instance_ids is not None:
-            pulumi.set(__self__, "source_instance_ids", source_instance_ids)
+            _setter("source_instance_ids", source_instance_ids)
         if source_instance_ids_reverse_match is not None:
-            pulumi.set(__self__, "source_instance_ids_reverse_match", source_instance_ids_reverse_match)
+            _setter("source_instance_ids_reverse_match", source_instance_ids_reverse_match)
         if source_region_ids is not None:
-            pulumi.set(__self__, "source_region_ids", source_region_ids)
+            _setter("source_region_ids", source_region_ids)
         if source_route_table_ids is not None:
-            pulumi.set(__self__, "source_route_table_ids", source_route_table_ids)
+            _setter("source_route_table_ids", source_route_table_ids)
         if transit_router_route_table_id is not None:
-            pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
+            _setter("transit_router_route_table_id", transit_router_route_table_id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -528,66 +591,133 @@ class _RouteMapState:
         :param pulumi.Input[str] transit_router_route_table_id: The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
         :param pulumi.Input[str] transmit_direction: The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
         """
+        _RouteMapState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            as_path_match_mode=as_path_match_mode,
+            cen_id=cen_id,
+            cen_region_id=cen_region_id,
+            cidr_match_mode=cidr_match_mode,
+            community_match_mode=community_match_mode,
+            community_operate_mode=community_operate_mode,
+            description=description,
+            destination_child_instance_types=destination_child_instance_types,
+            destination_cidr_blocks=destination_cidr_blocks,
+            destination_instance_ids=destination_instance_ids,
+            destination_instance_ids_reverse_match=destination_instance_ids_reverse_match,
+            destination_route_table_ids=destination_route_table_ids,
+            map_result=map_result,
+            match_asns=match_asns,
+            match_community_sets=match_community_sets,
+            next_priority=next_priority,
+            operate_community_sets=operate_community_sets,
+            preference=preference,
+            prepend_as_paths=prepend_as_paths,
+            priority=priority,
+            route_map_id=route_map_id,
+            route_types=route_types,
+            source_child_instance_types=source_child_instance_types,
+            source_instance_ids=source_instance_ids,
+            source_instance_ids_reverse_match=source_instance_ids_reverse_match,
+            source_region_ids=source_region_ids,
+            source_route_table_ids=source_route_table_ids,
+            status=status,
+            transit_router_route_table_id=transit_router_route_table_id,
+            transmit_direction=transmit_direction,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             as_path_match_mode: Optional[pulumi.Input[str]] = None,
+             cen_id: Optional[pulumi.Input[str]] = None,
+             cen_region_id: Optional[pulumi.Input[str]] = None,
+             cidr_match_mode: Optional[pulumi.Input[str]] = None,
+             community_match_mode: Optional[pulumi.Input[str]] = None,
+             community_operate_mode: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             destination_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             destination_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             destination_instance_ids_reverse_match: Optional[pulumi.Input[bool]] = None,
+             destination_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             map_result: Optional[pulumi.Input[str]] = None,
+             match_asns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             match_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             next_priority: Optional[pulumi.Input[int]] = None,
+             operate_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preference: Optional[pulumi.Input[int]] = None,
+             prepend_as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             route_map_id: Optional[pulumi.Input[str]] = None,
+             route_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             source_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             source_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             source_instance_ids_reverse_match: Optional[pulumi.Input[bool]] = None,
+             source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
+             transmit_direction: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if as_path_match_mode is not None:
-            pulumi.set(__self__, "as_path_match_mode", as_path_match_mode)
+            _setter("as_path_match_mode", as_path_match_mode)
         if cen_id is not None:
-            pulumi.set(__self__, "cen_id", cen_id)
+            _setter("cen_id", cen_id)
         if cen_region_id is not None:
-            pulumi.set(__self__, "cen_region_id", cen_region_id)
+            _setter("cen_region_id", cen_region_id)
         if cidr_match_mode is not None:
-            pulumi.set(__self__, "cidr_match_mode", cidr_match_mode)
+            _setter("cidr_match_mode", cidr_match_mode)
         if community_match_mode is not None:
-            pulumi.set(__self__, "community_match_mode", community_match_mode)
+            _setter("community_match_mode", community_match_mode)
         if community_operate_mode is not None:
-            pulumi.set(__self__, "community_operate_mode", community_operate_mode)
+            _setter("community_operate_mode", community_operate_mode)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if destination_child_instance_types is not None:
-            pulumi.set(__self__, "destination_child_instance_types", destination_child_instance_types)
+            _setter("destination_child_instance_types", destination_child_instance_types)
         if destination_cidr_blocks is not None:
-            pulumi.set(__self__, "destination_cidr_blocks", destination_cidr_blocks)
+            _setter("destination_cidr_blocks", destination_cidr_blocks)
         if destination_instance_ids is not None:
-            pulumi.set(__self__, "destination_instance_ids", destination_instance_ids)
+            _setter("destination_instance_ids", destination_instance_ids)
         if destination_instance_ids_reverse_match is not None:
-            pulumi.set(__self__, "destination_instance_ids_reverse_match", destination_instance_ids_reverse_match)
+            _setter("destination_instance_ids_reverse_match", destination_instance_ids_reverse_match)
         if destination_route_table_ids is not None:
-            pulumi.set(__self__, "destination_route_table_ids", destination_route_table_ids)
+            _setter("destination_route_table_ids", destination_route_table_ids)
         if map_result is not None:
-            pulumi.set(__self__, "map_result", map_result)
+            _setter("map_result", map_result)
         if match_asns is not None:
-            pulumi.set(__self__, "match_asns", match_asns)
+            _setter("match_asns", match_asns)
         if match_community_sets is not None:
-            pulumi.set(__self__, "match_community_sets", match_community_sets)
+            _setter("match_community_sets", match_community_sets)
         if next_priority is not None:
-            pulumi.set(__self__, "next_priority", next_priority)
+            _setter("next_priority", next_priority)
         if operate_community_sets is not None:
-            pulumi.set(__self__, "operate_community_sets", operate_community_sets)
+            _setter("operate_community_sets", operate_community_sets)
         if preference is not None:
-            pulumi.set(__self__, "preference", preference)
+            _setter("preference", preference)
         if prepend_as_paths is not None:
-            pulumi.set(__self__, "prepend_as_paths", prepend_as_paths)
+            _setter("prepend_as_paths", prepend_as_paths)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if route_map_id is not None:
-            pulumi.set(__self__, "route_map_id", route_map_id)
+            _setter("route_map_id", route_map_id)
         if route_types is not None:
-            pulumi.set(__self__, "route_types", route_types)
+            _setter("route_types", route_types)
         if source_child_instance_types is not None:
-            pulumi.set(__self__, "source_child_instance_types", source_child_instance_types)
+            _setter("source_child_instance_types", source_child_instance_types)
         if source_instance_ids is not None:
-            pulumi.set(__self__, "source_instance_ids", source_instance_ids)
+            _setter("source_instance_ids", source_instance_ids)
         if source_instance_ids_reverse_match is not None:
-            pulumi.set(__self__, "source_instance_ids_reverse_match", source_instance_ids_reverse_match)
+            _setter("source_instance_ids_reverse_match", source_instance_ids_reverse_match)
         if source_region_ids is not None:
-            pulumi.set(__self__, "source_region_ids", source_region_ids)
+            _setter("source_region_ids", source_region_ids)
         if source_route_table_ids is not None:
-            pulumi.set(__self__, "source_route_table_ids", source_route_table_ids)
+            _setter("source_route_table_ids", source_route_table_ids)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if transit_router_route_table_id is not None:
-            pulumi.set(__self__, "transit_router_route_table_id", transit_router_route_table_id)
+            _setter("transit_router_route_table_id", transit_router_route_table_id)
         if transmit_direction is not None:
-            pulumi.set(__self__, "transmit_direction", transmit_direction)
+            _setter("transmit_direction", transmit_direction)
 
     @property
     @pulumi.getter(name="asPathMatchMode")
@@ -1201,6 +1331,10 @@ class RouteMap(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RouteMapArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

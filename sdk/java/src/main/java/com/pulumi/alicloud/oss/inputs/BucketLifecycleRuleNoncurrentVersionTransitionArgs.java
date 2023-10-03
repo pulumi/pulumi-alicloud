@@ -18,18 +18,14 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
     public static final BucketLifecycleRuleNoncurrentVersionTransitionArgs Empty = new BucketLifecycleRuleNoncurrentVersionTransitionArgs();
 
     /**
-     * Specifies the number of days after object creation when the specific rule action takes effect.
-     * 
-     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+     * Specifies the number of days noncurrent object versions transition.
      * 
      */
     @Import(name="days", required=true)
     private Output<Integer> days;
 
     /**
-     * @return Specifies the number of days after object creation when the specific rule action takes effect.
-     * 
-     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+     * @return Specifies the number of days noncurrent object versions transition.
      * 
      */
     public Output<Integer> days() {
@@ -53,7 +49,6 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
 
     /**
      * Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one transition configuration.
      * 
      */
     @Import(name="returnToStdWhenVisit")
@@ -61,7 +56,6 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
 
     /**
      * @return Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one transition configuration.
      * 
      */
     public Optional<Output<Boolean>> returnToStdWhenVisit() {
@@ -111,9 +105,7 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
         }
 
         /**
-         * @param days Specifies the number of days after object creation when the specific rule action takes effect.
-         * 
-         * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+         * @param days Specifies the number of days noncurrent object versions transition.
          * 
          * @return builder
          * 
@@ -124,9 +116,7 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
         }
 
         /**
-         * @param days Specifies the number of days after object creation when the specific rule action takes effect.
-         * 
-         * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+         * @param days Specifies the number of days noncurrent object versions transition.
          * 
          * @return builder
          * 
@@ -158,7 +148,6 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
 
         /**
          * @param returnToStdWhenVisit Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-         * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one transition configuration.
          * 
          * @return builder
          * 
@@ -170,7 +159,6 @@ public final class BucketLifecycleRuleNoncurrentVersionTransitionArgs extends co
 
         /**
          * @param returnToStdWhenVisit Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-         * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one transition configuration.
          * 
          * @return builder
          * 

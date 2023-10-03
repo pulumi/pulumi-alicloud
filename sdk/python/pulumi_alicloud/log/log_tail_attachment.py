@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LogTailAttachmentArgs', 'LogTailAttachment']
@@ -23,9 +23,22 @@ class LogTailAttachmentArgs:
         :param pulumi.Input[str] machine_group_name: The machine group name, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
         """
-        pulumi.set(__self__, "logtail_config_name", logtail_config_name)
-        pulumi.set(__self__, "machine_group_name", machine_group_name)
-        pulumi.set(__self__, "project", project)
+        LogTailAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            logtail_config_name=logtail_config_name,
+            machine_group_name=machine_group_name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             logtail_config_name: pulumi.Input[str],
+             machine_group_name: pulumi.Input[str],
+             project: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("logtail_config_name", logtail_config_name)
+        _setter("machine_group_name", machine_group_name)
+        _setter("project", project)
 
     @property
     @pulumi.getter(name="logtailConfigName")
@@ -76,12 +89,25 @@ class _LogTailAttachmentState:
         :param pulumi.Input[str] machine_group_name: The machine group name, which is unique in the same project.
         :param pulumi.Input[str] project: The project name to the log store belongs.
         """
+        _LogTailAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            logtail_config_name=logtail_config_name,
+            machine_group_name=machine_group_name,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             logtail_config_name: Optional[pulumi.Input[str]] = None,
+             machine_group_name: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if logtail_config_name is not None:
-            pulumi.set(__self__, "logtail_config_name", logtail_config_name)
+            _setter("logtail_config_name", logtail_config_name)
         if machine_group_name is not None:
-            pulumi.set(__self__, "machine_group_name", machine_group_name)
+            _setter("machine_group_name", machine_group_name)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter(name="logtailConfigName")
@@ -285,6 +311,10 @@ class LogTailAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LogTailAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

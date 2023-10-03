@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['WebLockConfigArgs', 'WebLockConfig']
@@ -35,19 +35,44 @@ class WebLockConfigArgs:
         :param pulumi.Input[str] exclusive_file_type: Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         :param pulumi.Input[str] inclusive_file_type: Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
         """
-        pulumi.set(__self__, "defence_mode", defence_mode)
-        pulumi.set(__self__, "dir", dir)
-        pulumi.set(__self__, "local_backup_dir", local_backup_dir)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "uuid", uuid)
+        WebLockConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            defence_mode=defence_mode,
+            dir=dir,
+            local_backup_dir=local_backup_dir,
+            mode=mode,
+            uuid=uuid,
+            exclusive_dir=exclusive_dir,
+            exclusive_file=exclusive_file,
+            exclusive_file_type=exclusive_file_type,
+            inclusive_file_type=inclusive_file_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             defence_mode: pulumi.Input[str],
+             dir: pulumi.Input[str],
+             local_backup_dir: pulumi.Input[str],
+             mode: pulumi.Input[str],
+             uuid: pulumi.Input[str],
+             exclusive_dir: Optional[pulumi.Input[str]] = None,
+             exclusive_file: Optional[pulumi.Input[str]] = None,
+             exclusive_file_type: Optional[pulumi.Input[str]] = None,
+             inclusive_file_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("defence_mode", defence_mode)
+        _setter("dir", dir)
+        _setter("local_backup_dir", local_backup_dir)
+        _setter("mode", mode)
+        _setter("uuid", uuid)
         if exclusive_dir is not None:
-            pulumi.set(__self__, "exclusive_dir", exclusive_dir)
+            _setter("exclusive_dir", exclusive_dir)
         if exclusive_file is not None:
-            pulumi.set(__self__, "exclusive_file", exclusive_file)
+            _setter("exclusive_file", exclusive_file)
         if exclusive_file_type is not None:
-            pulumi.set(__self__, "exclusive_file_type", exclusive_file_type)
+            _setter("exclusive_file_type", exclusive_file_type)
         if inclusive_file_type is not None:
-            pulumi.set(__self__, "inclusive_file_type", inclusive_file_type)
+            _setter("inclusive_file_type", inclusive_file_type)
 
     @property
     @pulumi.getter(name="defenceMode")
@@ -182,24 +207,49 @@ class _WebLockConfigState:
         :param pulumi.Input[str] mode: Specify the protected directory mode. Value:-**whitelist**: whitelist mode, which protects the added protected directories and file types.-**blacklist**: blacklist mode, which protects all unexcluded subdirectories, file types, and specified files under the added protection directory.
         :param pulumi.Input[str] uuid: Specify the UUID of the server to which you want to add a protection directory.> You can call the DescribeCloudCenterInstances interface to obtain the UUID of the server.
         """
+        _WebLockConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            defence_mode=defence_mode,
+            dir=dir,
+            exclusive_dir=exclusive_dir,
+            exclusive_file=exclusive_file,
+            exclusive_file_type=exclusive_file_type,
+            inclusive_file_type=inclusive_file_type,
+            local_backup_dir=local_backup_dir,
+            mode=mode,
+            uuid=uuid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             defence_mode: Optional[pulumi.Input[str]] = None,
+             dir: Optional[pulumi.Input[str]] = None,
+             exclusive_dir: Optional[pulumi.Input[str]] = None,
+             exclusive_file: Optional[pulumi.Input[str]] = None,
+             exclusive_file_type: Optional[pulumi.Input[str]] = None,
+             inclusive_file_type: Optional[pulumi.Input[str]] = None,
+             local_backup_dir: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             uuid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if defence_mode is not None:
-            pulumi.set(__self__, "defence_mode", defence_mode)
+            _setter("defence_mode", defence_mode)
         if dir is not None:
-            pulumi.set(__self__, "dir", dir)
+            _setter("dir", dir)
         if exclusive_dir is not None:
-            pulumi.set(__self__, "exclusive_dir", exclusive_dir)
+            _setter("exclusive_dir", exclusive_dir)
         if exclusive_file is not None:
-            pulumi.set(__self__, "exclusive_file", exclusive_file)
+            _setter("exclusive_file", exclusive_file)
         if exclusive_file_type is not None:
-            pulumi.set(__self__, "exclusive_file_type", exclusive_file_type)
+            _setter("exclusive_file_type", exclusive_file_type)
         if inclusive_file_type is not None:
-            pulumi.set(__self__, "inclusive_file_type", inclusive_file_type)
+            _setter("inclusive_file_type", inclusive_file_type)
         if local_backup_dir is not None:
-            pulumi.set(__self__, "local_backup_dir", local_backup_dir)
+            _setter("local_backup_dir", local_backup_dir)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
+            _setter("uuid", uuid)
 
     @property
     @pulumi.getter(name="defenceMode")
@@ -419,6 +469,10 @@ class WebLockConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WebLockConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

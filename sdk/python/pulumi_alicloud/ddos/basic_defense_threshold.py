@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BasicDefenseThresholdArgs', 'BasicDefenseThreshold']
@@ -31,17 +31,38 @@ class BasicDefenseThresholdArgs:
         :param pulumi.Input[bool] is_auto: Whether it is the system default threshold. Value:
         :param pulumi.Input[int] pps: The current message number cleaning threshold. Unit: pps.
         """
-        pulumi.set(__self__, "ddos_type", ddos_type)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_type", instance_type)
+        BasicDefenseThresholdArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ddos_type=ddos_type,
+            instance_id=instance_id,
+            instance_type=instance_type,
+            bps=bps,
+            internet_ip=internet_ip,
+            is_auto=is_auto,
+            pps=pps,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ddos_type: pulumi.Input[str],
+             instance_id: pulumi.Input[str],
+             instance_type: pulumi.Input[str],
+             bps: Optional[pulumi.Input[int]] = None,
+             internet_ip: Optional[pulumi.Input[str]] = None,
+             is_auto: Optional[pulumi.Input[bool]] = None,
+             pps: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ddos_type", ddos_type)
+        _setter("instance_id", instance_id)
+        _setter("instance_type", instance_type)
         if bps is not None:
-            pulumi.set(__self__, "bps", bps)
+            _setter("bps", bps)
         if internet_ip is not None:
-            pulumi.set(__self__, "internet_ip", internet_ip)
+            _setter("internet_ip", internet_ip)
         if is_auto is not None:
-            pulumi.set(__self__, "is_auto", is_auto)
+            _setter("is_auto", is_auto)
         if pps is not None:
-            pulumi.set(__self__, "pps", pps)
+            _setter("pps", pps)
 
     @property
     @pulumi.getter(name="ddosType")
@@ -152,24 +173,49 @@ class _BasicDefenseThresholdState:
         :param pulumi.Input[int] max_pps: The maximum packet scrubbing threshold. Unit: pps.
         :param pulumi.Input[int] pps: The current message number cleaning threshold. Unit: pps.
         """
+        _BasicDefenseThresholdState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bps=bps,
+            ddos_type=ddos_type,
+            instance_id=instance_id,
+            instance_type=instance_type,
+            internet_ip=internet_ip,
+            is_auto=is_auto,
+            max_bps=max_bps,
+            max_pps=max_pps,
+            pps=pps,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bps: Optional[pulumi.Input[int]] = None,
+             ddos_type: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             internet_ip: Optional[pulumi.Input[str]] = None,
+             is_auto: Optional[pulumi.Input[bool]] = None,
+             max_bps: Optional[pulumi.Input[int]] = None,
+             max_pps: Optional[pulumi.Input[int]] = None,
+             pps: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bps is not None:
-            pulumi.set(__self__, "bps", bps)
+            _setter("bps", bps)
         if ddos_type is not None:
-            pulumi.set(__self__, "ddos_type", ddos_type)
+            _setter("ddos_type", ddos_type)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if internet_ip is not None:
-            pulumi.set(__self__, "internet_ip", internet_ip)
+            _setter("internet_ip", internet_ip)
         if is_auto is not None:
-            pulumi.set(__self__, "is_auto", is_auto)
+            _setter("is_auto", is_auto)
         if max_bps is not None:
-            pulumi.set(__self__, "max_bps", max_bps)
+            _setter("max_bps", max_bps)
         if max_pps is not None:
-            pulumi.set(__self__, "max_pps", max_pps)
+            _setter("max_pps", max_pps)
         if pps is not None:
-            pulumi.set(__self__, "pps", pps)
+            _setter("pps", pps)
 
     @property
     @pulumi.getter
@@ -399,6 +445,10 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BasicDefenseThresholdArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

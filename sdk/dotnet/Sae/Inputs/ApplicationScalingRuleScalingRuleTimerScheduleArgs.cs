@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public Input<string>? AtTime { get; set; }
 
         /// <summary>
-        /// Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+        /// Maximum number of instances applied.
         /// </summary>
         [Input("maxReplicas")]
         public Input<int>? MaxReplicas { get; set; }
 
         /// <summary>
-        /// Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+        /// Minimum number of instances applied.
         /// </summary>
         [Input("minReplicas")]
         public Input<int>? MinReplicas { get; set; }

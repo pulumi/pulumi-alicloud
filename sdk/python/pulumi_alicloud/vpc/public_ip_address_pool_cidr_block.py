@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PublicIpAddressPoolCidrBlockArgs', 'PublicIpAddressPoolCidrBlock']
@@ -21,9 +21,20 @@ class PublicIpAddressPoolCidrBlockArgs:
         :param pulumi.Input[str] public_ip_address_pool_id: The ID of the VPC Public IP address pool.
         :param pulumi.Input[str] cidr_block: The CIDR block.
         """
-        pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
+        PublicIpAddressPoolCidrBlockArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            public_ip_address_pool_id=public_ip_address_pool_id,
+            cidr_block=cidr_block,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             public_ip_address_pool_id: pulumi.Input[str],
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("public_ip_address_pool_id", public_ip_address_pool_id)
         if cidr_block is not None:
-            pulumi.set(__self__, "cidr_block", cidr_block)
+            _setter("cidr_block", cidr_block)
 
     @property
     @pulumi.getter(name="publicIpAddressPoolId")
@@ -64,14 +75,29 @@ class _PublicIpAddressPoolCidrBlockState:
         :param pulumi.Input[str] public_ip_address_pool_id: The ID of the VPC Public IP address pool.
         :param pulumi.Input[str] status: The status of the VPC Public Ip Address Pool Cidr Block.
         """
+        _PublicIpAddressPoolCidrBlockState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            create_time=create_time,
+            public_ip_address_pool_id=public_ip_address_pool_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr_block is not None:
-            pulumi.set(__self__, "cidr_block", cidr_block)
+            _setter("cidr_block", cidr_block)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if public_ip_address_pool_id is not None:
-            pulumi.set(__self__, "public_ip_address_pool_id", public_ip_address_pool_id)
+            _setter("public_ip_address_pool_id", public_ip_address_pool_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -229,6 +255,10 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PublicIpAddressPoolCidrBlockArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

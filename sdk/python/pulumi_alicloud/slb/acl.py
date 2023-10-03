@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,19 +29,36 @@ class AclArgs:
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        AclArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entry_lists=entry_lists,
+            ip_version=ip_version,
+            name=name,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AclEntryListArgs']]]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if entry_lists is not None:
             warnings.warn("""Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""", DeprecationWarning)
             pulumi.log.warn("""entry_lists is deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""")
         if entry_lists is not None:
-            pulumi.set(__self__, "entry_lists", entry_lists)
+            _setter("entry_lists", entry_lists)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="entryLists")
@@ -123,19 +140,36 @@ class _AclState:
         :param pulumi.Input[str] resource_group_id: Resource group ID.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        _AclState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entry_lists=entry_lists,
+            ip_version=ip_version,
+            name=name,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AclEntryListArgs']]]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if entry_lists is not None:
             warnings.warn("""Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""", DeprecationWarning)
             pulumi.log.warn("""entry_lists is deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""")
         if entry_lists is not None:
-            pulumi.set(__self__, "entry_lists", entry_lists)
+            _setter("entry_lists", entry_lists)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="entryLists")
@@ -332,6 +366,10 @@ class Acl(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AclArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -351,9 +389,6 @@ class Acl(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AclArgs.__new__(AclArgs)
 
-            if entry_lists is not None and not opts.urn:
-                warnings.warn("""Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""", DeprecationWarning)
-                pulumi.log.warn("""entry_lists is deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""")
             __props__.__dict__["entry_lists"] = entry_lists
             __props__.__dict__["ip_version"] = ip_version
             __props__.__dict__["name"] = name

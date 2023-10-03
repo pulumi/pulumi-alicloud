@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TairInstanceArgs', 'TairInstance']
@@ -53,37 +53,80 @@ class TairInstanceArgs:
         :param pulumi.Input[int] shard_count: The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
         :param pulumi.Input[str] tair_instance_name: The name of the resource.
         """
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        TairInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_class=instance_class,
+            instance_type=instance_type,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            effective_time=effective_time,
+            engine_version=engine_version,
+            force_upgrade=force_upgrade,
+            password=password,
+            payment_type=payment_type,
+            period=period,
+            port=port,
+            resource_group_id=resource_group_id,
+            secondary_zone_id=secondary_zone_id,
+            shard_count=shard_count,
+            tair_instance_name=tair_instance_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_class: pulumi.Input[str],
+             instance_type: pulumi.Input[str],
+             vpc_id: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             auto_renew: Optional[pulumi.Input[str]] = None,
+             auto_renew_period: Optional[pulumi.Input[str]] = None,
+             effective_time: Optional[pulumi.Input[str]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             force_upgrade: Optional[pulumi.Input[bool]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             secondary_zone_id: Optional[pulumi.Input[str]] = None,
+             shard_count: Optional[pulumi.Input[int]] = None,
+             tair_instance_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_class", instance_class)
+        _setter("instance_type", instance_type)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if effective_time is not None:
-            pulumi.set(__self__, "effective_time", effective_time)
+            _setter("effective_time", effective_time)
         if engine_version is not None:
-            pulumi.set(__self__, "engine_version", engine_version)
+            _setter("engine_version", engine_version)
         if force_upgrade is not None:
-            pulumi.set(__self__, "force_upgrade", force_upgrade)
+            _setter("force_upgrade", force_upgrade)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if secondary_zone_id is not None:
-            pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
+            _setter("secondary_zone_id", secondary_zone_id)
         if shard_count is not None:
-            pulumi.set(__self__, "shard_count", shard_count)
+            _setter("shard_count", shard_count)
         if tair_instance_name is not None:
-            pulumi.set(__self__, "tair_instance_name", tair_instance_name)
+            _setter("tair_instance_name", tair_instance_name)
 
     @property
     @pulumi.getter(name="instanceClass")
@@ -348,46 +391,93 @@ class _TairInstanceState:
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch to which the instance is connected.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
+        _TairInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            create_time=create_time,
+            effective_time=effective_time,
+            engine_version=engine_version,
+            force_upgrade=force_upgrade,
+            instance_class=instance_class,
+            instance_type=instance_type,
+            password=password,
+            payment_type=payment_type,
+            period=period,
+            port=port,
+            resource_group_id=resource_group_id,
+            secondary_zone_id=secondary_zone_id,
+            shard_count=shard_count,
+            status=status,
+            tair_instance_name=tair_instance_name,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: Optional[pulumi.Input[str]] = None,
+             auto_renew_period: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             effective_time: Optional[pulumi.Input[str]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             force_upgrade: Optional[pulumi.Input[bool]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             secondary_zone_id: Optional[pulumi.Input[str]] = None,
+             shard_count: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tair_instance_name: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if effective_time is not None:
-            pulumi.set(__self__, "effective_time", effective_time)
+            _setter("effective_time", effective_time)
         if engine_version is not None:
-            pulumi.set(__self__, "engine_version", engine_version)
+            _setter("engine_version", engine_version)
         if force_upgrade is not None:
-            pulumi.set(__self__, "force_upgrade", force_upgrade)
+            _setter("force_upgrade", force_upgrade)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if secondary_zone_id is not None:
-            pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
+            _setter("secondary_zone_id", secondary_zone_id)
         if shard_count is not None:
-            pulumi.set(__self__, "shard_count", shard_count)
+            _setter("shard_count", shard_count)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tair_instance_name is not None:
-            pulumi.set(__self__, "tair_instance_name", tair_instance_name)
+            _setter("tair_instance_name", tair_instance_name)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -709,6 +799,10 @@ class TairInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TairInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

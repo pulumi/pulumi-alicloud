@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -26,11 +26,26 @@ class DomainSourceArgs:
         :param pulumi.Input[str] source_type: The type of the origin server. Valid values:
         :param pulumi.Input[str] source_priority: The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
         """
-        pulumi.set(__self__, "source_content", source_content)
-        pulumi.set(__self__, "source_port", source_port)
-        pulumi.set(__self__, "source_type", source_type)
+        DomainSourceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_content=source_content,
+            source_port=source_port,
+            source_type=source_type,
+            source_priority=source_priority,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_content: pulumi.Input[str],
+             source_port: pulumi.Input[str],
+             source_type: pulumi.Input[str],
+             source_priority: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_content", source_content)
+        _setter("source_port", source_port)
+        _setter("source_type", source_type)
         if source_priority is not None:
-            pulumi.set(__self__, "source_priority", source_priority)
+            _setter("source_priority", source_priority)
 
     @property
     @pulumi.getter(name="sourceContent")

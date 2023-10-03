@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ExecutionArgs', 'Execution']
@@ -25,12 +25,27 @@ class ExecutionArgs:
         :param pulumi.Input[str] input: The Input information for this execution.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Stopped`.
         """
-        pulumi.set(__self__, "execution_name", execution_name)
-        pulumi.set(__self__, "flow_name", flow_name)
+        ExecutionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            execution_name=execution_name,
+            flow_name=flow_name,
+            input=input,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             execution_name: pulumi.Input[str],
+             flow_name: pulumi.Input[str],
+             input: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("execution_name", execution_name)
+        _setter("flow_name", flow_name)
         if input is not None:
-            pulumi.set(__self__, "input", input)
+            _setter("input", input)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="executionName")
@@ -95,14 +110,29 @@ class _ExecutionState:
         :param pulumi.Input[str] input: The Input information for this execution.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Stopped`.
         """
+        _ExecutionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            execution_name=execution_name,
+            flow_name=flow_name,
+            input=input,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             execution_name: Optional[pulumi.Input[str]] = None,
+             flow_name: Optional[pulumi.Input[str]] = None,
+             input: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if execution_name is not None:
-            pulumi.set(__self__, "execution_name", execution_name)
+            _setter("execution_name", execution_name)
         if flow_name is not None:
-            pulumi.set(__self__, "flow_name", flow_name)
+            _setter("flow_name", flow_name)
         if input is not None:
-            pulumi.set(__self__, "input", input)
+            _setter("input", input)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="executionName")
@@ -304,6 +334,10 @@ class Execution(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ExecutionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshMeshConfigControlPlaneLog
     {
         /// <summary>
-        /// Whether to enable of the access logging. Valid values: `true` and `false`.
+        /// Whether to enable Service grid audit.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The SLS Project of the access logging.
+        /// The Service grid audit that to the project.
         /// </summary>
         public readonly string? Project;
 

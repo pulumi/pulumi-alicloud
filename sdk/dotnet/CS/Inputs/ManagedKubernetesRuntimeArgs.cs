@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.CS.Inputs
     public sealed class ManagedKubernetesRuntimeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// This parameter specifies the name of the component.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

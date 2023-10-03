@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VpcNetworkAclAttachmentArgs', 'VpcNetworkAclAttachment']
@@ -23,9 +23,22 @@ class VpcNetworkAclAttachmentArgs:
         :param pulumi.Input[str] resource_id: The ID of the associated resource.
         :param pulumi.Input[str] resource_type: The type of the associated resource. Valid values: `VSwitch`.
         """
-        pulumi.set(__self__, "network_acl_id", network_acl_id)
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
+        VpcNetworkAclAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_acl_id=network_acl_id,
+            resource_id=resource_id,
+            resource_type=resource_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_acl_id: pulumi.Input[str],
+             resource_id: pulumi.Input[str],
+             resource_type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network_acl_id", network_acl_id)
+        _setter("resource_id", resource_id)
+        _setter("resource_type", resource_type)
 
     @property
     @pulumi.getter(name="networkAclId")
@@ -78,14 +91,29 @@ class _VpcNetworkAclAttachmentState:
         :param pulumi.Input[str] resource_type: The type of the associated resource. Valid values: `VSwitch`.
         :param pulumi.Input[str] status: The status of the Network Acl Attachment.
         """
+        _VpcNetworkAclAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_acl_id=network_acl_id,
+            resource_id=resource_id,
+            resource_type=resource_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_acl_id: Optional[pulumi.Input[str]] = None,
+             resource_id: Optional[pulumi.Input[str]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if network_acl_id is not None:
-            pulumi.set(__self__, "network_acl_id", network_acl_id)
+            _setter("network_acl_id", network_acl_id)
         if resource_id is not None:
-            pulumi.set(__self__, "resource_id", resource_id)
+            _setter("resource_id", resource_id)
         if resource_type is not None:
-            pulumi.set(__self__, "resource_type", resource_type)
+            _setter("resource_type", resource_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="networkAclId")
@@ -197,6 +225,10 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VpcNetworkAclAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

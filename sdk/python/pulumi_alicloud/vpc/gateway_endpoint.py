@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayEndpointArgs', 'GatewayEndpoint']
@@ -31,18 +31,39 @@ class GatewayEndpointArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of the resource.
         """
-        pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GatewayEndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            service_name=service_name,
+            vpc_id=vpc_id,
+            gateway_endpoint_descrption=gateway_endpoint_descrption,
+            gateway_endpoint_name=gateway_endpoint_name,
+            policy_document=policy_document,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             service_name: pulumi.Input[str],
+             vpc_id: pulumi.Input[str],
+             gateway_endpoint_descrption: Optional[pulumi.Input[str]] = None,
+             gateway_endpoint_name: Optional[pulumi.Input[str]] = None,
+             policy_document: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("service_name", service_name)
+        _setter("vpc_id", vpc_id)
         if gateway_endpoint_descrption is not None:
-            pulumi.set(__self__, "gateway_endpoint_descrption", gateway_endpoint_descrption)
+            _setter("gateway_endpoint_descrption", gateway_endpoint_descrption)
         if gateway_endpoint_name is not None:
-            pulumi.set(__self__, "gateway_endpoint_name", gateway_endpoint_name)
+            _setter("gateway_endpoint_name", gateway_endpoint_name)
         if policy_document is not None:
-            pulumi.set(__self__, "policy_document", policy_document)
+            _setter("policy_document", policy_document)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="serviceName")
@@ -153,24 +174,49 @@ class _GatewayEndpointState:
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of the resource.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         """
+        _GatewayEndpointState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            gateway_endpoint_descrption=gateway_endpoint_descrption,
+            gateway_endpoint_name=gateway_endpoint_name,
+            policy_document=policy_document,
+            resource_group_id=resource_group_id,
+            service_name=service_name,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             gateway_endpoint_descrption: Optional[pulumi.Input[str]] = None,
+             gateway_endpoint_name: Optional[pulumi.Input[str]] = None,
+             policy_document: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if gateway_endpoint_descrption is not None:
-            pulumi.set(__self__, "gateway_endpoint_descrption", gateway_endpoint_descrption)
+            _setter("gateway_endpoint_descrption", gateway_endpoint_descrption)
         if gateway_endpoint_name is not None:
-            pulumi.set(__self__, "gateway_endpoint_name", gateway_endpoint_name)
+            _setter("gateway_endpoint_name", gateway_endpoint_name)
         if policy_document is not None:
-            pulumi.set(__self__, "policy_document", policy_document)
+            _setter("policy_document", policy_document)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if service_name is not None:
-            pulumi.set(__self__, "service_name", service_name)
+            _setter("service_name", service_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -406,6 +452,10 @@ class GatewayEndpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayEndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

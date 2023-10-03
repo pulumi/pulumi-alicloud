@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['MonitorGroupArgs', 'MonitorGroup']
@@ -27,16 +27,33 @@ class MonitorGroupArgs:
         :param pulumi.Input[str] resource_group_name: The name of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        MonitorGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_groups=contact_groups,
+            monitor_group_name=monitor_group_name,
+            resource_group_id=resource_group_id,
+            resource_group_name=resource_group_name,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             monitor_group_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             resource_group_name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if contact_groups is not None:
-            pulumi.set(__self__, "contact_groups", contact_groups)
+            _setter("contact_groups", contact_groups)
         if monitor_group_name is not None:
-            pulumi.set(__self__, "monitor_group_name", monitor_group_name)
+            _setter("monitor_group_name", monitor_group_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if resource_group_name is not None:
-            pulumi.set(__self__, "resource_group_name", resource_group_name)
+            _setter("resource_group_name", resource_group_name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="contactGroups")
@@ -115,16 +132,33 @@ class _MonitorGroupState:
         :param pulumi.Input[str] resource_group_name: The name of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        _MonitorGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_groups=contact_groups,
+            monitor_group_name=monitor_group_name,
+            resource_group_id=resource_group_id,
+            resource_group_name=resource_group_name,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             monitor_group_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             resource_group_name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if contact_groups is not None:
-            pulumi.set(__self__, "contact_groups", contact_groups)
+            _setter("contact_groups", contact_groups)
         if monitor_group_name is not None:
-            pulumi.set(__self__, "monitor_group_name", monitor_group_name)
+            _setter("monitor_group_name", monitor_group_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if resource_group_name is not None:
-            pulumi.set(__self__, "resource_group_name", resource_group_name)
+            _setter("resource_group_name", resource_group_name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="contactGroups")
@@ -290,6 +324,10 @@ class MonitorGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MonitorGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

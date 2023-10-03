@@ -13,30 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketLifecycleRuleAbortMultipartUpload {
     /**
-     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
      * 
      */
     private @Nullable String createdBeforeDate;
     /**
-     * @return Specifies the number of days after object creation when the specific rule action takes effect.
-     * 
-     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+     * @return Specifies the number of days noncurrent object versions transition.
      * 
      */
     private @Nullable Integer days;
 
     private BucketLifecycleRuleAbortMultipartUpload() {}
     /**
-     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
      * 
      */
     public Optional<String> createdBeforeDate() {
         return Optional.ofNullable(this.createdBeforeDate);
     }
     /**
-     * @return Specifies the number of days after object creation when the specific rule action takes effect.
-     * 
-     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+     * @return Specifies the number of days noncurrent object versions transition.
      * 
      */
     public Optional<Integer> days() {

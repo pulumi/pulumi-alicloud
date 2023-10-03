@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NetworkRuleArgs', 'NetworkRule']
@@ -23,11 +23,24 @@ class NetworkRuleArgs:
         :param pulumi.Input[str] description: Description.
         :param pulumi.Input[str] network_rule_name: Network Rule Name.
         """
-        pulumi.set(__self__, "source_private_ips", source_private_ips)
+        NetworkRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            source_private_ips=source_private_ips,
+            description=description,
+            network_rule_name=network_rule_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             source_private_ips: pulumi.Input[Sequence[pulumi.Input[str]]],
+             description: Optional[pulumi.Input[str]] = None,
+             network_rule_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("source_private_ips", source_private_ips)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if network_rule_name is not None:
-            pulumi.set(__self__, "network_rule_name", network_rule_name)
+            _setter("network_rule_name", network_rule_name)
 
     @property
     @pulumi.getter(name="sourcePrivateIps")
@@ -78,12 +91,25 @@ class _NetworkRuleState:
         :param pulumi.Input[str] network_rule_name: Network Rule Name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_private_ips: Allowed private network addresses.
         """
+        _NetworkRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            network_rule_name=network_rule_name,
+            source_private_ips=source_private_ips,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             network_rule_name: Optional[pulumi.Input[str]] = None,
+             source_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if network_rule_name is not None:
-            pulumi.set(__self__, "network_rule_name", network_rule_name)
+            _setter("network_rule_name", network_rule_name)
         if source_private_ips is not None:
-            pulumi.set(__self__, "source_private_ips", source_private_ips)
+            _setter("source_private_ips", source_private_ips)
 
     @property
     @pulumi.getter
@@ -227,6 +253,10 @@ class NetworkRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -73,57 +73,118 @@ class ClusterArgs:
         :param pulumi.Input[str] user_defined_emr_ecs_role: Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
         :param pulumi.Input[str] vswitch_id: Global vswitch id, you can also specify it in host group.
         """
-        pulumi.set(__self__, "cluster_type", cluster_type)
-        pulumi.set(__self__, "emr_ver", emr_ver)
-        pulumi.set(__self__, "zone_id", zone_id)
+        ClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_type=cluster_type,
+            emr_ver=emr_ver,
+            zone_id=zone_id,
+            bootstrap_actions=bootstrap_actions,
+            charge_type=charge_type,
+            configs=configs,
+            deposit_type=deposit_type,
+            eas_enable=eas_enable,
+            high_availability_enable=high_availability_enable,
+            host_groups=host_groups,
+            is_open_public_ip=is_open_public_ip,
+            key_pair_name=key_pair_name,
+            master_pwd=master_pwd,
+            meta_store_conf=meta_store_conf,
+            meta_store_type=meta_store_type,
+            modify_cluster_service_config=modify_cluster_service_config,
+            name=name,
+            option_software_lists=option_software_lists,
+            period=period,
+            related_cluster_id=related_cluster_id,
+            resource_group_id=resource_group_id,
+            security_group_id=security_group_id,
+            ssh_enable=ssh_enable,
+            tags=tags,
+            use_local_metadb=use_local_metadb,
+            user_defined_emr_ecs_role=user_defined_emr_ecs_role,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_type: pulumi.Input[str],
+             emr_ver: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             bootstrap_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]] = None,
+             charge_type: Optional[pulumi.Input[str]] = None,
+             configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]]] = None,
+             deposit_type: Optional[pulumi.Input[str]] = None,
+             eas_enable: Optional[pulumi.Input[bool]] = None,
+             high_availability_enable: Optional[pulumi.Input[bool]] = None,
+             host_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]]] = None,
+             is_open_public_ip: Optional[pulumi.Input[bool]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             master_pwd: Optional[pulumi.Input[str]] = None,
+             meta_store_conf: Optional[pulumi.Input['ClusterMetaStoreConfArgs']] = None,
+             meta_store_type: Optional[pulumi.Input[str]] = None,
+             modify_cluster_service_config: Optional[pulumi.Input['ClusterModifyClusterServiceConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             option_software_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             related_cluster_id: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             ssh_enable: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             use_local_metadb: Optional[pulumi.Input[bool]] = None,
+             user_defined_emr_ecs_role: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_type", cluster_type)
+        _setter("emr_ver", emr_ver)
+        _setter("zone_id", zone_id)
         if bootstrap_actions is not None:
-            pulumi.set(__self__, "bootstrap_actions", bootstrap_actions)
+            _setter("bootstrap_actions", bootstrap_actions)
         if charge_type is not None:
-            pulumi.set(__self__, "charge_type", charge_type)
+            _setter("charge_type", charge_type)
         if configs is not None:
-            pulumi.set(__self__, "configs", configs)
+            _setter("configs", configs)
         if deposit_type is not None:
-            pulumi.set(__self__, "deposit_type", deposit_type)
+            _setter("deposit_type", deposit_type)
         if eas_enable is not None:
-            pulumi.set(__self__, "eas_enable", eas_enable)
+            _setter("eas_enable", eas_enable)
         if high_availability_enable is not None:
-            pulumi.set(__self__, "high_availability_enable", high_availability_enable)
+            _setter("high_availability_enable", high_availability_enable)
         if host_groups is not None:
-            pulumi.set(__self__, "host_groups", host_groups)
+            _setter("host_groups", host_groups)
         if is_open_public_ip is not None:
-            pulumi.set(__self__, "is_open_public_ip", is_open_public_ip)
+            _setter("is_open_public_ip", is_open_public_ip)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
         if master_pwd is not None:
-            pulumi.set(__self__, "master_pwd", master_pwd)
+            _setter("master_pwd", master_pwd)
         if meta_store_conf is not None:
-            pulumi.set(__self__, "meta_store_conf", meta_store_conf)
+            _setter("meta_store_conf", meta_store_conf)
         if meta_store_type is not None:
-            pulumi.set(__self__, "meta_store_type", meta_store_type)
+            _setter("meta_store_type", meta_store_type)
         if modify_cluster_service_config is not None:
-            pulumi.set(__self__, "modify_cluster_service_config", modify_cluster_service_config)
+            _setter("modify_cluster_service_config", modify_cluster_service_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if option_software_lists is not None:
-            pulumi.set(__self__, "option_software_lists", option_software_lists)
+            _setter("option_software_lists", option_software_lists)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if related_cluster_id is not None:
-            pulumi.set(__self__, "related_cluster_id", related_cluster_id)
+            _setter("related_cluster_id", related_cluster_id)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if ssh_enable is not None:
-            pulumi.set(__self__, "ssh_enable", ssh_enable)
+            _setter("ssh_enable", ssh_enable)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if use_local_metadb is not None:
-            pulumi.set(__self__, "use_local_metadb", use_local_metadb)
+            _setter("use_local_metadb", use_local_metadb)
         if user_defined_emr_ecs_role is not None:
-            pulumi.set(__self__, "user_defined_emr_ecs_role", user_defined_emr_ecs_role)
+            _setter("user_defined_emr_ecs_role", user_defined_emr_ecs_role)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="clusterType")
@@ -510,60 +571,121 @@ class _ClusterState:
         :param pulumi.Input[str] vswitch_id: Global vswitch id, you can also specify it in host group.
         :param pulumi.Input[str] zone_id: Zone ID, e.g. cn-huhehaote-a
         """
+        _ClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bootstrap_actions=bootstrap_actions,
+            charge_type=charge_type,
+            cluster_type=cluster_type,
+            configs=configs,
+            deposit_type=deposit_type,
+            eas_enable=eas_enable,
+            emr_ver=emr_ver,
+            high_availability_enable=high_availability_enable,
+            host_groups=host_groups,
+            is_open_public_ip=is_open_public_ip,
+            key_pair_name=key_pair_name,
+            master_pwd=master_pwd,
+            meta_store_conf=meta_store_conf,
+            meta_store_type=meta_store_type,
+            modify_cluster_service_config=modify_cluster_service_config,
+            name=name,
+            option_software_lists=option_software_lists,
+            period=period,
+            related_cluster_id=related_cluster_id,
+            resource_group_id=resource_group_id,
+            security_group_id=security_group_id,
+            ssh_enable=ssh_enable,
+            tags=tags,
+            use_local_metadb=use_local_metadb,
+            user_defined_emr_ecs_role=user_defined_emr_ecs_role,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bootstrap_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]] = None,
+             charge_type: Optional[pulumi.Input[str]] = None,
+             cluster_type: Optional[pulumi.Input[str]] = None,
+             configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]]] = None,
+             deposit_type: Optional[pulumi.Input[str]] = None,
+             eas_enable: Optional[pulumi.Input[bool]] = None,
+             emr_ver: Optional[pulumi.Input[str]] = None,
+             high_availability_enable: Optional[pulumi.Input[bool]] = None,
+             host_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]]] = None,
+             is_open_public_ip: Optional[pulumi.Input[bool]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             master_pwd: Optional[pulumi.Input[str]] = None,
+             meta_store_conf: Optional[pulumi.Input['ClusterMetaStoreConfArgs']] = None,
+             meta_store_type: Optional[pulumi.Input[str]] = None,
+             modify_cluster_service_config: Optional[pulumi.Input['ClusterModifyClusterServiceConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             option_software_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             related_cluster_id: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             ssh_enable: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             use_local_metadb: Optional[pulumi.Input[bool]] = None,
+             user_defined_emr_ecs_role: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bootstrap_actions is not None:
-            pulumi.set(__self__, "bootstrap_actions", bootstrap_actions)
+            _setter("bootstrap_actions", bootstrap_actions)
         if charge_type is not None:
-            pulumi.set(__self__, "charge_type", charge_type)
+            _setter("charge_type", charge_type)
         if cluster_type is not None:
-            pulumi.set(__self__, "cluster_type", cluster_type)
+            _setter("cluster_type", cluster_type)
         if configs is not None:
-            pulumi.set(__self__, "configs", configs)
+            _setter("configs", configs)
         if deposit_type is not None:
-            pulumi.set(__self__, "deposit_type", deposit_type)
+            _setter("deposit_type", deposit_type)
         if eas_enable is not None:
-            pulumi.set(__self__, "eas_enable", eas_enable)
+            _setter("eas_enable", eas_enable)
         if emr_ver is not None:
-            pulumi.set(__self__, "emr_ver", emr_ver)
+            _setter("emr_ver", emr_ver)
         if high_availability_enable is not None:
-            pulumi.set(__self__, "high_availability_enable", high_availability_enable)
+            _setter("high_availability_enable", high_availability_enable)
         if host_groups is not None:
-            pulumi.set(__self__, "host_groups", host_groups)
+            _setter("host_groups", host_groups)
         if is_open_public_ip is not None:
-            pulumi.set(__self__, "is_open_public_ip", is_open_public_ip)
+            _setter("is_open_public_ip", is_open_public_ip)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
         if master_pwd is not None:
-            pulumi.set(__self__, "master_pwd", master_pwd)
+            _setter("master_pwd", master_pwd)
         if meta_store_conf is not None:
-            pulumi.set(__self__, "meta_store_conf", meta_store_conf)
+            _setter("meta_store_conf", meta_store_conf)
         if meta_store_type is not None:
-            pulumi.set(__self__, "meta_store_type", meta_store_type)
+            _setter("meta_store_type", meta_store_type)
         if modify_cluster_service_config is not None:
-            pulumi.set(__self__, "modify_cluster_service_config", modify_cluster_service_config)
+            _setter("modify_cluster_service_config", modify_cluster_service_config)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if option_software_lists is not None:
-            pulumi.set(__self__, "option_software_lists", option_software_lists)
+            _setter("option_software_lists", option_software_lists)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if related_cluster_id is not None:
-            pulumi.set(__self__, "related_cluster_id", related_cluster_id)
+            _setter("related_cluster_id", related_cluster_id)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if ssh_enable is not None:
-            pulumi.set(__self__, "ssh_enable", ssh_enable)
+            _setter("ssh_enable", ssh_enable)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if use_local_metadb is not None:
-            pulumi.set(__self__, "use_local_metadb", use_local_metadb)
+            _setter("use_local_metadb", use_local_metadb)
         if user_defined_emr_ecs_role is not None:
-            pulumi.set(__self__, "user_defined_emr_ecs_role", user_defined_emr_ecs_role)
+            _setter("user_defined_emr_ecs_role", user_defined_emr_ecs_role)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="bootstrapActions")
@@ -1003,6 +1125,10 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1060,8 +1186,18 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["is_open_public_ip"] = is_open_public_ip
             __props__.__dict__["key_pair_name"] = key_pair_name
             __props__.__dict__["master_pwd"] = master_pwd
+            if meta_store_conf is not None and not isinstance(meta_store_conf, ClusterMetaStoreConfArgs):
+                meta_store_conf = meta_store_conf or {}
+                def _setter(key, value):
+                    meta_store_conf[key] = value
+                ClusterMetaStoreConfArgs._configure(_setter, **meta_store_conf)
             __props__.__dict__["meta_store_conf"] = meta_store_conf
             __props__.__dict__["meta_store_type"] = meta_store_type
+            if modify_cluster_service_config is not None and not isinstance(modify_cluster_service_config, ClusterModifyClusterServiceConfigArgs):
+                modify_cluster_service_config = modify_cluster_service_config or {}
+                def _setter(key, value):
+                    modify_cluster_service_config[key] = value
+                ClusterModifyClusterServiceConfigArgs._configure(_setter, **modify_cluster_service_config)
             __props__.__dict__["modify_cluster_service_config"] = modify_cluster_service_config
             __props__.__dict__["name"] = name
             __props__.__dict__["option_software_lists"] = option_software_lists

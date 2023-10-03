@@ -13,25 +13,25 @@ namespace Pulumi.AliCloud.Cms.Inputs
     public sealed class MetricRuleTemplateAlertTemplateEscalationsWarnGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        /// The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         /// </summary>
         [Input("comparisonOperator")]
         public Input<string>? ComparisonOperator { get; set; }
 
         /// <summary>
-        /// The statistical aggregation method for warn-level alerts.
+        /// The statistical aggregation method for critical-level alerts.
         /// </summary>
         [Input("statistics")]
         public Input<string>? Statistics { get; set; }
 
         /// <summary>
-        /// The threshold for warn-level alerts.
+        /// The threshold for critical-level alerts.
         /// </summary>
         [Input("threshold")]
         public Input<string>? Threshold { get; set; }
 
         /// <summary>
-        /// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        /// The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
         /// </summary>
         [Input("times")]
         public Input<string>? Times { get; set; }

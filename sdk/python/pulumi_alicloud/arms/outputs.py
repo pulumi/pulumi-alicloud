@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -77,13 +77,30 @@ class DispatchRuleGroupRule(dict):
         :param int group_id: The ID of the group rule.
         :param int repeat_interval: The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
         """
-        pulumi.set(__self__, "group_interval", group_interval)
-        pulumi.set(__self__, "group_wait_time", group_wait_time)
-        pulumi.set(__self__, "grouping_fields", grouping_fields)
+        DispatchRuleGroupRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_interval=group_interval,
+            group_wait_time=group_wait_time,
+            grouping_fields=grouping_fields,
+            group_id=group_id,
+            repeat_interval=repeat_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_interval: int,
+             group_wait_time: int,
+             grouping_fields: Sequence[str],
+             group_id: Optional[int] = None,
+             repeat_interval: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_interval", group_interval)
+        _setter("group_wait_time", group_wait_time)
+        _setter("grouping_fields", grouping_fields)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if repeat_interval is not None:
-            pulumi.set(__self__, "repeat_interval", repeat_interval)
+            _setter("repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="groupInterval")
@@ -150,7 +167,16 @@ class DispatchRuleLabelMatchExpressionGrid(dict):
         """
         :param Sequence['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs'] label_match_expression_groups: Sets the dispatch rule. See `label_match_expression_groups` below.
         """
-        pulumi.set(__self__, "label_match_expression_groups", label_match_expression_groups)
+        DispatchRuleLabelMatchExpressionGrid._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label_match_expression_groups=label_match_expression_groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label_match_expression_groups: Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label_match_expression_groups", label_match_expression_groups)
 
     @property
     @pulumi.getter(name="labelMatchExpressionGroups")
@@ -185,7 +211,16 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup(dict):
         """
         :param Sequence['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs'] label_match_expressions: Sets the dispatch rule. See `label_match_expressions` below.
         """
-        pulumi.set(__self__, "label_match_expressions", label_match_expressions)
+        DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label_match_expressions=label_match_expressions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label_match_expressions: Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label_match_expressions", label_match_expressions)
 
     @property
     @pulumi.getter(name="labelMatchExpressions")
@@ -217,9 +252,22 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
                * re: matches a regular expression.
         :param str value: The value of the tag.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "value", value)
+        DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            operator=operator,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             operator: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("operator", operator)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -284,8 +332,19 @@ class DispatchRuleNotifyRule(dict):
         :param Sequence[str] notify_channels: The notification method. Valid values: dingTalk, sms, webhook, email, and wechat.
         :param Sequence['DispatchRuleNotifyRuleNotifyObjectArgs'] notify_objects: Sets the notification object. See `notify_objects` below.
         """
-        pulumi.set(__self__, "notify_channels", notify_channels)
-        pulumi.set(__self__, "notify_objects", notify_objects)
+        DispatchRuleNotifyRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            notify_channels=notify_channels,
+            notify_objects=notify_objects,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             notify_channels: Sequence[str],
+             notify_objects: Sequence['outputs.DispatchRuleNotifyRuleNotifyObject'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("notify_channels", notify_channels)
+        _setter("notify_objects", notify_objects)
 
     @property
     @pulumi.getter(name="notifyChannels")
@@ -334,9 +393,22 @@ class DispatchRuleNotifyRuleNotifyObject(dict):
         :param str notify_object_id: The ID of the contact or contact group.
         :param str notify_type: The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "notify_object_id", notify_object_id)
-        pulumi.set(__self__, "notify_type", notify_type)
+        DispatchRuleNotifyRuleNotifyObject._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            notify_object_id=notify_object_id,
+            notify_type=notify_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             notify_object_id: str,
+             notify_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("notify_object_id", notify_object_id)
+        _setter("notify_type", notify_type)
 
     @property
     @pulumi.getter
@@ -372,10 +444,21 @@ class PrometheusAlertRuleAnnotation(dict):
         :param str name: The name of the annotation.
         :param str value: The value of the annotation.
         """
+        PrometheusAlertRuleAnnotation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -403,10 +486,21 @@ class PrometheusAlertRuleLabel(dict):
         :param str name: The name of the label.
         :param str value: The value of the label.
         """
+        PrometheusAlertRuleLabel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -440,11 +534,28 @@ class GetAlertContactGroupsGroupResult(dict):
         :param str create_time: The creation time of the resource.
         :param str id: The ID of the Alert Contact Group.
         """
-        pulumi.set(__self__, "alert_contact_group_id", alert_contact_group_id)
-        pulumi.set(__self__, "alert_contact_group_name", alert_contact_group_name)
-        pulumi.set(__self__, "contact_ids", contact_ids)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
+        GetAlertContactGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_contact_group_id=alert_contact_group_id,
+            alert_contact_group_name=alert_contact_group_name,
+            contact_ids=contact_ids,
+            create_time=create_time,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_contact_group_id: str,
+             alert_contact_group_name: str,
+             contact_ids: Sequence[str],
+             create_time: str,
+             id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alert_contact_group_id", alert_contact_group_id)
+        _setter("alert_contact_group_name", alert_contact_group_name)
+        _setter("contact_ids", contact_ids)
+        _setter("create_time", create_time)
+        _setter("id", id)
 
     @property
     @pulumi.getter(name="alertContactGroupId")
@@ -510,15 +621,40 @@ class GetAlertContactsContactResult(dict):
         :param bool system_noc: Specifies whether the alert contact receives system notifications.
         :param str webhook: Webhook Information.
         """
-        pulumi.set(__self__, "alert_contact_id", alert_contact_id)
-        pulumi.set(__self__, "alert_contact_name", alert_contact_name)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "ding_robot_webhook_url", ding_robot_webhook_url)
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "phone_num", phone_num)
-        pulumi.set(__self__, "system_noc", system_noc)
-        pulumi.set(__self__, "webhook", webhook)
+        GetAlertContactsContactResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_contact_id=alert_contact_id,
+            alert_contact_name=alert_contact_name,
+            create_time=create_time,
+            ding_robot_webhook_url=ding_robot_webhook_url,
+            email=email,
+            id=id,
+            phone_num=phone_num,
+            system_noc=system_noc,
+            webhook=webhook,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_contact_id: str,
+             alert_contact_name: str,
+             create_time: str,
+             ding_robot_webhook_url: str,
+             email: str,
+             id: str,
+             phone_num: str,
+             system_noc: bool,
+             webhook: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alert_contact_id", alert_contact_id)
+        _setter("alert_contact_name", alert_contact_name)
+        _setter("create_time", create_time)
+        _setter("ding_robot_webhook_url", ding_robot_webhook_url)
+        _setter("email", email)
+        _setter("id", id)
+        _setter("phone_num", phone_num)
+        _setter("system_noc", system_noc)
+        _setter("webhook", webhook)
 
     @property
     @pulumi.getter(name="alertContactId")
@@ -613,14 +749,37 @@ class GetDispatchRulesRuleResult(dict):
         :param Sequence['GetDispatchRulesRuleNotifyRuleArgs'] notify_rules: Sets the notification rule.
         :param str status: The resource status of Alert Dispatch Rule.
         """
-        pulumi.set(__self__, "dispatch_rule_id", dispatch_rule_id)
-        pulumi.set(__self__, "dispatch_rule_name", dispatch_rule_name)
-        pulumi.set(__self__, "dispatch_type", dispatch_type)
-        pulumi.set(__self__, "group_rules", group_rules)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "label_match_expression_grids", label_match_expression_grids)
-        pulumi.set(__self__, "notify_rules", notify_rules)
-        pulumi.set(__self__, "status", status)
+        GetDispatchRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dispatch_rule_id=dispatch_rule_id,
+            dispatch_rule_name=dispatch_rule_name,
+            dispatch_type=dispatch_type,
+            group_rules=group_rules,
+            id=id,
+            label_match_expression_grids=label_match_expression_grids,
+            notify_rules=notify_rules,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dispatch_rule_id: str,
+             dispatch_rule_name: str,
+             dispatch_type: str,
+             group_rules: Sequence['outputs.GetDispatchRulesRuleGroupRuleResult'],
+             id: str,
+             label_match_expression_grids: Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridResult'],
+             notify_rules: Sequence['outputs.GetDispatchRulesRuleNotifyRuleResult'],
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dispatch_rule_id", dispatch_rule_id)
+        _setter("dispatch_rule_name", dispatch_rule_name)
+        _setter("dispatch_type", dispatch_type)
+        _setter("group_rules", group_rules)
+        _setter("id", id)
+        _setter("label_match_expression_grids", label_match_expression_grids)
+        _setter("notify_rules", notify_rules)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="dispatchRuleId")
@@ -698,11 +857,28 @@ class GetDispatchRulesRuleGroupRuleResult(dict):
         :param Sequence[str] grouping_fields: The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
         :param int repeat_interval: The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
         """
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_interval", group_interval)
-        pulumi.set(__self__, "group_wait_time", group_wait_time)
-        pulumi.set(__self__, "grouping_fields", grouping_fields)
-        pulumi.set(__self__, "repeat_interval", repeat_interval)
+        GetDispatchRulesRuleGroupRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_id=group_id,
+            group_interval=group_interval,
+            group_wait_time=group_wait_time,
+            grouping_fields=grouping_fields,
+            repeat_interval=repeat_interval,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_id: int,
+             group_interval: int,
+             group_wait_time: int,
+             grouping_fields: Sequence[str],
+             repeat_interval: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_id", group_id)
+        _setter("group_interval", group_interval)
+        _setter("group_wait_time", group_wait_time)
+        _setter("grouping_fields", grouping_fields)
+        _setter("repeat_interval", repeat_interval)
 
     @property
     @pulumi.getter(name="groupId")
@@ -749,7 +925,16 @@ class GetDispatchRulesRuleLabelMatchExpressionGridResult(dict):
         """
         :param Sequence['GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs'] label_match_expression_groups: Sets the dispatch rule.
         """
-        pulumi.set(__self__, "label_match_expression_groups", label_match_expression_groups)
+        GetDispatchRulesRuleLabelMatchExpressionGridResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label_match_expression_groups=label_match_expression_groups,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label_match_expression_groups: Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label_match_expression_groups", label_match_expression_groups)
 
     @property
     @pulumi.getter(name="labelMatchExpressionGroups")
@@ -767,7 +952,16 @@ class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupResul
         """
         :param Sequence['GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs'] label_match_expressions: Sets the dispatch rule.
         """
-        pulumi.set(__self__, "label_match_expressions", label_match_expressions)
+        GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            label_match_expressions=label_match_expressions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             label_match_expressions: Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("label_match_expressions", label_match_expressions)
 
     @property
     @pulumi.getter(name="labelMatchExpressions")
@@ -789,9 +983,22 @@ class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabel
         :param str operator: The operator used in the dispatch rule.
         :param str value: The value of the tag.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "value", value)
+        GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            operator=operator,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             operator: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("operator", operator)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -827,8 +1034,19 @@ class GetDispatchRulesRuleNotifyRuleResult(dict):
         :param Sequence[str] notify_channels: The notification method.
         :param Sequence['GetDispatchRulesRuleNotifyRuleNotifyObjectArgs'] notify_objects: Sets the notification object.
         """
-        pulumi.set(__self__, "notify_channels", notify_channels)
-        pulumi.set(__self__, "notify_objects", notify_objects)
+        GetDispatchRulesRuleNotifyRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            notify_channels=notify_channels,
+            notify_objects=notify_objects,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             notify_channels: Sequence[str],
+             notify_objects: Sequence['outputs.GetDispatchRulesRuleNotifyRuleNotifyObjectResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("notify_channels", notify_channels)
+        _setter("notify_objects", notify_objects)
 
     @property
     @pulumi.getter(name="notifyChannels")
@@ -858,9 +1076,22 @@ class GetDispatchRulesRuleNotifyRuleNotifyObjectResult(dict):
         :param str notify_object_id: The ID of the contact or contact group.
         :param str notify_type: The type of the alert contact.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "notify_object_id", notify_object_id)
-        pulumi.set(__self__, "notify_type", notify_type)
+        GetDispatchRulesRuleNotifyRuleNotifyObjectResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            notify_object_id=notify_object_id,
+            notify_type=notify_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             notify_object_id: str,
+             notify_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("notify_object_id", notify_object_id)
+        _setter("notify_type", notify_type)
 
     @property
     @pulumi.getter
@@ -910,15 +1141,40 @@ class GetIntegrationExportersIntegrationExporterResult(dict):
         :param str target: Monitor the target address.
         :param str version: The version information.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "exporter_type", exporter_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "integration_type", integration_type)
-        pulumi.set(__self__, "param", param)
-        pulumi.set(__self__, "target", target)
-        pulumi.set(__self__, "version", version)
+        GetIntegrationExportersIntegrationExporterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            exporter_type=exporter_type,
+            id=id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            integration_type=integration_type,
+            param=param,
+            target=target,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: str,
+             exporter_type: str,
+             id: str,
+             instance_id: int,
+             instance_name: str,
+             integration_type: str,
+             param: str,
+             target: str,
+             version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("exporter_type", exporter_type)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("integration_type", integration_type)
+        _setter("param", param)
+        _setter("target", target)
+        _setter("version", version)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -1020,17 +1276,46 @@ class GetPrometheisPrometheiResult(dict):
         :param str vpc_id: The ID of the VPC.
         :param str vswitch_id: The ID of the VSwitch.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "cluster_type", cluster_type)
-        pulumi.set(__self__, "grafana_instance_id", grafana_instance_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "sub_clusters_json", sub_clusters_json)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetPrometheisPrometheiResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            cluster_name=cluster_name,
+            cluster_type=cluster_type,
+            grafana_instance_id=grafana_instance_id,
+            id=id,
+            resource_group_id=resource_group_id,
+            security_group_id=security_group_id,
+            sub_clusters_json=sub_clusters_json,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: str,
+             cluster_name: str,
+             cluster_type: str,
+             grafana_instance_id: str,
+             id: str,
+             resource_group_id: str,
+             security_group_id: str,
+             sub_clusters_json: str,
+             tags: Mapping[str, Any],
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("cluster_name", cluster_name)
+        _setter("cluster_type", cluster_type)
+        _setter("grafana_instance_id", grafana_instance_id)
+        _setter("id", id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("security_group_id", security_group_id)
+        _setter("sub_clusters_json", sub_clusters_json)
+        _setter("tags", tags)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -1152,19 +1437,52 @@ class GetPrometheusAlertRulesRuleResult(dict):
         :param int status: The status of the resource. Valid values: `0`, `1`.
         :param str type: The type of the alert rule.
         """
-        pulumi.set(__self__, "annotations", annotations)
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "dispatch_rule_id", dispatch_rule_id)
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "labels", labels)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "notify_type", notify_type)
-        pulumi.set(__self__, "prometheus_alert_rule_id", prometheus_alert_rule_id)
-        pulumi.set(__self__, "prometheus_alert_rule_name", prometheus_alert_rule_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
+        GetPrometheusAlertRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            cluster_id=cluster_id,
+            dispatch_rule_id=dispatch_rule_id,
+            duration=duration,
+            expression=expression,
+            id=id,
+            labels=labels,
+            message=message,
+            notify_type=notify_type,
+            prometheus_alert_rule_id=prometheus_alert_rule_id,
+            prometheus_alert_rule_name=prometheus_alert_rule_name,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Sequence['outputs.GetPrometheusAlertRulesRuleAnnotationResult'],
+             cluster_id: str,
+             dispatch_rule_id: str,
+             duration: str,
+             expression: str,
+             id: str,
+             labels: Sequence['outputs.GetPrometheusAlertRulesRuleLabelResult'],
+             message: str,
+             notify_type: str,
+             prometheus_alert_rule_id: str,
+             prometheus_alert_rule_name: str,
+             status: int,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("annotations", annotations)
+        _setter("cluster_id", cluster_id)
+        _setter("dispatch_rule_id", dispatch_rule_id)
+        _setter("duration", duration)
+        _setter("expression", expression)
+        _setter("id", id)
+        _setter("labels", labels)
+        _setter("message", message)
+        _setter("notify_type", notify_type)
+        _setter("prometheus_alert_rule_id", prometheus_alert_rule_id)
+        _setter("prometheus_alert_rule_name", prometheus_alert_rule_name)
+        _setter("status", status)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1280,8 +1598,19 @@ class GetPrometheusAlertRulesRuleAnnotationResult(dict):
         :param str name: The name of the label.
         :param str value: The value of the label.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        GetPrometheusAlertRulesRuleAnnotationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1309,8 +1638,19 @@ class GetPrometheusAlertRulesRuleLabelResult(dict):
         :param str name: The name of the label.
         :param str value: The value of the label.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        GetPrometheusAlertRulesRuleLabelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1346,12 +1686,31 @@ class GetPrometheusMonitoringsPrometheusMonitoringResult(dict):
         :param str status: The status of the monitoring configuration. Valid values: `run`, `stop`.
         :param str type: The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "config_yaml", config_yaml)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "monitoring_name", monitoring_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
+        GetPrometheusMonitoringsPrometheusMonitoringResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            config_yaml=config_yaml,
+            id=id,
+            monitoring_name=monitoring_name,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: str,
+             config_yaml: str,
+             id: str,
+             monitoring_name: str,
+             status: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("config_yaml", config_yaml)
+        _setter("id", id)
+        _setter("monitoring_name", monitoring_name)
+        _setter("status", status)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -1415,10 +1774,25 @@ class GetRemoteWritesRemoteWriteResult(dict):
         :param str remote_write_name: The name of the Remote Write configuration item.
         :param str remote_write_yaml: The details of the Remote Write configuration item. The value is in the YAML format.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "remote_write_name", remote_write_name)
-        pulumi.set(__self__, "remote_write_yaml", remote_write_yaml)
+        GetRemoteWritesRemoteWriteResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            id=id,
+            remote_write_name=remote_write_name,
+            remote_write_yaml=remote_write_yaml,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: str,
+             id: str,
+             remote_write_name: str,
+             remote_write_yaml: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("id", id)
+        _setter("remote_write_name", remote_write_name)
+        _setter("remote_write_yaml", remote_write_yaml)
 
     @property
     @pulumi.getter(name="clusterId")

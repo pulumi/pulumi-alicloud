@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -115,34 +115,69 @@ class DomainListen(dict):
                - **2**: indicates that the custom field value set by you in the WAF read request header is used as the client IP address.
         :param Sequence[str] xff_headers: Set the list of custom fields used to obtain the client IP address.
         """
+        DomainListen._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert_id=cert_id,
+            cipher_suite=cipher_suite,
+            custom_ciphers=custom_ciphers,
+            enable_tlsv3=enable_tlsv3,
+            exclusive_ip=exclusive_ip,
+            focus_https=focus_https,
+            http2_enabled=http2_enabled,
+            http_ports=http_ports,
+            https_ports=https_ports,
+            ipv6_enabled=ipv6_enabled,
+            protection_resource=protection_resource,
+            tls_version=tls_version,
+            xff_header_mode=xff_header_mode,
+            xff_headers=xff_headers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert_id: Optional[str] = None,
+             cipher_suite: Optional[int] = None,
+             custom_ciphers: Optional[Sequence[str]] = None,
+             enable_tlsv3: Optional[bool] = None,
+             exclusive_ip: Optional[bool] = None,
+             focus_https: Optional[bool] = None,
+             http2_enabled: Optional[bool] = None,
+             http_ports: Optional[Sequence[int]] = None,
+             https_ports: Optional[Sequence[int]] = None,
+             ipv6_enabled: Optional[bool] = None,
+             protection_resource: Optional[str] = None,
+             tls_version: Optional[str] = None,
+             xff_header_mode: Optional[int] = None,
+             xff_headers: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cert_id is not None:
-            pulumi.set(__self__, "cert_id", cert_id)
+            _setter("cert_id", cert_id)
         if cipher_suite is not None:
-            pulumi.set(__self__, "cipher_suite", cipher_suite)
+            _setter("cipher_suite", cipher_suite)
         if custom_ciphers is not None:
-            pulumi.set(__self__, "custom_ciphers", custom_ciphers)
+            _setter("custom_ciphers", custom_ciphers)
         if enable_tlsv3 is not None:
-            pulumi.set(__self__, "enable_tlsv3", enable_tlsv3)
+            _setter("enable_tlsv3", enable_tlsv3)
         if exclusive_ip is not None:
-            pulumi.set(__self__, "exclusive_ip", exclusive_ip)
+            _setter("exclusive_ip", exclusive_ip)
         if focus_https is not None:
-            pulumi.set(__self__, "focus_https", focus_https)
+            _setter("focus_https", focus_https)
         if http2_enabled is not None:
-            pulumi.set(__self__, "http2_enabled", http2_enabled)
+            _setter("http2_enabled", http2_enabled)
         if http_ports is not None:
-            pulumi.set(__self__, "http_ports", http_ports)
+            _setter("http_ports", http_ports)
         if https_ports is not None:
-            pulumi.set(__self__, "https_ports", https_ports)
+            _setter("https_ports", https_ports)
         if ipv6_enabled is not None:
-            pulumi.set(__self__, "ipv6_enabled", ipv6_enabled)
+            _setter("ipv6_enabled", ipv6_enabled)
         if protection_resource is not None:
-            pulumi.set(__self__, "protection_resource", protection_resource)
+            _setter("protection_resource", protection_resource)
         if tls_version is not None:
-            pulumi.set(__self__, "tls_version", tls_version)
+            _setter("tls_version", tls_version)
         if xff_header_mode is not None:
-            pulumi.set(__self__, "xff_header_mode", xff_header_mode)
+            _setter("xff_header_mode", xff_header_mode)
         if xff_headers is not None:
-            pulumi.set(__self__, "xff_headers", xff_headers)
+            _setter("xff_headers", xff_headers)
 
     @property
     @pulumi.getter(name="certId")
@@ -353,31 +388,64 @@ class DomainRedirect(dict):
         :param str sni_host: Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).> This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
         :param int write_timeout: Write timeout duration> **Unit**: seconds, **Value range**: 5~1800.
         """
-        pulumi.set(__self__, "loadbalance", loadbalance)
+        DomainRedirect._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            loadbalance=loadbalance,
+            backends=backends,
+            connect_timeout=connect_timeout,
+            focus_http_backend=focus_http_backend,
+            keepalive=keepalive,
+            keepalive_requests=keepalive_requests,
+            keepalive_timeout=keepalive_timeout,
+            read_timeout=read_timeout,
+            request_headers=request_headers,
+            retry=retry,
+            sni_enabled=sni_enabled,
+            sni_host=sni_host,
+            write_timeout=write_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             loadbalance: str,
+             backends: Optional[Sequence[str]] = None,
+             connect_timeout: Optional[int] = None,
+             focus_http_backend: Optional[bool] = None,
+             keepalive: Optional[bool] = None,
+             keepalive_requests: Optional[int] = None,
+             keepalive_timeout: Optional[int] = None,
+             read_timeout: Optional[int] = None,
+             request_headers: Optional[Sequence['outputs.DomainRedirectRequestHeader']] = None,
+             retry: Optional[bool] = None,
+             sni_enabled: Optional[bool] = None,
+             sni_host: Optional[str] = None,
+             write_timeout: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("loadbalance", loadbalance)
         if backends is not None:
-            pulumi.set(__self__, "backends", backends)
+            _setter("backends", backends)
         if connect_timeout is not None:
-            pulumi.set(__self__, "connect_timeout", connect_timeout)
+            _setter("connect_timeout", connect_timeout)
         if focus_http_backend is not None:
-            pulumi.set(__self__, "focus_http_backend", focus_http_backend)
+            _setter("focus_http_backend", focus_http_backend)
         if keepalive is not None:
-            pulumi.set(__self__, "keepalive", keepalive)
+            _setter("keepalive", keepalive)
         if keepalive_requests is not None:
-            pulumi.set(__self__, "keepalive_requests", keepalive_requests)
+            _setter("keepalive_requests", keepalive_requests)
         if keepalive_timeout is not None:
-            pulumi.set(__self__, "keepalive_timeout", keepalive_timeout)
+            _setter("keepalive_timeout", keepalive_timeout)
         if read_timeout is not None:
-            pulumi.set(__self__, "read_timeout", read_timeout)
+            _setter("read_timeout", read_timeout)
         if request_headers is not None:
-            pulumi.set(__self__, "request_headers", request_headers)
+            _setter("request_headers", request_headers)
         if retry is not None:
-            pulumi.set(__self__, "retry", retry)
+            _setter("retry", retry)
         if sni_enabled is not None:
-            pulumi.set(__self__, "sni_enabled", sni_enabled)
+            _setter("sni_enabled", sni_enabled)
         if sni_host is not None:
-            pulumi.set(__self__, "sni_host", sni_host)
+            _setter("sni_host", sni_host)
         if write_timeout is not None:
-            pulumi.set(__self__, "write_timeout", write_timeout)
+            _setter("write_timeout", write_timeout)
 
     @property
     @pulumi.getter
@@ -507,10 +575,21 @@ class DomainRedirectRequestHeader(dict):
         :param str key: The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
         :param str value: The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
         """
+        DomainRedirectRequestHeader._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -546,12 +625,31 @@ class GetDomainsDomainResult(dict):
         :param str resource_manager_resource_group_id: The ID of the resource group.
         :param str status: The status of the domain.
         """
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "listens", listens)
-        pulumi.set(__self__, "redirects", redirects)
-        pulumi.set(__self__, "resource_manager_resource_group_id", resource_manager_resource_group_id)
-        pulumi.set(__self__, "status", status)
+        GetDomainsDomainResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain=domain,
+            id=id,
+            listens=listens,
+            redirects=redirects,
+            resource_manager_resource_group_id=resource_manager_resource_group_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain: str,
+             id: str,
+             listens: Sequence['outputs.GetDomainsDomainListenResult'],
+             redirects: Sequence['outputs.GetDomainsDomainRedirectResult'],
+             resource_manager_resource_group_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain", domain)
+        _setter("id", id)
+        _setter("listens", listens)
+        _setter("redirects", redirects)
+        _setter("resource_manager_resource_group_id", resource_manager_resource_group_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -635,20 +733,55 @@ class GetDomainsDomainListenResult(dict):
         :param int xff_header_mode: WAF obtains the real IP address of the client.
         :param Sequence[str] xff_headers: Set the list of custom fields used to obtain the client IP address.
         """
-        pulumi.set(__self__, "cert_id", cert_id)
-        pulumi.set(__self__, "cipher_suite", cipher_suite)
-        pulumi.set(__self__, "custom_ciphers", custom_ciphers)
-        pulumi.set(__self__, "enable_tlsv3", enable_tlsv3)
-        pulumi.set(__self__, "exclusive_ip", exclusive_ip)
-        pulumi.set(__self__, "focus_https", focus_https)
-        pulumi.set(__self__, "http2_enabled", http2_enabled)
-        pulumi.set(__self__, "http_ports", http_ports)
-        pulumi.set(__self__, "https_ports", https_ports)
-        pulumi.set(__self__, "ipv6_enabled", ipv6_enabled)
-        pulumi.set(__self__, "protection_resource", protection_resource)
-        pulumi.set(__self__, "tls_version", tls_version)
-        pulumi.set(__self__, "xff_header_mode", xff_header_mode)
-        pulumi.set(__self__, "xff_headers", xff_headers)
+        GetDomainsDomainListenResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert_id=cert_id,
+            cipher_suite=cipher_suite,
+            custom_ciphers=custom_ciphers,
+            enable_tlsv3=enable_tlsv3,
+            exclusive_ip=exclusive_ip,
+            focus_https=focus_https,
+            http2_enabled=http2_enabled,
+            http_ports=http_ports,
+            https_ports=https_ports,
+            ipv6_enabled=ipv6_enabled,
+            protection_resource=protection_resource,
+            tls_version=tls_version,
+            xff_header_mode=xff_header_mode,
+            xff_headers=xff_headers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert_id: str,
+             cipher_suite: int,
+             custom_ciphers: Sequence[str],
+             enable_tlsv3: bool,
+             exclusive_ip: bool,
+             focus_https: bool,
+             http2_enabled: bool,
+             http_ports: Sequence[int],
+             https_ports: Sequence[int],
+             ipv6_enabled: bool,
+             protection_resource: str,
+             tls_version: str,
+             xff_header_mode: int,
+             xff_headers: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cert_id", cert_id)
+        _setter("cipher_suite", cipher_suite)
+        _setter("custom_ciphers", custom_ciphers)
+        _setter("enable_tlsv3", enable_tlsv3)
+        _setter("exclusive_ip", exclusive_ip)
+        _setter("focus_https", focus_https)
+        _setter("http2_enabled", http2_enabled)
+        _setter("http_ports", http_ports)
+        _setter("https_ports", https_ports)
+        _setter("ipv6_enabled", ipv6_enabled)
+        _setter("protection_resource", protection_resource)
+        _setter("tls_version", tls_version)
+        _setter("xff_header_mode", xff_header_mode)
+        _setter("xff_headers", xff_headers)
 
     @property
     @pulumi.getter(name="certId")
@@ -794,19 +927,52 @@ class GetDomainsDomainRedirectResult(dict):
         :param str sni_host: Sets the value of the custom SNI extension field. If this parameter is not set, the value of the **Host** field in the request header is used as the value of the SNI extension field by default.In general, you do not need to customize SNI unless your business has special configuration requirements. You want WAF to use SNI that is inconsistent with the actual request Host in the back-to-origin request (that is, the custom SNI set here).> This parameter is required only when **sni_enalbed** is set to **true** (indicating that back-to-source SNI is enabled).
         :param int write_timeout: Write timeout duration. **Unit**: seconds, **Value range**:5~1800.
         """
-        pulumi.set(__self__, "backends", backends)
-        pulumi.set(__self__, "connect_timeout", connect_timeout)
-        pulumi.set(__self__, "focus_http_backend", focus_http_backend)
-        pulumi.set(__self__, "keepalive", keepalive)
-        pulumi.set(__self__, "keepalive_requests", keepalive_requests)
-        pulumi.set(__self__, "keepalive_timeout", keepalive_timeout)
-        pulumi.set(__self__, "loadbalance", loadbalance)
-        pulumi.set(__self__, "read_timeout", read_timeout)
-        pulumi.set(__self__, "request_headers", request_headers)
-        pulumi.set(__self__, "retry", retry)
-        pulumi.set(__self__, "sni_enabled", sni_enabled)
-        pulumi.set(__self__, "sni_host", sni_host)
-        pulumi.set(__self__, "write_timeout", write_timeout)
+        GetDomainsDomainRedirectResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backends=backends,
+            connect_timeout=connect_timeout,
+            focus_http_backend=focus_http_backend,
+            keepalive=keepalive,
+            keepalive_requests=keepalive_requests,
+            keepalive_timeout=keepalive_timeout,
+            loadbalance=loadbalance,
+            read_timeout=read_timeout,
+            request_headers=request_headers,
+            retry=retry,
+            sni_enabled=sni_enabled,
+            sni_host=sni_host,
+            write_timeout=write_timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backends: Sequence[str],
+             connect_timeout: int,
+             focus_http_backend: bool,
+             keepalive: bool,
+             keepalive_requests: int,
+             keepalive_timeout: int,
+             loadbalance: str,
+             read_timeout: int,
+             request_headers: Sequence['outputs.GetDomainsDomainRedirectRequestHeaderResult'],
+             retry: bool,
+             sni_enabled: bool,
+             sni_host: str,
+             write_timeout: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backends", backends)
+        _setter("connect_timeout", connect_timeout)
+        _setter("focus_http_backend", focus_http_backend)
+        _setter("keepalive", keepalive)
+        _setter("keepalive_requests", keepalive_requests)
+        _setter("keepalive_timeout", keepalive_timeout)
+        _setter("loadbalance", loadbalance)
+        _setter("read_timeout", read_timeout)
+        _setter("request_headers", request_headers)
+        _setter("retry", retry)
+        _setter("sni_enabled", sni_enabled)
+        _setter("sni_host", sni_host)
+        _setter("write_timeout", write_timeout)
 
     @property
     @pulumi.getter
@@ -922,8 +1088,19 @@ class GetDomainsDomainRedirectRequestHeaderResult(dict):
         :param str key: The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
         :param str value: The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. where_key_represents the specified custom request header field, and_value_represents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetDomainsDomainRedirectRequestHeaderResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -955,10 +1132,25 @@ class GetInstancesInstanceResult(dict):
         :param str instance_id: The first ID of the resource.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "status", status)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            id=id,
+            instance_id=instance_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             id: str,
+             instance_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayArgs', 'Gateway']
@@ -41,26 +41,57 @@ class GatewayArgs:
         :param pulumi.Input[bool] release_after_expiration: Whether to release the gateway due to expiration.
         :param pulumi.Input[str] vswitch_id: The vswitch id of gateway.
         """
-        pulumi.set(__self__, "gateway_name", gateway_name)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "storage_bundle_id", storage_bundle_id)
-        pulumi.set(__self__, "type", type)
+        GatewayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gateway_name=gateway_name,
+            location=location,
+            storage_bundle_id=storage_bundle_id,
+            type=type,
+            description=description,
+            gateway_class=gateway_class,
+            payment_type=payment_type,
+            public_network_bandwidth=public_network_bandwidth,
+            reason_detail=reason_detail,
+            reason_type=reason_type,
+            release_after_expiration=release_after_expiration,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gateway_name: pulumi.Input[str],
+             location: pulumi.Input[str],
+             storage_bundle_id: pulumi.Input[str],
+             type: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             gateway_class: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             public_network_bandwidth: Optional[pulumi.Input[int]] = None,
+             reason_detail: Optional[pulumi.Input[str]] = None,
+             reason_type: Optional[pulumi.Input[str]] = None,
+             release_after_expiration: Optional[pulumi.Input[bool]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("gateway_name", gateway_name)
+        _setter("location", location)
+        _setter("storage_bundle_id", storage_bundle_id)
+        _setter("type", type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if gateway_class is not None:
-            pulumi.set(__self__, "gateway_class", gateway_class)
+            _setter("gateway_class", gateway_class)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if public_network_bandwidth is not None:
-            pulumi.set(__self__, "public_network_bandwidth", public_network_bandwidth)
+            _setter("public_network_bandwidth", public_network_bandwidth)
         if reason_detail is not None:
-            pulumi.set(__self__, "reason_detail", reason_detail)
+            _setter("reason_detail", reason_detail)
         if reason_type is not None:
-            pulumi.set(__self__, "reason_type", reason_type)
+            _setter("reason_type", reason_type)
         if release_after_expiration is not None:
-            pulumi.set(__self__, "release_after_expiration", release_after_expiration)
+            _setter("release_after_expiration", release_after_expiration)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="gatewayName")
@@ -239,32 +270,65 @@ class _GatewayState:
         :param pulumi.Input[str] type: gateway type. the valid values: `Type`, `Iscsi`.
         :param pulumi.Input[str] vswitch_id: The vswitch id of gateway.
         """
+        _GatewayState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            gateway_class=gateway_class,
+            gateway_name=gateway_name,
+            location=location,
+            payment_type=payment_type,
+            public_network_bandwidth=public_network_bandwidth,
+            reason_detail=reason_detail,
+            reason_type=reason_type,
+            release_after_expiration=release_after_expiration,
+            status=status,
+            storage_bundle_id=storage_bundle_id,
+            type=type,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             gateway_class: Optional[pulumi.Input[str]] = None,
+             gateway_name: Optional[pulumi.Input[str]] = None,
+             location: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             public_network_bandwidth: Optional[pulumi.Input[int]] = None,
+             reason_detail: Optional[pulumi.Input[str]] = None,
+             reason_type: Optional[pulumi.Input[str]] = None,
+             release_after_expiration: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             storage_bundle_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if gateway_class is not None:
-            pulumi.set(__self__, "gateway_class", gateway_class)
+            _setter("gateway_class", gateway_class)
         if gateway_name is not None:
-            pulumi.set(__self__, "gateway_name", gateway_name)
+            _setter("gateway_name", gateway_name)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if public_network_bandwidth is not None:
-            pulumi.set(__self__, "public_network_bandwidth", public_network_bandwidth)
+            _setter("public_network_bandwidth", public_network_bandwidth)
         if reason_detail is not None:
-            pulumi.set(__self__, "reason_detail", reason_detail)
+            _setter("reason_detail", reason_detail)
         if reason_type is not None:
-            pulumi.set(__self__, "reason_type", reason_type)
+            _setter("reason_type", reason_type)
         if release_after_expiration is not None:
-            pulumi.set(__self__, "release_after_expiration", release_after_expiration)
+            _setter("release_after_expiration", release_after_expiration)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if storage_bundle_id is not None:
-            pulumi.set(__self__, "storage_bundle_id", storage_bundle_id)
+            _setter("storage_bundle_id", storage_bundle_id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter
@@ -502,6 +566,10 @@ class Gateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

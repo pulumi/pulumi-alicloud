@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PbrRouteEntryArgs', 'PbrRouteEntry']
@@ -29,12 +29,31 @@ class PbrRouteEntryArgs:
         :param pulumi.Input[str] vpn_gateway_id: The ID of the vpn gateway.
         :param pulumi.Input[int] weight: The weight of the policy-based route. Valid values: 0 and 100.
         """
-        pulumi.set(__self__, "next_hop", next_hop)
-        pulumi.set(__self__, "publish_vpc", publish_vpc)
-        pulumi.set(__self__, "route_dest", route_dest)
-        pulumi.set(__self__, "route_source", route_source)
-        pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
-        pulumi.set(__self__, "weight", weight)
+        PbrRouteEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            next_hop=next_hop,
+            publish_vpc=publish_vpc,
+            route_dest=route_dest,
+            route_source=route_source,
+            vpn_gateway_id=vpn_gateway_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             next_hop: pulumi.Input[str],
+             publish_vpc: pulumi.Input[bool],
+             route_dest: pulumi.Input[str],
+             route_source: pulumi.Input[str],
+             vpn_gateway_id: pulumi.Input[str],
+             weight: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("next_hop", next_hop)
+        _setter("publish_vpc", publish_vpc)
+        _setter("route_dest", route_dest)
+        _setter("route_source", route_source)
+        _setter("vpn_gateway_id", vpn_gateway_id)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter(name="nextHop")
@@ -129,20 +148,41 @@ class _PbrRouteEntryState:
         :param pulumi.Input[str] vpn_gateway_id: The ID of the vpn gateway.
         :param pulumi.Input[int] weight: The weight of the policy-based route. Valid values: 0 and 100.
         """
+        _PbrRouteEntryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            next_hop=next_hop,
+            publish_vpc=publish_vpc,
+            route_dest=route_dest,
+            route_source=route_source,
+            status=status,
+            vpn_gateway_id=vpn_gateway_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             next_hop: Optional[pulumi.Input[str]] = None,
+             publish_vpc: Optional[pulumi.Input[bool]] = None,
+             route_dest: Optional[pulumi.Input[str]] = None,
+             route_source: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpn_gateway_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if next_hop is not None:
-            pulumi.set(__self__, "next_hop", next_hop)
+            _setter("next_hop", next_hop)
         if publish_vpc is not None:
-            pulumi.set(__self__, "publish_vpc", publish_vpc)
+            _setter("publish_vpc", publish_vpc)
         if route_dest is not None:
-            pulumi.set(__self__, "route_dest", route_dest)
+            _setter("route_dest", route_dest)
         if route_source is not None:
-            pulumi.set(__self__, "route_source", route_source)
+            _setter("route_source", route_source)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vpn_gateway_id is not None:
-            pulumi.set(__self__, "vpn_gateway_id", vpn_gateway_id)
+            _setter("vpn_gateway_id", vpn_gateway_id)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="nextHop")
@@ -352,6 +392,10 @@ class PbrRouteEntry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PbrRouteEntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

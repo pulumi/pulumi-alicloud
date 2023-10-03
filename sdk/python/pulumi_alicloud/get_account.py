@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetAccountResult',
     'AwaitableGetAccountResult',
     'get_account',
+    'get_account_output',
 ]
 
 @pulumi.output_type
@@ -63,3 +64,21 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
 
     return AwaitableGetAccountResult(
         id=pulumi.get(__ret__, 'id'))
+
+
+@_utilities.lift_output_func(get_account)
+def get_account_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+    """
+    This data source provides information about the current account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    current = alicloud.get_account()
+    pulumi.export("currentAccountId", current.id)
+    ```
+    """
+    ...

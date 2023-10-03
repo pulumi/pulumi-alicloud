@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -24,10 +24,21 @@ class CustomPropertyPropertyValueArgs:
         :param pulumi.Input[str] property_value: The value of an attribute.
         :param pulumi.Input[str] property_value_id: The value of an attribute id.
         """
+        CustomPropertyPropertyValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property_value=property_value,
+            property_value_id=property_value_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property_value: Optional[pulumi.Input[str]] = None,
+             property_value_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if property_value is not None:
-            pulumi.set(__self__, "property_value", property_value)
+            _setter("property_value", property_value)
         if property_value_id is not None:
-            pulumi.set(__self__, "property_value_id", property_value_id)
+            _setter("property_value_id", property_value_id)
 
     @property
     @pulumi.getter(name="propertyValue")
@@ -63,10 +74,21 @@ class EcdPolicyGroupAuthorizeAccessPolicyRuleArgs:
         :param pulumi.Input[str] cidr_ip: The cidrip of authorize access rule.
         :param pulumi.Input[str] description: The description of authorize access rule.
         """
+        EcdPolicyGroupAuthorizeAccessPolicyRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_ip=cidr_ip,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_ip: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr_ip is not None:
-            pulumi.set(__self__, "cidr_ip", cidr_ip)
+            _setter("cidr_ip", cidr_ip)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="cidrIp")
@@ -112,20 +134,41 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs:
         :param pulumi.Input[str] priority: The priority of security rules.
         :param pulumi.Input[str] type: The type of security rules.
         """
+        EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_ip=cidr_ip,
+            description=description,
+            ip_protocol=ip_protocol,
+            policy=policy,
+            port_range=port_range,
+            priority=priority,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_ip: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             policy: Optional[pulumi.Input[str]] = None,
+             port_range: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr_ip is not None:
-            pulumi.set(__self__, "cidr_ip", cidr_ip)
+            _setter("cidr_ip", cidr_ip)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
+            _setter("ip_protocol", ip_protocol)
         if policy is not None:
-            pulumi.set(__self__, "policy", policy)
+            _setter("policy", policy)
         if port_range is not None:
-            pulumi.set(__self__, "port_range", port_range)
+            _setter("port_range", port_range)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="cidrIp")
