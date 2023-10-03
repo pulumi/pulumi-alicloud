@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -53,12 +53,25 @@ class DbClusterDbClusterAccessWhiteList(dict):
         :param str db_cluster_ip_array_name: Whitelist group name.
         :param str security_ip_list: The IP address list under the whitelist group.
         """
+        DbClusterDbClusterAccessWhiteList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_ip_array_attribute=db_cluster_ip_array_attribute,
+            db_cluster_ip_array_name=db_cluster_ip_array_name,
+            security_ip_list=security_ip_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_ip_array_attribute: Optional[str] = None,
+             db_cluster_ip_array_name: Optional[str] = None,
+             security_ip_list: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if db_cluster_ip_array_attribute is not None:
-            pulumi.set(__self__, "db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
+            _setter("db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
         if db_cluster_ip_array_name is not None:
-            pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
+            _setter("db_cluster_ip_array_name", db_cluster_ip_array_name)
         if security_ip_list is not None:
-            pulumi.set(__self__, "security_ip_list", security_ip_list)
+            _setter("security_ip_list", security_ip_list)
 
     @property
     @pulumi.getter(name="dbClusterIpArrayAttribute")
@@ -102,12 +115,31 @@ class GetAccountsAccountResult(dict):
         :param str id: The ID of the Account. Its value is same as Queue Name.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "account_description", account_description)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_type", account_type)
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
+        GetAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_description=account_description,
+            account_name=account_name,
+            account_type=account_type,
+            db_cluster_id=db_cluster_id,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_description: str,
+             account_name: str,
+             account_type: str,
+             db_cluster_id: str,
+             id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_description", account_description)
+        _setter("account_name", account_name)
+        _setter("account_type", account_type)
+        _setter("db_cluster_id", db_cluster_id)
+        _setter("id", id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountDescription")
@@ -175,12 +207,31 @@ class GetBackupPoliciesPolicyResult(dict):
         :param str preferred_backup_time: Backup Time, UTC time.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "backup_retention_period", backup_retention_period)
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
-        pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
-        pulumi.set(__self__, "status", status)
+        GetBackupPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_retention_period=backup_retention_period,
+            db_cluster_id=db_cluster_id,
+            id=id,
+            preferred_backup_periods=preferred_backup_periods,
+            preferred_backup_time=preferred_backup_time,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_retention_period: int,
+             db_cluster_id: str,
+             id: str,
+             preferred_backup_periods: Sequence[str],
+             preferred_backup_time: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_retention_period", backup_retention_period)
+        _setter("db_cluster_id", db_cluster_id)
+        _setter("id", id)
+        _setter("preferred_backup_periods", preferred_backup_periods)
+        _setter("preferred_backup_time", preferred_backup_time)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
@@ -313,45 +364,130 @@ class GetDbClustersClusterResult(dict):
         :param str vswitch_id: The vswitch id of the DBCluster.
         :param str zone_id: The zone ID of the DBCluster.
         """
-        pulumi.set(__self__, "ali_uid", ali_uid)
-        pulumi.set(__self__, "bid", bid)
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "commodity_code", commodity_code)
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "control_version", control_version)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_cluster_access_white_lists", db_cluster_access_white_lists)
-        pulumi.set(__self__, "db_cluster_description", db_cluster_description)
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "db_cluster_network_type", db_cluster_network_type)
-        pulumi.set(__self__, "db_cluster_type", db_cluster_type)
-        pulumi.set(__self__, "db_node_class", db_node_class)
-        pulumi.set(__self__, "db_node_count", db_node_count)
-        pulumi.set(__self__, "db_node_storage", db_node_storage)
-        pulumi.set(__self__, "encryption_key", encryption_key)
-        pulumi.set(__self__, "encryption_type", encryption_type)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_expired", is_expired)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "lock_reason", lock_reason)
-        pulumi.set(__self__, "maintain_time", maintain_time)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "public_connection_string", public_connection_string)
-        pulumi.set(__self__, "public_port", public_port)
-        pulumi.set(__self__, "scale_out_statuses", scale_out_statuses)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_type", storage_type)
-        pulumi.set(__self__, "support_backup", support_backup)
-        pulumi.set(__self__, "support_https_port", support_https_port)
-        pulumi.set(__self__, "support_mysql_port", support_mysql_port)
-        pulumi.set(__self__, "vpc_cloud_instance_id", vpc_cloud_instance_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetDbClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ali_uid=ali_uid,
+            bid=bid,
+            category=category,
+            commodity_code=commodity_code,
+            connection_string=connection_string,
+            control_version=control_version,
+            create_time=create_time,
+            db_cluster_access_white_lists=db_cluster_access_white_lists,
+            db_cluster_description=db_cluster_description,
+            db_cluster_id=db_cluster_id,
+            db_cluster_network_type=db_cluster_network_type,
+            db_cluster_type=db_cluster_type,
+            db_node_class=db_node_class,
+            db_node_count=db_node_count,
+            db_node_storage=db_node_storage,
+            encryption_key=encryption_key,
+            encryption_type=encryption_type,
+            engine=engine,
+            engine_version=engine_version,
+            expire_time=expire_time,
+            id=id,
+            is_expired=is_expired,
+            lock_mode=lock_mode,
+            lock_reason=lock_reason,
+            maintain_time=maintain_time,
+            payment_type=payment_type,
+            port=port,
+            public_connection_string=public_connection_string,
+            public_port=public_port,
+            scale_out_statuses=scale_out_statuses,
+            status=status,
+            storage_type=storage_type,
+            support_backup=support_backup,
+            support_https_port=support_https_port,
+            support_mysql_port=support_mysql_port,
+            vpc_cloud_instance_id=vpc_cloud_instance_id,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ali_uid: str,
+             bid: str,
+             category: str,
+             commodity_code: str,
+             connection_string: str,
+             control_version: str,
+             create_time: str,
+             db_cluster_access_white_lists: Sequence['outputs.GetDbClustersClusterDbClusterAccessWhiteListResult'],
+             db_cluster_description: str,
+             db_cluster_id: str,
+             db_cluster_network_type: str,
+             db_cluster_type: str,
+             db_node_class: str,
+             db_node_count: str,
+             db_node_storage: str,
+             encryption_key: str,
+             encryption_type: str,
+             engine: str,
+             engine_version: str,
+             expire_time: str,
+             id: str,
+             is_expired: str,
+             lock_mode: str,
+             lock_reason: str,
+             maintain_time: str,
+             payment_type: str,
+             port: int,
+             public_connection_string: str,
+             public_port: str,
+             scale_out_statuses: Sequence['outputs.GetDbClustersClusterScaleOutStatusResult'],
+             status: str,
+             storage_type: str,
+             support_backup: int,
+             support_https_port: bool,
+             support_mysql_port: bool,
+             vpc_cloud_instance_id: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ali_uid", ali_uid)
+        _setter("bid", bid)
+        _setter("category", category)
+        _setter("commodity_code", commodity_code)
+        _setter("connection_string", connection_string)
+        _setter("control_version", control_version)
+        _setter("create_time", create_time)
+        _setter("db_cluster_access_white_lists", db_cluster_access_white_lists)
+        _setter("db_cluster_description", db_cluster_description)
+        _setter("db_cluster_id", db_cluster_id)
+        _setter("db_cluster_network_type", db_cluster_network_type)
+        _setter("db_cluster_type", db_cluster_type)
+        _setter("db_node_class", db_node_class)
+        _setter("db_node_count", db_node_count)
+        _setter("db_node_storage", db_node_storage)
+        _setter("encryption_key", encryption_key)
+        _setter("encryption_type", encryption_type)
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("is_expired", is_expired)
+        _setter("lock_mode", lock_mode)
+        _setter("lock_reason", lock_reason)
+        _setter("maintain_time", maintain_time)
+        _setter("payment_type", payment_type)
+        _setter("port", port)
+        _setter("public_connection_string", public_connection_string)
+        _setter("public_port", public_port)
+        _setter("scale_out_statuses", scale_out_statuses)
+        _setter("status", status)
+        _setter("storage_type", storage_type)
+        _setter("support_backup", support_backup)
+        _setter("support_https_port", support_https_port)
+        _setter("support_mysql_port", support_mysql_port)
+        _setter("vpc_cloud_instance_id", vpc_cloud_instance_id)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="aliUid")
@@ -674,9 +810,22 @@ class GetDbClustersClusterDbClusterAccessWhiteListResult(dict):
         :param str db_cluster_ip_array_name: Whitelist group name.
         :param str security_ip_list: The IP address list under the whitelist group.
         """
-        pulumi.set(__self__, "db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
-        pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
-        pulumi.set(__self__, "security_ip_list", security_ip_list)
+        GetDbClustersClusterDbClusterAccessWhiteListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_ip_array_attribute=db_cluster_ip_array_attribute,
+            db_cluster_ip_array_name=db_cluster_ip_array_name,
+            security_ip_list=security_ip_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_ip_array_attribute: str,
+             db_cluster_ip_array_name: str,
+             security_ip_list: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
+        _setter("db_cluster_ip_array_name", db_cluster_ip_array_name)
+        _setter("security_ip_list", security_ip_list)
 
     @property
     @pulumi.getter(name="dbClusterIpArrayAttribute")
@@ -712,8 +861,19 @@ class GetDbClustersClusterScaleOutStatusResult(dict):
         :param str progress: Process.
         :param str ratio: Efficiency.
         """
-        pulumi.set(__self__, "progress", progress)
-        pulumi.set(__self__, "ratio", ratio)
+        GetDbClustersClusterScaleOutStatusResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            progress=progress,
+            ratio=ratio,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             progress: str,
+             ratio: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("progress", progress)
+        _setter("ratio", ratio)
 
     @property
     @pulumi.getter
@@ -741,8 +901,19 @@ class GetRegionsRegionResult(dict):
         :param str region_id: The Region ID.
         :param Sequence['GetRegionsRegionZoneIdArgs'] zone_ids: A list of available zone ids in the region_id.
         """
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "zone_ids", zone_ids)
+        GetRegionsRegionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region_id=region_id,
+            zone_ids=zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region_id: str,
+             zone_ids: Sequence['outputs.GetRegionsRegionZoneIdResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("region_id", region_id)
+        _setter("zone_ids", zone_ids)
 
     @property
     @pulumi.getter(name="regionId")
@@ -770,8 +941,19 @@ class GetRegionsRegionZoneIdResult(dict):
         :param bool vpc_enabled: Whether to support vpc network.
         :param str zone_id: The zone ID.
         """
-        pulumi.set(__self__, "vpc_enabled", vpc_enabled)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetRegionsRegionZoneIdResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vpc_enabled=vpc_enabled,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vpc_enabled: bool,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("vpc_enabled", vpc_enabled)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="vpcEnabled")

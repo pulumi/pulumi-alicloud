@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -307,152 +307,303 @@ class InstanceArgs:
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "instance_storage", instance_storage)
-        pulumi.set(__self__, "instance_type", instance_type)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            engine=engine,
+            engine_version=engine_version,
+            instance_storage=instance_storage,
+            instance_type=instance_type,
+            acl=acl,
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            auto_upgrade_minor_version=auto_upgrade_minor_version,
+            babelfish_configs=babelfish_configs,
+            babelfish_port=babelfish_port,
+            ca_type=ca_type,
+            category=category,
+            client_ca_cert=client_ca_cert,
+            client_ca_enabled=client_ca_enabled,
+            client_cert_revocation_list=client_cert_revocation_list,
+            client_crl_enabled=client_crl_enabled,
+            connection_string_prefix=connection_string_prefix,
+            db_instance_ip_array_attribute=db_instance_ip_array_attribute,
+            db_instance_ip_array_name=db_instance_ip_array_name,
+            db_instance_storage_type=db_instance_storage_type,
+            db_is_ignore_case=db_is_ignore_case,
+            db_time_zone=db_time_zone,
+            deletion_protection=deletion_protection,
+            direction=direction,
+            effective_time=effective_time,
+            encryption_key=encryption_key,
+            force_restart=force_restart,
+            fresh_white_list_readins=fresh_white_list_readins,
+            ha_config=ha_config,
+            instance_charge_type=instance_charge_type,
+            instance_name=instance_name,
+            maintain_time=maintain_time,
+            manual_ha_time=manual_ha_time,
+            modify_mode=modify_mode,
+            monitoring_period=monitoring_period,
+            parameters=parameters,
+            period=period,
+            pg_hba_confs=pg_hba_confs,
+            port=port,
+            private_ip_address=private_ip_address,
+            released_keep_policy=released_keep_policy,
+            replication_acl=replication_acl,
+            resource_group_id=resource_group_id,
+            role_arn=role_arn,
+            security_group_id=security_group_id,
+            security_group_ids=security_group_ids,
+            security_ip_mode=security_ip_mode,
+            security_ip_type=security_ip_type,
+            security_ips=security_ips,
+            server_cert=server_cert,
+            server_key=server_key,
+            serverless_configs=serverless_configs,
+            sql_collector_config_value=sql_collector_config_value,
+            sql_collector_status=sql_collector_status,
+            ssl_action=ssl_action,
+            ssl_connection_string=ssl_connection_string,
+            storage_auto_scale=storage_auto_scale,
+            storage_threshold=storage_threshold,
+            storage_upper_bound=storage_upper_bound,
+            switch_time=switch_time,
+            tags=tags,
+            target_minor_version=target_minor_version,
+            tcp_connection_type=tcp_connection_type,
+            tde_status=tde_status,
+            upgrade_db_instance_kernel_version=upgrade_db_instance_kernel_version,
+            upgrade_time=upgrade_time,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            whitelist_network_type=whitelist_network_type,
+            zone_id=zone_id,
+            zone_id_slave_a=zone_id_slave_a,
+            zone_id_slave_b=zone_id_slave_b,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             engine: pulumi.Input[str],
+             engine_version: pulumi.Input[str],
+             instance_storage: pulumi.Input[int],
+             instance_type: pulumi.Input[str],
+             acl: Optional[pulumi.Input[str]] = None,
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
+             babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]] = None,
+             babelfish_port: Optional[pulumi.Input[str]] = None,
+             ca_type: Optional[pulumi.Input[str]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             client_ca_cert: Optional[pulumi.Input[str]] = None,
+             client_ca_enabled: Optional[pulumi.Input[int]] = None,
+             client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
+             client_crl_enabled: Optional[pulumi.Input[int]] = None,
+             connection_string_prefix: Optional[pulumi.Input[str]] = None,
+             db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
+             db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
+             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+             db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
+             db_time_zone: Optional[pulumi.Input[str]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             effective_time: Optional[pulumi.Input[str]] = None,
+             encryption_key: Optional[pulumi.Input[str]] = None,
+             force_restart: Optional[pulumi.Input[bool]] = None,
+             fresh_white_list_readins: Optional[pulumi.Input[str]] = None,
+             ha_config: Optional[pulumi.Input[str]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             maintain_time: Optional[pulumi.Input[str]] = None,
+             manual_ha_time: Optional[pulumi.Input[str]] = None,
+             modify_mode: Optional[pulumi.Input[str]] = None,
+             monitoring_period: Optional[pulumi.Input[int]] = None,
+             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             private_ip_address: Optional[pulumi.Input[str]] = None,
+             released_keep_policy: Optional[pulumi.Input[str]] = None,
+             replication_acl: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_ip_mode: Optional[pulumi.Input[str]] = None,
+             security_ip_type: Optional[pulumi.Input[str]] = None,
+             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             server_cert: Optional[pulumi.Input[str]] = None,
+             server_key: Optional[pulumi.Input[str]] = None,
+             serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]]] = None,
+             sql_collector_config_value: Optional[pulumi.Input[int]] = None,
+             sql_collector_status: Optional[pulumi.Input[str]] = None,
+             ssl_action: Optional[pulumi.Input[str]] = None,
+             ssl_connection_string: Optional[pulumi.Input[str]] = None,
+             storage_auto_scale: Optional[pulumi.Input[str]] = None,
+             storage_threshold: Optional[pulumi.Input[int]] = None,
+             storage_upper_bound: Optional[pulumi.Input[int]] = None,
+             switch_time: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             target_minor_version: Optional[pulumi.Input[str]] = None,
+             tcp_connection_type: Optional[pulumi.Input[str]] = None,
+             tde_status: Optional[pulumi.Input[str]] = None,
+             upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
+             upgrade_time: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             whitelist_network_type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+             zone_id_slave_b: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("instance_storage", instance_storage)
+        _setter("instance_type", instance_type)
         if acl is not None:
-            pulumi.set(__self__, "acl", acl)
+            _setter("acl", acl)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if auto_upgrade_minor_version is not None:
-            pulumi.set(__self__, "auto_upgrade_minor_version", auto_upgrade_minor_version)
+            _setter("auto_upgrade_minor_version", auto_upgrade_minor_version)
         if babelfish_configs is not None:
-            pulumi.set(__self__, "babelfish_configs", babelfish_configs)
+            _setter("babelfish_configs", babelfish_configs)
         if babelfish_port is not None:
-            pulumi.set(__self__, "babelfish_port", babelfish_port)
+            _setter("babelfish_port", babelfish_port)
         if ca_type is not None:
-            pulumi.set(__self__, "ca_type", ca_type)
+            _setter("ca_type", ca_type)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if client_ca_cert is not None:
-            pulumi.set(__self__, "client_ca_cert", client_ca_cert)
+            _setter("client_ca_cert", client_ca_cert)
         if client_ca_enabled is not None:
-            pulumi.set(__self__, "client_ca_enabled", client_ca_enabled)
+            _setter("client_ca_enabled", client_ca_enabled)
         if client_cert_revocation_list is not None:
-            pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
+            _setter("client_cert_revocation_list", client_cert_revocation_list)
         if client_crl_enabled is not None:
-            pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
+            _setter("client_crl_enabled", client_crl_enabled)
         if connection_string_prefix is not None:
-            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
+            _setter("connection_string_prefix", connection_string_prefix)
         if db_instance_ip_array_attribute is not None:
-            pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
+            _setter("db_instance_ip_array_attribute", db_instance_ip_array_attribute)
         if db_instance_ip_array_name is not None:
-            pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
+            _setter("db_instance_ip_array_name", db_instance_ip_array_name)
         if db_instance_storage_type is not None:
-            pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
+            _setter("db_instance_storage_type", db_instance_storage_type)
         if db_is_ignore_case is not None:
-            pulumi.set(__self__, "db_is_ignore_case", db_is_ignore_case)
+            _setter("db_is_ignore_case", db_is_ignore_case)
         if db_time_zone is not None:
-            pulumi.set(__self__, "db_time_zone", db_time_zone)
+            _setter("db_time_zone", db_time_zone)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if direction is not None:
-            pulumi.set(__self__, "direction", direction)
+            _setter("direction", direction)
         if effective_time is not None:
-            pulumi.set(__self__, "effective_time", effective_time)
+            _setter("effective_time", effective_time)
         if encryption_key is not None:
-            pulumi.set(__self__, "encryption_key", encryption_key)
+            _setter("encryption_key", encryption_key)
         if force_restart is not None:
-            pulumi.set(__self__, "force_restart", force_restart)
+            _setter("force_restart", force_restart)
         if fresh_white_list_readins is not None:
-            pulumi.set(__self__, "fresh_white_list_readins", fresh_white_list_readins)
+            _setter("fresh_white_list_readins", fresh_white_list_readins)
         if ha_config is not None:
-            pulumi.set(__self__, "ha_config", ha_config)
+            _setter("ha_config", ha_config)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if maintain_time is not None:
-            pulumi.set(__self__, "maintain_time", maintain_time)
+            _setter("maintain_time", maintain_time)
         if manual_ha_time is not None:
-            pulumi.set(__self__, "manual_ha_time", manual_ha_time)
+            _setter("manual_ha_time", manual_ha_time)
         if modify_mode is not None:
-            pulumi.set(__self__, "modify_mode", modify_mode)
+            _setter("modify_mode", modify_mode)
         if monitoring_period is not None:
-            pulumi.set(__self__, "monitoring_period", monitoring_period)
+            _setter("monitoring_period", monitoring_period)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if pg_hba_confs is not None:
-            pulumi.set(__self__, "pg_hba_confs", pg_hba_confs)
+            _setter("pg_hba_confs", pg_hba_confs)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if private_ip_address is not None:
-            pulumi.set(__self__, "private_ip_address", private_ip_address)
+            _setter("private_ip_address", private_ip_address)
         if released_keep_policy is not None:
-            pulumi.set(__self__, "released_keep_policy", released_keep_policy)
+            _setter("released_keep_policy", released_keep_policy)
         if replication_acl is not None:
-            pulumi.set(__self__, "replication_acl", replication_acl)
+            _setter("replication_acl", replication_acl)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if security_group_id is not None:
             warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
             pulumi.log.warn("""security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if security_ip_mode is not None:
-            pulumi.set(__self__, "security_ip_mode", security_ip_mode)
+            _setter("security_ip_mode", security_ip_mode)
         if security_ip_type is not None:
-            pulumi.set(__self__, "security_ip_type", security_ip_type)
+            _setter("security_ip_type", security_ip_type)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
         if server_cert is not None:
-            pulumi.set(__self__, "server_cert", server_cert)
+            _setter("server_cert", server_cert)
         if server_key is not None:
-            pulumi.set(__self__, "server_key", server_key)
+            _setter("server_key", server_key)
         if serverless_configs is not None:
-            pulumi.set(__self__, "serverless_configs", serverless_configs)
+            _setter("serverless_configs", serverless_configs)
         if sql_collector_config_value is not None:
-            pulumi.set(__self__, "sql_collector_config_value", sql_collector_config_value)
+            _setter("sql_collector_config_value", sql_collector_config_value)
         if sql_collector_status is not None:
-            pulumi.set(__self__, "sql_collector_status", sql_collector_status)
+            _setter("sql_collector_status", sql_collector_status)
         if ssl_action is not None:
-            pulumi.set(__self__, "ssl_action", ssl_action)
+            _setter("ssl_action", ssl_action)
         if ssl_connection_string is not None:
-            pulumi.set(__self__, "ssl_connection_string", ssl_connection_string)
+            _setter("ssl_connection_string", ssl_connection_string)
         if storage_auto_scale is not None:
-            pulumi.set(__self__, "storage_auto_scale", storage_auto_scale)
+            _setter("storage_auto_scale", storage_auto_scale)
         if storage_threshold is not None:
-            pulumi.set(__self__, "storage_threshold", storage_threshold)
+            _setter("storage_threshold", storage_threshold)
         if storage_upper_bound is not None:
-            pulumi.set(__self__, "storage_upper_bound", storage_upper_bound)
+            _setter("storage_upper_bound", storage_upper_bound)
         if switch_time is not None:
-            pulumi.set(__self__, "switch_time", switch_time)
+            _setter("switch_time", switch_time)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if target_minor_version is not None:
-            pulumi.set(__self__, "target_minor_version", target_minor_version)
+            _setter("target_minor_version", target_minor_version)
         if tcp_connection_type is not None:
-            pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
+            _setter("tcp_connection_type", tcp_connection_type)
         if tde_status is not None:
-            pulumi.set(__self__, "tde_status", tde_status)
+            _setter("tde_status", tde_status)
         if upgrade_db_instance_kernel_version is not None:
             warnings.warn("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""", DeprecationWarning)
             pulumi.log.warn("""upgrade_db_instance_kernel_version is deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
         if upgrade_db_instance_kernel_version is not None:
-            pulumi.set(__self__, "upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
+            _setter("upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
         if upgrade_time is not None:
-            pulumi.set(__self__, "upgrade_time", upgrade_time)
+            _setter("upgrade_time", upgrade_time)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if whitelist_network_type is not None:
-            pulumi.set(__self__, "whitelist_network_type", whitelist_network_type)
+            _setter("whitelist_network_type", whitelist_network_type)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
         if zone_id_slave_a is not None:
-            pulumi.set(__self__, "zone_id_slave_a", zone_id_slave_a)
+            _setter("zone_id_slave_a", zone_id_slave_a)
         if zone_id_slave_b is not None:
-            pulumi.set(__self__, "zone_id_slave_b", zone_id_slave_b)
+            _setter("zone_id_slave_b", zone_id_slave_b)
 
     @property
     @pulumi.getter
@@ -1773,166 +1924,327 @@ class _InstanceState:
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         :param pulumi.Input[str] zone_id_slave_b: The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl=acl,
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            auto_upgrade_minor_version=auto_upgrade_minor_version,
+            babelfish_configs=babelfish_configs,
+            babelfish_port=babelfish_port,
+            ca_type=ca_type,
+            category=category,
+            client_ca_cert=client_ca_cert,
+            client_ca_enabled=client_ca_enabled,
+            client_cert_revocation_list=client_cert_revocation_list,
+            client_crl_enabled=client_crl_enabled,
+            connection_string=connection_string,
+            connection_string_prefix=connection_string_prefix,
+            create_time=create_time,
+            db_instance_ip_array_attribute=db_instance_ip_array_attribute,
+            db_instance_ip_array_name=db_instance_ip_array_name,
+            db_instance_storage_type=db_instance_storage_type,
+            db_instance_type=db_instance_type,
+            db_is_ignore_case=db_is_ignore_case,
+            db_time_zone=db_time_zone,
+            deletion_protection=deletion_protection,
+            direction=direction,
+            effective_time=effective_time,
+            encryption_key=encryption_key,
+            engine=engine,
+            engine_version=engine_version,
+            force_restart=force_restart,
+            fresh_white_list_readins=fresh_white_list_readins,
+            ha_config=ha_config,
+            instance_charge_type=instance_charge_type,
+            instance_name=instance_name,
+            instance_storage=instance_storage,
+            instance_type=instance_type,
+            maintain_time=maintain_time,
+            manual_ha_time=manual_ha_time,
+            modify_mode=modify_mode,
+            monitoring_period=monitoring_period,
+            parameters=parameters,
+            period=period,
+            pg_hba_confs=pg_hba_confs,
+            port=port,
+            private_ip_address=private_ip_address,
+            released_keep_policy=released_keep_policy,
+            replication_acl=replication_acl,
+            resource_group_id=resource_group_id,
+            role_arn=role_arn,
+            security_group_id=security_group_id,
+            security_group_ids=security_group_ids,
+            security_ip_mode=security_ip_mode,
+            security_ip_type=security_ip_type,
+            security_ips=security_ips,
+            server_cert=server_cert,
+            server_key=server_key,
+            serverless_configs=serverless_configs,
+            sql_collector_config_value=sql_collector_config_value,
+            sql_collector_status=sql_collector_status,
+            ssl_action=ssl_action,
+            ssl_connection_string=ssl_connection_string,
+            ssl_status=ssl_status,
+            status=status,
+            storage_auto_scale=storage_auto_scale,
+            storage_threshold=storage_threshold,
+            storage_upper_bound=storage_upper_bound,
+            switch_time=switch_time,
+            tags=tags,
+            target_minor_version=target_minor_version,
+            tcp_connection_type=tcp_connection_type,
+            tde_status=tde_status,
+            upgrade_db_instance_kernel_version=upgrade_db_instance_kernel_version,
+            upgrade_time=upgrade_time,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            whitelist_network_type=whitelist_network_type,
+            zone_id=zone_id,
+            zone_id_slave_a=zone_id_slave_a,
+            zone_id_slave_b=zone_id_slave_b,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl: Optional[pulumi.Input[str]] = None,
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             auto_upgrade_minor_version: Optional[pulumi.Input[str]] = None,
+             babelfish_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceBabelfishConfigArgs']]]] = None,
+             babelfish_port: Optional[pulumi.Input[str]] = None,
+             ca_type: Optional[pulumi.Input[str]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             client_ca_cert: Optional[pulumi.Input[str]] = None,
+             client_ca_enabled: Optional[pulumi.Input[int]] = None,
+             client_cert_revocation_list: Optional[pulumi.Input[str]] = None,
+             client_crl_enabled: Optional[pulumi.Input[int]] = None,
+             connection_string: Optional[pulumi.Input[str]] = None,
+             connection_string_prefix: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             db_instance_ip_array_attribute: Optional[pulumi.Input[str]] = None,
+             db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
+             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
+             db_instance_type: Optional[pulumi.Input[str]] = None,
+             db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
+             db_time_zone: Optional[pulumi.Input[str]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             direction: Optional[pulumi.Input[str]] = None,
+             effective_time: Optional[pulumi.Input[str]] = None,
+             encryption_key: Optional[pulumi.Input[str]] = None,
+             engine: Optional[pulumi.Input[str]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             force_restart: Optional[pulumi.Input[bool]] = None,
+             fresh_white_list_readins: Optional[pulumi.Input[str]] = None,
+             ha_config: Optional[pulumi.Input[str]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             instance_storage: Optional[pulumi.Input[int]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             maintain_time: Optional[pulumi.Input[str]] = None,
+             manual_ha_time: Optional[pulumi.Input[str]] = None,
+             modify_mode: Optional[pulumi.Input[str]] = None,
+             monitoring_period: Optional[pulumi.Input[int]] = None,
+             parameters: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             pg_hba_confs: Optional[pulumi.Input[Sequence[pulumi.Input['InstancePgHbaConfArgs']]]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             private_ip_address: Optional[pulumi.Input[str]] = None,
+             released_keep_policy: Optional[pulumi.Input[str]] = None,
+             replication_acl: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             role_arn: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_ip_mode: Optional[pulumi.Input[str]] = None,
+             security_ip_type: Optional[pulumi.Input[str]] = None,
+             security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             server_cert: Optional[pulumi.Input[str]] = None,
+             server_key: Optional[pulumi.Input[str]] = None,
+             serverless_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceServerlessConfigArgs']]]] = None,
+             sql_collector_config_value: Optional[pulumi.Input[int]] = None,
+             sql_collector_status: Optional[pulumi.Input[str]] = None,
+             ssl_action: Optional[pulumi.Input[str]] = None,
+             ssl_connection_string: Optional[pulumi.Input[str]] = None,
+             ssl_status: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             storage_auto_scale: Optional[pulumi.Input[str]] = None,
+             storage_threshold: Optional[pulumi.Input[int]] = None,
+             storage_upper_bound: Optional[pulumi.Input[int]] = None,
+             switch_time: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             target_minor_version: Optional[pulumi.Input[str]] = None,
+             tcp_connection_type: Optional[pulumi.Input[str]] = None,
+             tde_status: Optional[pulumi.Input[str]] = None,
+             upgrade_db_instance_kernel_version: Optional[pulumi.Input[bool]] = None,
+             upgrade_time: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             whitelist_network_type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             zone_id_slave_a: Optional[pulumi.Input[str]] = None,
+             zone_id_slave_b: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acl is not None:
-            pulumi.set(__self__, "acl", acl)
+            _setter("acl", acl)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if auto_upgrade_minor_version is not None:
-            pulumi.set(__self__, "auto_upgrade_minor_version", auto_upgrade_minor_version)
+            _setter("auto_upgrade_minor_version", auto_upgrade_minor_version)
         if babelfish_configs is not None:
-            pulumi.set(__self__, "babelfish_configs", babelfish_configs)
+            _setter("babelfish_configs", babelfish_configs)
         if babelfish_port is not None:
-            pulumi.set(__self__, "babelfish_port", babelfish_port)
+            _setter("babelfish_port", babelfish_port)
         if ca_type is not None:
-            pulumi.set(__self__, "ca_type", ca_type)
+            _setter("ca_type", ca_type)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if client_ca_cert is not None:
-            pulumi.set(__self__, "client_ca_cert", client_ca_cert)
+            _setter("client_ca_cert", client_ca_cert)
         if client_ca_enabled is not None:
-            pulumi.set(__self__, "client_ca_enabled", client_ca_enabled)
+            _setter("client_ca_enabled", client_ca_enabled)
         if client_cert_revocation_list is not None:
-            pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
+            _setter("client_cert_revocation_list", client_cert_revocation_list)
         if client_crl_enabled is not None:
-            pulumi.set(__self__, "client_crl_enabled", client_crl_enabled)
+            _setter("client_crl_enabled", client_crl_enabled)
         if connection_string is not None:
-            pulumi.set(__self__, "connection_string", connection_string)
+            _setter("connection_string", connection_string)
         if connection_string_prefix is not None:
-            pulumi.set(__self__, "connection_string_prefix", connection_string_prefix)
+            _setter("connection_string_prefix", connection_string_prefix)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if db_instance_ip_array_attribute is not None:
-            pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
+            _setter("db_instance_ip_array_attribute", db_instance_ip_array_attribute)
         if db_instance_ip_array_name is not None:
-            pulumi.set(__self__, "db_instance_ip_array_name", db_instance_ip_array_name)
+            _setter("db_instance_ip_array_name", db_instance_ip_array_name)
         if db_instance_storage_type is not None:
-            pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
+            _setter("db_instance_storage_type", db_instance_storage_type)
         if db_instance_type is not None:
-            pulumi.set(__self__, "db_instance_type", db_instance_type)
+            _setter("db_instance_type", db_instance_type)
         if db_is_ignore_case is not None:
-            pulumi.set(__self__, "db_is_ignore_case", db_is_ignore_case)
+            _setter("db_is_ignore_case", db_is_ignore_case)
         if db_time_zone is not None:
-            pulumi.set(__self__, "db_time_zone", db_time_zone)
+            _setter("db_time_zone", db_time_zone)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if direction is not None:
-            pulumi.set(__self__, "direction", direction)
+            _setter("direction", direction)
         if effective_time is not None:
-            pulumi.set(__self__, "effective_time", effective_time)
+            _setter("effective_time", effective_time)
         if encryption_key is not None:
-            pulumi.set(__self__, "encryption_key", encryption_key)
+            _setter("encryption_key", encryption_key)
         if engine is not None:
-            pulumi.set(__self__, "engine", engine)
+            _setter("engine", engine)
         if engine_version is not None:
-            pulumi.set(__self__, "engine_version", engine_version)
+            _setter("engine_version", engine_version)
         if force_restart is not None:
-            pulumi.set(__self__, "force_restart", force_restart)
+            _setter("force_restart", force_restart)
         if fresh_white_list_readins is not None:
-            pulumi.set(__self__, "fresh_white_list_readins", fresh_white_list_readins)
+            _setter("fresh_white_list_readins", fresh_white_list_readins)
         if ha_config is not None:
-            pulumi.set(__self__, "ha_config", ha_config)
+            _setter("ha_config", ha_config)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if instance_storage is not None:
-            pulumi.set(__self__, "instance_storage", instance_storage)
+            _setter("instance_storage", instance_storage)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if maintain_time is not None:
-            pulumi.set(__self__, "maintain_time", maintain_time)
+            _setter("maintain_time", maintain_time)
         if manual_ha_time is not None:
-            pulumi.set(__self__, "manual_ha_time", manual_ha_time)
+            _setter("manual_ha_time", manual_ha_time)
         if modify_mode is not None:
-            pulumi.set(__self__, "modify_mode", modify_mode)
+            _setter("modify_mode", modify_mode)
         if monitoring_period is not None:
-            pulumi.set(__self__, "monitoring_period", monitoring_period)
+            _setter("monitoring_period", monitoring_period)
         if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
+            _setter("parameters", parameters)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if pg_hba_confs is not None:
-            pulumi.set(__self__, "pg_hba_confs", pg_hba_confs)
+            _setter("pg_hba_confs", pg_hba_confs)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if private_ip_address is not None:
-            pulumi.set(__self__, "private_ip_address", private_ip_address)
+            _setter("private_ip_address", private_ip_address)
         if released_keep_policy is not None:
-            pulumi.set(__self__, "released_keep_policy", released_keep_policy)
+            _setter("released_keep_policy", released_keep_policy)
         if replication_acl is not None:
-            pulumi.set(__self__, "replication_acl", replication_acl)
+            _setter("replication_acl", replication_acl)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if security_group_id is not None:
             warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
             pulumi.log.warn("""security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if security_ip_mode is not None:
-            pulumi.set(__self__, "security_ip_mode", security_ip_mode)
+            _setter("security_ip_mode", security_ip_mode)
         if security_ip_type is not None:
-            pulumi.set(__self__, "security_ip_type", security_ip_type)
+            _setter("security_ip_type", security_ip_type)
         if security_ips is not None:
-            pulumi.set(__self__, "security_ips", security_ips)
+            _setter("security_ips", security_ips)
         if server_cert is not None:
-            pulumi.set(__self__, "server_cert", server_cert)
+            _setter("server_cert", server_cert)
         if server_key is not None:
-            pulumi.set(__self__, "server_key", server_key)
+            _setter("server_key", server_key)
         if serverless_configs is not None:
-            pulumi.set(__self__, "serverless_configs", serverless_configs)
+            _setter("serverless_configs", serverless_configs)
         if sql_collector_config_value is not None:
-            pulumi.set(__self__, "sql_collector_config_value", sql_collector_config_value)
+            _setter("sql_collector_config_value", sql_collector_config_value)
         if sql_collector_status is not None:
-            pulumi.set(__self__, "sql_collector_status", sql_collector_status)
+            _setter("sql_collector_status", sql_collector_status)
         if ssl_action is not None:
-            pulumi.set(__self__, "ssl_action", ssl_action)
+            _setter("ssl_action", ssl_action)
         if ssl_connection_string is not None:
-            pulumi.set(__self__, "ssl_connection_string", ssl_connection_string)
+            _setter("ssl_connection_string", ssl_connection_string)
         if ssl_status is not None:
-            pulumi.set(__self__, "ssl_status", ssl_status)
+            _setter("ssl_status", ssl_status)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if storage_auto_scale is not None:
-            pulumi.set(__self__, "storage_auto_scale", storage_auto_scale)
+            _setter("storage_auto_scale", storage_auto_scale)
         if storage_threshold is not None:
-            pulumi.set(__self__, "storage_threshold", storage_threshold)
+            _setter("storage_threshold", storage_threshold)
         if storage_upper_bound is not None:
-            pulumi.set(__self__, "storage_upper_bound", storage_upper_bound)
+            _setter("storage_upper_bound", storage_upper_bound)
         if switch_time is not None:
-            pulumi.set(__self__, "switch_time", switch_time)
+            _setter("switch_time", switch_time)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if target_minor_version is not None:
-            pulumi.set(__self__, "target_minor_version", target_minor_version)
+            _setter("target_minor_version", target_minor_version)
         if tcp_connection_type is not None:
-            pulumi.set(__self__, "tcp_connection_type", tcp_connection_type)
+            _setter("tcp_connection_type", tcp_connection_type)
         if tde_status is not None:
-            pulumi.set(__self__, "tde_status", tde_status)
+            _setter("tde_status", tde_status)
         if upgrade_db_instance_kernel_version is not None:
             warnings.warn("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""", DeprecationWarning)
             pulumi.log.warn("""upgrade_db_instance_kernel_version is deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
         if upgrade_db_instance_kernel_version is not None:
-            pulumi.set(__self__, "upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
+            _setter("upgrade_db_instance_kernel_version", upgrade_db_instance_kernel_version)
         if upgrade_time is not None:
-            pulumi.set(__self__, "upgrade_time", upgrade_time)
+            _setter("upgrade_time", upgrade_time)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if whitelist_network_type is not None:
-            pulumi.set(__self__, "whitelist_network_type", whitelist_network_type)
+            _setter("whitelist_network_type", whitelist_network_type)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
         if zone_id_slave_a is not None:
-            pulumi.set(__self__, "zone_id_slave_a", zone_id_slave_a)
+            _setter("zone_id_slave_a", zone_id_slave_a)
         if zone_id_slave_b is not None:
-            pulumi.set(__self__, "zone_id_slave_b", zone_id_slave_b)
+            _setter("zone_id_slave_b", zone_id_slave_b)
 
     @property
     @pulumi.getter
@@ -3340,6 +3652,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -3478,9 +3794,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["replication_acl"] = replication_acl
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["role_arn"] = role_arn
-            if security_group_id is not None and not opts.urn:
-                warnings.warn("""Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""", DeprecationWarning)
-                pulumi.log.warn("""security_group_id is deprecated: Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.""")
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["security_ip_mode"] = security_ip_mode
@@ -3501,9 +3814,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["target_minor_version"] = target_minor_version
             __props__.__dict__["tcp_connection_type"] = tcp_connection_type
             __props__.__dict__["tde_status"] = tde_status
-            if upgrade_db_instance_kernel_version is not None and not opts.urn:
-                warnings.warn("""Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""", DeprecationWarning)
-                pulumi.log.warn("""upgrade_db_instance_kernel_version is deprecated: Attribute `upgrade_db_instance_kernel_version` has been deprecated from 1.198.0 and use `target_minor_version` instead.""")
             __props__.__dict__["upgrade_db_instance_kernel_version"] = upgrade_db_instance_kernel_version
             __props__.__dict__["upgrade_time"] = upgrade_time
             __props__.__dict__["vpc_id"] = vpc_id

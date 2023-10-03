@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -23,10 +23,21 @@ class TransitRouterVpcAttachmentZoneMappingArgs:
         :param pulumi.Input[str] vswitch_id: The VSwitch id of attachment.
         :param pulumi.Input[str] zone_id: The zone Id of VSwitch.
         """
+        TransitRouterVpcAttachmentZoneMappingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -60,7 +71,16 @@ class TransitRouterVpnAttachmentZoneArgs:
         """
         :param pulumi.Input[str] zone_id: The id of the zone.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        TransitRouterVpnAttachmentZoneArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="zoneId")

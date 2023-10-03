@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ResourceShareArgs', 'ResourceShare']
@@ -19,7 +19,16 @@ class ResourceShareArgs:
         The set of arguments for constructing a ResourceShare resource.
         :param pulumi.Input[str] resource_share_name: The name of resource share.
         """
-        pulumi.set(__self__, "resource_share_name", resource_share_name)
+        ResourceShareArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_share_name=resource_share_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_share_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_share_name", resource_share_name)
 
     @property
     @pulumi.getter(name="resourceShareName")
@@ -46,12 +55,25 @@ class _ResourceShareState:
         :param pulumi.Input[str] resource_share_owner: The owner of resource share.
         :param pulumi.Input[str] status: The status of resource share.
         """
+        _ResourceShareState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_share_name=resource_share_name,
+            resource_share_owner=resource_share_owner,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_share_name: Optional[pulumi.Input[str]] = None,
+             resource_share_owner: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if resource_share_name is not None:
-            pulumi.set(__self__, "resource_share_name", resource_share_name)
+            _setter("resource_share_name", resource_share_name)
         if resource_share_owner is not None:
-            pulumi.set(__self__, "resource_share_owner", resource_share_owner)
+            _setter("resource_share_owner", resource_share_owner)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="resourceShareName")
@@ -177,6 +199,10 @@ class ResourceShare(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ResourceShareArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

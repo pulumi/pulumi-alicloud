@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -33,10 +33,21 @@ class ApplicationInfoDimension(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
+        ApplicationInfoDimension._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -58,10 +69,21 @@ class QuotaAlarmQuotaDimension(dict):
         :param str key: The Key of quota_dimensions.
         :param str value: The Value of quota_dimensions.
         """
+        QuotaAlarmQuotaDimension._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -89,10 +111,21 @@ class QuotaApplicationDimension(dict):
         :param str key: Key.
         :param str value: Value.
         """
+        QuotaApplicationDimension._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -120,10 +153,21 @@ class TemplateQuotaDimension(dict):
         :param str key: The Key of quota_dimensions.
         :param str value: The Value of quota_dimensions.
         """
+        TemplateQuotaDimension._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -161,22 +205,61 @@ class GetApplicationInfosApplicationResult(dict):
                  quota_unit: str,
                  reason: str,
                  status: str):
-        pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "approve_value", approve_value)
-        pulumi.set(__self__, "audit_reason", audit_reason)
-        pulumi.set(__self__, "desire_value", desire_value)
-        pulumi.set(__self__, "dimensions", dimensions)
-        pulumi.set(__self__, "effective_time", effective_time)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "notice_type", notice_type)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "quota_action_code", quota_action_code)
-        pulumi.set(__self__, "quota_description", quota_description)
-        pulumi.set(__self__, "quota_name", quota_name)
-        pulumi.set(__self__, "quota_unit", quota_unit)
-        pulumi.set(__self__, "reason", reason)
-        pulumi.set(__self__, "status", status)
+        GetApplicationInfosApplicationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            approve_value=approve_value,
+            audit_reason=audit_reason,
+            desire_value=desire_value,
+            dimensions=dimensions,
+            effective_time=effective_time,
+            expire_time=expire_time,
+            id=id,
+            notice_type=notice_type,
+            product_code=product_code,
+            quota_action_code=quota_action_code,
+            quota_description=quota_description,
+            quota_name=quota_name,
+            quota_unit=quota_unit,
+            reason=reason,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: str,
+             approve_value: str,
+             audit_reason: str,
+             desire_value: float,
+             dimensions: Sequence['outputs.GetApplicationInfosApplicationDimensionResult'],
+             effective_time: str,
+             expire_time: str,
+             id: str,
+             notice_type: int,
+             product_code: str,
+             quota_action_code: str,
+             quota_description: str,
+             quota_name: str,
+             quota_unit: str,
+             reason: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("application_id", application_id)
+        _setter("approve_value", approve_value)
+        _setter("audit_reason", audit_reason)
+        _setter("desire_value", desire_value)
+        _setter("dimensions", dimensions)
+        _setter("effective_time", effective_time)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("notice_type", notice_type)
+        _setter("product_code", product_code)
+        _setter("quota_action_code", quota_action_code)
+        _setter("quota_description", quota_description)
+        _setter("quota_name", quota_name)
+        _setter("quota_unit", quota_unit)
+        _setter("reason", reason)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -264,8 +347,19 @@ class GetApplicationInfosApplicationDimensionResult(dict):
     def __init__(__self__, *,
                  key: str,
                  value: str):
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetApplicationInfosApplicationDimensionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -283,10 +377,21 @@ class GetApplicationInfosDimensionResult(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
+        GetApplicationInfosDimensionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -322,15 +427,40 @@ class GetQuotaAlarmsAlarmResult(dict):
         :param float threshold_percent: The threshold percent of Quota Alarm.
         :param str web_hook: The WebHook of Quota Alarm.
         """
-        pulumi.set(__self__, "alarm_id", alarm_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "quota_action_code", quota_action_code)
-        pulumi.set(__self__, "quota_alarm_name", quota_alarm_name)
-        pulumi.set(__self__, "quota_dimensions", quota_dimensions)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "threshold_percent", threshold_percent)
-        pulumi.set(__self__, "web_hook", web_hook)
+        GetQuotaAlarmsAlarmResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alarm_id=alarm_id,
+            id=id,
+            product_code=product_code,
+            quota_action_code=quota_action_code,
+            quota_alarm_name=quota_alarm_name,
+            quota_dimensions=quota_dimensions,
+            threshold=threshold,
+            threshold_percent=threshold_percent,
+            web_hook=web_hook,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alarm_id: str,
+             id: str,
+             product_code: str,
+             quota_action_code: str,
+             quota_alarm_name: str,
+             quota_dimensions: Sequence['outputs.GetQuotaAlarmsAlarmQuotaDimensionResult'],
+             threshold: float,
+             threshold_percent: float,
+             web_hook: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alarm_id", alarm_id)
+        _setter("id", id)
+        _setter("product_code", product_code)
+        _setter("quota_action_code", quota_action_code)
+        _setter("quota_alarm_name", quota_alarm_name)
+        _setter("quota_dimensions", quota_dimensions)
+        _setter("threshold", threshold)
+        _setter("threshold_percent", threshold_percent)
+        _setter("web_hook", web_hook)
 
     @property
     @pulumi.getter(name="alarmId")
@@ -414,8 +544,19 @@ class GetQuotaAlarmsAlarmQuotaDimensionResult(dict):
         :param str key: The key of quota_dimensions.
         :param str value: The value of quota_dimensions.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetQuotaAlarmsAlarmQuotaDimensionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -443,10 +584,21 @@ class GetQuotaAlarmsQuotaDimensionResult(dict):
         :param str key: The key of quota_dimensions.
         :param str value: The value of quota_dimensions.
         """
+        GetQuotaAlarmsQuotaDimensionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -502,22 +654,61 @@ class GetQuotaApplicationsApplicationResult(dict):
         :param str reason: The reason of the quota application.
         :param str status: The status of the quota application.
         """
-        pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "approve_value", approve_value)
-        pulumi.set(__self__, "audit_reason", audit_reason)
-        pulumi.set(__self__, "desire_value", desire_value)
-        pulumi.set(__self__, "dimensions", dimensions)
-        pulumi.set(__self__, "effective_time", effective_time)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "notice_type", notice_type)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "quota_action_code", quota_action_code)
-        pulumi.set(__self__, "quota_description", quota_description)
-        pulumi.set(__self__, "quota_name", quota_name)
-        pulumi.set(__self__, "quota_unit", quota_unit)
-        pulumi.set(__self__, "reason", reason)
-        pulumi.set(__self__, "status", status)
+        GetQuotaApplicationsApplicationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_id=application_id,
+            approve_value=approve_value,
+            audit_reason=audit_reason,
+            desire_value=desire_value,
+            dimensions=dimensions,
+            effective_time=effective_time,
+            expire_time=expire_time,
+            id=id,
+            notice_type=notice_type,
+            product_code=product_code,
+            quota_action_code=quota_action_code,
+            quota_description=quota_description,
+            quota_name=quota_name,
+            quota_unit=quota_unit,
+            reason=reason,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_id: str,
+             approve_value: str,
+             audit_reason: str,
+             desire_value: float,
+             dimensions: Sequence['outputs.GetQuotaApplicationsApplicationDimensionResult'],
+             effective_time: str,
+             expire_time: str,
+             id: str,
+             notice_type: int,
+             product_code: str,
+             quota_action_code: str,
+             quota_description: str,
+             quota_name: str,
+             quota_unit: str,
+             reason: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("application_id", application_id)
+        _setter("approve_value", approve_value)
+        _setter("audit_reason", audit_reason)
+        _setter("desire_value", desire_value)
+        _setter("dimensions", dimensions)
+        _setter("effective_time", effective_time)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("notice_type", notice_type)
+        _setter("product_code", product_code)
+        _setter("quota_action_code", quota_action_code)
+        _setter("quota_description", quota_description)
+        _setter("quota_name", quota_name)
+        _setter("quota_unit", quota_unit)
+        _setter("reason", reason)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -657,8 +848,19 @@ class GetQuotaApplicationsApplicationDimensionResult(dict):
         :param str key: The key of dimensions.
         :param str value: The value of dimensions.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetQuotaApplicationsApplicationDimensionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -686,10 +888,21 @@ class GetQuotaApplicationsDimensionResult(dict):
         :param str key: The key of dimensions.
         :param str value: The value of dimensions.
         """
+        GetQuotaApplicationsDimensionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -717,10 +930,21 @@ class GetQuotasDimensionResult(dict):
         :param str key: The key of dimensions.
         :param str value: The value of dimensions.
         """
+        GetQuotasDimensionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -770,19 +994,52 @@ class GetQuotasQuotaResult(dict):
         :param float total_usage: The total of usage.
         :param str unadjustable_detail: The unadjustable detail.
         """
-        pulumi.set(__self__, "adjustable", adjustable)
-        pulumi.set(__self__, "applicable_ranges", applicable_ranges)
-        pulumi.set(__self__, "applicable_type", applicable_type)
-        pulumi.set(__self__, "consumable", consumable)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "quota_action_code", quota_action_code)
-        pulumi.set(__self__, "quota_description", quota_description)
-        pulumi.set(__self__, "quota_name", quota_name)
-        pulumi.set(__self__, "quota_type", quota_type)
-        pulumi.set(__self__, "quota_unit", quota_unit)
-        pulumi.set(__self__, "total_quota", total_quota)
-        pulumi.set(__self__, "total_usage", total_usage)
-        pulumi.set(__self__, "unadjustable_detail", unadjustable_detail)
+        GetQuotasQuotaResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            adjustable=adjustable,
+            applicable_ranges=applicable_ranges,
+            applicable_type=applicable_type,
+            consumable=consumable,
+            id=id,
+            quota_action_code=quota_action_code,
+            quota_description=quota_description,
+            quota_name=quota_name,
+            quota_type=quota_type,
+            quota_unit=quota_unit,
+            total_quota=total_quota,
+            total_usage=total_usage,
+            unadjustable_detail=unadjustable_detail,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             adjustable: bool,
+             applicable_ranges: Sequence[str],
+             applicable_type: str,
+             consumable: bool,
+             id: str,
+             quota_action_code: str,
+             quota_description: str,
+             quota_name: str,
+             quota_type: str,
+             quota_unit: str,
+             total_quota: float,
+             total_usage: float,
+             unadjustable_detail: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("adjustable", adjustable)
+        _setter("applicable_ranges", applicable_ranges)
+        _setter("applicable_type", applicable_type)
+        _setter("consumable", consumable)
+        _setter("id", id)
+        _setter("quota_action_code", quota_action_code)
+        _setter("quota_description", quota_description)
+        _setter("quota_name", quota_name)
+        _setter("quota_type", quota_type)
+        _setter("quota_unit", quota_unit)
+        _setter("total_quota", total_quota)
+        _setter("total_usage", total_usage)
+        _setter("unadjustable_detail", unadjustable_detail)
 
     @property
     @pulumi.getter

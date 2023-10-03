@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ElasticInstanceArgs', 'ElasticInstance']
@@ -57,35 +57,78 @@ class ElasticInstanceArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
         """
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "instance_spec", instance_spec)
-        pulumi.set(__self__, "seg_node_num", seg_node_num)
-        pulumi.set(__self__, "seg_storage_type", seg_storage_type)
-        pulumi.set(__self__, "storage_size", storage_size)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        ElasticInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            engine=engine,
+            engine_version=engine_version,
+            instance_spec=instance_spec,
+            seg_node_num=seg_node_num,
+            seg_storage_type=seg_storage_type,
+            storage_size=storage_size,
+            vswitch_id=vswitch_id,
+            db_instance_category=db_instance_category,
+            db_instance_description=db_instance_description,
+            encryption_key=encryption_key,
+            encryption_type=encryption_type,
+            instance_network_type=instance_network_type,
+            payment_duration=payment_duration,
+            payment_duration_unit=payment_duration_unit,
+            payment_type=payment_type,
+            security_ip_lists=security_ip_lists,
+            tags=tags,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             engine: pulumi.Input[str],
+             engine_version: pulumi.Input[str],
+             instance_spec: pulumi.Input[str],
+             seg_node_num: pulumi.Input[int],
+             seg_storage_type: pulumi.Input[str],
+             storage_size: pulumi.Input[int],
+             vswitch_id: pulumi.Input[str],
+             db_instance_category: Optional[pulumi.Input[str]] = None,
+             db_instance_description: Optional[pulumi.Input[str]] = None,
+             encryption_key: Optional[pulumi.Input[str]] = None,
+             encryption_type: Optional[pulumi.Input[str]] = None,
+             instance_network_type: Optional[pulumi.Input[str]] = None,
+             payment_duration: Optional[pulumi.Input[int]] = None,
+             payment_duration_unit: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("instance_spec", instance_spec)
+        _setter("seg_node_num", seg_node_num)
+        _setter("seg_storage_type", seg_storage_type)
+        _setter("storage_size", storage_size)
+        _setter("vswitch_id", vswitch_id)
         if db_instance_category is not None:
-            pulumi.set(__self__, "db_instance_category", db_instance_category)
+            _setter("db_instance_category", db_instance_category)
         if db_instance_description is not None:
-            pulumi.set(__self__, "db_instance_description", db_instance_description)
+            _setter("db_instance_description", db_instance_description)
         if encryption_key is not None:
-            pulumi.set(__self__, "encryption_key", encryption_key)
+            _setter("encryption_key", encryption_key)
         if encryption_type is not None:
-            pulumi.set(__self__, "encryption_type", encryption_type)
+            _setter("encryption_type", encryption_type)
         if instance_network_type is not None:
-            pulumi.set(__self__, "instance_network_type", instance_network_type)
+            _setter("instance_network_type", instance_network_type)
         if payment_duration is not None:
-            pulumi.set(__self__, "payment_duration", payment_duration)
+            _setter("payment_duration", payment_duration)
         if payment_duration_unit is not None:
-            pulumi.set(__self__, "payment_duration_unit", payment_duration_unit)
+            _setter("payment_duration_unit", payment_duration_unit)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if security_ip_lists is not None:
-            pulumi.set(__self__, "security_ip_lists", security_ip_lists)
+            _setter("security_ip_lists", security_ip_lists)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -360,48 +403,97 @@ class _ElasticInstanceState:
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch ADB PG instances in one VPC.
         :param pulumi.Input[str] zone_id: The Zone to launch the ADB PG instance. If specified, must be consistent with the zone where the vswitch is located.
         """
+        _ElasticInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_string=connection_string,
+            db_instance_category=db_instance_category,
+            db_instance_description=db_instance_description,
+            encryption_key=encryption_key,
+            encryption_type=encryption_type,
+            engine=engine,
+            engine_version=engine_version,
+            instance_network_type=instance_network_type,
+            instance_spec=instance_spec,
+            payment_duration=payment_duration,
+            payment_duration_unit=payment_duration_unit,
+            payment_type=payment_type,
+            port=port,
+            security_ip_lists=security_ip_lists,
+            seg_node_num=seg_node_num,
+            seg_storage_type=seg_storage_type,
+            status=status,
+            storage_size=storage_size,
+            tags=tags,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_string: Optional[pulumi.Input[str]] = None,
+             db_instance_category: Optional[pulumi.Input[str]] = None,
+             db_instance_description: Optional[pulumi.Input[str]] = None,
+             encryption_key: Optional[pulumi.Input[str]] = None,
+             encryption_type: Optional[pulumi.Input[str]] = None,
+             engine: Optional[pulumi.Input[str]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             instance_network_type: Optional[pulumi.Input[str]] = None,
+             instance_spec: Optional[pulumi.Input[str]] = None,
+             payment_duration: Optional[pulumi.Input[int]] = None,
+             payment_duration_unit: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             seg_node_num: Optional[pulumi.Input[int]] = None,
+             seg_storage_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             storage_size: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if connection_string is not None:
-            pulumi.set(__self__, "connection_string", connection_string)
+            _setter("connection_string", connection_string)
         if db_instance_category is not None:
-            pulumi.set(__self__, "db_instance_category", db_instance_category)
+            _setter("db_instance_category", db_instance_category)
         if db_instance_description is not None:
-            pulumi.set(__self__, "db_instance_description", db_instance_description)
+            _setter("db_instance_description", db_instance_description)
         if encryption_key is not None:
-            pulumi.set(__self__, "encryption_key", encryption_key)
+            _setter("encryption_key", encryption_key)
         if encryption_type is not None:
-            pulumi.set(__self__, "encryption_type", encryption_type)
+            _setter("encryption_type", encryption_type)
         if engine is not None:
-            pulumi.set(__self__, "engine", engine)
+            _setter("engine", engine)
         if engine_version is not None:
-            pulumi.set(__self__, "engine_version", engine_version)
+            _setter("engine_version", engine_version)
         if instance_network_type is not None:
-            pulumi.set(__self__, "instance_network_type", instance_network_type)
+            _setter("instance_network_type", instance_network_type)
         if instance_spec is not None:
-            pulumi.set(__self__, "instance_spec", instance_spec)
+            _setter("instance_spec", instance_spec)
         if payment_duration is not None:
-            pulumi.set(__self__, "payment_duration", payment_duration)
+            _setter("payment_duration", payment_duration)
         if payment_duration_unit is not None:
-            pulumi.set(__self__, "payment_duration_unit", payment_duration_unit)
+            _setter("payment_duration_unit", payment_duration_unit)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if security_ip_lists is not None:
-            pulumi.set(__self__, "security_ip_lists", security_ip_lists)
+            _setter("security_ip_lists", security_ip_lists)
         if seg_node_num is not None:
-            pulumi.set(__self__, "seg_node_num", seg_node_num)
+            _setter("seg_node_num", seg_node_num)
         if seg_storage_type is not None:
-            pulumi.set(__self__, "seg_storage_type", seg_storage_type)
+            _setter("seg_storage_type", seg_storage_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if storage_size is not None:
-            pulumi.set(__self__, "storage_size", storage_size)
+            _setter("storage_size", storage_size)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -811,6 +903,10 @@ class ElasticInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ElasticInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

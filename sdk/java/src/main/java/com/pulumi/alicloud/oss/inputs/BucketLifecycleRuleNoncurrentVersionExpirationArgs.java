@@ -14,18 +14,14 @@ public final class BucketLifecycleRuleNoncurrentVersionExpirationArgs extends co
     public static final BucketLifecycleRuleNoncurrentVersionExpirationArgs Empty = new BucketLifecycleRuleNoncurrentVersionExpirationArgs();
 
     /**
-     * Specifies the number of days after object creation when the specific rule action takes effect.
-     * 
-     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+     * Specifies the number of days noncurrent object versions transition.
      * 
      */
     @Import(name="days", required=true)
     private Output<Integer> days;
 
     /**
-     * @return Specifies the number of days after object creation when the specific rule action takes effect.
-     * 
-     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+     * @return Specifies the number of days noncurrent object versions transition.
      * 
      */
     public Output<Integer> days() {
@@ -57,9 +53,7 @@ public final class BucketLifecycleRuleNoncurrentVersionExpirationArgs extends co
         }
 
         /**
-         * @param days Specifies the number of days after object creation when the specific rule action takes effect.
-         * 
-         * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+         * @param days Specifies the number of days noncurrent object versions transition.
          * 
          * @return builder
          * 
@@ -70,9 +64,7 @@ public final class BucketLifecycleRuleNoncurrentVersionExpirationArgs extends co
         }
 
         /**
-         * @param days Specifies the number of days after object creation when the specific rule action takes effect.
-         * 
-         * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+         * @param days Specifies the number of days noncurrent object versions transition.
          * 
          * @return builder
          * 

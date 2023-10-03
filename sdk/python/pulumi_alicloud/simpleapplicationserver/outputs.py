@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -36,12 +36,31 @@ class GetImagesImageResult(dict):
         :param str image_type: The type of the image. Valid values: `app`, `custom`, `system`.
         :param str platform: The platform of Plan supported.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "image_name", image_name)
-        pulumi.set(__self__, "image_type", image_type)
-        pulumi.set(__self__, "platform", platform)
+        GetImagesImageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            image_id=image_id,
+            image_name=image_name,
+            image_type=image_type,
+            platform=platform,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             id: str,
+             image_id: str,
+             image_name: str,
+             image_type: str,
+             platform: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("image_name", image_name)
+        _setter("image_type", image_type)
+        _setter("platform", platform)
 
     @property
     @pulumi.getter
@@ -123,19 +142,52 @@ class GetInstancesInstanceResult(dict):
         :param str public_ip_address: The public IP address of the simple application server.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "business_status", business_status)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "ddos_status", ddos_status)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "inner_ip_address", inner_ip_address)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "plan_id", plan_id)
-        pulumi.set(__self__, "public_ip_address", public_ip_address)
-        pulumi.set(__self__, "status", status)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            business_status=business_status,
+            create_time=create_time,
+            ddos_status=ddos_status,
+            expired_time=expired_time,
+            id=id,
+            image_id=image_id,
+            inner_ip_address=inner_ip_address,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            payment_type=payment_type,
+            plan_id=plan_id,
+            public_ip_address=public_ip_address,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             business_status: str,
+             create_time: str,
+             ddos_status: str,
+             expired_time: str,
+             id: str,
+             image_id: str,
+             inner_ip_address: str,
+             instance_id: str,
+             instance_name: str,
+             payment_type: str,
+             plan_id: str,
+             public_ip_address: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("business_status", business_status)
+        _setter("create_time", create_time)
+        _setter("ddos_status", ddos_status)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("inner_ip_address", inner_ip_address)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("payment_type", payment_type)
+        _setter("plan_id", plan_id)
+        _setter("public_ip_address", public_ip_address)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="businessStatus")
@@ -257,11 +309,28 @@ class GetServerCustomImagesImageResult(dict):
         :param str id: The ID of the Custom Image.
         :param str platform: The type of operating system used by the Mirror. Valid values: `Linux`, `Windows`.
         """
-        pulumi.set(__self__, "custom_image_id", custom_image_id)
-        pulumi.set(__self__, "custom_image_name", custom_image_name)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "platform", platform)
+        GetServerCustomImagesImageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_image_id=custom_image_id,
+            custom_image_name=custom_image_name,
+            description=description,
+            id=id,
+            platform=platform,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_image_id: str,
+             custom_image_name: str,
+             description: str,
+             id: str,
+             platform: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("custom_image_id", custom_image_id)
+        _setter("custom_image_name", custom_image_name)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("platform", platform)
 
     @property
     @pulumi.getter(name="customImageId")
@@ -331,17 +400,46 @@ class GetServerDisksDiskResult(dict):
         :param int size: The size of the disk. Unit: `GB`.
         :param str status: The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "device", device)
-        pulumi.set(__self__, "disk_id", disk_id)
-        pulumi.set(__self__, "disk_name", disk_name)
-        pulumi.set(__self__, "disk_type", disk_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "status", status)
+        GetServerDisksDiskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            create_time=create_time,
+            device=device,
+            disk_id=disk_id,
+            disk_name=disk_name,
+            disk_type=disk_type,
+            id=id,
+            instance_id=instance_id,
+            payment_type=payment_type,
+            size=size,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             create_time: str,
+             device: str,
+             disk_id: str,
+             disk_name: str,
+             disk_type: str,
+             id: str,
+             instance_id: str,
+             payment_type: str,
+             size: int,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("create_time", create_time)
+        _setter("device", device)
+        _setter("disk_id", disk_id)
+        _setter("disk_name", disk_name)
+        _setter("disk_type", disk_type)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("payment_type", payment_type)
+        _setter("size", size)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -449,12 +547,31 @@ class GetServerFirewallRulesRuleResult(dict):
         :param str remark: The remarks of the firewall rule.
         :param str rule_protocol: The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
         """
-        pulumi.set(__self__, "firewall_rule_id", firewall_rule_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "rule_protocol", rule_protocol)
+        GetServerFirewallRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            firewall_rule_id=firewall_rule_id,
+            id=id,
+            instance_id=instance_id,
+            port=port,
+            remark=remark,
+            rule_protocol=rule_protocol,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             firewall_rule_id: str,
+             id: str,
+             instance_id: str,
+             port: str,
+             remark: str,
+             rule_protocol: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("firewall_rule_id", firewall_rule_id)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("port", port)
+        _setter("remark", remark)
+        _setter("rule_protocol", rule_protocol)
 
     @property
     @pulumi.getter(name="firewallRuleId")
@@ -526,14 +643,37 @@ class GetServerPlansPlanResult(dict):
         :param str plan_id: The ID of the Instance Plan.
         :param str support_platform: The platform of Plan supported.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "core", core)
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "flow", flow)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "memory", memory)
-        pulumi.set(__self__, "plan_id", plan_id)
-        pulumi.set(__self__, "support_platform", support_platform)
+        GetServerPlansPlanResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            core=core,
+            disk_size=disk_size,
+            flow=flow,
+            id=id,
+            memory=memory,
+            plan_id=plan_id,
+            support_platform=support_platform,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             core: int,
+             disk_size: int,
+             flow: int,
+             id: str,
+             memory: int,
+             plan_id: str,
+             support_platform: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("core", core)
+        _setter("disk_size", disk_size)
+        _setter("flow", flow)
+        _setter("id", id)
+        _setter("memory", memory)
+        _setter("plan_id", plan_id)
+        _setter("support_platform", support_platform)
 
     @property
     @pulumi.getter
@@ -623,15 +763,40 @@ class GetServerSnapshotsSnapshotResult(dict):
         :param str source_disk_type: A snapshot of the source of a disk type. Possible values: `System`, `Data`.
         :param str status: The status of the snapshots. Valid values: `Progressing`, `Accomplished` and `Failed`.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "disk_id", disk_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "progress", progress)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
-        pulumi.set(__self__, "snapshot_name", snapshot_name)
-        pulumi.set(__self__, "source_disk_type", source_disk_type)
-        pulumi.set(__self__, "status", status)
+        GetServerSnapshotsSnapshotResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            disk_id=disk_id,
+            id=id,
+            progress=progress,
+            remark=remark,
+            snapshot_id=snapshot_id,
+            snapshot_name=snapshot_name,
+            source_disk_type=source_disk_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             disk_id: str,
+             id: str,
+             progress: str,
+             remark: str,
+             snapshot_id: str,
+             snapshot_name: str,
+             source_disk_type: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("disk_id", disk_id)
+        _setter("id", id)
+        _setter("progress", progress)
+        _setter("remark", remark)
+        _setter("snapshot_id", snapshot_id)
+        _setter("snapshot_name", snapshot_name)
+        _setter("source_disk_type", source_disk_type)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")

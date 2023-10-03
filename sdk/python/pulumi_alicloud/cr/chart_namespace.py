@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ChartNamespaceArgs', 'ChartNamespace']
@@ -25,12 +25,27 @@ class ChartNamespaceArgs:
         :param pulumi.Input[bool] auto_create_repo: Specifies whether to automatically create repositories in the namespace. Valid values:
         :param pulumi.Input[str] default_repo_type: DefaultRepoType. Valid values: `PRIVATE`, `PUBLIC`.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "namespace_name", namespace_name)
+        ChartNamespaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            namespace_name=namespace_name,
+            auto_create_repo=auto_create_repo,
+            default_repo_type=default_repo_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: pulumi.Input[str],
+             namespace_name: pulumi.Input[str],
+             auto_create_repo: Optional[pulumi.Input[bool]] = None,
+             default_repo_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
+        _setter("namespace_name", namespace_name)
         if auto_create_repo is not None:
-            pulumi.set(__self__, "auto_create_repo", auto_create_repo)
+            _setter("auto_create_repo", auto_create_repo)
         if default_repo_type is not None:
-            pulumi.set(__self__, "default_repo_type", default_repo_type)
+            _setter("default_repo_type", default_repo_type)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -95,14 +110,29 @@ class _ChartNamespaceState:
         :param pulumi.Input[str] instance_id: The ID of the Container Registry instance.
         :param pulumi.Input[str] namespace_name: The name of the namespace that you want to create.
         """
+        _ChartNamespaceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_create_repo=auto_create_repo,
+            default_repo_type=default_repo_type,
+            instance_id=instance_id,
+            namespace_name=namespace_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_create_repo: Optional[pulumi.Input[bool]] = None,
+             default_repo_type: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             namespace_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_create_repo is not None:
-            pulumi.set(__self__, "auto_create_repo", auto_create_repo)
+            _setter("auto_create_repo", auto_create_repo)
         if default_repo_type is not None:
-            pulumi.set(__self__, "default_repo_type", default_repo_type)
+            _setter("default_repo_type", default_repo_type)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if namespace_name is not None:
-            pulumi.set(__self__, "namespace_name", namespace_name)
+            _setter("namespace_name", namespace_name)
 
     @property
     @pulumi.getter(name="autoCreateRepo")
@@ -264,6 +294,10 @@ class ChartNamespace(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ChartNamespaceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -61,42 +61,85 @@ class ListenerArgs:
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
         :param pulumi.Input['ListenerXForwardedForConfigArgs'] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
-        pulumi.set(__self__, "listener_port", listener_port)
-        pulumi.set(__self__, "listener_protocol", listener_protocol)
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        ListenerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            listener_port=listener_port,
+            listener_protocol=listener_protocol,
+            load_balancer_id=load_balancer_id,
+            access_log_record_customized_headers_enabled=access_log_record_customized_headers_enabled,
+            access_log_tracing_config=access_log_tracing_config,
+            acl_config=acl_config,
+            certificates=certificates,
+            default_actions=default_actions,
+            dry_run=dry_run,
+            gzip_enabled=gzip_enabled,
+            http2_enabled=http2_enabled,
+            idle_timeout=idle_timeout,
+            listener_description=listener_description,
+            quic_config=quic_config,
+            request_timeout=request_timeout,
+            security_policy_id=security_policy_id,
+            status=status,
+            x_forwarded_for_config=x_forwarded_for_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             listener_port: pulumi.Input[int],
+             listener_protocol: pulumi.Input[str],
+             load_balancer_id: pulumi.Input[str],
+             access_log_record_customized_headers_enabled: Optional[pulumi.Input[bool]] = None,
+             access_log_tracing_config: Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']] = None,
+             acl_config: Optional[pulumi.Input['ListenerAclConfigArgs']] = None,
+             certificates: Optional[pulumi.Input['ListenerCertificatesArgs']] = None,
+             default_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             gzip_enabled: Optional[pulumi.Input[bool]] = None,
+             http2_enabled: Optional[pulumi.Input[bool]] = None,
+             idle_timeout: Optional[pulumi.Input[int]] = None,
+             listener_description: Optional[pulumi.Input[str]] = None,
+             quic_config: Optional[pulumi.Input['ListenerQuicConfigArgs']] = None,
+             request_timeout: Optional[pulumi.Input[int]] = None,
+             security_policy_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("listener_port", listener_port)
+        _setter("listener_protocol", listener_protocol)
+        _setter("load_balancer_id", load_balancer_id)
         if access_log_record_customized_headers_enabled is not None:
-            pulumi.set(__self__, "access_log_record_customized_headers_enabled", access_log_record_customized_headers_enabled)
+            _setter("access_log_record_customized_headers_enabled", access_log_record_customized_headers_enabled)
         if access_log_tracing_config is not None:
-            pulumi.set(__self__, "access_log_tracing_config", access_log_tracing_config)
+            _setter("access_log_tracing_config", access_log_tracing_config)
         if acl_config is not None:
             warnings.warn("""Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""", DeprecationWarning)
             pulumi.log.warn("""acl_config is deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""")
         if acl_config is not None:
-            pulumi.set(__self__, "acl_config", acl_config)
+            _setter("acl_config", acl_config)
         if certificates is not None:
-            pulumi.set(__self__, "certificates", certificates)
+            _setter("certificates", certificates)
         if default_actions is not None:
-            pulumi.set(__self__, "default_actions", default_actions)
+            _setter("default_actions", default_actions)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if gzip_enabled is not None:
-            pulumi.set(__self__, "gzip_enabled", gzip_enabled)
+            _setter("gzip_enabled", gzip_enabled)
         if http2_enabled is not None:
-            pulumi.set(__self__, "http2_enabled", http2_enabled)
+            _setter("http2_enabled", http2_enabled)
         if idle_timeout is not None:
-            pulumi.set(__self__, "idle_timeout", idle_timeout)
+            _setter("idle_timeout", idle_timeout)
         if listener_description is not None:
-            pulumi.set(__self__, "listener_description", listener_description)
+            _setter("listener_description", listener_description)
         if quic_config is not None:
-            pulumi.set(__self__, "quic_config", quic_config)
+            _setter("quic_config", quic_config)
         if request_timeout is not None:
-            pulumi.set(__self__, "request_timeout", request_timeout)
+            _setter("request_timeout", request_timeout)
         if security_policy_id is not None:
-            pulumi.set(__self__, "security_policy_id", security_policy_id)
+            _setter("security_policy_id", security_policy_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if x_forwarded_for_config is not None:
-            pulumi.set(__self__, "x_forwarded_for_config", x_forwarded_for_config)
+            _setter("x_forwarded_for_config", x_forwarded_for_config)
 
     @property
     @pulumi.getter(name="listenerPort")
@@ -372,45 +415,88 @@ class _ListenerState:
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
         :param pulumi.Input['ListenerXForwardedForConfigArgs'] x_forwarded_for_config: The `x_forward_for` Related Attribute Configuration. See `x_forwarded_for_config` below for details. **NOTE:** The attribute is valid when the attribute `listener_protocol` is `HTTPS`.
         """
+        _ListenerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_log_record_customized_headers_enabled=access_log_record_customized_headers_enabled,
+            access_log_tracing_config=access_log_tracing_config,
+            acl_config=acl_config,
+            certificates=certificates,
+            default_actions=default_actions,
+            dry_run=dry_run,
+            gzip_enabled=gzip_enabled,
+            http2_enabled=http2_enabled,
+            idle_timeout=idle_timeout,
+            listener_description=listener_description,
+            listener_port=listener_port,
+            listener_protocol=listener_protocol,
+            load_balancer_id=load_balancer_id,
+            quic_config=quic_config,
+            request_timeout=request_timeout,
+            security_policy_id=security_policy_id,
+            status=status,
+            x_forwarded_for_config=x_forwarded_for_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_log_record_customized_headers_enabled: Optional[pulumi.Input[bool]] = None,
+             access_log_tracing_config: Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']] = None,
+             acl_config: Optional[pulumi.Input['ListenerAclConfigArgs']] = None,
+             certificates: Optional[pulumi.Input['ListenerCertificatesArgs']] = None,
+             default_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             gzip_enabled: Optional[pulumi.Input[bool]] = None,
+             http2_enabled: Optional[pulumi.Input[bool]] = None,
+             idle_timeout: Optional[pulumi.Input[int]] = None,
+             listener_description: Optional[pulumi.Input[str]] = None,
+             listener_port: Optional[pulumi.Input[int]] = None,
+             listener_protocol: Optional[pulumi.Input[str]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             quic_config: Optional[pulumi.Input['ListenerQuicConfigArgs']] = None,
+             request_timeout: Optional[pulumi.Input[int]] = None,
+             security_policy_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_log_record_customized_headers_enabled is not None:
-            pulumi.set(__self__, "access_log_record_customized_headers_enabled", access_log_record_customized_headers_enabled)
+            _setter("access_log_record_customized_headers_enabled", access_log_record_customized_headers_enabled)
         if access_log_tracing_config is not None:
-            pulumi.set(__self__, "access_log_tracing_config", access_log_tracing_config)
+            _setter("access_log_tracing_config", access_log_tracing_config)
         if acl_config is not None:
             warnings.warn("""Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""", DeprecationWarning)
             pulumi.log.warn("""acl_config is deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""")
         if acl_config is not None:
-            pulumi.set(__self__, "acl_config", acl_config)
+            _setter("acl_config", acl_config)
         if certificates is not None:
-            pulumi.set(__self__, "certificates", certificates)
+            _setter("certificates", certificates)
         if default_actions is not None:
-            pulumi.set(__self__, "default_actions", default_actions)
+            _setter("default_actions", default_actions)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if gzip_enabled is not None:
-            pulumi.set(__self__, "gzip_enabled", gzip_enabled)
+            _setter("gzip_enabled", gzip_enabled)
         if http2_enabled is not None:
-            pulumi.set(__self__, "http2_enabled", http2_enabled)
+            _setter("http2_enabled", http2_enabled)
         if idle_timeout is not None:
-            pulumi.set(__self__, "idle_timeout", idle_timeout)
+            _setter("idle_timeout", idle_timeout)
         if listener_description is not None:
-            pulumi.set(__self__, "listener_description", listener_description)
+            _setter("listener_description", listener_description)
         if listener_port is not None:
-            pulumi.set(__self__, "listener_port", listener_port)
+            _setter("listener_port", listener_port)
         if listener_protocol is not None:
-            pulumi.set(__self__, "listener_protocol", listener_protocol)
+            _setter("listener_protocol", listener_protocol)
         if load_balancer_id is not None:
-            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+            _setter("load_balancer_id", load_balancer_id)
         if quic_config is not None:
-            pulumi.set(__self__, "quic_config", quic_config)
+            _setter("quic_config", quic_config)
         if request_timeout is not None:
-            pulumi.set(__self__, "request_timeout", request_timeout)
+            _setter("request_timeout", request_timeout)
         if security_policy_id is not None:
-            pulumi.set(__self__, "security_policy_id", security_policy_id)
+            _setter("security_policy_id", security_policy_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if x_forwarded_for_config is not None:
-            pulumi.set(__self__, "x_forwarded_for_config", x_forwarded_for_config)
+            _setter("x_forwarded_for_config", x_forwarded_for_config)
 
     @property
     @pulumi.getter(name="accessLogRecordCustomizedHeadersEnabled")
@@ -735,6 +821,10 @@ class Listener(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ListenerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -768,11 +858,23 @@ class Listener(pulumi.CustomResource):
             __props__ = ListenerArgs.__new__(ListenerArgs)
 
             __props__.__dict__["access_log_record_customized_headers_enabled"] = access_log_record_customized_headers_enabled
+            if access_log_tracing_config is not None and not isinstance(access_log_tracing_config, ListenerAccessLogTracingConfigArgs):
+                access_log_tracing_config = access_log_tracing_config or {}
+                def _setter(key, value):
+                    access_log_tracing_config[key] = value
+                ListenerAccessLogTracingConfigArgs._configure(_setter, **access_log_tracing_config)
             __props__.__dict__["access_log_tracing_config"] = access_log_tracing_config
-            if acl_config is not None and not opts.urn:
-                warnings.warn("""Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""", DeprecationWarning)
-                pulumi.log.warn("""acl_config is deprecated: Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""")
+            if acl_config is not None and not isinstance(acl_config, ListenerAclConfigArgs):
+                acl_config = acl_config or {}
+                def _setter(key, value):
+                    acl_config[key] = value
+                ListenerAclConfigArgs._configure(_setter, **acl_config)
             __props__.__dict__["acl_config"] = acl_config
+            if certificates is not None and not isinstance(certificates, ListenerCertificatesArgs):
+                certificates = certificates or {}
+                def _setter(key, value):
+                    certificates[key] = value
+                ListenerCertificatesArgs._configure(_setter, **certificates)
             __props__.__dict__["certificates"] = certificates
             __props__.__dict__["default_actions"] = default_actions
             __props__.__dict__["dry_run"] = dry_run
@@ -789,10 +891,20 @@ class Listener(pulumi.CustomResource):
             if load_balancer_id is None and not opts.urn:
                 raise TypeError("Missing required property 'load_balancer_id'")
             __props__.__dict__["load_balancer_id"] = load_balancer_id
+            if quic_config is not None and not isinstance(quic_config, ListenerQuicConfigArgs):
+                quic_config = quic_config or {}
+                def _setter(key, value):
+                    quic_config[key] = value
+                ListenerQuicConfigArgs._configure(_setter, **quic_config)
             __props__.__dict__["quic_config"] = quic_config
             __props__.__dict__["request_timeout"] = request_timeout
             __props__.__dict__["security_policy_id"] = security_policy_id
             __props__.__dict__["status"] = status
+            if x_forwarded_for_config is not None and not isinstance(x_forwarded_for_config, ListenerXForwardedForConfigArgs):
+                x_forwarded_for_config = x_forwarded_for_config or {}
+                def _setter(key, value):
+                    x_forwarded_for_config[key] = value
+                ListenerXForwardedForConfigArgs._configure(_setter, **x_forwarded_for_config)
             __props__.__dict__["x_forwarded_for_config"] = x_forwarded_for_config
         super(Listener, __self__).__init__(
             'alicloud:alb/listener:Listener',

@@ -1191,7 +1191,7 @@ func (o ForwardingRuleRuleConditionArrayOutput) Index(i pulumi.IntInput) Forward
 }
 
 type ForwardingRuleRuleConditionHostConfig struct {
-	// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 	Values []string `pulumi:"values"`
 }
 
@@ -1207,7 +1207,7 @@ type ForwardingRuleRuleConditionHostConfigInput interface {
 }
 
 type ForwardingRuleRuleConditionHostConfigArgs struct {
-	// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -1280,7 +1280,7 @@ func (o ForwardingRuleRuleConditionHostConfigOutput) ToOutput(ctx context.Contex
 	}
 }
 
-// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 func (o ForwardingRuleRuleConditionHostConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleConditionHostConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1312,7 +1312,7 @@ func (o ForwardingRuleRuleConditionHostConfigArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ForwardingRuleRuleConditionPathConfig struct {
-	// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 	Values []string `pulumi:"values"`
 }
 
@@ -1328,7 +1328,7 @@ type ForwardingRuleRuleConditionPathConfigInput interface {
 }
 
 type ForwardingRuleRuleConditionPathConfigArgs struct {
-	// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+	// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -1427,7 +1427,7 @@ func (o ForwardingRuleRuleConditionPathConfigOutput) ToOutput(ctx context.Contex
 	}
 }
 
-// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 func (o ForwardingRuleRuleConditionPathConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleConditionPathConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1462,7 +1462,7 @@ func (o ForwardingRuleRuleConditionPathConfigPtrOutput) Elem() ForwardingRuleRul
 	}).(ForwardingRuleRuleConditionPathConfigOutput)
 }
 
-// The length of the path is 1-128 characters. It must start with a forward slash (/), and can only contain letters, numbers, dollar sign ($), dash (-), and underscores (_) , half width full stop (.), plus sign (+), forward slash (/), and (&), wavy line (~), at (@), half width colon (:), apostrophe ('). It supports asterisk (*) and half width question mark (?) as wildcards.
+// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
 func (o ForwardingRuleRuleConditionPathConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ForwardingRuleRuleConditionPathConfig) []string {
 		if v == nil {

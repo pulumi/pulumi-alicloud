@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DiskReplicaPairArgs', 'DiskReplicaPair']
@@ -43,27 +43,60 @@ class DiskReplicaPairArgs:
         :param pulumi.Input[str] replica_pair_id: The first ID of the resource.
         :param pulumi.Input[str] rpo: The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
         """
-        pulumi.set(__self__, "destination_disk_id", destination_disk_id)
-        pulumi.set(__self__, "destination_region_id", destination_region_id)
-        pulumi.set(__self__, "destination_zone_id", destination_zone_id)
-        pulumi.set(__self__, "disk_id", disk_id)
-        pulumi.set(__self__, "source_zone_id", source_zone_id)
+        DiskReplicaPairArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination_disk_id=destination_disk_id,
+            destination_region_id=destination_region_id,
+            destination_zone_id=destination_zone_id,
+            disk_id=disk_id,
+            source_zone_id=source_zone_id,
+            bandwidth=bandwidth,
+            description=description,
+            pair_name=pair_name,
+            payment_type=payment_type,
+            period=period,
+            period_unit=period_unit,
+            replica_pair_id=replica_pair_id,
+            rpo=rpo,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination_disk_id: pulumi.Input[str],
+             destination_region_id: pulumi.Input[str],
+             destination_zone_id: pulumi.Input[str],
+             disk_id: pulumi.Input[str],
+             source_zone_id: pulumi.Input[str],
+             bandwidth: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             pair_name: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[str]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             replica_pair_id: Optional[pulumi.Input[str]] = None,
+             rpo: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("destination_disk_id", destination_disk_id)
+        _setter("destination_region_id", destination_region_id)
+        _setter("destination_zone_id", destination_zone_id)
+        _setter("disk_id", disk_id)
+        _setter("source_zone_id", source_zone_id)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if pair_name is not None:
-            pulumi.set(__self__, "pair_name", pair_name)
+            _setter("pair_name", pair_name)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if replica_pair_id is not None:
-            pulumi.set(__self__, "replica_pair_id", replica_pair_id)
+            _setter("replica_pair_id", replica_pair_id)
         if rpo is not None:
-            pulumi.set(__self__, "rpo", rpo)
+            _setter("rpo", rpo)
 
     @property
     @pulumi.getter(name="destinationDiskId")
@@ -260,38 +293,77 @@ class _DiskReplicaPairState:
         :param pulumi.Input[str] source_zone_id: The ID of the zone to which the production site belongs.
         :param pulumi.Input[str] status: The status of the resource
         """
+        _DiskReplicaPairState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            create_time=create_time,
+            description=description,
+            destination_disk_id=destination_disk_id,
+            destination_region_id=destination_region_id,
+            destination_zone_id=destination_zone_id,
+            disk_id=disk_id,
+            pair_name=pair_name,
+            payment_type=payment_type,
+            period=period,
+            period_unit=period_unit,
+            replica_pair_id=replica_pair_id,
+            resource_group_id=resource_group_id,
+            rpo=rpo,
+            source_zone_id=source_zone_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             destination_disk_id: Optional[pulumi.Input[str]] = None,
+             destination_region_id: Optional[pulumi.Input[str]] = None,
+             destination_zone_id: Optional[pulumi.Input[str]] = None,
+             disk_id: Optional[pulumi.Input[str]] = None,
+             pair_name: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[str]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             replica_pair_id: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             rpo: Optional[pulumi.Input[str]] = None,
+             source_zone_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if destination_disk_id is not None:
-            pulumi.set(__self__, "destination_disk_id", destination_disk_id)
+            _setter("destination_disk_id", destination_disk_id)
         if destination_region_id is not None:
-            pulumi.set(__self__, "destination_region_id", destination_region_id)
+            _setter("destination_region_id", destination_region_id)
         if destination_zone_id is not None:
-            pulumi.set(__self__, "destination_zone_id", destination_zone_id)
+            _setter("destination_zone_id", destination_zone_id)
         if disk_id is not None:
-            pulumi.set(__self__, "disk_id", disk_id)
+            _setter("disk_id", disk_id)
         if pair_name is not None:
-            pulumi.set(__self__, "pair_name", pair_name)
+            _setter("pair_name", pair_name)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if replica_pair_id is not None:
-            pulumi.set(__self__, "replica_pair_id", replica_pair_id)
+            _setter("replica_pair_id", replica_pair_id)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if rpo is not None:
-            pulumi.set(__self__, "rpo", rpo)
+            _setter("rpo", rpo)
         if source_zone_id is not None:
-            pulumi.set(__self__, "source_zone_id", source_zone_id)
+            _setter("source_zone_id", source_zone_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -567,6 +639,10 @@ class DiskReplicaPair(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DiskReplicaPairArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

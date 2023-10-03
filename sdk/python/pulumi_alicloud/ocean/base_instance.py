@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BaseInstanceArgs', 'BaseInstance']
@@ -72,31 +72,68 @@ class BaseInstanceArgs:
         :param pulumi.Input[str] period_unit: The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which the instance resides.
         """
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "series", series)
-        pulumi.set(__self__, "zones", zones)
+        BaseInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            disk_size=disk_size,
+            instance_class=instance_class,
+            payment_type=payment_type,
+            series=series,
+            zones=zones,
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            backup_retain_mode=backup_retain_mode,
+            disk_type=disk_type,
+            instance_name=instance_name,
+            node_num=node_num,
+            ob_version=ob_version,
+            period=period,
+            period_unit=period_unit,
+            resource_group_id=resource_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             disk_size: pulumi.Input[int],
+             instance_class: pulumi.Input[str],
+             payment_type: pulumi.Input[str],
+             series: pulumi.Input[str],
+             zones: pulumi.Input[Sequence[pulumi.Input[str]]],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             backup_retain_mode: Optional[pulumi.Input[str]] = None,
+             disk_type: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             node_num: Optional[pulumi.Input[str]] = None,
+             ob_version: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("disk_size", disk_size)
+        _setter("instance_class", instance_class)
+        _setter("payment_type", payment_type)
+        _setter("series", series)
+        _setter("zones", zones)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if backup_retain_mode is not None:
-            pulumi.set(__self__, "backup_retain_mode", backup_retain_mode)
+            _setter("backup_retain_mode", backup_retain_mode)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if node_num is not None:
-            pulumi.set(__self__, "node_num", node_num)
+            _setter("node_num", node_num)
         if ob_version is not None:
-            pulumi.set(__self__, "ob_version", ob_version)
+            _setter("ob_version", ob_version)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
 
     @property
     @pulumi.getter(name="diskSize")
@@ -373,44 +410,89 @@ class _BaseInstanceState:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Information about the zone where the cluster is deployed.
         """
+        _BaseInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            backup_retain_mode=backup_retain_mode,
+            commodity_code=commodity_code,
+            cpu=cpu,
+            create_time=create_time,
+            disk_size=disk_size,
+            disk_type=disk_type,
+            instance_class=instance_class,
+            instance_name=instance_name,
+            node_num=node_num,
+            ob_version=ob_version,
+            payment_type=payment_type,
+            period=period,
+            period_unit=period_unit,
+            resource_group_id=resource_group_id,
+            series=series,
+            status=status,
+            zones=zones,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             backup_retain_mode: Optional[pulumi.Input[str]] = None,
+             commodity_code: Optional[pulumi.Input[str]] = None,
+             cpu: Optional[pulumi.Input[int]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             disk_size: Optional[pulumi.Input[int]] = None,
+             disk_type: Optional[pulumi.Input[str]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             node_num: Optional[pulumi.Input[str]] = None,
+             ob_version: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             series: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if backup_retain_mode is not None:
-            pulumi.set(__self__, "backup_retain_mode", backup_retain_mode)
+            _setter("backup_retain_mode", backup_retain_mode)
         if commodity_code is not None:
-            pulumi.set(__self__, "commodity_code", commodity_code)
+            _setter("commodity_code", commodity_code)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if disk_size is not None:
-            pulumi.set(__self__, "disk_size", disk_size)
+            _setter("disk_size", disk_size)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if node_num is not None:
-            pulumi.set(__self__, "node_num", node_num)
+            _setter("node_num", node_num)
         if ob_version is not None:
-            pulumi.set(__self__, "ob_version", ob_version)
+            _setter("ob_version", ob_version)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if series is not None:
-            pulumi.set(__self__, "series", series)
+            _setter("series", series)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if zones is not None:
-            pulumi.set(__self__, "zones", zones)
+            _setter("zones", zones)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -836,6 +918,10 @@ class BaseInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BaseInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

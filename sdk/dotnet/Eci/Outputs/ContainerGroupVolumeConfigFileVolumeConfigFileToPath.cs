@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string? Content;
         /// <summary>
-        /// The relative file path.
+        /// The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
         /// </summary>
         public readonly string? Path;
 

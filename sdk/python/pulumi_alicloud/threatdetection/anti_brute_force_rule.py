@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AntiBruteForceRuleArgs', 'AntiBruteForceRule']
@@ -29,13 +29,32 @@ class AntiBruteForceRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
         :param pulumi.Input[bool] default_rule: Specifies whether to set the defense rule as the default rule.
         """
-        pulumi.set(__self__, "anti_brute_force_rule_name", anti_brute_force_rule_name)
-        pulumi.set(__self__, "fail_count", fail_count)
-        pulumi.set(__self__, "forbidden_time", forbidden_time)
-        pulumi.set(__self__, "span", span)
-        pulumi.set(__self__, "uuid_lists", uuid_lists)
+        AntiBruteForceRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            anti_brute_force_rule_name=anti_brute_force_rule_name,
+            fail_count=fail_count,
+            forbidden_time=forbidden_time,
+            span=span,
+            uuid_lists=uuid_lists,
+            default_rule=default_rule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             anti_brute_force_rule_name: pulumi.Input[str],
+             fail_count: pulumi.Input[int],
+             forbidden_time: pulumi.Input[int],
+             span: pulumi.Input[int],
+             uuid_lists: pulumi.Input[Sequence[pulumi.Input[str]]],
+             default_rule: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("anti_brute_force_rule_name", anti_brute_force_rule_name)
+        _setter("fail_count", fail_count)
+        _setter("forbidden_time", forbidden_time)
+        _setter("span", span)
+        _setter("uuid_lists", uuid_lists)
         if default_rule is not None:
-            pulumi.set(__self__, "default_rule", default_rule)
+            _setter("default_rule", default_rule)
 
     @property
     @pulumi.getter(name="antiBruteForceRuleName")
@@ -130,20 +149,41 @@ class _AntiBruteForceRuleState:
         :param pulumi.Input[int] span: The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
         """
+        _AntiBruteForceRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            anti_brute_force_rule_id=anti_brute_force_rule_id,
+            anti_brute_force_rule_name=anti_brute_force_rule_name,
+            default_rule=default_rule,
+            fail_count=fail_count,
+            forbidden_time=forbidden_time,
+            span=span,
+            uuid_lists=uuid_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             anti_brute_force_rule_id: Optional[pulumi.Input[str]] = None,
+             anti_brute_force_rule_name: Optional[pulumi.Input[str]] = None,
+             default_rule: Optional[pulumi.Input[bool]] = None,
+             fail_count: Optional[pulumi.Input[int]] = None,
+             forbidden_time: Optional[pulumi.Input[int]] = None,
+             span: Optional[pulumi.Input[int]] = None,
+             uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if anti_brute_force_rule_id is not None:
-            pulumi.set(__self__, "anti_brute_force_rule_id", anti_brute_force_rule_id)
+            _setter("anti_brute_force_rule_id", anti_brute_force_rule_id)
         if anti_brute_force_rule_name is not None:
-            pulumi.set(__self__, "anti_brute_force_rule_name", anti_brute_force_rule_name)
+            _setter("anti_brute_force_rule_name", anti_brute_force_rule_name)
         if default_rule is not None:
-            pulumi.set(__self__, "default_rule", default_rule)
+            _setter("default_rule", default_rule)
         if fail_count is not None:
-            pulumi.set(__self__, "fail_count", fail_count)
+            _setter("fail_count", fail_count)
         if forbidden_time is not None:
-            pulumi.set(__self__, "forbidden_time", forbidden_time)
+            _setter("forbidden_time", forbidden_time)
         if span is not None:
-            pulumi.set(__self__, "span", span)
+            _setter("span", span)
         if uuid_lists is not None:
-            pulumi.set(__self__, "uuid_lists", uuid_lists)
+            _setter("uuid_lists", uuid_lists)
 
     @property
     @pulumi.getter(name="antiBruteForceRuleId")
@@ -329,6 +369,10 @@ class AntiBruteForceRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AntiBruteForceRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

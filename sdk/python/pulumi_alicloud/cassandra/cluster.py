@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ClusterArgs', 'Cluster']
@@ -59,43 +59,92 @@ class ClusterArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "major_version", major_version)
-        pulumi.set(__self__, "node_count", node_count)
-        pulumi.set(__self__, "pay_type", pay_type)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        ClusterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_type=instance_type,
+            major_version=major_version,
+            node_count=node_count,
+            pay_type=pay_type,
+            vswitch_id=vswitch_id,
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            cluster_name=cluster_name,
+            data_center_name=data_center_name,
+            disk_size=disk_size,
+            disk_type=disk_type,
+            enable_public=enable_public,
+            ip_white=ip_white,
+            maintain_end_time=maintain_end_time,
+            maintain_start_time=maintain_start_time,
+            password=password,
+            period=period,
+            period_unit=period_unit,
+            security_groups=security_groups,
+            tags=tags,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_type: pulumi.Input[str],
+             major_version: pulumi.Input[str],
+             node_count: pulumi.Input[int],
+             pay_type: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             data_center_name: Optional[pulumi.Input[str]] = None,
+             disk_size: Optional[pulumi.Input[int]] = None,
+             disk_type: Optional[pulumi.Input[str]] = None,
+             enable_public: Optional[pulumi.Input[bool]] = None,
+             ip_white: Optional[pulumi.Input[str]] = None,
+             maintain_end_time: Optional[pulumi.Input[str]] = None,
+             maintain_start_time: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_type", instance_type)
+        _setter("major_version", major_version)
+        _setter("node_count", node_count)
+        _setter("pay_type", pay_type)
+        _setter("vswitch_id", vswitch_id)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if cluster_name is not None:
-            pulumi.set(__self__, "cluster_name", cluster_name)
+            _setter("cluster_name", cluster_name)
         if data_center_name is not None:
-            pulumi.set(__self__, "data_center_name", data_center_name)
+            _setter("data_center_name", data_center_name)
         if disk_size is not None:
-            pulumi.set(__self__, "disk_size", disk_size)
+            _setter("disk_size", disk_size)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if enable_public is not None:
-            pulumi.set(__self__, "enable_public", enable_public)
+            _setter("enable_public", enable_public)
         if ip_white is not None:
-            pulumi.set(__self__, "ip_white", ip_white)
+            _setter("ip_white", ip_white)
         if maintain_end_time is not None:
-            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+            _setter("maintain_end_time", maintain_end_time)
         if maintain_start_time is not None:
-            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
+            _setter("maintain_start_time", maintain_start_time)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if security_groups is not None:
-            pulumi.set(__self__, "security_groups", security_groups)
+            _setter("security_groups", security_groups)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -392,52 +441,105 @@ class _ClusterState:
         :param pulumi.Input[str] vswitch_id: The vswitch_id of dataCenter-1, can not empty.
         :param pulumi.Input[str] zone_id: The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
+        _ClusterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            cluster_name=cluster_name,
+            data_center_name=data_center_name,
+            disk_size=disk_size,
+            disk_type=disk_type,
+            enable_public=enable_public,
+            instance_type=instance_type,
+            ip_white=ip_white,
+            maintain_end_time=maintain_end_time,
+            maintain_start_time=maintain_start_time,
+            major_version=major_version,
+            node_count=node_count,
+            password=password,
+            pay_type=pay_type,
+            period=period,
+            period_unit=period_unit,
+            public_points=public_points,
+            security_groups=security_groups,
+            status=status,
+            tags=tags,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             cluster_name: Optional[pulumi.Input[str]] = None,
+             data_center_name: Optional[pulumi.Input[str]] = None,
+             disk_size: Optional[pulumi.Input[int]] = None,
+             disk_type: Optional[pulumi.Input[str]] = None,
+             enable_public: Optional[pulumi.Input[bool]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             ip_white: Optional[pulumi.Input[str]] = None,
+             maintain_end_time: Optional[pulumi.Input[str]] = None,
+             maintain_start_time: Optional[pulumi.Input[str]] = None,
+             major_version: Optional[pulumi.Input[str]] = None,
+             node_count: Optional[pulumi.Input[int]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             pay_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             public_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if cluster_name is not None:
-            pulumi.set(__self__, "cluster_name", cluster_name)
+            _setter("cluster_name", cluster_name)
         if data_center_name is not None:
-            pulumi.set(__self__, "data_center_name", data_center_name)
+            _setter("data_center_name", data_center_name)
         if disk_size is not None:
-            pulumi.set(__self__, "disk_size", disk_size)
+            _setter("disk_size", disk_size)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if enable_public is not None:
-            pulumi.set(__self__, "enable_public", enable_public)
+            _setter("enable_public", enable_public)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if ip_white is not None:
-            pulumi.set(__self__, "ip_white", ip_white)
+            _setter("ip_white", ip_white)
         if maintain_end_time is not None:
-            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+            _setter("maintain_end_time", maintain_end_time)
         if maintain_start_time is not None:
-            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
+            _setter("maintain_start_time", maintain_start_time)
         if major_version is not None:
-            pulumi.set(__self__, "major_version", major_version)
+            _setter("major_version", major_version)
         if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
+            _setter("node_count", node_count)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if pay_type is not None:
-            pulumi.set(__self__, "pay_type", pay_type)
+            _setter("pay_type", pay_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if public_points is not None:
-            pulumi.set(__self__, "public_points", public_points)
+            _setter("public_points", public_points)
         if security_groups is not None:
-            pulumi.set(__self__, "security_groups", security_groups)
+            _setter("security_groups", security_groups)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -859,6 +961,10 @@ class Cluster(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ClusterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -22,7 +22,7 @@ public final class ApplicationConfigMapMountDescV2 {
      */
     private @Nullable String key;
     /**
-     * @return The path of the container in SAE.
+     * @return The mount path.
      * 
      */
     private @Nullable String mountPath;
@@ -43,7 +43,7 @@ public final class ApplicationConfigMapMountDescV2 {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The path of the container in SAE.
+     * @return The mount path.
      * 
      */
     public Optional<String> mountPath() {

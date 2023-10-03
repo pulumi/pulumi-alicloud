@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['CommonBandwithPackageAttachmentArgs', 'CommonBandwithPackageAttachment']
@@ -27,14 +27,31 @@ class CommonBandwithPackageAttachmentArgs:
         :param pulumi.Input[bool] cancel_common_bandwidth_package_ip_bandwidth: Whether to cancel the maximum bandwidth configuration for the EIP. Default: false.
         :param pulumi.Input[str] ip_type: IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
         """
-        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
-        pulumi.set(__self__, "instance_id", instance_id)
+        CommonBandwithPackageAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth_package_id=bandwidth_package_id,
+            instance_id=instance_id,
+            bandwidth_package_bandwidth=bandwidth_package_bandwidth,
+            cancel_common_bandwidth_package_ip_bandwidth=cancel_common_bandwidth_package_ip_bandwidth,
+            ip_type=ip_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth_package_id: pulumi.Input[str],
+             instance_id: pulumi.Input[str],
+             bandwidth_package_bandwidth: Optional[pulumi.Input[str]] = None,
+             cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[bool]] = None,
+             ip_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth_package_id", bandwidth_package_id)
+        _setter("instance_id", instance_id)
         if bandwidth_package_bandwidth is not None:
-            pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
+            _setter("bandwidth_package_bandwidth", bandwidth_package_bandwidth)
         if cancel_common_bandwidth_package_ip_bandwidth is not None:
-            pulumi.set(__self__, "cancel_common_bandwidth_package_ip_bandwidth", cancel_common_bandwidth_package_ip_bandwidth)
+            _setter("cancel_common_bandwidth_package_ip_bandwidth", cancel_common_bandwidth_package_ip_bandwidth)
         if ip_type is not None:
-            pulumi.set(__self__, "ip_type", ip_type)
+            _setter("ip_type", ip_type)
 
     @property
     @pulumi.getter(name="bandwidthPackageId")
@@ -115,18 +132,37 @@ class _CommonBandwithPackageAttachmentState:
         :param pulumi.Input[str] ip_type: IP type. Set the value to **EIP**, which indicates that the EIP is added to the Internet shared bandwidth.
         :param pulumi.Input[str] status: The status of the Internet Shared Bandwidth instance.
         """
+        _CommonBandwithPackageAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth_package_bandwidth=bandwidth_package_bandwidth,
+            bandwidth_package_id=bandwidth_package_id,
+            cancel_common_bandwidth_package_ip_bandwidth=cancel_common_bandwidth_package_ip_bandwidth,
+            instance_id=instance_id,
+            ip_type=ip_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth_package_bandwidth: Optional[pulumi.Input[str]] = None,
+             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+             cancel_common_bandwidth_package_ip_bandwidth: Optional[pulumi.Input[bool]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             ip_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bandwidth_package_bandwidth is not None:
-            pulumi.set(__self__, "bandwidth_package_bandwidth", bandwidth_package_bandwidth)
+            _setter("bandwidth_package_bandwidth", bandwidth_package_bandwidth)
         if bandwidth_package_id is not None:
-            pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+            _setter("bandwidth_package_id", bandwidth_package_id)
         if cancel_common_bandwidth_package_ip_bandwidth is not None:
-            pulumi.set(__self__, "cancel_common_bandwidth_package_ip_bandwidth", cancel_common_bandwidth_package_ip_bandwidth)
+            _setter("cancel_common_bandwidth_package_ip_bandwidth", cancel_common_bandwidth_package_ip_bandwidth)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if ip_type is not None:
-            pulumi.set(__self__, "ip_type", ip_type)
+            _setter("ip_type", ip_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="bandwidthPackageBandwidth")
@@ -304,6 +340,10 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CommonBandwithPackageAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -61,26 +61,73 @@ class GetDomainsDomainResult(dict):
         :param str tl_domain_name: The primary domain name.
         :param str tracef_record: The CNAME verification record provided by Alibaba Cloud DNS.
         """
-        pulumi.set(__self__, "cname_auth_status", cname_auth_status)
-        pulumi.set(__self__, "cname_confirm_status", cname_confirm_status)
-        pulumi.set(__self__, "cname_record", cname_record)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "default_domain", default_domain)
-        pulumi.set(__self__, "dns_mx", dns_mx)
-        pulumi.set(__self__, "dns_spf", dns_spf)
-        pulumi.set(__self__, "dns_txt", dns_txt)
-        pulumi.set(__self__, "domain_id", domain_id)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "domain_type", domain_type)
-        pulumi.set(__self__, "icp_status", icp_status)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mx_auth_status", mx_auth_status)
-        pulumi.set(__self__, "mx_record", mx_record)
-        pulumi.set(__self__, "spf_auth_status", spf_auth_status)
-        pulumi.set(__self__, "spf_record", spf_record)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tl_domain_name", tl_domain_name)
-        pulumi.set(__self__, "tracef_record", tracef_record)
+        GetDomainsDomainResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cname_auth_status=cname_auth_status,
+            cname_confirm_status=cname_confirm_status,
+            cname_record=cname_record,
+            create_time=create_time,
+            default_domain=default_domain,
+            dns_mx=dns_mx,
+            dns_spf=dns_spf,
+            dns_txt=dns_txt,
+            domain_id=domain_id,
+            domain_name=domain_name,
+            domain_type=domain_type,
+            icp_status=icp_status,
+            id=id,
+            mx_auth_status=mx_auth_status,
+            mx_record=mx_record,
+            spf_auth_status=spf_auth_status,
+            spf_record=spf_record,
+            status=status,
+            tl_domain_name=tl_domain_name,
+            tracef_record=tracef_record,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cname_auth_status: str,
+             cname_confirm_status: str,
+             cname_record: str,
+             create_time: str,
+             default_domain: str,
+             dns_mx: str,
+             dns_spf: str,
+             dns_txt: str,
+             domain_id: str,
+             domain_name: str,
+             domain_type: str,
+             icp_status: str,
+             id: str,
+             mx_auth_status: str,
+             mx_record: str,
+             spf_auth_status: str,
+             spf_record: str,
+             status: str,
+             tl_domain_name: str,
+             tracef_record: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cname_auth_status", cname_auth_status)
+        _setter("cname_confirm_status", cname_confirm_status)
+        _setter("cname_record", cname_record)
+        _setter("create_time", create_time)
+        _setter("default_domain", default_domain)
+        _setter("dns_mx", dns_mx)
+        _setter("dns_spf", dns_spf)
+        _setter("dns_txt", dns_txt)
+        _setter("domain_id", domain_id)
+        _setter("domain_name", domain_name)
+        _setter("domain_type", domain_type)
+        _setter("icp_status", icp_status)
+        _setter("id", id)
+        _setter("mx_auth_status", mx_auth_status)
+        _setter("mx_record", mx_record)
+        _setter("spf_auth_status", spf_auth_status)
+        _setter("spf_record", spf_record)
+        _setter("status", status)
+        _setter("tl_domain_name", tl_domain_name)
+        _setter("tracef_record", tracef_record)
 
     @property
     @pulumi.getter(name="cnameAuthStatus")
@@ -274,19 +321,52 @@ class GetMailAddressesAddressResult(dict):
         :param str sendtype: Account type.
         :param str status: Account Status. Valid values: `0`, `1`. Freeze: 1, normal: 0.
         """
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "daily_count", daily_count)
-        pulumi.set(__self__, "daily_req_count", daily_req_count)
-        pulumi.set(__self__, "domain_status", domain_status)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mail_address_id", mail_address_id)
-        pulumi.set(__self__, "month_count", month_count)
-        pulumi.set(__self__, "month_req_count", month_req_count)
-        pulumi.set(__self__, "reply_address", reply_address)
-        pulumi.set(__self__, "reply_status", reply_status)
-        pulumi.set(__self__, "sendtype", sendtype)
-        pulumi.set(__self__, "status", status)
+        GetMailAddressesAddressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_name=account_name,
+            create_time=create_time,
+            daily_count=daily_count,
+            daily_req_count=daily_req_count,
+            domain_status=domain_status,
+            id=id,
+            mail_address_id=mail_address_id,
+            month_count=month_count,
+            month_req_count=month_req_count,
+            reply_address=reply_address,
+            reply_status=reply_status,
+            sendtype=sendtype,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_name: str,
+             create_time: str,
+             daily_count: str,
+             daily_req_count: str,
+             domain_status: str,
+             id: str,
+             mail_address_id: str,
+             month_count: str,
+             month_req_count: str,
+             reply_address: str,
+             reply_status: str,
+             sendtype: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_name", account_name)
+        _setter("create_time", create_time)
+        _setter("daily_count", daily_count)
+        _setter("daily_req_count", daily_req_count)
+        _setter("domain_status", domain_status)
+        _setter("id", id)
+        _setter("mail_address_id", mail_address_id)
+        _setter("month_count", month_count)
+        _setter("month_req_count", month_req_count)
+        _setter("reply_address", reply_address)
+        _setter("reply_status", reply_status)
+        _setter("sendtype", sendtype)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountName")
@@ -412,13 +492,34 @@ class GetReceiversReceiverseResult(dict):
         :param str receivers_name: The name of the resource.
         :param int status: The status of the resource.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "receivers_alias", receivers_alias)
-        pulumi.set(__self__, "receivers_id", receivers_id)
-        pulumi.set(__self__, "receivers_name", receivers_name)
-        pulumi.set(__self__, "status", status)
+        GetReceiversReceiverseResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            id=id,
+            receivers_alias=receivers_alias,
+            receivers_id=receivers_id,
+            receivers_name=receivers_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             id: str,
+             receivers_alias: str,
+             receivers_id: str,
+             receivers_name: str,
+             status: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("receivers_alias", receivers_alias)
+        _setter("receivers_id", receivers_id)
+        _setter("receivers_name", receivers_name)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -488,9 +589,22 @@ class GetTagsTagResult(dict):
         :param str tag_id: The ID of the tag.
         :param str tag_name: The name of the tag.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "tag_id", tag_id)
-        pulumi.set(__self__, "tag_name", tag_name)
+        GetTagsTagResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            tag_id=tag_id,
+            tag_name=tag_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             tag_id: str,
+             tag_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("tag_id", tag_id)
+        _setter("tag_name", tag_name)
 
     @property
     @pulumi.getter

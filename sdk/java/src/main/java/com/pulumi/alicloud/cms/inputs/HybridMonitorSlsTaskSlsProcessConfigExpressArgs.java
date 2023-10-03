@@ -16,14 +16,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigExpressArgs extends com.p
     public static final HybridMonitorSlsTaskSlsProcessConfigExpressArgs Empty = new HybridMonitorSlsTaskSlsProcessConfigExpressArgs();
 
     /**
-     * The alias of the aggregation result.
+     * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
      */
     @Import(name="alias")
     private @Nullable Output<String> alias;
 
     /**
-     * @return The alias of the aggregation result.
+     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
      */
     public Optional<Output<String>> alias() {
@@ -31,14 +31,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigExpressArgs extends com.p
     }
 
     /**
-     * The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
+     * The extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
      */
     @Import(name="express")
     private @Nullable Output<String> express;
 
     /**
-     * @return The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
+     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
      * 
      */
     public Optional<Output<String>> express() {
@@ -71,7 +71,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigExpressArgs extends com.p
         }
 
         /**
-         * @param alias The alias of the aggregation result.
+         * @param alias The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigExpressArgs extends com.p
         }
 
         /**
-         * @param alias The alias of the aggregation result.
+         * @param alias The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigExpressArgs extends com.p
         }
 
         /**
-         * @param express The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
+         * @param express The extended field that specifies the result of basic operations that are performed on aggregation results.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigExpressArgs extends com.p
         }
 
         /**
-         * @param express The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
+         * @param express The extended field that specifies the result of basic operations that are performed on aggregation results.
          * 
          * @return builder
          * 

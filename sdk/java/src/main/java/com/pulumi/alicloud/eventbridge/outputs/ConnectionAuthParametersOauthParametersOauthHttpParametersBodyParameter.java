@@ -17,12 +17,12 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersBod
      */
     private @Nullable String isValueSecret;
     /**
-     * @return The key of the request header.
+     * @return The key of the request path.
      * 
      */
     private @Nullable String key;
     /**
-     * @return The value of the request header.
+     * @return The key of the request path.
      * 
      */
     private @Nullable String value;
@@ -36,14 +36,14 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersBod
         return Optional.ofNullable(this.isValueSecret);
     }
     /**
-     * @return The key of the request header.
+     * @return The key of the request path.
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return The value of the request header.
+     * @return The key of the request path.
      * 
      */
     public Optional<String> value() {

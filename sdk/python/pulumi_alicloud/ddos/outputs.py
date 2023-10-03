@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -49,10 +49,21 @@ class DomainResourceProxyType(dict):
         :param Sequence[int] proxy_ports: the port number. This field is required and must be an integer. **NOTE:** From version 1.206.0, `proxy_ports` can be modified.
         :param str proxy_type: the protocol type. This field is required and must be a string. Valid values: `http`, `https`, `websocket`, and `websockets`.
         """
+        DomainResourceProxyType._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            proxy_ports=proxy_ports,
+            proxy_type=proxy_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             proxy_ports: Optional[Sequence[int]] = None,
+             proxy_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if proxy_ports is not None:
-            pulumi.set(__self__, "proxy_ports", proxy_ports)
+            _setter("proxy_ports", proxy_ports)
         if proxy_type is not None:
-            pulumi.set(__self__, "proxy_type", proxy_type)
+            _setter("proxy_type", proxy_type)
 
     @property
     @pulumi.getter(name="proxyPorts")
@@ -113,18 +124,37 @@ class SchedulerRuleRule(dict):
                `3`: the IP address used to accelerate access (in the network acceleration scenario)
                `6` the IP address of the interaction resource (in the cloud service interaction scenario)
         """
+        SchedulerRuleRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            priority=priority,
+            region_id=region_id,
+            status=status,
+            type=type,
+            value=value,
+            value_type=value_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             priority: Optional[int] = None,
+             region_id: Optional[str] = None,
+             status: Optional[int] = None,
+             type: Optional[str] = None,
+             value: Optional[str] = None,
+             value_type: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if region_id is not None:
-            pulumi.set(__self__, "region_id", region_id)
+            _setter("region_id", region_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
         if value_type is not None:
-            pulumi.set(__self__, "value_type", value_type)
+            _setter("value_type", value_type)
 
     @property
     @pulumi.getter
@@ -204,15 +234,40 @@ class GetDdosBgpInstancesInstanceResult(dict):
         :param str region: A region of instance.
         :param str type: The instance's type.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "base_bandwidth", base_bandwidth)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_count", ip_count)
-        pulumi.set(__self__, "ip_type", ip_type)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "normal_bandwidth", normal_bandwidth)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "type", type)
+        GetDdosBgpInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            base_bandwidth=base_bandwidth,
+            id=id,
+            ip_count=ip_count,
+            ip_type=ip_type,
+            name=name,
+            normal_bandwidth=normal_bandwidth,
+            region=region,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             base_bandwidth: int,
+             id: str,
+             ip_count: int,
+             ip_type: str,
+             name: str,
+             normal_bandwidth: int,
+             region: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("base_bandwidth", base_bandwidth)
+        _setter("id", id)
+        _setter("ip_count", ip_count)
+        _setter("ip_type", ip_type)
+        _setter("name", name)
+        _setter("normal_bandwidth", normal_bandwidth)
+        _setter("region", region)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -302,11 +357,28 @@ class GetDdosBgpIpsIpResult(dict):
         :param str product: The type of cloud asset to which the IP address belongs.
         :param str status: The current state of the IP address.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "ip", ip)
-        pulumi.set(__self__, "product", product)
-        pulumi.set(__self__, "status", status)
+        GetDdosBgpIpsIpResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            instance_id=instance_id,
+            ip=ip,
+            product=product,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             instance_id: str,
+             ip: str,
+             product: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("ip", ip)
+        _setter("product", product)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -390,24 +462,67 @@ class GetDdosCooDomainResourcesResourceResult(dict):
         :param str ssl_protocols: The version of the TLS protocol.
         :param Sequence[str] white_lists: The IP addresses in the whitelist for the domain name.
         """
-        pulumi.set(__self__, "black_lists", black_lists)
-        pulumi.set(__self__, "cc_enabled", cc_enabled)
-        pulumi.set(__self__, "cc_rule_enabled", cc_rule_enabled)
-        pulumi.set(__self__, "cc_template", cc_template)
-        pulumi.set(__self__, "cert_name", cert_name)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "http2_enable", http2_enable)
-        pulumi.set(__self__, "https_ext", https_ext)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_ids", instance_ids)
-        pulumi.set(__self__, "policy_mode", policy_mode)
-        pulumi.set(__self__, "proxy_enabled", proxy_enabled)
-        pulumi.set(__self__, "proxy_types", proxy_types)
-        pulumi.set(__self__, "real_servers", real_servers)
-        pulumi.set(__self__, "rs_type", rs_type)
-        pulumi.set(__self__, "ssl_ciphers", ssl_ciphers)
-        pulumi.set(__self__, "ssl_protocols", ssl_protocols)
-        pulumi.set(__self__, "white_lists", white_lists)
+        GetDdosCooDomainResourcesResourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            black_lists=black_lists,
+            cc_enabled=cc_enabled,
+            cc_rule_enabled=cc_rule_enabled,
+            cc_template=cc_template,
+            cert_name=cert_name,
+            domain=domain,
+            http2_enable=http2_enable,
+            https_ext=https_ext,
+            id=id,
+            instance_ids=instance_ids,
+            policy_mode=policy_mode,
+            proxy_enabled=proxy_enabled,
+            proxy_types=proxy_types,
+            real_servers=real_servers,
+            rs_type=rs_type,
+            ssl_ciphers=ssl_ciphers,
+            ssl_protocols=ssl_protocols,
+            white_lists=white_lists,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             black_lists: Sequence[str],
+             cc_enabled: bool,
+             cc_rule_enabled: bool,
+             cc_template: str,
+             cert_name: str,
+             domain: str,
+             http2_enable: bool,
+             https_ext: str,
+             id: str,
+             instance_ids: Sequence[str],
+             policy_mode: str,
+             proxy_enabled: bool,
+             proxy_types: Sequence['outputs.GetDdosCooDomainResourcesResourceProxyTypeResult'],
+             real_servers: Sequence[str],
+             rs_type: int,
+             ssl_ciphers: str,
+             ssl_protocols: str,
+             white_lists: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("black_lists", black_lists)
+        _setter("cc_enabled", cc_enabled)
+        _setter("cc_rule_enabled", cc_rule_enabled)
+        _setter("cc_template", cc_template)
+        _setter("cert_name", cert_name)
+        _setter("domain", domain)
+        _setter("http2_enable", http2_enable)
+        _setter("https_ext", https_ext)
+        _setter("id", id)
+        _setter("instance_ids", instance_ids)
+        _setter("policy_mode", policy_mode)
+        _setter("proxy_enabled", proxy_enabled)
+        _setter("proxy_types", proxy_types)
+        _setter("real_servers", real_servers)
+        _setter("rs_type", rs_type)
+        _setter("ssl_ciphers", ssl_ciphers)
+        _setter("ssl_protocols", ssl_protocols)
+        _setter("white_lists", white_lists)
 
     @property
     @pulumi.getter(name="blackLists")
@@ -563,8 +678,19 @@ class GetDdosCooDomainResourcesResourceProxyTypeResult(dict):
         :param Sequence[int] proxy_ports: The forwarding port.
         :param str proxy_type: Protocol type.
         """
-        pulumi.set(__self__, "proxy_ports", proxy_ports)
-        pulumi.set(__self__, "proxy_type", proxy_type)
+        GetDdosCooDomainResourcesResourceProxyTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            proxy_ports=proxy_ports,
+            proxy_type=proxy_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             proxy_ports: Sequence[int],
+             proxy_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("proxy_ports", proxy_ports)
+        _setter("proxy_type", proxy_type)
 
     @property
     @pulumi.getter(name="proxyPorts")
@@ -620,22 +746,61 @@ class GetDdosCooInstancesInstanceResult(dict):
         :param int service_bandwidth: The instance's business bandwidth.
         :param int status: The status of the instance. The Valid Values : `1`, `2`.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "base_bandwidth", base_bandwidth)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "debt_status", debt_status)
-        pulumi.set(__self__, "domain_count", domain_count)
-        pulumi.set(__self__, "edition", edition)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_mode", ip_mode)
-        pulumi.set(__self__, "ip_version", ip_version)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "port_count", port_count)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "service_bandwidth", service_bandwidth)
-        pulumi.set(__self__, "status", status)
+        GetDdosCooInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            base_bandwidth=base_bandwidth,
+            create_time=create_time,
+            debt_status=debt_status,
+            domain_count=domain_count,
+            edition=edition,
+            enabled=enabled,
+            expire_time=expire_time,
+            id=id,
+            ip_mode=ip_mode,
+            ip_version=ip_version,
+            name=name,
+            port_count=port_count,
+            remark=remark,
+            service_bandwidth=service_bandwidth,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             base_bandwidth: int,
+             create_time: int,
+             debt_status: int,
+             domain_count: int,
+             edition: int,
+             enabled: int,
+             expire_time: int,
+             id: str,
+             ip_mode: str,
+             ip_version: str,
+             name: str,
+             port_count: int,
+             remark: str,
+             service_bandwidth: int,
+             status: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("base_bandwidth", base_bandwidth)
+        _setter("create_time", create_time)
+        _setter("debt_status", debt_status)
+        _setter("domain_count", domain_count)
+        _setter("edition", edition)
+        _setter("enabled", enabled)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("ip_mode", ip_mode)
+        _setter("ip_version", ip_version)
+        _setter("name", name)
+        _setter("port_count", port_count)
+        _setter("remark", remark)
+        _setter("service_bandwidth", service_bandwidth)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -783,12 +948,31 @@ class GetDdosCooPortsPortResult(dict):
         :param str instance_id: The Ddoscoo instance ID.
         :param Sequence[str] real_servers: List of source IP addresses.
         """
-        pulumi.set(__self__, "backend_port", backend_port)
-        pulumi.set(__self__, "frontend_port", frontend_port)
-        pulumi.set(__self__, "frontend_protocol", frontend_protocol)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "real_servers", real_servers)
+        GetDdosCooPortsPortResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_port=backend_port,
+            frontend_port=frontend_port,
+            frontend_protocol=frontend_protocol,
+            id=id,
+            instance_id=instance_id,
+            real_servers=real_servers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_port: str,
+             frontend_port: str,
+             frontend_protocol: str,
+             id: str,
+             instance_id: str,
+             real_servers: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backend_port", backend_port)
+        _setter("frontend_port", frontend_port)
+        _setter("frontend_protocol", frontend_protocol)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("real_servers", real_servers)
 
     @property
     @pulumi.getter(name="backendPort")

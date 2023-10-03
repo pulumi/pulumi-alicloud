@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -38,16 +38,43 @@ class GetInstancesInstanceResult(dict):
         :param int version: The DRDS Instance version.
         :param str zone_id: Zone ID the instance belongs to.
         """
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "version", version)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_string=connection_string,
+            create_time=create_time,
+            description=description,
+            id=id,
+            network_type=network_type,
+            port=port,
+            status=status,
+            type=type,
+            version=version,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_string: str,
+             create_time: int,
+             description: str,
+             id: str,
+             network_type: str,
+             port: str,
+             status: str,
+             type: str,
+             version: int,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("connection_string", connection_string)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("network_type", network_type)
+        _setter("port", port)
+        _setter("status", status)
+        _setter("type", type)
+        _setter("version", version)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="connectionString")

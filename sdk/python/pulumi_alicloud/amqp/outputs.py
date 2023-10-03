@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -39,14 +39,37 @@ class GetBindingsBindingResult(dict):
         :param str source_exchange: The Source Exchange Name.
         :param str virtual_host_name: Virtualhost Name.
         """
-        pulumi.set(__self__, "argument", argument)
-        pulumi.set(__self__, "binding_key", binding_key)
-        pulumi.set(__self__, "binding_type", binding_type)
-        pulumi.set(__self__, "destination_name", destination_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "source_exchange", source_exchange)
-        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+        GetBindingsBindingResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            argument=argument,
+            binding_key=binding_key,
+            binding_type=binding_type,
+            destination_name=destination_name,
+            id=id,
+            instance_id=instance_id,
+            source_exchange=source_exchange,
+            virtual_host_name=virtual_host_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             argument: str,
+             binding_key: str,
+             binding_type: str,
+             destination_name: str,
+             id: str,
+             instance_id: str,
+             source_exchange: str,
+             virtual_host_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("argument", argument)
+        _setter("binding_key", binding_key)
+        _setter("binding_type", binding_type)
+        _setter("destination_name", destination_name)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("source_exchange", source_exchange)
+        _setter("virtual_host_name", virtual_host_name)
 
     @property
     @pulumi.getter
@@ -134,14 +157,37 @@ class GetExchangesExchangeResult(dict):
         :param str instance_id: The ID of the instance.
         :param str virtual_host_name: The name of virtual host where an exchange resides.
         """
-        pulumi.set(__self__, "attributes", attributes)
-        pulumi.set(__self__, "auto_delete_state", auto_delete_state)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "exchange_name", exchange_name)
-        pulumi.set(__self__, "exchange_type", exchange_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+        GetExchangesExchangeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attributes=attributes,
+            auto_delete_state=auto_delete_state,
+            create_time=create_time,
+            exchange_name=exchange_name,
+            exchange_type=exchange_type,
+            id=id,
+            instance_id=instance_id,
+            virtual_host_name=virtual_host_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attributes: Mapping[str, Any],
+             auto_delete_state: bool,
+             create_time: str,
+             exchange_name: str,
+             exchange_type: str,
+             id: str,
+             instance_id: str,
+             virtual_host_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attributes", attributes)
+        _setter("auto_delete_state", auto_delete_state)
+        _setter("create_time", create_time)
+        _setter("exchange_name", exchange_name)
+        _setter("exchange_type", exchange_type)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("virtual_host_name", virtual_host_name)
 
     @property
     @pulumi.getter
@@ -241,20 +287,55 @@ class GetInstancesInstanceResult(dict):
         :param str status: The status of the resource.
         :param bool support_eip: Whether to support eip.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "private_end_point", private_end_point)
-        pulumi.set(__self__, "public_endpoint", public_endpoint)
-        pulumi.set(__self__, "renewal_duration", renewal_duration)
-        pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
-        pulumi.set(__self__, "renewal_status", renewal_status)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "support_eip", support_eip)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            expire_time=expire_time,
+            id=id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            payment_type=payment_type,
+            private_end_point=private_end_point,
+            public_endpoint=public_endpoint,
+            renewal_duration=renewal_duration,
+            renewal_duration_unit=renewal_duration_unit,
+            renewal_status=renewal_status,
+            status=status,
+            support_eip=support_eip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             expire_time: str,
+             id: str,
+             instance_id: str,
+             instance_name: str,
+             instance_type: str,
+             payment_type: str,
+             private_end_point: str,
+             public_endpoint: str,
+             renewal_duration: int,
+             renewal_duration_unit: str,
+             renewal_status: str,
+             status: str,
+             support_eip: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("instance_type", instance_type)
+        _setter("payment_type", payment_type)
+        _setter("private_end_point", private_end_point)
+        _setter("public_endpoint", public_endpoint)
+        _setter("renewal_duration", renewal_duration)
+        _setter("renewal_duration_unit", renewal_duration_unit)
+        _setter("renewal_status", renewal_status)
+        _setter("status", status)
+        _setter("support_eip", support_eip)
 
     @property
     @pulumi.getter(name="createTime")
@@ -392,15 +473,40 @@ class GetQueuesQueueResult(dict):
         :param str queue_name: The queue name.
         :param str virtual_host_name: The name of the virtual host.
         """
-        pulumi.set(__self__, "attributes", attributes)
-        pulumi.set(__self__, "auto_delete_state", auto_delete_state)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "exclusive_state", exclusive_state)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "last_consume_time", last_consume_time)
-        pulumi.set(__self__, "queue_name", queue_name)
-        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+        GetQueuesQueueResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attributes=attributes,
+            auto_delete_state=auto_delete_state,
+            create_time=create_time,
+            exclusive_state=exclusive_state,
+            id=id,
+            instance_id=instance_id,
+            last_consume_time=last_consume_time,
+            queue_name=queue_name,
+            virtual_host_name=virtual_host_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attributes: Mapping[str, Any],
+             auto_delete_state: bool,
+             create_time: str,
+             exclusive_state: bool,
+             id: str,
+             instance_id: str,
+             last_consume_time: str,
+             queue_name: str,
+             virtual_host_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attributes", attributes)
+        _setter("auto_delete_state", auto_delete_state)
+        _setter("create_time", create_time)
+        _setter("exclusive_state", exclusive_state)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("last_consume_time", last_consume_time)
+        _setter("queue_name", queue_name)
+        _setter("virtual_host_name", virtual_host_name)
 
     @property
     @pulumi.getter
@@ -494,13 +600,34 @@ class GetStaticAccountsAccountResult(dict):
         :param str password: Static password.
         :param str user_name: Static username.
         """
-        pulumi.set(__self__, "access_key", access_key)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "master_uid", master_uid)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "user_name", user_name)
+        GetStaticAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_key=access_key,
+            create_time=create_time,
+            id=id,
+            instance_id=instance_id,
+            master_uid=master_uid,
+            password=password,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_key: str,
+             create_time: str,
+             id: str,
+             instance_id: str,
+             master_uid: str,
+             password: str,
+             user_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_key", access_key)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("master_uid", master_uid)
+        _setter("password", password)
+        _setter("user_name", user_name)
 
     @property
     @pulumi.getter(name="accessKey")
@@ -570,9 +697,22 @@ class GetVirtualHostsHostResult(dict):
         :param str instance_id: InstanceId.
         :param str virtual_host_name: VirtualHostName.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+        GetVirtualHostsHostResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            instance_id=instance_id,
+            virtual_host_name=virtual_host_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             instance_id: str,
+             virtual_host_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("virtual_host_name", virtual_host_name)
 
     @property
     @pulumi.getter

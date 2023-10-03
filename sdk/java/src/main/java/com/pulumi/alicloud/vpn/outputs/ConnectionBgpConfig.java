@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionBgpConfig {
     /**
-     * @return Whether to enable Health Check.
+     * @return Whether to enable BGP.
      * 
      */
     private @Nullable Boolean enable;
@@ -35,7 +35,7 @@ public final class ConnectionBgpConfig {
 
     private ConnectionBgpConfig() {}
     /**
-     * @return Whether to enable Health Check.
+     * @return Whether to enable BGP.
      * 
      */
     public Optional<Boolean> enable() {

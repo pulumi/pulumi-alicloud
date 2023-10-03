@@ -16,14 +16,14 @@ public final class ContainerGroupContainerReadinessProbeTcpSocketArgs extends co
     public static final ContainerGroupContainerReadinessProbeTcpSocketArgs Empty = new ContainerGroupContainerReadinessProbeTcpSocketArgs();
 
     /**
-     * The port number. Valid values: `1` to `65535`.
+     * When using the HTTP request method for health check, the port number for HTTP Get request detection.
      * 
      */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
     /**
-     * @return The port number. Valid values: `1` to `65535`.
+     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
      * 
      */
     public Optional<Output<Integer>> port() {
@@ -55,7 +55,7 @@ public final class ContainerGroupContainerReadinessProbeTcpSocketArgs extends co
         }
 
         /**
-         * @param port The port number. Valid values: `1` to `65535`.
+         * @param port When using the HTTP request method for health check, the port number for HTTP Get request detection.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ContainerGroupContainerReadinessProbeTcpSocketArgs extends co
         }
 
         /**
-         * @param port The port number. Valid values: `1` to `65535`.
+         * @param port When using the HTTP request method for health check, the port number for HTTP Get request detection.
          * 
          * @return builder
          * 

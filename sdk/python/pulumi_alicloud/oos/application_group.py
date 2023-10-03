@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ApplicationGroupArgs', 'ApplicationGroup']
@@ -30,15 +30,34 @@ class ApplicationGroupArgs:
         :param pulumi.Input[str] import_tag_value: The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
                .
         """
-        pulumi.set(__self__, "application_group_name", application_group_name)
-        pulumi.set(__self__, "application_name", application_name)
-        pulumi.set(__self__, "deploy_region_id", deploy_region_id)
+        ApplicationGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_group_name=application_group_name,
+            application_name=application_name,
+            deploy_region_id=deploy_region_id,
+            description=description,
+            import_tag_key=import_tag_key,
+            import_tag_value=import_tag_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_group_name: pulumi.Input[str],
+             application_name: pulumi.Input[str],
+             deploy_region_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             import_tag_key: Optional[pulumi.Input[str]] = None,
+             import_tag_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("application_group_name", application_group_name)
+        _setter("application_name", application_name)
+        _setter("deploy_region_id", deploy_region_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if import_tag_key is not None:
-            pulumi.set(__self__, "import_tag_key", import_tag_key)
+            _setter("import_tag_key", import_tag_key)
         if import_tag_value is not None:
-            pulumi.set(__self__, "import_tag_value", import_tag_value)
+            _setter("import_tag_value", import_tag_value)
 
     @property
     @pulumi.getter(name="applicationGroupName")
@@ -133,18 +152,37 @@ class _ApplicationGroupState:
         :param pulumi.Input[str] import_tag_value: The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `import_tag_key` and `import_tag_value` are left empty, the default is application group name.
                .
         """
+        _ApplicationGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_group_name=application_group_name,
+            application_name=application_name,
+            deploy_region_id=deploy_region_id,
+            description=description,
+            import_tag_key=import_tag_key,
+            import_tag_value=import_tag_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_group_name: Optional[pulumi.Input[str]] = None,
+             application_name: Optional[pulumi.Input[str]] = None,
+             deploy_region_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             import_tag_key: Optional[pulumi.Input[str]] = None,
+             import_tag_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if application_group_name is not None:
-            pulumi.set(__self__, "application_group_name", application_group_name)
+            _setter("application_group_name", application_group_name)
         if application_name is not None:
-            pulumi.set(__self__, "application_name", application_name)
+            _setter("application_name", application_name)
         if deploy_region_id is not None:
-            pulumi.set(__self__, "deploy_region_id", deploy_region_id)
+            _setter("deploy_region_id", deploy_region_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if import_tag_key is not None:
-            pulumi.set(__self__, "import_tag_key", import_tag_key)
+            _setter("import_tag_key", import_tag_key)
         if import_tag_value is not None:
-            pulumi.set(__self__, "import_tag_value", import_tag_value)
+            _setter("import_tag_value", import_tag_value)
 
     @property
     @pulumi.getter(name="applicationGroupName")
@@ -348,6 +386,10 @@ class ApplicationGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

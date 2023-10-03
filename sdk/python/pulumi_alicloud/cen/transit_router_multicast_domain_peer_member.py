@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransitRouterMulticastDomainPeerMemberArgs', 'TransitRouterMulticastDomainPeerMember']
@@ -25,11 +25,26 @@ class TransitRouterMulticastDomainPeerMemberArgs:
         :param pulumi.Input[str] transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
         :param pulumi.Input[bool] dry_run: Specifies whether only to precheck the request.
         """
-        pulumi.set(__self__, "group_ip_address", group_ip_address)
-        pulumi.set(__self__, "peer_transit_router_multicast_domain_id", peer_transit_router_multicast_domain_id)
-        pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+        TransitRouterMulticastDomainPeerMemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            group_ip_address=group_ip_address,
+            peer_transit_router_multicast_domain_id=peer_transit_router_multicast_domain_id,
+            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
+            dry_run=dry_run,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             group_ip_address: pulumi.Input[str],
+             peer_transit_router_multicast_domain_id: pulumi.Input[str],
+             transit_router_multicast_domain_id: pulumi.Input[str],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("group_ip_address", group_ip_address)
+        _setter("peer_transit_router_multicast_domain_id", peer_transit_router_multicast_domain_id)
+        _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
 
     @property
     @pulumi.getter(name="groupIpAddress")
@@ -99,16 +114,33 @@ class _TransitRouterMulticastDomainPeerMemberState:
                - Deregistering: being deleted
         :param pulumi.Input[str] transit_router_multicast_domain_id: The ID of the multicast domain to which the multicast member belongs.
         """
+        _TransitRouterMulticastDomainPeerMemberState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dry_run=dry_run,
+            group_ip_address=group_ip_address,
+            peer_transit_router_multicast_domain_id=peer_transit_router_multicast_domain_id,
+            status=status,
+            transit_router_multicast_domain_id=transit_router_multicast_domain_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             group_ip_address: Optional[pulumi.Input[str]] = None,
+             peer_transit_router_multicast_domain_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             transit_router_multicast_domain_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if group_ip_address is not None:
-            pulumi.set(__self__, "group_ip_address", group_ip_address)
+            _setter("group_ip_address", group_ip_address)
         if peer_transit_router_multicast_domain_id is not None:
-            pulumi.set(__self__, "peer_transit_router_multicast_domain_id", peer_transit_router_multicast_domain_id)
+            _setter("peer_transit_router_multicast_domain_id", peer_transit_router_multicast_domain_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if transit_router_multicast_domain_id is not None:
-            pulumi.set(__self__, "transit_router_multicast_domain_id", transit_router_multicast_domain_id)
+            _setter("transit_router_multicast_domain_id", transit_router_multicast_domain_id)
 
     @property
     @pulumi.getter(name="dryRun")
@@ -321,6 +353,10 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TransitRouterMulticastDomainPeerMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

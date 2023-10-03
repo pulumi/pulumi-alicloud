@@ -545,11 +545,9 @@ func (o BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) BucketLifecycle
 }
 
 type BucketLifecycleRuleAbortMultipartUpload struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	//
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+	// Specifies the number of days noncurrent object versions transition.
 	Days *int `pulumi:"days"`
 }
 
@@ -565,11 +563,9 @@ type BucketLifecycleRuleAbortMultipartUploadInput interface {
 }
 
 type BucketLifecycleRuleAbortMultipartUploadArgs struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	//
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+	// Specifies the number of days noncurrent object versions transition.
 	Days pulumi.IntPtrInput `pulumi:"days"`
 }
 
@@ -642,14 +638,12 @@ func (o BucketLifecycleRuleAbortMultipartUploadOutput) ToOutput(ctx context.Cont
 	}
 }
 
-// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 func (o BucketLifecycleRuleAbortMultipartUploadOutput) CreatedBeforeDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleAbortMultipartUpload) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days after object creation when the specific rule action takes effect.
-//
-// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+// Specifies the number of days noncurrent object versions transition.
 func (o BucketLifecycleRuleAbortMultipartUploadOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleAbortMultipartUpload) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
@@ -681,13 +675,11 @@ func (o BucketLifecycleRuleAbortMultipartUploadArrayOutput) Index(i pulumi.IntIn
 }
 
 type BucketLifecycleRuleExpiration struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
 	// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
 	Date *string `pulumi:"date"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	//
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+	// Specifies the number of days noncurrent object versions transition.
 	Days *int `pulumi:"days"`
 	// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
 	//
@@ -707,13 +699,11 @@ type BucketLifecycleRuleExpirationInput interface {
 }
 
 type BucketLifecycleRuleExpirationArgs struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
 	// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
 	Date pulumi.StringPtrInput `pulumi:"date"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	//
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+	// Specifies the number of days noncurrent object versions transition.
 	Days pulumi.IntPtrInput `pulumi:"days"`
 	// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
 	//
@@ -790,7 +780,7 @@ func (o BucketLifecycleRuleExpirationOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
-// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 func (o BucketLifecycleRuleExpirationOutput) CreatedBeforeDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
 }
@@ -800,9 +790,7 @@ func (o BucketLifecycleRuleExpirationOutput) Date() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days after object creation when the specific rule action takes effect.
-//
-// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+// Specifies the number of days noncurrent object versions transition.
 func (o BucketLifecycleRuleExpirationOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
@@ -1040,7 +1028,7 @@ func (o BucketLifecycleRuleFilterPtrOutput) ObjectSizeLessThan() pulumi.IntPtrOu
 }
 
 type BucketLifecycleRuleFilterNot struct {
-	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+	// The prefix in the names of the objects to which the lifecycle rule does not apply.
 	Prefix *string `pulumi:"prefix"`
 	// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
 	Tag *BucketLifecycleRuleFilterNotTag `pulumi:"tag"`
@@ -1058,7 +1046,7 @@ type BucketLifecycleRuleFilterNotInput interface {
 }
 
 type BucketLifecycleRuleFilterNotArgs struct {
-	// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+	// The prefix in the names of the objects to which the lifecycle rule does not apply.
 	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
 	// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
 	Tag BucketLifecycleRuleFilterNotTagPtrInput `pulumi:"tag"`
@@ -1159,7 +1147,7 @@ func (o BucketLifecycleRuleFilterNotOutput) ToOutput(ctx context.Context) pulumi
 	}
 }
 
-// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+// The prefix in the names of the objects to which the lifecycle rule does not apply.
 func (o BucketLifecycleRuleFilterNotOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleFilterNot) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
@@ -1199,7 +1187,7 @@ func (o BucketLifecycleRuleFilterNotPtrOutput) Elem() BucketLifecycleRuleFilterN
 	}).(BucketLifecycleRuleFilterNotOutput)
 }
 
-// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+// The prefix in the names of the objects to which the lifecycle rule does not apply.
 func (o BucketLifecycleRuleFilterNotPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketLifecycleRuleFilterNot) *string {
 		if v == nil {
@@ -1400,9 +1388,7 @@ func (o BucketLifecycleRuleFilterNotTagPtrOutput) Value() pulumi.StringPtrOutput
 }
 
 type BucketLifecycleRuleNoncurrentVersionExpiration struct {
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	//
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+	// Specifies the number of days noncurrent object versions transition.
 	Days int `pulumi:"days"`
 }
 
@@ -1418,9 +1404,7 @@ type BucketLifecycleRuleNoncurrentVersionExpirationInput interface {
 }
 
 type BucketLifecycleRuleNoncurrentVersionExpirationArgs struct {
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	//
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+	// Specifies the number of days noncurrent object versions transition.
 	Days pulumi.IntInput `pulumi:"days"`
 }
 
@@ -1493,9 +1477,7 @@ func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) ToOutput(ctx conte
 	}
 }
 
-// Specifies the number of days after object creation when the specific rule action takes effect.
-//
-// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+// Specifies the number of days noncurrent object versions transition.
 func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionExpiration) int { return v.Days }).(pulumi.IntOutput)
 }
@@ -1527,14 +1509,11 @@ func (o BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput) Index(i pulum
 }
 
 type BucketLifecycleRuleNoncurrentVersionTransition struct {
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	//
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+	// Specifies the number of days noncurrent object versions transition.
 	Days int `pulumi:"days"`
 	// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
 	IsAccessTime *bool `pulumi:"isAccessTime"`
 	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
 	ReturnToStdWhenVisit *bool `pulumi:"returnToStdWhenVisit"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass string `pulumi:"storageClass"`
@@ -1552,14 +1531,11 @@ type BucketLifecycleRuleNoncurrentVersionTransitionInput interface {
 }
 
 type BucketLifecycleRuleNoncurrentVersionTransitionArgs struct {
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	//
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+	// Specifies the number of days noncurrent object versions transition.
 	Days pulumi.IntInput `pulumi:"days"`
 	// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
 	IsAccessTime pulumi.BoolPtrInput `pulumi:"isAccessTime"`
 	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
 	ReturnToStdWhenVisit pulumi.BoolPtrInput `pulumi:"returnToStdWhenVisit"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
@@ -1634,9 +1610,7 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) ToOutput(ctx conte
 	}
 }
 
-// Specifies the number of days after object creation when the specific rule action takes effect.
-//
-// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+// Specifies the number of days noncurrent object versions transition.
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) int { return v.Days }).(pulumi.IntOutput)
 }
@@ -1647,7 +1621,6 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) IsAccessTime() pul
 }
 
 // Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) ReturnToStdWhenVisit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) *bool { return v.ReturnToStdWhenVisit }).(pulumi.BoolPtrOutput)
 }
@@ -1684,16 +1657,13 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput) Index(i pulum
 }
 
 type BucketLifecycleRuleTransition struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	//
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+	// Specifies the number of days noncurrent object versions transition.
 	Days *int `pulumi:"days"`
 	// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
 	IsAccessTime *bool `pulumi:"isAccessTime"`
 	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
 	ReturnToStdWhenVisit *bool `pulumi:"returnToStdWhenVisit"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass string `pulumi:"storageClass"`
@@ -1711,16 +1681,13 @@ type BucketLifecycleRuleTransitionInput interface {
 }
 
 type BucketLifecycleRuleTransitionArgs struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
-	// Specifies the number of days after object creation when the specific rule action takes effect.
-	//
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+	// Specifies the number of days noncurrent object versions transition.
 	Days pulumi.IntPtrInput `pulumi:"days"`
 	// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
 	IsAccessTime pulumi.BoolPtrInput `pulumi:"isAccessTime"`
 	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-	// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
 	ReturnToStdWhenVisit pulumi.BoolPtrInput `pulumi:"returnToStdWhenVisit"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
@@ -1795,14 +1762,12 @@ func (o BucketLifecycleRuleTransitionOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
-// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that objects updated before 2002-10-11T00:00:00.000Z are deleted or converted to another storage class, and objects updated after this time (including this time) are not deleted or converted.
+// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 func (o BucketLifecycleRuleTransitionOutput) CreatedBeforeDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days after object creation when the specific rule action takes effect.
-//
-// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one abortMultipartUpload configuration.
+// Specifies the number of days noncurrent object versions transition.
 func (o BucketLifecycleRuleTransitionOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
@@ -1813,7 +1778,6 @@ func (o BucketLifecycleRuleTransitionOutput) IsAccessTime() pulumi.BoolPtrOutput
 }
 
 // Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-// `NOTE`: One and only one of "createdBeforeDate" and "days" can be specified in one transition configuration.
 func (o BucketLifecycleRuleTransitionOutput) ReturnToStdWhenVisit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *bool { return v.ReturnToStdWhenVisit }).(pulumi.BoolPtrOutput)
 }

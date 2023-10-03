@@ -46,14 +46,14 @@ public final class RuleRuleActionFixedResponseConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+     * The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
      * 
      */
     @Import(name="httpCode")
     private @Nullable Output<String> httpCode;
 
     /**
-     * @return The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+     * @return The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
      * 
      */
     public Optional<Output<String>> httpCode() {
@@ -129,7 +129,7 @@ public final class RuleRuleActionFixedResponseConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param httpCode The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+         * @param httpCode The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class RuleRuleActionFixedResponseConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param httpCode The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+         * @param httpCode The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
          * 
          * @return builder
          * 

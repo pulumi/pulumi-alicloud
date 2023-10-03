@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -42,19 +42,42 @@ class DedicatedPropreHostEcsClassListArgs:
                - **cloud_auto**: ESSD AutoPL cloud disk.
         :param pulumi.Input[str] system_disk_performance_level: System disk PL level.
         """
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "sys_disk_capacity", sys_disk_capacity)
-        pulumi.set(__self__, "sys_disk_type", sys_disk_type)
+        DedicatedPropreHostEcsClassListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_type=instance_type,
+            sys_disk_capacity=sys_disk_capacity,
+            sys_disk_type=sys_disk_type,
+            data_disk_performance_level=data_disk_performance_level,
+            disk_capacity=disk_capacity,
+            disk_count=disk_count,
+            disk_type=disk_type,
+            system_disk_performance_level=system_disk_performance_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_type: pulumi.Input[str],
+             sys_disk_capacity: pulumi.Input[int],
+             sys_disk_type: pulumi.Input[str],
+             data_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             disk_capacity: Optional[pulumi.Input[int]] = None,
+             disk_count: Optional[pulumi.Input[int]] = None,
+             disk_type: Optional[pulumi.Input[str]] = None,
+             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_type", instance_type)
+        _setter("sys_disk_capacity", sys_disk_capacity)
+        _setter("sys_disk_type", sys_disk_type)
         if data_disk_performance_level is not None:
-            pulumi.set(__self__, "data_disk_performance_level", data_disk_performance_level)
+            _setter("data_disk_performance_level", data_disk_performance_level)
         if disk_capacity is not None:
-            pulumi.set(__self__, "disk_capacity", disk_capacity)
+            _setter("disk_capacity", disk_capacity)
         if disk_count is not None:
-            pulumi.set(__self__, "disk_count", disk_count)
+            _setter("disk_count", disk_count)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if system_disk_performance_level is not None:
-            pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+            _setter("system_disk_performance_level", system_disk_performance_level)
 
     @property
     @pulumi.getter(name="instanceType")

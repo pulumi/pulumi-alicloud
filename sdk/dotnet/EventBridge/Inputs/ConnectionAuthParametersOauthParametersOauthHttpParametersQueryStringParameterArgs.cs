@@ -19,13 +19,13 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
         public Input<string>? IsValueSecret { get; set; }
 
         /// <summary>
-        /// The key of the request header.
+        /// The key of the request path.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The value of the request header.
+        /// The key of the request path.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

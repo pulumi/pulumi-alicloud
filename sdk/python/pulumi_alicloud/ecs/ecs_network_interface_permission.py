@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsNetworkInterfacePermissionArgs', 'EcsNetworkInterfacePermission']
@@ -25,11 +25,26 @@ class EcsNetworkInterfacePermissionArgs:
         :param pulumi.Input[str] permission: The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
         :param pulumi.Input[bool] force: Whether to force deletion of Network Interface Permission. Default value: `true`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "network_interface_id", network_interface_id)
-        pulumi.set(__self__, "permission", permission)
+        EcsNetworkInterfacePermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            network_interface_id=network_interface_id,
+            permission=permission,
+            force=force,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             network_interface_id: pulumi.Input[str],
+             permission: pulumi.Input[str],
+             force: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("network_interface_id", network_interface_id)
+        _setter("permission", permission)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
 
     @property
     @pulumi.getter(name="accountId")
@@ -96,16 +111,33 @@ class _EcsNetworkInterfacePermissionState:
         :param pulumi.Input[str] permission: The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
         :param pulumi.Input[str] status: The Status of the Network Interface Permissions. Valid values: `Pending`, `Granted`, `Revoking`, `Revoked`.
         """
+        _EcsNetworkInterfacePermissionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            force=force,
+            network_interface_id=network_interface_id,
+            permission=permission,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             network_interface_id: Optional[pulumi.Input[str]] = None,
+             permission: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if network_interface_id is not None:
-            pulumi.set(__self__, "network_interface_id", network_interface_id)
+            _setter("network_interface_id", network_interface_id)
         if permission is not None:
-            pulumi.set(__self__, "permission", permission)
+            _setter("permission", permission)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -231,6 +263,10 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EcsNetworkInterfacePermissionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

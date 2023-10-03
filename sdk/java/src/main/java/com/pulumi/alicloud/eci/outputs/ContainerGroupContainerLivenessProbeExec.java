@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerGroupContainerLivenessProbeExec {
     /**
-     * @return The commands run by the init container.
+     * @return Commands to be executed inside the container when performing health checks using the command line method.
      * 
      */
     private @Nullable List<String> commands;
 
     private ContainerGroupContainerLivenessProbeExec() {}
     /**
-     * @return The commands run by the init container.
+     * @return Commands to be executed inside the container when performing health checks using the command line method.
      * 
      */
     public List<String> commands() {

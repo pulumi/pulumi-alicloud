@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
     public sealed class BucketLifecycleRuleFilterNotGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+        /// The prefix in the names of the objects to which the lifecycle rule does not apply.
         /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }

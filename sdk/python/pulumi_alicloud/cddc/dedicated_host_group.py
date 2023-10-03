@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DedicatedHostGroupArgs', 'DedicatedHostGroup']
@@ -36,22 +36,47 @@ class DedicatedHostGroupArgs:
         :param pulumi.Input[bool] open_permission: Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
                **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
         """
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        DedicatedHostGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            engine=engine,
+            vpc_id=vpc_id,
+            allocation_policy=allocation_policy,
+            cpu_allocation_ratio=cpu_allocation_ratio,
+            dedicated_host_group_desc=dedicated_host_group_desc,
+            disk_allocation_ratio=disk_allocation_ratio,
+            host_replace_policy=host_replace_policy,
+            mem_allocation_ratio=mem_allocation_ratio,
+            open_permission=open_permission,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             engine: pulumi.Input[str],
+             vpc_id: pulumi.Input[str],
+             allocation_policy: Optional[pulumi.Input[str]] = None,
+             cpu_allocation_ratio: Optional[pulumi.Input[int]] = None,
+             dedicated_host_group_desc: Optional[pulumi.Input[str]] = None,
+             disk_allocation_ratio: Optional[pulumi.Input[int]] = None,
+             host_replace_policy: Optional[pulumi.Input[str]] = None,
+             mem_allocation_ratio: Optional[pulumi.Input[int]] = None,
+             open_permission: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("engine", engine)
+        _setter("vpc_id", vpc_id)
         if allocation_policy is not None:
-            pulumi.set(__self__, "allocation_policy", allocation_policy)
+            _setter("allocation_policy", allocation_policy)
         if cpu_allocation_ratio is not None:
-            pulumi.set(__self__, "cpu_allocation_ratio", cpu_allocation_ratio)
+            _setter("cpu_allocation_ratio", cpu_allocation_ratio)
         if dedicated_host_group_desc is not None:
-            pulumi.set(__self__, "dedicated_host_group_desc", dedicated_host_group_desc)
+            _setter("dedicated_host_group_desc", dedicated_host_group_desc)
         if disk_allocation_ratio is not None:
-            pulumi.set(__self__, "disk_allocation_ratio", disk_allocation_ratio)
+            _setter("disk_allocation_ratio", disk_allocation_ratio)
         if host_replace_policy is not None:
-            pulumi.set(__self__, "host_replace_policy", host_replace_policy)
+            _setter("host_replace_policy", host_replace_policy)
         if mem_allocation_ratio is not None:
-            pulumi.set(__self__, "mem_allocation_ratio", mem_allocation_ratio)
+            _setter("mem_allocation_ratio", mem_allocation_ratio)
         if open_permission is not None:
-            pulumi.set(__self__, "open_permission", open_permission)
+            _setter("open_permission", open_permission)
 
     @property
     @pulumi.getter
@@ -188,24 +213,49 @@ class _DedicatedHostGroupState:
                **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
         :param pulumi.Input[str] vpc_id: The virtual private cloud (VPC) ID of the dedicated cluster.
         """
+        _DedicatedHostGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocation_policy=allocation_policy,
+            cpu_allocation_ratio=cpu_allocation_ratio,
+            dedicated_host_group_desc=dedicated_host_group_desc,
+            disk_allocation_ratio=disk_allocation_ratio,
+            engine=engine,
+            host_replace_policy=host_replace_policy,
+            mem_allocation_ratio=mem_allocation_ratio,
+            open_permission=open_permission,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocation_policy: Optional[pulumi.Input[str]] = None,
+             cpu_allocation_ratio: Optional[pulumi.Input[int]] = None,
+             dedicated_host_group_desc: Optional[pulumi.Input[str]] = None,
+             disk_allocation_ratio: Optional[pulumi.Input[int]] = None,
+             engine: Optional[pulumi.Input[str]] = None,
+             host_replace_policy: Optional[pulumi.Input[str]] = None,
+             mem_allocation_ratio: Optional[pulumi.Input[int]] = None,
+             open_permission: Optional[pulumi.Input[bool]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allocation_policy is not None:
-            pulumi.set(__self__, "allocation_policy", allocation_policy)
+            _setter("allocation_policy", allocation_policy)
         if cpu_allocation_ratio is not None:
-            pulumi.set(__self__, "cpu_allocation_ratio", cpu_allocation_ratio)
+            _setter("cpu_allocation_ratio", cpu_allocation_ratio)
         if dedicated_host_group_desc is not None:
-            pulumi.set(__self__, "dedicated_host_group_desc", dedicated_host_group_desc)
+            _setter("dedicated_host_group_desc", dedicated_host_group_desc)
         if disk_allocation_ratio is not None:
-            pulumi.set(__self__, "disk_allocation_ratio", disk_allocation_ratio)
+            _setter("disk_allocation_ratio", disk_allocation_ratio)
         if engine is not None:
-            pulumi.set(__self__, "engine", engine)
+            _setter("engine", engine)
         if host_replace_policy is not None:
-            pulumi.set(__self__, "host_replace_policy", host_replace_policy)
+            _setter("host_replace_policy", host_replace_policy)
         if mem_allocation_ratio is not None:
-            pulumi.set(__self__, "mem_allocation_ratio", mem_allocation_ratio)
+            _setter("mem_allocation_ratio", mem_allocation_ratio)
         if open_permission is not None:
-            pulumi.set(__self__, "open_permission", open_permission)
+            _setter("open_permission", open_permission)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="allocationPolicy")
@@ -443,6 +493,10 @@ class DedicatedHostGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DedicatedHostGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -16,8 +16,6 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         /// Collection strategy for outbound rules. Value:
         /// - accept: collects network traffic.
         /// - drop: No network traffic is collected.
-        /// - accept: collects network traffic.
-        /// - drop: No network traffic is collected.
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -30,7 +28,6 @@ namespace Pulumi.AliCloud.Vpc.Inputs
 
         /// <summary>
         /// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-        /// &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
         /// &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
         /// </summary>
         [Input("destinationPortRange")]
@@ -48,10 +45,6 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         /// - ICMP: Network Control Message Protocol.
         /// - TCP: Transmission Control Protocol.
         /// - UDP: User Datagram Protocol.
-        /// - ALL: ALL agreements.
-        /// - ICMP: Network Control Message Protocol.
-        /// - TCP: Transmission Control Protocol.
-        /// - UDP: User Datagram Protocol.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
@@ -64,8 +57,6 @@ namespace Pulumi.AliCloud.Vpc.Inputs
 
         /// <summary>
         /// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-        /// &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-        /// 
         /// &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
         /// </summary>
         [Input("sourcePortRange")]

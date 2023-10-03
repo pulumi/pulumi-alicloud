@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BasicAcceleratorArgs', 'BasicAccelerator']
@@ -45,32 +45,65 @@ class BasicAcceleratorArgs:
         :param pulumi.Input[str] promotion_option_no: The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        BasicAcceleratorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_pay=auto_pay,
+            auto_renew=auto_renew,
+            auto_renew_duration=auto_renew_duration,
+            auto_use_coupon=auto_use_coupon,
+            bandwidth_billing_type=bandwidth_billing_type,
+            basic_accelerator_name=basic_accelerator_name,
+            cross_border_status=cross_border_status,
+            description=description,
+            duration=duration,
+            payment_type=payment_type,
+            pricing_cycle=pricing_cycle,
+            promotion_option_no=promotion_option_no,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_pay: Optional[pulumi.Input[bool]] = None,
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_duration: Optional[pulumi.Input[int]] = None,
+             auto_use_coupon: Optional[pulumi.Input[str]] = None,
+             bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
+             basic_accelerator_name: Optional[pulumi.Input[str]] = None,
+             cross_border_status: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[int]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             pricing_cycle: Optional[pulumi.Input[str]] = None,
+             promotion_option_no: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_pay is not None:
-            pulumi.set(__self__, "auto_pay", auto_pay)
+            _setter("auto_pay", auto_pay)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_duration is not None:
-            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
+            _setter("auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
-            pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
+            _setter("auto_use_coupon", auto_use_coupon)
         if bandwidth_billing_type is not None:
-            pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
+            _setter("bandwidth_billing_type", bandwidth_billing_type)
         if basic_accelerator_name is not None:
-            pulumi.set(__self__, "basic_accelerator_name", basic_accelerator_name)
+            _setter("basic_accelerator_name", basic_accelerator_name)
         if cross_border_status is not None:
-            pulumi.set(__self__, "cross_border_status", cross_border_status)
+            _setter("cross_border_status", cross_border_status)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if pricing_cycle is not None:
-            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+            _setter("pricing_cycle", pricing_cycle)
         if promotion_option_no is not None:
-            pulumi.set(__self__, "promotion_option_no", promotion_option_no)
+            _setter("promotion_option_no", promotion_option_no)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -267,34 +300,69 @@ class _BasicAcceleratorState:
         :param pulumi.Input[str] status: The status of the Basic Accelerator instance.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        _BasicAcceleratorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_pay=auto_pay,
+            auto_renew=auto_renew,
+            auto_renew_duration=auto_renew_duration,
+            auto_use_coupon=auto_use_coupon,
+            bandwidth_billing_type=bandwidth_billing_type,
+            basic_accelerator_name=basic_accelerator_name,
+            cross_border_status=cross_border_status,
+            description=description,
+            duration=duration,
+            payment_type=payment_type,
+            pricing_cycle=pricing_cycle,
+            promotion_option_no=promotion_option_no,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_pay: Optional[pulumi.Input[bool]] = None,
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_duration: Optional[pulumi.Input[int]] = None,
+             auto_use_coupon: Optional[pulumi.Input[str]] = None,
+             bandwidth_billing_type: Optional[pulumi.Input[str]] = None,
+             basic_accelerator_name: Optional[pulumi.Input[str]] = None,
+             cross_border_status: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             duration: Optional[pulumi.Input[int]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             pricing_cycle: Optional[pulumi.Input[str]] = None,
+             promotion_option_no: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_pay is not None:
-            pulumi.set(__self__, "auto_pay", auto_pay)
+            _setter("auto_pay", auto_pay)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_duration is not None:
-            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
+            _setter("auto_renew_duration", auto_renew_duration)
         if auto_use_coupon is not None:
-            pulumi.set(__self__, "auto_use_coupon", auto_use_coupon)
+            _setter("auto_use_coupon", auto_use_coupon)
         if bandwidth_billing_type is not None:
-            pulumi.set(__self__, "bandwidth_billing_type", bandwidth_billing_type)
+            _setter("bandwidth_billing_type", bandwidth_billing_type)
         if basic_accelerator_name is not None:
-            pulumi.set(__self__, "basic_accelerator_name", basic_accelerator_name)
+            _setter("basic_accelerator_name", basic_accelerator_name)
         if cross_border_status is not None:
-            pulumi.set(__self__, "cross_border_status", cross_border_status)
+            _setter("cross_border_status", cross_border_status)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if pricing_cycle is not None:
-            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+            _setter("pricing_cycle", pricing_cycle)
         if promotion_option_no is not None:
-            pulumi.set(__self__, "promotion_option_no", promotion_option_no)
+            _setter("promotion_option_no", promotion_option_no)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="autoPay")
@@ -586,6 +654,10 @@ class BasicAccelerator(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BasicAcceleratorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

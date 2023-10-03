@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RouteTableAttachmentArgs', 'RouteTableAttachment']
@@ -21,8 +21,19 @@ class RouteTableAttachmentArgs:
         :param pulumi.Input[str] route_table_id: The ID of the route table to be bound to the switch.
         :param pulumi.Input[str] vswitch_id: The ID of the switch to bind the route table.
         """
-        pulumi.set(__self__, "route_table_id", route_table_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        RouteTableAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            route_table_id=route_table_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             route_table_id: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("route_table_id", route_table_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="routeTableId")
@@ -61,12 +72,25 @@ class _RouteTableAttachmentState:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] vswitch_id: The ID of the switch to bind the route table.
         """
+        _RouteTableAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            route_table_id=route_table_id,
+            status=status,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             route_table_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if route_table_id is not None:
-            pulumi.set(__self__, "route_table_id", route_table_id)
+            _setter("route_table_id", route_table_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="routeTableId")
@@ -218,6 +242,10 @@ class RouteTableAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RouteTableAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

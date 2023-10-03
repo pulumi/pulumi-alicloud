@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BackupPolicyArgs', 'BackupPolicy']
@@ -75,64 +75,115 @@ class BackupPolicyArgs:
                * **All**: All archived backup files are retained.
         :param pulumi.Input[int] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
+        BackupPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            archive_backup_keep_count=archive_backup_keep_count,
+            archive_backup_keep_policy=archive_backup_keep_policy,
+            archive_backup_retention_period=archive_backup_retention_period,
+            backup_interval=backup_interval,
+            backup_periods=backup_periods,
+            backup_retention_period=backup_retention_period,
+            backup_time=backup_time,
+            category=category,
+            compress_type=compress_type,
+            enable_backup_log=enable_backup_log,
+            high_space_usage_protection=high_space_usage_protection,
+            local_log_retention_hours=local_log_retention_hours,
+            local_log_retention_space=local_log_retention_space,
+            log_backup=log_backup,
+            log_backup_frequency=log_backup_frequency,
+            log_backup_retention_period=log_backup_retention_period,
+            log_retention_period=log_retention_period,
+            preferred_backup_periods=preferred_backup_periods,
+            preferred_backup_time=preferred_backup_time,
+            released_keep_policy=released_keep_policy,
+            retention_period=retention_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: pulumi.Input[str],
+             archive_backup_keep_count: Optional[pulumi.Input[int]] = None,
+             archive_backup_keep_policy: Optional[pulumi.Input[str]] = None,
+             archive_backup_retention_period: Optional[pulumi.Input[int]] = None,
+             backup_interval: Optional[pulumi.Input[str]] = None,
+             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             backup_retention_period: Optional[pulumi.Input[int]] = None,
+             backup_time: Optional[pulumi.Input[str]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             compress_type: Optional[pulumi.Input[str]] = None,
+             enable_backup_log: Optional[pulumi.Input[bool]] = None,
+             high_space_usage_protection: Optional[pulumi.Input[str]] = None,
+             local_log_retention_hours: Optional[pulumi.Input[int]] = None,
+             local_log_retention_space: Optional[pulumi.Input[int]] = None,
+             log_backup: Optional[pulumi.Input[bool]] = None,
+             log_backup_frequency: Optional[pulumi.Input[str]] = None,
+             log_backup_retention_period: Optional[pulumi.Input[int]] = None,
+             log_retention_period: Optional[pulumi.Input[int]] = None,
+             preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preferred_backup_time: Optional[pulumi.Input[str]] = None,
+             released_keep_policy: Optional[pulumi.Input[str]] = None,
+             retention_period: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
         if archive_backup_keep_count is not None:
-            pulumi.set(__self__, "archive_backup_keep_count", archive_backup_keep_count)
+            _setter("archive_backup_keep_count", archive_backup_keep_count)
         if archive_backup_keep_policy is not None:
-            pulumi.set(__self__, "archive_backup_keep_policy", archive_backup_keep_policy)
+            _setter("archive_backup_keep_policy", archive_backup_keep_policy)
         if archive_backup_retention_period is not None:
-            pulumi.set(__self__, "archive_backup_retention_period", archive_backup_retention_period)
+            _setter("archive_backup_retention_period", archive_backup_retention_period)
         if backup_interval is not None:
-            pulumi.set(__self__, "backup_interval", backup_interval)
+            _setter("backup_interval", backup_interval)
         if backup_periods is not None:
             warnings.warn("""Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""", DeprecationWarning)
             pulumi.log.warn("""backup_periods is deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""")
         if backup_periods is not None:
-            pulumi.set(__self__, "backup_periods", backup_periods)
+            _setter("backup_periods", backup_periods)
         if backup_retention_period is not None:
-            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+            _setter("backup_retention_period", backup_retention_period)
         if backup_time is not None:
             warnings.warn("""Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""", DeprecationWarning)
             pulumi.log.warn("""backup_time is deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""")
         if backup_time is not None:
-            pulumi.set(__self__, "backup_time", backup_time)
+            _setter("backup_time", backup_time)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if compress_type is not None:
-            pulumi.set(__self__, "compress_type", compress_type)
+            _setter("compress_type", compress_type)
         if enable_backup_log is not None:
-            pulumi.set(__self__, "enable_backup_log", enable_backup_log)
+            _setter("enable_backup_log", enable_backup_log)
         if high_space_usage_protection is not None:
-            pulumi.set(__self__, "high_space_usage_protection", high_space_usage_protection)
+            _setter("high_space_usage_protection", high_space_usage_protection)
         if local_log_retention_hours is not None:
-            pulumi.set(__self__, "local_log_retention_hours", local_log_retention_hours)
+            _setter("local_log_retention_hours", local_log_retention_hours)
         if local_log_retention_space is not None:
-            pulumi.set(__self__, "local_log_retention_space", local_log_retention_space)
+            _setter("local_log_retention_space", local_log_retention_space)
         if log_backup is not None:
             warnings.warn("""Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""", DeprecationWarning)
             pulumi.log.warn("""log_backup is deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""")
         if log_backup is not None:
-            pulumi.set(__self__, "log_backup", log_backup)
+            _setter("log_backup", log_backup)
         if log_backup_frequency is not None:
-            pulumi.set(__self__, "log_backup_frequency", log_backup_frequency)
+            _setter("log_backup_frequency", log_backup_frequency)
         if log_backup_retention_period is not None:
-            pulumi.set(__self__, "log_backup_retention_period", log_backup_retention_period)
+            _setter("log_backup_retention_period", log_backup_retention_period)
         if log_retention_period is not None:
             warnings.warn("""Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""", DeprecationWarning)
             pulumi.log.warn("""log_retention_period is deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""")
         if log_retention_period is not None:
-            pulumi.set(__self__, "log_retention_period", log_retention_period)
+            _setter("log_retention_period", log_retention_period)
         if preferred_backup_periods is not None:
-            pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
+            _setter("preferred_backup_periods", preferred_backup_periods)
         if preferred_backup_time is not None:
-            pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
+            _setter("preferred_backup_time", preferred_backup_time)
         if released_keep_policy is not None:
-            pulumi.set(__self__, "released_keep_policy", released_keep_policy)
+            _setter("released_keep_policy", released_keep_policy)
         if retention_period is not None:
             warnings.warn("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""", DeprecationWarning)
             pulumi.log.warn("""retention_period is deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")
         if retention_period is not None:
-            pulumi.set(__self__, "retention_period", retention_period)
+            _setter("retention_period", retention_period)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -492,65 +543,116 @@ class _BackupPolicyState:
                * **All**: All archived backup files are retained.
         :param pulumi.Input[int] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
+        _BackupPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            archive_backup_keep_count=archive_backup_keep_count,
+            archive_backup_keep_policy=archive_backup_keep_policy,
+            archive_backup_retention_period=archive_backup_retention_period,
+            backup_interval=backup_interval,
+            backup_periods=backup_periods,
+            backup_retention_period=backup_retention_period,
+            backup_time=backup_time,
+            category=category,
+            compress_type=compress_type,
+            enable_backup_log=enable_backup_log,
+            high_space_usage_protection=high_space_usage_protection,
+            instance_id=instance_id,
+            local_log_retention_hours=local_log_retention_hours,
+            local_log_retention_space=local_log_retention_space,
+            log_backup=log_backup,
+            log_backup_frequency=log_backup_frequency,
+            log_backup_retention_period=log_backup_retention_period,
+            log_retention_period=log_retention_period,
+            preferred_backup_periods=preferred_backup_periods,
+            preferred_backup_time=preferred_backup_time,
+            released_keep_policy=released_keep_policy,
+            retention_period=retention_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             archive_backup_keep_count: Optional[pulumi.Input[int]] = None,
+             archive_backup_keep_policy: Optional[pulumi.Input[str]] = None,
+             archive_backup_retention_period: Optional[pulumi.Input[int]] = None,
+             backup_interval: Optional[pulumi.Input[str]] = None,
+             backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             backup_retention_period: Optional[pulumi.Input[int]] = None,
+             backup_time: Optional[pulumi.Input[str]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             compress_type: Optional[pulumi.Input[str]] = None,
+             enable_backup_log: Optional[pulumi.Input[bool]] = None,
+             high_space_usage_protection: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             local_log_retention_hours: Optional[pulumi.Input[int]] = None,
+             local_log_retention_space: Optional[pulumi.Input[int]] = None,
+             log_backup: Optional[pulumi.Input[bool]] = None,
+             log_backup_frequency: Optional[pulumi.Input[str]] = None,
+             log_backup_retention_period: Optional[pulumi.Input[int]] = None,
+             log_retention_period: Optional[pulumi.Input[int]] = None,
+             preferred_backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             preferred_backup_time: Optional[pulumi.Input[str]] = None,
+             released_keep_policy: Optional[pulumi.Input[str]] = None,
+             retention_period: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if archive_backup_keep_count is not None:
-            pulumi.set(__self__, "archive_backup_keep_count", archive_backup_keep_count)
+            _setter("archive_backup_keep_count", archive_backup_keep_count)
         if archive_backup_keep_policy is not None:
-            pulumi.set(__self__, "archive_backup_keep_policy", archive_backup_keep_policy)
+            _setter("archive_backup_keep_policy", archive_backup_keep_policy)
         if archive_backup_retention_period is not None:
-            pulumi.set(__self__, "archive_backup_retention_period", archive_backup_retention_period)
+            _setter("archive_backup_retention_period", archive_backup_retention_period)
         if backup_interval is not None:
-            pulumi.set(__self__, "backup_interval", backup_interval)
+            _setter("backup_interval", backup_interval)
         if backup_periods is not None:
             warnings.warn("""Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""", DeprecationWarning)
             pulumi.log.warn("""backup_periods is deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""")
         if backup_periods is not None:
-            pulumi.set(__self__, "backup_periods", backup_periods)
+            _setter("backup_periods", backup_periods)
         if backup_retention_period is not None:
-            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+            _setter("backup_retention_period", backup_retention_period)
         if backup_time is not None:
             warnings.warn("""Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""", DeprecationWarning)
             pulumi.log.warn("""backup_time is deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""")
         if backup_time is not None:
-            pulumi.set(__self__, "backup_time", backup_time)
+            _setter("backup_time", backup_time)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if compress_type is not None:
-            pulumi.set(__self__, "compress_type", compress_type)
+            _setter("compress_type", compress_type)
         if enable_backup_log is not None:
-            pulumi.set(__self__, "enable_backup_log", enable_backup_log)
+            _setter("enable_backup_log", enable_backup_log)
         if high_space_usage_protection is not None:
-            pulumi.set(__self__, "high_space_usage_protection", high_space_usage_protection)
+            _setter("high_space_usage_protection", high_space_usage_protection)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if local_log_retention_hours is not None:
-            pulumi.set(__self__, "local_log_retention_hours", local_log_retention_hours)
+            _setter("local_log_retention_hours", local_log_retention_hours)
         if local_log_retention_space is not None:
-            pulumi.set(__self__, "local_log_retention_space", local_log_retention_space)
+            _setter("local_log_retention_space", local_log_retention_space)
         if log_backup is not None:
             warnings.warn("""Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""", DeprecationWarning)
             pulumi.log.warn("""log_backup is deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""")
         if log_backup is not None:
-            pulumi.set(__self__, "log_backup", log_backup)
+            _setter("log_backup", log_backup)
         if log_backup_frequency is not None:
-            pulumi.set(__self__, "log_backup_frequency", log_backup_frequency)
+            _setter("log_backup_frequency", log_backup_frequency)
         if log_backup_retention_period is not None:
-            pulumi.set(__self__, "log_backup_retention_period", log_backup_retention_period)
+            _setter("log_backup_retention_period", log_backup_retention_period)
         if log_retention_period is not None:
             warnings.warn("""Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""", DeprecationWarning)
             pulumi.log.warn("""log_retention_period is deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""")
         if log_retention_period is not None:
-            pulumi.set(__self__, "log_retention_period", log_retention_period)
+            _setter("log_retention_period", log_retention_period)
         if preferred_backup_periods is not None:
-            pulumi.set(__self__, "preferred_backup_periods", preferred_backup_periods)
+            _setter("preferred_backup_periods", preferred_backup_periods)
         if preferred_backup_time is not None:
-            pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
+            _setter("preferred_backup_time", preferred_backup_time)
         if released_keep_policy is not None:
-            pulumi.set(__self__, "released_keep_policy", released_keep_policy)
+            _setter("released_keep_policy", released_keep_policy)
         if retention_period is not None:
             warnings.warn("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""", DeprecationWarning)
             pulumi.log.warn("""retention_period is deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")
         if retention_period is not None:
-            pulumi.set(__self__, "retention_period", retention_period)
+            _setter("retention_period", retention_period)
 
     @property
     @pulumi.getter(name="archiveBackupKeepCount")
@@ -1019,6 +1121,10 @@ class BackupPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BackupPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1059,14 +1165,8 @@ class BackupPolicy(pulumi.CustomResource):
             __props__.__dict__["archive_backup_keep_policy"] = archive_backup_keep_policy
             __props__.__dict__["archive_backup_retention_period"] = archive_backup_retention_period
             __props__.__dict__["backup_interval"] = backup_interval
-            if backup_periods is not None and not opts.urn:
-                warnings.warn("""Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""", DeprecationWarning)
-                pulumi.log.warn("""backup_periods is deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""")
             __props__.__dict__["backup_periods"] = backup_periods
             __props__.__dict__["backup_retention_period"] = backup_retention_period
-            if backup_time is not None and not opts.urn:
-                warnings.warn("""Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""", DeprecationWarning)
-                pulumi.log.warn("""backup_time is deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""")
             __props__.__dict__["backup_time"] = backup_time
             __props__.__dict__["category"] = category
             __props__.__dict__["compress_type"] = compress_type
@@ -1077,22 +1177,13 @@ class BackupPolicy(pulumi.CustomResource):
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["local_log_retention_hours"] = local_log_retention_hours
             __props__.__dict__["local_log_retention_space"] = local_log_retention_space
-            if log_backup is not None and not opts.urn:
-                warnings.warn("""Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""", DeprecationWarning)
-                pulumi.log.warn("""log_backup is deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""")
             __props__.__dict__["log_backup"] = log_backup
             __props__.__dict__["log_backup_frequency"] = log_backup_frequency
             __props__.__dict__["log_backup_retention_period"] = log_backup_retention_period
-            if log_retention_period is not None and not opts.urn:
-                warnings.warn("""Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""", DeprecationWarning)
-                pulumi.log.warn("""log_retention_period is deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""")
             __props__.__dict__["log_retention_period"] = log_retention_period
             __props__.__dict__["preferred_backup_periods"] = preferred_backup_periods
             __props__.__dict__["preferred_backup_time"] = preferred_backup_time
             __props__.__dict__["released_keep_policy"] = released_keep_policy
-            if retention_period is not None and not opts.urn:
-                warnings.warn("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""", DeprecationWarning)
-                pulumi.log.warn("""retention_period is deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")
             __props__.__dict__["retention_period"] = retention_period
         super(BackupPolicy, __self__).__init__(
             'alicloud:rds/backupPolicy:BackupPolicy',

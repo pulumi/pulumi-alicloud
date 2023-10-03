@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -61,11 +61,26 @@ class EndpointIpConfig(dict):
         :param str zone_id: The Zone ID.
         :param str ip: The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        EndpointIpConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+            ip=ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: str,
+             vswitch_id: str,
+             zone_id: str,
+             ip: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr_block", cidr_block)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
         if ip is not None:
-            pulumi.set(__self__, "ip", ip)
+            _setter("ip", ip)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -128,8 +143,19 @@ class RuleAttachmentVpc(dict):
         :param str region_id: The region of the vpc. If not set, the current region will instead of.
         :param str vpc_id: The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
         """
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        RuleAttachmentVpc._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region_id=region_id,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region_id: str,
+             vpc_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("region_id", region_id)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="regionId")
@@ -157,8 +183,19 @@ class RuleForwardIp(dict):
         :param str ip: The ip of the forwarding destination.
         :param int port: The port of the forwarding destination.
         """
-        pulumi.set(__self__, "ip", ip)
-        pulumi.set(__self__, "port", port)
+        RuleForwardIp._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip=ip,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip: str,
+             port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip", ip)
+        _setter("port", port)
 
     @property
     @pulumi.getter
@@ -207,9 +244,20 @@ class ZoneAttachmentVpc(dict):
                
                Recommend to use `vpcs`.
         """
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        ZoneAttachmentVpc._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vpc_id=vpc_id,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vpc_id: str,
+             region_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("vpc_id", vpc_id)
         if region_id is not None:
-            pulumi.set(__self__, "region_id", region_id)
+            _setter("region_id", region_id)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -258,10 +306,21 @@ class ZoneUserInfo(dict):
         :param Sequence[str] region_ids: The list of the region IDs.
         :param str user_id: The user ID belonging to the region is used for cross-account synchronization scenarios.
         """
+        ZoneUserInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region_ids=region_ids,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region_ids: Optional[Sequence[str]] = None,
+             user_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if region_ids is not None:
-            pulumi.set(__self__, "region_ids", region_ids)
+            _setter("region_ids", region_ids)
         if user_id is not None:
-            pulumi.set(__self__, "user_id", user_id)
+            _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="regionIds")
@@ -302,15 +361,40 @@ class GetEndpointsEndpointResult(dict):
         :param str vpc_name: The name of the VPC.
         :param str vpc_region_id: The Region of the VPC.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "endpoint_name", endpoint_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ip_configs", ip_configs)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vpc_name", vpc_name)
-        pulumi.set(__self__, "vpc_region_id", vpc_region_id)
+        GetEndpointsEndpointResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            endpoint_name=endpoint_name,
+            id=id,
+            ip_configs=ip_configs,
+            security_group_id=security_group_id,
+            status=status,
+            vpc_id=vpc_id,
+            vpc_name=vpc_name,
+            vpc_region_id=vpc_region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             endpoint_name: str,
+             id: str,
+             ip_configs: Sequence['outputs.GetEndpointsEndpointIpConfigResult'],
+             security_group_id: str,
+             status: str,
+             vpc_id: str,
+             vpc_name: str,
+             vpc_region_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("endpoint_name", endpoint_name)
+        _setter("id", id)
+        _setter("ip_configs", ip_configs)
+        _setter("security_group_id", security_group_id)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
+        _setter("vpc_name", vpc_name)
+        _setter("vpc_region_id", vpc_region_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -395,10 +479,25 @@ class GetEndpointsEndpointIpConfigResult(dict):
         :param str vswitch_id: The Vswitch id.
         :param str zone_id: The Zone ID.
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "ip", ip)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetEndpointsEndpointIpConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            ip=ip,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: str,
+             ip: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr_block", cidr_block)
+        _setter("ip", ip)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -442,8 +541,19 @@ class GetResolverZonesZoneResult(dict):
         :param str status: The status of the Zone.
         :param str zone_id: The zone ID.
         """
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetResolverZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            status=status,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             status: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("status", status)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -486,16 +596,43 @@ class GetRulesRuleResult(dict):
         :param str type: The type of the rule.
         :param str zone_name: The name of the forwarding zone.
         """
-        pulumi.set(__self__, "bind_vpcs", bind_vpcs)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "endpoint_id", endpoint_id)
-        pulumi.set(__self__, "endpoint_name", endpoint_name)
-        pulumi.set(__self__, "forward_ips", forward_ips)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "rule_id", rule_id)
-        pulumi.set(__self__, "rule_name", rule_name)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "zone_name", zone_name)
+        GetRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bind_vpcs=bind_vpcs,
+            create_time=create_time,
+            endpoint_id=endpoint_id,
+            endpoint_name=endpoint_name,
+            forward_ips=forward_ips,
+            id=id,
+            rule_id=rule_id,
+            rule_name=rule_name,
+            type=type,
+            zone_name=zone_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bind_vpcs: Sequence['outputs.GetRulesRuleBindVpcResult'],
+             create_time: str,
+             endpoint_id: str,
+             endpoint_name: str,
+             forward_ips: Sequence['outputs.GetRulesRuleForwardIpResult'],
+             id: str,
+             rule_id: str,
+             rule_name: str,
+             type: str,
+             zone_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bind_vpcs", bind_vpcs)
+        _setter("create_time", create_time)
+        _setter("endpoint_id", endpoint_id)
+        _setter("endpoint_name", endpoint_name)
+        _setter("forward_ips", forward_ips)
+        _setter("id", id)
+        _setter("rule_id", rule_id)
+        _setter("rule_name", rule_name)
+        _setter("type", type)
+        _setter("zone_name", zone_name)
 
     @property
     @pulumi.getter(name="bindVpcs")
@@ -588,10 +725,25 @@ class GetRulesRuleBindVpcResult(dict):
         :param str vpc_id: The ID of the VPC.
         :param str vpc_name: The Name of the VPC.
         """
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "region_name", region_name)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vpc_name", vpc_name)
+        GetRulesRuleBindVpcResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region_id=region_id,
+            region_name=region_name,
+            vpc_id=vpc_id,
+            vpc_name=vpc_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region_id: str,
+             region_name: str,
+             vpc_id: str,
+             vpc_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("region_id", region_id)
+        _setter("region_name", region_name)
+        _setter("vpc_id", vpc_id)
+        _setter("vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="regionId")
@@ -631,8 +783,19 @@ class GetRulesRuleForwardIpResult(dict):
     def __init__(__self__, *,
                  ip: str,
                  port: int):
-        pulumi.set(__self__, "ip", ip)
-        pulumi.set(__self__, "port", port)
+        GetRulesRuleForwardIpResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip=ip,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip: str,
+             port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip", ip)
+        _setter("port", port)
 
     @property
     @pulumi.getter
@@ -672,16 +835,43 @@ class GetZoneRecordsRecordResult(dict):
         :param str type: Type of the Private Zone Record.
         :param str value: Value of the Private Zone Record.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "record_id", record_id)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "resource_record", resource_record)
-        pulumi.set(__self__, "rr", rr)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "ttl", ttl)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
+        GetZoneRecordsRecordResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            priority=priority,
+            record_id=record_id,
+            remark=remark,
+            resource_record=resource_record,
+            rr=rr,
+            status=status,
+            ttl=ttl,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             priority: int,
+             record_id: str,
+             remark: str,
+             resource_record: str,
+             rr: str,
+             status: str,
+             ttl: int,
+             type: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("priority", priority)
+        _setter("record_id", record_id)
+        _setter("remark", remark)
+        _setter("resource_record", resource_record)
+        _setter("rr", rr)
+        _setter("status", status)
+        _setter("ttl", ttl)
+        _setter("type", type)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -799,21 +989,58 @@ class GetZonesZoneResult(dict):
         :param str zone_id: ZoneId of the Private Zone.
         :param str zone_name: ZoneName of the Private Zone.
         """
-        pulumi.set(__self__, "bind_vpcs", bind_vpcs)
-        pulumi.set(__self__, "create_timestamp", create_timestamp)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_ptr", is_ptr)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "proxy_pattern", proxy_pattern)
-        pulumi.set(__self__, "record_count", record_count)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "slave_dns", slave_dns)
-        pulumi.set(__self__, "update_time", update_time)
-        pulumi.set(__self__, "update_timestamp", update_timestamp)
-        pulumi.set(__self__, "zone_id", zone_id)
-        pulumi.set(__self__, "zone_name", zone_name)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bind_vpcs=bind_vpcs,
+            create_timestamp=create_timestamp,
+            creation_time=creation_time,
+            id=id,
+            is_ptr=is_ptr,
+            name=name,
+            proxy_pattern=proxy_pattern,
+            record_count=record_count,
+            remark=remark,
+            resource_group_id=resource_group_id,
+            slave_dns=slave_dns,
+            update_time=update_time,
+            update_timestamp=update_timestamp,
+            zone_id=zone_id,
+            zone_name=zone_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bind_vpcs: Sequence['outputs.GetZonesZoneBindVpcResult'],
+             create_timestamp: int,
+             creation_time: str,
+             id: str,
+             is_ptr: bool,
+             name: str,
+             proxy_pattern: str,
+             record_count: int,
+             remark: str,
+             resource_group_id: str,
+             slave_dns: bool,
+             update_time: str,
+             update_timestamp: int,
+             zone_id: str,
+             zone_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bind_vpcs", bind_vpcs)
+        _setter("create_timestamp", create_timestamp)
+        _setter("creation_time", creation_time)
+        _setter("id", id)
+        _setter("is_ptr", is_ptr)
+        _setter("name", name)
+        _setter("proxy_pattern", proxy_pattern)
+        _setter("record_count", record_count)
+        _setter("remark", remark)
+        _setter("resource_group_id", resource_group_id)
+        _setter("slave_dns", slave_dns)
+        _setter("update_time", update_time)
+        _setter("update_timestamp", update_timestamp)
+        _setter("zone_id", zone_id)
+        _setter("zone_name", zone_name)
 
     @property
     @pulumi.getter(name="bindVpcs")
@@ -942,10 +1169,25 @@ class GetZonesZoneBindVpcResult(dict):
         :param str region_name: Binding the regionName of VPC.
         :param str vpc_id: Binding the vpcId of VPC.
         """
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "region_name", region_name)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vpc_name", vpc_name)
+        GetZonesZoneBindVpcResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region_id=region_id,
+            region_name=region_name,
+            vpc_id=vpc_id,
+            vpc_name=vpc_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region_id: str,
+             region_name: str,
+             vpc_id: str,
+             vpc_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("region_id", region_id)
+        _setter("region_name", region_name)
+        _setter("vpc_id", vpc_id)
+        _setter("vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="regionId")

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// The variable value of the security context that the container group runs.
+        /// The value of the variable. The value can be 0 to 256 characters in length.
         /// </summary>
         public readonly string? Value;
 

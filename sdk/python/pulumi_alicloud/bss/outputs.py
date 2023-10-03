@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -39,14 +39,37 @@ class GetOpenApiPricingModulesModuleResult(dict):
         :param str unit: Attribute unit.
         :param Sequence['GetOpenApiPricingModulesModuleValueArgs'] values: Property.
         """
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "pricing_module_name", pricing_module_name)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "product_type", product_type)
-        pulumi.set(__self__, "subscription_type", subscription_type)
-        pulumi.set(__self__, "unit", unit)
-        pulumi.set(__self__, "values", values)
+        GetOpenApiPricingModulesModuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            id=id,
+            pricing_module_name=pricing_module_name,
+            product_code=product_code,
+            product_type=product_type,
+            subscription_type=subscription_type,
+            unit=unit,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: str,
+             id: str,
+             pricing_module_name: str,
+             product_code: str,
+             product_type: str,
+             subscription_type: str,
+             unit: str,
+             values: Sequence['outputs.GetOpenApiPricingModulesModuleValueResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("code", code)
+        _setter("id", id)
+        _setter("pricing_module_name", pricing_module_name)
+        _setter("product_code", product_code)
+        _setter("product_type", product_type)
+        _setter("subscription_type", subscription_type)
+        _setter("unit", unit)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -131,10 +154,25 @@ class GetOpenApiPricingModulesModuleValueResult(dict):
         :param str value: The module Code corresponds to the attribute value.
                > format 1024-1024000 when Type = range_float: 1024 means from 1024 to 1024000, step size 1024.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "remark", remark)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "value", value)
+        GetOpenApiPricingModulesModuleValueResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            remark=remark,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             remark: str,
+             type: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("remark", remark)
+        _setter("type", type)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -189,11 +227,28 @@ class GetOpenApiProductsProductResult(dict):
                * Subscription: Prepaid.
                * PayAsYouGo: postpaid.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "product_name", product_name)
-        pulumi.set(__self__, "product_type", product_type)
-        pulumi.set(__self__, "subscription_type", subscription_type)
+        GetOpenApiProductsProductResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            product_code=product_code,
+            product_name=product_name,
+            product_type=product_type,
+            subscription_type=subscription_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             product_code: str,
+             product_name: str,
+             product_type: str,
+             subscription_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("product_code", product_code)
+        _setter("product_name", product_name)
+        _setter("product_type", product_type)
+        _setter("subscription_type", subscription_type)
 
     @property
     @pulumi.getter

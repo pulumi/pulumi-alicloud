@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,12 +29,29 @@ class RdsParameterGroupArgs:
         :param pulumi.Input[str] parameter_group_name: The name of the parameter template.
         :param pulumi.Input[str] parameter_group_desc: The description of the parameter template.
         """
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "param_details", param_details)
-        pulumi.set(__self__, "parameter_group_name", parameter_group_name)
+        RdsParameterGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            engine=engine,
+            engine_version=engine_version,
+            param_details=param_details,
+            parameter_group_name=parameter_group_name,
+            parameter_group_desc=parameter_group_desc,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             engine: pulumi.Input[str],
+             engine_version: pulumi.Input[str],
+             param_details: pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]],
+             parameter_group_name: pulumi.Input[str],
+             parameter_group_desc: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("param_details", param_details)
+        _setter("parameter_group_name", parameter_group_name)
         if parameter_group_desc is not None:
-            pulumi.set(__self__, "parameter_group_desc", parameter_group_desc)
+            _setter("parameter_group_desc", parameter_group_desc)
 
     @property
     @pulumi.getter
@@ -113,16 +130,33 @@ class _RdsParameterGroupState:
         :param pulumi.Input[str] parameter_group_desc: The description of the parameter template.
         :param pulumi.Input[str] parameter_group_name: The name of the parameter template.
         """
+        _RdsParameterGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            engine=engine,
+            engine_version=engine_version,
+            param_details=param_details,
+            parameter_group_desc=parameter_group_desc,
+            parameter_group_name=parameter_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             engine: Optional[pulumi.Input[str]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             param_details: Optional[pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]] = None,
+             parameter_group_desc: Optional[pulumi.Input[str]] = None,
+             parameter_group_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if engine is not None:
-            pulumi.set(__self__, "engine", engine)
+            _setter("engine", engine)
         if engine_version is not None:
-            pulumi.set(__self__, "engine_version", engine_version)
+            _setter("engine_version", engine_version)
         if param_details is not None:
-            pulumi.set(__self__, "param_details", param_details)
+            _setter("param_details", param_details)
         if parameter_group_desc is not None:
-            pulumi.set(__self__, "parameter_group_desc", parameter_group_desc)
+            _setter("parameter_group_desc", parameter_group_desc)
         if parameter_group_name is not None:
-            pulumi.set(__self__, "parameter_group_name", parameter_group_name)
+            _setter("parameter_group_name", parameter_group_name)
 
     @property
     @pulumi.getter
@@ -308,6 +342,10 @@ class RdsParameterGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RdsParameterGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

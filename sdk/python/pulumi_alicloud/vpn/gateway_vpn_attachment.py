@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,27 +43,58 @@ class GatewayVpnAttachmentArgs:
         :param pulumi.Input[str] network_type: The network type of the IPsec connection. Valid values: `public`, `private`.
         :param pulumi.Input[str] vpn_attachment_name: The name of the vpn attachment.
         """
-        pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
-        pulumi.set(__self__, "local_subnet", local_subnet)
-        pulumi.set(__self__, "remote_subnet", remote_subnet)
+        GatewayVpnAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            customer_gateway_id=customer_gateway_id,
+            local_subnet=local_subnet,
+            remote_subnet=remote_subnet,
+            bgp_config=bgp_config,
+            effect_immediately=effect_immediately,
+            enable_dpd=enable_dpd,
+            enable_nat_traversal=enable_nat_traversal,
+            health_check_config=health_check_config,
+            ike_config=ike_config,
+            ipsec_config=ipsec_config,
+            network_type=network_type,
+            vpn_attachment_name=vpn_attachment_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             customer_gateway_id: pulumi.Input[str],
+             local_subnet: pulumi.Input[str],
+             remote_subnet: pulumi.Input[str],
+             bgp_config: Optional[pulumi.Input['GatewayVpnAttachmentBgpConfigArgs']] = None,
+             effect_immediately: Optional[pulumi.Input[bool]] = None,
+             enable_dpd: Optional[pulumi.Input[bool]] = None,
+             enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
+             health_check_config: Optional[pulumi.Input['GatewayVpnAttachmentHealthCheckConfigArgs']] = None,
+             ike_config: Optional[pulumi.Input['GatewayVpnAttachmentIkeConfigArgs']] = None,
+             ipsec_config: Optional[pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs']] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             vpn_attachment_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("customer_gateway_id", customer_gateway_id)
+        _setter("local_subnet", local_subnet)
+        _setter("remote_subnet", remote_subnet)
         if bgp_config is not None:
-            pulumi.set(__self__, "bgp_config", bgp_config)
+            _setter("bgp_config", bgp_config)
         if effect_immediately is not None:
-            pulumi.set(__self__, "effect_immediately", effect_immediately)
+            _setter("effect_immediately", effect_immediately)
         if enable_dpd is not None:
-            pulumi.set(__self__, "enable_dpd", enable_dpd)
+            _setter("enable_dpd", enable_dpd)
         if enable_nat_traversal is not None:
-            pulumi.set(__self__, "enable_nat_traversal", enable_nat_traversal)
+            _setter("enable_nat_traversal", enable_nat_traversal)
         if health_check_config is not None:
-            pulumi.set(__self__, "health_check_config", health_check_config)
+            _setter("health_check_config", health_check_config)
         if ike_config is not None:
-            pulumi.set(__self__, "ike_config", ike_config)
+            _setter("ike_config", ike_config)
         if ipsec_config is not None:
-            pulumi.set(__self__, "ipsec_config", ipsec_config)
+            _setter("ipsec_config", ipsec_config)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if vpn_attachment_name is not None:
-            pulumi.set(__self__, "vpn_attachment_name", vpn_attachment_name)
+            _setter("vpn_attachment_name", vpn_attachment_name)
 
     @property
     @pulumi.getter(name="customerGatewayId")
@@ -244,34 +275,69 @@ class _GatewayVpnAttachmentState:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[str] vpn_attachment_name: The name of the vpn attachment.
         """
+        _GatewayVpnAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bgp_config=bgp_config,
+            customer_gateway_id=customer_gateway_id,
+            effect_immediately=effect_immediately,
+            enable_dpd=enable_dpd,
+            enable_nat_traversal=enable_nat_traversal,
+            health_check_config=health_check_config,
+            ike_config=ike_config,
+            internet_ip=internet_ip,
+            ipsec_config=ipsec_config,
+            local_subnet=local_subnet,
+            network_type=network_type,
+            remote_subnet=remote_subnet,
+            status=status,
+            vpn_attachment_name=vpn_attachment_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bgp_config: Optional[pulumi.Input['GatewayVpnAttachmentBgpConfigArgs']] = None,
+             customer_gateway_id: Optional[pulumi.Input[str]] = None,
+             effect_immediately: Optional[pulumi.Input[bool]] = None,
+             enable_dpd: Optional[pulumi.Input[bool]] = None,
+             enable_nat_traversal: Optional[pulumi.Input[bool]] = None,
+             health_check_config: Optional[pulumi.Input['GatewayVpnAttachmentHealthCheckConfigArgs']] = None,
+             ike_config: Optional[pulumi.Input['GatewayVpnAttachmentIkeConfigArgs']] = None,
+             internet_ip: Optional[pulumi.Input[str]] = None,
+             ipsec_config: Optional[pulumi.Input['GatewayVpnAttachmentIpsecConfigArgs']] = None,
+             local_subnet: Optional[pulumi.Input[str]] = None,
+             network_type: Optional[pulumi.Input[str]] = None,
+             remote_subnet: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpn_attachment_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bgp_config is not None:
-            pulumi.set(__self__, "bgp_config", bgp_config)
+            _setter("bgp_config", bgp_config)
         if customer_gateway_id is not None:
-            pulumi.set(__self__, "customer_gateway_id", customer_gateway_id)
+            _setter("customer_gateway_id", customer_gateway_id)
         if effect_immediately is not None:
-            pulumi.set(__self__, "effect_immediately", effect_immediately)
+            _setter("effect_immediately", effect_immediately)
         if enable_dpd is not None:
-            pulumi.set(__self__, "enable_dpd", enable_dpd)
+            _setter("enable_dpd", enable_dpd)
         if enable_nat_traversal is not None:
-            pulumi.set(__self__, "enable_nat_traversal", enable_nat_traversal)
+            _setter("enable_nat_traversal", enable_nat_traversal)
         if health_check_config is not None:
-            pulumi.set(__self__, "health_check_config", health_check_config)
+            _setter("health_check_config", health_check_config)
         if ike_config is not None:
-            pulumi.set(__self__, "ike_config", ike_config)
+            _setter("ike_config", ike_config)
         if internet_ip is not None:
-            pulumi.set(__self__, "internet_ip", internet_ip)
+            _setter("internet_ip", internet_ip)
         if ipsec_config is not None:
-            pulumi.set(__self__, "ipsec_config", ipsec_config)
+            _setter("ipsec_config", ipsec_config)
         if local_subnet is not None:
-            pulumi.set(__self__, "local_subnet", local_subnet)
+            _setter("local_subnet", local_subnet)
         if network_type is not None:
-            pulumi.set(__self__, "network_type", network_type)
+            _setter("network_type", network_type)
         if remote_subnet is not None:
-            pulumi.set(__self__, "remote_subnet", remote_subnet)
+            _setter("remote_subnet", remote_subnet)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vpn_attachment_name is not None:
-            pulumi.set(__self__, "vpn_attachment_name", vpn_attachment_name)
+            _setter("vpn_attachment_name", vpn_attachment_name)
 
     @property
     @pulumi.getter(name="bgpConfig")
@@ -637,6 +703,10 @@ class GatewayVpnAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayVpnAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -663,6 +733,11 @@ class GatewayVpnAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GatewayVpnAttachmentArgs.__new__(GatewayVpnAttachmentArgs)
 
+            if bgp_config is not None and not isinstance(bgp_config, GatewayVpnAttachmentBgpConfigArgs):
+                bgp_config = bgp_config or {}
+                def _setter(key, value):
+                    bgp_config[key] = value
+                GatewayVpnAttachmentBgpConfigArgs._configure(_setter, **bgp_config)
             __props__.__dict__["bgp_config"] = bgp_config
             if customer_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'customer_gateway_id'")
@@ -670,8 +745,23 @@ class GatewayVpnAttachment(pulumi.CustomResource):
             __props__.__dict__["effect_immediately"] = effect_immediately
             __props__.__dict__["enable_dpd"] = enable_dpd
             __props__.__dict__["enable_nat_traversal"] = enable_nat_traversal
+            if health_check_config is not None and not isinstance(health_check_config, GatewayVpnAttachmentHealthCheckConfigArgs):
+                health_check_config = health_check_config or {}
+                def _setter(key, value):
+                    health_check_config[key] = value
+                GatewayVpnAttachmentHealthCheckConfigArgs._configure(_setter, **health_check_config)
             __props__.__dict__["health_check_config"] = health_check_config
+            if ike_config is not None and not isinstance(ike_config, GatewayVpnAttachmentIkeConfigArgs):
+                ike_config = ike_config or {}
+                def _setter(key, value):
+                    ike_config[key] = value
+                GatewayVpnAttachmentIkeConfigArgs._configure(_setter, **ike_config)
             __props__.__dict__["ike_config"] = ike_config
+            if ipsec_config is not None and not isinstance(ipsec_config, GatewayVpnAttachmentIpsecConfigArgs):
+                ipsec_config = ipsec_config or {}
+                def _setter(key, value):
+                    ipsec_config[key] = value
+                GatewayVpnAttachmentIpsecConfigArgs._configure(_setter, **ipsec_config)
             __props__.__dict__["ipsec_config"] = ipsec_config
             if local_subnet is None and not opts.urn:
                 raise TypeError("Missing required property 'local_subnet'")

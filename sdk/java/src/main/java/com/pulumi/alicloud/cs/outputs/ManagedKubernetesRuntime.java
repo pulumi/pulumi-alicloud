@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ManagedKubernetesRuntime {
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return This parameter specifies the name of the component.
      * 
      */
     private @Nullable String name;
@@ -24,7 +24,7 @@ public final class ManagedKubernetesRuntime {
 
     private ManagedKubernetesRuntime() {}
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return This parameter specifies the name of the component.
      * 
      */
     public Optional<String> name() {

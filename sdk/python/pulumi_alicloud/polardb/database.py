@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DatabaseArgs', 'Database']
@@ -25,12 +25,27 @@ class DatabaseArgs:
         :param pulumi.Input[str] character_set_name: Character set. The value range is limited to the following: [ utf8, gbk, latin1, utf8mb4, Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, Chinese_PRC_BIN ], default is "utf8" \\(`utf8mb4` only supports versions 5.5 and 5.6\\).
         :param pulumi.Input[str] db_description: Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
         """
-        pulumi.set(__self__, "db_cluster_id", db_cluster_id)
-        pulumi.set(__self__, "db_name", db_name)
+        DatabaseArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_cluster_id=db_cluster_id,
+            db_name=db_name,
+            character_set_name=character_set_name,
+            db_description=db_description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_cluster_id: pulumi.Input[str],
+             db_name: pulumi.Input[str],
+             character_set_name: Optional[pulumi.Input[str]] = None,
+             db_description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_cluster_id", db_cluster_id)
+        _setter("db_name", db_name)
         if character_set_name is not None:
-            pulumi.set(__self__, "character_set_name", character_set_name)
+            _setter("character_set_name", character_set_name)
         if db_description is not None:
-            pulumi.set(__self__, "db_description", db_description)
+            _setter("db_description", db_description)
 
     @property
     @pulumi.getter(name="dbClusterId")
@@ -95,14 +110,29 @@ class _DatabaseState:
         :param pulumi.Input[str] db_description: Database description. It must start with a Chinese character or English letter, cannot start with "http://" or "https://". It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length must be 2-256 characters.
         :param pulumi.Input[str] db_name: Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         """
+        _DatabaseState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            character_set_name=character_set_name,
+            db_cluster_id=db_cluster_id,
+            db_description=db_description,
+            db_name=db_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             character_set_name: Optional[pulumi.Input[str]] = None,
+             db_cluster_id: Optional[pulumi.Input[str]] = None,
+             db_description: Optional[pulumi.Input[str]] = None,
+             db_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if character_set_name is not None:
-            pulumi.set(__self__, "character_set_name", character_set_name)
+            _setter("character_set_name", character_set_name)
         if db_cluster_id is not None:
-            pulumi.set(__self__, "db_cluster_id", db_cluster_id)
+            _setter("db_cluster_id", db_cluster_id)
         if db_description is not None:
-            pulumi.set(__self__, "db_description", db_description)
+            _setter("db_description", db_description)
         if db_name is not None:
-            pulumi.set(__self__, "db_name", db_name)
+            _setter("db_name", db_name)
 
     @property
     @pulumi.getter(name="characterSetName")
@@ -270,6 +300,10 @@ class Database(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

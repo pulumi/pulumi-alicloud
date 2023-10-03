@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FolderArgs', 'Folder']
@@ -22,11 +22,24 @@ class FolderArgs:
         :param pulumi.Input[str] folder_path: Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
         :param pulumi.Input[str] project_id: The ID of the project.
         """
-        pulumi.set(__self__, "folder_path", folder_path)
+        FolderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            folder_path=folder_path,
+            project_id=project_id,
+            project_identifier=project_identifier,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             folder_path: pulumi.Input[str],
+             project_id: Optional[pulumi.Input[str]] = None,
+             project_identifier: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("folder_path", folder_path)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if project_identifier is not None:
-            pulumi.set(__self__, "project_identifier", project_identifier)
+            _setter("project_identifier", project_identifier)
 
     @property
     @pulumi.getter(name="folderPath")
@@ -74,14 +87,29 @@ class _FolderState:
         :param pulumi.Input[str] folder_path: Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
         :param pulumi.Input[str] project_id: The ID of the project.
         """
+        _FolderState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            folder_id=folder_id,
+            folder_path=folder_path,
+            project_id=project_id,
+            project_identifier=project_identifier,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             folder_id: Optional[pulumi.Input[str]] = None,
+             folder_path: Optional[pulumi.Input[str]] = None,
+             project_id: Optional[pulumi.Input[str]] = None,
+             project_identifier: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if folder_id is not None:
-            pulumi.set(__self__, "folder_id", folder_id)
+            _setter("folder_id", folder_id)
         if folder_path is not None:
-            pulumi.set(__self__, "folder_path", folder_path)
+            _setter("folder_path", folder_path)
         if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+            _setter("project_id", project_id)
         if project_identifier is not None:
-            pulumi.set(__self__, "project_identifier", project_identifier)
+            _setter("project_identifier", project_identifier)
 
     @property
     @pulumi.getter(name="folderId")
@@ -212,6 +240,10 @@ class Folder(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FolderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

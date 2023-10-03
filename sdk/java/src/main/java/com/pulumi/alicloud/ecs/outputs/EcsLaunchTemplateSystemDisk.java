@@ -14,12 +14,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EcsLaunchTemplateSystemDisk {
     /**
-     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+     * @return The category of the disk.
      * 
      */
     private @Nullable String category;
     /**
-     * @return Specifies whether to release the system disk when the instance is released. Default to `true`.
+     * @return Indicates whether the data disk is released with the instance.
      * 
      */
     private @Nullable Boolean deleteWithInstance;
@@ -39,26 +39,26 @@ public final class EcsLaunchTemplateSystemDisk {
      */
     private @Nullable String name;
     /**
-     * @return The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+     * @return The performance level of the ESSD used as the data disk.
      * 
      */
     private @Nullable String performanceLevel;
     /**
-     * @return Size of the system disk, measured in GB. Value range: [20, 500].
+     * @return The size of the data disk.
      * 
      */
     private @Nullable Integer size;
 
     private EcsLaunchTemplateSystemDisk() {}
     /**
-     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+     * @return The category of the disk.
      * 
      */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
     /**
-     * @return Specifies whether to release the system disk when the instance is released. Default to `true`.
+     * @return Indicates whether the data disk is released with the instance.
      * 
      */
     public Optional<Boolean> deleteWithInstance() {
@@ -86,14 +86,14 @@ public final class EcsLaunchTemplateSystemDisk {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+     * @return The performance level of the ESSD used as the data disk.
      * 
      */
     public Optional<String> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
     /**
-     * @return Size of the system disk, measured in GB. Value range: [20, 500].
+     * @return The size of the data disk.
      * 
      */
     public Optional<Integer> size() {

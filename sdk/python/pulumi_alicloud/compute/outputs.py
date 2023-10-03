@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -47,10 +47,21 @@ class NestServiceInstanceCommodity(dict):
         :param int pay_period: Length of purchase.
         :param str pay_period_unit: Duration unit. Valid values: `Year`, `Month`, `Day`.
         """
+        NestServiceInstanceCommodity._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pay_period=pay_period,
+            pay_period_unit=pay_period_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pay_period: Optional[int] = None,
+             pay_period_unit: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if pay_period is not None:
-            pulumi.set(__self__, "pay_period", pay_period)
+            _setter("pay_period", pay_period)
         if pay_period_unit is not None:
-            pulumi.set(__self__, "pay_period_unit", pay_period_unit)
+            _setter("pay_period_unit", pay_period_unit)
 
     @property
     @pulumi.getter(name="payPeriod")
@@ -103,14 +114,29 @@ class NestServiceInstanceOperationMetadata(dict):
         :param str operation_start_time: The start time of O&M.
         :param str resources: The list of imported resources.
         """
+        NestServiceInstanceOperationMetadata._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            operated_service_instance_id=operated_service_instance_id,
+            operation_end_time=operation_end_time,
+            operation_start_time=operation_start_time,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             operated_service_instance_id: Optional[str] = None,
+             operation_end_time: Optional[str] = None,
+             operation_start_time: Optional[str] = None,
+             resources: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if operated_service_instance_id is not None:
-            pulumi.set(__self__, "operated_service_instance_id", operated_service_instance_id)
+            _setter("operated_service_instance_id", operated_service_instance_id)
         if operation_end_time is not None:
-            pulumi.set(__self__, "operation_end_time", operation_end_time)
+            _setter("operation_end_time", operation_end_time)
         if operation_start_time is not None:
-            pulumi.set(__self__, "operation_start_time", operation_start_time)
+            _setter("operation_start_time", operation_start_time)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
 
     @property
     @pulumi.getter(name="operatedServiceInstanceId")
@@ -154,10 +180,21 @@ class GetNestServiceInstancesFilterResult(dict):
         :param str name: The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
         :param Sequence[str] values: Set of values that are accepted for the given field.
         """
+        GetNestServiceInstancesFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -209,20 +246,55 @@ class GetNestServiceInstancesServiceInstanceResult(dict):
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str template_name: The name of the template.
         """
-        pulumi.set(__self__, "enable_instance_ops", enable_instance_ops)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "operated_service_instance_id", operated_service_instance_id)
-        pulumi.set(__self__, "operation_end_time", operation_end_time)
-        pulumi.set(__self__, "operation_start_time", operation_start_time)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "resources", resources)
-        pulumi.set(__self__, "service_instance_id", service_instance_id)
-        pulumi.set(__self__, "service_instance_name", service_instance_name)
-        pulumi.set(__self__, "services", services)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "template_name", template_name)
+        GetNestServiceInstancesServiceInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_instance_ops=enable_instance_ops,
+            id=id,
+            operated_service_instance_id=operated_service_instance_id,
+            operation_end_time=operation_end_time,
+            operation_start_time=operation_start_time,
+            parameters=parameters,
+            resources=resources,
+            service_instance_id=service_instance_id,
+            service_instance_name=service_instance_name,
+            services=services,
+            source=source,
+            status=status,
+            tags=tags,
+            template_name=template_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_instance_ops: bool,
+             id: str,
+             operated_service_instance_id: str,
+             operation_end_time: str,
+             operation_start_time: str,
+             parameters: str,
+             resources: str,
+             service_instance_id: str,
+             service_instance_name: str,
+             services: Sequence['outputs.GetNestServiceInstancesServiceInstanceServiceResult'],
+             source: str,
+             status: str,
+             tags: Mapping[str, Any],
+             template_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enable_instance_ops", enable_instance_ops)
+        _setter("id", id)
+        _setter("operated_service_instance_id", operated_service_instance_id)
+        _setter("operation_end_time", operation_end_time)
+        _setter("operation_start_time", operation_start_time)
+        _setter("parameters", parameters)
+        _setter("resources", resources)
+        _setter("service_instance_id", service_instance_id)
+        _setter("service_instance_name", service_instance_name)
+        _setter("services", services)
+        _setter("source", source)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("template_name", template_name)
 
     @property
     @pulumi.getter(name="enableInstanceOps")
@@ -362,16 +434,43 @@ class GetNestServiceInstancesServiceInstanceServiceResult(dict):
         :param str version: The version of the service.
         :param str version_name: The version name of the service.
         """
-        pulumi.set(__self__, "deploy_type", deploy_type)
-        pulumi.set(__self__, "publish_time", publish_time)
-        pulumi.set(__self__, "service_id", service_id)
-        pulumi.set(__self__, "service_infos", service_infos)
-        pulumi.set(__self__, "service_type", service_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "supplier_name", supplier_name)
-        pulumi.set(__self__, "supplier_url", supplier_url)
-        pulumi.set(__self__, "version", version)
-        pulumi.set(__self__, "version_name", version_name)
+        GetNestServiceInstancesServiceInstanceServiceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deploy_type=deploy_type,
+            publish_time=publish_time,
+            service_id=service_id,
+            service_infos=service_infos,
+            service_type=service_type,
+            status=status,
+            supplier_name=supplier_name,
+            supplier_url=supplier_url,
+            version=version,
+            version_name=version_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deploy_type: str,
+             publish_time: str,
+             service_id: str,
+             service_infos: Sequence['outputs.GetNestServiceInstancesServiceInstanceServiceServiceInfoResult'],
+             service_type: str,
+             status: str,
+             supplier_name: str,
+             supplier_url: str,
+             version: str,
+             version_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("deploy_type", deploy_type)
+        _setter("publish_time", publish_time)
+        _setter("service_id", service_id)
+        _setter("service_infos", service_infos)
+        _setter("service_type", service_type)
+        _setter("status", status)
+        _setter("supplier_name", supplier_name)
+        _setter("supplier_url", supplier_url)
+        _setter("version", version)
+        _setter("version_name", version_name)
 
     @property
     @pulumi.getter(name="deployType")
@@ -467,10 +566,25 @@ class GetNestServiceInstancesServiceInstanceServiceServiceInfoResult(dict):
         :param str name: The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
         :param str short_description: The short description of the service.
         """
-        pulumi.set(__self__, "image", image)
-        pulumi.set(__self__, "locale", locale)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "short_description", short_description)
+        GetNestServiceInstancesServiceInstanceServiceServiceInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image=image,
+            locale=locale,
+            name=name,
+            short_description=short_description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image: str,
+             locale: str,
+             name: str,
+             short_description: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("image", image)
+        _setter("locale", locale)
+        _setter("name", name)
+        _setter("short_description", short_description)
 
     @property
     @pulumi.getter

@@ -17,14 +17,14 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
     public static final ServiceMeshMeshConfigControlPlaneLogArgs Empty = new ServiceMeshMeshConfigControlPlaneLogArgs();
 
     /**
-     * Whether to enable of the access logging. Valid values: `true` and `false`.
+     * Whether to enable Service grid audit.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable of the access logging. Valid values: `true` and `false`.
+     * @return Whether to enable Service grid audit.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,14 +32,14 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
     }
 
     /**
-     * The SLS Project of the access logging.
+     * The Service grid audit that to the project.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The SLS Project of the access logging.
+     * @return The Service grid audit that to the project.
      * 
      */
     public Optional<Output<String>> project() {
@@ -72,7 +72,7 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Whether to enable of the access logging. Valid values: `true` and `false`.
+         * @param enabled Whether to enable Service grid audit.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Whether to enable of the access logging. Valid values: `true` and `false`.
+         * @param enabled Whether to enable Service grid audit.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
         }
 
         /**
-         * @param project The SLS Project of the access logging.
+         * @param project The Service grid audit that to the project.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ServiceMeshMeshConfigControlPlaneLogArgs extends com.pulumi.r
         }
 
         /**
-         * @param project The SLS Project of the access logging.
+         * @param project The Service grid audit that to the project.
          * 
          * @return builder
          * 

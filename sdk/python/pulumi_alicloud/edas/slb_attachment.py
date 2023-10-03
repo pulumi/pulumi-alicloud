@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SlbAttachmentArgs', 'SlbAttachment']
@@ -29,14 +29,33 @@ class SlbAttachmentArgs:
         :param pulumi.Input[int] listener_port: The listening port for the bound SLB instance.
         :param pulumi.Input[str] vserver_group_id: The ID of the virtual server (VServer) group associated with the intranet SLB instance.
         """
-        pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "slb_id", slb_id)
-        pulumi.set(__self__, "slb_ip", slb_ip)
-        pulumi.set(__self__, "type", type)
+        SlbAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            slb_id=slb_id,
+            slb_ip=slb_ip,
+            type=type,
+            listener_port=listener_port,
+            vserver_group_id=vserver_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: pulumi.Input[str],
+             slb_id: pulumi.Input[str],
+             slb_ip: pulumi.Input[str],
+             type: pulumi.Input[str],
+             listener_port: Optional[pulumi.Input[int]] = None,
+             vserver_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_id", app_id)
+        _setter("slb_id", slb_id)
+        _setter("slb_ip", slb_ip)
+        _setter("type", type)
         if listener_port is not None:
-            pulumi.set(__self__, "listener_port", listener_port)
+            _setter("listener_port", listener_port)
         if vserver_group_id is not None:
-            pulumi.set(__self__, "vserver_group_id", vserver_group_id)
+            _setter("vserver_group_id", vserver_group_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -133,22 +152,45 @@ class _SlbAttachmentState:
         :param pulumi.Input[str] vserver_group_id: The ID of the virtual server (VServer) group associated with the intranet SLB instance.
         :param pulumi.Input[str] vswitch_id: VPC related vswitch ID.
         """
+        _SlbAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            listener_port=listener_port,
+            slb_id=slb_id,
+            slb_ip=slb_ip,
+            slb_status=slb_status,
+            type=type,
+            vserver_group_id=vserver_group_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             listener_port: Optional[pulumi.Input[int]] = None,
+             slb_id: Optional[pulumi.Input[str]] = None,
+             slb_ip: Optional[pulumi.Input[str]] = None,
+             slb_status: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             vserver_group_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if listener_port is not None:
-            pulumi.set(__self__, "listener_port", listener_port)
+            _setter("listener_port", listener_port)
         if slb_id is not None:
-            pulumi.set(__self__, "slb_id", slb_id)
+            _setter("slb_id", slb_id)
         if slb_ip is not None:
-            pulumi.set(__self__, "slb_ip", slb_ip)
+            _setter("slb_ip", slb_ip)
         if slb_status is not None:
-            pulumi.set(__self__, "slb_status", slb_status)
+            _setter("slb_status", slb_status)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if vserver_group_id is not None:
-            pulumi.set(__self__, "vserver_group_id", vserver_group_id)
+            _setter("vserver_group_id", vserver_group_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -422,6 +464,10 @@ class SlbAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SlbAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

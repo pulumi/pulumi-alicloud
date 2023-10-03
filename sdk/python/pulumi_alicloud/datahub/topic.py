@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TopicArgs', 'Topic']
@@ -38,19 +38,40 @@ class TopicArgs:
         :param pulumi.Input[str] record_type: The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
         :param pulumi.Input[int] shard_count: The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
         """
-        pulumi.set(__self__, "project_name", project_name)
+        TopicArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            project_name=project_name,
+            comment=comment,
+            life_cycle=life_cycle,
+            name=name,
+            record_schema=record_schema,
+            record_type=record_type,
+            shard_count=shard_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             project_name: pulumi.Input[str],
+             comment: Optional[pulumi.Input[str]] = None,
+             life_cycle: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             record_type: Optional[pulumi.Input[str]] = None,
+             shard_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("project_name", project_name)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if life_cycle is not None:
-            pulumi.set(__self__, "life_cycle", life_cycle)
+            _setter("life_cycle", life_cycle)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if record_schema is not None:
-            pulumi.set(__self__, "record_schema", record_schema)
+            _setter("record_schema", record_schema)
         if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
+            _setter("record_type", record_type)
         if shard_count is not None:
-            pulumi.set(__self__, "shard_count", shard_count)
+            _setter("shard_count", shard_count)
 
     @property
     @pulumi.getter(name="projectName")
@@ -175,24 +196,49 @@ class _TopicState:
         :param pulumi.Input[str] record_type: The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is "TUPLE" with a schema {STRING}.
         :param pulumi.Input[int] shard_count: The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
         """
+        _TopicState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            create_time=create_time,
+            last_modify_time=last_modify_time,
+            life_cycle=life_cycle,
+            name=name,
+            project_name=project_name,
+            record_schema=record_schema,
+            record_type=record_type,
+            shard_count=shard_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             last_modify_time: Optional[pulumi.Input[str]] = None,
+             life_cycle: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             record_type: Optional[pulumi.Input[str]] = None,
+             shard_count: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if last_modify_time is not None:
-            pulumi.set(__self__, "last_modify_time", last_modify_time)
+            _setter("last_modify_time", last_modify_time)
         if life_cycle is not None:
-            pulumi.set(__self__, "life_cycle", life_cycle)
+            _setter("life_cycle", life_cycle)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if project_name is not None:
-            pulumi.set(__self__, "project_name", project_name)
+            _setter("project_name", project_name)
         if record_schema is not None:
-            pulumi.set(__self__, "record_schema", record_schema)
+            _setter("record_schema", record_schema)
         if record_type is not None:
-            pulumi.set(__self__, "record_type", record_type)
+            _setter("record_type", record_type)
         if shard_count is not None:
-            pulumi.set(__self__, "shard_count", shard_count)
+            _setter("shard_count", shard_count)
 
     @property
     @pulumi.getter
@@ -450,6 +496,10 @@ class Topic(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TopicArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

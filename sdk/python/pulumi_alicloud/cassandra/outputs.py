@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -37,14 +37,37 @@ class GetBackupPlansPlanResult(dict):
         :param str id: The ID of the Backup Plan.
         :param int retention_period: The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days.
         """
-        pulumi.set(__self__, "active", active)
-        pulumi.set(__self__, "backup_period", backup_period)
-        pulumi.set(__self__, "backup_time", backup_time)
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "data_center_id", data_center_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "retention_period", retention_period)
+        GetBackupPlansPlanResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            backup_period=backup_period,
+            backup_time=backup_time,
+            cluster_id=cluster_id,
+            create_time=create_time,
+            data_center_id=data_center_id,
+            id=id,
+            retention_period=retention_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: bool,
+             backup_period: str,
+             backup_time: str,
+             cluster_id: str,
+             create_time: str,
+             data_center_id: str,
+             id: str,
+             retention_period: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("active", active)
+        _setter("backup_period", backup_period)
+        _setter("backup_time", backup_time)
+        _setter("cluster_id", cluster_id)
+        _setter("create_time", create_time)
+        _setter("data_center_id", data_center_id)
+        _setter("id", id)
+        _setter("retention_period", retention_period)
 
     @property
     @pulumi.getter
@@ -139,19 +162,50 @@ class GetClustersClusterResult(dict):
         :param str status: Status of the cluster.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "created_time", created_time)
-        pulumi.set(__self__, "data_center_count", data_center_count)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "major_version", major_version)
-        pulumi.set(__self__, "minor_version", minor_version)
-        pulumi.set(__self__, "pay_type", pay_type)
-        pulumi.set(__self__, "status", status)
+        GetClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            cluster_name=cluster_name,
+            created_time=created_time,
+            data_center_count=data_center_count,
+            expire_time=expire_time,
+            id=id,
+            lock_mode=lock_mode,
+            major_version=major_version,
+            minor_version=minor_version,
+            pay_type=pay_type,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: str,
+             cluster_name: str,
+             created_time: str,
+             data_center_count: int,
+             expire_time: str,
+             id: str,
+             lock_mode: str,
+             major_version: str,
+             minor_version: str,
+             pay_type: str,
+             status: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("cluster_name", cluster_name)
+        _setter("created_time", created_time)
+        _setter("data_center_count", data_center_count)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("lock_mode", lock_mode)
+        _setter("major_version", major_version)
+        _setter("minor_version", minor_version)
+        _setter("pay_type", pay_type)
+        _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -283,22 +337,61 @@ class GetDataCentersCenterResult(dict):
         :param str vswitch_id: VSwitch ID the dataCenter belongs to.
         :param str zone_id: Zone ID the dataCenter belongs to.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "commodity_instance", commodity_instance)
-        pulumi.set(__self__, "created_time", created_time)
-        pulumi.set(__self__, "data_center_id", data_center_id)
-        pulumi.set(__self__, "data_center_name", data_center_name)
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "disk_type", disk_type)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "lock_mode", lock_mode)
-        pulumi.set(__self__, "node_count", node_count)
-        pulumi.set(__self__, "pay_type", pay_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetDataCentersCenterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            commodity_instance=commodity_instance,
+            created_time=created_time,
+            data_center_id=data_center_id,
+            data_center_name=data_center_name,
+            disk_size=disk_size,
+            disk_type=disk_type,
+            expire_time=expire_time,
+            instance_type=instance_type,
+            lock_mode=lock_mode,
+            node_count=node_count,
+            pay_type=pay_type,
+            status=status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: str,
+             commodity_instance: str,
+             created_time: str,
+             data_center_id: str,
+             data_center_name: str,
+             disk_size: int,
+             disk_type: str,
+             expire_time: str,
+             instance_type: str,
+             lock_mode: str,
+             node_count: int,
+             pay_type: str,
+             status: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("commodity_instance", commodity_instance)
+        _setter("created_time", created_time)
+        _setter("data_center_id", data_center_id)
+        _setter("data_center_name", data_center_name)
+        _setter("disk_size", disk_size)
+        _setter("disk_type", disk_type)
+        _setter("expire_time", expire_time)
+        _setter("instance_type", instance_type)
+        _setter("lock_mode", lock_mode)
+        _setter("node_count", node_count)
+        _setter("pay_type", pay_type)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -435,8 +528,19 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            multi_zone_ids=multi_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             multi_zone_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

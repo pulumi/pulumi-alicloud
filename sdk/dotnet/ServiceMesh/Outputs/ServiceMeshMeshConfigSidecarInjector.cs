@@ -22,19 +22,19 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly bool? EnableNamespacesByDefault;
         /// <summary>
-        /// The limit cpu of the Sidecar injector Pods.
+        /// The CPU resource  of the limitsOPA proxy container.
         /// </summary>
         public readonly string? LimitCpu;
         /// <summary>
-        /// Sidecar injector Pods on the throttle.
+        /// The memory resource limit of the OPA proxy container.
         /// </summary>
         public readonly string? LimitMemory;
         /// <summary>
-        /// The requested cpu the Sidecar injector Pods.
+        /// The CPU resource request of the OPA proxy container.
         /// </summary>
         public readonly string? RequestCpu;
         /// <summary>
-        /// The requested memory the Sidecar injector Pods.
+        /// The memory resource request of the OPA proxy container.
         /// </summary>
         public readonly string? RequestMemory;
 

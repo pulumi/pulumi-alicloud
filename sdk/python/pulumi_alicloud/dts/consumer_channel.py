@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ConsumerChannelArgs', 'ConsumerChannel']
@@ -25,10 +25,25 @@ class ConsumerChannelArgs:
         :param pulumi.Input[str] consumer_group_user_name: The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
         :param pulumi.Input[str] dts_instance_id: The ID of the subscription instance.
         """
-        pulumi.set(__self__, "consumer_group_name", consumer_group_name)
-        pulumi.set(__self__, "consumer_group_password", consumer_group_password)
-        pulumi.set(__self__, "consumer_group_user_name", consumer_group_user_name)
-        pulumi.set(__self__, "dts_instance_id", dts_instance_id)
+        ConsumerChannelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            consumer_group_name=consumer_group_name,
+            consumer_group_password=consumer_group_password,
+            consumer_group_user_name=consumer_group_user_name,
+            dts_instance_id=dts_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             consumer_group_name: pulumi.Input[str],
+             consumer_group_password: pulumi.Input[str],
+             consumer_group_user_name: pulumi.Input[str],
+             dts_instance_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("consumer_group_name", consumer_group_name)
+        _setter("consumer_group_password", consumer_group_password)
+        _setter("consumer_group_user_name", consumer_group_user_name)
+        _setter("dts_instance_id", dts_instance_id)
 
     @property
     @pulumi.getter(name="consumerGroupName")
@@ -95,16 +110,33 @@ class _ConsumerChannelState:
         :param pulumi.Input[str] consumer_group_user_name: The username of the consumer group. The length of the `consumer_group_user_name` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
         :param pulumi.Input[str] dts_instance_id: The ID of the subscription instance.
         """
+        _ConsumerChannelState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            consumer_group_id=consumer_group_id,
+            consumer_group_name=consumer_group_name,
+            consumer_group_password=consumer_group_password,
+            consumer_group_user_name=consumer_group_user_name,
+            dts_instance_id=dts_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             consumer_group_id: Optional[pulumi.Input[str]] = None,
+             consumer_group_name: Optional[pulumi.Input[str]] = None,
+             consumer_group_password: Optional[pulumi.Input[str]] = None,
+             consumer_group_user_name: Optional[pulumi.Input[str]] = None,
+             dts_instance_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if consumer_group_id is not None:
-            pulumi.set(__self__, "consumer_group_id", consumer_group_id)
+            _setter("consumer_group_id", consumer_group_id)
         if consumer_group_name is not None:
-            pulumi.set(__self__, "consumer_group_name", consumer_group_name)
+            _setter("consumer_group_name", consumer_group_name)
         if consumer_group_password is not None:
-            pulumi.set(__self__, "consumer_group_password", consumer_group_password)
+            _setter("consumer_group_password", consumer_group_password)
         if consumer_group_user_name is not None:
-            pulumi.set(__self__, "consumer_group_user_name", consumer_group_user_name)
+            _setter("consumer_group_user_name", consumer_group_user_name)
         if dts_instance_id is not None:
-            pulumi.set(__self__, "dts_instance_id", dts_instance_id)
+            _setter("dts_instance_id", dts_instance_id)
 
     @property
     @pulumi.getter(name="consumerGroupId")
@@ -382,6 +414,10 @@ class ConsumerChannel(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ConsumerChannelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

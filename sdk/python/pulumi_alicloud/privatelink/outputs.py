@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -31,10 +31,25 @@ class GetVpcEndpointConnectionsConnectionResult(dict):
         :param str id: The ID of the Vpc Endpoint Connection.
         :param str status: The status of Vpc Endpoint Connection.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "endpoint_id", endpoint_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
+        GetVpcEndpointConnectionsConnectionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            endpoint_id=endpoint_id,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             endpoint_id: str,
+             id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("endpoint_id", endpoint_id)
+        _setter("id", id)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -80,9 +95,22 @@ class GetVpcEndpointServiceResourcesResourceResult(dict):
         :param str resource_id: The ID of Resource.
         :param str resource_type: The type of Resource.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
+        GetVpcEndpointServiceResourcesResourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            resource_id=resource_id,
+            resource_type=resource_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             resource_id: str,
+             resource_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("resource_id", resource_id)
+        _setter("resource_type", resource_type)
 
     @property
     @pulumi.getter
@@ -118,8 +146,19 @@ class GetVpcEndpointServiceUsersUserResult(dict):
         :param str id: The ID of the Vpc Endpoint Service User.
         :param str user_id: The Id of Ram User.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "user_id", user_id)
+        GetVpcEndpointServiceUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             user_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("user_id", user_id)
 
     @property
     @pulumi.getter
@@ -161,15 +200,40 @@ class GetVpcEndpointServicesServiceResult(dict):
         :param str status: The Status of Vpc Endpoint Service.
         :param str vpc_endpoint_service_name: The name of Vpc Endpoint Service.
         """
-        pulumi.set(__self__, "auto_accept_connection", auto_accept_connection)
-        pulumi.set(__self__, "connect_bandwidth", connect_bandwidth)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "service_business_status", service_business_status)
-        pulumi.set(__self__, "service_description", service_description)
-        pulumi.set(__self__, "service_domain", service_domain)
-        pulumi.set(__self__, "service_id", service_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_endpoint_service_name", vpc_endpoint_service_name)
+        GetVpcEndpointServicesServiceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_accept_connection=auto_accept_connection,
+            connect_bandwidth=connect_bandwidth,
+            id=id,
+            service_business_status=service_business_status,
+            service_description=service_description,
+            service_domain=service_domain,
+            service_id=service_id,
+            status=status,
+            vpc_endpoint_service_name=vpc_endpoint_service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_accept_connection: bool,
+             connect_bandwidth: int,
+             id: str,
+             service_business_status: str,
+             service_description: str,
+             service_domain: str,
+             service_id: str,
+             status: str,
+             vpc_endpoint_service_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_accept_connection", auto_accept_connection)
+        _setter("connect_bandwidth", connect_bandwidth)
+        _setter("id", id)
+        _setter("service_business_status", service_business_status)
+        _setter("service_description", service_description)
+        _setter("service_domain", service_domain)
+        _setter("service_id", service_id)
+        _setter("status", status)
+        _setter("vpc_endpoint_service_name", vpc_endpoint_service_name)
 
     @property
     @pulumi.getter(name="autoAcceptConnection")
@@ -263,13 +327,34 @@ class GetVpcEndpointZonesZoneResult(dict):
         :param str zone_domain: The Zone Domain.
         :param str zone_id: The Zone Id.
         """
-        pulumi.set(__self__, "eni_id", eni_id)
-        pulumi.set(__self__, "eni_ip", eni_ip)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_domain", zone_domain)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetVpcEndpointZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            eni_id=eni_id,
+            eni_ip=eni_ip,
+            id=id,
+            status=status,
+            vswitch_id=vswitch_id,
+            zone_domain=zone_domain,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             eni_id: str,
+             eni_ip: str,
+             id: str,
+             status: str,
+             vswitch_id: str,
+             zone_domain: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("eni_id", eni_id)
+        _setter("eni_ip", eni_ip)
+        _setter("id", id)
+        _setter("status", status)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_domain", zone_domain)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="eniId")
@@ -359,19 +444,52 @@ class GetVpcEndpointsEndpointResult(dict):
         :param str vpc_endpoint_name: The name of Vpc Endpoint.
         :param str vpc_id: The private network to which the terminal node belongs.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "connection_status", connection_status)
-        pulumi.set(__self__, "endpoint_business_status", endpoint_business_status)
-        pulumi.set(__self__, "endpoint_description", endpoint_description)
-        pulumi.set(__self__, "endpoint_domain", endpoint_domain)
-        pulumi.set(__self__, "endpoint_id", endpoint_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "security_group_ids", security_group_ids)
-        pulumi.set(__self__, "service_id", service_id)
-        pulumi.set(__self__, "service_name", service_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_endpoint_name", vpc_endpoint_name)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetVpcEndpointsEndpointResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            connection_status=connection_status,
+            endpoint_business_status=endpoint_business_status,
+            endpoint_description=endpoint_description,
+            endpoint_domain=endpoint_domain,
+            endpoint_id=endpoint_id,
+            id=id,
+            security_group_ids=security_group_ids,
+            service_id=service_id,
+            service_name=service_name,
+            status=status,
+            vpc_endpoint_name=vpc_endpoint_name,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             connection_status: str,
+             endpoint_business_status: str,
+             endpoint_description: str,
+             endpoint_domain: str,
+             endpoint_id: str,
+             id: str,
+             security_group_ids: Sequence[str],
+             service_id: str,
+             service_name: str,
+             status: str,
+             vpc_endpoint_name: str,
+             vpc_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("connection_status", connection_status)
+        _setter("endpoint_business_status", endpoint_business_status)
+        _setter("endpoint_description", endpoint_description)
+        _setter("endpoint_domain", endpoint_domain)
+        _setter("endpoint_id", endpoint_id)
+        _setter("id", id)
+        _setter("security_group_ids", security_group_ids)
+        _setter("service_id", service_id)
+        _setter("service_name", service_name)
+        _setter("status", status)
+        _setter("vpc_endpoint_name", vpc_endpoint_name)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -111,91 +111,186 @@ class EcsInstanceSetArgs:
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch in VPC.
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the instance.
         """
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "security_group_ids", security_group_ids)
+        EcsInstanceSetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_id=image_id,
+            instance_type=instance_type,
+            security_group_ids=security_group_ids,
+            amount=amount,
+            auto_release_time=auto_release_time,
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            boot_check_os_with_assistant=boot_check_os_with_assistant,
+            data_disks=data_disks,
+            dedicated_host_id=dedicated_host_id,
+            deletion_protection=deletion_protection,
+            deployment_set_id=deployment_set_id,
+            description=description,
+            exclude_instance_filter=exclude_instance_filter,
+            host_name=host_name,
+            hpc_cluster_id=hpc_cluster_id,
+            instance_charge_type=instance_charge_type,
+            instance_name=instance_name,
+            internet_charge_type=internet_charge_type,
+            internet_max_bandwidth_out=internet_max_bandwidth_out,
+            key_pair_name=key_pair_name,
+            launch_template_id=launch_template_id,
+            launch_template_name=launch_template_name,
+            launch_template_version=launch_template_version,
+            network_interfaces=network_interfaces,
+            password=password,
+            password_inherit=password_inherit,
+            period=period,
+            period_unit=period_unit,
+            ram_role_name=ram_role_name,
+            resource_group_id=resource_group_id,
+            security_enhancement_strategy=security_enhancement_strategy,
+            spot_price_limit=spot_price_limit,
+            spot_strategy=spot_strategy,
+            system_disk_auto_snapshot_policy_id=system_disk_auto_snapshot_policy_id,
+            system_disk_category=system_disk_category,
+            system_disk_description=system_disk_description,
+            system_disk_name=system_disk_name,
+            system_disk_performance_level=system_disk_performance_level,
+            system_disk_size=system_disk_size,
+            tags=tags,
+            unique_suffix=unique_suffix,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_id: pulumi.Input[str],
+             instance_type: pulumi.Input[str],
+             security_group_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             amount: Optional[pulumi.Input[int]] = None,
+             auto_release_time: Optional[pulumi.Input[str]] = None,
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             boot_check_os_with_assistant: Optional[pulumi.Input[bool]] = None,
+             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]] = None,
+             dedicated_host_id: Optional[pulumi.Input[str]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             deployment_set_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             exclude_instance_filter: Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             hpc_cluster_id: Optional[pulumi.Input[str]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             launch_template_id: Optional[pulumi.Input[str]] = None,
+             launch_template_name: Optional[pulumi.Input[str]] = None,
+             launch_template_version: Optional[pulumi.Input[str]] = None,
+             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             password_inherit: Optional[pulumi.Input[bool]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             ram_role_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
+             spot_price_limit: Optional[pulumi.Input[float]] = None,
+             spot_strategy: Optional[pulumi.Input[str]] = None,
+             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             system_disk_category: Optional[pulumi.Input[str]] = None,
+             system_disk_description: Optional[pulumi.Input[str]] = None,
+             system_disk_name: Optional[pulumi.Input[str]] = None,
+             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             system_disk_size: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             unique_suffix: Optional[pulumi.Input[bool]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("image_id", image_id)
+        _setter("instance_type", instance_type)
+        _setter("security_group_ids", security_group_ids)
         if amount is not None:
-            pulumi.set(__self__, "amount", amount)
+            _setter("amount", amount)
         if auto_release_time is not None:
-            pulumi.set(__self__, "auto_release_time", auto_release_time)
+            _setter("auto_release_time", auto_release_time)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if boot_check_os_with_assistant is not None:
-            pulumi.set(__self__, "boot_check_os_with_assistant", boot_check_os_with_assistant)
+            _setter("boot_check_os_with_assistant", boot_check_os_with_assistant)
         if data_disks is not None:
-            pulumi.set(__self__, "data_disks", data_disks)
+            _setter("data_disks", data_disks)
         if dedicated_host_id is not None:
-            pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
+            _setter("dedicated_host_id", dedicated_host_id)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if deployment_set_id is not None:
-            pulumi.set(__self__, "deployment_set_id", deployment_set_id)
+            _setter("deployment_set_id", deployment_set_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if exclude_instance_filter is not None:
-            pulumi.set(__self__, "exclude_instance_filter", exclude_instance_filter)
+            _setter("exclude_instance_filter", exclude_instance_filter)
         if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+            _setter("host_name", host_name)
         if hpc_cluster_id is not None:
-            pulumi.set(__self__, "hpc_cluster_id", hpc_cluster_id)
+            _setter("hpc_cluster_id", hpc_cluster_id)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_out is not None:
-            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+            _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
         if launch_template_id is not None:
-            pulumi.set(__self__, "launch_template_id", launch_template_id)
+            _setter("launch_template_id", launch_template_id)
         if launch_template_name is not None:
-            pulumi.set(__self__, "launch_template_name", launch_template_name)
+            _setter("launch_template_name", launch_template_name)
         if launch_template_version is not None:
-            pulumi.set(__self__, "launch_template_version", launch_template_version)
+            _setter("launch_template_version", launch_template_version)
         if network_interfaces is not None:
-            pulumi.set(__self__, "network_interfaces", network_interfaces)
+            _setter("network_interfaces", network_interfaces)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if password_inherit is not None:
-            pulumi.set(__self__, "password_inherit", password_inherit)
+            _setter("password_inherit", password_inherit)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if ram_role_name is not None:
-            pulumi.set(__self__, "ram_role_name", ram_role_name)
+            _setter("ram_role_name", ram_role_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if security_enhancement_strategy is not None:
-            pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
+            _setter("security_enhancement_strategy", security_enhancement_strategy)
         if spot_price_limit is not None:
-            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+            _setter("spot_price_limit", spot_price_limit)
         if spot_strategy is not None:
-            pulumi.set(__self__, "spot_strategy", spot_strategy)
+            _setter("spot_strategy", spot_strategy)
         if system_disk_auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
+            _setter("system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
         if system_disk_category is not None:
-            pulumi.set(__self__, "system_disk_category", system_disk_category)
+            _setter("system_disk_category", system_disk_category)
         if system_disk_description is not None:
-            pulumi.set(__self__, "system_disk_description", system_disk_description)
+            _setter("system_disk_description", system_disk_description)
         if system_disk_name is not None:
-            pulumi.set(__self__, "system_disk_name", system_disk_name)
+            _setter("system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
-            pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+            _setter("system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
-            pulumi.set(__self__, "system_disk_size", system_disk_size)
+            _setter("system_disk_size", system_disk_size)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if unique_suffix is not None:
-            pulumi.set(__self__, "unique_suffix", unique_suffix)
+            _setter("unique_suffix", unique_suffix)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="imageId")
@@ -830,96 +925,193 @@ class _EcsInstanceSetState:
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch in VPC.
         :param pulumi.Input[str] zone_id: The ID of the zone in which to create the instance.
         """
+        _EcsInstanceSetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            amount=amount,
+            auto_release_time=auto_release_time,
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            boot_check_os_with_assistant=boot_check_os_with_assistant,
+            data_disks=data_disks,
+            dedicated_host_id=dedicated_host_id,
+            deletion_protection=deletion_protection,
+            deployment_set_id=deployment_set_id,
+            description=description,
+            exclude_instance_filter=exclude_instance_filter,
+            host_name=host_name,
+            hpc_cluster_id=hpc_cluster_id,
+            image_id=image_id,
+            instance_charge_type=instance_charge_type,
+            instance_ids=instance_ids,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            internet_charge_type=internet_charge_type,
+            internet_max_bandwidth_out=internet_max_bandwidth_out,
+            key_pair_name=key_pair_name,
+            launch_template_id=launch_template_id,
+            launch_template_name=launch_template_name,
+            launch_template_version=launch_template_version,
+            network_interfaces=network_interfaces,
+            password=password,
+            password_inherit=password_inherit,
+            period=period,
+            period_unit=period_unit,
+            ram_role_name=ram_role_name,
+            resource_group_id=resource_group_id,
+            security_enhancement_strategy=security_enhancement_strategy,
+            security_group_ids=security_group_ids,
+            spot_price_limit=spot_price_limit,
+            spot_strategy=spot_strategy,
+            system_disk_auto_snapshot_policy_id=system_disk_auto_snapshot_policy_id,
+            system_disk_category=system_disk_category,
+            system_disk_description=system_disk_description,
+            system_disk_name=system_disk_name,
+            system_disk_performance_level=system_disk_performance_level,
+            system_disk_size=system_disk_size,
+            tags=tags,
+            unique_suffix=unique_suffix,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             amount: Optional[pulumi.Input[int]] = None,
+             auto_release_time: Optional[pulumi.Input[str]] = None,
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             boot_check_os_with_assistant: Optional[pulumi.Input[bool]] = None,
+             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetDataDiskArgs']]]] = None,
+             dedicated_host_id: Optional[pulumi.Input[str]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             deployment_set_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             exclude_instance_filter: Optional[pulumi.Input['EcsInstanceSetExcludeInstanceFilterArgs']] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             hpc_cluster_id: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             launch_template_id: Optional[pulumi.Input[str]] = None,
+             launch_template_name: Optional[pulumi.Input[str]] = None,
+             launch_template_version: Optional[pulumi.Input[str]] = None,
+             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['EcsInstanceSetNetworkInterfaceArgs']]]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             password_inherit: Optional[pulumi.Input[bool]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             ram_role_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
+             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             spot_price_limit: Optional[pulumi.Input[float]] = None,
+             spot_strategy: Optional[pulumi.Input[str]] = None,
+             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             system_disk_category: Optional[pulumi.Input[str]] = None,
+             system_disk_description: Optional[pulumi.Input[str]] = None,
+             system_disk_name: Optional[pulumi.Input[str]] = None,
+             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             system_disk_size: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             unique_suffix: Optional[pulumi.Input[bool]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if amount is not None:
-            pulumi.set(__self__, "amount", amount)
+            _setter("amount", amount)
         if auto_release_time is not None:
-            pulumi.set(__self__, "auto_release_time", auto_release_time)
+            _setter("auto_release_time", auto_release_time)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if boot_check_os_with_assistant is not None:
-            pulumi.set(__self__, "boot_check_os_with_assistant", boot_check_os_with_assistant)
+            _setter("boot_check_os_with_assistant", boot_check_os_with_assistant)
         if data_disks is not None:
-            pulumi.set(__self__, "data_disks", data_disks)
+            _setter("data_disks", data_disks)
         if dedicated_host_id is not None:
-            pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
+            _setter("dedicated_host_id", dedicated_host_id)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if deployment_set_id is not None:
-            pulumi.set(__self__, "deployment_set_id", deployment_set_id)
+            _setter("deployment_set_id", deployment_set_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if exclude_instance_filter is not None:
-            pulumi.set(__self__, "exclude_instance_filter", exclude_instance_filter)
+            _setter("exclude_instance_filter", exclude_instance_filter)
         if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+            _setter("host_name", host_name)
         if hpc_cluster_id is not None:
-            pulumi.set(__self__, "hpc_cluster_id", hpc_cluster_id)
+            _setter("hpc_cluster_id", hpc_cluster_id)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if instance_ids is not None:
-            pulumi.set(__self__, "instance_ids", instance_ids)
+            _setter("instance_ids", instance_ids)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_out is not None:
-            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+            _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
         if launch_template_id is not None:
-            pulumi.set(__self__, "launch_template_id", launch_template_id)
+            _setter("launch_template_id", launch_template_id)
         if launch_template_name is not None:
-            pulumi.set(__self__, "launch_template_name", launch_template_name)
+            _setter("launch_template_name", launch_template_name)
         if launch_template_version is not None:
-            pulumi.set(__self__, "launch_template_version", launch_template_version)
+            _setter("launch_template_version", launch_template_version)
         if network_interfaces is not None:
-            pulumi.set(__self__, "network_interfaces", network_interfaces)
+            _setter("network_interfaces", network_interfaces)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if password_inherit is not None:
-            pulumi.set(__self__, "password_inherit", password_inherit)
+            _setter("password_inherit", password_inherit)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if ram_role_name is not None:
-            pulumi.set(__self__, "ram_role_name", ram_role_name)
+            _setter("ram_role_name", ram_role_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if security_enhancement_strategy is not None:
-            pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
+            _setter("security_enhancement_strategy", security_enhancement_strategy)
         if security_group_ids is not None:
-            pulumi.set(__self__, "security_group_ids", security_group_ids)
+            _setter("security_group_ids", security_group_ids)
         if spot_price_limit is not None:
-            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+            _setter("spot_price_limit", spot_price_limit)
         if spot_strategy is not None:
-            pulumi.set(__self__, "spot_strategy", spot_strategy)
+            _setter("spot_strategy", spot_strategy)
         if system_disk_auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
+            _setter("system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
         if system_disk_category is not None:
-            pulumi.set(__self__, "system_disk_category", system_disk_category)
+            _setter("system_disk_category", system_disk_category)
         if system_disk_description is not None:
-            pulumi.set(__self__, "system_disk_description", system_disk_description)
+            _setter("system_disk_description", system_disk_description)
         if system_disk_name is not None:
-            pulumi.set(__self__, "system_disk_name", system_disk_name)
+            _setter("system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
-            pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+            _setter("system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
-            pulumi.set(__self__, "system_disk_size", system_disk_size)
+            _setter("system_disk_size", system_disk_size)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if unique_suffix is not None:
-            pulumi.set(__self__, "unique_suffix", unique_suffix)
+            _setter("unique_suffix", unique_suffix)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -1691,6 +1883,10 @@ class EcsInstanceSet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EcsInstanceSetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1759,6 +1955,11 @@ class EcsInstanceSet(pulumi.CustomResource):
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["deployment_set_id"] = deployment_set_id
             __props__.__dict__["description"] = description
+            if exclude_instance_filter is not None and not isinstance(exclude_instance_filter, EcsInstanceSetExcludeInstanceFilterArgs):
+                exclude_instance_filter = exclude_instance_filter or {}
+                def _setter(key, value):
+                    exclude_instance_filter[key] = value
+                EcsInstanceSetExcludeInstanceFilterArgs._configure(_setter, **exclude_instance_filter)
             __props__.__dict__["exclude_instance_filter"] = exclude_instance_filter
             __props__.__dict__["host_name"] = host_name
             __props__.__dict__["hpc_cluster_id"] = hpc_cluster_id

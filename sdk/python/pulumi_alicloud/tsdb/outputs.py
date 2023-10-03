@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -55,24 +55,67 @@ class GetInstancesInstanceResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID of the instance.
         """
-        pulumi.set(__self__, "auto_renew", auto_renew)
-        pulumi.set(__self__, "cpu_number", cpu_number)
-        pulumi.set(__self__, "disk_category", disk_category)
-        pulumi.set(__self__, "engine_type", engine_type)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_alias", instance_alias)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_storage", instance_storage)
-        pulumi.set(__self__, "memory_size", memory_size)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_connection_address", vpc_connection_address)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            cpu_number=cpu_number,
+            disk_category=disk_category,
+            engine_type=engine_type,
+            expired_time=expired_time,
+            id=id,
+            instance_alias=instance_alias,
+            instance_class=instance_class,
+            instance_id=instance_id,
+            instance_storage=instance_storage,
+            memory_size=memory_size,
+            network_type=network_type,
+            payment_type=payment_type,
+            status=status,
+            vpc_connection_address=vpc_connection_address,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: str,
+             cpu_number: str,
+             disk_category: str,
+             engine_type: str,
+             expired_time: int,
+             id: str,
+             instance_alias: str,
+             instance_class: str,
+             instance_id: str,
+             instance_storage: str,
+             memory_size: str,
+             network_type: str,
+             payment_type: str,
+             status: str,
+             vpc_connection_address: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_renew", auto_renew)
+        _setter("cpu_number", cpu_number)
+        _setter("disk_category", disk_category)
+        _setter("engine_type", engine_type)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("instance_alias", instance_alias)
+        _setter("instance_class", instance_class)
+        _setter("instance_id", instance_id)
+        _setter("instance_storage", instance_storage)
+        _setter("memory_size", memory_size)
+        _setter("network_type", network_type)
+        _setter("payment_type", payment_type)
+        _setter("status", status)
+        _setter("vpc_connection_address", vpc_connection_address)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -230,9 +273,22 @@ class GetZonesZoneResult(dict):
         :param str local_name: The local name.
         :param str zone_id: The zone ID.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_name", local_name)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            local_name=local_name,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             local_name: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("local_name", local_name)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter

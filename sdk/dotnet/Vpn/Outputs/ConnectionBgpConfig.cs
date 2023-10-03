@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     public sealed class ConnectionBgpConfig
     {
         /// <summary>
-        /// Whether to enable Health Check.
+        /// Whether to enable BGP.
         /// </summary>
         public readonly bool? Enable;
         /// <summary>

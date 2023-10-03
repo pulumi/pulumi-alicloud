@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SamlProviderArgs', 'SamlProvider']
@@ -23,11 +23,24 @@ class SamlProviderArgs:
         :param pulumi.Input[str] description: The description of SAML Provider.
         :param pulumi.Input[str] encodedsaml_metadata_document: The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
         """
-        pulumi.set(__self__, "saml_provider_name", saml_provider_name)
+        SamlProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            saml_provider_name=saml_provider_name,
+            description=description,
+            encodedsaml_metadata_document=encodedsaml_metadata_document,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             saml_provider_name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             encodedsaml_metadata_document: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("saml_provider_name", saml_provider_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encodedsaml_metadata_document is not None:
-            pulumi.set(__self__, "encodedsaml_metadata_document", encodedsaml_metadata_document)
+            _setter("encodedsaml_metadata_document", encodedsaml_metadata_document)
 
     @property
     @pulumi.getter(name="samlProviderName")
@@ -82,16 +95,33 @@ class _SamlProviderState:
         :param pulumi.Input[str] saml_provider_name: The name of SAML Provider.
         :param pulumi.Input[str] update_date: The update time.
         """
+        _SamlProviderState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            description=description,
+            encodedsaml_metadata_document=encodedsaml_metadata_document,
+            saml_provider_name=saml_provider_name,
+            update_date=update_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             encodedsaml_metadata_document: Optional[pulumi.Input[str]] = None,
+             saml_provider_name: Optional[pulumi.Input[str]] = None,
+             update_date: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if encodedsaml_metadata_document is not None:
-            pulumi.set(__self__, "encodedsaml_metadata_document", encodedsaml_metadata_document)
+            _setter("encodedsaml_metadata_document", encodedsaml_metadata_document)
         if saml_provider_name is not None:
-            pulumi.set(__self__, "saml_provider_name", saml_provider_name)
+            _setter("saml_provider_name", saml_provider_name)
         if update_date is not None:
-            pulumi.set(__self__, "update_date", update_date)
+            _setter("update_date", update_date)
 
     @property
     @pulumi.getter
@@ -243,6 +273,10 @@ class SamlProvider(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SamlProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

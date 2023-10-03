@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HaVipv2Args', 'HaVipv2']
@@ -33,22 +33,43 @@ class HaVipv2Args:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of HaVip.
         """
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        HaVipv2Args._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vswitch_id=vswitch_id,
+            description=description,
+            ha_vip_name=ha_vip_name,
+            havip_name=havip_name,
+            ip_address=ip_address,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vswitch_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             ha_vip_name: Optional[pulumi.Input[str]] = None,
+             havip_name: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("vswitch_id", vswitch_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ha_vip_name is not None:
-            pulumi.set(__self__, "ha_vip_name", ha_vip_name)
+            _setter("ha_vip_name", ha_vip_name)
         if havip_name is not None:
             warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
         if havip_name is not None:
-            pulumi.set(__self__, "havip_name", havip_name)
+            _setter("havip_name", havip_name)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -178,39 +199,76 @@ class _HaVipv2State:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
+        _HaVipv2State._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            associated_eip_addresses=associated_eip_addresses,
+            associated_instance_type=associated_instance_type,
+            associated_instances=associated_instances,
+            create_time=create_time,
+            description=description,
+            ha_vip_id=ha_vip_id,
+            ha_vip_name=ha_vip_name,
+            havip_name=havip_name,
+            ip_address=ip_address,
+            master_instance_id=master_instance_id,
+            resource_group_id=resource_group_id,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             associated_eip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             associated_instance_type: Optional[pulumi.Input[str]] = None,
+             associated_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             ha_vip_id: Optional[pulumi.Input[str]] = None,
+             ha_vip_name: Optional[pulumi.Input[str]] = None,
+             havip_name: Optional[pulumi.Input[str]] = None,
+             ip_address: Optional[pulumi.Input[str]] = None,
+             master_instance_id: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if associated_eip_addresses is not None:
-            pulumi.set(__self__, "associated_eip_addresses", associated_eip_addresses)
+            _setter("associated_eip_addresses", associated_eip_addresses)
         if associated_instance_type is not None:
-            pulumi.set(__self__, "associated_instance_type", associated_instance_type)
+            _setter("associated_instance_type", associated_instance_type)
         if associated_instances is not None:
-            pulumi.set(__self__, "associated_instances", associated_instances)
+            _setter("associated_instances", associated_instances)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ha_vip_id is not None:
-            pulumi.set(__self__, "ha_vip_id", ha_vip_id)
+            _setter("ha_vip_id", ha_vip_id)
         if ha_vip_name is not None:
-            pulumi.set(__self__, "ha_vip_name", ha_vip_name)
+            _setter("ha_vip_name", ha_vip_name)
         if havip_name is not None:
             warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
         if havip_name is not None:
-            pulumi.set(__self__, "havip_name", havip_name)
+            _setter("havip_name", havip_name)
         if ip_address is not None:
-            pulumi.set(__self__, "ip_address", ip_address)
+            _setter("ip_address", ip_address)
         if master_instance_id is not None:
-            pulumi.set(__self__, "master_instance_id", master_instance_id)
+            _setter("master_instance_id", master_instance_id)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="associatedEipAddresses")
@@ -539,6 +597,10 @@ class HaVipv2(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HaVipv2Args._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -562,9 +624,6 @@ class HaVipv2(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["ha_vip_name"] = ha_vip_name
-            if havip_name is not None and not opts.urn:
-                warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
             __props__.__dict__["havip_name"] = havip_name
             __props__.__dict__["ip_address"] = ip_address
             __props__.__dict__["resource_group_id"] = resource_group_id

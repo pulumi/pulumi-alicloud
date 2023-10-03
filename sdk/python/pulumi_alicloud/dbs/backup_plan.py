@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BackupPlanArgs', 'BackupPlan']
@@ -93,77 +93,160 @@ class BackupPlanArgs:
         :param pulumi.Input[str] storage_region: The storage region.
         :param pulumi.Input[int] used_time: Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
         """
-        pulumi.set(__self__, "backup_method", backup_method)
-        pulumi.set(__self__, "backup_plan_name", backup_plan_name)
-        pulumi.set(__self__, "database_type", database_type)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
+        BackupPlanArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_method=backup_method,
+            backup_plan_name=backup_plan_name,
+            database_type=database_type,
+            instance_class=instance_class,
+            source_endpoint_instance_type=source_endpoint_instance_type,
+            backup_gateway_id=backup_gateway_id,
+            backup_log_interval_seconds=backup_log_interval_seconds,
+            backup_objects=backup_objects,
+            backup_period=backup_period,
+            backup_rate_limit=backup_rate_limit,
+            backup_retention_period=backup_retention_period,
+            backup_speed_limit=backup_speed_limit,
+            backup_start_time=backup_start_time,
+            backup_storage_type=backup_storage_type,
+            backup_strategy_type=backup_strategy_type,
+            cross_aliyun_id=cross_aliyun_id,
+            cross_role_name=cross_role_name,
+            database_region=database_region,
+            duplication_archive_period=duplication_archive_period,
+            duplication_infrequent_access_period=duplication_infrequent_access_period,
+            enable_backup_log=enable_backup_log,
+            instance_type=instance_type,
+            oss_bucket_name=oss_bucket_name,
+            payment_type=payment_type,
+            period=period,
+            resource_group_id=resource_group_id,
+            source_endpoint_database_name=source_endpoint_database_name,
+            source_endpoint_instance_id=source_endpoint_instance_id,
+            source_endpoint_ip=source_endpoint_ip,
+            source_endpoint_oracle_sid=source_endpoint_oracle_sid,
+            source_endpoint_password=source_endpoint_password,
+            source_endpoint_port=source_endpoint_port,
+            source_endpoint_region=source_endpoint_region,
+            source_endpoint_sid=source_endpoint_sid,
+            source_endpoint_user_name=source_endpoint_user_name,
+            status=status,
+            storage_region=storage_region,
+            used_time=used_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_method: pulumi.Input[str],
+             backup_plan_name: pulumi.Input[str],
+             database_type: pulumi.Input[str],
+             instance_class: pulumi.Input[str],
+             source_endpoint_instance_type: pulumi.Input[str],
+             backup_gateway_id: Optional[pulumi.Input[str]] = None,
+             backup_log_interval_seconds: Optional[pulumi.Input[int]] = None,
+             backup_objects: Optional[pulumi.Input[str]] = None,
+             backup_period: Optional[pulumi.Input[str]] = None,
+             backup_rate_limit: Optional[pulumi.Input[str]] = None,
+             backup_retention_period: Optional[pulumi.Input[int]] = None,
+             backup_speed_limit: Optional[pulumi.Input[str]] = None,
+             backup_start_time: Optional[pulumi.Input[str]] = None,
+             backup_storage_type: Optional[pulumi.Input[str]] = None,
+             backup_strategy_type: Optional[pulumi.Input[str]] = None,
+             cross_aliyun_id: Optional[pulumi.Input[str]] = None,
+             cross_role_name: Optional[pulumi.Input[str]] = None,
+             database_region: Optional[pulumi.Input[str]] = None,
+             duplication_archive_period: Optional[pulumi.Input[int]] = None,
+             duplication_infrequent_access_period: Optional[pulumi.Input[int]] = None,
+             enable_backup_log: Optional[pulumi.Input[bool]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             oss_bucket_name: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             source_endpoint_database_name: Optional[pulumi.Input[str]] = None,
+             source_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
+             source_endpoint_ip: Optional[pulumi.Input[str]] = None,
+             source_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
+             source_endpoint_password: Optional[pulumi.Input[str]] = None,
+             source_endpoint_port: Optional[pulumi.Input[int]] = None,
+             source_endpoint_region: Optional[pulumi.Input[str]] = None,
+             source_endpoint_sid: Optional[pulumi.Input[str]] = None,
+             source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             storage_region: Optional[pulumi.Input[str]] = None,
+             used_time: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_method", backup_method)
+        _setter("backup_plan_name", backup_plan_name)
+        _setter("database_type", database_type)
+        _setter("instance_class", instance_class)
+        _setter("source_endpoint_instance_type", source_endpoint_instance_type)
         if backup_gateway_id is not None:
-            pulumi.set(__self__, "backup_gateway_id", backup_gateway_id)
+            _setter("backup_gateway_id", backup_gateway_id)
         if backup_log_interval_seconds is not None:
-            pulumi.set(__self__, "backup_log_interval_seconds", backup_log_interval_seconds)
+            _setter("backup_log_interval_seconds", backup_log_interval_seconds)
         if backup_objects is not None:
-            pulumi.set(__self__, "backup_objects", backup_objects)
+            _setter("backup_objects", backup_objects)
         if backup_period is not None:
-            pulumi.set(__self__, "backup_period", backup_period)
+            _setter("backup_period", backup_period)
         if backup_rate_limit is not None:
-            pulumi.set(__self__, "backup_rate_limit", backup_rate_limit)
+            _setter("backup_rate_limit", backup_rate_limit)
         if backup_retention_period is not None:
-            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+            _setter("backup_retention_period", backup_retention_period)
         if backup_speed_limit is not None:
-            pulumi.set(__self__, "backup_speed_limit", backup_speed_limit)
+            _setter("backup_speed_limit", backup_speed_limit)
         if backup_start_time is not None:
-            pulumi.set(__self__, "backup_start_time", backup_start_time)
+            _setter("backup_start_time", backup_start_time)
         if backup_storage_type is not None:
-            pulumi.set(__self__, "backup_storage_type", backup_storage_type)
+            _setter("backup_storage_type", backup_storage_type)
         if backup_strategy_type is not None:
-            pulumi.set(__self__, "backup_strategy_type", backup_strategy_type)
+            _setter("backup_strategy_type", backup_strategy_type)
         if cross_aliyun_id is not None:
-            pulumi.set(__self__, "cross_aliyun_id", cross_aliyun_id)
+            _setter("cross_aliyun_id", cross_aliyun_id)
         if cross_role_name is not None:
-            pulumi.set(__self__, "cross_role_name", cross_role_name)
+            _setter("cross_role_name", cross_role_name)
         if database_region is not None:
-            pulumi.set(__self__, "database_region", database_region)
+            _setter("database_region", database_region)
         if duplication_archive_period is not None:
-            pulumi.set(__self__, "duplication_archive_period", duplication_archive_period)
+            _setter("duplication_archive_period", duplication_archive_period)
         if duplication_infrequent_access_period is not None:
-            pulumi.set(__self__, "duplication_infrequent_access_period", duplication_infrequent_access_period)
+            _setter("duplication_infrequent_access_period", duplication_infrequent_access_period)
         if enable_backup_log is not None:
-            pulumi.set(__self__, "enable_backup_log", enable_backup_log)
+            _setter("enable_backup_log", enable_backup_log)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if oss_bucket_name is not None:
-            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+            _setter("oss_bucket_name", oss_bucket_name)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if source_endpoint_database_name is not None:
-            pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
+            _setter("source_endpoint_database_name", source_endpoint_database_name)
         if source_endpoint_instance_id is not None:
-            pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
+            _setter("source_endpoint_instance_id", source_endpoint_instance_id)
         if source_endpoint_ip is not None:
-            pulumi.set(__self__, "source_endpoint_ip", source_endpoint_ip)
+            _setter("source_endpoint_ip", source_endpoint_ip)
         if source_endpoint_oracle_sid is not None:
-            pulumi.set(__self__, "source_endpoint_oracle_sid", source_endpoint_oracle_sid)
+            _setter("source_endpoint_oracle_sid", source_endpoint_oracle_sid)
         if source_endpoint_password is not None:
-            pulumi.set(__self__, "source_endpoint_password", source_endpoint_password)
+            _setter("source_endpoint_password", source_endpoint_password)
         if source_endpoint_port is not None:
-            pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
+            _setter("source_endpoint_port", source_endpoint_port)
         if source_endpoint_region is not None:
-            pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
+            _setter("source_endpoint_region", source_endpoint_region)
         if source_endpoint_sid is not None:
-            pulumi.set(__self__, "source_endpoint_sid", source_endpoint_sid)
+            _setter("source_endpoint_sid", source_endpoint_sid)
         if source_endpoint_user_name is not None:
-            pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
+            _setter("source_endpoint_user_name", source_endpoint_user_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if storage_region is not None:
-            pulumi.set(__self__, "storage_region", storage_region)
+            _setter("storage_region", storage_region)
         if used_time is not None:
-            pulumi.set(__self__, "used_time", used_time)
+            _setter("used_time", used_time)
 
     @property
     @pulumi.getter(name="backupMethod")
@@ -704,82 +787,165 @@ class _BackupPlanState:
         :param pulumi.Input[str] storage_region: The storage region.
         :param pulumi.Input[int] used_time: Specify purchase duration. When the parameter `period` is `Year`, the `used_time` value is 1 to 9. When the parameter `period` is `Month`, the `used_time` value is 1 to 11.
         """
+        _BackupPlanState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_gateway_id=backup_gateway_id,
+            backup_log_interval_seconds=backup_log_interval_seconds,
+            backup_method=backup_method,
+            backup_objects=backup_objects,
+            backup_period=backup_period,
+            backup_plan_name=backup_plan_name,
+            backup_rate_limit=backup_rate_limit,
+            backup_retention_period=backup_retention_period,
+            backup_speed_limit=backup_speed_limit,
+            backup_start_time=backup_start_time,
+            backup_storage_type=backup_storage_type,
+            backup_strategy_type=backup_strategy_type,
+            cross_aliyun_id=cross_aliyun_id,
+            cross_role_name=cross_role_name,
+            database_region=database_region,
+            database_type=database_type,
+            duplication_archive_period=duplication_archive_period,
+            duplication_infrequent_access_period=duplication_infrequent_access_period,
+            enable_backup_log=enable_backup_log,
+            instance_class=instance_class,
+            instance_type=instance_type,
+            oss_bucket_name=oss_bucket_name,
+            payment_type=payment_type,
+            period=period,
+            resource_group_id=resource_group_id,
+            source_endpoint_database_name=source_endpoint_database_name,
+            source_endpoint_instance_id=source_endpoint_instance_id,
+            source_endpoint_instance_type=source_endpoint_instance_type,
+            source_endpoint_ip=source_endpoint_ip,
+            source_endpoint_oracle_sid=source_endpoint_oracle_sid,
+            source_endpoint_password=source_endpoint_password,
+            source_endpoint_port=source_endpoint_port,
+            source_endpoint_region=source_endpoint_region,
+            source_endpoint_sid=source_endpoint_sid,
+            source_endpoint_user_name=source_endpoint_user_name,
+            status=status,
+            storage_region=storage_region,
+            used_time=used_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_gateway_id: Optional[pulumi.Input[str]] = None,
+             backup_log_interval_seconds: Optional[pulumi.Input[int]] = None,
+             backup_method: Optional[pulumi.Input[str]] = None,
+             backup_objects: Optional[pulumi.Input[str]] = None,
+             backup_period: Optional[pulumi.Input[str]] = None,
+             backup_plan_name: Optional[pulumi.Input[str]] = None,
+             backup_rate_limit: Optional[pulumi.Input[str]] = None,
+             backup_retention_period: Optional[pulumi.Input[int]] = None,
+             backup_speed_limit: Optional[pulumi.Input[str]] = None,
+             backup_start_time: Optional[pulumi.Input[str]] = None,
+             backup_storage_type: Optional[pulumi.Input[str]] = None,
+             backup_strategy_type: Optional[pulumi.Input[str]] = None,
+             cross_aliyun_id: Optional[pulumi.Input[str]] = None,
+             cross_role_name: Optional[pulumi.Input[str]] = None,
+             database_region: Optional[pulumi.Input[str]] = None,
+             database_type: Optional[pulumi.Input[str]] = None,
+             duplication_archive_period: Optional[pulumi.Input[int]] = None,
+             duplication_infrequent_access_period: Optional[pulumi.Input[int]] = None,
+             enable_backup_log: Optional[pulumi.Input[bool]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             oss_bucket_name: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             source_endpoint_database_name: Optional[pulumi.Input[str]] = None,
+             source_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
+             source_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
+             source_endpoint_ip: Optional[pulumi.Input[str]] = None,
+             source_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
+             source_endpoint_password: Optional[pulumi.Input[str]] = None,
+             source_endpoint_port: Optional[pulumi.Input[int]] = None,
+             source_endpoint_region: Optional[pulumi.Input[str]] = None,
+             source_endpoint_sid: Optional[pulumi.Input[str]] = None,
+             source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             storage_region: Optional[pulumi.Input[str]] = None,
+             used_time: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backup_gateway_id is not None:
-            pulumi.set(__self__, "backup_gateway_id", backup_gateway_id)
+            _setter("backup_gateway_id", backup_gateway_id)
         if backup_log_interval_seconds is not None:
-            pulumi.set(__self__, "backup_log_interval_seconds", backup_log_interval_seconds)
+            _setter("backup_log_interval_seconds", backup_log_interval_seconds)
         if backup_method is not None:
-            pulumi.set(__self__, "backup_method", backup_method)
+            _setter("backup_method", backup_method)
         if backup_objects is not None:
-            pulumi.set(__self__, "backup_objects", backup_objects)
+            _setter("backup_objects", backup_objects)
         if backup_period is not None:
-            pulumi.set(__self__, "backup_period", backup_period)
+            _setter("backup_period", backup_period)
         if backup_plan_name is not None:
-            pulumi.set(__self__, "backup_plan_name", backup_plan_name)
+            _setter("backup_plan_name", backup_plan_name)
         if backup_rate_limit is not None:
-            pulumi.set(__self__, "backup_rate_limit", backup_rate_limit)
+            _setter("backup_rate_limit", backup_rate_limit)
         if backup_retention_period is not None:
-            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+            _setter("backup_retention_period", backup_retention_period)
         if backup_speed_limit is not None:
-            pulumi.set(__self__, "backup_speed_limit", backup_speed_limit)
+            _setter("backup_speed_limit", backup_speed_limit)
         if backup_start_time is not None:
-            pulumi.set(__self__, "backup_start_time", backup_start_time)
+            _setter("backup_start_time", backup_start_time)
         if backup_storage_type is not None:
-            pulumi.set(__self__, "backup_storage_type", backup_storage_type)
+            _setter("backup_storage_type", backup_storage_type)
         if backup_strategy_type is not None:
-            pulumi.set(__self__, "backup_strategy_type", backup_strategy_type)
+            _setter("backup_strategy_type", backup_strategy_type)
         if cross_aliyun_id is not None:
-            pulumi.set(__self__, "cross_aliyun_id", cross_aliyun_id)
+            _setter("cross_aliyun_id", cross_aliyun_id)
         if cross_role_name is not None:
-            pulumi.set(__self__, "cross_role_name", cross_role_name)
+            _setter("cross_role_name", cross_role_name)
         if database_region is not None:
-            pulumi.set(__self__, "database_region", database_region)
+            _setter("database_region", database_region)
         if database_type is not None:
-            pulumi.set(__self__, "database_type", database_type)
+            _setter("database_type", database_type)
         if duplication_archive_period is not None:
-            pulumi.set(__self__, "duplication_archive_period", duplication_archive_period)
+            _setter("duplication_archive_period", duplication_archive_period)
         if duplication_infrequent_access_period is not None:
-            pulumi.set(__self__, "duplication_infrequent_access_period", duplication_infrequent_access_period)
+            _setter("duplication_infrequent_access_period", duplication_infrequent_access_period)
         if enable_backup_log is not None:
-            pulumi.set(__self__, "enable_backup_log", enable_backup_log)
+            _setter("enable_backup_log", enable_backup_log)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if oss_bucket_name is not None:
-            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+            _setter("oss_bucket_name", oss_bucket_name)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if source_endpoint_database_name is not None:
-            pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
+            _setter("source_endpoint_database_name", source_endpoint_database_name)
         if source_endpoint_instance_id is not None:
-            pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
+            _setter("source_endpoint_instance_id", source_endpoint_instance_id)
         if source_endpoint_instance_type is not None:
-            pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
+            _setter("source_endpoint_instance_type", source_endpoint_instance_type)
         if source_endpoint_ip is not None:
-            pulumi.set(__self__, "source_endpoint_ip", source_endpoint_ip)
+            _setter("source_endpoint_ip", source_endpoint_ip)
         if source_endpoint_oracle_sid is not None:
-            pulumi.set(__self__, "source_endpoint_oracle_sid", source_endpoint_oracle_sid)
+            _setter("source_endpoint_oracle_sid", source_endpoint_oracle_sid)
         if source_endpoint_password is not None:
-            pulumi.set(__self__, "source_endpoint_password", source_endpoint_password)
+            _setter("source_endpoint_password", source_endpoint_password)
         if source_endpoint_port is not None:
-            pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
+            _setter("source_endpoint_port", source_endpoint_port)
         if source_endpoint_region is not None:
-            pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
+            _setter("source_endpoint_region", source_endpoint_region)
         if source_endpoint_sid is not None:
-            pulumi.set(__self__, "source_endpoint_sid", source_endpoint_sid)
+            _setter("source_endpoint_sid", source_endpoint_sid)
         if source_endpoint_user_name is not None:
-            pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
+            _setter("source_endpoint_user_name", source_endpoint_user_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if storage_region is not None:
-            pulumi.set(__self__, "storage_region", storage_region)
+            _setter("storage_region", storage_region)
         if used_time is not None:
-            pulumi.set(__self__, "used_time", used_time)
+            _setter("used_time", used_time)
 
     @property
     @pulumi.getter(name="backupGatewayId")
@@ -1369,6 +1535,10 @@ class BackupPlan(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BackupPlanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

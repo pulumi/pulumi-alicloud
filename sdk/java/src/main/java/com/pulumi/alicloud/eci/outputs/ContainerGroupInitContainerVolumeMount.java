@@ -18,12 +18,12 @@ public final class ContainerGroupInitContainerVolumeMount {
      */
     private @Nullable String mountPath;
     /**
-     * @return The name of the volume.
+     * @return The name of the mounted volume.
      * 
      */
     private @Nullable String name;
     /**
-     * @return Specifies whether the mount path is read-only. Default value: `false`.
+     * @return Specifies whether the volume is read-only. Default value: `false`.
      * 
      */
     private @Nullable Boolean readOnly;
@@ -37,14 +37,14 @@ public final class ContainerGroupInitContainerVolumeMount {
         return Optional.ofNullable(this.mountPath);
     }
     /**
-     * @return The name of the volume.
+     * @return The name of the mounted volume.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Specifies whether the mount path is read-only. Default value: `false`.
+     * @return Specifies whether the volume is read-only. Default value: `false`.
      * 
      */
     public Optional<Boolean> readOnly() {

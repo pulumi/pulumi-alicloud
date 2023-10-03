@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,26 +43,55 @@ class ListenerArgs:
         :param pulumi.Input[bool] proxy_protocol: The proxy protocol of the listener. Default value: `false`. Valid values:
         :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "port_ranges", port_ranges)
+        ListenerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            port_ranges=port_ranges,
+            certificates=certificates,
+            client_affinity=client_affinity,
+            description=description,
+            forwarded_for_config=forwarded_for_config,
+            listener_type=listener_type,
+            name=name,
+            protocol=protocol,
+            proxy_protocol=proxy_protocol,
+            security_policy_id=security_policy_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: pulumi.Input[str],
+             port_ranges: pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]],
+             certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
+             client_affinity: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             forwarded_for_config: Optional[pulumi.Input['ListenerForwardedForConfigArgs']] = None,
+             listener_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             proxy_protocol: Optional[pulumi.Input[bool]] = None,
+             security_policy_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("port_ranges", port_ranges)
         if certificates is not None:
-            pulumi.set(__self__, "certificates", certificates)
+            _setter("certificates", certificates)
         if client_affinity is not None:
-            pulumi.set(__self__, "client_affinity", client_affinity)
+            _setter("client_affinity", client_affinity)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if forwarded_for_config is not None:
-            pulumi.set(__self__, "forwarded_for_config", forwarded_for_config)
+            _setter("forwarded_for_config", forwarded_for_config)
         if listener_type is not None:
-            pulumi.set(__self__, "listener_type", listener_type)
+            _setter("listener_type", listener_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if proxy_protocol is not None:
-            pulumi.set(__self__, "proxy_protocol", proxy_protocol)
+            _setter("proxy_protocol", proxy_protocol)
         if security_policy_id is not None:
-            pulumi.set(__self__, "security_policy_id", security_policy_id)
+            _setter("security_policy_id", security_policy_id)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -231,30 +260,61 @@ class _ListenerState:
         :param pulumi.Input[str] security_policy_id: The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
         :param pulumi.Input[str] status: The status of the listener.
         """
+        _ListenerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            certificates=certificates,
+            client_affinity=client_affinity,
+            description=description,
+            forwarded_for_config=forwarded_for_config,
+            listener_type=listener_type,
+            name=name,
+            port_ranges=port_ranges,
+            protocol=protocol,
+            proxy_protocol=proxy_protocol,
+            security_policy_id=security_policy_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
+             client_affinity: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             forwarded_for_config: Optional[pulumi.Input['ListenerForwardedForConfigArgs']] = None,
+             listener_type: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             proxy_protocol: Optional[pulumi.Input[bool]] = None,
+             security_policy_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if accelerator_id is not None:
-            pulumi.set(__self__, "accelerator_id", accelerator_id)
+            _setter("accelerator_id", accelerator_id)
         if certificates is not None:
-            pulumi.set(__self__, "certificates", certificates)
+            _setter("certificates", certificates)
         if client_affinity is not None:
-            pulumi.set(__self__, "client_affinity", client_affinity)
+            _setter("client_affinity", client_affinity)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if forwarded_for_config is not None:
-            pulumi.set(__self__, "forwarded_for_config", forwarded_for_config)
+            _setter("forwarded_for_config", forwarded_for_config)
         if listener_type is not None:
-            pulumi.set(__self__, "listener_type", listener_type)
+            _setter("listener_type", listener_type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port_ranges is not None:
-            pulumi.set(__self__, "port_ranges", port_ranges)
+            _setter("port_ranges", port_ranges)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if proxy_protocol is not None:
-            pulumi.set(__self__, "proxy_protocol", proxy_protocol)
+            _setter("proxy_protocol", proxy_protocol)
         if security_policy_id is not None:
-            pulumi.set(__self__, "security_policy_id", security_policy_id)
+            _setter("security_policy_id", security_policy_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -542,6 +602,10 @@ class Listener(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ListenerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -573,6 +637,11 @@ class Listener(pulumi.CustomResource):
             __props__.__dict__["certificates"] = certificates
             __props__.__dict__["client_affinity"] = client_affinity
             __props__.__dict__["description"] = description
+            if forwarded_for_config is not None and not isinstance(forwarded_for_config, ListenerForwardedForConfigArgs):
+                forwarded_for_config = forwarded_for_config or {}
+                def _setter(key, value):
+                    forwarded_for_config[key] = value
+                ListenerForwardedForConfigArgs._configure(_setter, **forwarded_for_config)
             __props__.__dict__["forwarded_for_config"] = forwarded_for_config
             __props__.__dict__["listener_type"] = listener_type
             __props__.__dict__["name"] = name

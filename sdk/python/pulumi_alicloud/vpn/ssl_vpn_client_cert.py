@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SslVpnClientCertArgs', 'SslVpnClientCert']
@@ -21,9 +21,20 @@ class SslVpnClientCertArgs:
         :param pulumi.Input[str] ssl_vpn_server_id: The ID of the SSL-VPN server.
         :param pulumi.Input[str] name: The name of the client certificate.
         """
-        pulumi.set(__self__, "ssl_vpn_server_id", ssl_vpn_server_id)
+        SslVpnClientCertArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ssl_vpn_server_id=ssl_vpn_server_id,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ssl_vpn_server_id: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ssl_vpn_server_id", ssl_vpn_server_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="sslVpnServerId")
@@ -70,20 +81,41 @@ class _SslVpnClientCertState:
         :param pulumi.Input[str] ssl_vpn_server_id: The ID of the SSL-VPN server.
         :param pulumi.Input[str] status: The status of the client certificate.
         """
+        _SslVpnClientCertState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ca_cert=ca_cert,
+            client_cert=client_cert,
+            client_config=client_config,
+            client_key=client_key,
+            name=name,
+            ssl_vpn_server_id=ssl_vpn_server_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ca_cert: Optional[pulumi.Input[str]] = None,
+             client_cert: Optional[pulumi.Input[str]] = None,
+             client_config: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ssl_vpn_server_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ca_cert is not None:
-            pulumi.set(__self__, "ca_cert", ca_cert)
+            _setter("ca_cert", ca_cert)
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_config is not None:
-            pulumi.set(__self__, "client_config", client_config)
+            _setter("client_config", client_config)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ssl_vpn_server_id is not None:
-            pulumi.set(__self__, "ssl_vpn_server_id", ssl_vpn_server_id)
+            _setter("ssl_vpn_server_id", ssl_vpn_server_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="caCert")
@@ -217,6 +249,10 @@ class SslVpnClientCert(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SslVpnClientCertArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -66,68 +66,119 @@ class AlarmArgs:
         :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
-        pulumi.set(__self__, "contact_groups", contact_groups)
-        pulumi.set(__self__, "metric", metric)
-        pulumi.set(__self__, "project", project)
+        AlarmArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_groups=contact_groups,
+            metric=metric,
+            project=project,
+            dimensions=dimensions,
+            effective_interval=effective_interval,
+            enabled=enabled,
+            end_time=end_time,
+            escalations_critical=escalations_critical,
+            escalations_info=escalations_info,
+            escalations_warn=escalations_warn,
+            metric_dimensions=metric_dimensions,
+            name=name,
+            operator=operator,
+            period=period,
+            prometheuses=prometheuses,
+            silence_time=silence_time,
+            start_time=start_time,
+            statistics=statistics,
+            tags=tags,
+            threshold=threshold,
+            triggered_count=triggered_count,
+            webhook=webhook,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
+             metric: pulumi.Input[str],
+             project: pulumi.Input[str],
+             dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             effective_interval: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             end_time: Optional[pulumi.Input[int]] = None,
+             escalations_critical: Optional[pulumi.Input['AlarmEscalationsCriticalArgs']] = None,
+             escalations_info: Optional[pulumi.Input['AlarmEscalationsInfoArgs']] = None,
+             escalations_warn: Optional[pulumi.Input['AlarmEscalationsWarnArgs']] = None,
+             metric_dimensions: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             operator: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]]] = None,
+             silence_time: Optional[pulumi.Input[int]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
+             statistics: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             threshold: Optional[pulumi.Input[str]] = None,
+             triggered_count: Optional[pulumi.Input[int]] = None,
+             webhook: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("contact_groups", contact_groups)
+        _setter("metric", metric)
+        _setter("project", project)
         if dimensions is not None:
             warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
             pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if effective_interval is not None:
-            pulumi.set(__self__, "effective_interval", effective_interval)
+            _setter("effective_interval", effective_interval)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if end_time is not None:
             warnings.warn("""Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
             pulumi.log.warn("""end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if escalations_critical is not None:
-            pulumi.set(__self__, "escalations_critical", escalations_critical)
+            _setter("escalations_critical", escalations_critical)
         if escalations_info is not None:
-            pulumi.set(__self__, "escalations_info", escalations_info)
+            _setter("escalations_info", escalations_info)
         if escalations_warn is not None:
-            pulumi.set(__self__, "escalations_warn", escalations_warn)
+            _setter("escalations_warn", escalations_warn)
         if metric_dimensions is not None:
-            pulumi.set(__self__, "metric_dimensions", metric_dimensions)
+            _setter("metric_dimensions", metric_dimensions)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if operator is not None:
             warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
             pulumi.log.warn("""operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""")
         if operator is not None:
-            pulumi.set(__self__, "operator", operator)
+            _setter("operator", operator)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if prometheuses is not None:
-            pulumi.set(__self__, "prometheuses", prometheuses)
+            _setter("prometheuses", prometheuses)
         if silence_time is not None:
-            pulumi.set(__self__, "silence_time", silence_time)
+            _setter("silence_time", silence_time)
         if start_time is not None:
             warnings.warn("""Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
             pulumi.log.warn("""start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if statistics is not None:
             warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
             pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if threshold is not None:
             warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
             pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if triggered_count is not None:
             warnings.warn("""Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""", DeprecationWarning)
             pulumi.log.warn("""triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""")
         if triggered_count is not None:
-            pulumi.set(__self__, "triggered_count", triggered_count)
+            _setter("triggered_count", triggered_count)
         if webhook is not None:
-            pulumi.set(__self__, "webhook", webhook)
+            _setter("webhook", webhook)
 
     @property
     @pulumi.getter(name="contactGroups")
@@ -473,73 +524,126 @@ class _AlarmState:
         :param pulumi.Input[int] triggered_count: It has been deprecated from provider version 1.94.0 and 'escalations_critical.times' instead.
         :param pulumi.Input[str] webhook: The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
+        _AlarmState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_groups=contact_groups,
+            dimensions=dimensions,
+            effective_interval=effective_interval,
+            enabled=enabled,
+            end_time=end_time,
+            escalations_critical=escalations_critical,
+            escalations_info=escalations_info,
+            escalations_warn=escalations_warn,
+            metric=metric,
+            metric_dimensions=metric_dimensions,
+            name=name,
+            operator=operator,
+            period=period,
+            project=project,
+            prometheuses=prometheuses,
+            silence_time=silence_time,
+            start_time=start_time,
+            statistics=statistics,
+            status=status,
+            tags=tags,
+            threshold=threshold,
+            triggered_count=triggered_count,
+            webhook=webhook,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             dimensions: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             effective_interval: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             end_time: Optional[pulumi.Input[int]] = None,
+             escalations_critical: Optional[pulumi.Input['AlarmEscalationsCriticalArgs']] = None,
+             escalations_info: Optional[pulumi.Input['AlarmEscalationsInfoArgs']] = None,
+             escalations_warn: Optional[pulumi.Input['AlarmEscalationsWarnArgs']] = None,
+             metric: Optional[pulumi.Input[str]] = None,
+             metric_dimensions: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             operator: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]]] = None,
+             silence_time: Optional[pulumi.Input[int]] = None,
+             start_time: Optional[pulumi.Input[int]] = None,
+             statistics: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             threshold: Optional[pulumi.Input[str]] = None,
+             triggered_count: Optional[pulumi.Input[int]] = None,
+             webhook: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if contact_groups is not None:
-            pulumi.set(__self__, "contact_groups", contact_groups)
+            _setter("contact_groups", contact_groups)
         if dimensions is not None:
             warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
             pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if effective_interval is not None:
-            pulumi.set(__self__, "effective_interval", effective_interval)
+            _setter("effective_interval", effective_interval)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if end_time is not None:
             warnings.warn("""Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
             pulumi.log.warn("""end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
         if end_time is not None:
-            pulumi.set(__self__, "end_time", end_time)
+            _setter("end_time", end_time)
         if escalations_critical is not None:
-            pulumi.set(__self__, "escalations_critical", escalations_critical)
+            _setter("escalations_critical", escalations_critical)
         if escalations_info is not None:
-            pulumi.set(__self__, "escalations_info", escalations_info)
+            _setter("escalations_info", escalations_info)
         if escalations_warn is not None:
-            pulumi.set(__self__, "escalations_warn", escalations_warn)
+            _setter("escalations_warn", escalations_warn)
         if metric is not None:
-            pulumi.set(__self__, "metric", metric)
+            _setter("metric", metric)
         if metric_dimensions is not None:
-            pulumi.set(__self__, "metric_dimensions", metric_dimensions)
+            _setter("metric_dimensions", metric_dimensions)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if operator is not None:
             warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
             pulumi.log.warn("""operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""")
         if operator is not None:
-            pulumi.set(__self__, "operator", operator)
+            _setter("operator", operator)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if prometheuses is not None:
-            pulumi.set(__self__, "prometheuses", prometheuses)
+            _setter("prometheuses", prometheuses)
         if silence_time is not None:
-            pulumi.set(__self__, "silence_time", silence_time)
+            _setter("silence_time", silence_time)
         if start_time is not None:
             warnings.warn("""Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
             pulumi.log.warn("""start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
         if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
+            _setter("start_time", start_time)
         if statistics is not None:
             warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
             pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if threshold is not None:
             warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
             pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if triggered_count is not None:
             warnings.warn("""Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""", DeprecationWarning)
             pulumi.log.warn("""triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""")
         if triggered_count is not None:
-            pulumi.set(__self__, "triggered_count", triggered_count)
+            _setter("triggered_count", triggered_count)
         if webhook is not None:
-            pulumi.set(__self__, "webhook", webhook)
+            _setter("webhook", webhook)
 
     @property
     @pulumi.getter(name="contactGroups")
@@ -1042,6 +1146,10 @@ class Alarm(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AlarmArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1081,27 +1189,33 @@ class Alarm(pulumi.CustomResource):
             if contact_groups is None and not opts.urn:
                 raise TypeError("Missing required property 'contact_groups'")
             __props__.__dict__["contact_groups"] = contact_groups
-            if dimensions is not None and not opts.urn:
-                warnings.warn("""Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""", DeprecationWarning)
-                pulumi.log.warn("""dimensions is deprecated: Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead.""")
             __props__.__dict__["dimensions"] = dimensions
             __props__.__dict__["effective_interval"] = effective_interval
             __props__.__dict__["enabled"] = enabled
-            if end_time is not None and not opts.urn:
-                warnings.warn("""Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
-                pulumi.log.warn("""end_time is deprecated: Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
             __props__.__dict__["end_time"] = end_time
+            if escalations_critical is not None and not isinstance(escalations_critical, AlarmEscalationsCriticalArgs):
+                escalations_critical = escalations_critical or {}
+                def _setter(key, value):
+                    escalations_critical[key] = value
+                AlarmEscalationsCriticalArgs._configure(_setter, **escalations_critical)
             __props__.__dict__["escalations_critical"] = escalations_critical
+            if escalations_info is not None and not isinstance(escalations_info, AlarmEscalationsInfoArgs):
+                escalations_info = escalations_info or {}
+                def _setter(key, value):
+                    escalations_info[key] = value
+                AlarmEscalationsInfoArgs._configure(_setter, **escalations_info)
             __props__.__dict__["escalations_info"] = escalations_info
+            if escalations_warn is not None and not isinstance(escalations_warn, AlarmEscalationsWarnArgs):
+                escalations_warn = escalations_warn or {}
+                def _setter(key, value):
+                    escalations_warn[key] = value
+                AlarmEscalationsWarnArgs._configure(_setter, **escalations_warn)
             __props__.__dict__["escalations_warn"] = escalations_warn
             if metric is None and not opts.urn:
                 raise TypeError("Missing required property 'metric'")
             __props__.__dict__["metric"] = metric
             __props__.__dict__["metric_dimensions"] = metric_dimensions
             __props__.__dict__["name"] = name
-            if operator is not None and not opts.urn:
-                warnings.warn("""Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""", DeprecationWarning)
-                pulumi.log.warn("""operator is deprecated: Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead.""")
             __props__.__dict__["operator"] = operator
             __props__.__dict__["period"] = period
             if project is None and not opts.urn:
@@ -1109,22 +1223,10 @@ class Alarm(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["prometheuses"] = prometheuses
             __props__.__dict__["silence_time"] = silence_time
-            if start_time is not None and not opts.urn:
-                warnings.warn("""Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""", DeprecationWarning)
-                pulumi.log.warn("""start_time is deprecated: Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead.""")
             __props__.__dict__["start_time"] = start_time
-            if statistics is not None and not opts.urn:
-                warnings.warn("""Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""", DeprecationWarning)
-                pulumi.log.warn("""statistics is deprecated: Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead.""")
             __props__.__dict__["statistics"] = statistics
             __props__.__dict__["tags"] = tags
-            if threshold is not None and not opts.urn:
-                warnings.warn("""Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""", DeprecationWarning)
-                pulumi.log.warn("""threshold is deprecated: Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead.""")
             __props__.__dict__["threshold"] = threshold
-            if triggered_count is not None and not opts.urn:
-                warnings.warn("""Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""", DeprecationWarning)
-                pulumi.log.warn("""triggered_count is deprecated: Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead.""")
             __props__.__dict__["triggered_count"] = triggered_count
             __props__.__dict__["webhook"] = webhook
             __props__.__dict__["status"] = None

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AdConnectorDirectoryArgs', 'AdConnectorDirectory']
@@ -41,24 +41,55 @@ class AdConnectorDirectoryArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sub_domain_dns_addresses: The Enterprise already has the DNS address of the AD subdomain. If `sub_domain_name` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
         :param pulumi.Input[str] sub_domain_name: The Enterprise already has a fully qualified domain name (FQDN) of an AD subdomain, with both a host name and a domain name.
         """
-        pulumi.set(__self__, "directory_name", directory_name)
-        pulumi.set(__self__, "dns_addresses", dns_addresses)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "domain_password", domain_password)
-        pulumi.set(__self__, "domain_user_name", domain_user_name)
-        pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+        AdConnectorDirectoryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            directory_name=directory_name,
+            dns_addresses=dns_addresses,
+            domain_name=domain_name,
+            domain_password=domain_password,
+            domain_user_name=domain_user_name,
+            vswitch_ids=vswitch_ids,
+            desktop_access_type=desktop_access_type,
+            enable_admin_access=enable_admin_access,
+            mfa_enabled=mfa_enabled,
+            specification=specification,
+            sub_domain_dns_addresses=sub_domain_dns_addresses,
+            sub_domain_name=sub_domain_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             directory_name: pulumi.Input[str],
+             dns_addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
+             domain_name: pulumi.Input[str],
+             domain_password: pulumi.Input[str],
+             domain_user_name: pulumi.Input[str],
+             vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             desktop_access_type: Optional[pulumi.Input[str]] = None,
+             enable_admin_access: Optional[pulumi.Input[bool]] = None,
+             mfa_enabled: Optional[pulumi.Input[bool]] = None,
+             specification: Optional[pulumi.Input[int]] = None,
+             sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             sub_domain_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("directory_name", directory_name)
+        _setter("dns_addresses", dns_addresses)
+        _setter("domain_name", domain_name)
+        _setter("domain_password", domain_password)
+        _setter("domain_user_name", domain_user_name)
+        _setter("vswitch_ids", vswitch_ids)
         if desktop_access_type is not None:
-            pulumi.set(__self__, "desktop_access_type", desktop_access_type)
+            _setter("desktop_access_type", desktop_access_type)
         if enable_admin_access is not None:
-            pulumi.set(__self__, "enable_admin_access", enable_admin_access)
+            _setter("enable_admin_access", enable_admin_access)
         if mfa_enabled is not None:
-            pulumi.set(__self__, "mfa_enabled", mfa_enabled)
+            _setter("mfa_enabled", mfa_enabled)
         if specification is not None:
-            pulumi.set(__self__, "specification", specification)
+            _setter("specification", specification)
         if sub_domain_dns_addresses is not None:
-            pulumi.set(__self__, "sub_domain_dns_addresses", sub_domain_dns_addresses)
+            _setter("sub_domain_dns_addresses", sub_domain_dns_addresses)
         if sub_domain_name is not None:
-            pulumi.set(__self__, "sub_domain_name", sub_domain_name)
+            _setter("sub_domain_name", sub_domain_name)
 
     @property
     @pulumi.getter(name="directoryName")
@@ -237,32 +268,65 @@ class _AdConnectorDirectoryState:
         :param pulumi.Input[str] sub_domain_name: The Enterprise already has a fully qualified domain name (FQDN) of an AD subdomain, with both a host name and a domain name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of VSwitch IDs in the directory.
         """
+        _AdConnectorDirectoryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            desktop_access_type=desktop_access_type,
+            directory_name=directory_name,
+            dns_addresses=dns_addresses,
+            domain_name=domain_name,
+            domain_password=domain_password,
+            domain_user_name=domain_user_name,
+            enable_admin_access=enable_admin_access,
+            mfa_enabled=mfa_enabled,
+            specification=specification,
+            status=status,
+            sub_domain_dns_addresses=sub_domain_dns_addresses,
+            sub_domain_name=sub_domain_name,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             desktop_access_type: Optional[pulumi.Input[str]] = None,
+             directory_name: Optional[pulumi.Input[str]] = None,
+             dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             domain_password: Optional[pulumi.Input[str]] = None,
+             domain_user_name: Optional[pulumi.Input[str]] = None,
+             enable_admin_access: Optional[pulumi.Input[bool]] = None,
+             mfa_enabled: Optional[pulumi.Input[bool]] = None,
+             specification: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             sub_domain_name: Optional[pulumi.Input[str]] = None,
+             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if desktop_access_type is not None:
-            pulumi.set(__self__, "desktop_access_type", desktop_access_type)
+            _setter("desktop_access_type", desktop_access_type)
         if directory_name is not None:
-            pulumi.set(__self__, "directory_name", directory_name)
+            _setter("directory_name", directory_name)
         if dns_addresses is not None:
-            pulumi.set(__self__, "dns_addresses", dns_addresses)
+            _setter("dns_addresses", dns_addresses)
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
         if domain_password is not None:
-            pulumi.set(__self__, "domain_password", domain_password)
+            _setter("domain_password", domain_password)
         if domain_user_name is not None:
-            pulumi.set(__self__, "domain_user_name", domain_user_name)
+            _setter("domain_user_name", domain_user_name)
         if enable_admin_access is not None:
-            pulumi.set(__self__, "enable_admin_access", enable_admin_access)
+            _setter("enable_admin_access", enable_admin_access)
         if mfa_enabled is not None:
-            pulumi.set(__self__, "mfa_enabled", mfa_enabled)
+            _setter("mfa_enabled", mfa_enabled)
         if specification is not None:
-            pulumi.set(__self__, "specification", specification)
+            _setter("specification", specification)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if sub_domain_dns_addresses is not None:
-            pulumi.set(__self__, "sub_domain_dns_addresses", sub_domain_dns_addresses)
+            _setter("sub_domain_dns_addresses", sub_domain_dns_addresses)
         if sub_domain_name is not None:
-            pulumi.set(__self__, "sub_domain_name", sub_domain_name)
+            _setter("sub_domain_name", sub_domain_name)
         if vswitch_ids is not None:
-            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+            _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter(name="desktopAccessType")
@@ -572,6 +636,10 @@ class AdConnectorDirectory(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AdConnectorDirectoryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

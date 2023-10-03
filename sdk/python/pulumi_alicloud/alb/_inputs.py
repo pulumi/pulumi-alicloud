@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -62,10 +62,21 @@ class AScriptExtAttributeArgs:
         :param pulumi.Input[str] attribute_key: The key of the extended attribute.
         :param pulumi.Input[str] attribute_value: The value of the extended attribute.
         """
+        AScriptExtAttributeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attribute_key=attribute_key,
+            attribute_value=attribute_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attribute_key: Optional[pulumi.Input[str]] = None,
+             attribute_value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if attribute_key is not None:
-            pulumi.set(__self__, "attribute_key", attribute_key)
+            _setter("attribute_key", attribute_key)
         if attribute_value is not None:
-            pulumi.set(__self__, "attribute_value", attribute_value)
+            _setter("attribute_value", attribute_value)
 
     @property
     @pulumi.getter(name="attributeKey")
@@ -103,12 +114,25 @@ class AclAclEntryArgs:
         :param pulumi.Input[str] entry: The IP address for the ACL entry.
         :param pulumi.Input[str] status: The status of the ACL entry. Valid values:
         """
+        AclAclEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            entry=entry,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             entry: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if entry is not None:
-            pulumi.set(__self__, "entry", entry)
+            _setter("entry", entry)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -164,12 +188,25 @@ class ListenerAccessLogTracingConfigArgs:
                
                > **NOTE:** This attribute is valid when `tracingenabled` is `true`.
         """
+        ListenerAccessLogTracingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            tracing_enabled=tracing_enabled,
+            tracing_sample=tracing_sample,
+            tracing_type=tracing_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             tracing_enabled: Optional[pulumi.Input[bool]] = None,
+             tracing_sample: Optional[pulumi.Input[int]] = None,
+             tracing_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if tracing_enabled is not None:
-            pulumi.set(__self__, "tracing_enabled", tracing_enabled)
+            _setter("tracing_enabled", tracing_enabled)
         if tracing_sample is not None:
-            pulumi.set(__self__, "tracing_sample", tracing_sample)
+            _setter("tracing_sample", tracing_sample)
         if tracing_type is not None:
-            pulumi.set(__self__, "tracing_type", tracing_type)
+            _setter("tracing_type", tracing_type)
 
     @property
     @pulumi.getter(name="tracingEnabled")
@@ -223,10 +260,21 @@ class ListenerAclConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgs']]] acl_relations: The ACLs that are associated with the listener. See `acl_relations` below for details.
         :param pulumi.Input[str] acl_type: The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
         """
+        ListenerAclConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_relations=acl_relations,
+            acl_type=acl_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_relations: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerAclConfigAclRelationArgs']]]] = None,
+             acl_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acl_relations is not None:
-            pulumi.set(__self__, "acl_relations", acl_relations)
+            _setter("acl_relations", acl_relations)
         if acl_type is not None:
-            pulumi.set(__self__, "acl_type", acl_type)
+            _setter("acl_type", acl_type)
 
     @property
     @pulumi.getter(name="aclRelations")
@@ -262,10 +310,21 @@ class ListenerAclConfigAclRelationArgs:
         :param pulumi.Input[str] acl_id: Snooping Binding of the Access Policy Group ID List.
         :param pulumi.Input[str] status: The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
         """
+        ListenerAclConfigAclRelationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_id=acl_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acl_id is not None:
-            pulumi.set(__self__, "acl_id", acl_id)
+            _setter("acl_id", acl_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="aclId")
@@ -299,8 +358,17 @@ class ListenerCertificatesArgs:
         """
         :param pulumi.Input[str] certificate_id: The ID of the Certificate.
         """
+        ListenerCertificatesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_id=certificate_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if certificate_id is not None:
-            pulumi.set(__self__, "certificate_id", certificate_id)
+            _setter("certificate_id", certificate_id)
 
     @property
     @pulumi.getter(name="certificateId")
@@ -324,8 +392,19 @@ class ListenerDefaultActionArgs:
         :param pulumi.Input['ListenerDefaultActionForwardGroupConfigArgs'] forward_group_config: The configurations of the actions. This parameter is required if Type is set to FowardGroup. See `forward_group_config` below for details.
         :param pulumi.Input[str] type: Action Type.
         """
-        pulumi.set(__self__, "forward_group_config", forward_group_config)
-        pulumi.set(__self__, "type", type)
+        ListenerDefaultActionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            forward_group_config=forward_group_config,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             forward_group_config: pulumi.Input['ListenerDefaultActionForwardGroupConfigArgs'],
+             type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("forward_group_config", forward_group_config)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="forwardGroupConfig")
@@ -359,7 +438,16 @@ class ListenerDefaultActionForwardGroupConfigArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs']]] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
         """
-        pulumi.set(__self__, "server_group_tuples", server_group_tuples)
+        ListenerDefaultActionForwardGroupConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_group_tuples=server_group_tuples,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_group_tuples: pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs']]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("server_group_tuples", server_group_tuples)
 
     @property
     @pulumi.getter(name="serverGroupTuples")
@@ -381,7 +469,16 @@ class ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs:
         """
         :param pulumi.Input[str] server_group_id: The ID of the destination server group to which requests are forwarded.
         """
-        pulumi.set(__self__, "server_group_id", server_group_id)
+        ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_group_id=server_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_group_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("server_group_id", server_group_id)
 
     @property
     @pulumi.getter(name="serverGroupId")
@@ -407,10 +504,21 @@ class ListenerQuicConfigArgs:
                
                > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
         """
+        ListenerQuicConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            quic_listener_id=quic_listener_id,
+            quic_upgrade_enabled=quic_upgrade_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             quic_listener_id: Optional[pulumi.Input[str]] = None,
+             quic_upgrade_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if quic_listener_id is not None:
-            pulumi.set(__self__, "quic_listener_id", quic_listener_id)
+            _setter("quic_listener_id", quic_listener_id)
         if quic_upgrade_enabled is not None:
-            pulumi.set(__self__, "quic_upgrade_enabled", quic_upgrade_enabled)
+            _setter("quic_upgrade_enabled", quic_upgrade_enabled)
 
     @property
     @pulumi.getter(name="quicListenerId")
@@ -470,32 +578,65 @@ class ListenerXForwardedForConfigArgs:
         :param pulumi.Input[bool] x_forwarded_for_slb_id_enabled: Indicates Whether the SLB-ID Header Field Is Used to Obtain the Load Balancing Instance Id.
         :param pulumi.Input[bool] x_forwarded_for_slb_port_enabled: Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
         """
+        ListenerXForwardedForConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            x_forwarded_for_client_cert_client_verify_alias=x_forwarded_for_client_cert_client_verify_alias,
+            x_forwarded_for_client_cert_client_verify_enabled=x_forwarded_for_client_cert_client_verify_enabled,
+            x_forwarded_for_client_cert_finger_print_alias=x_forwarded_for_client_cert_finger_print_alias,
+            x_forwarded_for_client_cert_finger_print_enabled=x_forwarded_for_client_cert_finger_print_enabled,
+            x_forwarded_for_client_cert_issuer_dn_alias=x_forwarded_for_client_cert_issuer_dn_alias,
+            x_forwarded_for_client_cert_issuer_dn_enabled=x_forwarded_for_client_cert_issuer_dn_enabled,
+            x_forwarded_for_client_cert_subject_dn_alias=x_forwarded_for_client_cert_subject_dn_alias,
+            x_forwarded_for_client_cert_subject_dn_enabled=x_forwarded_for_client_cert_subject_dn_enabled,
+            x_forwarded_for_client_src_port_enabled=x_forwarded_for_client_src_port_enabled,
+            x_forwarded_for_enabled=x_forwarded_for_enabled,
+            x_forwarded_for_proto_enabled=x_forwarded_for_proto_enabled,
+            x_forwarded_for_slb_id_enabled=x_forwarded_for_slb_id_enabled,
+            x_forwarded_for_slb_port_enabled=x_forwarded_for_slb_port_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             x_forwarded_for_client_cert_client_verify_alias: Optional[pulumi.Input[str]] = None,
+             x_forwarded_for_client_cert_client_verify_enabled: Optional[pulumi.Input[bool]] = None,
+             x_forwarded_for_client_cert_finger_print_alias: Optional[pulumi.Input[str]] = None,
+             x_forwarded_for_client_cert_finger_print_enabled: Optional[pulumi.Input[bool]] = None,
+             x_forwarded_for_client_cert_issuer_dn_alias: Optional[pulumi.Input[str]] = None,
+             x_forwarded_for_client_cert_issuer_dn_enabled: Optional[pulumi.Input[bool]] = None,
+             x_forwarded_for_client_cert_subject_dn_alias: Optional[pulumi.Input[str]] = None,
+             x_forwarded_for_client_cert_subject_dn_enabled: Optional[pulumi.Input[bool]] = None,
+             x_forwarded_for_client_src_port_enabled: Optional[pulumi.Input[bool]] = None,
+             x_forwarded_for_enabled: Optional[pulumi.Input[bool]] = None,
+             x_forwarded_for_proto_enabled: Optional[pulumi.Input[bool]] = None,
+             x_forwarded_for_slb_id_enabled: Optional[pulumi.Input[bool]] = None,
+             x_forwarded_for_slb_port_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if x_forwarded_for_client_cert_client_verify_alias is not None:
-            pulumi.set(__self__, "x_forwarded_for_client_cert_client_verify_alias", x_forwarded_for_client_cert_client_verify_alias)
+            _setter("x_forwarded_for_client_cert_client_verify_alias", x_forwarded_for_client_cert_client_verify_alias)
         if x_forwarded_for_client_cert_client_verify_enabled is not None:
-            pulumi.set(__self__, "x_forwarded_for_client_cert_client_verify_enabled", x_forwarded_for_client_cert_client_verify_enabled)
+            _setter("x_forwarded_for_client_cert_client_verify_enabled", x_forwarded_for_client_cert_client_verify_enabled)
         if x_forwarded_for_client_cert_finger_print_alias is not None:
-            pulumi.set(__self__, "x_forwarded_for_client_cert_finger_print_alias", x_forwarded_for_client_cert_finger_print_alias)
+            _setter("x_forwarded_for_client_cert_finger_print_alias", x_forwarded_for_client_cert_finger_print_alias)
         if x_forwarded_for_client_cert_finger_print_enabled is not None:
-            pulumi.set(__self__, "x_forwarded_for_client_cert_finger_print_enabled", x_forwarded_for_client_cert_finger_print_enabled)
+            _setter("x_forwarded_for_client_cert_finger_print_enabled", x_forwarded_for_client_cert_finger_print_enabled)
         if x_forwarded_for_client_cert_issuer_dn_alias is not None:
-            pulumi.set(__self__, "x_forwarded_for_client_cert_issuer_dn_alias", x_forwarded_for_client_cert_issuer_dn_alias)
+            _setter("x_forwarded_for_client_cert_issuer_dn_alias", x_forwarded_for_client_cert_issuer_dn_alias)
         if x_forwarded_for_client_cert_issuer_dn_enabled is not None:
-            pulumi.set(__self__, "x_forwarded_for_client_cert_issuer_dn_enabled", x_forwarded_for_client_cert_issuer_dn_enabled)
+            _setter("x_forwarded_for_client_cert_issuer_dn_enabled", x_forwarded_for_client_cert_issuer_dn_enabled)
         if x_forwarded_for_client_cert_subject_dn_alias is not None:
-            pulumi.set(__self__, "x_forwarded_for_client_cert_subject_dn_alias", x_forwarded_for_client_cert_subject_dn_alias)
+            _setter("x_forwarded_for_client_cert_subject_dn_alias", x_forwarded_for_client_cert_subject_dn_alias)
         if x_forwarded_for_client_cert_subject_dn_enabled is not None:
-            pulumi.set(__self__, "x_forwarded_for_client_cert_subject_dn_enabled", x_forwarded_for_client_cert_subject_dn_enabled)
+            _setter("x_forwarded_for_client_cert_subject_dn_enabled", x_forwarded_for_client_cert_subject_dn_enabled)
         if x_forwarded_for_client_src_port_enabled is not None:
-            pulumi.set(__self__, "x_forwarded_for_client_src_port_enabled", x_forwarded_for_client_src_port_enabled)
+            _setter("x_forwarded_for_client_src_port_enabled", x_forwarded_for_client_src_port_enabled)
         if x_forwarded_for_enabled is not None:
-            pulumi.set(__self__, "x_forwarded_for_enabled", x_forwarded_for_enabled)
+            _setter("x_forwarded_for_enabled", x_forwarded_for_enabled)
         if x_forwarded_for_proto_enabled is not None:
-            pulumi.set(__self__, "x_forwarded_for_proto_enabled", x_forwarded_for_proto_enabled)
+            _setter("x_forwarded_for_proto_enabled", x_forwarded_for_proto_enabled)
         if x_forwarded_for_slb_id_enabled is not None:
-            pulumi.set(__self__, "x_forwarded_for_slb_id_enabled", x_forwarded_for_slb_id_enabled)
+            _setter("x_forwarded_for_slb_id_enabled", x_forwarded_for_slb_id_enabled)
         if x_forwarded_for_slb_port_enabled is not None:
-            pulumi.set(__self__, "x_forwarded_for_slb_port_enabled", x_forwarded_for_slb_port_enabled)
+            _setter("x_forwarded_for_slb_port_enabled", x_forwarded_for_slb_port_enabled)
 
     @property
     @pulumi.getter(name="xForwardedForClientCertClientVerifyAlias")
@@ -663,10 +804,21 @@ class LoadBalancerAccessLogConfigArgs:
         :param pulumi.Input[str] log_project: The log service that access logs are shipped to.
         :param pulumi.Input[str] log_store: The log service that access logs are shipped to.
         """
+        LoadBalancerAccessLogConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            log_project=log_project,
+            log_store=log_store,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             log_project: Optional[pulumi.Input[str]] = None,
+             log_store: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if log_project is not None:
-            pulumi.set(__self__, "log_project", log_project)
+            _setter("log_project", log_project)
         if log_store is not None:
-            pulumi.set(__self__, "log_store", log_store)
+            _setter("log_store", log_store)
 
     @property
     @pulumi.getter(name="logProject")
@@ -700,7 +852,16 @@ class LoadBalancerLoadBalancerBillingConfigArgs:
         """
         :param pulumi.Input[str] pay_type: The billing method of the ALB instance. Valid value: `PayAsYouGo`.
         """
-        pulumi.set(__self__, "pay_type", pay_type)
+        LoadBalancerLoadBalancerBillingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pay_type=pay_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pay_type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pay_type", pay_type)
 
     @property
     @pulumi.getter(name="payType")
@@ -724,10 +885,21 @@ class LoadBalancerModificationProtectionConfigArgs:
         :param pulumi.Input[str] reason: The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
         :param pulumi.Input[str] status: Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
         """
+        LoadBalancerModificationProtectionConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            reason=reason,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             reason: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if reason is not None:
-            pulumi.set(__self__, "reason", reason)
+            _setter("reason", reason)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -763,8 +935,19 @@ class LoadBalancerZoneMappingArgs:
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
         :param pulumi.Input[str] zone_id: The ID of the zone to which the ALB instance belongs.
         """
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        LoadBalancerZoneMappingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vswitch_id: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -819,24 +1002,51 @@ class RuleRuleActionArgs:
         :param pulumi.Input['RuleRuleActionTrafficLimitConfigArgs'] traffic_limit_config: The Flow speed limit. See `traffic_limit_config` below.
         :param pulumi.Input['RuleRuleActionTrafficMirrorConfigArgs'] traffic_mirror_config: The Traffic mirroring. See `traffic_mirror_config` below.
         """
-        pulumi.set(__self__, "order", order)
-        pulumi.set(__self__, "type", type)
+        RuleRuleActionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            order=order,
+            type=type,
+            cors_config=cors_config,
+            fixed_response_config=fixed_response_config,
+            forward_group_config=forward_group_config,
+            insert_header_config=insert_header_config,
+            redirect_config=redirect_config,
+            rewrite_config=rewrite_config,
+            traffic_limit_config=traffic_limit_config,
+            traffic_mirror_config=traffic_mirror_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             order: pulumi.Input[int],
+             type: pulumi.Input[str],
+             cors_config: Optional[pulumi.Input['RuleRuleActionCorsConfigArgs']] = None,
+             fixed_response_config: Optional[pulumi.Input['RuleRuleActionFixedResponseConfigArgs']] = None,
+             forward_group_config: Optional[pulumi.Input['RuleRuleActionForwardGroupConfigArgs']] = None,
+             insert_header_config: Optional[pulumi.Input['RuleRuleActionInsertHeaderConfigArgs']] = None,
+             redirect_config: Optional[pulumi.Input['RuleRuleActionRedirectConfigArgs']] = None,
+             rewrite_config: Optional[pulumi.Input['RuleRuleActionRewriteConfigArgs']] = None,
+             traffic_limit_config: Optional[pulumi.Input['RuleRuleActionTrafficLimitConfigArgs']] = None,
+             traffic_mirror_config: Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("order", order)
+        _setter("type", type)
         if cors_config is not None:
-            pulumi.set(__self__, "cors_config", cors_config)
+            _setter("cors_config", cors_config)
         if fixed_response_config is not None:
-            pulumi.set(__self__, "fixed_response_config", fixed_response_config)
+            _setter("fixed_response_config", fixed_response_config)
         if forward_group_config is not None:
-            pulumi.set(__self__, "forward_group_config", forward_group_config)
+            _setter("forward_group_config", forward_group_config)
         if insert_header_config is not None:
-            pulumi.set(__self__, "insert_header_config", insert_header_config)
+            _setter("insert_header_config", insert_header_config)
         if redirect_config is not None:
-            pulumi.set(__self__, "redirect_config", redirect_config)
+            _setter("redirect_config", redirect_config)
         if rewrite_config is not None:
-            pulumi.set(__self__, "rewrite_config", rewrite_config)
+            _setter("rewrite_config", rewrite_config)
         if traffic_limit_config is not None:
-            pulumi.set(__self__, "traffic_limit_config", traffic_limit_config)
+            _setter("traffic_limit_config", traffic_limit_config)
         if traffic_mirror_config is not None:
-            pulumi.set(__self__, "traffic_mirror_config", traffic_mirror_config)
+            _setter("traffic_mirror_config", traffic_mirror_config)
 
     @property
     @pulumi.getter
@@ -979,18 +1189,37 @@ class RuleRuleActionCorsConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The headers that can be exposed.
         :param pulumi.Input[int] max_age: The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
         """
+        RuleRuleActionCorsConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allow_credentials=allow_credentials,
+            allow_headers=allow_headers,
+            allow_methods=allow_methods,
+            allow_origins=allow_origins,
+            expose_headers=expose_headers,
+            max_age=max_age,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allow_credentials: Optional[pulumi.Input[str]] = None,
+             allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             allow_methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             allow_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             max_age: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allow_credentials is not None:
-            pulumi.set(__self__, "allow_credentials", allow_credentials)
+            _setter("allow_credentials", allow_credentials)
         if allow_headers is not None:
-            pulumi.set(__self__, "allow_headers", allow_headers)
+            _setter("allow_headers", allow_headers)
         if allow_methods is not None:
-            pulumi.set(__self__, "allow_methods", allow_methods)
+            _setter("allow_methods", allow_methods)
         if allow_origins is not None:
-            pulumi.set(__self__, "allow_origins", allow_origins)
+            _setter("allow_origins", allow_origins)
         if expose_headers is not None:
-            pulumi.set(__self__, "expose_headers", expose_headers)
+            _setter("expose_headers", expose_headers)
         if max_age is not None:
-            pulumi.set(__self__, "max_age", max_age)
+            _setter("max_age", max_age)
 
     @property
     @pulumi.getter(name="allowCredentials")
@@ -1074,13 +1303,26 @@ class RuleRuleActionFixedResponseConfigArgs:
         """
         :param pulumi.Input[str] content: The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
         :param pulumi.Input[str] content_type: The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
-        :param pulumi.Input[str] http_code: The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+        :param pulumi.Input[str] http_code: The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
         """
-        pulumi.set(__self__, "content", content)
+        RuleRuleActionFixedResponseConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            content_type=content_type,
+            http_code=http_code,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: pulumi.Input[str],
+             content_type: Optional[pulumi.Input[str]] = None,
+             http_code: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("content", content)
         if content_type is not None:
-            pulumi.set(__self__, "content_type", content_type)
+            _setter("content_type", content_type)
         if http_code is not None:
-            pulumi.set(__self__, "http_code", http_code)
+            _setter("http_code", http_code)
 
     @property
     @pulumi.getter
@@ -1110,7 +1352,7 @@ class RuleRuleActionFixedResponseConfigArgs:
     @pulumi.getter(name="httpCode")
     def http_code(self) -> Optional[pulumi.Input[str]]:
         """
-        The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+        The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
         """
         return pulumi.get(self, "http_code")
 
@@ -1128,10 +1370,21 @@ class RuleRuleActionForwardGroupConfigArgs:
         :param pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs'] server_group_sticky_session: The configuration of session persistence for server groups. See `server_group_sticky_session` below.
         :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgs']]] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below.
         """
+        RuleRuleActionForwardGroupConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_group_sticky_session=server_group_sticky_session,
+            server_group_tuples=server_group_tuples,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_group_sticky_session: Optional[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs']] = None,
+             server_group_tuples: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionForwardGroupConfigServerGroupTupleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if server_group_sticky_session is not None:
-            pulumi.set(__self__, "server_group_sticky_session", server_group_sticky_session)
+            _setter("server_group_sticky_session", server_group_sticky_session)
         if server_group_tuples is not None:
-            pulumi.set(__self__, "server_group_tuples", server_group_tuples)
+            _setter("server_group_tuples", server_group_tuples)
 
     @property
     @pulumi.getter(name="serverGroupStickySession")
@@ -1167,10 +1420,21 @@ class RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs:
         :param pulumi.Input[bool] enabled: Whether to enable session persistence.
         :param pulumi.Input[int] timeout: The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
         """
+        RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter
@@ -1206,10 +1470,21 @@ class RuleRuleActionForwardGroupConfigServerGroupTupleArgs:
         :param pulumi.Input[str] server_group_id: The ID of the destination server group to which requests are forwarded.
         :param pulumi.Input[int] weight: The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
         """
+        RuleRuleActionForwardGroupConfigServerGroupTupleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_group_id=server_group_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_group_id: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if server_group_id is not None:
-            pulumi.set(__self__, "server_group_id", server_group_id)
+            _setter("server_group_id", server_group_id)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="serverGroupId")
@@ -1248,12 +1523,25 @@ class RuleRuleActionInsertHeaderConfigArgs:
                * If the `value_type` is set to `SystemDefined`, the following values are used:
         :param pulumi.Input[str] value_type: The value type of the inserted header field. Valid values:
         """
+        RuleRuleActionInsertHeaderConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+            value_type=value_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             value_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
         if value_type is not None:
-            pulumi.set(__self__, "value_type", value_type)
+            _setter("value_type", value_type)
 
     @property
     @pulumi.getter
@@ -1303,31 +1591,50 @@ class RuleRuleActionRedirectConfigArgs:
                  protocol: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] host: The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-        :param pulumi.Input[str] http_code: The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
-        :param pulumi.Input[str] path: The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+        :param pulumi.Input[str] host: The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        :param pulumi.Input[str] http_code: The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+        :param pulumi.Input[str] path: The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
         :param pulumi.Input[str] port: The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
         :param pulumi.Input[str] protocol: The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
-        :param pulumi.Input[str] query: The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+        :param pulumi.Input[str] query: The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
         """
+        RuleRuleActionRedirectConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host=host,
+            http_code=http_code,
+            path=path,
+            port=port,
+            protocol=protocol,
+            query=query,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host: Optional[pulumi.Input[str]] = None,
+             http_code: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             query: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if http_code is not None:
-            pulumi.set(__self__, "http_code", http_code)
+            _setter("http_code", http_code)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if query is not None:
-            pulumi.set(__self__, "query", query)
+            _setter("query", query)
 
     @property
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
         """
         return pulumi.get(self, "host")
 
@@ -1339,7 +1646,7 @@ class RuleRuleActionRedirectConfigArgs:
     @pulumi.getter(name="httpCode")
     def http_code(self) -> Optional[pulumi.Input[str]]:
         """
-        The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+        The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
         """
         return pulumi.get(self, "http_code")
 
@@ -1351,7 +1658,7 @@ class RuleRuleActionRedirectConfigArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+        The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
         """
         return pulumi.get(self, "path")
 
@@ -1387,7 +1694,7 @@ class RuleRuleActionRedirectConfigArgs:
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input[str]]:
         """
-        The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+        The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
         """
         return pulumi.get(self, "query")
 
@@ -1403,22 +1710,35 @@ class RuleRuleActionRewriteConfigArgs:
                  path: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] host: The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-        :param pulumi.Input[str] path: The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
-        :param pulumi.Input[str] query: The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+        :param pulumi.Input[str] host: The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        :param pulumi.Input[str] path: The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
+        :param pulumi.Input[str] query: The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
         """
+        RuleRuleActionRewriteConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host=host,
+            path=path,
+            query=query,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             query: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if query is not None:
-            pulumi.set(__self__, "query", query)
+            _setter("query", query)
 
     @property
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        The host name of the destination to which requests are directed. The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+        The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
         """
         return pulumi.get(self, "host")
 
@@ -1430,7 +1750,7 @@ class RuleRuleActionRewriteConfigArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path of the destination to which requests are directed. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
+        The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
         """
         return pulumi.get(self, "path")
 
@@ -1442,7 +1762,7 @@ class RuleRuleActionRewriteConfigArgs:
     @pulumi.getter
     def query(self) -> Optional[pulumi.Input[str]]:
         """
-        The query string of the request to be redirected. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
+        The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \\ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
         """
         return pulumi.get(self, "query")
 
@@ -1458,8 +1778,17 @@ class RuleRuleActionTrafficLimitConfigArgs:
         """
         :param pulumi.Input[int] qps: The Number of requests per second. Valid values: `1` to `100000`.
         """
+        RuleRuleActionTrafficLimitConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            qps=qps,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             qps: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if qps is not None:
-            pulumi.set(__self__, "qps", qps)
+            _setter("qps", qps)
 
     @property
     @pulumi.getter
@@ -1483,10 +1812,21 @@ class RuleRuleActionTrafficMirrorConfigArgs:
         :param pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs'] mirror_group_config: The Traffic is mirrored to the server group. See `mirror_group_config` below.
         :param pulumi.Input[str] target_type: The Mirror target type.
         """
+        RuleRuleActionTrafficMirrorConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mirror_group_config=mirror_group_config,
+            target_type=target_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mirror_group_config: Optional[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs']] = None,
+             target_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if mirror_group_config is not None:
-            pulumi.set(__self__, "mirror_group_config", mirror_group_config)
+            _setter("mirror_group_config", mirror_group_config)
         if target_type is not None:
-            pulumi.set(__self__, "target_type", target_type)
+            _setter("target_type", target_type)
 
     @property
     @pulumi.getter(name="mirrorGroupConfig")
@@ -1520,8 +1860,17 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]] server_group_tuples: The destination server group to which requests are forwarded. See `server_group_tuples` below.
         """
+        RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_group_tuples=server_group_tuples,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_group_tuples: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if server_group_tuples is not None:
-            pulumi.set(__self__, "server_group_tuples", server_group_tuples)
+            _setter("server_group_tuples", server_group_tuples)
 
     @property
     @pulumi.getter(name="serverGroupTuples")
@@ -1543,8 +1892,17 @@ class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs:
         """
         :param pulumi.Input[str] server_group_id: The ID of the destination server group to which requests are forwarded.
         """
+        RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_group_id=server_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if server_group_id is not None:
-            pulumi.set(__self__, "server_group_id", server_group_id)
+            _setter("server_group_id", server_group_id)
 
     @property
     @pulumi.getter(name="serverGroupId")
@@ -1580,21 +1938,44 @@ class RuleRuleConditionArgs:
         :param pulumi.Input['RuleRuleConditionQueryStringConfigArgs'] query_string_config: The configuration of the query string. See `query_string_config` below.
         :param pulumi.Input['RuleRuleConditionSourceIpConfigArgs'] source_ip_config: The Based on source IP traffic matching. Required and valid when Type is SourceIP. See `source_ip_config` below.
         """
-        pulumi.set(__self__, "type", type)
+        RuleRuleConditionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            cookie_config=cookie_config,
+            header_config=header_config,
+            host_config=host_config,
+            method_config=method_config,
+            path_config=path_config,
+            query_string_config=query_string_config,
+            source_ip_config=source_ip_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: pulumi.Input[str],
+             cookie_config: Optional[pulumi.Input['RuleRuleConditionCookieConfigArgs']] = None,
+             header_config: Optional[pulumi.Input['RuleRuleConditionHeaderConfigArgs']] = None,
+             host_config: Optional[pulumi.Input['RuleRuleConditionHostConfigArgs']] = None,
+             method_config: Optional[pulumi.Input['RuleRuleConditionMethodConfigArgs']] = None,
+             path_config: Optional[pulumi.Input['RuleRuleConditionPathConfigArgs']] = None,
+             query_string_config: Optional[pulumi.Input['RuleRuleConditionQueryStringConfigArgs']] = None,
+             source_ip_config: Optional[pulumi.Input['RuleRuleConditionSourceIpConfigArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if cookie_config is not None:
-            pulumi.set(__self__, "cookie_config", cookie_config)
+            _setter("cookie_config", cookie_config)
         if header_config is not None:
-            pulumi.set(__self__, "header_config", header_config)
+            _setter("header_config", header_config)
         if host_config is not None:
-            pulumi.set(__self__, "host_config", host_config)
+            _setter("host_config", host_config)
         if method_config is not None:
-            pulumi.set(__self__, "method_config", method_config)
+            _setter("method_config", method_config)
         if path_config is not None:
-            pulumi.set(__self__, "path_config", path_config)
+            _setter("path_config", path_config)
         if query_string_config is not None:
-            pulumi.set(__self__, "query_string_config", query_string_config)
+            _setter("query_string_config", query_string_config)
         if source_ip_config is not None:
-            pulumi.set(__self__, "source_ip_config", source_ip_config)
+            _setter("source_ip_config", source_ip_config)
 
     @property
     @pulumi.getter
@@ -1698,16 +2079,25 @@ class RuleRuleConditionCookieConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionCookieConfigValueArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionCookieConfigValueArgs']]] values: The values of the cookie. See `values` below.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionCookieConfigValueArgs']]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
+        RuleRuleConditionCookieConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionCookieConfigValueArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionCookieConfigValueArgs']]]]:
         """
-        The values of the cookie. See `values` below.
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
         return pulumi.get(self, "values")
 
@@ -1726,10 +2116,21 @@ class RuleRuleConditionCookieConfigValueArgs:
         :param pulumi.Input[str] value: The content of the inserted header field. Valid values:
                * If the `value_type` is set to `SystemDefined`, the following values are used:
         """
+        RuleRuleConditionCookieConfigValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1764,12 +2165,23 @@ class RuleRuleConditionHeaderConfigArgs:
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The values of the cookie. See `values` below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
+        RuleRuleConditionHeaderConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -1787,7 +2199,7 @@ class RuleRuleConditionHeaderConfigArgs:
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The values of the cookie. See `values` below.
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
         return pulumi.get(self, "values")
 
@@ -1801,16 +2213,25 @@ class RuleRuleConditionHostConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The values of the cookie. See `values` below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
+        RuleRuleConditionHostConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The values of the cookie. See `values` below.
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
         return pulumi.get(self, "values")
 
@@ -1824,16 +2245,25 @@ class RuleRuleConditionMethodConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The values of the cookie. See `values` below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
+        RuleRuleConditionMethodConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The values of the cookie. See `values` below.
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
         return pulumi.get(self, "values")
 
@@ -1847,16 +2277,25 @@ class RuleRuleConditionPathConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The values of the cookie. See `values` below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
+        RuleRuleConditionPathConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The values of the cookie. See `values` below.
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
         return pulumi.get(self, "values")
 
@@ -1870,16 +2309,25 @@ class RuleRuleConditionQueryStringConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionQueryStringConfigValueArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionQueryStringConfigValueArgs']]] values: The values of the cookie. See `values` below.
+        :param pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionQueryStringConfigValueArgs']]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
+        RuleRuleConditionQueryStringConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionQueryStringConfigValueArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionQueryStringConfigValueArgs']]]]:
         """
-        The values of the cookie. See `values` below.
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
         return pulumi.get(self, "values")
 
@@ -1898,10 +2346,21 @@ class RuleRuleConditionQueryStringConfigValueArgs:
         :param pulumi.Input[str] value: The content of the inserted header field. Valid values:
                * If the `value_type` is set to `SystemDefined`, the following values are used:
         """
+        RuleRuleConditionQueryStringConfigValueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1934,16 +2393,25 @@ class RuleRuleConditionSourceIpConfigArgs:
     def __init__(__self__, *,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: The values of the cookie. See `values` below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
+        RuleRuleConditionSourceIpConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
     def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The values of the cookie. See `values` below.
+        Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
         """
         return pulumi.get(self, "values")
 
@@ -1982,30 +2450,61 @@ class ServerGroupHealthCheckConfigArgs:
         :param pulumi.Input[int] healthy_threshold: The number of health checks that an unhealthy backend server must pass consecutively before it is declared healthy. In this case, the health check state is changed from fail to success. Valid values: 2 to 10. Default value: 3.
         :param pulumi.Input[int] unhealthy_threshold: The number of consecutive health checks that a healthy backend server must consecutively fail before it is declared unhealthy. In this case, the health check state is changed from success to fail. Valid values: `2` to `10`. Default value: `3`.
         """
+        ServerGroupHealthCheckConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            health_check_codes=health_check_codes,
+            health_check_connect_port=health_check_connect_port,
+            health_check_enabled=health_check_enabled,
+            health_check_host=health_check_host,
+            health_check_http_version=health_check_http_version,
+            health_check_interval=health_check_interval,
+            health_check_method=health_check_method,
+            health_check_path=health_check_path,
+            health_check_protocol=health_check_protocol,
+            health_check_timeout=health_check_timeout,
+            healthy_threshold=healthy_threshold,
+            unhealthy_threshold=unhealthy_threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             health_check_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             health_check_connect_port: Optional[pulumi.Input[int]] = None,
+             health_check_enabled: Optional[pulumi.Input[bool]] = None,
+             health_check_host: Optional[pulumi.Input[str]] = None,
+             health_check_http_version: Optional[pulumi.Input[str]] = None,
+             health_check_interval: Optional[pulumi.Input[int]] = None,
+             health_check_method: Optional[pulumi.Input[str]] = None,
+             health_check_path: Optional[pulumi.Input[str]] = None,
+             health_check_protocol: Optional[pulumi.Input[str]] = None,
+             health_check_timeout: Optional[pulumi.Input[int]] = None,
+             healthy_threshold: Optional[pulumi.Input[int]] = None,
+             unhealthy_threshold: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if health_check_codes is not None:
-            pulumi.set(__self__, "health_check_codes", health_check_codes)
+            _setter("health_check_codes", health_check_codes)
         if health_check_connect_port is not None:
-            pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
+            _setter("health_check_connect_port", health_check_connect_port)
         if health_check_enabled is not None:
-            pulumi.set(__self__, "health_check_enabled", health_check_enabled)
+            _setter("health_check_enabled", health_check_enabled)
         if health_check_host is not None:
-            pulumi.set(__self__, "health_check_host", health_check_host)
+            _setter("health_check_host", health_check_host)
         if health_check_http_version is not None:
-            pulumi.set(__self__, "health_check_http_version", health_check_http_version)
+            _setter("health_check_http_version", health_check_http_version)
         if health_check_interval is not None:
-            pulumi.set(__self__, "health_check_interval", health_check_interval)
+            _setter("health_check_interval", health_check_interval)
         if health_check_method is not None:
-            pulumi.set(__self__, "health_check_method", health_check_method)
+            _setter("health_check_method", health_check_method)
         if health_check_path is not None:
-            pulumi.set(__self__, "health_check_path", health_check_path)
+            _setter("health_check_path", health_check_path)
         if health_check_protocol is not None:
-            pulumi.set(__self__, "health_check_protocol", health_check_protocol)
+            _setter("health_check_protocol", health_check_protocol)
         if health_check_timeout is not None:
-            pulumi.set(__self__, "health_check_timeout", health_check_timeout)
+            _setter("health_check_timeout", health_check_timeout)
         if healthy_threshold is not None:
-            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+            _setter("healthy_threshold", healthy_threshold)
         if unhealthy_threshold is not None:
-            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+            _setter("unhealthy_threshold", unhealthy_threshold)
 
     @property
     @pulumi.getter(name="healthCheckCodes")
@@ -2183,20 +2682,43 @@ class ServerGroupServerArgs:
         :param pulumi.Input[int] weight: The weight of the server. Valid values: `0` to `100`. Default value: `100`. If the value is set to `0`, no
                requests are forwarded to the server. **Note:** You do not need to set this parameter if you set `server_type` to `Fc`.
         """
-        pulumi.set(__self__, "server_id", server_id)
-        pulumi.set(__self__, "server_type", server_type)
+        ServerGroupServerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_id=server_id,
+            server_type=server_type,
+            description=description,
+            port=port,
+            remote_ip_enabled=remote_ip_enabled,
+            server_ip=server_ip,
+            status=status,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_id: pulumi.Input[str],
+             server_type: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             remote_ip_enabled: Optional[pulumi.Input[bool]] = None,
+             server_ip: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("server_id", server_id)
+        _setter("server_type", server_type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if remote_ip_enabled is not None:
-            pulumi.set(__self__, "remote_ip_enabled", remote_ip_enabled)
+            _setter("remote_ip_enabled", remote_ip_enabled)
         if server_ip is not None:
-            pulumi.set(__self__, "server_ip", server_ip)
+            _setter("server_ip", server_ip)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="serverId")
@@ -2320,14 +2842,29 @@ class ServerGroupStickySessionConfigArgs:
                value: `false`.  **NOTE:** This parameter exists if the `StickySession` parameter is set to `On`.
         :param pulumi.Input[str] sticky_session_type: The method that is used to handle a cookie. Values: `Server` and `Insert`.
         """
+        ServerGroupStickySessionConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cookie=cookie,
+            cookie_timeout=cookie_timeout,
+            sticky_session_enabled=sticky_session_enabled,
+            sticky_session_type=sticky_session_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cookie: Optional[pulumi.Input[str]] = None,
+             cookie_timeout: Optional[pulumi.Input[int]] = None,
+             sticky_session_enabled: Optional[pulumi.Input[bool]] = None,
+             sticky_session_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cookie is not None:
-            pulumi.set(__self__, "cookie", cookie)
+            _setter("cookie", cookie)
         if cookie_timeout is not None:
-            pulumi.set(__self__, "cookie_timeout", cookie_timeout)
+            _setter("cookie_timeout", cookie_timeout)
         if sticky_session_enabled is not None:
-            pulumi.set(__self__, "sticky_session_enabled", sticky_session_enabled)
+            _setter("sticky_session_enabled", sticky_session_enabled)
         if sticky_session_type is not None:
-            pulumi.set(__self__, "sticky_session_type", sticky_session_type)
+            _setter("sticky_session_type", sticky_session_type)
 
     @property
     @pulumi.getter

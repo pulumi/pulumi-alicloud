@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AlarmContactGroupArgs', 'AlarmContactGroup']
@@ -25,13 +25,28 @@ class AlarmContactGroupArgs:
         :param pulumi.Input[str] describe: The description of the alert group.
         :param pulumi.Input[bool] enable_subscribed: Whether to open weekly subscription.
         """
-        pulumi.set(__self__, "alarm_contact_group_name", alarm_contact_group_name)
+        AlarmContactGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alarm_contact_group_name=alarm_contact_group_name,
+            contacts=contacts,
+            describe=describe,
+            enable_subscribed=enable_subscribed,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alarm_contact_group_name: pulumi.Input[str],
+             contacts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             describe: Optional[pulumi.Input[str]] = None,
+             enable_subscribed: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alarm_contact_group_name", alarm_contact_group_name)
         if contacts is not None:
-            pulumi.set(__self__, "contacts", contacts)
+            _setter("contacts", contacts)
         if describe is not None:
-            pulumi.set(__self__, "describe", describe)
+            _setter("describe", describe)
         if enable_subscribed is not None:
-            pulumi.set(__self__, "enable_subscribed", enable_subscribed)
+            _setter("enable_subscribed", enable_subscribed)
 
     @property
     @pulumi.getter(name="alarmContactGroupName")
@@ -96,14 +111,29 @@ class _AlarmContactGroupState:
         :param pulumi.Input[str] describe: The description of the alert group.
         :param pulumi.Input[bool] enable_subscribed: Whether to open weekly subscription.
         """
+        _AlarmContactGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alarm_contact_group_name=alarm_contact_group_name,
+            contacts=contacts,
+            describe=describe,
+            enable_subscribed=enable_subscribed,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alarm_contact_group_name: Optional[pulumi.Input[str]] = None,
+             contacts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             describe: Optional[pulumi.Input[str]] = None,
+             enable_subscribed: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alarm_contact_group_name is not None:
-            pulumi.set(__self__, "alarm_contact_group_name", alarm_contact_group_name)
+            _setter("alarm_contact_group_name", alarm_contact_group_name)
         if contacts is not None:
-            pulumi.set(__self__, "contacts", contacts)
+            _setter("contacts", contacts)
         if describe is not None:
-            pulumi.set(__self__, "describe", describe)
+            _setter("describe", describe)
         if enable_subscribed is not None:
-            pulumi.set(__self__, "enable_subscribed", enable_subscribed)
+            _setter("enable_subscribed", enable_subscribed)
 
     @property
     @pulumi.getter(name="alarmContactGroupName")
@@ -239,6 +269,10 @@ class AlarmContactGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AlarmContactGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

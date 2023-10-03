@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class ManagedKubernetesRuntime
     {
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// This parameter specifies the name of the component.
         /// </summary>
         public readonly string? Name;
         /// <summary>

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -28,10 +28,21 @@ class InstanceDataDisk(dict):
                - local_ssd：Local disk ssd.
         :param int size: Data disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
         """
+        InstanceDataDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[str] = None,
+             size: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
 
     @property
     @pulumi.getter
@@ -61,8 +72,17 @@ class InstanceSystemDisk(dict):
         """
         :param int size: System disk size, cloud_efficiency is 20-32000,cloud_ssd/local_hdd/local_ssd is 20-25000, unit: GB.
         """
+        InstanceSystemDisk._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             size: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
 
     @property
     @pulumi.getter
@@ -88,11 +108,28 @@ class GetKeyPairsPairResult(dict):
         :param str key_pair_name: The name of the key pair.
         :param str version: The version number.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "key_pair_finger_print", key_pair_finger_print)
-        pulumi.set(__self__, "key_pair_name", key_pair_name)
-        pulumi.set(__self__, "version", version)
+        GetKeyPairsPairResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            id=id,
+            key_pair_finger_print=key_pair_finger_print,
+            key_pair_name=key_pair_name,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             id: str,
+             key_pair_finger_print: str,
+             key_pair_name: str,
+             version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("key_pair_finger_print", key_pair_finger_print)
+        _setter("key_pair_name", key_pair_name)
+        _setter("version", version)
 
     @property
     @pulumi.getter(name="createTime")

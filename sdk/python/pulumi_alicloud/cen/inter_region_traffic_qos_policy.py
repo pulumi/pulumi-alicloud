@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InterRegionTrafficQosPolicyArgs', 'InterRegionTrafficQosPolicy']
@@ -25,12 +25,27 @@ class InterRegionTrafficQosPolicyArgs:
         :param pulumi.Input[str] inter_region_traffic_qos_policy_description: The description of the QoS policy. The description must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
         :param pulumi.Input[str] inter_region_traffic_qos_policy_name: The name of the QoS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         """
-        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
-        pulumi.set(__self__, "transit_router_id", transit_router_id)
+        InterRegionTrafficQosPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            transit_router_attachment_id=transit_router_attachment_id,
+            transit_router_id=transit_router_id,
+            inter_region_traffic_qos_policy_description=inter_region_traffic_qos_policy_description,
+            inter_region_traffic_qos_policy_name=inter_region_traffic_qos_policy_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             transit_router_attachment_id: pulumi.Input[str],
+             transit_router_id: pulumi.Input[str],
+             inter_region_traffic_qos_policy_description: Optional[pulumi.Input[str]] = None,
+             inter_region_traffic_qos_policy_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("transit_router_attachment_id", transit_router_attachment_id)
+        _setter("transit_router_id", transit_router_id)
         if inter_region_traffic_qos_policy_description is not None:
-            pulumi.set(__self__, "inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
+            _setter("inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
         if inter_region_traffic_qos_policy_name is not None:
-            pulumi.set(__self__, "inter_region_traffic_qos_policy_name", inter_region_traffic_qos_policy_name)
+            _setter("inter_region_traffic_qos_policy_name", inter_region_traffic_qos_policy_name)
 
     @property
     @pulumi.getter(name="transitRouterAttachmentId")
@@ -97,16 +112,33 @@ class _InterRegionTrafficQosPolicyState:
         :param pulumi.Input[str] transit_router_attachment_id: The ID of the inter-region connection.
         :param pulumi.Input[str] transit_router_id: The ID of the transit router.
         """
+        _InterRegionTrafficQosPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            inter_region_traffic_qos_policy_description=inter_region_traffic_qos_policy_description,
+            inter_region_traffic_qos_policy_name=inter_region_traffic_qos_policy_name,
+            status=status,
+            transit_router_attachment_id=transit_router_attachment_id,
+            transit_router_id=transit_router_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             inter_region_traffic_qos_policy_description: Optional[pulumi.Input[str]] = None,
+             inter_region_traffic_qos_policy_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if inter_region_traffic_qos_policy_description is not None:
-            pulumi.set(__self__, "inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
+            _setter("inter_region_traffic_qos_policy_description", inter_region_traffic_qos_policy_description)
         if inter_region_traffic_qos_policy_name is not None:
-            pulumi.set(__self__, "inter_region_traffic_qos_policy_name", inter_region_traffic_qos_policy_name)
+            _setter("inter_region_traffic_qos_policy_name", inter_region_traffic_qos_policy_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if transit_router_attachment_id is not None:
-            pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+            _setter("transit_router_attachment_id", transit_router_attachment_id)
         if transit_router_id is not None:
-            pulumi.set(__self__, "transit_router_id", transit_router_id)
+            _setter("transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter(name="interRegionTrafficQosPolicyDescription")
@@ -314,6 +346,10 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InterRegionTrafficQosPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupContainerReadinessProbeTcpSocket
     {
         /// <summary>
-        /// The port number. Valid values: `1` to `65535`.
+        /// When using the HTTP request method for health check, the port number for HTTP Get request detection.
         /// </summary>
         public readonly int? Port;
 

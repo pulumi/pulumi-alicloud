@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['VswitchCidrReservationArgs', 'VswitchCidrReservation']
@@ -31,19 +31,40 @@ class VswitchCidrReservationArgs:
         :param pulumi.Input[str] ip_version: Reserved ip version of network segment, valid values: `IPv4`, `IPv6`, default IPv4.
         :param pulumi.Input[str] vswitch_cidr_reservation_name: The name of the resource.
         """
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        VswitchCidrReservationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vswitch_id=vswitch_id,
+            cidr_reservation_cidr=cidr_reservation_cidr,
+            cidr_reservation_description=cidr_reservation_description,
+            cidr_reservation_mask=cidr_reservation_mask,
+            cidr_reservation_type=cidr_reservation_type,
+            ip_version=ip_version,
+            vswitch_cidr_reservation_name=vswitch_cidr_reservation_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vswitch_id: pulumi.Input[str],
+             cidr_reservation_cidr: Optional[pulumi.Input[str]] = None,
+             cidr_reservation_description: Optional[pulumi.Input[str]] = None,
+             cidr_reservation_mask: Optional[pulumi.Input[str]] = None,
+             cidr_reservation_type: Optional[pulumi.Input[str]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             vswitch_cidr_reservation_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("vswitch_id", vswitch_id)
         if cidr_reservation_cidr is not None:
-            pulumi.set(__self__, "cidr_reservation_cidr", cidr_reservation_cidr)
+            _setter("cidr_reservation_cidr", cidr_reservation_cidr)
         if cidr_reservation_description is not None:
-            pulumi.set(__self__, "cidr_reservation_description", cidr_reservation_description)
+            _setter("cidr_reservation_description", cidr_reservation_description)
         if cidr_reservation_mask is not None:
-            pulumi.set(__self__, "cidr_reservation_mask", cidr_reservation_mask)
+            _setter("cidr_reservation_mask", cidr_reservation_mask)
         if cidr_reservation_type is not None:
-            pulumi.set(__self__, "cidr_reservation_type", cidr_reservation_type)
+            _setter("cidr_reservation_type", cidr_reservation_type)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if vswitch_cidr_reservation_name is not None:
-            pulumi.set(__self__, "vswitch_cidr_reservation_name", vswitch_cidr_reservation_name)
+            _setter("vswitch_cidr_reservation_name", vswitch_cidr_reservation_name)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -158,28 +179,57 @@ class _VswitchCidrReservationState:
         :param pulumi.Input[str] vswitch_cidr_reservation_name: The name of the resource.
         :param pulumi.Input[str] vswitch_id: The Id of the switch instance.
         """
+        _VswitchCidrReservationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_reservation_cidr=cidr_reservation_cidr,
+            cidr_reservation_description=cidr_reservation_description,
+            cidr_reservation_mask=cidr_reservation_mask,
+            cidr_reservation_type=cidr_reservation_type,
+            create_time=create_time,
+            ip_version=ip_version,
+            status=status,
+            vpc_id=vpc_id,
+            vswitch_cidr_reservation_id=vswitch_cidr_reservation_id,
+            vswitch_cidr_reservation_name=vswitch_cidr_reservation_name,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_reservation_cidr: Optional[pulumi.Input[str]] = None,
+             cidr_reservation_description: Optional[pulumi.Input[str]] = None,
+             cidr_reservation_mask: Optional[pulumi.Input[str]] = None,
+             cidr_reservation_type: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             ip_version: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_cidr_reservation_id: Optional[pulumi.Input[str]] = None,
+             vswitch_cidr_reservation_name: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr_reservation_cidr is not None:
-            pulumi.set(__self__, "cidr_reservation_cidr", cidr_reservation_cidr)
+            _setter("cidr_reservation_cidr", cidr_reservation_cidr)
         if cidr_reservation_description is not None:
-            pulumi.set(__self__, "cidr_reservation_description", cidr_reservation_description)
+            _setter("cidr_reservation_description", cidr_reservation_description)
         if cidr_reservation_mask is not None:
-            pulumi.set(__self__, "cidr_reservation_mask", cidr_reservation_mask)
+            _setter("cidr_reservation_mask", cidr_reservation_mask)
         if cidr_reservation_type is not None:
-            pulumi.set(__self__, "cidr_reservation_type", cidr_reservation_type)
+            _setter("cidr_reservation_type", cidr_reservation_type)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if ip_version is not None:
-            pulumi.set(__self__, "ip_version", ip_version)
+            _setter("ip_version", ip_version)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_cidr_reservation_id is not None:
-            pulumi.set(__self__, "vswitch_cidr_reservation_id", vswitch_cidr_reservation_id)
+            _setter("vswitch_cidr_reservation_id", vswitch_cidr_reservation_id)
         if vswitch_cidr_reservation_name is not None:
-            pulumi.set(__self__, "vswitch_cidr_reservation_name", vswitch_cidr_reservation_name)
+            _setter("vswitch_cidr_reservation_name", vswitch_cidr_reservation_name)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="cidrReservationCidr")
@@ -443,6 +493,10 @@ class VswitchCidrReservation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            VswitchCidrReservationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

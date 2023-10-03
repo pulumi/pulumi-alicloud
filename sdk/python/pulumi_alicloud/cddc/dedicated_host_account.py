@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DedicatedHostAccountArgs', 'DedicatedHostAccount']
@@ -25,11 +25,26 @@ class DedicatedHostAccountArgs:
         :param pulumi.Input[str] dedicated_host_id: The ID of Dedicated the host.
         :param pulumi.Input[str] account_type: The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
         """
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_password", account_password)
-        pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
+        DedicatedHostAccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_name=account_name,
+            account_password=account_password,
+            dedicated_host_id=dedicated_host_id,
+            account_type=account_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_name: pulumi.Input[str],
+             account_password: pulumi.Input[str],
+             dedicated_host_id: pulumi.Input[str],
+             account_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_name", account_name)
+        _setter("account_password", account_password)
+        _setter("dedicated_host_id", dedicated_host_id)
         if account_type is not None:
-            pulumi.set(__self__, "account_type", account_type)
+            _setter("account_type", account_type)
 
     @property
     @pulumi.getter(name="accountName")
@@ -94,14 +109,29 @@ class _DedicatedHostAccountState:
         :param pulumi.Input[str] account_type: The type of the Dedicated host account. Valid values: `Admin`, `Normal`.
         :param pulumi.Input[str] dedicated_host_id: The ID of Dedicated the host.
         """
+        _DedicatedHostAccountState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_name=account_name,
+            account_password=account_password,
+            account_type=account_type,
+            dedicated_host_id=dedicated_host_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_name: Optional[pulumi.Input[str]] = None,
+             account_password: Optional[pulumi.Input[str]] = None,
+             account_type: Optional[pulumi.Input[str]] = None,
+             dedicated_host_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_name is not None:
-            pulumi.set(__self__, "account_name", account_name)
+            _setter("account_name", account_name)
         if account_password is not None:
-            pulumi.set(__self__, "account_password", account_password)
+            _setter("account_password", account_password)
         if account_type is not None:
-            pulumi.set(__self__, "account_type", account_type)
+            _setter("account_type", account_type)
         if dedicated_host_id is not None:
-            pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
+            _setter("dedicated_host_id", dedicated_host_id)
 
     @property
     @pulumi.getter(name="accountName")
@@ -323,6 +353,10 @@ class DedicatedHostAccount(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DedicatedHostAccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -40,8 +40,17 @@ class AnycastEipAddressAttachmentPopLocation(dict):
         """
         :param str pop_location: The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas.
         """
+        AnycastEipAddressAttachmentPopLocation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pop_location=pop_location,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pop_location: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if pop_location is not None:
-            pulumi.set(__self__, "pop_location", pop_location)
+            _setter("pop_location", pop_location)
 
     @property
     @pulumi.getter(name="popLocation")
@@ -85,20 +94,55 @@ class GetAnycastEipAddressesAddressResult(dict):
         :param str service_location: Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
         :param str status: IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`.
         """
-        pulumi.set(__self__, "ali_uid", ali_uid)
-        pulumi.set(__self__, "anycast_eip_address_name", anycast_eip_address_name)
-        pulumi.set(__self__, "anycast_eip_bind_info_lists", anycast_eip_bind_info_lists)
-        pulumi.set(__self__, "anycast_id", anycast_id)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "bid", bid)
-        pulumi.set(__self__, "business_status", business_status)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "internet_charge_type", internet_charge_type)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "service_location", service_location)
-        pulumi.set(__self__, "status", status)
+        GetAnycastEipAddressesAddressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ali_uid=ali_uid,
+            anycast_eip_address_name=anycast_eip_address_name,
+            anycast_eip_bind_info_lists=anycast_eip_bind_info_lists,
+            anycast_id=anycast_id,
+            bandwidth=bandwidth,
+            bid=bid,
+            business_status=business_status,
+            description=description,
+            id=id,
+            internet_charge_type=internet_charge_type,
+            ip_address=ip_address,
+            payment_type=payment_type,
+            service_location=service_location,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ali_uid: int,
+             anycast_eip_address_name: str,
+             anycast_eip_bind_info_lists: Sequence['outputs.GetAnycastEipAddressesAddressAnycastEipBindInfoListResult'],
+             anycast_id: str,
+             bandwidth: int,
+             bid: str,
+             business_status: str,
+             description: str,
+             id: str,
+             internet_charge_type: str,
+             ip_address: str,
+             payment_type: str,
+             service_location: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ali_uid", ali_uid)
+        _setter("anycast_eip_address_name", anycast_eip_address_name)
+        _setter("anycast_eip_bind_info_lists", anycast_eip_bind_info_lists)
+        _setter("anycast_id", anycast_id)
+        _setter("bandwidth", bandwidth)
+        _setter("bid", bid)
+        _setter("business_status", business_status)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("internet_charge_type", internet_charge_type)
+        _setter("ip_address", ip_address)
+        _setter("payment_type", payment_type)
+        _setter("service_location", service_location)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="aliUid")
@@ -226,10 +270,25 @@ class GetAnycastEipAddressesAddressAnycastEipBindInfoListResult(dict):
         :param str bind_instance_type: Bind the cloud resource instance type.
         :param str bind_time: Binding time.
         """
-        pulumi.set(__self__, "bind_instance_id", bind_instance_id)
-        pulumi.set(__self__, "bind_instance_region_id", bind_instance_region_id)
-        pulumi.set(__self__, "bind_instance_type", bind_instance_type)
-        pulumi.set(__self__, "bind_time", bind_time)
+        GetAnycastEipAddressesAddressAnycastEipBindInfoListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bind_instance_id=bind_instance_id,
+            bind_instance_region_id=bind_instance_region_id,
+            bind_instance_type=bind_instance_type,
+            bind_time=bind_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bind_instance_id: str,
+             bind_instance_region_id: str,
+             bind_instance_type: str,
+             bind_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bind_instance_id", bind_instance_id)
+        _setter("bind_instance_region_id", bind_instance_region_id)
+        _setter("bind_instance_type", bind_instance_type)
+        _setter("bind_time", bind_time)
 
     @property
     @pulumi.getter(name="bindInstanceId")

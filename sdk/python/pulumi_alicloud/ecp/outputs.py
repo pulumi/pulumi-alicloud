@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -32,12 +32,31 @@ class GetInstanceTypesInstanceTypeResult(dict):
         :param str name: The name of the current instance type.
         :param str name_en: The English name of the current instance type.
         """
-        pulumi.set(__self__, "cpu_core_count", cpu_core_count)
-        pulumi.set(__self__, "default_resolution", default_resolution)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "instance_type_family", instance_type_family)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "name_en", name_en)
+        GetInstanceTypesInstanceTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_core_count=cpu_core_count,
+            default_resolution=default_resolution,
+            instance_type=instance_type,
+            instance_type_family=instance_type_family,
+            name=name,
+            name_en=name_en,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_core_count: int,
+             default_resolution: str,
+             instance_type: str,
+             instance_type_family: str,
+             name: str,
+             name_en: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cpu_core_count", cpu_core_count)
+        _setter("default_resolution", default_resolution)
+        _setter("instance_type", instance_type)
+        _setter("instance_type_family", instance_type_family)
+        _setter("name", name)
+        _setter("name_en", name_en)
 
     @property
     @pulumi.getter(name="cpuCoreCount")
@@ -117,20 +136,55 @@ class GetInstancesInstanceResult(dict):
         :param str vnc_url: VNC login address.
         :param str vswitch_id: The vswitch id.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "key_pair_name", key_pair_name)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "resolution", resolution)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vnc_url", vnc_url)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            image_id=image_id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            key_pair_name=key_pair_name,
+            payment_type=payment_type,
+            resolution=resolution,
+            security_group_id=security_group_id,
+            status=status,
+            vnc_url=vnc_url,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             id: str,
+             image_id: str,
+             instance_id: str,
+             instance_name: str,
+             instance_type: str,
+             key_pair_name: str,
+             payment_type: str,
+             resolution: str,
+             security_group_id: str,
+             status: str,
+             vnc_url: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("instance_type", instance_type)
+        _setter("key_pair_name", key_pair_name)
+        _setter("payment_type", payment_type)
+        _setter("resolution", resolution)
+        _setter("security_group_id", security_group_id)
+        _setter("status", status)
+        _setter("vnc_url", vnc_url)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -253,9 +307,22 @@ class GetKeyPairsPairResult(dict):
         :param str key_pair_finger_print: The Private Key of the Fingerprint.
         :param str key_pair_name: The Key Name.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "key_pair_finger_print", key_pair_finger_print)
-        pulumi.set(__self__, "key_pair_name", key_pair_name)
+        GetKeyPairsPairResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            key_pair_finger_print=key_pair_finger_print,
+            key_pair_name=key_pair_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             key_pair_finger_print: str,
+             key_pair_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("key_pair_finger_print", key_pair_finger_print)
+        _setter("key_pair_name", key_pair_name)
 
     @property
     @pulumi.getter
@@ -289,7 +356,16 @@ class GetZonesZoneResult(dict):
         """
         :param str zone_id: String to filter results by zone id.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="zoneId")

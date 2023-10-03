@@ -487,14 +487,14 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.maintenanceWindow;
     }
     /**
-     * The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * This parameter specifies the name of the component.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
+     * @return This parameter specifies the name of the component.
      * 
      */
     public Output<String> name() {

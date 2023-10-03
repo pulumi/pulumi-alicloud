@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -40,8 +40,19 @@ class ApiDestinationHttpApiParameters(dict):
         :param str endpoint: The endpoint of the API destination.
         :param str method: The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
         """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "method", method)
+        ApiDestinationHttpApiParameters._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            method=method,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: str,
+             method: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint", endpoint)
+        _setter("method", method)
 
     @property
     @pulumi.getter
@@ -96,14 +107,29 @@ class ConnectionAuthParameters(dict):
         :param 'ConnectionAuthParametersBasicAuthParametersArgs' basic_auth_parameters: The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
         :param 'ConnectionAuthParametersOauthParametersArgs' oauth_parameters: The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
         """
+        ConnectionAuthParameters._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key_auth_parameters=api_key_auth_parameters,
+            authorization_type=authorization_type,
+            basic_auth_parameters=basic_auth_parameters,
+            oauth_parameters=oauth_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key_auth_parameters: Optional['outputs.ConnectionAuthParametersApiKeyAuthParameters'] = None,
+             authorization_type: Optional[str] = None,
+             basic_auth_parameters: Optional['outputs.ConnectionAuthParametersBasicAuthParameters'] = None,
+             oauth_parameters: Optional['outputs.ConnectionAuthParametersOauthParameters'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_key_auth_parameters is not None:
-            pulumi.set(__self__, "api_key_auth_parameters", api_key_auth_parameters)
+            _setter("api_key_auth_parameters", api_key_auth_parameters)
         if authorization_type is not None:
-            pulumi.set(__self__, "authorization_type", authorization_type)
+            _setter("authorization_type", authorization_type)
         if basic_auth_parameters is not None:
-            pulumi.set(__self__, "basic_auth_parameters", basic_auth_parameters)
+            _setter("basic_auth_parameters", basic_auth_parameters)
         if oauth_parameters is not None:
-            pulumi.set(__self__, "oauth_parameters", oauth_parameters)
+            _setter("oauth_parameters", oauth_parameters)
 
     @property
     @pulumi.getter(name="apiKeyAuthParameters")
@@ -166,10 +192,21 @@ class ConnectionAuthParametersApiKeyAuthParameters(dict):
         :param str api_key_name: The name of the API key.
         :param str api_key_value: The value of the API key.
         """
+        ConnectionAuthParametersApiKeyAuthParameters._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_key_name=api_key_name,
+            api_key_value=api_key_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_key_name: Optional[str] = None,
+             api_key_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_key_name is not None:
-            pulumi.set(__self__, "api_key_name", api_key_name)
+            _setter("api_key_name", api_key_name)
         if api_key_value is not None:
-            pulumi.set(__self__, "api_key_value", api_key_value)
+            _setter("api_key_value", api_key_value)
 
     @property
     @pulumi.getter(name="apiKeyName")
@@ -197,10 +234,21 @@ class ConnectionAuthParametersBasicAuthParameters(dict):
         :param str password: The password for basic authentication.
         :param str username: The username for basic authentication.
         """
+        ConnectionAuthParametersBasicAuthParameters._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            password=password,
+            username=username,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             password: Optional[str] = None,
+             username: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if username is not None:
-            pulumi.set(__self__, "username", username)
+            _setter("username", username)
 
     @property
     @pulumi.getter
@@ -255,14 +303,29 @@ class ConnectionAuthParametersOauthParameters(dict):
         :param str http_method: The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
         :param 'ConnectionAuthParametersOauthParametersOauthHttpParametersArgs' oauth_http_parameters: The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
         """
+        ConnectionAuthParametersOauthParameters._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            authorization_endpoint=authorization_endpoint,
+            client_parameters=client_parameters,
+            http_method=http_method,
+            oauth_http_parameters=oauth_http_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             authorization_endpoint: Optional[str] = None,
+             client_parameters: Optional['outputs.ConnectionAuthParametersOauthParametersClientParameters'] = None,
+             http_method: Optional[str] = None,
+             oauth_http_parameters: Optional['outputs.ConnectionAuthParametersOauthParametersOauthHttpParameters'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if authorization_endpoint is not None:
-            pulumi.set(__self__, "authorization_endpoint", authorization_endpoint)
+            _setter("authorization_endpoint", authorization_endpoint)
         if client_parameters is not None:
-            pulumi.set(__self__, "client_parameters", client_parameters)
+            _setter("client_parameters", client_parameters)
         if http_method is not None:
-            pulumi.set(__self__, "http_method", http_method)
+            _setter("http_method", http_method)
         if oauth_http_parameters is not None:
-            pulumi.set(__self__, "oauth_http_parameters", oauth_http_parameters)
+            _setter("oauth_http_parameters", oauth_http_parameters)
 
     @property
     @pulumi.getter(name="authorizationEndpoint")
@@ -325,10 +388,21 @@ class ConnectionAuthParametersOauthParametersClientParameters(dict):
         :param str client_id: The ID of the client.
         :param str client_secret: The AccessKey secret of the client.
         """
+        ConnectionAuthParametersOauthParametersClientParameters._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_id=client_id,
+            client_secret=client_secret,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_id: Optional[str] = None,
+             client_secret: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if client_id is not None:
-            pulumi.set(__self__, "client_id", client_id)
+            _setter("client_id", client_id)
         if client_secret is not None:
-            pulumi.set(__self__, "client_secret", client_secret)
+            _setter("client_secret", client_secret)
 
     @property
     @pulumi.getter(name="clientId")
@@ -379,12 +453,25 @@ class ConnectionAuthParametersOauthParametersOauthHttpParameters(dict):
         :param Sequence['ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs'] header_parameters: The parameters that are configured for the request header. See `header_parameters` below.
         :param Sequence['ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs'] query_string_parameters: The parameters that are configured for the request path. See `query_string_parameters` below.
         """
+        ConnectionAuthParametersOauthParametersOauthHttpParameters._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            body_parameters=body_parameters,
+            header_parameters=header_parameters,
+            query_string_parameters=query_string_parameters,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             body_parameters: Optional[Sequence['outputs.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter']] = None,
+             header_parameters: Optional[Sequence['outputs.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter']] = None,
+             query_string_parameters: Optional[Sequence['outputs.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if body_parameters is not None:
-            pulumi.set(__self__, "body_parameters", body_parameters)
+            _setter("body_parameters", body_parameters)
         if header_parameters is not None:
-            pulumi.set(__self__, "header_parameters", header_parameters)
+            _setter("header_parameters", header_parameters)
         if query_string_parameters is not None:
-            pulumi.set(__self__, "query_string_parameters", query_string_parameters)
+            _setter("query_string_parameters", query_string_parameters)
 
     @property
     @pulumi.getter(name="bodyParameters")
@@ -436,15 +523,28 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter(di
                  value: Optional[str] = None):
         """
         :param str is_value_secret: Specifies whether to enable authentication.
-        :param str key: The key of the request header.
-        :param str value: The value of the request header.
+        :param str key: The key of the request path.
+        :param str value: The key of the request path.
         """
+        ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            is_value_secret=is_value_secret,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             is_value_secret: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if is_value_secret is not None:
-            pulumi.set(__self__, "is_value_secret", is_value_secret)
+            _setter("is_value_secret", is_value_secret)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter(name="isValueSecret")
@@ -458,7 +558,7 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter(di
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The key of the request header.
+        The key of the request path.
         """
         return pulumi.get(self, "key")
 
@@ -466,7 +566,7 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter(di
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the request header.
+        The key of the request path.
         """
         return pulumi.get(self, "value")
 
@@ -496,15 +596,28 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter(
                  value: Optional[str] = None):
         """
         :param str is_value_secret: Specifies whether to enable authentication.
-        :param str key: The key of the request header.
-        :param str value: The value of the request header.
+        :param str key: The key of the request path.
+        :param str value: The key of the request path.
         """
+        ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            is_value_secret=is_value_secret,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             is_value_secret: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if is_value_secret is not None:
-            pulumi.set(__self__, "is_value_secret", is_value_secret)
+            _setter("is_value_secret", is_value_secret)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter(name="isValueSecret")
@@ -518,7 +631,7 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter(
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The key of the request header.
+        The key of the request path.
         """
         return pulumi.get(self, "key")
 
@@ -526,7 +639,7 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter(
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the request header.
+        The key of the request path.
         """
         return pulumi.get(self, "value")
 
@@ -556,15 +669,28 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParam
                  value: Optional[str] = None):
         """
         :param str is_value_secret: Specifies whether to enable authentication.
-        :param str key: The key of the request header.
-        :param str value: The value of the request header.
+        :param str key: The key of the request path.
+        :param str value: The key of the request path.
         """
+        ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            is_value_secret=is_value_secret,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             is_value_secret: Optional[str] = None,
+             key: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if is_value_secret is not None:
-            pulumi.set(__self__, "is_value_secret", is_value_secret)
+            _setter("is_value_secret", is_value_secret)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter(name="isValueSecret")
@@ -578,7 +704,7 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParam
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        The key of the request header.
+        The key of the request path.
         """
         return pulumi.get(self, "key")
 
@@ -586,7 +712,7 @@ class ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParam
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the request header.
+        The key of the request path.
         """
         return pulumi.get(self, "value")
 
@@ -627,13 +753,28 @@ class ConnectionNetworkParameters(dict):
         :param str vpc_id: The ID of the VPC.
         :param str vswitche_id: The ID of the VSwitch.
         """
-        pulumi.set(__self__, "network_type", network_type)
+        ConnectionNetworkParameters._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_type=network_type,
+            security_group_id=security_group_id,
+            vpc_id=vpc_id,
+            vswitche_id=vswitche_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_type: str,
+             security_group_id: Optional[str] = None,
+             vpc_id: Optional[str] = None,
+             vswitche_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network_type", network_type)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitche_id is not None:
-            pulumi.set(__self__, "vswitche_id", vswitche_id)
+            _setter("vswitche_id", vswitche_id)
 
     @property
     @pulumi.getter(name="networkType")
@@ -709,14 +850,33 @@ class RuleTarget(dict):
         :param 'RuleTargetDeadLetterQueueArgs' dead_letter_queue: Dead letter queue. Events that are not processed or exceed the number of retries will be written to the dead letter. Support message service MNS and message queue RocketMQ. See `dead_letter_queue` below.
         :param str push_retry_strategy: The retry policy that is used to push the event. Valid values:
         """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "param_lists", param_lists)
-        pulumi.set(__self__, "target_id", target_id)
-        pulumi.set(__self__, "type", type)
+        RuleTarget._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            param_lists=param_lists,
+            target_id=target_id,
+            type=type,
+            dead_letter_queue=dead_letter_queue,
+            push_retry_strategy=push_retry_strategy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: str,
+             param_lists: Sequence['outputs.RuleTargetParamList'],
+             target_id: str,
+             type: str,
+             dead_letter_queue: Optional['outputs.RuleTargetDeadLetterQueue'] = None,
+             push_retry_strategy: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint", endpoint)
+        _setter("param_lists", param_lists)
+        _setter("target_id", target_id)
+        _setter("type", type)
         if dead_letter_queue is not None:
-            pulumi.set(__self__, "dead_letter_queue", dead_letter_queue)
+            _setter("dead_letter_queue", dead_letter_queue)
         if push_retry_strategy is not None:
-            pulumi.set(__self__, "push_retry_strategy", push_retry_strategy)
+            _setter("push_retry_strategy", push_retry_strategy)
 
     @property
     @pulumi.getter
@@ -775,8 +935,17 @@ class RuleTargetDeadLetterQueue(dict):
         """
         :param str arn: The srn of the dead letter queue.
         """
+        RuleTargetDeadLetterQueue._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
 
     @property
     @pulumi.getter
@@ -827,12 +996,27 @@ class RuleTargetParamList(dict):
                this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
                If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
         """
-        pulumi.set(__self__, "form", form)
-        pulumi.set(__self__, "resource_key", resource_key)
+        RuleTargetParamList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            form=form,
+            resource_key=resource_key,
+            template=template,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             form: str,
+             resource_key: str,
+             template: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("form", form)
+        _setter("resource_key", resource_key)
         if template is not None:
-            pulumi.set(__self__, "template", template)
+            _setter("template", template)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -890,10 +1074,25 @@ class GetEventBusesBusResult(dict):
         :param str event_bus_name: The name of event bus.
         :param str id: The ID of the Event Bus. Its value is same as Queue Name.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "event_bus_name", event_bus_name)
-        pulumi.set(__self__, "id", id)
+        GetEventBusesBusResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            event_bus_name=event_bus_name,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             event_bus_name: str,
+             id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("event_bus_name", event_bus_name)
+        _setter("id", id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -946,13 +1145,34 @@ class GetEventSourcesSourceResult(dict):
         :param str id: The ID of the Event Source.
         :param bool linked_external_source: Whether to connect to an external data source.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "event_source_name", event_source_name)
-        pulumi.set(__self__, "external_source_config", external_source_config)
-        pulumi.set(__self__, "external_source_type", external_source_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "linked_external_source", linked_external_source)
-        pulumi.set(__self__, "type", type)
+        GetEventSourcesSourceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            event_source_name=event_source_name,
+            external_source_config=external_source_config,
+            external_source_type=external_source_type,
+            id=id,
+            linked_external_source=linked_external_source,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             event_source_name: str,
+             external_source_config: Mapping[str, Any],
+             external_source_type: str,
+             id: str,
+             linked_external_source: bool,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("event_source_name", event_source_name)
+        _setter("external_source_config", external_source_config)
+        _setter("external_source_type", external_source_type)
+        _setter("id", id)
+        _setter("linked_external_source", linked_external_source)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1027,13 +1247,34 @@ class GetRulesRuleResult(dict):
         :param str status: Rule status, either Enable or Disable.
         :param Sequence['GetRulesRuleTargetArgs'] targets: The target for rule.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "event_bus_name", event_bus_name)
-        pulumi.set(__self__, "filter_pattern", filter_pattern)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "rule_name", rule_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "targets", targets)
+        GetRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            event_bus_name=event_bus_name,
+            filter_pattern=filter_pattern,
+            id=id,
+            rule_name=rule_name,
+            status=status,
+            targets=targets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             event_bus_name: str,
+             filter_pattern: str,
+             id: str,
+             rule_name: str,
+             status: str,
+             targets: Sequence['outputs.GetRulesRuleTargetResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("event_bus_name", event_bus_name)
+        _setter("filter_pattern", filter_pattern)
+        _setter("id", id)
+        _setter("rule_name", rule_name)
+        _setter("status", status)
+        _setter("targets", targets)
 
     @property
     @pulumi.getter
@@ -1103,9 +1344,22 @@ class GetRulesRuleTargetResult(dict):
         :param str target_id: The id of target.
         :param str type: The type of target.
         """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "target_id", target_id)
-        pulumi.set(__self__, "type", type)
+        GetRulesRuleTargetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            target_id=target_id,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: str,
+             target_id: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint", endpoint)
+        _setter("target_id", target_id)
+        _setter("type", type)
 
     @property
     @pulumi.getter

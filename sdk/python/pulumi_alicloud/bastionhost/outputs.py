@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -79,23 +79,54 @@ class InstanceAdAuthServer(dict):
         :param str name_mapping: The field that is used to indicate the name of a user on the AD server.
         :param str standby_server: The address of the secondary AD server.
         """
-        pulumi.set(__self__, "account", account)
-        pulumi.set(__self__, "base_dn", base_dn)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "is_ssl", is_ssl)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server", server)
+        InstanceAdAuthServer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account=account,
+            base_dn=base_dn,
+            domain=domain,
+            is_ssl=is_ssl,
+            password=password,
+            port=port,
+            server=server,
+            email_mapping=email_mapping,
+            filter=filter,
+            mobile_mapping=mobile_mapping,
+            name_mapping=name_mapping,
+            standby_server=standby_server,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account: str,
+             base_dn: str,
+             domain: str,
+             is_ssl: bool,
+             password: str,
+             port: int,
+             server: str,
+             email_mapping: Optional[str] = None,
+             filter: Optional[str] = None,
+             mobile_mapping: Optional[str] = None,
+             name_mapping: Optional[str] = None,
+             standby_server: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account", account)
+        _setter("base_dn", base_dn)
+        _setter("domain", domain)
+        _setter("is_ssl", is_ssl)
+        _setter("password", password)
+        _setter("port", port)
+        _setter("server", server)
         if email_mapping is not None:
-            pulumi.set(__self__, "email_mapping", email_mapping)
+            _setter("email_mapping", email_mapping)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if mobile_mapping is not None:
-            pulumi.set(__self__, "mobile_mapping", mobile_mapping)
+            _setter("mobile_mapping", mobile_mapping)
         if name_mapping is not None:
-            pulumi.set(__self__, "name_mapping", name_mapping)
+            _setter("name_mapping", name_mapping)
         if standby_server is not None:
-            pulumi.set(__self__, "standby_server", standby_server)
+            _setter("standby_server", standby_server)
 
     @property
     @pulumi.getter
@@ -252,25 +283,56 @@ class InstanceLdapAuthServer(dict):
         :param str name_mapping: The field that is used to indicate the name of a user on the LDAP server.
         :param str standby_server: The address of the secondary LDAP server.
         """
-        pulumi.set(__self__, "account", account)
-        pulumi.set(__self__, "base_dn", base_dn)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server", server)
+        InstanceLdapAuthServer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account=account,
+            base_dn=base_dn,
+            password=password,
+            port=port,
+            server=server,
+            email_mapping=email_mapping,
+            filter=filter,
+            is_ssl=is_ssl,
+            login_name_mapping=login_name_mapping,
+            mobile_mapping=mobile_mapping,
+            name_mapping=name_mapping,
+            standby_server=standby_server,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account: str,
+             base_dn: str,
+             password: str,
+             port: int,
+             server: str,
+             email_mapping: Optional[str] = None,
+             filter: Optional[str] = None,
+             is_ssl: Optional[bool] = None,
+             login_name_mapping: Optional[str] = None,
+             mobile_mapping: Optional[str] = None,
+             name_mapping: Optional[str] = None,
+             standby_server: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account", account)
+        _setter("base_dn", base_dn)
+        _setter("password", password)
+        _setter("port", port)
+        _setter("server", server)
         if email_mapping is not None:
-            pulumi.set(__self__, "email_mapping", email_mapping)
+            _setter("email_mapping", email_mapping)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if is_ssl is not None:
-            pulumi.set(__self__, "is_ssl", is_ssl)
+            _setter("is_ssl", is_ssl)
         if login_name_mapping is not None:
-            pulumi.set(__self__, "login_name_mapping", login_name_mapping)
+            _setter("login_name_mapping", login_name_mapping)
         if mobile_mapping is not None:
-            pulumi.set(__self__, "mobile_mapping", mobile_mapping)
+            _setter("mobile_mapping", mobile_mapping)
         if name_mapping is not None:
-            pulumi.set(__self__, "name_mapping", name_mapping)
+            _setter("name_mapping", name_mapping)
         if standby_server is not None:
-            pulumi.set(__self__, "standby_server", standby_server)
+            _setter("standby_server", standby_server)
 
     @property
     @pulumi.getter
@@ -390,14 +452,37 @@ class GetHostAccountsAccountResult(dict):
         :param str private_key_fingerprint: The situation where the private keys of the fingerprint information.
         :param str protocol_name: Specify the new hosting account of the agreement name. Valid values: USING SSH and RDP.
         """
-        pulumi.set(__self__, "has_password", has_password)
-        pulumi.set(__self__, "host_account_id", host_account_id)
-        pulumi.set(__self__, "host_account_name", host_account_name)
-        pulumi.set(__self__, "host_id", host_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "private_key_fingerprint", private_key_fingerprint)
-        pulumi.set(__self__, "protocol_name", protocol_name)
+        GetHostAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            has_password=has_password,
+            host_account_id=host_account_id,
+            host_account_name=host_account_name,
+            host_id=host_id,
+            id=id,
+            instance_id=instance_id,
+            private_key_fingerprint=private_key_fingerprint,
+            protocol_name=protocol_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             has_password: bool,
+             host_account_id: str,
+             host_account_name: str,
+             host_id: str,
+             id: str,
+             instance_id: str,
+             private_key_fingerprint: str,
+             protocol_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("has_password", has_password)
+        _setter("host_account_id", host_account_id)
+        _setter("host_account_name", host_account_name)
+        _setter("host_id", host_id)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("private_key_fingerprint", private_key_fingerprint)
+        _setter("protocol_name", protocol_name)
 
     @property
     @pulumi.getter(name="hasPassword")
@@ -479,11 +564,28 @@ class GetHostGroupsGroupResult(dict):
         :param str id: The ID of the Host Group.
         :param str instance_id: Specify the New Host Group Where the Bastion Host ID of.
         """
-        pulumi.set(__self__, "comment", comment)
-        pulumi.set(__self__, "host_group_id", host_group_id)
-        pulumi.set(__self__, "host_group_name", host_group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
+        GetHostGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            host_group_id=host_group_id,
+            host_group_name=host_group_name,
+            id=id,
+            instance_id=instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: str,
+             host_group_id: str,
+             host_group_name: str,
+             id: str,
+             instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("comment", comment)
+        _setter("host_group_id", host_group_id)
+        _setter("host_group_name", host_group_name)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
 
     @property
     @pulumi.getter
@@ -541,11 +643,28 @@ class GetHostShareKeysKeyResult(dict):
         :param str instance_id: The ID of the Bastion instance.
         :param str private_key_finger_print: The fingerprint of the private key.
         """
-        pulumi.set(__self__, "host_share_key_id", host_share_key_id)
-        pulumi.set(__self__, "host_share_key_name", host_share_key_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "private_key_finger_print", private_key_finger_print)
+        GetHostShareKeysKeyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_share_key_id=host_share_key_id,
+            host_share_key_name=host_share_key_name,
+            id=id,
+            instance_id=instance_id,
+            private_key_finger_print=private_key_finger_print,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_share_key_id: str,
+             host_share_key_name: str,
+             id: str,
+             instance_id: str,
+             private_key_finger_print: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("host_share_key_id", host_share_key_id)
+        _setter("host_share_key_name", host_share_key_name)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("private_key_finger_print", private_key_finger_print)
 
     @property
     @pulumi.getter(name="hostShareKeyId")
@@ -617,18 +736,49 @@ class GetHostsHostResult(dict):
         :param str source: Specify the new create a host of source. Valid values: Local: localhost Ecs:ECS instance Rds:RDS exclusive cluster host.
         :param str source_instance_id: Specify the newly created ECS instance ID or dedicated cluster host ID.
         """
-        pulumi.set(__self__, "active_address_type", active_address_type)
-        pulumi.set(__self__, "comment", comment)
-        pulumi.set(__self__, "host_id", host_id)
-        pulumi.set(__self__, "host_name", host_name)
-        pulumi.set(__self__, "host_private_address", host_private_address)
-        pulumi.set(__self__, "host_public_address", host_public_address)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "os_type", os_type)
-        pulumi.set(__self__, "protocols", protocols)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "source_instance_id", source_instance_id)
+        GetHostsHostResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active_address_type=active_address_type,
+            comment=comment,
+            host_id=host_id,
+            host_name=host_name,
+            host_private_address=host_private_address,
+            host_public_address=host_public_address,
+            id=id,
+            instance_id=instance_id,
+            os_type=os_type,
+            protocols=protocols,
+            source=source,
+            source_instance_id=source_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active_address_type: str,
+             comment: str,
+             host_id: str,
+             host_name: str,
+             host_private_address: str,
+             host_public_address: str,
+             id: str,
+             instance_id: str,
+             os_type: str,
+             protocols: Sequence['outputs.GetHostsHostProtocolResult'],
+             source: str,
+             source_instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("active_address_type", active_address_type)
+        _setter("comment", comment)
+        _setter("host_id", host_id)
+        _setter("host_name", host_name)
+        _setter("host_private_address", host_private_address)
+        _setter("host_public_address", host_public_address)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("os_type", os_type)
+        _setter("protocols", protocols)
+        _setter("source", source)
+        _setter("source_instance_id", source_instance_id)
 
     @property
     @pulumi.getter(name="activeAddressType")
@@ -738,9 +888,22 @@ class GetHostsHostProtocolResult(dict):
         :param int port: Host the service port of the RDS.
         :param str protocol_name: The host uses the protocol name.
         """
-        pulumi.set(__self__, "host_finger_print", host_finger_print)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "protocol_name", protocol_name)
+        GetHostsHostProtocolResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_finger_print=host_finger_print,
+            port=port,
+            protocol_name=protocol_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_finger_print: str,
+             port: int,
+             protocol_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("host_finger_print", host_finger_print)
+        _setter("port", port)
+        _setter("protocol_name", protocol_name)
 
     @property
     @pulumi.getter(name="hostFingerPrint")
@@ -799,17 +962,44 @@ class GetInstancesInstanceResult(dict):
                })
                ```
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_status", instance_status)
-        pulumi.set(__self__, "license_code", license_code)
-        pulumi.set(__self__, "private_domain", private_domain)
-        pulumi.set(__self__, "public_domain", public_domain)
-        pulumi.set(__self__, "public_network_access", public_network_access)
-        pulumi.set(__self__, "security_group_ids", security_group_ids)
-        pulumi.set(__self__, "user_vswitch_id", user_vswitch_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            instance_status=instance_status,
+            license_code=license_code,
+            private_domain=private_domain,
+            public_domain=public_domain,
+            public_network_access=public_network_access,
+            security_group_ids=security_group_ids,
+            user_vswitch_id=user_vswitch_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             id: str,
+             instance_status: str,
+             license_code: str,
+             private_domain: str,
+             public_domain: str,
+             public_network_access: bool,
+             security_group_ids: Sequence[str],
+             user_vswitch_id: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("id", id)
+        _setter("instance_status", instance_status)
+        _setter("license_code", license_code)
+        _setter("private_domain", private_domain)
+        _setter("public_domain", public_domain)
+        _setter("public_network_access", public_network_access)
+        _setter("security_group_ids", security_group_ids)
+        _setter("user_vswitch_id", user_vswitch_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -912,11 +1102,28 @@ class GetUserGroupsGroupResult(dict):
         :param str user_group_id: The User Group ID.
         :param str user_group_name: Specify the New Group Name. Supports up to 128 Characters.
         """
-        pulumi.set(__self__, "comment", comment)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "user_group_id", user_group_id)
-        pulumi.set(__self__, "user_group_name", user_group_name)
+        GetUserGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            id=id,
+            instance_id=instance_id,
+            user_group_id=user_group_id,
+            user_group_name=user_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: str,
+             id: str,
+             instance_id: str,
+             user_group_id: str,
+             user_group_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("comment", comment)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("user_group_id", user_group_id)
+        _setter("user_group_name", user_group_name)
 
     @property
     @pulumi.getter
@@ -988,18 +1195,49 @@ class GetUsersUserResult(dict):
         :param str user_id: The User ID.
         :param str user_name: Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
         """
-        pulumi.set(__self__, "comment", comment)
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "email", email)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "mobile", mobile)
-        pulumi.set(__self__, "mobile_country_code", mobile_country_code)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "source_user_id", source_user_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "user_name", user_name)
+        GetUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            display_name=display_name,
+            email=email,
+            id=id,
+            instance_id=instance_id,
+            mobile=mobile,
+            mobile_country_code=mobile_country_code,
+            source=source,
+            source_user_id=source_user_id,
+            status=status,
+            user_id=user_id,
+            user_name=user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: str,
+             display_name: str,
+             email: str,
+             id: str,
+             instance_id: str,
+             mobile: str,
+             mobile_country_code: str,
+             source: str,
+             source_user_id: str,
+             status: str,
+             user_id: str,
+             user_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("comment", comment)
+        _setter("display_name", display_name)
+        _setter("email", email)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("mobile", mobile)
+        _setter("mobile_country_code", mobile_country_code)
+        _setter("source", source)
+        _setter("source_user_id", source_user_id)
+        _setter("status", status)
+        _setter("user_id", user_id)
+        _setter("user_name", user_name)
 
     @property
     @pulumi.getter

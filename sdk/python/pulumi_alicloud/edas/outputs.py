@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -56,15 +56,34 @@ class K8sSlbAttachmentSlbConfig(dict):
         :param str slb_id: The ID of your SLB instance, if value is empty which means EDAS will purchase an SLB instance with 'specification' field.
         :param str specification: The instance specification of SLB, values can be found [here](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2#t4182.html), empty for 'slb.s1.small'.
         """
-        pulumi.set(__self__, "port_mappings", port_mappings)
-        pulumi.set(__self__, "scheduler", scheduler)
-        pulumi.set(__self__, "type", type)
+        K8sSlbAttachmentSlbConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port_mappings=port_mappings,
+            scheduler=scheduler,
+            type=type,
+            name=name,
+            slb_id=slb_id,
+            specification=specification,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port_mappings: Sequence['outputs.K8sSlbAttachmentSlbConfigPortMapping'],
+             scheduler: str,
+             type: str,
+             name: Optional[str] = None,
+             slb_id: Optional[str] = None,
+             specification: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port_mappings", port_mappings)
+        _setter("scheduler", scheduler)
+        _setter("type", type)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if slb_id is not None:
-            pulumi.set(__self__, "slb_id", slb_id)
+            _setter("slb_id", slb_id)
         if specification is not None:
-            pulumi.set(__self__, "specification", specification)
+            _setter("specification", specification)
 
     @property
     @pulumi.getter(name="portMappings")
@@ -147,10 +166,23 @@ class K8sSlbAttachmentSlbConfigPortMapping(dict):
         :param 'K8sSlbAttachmentSlbConfigPortMappingServicePortArgs' service_port: The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
         :param str cert_id: The ID of your tls certification, this is used for 'HTTPS' protocol only.
         """
-        pulumi.set(__self__, "loadbalancer_protocol", loadbalancer_protocol)
-        pulumi.set(__self__, "service_port", service_port)
+        K8sSlbAttachmentSlbConfigPortMapping._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            loadbalancer_protocol=loadbalancer_protocol,
+            service_port=service_port,
+            cert_id=cert_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             loadbalancer_protocol: str,
+             service_port: 'outputs.K8sSlbAttachmentSlbConfigPortMappingServicePort',
+             cert_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("loadbalancer_protocol", loadbalancer_protocol)
+        _setter("service_port", service_port)
         if cert_id is not None:
-            pulumi.set(__self__, "cert_id", cert_id)
+            _setter("cert_id", cert_id)
 
     @property
     @pulumi.getter(name="loadbalancerProtocol")
@@ -205,9 +237,22 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePort(dict):
         :param str protocol: The protocol of k8s service, values can be 'TCP' or 'UDP'.
         :param int target_port: The port of k8s pod, values should be within range [1, 65535].
         """
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "target_port", target_port)
+        K8sSlbAttachmentSlbConfigPortMappingServicePort._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            protocol=protocol,
+            target_port=target_port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: int,
+             protocol: str,
+             target_port: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port", port)
+        _setter("protocol", protocol)
+        _setter("target_port", target_port)
 
     @property
     @pulumi.getter
@@ -253,13 +298,34 @@ class GetApplicationsApplicationResult(dict):
         :param int cluster_type: The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
         :param str region_id: The ID of the namespace the application belongs to.
         """
-        pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "app_name", app_name)
-        pulumi.set(__self__, "application_type", application_type)
-        pulumi.set(__self__, "build_package_id", build_package_id)
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "cluster_type", cluster_type)
-        pulumi.set(__self__, "region_id", region_id)
+        GetApplicationsApplicationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            app_name=app_name,
+            application_type=application_type,
+            build_package_id=build_package_id,
+            cluster_id=cluster_id,
+            cluster_type=cluster_type,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: str,
+             app_name: str,
+             application_type: str,
+             build_package_id: int,
+             cluster_id: str,
+             cluster_type: int,
+             region_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_id", app_id)
+        _setter("app_name", app_name)
+        _setter("application_type", application_type)
+        _setter("build_package_id", build_package_id)
+        _setter("cluster_id", cluster_id)
+        _setter("cluster_type", cluster_type)
+        _setter("region_id", region_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -349,19 +415,52 @@ class GetClustersClusterResult(dict):
         :param int update_time: The time when the cluster was last updated.
         :param str vpc_id: The ID of the Virtual Private Cloud (VPC) for the cluster.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "cluster_type", cluster_type)
-        pulumi.set(__self__, "cpu", cpu)
-        pulumi.set(__self__, "cpu_used", cpu_used)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "mem", mem)
-        pulumi.set(__self__, "mem_used", mem_used)
-        pulumi.set(__self__, "network_mode", network_mode)
-        pulumi.set(__self__, "node_num", node_num)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "update_time", update_time)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            cluster_name=cluster_name,
+            cluster_type=cluster_type,
+            cpu=cpu,
+            cpu_used=cpu_used,
+            create_time=create_time,
+            mem=mem,
+            mem_used=mem_used,
+            network_mode=network_mode,
+            node_num=node_num,
+            region_id=region_id,
+            update_time=update_time,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: str,
+             cluster_name: str,
+             cluster_type: int,
+             cpu: int,
+             cpu_used: int,
+             create_time: int,
+             mem: int,
+             mem_used: int,
+             network_mode: int,
+             node_num: int,
+             region_id: str,
+             update_time: int,
+             vpc_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("cluster_name", cluster_name)
+        _setter("cluster_type", cluster_type)
+        _setter("cpu", cpu)
+        _setter("cpu_used", cpu_used)
+        _setter("create_time", create_time)
+        _setter("mem", mem)
+        _setter("mem_used", mem_used)
+        _setter("network_mode", network_mode)
+        _setter("node_num", node_num)
+        _setter("region_id", region_id)
+        _setter("update_time", update_time)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -491,15 +590,40 @@ class GetDeployGroupsGroupResult(dict):
         :param str package_version_id: The version of the deployment package for the instance group that was created.
         :param int update_time: The time when the instance group was updated.
         """
-        pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "app_version_id", app_version_id)
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "group_type", group_type)
-        pulumi.set(__self__, "package_version_id", package_version_id)
-        pulumi.set(__self__, "update_time", update_time)
+        GetDeployGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            app_version_id=app_version_id,
+            cluster_id=cluster_id,
+            create_time=create_time,
+            group_id=group_id,
+            group_name=group_name,
+            group_type=group_type,
+            package_version_id=package_version_id,
+            update_time=update_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: str,
+             app_version_id: str,
+             cluster_id: str,
+             create_time: int,
+             group_id: str,
+             group_name: str,
+             group_type: int,
+             package_version_id: str,
+             update_time: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_id", app_id)
+        _setter("app_version_id", app_version_id)
+        _setter("cluster_id", cluster_id)
+        _setter("create_time", create_time)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
+        _setter("group_type", group_type)
+        _setter("package_version_id", package_version_id)
+        _setter("update_time", update_time)
 
     @property
     @pulumi.getter(name="appId")
@@ -595,14 +719,37 @@ class GetNamespacesNamespaceResult(dict):
         :param str namespace_name: The name of the namespace.
         :param str user_id: The ID of the Alibaba Cloud account to which the namespace belongs.
         """
-        pulumi.set(__self__, "belong_region", belong_region)
-        pulumi.set(__self__, "debug_enable", debug_enable)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "namespace_id", namespace_id)
-        pulumi.set(__self__, "namespace_logical_id", namespace_logical_id)
-        pulumi.set(__self__, "namespace_name", namespace_name)
-        pulumi.set(__self__, "user_id", user_id)
+        GetNamespacesNamespaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            belong_region=belong_region,
+            debug_enable=debug_enable,
+            description=description,
+            id=id,
+            namespace_id=namespace_id,
+            namespace_logical_id=namespace_logical_id,
+            namespace_name=namespace_name,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             belong_region: str,
+             debug_enable: bool,
+             description: str,
+             id: str,
+             namespace_id: str,
+             namespace_logical_id: str,
+             namespace_name: str,
+             user_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("belong_region", belong_region)
+        _setter("debug_enable", debug_enable)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("namespace_id", namespace_id)
+        _setter("namespace_logical_id", namespace_logical_id)
+        _setter("namespace_name", namespace_name)
+        _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="belongRegion")

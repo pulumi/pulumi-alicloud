@@ -16,14 +16,14 @@ public final class MetricRuleTemplateAlertTemplateEscalationsWarnArgs extends co
     public static final MetricRuleTemplateAlertTemplateEscalationsWarnArgs Empty = new MetricRuleTemplateAlertTemplateEscalationsWarnArgs();
 
     /**
-     * The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+     * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
      * 
      */
     @Import(name="comparisonOperator")
     private @Nullable Output<String> comparisonOperator;
 
     /**
-     * @return The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+     * @return The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
      * 
      */
     public Optional<Output<String>> comparisonOperator() {
@@ -31,14 +31,14 @@ public final class MetricRuleTemplateAlertTemplateEscalationsWarnArgs extends co
     }
 
     /**
-     * The statistical aggregation method for warn-level alerts.
+     * The statistical aggregation method for critical-level alerts.
      * 
      */
     @Import(name="statistics")
     private @Nullable Output<String> statistics;
 
     /**
-     * @return The statistical aggregation method for warn-level alerts.
+     * @return The statistical aggregation method for critical-level alerts.
      * 
      */
     public Optional<Output<String>> statistics() {
@@ -46,14 +46,14 @@ public final class MetricRuleTemplateAlertTemplateEscalationsWarnArgs extends co
     }
 
     /**
-     * The threshold for warn-level alerts.
+     * The threshold for critical-level alerts.
      * 
      */
     @Import(name="threshold")
     private @Nullable Output<String> threshold;
 
     /**
-     * @return The threshold for warn-level alerts.
+     * @return The threshold for critical-level alerts.
      * 
      */
     public Optional<Output<String>> threshold() {
@@ -61,14 +61,14 @@ public final class MetricRuleTemplateAlertTemplateEscalationsWarnArgs extends co
     }
 
     /**
-     * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+     * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
      * 
      */
     @Import(name="times")
     private @Nullable Output<String> times;
 
     /**
-     * @return The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+     * @return The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
      * 
      */
     public Optional<Output<String>> times() {
@@ -103,7 +103,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsWarnArgs extends co
         }
 
         /**
-         * @param comparisonOperator The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         * @param comparisonOperator The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsWarnArgs extends co
         }
 
         /**
-         * @param comparisonOperator The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         * @param comparisonOperator The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsWarnArgs extends co
         }
 
         /**
-         * @param statistics The statistical aggregation method for warn-level alerts.
+         * @param statistics The statistical aggregation method for critical-level alerts.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsWarnArgs extends co
         }
 
         /**
-         * @param statistics The statistical aggregation method for warn-level alerts.
+         * @param statistics The statistical aggregation method for critical-level alerts.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsWarnArgs extends co
         }
 
         /**
-         * @param threshold The threshold for warn-level alerts.
+         * @param threshold The threshold for critical-level alerts.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsWarnArgs extends co
         }
 
         /**
-         * @param threshold The threshold for warn-level alerts.
+         * @param threshold The threshold for critical-level alerts.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsWarnArgs extends co
         }
 
         /**
-         * @param times The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         * @param times The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class MetricRuleTemplateAlertTemplateEscalationsWarnArgs extends co
         }
 
         /**
-         * @param times The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+         * @param times The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
          * 
          * @return builder
          * 

@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Eci.Inputs
     public sealed class ContainerGroupContainerReadinessProbeHttpGetGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The relative file path.
+        /// The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// The port number. Valid values: `1` to `65535`.
+        /// When using the HTTP request method for health check, the port number for HTTP Get request detection.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

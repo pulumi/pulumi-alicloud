@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -24,9 +24,22 @@ class GetMetaTagsTagResult(dict):
         :param str key_name: The name of the key.
         :param str value_name: The name of the value.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "key_name", key_name)
-        pulumi.set(__self__, "value_name", value_name)
+        GetMetaTagsTagResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            key_name=key_name,
+            value_name=value_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             key_name: str,
+             value_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("key_name", key_name)
+        _setter("value_name", value_name)
 
     @property
     @pulumi.getter

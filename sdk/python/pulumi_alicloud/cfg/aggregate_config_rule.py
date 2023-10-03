@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AggregateConfigRuleArgs', 'AggregateConfigRule']
@@ -49,31 +49,70 @@ class AggregateConfigRuleArgs:
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
         :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
-        pulumi.set(__self__, "aggregate_config_rule_name", aggregate_config_rule_name)
-        pulumi.set(__self__, "aggregator_id", aggregator_id)
-        pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
-        pulumi.set(__self__, "resource_types_scopes", resource_types_scopes)
-        pulumi.set(__self__, "risk_level", risk_level)
-        pulumi.set(__self__, "source_identifier", source_identifier)
-        pulumi.set(__self__, "source_owner", source_owner)
+        AggregateConfigRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aggregate_config_rule_name=aggregate_config_rule_name,
+            aggregator_id=aggregator_id,
+            config_rule_trigger_types=config_rule_trigger_types,
+            resource_types_scopes=resource_types_scopes,
+            risk_level=risk_level,
+            source_identifier=source_identifier,
+            source_owner=source_owner,
+            description=description,
+            exclude_resource_ids_scope=exclude_resource_ids_scope,
+            input_parameters=input_parameters,
+            maximum_execution_frequency=maximum_execution_frequency,
+            region_ids_scope=region_ids_scope,
+            resource_group_ids_scope=resource_group_ids_scope,
+            status=status,
+            tag_key_scope=tag_key_scope,
+            tag_value_scope=tag_value_scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aggregate_config_rule_name: pulumi.Input[str],
+             aggregator_id: pulumi.Input[str],
+             config_rule_trigger_types: pulumi.Input[str],
+             resource_types_scopes: pulumi.Input[Sequence[pulumi.Input[str]]],
+             risk_level: pulumi.Input[int],
+             source_identifier: pulumi.Input[str],
+             source_owner: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
+             input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+             region_ids_scope: Optional[pulumi.Input[str]] = None,
+             resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tag_key_scope: Optional[pulumi.Input[str]] = None,
+             tag_value_scope: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("aggregate_config_rule_name", aggregate_config_rule_name)
+        _setter("aggregator_id", aggregator_id)
+        _setter("config_rule_trigger_types", config_rule_trigger_types)
+        _setter("resource_types_scopes", resource_types_scopes)
+        _setter("risk_level", risk_level)
+        _setter("source_identifier", source_identifier)
+        _setter("source_owner", source_owner)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if exclude_resource_ids_scope is not None:
-            pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
+            _setter("exclude_resource_ids_scope", exclude_resource_ids_scope)
         if input_parameters is not None:
-            pulumi.set(__self__, "input_parameters", input_parameters)
+            _setter("input_parameters", input_parameters)
         if maximum_execution_frequency is not None:
-            pulumi.set(__self__, "maximum_execution_frequency", maximum_execution_frequency)
+            _setter("maximum_execution_frequency", maximum_execution_frequency)
         if region_ids_scope is not None:
-            pulumi.set(__self__, "region_ids_scope", region_ids_scope)
+            _setter("region_ids_scope", region_ids_scope)
         if resource_group_ids_scope is not None:
-            pulumi.set(__self__, "resource_group_ids_scope", resource_group_ids_scope)
+            _setter("resource_group_ids_scope", resource_group_ids_scope)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tag_key_scope is not None:
-            pulumi.set(__self__, "tag_key_scope", tag_key_scope)
+            _setter("tag_key_scope", tag_key_scope)
         if tag_value_scope is not None:
-            pulumi.set(__self__, "tag_value_scope", tag_value_scope)
+            _setter("tag_value_scope", tag_value_scope)
 
     @property
     @pulumi.getter(name="aggregateConfigRuleName")
@@ -308,40 +347,81 @@ class _AggregateConfigRuleState:
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
         :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
+        _AggregateConfigRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            aggregate_config_rule_name=aggregate_config_rule_name,
+            aggregator_id=aggregator_id,
+            config_rule_id=config_rule_id,
+            config_rule_trigger_types=config_rule_trigger_types,
+            description=description,
+            exclude_resource_ids_scope=exclude_resource_ids_scope,
+            input_parameters=input_parameters,
+            maximum_execution_frequency=maximum_execution_frequency,
+            region_ids_scope=region_ids_scope,
+            resource_group_ids_scope=resource_group_ids_scope,
+            resource_types_scopes=resource_types_scopes,
+            risk_level=risk_level,
+            source_identifier=source_identifier,
+            source_owner=source_owner,
+            status=status,
+            tag_key_scope=tag_key_scope,
+            tag_value_scope=tag_value_scope,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             aggregate_config_rule_name: Optional[pulumi.Input[str]] = None,
+             aggregator_id: Optional[pulumi.Input[str]] = None,
+             config_rule_id: Optional[pulumi.Input[str]] = None,
+             config_rule_trigger_types: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             exclude_resource_ids_scope: Optional[pulumi.Input[str]] = None,
+             input_parameters: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             maximum_execution_frequency: Optional[pulumi.Input[str]] = None,
+             region_ids_scope: Optional[pulumi.Input[str]] = None,
+             resource_group_ids_scope: Optional[pulumi.Input[str]] = None,
+             resource_types_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             risk_level: Optional[pulumi.Input[int]] = None,
+             source_identifier: Optional[pulumi.Input[str]] = None,
+             source_owner: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tag_key_scope: Optional[pulumi.Input[str]] = None,
+             tag_value_scope: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if aggregate_config_rule_name is not None:
-            pulumi.set(__self__, "aggregate_config_rule_name", aggregate_config_rule_name)
+            _setter("aggregate_config_rule_name", aggregate_config_rule_name)
         if aggregator_id is not None:
-            pulumi.set(__self__, "aggregator_id", aggregator_id)
+            _setter("aggregator_id", aggregator_id)
         if config_rule_id is not None:
-            pulumi.set(__self__, "config_rule_id", config_rule_id)
+            _setter("config_rule_id", config_rule_id)
         if config_rule_trigger_types is not None:
-            pulumi.set(__self__, "config_rule_trigger_types", config_rule_trigger_types)
+            _setter("config_rule_trigger_types", config_rule_trigger_types)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if exclude_resource_ids_scope is not None:
-            pulumi.set(__self__, "exclude_resource_ids_scope", exclude_resource_ids_scope)
+            _setter("exclude_resource_ids_scope", exclude_resource_ids_scope)
         if input_parameters is not None:
-            pulumi.set(__self__, "input_parameters", input_parameters)
+            _setter("input_parameters", input_parameters)
         if maximum_execution_frequency is not None:
-            pulumi.set(__self__, "maximum_execution_frequency", maximum_execution_frequency)
+            _setter("maximum_execution_frequency", maximum_execution_frequency)
         if region_ids_scope is not None:
-            pulumi.set(__self__, "region_ids_scope", region_ids_scope)
+            _setter("region_ids_scope", region_ids_scope)
         if resource_group_ids_scope is not None:
-            pulumi.set(__self__, "resource_group_ids_scope", resource_group_ids_scope)
+            _setter("resource_group_ids_scope", resource_group_ids_scope)
         if resource_types_scopes is not None:
-            pulumi.set(__self__, "resource_types_scopes", resource_types_scopes)
+            _setter("resource_types_scopes", resource_types_scopes)
         if risk_level is not None:
-            pulumi.set(__self__, "risk_level", risk_level)
+            _setter("risk_level", risk_level)
         if source_identifier is not None:
-            pulumi.set(__self__, "source_identifier", source_identifier)
+            _setter("source_identifier", source_identifier)
         if source_owner is not None:
-            pulumi.set(__self__, "source_owner", source_owner)
+            _setter("source_owner", source_owner)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tag_key_scope is not None:
-            pulumi.set(__self__, "tag_key_scope", tag_key_scope)
+            _setter("tag_key_scope", tag_key_scope)
         if tag_value_scope is not None:
-            pulumi.set(__self__, "tag_value_scope", tag_value_scope)
+            _setter("tag_value_scope", tag_value_scope)
 
     @property
     @pulumi.getter(name="aggregateConfigRuleName")
@@ -707,6 +787,10 @@ class AggregateConfigRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AggregateConfigRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

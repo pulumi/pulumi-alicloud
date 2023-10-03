@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -74,8 +74,19 @@ class DbInstanceEndpointNodeItem(dict):
         :param str node_id: The ID of the node.
         :param int weight: The weight of the node. Read requests are distributed based on the weight.Valid values: 0 to 100.
         """
-        pulumi.set(__self__, "node_id", node_id)
-        pulumi.set(__self__, "weight", weight)
+        DbInstanceEndpointNodeItem._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_id=node_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_id: str,
+             weight: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("node_id", node_id)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter(name="nodeId")
@@ -103,8 +114,19 @@ class DdrInstanceParameter(dict):
         :param str name: The parameter name.
         :param str value: The parameter value.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        DdrInstanceParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -166,16 +188,39 @@ class DdrInstancePgHbaConf(dict):
         :param str mask: The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         :param str option: Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "database", database)
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "priority_id", priority_id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "user", user)
+        DdrInstancePgHbaConf._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            database=database,
+            method=method,
+            priority_id=priority_id,
+            type=type,
+            user=user,
+            mask=mask,
+            option=option,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             database: str,
+             method: str,
+             priority_id: int,
+             type: str,
+             user: str,
+             mask: Optional[str] = None,
+             option: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("database", database)
+        _setter("method", method)
+        _setter("priority_id", priority_id)
+        _setter("type", type)
+        _setter("user", user)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
         if option is not None:
-            pulumi.set(__self__, "option", option)
+            _setter("option", option)
 
     @property
     @pulumi.getter
@@ -283,10 +328,25 @@ class InstanceBabelfishConfig(dict):
         :param str master_username: The name of the administrator account. The name can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
         :param str migration_mode: The migration mode of the instance. Valid values: **single-db** and **multi-db**.
         """
-        pulumi.set(__self__, "babelfish_enabled", babelfish_enabled)
-        pulumi.set(__self__, "master_user_password", master_user_password)
-        pulumi.set(__self__, "master_username", master_username)
-        pulumi.set(__self__, "migration_mode", migration_mode)
+        InstanceBabelfishConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            babelfish_enabled=babelfish_enabled,
+            master_user_password=master_user_password,
+            master_username=master_username,
+            migration_mode=migration_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             babelfish_enabled: str,
+             master_user_password: str,
+             master_username: str,
+             migration_mode: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("babelfish_enabled", babelfish_enabled)
+        _setter("master_user_password", master_user_password)
+        _setter("master_username", master_username)
+        _setter("migration_mode", migration_mode)
 
     @property
     @pulumi.getter(name="babelfishEnabled")
@@ -330,8 +390,19 @@ class InstanceParameter(dict):
         :param str name: The parameter name.
         :param str value: The parameter value.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        InstanceParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -393,16 +464,39 @@ class InstancePgHbaConf(dict):
         :param str mask: The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         :param str option: Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "database", database)
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "priority_id", priority_id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "user", user)
+        InstancePgHbaConf._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            database=database,
+            method=method,
+            priority_id=priority_id,
+            type=type,
+            user=user,
+            mask=mask,
+            option=option,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             database: str,
+             method: str,
+             priority_id: int,
+             type: str,
+             user: str,
+             mask: Optional[str] = None,
+             option: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("database", database)
+        _setter("method", method)
+        _setter("priority_id", priority_id)
+        _setter("type", type)
+        _setter("user", user)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
         if option is not None:
-            pulumi.set(__self__, "option", option)
+            _setter("option", option)
 
     @property
     @pulumi.getter
@@ -523,12 +617,27 @@ class InstanceServerlessConfig(dict):
                > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
                > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
         """
-        pulumi.set(__self__, "max_capacity", max_capacity)
-        pulumi.set(__self__, "min_capacity", min_capacity)
+        InstanceServerlessConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_capacity=max_capacity,
+            min_capacity=min_capacity,
+            auto_pause=auto_pause,
+            switch_force=switch_force,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_capacity: float,
+             min_capacity: float,
+             auto_pause: Optional[bool] = None,
+             switch_force: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max_capacity", max_capacity)
+        _setter("min_capacity", min_capacity)
         if auto_pause is not None:
-            pulumi.set(__self__, "auto_pause", auto_pause)
+            _setter("auto_pause", auto_pause)
         if switch_force is not None:
-            pulumi.set(__self__, "switch_force", switch_force)
+            _setter("switch_force", switch_force)
 
     @property
     @pulumi.getter(name="maxCapacity")
@@ -585,8 +694,19 @@ class RdsCloneDbInstanceParameter(dict):
         :param str name: The parameters name.
         :param str value: The parameters value.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        RdsCloneDbInstanceParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -648,16 +768,39 @@ class RdsCloneDbInstancePgHbaConf(dict):
         :param str mask: The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         :param str option: Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "database", database)
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "priority_id", priority_id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "user", user)
+        RdsCloneDbInstancePgHbaConf._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            database=database,
+            method=method,
+            priority_id=priority_id,
+            type=type,
+            user=user,
+            mask=mask,
+            option=option,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             database: str,
+             method: str,
+             priority_id: int,
+             type: str,
+             user: str,
+             mask: Optional[str] = None,
+             option: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("database", database)
+        _setter("method", method)
+        _setter("priority_id", priority_id)
+        _setter("type", type)
+        _setter("user", user)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
         if option is not None:
-            pulumi.set(__self__, "option", option)
+            _setter("option", option)
 
     @property
     @pulumi.getter
@@ -778,12 +921,27 @@ class RdsCloneDbInstanceServerlessConfig(dict):
                > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
                > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
         """
-        pulumi.set(__self__, "max_capacity", max_capacity)
-        pulumi.set(__self__, "min_capacity", min_capacity)
+        RdsCloneDbInstanceServerlessConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_capacity=max_capacity,
+            min_capacity=min_capacity,
+            auto_pause=auto_pause,
+            switch_force=switch_force,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_capacity: float,
+             min_capacity: float,
+             auto_pause: Optional[bool] = None,
+             switch_force: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max_capacity", max_capacity)
+        _setter("min_capacity", min_capacity)
         if auto_pause is not None:
-            pulumi.set(__self__, "auto_pause", auto_pause)
+            _setter("auto_pause", auto_pause)
         if switch_force is not None:
-            pulumi.set(__self__, "switch_force", switch_force)
+            _setter("switch_force", switch_force)
 
     @property
     @pulumi.getter(name="maxCapacity")
@@ -857,8 +1015,19 @@ class RdsDbProxyReadOnlyInstanceWeight(dict):
         :param str instance_id: The Id of the instance and its read-only instances that can run database.
         :param str weight: Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "weight", weight)
+        RdsDbProxyReadOnlyInstanceWeight._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: str,
+             weight: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
+        _setter("weight", weight)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -905,8 +1074,19 @@ class RdsParameterGroupParamDetail(dict):
         :param str param_name: The name of a parameter.
         :param str param_value: The value of a parameter.
         """
-        pulumi.set(__self__, "param_name", param_name)
-        pulumi.set(__self__, "param_value", param_value)
+        RdsParameterGroupParamDetail._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            param_name=param_name,
+            param_value=param_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             param_name: str,
+             param_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("param_name", param_name)
+        _setter("param_value", param_value)
 
     @property
     @pulumi.getter(name="paramName")
@@ -934,8 +1114,19 @@ class RdsUpgradeDbInstanceParameter(dict):
         :param str name: The parameter name.
         :param str value: The parameter value.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        RdsUpgradeDbInstanceParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -997,16 +1188,39 @@ class RdsUpgradeDbInstancePgHbaConf(dict):
         :param str mask: The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         :param str option: Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "database", database)
-        pulumi.set(__self__, "method", method)
-        pulumi.set(__self__, "priority_id", priority_id)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "user", user)
+        RdsUpgradeDbInstancePgHbaConf._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            database=database,
+            method=method,
+            priority_id=priority_id,
+            type=type,
+            user=user,
+            mask=mask,
+            option=option,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: str,
+             database: str,
+             method: str,
+             priority_id: int,
+             type: str,
+             user: str,
+             mask: Optional[str] = None,
+             option: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address", address)
+        _setter("database", database)
+        _setter("method", method)
+        _setter("priority_id", priority_id)
+        _setter("type", type)
+        _setter("user", user)
         if mask is not None:
-            pulumi.set(__self__, "mask", mask)
+            _setter("mask", mask)
         if option is not None:
-            pulumi.set(__self__, "option", option)
+            _setter("option", option)
 
     @property
     @pulumi.getter
@@ -1087,8 +1301,19 @@ class ReadOnlyInstanceParameter(dict):
         :param str name: The parameter name.
         :param str value: The parameter value.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        ReadOnlyInstanceParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1126,13 +1351,34 @@ class GetAccountsAccountResult(dict):
         :param str priv_exceeded: Whether the maximum number of databases managed by the account is exceeded.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "account_description", account_description)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_type", account_type)
-        pulumi.set(__self__, "database_privileges", database_privileges)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "priv_exceeded", priv_exceeded)
-        pulumi.set(__self__, "status", status)
+        GetAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_description=account_description,
+            account_name=account_name,
+            account_type=account_type,
+            database_privileges=database_privileges,
+            id=id,
+            priv_exceeded=priv_exceeded,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_description: str,
+             account_name: str,
+             account_type: str,
+             database_privileges: Sequence['outputs.GetAccountsAccountDatabasePrivilegeResult'],
+             id: str,
+             priv_exceeded: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_description", account_description)
+        _setter("account_name", account_name)
+        _setter("account_type", account_type)
+        _setter("database_privileges", database_privileges)
+        _setter("id", id)
+        _setter("priv_exceeded", priv_exceeded)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountDescription")
@@ -1202,9 +1448,22 @@ class GetAccountsAccountDatabasePrivilegeResult(dict):
         :param str account_privilege_detail: The specific permissions corresponding to the type of account permissions.
         :param str db_name: Database name.
         """
-        pulumi.set(__self__, "account_privilege", account_privilege)
-        pulumi.set(__self__, "account_privilege_detail", account_privilege_detail)
-        pulumi.set(__self__, "db_name", db_name)
+        GetAccountsAccountDatabasePrivilegeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_privilege=account_privilege,
+            account_privilege_detail=account_privilege_detail,
+            db_name=db_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_privilege: str,
+             account_privilege_detail: str,
+             db_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_privilege", account_privilege)
+        _setter("account_privilege_detail", account_privilege_detail)
+        _setter("db_name", db_name)
 
     @property
     @pulumi.getter(name="accountPrivilege")
@@ -1242,12 +1501,25 @@ class GetCollationTimeZonesCollationTimeZoneResult(dict):
         :param str standard_time_offset: The offset of the UTC time. The offset is in the following format: (UTC+<i>HH:mm</i>).
         :param str time_zone: The time zone that is available for use in ApsaraDB RDS.
         """
+        GetCollationTimeZonesCollationTimeZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            standard_time_offset=standard_time_offset,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[str] = None,
+             standard_time_offset: Optional[str] = None,
+             time_zone: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if standard_time_offset is not None:
-            pulumi.set(__self__, "standard_time_offset", standard_time_offset)
+            _setter("standard_time_offset", standard_time_offset)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter
@@ -1334,28 +1606,79 @@ class GetCrossRegionBackupsBackupResult(dict):
         :param str recovery_end_time: The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         :param Sequence[str] restore_regions: An array that consists of the regions to which the cross-region data backup file can be restored.
         """
-        pulumi.set(__self__, "backup_end_time", backup_end_time)
-        pulumi.set(__self__, "backup_method", backup_method)
-        pulumi.set(__self__, "backup_set_scale", backup_set_scale)
-        pulumi.set(__self__, "backup_set_status", backup_set_status)
-        pulumi.set(__self__, "backup_start_time", backup_start_time)
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "consistent_time", consistent_time)
-        pulumi.set(__self__, "cross_backup_download_link", cross_backup_download_link)
-        pulumi.set(__self__, "cross_backup_id", cross_backup_id)
-        pulumi.set(__self__, "cross_backup_region", cross_backup_region)
-        pulumi.set(__self__, "cross_backup_set_file", cross_backup_set_file)
-        pulumi.set(__self__, "cross_backup_set_location", cross_backup_set_location)
-        pulumi.set(__self__, "cross_backup_set_size", cross_backup_set_size)
-        pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "recovery_begin_time", recovery_begin_time)
-        pulumi.set(__self__, "recovery_end_time", recovery_end_time)
-        pulumi.set(__self__, "restore_regions", restore_regions)
+        GetCrossRegionBackupsBackupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_end_time=backup_end_time,
+            backup_method=backup_method,
+            backup_set_scale=backup_set_scale,
+            backup_set_status=backup_set_status,
+            backup_start_time=backup_start_time,
+            backup_type=backup_type,
+            category=category,
+            consistent_time=consistent_time,
+            cross_backup_download_link=cross_backup_download_link,
+            cross_backup_id=cross_backup_id,
+            cross_backup_region=cross_backup_region,
+            cross_backup_set_file=cross_backup_set_file,
+            cross_backup_set_location=cross_backup_set_location,
+            cross_backup_set_size=cross_backup_set_size,
+            db_instance_storage_type=db_instance_storage_type,
+            engine=engine,
+            engine_version=engine_version,
+            id=id,
+            instance_id=instance_id,
+            recovery_begin_time=recovery_begin_time,
+            recovery_end_time=recovery_end_time,
+            restore_regions=restore_regions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_end_time: str,
+             backup_method: str,
+             backup_set_scale: str,
+             backup_set_status: int,
+             backup_start_time: str,
+             backup_type: str,
+             category: str,
+             consistent_time: str,
+             cross_backup_download_link: str,
+             cross_backup_id: str,
+             cross_backup_region: str,
+             cross_backup_set_file: str,
+             cross_backup_set_location: str,
+             cross_backup_set_size: int,
+             db_instance_storage_type: str,
+             engine: str,
+             engine_version: str,
+             id: str,
+             instance_id: int,
+             recovery_begin_time: str,
+             recovery_end_time: str,
+             restore_regions: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_end_time", backup_end_time)
+        _setter("backup_method", backup_method)
+        _setter("backup_set_scale", backup_set_scale)
+        _setter("backup_set_status", backup_set_status)
+        _setter("backup_start_time", backup_start_time)
+        _setter("backup_type", backup_type)
+        _setter("category", category)
+        _setter("consistent_time", consistent_time)
+        _setter("cross_backup_download_link", cross_backup_download_link)
+        _setter("cross_backup_id", cross_backup_id)
+        _setter("cross_backup_region", cross_backup_region)
+        _setter("cross_backup_set_file", cross_backup_set_file)
+        _setter("cross_backup_set_location", cross_backup_set_location)
+        _setter("cross_backup_set_size", cross_backup_set_size)
+        _setter("db_instance_storage_type", db_instance_storage_type)
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("recovery_begin_time", recovery_begin_time)
+        _setter("recovery_end_time", recovery_end_time)
+        _setter("restore_regions", restore_regions)
 
     @property
     @pulumi.getter(name="backupEndTime")
@@ -1552,7 +1875,16 @@ class GetCrossRegionsRegionResult(dict):
         """
         :param str id: ID of the region.
         """
-        pulumi.set(__self__, "id", id)
+        GetCrossRegionsRegionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
 
     @property
     @pulumi.getter
@@ -1586,24 +1918,49 @@ class GetInstanceClassInfosInfoResult(dict):
         :param str memory_class: The memory capacity that is supported by the instance type. Unit: GB.
         :param str reference_price: The fee that you must pay for the instance type. Unit: cent (USD).
         """
+        GetInstanceClassInfosInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            class_code=class_code,
+            class_group=class_group,
+            cpu=cpu,
+            instruction_set_arch=instruction_set_arch,
+            max_connections=max_connections,
+            max_iombps=max_iombps,
+            max_iops=max_iops,
+            memory_class=memory_class,
+            reference_price=reference_price,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             class_code: Optional[str] = None,
+             class_group: Optional[str] = None,
+             cpu: Optional[str] = None,
+             instruction_set_arch: Optional[str] = None,
+             max_connections: Optional[str] = None,
+             max_iombps: Optional[str] = None,
+             max_iops: Optional[str] = None,
+             memory_class: Optional[str] = None,
+             reference_price: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if class_code is not None:
-            pulumi.set(__self__, "class_code", class_code)
+            _setter("class_code", class_code)
         if class_group is not None:
-            pulumi.set(__self__, "class_group", class_group)
+            _setter("class_group", class_group)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if instruction_set_arch is not None:
-            pulumi.set(__self__, "instruction_set_arch", instruction_set_arch)
+            _setter("instruction_set_arch", instruction_set_arch)
         if max_connections is not None:
-            pulumi.set(__self__, "max_connections", max_connections)
+            _setter("max_connections", max_connections)
         if max_iombps is not None:
-            pulumi.set(__self__, "max_iombps", max_iombps)
+            _setter("max_iombps", max_iombps)
         if max_iops is not None:
-            pulumi.set(__self__, "max_iops", max_iops)
+            _setter("max_iops", max_iops)
         if memory_class is not None:
-            pulumi.set(__self__, "memory_class", memory_class)
+            _setter("memory_class", memory_class)
         if reference_price is not None:
-            pulumi.set(__self__, "reference_price", reference_price)
+            _setter("reference_price", reference_price)
 
     @property
     @pulumi.getter(name="classCode")
@@ -1690,10 +2047,25 @@ class GetInstanceClassesInstanceClassResult(dict):
         :param 'GetInstanceClassesInstanceClassStorageRangeArgs' storage_range: DB Instance available storage range.
         :param Sequence['GetInstanceClassesInstanceClassZoneIdArgs'] zone_ids: A list of Zone to launch the DB instance.
         """
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "price", price)
-        pulumi.set(__self__, "storage_range", storage_range)
-        pulumi.set(__self__, "zone_ids", zone_ids)
+        GetInstanceClassesInstanceClassResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_class=instance_class,
+            price=price,
+            storage_range=storage_range,
+            zone_ids=zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_class: str,
+             price: str,
+             storage_range: 'outputs.GetInstanceClassesInstanceClassStorageRangeResult',
+             zone_ids: Sequence['outputs.GetInstanceClassesInstanceClassZoneIdResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_class", instance_class)
+        _setter("price", price)
+        _setter("storage_range", storage_range)
+        _setter("zone_ids", zone_ids)
 
     @property
     @pulumi.getter(name="instanceClass")
@@ -1736,9 +2108,22 @@ class GetInstanceClassesInstanceClassStorageRangeResult(dict):
         :param str min: DB Instance available storage min value.
         :param str step: DB Instance available storage increase step.
         """
-        pulumi.set(__self__, "max", max)
-        pulumi.set(__self__, "min", min)
-        pulumi.set(__self__, "step", step)
+        GetInstanceClassesInstanceClassStorageRangeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max=max,
+            min=min,
+            step=step,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max: str,
+             min: str,
+             step: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max", max)
+        _setter("min", min)
+        _setter("step", step)
 
     @property
     @pulumi.getter
@@ -1774,8 +2159,19 @@ class GetInstanceClassesInstanceClassZoneIdResult(dict):
         :param str id: The Zone to launch the DB instance
         :param Sequence[str] sub_zone_ids: A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `["cn-beijing-a", "cn-beijing-b"]`.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "sub_zone_ids", sub_zone_ids)
+        GetInstanceClassesInstanceClassZoneIdResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            sub_zone_ids=sub_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             sub_zone_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("sub_zone_ids", sub_zone_ids)
 
     @property
     @pulumi.getter
@@ -1807,10 +2203,25 @@ class GetInstanceEnginesInstanceEngineResult(dict):
         :param str engine_version: Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         :param Sequence['GetInstanceEnginesInstanceEngineZoneIdArgs'] zone_ids: A list of Zone to launch the DB instance.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "zone_ids", zone_ids)
+        GetInstanceEnginesInstanceEngineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            engine=engine,
+            engine_version=engine_version,
+            zone_ids=zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             engine: str,
+             engine_version: str,
+             zone_ids: Sequence['outputs.GetInstanceEnginesInstanceEngineZoneIdResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("zone_ids", zone_ids)
 
     @property
     @pulumi.getter
@@ -1854,8 +2265,19 @@ class GetInstanceEnginesInstanceEngineZoneIdResult(dict):
         :param str id: The Zone to launch the DB instance
         :param Sequence[str] sub_zone_ids: A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `["cn-beijing-a", "cn-beijing-b"]`.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "sub_zone_ids", sub_zone_ids)
+        GetInstanceEnginesInstanceEngineZoneIdResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            sub_zone_ids=sub_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             sub_zone_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("sub_zone_ids", sub_zone_ids)
 
     @property
     @pulumi.getter
@@ -2020,64 +2442,187 @@ class GetInstancesInstanceResult(dict):
         :param str zone_id_slave_a: (Available in 1.101.0+) The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         :param str zone_id_slave_b: (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
         """
-        pulumi.set(__self__, "acl", acl)
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "ca_type", ca_type)
-        pulumi.set(__self__, "charge_type", charge_type)
-        pulumi.set(__self__, "client_ca_cert", client_ca_cert)
-        pulumi.set(__self__, "client_ca_cert_expire_time", client_ca_cert_expire_time)
-        pulumi.set(__self__, "client_cert_revocation_list", client_cert_revocation_list)
-        pulumi.set(__self__, "connection_mode", connection_mode)
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "creator", creator)
-        pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
-        pulumi.set(__self__, "db_instance_type", db_instance_type)
-        pulumi.set(__self__, "db_type", db_type)
-        pulumi.set(__self__, "delete_date", delete_date)
-        pulumi.set(__self__, "deletion_protection", deletion_protection)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "encryption_key", encryption_key)
-        pulumi.set(__self__, "encryption_key_status", encryption_key_status)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "guard_instance_id", guard_instance_id)
-        pulumi.set(__self__, "ha_mode", ha_mode)
-        pulumi.set(__self__, "host_instance_infos", host_instance_infos)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_storage", instance_storage)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "key_usage", key_usage)
-        pulumi.set(__self__, "last_modify_status", last_modify_status)
-        pulumi.set(__self__, "master_instance_id", master_instance_id)
-        pulumi.set(__self__, "master_zone", master_zone)
-        pulumi.set(__self__, "material_expire_time", material_expire_time)
-        pulumi.set(__self__, "modify_status_reason", modify_status_reason)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "net_type", net_type)
-        pulumi.set(__self__, "origin", origin)
-        pulumi.set(__self__, "parameters", parameters)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "readonly_instance_ids", readonly_instance_ids)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "replication_acl", replication_acl)
-        pulumi.set(__self__, "require_update", require_update)
-        pulumi.set(__self__, "require_update_item", require_update_item)
-        pulumi.set(__self__, "require_update_reason", require_update_reason)
-        pulumi.set(__self__, "server_ca_url", server_ca_url)
-        pulumi.set(__self__, "server_cert", server_cert)
-        pulumi.set(__self__, "server_key", server_key)
-        pulumi.set(__self__, "ssl_create_time", ssl_create_time)
-        pulumi.set(__self__, "ssl_enabled", ssl_enabled)
-        pulumi.set(__self__, "ssl_expire_time", ssl_expire_time)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "sync_mode", sync_mode)
-        pulumi.set(__self__, "temp_instance_id", temp_instance_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id_slave_a", zone_id_slave_a)
-        pulumi.set(__self__, "zone_id_slave_b", zone_id_slave_b)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl=acl,
+            availability_zone=availability_zone,
+            ca_type=ca_type,
+            charge_type=charge_type,
+            client_ca_cert=client_ca_cert,
+            client_ca_cert_expire_time=client_ca_cert_expire_time,
+            client_cert_revocation_list=client_cert_revocation_list,
+            connection_mode=connection_mode,
+            connection_string=connection_string,
+            create_time=create_time,
+            creator=creator,
+            db_instance_storage_type=db_instance_storage_type,
+            db_instance_type=db_instance_type,
+            db_type=db_type,
+            delete_date=delete_date,
+            deletion_protection=deletion_protection,
+            description=description,
+            encryption_key=encryption_key,
+            encryption_key_status=encryption_key_status,
+            engine=engine,
+            engine_version=engine_version,
+            expire_time=expire_time,
+            guard_instance_id=guard_instance_id,
+            ha_mode=ha_mode,
+            host_instance_infos=host_instance_infos,
+            id=id,
+            instance_storage=instance_storage,
+            instance_type=instance_type,
+            key_usage=key_usage,
+            last_modify_status=last_modify_status,
+            master_instance_id=master_instance_id,
+            master_zone=master_zone,
+            material_expire_time=material_expire_time,
+            modify_status_reason=modify_status_reason,
+            name=name,
+            net_type=net_type,
+            origin=origin,
+            parameters=parameters,
+            port=port,
+            readonly_instance_ids=readonly_instance_ids,
+            region_id=region_id,
+            replication_acl=replication_acl,
+            require_update=require_update,
+            require_update_item=require_update_item,
+            require_update_reason=require_update_reason,
+            server_ca_url=server_ca_url,
+            server_cert=server_cert,
+            server_key=server_key,
+            ssl_create_time=ssl_create_time,
+            ssl_enabled=ssl_enabled,
+            ssl_expire_time=ssl_expire_time,
+            status=status,
+            sync_mode=sync_mode,
+            temp_instance_id=temp_instance_id,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id_slave_a=zone_id_slave_a,
+            zone_id_slave_b=zone_id_slave_b,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl: str,
+             availability_zone: str,
+             ca_type: str,
+             charge_type: str,
+             client_ca_cert: str,
+             client_ca_cert_expire_time: str,
+             client_cert_revocation_list: str,
+             connection_mode: str,
+             connection_string: str,
+             create_time: str,
+             creator: str,
+             db_instance_storage_type: str,
+             db_instance_type: str,
+             db_type: str,
+             delete_date: str,
+             deletion_protection: bool,
+             description: str,
+             encryption_key: str,
+             encryption_key_status: str,
+             engine: str,
+             engine_version: str,
+             expire_time: str,
+             guard_instance_id: str,
+             ha_mode: str,
+             host_instance_infos: Sequence['outputs.GetInstancesInstanceHostInstanceInfoResult'],
+             id: str,
+             instance_storage: int,
+             instance_type: str,
+             key_usage: str,
+             last_modify_status: str,
+             master_instance_id: str,
+             master_zone: str,
+             material_expire_time: str,
+             modify_status_reason: str,
+             name: str,
+             net_type: str,
+             origin: str,
+             parameters: Sequence['outputs.GetInstancesInstanceParameterResult'],
+             port: str,
+             readonly_instance_ids: Sequence[str],
+             region_id: str,
+             replication_acl: str,
+             require_update: str,
+             require_update_item: str,
+             require_update_reason: str,
+             server_ca_url: str,
+             server_cert: str,
+             server_key: str,
+             ssl_create_time: str,
+             ssl_enabled: str,
+             ssl_expire_time: str,
+             status: str,
+             sync_mode: str,
+             temp_instance_id: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id_slave_a: str,
+             zone_id_slave_b: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("acl", acl)
+        _setter("availability_zone", availability_zone)
+        _setter("ca_type", ca_type)
+        _setter("charge_type", charge_type)
+        _setter("client_ca_cert", client_ca_cert)
+        _setter("client_ca_cert_expire_time", client_ca_cert_expire_time)
+        _setter("client_cert_revocation_list", client_cert_revocation_list)
+        _setter("connection_mode", connection_mode)
+        _setter("connection_string", connection_string)
+        _setter("create_time", create_time)
+        _setter("creator", creator)
+        _setter("db_instance_storage_type", db_instance_storage_type)
+        _setter("db_instance_type", db_instance_type)
+        _setter("db_type", db_type)
+        _setter("delete_date", delete_date)
+        _setter("deletion_protection", deletion_protection)
+        _setter("description", description)
+        _setter("encryption_key", encryption_key)
+        _setter("encryption_key_status", encryption_key_status)
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("expire_time", expire_time)
+        _setter("guard_instance_id", guard_instance_id)
+        _setter("ha_mode", ha_mode)
+        _setter("host_instance_infos", host_instance_infos)
+        _setter("id", id)
+        _setter("instance_storage", instance_storage)
+        _setter("instance_type", instance_type)
+        _setter("key_usage", key_usage)
+        _setter("last_modify_status", last_modify_status)
+        _setter("master_instance_id", master_instance_id)
+        _setter("master_zone", master_zone)
+        _setter("material_expire_time", material_expire_time)
+        _setter("modify_status_reason", modify_status_reason)
+        _setter("name", name)
+        _setter("net_type", net_type)
+        _setter("origin", origin)
+        _setter("parameters", parameters)
+        _setter("port", port)
+        _setter("readonly_instance_ids", readonly_instance_ids)
+        _setter("region_id", region_id)
+        _setter("replication_acl", replication_acl)
+        _setter("require_update", require_update)
+        _setter("require_update_item", require_update_item)
+        _setter("require_update_reason", require_update_reason)
+        _setter("server_ca_url", server_ca_url)
+        _setter("server_cert", server_cert)
+        _setter("server_key", server_key)
+        _setter("ssl_create_time", ssl_create_time)
+        _setter("ssl_enabled", ssl_enabled)
+        _setter("ssl_expire_time", ssl_expire_time)
+        _setter("status", status)
+        _setter("sync_mode", sync_mode)
+        _setter("temp_instance_id", temp_instance_id)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id_slave_a", zone_id_slave_a)
+        _setter("zone_id_slave_b", zone_id_slave_b)
 
     @property
     @pulumi.getter
@@ -2588,13 +3133,34 @@ class GetInstancesInstanceHostInstanceInfoResult(dict):
         :param str sync_status: The synchronization status.
         :param str zone_id: The ID of the zone.
         """
-        pulumi.set(__self__, "data_sync_time", data_sync_time)
-        pulumi.set(__self__, "log_sync_time", log_sync_time)
-        pulumi.set(__self__, "node_id", node_id)
-        pulumi.set(__self__, "node_type", node_type)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "sync_status", sync_status)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceHostInstanceInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_sync_time=data_sync_time,
+            log_sync_time=log_sync_time,
+            node_id=node_id,
+            node_type=node_type,
+            region_id=region_id,
+            sync_status=sync_status,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_sync_time: str,
+             log_sync_time: str,
+             node_id: str,
+             node_type: str,
+             region_id: str,
+             sync_status: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("data_sync_time", data_sync_time)
+        _setter("log_sync_time", log_sync_time)
+        _setter("node_id", node_id)
+        _setter("node_type", node_type)
+        _setter("region_id", region_id)
+        _setter("sync_status", sync_status)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="dataSyncTime")
@@ -2670,12 +3236,31 @@ class GetInstancesInstanceParameterResult(dict):
         :param str parameter_name: The name of the parameter.
         :param str parameter_value: The default value of the parameter.
         """
-        pulumi.set(__self__, "checking_code", checking_code)
-        pulumi.set(__self__, "force_modify", force_modify)
-        pulumi.set(__self__, "force_restart", force_restart)
-        pulumi.set(__self__, "parameter_description", parameter_description)
-        pulumi.set(__self__, "parameter_name", parameter_name)
-        pulumi.set(__self__, "parameter_value", parameter_value)
+        GetInstancesInstanceParameterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            checking_code=checking_code,
+            force_modify=force_modify,
+            force_restart=force_restart,
+            parameter_description=parameter_description,
+            parameter_name=parameter_name,
+            parameter_value=parameter_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             checking_code: str,
+             force_modify: str,
+             force_restart: str,
+             parameter_description: str,
+             parameter_name: str,
+             parameter_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("checking_code", checking_code)
+        _setter("force_modify", force_modify)
+        _setter("force_restart", force_restart)
+        _setter("parameter_description", parameter_description)
+        _setter("parameter_name", parameter_name)
+        _setter("parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="checkingCode")
@@ -2743,11 +3328,28 @@ class GetModifyParameterLogsLogResult(dict):
                * **Applied**: The new value has taken effect.
                * **Syncing**: The new value is being applied and has not taken effect.
         """
-        pulumi.set(__self__, "modify_time", modify_time)
-        pulumi.set(__self__, "new_parameter_value", new_parameter_value)
-        pulumi.set(__self__, "old_parameter_value", old_parameter_value)
-        pulumi.set(__self__, "parameter_name", parameter_name)
-        pulumi.set(__self__, "status", status)
+        GetModifyParameterLogsLogResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            modify_time=modify_time,
+            new_parameter_value=new_parameter_value,
+            old_parameter_value=old_parameter_value,
+            parameter_name=parameter_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             modify_time: str,
+             new_parameter_value: str,
+             old_parameter_value: str,
+             parameter_name: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("modify_time", modify_time)
+        _setter("new_parameter_value", new_parameter_value)
+        _setter("old_parameter_value", old_parameter_value)
+        _setter("parameter_name", parameter_name)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="modifyTime")
@@ -2857,27 +3459,76 @@ class GetRdsBackupsBackupResult(dict):
                * **1**: Archive storage.
         :param str store_status: StoreStatus.
         """
-        pulumi.set(__self__, "backup_download_url", backup_download_url)
-        pulumi.set(__self__, "backup_end_time", backup_end_time)
-        pulumi.set(__self__, "backup_id", backup_id)
-        pulumi.set(__self__, "backup_initiator", backup_initiator)
-        pulumi.set(__self__, "backup_intranet_download_url", backup_intranet_download_url)
-        pulumi.set(__self__, "backup_method", backup_method)
-        pulumi.set(__self__, "backup_mode", backup_mode)
-        pulumi.set(__self__, "backup_size", backup_size)
-        pulumi.set(__self__, "backup_start_time", backup_start_time)
-        pulumi.set(__self__, "backup_status", backup_status)
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "consistent_time", consistent_time)
-        pulumi.set(__self__, "copy_only_backup", copy_only_backup)
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "encryption", encryption)
-        pulumi.set(__self__, "host_instance_id", host_instance_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_avail", is_avail)
-        pulumi.set(__self__, "meta_status", meta_status)
-        pulumi.set(__self__, "storage_class", storage_class)
-        pulumi.set(__self__, "store_status", store_status)
+        GetRdsBackupsBackupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_download_url=backup_download_url,
+            backup_end_time=backup_end_time,
+            backup_id=backup_id,
+            backup_initiator=backup_initiator,
+            backup_intranet_download_url=backup_intranet_download_url,
+            backup_method=backup_method,
+            backup_mode=backup_mode,
+            backup_size=backup_size,
+            backup_start_time=backup_start_time,
+            backup_status=backup_status,
+            backup_type=backup_type,
+            consistent_time=consistent_time,
+            copy_only_backup=copy_only_backup,
+            db_instance_id=db_instance_id,
+            encryption=encryption,
+            host_instance_id=host_instance_id,
+            id=id,
+            is_avail=is_avail,
+            meta_status=meta_status,
+            storage_class=storage_class,
+            store_status=store_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_download_url: str,
+             backup_end_time: str,
+             backup_id: str,
+             backup_initiator: str,
+             backup_intranet_download_url: str,
+             backup_method: str,
+             backup_mode: str,
+             backup_size: str,
+             backup_start_time: str,
+             backup_status: str,
+             backup_type: str,
+             consistent_time: str,
+             copy_only_backup: str,
+             db_instance_id: str,
+             encryption: str,
+             host_instance_id: str,
+             id: str,
+             is_avail: int,
+             meta_status: str,
+             storage_class: str,
+             store_status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_download_url", backup_download_url)
+        _setter("backup_end_time", backup_end_time)
+        _setter("backup_id", backup_id)
+        _setter("backup_initiator", backup_initiator)
+        _setter("backup_intranet_download_url", backup_intranet_download_url)
+        _setter("backup_method", backup_method)
+        _setter("backup_mode", backup_mode)
+        _setter("backup_size", backup_size)
+        _setter("backup_start_time", backup_start_time)
+        _setter("backup_status", backup_status)
+        _setter("backup_type", backup_type)
+        _setter("consistent_time", consistent_time)
+        _setter("copy_only_backup", copy_only_backup)
+        _setter("db_instance_id", db_instance_id)
+        _setter("encryption", encryption)
+        _setter("host_instance_id", host_instance_id)
+        _setter("id", id)
+        _setter("is_avail", is_avail)
+        _setter("meta_status", meta_status)
+        _setter("storage_class", storage_class)
+        _setter("store_status", store_status)
 
     @property
     @pulumi.getter(name="backupDownloadUrl")
@@ -3079,16 +3730,43 @@ class GetRdsParameterGroupsGroupResult(dict):
                  parameter_group_id: str,
                  parameter_group_name: str,
                  parameter_group_type: int):
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "force_restart", force_restart)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "param_counts", param_counts)
-        pulumi.set(__self__, "param_details", param_details)
-        pulumi.set(__self__, "parameter_group_desc", parameter_group_desc)
-        pulumi.set(__self__, "parameter_group_id", parameter_group_id)
-        pulumi.set(__self__, "parameter_group_name", parameter_group_name)
-        pulumi.set(__self__, "parameter_group_type", parameter_group_type)
+        GetRdsParameterGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            engine=engine,
+            engine_version=engine_version,
+            force_restart=force_restart,
+            id=id,
+            param_counts=param_counts,
+            param_details=param_details,
+            parameter_group_desc=parameter_group_desc,
+            parameter_group_id=parameter_group_id,
+            parameter_group_name=parameter_group_name,
+            parameter_group_type=parameter_group_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             engine: str,
+             engine_version: str,
+             force_restart: int,
+             id: str,
+             param_counts: int,
+             param_details: Sequence['outputs.GetRdsParameterGroupsGroupParamDetailResult'],
+             parameter_group_desc: str,
+             parameter_group_id: str,
+             parameter_group_name: str,
+             parameter_group_type: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("force_restart", force_restart)
+        _setter("id", id)
+        _setter("param_counts", param_counts)
+        _setter("param_details", param_details)
+        _setter("parameter_group_desc", parameter_group_desc)
+        _setter("parameter_group_id", parameter_group_id)
+        _setter("parameter_group_name", parameter_group_name)
+        _setter("parameter_group_type", parameter_group_type)
 
     @property
     @pulumi.getter
@@ -3146,8 +3824,19 @@ class GetRdsParameterGroupsGroupParamDetailResult(dict):
     def __init__(__self__, *,
                  param_name: str,
                  param_value: str):
-        pulumi.set(__self__, "param_name", param_name)
-        pulumi.set(__self__, "param_value", param_value)
+        GetRdsParameterGroupsGroupParamDetailResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            param_name=param_name,
+            param_value=param_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             param_name: str,
+             param_value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("param_name", param_name)
+        _setter("param_value", param_value)
 
     @property
     @pulumi.getter(name="paramName")
@@ -3179,13 +3868,34 @@ class GetSlotsSlotResult(dict):
         :param str temporary: Is the Replication Slot temporary.
         :param str wal_delay: The amount of logs accumulated by Replication Slot.
         """
-        pulumi.set(__self__, "database", database)
-        pulumi.set(__self__, "plugin", plugin)
-        pulumi.set(__self__, "slot_name", slot_name)
-        pulumi.set(__self__, "slot_status", slot_status)
-        pulumi.set(__self__, "slot_type", slot_type)
-        pulumi.set(__self__, "temporary", temporary)
-        pulumi.set(__self__, "wal_delay", wal_delay)
+        GetSlotsSlotResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            database=database,
+            plugin=plugin,
+            slot_name=slot_name,
+            slot_status=slot_status,
+            slot_type=slot_type,
+            temporary=temporary,
+            wal_delay=wal_delay,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             database: str,
+             plugin: str,
+             slot_name: str,
+             slot_status: str,
+             slot_type: str,
+             temporary: str,
+             wal_delay: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("database", database)
+        _setter("plugin", plugin)
+        _setter("slot_name", slot_name)
+        _setter("slot_status", slot_status)
+        _setter("slot_type", slot_type)
+        _setter("temporary", temporary)
+        _setter("wal_delay", wal_delay)
 
     @property
     @pulumi.getter
@@ -3253,8 +3963,19 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            multi_zone_ids=multi_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             multi_zone_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

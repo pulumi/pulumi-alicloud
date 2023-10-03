@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AccessConfigurationProvisioningArgs', 'AccessConfigurationProvisioning']
@@ -27,12 +27,29 @@ class AccessConfigurationProvisioningArgs:
         :param pulumi.Input[str] target_type: The type of the resource range target to be accessed. Valid values: `RD-Account`.
         :param pulumi.Input[str] status: The status of the resource. Valid values: `Provisioned`, `ReprovisionRequired` and `DeprovisionFailed`.
         """
-        pulumi.set(__self__, "access_configuration_id", access_configuration_id)
-        pulumi.set(__self__, "directory_id", directory_id)
-        pulumi.set(__self__, "target_id", target_id)
-        pulumi.set(__self__, "target_type", target_type)
+        AccessConfigurationProvisioningArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_configuration_id=access_configuration_id,
+            directory_id=directory_id,
+            target_id=target_id,
+            target_type=target_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_configuration_id: pulumi.Input[str],
+             directory_id: pulumi.Input[str],
+             target_id: pulumi.Input[str],
+             target_type: pulumi.Input[str],
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_configuration_id", access_configuration_id)
+        _setter("directory_id", directory_id)
+        _setter("target_id", target_id)
+        _setter("target_type", target_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accessConfigurationId")
@@ -111,16 +128,33 @@ class _AccessConfigurationProvisioningState:
         :param pulumi.Input[str] target_id: The ID of the target to create the resource range.
         :param pulumi.Input[str] target_type: The type of the resource range target to be accessed. Valid values: `RD-Account`.
         """
+        _AccessConfigurationProvisioningState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_configuration_id=access_configuration_id,
+            directory_id=directory_id,
+            status=status,
+            target_id=target_id,
+            target_type=target_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_configuration_id: Optional[pulumi.Input[str]] = None,
+             directory_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             target_id: Optional[pulumi.Input[str]] = None,
+             target_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_configuration_id is not None:
-            pulumi.set(__self__, "access_configuration_id", access_configuration_id)
+            _setter("access_configuration_id", access_configuration_id)
         if directory_id is not None:
-            pulumi.set(__self__, "directory_id", directory_id)
+            _setter("directory_id", directory_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if target_id is not None:
-            pulumi.set(__self__, "target_id", target_id)
+            _setter("target_id", target_id)
         if target_type is not None:
-            pulumi.set(__self__, "target_type", target_type)
+            _setter("target_type", target_type)
 
     @property
     @pulumi.getter(name="accessConfigurationId")
@@ -248,6 +282,10 @@ class AccessConfigurationProvisioning(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessConfigurationProvisioningArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

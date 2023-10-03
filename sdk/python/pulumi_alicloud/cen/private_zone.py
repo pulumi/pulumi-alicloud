@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PrivateZoneArgs', 'PrivateZone']
@@ -27,10 +27,25 @@ class PrivateZoneArgs:
                
                ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
         """
-        pulumi.set(__self__, "access_region_id", access_region_id)
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "host_region_id", host_region_id)
-        pulumi.set(__self__, "host_vpc_id", host_vpc_id)
+        PrivateZoneArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_region_id=access_region_id,
+            cen_id=cen_id,
+            host_region_id=host_region_id,
+            host_vpc_id=host_vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_region_id: pulumi.Input[str],
+             cen_id: pulumi.Input[str],
+             host_region_id: pulumi.Input[str],
+             host_vpc_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_region_id", access_region_id)
+        _setter("cen_id", cen_id)
+        _setter("host_region_id", host_region_id)
+        _setter("host_vpc_id", host_vpc_id)
 
     @property
     @pulumi.getter(name="accessRegionId")
@@ -101,16 +116,33 @@ class _PrivateZoneState:
                ->**NOTE:** The "cen.PrivateZone" resource depends on the related "cen.InstanceAttachment" resource.
         :param pulumi.Input[str] status: The status of the PrivateZone service. Valid values: ["Creating", "Active", "Deleting"].
         """
+        _PrivateZoneState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_region_id=access_region_id,
+            cen_id=cen_id,
+            host_region_id=host_region_id,
+            host_vpc_id=host_vpc_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_region_id: Optional[pulumi.Input[str]] = None,
+             cen_id: Optional[pulumi.Input[str]] = None,
+             host_region_id: Optional[pulumi.Input[str]] = None,
+             host_vpc_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_region_id is not None:
-            pulumi.set(__self__, "access_region_id", access_region_id)
+            _setter("access_region_id", access_region_id)
         if cen_id is not None:
-            pulumi.set(__self__, "cen_id", cen_id)
+            _setter("cen_id", cen_id)
         if host_region_id is not None:
-            pulumi.set(__self__, "host_region_id", host_region_id)
+            _setter("host_region_id", host_region_id)
         if host_vpc_id is not None:
-            pulumi.set(__self__, "host_vpc_id", host_vpc_id)
+            _setter("host_vpc_id", host_vpc_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accessRegionId")
@@ -298,6 +330,10 @@ class PrivateZone(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PrivateZoneArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

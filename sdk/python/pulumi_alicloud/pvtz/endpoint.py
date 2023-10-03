@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,11 +29,28 @@ class EndpointArgs:
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vpc_region_id: The Region of the VPC.
         """
-        pulumi.set(__self__, "endpoint_name", endpoint_name)
-        pulumi.set(__self__, "ip_configs", ip_configs)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vpc_region_id", vpc_region_id)
+        EndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint_name=endpoint_name,
+            ip_configs=ip_configs,
+            security_group_id=security_group_id,
+            vpc_id=vpc_id,
+            vpc_region_id=vpc_region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint_name: pulumi.Input[str],
+             ip_configs: pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]],
+             security_group_id: pulumi.Input[str],
+             vpc_id: pulumi.Input[str],
+             vpc_region_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint_name", endpoint_name)
+        _setter("ip_configs", ip_configs)
+        _setter("security_group_id", security_group_id)
+        _setter("vpc_id", vpc_id)
+        _setter("vpc_region_id", vpc_region_id)
 
     @property
     @pulumi.getter(name="endpointName")
@@ -114,18 +131,37 @@ class _EndpointState:
         :param pulumi.Input[str] vpc_id: The VPC ID.
         :param pulumi.Input[str] vpc_region_id: The Region of the VPC.
         """
+        _EndpointState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint_name=endpoint_name,
+            ip_configs=ip_configs,
+            security_group_id=security_group_id,
+            status=status,
+            vpc_id=vpc_id,
+            vpc_region_id=vpc_region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint_name: Optional[pulumi.Input[str]] = None,
+             ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vpc_region_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if endpoint_name is not None:
-            pulumi.set(__self__, "endpoint_name", endpoint_name)
+            _setter("endpoint_name", endpoint_name)
         if ip_configs is not None:
-            pulumi.set(__self__, "ip_configs", ip_configs)
+            _setter("ip_configs", ip_configs)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vpc_region_id is not None:
-            pulumi.set(__self__, "vpc_region_id", vpc_region_id)
+            _setter("vpc_region_id", vpc_region_id)
 
     @property
     @pulumi.getter(name="endpointName")
@@ -265,6 +301,10 @@ class Endpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

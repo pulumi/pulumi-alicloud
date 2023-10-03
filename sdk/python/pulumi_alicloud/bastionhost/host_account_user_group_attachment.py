@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HostAccountUserGroupAttachmentArgs', 'HostAccountUserGroupAttachment']
@@ -25,10 +25,25 @@ class HostAccountUserGroupAttachmentArgs:
         :param pulumi.Input[str] instance_id: The ID of the Bastionhost instance where you want to authorize the user group to manage the specified hosts and host accounts.
         :param pulumi.Input[str] user_group_id: The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
         """
-        pulumi.set(__self__, "host_account_ids", host_account_ids)
-        pulumi.set(__self__, "host_id", host_id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "user_group_id", user_group_id)
+        HostAccountUserGroupAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_account_ids=host_account_ids,
+            host_id=host_id,
+            instance_id=instance_id,
+            user_group_id=user_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_account_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             host_id: pulumi.Input[str],
+             instance_id: pulumi.Input[str],
+             user_group_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("host_account_ids", host_account_ids)
+        _setter("host_id", host_id)
+        _setter("instance_id", instance_id)
+        _setter("user_group_id", user_group_id)
 
     @property
     @pulumi.getter(name="hostAccountIds")
@@ -93,14 +108,29 @@ class _HostAccountUserGroupAttachmentState:
         :param pulumi.Input[str] instance_id: The ID of the Bastionhost instance where you want to authorize the user group to manage the specified hosts and host accounts.
         :param pulumi.Input[str] user_group_id: The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
         """
+        _HostAccountUserGroupAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_account_ids=host_account_ids,
+            host_id=host_id,
+            instance_id=instance_id,
+            user_group_id=user_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_account_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             host_id: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             user_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if host_account_ids is not None:
-            pulumi.set(__self__, "host_account_ids", host_account_ids)
+            _setter("host_account_ids", host_account_ids)
         if host_id is not None:
-            pulumi.set(__self__, "host_id", host_id)
+            _setter("host_id", host_id)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if user_group_id is not None:
-            pulumi.set(__self__, "user_group_id", user_group_id)
+            _setter("user_group_id", user_group_id)
 
     @property
     @pulumi.getter(name="hostAccountIds")
@@ -318,6 +348,10 @@ class HostAccountUserGroupAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HostAccountUserGroupAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

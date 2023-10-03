@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,16 +31,35 @@ class DomainArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
         """
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "sources", sources)
+        DomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            sources=sources,
+            check_url=check_url,
+            scope=scope,
+            tags=tags,
+            top_level_domain=top_level_domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: pulumi.Input[str],
+             sources: pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]],
+             check_url: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             top_level_domain: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain_name", domain_name)
+        _setter("sources", sources)
         if check_url is not None:
-            pulumi.set(__self__, "check_url", check_url)
+            _setter("check_url", check_url)
         if scope is not None:
-            pulumi.set(__self__, "scope", scope)
+            _setter("scope", scope)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if top_level_domain is not None:
-            pulumi.set(__self__, "top_level_domain", top_level_domain)
+            _setter("top_level_domain", top_level_domain)
 
     @property
     @pulumi.getter(name="domainName")
@@ -151,36 +170,73 @@ class _DomainState:
         :param pulumi.Input[str] top_level_domain: The top-level domain name.
         :param pulumi.Input[str] weight: The weight of the origin server.
         """
+        _DomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cert_name=cert_name,
+            check_url=check_url,
+            cname=cname,
+            description=description,
+            domain_name=domain_name,
+            gmt_created=gmt_created,
+            gmt_modified=gmt_modified,
+            scope=scope,
+            sources=sources,
+            ssl_protocol=ssl_protocol,
+            ssl_pub=ssl_pub,
+            status=status,
+            tags=tags,
+            top_level_domain=top_level_domain,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cert_name: Optional[pulumi.Input[str]] = None,
+             check_url: Optional[pulumi.Input[str]] = None,
+             cname: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             gmt_created: Optional[pulumi.Input[str]] = None,
+             gmt_modified: Optional[pulumi.Input[str]] = None,
+             scope: Optional[pulumi.Input[str]] = None,
+             sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
+             ssl_protocol: Optional[pulumi.Input[str]] = None,
+             ssl_pub: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             top_level_domain: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cert_name is not None:
-            pulumi.set(__self__, "cert_name", cert_name)
+            _setter("cert_name", cert_name)
         if check_url is not None:
-            pulumi.set(__self__, "check_url", check_url)
+            _setter("check_url", check_url)
         if cname is not None:
-            pulumi.set(__self__, "cname", cname)
+            _setter("cname", cname)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
         if gmt_created is not None:
-            pulumi.set(__self__, "gmt_created", gmt_created)
+            _setter("gmt_created", gmt_created)
         if gmt_modified is not None:
-            pulumi.set(__self__, "gmt_modified", gmt_modified)
+            _setter("gmt_modified", gmt_modified)
         if scope is not None:
-            pulumi.set(__self__, "scope", scope)
+            _setter("scope", scope)
         if sources is not None:
-            pulumi.set(__self__, "sources", sources)
+            _setter("sources", sources)
         if ssl_protocol is not None:
-            pulumi.set(__self__, "ssl_protocol", ssl_protocol)
+            _setter("ssl_protocol", ssl_protocol)
         if ssl_pub is not None:
-            pulumi.set(__self__, "ssl_pub", ssl_pub)
+            _setter("ssl_pub", ssl_pub)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if top_level_domain is not None:
-            pulumi.set(__self__, "top_level_domain", top_level_domain)
+            _setter("top_level_domain", top_level_domain)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter(name="certName")
@@ -474,6 +530,10 @@ class Domain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

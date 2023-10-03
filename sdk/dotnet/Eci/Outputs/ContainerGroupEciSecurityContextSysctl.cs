@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
     public sealed class ContainerGroupEciSecurityContextSysctl
     {
         /// <summary>
-        /// The name of the volume.
+        /// The name of the mounted volume.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The variable value of the security context that the container group runs.
+        /// The value of the variable. The value can be 0 to 256 characters in length.
         /// </summary>
         public readonly string? Value;
 

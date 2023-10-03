@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AutoSnapShotPolicyArgs', 'AutoSnapShotPolicy']
@@ -25,10 +25,25 @@ class AutoSnapShotPolicyArgs:
         :param pulumi.Input[int] retention_days: Automatic snapshot retention days.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The set of times at which the snapshot is taken on the day the automatic snapshot is executed. Value range: `00` to `23`, representing 24 time points from 00:00 to 23:00, for example, `01` indicates 01:00.
         """
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
-        pulumi.set(__self__, "retention_days", retention_days)
-        pulumi.set(__self__, "time_points", time_points)
+        AutoSnapShotPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy_name=policy_name,
+            repeat_weekdays=repeat_weekdays,
+            retention_days=retention_days,
+            time_points=time_points,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy_name: pulumi.Input[str],
+             repeat_weekdays: pulumi.Input[Sequence[pulumi.Input[str]]],
+             retention_days: pulumi.Input[int],
+             time_points: pulumi.Input[Sequence[pulumi.Input[str]]],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("policy_name", policy_name)
+        _setter("repeat_weekdays", repeat_weekdays)
+        _setter("retention_days", retention_days)
+        _setter("time_points", time_points)
 
     @property
     @pulumi.getter(name="policyName")
@@ -105,26 +120,53 @@ class _AutoSnapShotPolicyState:
         :param pulumi.Input[str] status_detail: Automatic snapshot policy status details
         :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The set of times at which the snapshot is taken on the day the automatic snapshot is executed. Value range: `00` to `23`, representing 24 time points from 00:00 to 23:00, for example, `01` indicates 01:00.
         """
+        _AutoSnapShotPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            applied_dbfs_number=applied_dbfs_number,
+            create_time=create_time,
+            last_modified=last_modified,
+            policy_id=policy_id,
+            policy_name=policy_name,
+            repeat_weekdays=repeat_weekdays,
+            retention_days=retention_days,
+            status=status,
+            status_detail=status_detail,
+            time_points=time_points,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             applied_dbfs_number: Optional[pulumi.Input[int]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             last_modified: Optional[pulumi.Input[str]] = None,
+             policy_id: Optional[pulumi.Input[str]] = None,
+             policy_name: Optional[pulumi.Input[str]] = None,
+             repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             retention_days: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             status_detail: Optional[pulumi.Input[str]] = None,
+             time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if applied_dbfs_number is not None:
-            pulumi.set(__self__, "applied_dbfs_number", applied_dbfs_number)
+            _setter("applied_dbfs_number", applied_dbfs_number)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if last_modified is not None:
-            pulumi.set(__self__, "last_modified", last_modified)
+            _setter("last_modified", last_modified)
         if policy_id is not None:
-            pulumi.set(__self__, "policy_id", policy_id)
+            _setter("policy_id", policy_id)
         if policy_name is not None:
-            pulumi.set(__self__, "policy_name", policy_name)
+            _setter("policy_name", policy_name)
         if repeat_weekdays is not None:
-            pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
+            _setter("repeat_weekdays", repeat_weekdays)
         if retention_days is not None:
-            pulumi.set(__self__, "retention_days", retention_days)
+            _setter("retention_days", retention_days)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if status_detail is not None:
-            pulumi.set(__self__, "status_detail", status_detail)
+            _setter("status_detail", status_detail)
         if time_points is not None:
-            pulumi.set(__self__, "time_points", time_points)
+            _setter("time_points", time_points)
 
     @property
     @pulumi.getter(name="appliedDbfsNumber")
@@ -340,6 +382,10 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AutoSnapShotPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

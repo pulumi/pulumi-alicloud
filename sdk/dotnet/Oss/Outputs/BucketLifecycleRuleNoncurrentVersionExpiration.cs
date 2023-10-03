@@ -14,9 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketLifecycleRuleNoncurrentVersionExpiration
     {
         /// <summary>
-        /// Specifies the number of days after object creation when the specific rule action takes effect.
-        /// 
-        /// `NOTE`: One and only one of "created_before_date" and "days" can be specified in one abort_multipart_upload configuration.
+        /// Specifies the number of days noncurrent object versions transition.
         /// </summary>
         public readonly int Days;
 

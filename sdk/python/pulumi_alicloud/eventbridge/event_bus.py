@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EventBusArgs', 'EventBus']
@@ -21,9 +21,20 @@ class EventBusArgs:
         :param pulumi.Input[str] event_bus_name: The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
         :param pulumi.Input[str] description: The description of event bus.
         """
-        pulumi.set(__self__, "event_bus_name", event_bus_name)
+        EventBusArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_bus_name=event_bus_name,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_bus_name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("event_bus_name", event_bus_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="eventBusName")
@@ -60,10 +71,21 @@ class _EventBusState:
         :param pulumi.Input[str] description: The description of event bus.
         :param pulumi.Input[str] event_bus_name: The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
         """
+        _EventBusState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            event_bus_name=event_bus_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             event_bus_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if event_bus_name is not None:
-            pulumi.set(__self__, "event_bus_name", event_bus_name)
+            _setter("event_bus_name", event_bus_name)
 
     @property
     @pulumi.getter
@@ -179,6 +201,10 @@ class EventBus(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EventBusArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

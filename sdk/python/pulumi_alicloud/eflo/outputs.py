@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -46,18 +46,49 @@ class GetSubnetsSubnetResult(dict):
         :param str vpd_id: The Eflo VPD ID.
         :param str zone_id: The zone ID of the resource.
         """
-        pulumi.set(__self__, "cidr", cidr)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "gmt_modified", gmt_modified)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "subnet_id", subnet_id)
-        pulumi.set(__self__, "subnet_name", subnet_name)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "vpd_id", vpd_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetSubnetsSubnetResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            create_time=create_time,
+            gmt_modified=gmt_modified,
+            id=id,
+            message=message,
+            resource_group_id=resource_group_id,
+            status=status,
+            subnet_id=subnet_id,
+            subnet_name=subnet_name,
+            type=type,
+            vpd_id=vpd_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: str,
+             create_time: str,
+             gmt_modified: str,
+             id: str,
+             message: str,
+             resource_group_id: str,
+             status: str,
+             subnet_id: str,
+             subnet_name: str,
+             type: str,
+             vpd_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr", cidr)
+        _setter("create_time", create_time)
+        _setter("gmt_modified", gmt_modified)
+        _setter("id", id)
+        _setter("message", message)
+        _setter("resource_group_id", resource_group_id)
+        _setter("status", status)
+        _setter("subnet_id", subnet_id)
+        _setter("subnet_name", subnet_name)
+        _setter("type", type)
+        _setter("vpd_id", vpd_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -180,14 +211,37 @@ class GetVpdsVpdResult(dict):
         :param str vpd_id: The id of the vpd.
         :param str vpd_name: The Name of the VPD.
         """
-        pulumi.set(__self__, "cidr", cidr)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "gmt_modified", gmt_modified)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpd_id", vpd_id)
-        pulumi.set(__self__, "vpd_name", vpd_name)
+        GetVpdsVpdResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr=cidr,
+            create_time=create_time,
+            gmt_modified=gmt_modified,
+            id=id,
+            resource_group_id=resource_group_id,
+            status=status,
+            vpd_id=vpd_id,
+            vpd_name=vpd_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr: str,
+             create_time: str,
+             gmt_modified: str,
+             id: str,
+             resource_group_id: str,
+             status: str,
+             vpd_id: str,
+             vpd_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr", cidr)
+        _setter("create_time", create_time)
+        _setter("gmt_modified", gmt_modified)
+        _setter("id", id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("status", status)
+        _setter("vpd_id", vpd_id)
+        _setter("vpd_name", vpd_name)
 
     @property
     @pulumi.getter

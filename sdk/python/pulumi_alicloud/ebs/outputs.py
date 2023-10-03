@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -56,23 +56,64 @@ class GetDedicatedBlockStorageClustersClusterResult(dict):
         :param str used_capacity: The used (created disk) capacity of the current cluster, in GB
         :param str zone_id: The zone ID  of the resource
         """
-        pulumi.set(__self__, "available_capacity", available_capacity)
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "dedicated_block_storage_cluster_id", dedicated_block_storage_cluster_id)
-        pulumi.set(__self__, "dedicated_block_storage_cluster_name", dedicated_block_storage_cluster_name)
-        pulumi.set(__self__, "delivery_capacity", delivery_capacity)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "performance_level", performance_level)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "supported_category", supported_category)
-        pulumi.set(__self__, "total_capacity", total_capacity)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "used_capacity", used_capacity)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetDedicatedBlockStorageClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            available_capacity=available_capacity,
+            category=category,
+            create_time=create_time,
+            dedicated_block_storage_cluster_id=dedicated_block_storage_cluster_id,
+            dedicated_block_storage_cluster_name=dedicated_block_storage_cluster_name,
+            delivery_capacity=delivery_capacity,
+            description=description,
+            expired_time=expired_time,
+            id=id,
+            performance_level=performance_level,
+            resource_group_id=resource_group_id,
+            status=status,
+            supported_category=supported_category,
+            total_capacity=total_capacity,
+            type=type,
+            used_capacity=used_capacity,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             available_capacity: str,
+             category: str,
+             create_time: str,
+             dedicated_block_storage_cluster_id: str,
+             dedicated_block_storage_cluster_name: str,
+             delivery_capacity: str,
+             description: str,
+             expired_time: str,
+             id: str,
+             performance_level: str,
+             resource_group_id: str,
+             status: str,
+             supported_category: str,
+             total_capacity: str,
+             type: str,
+             used_capacity: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("available_capacity", available_capacity)
+        _setter("category", category)
+        _setter("create_time", create_time)
+        _setter("dedicated_block_storage_cluster_id", dedicated_block_storage_cluster_id)
+        _setter("dedicated_block_storage_cluster_name", dedicated_block_storage_cluster_name)
+        _setter("delivery_capacity", delivery_capacity)
+        _setter("description", description)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("performance_level", performance_level)
+        _setter("resource_group_id", resource_group_id)
+        _setter("status", status)
+        _setter("supported_category", supported_category)
+        _setter("total_capacity", total_capacity)
+        _setter("type", type)
+        _setter("used_capacity", used_capacity)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="availableCapacity")
@@ -244,22 +285,61 @@ class GetDiskReplicaGroupsGroupResult(dict):
         :param str standby_zone: The initial destination zone of the replication group.
         :param str status: The status of the consistent replication group. Possible values:
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "destination_region_id", destination_region_id)
-        pulumi.set(__self__, "destination_zone_id", destination_zone_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_recover_point", last_recover_point)
-        pulumi.set(__self__, "primary_region", primary_region)
-        pulumi.set(__self__, "primary_zone", primary_zone)
-        pulumi.set(__self__, "replica_group_id", replica_group_id)
-        pulumi.set(__self__, "rpo", rpo)
-        pulumi.set(__self__, "site", site)
-        pulumi.set(__self__, "source_region_id", source_region_id)
-        pulumi.set(__self__, "source_zone_id", source_zone_id)
-        pulumi.set(__self__, "standby_region", standby_region)
-        pulumi.set(__self__, "standby_zone", standby_zone)
-        pulumi.set(__self__, "status", status)
+        GetDiskReplicaGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            destination_region_id=destination_region_id,
+            destination_zone_id=destination_zone_id,
+            group_name=group_name,
+            id=id,
+            last_recover_point=last_recover_point,
+            primary_region=primary_region,
+            primary_zone=primary_zone,
+            replica_group_id=replica_group_id,
+            rpo=rpo,
+            site=site,
+            source_region_id=source_region_id,
+            source_zone_id=source_zone_id,
+            standby_region=standby_region,
+            standby_zone=standby_zone,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             destination_region_id: str,
+             destination_zone_id: str,
+             group_name: str,
+             id: str,
+             last_recover_point: str,
+             primary_region: str,
+             primary_zone: str,
+             replica_group_id: str,
+             rpo: int,
+             site: str,
+             source_region_id: str,
+             source_zone_id: str,
+             standby_region: str,
+             standby_zone: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("destination_region_id", destination_region_id)
+        _setter("destination_zone_id", destination_zone_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
+        _setter("last_recover_point", last_recover_point)
+        _setter("primary_region", primary_region)
+        _setter("primary_zone", primary_zone)
+        _setter("replica_group_id", replica_group_id)
+        _setter("rpo", rpo)
+        _setter("site", site)
+        _setter("source_region_id", source_region_id)
+        _setter("source_zone_id", source_zone_id)
+        _setter("standby_region", standby_region)
+        _setter("standby_zone", standby_zone)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -419,20 +499,55 @@ class GetDiskReplicaPairsPairResult(dict):
         :param str source_zone_id: The ID of the zone to which the production site belongs.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "destination_disk_id", destination_disk_id)
-        pulumi.set(__self__, "destination_region_id", destination_region_id)
-        pulumi.set(__self__, "destination_zone_id", destination_zone_id)
-        pulumi.set(__self__, "disk_id", disk_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "pair_name", pair_name)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "replica_pair_id", replica_pair_id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "rpo", rpo)
-        pulumi.set(__self__, "source_zone_id", source_zone_id)
-        pulumi.set(__self__, "status", status)
+        GetDiskReplicaPairsPairResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            description=description,
+            destination_disk_id=destination_disk_id,
+            destination_region_id=destination_region_id,
+            destination_zone_id=destination_zone_id,
+            disk_id=disk_id,
+            id=id,
+            pair_name=pair_name,
+            payment_type=payment_type,
+            replica_pair_id=replica_pair_id,
+            resource_group_id=resource_group_id,
+            rpo=rpo,
+            source_zone_id=source_zone_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: str,
+             description: str,
+             destination_disk_id: str,
+             destination_region_id: str,
+             destination_zone_id: str,
+             disk_id: str,
+             id: str,
+             pair_name: str,
+             payment_type: str,
+             replica_pair_id: str,
+             resource_group_id: str,
+             rpo: str,
+             source_zone_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("description", description)
+        _setter("destination_disk_id", destination_disk_id)
+        _setter("destination_region_id", destination_region_id)
+        _setter("destination_zone_id", destination_zone_id)
+        _setter("disk_id", disk_id)
+        _setter("id", id)
+        _setter("pair_name", pair_name)
+        _setter("payment_type", payment_type)
+        _setter("replica_pair_id", replica_pair_id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("rpo", rpo)
+        _setter("source_zone_id", source_zone_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -553,8 +668,19 @@ class GetRegionsRegionResult(dict):
         :param str region_id: The ID of the region.
         :param Sequence['GetRegionsRegionZoneArgs'] zones: A list of Ebs Zones.
         """
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "zones", zones)
+        GetRegionsRegionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            region_id=region_id,
+            zones=zones,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             region_id: str,
+             zones: Sequence['outputs.GetRegionsRegionZoneResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("region_id", region_id)
+        _setter("zones", zones)
 
     @property
     @pulumi.getter(name="regionId")
@@ -580,7 +706,16 @@ class GetRegionsRegionZoneResult(dict):
         """
         :param str zone_id: The ID of the zone.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetRegionsRegionZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="zoneId")

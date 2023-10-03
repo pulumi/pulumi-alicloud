@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// The path of the container in SAE.
+        /// The mount path.
         /// </summary>
         public readonly string? MountPath;
 

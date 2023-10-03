@@ -103,7 +103,7 @@ type ManagedKubernetes struct {
 	LoadBalancerSpec pulumi.StringPtrOutput `pulumi:"loadBalancerSpec"`
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowOutput `pulumi:"maintenanceWindow"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// This parameter specifies the name of the component.
 	Name       pulumi.StringOutput    `pulumi:"name"`
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
@@ -372,7 +372,7 @@ type managedKubernetesState struct {
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
 	MaintenanceWindow *ManagedKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// This parameter specifies the name of the component.
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The ID of nat gateway used to launch kubernetes cluster.
@@ -602,7 +602,7 @@ type ManagedKubernetesState struct {
 	LoadBalancerSpec pulumi.StringPtrInput
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowPtrInput
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// This parameter specifies the name of the component.
 	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
 	// The ID of nat gateway used to launch kubernetes cluster.
@@ -832,7 +832,7 @@ type managedKubernetesArgs struct {
 	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
 	MaintenanceWindow *ManagedKubernetesMaintenanceWindow `pulumi:"maintenanceWindow"`
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// This parameter specifies the name of the component.
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
@@ -1041,7 +1041,7 @@ type ManagedKubernetesArgs struct {
 	LoadBalancerSpec pulumi.StringPtrInput
 	// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. Detailed below.
 	MaintenanceWindow ManagedKubernetesMaintenanceWindowPtrInput
-	// The kubernetes cluster's name. It is unique in one Alicloud account.
+	// This parameter specifies the name of the component.
 	Name       pulumi.StringPtrInput
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
@@ -1450,7 +1450,7 @@ func (o ManagedKubernetesOutput) MaintenanceWindow() ManagedKubernetesMaintenanc
 	return o.ApplyT(func(v *ManagedKubernetes) ManagedKubernetesMaintenanceWindowOutput { return v.MaintenanceWindow }).(ManagedKubernetesMaintenanceWindowOutput)
 }
 
-// The kubernetes cluster's name. It is unique in one Alicloud account.
+// This parameter specifies the name of the component.
 func (o ManagedKubernetesOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedKubernetes) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetCallerIdentityResult',
     'AwaitableGetCallerIdentityResult',
     'get_caller_identity',
+    'get_caller_identity_output',
 ]
 
 @pulumi.output_type
@@ -104,3 +105,23 @@ def get_caller_identity(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
         arn=pulumi.get(__ret__, 'arn'),
         id=pulumi.get(__ret__, 'id'),
         identity_type=pulumi.get(__ret__, 'identity_type'))
+
+
+@_utilities.lift_output_func(get_caller_identity)
+def get_caller_identity_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCallerIdentityResult]:
+    """
+    This data source provides the identity of the current user.
+
+    > **NOTE:** Available in 1.65.0+.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    current = alicloud.get_caller_identity()
+    pulumi.export("currentUserArn", current.id)
+    ```
+    """
+    ...

@@ -17,14 +17,14 @@ public final class BucketLifecycleRuleFilterNotArgs extends com.pulumi.resources
     public static final BucketLifecycleRuleFilterNotArgs Empty = new BucketLifecycleRuleFilterNotArgs();
 
     /**
-     * Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+     * The prefix in the names of the objects to which the lifecycle rule does not apply.
      * 
      */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
     /**
-     * @return Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+     * @return The prefix in the names of the objects to which the lifecycle rule does not apply.
      * 
      */
     public Optional<Output<String>> prefix() {
@@ -72,7 +72,7 @@ public final class BucketLifecycleRuleFilterNotArgs extends com.pulumi.resources
         }
 
         /**
-         * @param prefix Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+         * @param prefix The prefix in the names of the objects to which the lifecycle rule does not apply.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class BucketLifecycleRuleFilterNotArgs extends com.pulumi.resources
         }
 
         /**
-         * @param prefix Object key prefix identifying one or more objects to which the rule applies. Default value is null, the rule applies to all objects in a bucket.
+         * @param prefix The prefix in the names of the objects to which the lifecycle rule does not apply.
          * 
          * @return builder
          * 

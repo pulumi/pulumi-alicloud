@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -70,18 +70,37 @@ class ClusterBootstrapAction(dict):
         :param str name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         :param str path: bootstrap action path, e.g. "oss://bucket/path".
         """
+        ClusterBootstrapAction._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arg=arg,
+            execution_fail_strategy=execution_fail_strategy,
+            execution_moment=execution_moment,
+            execution_target=execution_target,
+            name=name,
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arg: Optional[str] = None,
+             execution_fail_strategy: Optional[str] = None,
+             execution_moment: Optional[str] = None,
+             execution_target: Optional[str] = None,
+             name: Optional[str] = None,
+             path: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arg is not None:
-            pulumi.set(__self__, "arg", arg)
+            _setter("arg", arg)
         if execution_fail_strategy is not None:
-            pulumi.set(__self__, "execution_fail_strategy", execution_fail_strategy)
+            _setter("execution_fail_strategy", execution_fail_strategy)
         if execution_moment is not None:
-            pulumi.set(__self__, "execution_moment", execution_moment)
+            _setter("execution_moment", execution_moment)
         if execution_target is not None:
-            pulumi.set(__self__, "execution_target", execution_target)
+            _setter("execution_target", execution_target)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
 
     @property
     @pulumi.getter
@@ -168,10 +187,25 @@ class ClusterConfig(dict):
         :param str file_name: Custom configuration service file name, e.g. ’hdfs-site’.
         :param str service_name: Custom configuration service name, e.g. ’HDFS’.
         """
-        pulumi.set(__self__, "config_key", config_key)
-        pulumi.set(__self__, "config_value", config_value)
-        pulumi.set(__self__, "file_name", file_name)
-        pulumi.set(__self__, "service_name", service_name)
+        ClusterConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_key=config_key,
+            config_value=config_value,
+            file_name=file_name,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_key: str,
+             config_value: str,
+             file_name: str,
+             service_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config_key", config_key)
+        _setter("config_value", config_value)
+        _setter("file_name", file_name)
+        _setter("service_name", service_name)
 
     @property
     @pulumi.getter(name="configKey")
@@ -287,38 +321,77 @@ class ClusterHostGroup(dict):
         :param str sys_disk_capacity: System disk capacity.
         :param str sys_disk_type: System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
         """
+        ClusterHostGroup._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            charge_type=charge_type,
+            decommission_timeout=decommission_timeout,
+            disk_capacity=disk_capacity,
+            disk_count=disk_count,
+            disk_type=disk_type,
+            enable_graceful_decommission=enable_graceful_decommission,
+            gpu_driver=gpu_driver,
+            host_group_name=host_group_name,
+            host_group_type=host_group_type,
+            instance_list=instance_list,
+            instance_type=instance_type,
+            node_count=node_count,
+            period=period,
+            sys_disk_capacity=sys_disk_capacity,
+            sys_disk_type=sys_disk_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: Optional[bool] = None,
+             charge_type: Optional[str] = None,
+             decommission_timeout: Optional[int] = None,
+             disk_capacity: Optional[str] = None,
+             disk_count: Optional[str] = None,
+             disk_type: Optional[str] = None,
+             enable_graceful_decommission: Optional[bool] = None,
+             gpu_driver: Optional[str] = None,
+             host_group_name: Optional[str] = None,
+             host_group_type: Optional[str] = None,
+             instance_list: Optional[str] = None,
+             instance_type: Optional[str] = None,
+             node_count: Optional[str] = None,
+             period: Optional[int] = None,
+             sys_disk_capacity: Optional[str] = None,
+             sys_disk_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if charge_type is not None:
-            pulumi.set(__self__, "charge_type", charge_type)
+            _setter("charge_type", charge_type)
         if decommission_timeout is not None:
-            pulumi.set(__self__, "decommission_timeout", decommission_timeout)
+            _setter("decommission_timeout", decommission_timeout)
         if disk_capacity is not None:
-            pulumi.set(__self__, "disk_capacity", disk_capacity)
+            _setter("disk_capacity", disk_capacity)
         if disk_count is not None:
-            pulumi.set(__self__, "disk_count", disk_count)
+            _setter("disk_count", disk_count)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if enable_graceful_decommission is not None:
-            pulumi.set(__self__, "enable_graceful_decommission", enable_graceful_decommission)
+            _setter("enable_graceful_decommission", enable_graceful_decommission)
         if gpu_driver is not None:
-            pulumi.set(__self__, "gpu_driver", gpu_driver)
+            _setter("gpu_driver", gpu_driver)
         if host_group_name is not None:
-            pulumi.set(__self__, "host_group_name", host_group_name)
+            _setter("host_group_name", host_group_name)
         if host_group_type is not None:
-            pulumi.set(__self__, "host_group_type", host_group_type)
+            _setter("host_group_type", host_group_type)
         if instance_list is not None:
-            pulumi.set(__self__, "instance_list", instance_list)
+            _setter("instance_list", instance_list)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if node_count is not None:
-            pulumi.set(__self__, "node_count", node_count)
+            _setter("node_count", node_count)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if sys_disk_capacity is not None:
-            pulumi.set(__self__, "sys_disk_capacity", sys_disk_capacity)
+            _setter("sys_disk_capacity", sys_disk_capacity)
         if sys_disk_type is not None:
-            pulumi.set(__self__, "sys_disk_type", sys_disk_type)
+            _setter("sys_disk_type", sys_disk_type)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -478,9 +551,22 @@ class ClusterMetaStoreConf(dict):
         :param str db_url: Custom rds database connection url.
         :param str db_user_name: Custom rds database user name.
         """
-        pulumi.set(__self__, "db_password", db_password)
-        pulumi.set(__self__, "db_url", db_url)
-        pulumi.set(__self__, "db_user_name", db_user_name)
+        ClusterMetaStoreConf._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_password=db_password,
+            db_url=db_url,
+            db_user_name=db_user_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_password: str,
+             db_url: str,
+             db_user_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_password", db_password)
+        _setter("db_url", db_url)
+        _setter("db_user_name", db_user_name)
 
     @property
     @pulumi.getter(name="dbPassword")
@@ -561,22 +647,47 @@ class ClusterModifyClusterServiceConfig(dict):
         :param str host_instance_id: Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
         :param bool refresh_host_config: Cluster service configuration modification refresh host config, ’true’ or ’false’.
         """
-        pulumi.set(__self__, "config_params", config_params)
-        pulumi.set(__self__, "service_name", service_name)
+        ClusterModifyClusterServiceConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_params=config_params,
+            service_name=service_name,
+            comment=comment,
+            config_type=config_type,
+            custom_config_params=custom_config_params,
+            gateway_cluster_id_lists=gateway_cluster_id_lists,
+            group_id=group_id,
+            host_instance_id=host_instance_id,
+            refresh_host_config=refresh_host_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_params: str,
+             service_name: str,
+             comment: Optional[str] = None,
+             config_type: Optional[str] = None,
+             custom_config_params: Optional[str] = None,
+             gateway_cluster_id_lists: Optional[Sequence[str]] = None,
+             group_id: Optional[str] = None,
+             host_instance_id: Optional[str] = None,
+             refresh_host_config: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config_params", config_params)
+        _setter("service_name", service_name)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if config_type is not None:
-            pulumi.set(__self__, "config_type", config_type)
+            _setter("config_type", config_type)
         if custom_config_params is not None:
-            pulumi.set(__self__, "custom_config_params", custom_config_params)
+            _setter("custom_config_params", custom_config_params)
         if gateway_cluster_id_lists is not None:
-            pulumi.set(__self__, "gateway_cluster_id_lists", gateway_cluster_id_lists)
+            _setter("gateway_cluster_id_lists", gateway_cluster_id_lists)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if host_instance_id is not None:
-            pulumi.set(__self__, "host_instance_id", host_instance_id)
+            _setter("host_instance_id", host_instance_id)
         if refresh_host_config is not None:
-            pulumi.set(__self__, "refresh_host_config", refresh_host_config)
+            _setter("refresh_host_config", refresh_host_config)
 
     @property
     @pulumi.getter(name="configParams")
@@ -742,50 +853,145 @@ class GetClustersClusterResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID.
         """
-        pulumi.set(__self__, "access_infos", access_infos)
-        pulumi.set(__self__, "auto_scaling_allowed", auto_scaling_allowed)
-        pulumi.set(__self__, "auto_scaling_by_load_allowed", auto_scaling_by_load_allowed)
-        pulumi.set(__self__, "auto_scaling_enable", auto_scaling_enable)
-        pulumi.set(__self__, "auto_scaling_spot_with_limit_allowed", auto_scaling_spot_with_limit_allowed)
-        pulumi.set(__self__, "bootstrap_action_lists", bootstrap_action_lists)
-        pulumi.set(__self__, "bootstrap_failed", bootstrap_failed)
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "create_resource", create_resource)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "create_type", create_type)
-        pulumi.set(__self__, "deposit_type", deposit_type)
-        pulumi.set(__self__, "eas_enable", eas_enable)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "extra_info", extra_info)
-        pulumi.set(__self__, "has_uncompleted_order", has_uncompleted_order)
-        pulumi.set(__self__, "high_availability_enable", high_availability_enable)
-        pulumi.set(__self__, "host_group_lists", host_group_lists)
-        pulumi.set(__self__, "host_pool_infos", host_pool_infos)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "local_meta_db", local_meta_db)
-        pulumi.set(__self__, "machine_type", machine_type)
-        pulumi.set(__self__, "meta_store_type", meta_store_type)
-        pulumi.set(__self__, "net_type", net_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "period", period)
-        pulumi.set(__self__, "relate_cluster_infos", relate_cluster_infos)
-        pulumi.set(__self__, "resize_disk_enable", resize_disk_enable)
-        pulumi.set(__self__, "running_time", running_time)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "security_group_name", security_group_name)
-        pulumi.set(__self__, "software_infos", software_infos)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "stop_time", stop_time)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "user_defined_emr_ecs_role", user_defined_emr_ecs_role)
-        pulumi.set(__self__, "user_id", user_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_infos=access_infos,
+            auto_scaling_allowed=auto_scaling_allowed,
+            auto_scaling_by_load_allowed=auto_scaling_by_load_allowed,
+            auto_scaling_enable=auto_scaling_enable,
+            auto_scaling_spot_with_limit_allowed=auto_scaling_spot_with_limit_allowed,
+            bootstrap_action_lists=bootstrap_action_lists,
+            bootstrap_failed=bootstrap_failed,
+            cluster_id=cluster_id,
+            cluster_name=cluster_name,
+            create_resource=create_resource,
+            create_time=create_time,
+            create_type=create_type,
+            deposit_type=deposit_type,
+            eas_enable=eas_enable,
+            expired_time=expired_time,
+            extra_info=extra_info,
+            has_uncompleted_order=has_uncompleted_order,
+            high_availability_enable=high_availability_enable,
+            host_group_lists=host_group_lists,
+            host_pool_infos=host_pool_infos,
+            id=id,
+            image_id=image_id,
+            local_meta_db=local_meta_db,
+            machine_type=machine_type,
+            meta_store_type=meta_store_type,
+            net_type=net_type,
+            payment_type=payment_type,
+            period=period,
+            relate_cluster_infos=relate_cluster_infos,
+            resize_disk_enable=resize_disk_enable,
+            running_time=running_time,
+            security_group_id=security_group_id,
+            security_group_name=security_group_name,
+            software_infos=software_infos,
+            start_time=start_time,
+            status=status,
+            stop_time=stop_time,
+            tags=tags,
+            type=type,
+            user_defined_emr_ecs_role=user_defined_emr_ecs_role,
+            user_id=user_id,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_infos: Sequence['outputs.GetClustersClusterAccessInfoResult'],
+             auto_scaling_allowed: bool,
+             auto_scaling_by_load_allowed: bool,
+             auto_scaling_enable: bool,
+             auto_scaling_spot_with_limit_allowed: bool,
+             bootstrap_action_lists: Sequence['outputs.GetClustersClusterBootstrapActionListResult'],
+             bootstrap_failed: bool,
+             cluster_id: str,
+             cluster_name: str,
+             create_resource: str,
+             create_time: str,
+             create_type: str,
+             deposit_type: str,
+             eas_enable: bool,
+             expired_time: str,
+             extra_info: str,
+             has_uncompleted_order: bool,
+             high_availability_enable: bool,
+             host_group_lists: Sequence['outputs.GetClustersClusterHostGroupListResult'],
+             host_pool_infos: Sequence['outputs.GetClustersClusterHostPoolInfoResult'],
+             id: str,
+             image_id: str,
+             local_meta_db: bool,
+             machine_type: str,
+             meta_store_type: str,
+             net_type: str,
+             payment_type: str,
+             period: int,
+             relate_cluster_infos: Sequence['outputs.GetClustersClusterRelateClusterInfoResult'],
+             resize_disk_enable: bool,
+             running_time: int,
+             security_group_id: str,
+             security_group_name: str,
+             software_infos: Sequence['outputs.GetClustersClusterSoftwareInfoResult'],
+             start_time: str,
+             status: str,
+             stop_time: str,
+             tags: Mapping[str, Any],
+             type: str,
+             user_defined_emr_ecs_role: str,
+             user_id: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_infos", access_infos)
+        _setter("auto_scaling_allowed", auto_scaling_allowed)
+        _setter("auto_scaling_by_load_allowed", auto_scaling_by_load_allowed)
+        _setter("auto_scaling_enable", auto_scaling_enable)
+        _setter("auto_scaling_spot_with_limit_allowed", auto_scaling_spot_with_limit_allowed)
+        _setter("bootstrap_action_lists", bootstrap_action_lists)
+        _setter("bootstrap_failed", bootstrap_failed)
+        _setter("cluster_id", cluster_id)
+        _setter("cluster_name", cluster_name)
+        _setter("create_resource", create_resource)
+        _setter("create_time", create_time)
+        _setter("create_type", create_type)
+        _setter("deposit_type", deposit_type)
+        _setter("eas_enable", eas_enable)
+        _setter("expired_time", expired_time)
+        _setter("extra_info", extra_info)
+        _setter("has_uncompleted_order", has_uncompleted_order)
+        _setter("high_availability_enable", high_availability_enable)
+        _setter("host_group_lists", host_group_lists)
+        _setter("host_pool_infos", host_pool_infos)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("local_meta_db", local_meta_db)
+        _setter("machine_type", machine_type)
+        _setter("meta_store_type", meta_store_type)
+        _setter("net_type", net_type)
+        _setter("payment_type", payment_type)
+        _setter("period", period)
+        _setter("relate_cluster_infos", relate_cluster_infos)
+        _setter("resize_disk_enable", resize_disk_enable)
+        _setter("running_time", running_time)
+        _setter("security_group_id", security_group_id)
+        _setter("security_group_name", security_group_name)
+        _setter("software_infos", software_infos)
+        _setter("start_time", start_time)
+        _setter("status", status)
+        _setter("stop_time", stop_time)
+        _setter("tags", tags)
+        _setter("type", type)
+        _setter("user_defined_emr_ecs_role", user_defined_emr_ecs_role)
+        _setter("user_id", user_id)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accessInfos")
@@ -1141,7 +1347,16 @@ class GetClustersClusterAccessInfoResult(dict):
         """
         :param Sequence['GetClustersClusterAccessInfoZkLinkArgs'] zk_links: Link address information list of ZooKeeper.
         """
-        pulumi.set(__self__, "zk_links", zk_links)
+        GetClustersClusterAccessInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zk_links=zk_links,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zk_links: Sequence['outputs.GetClustersClusterAccessInfoZkLinkResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zk_links", zk_links)
 
     @property
     @pulumi.getter(name="zkLinks")
@@ -1161,8 +1376,19 @@ class GetClustersClusterAccessInfoZkLinkResult(dict):
         :param str link: The access link address of ZooKeeper.
         :param str port: The port of ZooKeeper.
         """
-        pulumi.set(__self__, "link", link)
-        pulumi.set(__self__, "port", port)
+        GetClustersClusterAccessInfoZkLinkResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            link=link,
+            port=port,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             link: str,
+             port: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("link", link)
+        _setter("port", port)
 
     @property
     @pulumi.getter
@@ -1192,9 +1418,22 @@ class GetClustersClusterBootstrapActionListResult(dict):
         :param str name: The internal name of the service.
         :param str path: Boot operation script path.
         """
-        pulumi.set(__self__, "arg", arg)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "path", path)
+        GetClustersClusterBootstrapActionListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arg=arg,
+            name=name,
+            path=path,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arg: str,
+             name: str,
+             path: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("arg", arg)
+        _setter("name", name)
+        _setter("path", path)
 
     @property
     @pulumi.getter
@@ -1256,21 +1495,58 @@ class GetClustersClusterHostGroupListResult(dict):
         :param Sequence['GetClustersClusterHostGroupListNodeArgs'] nodes: Machine node.
         :param str period: The package year and month time of the machine group. The Valid Values : `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`.
         """
-        pulumi.set(__self__, "band_width", band_width)
-        pulumi.set(__self__, "charge_type", charge_type)
-        pulumi.set(__self__, "cpu_core", cpu_core)
-        pulumi.set(__self__, "disk_capacity", disk_capacity)
-        pulumi.set(__self__, "disk_count", disk_count)
-        pulumi.set(__self__, "disk_type", disk_type)
-        pulumi.set(__self__, "host_group_change_type", host_group_change_type)
-        pulumi.set(__self__, "host_group_id", host_group_id)
-        pulumi.set(__self__, "host_group_name", host_group_name)
-        pulumi.set(__self__, "host_group_type", host_group_type)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "memory_capacity", memory_capacity)
-        pulumi.set(__self__, "node_count", node_count)
-        pulumi.set(__self__, "nodes", nodes)
-        pulumi.set(__self__, "period", period)
+        GetClustersClusterHostGroupListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            band_width=band_width,
+            charge_type=charge_type,
+            cpu_core=cpu_core,
+            disk_capacity=disk_capacity,
+            disk_count=disk_count,
+            disk_type=disk_type,
+            host_group_change_type=host_group_change_type,
+            host_group_id=host_group_id,
+            host_group_name=host_group_name,
+            host_group_type=host_group_type,
+            instance_type=instance_type,
+            memory_capacity=memory_capacity,
+            node_count=node_count,
+            nodes=nodes,
+            period=period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             band_width: str,
+             charge_type: str,
+             cpu_core: int,
+             disk_capacity: int,
+             disk_count: int,
+             disk_type: str,
+             host_group_change_type: str,
+             host_group_id: str,
+             host_group_name: str,
+             host_group_type: str,
+             instance_type: str,
+             memory_capacity: int,
+             node_count: int,
+             nodes: Sequence['outputs.GetClustersClusterHostGroupListNodeResult'],
+             period: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("band_width", band_width)
+        _setter("charge_type", charge_type)
+        _setter("cpu_core", cpu_core)
+        _setter("disk_capacity", disk_capacity)
+        _setter("disk_count", disk_count)
+        _setter("disk_type", disk_type)
+        _setter("host_group_change_type", host_group_change_type)
+        _setter("host_group_id", host_group_id)
+        _setter("host_group_name", host_group_name)
+        _setter("host_group_type", host_group_type)
+        _setter("instance_type", instance_type)
+        _setter("memory_capacity", memory_capacity)
+        _setter("node_count", node_count)
+        _setter("nodes", nodes)
+        _setter("period", period)
 
     @property
     @pulumi.getter(name="bandWidth")
@@ -1418,16 +1694,43 @@ class GetClustersClusterHostGroupListNodeResult(dict):
         :param bool support_ipv6: Whether IPV6 is supported.
         :param str zone_id: The zone ID.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "disk_infos", disk_infos)
-        pulumi.set(__self__, "emr_expired_time", emr_expired_time)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "inner_ip", inner_ip)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "pub_ip", pub_ip)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "support_ipv6", support_ipv6)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetClustersClusterHostGroupListNodeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            disk_infos=disk_infos,
+            emr_expired_time=emr_expired_time,
+            expired_time=expired_time,
+            inner_ip=inner_ip,
+            instance_id=instance_id,
+            pub_ip=pub_ip,
+            status=status,
+            support_ipv6=support_ipv6,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             disk_infos: Sequence['outputs.GetClustersClusterHostGroupListNodeDiskInfoResult'],
+             emr_expired_time: str,
+             expired_time: str,
+             inner_ip: str,
+             instance_id: str,
+             pub_ip: str,
+             status: str,
+             support_ipv6: bool,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("disk_infos", disk_infos)
+        _setter("emr_expired_time", emr_expired_time)
+        _setter("expired_time", expired_time)
+        _setter("inner_ip", inner_ip)
+        _setter("instance_id", instance_id)
+        _setter("pub_ip", pub_ip)
+        _setter("status", status)
+        _setter("support_ipv6", support_ipv6)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1525,11 +1828,28 @@ class GetClustersClusterHostGroupListNodeDiskInfoResult(dict):
         :param int size: Disk capacity.
         :param str type: Disk type.
         """
-        pulumi.set(__self__, "device", device)
-        pulumi.set(__self__, "disk_id", disk_id)
-        pulumi.set(__self__, "disk_name", disk_name)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "type", type)
+        GetClustersClusterHostGroupListNodeDiskInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device=device,
+            disk_id=disk_id,
+            disk_name=disk_name,
+            size=size,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device: str,
+             disk_id: str,
+             disk_name: str,
+             size: int,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("device", device)
+        _setter("disk_id", disk_id)
+        _setter("disk_name", disk_name)
+        _setter("size", size)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1581,8 +1901,19 @@ class GetClustersClusterHostPoolInfoResult(dict):
         :param str hp_biz_id: Machine pool ID.
         :param str hp_name: The name of the machine pool.
         """
-        pulumi.set(__self__, "hp_biz_id", hp_biz_id)
-        pulumi.set(__self__, "hp_name", hp_name)
+        GetClustersClusterHostPoolInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hp_biz_id=hp_biz_id,
+            hp_name=hp_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hp_biz_id: str,
+             hp_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hp_biz_id", hp_biz_id)
+        _setter("hp_name", hp_name)
 
     @property
     @pulumi.getter(name="hpBizId")
@@ -1614,10 +1945,25 @@ class GetClustersClusterRelateClusterInfoResult(dict):
         :param str cluster_type: Cluster type:
         :param str status: The cluster status.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "cluster_type", cluster_type)
-        pulumi.set(__self__, "status", status)
+        GetClustersClusterRelateClusterInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            cluster_name=cluster_name,
+            cluster_type=cluster_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: str,
+             cluster_name: str,
+             cluster_type: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("cluster_name", cluster_name)
+        _setter("cluster_type", cluster_type)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -1663,9 +2009,22 @@ class GetClustersClusterSoftwareInfoResult(dict):
         :param str emr_ver: E-MapReduce version number.
         :param Sequence['GetClustersClusterSoftwareInfoSoftwareArgs'] softwares: Service list.
         """
-        pulumi.set(__self__, "cluster_type", cluster_type)
-        pulumi.set(__self__, "emr_ver", emr_ver)
-        pulumi.set(__self__, "softwares", softwares)
+        GetClustersClusterSoftwareInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_type=cluster_type,
+            emr_ver=emr_ver,
+            softwares=softwares,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_type: str,
+             emr_ver: str,
+             softwares: Sequence['outputs.GetClustersClusterSoftwareInfoSoftwareResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_type", cluster_type)
+        _setter("emr_ver", emr_ver)
+        _setter("softwares", softwares)
 
     @property
     @pulumi.getter(name="clusterType")
@@ -1707,11 +2066,28 @@ class GetClustersClusterSoftwareInfoSoftwareResult(dict):
         :param int start_tpe: Startup type.
         :param str version: Service version.
         """
-        pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "only_display", only_display)
-        pulumi.set(__self__, "start_tpe", start_tpe)
-        pulumi.set(__self__, "version", version)
+        GetClustersClusterSoftwareInfoSoftwareResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            display_name=display_name,
+            name=name,
+            only_display=only_display,
+            start_tpe=start_tpe,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             display_name: str,
+             name: str,
+             only_display: bool,
+             start_tpe: int,
+             version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("display_name", display_name)
+        _setter("name", name)
+        _setter("only_display", only_display)
+        _setter("start_tpe", start_tpe)
+        _setter("version", version)
 
     @property
     @pulumi.getter(name="displayName")
@@ -1765,9 +2141,22 @@ class GetDiskTypesTypeResult(dict):
         :param int min: The mininum value of the data disk to supported the specific instance type
         :param str value: The value of the data disk or system disk
         """
-        pulumi.set(__self__, "max", max)
-        pulumi.set(__self__, "min", min)
-        pulumi.set(__self__, "value", value)
+        GetDiskTypesTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max=max,
+            min=min,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max: int,
+             min: int,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max", max)
+        _setter("min", min)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1805,9 +2194,22 @@ class GetInstanceTypesTypeResult(dict):
         :param int local_storage_capacity: Local capacity of the applied ecs instance for emr cluster. Unit: GB.
         :param str zone_id: The supported resources of specific zoneId.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_storage_capacity", local_storage_capacity)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstanceTypesTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            local_storage_capacity=local_storage_capacity,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             local_storage_capacity: int,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("local_storage_capacity", local_storage_capacity)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -1845,9 +2247,22 @@ class GetMainVersionsMainVersionResult(dict):
         :param str emr_version: The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
         :param str image_id: The image id of the emr cluster instance.
         """
-        pulumi.set(__self__, "cluster_types", cluster_types)
-        pulumi.set(__self__, "emr_version", emr_version)
-        pulumi.set(__self__, "image_id", image_id)
+        GetMainVersionsMainVersionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_types=cluster_types,
+            emr_version=emr_version,
+            image_id=image_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_types: Sequence[str],
+             emr_version: str,
+             image_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_types", cluster_types)
+        _setter("emr_version", emr_version)
+        _setter("image_id", image_id)
 
     @property
     @pulumi.getter(name="clusterTypes")

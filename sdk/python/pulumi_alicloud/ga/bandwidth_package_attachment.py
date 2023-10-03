@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BandwidthPackageAttachmentArgs', 'BandwidthPackageAttachment']
@@ -21,8 +21,19 @@ class BandwidthPackageAttachmentArgs:
         :param pulumi.Input[str] accelerator_id: The ID of the Global Accelerator instance from which you want to disassociate the bandwidth plan.
         :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+        BandwidthPackageAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            bandwidth_package_id=bandwidth_package_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: pulumi.Input[str],
+             bandwidth_package_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("bandwidth_package_id", bandwidth_package_id)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -63,14 +74,29 @@ class _BandwidthPackageAttachmentState:
         :param pulumi.Input[str] bandwidth_package_id: The ID of the bandwidth plan to disassociate. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
         :param pulumi.Input[str] status: State of Bandwidth Package.
         """
+        _BandwidthPackageAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            accelerators=accelerators,
+            bandwidth_package_id=bandwidth_package_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if accelerator_id is not None:
-            pulumi.set(__self__, "accelerator_id", accelerator_id)
+            _setter("accelerator_id", accelerator_id)
         if accelerators is not None:
-            pulumi.set(__self__, "accelerators", accelerators)
+            _setter("accelerators", accelerators)
         if bandwidth_package_id is not None:
-            pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
+            _setter("bandwidth_package_id", bandwidth_package_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -228,6 +254,10 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BandwidthPackageAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

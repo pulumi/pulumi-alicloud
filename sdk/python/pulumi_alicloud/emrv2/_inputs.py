@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -44,18 +44,41 @@ class ClusterApplicationConfigArgs:
         :param pulumi.Input[str] node_group_id: The configuration effected which node group id of emr cluster.
         :param pulumi.Input[str] node_group_name: The configuration effected which node group name of emr cluster.
         """
-        pulumi.set(__self__, "application_name", application_name)
-        pulumi.set(__self__, "config_file_name", config_file_name)
-        pulumi.set(__self__, "config_item_key", config_item_key)
-        pulumi.set(__self__, "config_item_value", config_item_value)
+        ClusterApplicationConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            application_name=application_name,
+            config_file_name=config_file_name,
+            config_item_key=config_item_key,
+            config_item_value=config_item_value,
+            config_description=config_description,
+            config_scope=config_scope,
+            node_group_id=node_group_id,
+            node_group_name=node_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             application_name: pulumi.Input[str],
+             config_file_name: pulumi.Input[str],
+             config_item_key: pulumi.Input[str],
+             config_item_value: pulumi.Input[str],
+             config_description: Optional[pulumi.Input[str]] = None,
+             config_scope: Optional[pulumi.Input[str]] = None,
+             node_group_id: Optional[pulumi.Input[str]] = None,
+             node_group_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("application_name", application_name)
+        _setter("config_file_name", config_file_name)
+        _setter("config_item_key", config_item_key)
+        _setter("config_item_value", config_item_value)
         if config_description is not None:
-            pulumi.set(__self__, "config_description", config_description)
+            _setter("config_description", config_description)
         if config_scope is not None:
-            pulumi.set(__self__, "config_scope", config_scope)
+            _setter("config_scope", config_scope)
         if node_group_id is not None:
-            pulumi.set(__self__, "node_group_id", node_group_id)
+            _setter("node_group_id", node_group_id)
         if node_group_name is not None:
-            pulumi.set(__self__, "node_group_name", node_group_name)
+            _setter("node_group_name", node_group_name)
 
     @property
     @pulumi.getter(name="applicationName")
@@ -173,14 +196,35 @@ class ClusterBootstrapScriptArgs:
         :param pulumi.Input[str] script_path: The bootstrap script path, e.g. "oss://bucket/path".
         :param pulumi.Input[int] priority: The bootstrap scripts priority.
         """
-        pulumi.set(__self__, "execution_fail_strategy", execution_fail_strategy)
-        pulumi.set(__self__, "execution_moment", execution_moment)
-        pulumi.set(__self__, "node_selector", node_selector)
-        pulumi.set(__self__, "script_args", script_args)
-        pulumi.set(__self__, "script_name", script_name)
-        pulumi.set(__self__, "script_path", script_path)
+        ClusterBootstrapScriptArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            execution_fail_strategy=execution_fail_strategy,
+            execution_moment=execution_moment,
+            node_selector=node_selector,
+            script_args=script_args,
+            script_name=script_name,
+            script_path=script_path,
+            priority=priority,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             execution_fail_strategy: pulumi.Input[str],
+             execution_moment: pulumi.Input[str],
+             node_selector: pulumi.Input['ClusterBootstrapScriptNodeSelectorArgs'],
+             script_args: pulumi.Input[str],
+             script_name: pulumi.Input[str],
+             script_path: pulumi.Input[str],
+             priority: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("execution_fail_strategy", execution_fail_strategy)
+        _setter("execution_moment", execution_moment)
+        _setter("node_selector", node_selector)
+        _setter("script_args", script_args)
+        _setter("script_name", script_name)
+        _setter("script_path", script_path)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
 
     @property
     @pulumi.getter(name="executionFailStrategy")
@@ -282,15 +326,32 @@ class ClusterBootstrapScriptNodeSelectorArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] node_group_types: The bootstrap scripts execution target node group types.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] node_names: The bootstrap scripts execution target node names.
         """
-        pulumi.set(__self__, "node_select_type", node_select_type)
+        ClusterBootstrapScriptNodeSelectorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            node_select_type=node_select_type,
+            node_group_id=node_group_id,
+            node_group_name=node_group_name,
+            node_group_types=node_group_types,
+            node_names=node_names,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             node_select_type: pulumi.Input[str],
+             node_group_id: Optional[pulumi.Input[str]] = None,
+             node_group_name: Optional[pulumi.Input[str]] = None,
+             node_group_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             node_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("node_select_type", node_select_type)
         if node_group_id is not None:
-            pulumi.set(__self__, "node_group_id", node_group_id)
+            _setter("node_group_id", node_group_id)
         if node_group_name is not None:
-            pulumi.set(__self__, "node_group_name", node_group_name)
+            _setter("node_group_name", node_group_name)
         if node_group_types is not None:
-            pulumi.set(__self__, "node_group_types", node_group_types)
+            _setter("node_group_types", node_group_types)
         if node_names is not None:
-            pulumi.set(__self__, "node_names", node_names)
+            _setter("node_names", node_names)
 
     @property
     @pulumi.getter(name="nodeSelectType")
@@ -372,15 +433,36 @@ class ClusterNodeAttributeArgs:
         :param pulumi.Input[bool] data_disk_encrypted: Whether to enable data disk encryption.
         :param pulumi.Input[str] data_disk_kms_key_id: The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
         """
-        pulumi.set(__self__, "key_pair_name", key_pair_name)
-        pulumi.set(__self__, "ram_role", ram_role)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        ClusterNodeAttributeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_pair_name=key_pair_name,
+            ram_role=ram_role,
+            security_group_id=security_group_id,
+            vpc_id=vpc_id,
+            zone_id=zone_id,
+            data_disk_encrypted=data_disk_encrypted,
+            data_disk_kms_key_id=data_disk_kms_key_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_pair_name: pulumi.Input[str],
+             ram_role: pulumi.Input[str],
+             security_group_id: pulumi.Input[str],
+             vpc_id: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             data_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+             data_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key_pair_name", key_pair_name)
+        _setter("ram_role", ram_role)
+        _setter("security_group_id", security_group_id)
+        _setter("vpc_id", vpc_id)
+        _setter("zone_id", zone_id)
         if data_disk_encrypted is not None:
-            pulumi.set(__self__, "data_disk_encrypted", data_disk_encrypted)
+            _setter("data_disk_encrypted", data_disk_encrypted)
         if data_disk_kms_key_id is not None:
-            pulumi.set(__self__, "data_disk_kms_key_id", data_disk_kms_key_id)
+            _setter("data_disk_kms_key_id", data_disk_kms_key_id)
 
     @property
     @pulumi.getter(name="keyPairName")
@@ -502,30 +584,67 @@ class ClusterNodeGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: Global vSwitch ids, you can also specify it in node group.
         :param pulumi.Input[bool] with_public_ip: Whether the node has a public IP address enabled.
         """
-        pulumi.set(__self__, "data_disks", data_disks)
-        pulumi.set(__self__, "instance_types", instance_types)
-        pulumi.set(__self__, "node_count", node_count)
-        pulumi.set(__self__, "node_group_name", node_group_name)
-        pulumi.set(__self__, "node_group_type", node_group_type)
-        pulumi.set(__self__, "system_disk", system_disk)
+        ClusterNodeGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_disks=data_disks,
+            instance_types=instance_types,
+            node_count=node_count,
+            node_group_name=node_group_name,
+            node_group_type=node_group_type,
+            system_disk=system_disk,
+            additional_security_group_ids=additional_security_group_ids,
+            cost_optimized_config=cost_optimized_config,
+            graceful_shutdown=graceful_shutdown,
+            payment_type=payment_type,
+            spot_bid_prices=spot_bid_prices,
+            spot_instance_remedy=spot_instance_remedy,
+            subscription_config=subscription_config,
+            vswitch_ids=vswitch_ids,
+            with_public_ip=with_public_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_disks: pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupDataDiskArgs']]],
+             instance_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+             node_count: pulumi.Input[int],
+             node_group_name: pulumi.Input[str],
+             node_group_type: pulumi.Input[str],
+             system_disk: pulumi.Input['ClusterNodeGroupSystemDiskArgs'],
+             additional_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             cost_optimized_config: Optional[pulumi.Input['ClusterNodeGroupCostOptimizedConfigArgs']] = None,
+             graceful_shutdown: Optional[pulumi.Input[bool]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             spot_bid_prices: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]]] = None,
+             spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+             subscription_config: Optional[pulumi.Input['ClusterNodeGroupSubscriptionConfigArgs']] = None,
+             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             with_public_ip: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("data_disks", data_disks)
+        _setter("instance_types", instance_types)
+        _setter("node_count", node_count)
+        _setter("node_group_name", node_group_name)
+        _setter("node_group_type", node_group_type)
+        _setter("system_disk", system_disk)
         if additional_security_group_ids is not None:
-            pulumi.set(__self__, "additional_security_group_ids", additional_security_group_ids)
+            _setter("additional_security_group_ids", additional_security_group_ids)
         if cost_optimized_config is not None:
-            pulumi.set(__self__, "cost_optimized_config", cost_optimized_config)
+            _setter("cost_optimized_config", cost_optimized_config)
         if graceful_shutdown is not None:
-            pulumi.set(__self__, "graceful_shutdown", graceful_shutdown)
+            _setter("graceful_shutdown", graceful_shutdown)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if spot_bid_prices is not None:
-            pulumi.set(__self__, "spot_bid_prices", spot_bid_prices)
+            _setter("spot_bid_prices", spot_bid_prices)
         if spot_instance_remedy is not None:
-            pulumi.set(__self__, "spot_instance_remedy", spot_instance_remedy)
+            _setter("spot_instance_remedy", spot_instance_remedy)
         if subscription_config is not None:
-            pulumi.set(__self__, "subscription_config", subscription_config)
+            _setter("subscription_config", subscription_config)
         if vswitch_ids is not None:
-            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+            _setter("vswitch_ids", vswitch_ids)
         if with_public_ip is not None:
-            pulumi.set(__self__, "with_public_ip", with_public_ip)
+            _setter("with_public_ip", with_public_ip)
 
     @property
     @pulumi.getter(name="dataDisks")
@@ -719,9 +838,22 @@ class ClusterNodeGroupCostOptimizedConfigArgs:
         :param pulumi.Input[int] on_demand_percentage_above_base_capacity: The cost optimized configuration which on demand percentage above based capacity.
         :param pulumi.Input[int] spot_instance_pools: The cost optimized configuration with spot instance pools.
         """
-        pulumi.set(__self__, "on_demand_base_capacity", on_demand_base_capacity)
-        pulumi.set(__self__, "on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
-        pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
+        ClusterNodeGroupCostOptimizedConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            on_demand_base_capacity=on_demand_base_capacity,
+            on_demand_percentage_above_base_capacity=on_demand_percentage_above_base_capacity,
+            spot_instance_pools=spot_instance_pools,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             on_demand_base_capacity: pulumi.Input[int],
+             on_demand_percentage_above_base_capacity: pulumi.Input[int],
+             spot_instance_pools: pulumi.Input[int],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("on_demand_base_capacity", on_demand_base_capacity)
+        _setter("on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
+        _setter("spot_instance_pools", spot_instance_pools)
 
     @property
     @pulumi.getter(name="onDemandBaseCapacity")
@@ -773,12 +905,27 @@ class ClusterNodeGroupDataDiskArgs:
         :param pulumi.Input[int] count: The count of a data disk.
         :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "size", size)
+        ClusterNodeGroupDataDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            size=size,
+            count=count,
+            performance_level=performance_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: pulumi.Input[str],
+             size: pulumi.Input[int],
+             count: Optional[pulumi.Input[int]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("size", size)
         if count is not None:
-            pulumi.set(__self__, "count", count)
+            _setter("count", count)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
 
     @property
     @pulumi.getter
@@ -838,8 +985,19 @@ class ClusterNodeGroupSpotBidPriceArgs:
         :param pulumi.Input[int] bid_price: The spot bid price of a PayAsYouGo instance.
         :param pulumi.Input[str] instance_type: Host Ecs instance type.
         """
-        pulumi.set(__self__, "bid_price", bid_price)
-        pulumi.set(__self__, "instance_type", instance_type)
+        ClusterNodeGroupSpotBidPriceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bid_price=bid_price,
+            instance_type=instance_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bid_price: pulumi.Input[int],
+             instance_type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bid_price", bid_price)
+        _setter("instance_type", instance_type)
 
     @property
     @pulumi.getter(name="bidPrice")
@@ -881,14 +1039,31 @@ class ClusterNodeGroupSubscriptionConfigArgs:
         :param pulumi.Input[int] auto_renew_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param pulumi.Input[str] auto_renew_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
         """
-        pulumi.set(__self__, "payment_duration", payment_duration)
-        pulumi.set(__self__, "payment_duration_unit", payment_duration_unit)
+        ClusterNodeGroupSubscriptionConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            payment_duration=payment_duration,
+            payment_duration_unit=payment_duration_unit,
+            auto_renew=auto_renew,
+            auto_renew_duration=auto_renew_duration,
+            auto_renew_duration_unit=auto_renew_duration_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             payment_duration: pulumi.Input[int],
+             payment_duration_unit: pulumi.Input[str],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_duration: Optional[pulumi.Input[int]] = None,
+             auto_renew_duration_unit: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("payment_duration", payment_duration)
+        _setter("payment_duration_unit", payment_duration_unit)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_duration is not None:
-            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
+            _setter("auto_renew_duration", auto_renew_duration)
         if auto_renew_duration_unit is not None:
-            pulumi.set(__self__, "auto_renew_duration_unit", auto_renew_duration_unit)
+            _setter("auto_renew_duration_unit", auto_renew_duration_unit)
 
     @property
     @pulumi.getter(name="paymentDuration")
@@ -964,12 +1139,27 @@ class ClusterNodeGroupSystemDiskArgs:
         :param pulumi.Input[int] count: The count of a data disk.
         :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "size", size)
+        ClusterNodeGroupSystemDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            size=size,
+            count=count,
+            performance_level=performance_level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: pulumi.Input[str],
+             size: pulumi.Input[int],
+             count: Optional[pulumi.Input[int]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("size", size)
         if count is not None:
-            pulumi.set(__self__, "count", count)
+            _setter("count", count)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
 
     @property
     @pulumi.getter
@@ -1035,14 +1225,31 @@ class ClusterSubscriptionConfigArgs:
         :param pulumi.Input[int] auto_renew_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param pulumi.Input[str] auto_renew_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
         """
-        pulumi.set(__self__, "payment_duration", payment_duration)
-        pulumi.set(__self__, "payment_duration_unit", payment_duration_unit)
+        ClusterSubscriptionConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            payment_duration=payment_duration,
+            payment_duration_unit=payment_duration_unit,
+            auto_renew=auto_renew,
+            auto_renew_duration=auto_renew_duration,
+            auto_renew_duration_unit=auto_renew_duration_unit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             payment_duration: pulumi.Input[int],
+             payment_duration_unit: pulumi.Input[str],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             auto_renew_duration: Optional[pulumi.Input[int]] = None,
+             auto_renew_duration_unit: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("payment_duration", payment_duration)
+        _setter("payment_duration_unit", payment_duration_unit)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if auto_renew_duration is not None:
-            pulumi.set(__self__, "auto_renew_duration", auto_renew_duration)
+            _setter("auto_renew_duration", auto_renew_duration)
         if auto_renew_duration_unit is not None:
-            pulumi.set(__self__, "auto_renew_duration_unit", auto_renew_duration_unit)
+            _setter("auto_renew_duration_unit", auto_renew_duration_unit)
 
     @property
     @pulumi.getter(name="paymentDuration")

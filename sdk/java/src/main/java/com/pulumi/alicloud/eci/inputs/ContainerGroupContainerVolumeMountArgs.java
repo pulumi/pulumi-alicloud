@@ -32,14 +32,14 @@ public final class ContainerGroupContainerVolumeMountArgs extends com.pulumi.res
     }
 
     /**
-     * The name of the volume.
+     * The name of the mounted volume.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the volume.
+     * @return The name of the mounted volume.
      * 
      */
     public Optional<Output<String>> name() {
@@ -47,14 +47,14 @@ public final class ContainerGroupContainerVolumeMountArgs extends com.pulumi.res
     }
 
     /**
-     * Specifies whether the mount path is read-only. Default value: `false`.
+     * Specifies whether the volume is read-only. Default value: `false`.
      * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
-     * @return Specifies whether the mount path is read-only. Default value: `false`.
+     * @return Specifies whether the volume is read-only. Default value: `false`.
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -109,7 +109,7 @@ public final class ContainerGroupContainerVolumeMountArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The name of the volume.
+         * @param name The name of the mounted volume.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class ContainerGroupContainerVolumeMountArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The name of the volume.
+         * @param name The name of the mounted volume.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class ContainerGroupContainerVolumeMountArgs extends com.pulumi.res
         }
 
         /**
-         * @param readOnly Specifies whether the mount path is read-only. Default value: `false`.
+         * @param readOnly Specifies whether the volume is read-only. Default value: `false`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class ContainerGroupContainerVolumeMountArgs extends com.pulumi.res
         }
 
         /**
-         * @param readOnly Specifies whether the mount path is read-only. Default value: `false`.
+         * @param readOnly Specifies whether the volume is read-only. Default value: `false`.
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class ContainerGroupContainerReadinessProbeExecArgs extends com.pul
     public static final ContainerGroupContainerReadinessProbeExecArgs Empty = new ContainerGroupContainerReadinessProbeExecArgs();
 
     /**
-     * The commands run by the init container.
+     * Commands to be executed inside the container when performing health checks using the command line method.
      * 
      */
     @Import(name="commands")
     private @Nullable Output<List<String>> commands;
 
     /**
-     * @return The commands run by the init container.
+     * @return Commands to be executed inside the container when performing health checks using the command line method.
      * 
      */
     public Optional<Output<List<String>>> commands() {
@@ -56,7 +56,7 @@ public final class ContainerGroupContainerReadinessProbeExecArgs extends com.pul
         }
 
         /**
-         * @param commands The commands run by the init container.
+         * @param commands Commands to be executed inside the container when performing health checks using the command line method.
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class ContainerGroupContainerReadinessProbeExecArgs extends com.pul
         }
 
         /**
-         * @param commands The commands run by the init container.
+         * @param commands Commands to be executed inside the container when performing health checks using the command line method.
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class ContainerGroupContainerReadinessProbeExecArgs extends com.pul
         }
 
         /**
-         * @param commands The commands run by the init container.
+         * @param commands Commands to be executed inside the container when performing health checks using the command line method.
          * 
          * @return builder
          * 

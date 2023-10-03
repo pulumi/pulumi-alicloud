@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -52,12 +52,25 @@ class InstanceSlbConnAddr(dict):
         :param str conn_addr_port: The number of the port over which Phoenix connects to the instance.
         :param str net_type: The type of the network. Valid values:
         """
+        InstanceSlbConnAddr._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            conn_addr=conn_addr,
+            conn_addr_port=conn_addr_port,
+            net_type=net_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             conn_addr: Optional[str] = None,
+             conn_addr_port: Optional[str] = None,
+             net_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if conn_addr is not None:
-            pulumi.set(__self__, "conn_addr", conn_addr)
+            _setter("conn_addr", conn_addr)
         if conn_addr_port is not None:
-            pulumi.set(__self__, "conn_addr_port", conn_addr_port)
+            _setter("conn_addr_port", conn_addr_port)
         if net_type is not None:
-            pulumi.set(__self__, "net_type", net_type)
+            _setter("net_type", net_type)
 
     @property
     @pulumi.getter(name="connAddr")
@@ -116,12 +129,25 @@ class InstanceUiProxyConnAddr(dict):
         :param str conn_addr_port: The number of the port over which Phoenix connects to the instance.
         :param str net_type: The type of the network. Valid values:
         """
+        InstanceUiProxyConnAddr._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            conn_addr=conn_addr,
+            conn_addr_port=conn_addr_port,
+            net_type=net_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             conn_addr: Optional[str] = None,
+             conn_addr_port: Optional[str] = None,
+             net_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if conn_addr is not None:
-            pulumi.set(__self__, "conn_addr", conn_addr)
+            _setter("conn_addr", conn_addr)
         if conn_addr_port is not None:
-            pulumi.set(__self__, "conn_addr_port", conn_addr_port)
+            _setter("conn_addr_port", conn_addr_port)
         if net_type is not None:
-            pulumi.set(__self__, "net_type", net_type)
+            _setter("net_type", net_type)
 
     @property
     @pulumi.getter(name="connAddr")
@@ -180,12 +206,25 @@ class InstanceZkConnAddr(dict):
         :param str conn_addr_port: The number of the port over which Phoenix connects to the instance.
         :param str net_type: The type of the network. Valid values:
         """
+        InstanceZkConnAddr._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            conn_addr=conn_addr,
+            conn_addr_port=conn_addr_port,
+            net_type=net_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             conn_addr: Optional[str] = None,
+             conn_addr_port: Optional[str] = None,
+             net_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if conn_addr is not None:
-            pulumi.set(__self__, "conn_addr", conn_addr)
+            _setter("conn_addr", conn_addr)
         if conn_addr_port is not None:
-            pulumi.set(__self__, "conn_addr_port", conn_addr_port)
+            _setter("conn_addr_port", conn_addr_port)
         if net_type is not None:
-            pulumi.set(__self__, "net_type", net_type)
+            _setter("net_type", net_type)
 
     @property
     @pulumi.getter(name="connAddr")
@@ -235,15 +274,40 @@ class GetInstanceTypesCoreInstanceTypeResult(dict):
         :param str version: The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
         :param str zone: Name of zone id.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "cpu_size", cpu_size)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "max_core_count", max_core_count)
-        pulumi.set(__self__, "mem_size", mem_size)
-        pulumi.set(__self__, "storage_type", storage_type)
-        pulumi.set(__self__, "version", version)
-        pulumi.set(__self__, "zone", zone)
+        GetInstanceTypesCoreInstanceTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            cpu_size=cpu_size,
+            engine=engine,
+            instance_type=instance_type,
+            max_core_count=max_core_count,
+            mem_size=mem_size,
+            storage_type=storage_type,
+            version=version,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             cpu_size: int,
+             engine: str,
+             instance_type: str,
+             max_core_count: int,
+             mem_size: int,
+             storage_type: str,
+             version: str,
+             zone: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("cpu_size", cpu_size)
+        _setter("engine", engine)
+        _setter("instance_type", instance_type)
+        _setter("max_core_count", max_core_count)
+        _setter("mem_size", mem_size)
+        _setter("storage_type", storage_type)
+        _setter("version", version)
+        _setter("zone", zone)
 
     @property
     @pulumi.getter
@@ -329,9 +393,22 @@ class GetInstanceTypesMasterInstanceTypeResult(dict):
         :param str instance_type: The hbase instance type of create hbase cluster instance.
         :param int mem_size: Mem size of the instance type.
         """
-        pulumi.set(__self__, "cpu_size", cpu_size)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "mem_size", mem_size)
+        GetInstanceTypesMasterInstanceTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_size=cpu_size,
+            instance_type=instance_type,
+            mem_size=mem_size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_size: int,
+             instance_type: str,
+             mem_size: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cpu_size", cpu_size)
+        _setter("instance_type", instance_type)
+        _setter("mem_size", mem_size)
 
     @property
     @pulumi.getter(name="cpuSize")
@@ -369,9 +446,22 @@ class GetInstanceTypesTypeResult(dict):
         :param int mem_size: Mem size of the instance type.
         :param str value: Name of the instance type.
         """
-        pulumi.set(__self__, "cpu_size", cpu_size)
-        pulumi.set(__self__, "mem_size", mem_size)
-        pulumi.set(__self__, "value", value)
+        GetInstanceTypesTypeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_size=cpu_size,
+            mem_size=mem_size,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_size: int,
+             mem_size: int,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cpu_size", cpu_size)
+        _setter("mem_size", mem_size)
+        _setter("value", value)
 
     @property
     @pulumi.getter(name="cpuSize")
@@ -447,29 +537,80 @@ class GetInstancesInstanceResult(dict):
         :param str zone_id: Zone ID the instance belongs to.
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "backup_status", backup_status)
-        pulumi.set(__self__, "core_disk_size", core_disk_size)
-        pulumi.set(__self__, "core_disk_type", core_disk_type)
-        pulumi.set(__self__, "core_instance_type", core_instance_type)
-        pulumi.set(__self__, "core_node_count", core_node_count)
-        pulumi.set(__self__, "created_time", created_time)
-        pulumi.set(__self__, "deletion_protection", deletion_protection)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "master_instance_type", master_instance_type)
-        pulumi.set(__self__, "master_node_count", master_node_count)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "pay_type", pay_type)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_status=backup_status,
+            core_disk_size=core_disk_size,
+            core_disk_type=core_disk_type,
+            core_instance_type=core_instance_type,
+            core_node_count=core_node_count,
+            created_time=created_time,
+            deletion_protection=deletion_protection,
+            engine=engine,
+            engine_version=engine_version,
+            expire_time=expire_time,
+            id=id,
+            master_instance_type=master_instance_type,
+            master_node_count=master_node_count,
+            name=name,
+            network_type=network_type,
+            pay_type=pay_type,
+            region_id=region_id,
+            status=status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_status: str,
+             core_disk_size: int,
+             core_disk_type: str,
+             core_instance_type: str,
+             core_node_count: int,
+             created_time: str,
+             deletion_protection: bool,
+             engine: str,
+             engine_version: str,
+             expire_time: str,
+             id: str,
+             master_instance_type: str,
+             master_node_count: int,
+             name: str,
+             network_type: str,
+             pay_type: str,
+             region_id: str,
+             status: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_status", backup_status)
+        _setter("core_disk_size", core_disk_size)
+        _setter("core_disk_type", core_disk_type)
+        _setter("core_instance_type", core_instance_type)
+        _setter("core_node_count", core_node_count)
+        _setter("created_time", created_time)
+        _setter("deletion_protection", deletion_protection)
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("master_instance_type", master_instance_type)
+        _setter("master_node_count", master_node_count)
+        _setter("name", name)
+        _setter("network_type", network_type)
+        _setter("pay_type", pay_type)
+        _setter("region_id", region_id)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="backupStatus")
@@ -657,8 +798,19 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone. Removed from v1.99.0.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            multi_zone_ids=multi_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             multi_zone_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

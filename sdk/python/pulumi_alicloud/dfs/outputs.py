@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -40,14 +40,37 @@ class GetAccessGroupsGroupResult(dict):
         :param str network_type: The NetworkType of Access Group. Valid values: `VPC`.
         :param int rule_count: The Number of access rule.
         """
-        pulumi.set(__self__, "access_group_id", access_group_id)
-        pulumi.set(__self__, "access_group_name", access_group_name)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mount_point_count", mount_point_count)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "rule_count", rule_count)
+        GetAccessGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_group_id=access_group_id,
+            access_group_name=access_group_name,
+            create_time=create_time,
+            description=description,
+            id=id,
+            mount_point_count=mount_point_count,
+            network_type=network_type,
+            rule_count=rule_count,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_group_id: str,
+             access_group_name: str,
+             create_time: str,
+             description: str,
+             id: str,
+             mount_point_count: int,
+             network_type: str,
+             rule_count: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_group_id", access_group_id)
+        _setter("access_group_name", access_group_name)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("mount_point_count", mount_point_count)
+        _setter("network_type", network_type)
+        _setter("rule_count", rule_count)
 
     @property
     @pulumi.getter(name="accessGroupId")
@@ -135,14 +158,37 @@ class GetAccessRulesRuleResult(dict):
         :param int priority: The priority of the Access Rule.
         :param str rw_access_type: RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
         """
-        pulumi.set(__self__, "access_group_id", access_group_id)
-        pulumi.set(__self__, "access_rule_id", access_rule_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "network_segment", network_segment)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "rw_access_type", rw_access_type)
+        GetAccessRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_group_id=access_group_id,
+            access_rule_id=access_rule_id,
+            create_time=create_time,
+            description=description,
+            id=id,
+            network_segment=network_segment,
+            priority=priority,
+            rw_access_type=rw_access_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_group_id: str,
+             access_rule_id: str,
+             create_time: str,
+             description: str,
+             id: str,
+             network_segment: str,
+             priority: int,
+             rw_access_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_group_id", access_group_id)
+        _setter("access_rule_id", access_rule_id)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("network_segment", network_segment)
+        _setter("priority", priority)
+        _setter("rw_access_type", rw_access_type)
 
     @property
     @pulumi.getter(name="accessGroupId")
@@ -246,22 +292,61 @@ class GetFileSystemsSystemResult(dict):
         :param float used_space_size: The used space of the File system.
         :param str zone_id: The zone ID of the File system.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "file_system_name", file_system_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mount_point_count", mount_point_count)
-        pulumi.set(__self__, "number_of_directories", number_of_directories)
-        pulumi.set(__self__, "number_of_files", number_of_files)
-        pulumi.set(__self__, "protocol_type", protocol_type)
-        pulumi.set(__self__, "provisioned_throughput_in_mi_bps", provisioned_throughput_in_mi_bps)
-        pulumi.set(__self__, "space_capacity", space_capacity)
-        pulumi.set(__self__, "storage_package_id", storage_package_id)
-        pulumi.set(__self__, "storage_type", storage_type)
-        pulumi.set(__self__, "throughput_mode", throughput_mode)
-        pulumi.set(__self__, "used_space_size", used_space_size)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetFileSystemsSystemResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            file_system_id=file_system_id,
+            file_system_name=file_system_name,
+            id=id,
+            mount_point_count=mount_point_count,
+            number_of_directories=number_of_directories,
+            number_of_files=number_of_files,
+            protocol_type=protocol_type,
+            provisioned_throughput_in_mi_bps=provisioned_throughput_in_mi_bps,
+            space_capacity=space_capacity,
+            storage_package_id=storage_package_id,
+            storage_type=storage_type,
+            throughput_mode=throughput_mode,
+            used_space_size=used_space_size,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             file_system_id: str,
+             file_system_name: str,
+             id: str,
+             mount_point_count: int,
+             number_of_directories: int,
+             number_of_files: int,
+             protocol_type: str,
+             provisioned_throughput_in_mi_bps: int,
+             space_capacity: int,
+             storage_package_id: str,
+             storage_type: str,
+             throughput_mode: str,
+             used_space_size: float,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("file_system_id", file_system_id)
+        _setter("file_system_name", file_system_name)
+        _setter("id", id)
+        _setter("mount_point_count", mount_point_count)
+        _setter("number_of_directories", number_of_directories)
+        _setter("number_of_files", number_of_files)
+        _setter("protocol_type", protocol_type)
+        _setter("provisioned_throughput_in_mi_bps", provisioned_throughput_in_mi_bps)
+        _setter("space_capacity", space_capacity)
+        _setter("storage_package_id", storage_package_id)
+        _setter("storage_type", storage_type)
+        _setter("throughput_mode", throughput_mode)
+        _setter("used_space_size", used_space_size)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -419,17 +504,46 @@ class GetMountPointsPointResult(dict):
         :param str vpc_id: The ID of the VPC network.
         :param str vswitch_id: The vswitch id.
         """
-        pulumi.set(__self__, "access_group_id", access_group_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mount_point_domain", mount_point_domain)
-        pulumi.set(__self__, "mount_point_id", mount_point_id)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetMountPointsPointResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_group_id=access_group_id,
+            create_time=create_time,
+            description=description,
+            file_system_id=file_system_id,
+            id=id,
+            mount_point_domain=mount_point_domain,
+            mount_point_id=mount_point_id,
+            network_type=network_type,
+            status=status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_group_id: str,
+             create_time: str,
+             description: str,
+             file_system_id: str,
+             id: str,
+             mount_point_domain: str,
+             mount_point_id: str,
+             network_type: str,
+             status: str,
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_group_id", access_group_id)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("file_system_id", file_system_id)
+        _setter("id", id)
+        _setter("mount_point_domain", mount_point_domain)
+        _setter("mount_point_id", mount_point_id)
+        _setter("network_type", network_type)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="accessGroupId")
@@ -529,8 +643,19 @@ class GetZonesZoneResult(dict):
         :param Sequence['GetZonesZoneOptionArgs'] options: A list of available configurations of the Zone.
         :param str zone_id: The zone ID.
         """
-        pulumi.set(__self__, "options", options)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            options=options,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             options: Sequence['outputs.GetZonesZoneOptionResult'],
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("options", options)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -558,8 +683,19 @@ class GetZonesZoneOptionResult(dict):
         :param str protocol_type: The protocol type. Valid values: `HDFS`.
         :param str storage_type: The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
         """
-        pulumi.set(__self__, "protocol_type", protocol_type)
-        pulumi.set(__self__, "storage_type", storage_type)
+        GetZonesZoneOptionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            protocol_type=protocol_type,
+            storage_type=storage_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             protocol_type: str,
+             storage_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("protocol_type", protocol_type)
+        _setter("storage_type", storage_type)
 
     @property
     @pulumi.getter(name="protocolType")

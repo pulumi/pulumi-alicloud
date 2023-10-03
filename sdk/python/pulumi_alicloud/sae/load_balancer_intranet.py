@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,10 +25,23 @@ class LoadBalancerIntranetArgs:
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]] intranets: The bound private network SLB. See `intranet` below.
         :param pulumi.Input[str] intranet_slb_id: The intranet SLB ID.
         """
-        pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "intranets", intranets)
+        LoadBalancerIntranetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            intranets=intranets,
+            intranet_slb_id=intranet_slb_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: pulumi.Input[str],
+             intranets: pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]],
+             intranet_slb_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_id", app_id)
+        _setter("intranets", intranets)
         if intranet_slb_id is not None:
-            pulumi.set(__self__, "intranet_slb_id", intranet_slb_id)
+            _setter("intranet_slb_id", intranet_slb_id)
 
     @property
     @pulumi.getter(name="appId")
@@ -81,14 +94,29 @@ class _LoadBalancerIntranetState:
         :param pulumi.Input[str] intranet_slb_id: The intranet SLB ID.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]] intranets: The bound private network SLB. See `intranet` below.
         """
+        _LoadBalancerIntranetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            intranet_ip=intranet_ip,
+            intranet_slb_id=intranet_slb_id,
+            intranets=intranets,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             intranet_ip: Optional[pulumi.Input[str]] = None,
+             intranet_slb_id: Optional[pulumi.Input[str]] = None,
+             intranets: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if intranet_ip is not None:
-            pulumi.set(__self__, "intranet_ip", intranet_ip)
+            _setter("intranet_ip", intranet_ip)
         if intranet_slb_id is not None:
-            pulumi.set(__self__, "intranet_slb_id", intranet_slb_id)
+            _setter("intranet_slb_id", intranet_slb_id)
         if intranets is not None:
-            pulumi.set(__self__, "intranets", intranets)
+            _setter("intranets", intranets)
 
     @property
     @pulumi.getter(name="appId")
@@ -322,6 +350,10 @@ class LoadBalancerIntranet(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LoadBalancerIntranetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

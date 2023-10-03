@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SubscriptionJobArgs', 'SubscriptionJob']
@@ -95,80 +95,165 @@ class SubscriptionJobArgs:
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
-        pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
-        pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
+        SubscriptionJobArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            payment_type=payment_type,
+            source_endpoint_engine_name=source_endpoint_engine_name,
+            source_endpoint_instance_type=source_endpoint_instance_type,
+            source_endpoint_region=source_endpoint_region,
+            checkpoint=checkpoint,
+            compute_unit=compute_unit,
+            database_count=database_count,
+            db_list=db_list,
+            delay_notice=delay_notice,
+            delay_phone=delay_phone,
+            delay_rule_time=delay_rule_time,
+            destination_endpoint_engine_name=destination_endpoint_engine_name,
+            destination_region=destination_region,
+            dts_instance_id=dts_instance_id,
+            dts_job_name=dts_job_name,
+            error_notice=error_notice,
+            error_phone=error_phone,
+            instance_class=instance_class,
+            payment_duration=payment_duration,
+            payment_duration_unit=payment_duration_unit,
+            reserve=reserve,
+            source_endpoint_database_name=source_endpoint_database_name,
+            source_endpoint_instance_id=source_endpoint_instance_id,
+            source_endpoint_ip=source_endpoint_ip,
+            source_endpoint_oracle_sid=source_endpoint_oracle_sid,
+            source_endpoint_owner_id=source_endpoint_owner_id,
+            source_endpoint_password=source_endpoint_password,
+            source_endpoint_port=source_endpoint_port,
+            source_endpoint_role=source_endpoint_role,
+            source_endpoint_user_name=source_endpoint_user_name,
+            status=status,
+            subscription_data_type_ddl=subscription_data_type_ddl,
+            subscription_data_type_dml=subscription_data_type_dml,
+            subscription_instance_network_type=subscription_instance_network_type,
+            subscription_instance_vpc_id=subscription_instance_vpc_id,
+            subscription_instance_vswitch_id=subscription_instance_vswitch_id,
+            sync_architecture=sync_architecture,
+            synchronization_direction=synchronization_direction,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             payment_type: pulumi.Input[str],
+             source_endpoint_engine_name: pulumi.Input[str],
+             source_endpoint_instance_type: pulumi.Input[str],
+             source_endpoint_region: pulumi.Input[str],
+             checkpoint: Optional[pulumi.Input[str]] = None,
+             compute_unit: Optional[pulumi.Input[int]] = None,
+             database_count: Optional[pulumi.Input[int]] = None,
+             db_list: Optional[pulumi.Input[str]] = None,
+             delay_notice: Optional[pulumi.Input[bool]] = None,
+             delay_phone: Optional[pulumi.Input[str]] = None,
+             delay_rule_time: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
+             destination_region: Optional[pulumi.Input[str]] = None,
+             dts_instance_id: Optional[pulumi.Input[str]] = None,
+             dts_job_name: Optional[pulumi.Input[str]] = None,
+             error_notice: Optional[pulumi.Input[bool]] = None,
+             error_phone: Optional[pulumi.Input[str]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             payment_duration: Optional[pulumi.Input[int]] = None,
+             payment_duration_unit: Optional[pulumi.Input[str]] = None,
+             reserve: Optional[pulumi.Input[str]] = None,
+             source_endpoint_database_name: Optional[pulumi.Input[str]] = None,
+             source_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
+             source_endpoint_ip: Optional[pulumi.Input[str]] = None,
+             source_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
+             source_endpoint_owner_id: Optional[pulumi.Input[str]] = None,
+             source_endpoint_password: Optional[pulumi.Input[str]] = None,
+             source_endpoint_port: Optional[pulumi.Input[str]] = None,
+             source_endpoint_role: Optional[pulumi.Input[str]] = None,
+             source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             subscription_data_type_ddl: Optional[pulumi.Input[bool]] = None,
+             subscription_data_type_dml: Optional[pulumi.Input[bool]] = None,
+             subscription_instance_network_type: Optional[pulumi.Input[str]] = None,
+             subscription_instance_vpc_id: Optional[pulumi.Input[str]] = None,
+             subscription_instance_vswitch_id: Optional[pulumi.Input[str]] = None,
+             sync_architecture: Optional[pulumi.Input[str]] = None,
+             synchronization_direction: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("payment_type", payment_type)
+        _setter("source_endpoint_engine_name", source_endpoint_engine_name)
+        _setter("source_endpoint_instance_type", source_endpoint_instance_type)
+        _setter("source_endpoint_region", source_endpoint_region)
         if checkpoint is not None:
-            pulumi.set(__self__, "checkpoint", checkpoint)
+            _setter("checkpoint", checkpoint)
         if compute_unit is not None:
-            pulumi.set(__self__, "compute_unit", compute_unit)
+            _setter("compute_unit", compute_unit)
         if database_count is not None:
-            pulumi.set(__self__, "database_count", database_count)
+            _setter("database_count", database_count)
         if db_list is not None:
-            pulumi.set(__self__, "db_list", db_list)
+            _setter("db_list", db_list)
         if delay_notice is not None:
-            pulumi.set(__self__, "delay_notice", delay_notice)
+            _setter("delay_notice", delay_notice)
         if delay_phone is not None:
-            pulumi.set(__self__, "delay_phone", delay_phone)
+            _setter("delay_phone", delay_phone)
         if delay_rule_time is not None:
-            pulumi.set(__self__, "delay_rule_time", delay_rule_time)
+            _setter("delay_rule_time", delay_rule_time)
         if destination_endpoint_engine_name is not None:
-            pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
+            _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
         if destination_region is not None:
-            pulumi.set(__self__, "destination_region", destination_region)
+            _setter("destination_region", destination_region)
         if dts_instance_id is not None:
-            pulumi.set(__self__, "dts_instance_id", dts_instance_id)
+            _setter("dts_instance_id", dts_instance_id)
         if dts_job_name is not None:
-            pulumi.set(__self__, "dts_job_name", dts_job_name)
+            _setter("dts_job_name", dts_job_name)
         if error_notice is not None:
-            pulumi.set(__self__, "error_notice", error_notice)
+            _setter("error_notice", error_notice)
         if error_phone is not None:
-            pulumi.set(__self__, "error_phone", error_phone)
+            _setter("error_phone", error_phone)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if payment_duration is not None:
-            pulumi.set(__self__, "payment_duration", payment_duration)
+            _setter("payment_duration", payment_duration)
         if payment_duration_unit is not None:
-            pulumi.set(__self__, "payment_duration_unit", payment_duration_unit)
+            _setter("payment_duration_unit", payment_duration_unit)
         if reserve is not None:
-            pulumi.set(__self__, "reserve", reserve)
+            _setter("reserve", reserve)
         if source_endpoint_database_name is not None:
-            pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
+            _setter("source_endpoint_database_name", source_endpoint_database_name)
         if source_endpoint_instance_id is not None:
-            pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
+            _setter("source_endpoint_instance_id", source_endpoint_instance_id)
         if source_endpoint_ip is not None:
-            pulumi.set(__self__, "source_endpoint_ip", source_endpoint_ip)
+            _setter("source_endpoint_ip", source_endpoint_ip)
         if source_endpoint_oracle_sid is not None:
-            pulumi.set(__self__, "source_endpoint_oracle_sid", source_endpoint_oracle_sid)
+            _setter("source_endpoint_oracle_sid", source_endpoint_oracle_sid)
         if source_endpoint_owner_id is not None:
-            pulumi.set(__self__, "source_endpoint_owner_id", source_endpoint_owner_id)
+            _setter("source_endpoint_owner_id", source_endpoint_owner_id)
         if source_endpoint_password is not None:
-            pulumi.set(__self__, "source_endpoint_password", source_endpoint_password)
+            _setter("source_endpoint_password", source_endpoint_password)
         if source_endpoint_port is not None:
-            pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
+            _setter("source_endpoint_port", source_endpoint_port)
         if source_endpoint_role is not None:
-            pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
+            _setter("source_endpoint_role", source_endpoint_role)
         if source_endpoint_user_name is not None:
-            pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
+            _setter("source_endpoint_user_name", source_endpoint_user_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if subscription_data_type_ddl is not None:
-            pulumi.set(__self__, "subscription_data_type_ddl", subscription_data_type_ddl)
+            _setter("subscription_data_type_ddl", subscription_data_type_ddl)
         if subscription_data_type_dml is not None:
-            pulumi.set(__self__, "subscription_data_type_dml", subscription_data_type_dml)
+            _setter("subscription_data_type_dml", subscription_data_type_dml)
         if subscription_instance_network_type is not None:
-            pulumi.set(__self__, "subscription_instance_network_type", subscription_instance_network_type)
+            _setter("subscription_instance_network_type", subscription_instance_network_type)
         if subscription_instance_vpc_id is not None:
-            pulumi.set(__self__, "subscription_instance_vpc_id", subscription_instance_vpc_id)
+            _setter("subscription_instance_vpc_id", subscription_instance_vpc_id)
         if subscription_instance_vswitch_id is not None:
-            pulumi.set(__self__, "subscription_instance_vswitch_id", subscription_instance_vswitch_id)
+            _setter("subscription_instance_vswitch_id", subscription_instance_vswitch_id)
         if sync_architecture is not None:
-            pulumi.set(__self__, "sync_architecture", sync_architecture)
+            _setter("sync_architecture", sync_architecture)
         if synchronization_direction is not None:
-            pulumi.set(__self__, "synchronization_direction", synchronization_direction)
+            _setter("synchronization_direction", synchronization_direction)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="paymentType")
@@ -723,84 +808,169 @@ class _SubscriptionJobState:
         :param pulumi.Input[str] synchronization_direction: The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
+        _SubscriptionJobState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            checkpoint=checkpoint,
+            compute_unit=compute_unit,
+            database_count=database_count,
+            db_list=db_list,
+            delay_notice=delay_notice,
+            delay_phone=delay_phone,
+            delay_rule_time=delay_rule_time,
+            destination_endpoint_engine_name=destination_endpoint_engine_name,
+            destination_region=destination_region,
+            dts_instance_id=dts_instance_id,
+            dts_job_name=dts_job_name,
+            error_notice=error_notice,
+            error_phone=error_phone,
+            instance_class=instance_class,
+            payment_duration=payment_duration,
+            payment_duration_unit=payment_duration_unit,
+            payment_type=payment_type,
+            reserve=reserve,
+            source_endpoint_database_name=source_endpoint_database_name,
+            source_endpoint_engine_name=source_endpoint_engine_name,
+            source_endpoint_instance_id=source_endpoint_instance_id,
+            source_endpoint_instance_type=source_endpoint_instance_type,
+            source_endpoint_ip=source_endpoint_ip,
+            source_endpoint_oracle_sid=source_endpoint_oracle_sid,
+            source_endpoint_owner_id=source_endpoint_owner_id,
+            source_endpoint_password=source_endpoint_password,
+            source_endpoint_port=source_endpoint_port,
+            source_endpoint_region=source_endpoint_region,
+            source_endpoint_role=source_endpoint_role,
+            source_endpoint_user_name=source_endpoint_user_name,
+            status=status,
+            subscription_data_type_ddl=subscription_data_type_ddl,
+            subscription_data_type_dml=subscription_data_type_dml,
+            subscription_instance_network_type=subscription_instance_network_type,
+            subscription_instance_vpc_id=subscription_instance_vpc_id,
+            subscription_instance_vswitch_id=subscription_instance_vswitch_id,
+            sync_architecture=sync_architecture,
+            synchronization_direction=synchronization_direction,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             checkpoint: Optional[pulumi.Input[str]] = None,
+             compute_unit: Optional[pulumi.Input[int]] = None,
+             database_count: Optional[pulumi.Input[int]] = None,
+             db_list: Optional[pulumi.Input[str]] = None,
+             delay_notice: Optional[pulumi.Input[bool]] = None,
+             delay_phone: Optional[pulumi.Input[str]] = None,
+             delay_rule_time: Optional[pulumi.Input[str]] = None,
+             destination_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
+             destination_region: Optional[pulumi.Input[str]] = None,
+             dts_instance_id: Optional[pulumi.Input[str]] = None,
+             dts_job_name: Optional[pulumi.Input[str]] = None,
+             error_notice: Optional[pulumi.Input[bool]] = None,
+             error_phone: Optional[pulumi.Input[str]] = None,
+             instance_class: Optional[pulumi.Input[str]] = None,
+             payment_duration: Optional[pulumi.Input[int]] = None,
+             payment_duration_unit: Optional[pulumi.Input[str]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             reserve: Optional[pulumi.Input[str]] = None,
+             source_endpoint_database_name: Optional[pulumi.Input[str]] = None,
+             source_endpoint_engine_name: Optional[pulumi.Input[str]] = None,
+             source_endpoint_instance_id: Optional[pulumi.Input[str]] = None,
+             source_endpoint_instance_type: Optional[pulumi.Input[str]] = None,
+             source_endpoint_ip: Optional[pulumi.Input[str]] = None,
+             source_endpoint_oracle_sid: Optional[pulumi.Input[str]] = None,
+             source_endpoint_owner_id: Optional[pulumi.Input[str]] = None,
+             source_endpoint_password: Optional[pulumi.Input[str]] = None,
+             source_endpoint_port: Optional[pulumi.Input[str]] = None,
+             source_endpoint_region: Optional[pulumi.Input[str]] = None,
+             source_endpoint_role: Optional[pulumi.Input[str]] = None,
+             source_endpoint_user_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             subscription_data_type_ddl: Optional[pulumi.Input[bool]] = None,
+             subscription_data_type_dml: Optional[pulumi.Input[bool]] = None,
+             subscription_instance_network_type: Optional[pulumi.Input[str]] = None,
+             subscription_instance_vpc_id: Optional[pulumi.Input[str]] = None,
+             subscription_instance_vswitch_id: Optional[pulumi.Input[str]] = None,
+             sync_architecture: Optional[pulumi.Input[str]] = None,
+             synchronization_direction: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if checkpoint is not None:
-            pulumi.set(__self__, "checkpoint", checkpoint)
+            _setter("checkpoint", checkpoint)
         if compute_unit is not None:
-            pulumi.set(__self__, "compute_unit", compute_unit)
+            _setter("compute_unit", compute_unit)
         if database_count is not None:
-            pulumi.set(__self__, "database_count", database_count)
+            _setter("database_count", database_count)
         if db_list is not None:
-            pulumi.set(__self__, "db_list", db_list)
+            _setter("db_list", db_list)
         if delay_notice is not None:
-            pulumi.set(__self__, "delay_notice", delay_notice)
+            _setter("delay_notice", delay_notice)
         if delay_phone is not None:
-            pulumi.set(__self__, "delay_phone", delay_phone)
+            _setter("delay_phone", delay_phone)
         if delay_rule_time is not None:
-            pulumi.set(__self__, "delay_rule_time", delay_rule_time)
+            _setter("delay_rule_time", delay_rule_time)
         if destination_endpoint_engine_name is not None:
-            pulumi.set(__self__, "destination_endpoint_engine_name", destination_endpoint_engine_name)
+            _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
         if destination_region is not None:
-            pulumi.set(__self__, "destination_region", destination_region)
+            _setter("destination_region", destination_region)
         if dts_instance_id is not None:
-            pulumi.set(__self__, "dts_instance_id", dts_instance_id)
+            _setter("dts_instance_id", dts_instance_id)
         if dts_job_name is not None:
-            pulumi.set(__self__, "dts_job_name", dts_job_name)
+            _setter("dts_job_name", dts_job_name)
         if error_notice is not None:
-            pulumi.set(__self__, "error_notice", error_notice)
+            _setter("error_notice", error_notice)
         if error_phone is not None:
-            pulumi.set(__self__, "error_phone", error_phone)
+            _setter("error_phone", error_phone)
         if instance_class is not None:
-            pulumi.set(__self__, "instance_class", instance_class)
+            _setter("instance_class", instance_class)
         if payment_duration is not None:
-            pulumi.set(__self__, "payment_duration", payment_duration)
+            _setter("payment_duration", payment_duration)
         if payment_duration_unit is not None:
-            pulumi.set(__self__, "payment_duration_unit", payment_duration_unit)
+            _setter("payment_duration_unit", payment_duration_unit)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if reserve is not None:
-            pulumi.set(__self__, "reserve", reserve)
+            _setter("reserve", reserve)
         if source_endpoint_database_name is not None:
-            pulumi.set(__self__, "source_endpoint_database_name", source_endpoint_database_name)
+            _setter("source_endpoint_database_name", source_endpoint_database_name)
         if source_endpoint_engine_name is not None:
-            pulumi.set(__self__, "source_endpoint_engine_name", source_endpoint_engine_name)
+            _setter("source_endpoint_engine_name", source_endpoint_engine_name)
         if source_endpoint_instance_id is not None:
-            pulumi.set(__self__, "source_endpoint_instance_id", source_endpoint_instance_id)
+            _setter("source_endpoint_instance_id", source_endpoint_instance_id)
         if source_endpoint_instance_type is not None:
-            pulumi.set(__self__, "source_endpoint_instance_type", source_endpoint_instance_type)
+            _setter("source_endpoint_instance_type", source_endpoint_instance_type)
         if source_endpoint_ip is not None:
-            pulumi.set(__self__, "source_endpoint_ip", source_endpoint_ip)
+            _setter("source_endpoint_ip", source_endpoint_ip)
         if source_endpoint_oracle_sid is not None:
-            pulumi.set(__self__, "source_endpoint_oracle_sid", source_endpoint_oracle_sid)
+            _setter("source_endpoint_oracle_sid", source_endpoint_oracle_sid)
         if source_endpoint_owner_id is not None:
-            pulumi.set(__self__, "source_endpoint_owner_id", source_endpoint_owner_id)
+            _setter("source_endpoint_owner_id", source_endpoint_owner_id)
         if source_endpoint_password is not None:
-            pulumi.set(__self__, "source_endpoint_password", source_endpoint_password)
+            _setter("source_endpoint_password", source_endpoint_password)
         if source_endpoint_port is not None:
-            pulumi.set(__self__, "source_endpoint_port", source_endpoint_port)
+            _setter("source_endpoint_port", source_endpoint_port)
         if source_endpoint_region is not None:
-            pulumi.set(__self__, "source_endpoint_region", source_endpoint_region)
+            _setter("source_endpoint_region", source_endpoint_region)
         if source_endpoint_role is not None:
-            pulumi.set(__self__, "source_endpoint_role", source_endpoint_role)
+            _setter("source_endpoint_role", source_endpoint_role)
         if source_endpoint_user_name is not None:
-            pulumi.set(__self__, "source_endpoint_user_name", source_endpoint_user_name)
+            _setter("source_endpoint_user_name", source_endpoint_user_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if subscription_data_type_ddl is not None:
-            pulumi.set(__self__, "subscription_data_type_ddl", subscription_data_type_ddl)
+            _setter("subscription_data_type_ddl", subscription_data_type_ddl)
         if subscription_data_type_dml is not None:
-            pulumi.set(__self__, "subscription_data_type_dml", subscription_data_type_dml)
+            _setter("subscription_data_type_dml", subscription_data_type_dml)
         if subscription_instance_network_type is not None:
-            pulumi.set(__self__, "subscription_instance_network_type", subscription_instance_network_type)
+            _setter("subscription_instance_network_type", subscription_instance_network_type)
         if subscription_instance_vpc_id is not None:
-            pulumi.set(__self__, "subscription_instance_vpc_id", subscription_instance_vpc_id)
+            _setter("subscription_instance_vpc_id", subscription_instance_vpc_id)
         if subscription_instance_vswitch_id is not None:
-            pulumi.set(__self__, "subscription_instance_vswitch_id", subscription_instance_vswitch_id)
+            _setter("subscription_instance_vswitch_id", subscription_instance_vswitch_id)
         if sync_architecture is not None:
-            pulumi.set(__self__, "sync_architecture", sync_architecture)
+            _setter("sync_architecture", sync_architecture)
         if synchronization_direction is not None:
-            pulumi.set(__self__, "synchronization_direction", synchronization_direction)
+            _setter("synchronization_direction", synchronization_direction)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -1546,6 +1716,10 @@ class SubscriptionJob(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SubscriptionJobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

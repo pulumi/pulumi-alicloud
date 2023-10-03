@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BackupPlanArgs', 'BackupPlan']
@@ -29,15 +29,34 @@ class BackupPlanArgs:
         :param pulumi.Input[str] backup_period: The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
         :param pulumi.Input[int] retention_period: The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
         """
-        pulumi.set(__self__, "backup_time", backup_time)
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "data_center_id", data_center_id)
+        BackupPlanArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_time=backup_time,
+            cluster_id=cluster_id,
+            data_center_id=data_center_id,
+            active=active,
+            backup_period=backup_period,
+            retention_period=retention_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_time: pulumi.Input[str],
+             cluster_id: pulumi.Input[str],
+             data_center_id: pulumi.Input[str],
+             active: Optional[pulumi.Input[bool]] = None,
+             backup_period: Optional[pulumi.Input[str]] = None,
+             retention_period: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_time", backup_time)
+        _setter("cluster_id", cluster_id)
+        _setter("data_center_id", data_center_id)
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if backup_period is not None:
-            pulumi.set(__self__, "backup_period", backup_period)
+            _setter("backup_period", backup_period)
         if retention_period is not None:
-            pulumi.set(__self__, "retention_period", retention_period)
+            _setter("retention_period", retention_period)
 
     @property
     @pulumi.getter(name="backupTime")
@@ -130,18 +149,37 @@ class _BackupPlanState:
         :param pulumi.Input[str] data_center_id: The ID of the data center for the backup in the cluster.
         :param pulumi.Input[int] retention_period: The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
         """
+        _BackupPlanState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            active=active,
+            backup_period=backup_period,
+            backup_time=backup_time,
+            cluster_id=cluster_id,
+            data_center_id=data_center_id,
+            retention_period=retention_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             active: Optional[pulumi.Input[bool]] = None,
+             backup_period: Optional[pulumi.Input[str]] = None,
+             backup_time: Optional[pulumi.Input[str]] = None,
+             cluster_id: Optional[pulumi.Input[str]] = None,
+             data_center_id: Optional[pulumi.Input[str]] = None,
+             retention_period: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if active is not None:
-            pulumi.set(__self__, "active", active)
+            _setter("active", active)
         if backup_period is not None:
-            pulumi.set(__self__, "backup_period", backup_period)
+            _setter("backup_period", backup_period)
         if backup_time is not None:
-            pulumi.set(__self__, "backup_time", backup_time)
+            _setter("backup_time", backup_time)
         if cluster_id is not None:
-            pulumi.set(__self__, "cluster_id", cluster_id)
+            _setter("cluster_id", cluster_id)
         if data_center_id is not None:
-            pulumi.set(__self__, "data_center_id", data_center_id)
+            _setter("data_center_id", data_center_id)
         if retention_period is not None:
-            pulumi.set(__self__, "retention_period", retention_period)
+            _setter("retention_period", retention_period)
 
     @property
     @pulumi.getter
@@ -283,6 +321,10 @@ class BackupPlan(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BackupPlanArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

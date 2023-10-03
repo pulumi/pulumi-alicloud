@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ExtensionProviderArgs', 'ExtensionProvider']
@@ -25,10 +25,25 @@ class ExtensionProviderArgs:
         :param pulumi.Input[str] service_mesh_id: The ID of the Service Mesh.
         :param pulumi.Input[str] type: The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
         """
-        pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "extension_provider_name", extension_provider_name)
-        pulumi.set(__self__, "service_mesh_id", service_mesh_id)
-        pulumi.set(__self__, "type", type)
+        ExtensionProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            extension_provider_name=extension_provider_name,
+            service_mesh_id=service_mesh_id,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: pulumi.Input[str],
+             extension_provider_name: pulumi.Input[str],
+             service_mesh_id: pulumi.Input[str],
+             type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config", config)
+        _setter("extension_provider_name", extension_provider_name)
+        _setter("service_mesh_id", service_mesh_id)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -93,14 +108,29 @@ class _ExtensionProviderState:
         :param pulumi.Input[str] service_mesh_id: The ID of the Service Mesh.
         :param pulumi.Input[str] type: The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
         """
+        _ExtensionProviderState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            extension_provider_name=extension_provider_name,
+            service_mesh_id=service_mesh_id,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[str]] = None,
+             extension_provider_name: Optional[pulumi.Input[str]] = None,
+             service_mesh_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if extension_provider_name is not None:
-            pulumi.set(__self__, "extension_provider_name", extension_provider_name)
+            _setter("extension_provider_name", extension_provider_name)
         if service_mesh_id is not None:
-            pulumi.set(__self__, "service_mesh_id", service_mesh_id)
+            _setter("service_mesh_id", service_mesh_id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -214,6 +244,10 @@ class ExtensionProvider(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ExtensionProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string? MountPath;
         /// <summary>
-        /// The name of the volume.
+        /// The name of the mounted volume.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Specifies whether the mount path is read-only. Default value: `false`.
+        /// Specifies whether the volume is read-only. Default value: `false`.
         /// </summary>
         public readonly bool? ReadOnly;
 

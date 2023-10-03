@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// The path of the container in SAE.
+        /// The mount path.
         /// </summary>
         [Input("mountPath")]
         public Input<string>? MountPath { get; set; }

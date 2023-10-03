@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayCacheDiskArgs', 'GatewayCacheDisk']
@@ -23,10 +23,23 @@ class GatewayCacheDiskArgs:
         :param pulumi.Input[str] gateway_id: The ID of the gateway.
         :param pulumi.Input[str] cache_disk_category: The cache disk type. Valid values: `cloud_efficiency`, `cloud_ssd`.
         """
-        pulumi.set(__self__, "cache_disk_size_in_gb", cache_disk_size_in_gb)
-        pulumi.set(__self__, "gateway_id", gateway_id)
+        GatewayCacheDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cache_disk_size_in_gb=cache_disk_size_in_gb,
+            gateway_id=gateway_id,
+            cache_disk_category=cache_disk_category,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cache_disk_size_in_gb: pulumi.Input[int],
+             gateway_id: pulumi.Input[str],
+             cache_disk_category: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cache_disk_size_in_gb", cache_disk_size_in_gb)
+        _setter("gateway_id", gateway_id)
         if cache_disk_category is not None:
-            pulumi.set(__self__, "cache_disk_category", cache_disk_category)
+            _setter("cache_disk_category", cache_disk_category)
 
     @property
     @pulumi.getter(name="cacheDiskSizeInGb")
@@ -83,18 +96,37 @@ class _GatewayCacheDiskState:
         :param pulumi.Input[str] local_file_path: The cache disk inside the device name.
         :param pulumi.Input[int] status: The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
         """
+        _GatewayCacheDiskState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cache_disk_category=cache_disk_category,
+            cache_disk_size_in_gb=cache_disk_size_in_gb,
+            cache_id=cache_id,
+            gateway_id=gateway_id,
+            local_file_path=local_file_path,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cache_disk_category: Optional[pulumi.Input[str]] = None,
+             cache_disk_size_in_gb: Optional[pulumi.Input[int]] = None,
+             cache_id: Optional[pulumi.Input[str]] = None,
+             gateway_id: Optional[pulumi.Input[str]] = None,
+             local_file_path: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cache_disk_category is not None:
-            pulumi.set(__self__, "cache_disk_category", cache_disk_category)
+            _setter("cache_disk_category", cache_disk_category)
         if cache_disk_size_in_gb is not None:
-            pulumi.set(__self__, "cache_disk_size_in_gb", cache_disk_size_in_gb)
+            _setter("cache_disk_size_in_gb", cache_disk_size_in_gb)
         if cache_id is not None:
-            pulumi.set(__self__, "cache_id", cache_id)
+            _setter("cache_id", cache_id)
         if gateway_id is not None:
-            pulumi.set(__self__, "gateway_id", gateway_id)
+            _setter("gateway_id", gateway_id)
         if local_file_path is not None:
-            pulumi.set(__self__, "local_file_path", local_file_path)
+            _setter("local_file_path", local_file_path)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="cacheDiskCategory")
@@ -230,6 +262,10 @@ class GatewayCacheDisk(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayCacheDiskArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

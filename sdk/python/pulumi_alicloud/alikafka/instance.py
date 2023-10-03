@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['InstanceArgs', 'Instance']
@@ -74,45 +74,92 @@ class InstanceArgs:
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
-        pulumi.set(__self__, "deploy_type", deploy_type)
-        pulumi.set(__self__, "disk_size", disk_size)
-        pulumi.set(__self__, "disk_type", disk_type)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            deploy_type=deploy_type,
+            disk_size=disk_size,
+            disk_type=disk_type,
+            vswitch_id=vswitch_id,
+            config=config,
+            eip_max=eip_max,
+            io_max=io_max,
+            io_max_spec=io_max_spec,
+            kms_key_id=kms_key_id,
+            name=name,
+            paid_type=paid_type,
+            partition_num=partition_num,
+            security_group=security_group,
+            selected_zones=selected_zones,
+            service_version=service_version,
+            spec_type=spec_type,
+            tags=tags,
+            topic_quota=topic_quota,
+            vpc_id=vpc_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             deploy_type: pulumi.Input[int],
+             disk_size: pulumi.Input[int],
+             disk_type: pulumi.Input[int],
+             vswitch_id: pulumi.Input[str],
+             config: Optional[pulumi.Input[str]] = None,
+             eip_max: Optional[pulumi.Input[int]] = None,
+             io_max: Optional[pulumi.Input[int]] = None,
+             io_max_spec: Optional[pulumi.Input[str]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             paid_type: Optional[pulumi.Input[str]] = None,
+             partition_num: Optional[pulumi.Input[int]] = None,
+             security_group: Optional[pulumi.Input[str]] = None,
+             selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_version: Optional[pulumi.Input[str]] = None,
+             spec_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             topic_quota: Optional[pulumi.Input[int]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("deploy_type", deploy_type)
+        _setter("disk_size", disk_size)
+        _setter("disk_type", disk_type)
+        _setter("vswitch_id", vswitch_id)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if eip_max is not None:
-            pulumi.set(__self__, "eip_max", eip_max)
+            _setter("eip_max", eip_max)
         if io_max is not None:
-            pulumi.set(__self__, "io_max", io_max)
+            _setter("io_max", io_max)
         if io_max_spec is not None:
-            pulumi.set(__self__, "io_max_spec", io_max_spec)
+            _setter("io_max_spec", io_max_spec)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if paid_type is not None:
-            pulumi.set(__self__, "paid_type", paid_type)
+            _setter("paid_type", paid_type)
         if partition_num is not None:
-            pulumi.set(__self__, "partition_num", partition_num)
+            _setter("partition_num", partition_num)
         if security_group is not None:
-            pulumi.set(__self__, "security_group", security_group)
+            _setter("security_group", security_group)
         if selected_zones is not None:
-            pulumi.set(__self__, "selected_zones", selected_zones)
+            _setter("selected_zones", selected_zones)
         if service_version is not None:
-            pulumi.set(__self__, "service_version", service_version)
+            _setter("service_version", service_version)
         if spec_type is not None:
-            pulumi.set(__self__, "spec_type", spec_type)
+            _setter("spec_type", spec_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if topic_quota is not None:
             warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
             pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
         if topic_quota is not None:
-            pulumi.set(__self__, "topic_quota", topic_quota)
+            _setter("topic_quota", topic_quota)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="deployType")
@@ -446,53 +493,104 @@ class _InstanceState:
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            deploy_type=deploy_type,
+            disk_size=disk_size,
+            disk_type=disk_type,
+            eip_max=eip_max,
+            end_point=end_point,
+            io_max=io_max,
+            io_max_spec=io_max_spec,
+            kms_key_id=kms_key_id,
+            name=name,
+            paid_type=paid_type,
+            partition_num=partition_num,
+            security_group=security_group,
+            selected_zones=selected_zones,
+            service_version=service_version,
+            spec_type=spec_type,
+            status=status,
+            tags=tags,
+            topic_quota=topic_quota,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[str]] = None,
+             deploy_type: Optional[pulumi.Input[int]] = None,
+             disk_size: Optional[pulumi.Input[int]] = None,
+             disk_type: Optional[pulumi.Input[int]] = None,
+             eip_max: Optional[pulumi.Input[int]] = None,
+             end_point: Optional[pulumi.Input[str]] = None,
+             io_max: Optional[pulumi.Input[int]] = None,
+             io_max_spec: Optional[pulumi.Input[str]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             paid_type: Optional[pulumi.Input[str]] = None,
+             partition_num: Optional[pulumi.Input[int]] = None,
+             security_group: Optional[pulumi.Input[str]] = None,
+             selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             service_version: Optional[pulumi.Input[str]] = None,
+             spec_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[int]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             topic_quota: Optional[pulumi.Input[int]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if deploy_type is not None:
-            pulumi.set(__self__, "deploy_type", deploy_type)
+            _setter("deploy_type", deploy_type)
         if disk_size is not None:
-            pulumi.set(__self__, "disk_size", disk_size)
+            _setter("disk_size", disk_size)
         if disk_type is not None:
-            pulumi.set(__self__, "disk_type", disk_type)
+            _setter("disk_type", disk_type)
         if eip_max is not None:
-            pulumi.set(__self__, "eip_max", eip_max)
+            _setter("eip_max", eip_max)
         if end_point is not None:
-            pulumi.set(__self__, "end_point", end_point)
+            _setter("end_point", end_point)
         if io_max is not None:
-            pulumi.set(__self__, "io_max", io_max)
+            _setter("io_max", io_max)
         if io_max_spec is not None:
-            pulumi.set(__self__, "io_max_spec", io_max_spec)
+            _setter("io_max_spec", io_max_spec)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if paid_type is not None:
-            pulumi.set(__self__, "paid_type", paid_type)
+            _setter("paid_type", paid_type)
         if partition_num is not None:
-            pulumi.set(__self__, "partition_num", partition_num)
+            _setter("partition_num", partition_num)
         if security_group is not None:
-            pulumi.set(__self__, "security_group", security_group)
+            _setter("security_group", security_group)
         if selected_zones is not None:
-            pulumi.set(__self__, "selected_zones", selected_zones)
+            _setter("selected_zones", selected_zones)
         if service_version is not None:
-            pulumi.set(__self__, "service_version", service_version)
+            _setter("service_version", service_version)
         if spec_type is not None:
-            pulumi.set(__self__, "spec_type", spec_type)
+            _setter("spec_type", spec_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if topic_quota is not None:
             warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
             pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
         if topic_quota is not None:
-            pulumi.set(__self__, "topic_quota", topic_quota)
+            _setter("topic_quota", topic_quota)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -883,6 +981,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -939,9 +1041,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["service_version"] = service_version
             __props__.__dict__["spec_type"] = spec_type
             __props__.__dict__["tags"] = tags
-            if topic_quota is not None and not opts.urn:
-                warnings.warn("""Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""", DeprecationWarning)
-                pulumi.log.warn("""topic_quota is deprecated: Attribute 'topic_quota' has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute 'partition_num' instead.""")
             __props__.__dict__["topic_quota"] = topic_quota
             __props__.__dict__["vpc_id"] = vpc_id
             if vswitch_id is None and not opts.urn:

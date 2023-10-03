@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['WafDomainArgs', 'WafDomain']
@@ -21,9 +21,20 @@ class WafDomainArgs:
         :param pulumi.Input[str] domain_name: The accelerated domain name.
         :param pulumi.Input[str] client_ip_tag: The client ip tag.
         """
-        pulumi.set(__self__, "domain_name", domain_name)
+        WafDomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            domain_name=domain_name,
+            client_ip_tag=client_ip_tag,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             domain_name: pulumi.Input[str],
+             client_ip_tag: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("domain_name", domain_name)
         if client_ip_tag is not None:
-            pulumi.set(__self__, "client_ip_tag", client_ip_tag)
+            _setter("client_ip_tag", client_ip_tag)
 
     @property
     @pulumi.getter(name="domainName")
@@ -60,10 +71,21 @@ class _WafDomainState:
         :param pulumi.Input[str] client_ip_tag: The client ip tag.
         :param pulumi.Input[str] domain_name: The accelerated domain name.
         """
+        _WafDomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_ip_tag=client_ip_tag,
+            domain_name=domain_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_ip_tag: Optional[pulumi.Input[str]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if client_ip_tag is not None:
-            pulumi.set(__self__, "client_ip_tag", client_ip_tag)
+            _setter("client_ip_tag", client_ip_tag)
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
 
     @property
     @pulumi.getter(name="clientIpTag")
@@ -203,6 +225,10 @@ class WafDomain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WafDomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

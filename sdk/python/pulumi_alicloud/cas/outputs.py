@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -50,24 +50,67 @@ class GetCertificatesCertificateResult(dict):
         :param str sans: The cert's subject alternative name.
         :param str start_date: The cert's not valid before time.
         """
-        pulumi.set(__self__, "buy_in_aliyun", buy_in_aliyun)
-        pulumi.set(__self__, "cert", cert)
-        pulumi.set(__self__, "cert_id", cert_id)
-        pulumi.set(__self__, "certificate_name", certificate_name)
-        pulumi.set(__self__, "city", city)
-        pulumi.set(__self__, "common", common)
-        pulumi.set(__self__, "country", country)
-        pulumi.set(__self__, "end_date", end_date)
-        pulumi.set(__self__, "expired", expired)
-        pulumi.set(__self__, "fingerprint", fingerprint)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "issuer", issuer)
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "org_name", org_name)
-        pulumi.set(__self__, "province", province)
-        pulumi.set(__self__, "sans", sans)
-        pulumi.set(__self__, "start_date", start_date)
+        GetCertificatesCertificateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            buy_in_aliyun=buy_in_aliyun,
+            cert=cert,
+            cert_id=cert_id,
+            certificate_name=certificate_name,
+            city=city,
+            common=common,
+            country=country,
+            end_date=end_date,
+            expired=expired,
+            fingerprint=fingerprint,
+            id=id,
+            issuer=issuer,
+            key=key,
+            name=name,
+            org_name=org_name,
+            province=province,
+            sans=sans,
+            start_date=start_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             buy_in_aliyun: bool,
+             cert: str,
+             cert_id: str,
+             certificate_name: str,
+             city: str,
+             common: str,
+             country: str,
+             end_date: str,
+             expired: bool,
+             fingerprint: str,
+             id: str,
+             issuer: str,
+             key: str,
+             name: str,
+             org_name: str,
+             province: str,
+             sans: str,
+             start_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("buy_in_aliyun", buy_in_aliyun)
+        _setter("cert", cert)
+        _setter("cert_id", cert_id)
+        _setter("certificate_name", certificate_name)
+        _setter("city", city)
+        _setter("common", common)
+        _setter("country", country)
+        _setter("end_date", end_date)
+        _setter("expired", expired)
+        _setter("fingerprint", fingerprint)
+        _setter("id", id)
+        _setter("issuer", issuer)
+        _setter("key", key)
+        _setter("name", name)
+        _setter("org_name", org_name)
+        _setter("province", province)
+        _setter("sans", sans)
+        _setter("start_date", start_date)
 
     @property
     @pulumi.getter(name="buyInAliyun")
@@ -242,24 +285,67 @@ class GetServiceCertificatesCertificateResult(dict):
         :param str sans: The cert's subject alternative name.
         :param str start_date: The cert's not valid before time.
         """
-        pulumi.set(__self__, "buy_in_aliyun", buy_in_aliyun)
-        pulumi.set(__self__, "cert", cert)
-        pulumi.set(__self__, "cert_id", cert_id)
-        pulumi.set(__self__, "certificate_name", certificate_name)
-        pulumi.set(__self__, "city", city)
-        pulumi.set(__self__, "common", common)
-        pulumi.set(__self__, "country", country)
-        pulumi.set(__self__, "end_date", end_date)
-        pulumi.set(__self__, "expired", expired)
-        pulumi.set(__self__, "fingerprint", fingerprint)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "issuer", issuer)
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "org_name", org_name)
-        pulumi.set(__self__, "province", province)
-        pulumi.set(__self__, "sans", sans)
-        pulumi.set(__self__, "start_date", start_date)
+        GetServiceCertificatesCertificateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            buy_in_aliyun=buy_in_aliyun,
+            cert=cert,
+            cert_id=cert_id,
+            certificate_name=certificate_name,
+            city=city,
+            common=common,
+            country=country,
+            end_date=end_date,
+            expired=expired,
+            fingerprint=fingerprint,
+            id=id,
+            issuer=issuer,
+            key=key,
+            name=name,
+            org_name=org_name,
+            province=province,
+            sans=sans,
+            start_date=start_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             buy_in_aliyun: bool,
+             cert: str,
+             cert_id: str,
+             certificate_name: str,
+             city: str,
+             common: str,
+             country: str,
+             end_date: str,
+             expired: bool,
+             fingerprint: str,
+             id: str,
+             issuer: str,
+             key: str,
+             name: str,
+             org_name: str,
+             province: str,
+             sans: str,
+             start_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("buy_in_aliyun", buy_in_aliyun)
+        _setter("cert", cert)
+        _setter("cert_id", cert_id)
+        _setter("certificate_name", certificate_name)
+        _setter("city", city)
+        _setter("common", common)
+        _setter("country", country)
+        _setter("end_date", end_date)
+        _setter("expired", expired)
+        _setter("fingerprint", fingerprint)
+        _setter("id", id)
+        _setter("issuer", issuer)
+        _setter("key", key)
+        _setter("name", name)
+        _setter("org_name", org_name)
+        _setter("province", province)
+        _setter("sans", sans)
+        _setter("start_date", start_date)
 
     @property
     @pulumi.getter(name="buyInAliyun")

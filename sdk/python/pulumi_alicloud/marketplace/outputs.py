@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -31,10 +31,25 @@ class GetProductProductResult(dict):
         :param str name: The name of the product.
         :param Sequence['GetProductProductSkusArgs'] skuses: A list of one element containing sku attributes of an object. Each element contains the following attributes:
         """
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "skuses", skuses)
+        GetProductProductResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            code=code,
+            description=description,
+            name=name,
+            skuses=skuses,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             code: str,
+             description: str,
+             name: str,
+             skuses: Sequence['outputs.GetProductProductSkusResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("code", code)
+        _setter("description", description)
+        _setter("name", name)
+        _setter("skuses", skuses)
 
     @property
     @pulumi.getter
@@ -82,10 +97,25 @@ class GetProductProductSkusResult(dict):
         :param str sku_code: The sku code of this product sku.
         :param str sku_name: The sku name of this product sku.
         """
-        pulumi.set(__self__, "images", images)
-        pulumi.set(__self__, "package_versions", package_versions)
-        pulumi.set(__self__, "sku_code", sku_code)
-        pulumi.set(__self__, "sku_name", sku_name)
+        GetProductProductSkusResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            images=images,
+            package_versions=package_versions,
+            sku_code=sku_code,
+            sku_name=sku_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             images: Sequence['outputs.GetProductProductSkusImageResult'],
+             package_versions: Sequence['outputs.GetProductProductSkusPackageVersionResult'],
+             sku_code: str,
+             sku_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("images", images)
+        _setter("package_versions", package_versions)
+        _setter("sku_code", sku_code)
+        _setter("sku_name", sku_name)
 
     @property
     @pulumi.getter
@@ -131,9 +161,22 @@ class GetProductProductSkusImageResult(dict):
         :param str image_name: The Ecs image display name.
         :param str region_id: The Ecs image region.
         """
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "image_name", image_name)
-        pulumi.set(__self__, "region_id", region_id)
+        GetProductProductSkusImageResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_id=image_id,
+            image_name=image_name,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_id: str,
+             image_name: str,
+             region_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("image_id", image_id)
+        _setter("image_name", image_name)
+        _setter("region_id", region_id)
 
     @property
     @pulumi.getter(name="imageId")
@@ -169,8 +212,19 @@ class GetProductProductSkusPackageVersionResult(dict):
         :param str package_name: The package name of this product sku package.
         :param str package_version: The package version of this product sku package. Currently, the API products can return package_version, but others can not for ensure.
         """
-        pulumi.set(__self__, "package_name", package_name)
-        pulumi.set(__self__, "package_version", package_version)
+        GetProductProductSkusPackageVersionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            package_name=package_name,
+            package_version=package_version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             package_name: str,
+             package_version: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("package_name", package_name)
+        _setter("package_version", package_version)
 
     @property
     @pulumi.getter(name="packageName")
@@ -224,21 +278,58 @@ class GetProductsProductResult(dict):
         :param str target_url: The detail page URL of the product.
         :param str warranty_date: The warranty date of the product.
         """
-        pulumi.set(__self__, "category_id", category_id)
-        pulumi.set(__self__, "code", code)
-        pulumi.set(__self__, "delivery_date", delivery_date)
-        pulumi.set(__self__, "delivery_way", delivery_way)
-        pulumi.set(__self__, "image_url", image_url)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "operation_system", operation_system)
-        pulumi.set(__self__, "score", score)
-        pulumi.set(__self__, "short_description", short_description)
-        pulumi.set(__self__, "suggested_price", suggested_price)
-        pulumi.set(__self__, "supplier_id", supplier_id)
-        pulumi.set(__self__, "supplier_name", supplier_name)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "target_url", target_url)
-        pulumi.set(__self__, "warranty_date", warranty_date)
+        GetProductsProductResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category_id=category_id,
+            code=code,
+            delivery_date=delivery_date,
+            delivery_way=delivery_way,
+            image_url=image_url,
+            name=name,
+            operation_system=operation_system,
+            score=score,
+            short_description=short_description,
+            suggested_price=suggested_price,
+            supplier_id=supplier_id,
+            supplier_name=supplier_name,
+            tags=tags,
+            target_url=target_url,
+            warranty_date=warranty_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category_id: int,
+             code: str,
+             delivery_date: str,
+             delivery_way: str,
+             image_url: str,
+             name: str,
+             operation_system: str,
+             score: str,
+             short_description: str,
+             suggested_price: str,
+             supplier_id: int,
+             supplier_name: str,
+             tags: str,
+             target_url: str,
+             warranty_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category_id", category_id)
+        _setter("code", code)
+        _setter("delivery_date", delivery_date)
+        _setter("delivery_way", delivery_way)
+        _setter("image_url", image_url)
+        _setter("name", name)
+        _setter("operation_system", operation_system)
+        _setter("score", score)
+        _setter("short_description", short_description)
+        _setter("suggested_price", suggested_price)
+        _setter("supplier_id", supplier_id)
+        _setter("supplier_name", supplier_name)
+        _setter("tags", tags)
+        _setter("target_url", target_url)
+        _setter("warranty_date", warranty_date)
 
     @property
     @pulumi.getter(name="categoryId")

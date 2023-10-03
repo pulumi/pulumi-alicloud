@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,33 +33,68 @@ class SwarmArgs:
         """
         The set of arguments for constructing a Swarm resource.
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        SwarmArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            instance_type=instance_type,
+            password=password,
+            vswitch_id=vswitch_id,
+            disk_category=disk_category,
+            disk_size=disk_size,
+            image_id=image_id,
+            is_outdated=is_outdated,
+            name=name,
+            name_prefix=name_prefix,
+            need_slb=need_slb,
+            node_number=node_number,
+            release_eip=release_eip,
+            size=size,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: pulumi.Input[str],
+             instance_type: pulumi.Input[str],
+             password: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             disk_category: Optional[pulumi.Input[str]] = None,
+             disk_size: Optional[pulumi.Input[int]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             is_outdated: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             need_slb: Optional[pulumi.Input[bool]] = None,
+             node_number: Optional[pulumi.Input[int]] = None,
+             release_eip: Optional[pulumi.Input[bool]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr_block", cidr_block)
+        _setter("instance_type", instance_type)
+        _setter("password", password)
+        _setter("vswitch_id", vswitch_id)
         if disk_category is not None:
-            pulumi.set(__self__, "disk_category", disk_category)
+            _setter("disk_category", disk_category)
         if disk_size is not None:
-            pulumi.set(__self__, "disk_size", disk_size)
+            _setter("disk_size", disk_size)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if is_outdated is not None:
-            pulumi.set(__self__, "is_outdated", is_outdated)
+            _setter("is_outdated", is_outdated)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if need_slb is not None:
-            pulumi.set(__self__, "need_slb", need_slb)
+            _setter("need_slb", need_slb)
         if node_number is not None:
-            pulumi.set(__self__, "node_number", node_number)
+            _setter("node_number", node_number)
         if release_eip is not None:
-            pulumi.set(__self__, "release_eip", release_eip)
+            _setter("release_eip", release_eip)
         if size is not None:
             warnings.warn("""Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""size is deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""")
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -216,47 +251,92 @@ class _SwarmState:
         """
         Input properties used for looking up and filtering Swarm resources.
         """
+        _SwarmState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            agent_version=agent_version,
+            cidr_block=cidr_block,
+            disk_category=disk_category,
+            disk_size=disk_size,
+            image_id=image_id,
+            instance_type=instance_type,
+            is_outdated=is_outdated,
+            name=name,
+            name_prefix=name_prefix,
+            need_slb=need_slb,
+            node_number=node_number,
+            nodes=nodes,
+            password=password,
+            release_eip=release_eip,
+            security_group_id=security_group_id,
+            size=size,
+            slb_id=slb_id,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             agent_version: Optional[pulumi.Input[str]] = None,
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             disk_category: Optional[pulumi.Input[str]] = None,
+             disk_size: Optional[pulumi.Input[int]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             is_outdated: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             need_slb: Optional[pulumi.Input[bool]] = None,
+             node_number: Optional[pulumi.Input[int]] = None,
+             nodes: Optional[pulumi.Input[Sequence[pulumi.Input['SwarmNodeArgs']]]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             release_eip: Optional[pulumi.Input[bool]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             slb_id: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if agent_version is not None:
-            pulumi.set(__self__, "agent_version", agent_version)
+            _setter("agent_version", agent_version)
         if cidr_block is not None:
-            pulumi.set(__self__, "cidr_block", cidr_block)
+            _setter("cidr_block", cidr_block)
         if disk_category is not None:
-            pulumi.set(__self__, "disk_category", disk_category)
+            _setter("disk_category", disk_category)
         if disk_size is not None:
-            pulumi.set(__self__, "disk_size", disk_size)
+            _setter("disk_size", disk_size)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if is_outdated is not None:
-            pulumi.set(__self__, "is_outdated", is_outdated)
+            _setter("is_outdated", is_outdated)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if need_slb is not None:
-            pulumi.set(__self__, "need_slb", need_slb)
+            _setter("need_slb", need_slb)
         if node_number is not None:
-            pulumi.set(__self__, "node_number", node_number)
+            _setter("node_number", node_number)
         if nodes is not None:
-            pulumi.set(__self__, "nodes", nodes)
+            _setter("nodes", nodes)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if release_eip is not None:
-            pulumi.set(__self__, "release_eip", release_eip)
+            _setter("release_eip", release_eip)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if size is not None:
             warnings.warn("""Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""size is deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""")
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if slb_id is not None:
-            pulumi.set(__self__, "slb_id", slb_id)
+            _setter("slb_id", slb_id)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="agentVersion")
@@ -476,6 +556,10 @@ class Swarm(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SwarmArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -522,9 +606,6 @@ class Swarm(pulumi.CustomResource):
                 raise TypeError("Missing required property 'password'")
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["release_eip"] = release_eip
-            if size is not None and not opts.urn:
-                warnings.warn("""Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""", DeprecationWarning)
-                pulumi.log.warn("""size is deprecated: Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it.""")
             __props__.__dict__["size"] = size
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")

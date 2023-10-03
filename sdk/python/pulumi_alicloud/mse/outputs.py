@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -70,22 +70,45 @@ class GatewaySlbList(dict):
         :param str slb_port: The port of the gateway slb.
         :param str type: The type of the gateway slb.
         """
+        GatewaySlbList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            associate_id=associate_id,
+            gateway_slb_mode=gateway_slb_mode,
+            gateway_slb_status=gateway_slb_status,
+            gmt_create=gmt_create,
+            slb_id=slb_id,
+            slb_ip=slb_ip,
+            slb_port=slb_port,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             associate_id: Optional[str] = None,
+             gateway_slb_mode: Optional[str] = None,
+             gateway_slb_status: Optional[str] = None,
+             gmt_create: Optional[str] = None,
+             slb_id: Optional[str] = None,
+             slb_ip: Optional[str] = None,
+             slb_port: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if associate_id is not None:
-            pulumi.set(__self__, "associate_id", associate_id)
+            _setter("associate_id", associate_id)
         if gateway_slb_mode is not None:
-            pulumi.set(__self__, "gateway_slb_mode", gateway_slb_mode)
+            _setter("gateway_slb_mode", gateway_slb_mode)
         if gateway_slb_status is not None:
-            pulumi.set(__self__, "gateway_slb_status", gateway_slb_status)
+            _setter("gateway_slb_status", gateway_slb_status)
         if gmt_create is not None:
-            pulumi.set(__self__, "gmt_create", gmt_create)
+            _setter("gmt_create", gmt_create)
         if slb_id is not None:
-            pulumi.set(__self__, "slb_id", slb_id)
+            _setter("slb_id", slb_id)
         if slb_ip is not None:
-            pulumi.set(__self__, "slb_ip", slb_ip)
+            _setter("slb_ip", slb_ip)
         if slb_port is not None:
-            pulumi.set(__self__, "slb_port", slb_port)
+            _setter("slb_port", slb_port)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="associateId")
@@ -201,28 +224,79 @@ class GetClustersClusterResult(dict):
         :param str pub_network_flow: The public network bandwidth.
         :param str status: The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
         """
-        pulumi.set(__self__, "acl_id", acl_id)
-        pulumi.set(__self__, "app_version", app_version)
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "cluster_type", cluster_type)
-        pulumi.set(__self__, "cpu", cpu)
-        pulumi.set(__self__, "health_status", health_status)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "init_cost_time", init_cost_time)
-        pulumi.set(__self__, "instance_count", instance_count)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_models", instance_models)
-        pulumi.set(__self__, "internet_address", internet_address)
-        pulumi.set(__self__, "internet_domain", internet_domain)
-        pulumi.set(__self__, "internet_port", internet_port)
-        pulumi.set(__self__, "intranet_address", intranet_address)
-        pulumi.set(__self__, "intranet_domain", intranet_domain)
-        pulumi.set(__self__, "intranet_port", intranet_port)
-        pulumi.set(__self__, "memory_capacity", memory_capacity)
-        pulumi.set(__self__, "pay_info", pay_info)
-        pulumi.set(__self__, "pub_network_flow", pub_network_flow)
-        pulumi.set(__self__, "status", status)
+        GetClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_id=acl_id,
+            app_version=app_version,
+            cluster_id=cluster_id,
+            cluster_name=cluster_name,
+            cluster_type=cluster_type,
+            cpu=cpu,
+            health_status=health_status,
+            id=id,
+            init_cost_time=init_cost_time,
+            instance_count=instance_count,
+            instance_id=instance_id,
+            instance_models=instance_models,
+            internet_address=internet_address,
+            internet_domain=internet_domain,
+            internet_port=internet_port,
+            intranet_address=intranet_address,
+            intranet_domain=intranet_domain,
+            intranet_port=intranet_port,
+            memory_capacity=memory_capacity,
+            pay_info=pay_info,
+            pub_network_flow=pub_network_flow,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_id: str,
+             app_version: str,
+             cluster_id: str,
+             cluster_name: str,
+             cluster_type: str,
+             cpu: int,
+             health_status: str,
+             id: str,
+             init_cost_time: int,
+             instance_count: int,
+             instance_id: str,
+             instance_models: Sequence['outputs.GetClustersClusterInstanceModelResult'],
+             internet_address: str,
+             internet_domain: str,
+             internet_port: str,
+             intranet_address: str,
+             intranet_domain: str,
+             intranet_port: str,
+             memory_capacity: int,
+             pay_info: str,
+             pub_network_flow: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("acl_id", acl_id)
+        _setter("app_version", app_version)
+        _setter("cluster_id", cluster_id)
+        _setter("cluster_name", cluster_name)
+        _setter("cluster_type", cluster_type)
+        _setter("cpu", cpu)
+        _setter("health_status", health_status)
+        _setter("id", id)
+        _setter("init_cost_time", init_cost_time)
+        _setter("instance_count", instance_count)
+        _setter("instance_id", instance_id)
+        _setter("instance_models", instance_models)
+        _setter("internet_address", internet_address)
+        _setter("internet_domain", internet_domain)
+        _setter("internet_port", internet_port)
+        _setter("intranet_address", intranet_address)
+        _setter("intranet_domain", intranet_domain)
+        _setter("intranet_port", intranet_port)
+        _setter("memory_capacity", memory_capacity)
+        _setter("pay_info", pay_info)
+        _setter("pub_network_flow", pub_network_flow)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="aclId")
@@ -415,14 +489,37 @@ class GetClustersClusterInstanceModelResult(dict):
         """
         :param str health_status: The health status of MSE Cluster.
         """
-        pulumi.set(__self__, "health_status", health_status)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "internet_ip", internet_ip)
-        pulumi.set(__self__, "ip", ip)
-        pulumi.set(__self__, "pod_name", pod_name)
-        pulumi.set(__self__, "role", role)
-        pulumi.set(__self__, "single_tunnel_vip", single_tunnel_vip)
-        pulumi.set(__self__, "vip", vip)
+        GetClustersClusterInstanceModelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            health_status=health_status,
+            instance_type=instance_type,
+            internet_ip=internet_ip,
+            ip=ip,
+            pod_name=pod_name,
+            role=role,
+            single_tunnel_vip=single_tunnel_vip,
+            vip=vip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             health_status: str,
+             instance_type: str,
+             internet_ip: str,
+             ip: str,
+             pod_name: str,
+             role: str,
+             single_tunnel_vip: str,
+             vip: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("health_status", health_status)
+        _setter("instance_type", instance_type)
+        _setter("internet_ip", internet_ip)
+        _setter("ip", ip)
+        _setter("pod_name", pod_name)
+        _setter("role", role)
+        _setter("single_tunnel_vip", single_tunnel_vip)
+        _setter("vip", vip)
 
     @property
     @pulumi.getter(name="healthStatus")
@@ -492,14 +589,37 @@ class GetEngineNamespacesNamespaceResult(dict):
                - '1': default namespace.
                - '2': Custom Namespace.
         """
-        pulumi.set(__self__, "config_count", config_count)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "namespace_desc", namespace_desc)
-        pulumi.set(__self__, "namespace_id", namespace_id)
-        pulumi.set(__self__, "namespace_show_name", namespace_show_name)
-        pulumi.set(__self__, "quota", quota)
-        pulumi.set(__self__, "service_count", service_count)
-        pulumi.set(__self__, "type", type)
+        GetEngineNamespacesNamespaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config_count=config_count,
+            id=id,
+            namespace_desc=namespace_desc,
+            namespace_id=namespace_id,
+            namespace_show_name=namespace_show_name,
+            quota=quota,
+            service_count=service_count,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config_count: int,
+             id: str,
+             namespace_desc: str,
+             namespace_id: str,
+             namespace_show_name: str,
+             quota: int,
+             service_count: str,
+             type: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("config_count", config_count)
+        _setter("id", id)
+        _setter("namespace_desc", namespace_desc)
+        _setter("namespace_id", namespace_id)
+        _setter("namespace_show_name", namespace_show_name)
+        _setter("quota", quota)
+        _setter("service_count", service_count)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="configCount")
@@ -596,17 +716,46 @@ class GetGatewaysGatewayResult(dict):
         :param str vpc_id: The ID of the vpc.
         :param str vswitch_id: The ID of the vswitch.
         """
-        pulumi.set(__self__, "backup_vswitch_id", backup_vswitch_id)
-        pulumi.set(__self__, "gateway_name", gateway_name)
-        pulumi.set(__self__, "gateway_unique_id", gateway_unique_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "replica", replica)
-        pulumi.set(__self__, "slb_lists", slb_lists)
-        pulumi.set(__self__, "spec", spec)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetGatewaysGatewayResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_vswitch_id=backup_vswitch_id,
+            gateway_name=gateway_name,
+            gateway_unique_id=gateway_unique_id,
+            id=id,
+            payment_type=payment_type,
+            replica=replica,
+            slb_lists=slb_lists,
+            spec=spec,
+            status=status,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_vswitch_id: str,
+             gateway_name: str,
+             gateway_unique_id: str,
+             id: str,
+             payment_type: str,
+             replica: str,
+             slb_lists: Sequence['outputs.GetGatewaysGatewaySlbListResult'],
+             spec: str,
+             status: str,
+             vpc_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_vswitch_id", backup_vswitch_id)
+        _setter("gateway_name", gateway_name)
+        _setter("gateway_unique_id", gateway_unique_id)
+        _setter("id", id)
+        _setter("payment_type", payment_type)
+        _setter("replica", replica)
+        _setter("slb_lists", slb_lists)
+        _setter("spec", spec)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="backupVswitchId")
@@ -718,14 +867,37 @@ class GetGatewaysGatewaySlbListResult(dict):
         :param str slb_port: The port of the gateway slb.
         :param str type: The type of the gateway slb.
         """
-        pulumi.set(__self__, "associate_id", associate_id)
-        pulumi.set(__self__, "gateway_slb_mode", gateway_slb_mode)
-        pulumi.set(__self__, "gateway_slb_status", gateway_slb_status)
-        pulumi.set(__self__, "gmt_create", gmt_create)
-        pulumi.set(__self__, "slb_id", slb_id)
-        pulumi.set(__self__, "slb_ip", slb_ip)
-        pulumi.set(__self__, "slb_port", slb_port)
-        pulumi.set(__self__, "type", type)
+        GetGatewaysGatewaySlbListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            associate_id=associate_id,
+            gateway_slb_mode=gateway_slb_mode,
+            gateway_slb_status=gateway_slb_status,
+            gmt_create=gmt_create,
+            slb_id=slb_id,
+            slb_ip=slb_ip,
+            slb_port=slb_port,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             associate_id: str,
+             gateway_slb_mode: str,
+             gateway_slb_status: str,
+             gmt_create: str,
+             slb_id: str,
+             slb_ip: str,
+             slb_port: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("associate_id", associate_id)
+        _setter("gateway_slb_mode", gateway_slb_mode)
+        _setter("gateway_slb_status", gateway_slb_status)
+        _setter("gmt_create", gmt_create)
+        _setter("slb_id", slb_id)
+        _setter("slb_ip", slb_ip)
+        _setter("slb_port", slb_port)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="associateId")
@@ -809,12 +981,31 @@ class GetZnodesZnodeResult(dict):
         :param str path: The Node path.
         :param str znode_name: The Node name.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "data", data)
-        pulumi.set(__self__, "dir", dir)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "znode_name", znode_name)
+        GetZnodesZnodeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster_id=cluster_id,
+            data=data,
+            dir=dir,
+            id=id,
+            path=path,
+            znode_name=znode_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster_id: str,
+             data: str,
+             dir: bool,
+             id: str,
+             path: str,
+             znode_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster_id", cluster_id)
+        _setter("data", data)
+        _setter("dir", dir)
+        _setter("id", id)
+        _setter("path", path)
+        _setter("znode_name", znode_name)
 
     @property
     @pulumi.getter(name="clusterId")

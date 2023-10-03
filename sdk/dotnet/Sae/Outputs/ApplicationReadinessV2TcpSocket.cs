@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
     public sealed class ApplicationReadinessV2TcpSocket
     {
         /// <summary>
-        /// The port that is used to check the status of TCP connections.
+        /// The port.
         /// </summary>
         public readonly int? Port;
 

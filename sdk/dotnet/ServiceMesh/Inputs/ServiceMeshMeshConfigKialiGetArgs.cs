@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
     public sealed class ServiceMeshMeshConfigKialiGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable of the access logging. Valid values: `true` and `false`.
+        /// Whether to enable Service grid audit.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

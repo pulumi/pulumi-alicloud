@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GatewayFileShareArgs', 'GatewayFileShare']
@@ -83,66 +83,139 @@ class GatewayFileShareArgs:
         :param pulumi.Input[bool] transfer_acceleration: The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
         :param pulumi.Input[bool] windows_acl: Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
         """
-        pulumi.set(__self__, "gateway_file_share_name", gateway_file_share_name)
-        pulumi.set(__self__, "gateway_id", gateway_id)
-        pulumi.set(__self__, "local_path", local_path)
-        pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
-        pulumi.set(__self__, "oss_endpoint", oss_endpoint)
-        pulumi.set(__self__, "protocol", protocol)
+        GatewayFileShareArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            gateway_file_share_name=gateway_file_share_name,
+            gateway_id=gateway_id,
+            local_path=local_path,
+            oss_bucket_name=oss_bucket_name,
+            oss_endpoint=oss_endpoint,
+            protocol=protocol,
+            access_based_enumeration=access_based_enumeration,
+            backend_limit=backend_limit,
+            browsable=browsable,
+            bypass_cache_read=bypass_cache_read,
+            cache_mode=cache_mode,
+            direct_io=direct_io,
+            download_limit=download_limit,
+            fast_reclaim=fast_reclaim,
+            fe_limit=fe_limit,
+            ignore_delete=ignore_delete,
+            in_place=in_place,
+            lag_period=lag_period,
+            nfs_v4_optimization=nfs_v4_optimization,
+            oss_bucket_ssl=oss_bucket_ssl,
+            partial_sync_paths=partial_sync_paths,
+            path_prefix=path_prefix,
+            polling_interval=polling_interval,
+            remote_sync=remote_sync,
+            remote_sync_download=remote_sync_download,
+            ro_client_list=ro_client_list,
+            ro_user_list=ro_user_list,
+            rw_client_list=rw_client_list,
+            rw_user_list=rw_user_list,
+            squash=squash,
+            support_archive=support_archive,
+            transfer_acceleration=transfer_acceleration,
+            windows_acl=windows_acl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             gateway_file_share_name: pulumi.Input[str],
+             gateway_id: pulumi.Input[str],
+             local_path: pulumi.Input[str],
+             oss_bucket_name: pulumi.Input[str],
+             oss_endpoint: pulumi.Input[str],
+             protocol: pulumi.Input[str],
+             access_based_enumeration: Optional[pulumi.Input[bool]] = None,
+             backend_limit: Optional[pulumi.Input[int]] = None,
+             browsable: Optional[pulumi.Input[bool]] = None,
+             bypass_cache_read: Optional[pulumi.Input[bool]] = None,
+             cache_mode: Optional[pulumi.Input[str]] = None,
+             direct_io: Optional[pulumi.Input[bool]] = None,
+             download_limit: Optional[pulumi.Input[int]] = None,
+             fast_reclaim: Optional[pulumi.Input[bool]] = None,
+             fe_limit: Optional[pulumi.Input[int]] = None,
+             ignore_delete: Optional[pulumi.Input[bool]] = None,
+             in_place: Optional[pulumi.Input[bool]] = None,
+             lag_period: Optional[pulumi.Input[int]] = None,
+             nfs_v4_optimization: Optional[pulumi.Input[bool]] = None,
+             oss_bucket_ssl: Optional[pulumi.Input[bool]] = None,
+             partial_sync_paths: Optional[pulumi.Input[str]] = None,
+             path_prefix: Optional[pulumi.Input[str]] = None,
+             polling_interval: Optional[pulumi.Input[int]] = None,
+             remote_sync: Optional[pulumi.Input[bool]] = None,
+             remote_sync_download: Optional[pulumi.Input[bool]] = None,
+             ro_client_list: Optional[pulumi.Input[str]] = None,
+             ro_user_list: Optional[pulumi.Input[str]] = None,
+             rw_client_list: Optional[pulumi.Input[str]] = None,
+             rw_user_list: Optional[pulumi.Input[str]] = None,
+             squash: Optional[pulumi.Input[str]] = None,
+             support_archive: Optional[pulumi.Input[bool]] = None,
+             transfer_acceleration: Optional[pulumi.Input[bool]] = None,
+             windows_acl: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("gateway_file_share_name", gateway_file_share_name)
+        _setter("gateway_id", gateway_id)
+        _setter("local_path", local_path)
+        _setter("oss_bucket_name", oss_bucket_name)
+        _setter("oss_endpoint", oss_endpoint)
+        _setter("protocol", protocol)
         if access_based_enumeration is not None:
-            pulumi.set(__self__, "access_based_enumeration", access_based_enumeration)
+            _setter("access_based_enumeration", access_based_enumeration)
         if backend_limit is not None:
-            pulumi.set(__self__, "backend_limit", backend_limit)
+            _setter("backend_limit", backend_limit)
         if browsable is not None:
-            pulumi.set(__self__, "browsable", browsable)
+            _setter("browsable", browsable)
         if bypass_cache_read is not None:
-            pulumi.set(__self__, "bypass_cache_read", bypass_cache_read)
+            _setter("bypass_cache_read", bypass_cache_read)
         if cache_mode is not None:
-            pulumi.set(__self__, "cache_mode", cache_mode)
+            _setter("cache_mode", cache_mode)
         if direct_io is not None:
-            pulumi.set(__self__, "direct_io", direct_io)
+            _setter("direct_io", direct_io)
         if download_limit is not None:
-            pulumi.set(__self__, "download_limit", download_limit)
+            _setter("download_limit", download_limit)
         if fast_reclaim is not None:
-            pulumi.set(__self__, "fast_reclaim", fast_reclaim)
+            _setter("fast_reclaim", fast_reclaim)
         if fe_limit is not None:
-            pulumi.set(__self__, "fe_limit", fe_limit)
+            _setter("fe_limit", fe_limit)
         if ignore_delete is not None:
-            pulumi.set(__self__, "ignore_delete", ignore_delete)
+            _setter("ignore_delete", ignore_delete)
         if in_place is not None:
-            pulumi.set(__self__, "in_place", in_place)
+            _setter("in_place", in_place)
         if lag_period is not None:
-            pulumi.set(__self__, "lag_period", lag_period)
+            _setter("lag_period", lag_period)
         if nfs_v4_optimization is not None:
-            pulumi.set(__self__, "nfs_v4_optimization", nfs_v4_optimization)
+            _setter("nfs_v4_optimization", nfs_v4_optimization)
         if oss_bucket_ssl is not None:
-            pulumi.set(__self__, "oss_bucket_ssl", oss_bucket_ssl)
+            _setter("oss_bucket_ssl", oss_bucket_ssl)
         if partial_sync_paths is not None:
-            pulumi.set(__self__, "partial_sync_paths", partial_sync_paths)
+            _setter("partial_sync_paths", partial_sync_paths)
         if path_prefix is not None:
-            pulumi.set(__self__, "path_prefix", path_prefix)
+            _setter("path_prefix", path_prefix)
         if polling_interval is not None:
-            pulumi.set(__self__, "polling_interval", polling_interval)
+            _setter("polling_interval", polling_interval)
         if remote_sync is not None:
-            pulumi.set(__self__, "remote_sync", remote_sync)
+            _setter("remote_sync", remote_sync)
         if remote_sync_download is not None:
-            pulumi.set(__self__, "remote_sync_download", remote_sync_download)
+            _setter("remote_sync_download", remote_sync_download)
         if ro_client_list is not None:
-            pulumi.set(__self__, "ro_client_list", ro_client_list)
+            _setter("ro_client_list", ro_client_list)
         if ro_user_list is not None:
-            pulumi.set(__self__, "ro_user_list", ro_user_list)
+            _setter("ro_user_list", ro_user_list)
         if rw_client_list is not None:
-            pulumi.set(__self__, "rw_client_list", rw_client_list)
+            _setter("rw_client_list", rw_client_list)
         if rw_user_list is not None:
-            pulumi.set(__self__, "rw_user_list", rw_user_list)
+            _setter("rw_user_list", rw_user_list)
         if squash is not None:
-            pulumi.set(__self__, "squash", squash)
+            _setter("squash", squash)
         if support_archive is not None:
-            pulumi.set(__self__, "support_archive", support_archive)
+            _setter("support_archive", support_archive)
         if transfer_acceleration is not None:
-            pulumi.set(__self__, "transfer_acceleration", transfer_acceleration)
+            _setter("transfer_acceleration", transfer_acceleration)
         if windows_acl is not None:
-            pulumi.set(__self__, "windows_acl", windows_acl)
+            _setter("windows_acl", windows_acl)
 
     @property
     @pulumi.getter(name="gatewayFileShareName")
@@ -615,74 +688,149 @@ class _GatewayFileShareState:
         :param pulumi.Input[bool] transfer_acceleration: The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version >= 1.3.0 above support.
         :param pulumi.Input[bool] windows_acl: Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version >= 1.0.45 above support.
         """
+        _GatewayFileShareState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_based_enumeration=access_based_enumeration,
+            backend_limit=backend_limit,
+            browsable=browsable,
+            bypass_cache_read=bypass_cache_read,
+            cache_mode=cache_mode,
+            direct_io=direct_io,
+            download_limit=download_limit,
+            fast_reclaim=fast_reclaim,
+            fe_limit=fe_limit,
+            gateway_file_share_name=gateway_file_share_name,
+            gateway_id=gateway_id,
+            ignore_delete=ignore_delete,
+            in_place=in_place,
+            index_id=index_id,
+            lag_period=lag_period,
+            local_path=local_path,
+            nfs_v4_optimization=nfs_v4_optimization,
+            oss_bucket_name=oss_bucket_name,
+            oss_bucket_ssl=oss_bucket_ssl,
+            oss_endpoint=oss_endpoint,
+            partial_sync_paths=partial_sync_paths,
+            path_prefix=path_prefix,
+            polling_interval=polling_interval,
+            protocol=protocol,
+            remote_sync=remote_sync,
+            remote_sync_download=remote_sync_download,
+            ro_client_list=ro_client_list,
+            ro_user_list=ro_user_list,
+            rw_client_list=rw_client_list,
+            rw_user_list=rw_user_list,
+            squash=squash,
+            support_archive=support_archive,
+            transfer_acceleration=transfer_acceleration,
+            windows_acl=windows_acl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_based_enumeration: Optional[pulumi.Input[bool]] = None,
+             backend_limit: Optional[pulumi.Input[int]] = None,
+             browsable: Optional[pulumi.Input[bool]] = None,
+             bypass_cache_read: Optional[pulumi.Input[bool]] = None,
+             cache_mode: Optional[pulumi.Input[str]] = None,
+             direct_io: Optional[pulumi.Input[bool]] = None,
+             download_limit: Optional[pulumi.Input[int]] = None,
+             fast_reclaim: Optional[pulumi.Input[bool]] = None,
+             fe_limit: Optional[pulumi.Input[int]] = None,
+             gateway_file_share_name: Optional[pulumi.Input[str]] = None,
+             gateway_id: Optional[pulumi.Input[str]] = None,
+             ignore_delete: Optional[pulumi.Input[bool]] = None,
+             in_place: Optional[pulumi.Input[bool]] = None,
+             index_id: Optional[pulumi.Input[str]] = None,
+             lag_period: Optional[pulumi.Input[int]] = None,
+             local_path: Optional[pulumi.Input[str]] = None,
+             nfs_v4_optimization: Optional[pulumi.Input[bool]] = None,
+             oss_bucket_name: Optional[pulumi.Input[str]] = None,
+             oss_bucket_ssl: Optional[pulumi.Input[bool]] = None,
+             oss_endpoint: Optional[pulumi.Input[str]] = None,
+             partial_sync_paths: Optional[pulumi.Input[str]] = None,
+             path_prefix: Optional[pulumi.Input[str]] = None,
+             polling_interval: Optional[pulumi.Input[int]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             remote_sync: Optional[pulumi.Input[bool]] = None,
+             remote_sync_download: Optional[pulumi.Input[bool]] = None,
+             ro_client_list: Optional[pulumi.Input[str]] = None,
+             ro_user_list: Optional[pulumi.Input[str]] = None,
+             rw_client_list: Optional[pulumi.Input[str]] = None,
+             rw_user_list: Optional[pulumi.Input[str]] = None,
+             squash: Optional[pulumi.Input[str]] = None,
+             support_archive: Optional[pulumi.Input[bool]] = None,
+             transfer_acceleration: Optional[pulumi.Input[bool]] = None,
+             windows_acl: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_based_enumeration is not None:
-            pulumi.set(__self__, "access_based_enumeration", access_based_enumeration)
+            _setter("access_based_enumeration", access_based_enumeration)
         if backend_limit is not None:
-            pulumi.set(__self__, "backend_limit", backend_limit)
+            _setter("backend_limit", backend_limit)
         if browsable is not None:
-            pulumi.set(__self__, "browsable", browsable)
+            _setter("browsable", browsable)
         if bypass_cache_read is not None:
-            pulumi.set(__self__, "bypass_cache_read", bypass_cache_read)
+            _setter("bypass_cache_read", bypass_cache_read)
         if cache_mode is not None:
-            pulumi.set(__self__, "cache_mode", cache_mode)
+            _setter("cache_mode", cache_mode)
         if direct_io is not None:
-            pulumi.set(__self__, "direct_io", direct_io)
+            _setter("direct_io", direct_io)
         if download_limit is not None:
-            pulumi.set(__self__, "download_limit", download_limit)
+            _setter("download_limit", download_limit)
         if fast_reclaim is not None:
-            pulumi.set(__self__, "fast_reclaim", fast_reclaim)
+            _setter("fast_reclaim", fast_reclaim)
         if fe_limit is not None:
-            pulumi.set(__self__, "fe_limit", fe_limit)
+            _setter("fe_limit", fe_limit)
         if gateway_file_share_name is not None:
-            pulumi.set(__self__, "gateway_file_share_name", gateway_file_share_name)
+            _setter("gateway_file_share_name", gateway_file_share_name)
         if gateway_id is not None:
-            pulumi.set(__self__, "gateway_id", gateway_id)
+            _setter("gateway_id", gateway_id)
         if ignore_delete is not None:
-            pulumi.set(__self__, "ignore_delete", ignore_delete)
+            _setter("ignore_delete", ignore_delete)
         if in_place is not None:
-            pulumi.set(__self__, "in_place", in_place)
+            _setter("in_place", in_place)
         if index_id is not None:
-            pulumi.set(__self__, "index_id", index_id)
+            _setter("index_id", index_id)
         if lag_period is not None:
-            pulumi.set(__self__, "lag_period", lag_period)
+            _setter("lag_period", lag_period)
         if local_path is not None:
-            pulumi.set(__self__, "local_path", local_path)
+            _setter("local_path", local_path)
         if nfs_v4_optimization is not None:
-            pulumi.set(__self__, "nfs_v4_optimization", nfs_v4_optimization)
+            _setter("nfs_v4_optimization", nfs_v4_optimization)
         if oss_bucket_name is not None:
-            pulumi.set(__self__, "oss_bucket_name", oss_bucket_name)
+            _setter("oss_bucket_name", oss_bucket_name)
         if oss_bucket_ssl is not None:
-            pulumi.set(__self__, "oss_bucket_ssl", oss_bucket_ssl)
+            _setter("oss_bucket_ssl", oss_bucket_ssl)
         if oss_endpoint is not None:
-            pulumi.set(__self__, "oss_endpoint", oss_endpoint)
+            _setter("oss_endpoint", oss_endpoint)
         if partial_sync_paths is not None:
-            pulumi.set(__self__, "partial_sync_paths", partial_sync_paths)
+            _setter("partial_sync_paths", partial_sync_paths)
         if path_prefix is not None:
-            pulumi.set(__self__, "path_prefix", path_prefix)
+            _setter("path_prefix", path_prefix)
         if polling_interval is not None:
-            pulumi.set(__self__, "polling_interval", polling_interval)
+            _setter("polling_interval", polling_interval)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if remote_sync is not None:
-            pulumi.set(__self__, "remote_sync", remote_sync)
+            _setter("remote_sync", remote_sync)
         if remote_sync_download is not None:
-            pulumi.set(__self__, "remote_sync_download", remote_sync_download)
+            _setter("remote_sync_download", remote_sync_download)
         if ro_client_list is not None:
-            pulumi.set(__self__, "ro_client_list", ro_client_list)
+            _setter("ro_client_list", ro_client_list)
         if ro_user_list is not None:
-            pulumi.set(__self__, "ro_user_list", ro_user_list)
+            _setter("ro_user_list", ro_user_list)
         if rw_client_list is not None:
-            pulumi.set(__self__, "rw_client_list", rw_client_list)
+            _setter("rw_client_list", rw_client_list)
         if rw_user_list is not None:
-            pulumi.set(__self__, "rw_user_list", rw_user_list)
+            _setter("rw_user_list", rw_user_list)
         if squash is not None:
-            pulumi.set(__self__, "squash", squash)
+            _setter("squash", squash)
         if support_archive is not None:
-            pulumi.set(__self__, "support_archive", support_archive)
+            _setter("support_archive", support_archive)
         if transfer_acceleration is not None:
-            pulumi.set(__self__, "transfer_acceleration", transfer_acceleration)
+            _setter("transfer_acceleration", transfer_acceleration)
         if windows_acl is not None:
-            pulumi.set(__self__, "windows_acl", windows_acl)
+            _setter("windows_acl", windows_acl)
 
     @property
     @pulumi.getter(name="accessBasedEnumeration")
@@ -1214,6 +1362,10 @@ class GatewayFileShare(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GatewayFileShareArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

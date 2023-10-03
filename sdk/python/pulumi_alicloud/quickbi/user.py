@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['UserArgs', 'User']
@@ -29,13 +29,32 @@ class UserArgs:
         :param pulumi.Input[str] user_type: The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
         :param pulumi.Input[str] account_id: Alibaba Cloud account ID.
         """
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "admin_user", admin_user)
-        pulumi.set(__self__, "auth_admin_user", auth_admin_user)
-        pulumi.set(__self__, "nick_name", nick_name)
-        pulumi.set(__self__, "user_type", user_type)
+        UserArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_name=account_name,
+            admin_user=admin_user,
+            auth_admin_user=auth_admin_user,
+            nick_name=nick_name,
+            user_type=user_type,
+            account_id=account_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_name: pulumi.Input[str],
+             admin_user: pulumi.Input[bool],
+             auth_admin_user: pulumi.Input[bool],
+             nick_name: pulumi.Input[str],
+             user_type: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_name", account_name)
+        _setter("admin_user", admin_user)
+        _setter("auth_admin_user", auth_admin_user)
+        _setter("nick_name", nick_name)
+        _setter("user_type", user_type)
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
 
     @property
     @pulumi.getter(name="accountName")
@@ -128,18 +147,37 @@ class _UserState:
         :param pulumi.Input[str] nick_name: The nickname of the user.
         :param pulumi.Input[str] user_type: The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
         """
+        _UserState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            account_name=account_name,
+            admin_user=admin_user,
+            auth_admin_user=auth_admin_user,
+            nick_name=nick_name,
+            user_type=user_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             account_name: Optional[pulumi.Input[str]] = None,
+             admin_user: Optional[pulumi.Input[bool]] = None,
+             auth_admin_user: Optional[pulumi.Input[bool]] = None,
+             nick_name: Optional[pulumi.Input[str]] = None,
+             user_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if account_name is not None:
-            pulumi.set(__self__, "account_name", account_name)
+            _setter("account_name", account_name)
         if admin_user is not None:
-            pulumi.set(__self__, "admin_user", admin_user)
+            _setter("admin_user", admin_user)
         if auth_admin_user is not None:
-            pulumi.set(__self__, "auth_admin_user", auth_admin_user)
+            _setter("auth_admin_user", auth_admin_user)
         if nick_name is not None:
-            pulumi.set(__self__, "nick_name", nick_name)
+            _setter("nick_name", nick_name)
         if user_type is not None:
-            pulumi.set(__self__, "user_type", user_type)
+            _setter("user_type", user_type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -313,6 +351,10 @@ class User(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            UserArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

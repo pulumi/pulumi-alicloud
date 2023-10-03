@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RouteServiceArgs', 'RouteService']
@@ -31,13 +31,32 @@ class RouteServiceArgs:
                > **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
         :param pulumi.Input[str] description: The description of the cloud service.
         """
-        pulumi.set(__self__, "access_region_id", access_region_id)
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "host_region_id", host_region_id)
-        pulumi.set(__self__, "host_vpc_id", host_vpc_id)
+        RouteServiceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_region_id=access_region_id,
+            cen_id=cen_id,
+            host=host,
+            host_region_id=host_region_id,
+            host_vpc_id=host_vpc_id,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_region_id: pulumi.Input[str],
+             cen_id: pulumi.Input[str],
+             host: pulumi.Input[str],
+             host_region_id: pulumi.Input[str],
+             host_vpc_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("access_region_id", access_region_id)
+        _setter("cen_id", cen_id)
+        _setter("host", host)
+        _setter("host_region_id", host_region_id)
+        _setter("host_vpc_id", host_vpc_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="accessRegionId")
@@ -136,20 +155,41 @@ class _RouteServiceState:
                > **NOTE:** The values of `host_region_id` and `access_region_id` must be consistent.
         :param pulumi.Input[str] status: The status of the cloud service.
         """
+        _RouteServiceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            access_region_id=access_region_id,
+            cen_id=cen_id,
+            description=description,
+            host=host,
+            host_region_id=host_region_id,
+            host_vpc_id=host_vpc_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             access_region_id: Optional[pulumi.Input[str]] = None,
+             cen_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             host_region_id: Optional[pulumi.Input[str]] = None,
+             host_vpc_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if access_region_id is not None:
-            pulumi.set(__self__, "access_region_id", access_region_id)
+            _setter("access_region_id", access_region_id)
         if cen_id is not None:
-            pulumi.set(__self__, "cen_id", cen_id)
+            _setter("cen_id", cen_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if host_region_id is not None:
-            pulumi.set(__self__, "host_region_id", host_region_id)
+            _setter("host_region_id", host_region_id)
         if host_vpc_id is not None:
-            pulumi.set(__self__, "host_vpc_id", host_vpc_id)
+            _setter("host_vpc_id", host_vpc_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accessRegionId")
@@ -367,6 +407,10 @@ class RouteService(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RouteServiceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

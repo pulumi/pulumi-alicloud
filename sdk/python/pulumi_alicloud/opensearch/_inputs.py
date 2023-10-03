@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -25,12 +25,25 @@ class AppGroupOrderArgs:
         :param pulumi.Input[int] duration: Order cycle. The minimum value is not less than 0.
         :param pulumi.Input[str] pricing_cycle: Order cycle unit. Valid values: `Year` and `Month`.
         """
+        AppGroupOrderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            duration=duration,
+            pricing_cycle=pricing_cycle,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             duration: Optional[pulumi.Input[int]] = None,
+             pricing_cycle: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if duration is not None:
-            pulumi.set(__self__, "duration", duration)
+            _setter("duration", duration)
         if pricing_cycle is not None:
-            pulumi.set(__self__, "pricing_cycle", pricing_cycle)
+            _setter("pricing_cycle", pricing_cycle)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -89,11 +102,26 @@ class AppGroupQuotaArgs:
                * `opensearch.private.storage`: Exclusive storage type
         :param pulumi.Input[int] qps: Search request. Unit: times/second.
         """
-        pulumi.set(__self__, "compute_resource", compute_resource)
-        pulumi.set(__self__, "doc_size", doc_size)
-        pulumi.set(__self__, "spec", spec)
+        AppGroupQuotaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            compute_resource=compute_resource,
+            doc_size=doc_size,
+            spec=spec,
+            qps=qps,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             compute_resource: pulumi.Input[int],
+             doc_size: pulumi.Input[int],
+             spec: pulumi.Input[str],
+             qps: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("compute_resource", compute_resource)
+        _setter("doc_size", doc_size)
+        _setter("spec", spec)
         if qps is not None:
-            pulumi.set(__self__, "qps", qps)
+            _setter("qps", qps)
 
     @property
     @pulumi.getter(name="computeResource")

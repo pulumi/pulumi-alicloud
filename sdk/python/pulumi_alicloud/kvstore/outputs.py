@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -28,10 +28,21 @@ class InstanceParameter(dict):
         :param str name: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         :param str value: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         """
+        InstanceParameter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -75,13 +86,34 @@ class GetAccountsAccountResult(dict):
         :param str instance_id: The Id of instance in which account belongs.
         :param str status: The status of account.
         """
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "account_privilege", account_privilege)
-        pulumi.set(__self__, "account_type", account_type)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "status", status)
+        GetAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_name=account_name,
+            account_privilege=account_privilege,
+            account_type=account_type,
+            description=description,
+            id=id,
+            instance_id=instance_id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_name: str,
+             account_privilege: str,
+             account_type: str,
+             description: str,
+             id: str,
+             instance_id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_name", account_name)
+        _setter("account_privilege", account_privilege)
+        _setter("account_type", account_type)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountName")
@@ -165,17 +197,46 @@ class GetConnectionsConnectionResult(dict):
         :param str vpc_instance_id: The ID of the instance. It is returned only when the value of the DBInstanceNetType parameter is 2 (indicating VPC).
         :param str vswitch_id: The ID of the VSwitch.
         """
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "db_instance_net_type", db_instance_net_type)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "upgradeable", upgradeable)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vpc_instance_id", vpc_instance_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        GetConnectionsConnectionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connection_string=connection_string,
+            db_instance_net_type=db_instance_net_type,
+            expired_time=expired_time,
+            id=id,
+            instance_id=instance_id,
+            ip_address=ip_address,
+            port=port,
+            upgradeable=upgradeable,
+            vpc_id=vpc_id,
+            vpc_instance_id=vpc_instance_id,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connection_string: str,
+             db_instance_net_type: str,
+             expired_time: str,
+             id: str,
+             instance_id: str,
+             ip_address: str,
+             port: str,
+             upgradeable: str,
+             vpc_id: str,
+             vpc_instance_id: str,
+             vswitch_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("connection_string", connection_string)
+        _setter("db_instance_net_type", db_instance_net_type)
+        _setter("expired_time", expired_time)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("ip_address", ip_address)
+        _setter("port", port)
+        _setter("upgradeable", upgradeable)
+        _setter("vpc_id", vpc_id)
+        _setter("vpc_instance_id", vpc_instance_id)
+        _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="connectionString")
@@ -268,8 +329,19 @@ class GetInstanceClassesClassResult(dict):
         """
         :param str instance_class: KVStore available instance class.
         """
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "price", price)
+        GetInstanceClassesClassResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_class=instance_class,
+            price=price,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_class: str,
+             price: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_class", instance_class)
+        _setter("price", price)
 
     @property
     @pulumi.getter(name="instanceClass")
@@ -296,9 +368,22 @@ class GetInstanceEnginesInstanceEngineResult(dict):
         :param str engine_version: Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/60873.htm) `EngineVersion`. Value of Memcache should be empty.
         :param str zone_id: The Zone to launch the KVStore instance.
         """
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstanceEnginesInstanceEngineResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            engine=engine,
+            engine_version=engine_version,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             engine: str,
+             engine_version: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -425,59 +510,172 @@ class GetInstancesInstanceResult(dict):
         :param str vswitch_id: Used to retrieve instances belong to specified `vswitch` resources.
         :param str zone_id: The ID of the zone.
         """
-        pulumi.set(__self__, "architecture_type", architecture_type)
-        pulumi.set(__self__, "auto_renew", auto_renew)
-        pulumi.set(__self__, "auto_renew_period", auto_renew_period)
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "capacity", capacity)
-        pulumi.set(__self__, "charge_type", charge_type)
-        pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "connection_domain", connection_domain)
-        pulumi.set(__self__, "connection_mode", connection_mode)
-        pulumi.set(__self__, "connections", connections)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "db_instance_name", db_instance_name)
-        pulumi.set(__self__, "destroy_time", destroy_time)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "has_renew_change_order", has_renew_change_order)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_class", instance_class)
-        pulumi.set(__self__, "instance_release_protection", instance_release_protection)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "is_rds", is_rds)
-        pulumi.set(__self__, "maintain_end_time", maintain_end_time)
-        pulumi.set(__self__, "maintain_start_time", maintain_start_time)
-        pulumi.set(__self__, "max_connections", max_connections)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "node_type", node_type)
-        pulumi.set(__self__, "package_type", package_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "private_ip", private_ip)
-        pulumi.set(__self__, "qps", qps)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "replacate_id", replacate_id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "search_key", search_key)
-        pulumi.set(__self__, "secondary_zone_id", secondary_zone_id)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
-        pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
-        pulumi.set(__self__, "security_ips", security_ips)
-        pulumi.set(__self__, "ssl_enable", ssl_enable)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "user_name", user_name)
-        pulumi.set(__self__, "vpc_auth_mode", vpc_auth_mode)
-        pulumi.set(__self__, "vpc_cloud_instance_id", vpc_cloud_instance_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            architecture_type=architecture_type,
+            auto_renew=auto_renew,
+            auto_renew_period=auto_renew_period,
+            availability_zone=availability_zone,
+            bandwidth=bandwidth,
+            capacity=capacity,
+            charge_type=charge_type,
+            config=config,
+            connection_domain=connection_domain,
+            connection_mode=connection_mode,
+            connections=connections,
+            create_time=create_time,
+            db_instance_id=db_instance_id,
+            db_instance_name=db_instance_name,
+            destroy_time=destroy_time,
+            end_time=end_time,
+            engine_version=engine_version,
+            expire_time=expire_time,
+            has_renew_change_order=has_renew_change_order,
+            id=id,
+            instance_class=instance_class,
+            instance_release_protection=instance_release_protection,
+            instance_type=instance_type,
+            is_rds=is_rds,
+            maintain_end_time=maintain_end_time,
+            maintain_start_time=maintain_start_time,
+            max_connections=max_connections,
+            name=name,
+            network_type=network_type,
+            node_type=node_type,
+            package_type=package_type,
+            payment_type=payment_type,
+            port=port,
+            private_ip=private_ip,
+            qps=qps,
+            region_id=region_id,
+            replacate_id=replacate_id,
+            resource_group_id=resource_group_id,
+            search_key=search_key,
+            secondary_zone_id=secondary_zone_id,
+            security_group_id=security_group_id,
+            security_ip_group_attribute=security_ip_group_attribute,
+            security_ip_group_name=security_ip_group_name,
+            security_ips=security_ips,
+            ssl_enable=ssl_enable,
+            status=status,
+            tags=tags,
+            user_name=user_name,
+            vpc_auth_mode=vpc_auth_mode,
+            vpc_cloud_instance_id=vpc_cloud_instance_id,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             architecture_type: str,
+             auto_renew: bool,
+             auto_renew_period: int,
+             availability_zone: str,
+             bandwidth: int,
+             capacity: int,
+             charge_type: str,
+             config: Mapping[str, Any],
+             connection_domain: str,
+             connection_mode: str,
+             connections: int,
+             create_time: str,
+             db_instance_id: str,
+             db_instance_name: str,
+             destroy_time: str,
+             end_time: str,
+             engine_version: str,
+             expire_time: str,
+             has_renew_change_order: bool,
+             id: str,
+             instance_class: str,
+             instance_release_protection: bool,
+             instance_type: str,
+             is_rds: bool,
+             maintain_end_time: str,
+             maintain_start_time: str,
+             max_connections: int,
+             name: str,
+             network_type: str,
+             node_type: str,
+             package_type: str,
+             payment_type: str,
+             port: int,
+             private_ip: str,
+             qps: int,
+             region_id: str,
+             replacate_id: str,
+             resource_group_id: str,
+             search_key: str,
+             secondary_zone_id: str,
+             security_group_id: str,
+             security_ip_group_attribute: str,
+             security_ip_group_name: str,
+             security_ips: Sequence[str],
+             ssl_enable: str,
+             status: str,
+             tags: Mapping[str, Any],
+             user_name: str,
+             vpc_auth_mode: str,
+             vpc_cloud_instance_id: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("architecture_type", architecture_type)
+        _setter("auto_renew", auto_renew)
+        _setter("auto_renew_period", auto_renew_period)
+        _setter("availability_zone", availability_zone)
+        _setter("bandwidth", bandwidth)
+        _setter("capacity", capacity)
+        _setter("charge_type", charge_type)
+        _setter("config", config)
+        _setter("connection_domain", connection_domain)
+        _setter("connection_mode", connection_mode)
+        _setter("connections", connections)
+        _setter("create_time", create_time)
+        _setter("db_instance_id", db_instance_id)
+        _setter("db_instance_name", db_instance_name)
+        _setter("destroy_time", destroy_time)
+        _setter("end_time", end_time)
+        _setter("engine_version", engine_version)
+        _setter("expire_time", expire_time)
+        _setter("has_renew_change_order", has_renew_change_order)
+        _setter("id", id)
+        _setter("instance_class", instance_class)
+        _setter("instance_release_protection", instance_release_protection)
+        _setter("instance_type", instance_type)
+        _setter("is_rds", is_rds)
+        _setter("maintain_end_time", maintain_end_time)
+        _setter("maintain_start_time", maintain_start_time)
+        _setter("max_connections", max_connections)
+        _setter("name", name)
+        _setter("network_type", network_type)
+        _setter("node_type", node_type)
+        _setter("package_type", package_type)
+        _setter("payment_type", payment_type)
+        _setter("port", port)
+        _setter("private_ip", private_ip)
+        _setter("qps", qps)
+        _setter("region_id", region_id)
+        _setter("replacate_id", replacate_id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("search_key", search_key)
+        _setter("secondary_zone_id", secondary_zone_id)
+        _setter("security_group_id", security_group_id)
+        _setter("security_ip_group_attribute", security_ip_group_attribute)
+        _setter("security_ip_group_name", security_ip_group_name)
+        _setter("security_ips", security_ips)
+        _setter("ssl_enable", ssl_enable)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("user_name", user_name)
+        _setter("vpc_auth_mode", vpc_auth_mode)
+        _setter("vpc_cloud_instance_id", vpc_cloud_instance_id)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="architectureType")
@@ -880,8 +1078,19 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            multi_zone_ids=multi_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             multi_zone_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

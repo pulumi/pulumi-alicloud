@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,11 +27,26 @@ class CustomLineArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
         :param pulumi.Input[str] lang: The lang.
         """
-        pulumi.set(__self__, "custom_line_name", custom_line_name)
-        pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "ip_segment_lists", ip_segment_lists)
+        CustomLineArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_line_name=custom_line_name,
+            domain_name=domain_name,
+            ip_segment_lists=ip_segment_lists,
+            lang=lang,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_line_name: pulumi.Input[str],
+             domain_name: pulumi.Input[str],
+             ip_segment_lists: pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]],
+             lang: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("custom_line_name", custom_line_name)
+        _setter("domain_name", domain_name)
+        _setter("ip_segment_lists", ip_segment_lists)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
 
     @property
     @pulumi.getter(name="customLineName")
@@ -96,14 +111,29 @@ class _CustomLineState:
         :param pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]] ip_segment_lists: The IP segment list. See `ip_segment_list` below for details.
         :param pulumi.Input[str] lang: The lang.
         """
+        _CustomLineState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_line_name=custom_line_name,
+            domain_name=domain_name,
+            ip_segment_lists=ip_segment_lists,
+            lang=lang,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_line_name: Optional[pulumi.Input[str]] = None,
+             domain_name: Optional[pulumi.Input[str]] = None,
+             ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if custom_line_name is not None:
-            pulumi.set(__self__, "custom_line_name", custom_line_name)
+            _setter("custom_line_name", custom_line_name)
         if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
+            _setter("domain_name", domain_name)
         if ip_segment_lists is not None:
-            pulumi.set(__self__, "ip_segment_lists", ip_segment_lists)
+            _setter("ip_segment_lists", ip_segment_lists)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
 
     @property
     @pulumi.getter(name="customLineName")
@@ -251,6 +281,10 @@ class CustomLine(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CustomLineArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

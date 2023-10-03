@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -72,18 +72,39 @@ class LoadBalancerZoneMapping(dict):
         :param str private_ipv4_address: The private IPv4 address of the NLB instance.
         :param str public_ipv4_address: The public IPv4 address of the NLB instance.
         """
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        LoadBalancerZoneMapping._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+            allocation_id=allocation_id,
+            eni_id=eni_id,
+            ipv6_address=ipv6_address,
+            private_ipv4_address=private_ipv4_address,
+            public_ipv4_address=public_ipv4_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vswitch_id: str,
+             zone_id: str,
+             allocation_id: Optional[str] = None,
+             eni_id: Optional[str] = None,
+             ipv6_address: Optional[str] = None,
+             private_ipv4_address: Optional[str] = None,
+             public_ipv4_address: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
         if allocation_id is not None:
-            pulumi.set(__self__, "allocation_id", allocation_id)
+            _setter("allocation_id", allocation_id)
         if eni_id is not None:
-            pulumi.set(__self__, "eni_id", eni_id)
+            _setter("eni_id", eni_id)
         if ipv6_address is not None:
-            pulumi.set(__self__, "ipv6_address", ipv6_address)
+            _setter("ipv6_address", ipv6_address)
         if private_ipv4_address is not None:
-            pulumi.set(__self__, "private_ipv4_address", private_ipv4_address)
+            _setter("private_ipv4_address", private_ipv4_address)
         if public_ipv4_address is not None:
-            pulumi.set(__self__, "public_ipv4_address", public_ipv4_address)
+            _setter("public_ipv4_address", public_ipv4_address)
 
     @property
     @pulumi.getter(name="vswitchId")
@@ -207,28 +228,57 @@ class ServerGroupHealthCheck(dict):
         :param str http_check_method: The HTTP method that is used for health checks. Valid values: `GET` and `HEAD`. **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
         :param int unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from success to fail. Valid values: 2 to 10. Default value: 2.
         """
+        ServerGroupHealthCheck._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            health_check_connect_port=health_check_connect_port,
+            health_check_connect_timeout=health_check_connect_timeout,
+            health_check_domain=health_check_domain,
+            health_check_enabled=health_check_enabled,
+            health_check_http_codes=health_check_http_codes,
+            health_check_interval=health_check_interval,
+            health_check_type=health_check_type,
+            health_check_url=health_check_url,
+            healthy_threshold=healthy_threshold,
+            http_check_method=http_check_method,
+            unhealthy_threshold=unhealthy_threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             health_check_connect_port: Optional[int] = None,
+             health_check_connect_timeout: Optional[int] = None,
+             health_check_domain: Optional[str] = None,
+             health_check_enabled: Optional[bool] = None,
+             health_check_http_codes: Optional[Sequence[str]] = None,
+             health_check_interval: Optional[int] = None,
+             health_check_type: Optional[str] = None,
+             health_check_url: Optional[str] = None,
+             healthy_threshold: Optional[int] = None,
+             http_check_method: Optional[str] = None,
+             unhealthy_threshold: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if health_check_connect_port is not None:
-            pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
+            _setter("health_check_connect_port", health_check_connect_port)
         if health_check_connect_timeout is not None:
-            pulumi.set(__self__, "health_check_connect_timeout", health_check_connect_timeout)
+            _setter("health_check_connect_timeout", health_check_connect_timeout)
         if health_check_domain is not None:
-            pulumi.set(__self__, "health_check_domain", health_check_domain)
+            _setter("health_check_domain", health_check_domain)
         if health_check_enabled is not None:
-            pulumi.set(__self__, "health_check_enabled", health_check_enabled)
+            _setter("health_check_enabled", health_check_enabled)
         if health_check_http_codes is not None:
-            pulumi.set(__self__, "health_check_http_codes", health_check_http_codes)
+            _setter("health_check_http_codes", health_check_http_codes)
         if health_check_interval is not None:
-            pulumi.set(__self__, "health_check_interval", health_check_interval)
+            _setter("health_check_interval", health_check_interval)
         if health_check_type is not None:
-            pulumi.set(__self__, "health_check_type", health_check_type)
+            _setter("health_check_type", health_check_type)
         if health_check_url is not None:
-            pulumi.set(__self__, "health_check_url", health_check_url)
+            _setter("health_check_url", health_check_url)
         if healthy_threshold is not None:
-            pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+            _setter("healthy_threshold", healthy_threshold)
         if http_check_method is not None:
-            pulumi.set(__self__, "http_check_method", http_check_method)
+            _setter("http_check_method", http_check_method)
         if unhealthy_threshold is not None:
-            pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+            _setter("unhealthy_threshold", unhealthy_threshold)
 
     @property
     @pulumi.getter(name="healthCheckConnectPort")
@@ -367,27 +417,76 @@ class GetListenersListenerResult(dict):
         :param str start_port: Full Port listens to the starting port. Valid values: `0` ~ `65535`.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "alpn_enabled", alpn_enabled)
-        pulumi.set(__self__, "alpn_policy", alpn_policy)
-        pulumi.set(__self__, "ca_certificate_ids", ca_certificate_ids)
-        pulumi.set(__self__, "ca_enabled", ca_enabled)
-        pulumi.set(__self__, "certificate_ids", certificate_ids)
-        pulumi.set(__self__, "cps", cps)
-        pulumi.set(__self__, "end_port", end_port)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "idle_timeout", idle_timeout)
-        pulumi.set(__self__, "listener_description", listener_description)
-        pulumi.set(__self__, "listener_id", listener_id)
-        pulumi.set(__self__, "listener_port", listener_port)
-        pulumi.set(__self__, "listener_protocol", listener_protocol)
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
-        pulumi.set(__self__, "mss", mss)
-        pulumi.set(__self__, "proxy_protocol_enabled", proxy_protocol_enabled)
-        pulumi.set(__self__, "sec_sensor_enabled", sec_sensor_enabled)
-        pulumi.set(__self__, "security_policy_id", security_policy_id)
-        pulumi.set(__self__, "server_group_id", server_group_id)
-        pulumi.set(__self__, "start_port", start_port)
-        pulumi.set(__self__, "status", status)
+        GetListenersListenerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alpn_enabled=alpn_enabled,
+            alpn_policy=alpn_policy,
+            ca_certificate_ids=ca_certificate_ids,
+            ca_enabled=ca_enabled,
+            certificate_ids=certificate_ids,
+            cps=cps,
+            end_port=end_port,
+            id=id,
+            idle_timeout=idle_timeout,
+            listener_description=listener_description,
+            listener_id=listener_id,
+            listener_port=listener_port,
+            listener_protocol=listener_protocol,
+            load_balancer_id=load_balancer_id,
+            mss=mss,
+            proxy_protocol_enabled=proxy_protocol_enabled,
+            sec_sensor_enabled=sec_sensor_enabled,
+            security_policy_id=security_policy_id,
+            server_group_id=server_group_id,
+            start_port=start_port,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alpn_enabled: bool,
+             alpn_policy: str,
+             ca_certificate_ids: Sequence[str],
+             ca_enabled: bool,
+             certificate_ids: Sequence[str],
+             cps: int,
+             end_port: str,
+             id: str,
+             idle_timeout: int,
+             listener_description: str,
+             listener_id: str,
+             listener_port: int,
+             listener_protocol: str,
+             load_balancer_id: str,
+             mss: int,
+             proxy_protocol_enabled: bool,
+             sec_sensor_enabled: bool,
+             security_policy_id: str,
+             server_group_id: str,
+             start_port: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alpn_enabled", alpn_enabled)
+        _setter("alpn_policy", alpn_policy)
+        _setter("ca_certificate_ids", ca_certificate_ids)
+        _setter("ca_enabled", ca_enabled)
+        _setter("certificate_ids", certificate_ids)
+        _setter("cps", cps)
+        _setter("end_port", end_port)
+        _setter("id", id)
+        _setter("idle_timeout", idle_timeout)
+        _setter("listener_description", listener_description)
+        _setter("listener_id", listener_id)
+        _setter("listener_port", listener_port)
+        _setter("listener_protocol", listener_protocol)
+        _setter("load_balancer_id", load_balancer_id)
+        _setter("mss", mss)
+        _setter("proxy_protocol_enabled", proxy_protocol_enabled)
+        _setter("sec_sensor_enabled", sec_sensor_enabled)
+        _setter("security_policy_id", security_policy_id)
+        _setter("server_group_id", server_group_id)
+        _setter("start_port", start_port)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="alpnEnabled")
@@ -601,26 +700,71 @@ class GetLoadBalancersBalancerResult(dict):
         :param Sequence['GetLoadBalancersBalancerZoneMappingArgs'] zone_mappings: The zones and the vSwitches in the zones. An NLB instance can be deployed across 2 to 10 zones.
         :param Mapping[str, Any] tags: The tag of the resource.
         """
-        pulumi.set(__self__, "address_ip_version", address_ip_version)
-        pulumi.set(__self__, "address_type", address_type)
-        pulumi.set(__self__, "bandwidth_package_id", bandwidth_package_id)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "cross_zone_enabled", cross_zone_enabled)
-        pulumi.set(__self__, "dns_name", dns_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ipv6_address_type", ipv6_address_type)
-        pulumi.set(__self__, "load_balancer_business_status", load_balancer_business_status)
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
-        pulumi.set(__self__, "load_balancer_name", load_balancer_name)
-        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
-        pulumi.set(__self__, "operation_locks", operation_locks)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "security_group_ids", security_group_ids)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "zone_mappings", zone_mappings)
+        GetLoadBalancersBalancerResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_ip_version=address_ip_version,
+            address_type=address_type,
+            bandwidth_package_id=bandwidth_package_id,
+            create_time=create_time,
+            cross_zone_enabled=cross_zone_enabled,
+            dns_name=dns_name,
+            id=id,
+            ipv6_address_type=ipv6_address_type,
+            load_balancer_business_status=load_balancer_business_status,
+            load_balancer_id=load_balancer_id,
+            load_balancer_name=load_balancer_name,
+            load_balancer_type=load_balancer_type,
+            operation_locks=operation_locks,
+            resource_group_id=resource_group_id,
+            security_group_ids=security_group_ids,
+            status=status,
+            vpc_id=vpc_id,
+            zone_mappings=zone_mappings,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_ip_version: str,
+             address_type: str,
+             bandwidth_package_id: str,
+             create_time: str,
+             cross_zone_enabled: bool,
+             dns_name: str,
+             id: str,
+             ipv6_address_type: str,
+             load_balancer_business_status: str,
+             load_balancer_id: str,
+             load_balancer_name: str,
+             load_balancer_type: str,
+             operation_locks: Sequence['outputs.GetLoadBalancersBalancerOperationLockResult'],
+             resource_group_id: str,
+             security_group_ids: Sequence[str],
+             status: str,
+             vpc_id: str,
+             zone_mappings: Sequence['outputs.GetLoadBalancersBalancerZoneMappingResult'],
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address_ip_version", address_ip_version)
+        _setter("address_type", address_type)
+        _setter("bandwidth_package_id", bandwidth_package_id)
+        _setter("create_time", create_time)
+        _setter("cross_zone_enabled", cross_zone_enabled)
+        _setter("dns_name", dns_name)
+        _setter("id", id)
+        _setter("ipv6_address_type", ipv6_address_type)
+        _setter("load_balancer_business_status", load_balancer_business_status)
+        _setter("load_balancer_id", load_balancer_id)
+        _setter("load_balancer_name", load_balancer_name)
+        _setter("load_balancer_type", load_balancer_type)
+        _setter("operation_locks", operation_locks)
+        _setter("resource_group_id", resource_group_id)
+        _setter("security_group_ids", security_group_ids)
+        _setter("status", status)
+        _setter("vpc_id", vpc_id)
+        _setter("zone_mappings", zone_mappings)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="addressIpVersion")
@@ -784,8 +928,19 @@ class GetLoadBalancersBalancerOperationLockResult(dict):
         :param str lock_reason: The reason why the NLB instance is locked.
         :param str lock_type: The type of lock.
         """
-        pulumi.set(__self__, "lock_reason", lock_reason)
-        pulumi.set(__self__, "lock_type", lock_type)
+        GetLoadBalancersBalancerOperationLockResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            lock_reason=lock_reason,
+            lock_type=lock_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             lock_reason: str,
+             lock_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("lock_reason", lock_reason)
+        _setter("lock_type", lock_type)
 
     @property
     @pulumi.getter(name="lockReason")
@@ -823,13 +978,34 @@ class GetLoadBalancersBalancerZoneMappingResult(dict):
         :param str vswitch_id: The ID of the vSwitch. By default, you can specify one vSwitch (subnet) in each zone of the NLB instance.
         :param str zone_id: The name of the zone.
         """
-        pulumi.set(__self__, "allocation_id", allocation_id)
-        pulumi.set(__self__, "eni_id", eni_id)
-        pulumi.set(__self__, "ipv6_address", ipv6_address)
-        pulumi.set(__self__, "private_ipv4_address", private_ipv4_address)
-        pulumi.set(__self__, "public_ipv4_address", public_ipv4_address)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetLoadBalancersBalancerZoneMappingResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocation_id=allocation_id,
+            eni_id=eni_id,
+            ipv6_address=ipv6_address,
+            private_ipv4_address=private_ipv4_address,
+            public_ipv4_address=public_ipv4_address,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocation_id: str,
+             eni_id: str,
+             ipv6_address: str,
+             private_ipv4_address: str,
+             public_ipv4_address: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("allocation_id", allocation_id)
+        _setter("eni_id", eni_id)
+        _setter("ipv6_address", ipv6_address)
+        _setter("private_ipv4_address", private_ipv4_address)
+        _setter("public_ipv4_address", public_ipv4_address)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="allocationId")
@@ -907,13 +1083,34 @@ class GetSecurityPoliciesPolicyResult(dict):
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param Sequence[str] tls_versions: The TLS protocol versions that are supported.
         """
-        pulumi.set(__self__, "ciphers", ciphers)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "security_policy_name", security_policy_name)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "tls_versions", tls_versions)
+        GetSecurityPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ciphers=ciphers,
+            id=id,
+            resource_group_id=resource_group_id,
+            security_policy_name=security_policy_name,
+            status=status,
+            tags=tags,
+            tls_versions=tls_versions,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ciphers: Sequence[str],
+             id: str,
+             resource_group_id: str,
+             security_policy_name: str,
+             status: str,
+             tags: Mapping[str, Any],
+             tls_versions: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ciphers", ciphers)
+        _setter("id", id)
+        _setter("resource_group_id", resource_group_id)
+        _setter("security_policy_name", security_policy_name)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("tls_versions", tls_versions)
 
     @property
     @pulumi.getter
@@ -997,16 +1194,43 @@ class GetServerGroupServerAttachmentsAttachmentResult(dict):
         :param int weight: The weight of the backend server.
         :param str zone_id: The zone ID of the server.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server_group_id", server_group_id)
-        pulumi.set(__self__, "server_id", server_id)
-        pulumi.set(__self__, "server_ip", server_ip)
-        pulumi.set(__self__, "server_type", server_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "weight", weight)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetServerGroupServerAttachmentsAttachmentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            port=port,
+            server_group_id=server_group_id,
+            server_id=server_id,
+            server_ip=server_ip,
+            server_type=server_type,
+            status=status,
+            weight=weight,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             id: str,
+             port: int,
+             server_group_id: str,
+             server_id: str,
+             server_ip: str,
+             server_type: str,
+             status: str,
+             weight: int,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("id", id)
+        _setter("port", port)
+        _setter("server_group_id", server_group_id)
+        _setter("server_id", server_id)
+        _setter("server_ip", server_ip)
+        _setter("server_type", server_type)
+        _setter("status", status)
+        _setter("weight", weight)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -1126,22 +1350,61 @@ class GetServerGroupsGroupResult(dict):
         :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
         :param str vpc_id: The ID of the VPC to which the server group belongs.
         """
-        pulumi.set(__self__, "address_ip_version", address_ip_version)
-        pulumi.set(__self__, "connection_drain", connection_drain)
-        pulumi.set(__self__, "connection_drain_timeout", connection_drain_timeout)
-        pulumi.set(__self__, "health_checks", health_checks)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "preserve_client_ip_enabled", preserve_client_ip_enabled)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "related_load_balancer_ids", related_load_balancer_ids)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "scheduler", scheduler)
-        pulumi.set(__self__, "server_count", server_count)
-        pulumi.set(__self__, "server_group_name", server_group_name)
-        pulumi.set(__self__, "server_group_type", server_group_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        GetServerGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_ip_version=address_ip_version,
+            connection_drain=connection_drain,
+            connection_drain_timeout=connection_drain_timeout,
+            health_checks=health_checks,
+            id=id,
+            preserve_client_ip_enabled=preserve_client_ip_enabled,
+            protocol=protocol,
+            related_load_balancer_ids=related_load_balancer_ids,
+            resource_group_id=resource_group_id,
+            scheduler=scheduler,
+            server_count=server_count,
+            server_group_name=server_group_name,
+            server_group_type=server_group_type,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_ip_version: str,
+             connection_drain: bool,
+             connection_drain_timeout: int,
+             health_checks: Sequence['outputs.GetServerGroupsGroupHealthCheckResult'],
+             id: str,
+             preserve_client_ip_enabled: bool,
+             protocol: str,
+             related_load_balancer_ids: Sequence[str],
+             resource_group_id: str,
+             scheduler: str,
+             server_count: int,
+             server_group_name: str,
+             server_group_type: str,
+             status: str,
+             tags: Mapping[str, Any],
+             vpc_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address_ip_version", address_ip_version)
+        _setter("connection_drain", connection_drain)
+        _setter("connection_drain_timeout", connection_drain_timeout)
+        _setter("health_checks", health_checks)
+        _setter("id", id)
+        _setter("preserve_client_ip_enabled", preserve_client_ip_enabled)
+        _setter("protocol", protocol)
+        _setter("related_load_balancer_ids", related_load_balancer_ids)
+        _setter("resource_group_id", resource_group_id)
+        _setter("scheduler", scheduler)
+        _setter("server_count", server_count)
+        _setter("server_group_name", server_group_name)
+        _setter("server_group_type", server_group_type)
+        _setter("status", status)
+        _setter("tags", tags)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="addressIpVersion")
@@ -1299,17 +1562,46 @@ class GetServerGroupsGroupHealthCheckResult(dict):
         :param str http_check_method: The HTTP method that is used for health checks.
         :param int unhealthy_threshold: The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy.
         """
-        pulumi.set(__self__, "health_check_connect_port", health_check_connect_port)
-        pulumi.set(__self__, "health_check_connect_timeout", health_check_connect_timeout)
-        pulumi.set(__self__, "health_check_domain", health_check_domain)
-        pulumi.set(__self__, "health_check_enabled", health_check_enabled)
-        pulumi.set(__self__, "health_check_http_codes", health_check_http_codes)
-        pulumi.set(__self__, "health_check_interval", health_check_interval)
-        pulumi.set(__self__, "health_check_type", health_check_type)
-        pulumi.set(__self__, "health_check_url", health_check_url)
-        pulumi.set(__self__, "healthy_threshold", healthy_threshold)
-        pulumi.set(__self__, "http_check_method", http_check_method)
-        pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+        GetServerGroupsGroupHealthCheckResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            health_check_connect_port=health_check_connect_port,
+            health_check_connect_timeout=health_check_connect_timeout,
+            health_check_domain=health_check_domain,
+            health_check_enabled=health_check_enabled,
+            health_check_http_codes=health_check_http_codes,
+            health_check_interval=health_check_interval,
+            health_check_type=health_check_type,
+            health_check_url=health_check_url,
+            healthy_threshold=healthy_threshold,
+            http_check_method=http_check_method,
+            unhealthy_threshold=unhealthy_threshold,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             health_check_connect_port: int,
+             health_check_connect_timeout: int,
+             health_check_domain: str,
+             health_check_enabled: bool,
+             health_check_http_codes: Sequence[str],
+             health_check_interval: int,
+             health_check_type: str,
+             health_check_url: str,
+             healthy_threshold: int,
+             http_check_method: str,
+             unhealthy_threshold: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("health_check_connect_port", health_check_connect_port)
+        _setter("health_check_connect_timeout", health_check_connect_timeout)
+        _setter("health_check_domain", health_check_domain)
+        _setter("health_check_enabled", health_check_enabled)
+        _setter("health_check_http_codes", health_check_http_codes)
+        _setter("health_check_interval", health_check_interval)
+        _setter("health_check_type", health_check_type)
+        _setter("health_check_url", health_check_url)
+        _setter("healthy_threshold", healthy_threshold)
+        _setter("http_check_method", http_check_method)
+        _setter("unhealthy_threshold", unhealthy_threshold)
 
     @property
     @pulumi.getter(name="healthCheckConnectPort")
@@ -1411,9 +1703,22 @@ class GetZonesZoneResult(dict):
         :param str local_name: The local name.
         :param str zone_id: The zone ID.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_name", local_name)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            local_name=local_name,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             local_name: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("local_name", local_name)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter

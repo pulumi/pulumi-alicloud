@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SecurityGroupArgs', 'SecurityGroup']
@@ -37,25 +37,48 @@ class SecurityGroupArgs:
                Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         """
+        SecurityGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            inner_access=inner_access,
+            inner_access_policy=inner_access_policy,
+            name=name,
+            resource_group_id=resource_group_id,
+            security_group_type=security_group_type,
+            tags=tags,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             inner_access: Optional[pulumi.Input[bool]] = None,
+             inner_access_policy: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             security_group_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if inner_access is not None:
             warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
         if inner_access is not None:
-            pulumi.set(__self__, "inner_access", inner_access)
+            _setter("inner_access", inner_access)
         if inner_access_policy is not None:
-            pulumi.set(__self__, "inner_access_policy", inner_access_policy)
+            _setter("inner_access_policy", inner_access_policy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if security_group_type is not None:
-            pulumi.set(__self__, "security_group_type", security_group_type)
+            _setter("security_group_type", security_group_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter
@@ -187,25 +210,48 @@ class _SecurityGroupState:
                Combining security group rules, the policy can define multiple application scenario. Default to true. It is valid from version `1.7.2`.
         :param pulumi.Input[str] vpc_id: The VPC ID.
         """
+        _SecurityGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            inner_access=inner_access,
+            inner_access_policy=inner_access_policy,
+            name=name,
+            resource_group_id=resource_group_id,
+            security_group_type=security_group_type,
+            tags=tags,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             inner_access: Optional[pulumi.Input[bool]] = None,
+             inner_access_policy: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             security_group_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if inner_access is not None:
             warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
         if inner_access is not None:
-            pulumi.set(__self__, "inner_access", inner_access)
+            _setter("inner_access", inner_access)
         if inner_access_policy is not None:
-            pulumi.set(__self__, "inner_access_policy", inner_access_policy)
+            _setter("inner_access_policy", inner_access_policy)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if security_group_type is not None:
-            pulumi.set(__self__, "security_group_type", security_group_type)
+            _setter("security_group_type", security_group_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter
@@ -438,6 +484,10 @@ class SecurityGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecurityGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -461,9 +511,6 @@ class SecurityGroup(pulumi.CustomResource):
             __props__ = SecurityGroupArgs.__new__(SecurityGroupArgs)
 
             __props__.__dict__["description"] = description
-            if inner_access is not None and not opts.urn:
-                warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
-                pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
             __props__.__dict__["inner_access"] = inner_access
             __props__.__dict__["inner_access_policy"] = inner_access_policy
             __props__.__dict__["name"] = name

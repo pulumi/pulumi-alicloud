@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ChildInstanceRouteEntryToAttachmentArgs', 'ChildInstanceRouteEntryToAttachment']
@@ -27,12 +27,29 @@ class ChildInstanceRouteEntryToAttachmentArgs:
         :param pulumi.Input[str] transit_router_attachment_id: TransitRouterAttachmentId
         :param pulumi.Input[bool] dry_run: Whether to perform pre-check on this request, including permission and instance status verification.
         """
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "child_instance_route_table_id", child_instance_route_table_id)
-        pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
-        pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+        ChildInstanceRouteEntryToAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            child_instance_route_table_id=child_instance_route_table_id,
+            destination_cidr_block=destination_cidr_block,
+            transit_router_attachment_id=transit_router_attachment_id,
+            dry_run=dry_run,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: pulumi.Input[str],
+             child_instance_route_table_id: pulumi.Input[str],
+             destination_cidr_block: pulumi.Input[str],
+             transit_router_attachment_id: pulumi.Input[str],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cen_id", cen_id)
+        _setter("child_instance_route_table_id", child_instance_route_table_id)
+        _setter("destination_cidr_block", destination_cidr_block)
+        _setter("transit_router_attachment_id", transit_router_attachment_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
 
     @property
     @pulumi.getter(name="cenId")
@@ -115,20 +132,41 @@ class _ChildInstanceRouteEntryToAttachmentState:
         :param pulumi.Input[str] status: The status of the resource
         :param pulumi.Input[str] transit_router_attachment_id: TransitRouterAttachmentId
         """
+        _ChildInstanceRouteEntryToAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            child_instance_route_table_id=child_instance_route_table_id,
+            destination_cidr_block=destination_cidr_block,
+            dry_run=dry_run,
+            service_type=service_type,
+            status=status,
+            transit_router_attachment_id=transit_router_attachment_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: Optional[pulumi.Input[str]] = None,
+             child_instance_route_table_id: Optional[pulumi.Input[str]] = None,
+             destination_cidr_block: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             service_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cen_id is not None:
-            pulumi.set(__self__, "cen_id", cen_id)
+            _setter("cen_id", cen_id)
         if child_instance_route_table_id is not None:
-            pulumi.set(__self__, "child_instance_route_table_id", child_instance_route_table_id)
+            _setter("child_instance_route_table_id", child_instance_route_table_id)
         if destination_cidr_block is not None:
-            pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
+            _setter("destination_cidr_block", destination_cidr_block)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if service_type is not None:
-            pulumi.set(__self__, "service_type", service_type)
+            _setter("service_type", service_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if transit_router_attachment_id is not None:
-            pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+            _setter("transit_router_attachment_id", transit_router_attachment_id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -402,6 +440,10 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ChildInstanceRouteEntryToAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

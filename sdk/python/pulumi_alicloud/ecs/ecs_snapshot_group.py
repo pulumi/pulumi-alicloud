@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsSnapshotGroupArgs', 'EcsSnapshotGroup']
@@ -35,24 +35,49 @@ class EcsSnapshotGroupArgs:
         :param pulumi.Input[str] snapshot_group_name: The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the snapshot group.
         """
+        EcsSnapshotGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            disk_ids=disk_ids,
+            exclude_disk_ids=exclude_disk_ids,
+            instance_id=instance_id,
+            instant_access=instant_access,
+            instant_access_retention_days=instant_access_retention_days,
+            resource_group_id=resource_group_id,
+            snapshot_group_name=snapshot_group_name,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             exclude_disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instant_access: Optional[pulumi.Input[bool]] = None,
+             instant_access_retention_days: Optional[pulumi.Input[int]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             snapshot_group_name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_ids is not None:
-            pulumi.set(__self__, "disk_ids", disk_ids)
+            _setter("disk_ids", disk_ids)
         if exclude_disk_ids is not None:
-            pulumi.set(__self__, "exclude_disk_ids", exclude_disk_ids)
+            _setter("exclude_disk_ids", exclude_disk_ids)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if instant_access is not None:
-            pulumi.set(__self__, "instant_access", instant_access)
+            _setter("instant_access", instant_access)
         if instant_access_retention_days is not None:
-            pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
+            _setter("instant_access_retention_days", instant_access_retention_days)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if snapshot_group_name is not None:
-            pulumi.set(__self__, "snapshot_group_name", snapshot_group_name)
+            _setter("snapshot_group_name", snapshot_group_name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -189,26 +214,53 @@ class _EcsSnapshotGroupState:
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the snapshot group.
         """
+        _EcsSnapshotGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            disk_ids=disk_ids,
+            exclude_disk_ids=exclude_disk_ids,
+            instance_id=instance_id,
+            instant_access=instant_access,
+            instant_access_retention_days=instant_access_retention_days,
+            resource_group_id=resource_group_id,
+            snapshot_group_name=snapshot_group_name,
+            status=status,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             exclude_disk_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             instant_access: Optional[pulumi.Input[bool]] = None,
+             instant_access_retention_days: Optional[pulumi.Input[int]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             snapshot_group_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disk_ids is not None:
-            pulumi.set(__self__, "disk_ids", disk_ids)
+            _setter("disk_ids", disk_ids)
         if exclude_disk_ids is not None:
-            pulumi.set(__self__, "exclude_disk_ids", exclude_disk_ids)
+            _setter("exclude_disk_ids", exclude_disk_ids)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if instant_access is not None:
-            pulumi.set(__self__, "instant_access", instant_access)
+            _setter("instant_access", instant_access)
         if instant_access_retention_days is not None:
-            pulumi.set(__self__, "instant_access_retention_days", instant_access_retention_days)
+            _setter("instant_access_retention_days", instant_access_retention_days)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if snapshot_group_name is not None:
-            pulumi.set(__self__, "snapshot_group_name", snapshot_group_name)
+            _setter("snapshot_group_name", snapshot_group_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -508,6 +560,10 @@ class EcsSnapshotGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EcsSnapshotGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

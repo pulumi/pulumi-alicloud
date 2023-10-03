@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TopicArgs', 'Topic']
@@ -35,24 +35,45 @@ class TopicArgs:
         :param pulumi.Input[str] topic: Replaced by `topic_name` after version 1.97.0.
         :param pulumi.Input[str] topic_name: Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "message_type", message_type)
+        TopicArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            message_type=message_type,
+            perm=perm,
+            remark=remark,
+            tags=tags,
+            topic=topic,
+            topic_name=topic_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: pulumi.Input[str],
+             message_type: pulumi.Input[int],
+             perm: Optional[pulumi.Input[int]] = None,
+             remark: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
+             topic_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
+        _setter("message_type", message_type)
         if perm is not None:
             warnings.warn("""Attribute perm has been deprecated and suggest removing it from your template.""", DeprecationWarning)
             pulumi.log.warn("""perm is deprecated: Attribute perm has been deprecated and suggest removing it from your template.""")
         if perm is not None:
-            pulumi.set(__self__, "perm", perm)
+            _setter("perm", perm)
         if remark is not None:
-            pulumi.set(__self__, "remark", remark)
+            _setter("remark", remark)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if topic is not None:
             warnings.warn("""Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""topic is deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""")
         if topic is not None:
-            pulumi.set(__self__, "topic", topic)
+            _setter("topic", topic)
         if topic_name is not None:
-            pulumi.set(__self__, "topic_name", topic_name)
+            _setter("topic_name", topic_name)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -173,26 +194,47 @@ class _TopicState:
         :param pulumi.Input[str] topic: Replaced by `topic_name` after version 1.97.0.
         :param pulumi.Input[str] topic_name: Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
         """
+        _TopicState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            message_type=message_type,
+            perm=perm,
+            remark=remark,
+            tags=tags,
+            topic=topic,
+            topic_name=topic_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: Optional[pulumi.Input[str]] = None,
+             message_type: Optional[pulumi.Input[int]] = None,
+             perm: Optional[pulumi.Input[int]] = None,
+             remark: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
+             topic_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if message_type is not None:
-            pulumi.set(__self__, "message_type", message_type)
+            _setter("message_type", message_type)
         if perm is not None:
             warnings.warn("""Attribute perm has been deprecated and suggest removing it from your template.""", DeprecationWarning)
             pulumi.log.warn("""perm is deprecated: Attribute perm has been deprecated and suggest removing it from your template.""")
         if perm is not None:
-            pulumi.set(__self__, "perm", perm)
+            _setter("perm", perm)
         if remark is not None:
-            pulumi.set(__self__, "remark", remark)
+            _setter("remark", remark)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if topic is not None:
             warnings.warn("""Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""topic is deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""")
         if topic is not None:
-            pulumi.set(__self__, "topic", topic)
+            _setter("topic", topic)
         if topic_name is not None:
-            pulumi.set(__self__, "topic_name", topic_name)
+            _setter("topic_name", topic_name)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -408,6 +450,10 @@ class Topic(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TopicArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -435,15 +481,9 @@ class Topic(pulumi.CustomResource):
             if message_type is None and not opts.urn:
                 raise TypeError("Missing required property 'message_type'")
             __props__.__dict__["message_type"] = message_type
-            if perm is not None and not opts.urn:
-                warnings.warn("""Attribute perm has been deprecated and suggest removing it from your template.""", DeprecationWarning)
-                pulumi.log.warn("""perm is deprecated: Attribute perm has been deprecated and suggest removing it from your template.""")
             __props__.__dict__["perm"] = perm
             __props__.__dict__["remark"] = remark
             __props__.__dict__["tags"] = tags
-            if topic is not None and not opts.urn:
-                warnings.warn("""Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""topic is deprecated: Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead.""")
             __props__.__dict__["topic"] = topic
             __props__.__dict__["topic_name"] = topic_name
         super(Topic, __self__).__init__(

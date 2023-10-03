@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -86,40 +86,115 @@ class GetInstancesInstanceResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID of the instance.
         """
-        pulumi.set(__self__, "auto_renew", auto_renew)
-        pulumi.set(__self__, "cold_storage", cold_storage)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "deletion_proection", deletion_proection)
-        pulumi.set(__self__, "disk_category", disk_category)
-        pulumi.set(__self__, "disk_usage", disk_usage)
-        pulumi.set(__self__, "disk_warning_threshold", disk_warning_threshold)
-        pulumi.set(__self__, "engine_type", engine_type)
-        pulumi.set(__self__, "expired_time", expired_time)
-        pulumi.set(__self__, "file_engine_node_count", file_engine_node_count)
-        pulumi.set(__self__, "file_engine_specification", file_engine_specification)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_storage", instance_storage)
-        pulumi.set(__self__, "ip_white_lists", ip_white_lists)
-        pulumi.set(__self__, "lts_node_count", lts_node_count)
-        pulumi.set(__self__, "lts_node_specification", lts_node_specification)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "phoenix_node_count", phoenix_node_count)
-        pulumi.set(__self__, "phoenix_node_specification", phoenix_node_specification)
-        pulumi.set(__self__, "resource_owner_id", resource_owner_id)
-        pulumi.set(__self__, "search_engine_node_count", search_engine_node_count)
-        pulumi.set(__self__, "search_engine_specification", search_engine_specification)
-        pulumi.set(__self__, "service_type", service_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "table_engine_node_count", table_engine_node_count)
-        pulumi.set(__self__, "table_engine_specification", table_engine_specification)
-        pulumi.set(__self__, "time_series_engine_node_count", time_series_engine_node_count)
-        pulumi.set(__self__, "time_serires_engine_specification", time_serires_engine_specification)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_renew=auto_renew,
+            cold_storage=cold_storage,
+            create_time=create_time,
+            deletion_proection=deletion_proection,
+            disk_category=disk_category,
+            disk_usage=disk_usage,
+            disk_warning_threshold=disk_warning_threshold,
+            engine_type=engine_type,
+            expired_time=expired_time,
+            file_engine_node_count=file_engine_node_count,
+            file_engine_specification=file_engine_specification,
+            id=id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_storage=instance_storage,
+            ip_white_lists=ip_white_lists,
+            lts_node_count=lts_node_count,
+            lts_node_specification=lts_node_specification,
+            network_type=network_type,
+            payment_type=payment_type,
+            phoenix_node_count=phoenix_node_count,
+            phoenix_node_specification=phoenix_node_specification,
+            resource_owner_id=resource_owner_id,
+            search_engine_node_count=search_engine_node_count,
+            search_engine_specification=search_engine_specification,
+            service_type=service_type,
+            status=status,
+            table_engine_node_count=table_engine_node_count,
+            table_engine_specification=table_engine_specification,
+            time_series_engine_node_count=time_series_engine_node_count,
+            time_serires_engine_specification=time_serires_engine_specification,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_renew: str,
+             cold_storage: int,
+             create_time: str,
+             deletion_proection: bool,
+             disk_category: str,
+             disk_usage: str,
+             disk_warning_threshold: str,
+             engine_type: int,
+             expired_time: str,
+             file_engine_node_count: int,
+             file_engine_specification: str,
+             id: str,
+             instance_id: str,
+             instance_name: str,
+             instance_storage: str,
+             ip_white_lists: Sequence[str],
+             lts_node_count: int,
+             lts_node_specification: str,
+             network_type: str,
+             payment_type: str,
+             phoenix_node_count: int,
+             phoenix_node_specification: str,
+             resource_owner_id: str,
+             search_engine_node_count: int,
+             search_engine_specification: str,
+             service_type: str,
+             status: str,
+             table_engine_node_count: int,
+             table_engine_specification: str,
+             time_series_engine_node_count: int,
+             time_serires_engine_specification: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_renew", auto_renew)
+        _setter("cold_storage", cold_storage)
+        _setter("create_time", create_time)
+        _setter("deletion_proection", deletion_proection)
+        _setter("disk_category", disk_category)
+        _setter("disk_usage", disk_usage)
+        _setter("disk_warning_threshold", disk_warning_threshold)
+        _setter("engine_type", engine_type)
+        _setter("expired_time", expired_time)
+        _setter("file_engine_node_count", file_engine_node_count)
+        _setter("file_engine_specification", file_engine_specification)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("instance_storage", instance_storage)
+        _setter("ip_white_lists", ip_white_lists)
+        _setter("lts_node_count", lts_node_count)
+        _setter("lts_node_specification", lts_node_specification)
+        _setter("network_type", network_type)
+        _setter("payment_type", payment_type)
+        _setter("phoenix_node_count", phoenix_node_count)
+        _setter("phoenix_node_specification", phoenix_node_specification)
+        _setter("resource_owner_id", resource_owner_id)
+        _setter("search_engine_node_count", search_engine_node_count)
+        _setter("search_engine_specification", search_engine_specification)
+        _setter("service_type", service_type)
+        _setter("status", status)
+        _setter("table_engine_node_count", table_engine_node_count)
+        _setter("table_engine_specification", table_engine_specification)
+        _setter("time_series_engine_node_count", time_series_engine_node_count)
+        _setter("time_serires_engine_specification", time_serires_engine_specification)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoRenew")

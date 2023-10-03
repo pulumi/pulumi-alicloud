@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['DataFlowArgs', 'DataFlow']
@@ -36,18 +36,41 @@ class DataFlowArgs:
         :param pulumi.Input[str] source_security_type: The security protection type of the source storage. If the source storage must be accessed through security protection, specify the security protection type of the source storage. Value:
         :param pulumi.Input[str] status: The status of the Data flow. Valid values: `Running`, `Stopped`.
         """
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "fset_id", fset_id)
-        pulumi.set(__self__, "source_storage", source_storage)
-        pulumi.set(__self__, "throughput", throughput)
+        DataFlowArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            file_system_id=file_system_id,
+            fset_id=fset_id,
+            source_storage=source_storage,
+            throughput=throughput,
+            description=description,
+            dry_run=dry_run,
+            source_security_type=source_security_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             file_system_id: pulumi.Input[str],
+             fset_id: pulumi.Input[str],
+             source_storage: pulumi.Input[str],
+             throughput: pulumi.Input[int],
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             source_security_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("file_system_id", file_system_id)
+        _setter("fset_id", fset_id)
+        _setter("source_storage", source_storage)
+        _setter("throughput", throughput)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if source_security_type is not None:
-            pulumi.set(__self__, "source_security_type", source_security_type)
+            _setter("source_security_type", source_security_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="fileSystemId")
@@ -176,24 +199,49 @@ class _DataFlowState:
         :param pulumi.Input[str] status: The status of the Data flow. Valid values: `Running`, `Stopped`.
         :param pulumi.Input[int] throughput: The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
         """
+        _DataFlowState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            data_flow_id=data_flow_id,
+            description=description,
+            dry_run=dry_run,
+            file_system_id=file_system_id,
+            fset_id=fset_id,
+            source_security_type=source_security_type,
+            source_storage=source_storage,
+            status=status,
+            throughput=throughput,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             data_flow_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             file_system_id: Optional[pulumi.Input[str]] = None,
+             fset_id: Optional[pulumi.Input[str]] = None,
+             source_security_type: Optional[pulumi.Input[str]] = None,
+             source_storage: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             throughput: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if data_flow_id is not None:
-            pulumi.set(__self__, "data_flow_id", data_flow_id)
+            _setter("data_flow_id", data_flow_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if file_system_id is not None:
-            pulumi.set(__self__, "file_system_id", file_system_id)
+            _setter("file_system_id", file_system_id)
         if fset_id is not None:
-            pulumi.set(__self__, "fset_id", fset_id)
+            _setter("fset_id", fset_id)
         if source_security_type is not None:
-            pulumi.set(__self__, "source_security_type", source_security_type)
+            _setter("source_security_type", source_security_type)
         if source_storage is not None:
-            pulumi.set(__self__, "source_storage", source_storage)
+            _setter("source_storage", source_storage)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if throughput is not None:
-            pulumi.set(__self__, "throughput", throughput)
+            _setter("throughput", throughput)
 
     @property
     @pulumi.getter(name="dataFlowId")
@@ -381,6 +429,10 @@ class DataFlow(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DataFlowArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

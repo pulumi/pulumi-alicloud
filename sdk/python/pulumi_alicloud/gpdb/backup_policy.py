@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BackupPolicyArgs', 'BackupPolicy']
@@ -43,15 +43,34 @@ class BackupPolicyArgs:
                - **4**: Every four hours.
                - **8**: Every eight hours.
         """
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "preferred_backup_period", preferred_backup_period)
-        pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
+        BackupPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_instance_id=db_instance_id,
+            preferred_backup_period=preferred_backup_period,
+            preferred_backup_time=preferred_backup_time,
+            backup_retention_period=backup_retention_period,
+            enable_recovery_point=enable_recovery_point,
+            recovery_point_period=recovery_point_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_instance_id: pulumi.Input[str],
+             preferred_backup_period: pulumi.Input[str],
+             preferred_backup_time: pulumi.Input[str],
+             backup_retention_period: Optional[pulumi.Input[int]] = None,
+             enable_recovery_point: Optional[pulumi.Input[bool]] = None,
+             recovery_point_period: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_instance_id", db_instance_id)
+        _setter("preferred_backup_period", preferred_backup_period)
+        _setter("preferred_backup_time", preferred_backup_time)
         if backup_retention_period is not None:
-            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+            _setter("backup_retention_period", backup_retention_period)
         if enable_recovery_point is not None:
-            pulumi.set(__self__, "enable_recovery_point", enable_recovery_point)
+            _setter("enable_recovery_point", enable_recovery_point)
         if recovery_point_period is not None:
-            pulumi.set(__self__, "recovery_point_period", recovery_point_period)
+            _setter("recovery_point_period", recovery_point_period)
 
     @property
     @pulumi.getter(name="dbInstanceId")
@@ -172,18 +191,37 @@ class _BackupPolicyState:
                - **4**: Every four hours.
                - **8**: Every eight hours.
         """
+        _BackupPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_retention_period=backup_retention_period,
+            db_instance_id=db_instance_id,
+            enable_recovery_point=enable_recovery_point,
+            preferred_backup_period=preferred_backup_period,
+            preferred_backup_time=preferred_backup_time,
+            recovery_point_period=recovery_point_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_retention_period: Optional[pulumi.Input[int]] = None,
+             db_instance_id: Optional[pulumi.Input[str]] = None,
+             enable_recovery_point: Optional[pulumi.Input[bool]] = None,
+             preferred_backup_period: Optional[pulumi.Input[str]] = None,
+             preferred_backup_time: Optional[pulumi.Input[str]] = None,
+             recovery_point_period: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backup_retention_period is not None:
-            pulumi.set(__self__, "backup_retention_period", backup_retention_period)
+            _setter("backup_retention_period", backup_retention_period)
         if db_instance_id is not None:
-            pulumi.set(__self__, "db_instance_id", db_instance_id)
+            _setter("db_instance_id", db_instance_id)
         if enable_recovery_point is not None:
-            pulumi.set(__self__, "enable_recovery_point", enable_recovery_point)
+            _setter("enable_recovery_point", enable_recovery_point)
         if preferred_backup_period is not None:
-            pulumi.set(__self__, "preferred_backup_period", preferred_backup_period)
+            _setter("preferred_backup_period", preferred_backup_period)
         if preferred_backup_time is not None:
-            pulumi.set(__self__, "preferred_backup_time", preferred_backup_time)
+            _setter("preferred_backup_time", preferred_backup_time)
         if recovery_point_period is not None:
-            pulumi.set(__self__, "recovery_point_period", recovery_point_period)
+            _setter("recovery_point_period", recovery_point_period)
 
     @property
     @pulumi.getter(name="backupRetentionPeriod")
@@ -341,6 +379,10 @@ class BackupPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BackupPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

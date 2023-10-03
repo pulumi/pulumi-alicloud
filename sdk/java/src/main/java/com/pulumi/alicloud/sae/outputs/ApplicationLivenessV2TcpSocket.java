@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ApplicationLivenessV2TcpSocket {
     /**
-     * @return The port that is used to check the status of TCP connections.
+     * @return The port.
      * 
      */
     private @Nullable Integer port;
 
     private ApplicationLivenessV2TcpSocket() {}
     /**
-     * @return The port that is used to check the status of TCP connections.
+     * @return The port.
      * 
      */
     public Optional<Integer> port() {

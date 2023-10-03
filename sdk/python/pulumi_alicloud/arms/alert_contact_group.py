@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AlertContactGroupArgs', 'AlertContactGroup']
@@ -21,9 +21,20 @@ class AlertContactGroupArgs:
         :param pulumi.Input[str] alert_contact_group_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_ids: The list id of alert contact.
         """
-        pulumi.set(__self__, "alert_contact_group_name", alert_contact_group_name)
+        AlertContactGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_contact_group_name=alert_contact_group_name,
+            contact_ids=contact_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_contact_group_name: pulumi.Input[str],
+             contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alert_contact_group_name", alert_contact_group_name)
         if contact_ids is not None:
-            pulumi.set(__self__, "contact_ids", contact_ids)
+            _setter("contact_ids", contact_ids)
 
     @property
     @pulumi.getter(name="alertContactGroupName")
@@ -60,10 +71,21 @@ class _AlertContactGroupState:
         :param pulumi.Input[str] alert_contact_group_name: The name of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] contact_ids: The list id of alert contact.
         """
+        _AlertContactGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_contact_group_name=alert_contact_group_name,
+            contact_ids=contact_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_contact_group_name: Optional[pulumi.Input[str]] = None,
+             contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alert_contact_group_name is not None:
-            pulumi.set(__self__, "alert_contact_group_name", alert_contact_group_name)
+            _setter("alert_contact_group_name", alert_contact_group_name)
         if contact_ids is not None:
-            pulumi.set(__self__, "contact_ids", contact_ids)
+            _setter("contact_ids", contact_ids)
 
     @property
     @pulumi.getter(name="alertContactGroupName")
@@ -185,6 +207,10 @@ class AlertContactGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AlertContactGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

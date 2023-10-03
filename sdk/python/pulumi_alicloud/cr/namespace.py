@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NamespaceArgs', 'Namespace']
@@ -23,10 +23,23 @@ class NamespaceArgs:
         :param pulumi.Input[str] default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
         :param pulumi.Input[str] name: Name of Container Registry namespace.
         """
-        pulumi.set(__self__, "auto_create", auto_create)
-        pulumi.set(__self__, "default_visibility", default_visibility)
+        NamespaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_create=auto_create,
+            default_visibility=default_visibility,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_create: pulumi.Input[bool],
+             default_visibility: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("auto_create", auto_create)
+        _setter("default_visibility", default_visibility)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="autoCreate")
@@ -77,12 +90,25 @@ class _NamespaceState:
         :param pulumi.Input[str] default_visibility: `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
         :param pulumi.Input[str] name: Name of Container Registry namespace.
         """
+        _NamespaceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_create=auto_create,
+            default_visibility=default_visibility,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_create: Optional[pulumi.Input[bool]] = None,
+             default_visibility: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_create is not None:
-            pulumi.set(__self__, "auto_create", auto_create)
+            _setter("auto_create", auto_create)
         if default_visibility is not None:
-            pulumi.set(__self__, "default_visibility", default_visibility)
+            _setter("default_visibility", default_visibility)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="autoCreate")
@@ -216,6 +242,10 @@ class Namespace(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NamespaceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

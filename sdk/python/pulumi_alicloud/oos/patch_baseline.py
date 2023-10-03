@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PatchBaselineArgs', 'PatchBaseline']
@@ -29,15 +29,34 @@ class PatchBaselineArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rejected_patches: Reject patches.
         :param pulumi.Input[str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
         """
-        pulumi.set(__self__, "approval_rules", approval_rules)
-        pulumi.set(__self__, "operation_system", operation_system)
-        pulumi.set(__self__, "patch_baseline_name", patch_baseline_name)
+        PatchBaselineArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            approval_rules=approval_rules,
+            operation_system=operation_system,
+            patch_baseline_name=patch_baseline_name,
+            description=description,
+            rejected_patches=rejected_patches,
+            rejected_patches_action=rejected_patches_action,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             approval_rules: pulumi.Input[str],
+             operation_system: pulumi.Input[str],
+             patch_baseline_name: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             rejected_patches_action: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("approval_rules", approval_rules)
+        _setter("operation_system", operation_system)
+        _setter("patch_baseline_name", patch_baseline_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if rejected_patches is not None:
-            pulumi.set(__self__, "rejected_patches", rejected_patches)
+            _setter("rejected_patches", rejected_patches)
         if rejected_patches_action is not None:
-            pulumi.set(__self__, "rejected_patches_action", rejected_patches_action)
+            _setter("rejected_patches_action", rejected_patches_action)
 
     @property
     @pulumi.getter(name="approvalRules")
@@ -132,20 +151,41 @@ class _PatchBaselineState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] rejected_patches: Reject patches.
         :param pulumi.Input[str] rejected_patches_action: Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
         """
+        _PatchBaselineState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            approval_rules=approval_rules,
+            create_time=create_time,
+            description=description,
+            operation_system=operation_system,
+            patch_baseline_name=patch_baseline_name,
+            rejected_patches=rejected_patches,
+            rejected_patches_action=rejected_patches_action,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             approval_rules: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             operation_system: Optional[pulumi.Input[str]] = None,
+             patch_baseline_name: Optional[pulumi.Input[str]] = None,
+             rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             rejected_patches_action: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if approval_rules is not None:
-            pulumi.set(__self__, "approval_rules", approval_rules)
+            _setter("approval_rules", approval_rules)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if operation_system is not None:
-            pulumi.set(__self__, "operation_system", operation_system)
+            _setter("operation_system", operation_system)
         if patch_baseline_name is not None:
-            pulumi.set(__self__, "patch_baseline_name", patch_baseline_name)
+            _setter("patch_baseline_name", patch_baseline_name)
         if rejected_patches is not None:
-            pulumi.set(__self__, "rejected_patches", rejected_patches)
+            _setter("rejected_patches", rejected_patches)
         if rejected_patches_action is not None:
-            pulumi.set(__self__, "rejected_patches_action", rejected_patches_action)
+            _setter("rejected_patches_action", rejected_patches_action)
 
     @property
     @pulumi.getter(name="approvalRules")
@@ -335,6 +375,10 @@ class PatchBaseline(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PatchBaselineArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

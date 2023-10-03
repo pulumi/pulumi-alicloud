@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['AppArgs', 'App']
@@ -31,17 +31,38 @@ class AppArgs:
         :param pulumi.Input[str] industry_id: The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
         :param pulumi.Input[str] package_name: Android App package name. **NOTE:** Either `bundle_id` or `package_name` must be set.
         """
-        pulumi.set(__self__, "app_name", app_name)
-        pulumi.set(__self__, "product_id", product_id)
-        pulumi.set(__self__, "type", type)
+        AppArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_name=app_name,
+            product_id=product_id,
+            type=type,
+            bundle_id=bundle_id,
+            encoded_icon=encoded_icon,
+            industry_id=industry_id,
+            package_name=package_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_name: pulumi.Input[str],
+             product_id: pulumi.Input[str],
+             type: pulumi.Input[str],
+             bundle_id: Optional[pulumi.Input[str]] = None,
+             encoded_icon: Optional[pulumi.Input[str]] = None,
+             industry_id: Optional[pulumi.Input[str]] = None,
+             package_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_name", app_name)
+        _setter("product_id", product_id)
+        _setter("type", type)
         if bundle_id is not None:
-            pulumi.set(__self__, "bundle_id", bundle_id)
+            _setter("bundle_id", bundle_id)
         if encoded_icon is not None:
-            pulumi.set(__self__, "encoded_icon", encoded_icon)
+            _setter("encoded_icon", encoded_icon)
         if industry_id is not None:
-            pulumi.set(__self__, "industry_id", industry_id)
+            _setter("industry_id", industry_id)
         if package_name is not None:
-            pulumi.set(__self__, "package_name", package_name)
+            _setter("package_name", package_name)
 
     @property
     @pulumi.getter(name="appName")
@@ -148,20 +169,41 @@ class _AppState:
         :param pulumi.Input[str] product_id: The ID of the Product.
         :param pulumi.Input[str] type: The type of the Product. Valid values: `Android` and `iOS`.
         """
+        _AppState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_name=app_name,
+            bundle_id=bundle_id,
+            encoded_icon=encoded_icon,
+            industry_id=industry_id,
+            package_name=package_name,
+            product_id=product_id,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_name: Optional[pulumi.Input[str]] = None,
+             bundle_id: Optional[pulumi.Input[str]] = None,
+             encoded_icon: Optional[pulumi.Input[str]] = None,
+             industry_id: Optional[pulumi.Input[str]] = None,
+             package_name: Optional[pulumi.Input[str]] = None,
+             product_id: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if app_name is not None:
-            pulumi.set(__self__, "app_name", app_name)
+            _setter("app_name", app_name)
         if bundle_id is not None:
-            pulumi.set(__self__, "bundle_id", bundle_id)
+            _setter("bundle_id", bundle_id)
         if encoded_icon is not None:
-            pulumi.set(__self__, "encoded_icon", encoded_icon)
+            _setter("encoded_icon", encoded_icon)
         if industry_id is not None:
-            pulumi.set(__self__, "industry_id", industry_id)
+            _setter("industry_id", industry_id)
         if package_name is not None:
-            pulumi.set(__self__, "package_name", package_name)
+            _setter("package_name", package_name)
         if product_id is not None:
-            pulumi.set(__self__, "product_id", product_id)
+            _setter("product_id", product_id)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="appName")
@@ -361,6 +403,10 @@ class App(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AppArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

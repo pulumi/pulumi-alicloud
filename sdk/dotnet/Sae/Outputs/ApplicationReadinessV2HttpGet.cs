@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string? Path;
         /// <summary>
-        /// The port that is used to check the status of TCP connections.
+        /// The port.
         /// </summary>
         public readonly int? Port;
         /// <summary>

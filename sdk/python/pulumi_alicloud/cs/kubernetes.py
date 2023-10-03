@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -174,214 +174,365 @@ class KubernetesArgs:
         :param pulumi.Input[str] worker_period_unit: Worker payment period unit, the valid value is `Month`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by workers.
         """
-        pulumi.set(__self__, "master_instance_types", master_instance_types)
-        pulumi.set(__self__, "master_vswitch_ids", master_vswitch_ids)
+        KubernetesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            master_instance_types=master_instance_types,
+            master_vswitch_ids=master_vswitch_ids,
+            addons=addons,
+            api_audiences=api_audiences,
+            availability_zone=availability_zone,
+            client_cert=client_cert,
+            client_key=client_key,
+            cluster_ca_cert=cluster_ca_cert,
+            cluster_domain=cluster_domain,
+            cpu_policy=cpu_policy,
+            custom_san=custom_san,
+            deletion_protection=deletion_protection,
+            enable_ssh=enable_ssh,
+            exclude_autoscaler_nodes=exclude_autoscaler_nodes,
+            image_id=image_id,
+            install_cloud_monitor=install_cloud_monitor,
+            is_enterprise_security_group=is_enterprise_security_group,
+            key_name=key_name,
+            kms_encrypted_password=kms_encrypted_password,
+            kms_encryption_context=kms_encryption_context,
+            kube_config=kube_config,
+            load_balancer_spec=load_balancer_spec,
+            master_auto_renew=master_auto_renew,
+            master_auto_renew_period=master_auto_renew_period,
+            master_disk_category=master_disk_category,
+            master_disk_performance_level=master_disk_performance_level,
+            master_disk_size=master_disk_size,
+            master_disk_snapshot_policy_id=master_disk_snapshot_policy_id,
+            master_instance_charge_type=master_instance_charge_type,
+            master_period=master_period,
+            master_period_unit=master_period_unit,
+            name=name,
+            name_prefix=name_prefix,
+            new_nat_gateway=new_nat_gateway,
+            node_cidr_mask=node_cidr_mask,
+            node_name_mode=node_name_mode,
+            node_port_range=node_port_range,
+            os_type=os_type,
+            password=password,
+            platform=platform,
+            pod_cidr=pod_cidr,
+            pod_vswitch_ids=pod_vswitch_ids,
+            proxy_mode=proxy_mode,
+            rds_instances=rds_instances,
+            resource_group_id=resource_group_id,
+            retain_resources=retain_resources,
+            runtime=runtime,
+            security_group_id=security_group_id,
+            service_account_issuer=service_account_issuer,
+            service_cidr=service_cidr,
+            slb_internet_enabled=slb_internet_enabled,
+            tags=tags,
+            taints=taints,
+            timezone=timezone,
+            user_ca=user_ca,
+            user_data=user_data,
+            version=version,
+            worker_auto_renew=worker_auto_renew,
+            worker_auto_renew_period=worker_auto_renew_period,
+            worker_data_disk_category=worker_data_disk_category,
+            worker_data_disk_size=worker_data_disk_size,
+            worker_data_disks=worker_data_disks,
+            worker_disk_category=worker_disk_category,
+            worker_disk_performance_level=worker_disk_performance_level,
+            worker_disk_size=worker_disk_size,
+            worker_disk_snapshot_policy_id=worker_disk_snapshot_policy_id,
+            worker_instance_charge_type=worker_instance_charge_type,
+            worker_instance_types=worker_instance_types,
+            worker_number=worker_number,
+            worker_period=worker_period,
+            worker_period_unit=worker_period_unit,
+            worker_vswitch_ids=worker_vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             master_instance_types: pulumi.Input[Sequence[pulumi.Input[str]]],
+             master_vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             addons: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]]] = None,
+             api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             availability_zone: Optional[pulumi.Input[str]] = None,
+             client_cert: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+             cluster_domain: Optional[pulumi.Input[str]] = None,
+             cpu_policy: Optional[pulumi.Input[str]] = None,
+             custom_san: Optional[pulumi.Input[str]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             enable_ssh: Optional[pulumi.Input[bool]] = None,
+             exclude_autoscaler_nodes: Optional[pulumi.Input[bool]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
+             is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
+             key_name: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             kube_config: Optional[pulumi.Input[str]] = None,
+             load_balancer_spec: Optional[pulumi.Input[str]] = None,
+             master_auto_renew: Optional[pulumi.Input[bool]] = None,
+             master_auto_renew_period: Optional[pulumi.Input[int]] = None,
+             master_disk_category: Optional[pulumi.Input[str]] = None,
+             master_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             master_disk_size: Optional[pulumi.Input[int]] = None,
+             master_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             master_instance_charge_type: Optional[pulumi.Input[str]] = None,
+             master_period: Optional[pulumi.Input[int]] = None,
+             master_period_unit: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             new_nat_gateway: Optional[pulumi.Input[bool]] = None,
+             node_cidr_mask: Optional[pulumi.Input[int]] = None,
+             node_name_mode: Optional[pulumi.Input[str]] = None,
+             node_port_range: Optional[pulumi.Input[str]] = None,
+             os_type: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             platform: Optional[pulumi.Input[str]] = None,
+             pod_cidr: Optional[pulumi.Input[str]] = None,
+             pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             proxy_mode: Optional[pulumi.Input[str]] = None,
+             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             runtime: Optional[pulumi.Input['KubernetesRuntimeArgs']] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             service_account_issuer: Optional[pulumi.Input[str]] = None,
+             service_cidr: Optional[pulumi.Input[str]] = None,
+             slb_internet_enabled: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             taints: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesTaintArgs']]]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             user_ca: Optional[pulumi.Input[str]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             worker_auto_renew: Optional[pulumi.Input[bool]] = None,
+             worker_auto_renew_period: Optional[pulumi.Input[int]] = None,
+             worker_data_disk_category: Optional[pulumi.Input[str]] = None,
+             worker_data_disk_size: Optional[pulumi.Input[int]] = None,
+             worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerDataDiskArgs']]]] = None,
+             worker_disk_category: Optional[pulumi.Input[str]] = None,
+             worker_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             worker_disk_size: Optional[pulumi.Input[int]] = None,
+             worker_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
+             worker_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             worker_number: Optional[pulumi.Input[int]] = None,
+             worker_period: Optional[pulumi.Input[int]] = None,
+             worker_period_unit: Optional[pulumi.Input[str]] = None,
+             worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("master_instance_types", master_instance_types)
+        _setter("master_vswitch_ids", master_vswitch_ids)
         if addons is not None:
-            pulumi.set(__self__, "addons", addons)
+            _setter("addons", addons)
         if api_audiences is not None:
-            pulumi.set(__self__, "api_audiences", api_audiences)
+            _setter("api_audiences", api_audiences)
         if availability_zone is not None:
-            pulumi.set(__self__, "availability_zone", availability_zone)
+            _setter("availability_zone", availability_zone)
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if cluster_ca_cert is not None:
-            pulumi.set(__self__, "cluster_ca_cert", cluster_ca_cert)
+            _setter("cluster_ca_cert", cluster_ca_cert)
         if cluster_domain is not None:
-            pulumi.set(__self__, "cluster_domain", cluster_domain)
+            _setter("cluster_domain", cluster_domain)
         if cpu_policy is not None:
             warnings.warn("""Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""", DeprecationWarning)
             pulumi.log.warn("""cpu_policy is deprecated: Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""")
         if cpu_policy is not None:
-            pulumi.set(__self__, "cpu_policy", cpu_policy)
+            _setter("cpu_policy", cpu_policy)
         if custom_san is not None:
-            pulumi.set(__self__, "custom_san", custom_san)
+            _setter("custom_san", custom_san)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if enable_ssh is not None:
-            pulumi.set(__self__, "enable_ssh", enable_ssh)
+            _setter("enable_ssh", enable_ssh)
         if exclude_autoscaler_nodes is not None:
             warnings.warn("""Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
             pulumi.log.warn("""exclude_autoscaler_nodes is deprecated: Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
         if exclude_autoscaler_nodes is not None:
-            pulumi.set(__self__, "exclude_autoscaler_nodes", exclude_autoscaler_nodes)
+            _setter("exclude_autoscaler_nodes", exclude_autoscaler_nodes)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if install_cloud_monitor is not None:
-            pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
+            _setter("install_cloud_monitor", install_cloud_monitor)
         if is_enterprise_security_group is not None:
-            pulumi.set(__self__, "is_enterprise_security_group", is_enterprise_security_group)
+            _setter("is_enterprise_security_group", is_enterprise_security_group)
         if key_name is not None:
-            pulumi.set(__self__, "key_name", key_name)
+            _setter("key_name", key_name)
         if kms_encrypted_password is not None:
-            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+            _setter("kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+            _setter("kms_encryption_context", kms_encryption_context)
         if kube_config is not None:
             warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
             pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
         if kube_config is not None:
-            pulumi.set(__self__, "kube_config", kube_config)
+            _setter("kube_config", kube_config)
         if load_balancer_spec is not None:
-            pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
+            _setter("load_balancer_spec", load_balancer_spec)
         if master_auto_renew is not None:
-            pulumi.set(__self__, "master_auto_renew", master_auto_renew)
+            _setter("master_auto_renew", master_auto_renew)
         if master_auto_renew_period is not None:
-            pulumi.set(__self__, "master_auto_renew_period", master_auto_renew_period)
+            _setter("master_auto_renew_period", master_auto_renew_period)
         if master_disk_category is not None:
-            pulumi.set(__self__, "master_disk_category", master_disk_category)
+            _setter("master_disk_category", master_disk_category)
         if master_disk_performance_level is not None:
-            pulumi.set(__self__, "master_disk_performance_level", master_disk_performance_level)
+            _setter("master_disk_performance_level", master_disk_performance_level)
         if master_disk_size is not None:
-            pulumi.set(__self__, "master_disk_size", master_disk_size)
+            _setter("master_disk_size", master_disk_size)
         if master_disk_snapshot_policy_id is not None:
-            pulumi.set(__self__, "master_disk_snapshot_policy_id", master_disk_snapshot_policy_id)
+            _setter("master_disk_snapshot_policy_id", master_disk_snapshot_policy_id)
         if master_instance_charge_type is not None:
-            pulumi.set(__self__, "master_instance_charge_type", master_instance_charge_type)
+            _setter("master_instance_charge_type", master_instance_charge_type)
         if master_period is not None:
-            pulumi.set(__self__, "master_period", master_period)
+            _setter("master_period", master_period)
         if master_period_unit is not None:
-            pulumi.set(__self__, "master_period_unit", master_period_unit)
+            _setter("master_period_unit", master_period_unit)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
             warnings.warn("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""", DeprecationWarning)
             pulumi.log.warn("""name_prefix is deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if new_nat_gateway is not None:
-            pulumi.set(__self__, "new_nat_gateway", new_nat_gateway)
+            _setter("new_nat_gateway", new_nat_gateway)
         if node_cidr_mask is not None:
-            pulumi.set(__self__, "node_cidr_mask", node_cidr_mask)
+            _setter("node_cidr_mask", node_cidr_mask)
         if node_name_mode is not None:
-            pulumi.set(__self__, "node_name_mode", node_name_mode)
+            _setter("node_name_mode", node_name_mode)
         if node_port_range is not None:
             warnings.warn("""Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
             pulumi.log.warn("""node_port_range is deprecated: Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
         if node_port_range is not None:
-            pulumi.set(__self__, "node_port_range", node_port_range)
+            _setter("node_port_range", node_port_range)
         if os_type is not None:
-            pulumi.set(__self__, "os_type", os_type)
+            _setter("os_type", os_type)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if platform is not None:
-            pulumi.set(__self__, "platform", platform)
+            _setter("platform", platform)
         if pod_cidr is not None:
-            pulumi.set(__self__, "pod_cidr", pod_cidr)
+            _setter("pod_cidr", pod_cidr)
         if pod_vswitch_ids is not None:
-            pulumi.set(__self__, "pod_vswitch_ids", pod_vswitch_ids)
+            _setter("pod_vswitch_ids", pod_vswitch_ids)
         if proxy_mode is not None:
-            pulumi.set(__self__, "proxy_mode", proxy_mode)
+            _setter("proxy_mode", proxy_mode)
         if rds_instances is not None:
-            pulumi.set(__self__, "rds_instances", rds_instances)
+            _setter("rds_instances", rds_instances)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if retain_resources is not None:
-            pulumi.set(__self__, "retain_resources", retain_resources)
+            _setter("retain_resources", retain_resources)
         if runtime is not None:
-            pulumi.set(__self__, "runtime", runtime)
+            _setter("runtime", runtime)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if service_account_issuer is not None:
-            pulumi.set(__self__, "service_account_issuer", service_account_issuer)
+            _setter("service_account_issuer", service_account_issuer)
         if service_cidr is not None:
-            pulumi.set(__self__, "service_cidr", service_cidr)
+            _setter("service_cidr", service_cidr)
         if slb_internet_enabled is not None:
-            pulumi.set(__self__, "slb_internet_enabled", slb_internet_enabled)
+            _setter("slb_internet_enabled", slb_internet_enabled)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if taints is not None:
             warnings.warn("""Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""", DeprecationWarning)
             pulumi.log.warn("""taints is deprecated: Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""")
         if taints is not None:
-            pulumi.set(__self__, "taints", taints)
+            _setter("taints", taints)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if user_ca is not None:
-            pulumi.set(__self__, "user_ca", user_ca)
+            _setter("user_ca", user_ca)
         if user_data is not None:
             warnings.warn("""Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""", DeprecationWarning)
             pulumi.log.warn("""user_data is deprecated: Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""")
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if worker_auto_renew is not None:
             warnings.warn("""Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_auto_renew is deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""")
         if worker_auto_renew is not None:
-            pulumi.set(__self__, "worker_auto_renew", worker_auto_renew)
+            _setter("worker_auto_renew", worker_auto_renew)
         if worker_auto_renew_period is not None:
             warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""")
         if worker_auto_renew_period is not None:
-            pulumi.set(__self__, "worker_auto_renew_period", worker_auto_renew_period)
+            _setter("worker_auto_renew_period", worker_auto_renew_period)
         if worker_data_disk_category is not None:
             warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""")
         if worker_data_disk_category is not None:
-            pulumi.set(__self__, "worker_data_disk_category", worker_data_disk_category)
+            _setter("worker_data_disk_category", worker_data_disk_category)
         if worker_data_disk_size is not None:
             warnings.warn("""Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_data_disk_size is deprecated: Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""")
         if worker_data_disk_size is not None:
-            pulumi.set(__self__, "worker_data_disk_size", worker_data_disk_size)
+            _setter("worker_data_disk_size", worker_data_disk_size)
         if worker_data_disks is not None:
             warnings.warn("""Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_data_disks is deprecated: Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""")
         if worker_data_disks is not None:
-            pulumi.set(__self__, "worker_data_disks", worker_data_disks)
+            _setter("worker_data_disks", worker_data_disks)
         if worker_disk_category is not None:
             warnings.warn("""Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_disk_category is deprecated: Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""")
         if worker_disk_category is not None:
-            pulumi.set(__self__, "worker_disk_category", worker_disk_category)
+            _setter("worker_disk_category", worker_disk_category)
         if worker_disk_performance_level is not None:
             warnings.warn("""Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_disk_performance_level is deprecated: Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""")
         if worker_disk_performance_level is not None:
-            pulumi.set(__self__, "worker_disk_performance_level", worker_disk_performance_level)
+            _setter("worker_disk_performance_level", worker_disk_performance_level)
         if worker_disk_size is not None:
             warnings.warn("""Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_disk_size is deprecated: Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""")
         if worker_disk_size is not None:
-            pulumi.set(__self__, "worker_disk_size", worker_disk_size)
+            _setter("worker_disk_size", worker_disk_size)
         if worker_disk_snapshot_policy_id is not None:
             warnings.warn("""Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_disk_snapshot_policy_id is deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""")
         if worker_disk_snapshot_policy_id is not None:
-            pulumi.set(__self__, "worker_disk_snapshot_policy_id", worker_disk_snapshot_policy_id)
+            _setter("worker_disk_snapshot_policy_id", worker_disk_snapshot_policy_id)
         if worker_instance_charge_type is not None:
             warnings.warn("""Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_instance_charge_type is deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""")
         if worker_instance_charge_type is not None:
-            pulumi.set(__self__, "worker_instance_charge_type", worker_instance_charge_type)
+            _setter("worker_instance_charge_type", worker_instance_charge_type)
         if worker_instance_types is not None:
             warnings.warn("""Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_instance_types is deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""")
         if worker_instance_types is not None:
-            pulumi.set(__self__, "worker_instance_types", worker_instance_types)
+            _setter("worker_instance_types", worker_instance_types)
         if worker_number is not None:
             warnings.warn("""Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_number is deprecated: Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""")
         if worker_number is not None:
-            pulumi.set(__self__, "worker_number", worker_number)
+            _setter("worker_number", worker_number)
         if worker_period is not None:
             warnings.warn("""Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_period is deprecated: Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""")
         if worker_period is not None:
-            pulumi.set(__self__, "worker_period", worker_period)
+            _setter("worker_period", worker_period)
         if worker_period_unit is not None:
             warnings.warn("""Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_period_unit is deprecated: Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""")
         if worker_period_unit is not None:
-            pulumi.set(__self__, "worker_period_unit", worker_period_unit)
+            _setter("worker_period_unit", worker_period_unit)
         if worker_vswitch_ids is not None:
             warnings.warn("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_vswitch_ids is deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""")
         if worker_vswitch_ids is not None:
-            pulumi.set(__self__, "worker_vswitch_ids", worker_vswitch_ids)
+            _setter("worker_vswitch_ids", worker_vswitch_ids)
 
     @property
     @pulumi.getter(name="masterInstanceTypes")
@@ -1504,242 +1655,413 @@ class _KubernetesState:
         :param pulumi.Input[str] worker_ram_role_name: The RamRole Name attached to worker node.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_vswitch_ids: The vswitches used by workers.
         """
+        _KubernetesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            addons=addons,
+            api_audiences=api_audiences,
+            availability_zone=availability_zone,
+            certificate_authority=certificate_authority,
+            client_cert=client_cert,
+            client_key=client_key,
+            cluster_ca_cert=cluster_ca_cert,
+            cluster_domain=cluster_domain,
+            connections=connections,
+            cpu_policy=cpu_policy,
+            custom_san=custom_san,
+            deletion_protection=deletion_protection,
+            enable_ssh=enable_ssh,
+            exclude_autoscaler_nodes=exclude_autoscaler_nodes,
+            image_id=image_id,
+            install_cloud_monitor=install_cloud_monitor,
+            is_enterprise_security_group=is_enterprise_security_group,
+            key_name=key_name,
+            kms_encrypted_password=kms_encrypted_password,
+            kms_encryption_context=kms_encryption_context,
+            kube_config=kube_config,
+            load_balancer_spec=load_balancer_spec,
+            master_auto_renew=master_auto_renew,
+            master_auto_renew_period=master_auto_renew_period,
+            master_disk_category=master_disk_category,
+            master_disk_performance_level=master_disk_performance_level,
+            master_disk_size=master_disk_size,
+            master_disk_snapshot_policy_id=master_disk_snapshot_policy_id,
+            master_instance_charge_type=master_instance_charge_type,
+            master_instance_types=master_instance_types,
+            master_nodes=master_nodes,
+            master_period=master_period,
+            master_period_unit=master_period_unit,
+            master_vswitch_ids=master_vswitch_ids,
+            name=name,
+            name_prefix=name_prefix,
+            nat_gateway_id=nat_gateway_id,
+            new_nat_gateway=new_nat_gateway,
+            node_cidr_mask=node_cidr_mask,
+            node_name_mode=node_name_mode,
+            node_port_range=node_port_range,
+            os_type=os_type,
+            password=password,
+            platform=platform,
+            pod_cidr=pod_cidr,
+            pod_vswitch_ids=pod_vswitch_ids,
+            proxy_mode=proxy_mode,
+            rds_instances=rds_instances,
+            resource_group_id=resource_group_id,
+            retain_resources=retain_resources,
+            runtime=runtime,
+            security_group_id=security_group_id,
+            service_account_issuer=service_account_issuer,
+            service_cidr=service_cidr,
+            slb_id=slb_id,
+            slb_internet=slb_internet,
+            slb_internet_enabled=slb_internet_enabled,
+            slb_intranet=slb_intranet,
+            tags=tags,
+            taints=taints,
+            timezone=timezone,
+            user_ca=user_ca,
+            user_data=user_data,
+            version=version,
+            vpc_id=vpc_id,
+            worker_auto_renew=worker_auto_renew,
+            worker_auto_renew_period=worker_auto_renew_period,
+            worker_data_disk_category=worker_data_disk_category,
+            worker_data_disk_size=worker_data_disk_size,
+            worker_data_disks=worker_data_disks,
+            worker_disk_category=worker_disk_category,
+            worker_disk_performance_level=worker_disk_performance_level,
+            worker_disk_size=worker_disk_size,
+            worker_disk_snapshot_policy_id=worker_disk_snapshot_policy_id,
+            worker_instance_charge_type=worker_instance_charge_type,
+            worker_instance_types=worker_instance_types,
+            worker_nodes=worker_nodes,
+            worker_number=worker_number,
+            worker_period=worker_period,
+            worker_period_unit=worker_period_unit,
+            worker_ram_role_name=worker_ram_role_name,
+            worker_vswitch_ids=worker_vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             addons: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesAddonArgs']]]] = None,
+             api_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             availability_zone: Optional[pulumi.Input[str]] = None,
+             certificate_authority: Optional[pulumi.Input['KubernetesCertificateAuthorityArgs']] = None,
+             client_cert: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             cluster_ca_cert: Optional[pulumi.Input[str]] = None,
+             cluster_domain: Optional[pulumi.Input[str]] = None,
+             connections: Optional[pulumi.Input['KubernetesConnectionsArgs']] = None,
+             cpu_policy: Optional[pulumi.Input[str]] = None,
+             custom_san: Optional[pulumi.Input[str]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             enable_ssh: Optional[pulumi.Input[bool]] = None,
+             exclude_autoscaler_nodes: Optional[pulumi.Input[bool]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             install_cloud_monitor: Optional[pulumi.Input[bool]] = None,
+             is_enterprise_security_group: Optional[pulumi.Input[bool]] = None,
+             key_name: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             kube_config: Optional[pulumi.Input[str]] = None,
+             load_balancer_spec: Optional[pulumi.Input[str]] = None,
+             master_auto_renew: Optional[pulumi.Input[bool]] = None,
+             master_auto_renew_period: Optional[pulumi.Input[int]] = None,
+             master_disk_category: Optional[pulumi.Input[str]] = None,
+             master_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             master_disk_size: Optional[pulumi.Input[int]] = None,
+             master_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             master_instance_charge_type: Optional[pulumi.Input[str]] = None,
+             master_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             master_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesMasterNodeArgs']]]] = None,
+             master_period: Optional[pulumi.Input[int]] = None,
+             master_period_unit: Optional[pulumi.Input[str]] = None,
+             master_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             name_prefix: Optional[pulumi.Input[str]] = None,
+             nat_gateway_id: Optional[pulumi.Input[str]] = None,
+             new_nat_gateway: Optional[pulumi.Input[bool]] = None,
+             node_cidr_mask: Optional[pulumi.Input[int]] = None,
+             node_name_mode: Optional[pulumi.Input[str]] = None,
+             node_port_range: Optional[pulumi.Input[str]] = None,
+             os_type: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             platform: Optional[pulumi.Input[str]] = None,
+             pod_cidr: Optional[pulumi.Input[str]] = None,
+             pod_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             proxy_mode: Optional[pulumi.Input[str]] = None,
+             rds_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             retain_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             runtime: Optional[pulumi.Input['KubernetesRuntimeArgs']] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             service_account_issuer: Optional[pulumi.Input[str]] = None,
+             service_cidr: Optional[pulumi.Input[str]] = None,
+             slb_id: Optional[pulumi.Input[str]] = None,
+             slb_internet: Optional[pulumi.Input[str]] = None,
+             slb_internet_enabled: Optional[pulumi.Input[bool]] = None,
+             slb_intranet: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             taints: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesTaintArgs']]]] = None,
+             timezone: Optional[pulumi.Input[str]] = None,
+             user_ca: Optional[pulumi.Input[str]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             worker_auto_renew: Optional[pulumi.Input[bool]] = None,
+             worker_auto_renew_period: Optional[pulumi.Input[int]] = None,
+             worker_data_disk_category: Optional[pulumi.Input[str]] = None,
+             worker_data_disk_size: Optional[pulumi.Input[int]] = None,
+             worker_data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerDataDiskArgs']]]] = None,
+             worker_disk_category: Optional[pulumi.Input[str]] = None,
+             worker_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             worker_disk_size: Optional[pulumi.Input[int]] = None,
+             worker_disk_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             worker_instance_charge_type: Optional[pulumi.Input[str]] = None,
+             worker_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             worker_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerNodeArgs']]]] = None,
+             worker_number: Optional[pulumi.Input[int]] = None,
+             worker_period: Optional[pulumi.Input[int]] = None,
+             worker_period_unit: Optional[pulumi.Input[str]] = None,
+             worker_ram_role_name: Optional[pulumi.Input[str]] = None,
+             worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if addons is not None:
-            pulumi.set(__self__, "addons", addons)
+            _setter("addons", addons)
         if api_audiences is not None:
-            pulumi.set(__self__, "api_audiences", api_audiences)
+            _setter("api_audiences", api_audiences)
         if availability_zone is not None:
-            pulumi.set(__self__, "availability_zone", availability_zone)
+            _setter("availability_zone", availability_zone)
         if certificate_authority is not None:
-            pulumi.set(__self__, "certificate_authority", certificate_authority)
+            _setter("certificate_authority", certificate_authority)
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if cluster_ca_cert is not None:
-            pulumi.set(__self__, "cluster_ca_cert", cluster_ca_cert)
+            _setter("cluster_ca_cert", cluster_ca_cert)
         if cluster_domain is not None:
-            pulumi.set(__self__, "cluster_domain", cluster_domain)
+            _setter("cluster_domain", cluster_domain)
         if connections is not None:
-            pulumi.set(__self__, "connections", connections)
+            _setter("connections", connections)
         if cpu_policy is not None:
             warnings.warn("""Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""", DeprecationWarning)
             pulumi.log.warn("""cpu_policy is deprecated: Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""")
         if cpu_policy is not None:
-            pulumi.set(__self__, "cpu_policy", cpu_policy)
+            _setter("cpu_policy", cpu_policy)
         if custom_san is not None:
-            pulumi.set(__self__, "custom_san", custom_san)
+            _setter("custom_san", custom_san)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if enable_ssh is not None:
-            pulumi.set(__self__, "enable_ssh", enable_ssh)
+            _setter("enable_ssh", enable_ssh)
         if exclude_autoscaler_nodes is not None:
             warnings.warn("""Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
             pulumi.log.warn("""exclude_autoscaler_nodes is deprecated: Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
         if exclude_autoscaler_nodes is not None:
-            pulumi.set(__self__, "exclude_autoscaler_nodes", exclude_autoscaler_nodes)
+            _setter("exclude_autoscaler_nodes", exclude_autoscaler_nodes)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if install_cloud_monitor is not None:
-            pulumi.set(__self__, "install_cloud_monitor", install_cloud_monitor)
+            _setter("install_cloud_monitor", install_cloud_monitor)
         if is_enterprise_security_group is not None:
-            pulumi.set(__self__, "is_enterprise_security_group", is_enterprise_security_group)
+            _setter("is_enterprise_security_group", is_enterprise_security_group)
         if key_name is not None:
-            pulumi.set(__self__, "key_name", key_name)
+            _setter("key_name", key_name)
         if kms_encrypted_password is not None:
-            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+            _setter("kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+            _setter("kms_encryption_context", kms_encryption_context)
         if kube_config is not None:
             warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
             pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
         if kube_config is not None:
-            pulumi.set(__self__, "kube_config", kube_config)
+            _setter("kube_config", kube_config)
         if load_balancer_spec is not None:
-            pulumi.set(__self__, "load_balancer_spec", load_balancer_spec)
+            _setter("load_balancer_spec", load_balancer_spec)
         if master_auto_renew is not None:
-            pulumi.set(__self__, "master_auto_renew", master_auto_renew)
+            _setter("master_auto_renew", master_auto_renew)
         if master_auto_renew_period is not None:
-            pulumi.set(__self__, "master_auto_renew_period", master_auto_renew_period)
+            _setter("master_auto_renew_period", master_auto_renew_period)
         if master_disk_category is not None:
-            pulumi.set(__self__, "master_disk_category", master_disk_category)
+            _setter("master_disk_category", master_disk_category)
         if master_disk_performance_level is not None:
-            pulumi.set(__self__, "master_disk_performance_level", master_disk_performance_level)
+            _setter("master_disk_performance_level", master_disk_performance_level)
         if master_disk_size is not None:
-            pulumi.set(__self__, "master_disk_size", master_disk_size)
+            _setter("master_disk_size", master_disk_size)
         if master_disk_snapshot_policy_id is not None:
-            pulumi.set(__self__, "master_disk_snapshot_policy_id", master_disk_snapshot_policy_id)
+            _setter("master_disk_snapshot_policy_id", master_disk_snapshot_policy_id)
         if master_instance_charge_type is not None:
-            pulumi.set(__self__, "master_instance_charge_type", master_instance_charge_type)
+            _setter("master_instance_charge_type", master_instance_charge_type)
         if master_instance_types is not None:
-            pulumi.set(__self__, "master_instance_types", master_instance_types)
+            _setter("master_instance_types", master_instance_types)
         if master_nodes is not None:
-            pulumi.set(__self__, "master_nodes", master_nodes)
+            _setter("master_nodes", master_nodes)
         if master_period is not None:
-            pulumi.set(__self__, "master_period", master_period)
+            _setter("master_period", master_period)
         if master_period_unit is not None:
-            pulumi.set(__self__, "master_period_unit", master_period_unit)
+            _setter("master_period_unit", master_period_unit)
         if master_vswitch_ids is not None:
-            pulumi.set(__self__, "master_vswitch_ids", master_vswitch_ids)
+            _setter("master_vswitch_ids", master_vswitch_ids)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if name_prefix is not None:
             warnings.warn("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""", DeprecationWarning)
             pulumi.log.warn("""name_prefix is deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
         if name_prefix is not None:
-            pulumi.set(__self__, "name_prefix", name_prefix)
+            _setter("name_prefix", name_prefix)
         if nat_gateway_id is not None:
-            pulumi.set(__self__, "nat_gateway_id", nat_gateway_id)
+            _setter("nat_gateway_id", nat_gateway_id)
         if new_nat_gateway is not None:
-            pulumi.set(__self__, "new_nat_gateway", new_nat_gateway)
+            _setter("new_nat_gateway", new_nat_gateway)
         if node_cidr_mask is not None:
-            pulumi.set(__self__, "node_cidr_mask", node_cidr_mask)
+            _setter("node_cidr_mask", node_cidr_mask)
         if node_name_mode is not None:
-            pulumi.set(__self__, "node_name_mode", node_name_mode)
+            _setter("node_name_mode", node_name_mode)
         if node_port_range is not None:
             warnings.warn("""Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
             pulumi.log.warn("""node_port_range is deprecated: Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
         if node_port_range is not None:
-            pulumi.set(__self__, "node_port_range", node_port_range)
+            _setter("node_port_range", node_port_range)
         if os_type is not None:
-            pulumi.set(__self__, "os_type", os_type)
+            _setter("os_type", os_type)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if platform is not None:
-            pulumi.set(__self__, "platform", platform)
+            _setter("platform", platform)
         if pod_cidr is not None:
-            pulumi.set(__self__, "pod_cidr", pod_cidr)
+            _setter("pod_cidr", pod_cidr)
         if pod_vswitch_ids is not None:
-            pulumi.set(__self__, "pod_vswitch_ids", pod_vswitch_ids)
+            _setter("pod_vswitch_ids", pod_vswitch_ids)
         if proxy_mode is not None:
-            pulumi.set(__self__, "proxy_mode", proxy_mode)
+            _setter("proxy_mode", proxy_mode)
         if rds_instances is not None:
-            pulumi.set(__self__, "rds_instances", rds_instances)
+            _setter("rds_instances", rds_instances)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if retain_resources is not None:
-            pulumi.set(__self__, "retain_resources", retain_resources)
+            _setter("retain_resources", retain_resources)
         if runtime is not None:
-            pulumi.set(__self__, "runtime", runtime)
+            _setter("runtime", runtime)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if service_account_issuer is not None:
-            pulumi.set(__self__, "service_account_issuer", service_account_issuer)
+            _setter("service_account_issuer", service_account_issuer)
         if service_cidr is not None:
-            pulumi.set(__self__, "service_cidr", service_cidr)
+            _setter("service_cidr", service_cidr)
         if slb_id is not None:
             warnings.warn("""Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""slb_id is deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""")
         if slb_id is not None:
-            pulumi.set(__self__, "slb_id", slb_id)
+            _setter("slb_id", slb_id)
         if slb_internet is not None:
-            pulumi.set(__self__, "slb_internet", slb_internet)
+            _setter("slb_internet", slb_internet)
         if slb_internet_enabled is not None:
-            pulumi.set(__self__, "slb_internet_enabled", slb_internet_enabled)
+            _setter("slb_internet_enabled", slb_internet_enabled)
         if slb_intranet is not None:
-            pulumi.set(__self__, "slb_intranet", slb_intranet)
+            _setter("slb_intranet", slb_intranet)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if taints is not None:
             warnings.warn("""Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""", DeprecationWarning)
             pulumi.log.warn("""taints is deprecated: Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""")
         if taints is not None:
-            pulumi.set(__self__, "taints", taints)
+            _setter("taints", taints)
         if timezone is not None:
-            pulumi.set(__self__, "timezone", timezone)
+            _setter("timezone", timezone)
         if user_ca is not None:
-            pulumi.set(__self__, "user_ca", user_ca)
+            _setter("user_ca", user_ca)
         if user_data is not None:
             warnings.warn("""Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""", DeprecationWarning)
             pulumi.log.warn("""user_data is deprecated: Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""")
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if worker_auto_renew is not None:
             warnings.warn("""Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_auto_renew is deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""")
         if worker_auto_renew is not None:
-            pulumi.set(__self__, "worker_auto_renew", worker_auto_renew)
+            _setter("worker_auto_renew", worker_auto_renew)
         if worker_auto_renew_period is not None:
             warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""")
         if worker_auto_renew_period is not None:
-            pulumi.set(__self__, "worker_auto_renew_period", worker_auto_renew_period)
+            _setter("worker_auto_renew_period", worker_auto_renew_period)
         if worker_data_disk_category is not None:
             warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""")
         if worker_data_disk_category is not None:
-            pulumi.set(__self__, "worker_data_disk_category", worker_data_disk_category)
+            _setter("worker_data_disk_category", worker_data_disk_category)
         if worker_data_disk_size is not None:
             warnings.warn("""Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_data_disk_size is deprecated: Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""")
         if worker_data_disk_size is not None:
-            pulumi.set(__self__, "worker_data_disk_size", worker_data_disk_size)
+            _setter("worker_data_disk_size", worker_data_disk_size)
         if worker_data_disks is not None:
             warnings.warn("""Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_data_disks is deprecated: Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""")
         if worker_data_disks is not None:
-            pulumi.set(__self__, "worker_data_disks", worker_data_disks)
+            _setter("worker_data_disks", worker_data_disks)
         if worker_disk_category is not None:
             warnings.warn("""Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_disk_category is deprecated: Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""")
         if worker_disk_category is not None:
-            pulumi.set(__self__, "worker_disk_category", worker_disk_category)
+            _setter("worker_disk_category", worker_disk_category)
         if worker_disk_performance_level is not None:
             warnings.warn("""Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_disk_performance_level is deprecated: Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""")
         if worker_disk_performance_level is not None:
-            pulumi.set(__self__, "worker_disk_performance_level", worker_disk_performance_level)
+            _setter("worker_disk_performance_level", worker_disk_performance_level)
         if worker_disk_size is not None:
             warnings.warn("""Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_disk_size is deprecated: Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""")
         if worker_disk_size is not None:
-            pulumi.set(__self__, "worker_disk_size", worker_disk_size)
+            _setter("worker_disk_size", worker_disk_size)
         if worker_disk_snapshot_policy_id is not None:
             warnings.warn("""Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_disk_snapshot_policy_id is deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""")
         if worker_disk_snapshot_policy_id is not None:
-            pulumi.set(__self__, "worker_disk_snapshot_policy_id", worker_disk_snapshot_policy_id)
+            _setter("worker_disk_snapshot_policy_id", worker_disk_snapshot_policy_id)
         if worker_instance_charge_type is not None:
             warnings.warn("""Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_instance_charge_type is deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""")
         if worker_instance_charge_type is not None:
-            pulumi.set(__self__, "worker_instance_charge_type", worker_instance_charge_type)
+            _setter("worker_instance_charge_type", worker_instance_charge_type)
         if worker_instance_types is not None:
             warnings.warn("""Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_instance_types is deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""")
         if worker_instance_types is not None:
-            pulumi.set(__self__, "worker_instance_types", worker_instance_types)
+            _setter("worker_instance_types", worker_instance_types)
         if worker_nodes is not None:
             warnings.warn("""Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
             pulumi.log.warn("""worker_nodes is deprecated: Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
         if worker_nodes is not None:
-            pulumi.set(__self__, "worker_nodes", worker_nodes)
+            _setter("worker_nodes", worker_nodes)
         if worker_number is not None:
             warnings.warn("""Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_number is deprecated: Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""")
         if worker_number is not None:
-            pulumi.set(__self__, "worker_number", worker_number)
+            _setter("worker_number", worker_number)
         if worker_period is not None:
             warnings.warn("""Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_period is deprecated: Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""")
         if worker_period is not None:
-            pulumi.set(__self__, "worker_period", worker_period)
+            _setter("worker_period", worker_period)
         if worker_period_unit is not None:
             warnings.warn("""Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_period_unit is deprecated: Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""")
         if worker_period_unit is not None:
-            pulumi.set(__self__, "worker_period_unit", worker_period_unit)
+            _setter("worker_period_unit", worker_period_unit)
         if worker_ram_role_name is not None:
-            pulumi.set(__self__, "worker_ram_role_name", worker_ram_role_name)
+            _setter("worker_ram_role_name", worker_ram_role_name)
         if worker_vswitch_ids is not None:
             warnings.warn("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""", DeprecationWarning)
             pulumi.log.warn("""worker_vswitch_ids is deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""")
         if worker_vswitch_ids is not None:
-            pulumi.set(__self__, "worker_vswitch_ids", worker_vswitch_ids)
+            _setter("worker_vswitch_ids", worker_vswitch_ids)
 
     @property
     @pulumi.getter
@@ -3067,6 +3389,10 @@ class Kubernetes(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            KubernetesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -3160,16 +3486,10 @@ class Kubernetes(pulumi.CustomResource):
             __props__.__dict__["client_key"] = client_key
             __props__.__dict__["cluster_ca_cert"] = cluster_ca_cert
             __props__.__dict__["cluster_domain"] = cluster_domain
-            if cpu_policy is not None and not opts.urn:
-                warnings.warn("""Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""cpu_policy is deprecated: Field 'cpu_policy' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'cpu_policy' to replace it""")
             __props__.__dict__["cpu_policy"] = cpu_policy
             __props__.__dict__["custom_san"] = custom_san
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["enable_ssh"] = enable_ssh
-            if exclude_autoscaler_nodes is not None and not opts.urn:
-                warnings.warn("""Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
-                pulumi.log.warn("""exclude_autoscaler_nodes is deprecated: Field 'exclude_autoscaler_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
             __props__.__dict__["exclude_autoscaler_nodes"] = exclude_autoscaler_nodes
             __props__.__dict__["image_id"] = image_id
             __props__.__dict__["install_cloud_monitor"] = install_cloud_monitor
@@ -3177,9 +3497,6 @@ class Kubernetes(pulumi.CustomResource):
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["kms_encrypted_password"] = kms_encrypted_password
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
-            if kube_config is not None and not opts.urn:
-                warnings.warn("""Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""", DeprecationWarning)
-                pulumi.log.warn("""kube_config is deprecated: Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config.""")
             __props__.__dict__["kube_config"] = kube_config
             __props__.__dict__["load_balancer_spec"] = load_balancer_spec
             __props__.__dict__["master_auto_renew"] = master_auto_renew
@@ -3198,16 +3515,10 @@ class Kubernetes(pulumi.CustomResource):
                 raise TypeError("Missing required property 'master_vswitch_ids'")
             __props__.__dict__["master_vswitch_ids"] = master_vswitch_ids
             __props__.__dict__["name"] = name
-            if name_prefix is not None and not opts.urn:
-                warnings.warn("""Field 'name_prefix' has been deprecated from provider version 1.75.0.""", DeprecationWarning)
-                pulumi.log.warn("""name_prefix is deprecated: Field 'name_prefix' has been deprecated from provider version 1.75.0.""")
             __props__.__dict__["name_prefix"] = name_prefix
             __props__.__dict__["new_nat_gateway"] = new_nat_gateway
             __props__.__dict__["node_cidr_mask"] = node_cidr_mask
             __props__.__dict__["node_name_mode"] = node_name_mode
-            if node_port_range is not None and not opts.urn:
-                warnings.warn("""Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
-                pulumi.log.warn("""node_port_range is deprecated: Field 'node_port_range' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
             __props__.__dict__["node_port_range"] = node_port_range
             __props__.__dict__["os_type"] = os_type
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
@@ -3218,82 +3529,36 @@ class Kubernetes(pulumi.CustomResource):
             __props__.__dict__["rds_instances"] = rds_instances
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["retain_resources"] = retain_resources
+            if runtime is not None and not isinstance(runtime, KubernetesRuntimeArgs):
+                runtime = runtime or {}
+                def _setter(key, value):
+                    runtime[key] = value
+                KubernetesRuntimeArgs._configure(_setter, **runtime)
             __props__.__dict__["runtime"] = runtime
             __props__.__dict__["security_group_id"] = security_group_id
             __props__.__dict__["service_account_issuer"] = service_account_issuer
             __props__.__dict__["service_cidr"] = service_cidr
             __props__.__dict__["slb_internet_enabled"] = slb_internet_enabled
             __props__.__dict__["tags"] = tags
-            if taints is not None and not opts.urn:
-                warnings.warn("""Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""taints is deprecated: Field 'taints' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'taints' to replace it""")
             __props__.__dict__["taints"] = taints
             __props__.__dict__["timezone"] = timezone
             __props__.__dict__["user_ca"] = user_ca
-            if user_data is not None and not opts.urn:
-                warnings.warn("""Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""user_data is deprecated: Field 'user_data' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'user_data' to replace it""")
             __props__.__dict__["user_data"] = user_data
             __props__.__dict__["version"] = version
-            if worker_auto_renew is not None and not opts.urn:
-                warnings.warn("""Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_auto_renew is deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it""")
             __props__.__dict__["worker_auto_renew"] = worker_auto_renew
-            if worker_auto_renew_period is not None and not opts.urn:
-                warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""")
             __props__.__dict__["worker_auto_renew_period"] = worker_auto_renew_period
-            if worker_data_disk_category is not None and not opts.urn:
-                warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""")
             __props__.__dict__["worker_data_disk_category"] = worker_data_disk_category
-            if worker_data_disk_size is not None and not opts.urn:
-                warnings.warn("""Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_data_disk_size is deprecated: Field 'worker_data_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.size' to replace it""")
             __props__.__dict__["worker_data_disk_size"] = worker_data_disk_size
-            if worker_data_disks is not None and not opts.urn:
-                warnings.warn("""Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_data_disks is deprecated: Field 'worker_data_disks' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks' to replace it""")
             __props__.__dict__["worker_data_disks"] = worker_data_disks
-            if worker_disk_category is not None and not opts.urn:
-                warnings.warn("""Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_disk_category is deprecated: Field 'worker_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_category' to replace it""")
             __props__.__dict__["worker_disk_category"] = worker_disk_category
-            if worker_disk_performance_level is not None and not opts.urn:
-                warnings.warn("""Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_disk_performance_level is deprecated: Field 'worker_disk_performance_level' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_performance_level' to replace it""")
             __props__.__dict__["worker_disk_performance_level"] = worker_disk_performance_level
-            if worker_disk_size is not None and not opts.urn:
-                warnings.warn("""Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_disk_size is deprecated: Field 'worker_disk_size' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_size' to replace it""")
             __props__.__dict__["worker_disk_size"] = worker_disk_size
-            if worker_disk_snapshot_policy_id is not None and not opts.urn:
-                warnings.warn("""Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_disk_snapshot_policy_id is deprecated: Field 'worker_disk_snapshot_policy_id' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'system_disk_snapshot_policy_id' to replace it""")
             __props__.__dict__["worker_disk_snapshot_policy_id"] = worker_disk_snapshot_policy_id
-            if worker_instance_charge_type is not None and not opts.urn:
-                warnings.warn("""Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_instance_charge_type is deprecated: Field 'worker_instance_charge_type' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_charge_type' to replace it""")
             __props__.__dict__["worker_instance_charge_type"] = worker_instance_charge_type
-            if worker_instance_types is not None and not opts.urn:
-                warnings.warn("""Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_instance_types is deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it""")
             __props__.__dict__["worker_instance_types"] = worker_instance_types
-            if worker_number is not None and not opts.urn:
-                warnings.warn("""Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_number is deprecated: Field 'worker_number' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'desired_size' to replace it""")
             __props__.__dict__["worker_number"] = worker_number
-            if worker_period is not None and not opts.urn:
-                warnings.warn("""Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_period is deprecated: Field 'worker_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period' to replace it""")
             __props__.__dict__["worker_period"] = worker_period
-            if worker_period_unit is not None and not opts.urn:
-                warnings.warn("""Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_period_unit is deprecated: Field 'worker_period_unit' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'period_unit' to replace it""")
             __props__.__dict__["worker_period_unit"] = worker_period_unit
-            if worker_vswitch_ids is not None and not opts.urn:
-                warnings.warn("""Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""", DeprecationWarning)
-                pulumi.log.warn("""worker_vswitch_ids is deprecated: Field 'worker_vswitch_ids' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'vswitch_ids' to replace it""")
             __props__.__dict__["worker_vswitch_ids"] = worker_vswitch_ids
             __props__.__dict__["certificate_authority"] = None
             __props__.__dict__["connections"] = None

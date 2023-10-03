@@ -19,7 +19,7 @@ type ApplicationConfigMapMountDescV2 struct {
 	ConfigMapId *string `pulumi:"configMapId"`
 	// The key.
 	Key *string `pulumi:"key"`
-	// The path of the container in SAE.
+	// The mount path.
 	MountPath *string `pulumi:"mountPath"`
 }
 
@@ -39,7 +39,7 @@ type ApplicationConfigMapMountDescV2Args struct {
 	ConfigMapId pulumi.StringPtrInput `pulumi:"configMapId"`
 	// The key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The path of the container in SAE.
+	// The mount path.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
 }
 
@@ -122,7 +122,7 @@ func (o ApplicationConfigMapMountDescV2Output) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationConfigMapMountDescV2) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The path of the container in SAE.
+// The mount path.
 func (o ApplicationConfigMapMountDescV2Output) MountPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationConfigMapMountDescV2) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
@@ -1045,7 +1045,7 @@ type ApplicationLivenessV2HttpGet struct {
 	KeyWord *string `pulumi:"keyWord"`
 	// The request path.
 	Path *string `pulumi:"path"`
-	// The port that is used to check the status of TCP connections.
+	// The port.
 	Port *int `pulumi:"port"`
 	// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
 	Scheme *string `pulumi:"scheme"`
@@ -1069,7 +1069,7 @@ type ApplicationLivenessV2HttpGetArgs struct {
 	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
 	// The request path.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// The port that is used to check the status of TCP connections.
+	// The port.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
 	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
@@ -1185,7 +1185,7 @@ func (o ApplicationLivenessV2HttpGetOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationLivenessV2HttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// The port that is used to check the status of TCP connections.
+// The port.
 func (o ApplicationLivenessV2HttpGetOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationLivenessV2HttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -1255,7 +1255,7 @@ func (o ApplicationLivenessV2HttpGetPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The port that is used to check the status of TCP connections.
+// The port.
 func (o ApplicationLivenessV2HttpGetPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationLivenessV2HttpGet) *int {
 		if v == nil {
@@ -1276,7 +1276,7 @@ func (o ApplicationLivenessV2HttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
 }
 
 type ApplicationLivenessV2TcpSocket struct {
-	// The port that is used to check the status of TCP connections.
+	// The port.
 	Port *int `pulumi:"port"`
 }
 
@@ -1292,7 +1292,7 @@ type ApplicationLivenessV2TcpSocketInput interface {
 }
 
 type ApplicationLivenessV2TcpSocketArgs struct {
-	// The port that is used to check the status of TCP connections.
+	// The port.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -1391,7 +1391,7 @@ func (o ApplicationLivenessV2TcpSocketOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
-// The port that is used to check the status of TCP connections.
+// The port.
 func (o ApplicationLivenessV2TcpSocketOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationLivenessV2TcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -1426,7 +1426,7 @@ func (o ApplicationLivenessV2TcpSocketPtrOutput) Elem() ApplicationLivenessV2Tcp
 	}).(ApplicationLivenessV2TcpSocketOutput)
 }
 
-// The port that is used to check the status of TCP connections.
+// The port.
 func (o ApplicationLivenessV2TcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationLivenessV2TcpSocket) *int {
 		if v == nil {
@@ -1598,9 +1598,9 @@ type ApplicationOssMountDescsV2 struct {
 	BucketName *string `pulumi:"bucketName"`
 	// The directory or object in OSS.
 	BucketPath *string `pulumi:"bucketPath"`
-	// The path of the container in SAE.
+	// The mount path.
 	MountPath *string `pulumi:"mountPath"`
-	// Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+	// Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
 	ReadOnly *bool `pulumi:"readOnly"`
 }
 
@@ -1620,9 +1620,9 @@ type ApplicationOssMountDescsV2Args struct {
 	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
 	// The directory or object in OSS.
 	BucketPath pulumi.StringPtrInput `pulumi:"bucketPath"`
-	// The path of the container in SAE.
+	// The mount path.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
-	// Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+	// Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 }
 
@@ -1705,12 +1705,12 @@ func (o ApplicationOssMountDescsV2Output) BucketPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOssMountDescsV2) *string { return v.BucketPath }).(pulumi.StringPtrOutput)
 }
 
-// The path of the container in SAE.
+// The mount path.
 func (o ApplicationOssMountDescsV2Output) MountPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOssMountDescsV2) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+// Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
 func (o ApplicationOssMountDescsV2Output) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationOssMountDescsV2) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
@@ -2604,7 +2604,7 @@ func (o ApplicationPvtzDiscoverySvcPtrOutput) ServiceName() pulumi.StringPtrOutp
 }
 
 type ApplicationPvtzDiscoverySvcPortProtocol struct {
-	// The port that is used to check the status of TCP connections.
+	// The port.
 	Port *int `pulumi:"port"`
 	// The protocol. Valid values: `TCP` and `UDP`.
 	Protocol *string `pulumi:"protocol"`
@@ -2622,7 +2622,7 @@ type ApplicationPvtzDiscoverySvcPortProtocolInput interface {
 }
 
 type ApplicationPvtzDiscoverySvcPortProtocolArgs struct {
-	// The port that is used to check the status of TCP connections.
+	// The port.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The protocol. Valid values: `TCP` and `UDP`.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
@@ -2697,7 +2697,7 @@ func (o ApplicationPvtzDiscoverySvcPortProtocolOutput) ToOutput(ctx context.Cont
 	}
 }
 
-// The port that is used to check the status of TCP connections.
+// The port.
 func (o ApplicationPvtzDiscoverySvcPortProtocolOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationPvtzDiscoverySvcPortProtocol) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -3157,7 +3157,7 @@ type ApplicationReadinessV2HttpGet struct {
 	KeyWord *string `pulumi:"keyWord"`
 	// The request path.
 	Path *string `pulumi:"path"`
-	// The port that is used to check the status of TCP connections.
+	// The port.
 	Port *int `pulumi:"port"`
 	// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
 	Scheme *string `pulumi:"scheme"`
@@ -3181,7 +3181,7 @@ type ApplicationReadinessV2HttpGetArgs struct {
 	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
 	// The request path.
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// The port that is used to check the status of TCP connections.
+	// The port.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
 	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
@@ -3297,7 +3297,7 @@ func (o ApplicationReadinessV2HttpGetOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationReadinessV2HttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// The port that is used to check the status of TCP connections.
+// The port.
 func (o ApplicationReadinessV2HttpGetOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationReadinessV2HttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -3367,7 +3367,7 @@ func (o ApplicationReadinessV2HttpGetPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The port that is used to check the status of TCP connections.
+// The port.
 func (o ApplicationReadinessV2HttpGetPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationReadinessV2HttpGet) *int {
 		if v == nil {
@@ -3388,7 +3388,7 @@ func (o ApplicationReadinessV2HttpGetPtrOutput) Scheme() pulumi.StringPtrOutput 
 }
 
 type ApplicationReadinessV2TcpSocket struct {
-	// The port that is used to check the status of TCP connections.
+	// The port.
 	Port *int `pulumi:"port"`
 }
 
@@ -3404,7 +3404,7 @@ type ApplicationReadinessV2TcpSocketInput interface {
 }
 
 type ApplicationReadinessV2TcpSocketArgs struct {
-	// The port that is used to check the status of TCP connections.
+	// The port.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -3503,7 +3503,7 @@ func (o ApplicationReadinessV2TcpSocketOutput) ToOutput(ctx context.Context) pul
 	}
 }
 
-// The port that is used to check the status of TCP connections.
+// The port.
 func (o ApplicationReadinessV2TcpSocketOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationReadinessV2TcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -3538,7 +3538,7 @@ func (o ApplicationReadinessV2TcpSocketPtrOutput) Elem() ApplicationReadinessV2T
 	}).(ApplicationReadinessV2TcpSocketOutput)
 }
 
-// The port that is used to check the status of TCP connections.
+// The port.
 func (o ApplicationReadinessV2TcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationReadinessV2TcpSocket) *int {
 		if v == nil {
@@ -4610,9 +4610,9 @@ func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) Schedules() Application
 type ApplicationScalingRuleScalingRuleTimerSchedule struct {
 	// Trigger point in time. When supporting format: minutes, for example: `08:00`.
 	AtTime *string `pulumi:"atTime"`
-	// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+	// Maximum number of instances applied.
 	MaxReplicas *int `pulumi:"maxReplicas"`
-	// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+	// Minimum number of instances applied.
 	MinReplicas *int `pulumi:"minReplicas"`
 	// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
 	TargetReplicas *int `pulumi:"targetReplicas"`
@@ -4632,9 +4632,9 @@ type ApplicationScalingRuleScalingRuleTimerScheduleInput interface {
 type ApplicationScalingRuleScalingRuleTimerScheduleArgs struct {
 	// Trigger point in time. When supporting format: minutes, for example: `08:00`.
 	AtTime pulumi.StringPtrInput `pulumi:"atTime"`
-	// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+	// Maximum number of instances applied.
 	MaxReplicas pulumi.IntPtrInput `pulumi:"maxReplicas"`
-	// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+	// Minimum number of instances applied.
 	MinReplicas pulumi.IntPtrInput `pulumi:"minReplicas"`
 	// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
 	TargetReplicas pulumi.IntPtrInput `pulumi:"targetReplicas"`
@@ -4714,12 +4714,12 @@ func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) AtTime() pulumi.St
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *string { return v.AtTime }).(pulumi.StringPtrOutput)
 }
 
-// Maximum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+// Maximum number of instances applied.
 func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) MaxReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
 }
 
-// Minimum number of instances applied. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `mix`.
+// Minimum number of instances applied.
 func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) MinReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *int { return v.MinReplicas }).(pulumi.IntPtrOutput)
 }
@@ -4760,7 +4760,7 @@ type ApplicationTomcatConfigV2 struct {
 	ContextPath *string `pulumi:"contextPath"`
 	// The maximum number of connections in the connection pool.
 	MaxThreads *int `pulumi:"maxThreads"`
-	// The port that is used to check the status of TCP connections.
+	// The port.
 	Port *int `pulumi:"port"`
 	// The URI encoding scheme in the Tomcat container.
 	UriEncoding *string `pulumi:"uriEncoding"`
@@ -4784,7 +4784,7 @@ type ApplicationTomcatConfigV2Args struct {
 	ContextPath pulumi.StringPtrInput `pulumi:"contextPath"`
 	// The maximum number of connections in the connection pool.
 	MaxThreads pulumi.IntPtrInput `pulumi:"maxThreads"`
-	// The port that is used to check the status of TCP connections.
+	// The port.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The URI encoding scheme in the Tomcat container.
 	UriEncoding pulumi.StringPtrInput `pulumi:"uriEncoding"`
@@ -4897,7 +4897,7 @@ func (o ApplicationTomcatConfigV2Output) MaxThreads() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationTomcatConfigV2) *int { return v.MaxThreads }).(pulumi.IntPtrOutput)
 }
 
-// The port that is used to check the status of TCP connections.
+// The port.
 func (o ApplicationTomcatConfigV2Output) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationTomcatConfigV2) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -4962,7 +4962,7 @@ func (o ApplicationTomcatConfigV2PtrOutput) MaxThreads() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The port that is used to check the status of TCP connections.
+// The port.
 func (o ApplicationTomcatConfigV2PtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationTomcatConfigV2) *int {
 		if v == nil {

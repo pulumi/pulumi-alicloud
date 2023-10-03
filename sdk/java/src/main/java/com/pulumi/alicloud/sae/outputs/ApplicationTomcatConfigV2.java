@@ -23,7 +23,7 @@ public final class ApplicationTomcatConfigV2 {
      */
     private @Nullable Integer maxThreads;
     /**
-     * @return The port that is used to check the status of TCP connections.
+     * @return The port.
      * 
      */
     private @Nullable Integer port;
@@ -54,7 +54,7 @@ public final class ApplicationTomcatConfigV2 {
         return Optional.ofNullable(this.maxThreads);
     }
     /**
-     * @return The port that is used to check the status of TCP connections.
+     * @return The port.
      * 
      */
     public Optional<Integer> port() {

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RouteEntryArgs', 'RouteEntry']
@@ -27,9 +27,22 @@ class RouteEntryArgs:
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[str] route_table_id: The route table of the attached VBR or VPC.
         """
-        pulumi.set(__self__, "cidr_block", cidr_block)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "route_table_id", route_table_id)
+        RouteEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            instance_id=instance_id,
+            route_table_id=route_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: pulumi.Input[str],
+             instance_id: pulumi.Input[str],
+             route_table_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cidr_block", cidr_block)
+        _setter("instance_id", instance_id)
+        _setter("route_table_id", route_table_id)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -88,12 +101,25 @@ class _RouteEntryState:
         :param pulumi.Input[str] instance_id: The ID of the CEN.
         :param pulumi.Input[str] route_table_id: The route table of the attached VBR or VPC.
         """
+        _RouteEntryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            instance_id=instance_id,
+            route_table_id=route_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             route_table_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr_block is not None:
-            pulumi.set(__self__, "cidr_block", cidr_block)
+            _setter("cidr_block", cidr_block)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if route_table_id is not None:
-            pulumi.set(__self__, "route_table_id", route_table_id)
+            _setter("route_table_id", route_table_id)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -303,6 +329,10 @@ class RouteEntry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RouteEntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

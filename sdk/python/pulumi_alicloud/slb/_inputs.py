@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -22,10 +22,21 @@ class AclEntryListArgs:
     def __init__(__self__, *,
                  comment: Optional[pulumi.Input[str]] = None,
                  entry: Optional[pulumi.Input[str]] = None):
+        AclEntryListArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comment=comment,
+            entry=entry,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comment: Optional[pulumi.Input[str]] = None,
+             entry: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if entry is not None:
-            pulumi.set(__self__, "entry", entry)
+            _setter("entry", entry)
 
     @property
     @pulumi.getter
@@ -53,12 +64,27 @@ class BackendServerBackendServerArgs:
                  weight: pulumi.Input[int],
                  server_ip: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "server_id", server_id)
-        pulumi.set(__self__, "weight", weight)
+        BackendServerBackendServerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            server_id=server_id,
+            weight=weight,
+            server_ip=server_ip,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             server_id: pulumi.Input[str],
+             weight: pulumi.Input[int],
+             server_ip: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("server_id", server_id)
+        _setter("weight", weight)
         if server_ip is not None:
-            pulumi.set(__self__, "server_ip", server_ip)
+            _setter("server_ip", server_ip)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="serverId")
@@ -110,14 +136,29 @@ class ListenerXForwardedForArgs:
         :param pulumi.Input[bool] retrive_slb_ip: Whether to use the XForwardedFor_SLBIP header to obtain the public IP address of the SLB instance. Default to false.
         :param pulumi.Input[bool] retrive_slb_proto: Whether to use the XForwardedFor_proto header to obtain the protocol used by the listener. Default to false.
         """
+        ListenerXForwardedForArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            retrive_client_ip=retrive_client_ip,
+            retrive_slb_id=retrive_slb_id,
+            retrive_slb_ip=retrive_slb_ip,
+            retrive_slb_proto=retrive_slb_proto,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             retrive_client_ip: Optional[pulumi.Input[bool]] = None,
+             retrive_slb_id: Optional[pulumi.Input[bool]] = None,
+             retrive_slb_ip: Optional[pulumi.Input[bool]] = None,
+             retrive_slb_proto: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if retrive_client_ip is not None:
-            pulumi.set(__self__, "retrive_client_ip", retrive_client_ip)
+            _setter("retrive_client_ip", retrive_client_ip)
         if retrive_slb_id is not None:
-            pulumi.set(__self__, "retrive_slb_id", retrive_slb_id)
+            _setter("retrive_slb_id", retrive_slb_id)
         if retrive_slb_ip is not None:
-            pulumi.set(__self__, "retrive_slb_ip", retrive_slb_ip)
+            _setter("retrive_slb_ip", retrive_slb_ip)
         if retrive_slb_proto is not None:
-            pulumi.set(__self__, "retrive_slb_proto", retrive_slb_proto)
+            _setter("retrive_slb_proto", retrive_slb_proto)
 
     @property
     @pulumi.getter(name="retriveClientIp")
@@ -177,16 +218,35 @@ class MasterSlaveServerGroupServerArgs:
                  server_type: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server_id", server_id)
+        MasterSlaveServerGroupServerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            server_id=server_id,
+            is_backup=is_backup,
+            server_type=server_type,
+            type=type,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: pulumi.Input[int],
+             server_id: pulumi.Input[str],
+             is_backup: Optional[pulumi.Input[int]] = None,
+             server_type: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port", port)
+        _setter("server_id", server_id)
         if is_backup is not None:
-            pulumi.set(__self__, "is_backup", is_backup)
+            _setter("is_backup", is_backup)
         if server_type is not None:
-            pulumi.set(__self__, "server_type", server_type)
+            _setter("server_type", server_type)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter
@@ -250,12 +310,27 @@ class ServerGroupServerArgs:
                  server_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
                  type: Optional[pulumi.Input[str]] = None,
                  weight: Optional[pulumi.Input[int]] = None):
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server_ids", server_ids)
+        ServerGroupServerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            port=port,
+            server_ids=server_ids,
+            type=type,
+            weight=weight,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             port: pulumi.Input[int],
+             server_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             type: Optional[pulumi.Input[str]] = None,
+             weight: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("port", port)
+        _setter("server_ids", server_ids)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if weight is not None:
-            pulumi.set(__self__, "weight", weight)
+            _setter("weight", weight)
 
     @property
     @pulumi.getter

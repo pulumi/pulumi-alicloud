@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SecretParameterArgs', 'SecretParameter']
@@ -33,20 +33,43 @@ class SecretParameterArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] type: The data type of the encryption parameter. Valid values: `Secret`.
         """
-        pulumi.set(__self__, "secret_parameter_name", secret_parameter_name)
-        pulumi.set(__self__, "value", value)
+        SecretParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            secret_parameter_name=secret_parameter_name,
+            value=value,
+            constraints=constraints,
+            description=description,
+            key_id=key_id,
+            resource_group_id=resource_group_id,
+            tags=tags,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             secret_parameter_name: pulumi.Input[str],
+             value: pulumi.Input[str],
+             constraints: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             key_id: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("secret_parameter_name", secret_parameter_name)
+        _setter("value", value)
         if constraints is not None:
-            pulumi.set(__self__, "constraints", constraints)
+            _setter("constraints", constraints)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if key_id is not None:
-            pulumi.set(__self__, "key_id", key_id)
+            _setter("key_id", key_id)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="secretParameterName")
@@ -167,22 +190,45 @@ class _SecretParameterState:
         :param pulumi.Input[str] type: The data type of the encryption parameter. Valid values: `Secret`.
         :param pulumi.Input[str] value: The value of the encryption parameter. The value must be `1` to `4096` characters in length.
         """
+        _SecretParameterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            constraints=constraints,
+            description=description,
+            key_id=key_id,
+            resource_group_id=resource_group_id,
+            secret_parameter_name=secret_parameter_name,
+            tags=tags,
+            type=type,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             constraints: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             key_id: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             secret_parameter_name: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if constraints is not None:
-            pulumi.set(__self__, "constraints", constraints)
+            _setter("constraints", constraints)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if key_id is not None:
-            pulumi.set(__self__, "key_id", key_id)
+            _setter("key_id", key_id)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if secret_parameter_name is not None:
-            pulumi.set(__self__, "secret_parameter_name", secret_parameter_name)
+            _setter("secret_parameter_name", secret_parameter_name)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -404,6 +450,10 @@ class SecretParameter(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SecretParameterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Ecs.Inputs
     public sealed class EcsLaunchTemplateDataDiskGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+        /// The category of the disk.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// Specifies whether to release the system disk when the instance is released. Default to `true`.
+        /// Indicates whether the data disk is released with the instance.
         /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
@@ -43,13 +43,13 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+        /// The performance level of the ESSD used as the data disk.
         /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
 
         /// <summary>
-        /// Size of the system disk, measured in GB. Value range: [20, 500].
+        /// The size of the data disk.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -57,35 +57,78 @@ class ServerlessInstanceArgs:
         :param pulumi.Input[str] storage_engine: The storage engine used by the instance. Valid values: `WiredTiger`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "account_password", account_password)
-        pulumi.set(__self__, "capacity_unit", capacity_unit)
-        pulumi.set(__self__, "db_instance_storage", db_instance_storage)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        ServerlessInstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_password=account_password,
+            capacity_unit=capacity_unit,
+            db_instance_storage=db_instance_storage,
+            engine_version=engine_version,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+            auto_renew=auto_renew,
+            db_instance_description=db_instance_description,
+            engine=engine,
+            maintain_end_time=maintain_end_time,
+            maintain_start_time=maintain_start_time,
+            period=period,
+            period_price_type=period_price_type,
+            resource_group_id=resource_group_id,
+            security_ip_groups=security_ip_groups,
+            storage_engine=storage_engine,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_password: pulumi.Input[str],
+             capacity_unit: pulumi.Input[int],
+             db_instance_storage: pulumi.Input[int],
+             engine_version: pulumi.Input[str],
+             vpc_id: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             db_instance_description: Optional[pulumi.Input[str]] = None,
+             engine: Optional[pulumi.Input[str]] = None,
+             maintain_end_time: Optional[pulumi.Input[str]] = None,
+             maintain_start_time: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_price_type: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]] = None,
+             storage_engine: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_password", account_password)
+        _setter("capacity_unit", capacity_unit)
+        _setter("db_instance_storage", db_instance_storage)
+        _setter("engine_version", engine_version)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if db_instance_description is not None:
-            pulumi.set(__self__, "db_instance_description", db_instance_description)
+            _setter("db_instance_description", db_instance_description)
         if engine is not None:
-            pulumi.set(__self__, "engine", engine)
+            _setter("engine", engine)
         if maintain_end_time is not None:
-            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+            _setter("maintain_end_time", maintain_end_time)
         if maintain_start_time is not None:
-            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
+            _setter("maintain_start_time", maintain_start_time)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_price_type is not None:
-            pulumi.set(__self__, "period_price_type", period_price_type)
+            _setter("period_price_type", period_price_type)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if security_ip_groups is not None:
-            pulumi.set(__self__, "security_ip_groups", security_ip_groups)
+            _setter("security_ip_groups", security_ip_groups)
         if storage_engine is not None:
-            pulumi.set(__self__, "storage_engine", storage_engine)
+            _setter("storage_engine", storage_engine)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="accountPassword")
@@ -352,44 +395,89 @@ class _ServerlessInstanceState:
         :param pulumi.Input[str] vswitch_id: The of the vswitch.
         :param pulumi.Input[str] zone_id: The ID of the zone. Use this parameter to specify the zone created by the instance.
         """
+        _ServerlessInstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_password=account_password,
+            auto_renew=auto_renew,
+            capacity_unit=capacity_unit,
+            db_instance_description=db_instance_description,
+            db_instance_storage=db_instance_storage,
+            engine=engine,
+            engine_version=engine_version,
+            maintain_end_time=maintain_end_time,
+            maintain_start_time=maintain_start_time,
+            period=period,
+            period_price_type=period_price_type,
+            resource_group_id=resource_group_id,
+            security_ip_groups=security_ip_groups,
+            status=status,
+            storage_engine=storage_engine,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_password: Optional[pulumi.Input[str]] = None,
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             capacity_unit: Optional[pulumi.Input[int]] = None,
+             db_instance_description: Optional[pulumi.Input[str]] = None,
+             db_instance_storage: Optional[pulumi.Input[int]] = None,
+             engine: Optional[pulumi.Input[str]] = None,
+             engine_version: Optional[pulumi.Input[str]] = None,
+             maintain_end_time: Optional[pulumi.Input[str]] = None,
+             maintain_start_time: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_price_type: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             security_ip_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ServerlessInstanceSecurityIpGroupArgs']]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             storage_engine: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_password is not None:
-            pulumi.set(__self__, "account_password", account_password)
+            _setter("account_password", account_password)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if capacity_unit is not None:
-            pulumi.set(__self__, "capacity_unit", capacity_unit)
+            _setter("capacity_unit", capacity_unit)
         if db_instance_description is not None:
-            pulumi.set(__self__, "db_instance_description", db_instance_description)
+            _setter("db_instance_description", db_instance_description)
         if db_instance_storage is not None:
-            pulumi.set(__self__, "db_instance_storage", db_instance_storage)
+            _setter("db_instance_storage", db_instance_storage)
         if engine is not None:
-            pulumi.set(__self__, "engine", engine)
+            _setter("engine", engine)
         if engine_version is not None:
-            pulumi.set(__self__, "engine_version", engine_version)
+            _setter("engine_version", engine_version)
         if maintain_end_time is not None:
-            pulumi.set(__self__, "maintain_end_time", maintain_end_time)
+            _setter("maintain_end_time", maintain_end_time)
         if maintain_start_time is not None:
-            pulumi.set(__self__, "maintain_start_time", maintain_start_time)
+            _setter("maintain_start_time", maintain_start_time)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_price_type is not None:
-            pulumi.set(__self__, "period_price_type", period_price_type)
+            _setter("period_price_type", period_price_type)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if security_ip_groups is not None:
-            pulumi.set(__self__, "security_ip_groups", security_ip_groups)
+            _setter("security_ip_groups", security_ip_groups)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if storage_engine is not None:
-            pulumi.set(__self__, "storage_engine", storage_engine)
+            _setter("storage_engine", storage_engine)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountPassword")
@@ -791,6 +879,10 @@ class ServerlessInstance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServerlessInstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
     public sealed class ContainerGroupContainerReadinessProbeTcpSocketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The port number. Valid values: `1` to `65535`.
+        /// When using the HTTP request method for health check, the port number for HTTP Get request detection.
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }

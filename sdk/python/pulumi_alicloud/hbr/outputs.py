@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -61,8 +61,17 @@ class OtsBackupPlanOtsDetail(dict):
         """
         :param Sequence[str] table_names: The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
         """
+        OtsBackupPlanOtsDetail._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table_names=table_names,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table_names: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if table_names is not None:
-            pulumi.set(__self__, "table_names", table_names)
+            _setter("table_names", table_names)
 
     @property
     @pulumi.getter(name="tableNames")
@@ -107,16 +116,33 @@ class OtsBackupPlanRule(dict):
         :param str rule_name: The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
         :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
+        OtsBackupPlanRule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_type=backup_type,
+            disabled=disabled,
+            retention=retention,
+            rule_name=rule_name,
+            schedule=schedule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_type: Optional[str] = None,
+             disabled: Optional[bool] = None,
+             retention: Optional[str] = None,
+             rule_name: Optional[str] = None,
+             schedule: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backup_type is not None:
-            pulumi.set(__self__, "backup_type", backup_type)
+            _setter("backup_type", backup_type)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if retention is not None:
-            pulumi.set(__self__, "retention", retention)
+            _setter("retention", retention)
         if rule_name is not None:
-            pulumi.set(__self__, "rule_name", rule_name)
+            _setter("rule_name", rule_name)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
 
     @property
     @pulumi.getter(name="backupType")
@@ -183,8 +209,17 @@ class RestoreJobOtsDetail(dict):
         """
         :param bool overwrite_existing: Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
         """
+        RestoreJobOtsDetail._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            overwrite_existing=overwrite_existing,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             overwrite_existing: Optional[bool] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if overwrite_existing is not None:
-            pulumi.set(__self__, "overwrite_existing", overwrite_existing)
+            _setter("overwrite_existing", overwrite_existing)
 
     @property
     @pulumi.getter(name="overwriteExisting")
@@ -255,24 +290,51 @@ class ServerBackupPlanDetail(dict):
         :param str pre_script_path: Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
         :param int timeout_in_seconds: Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
         """
-        pulumi.set(__self__, "app_consistent", app_consistent)
-        pulumi.set(__self__, "snapshot_group", snapshot_group)
+        ServerBackupPlanDetail._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_consistent=app_consistent,
+            snapshot_group=snapshot_group,
+            destination_region_id=destination_region_id,
+            destination_retention=destination_retention,
+            disk_id_lists=disk_id_lists,
+            do_copy=do_copy,
+            enable_fs_freeze=enable_fs_freeze,
+            post_script_path=post_script_path,
+            pre_script_path=pre_script_path,
+            timeout_in_seconds=timeout_in_seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_consistent: bool,
+             snapshot_group: bool,
+             destination_region_id: Optional[str] = None,
+             destination_retention: Optional[int] = None,
+             disk_id_lists: Optional[Sequence[str]] = None,
+             do_copy: Optional[bool] = None,
+             enable_fs_freeze: Optional[bool] = None,
+             post_script_path: Optional[str] = None,
+             pre_script_path: Optional[str] = None,
+             timeout_in_seconds: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_consistent", app_consistent)
+        _setter("snapshot_group", snapshot_group)
         if destination_region_id is not None:
-            pulumi.set(__self__, "destination_region_id", destination_region_id)
+            _setter("destination_region_id", destination_region_id)
         if destination_retention is not None:
-            pulumi.set(__self__, "destination_retention", destination_retention)
+            _setter("destination_retention", destination_retention)
         if disk_id_lists is not None:
-            pulumi.set(__self__, "disk_id_lists", disk_id_lists)
+            _setter("disk_id_lists", disk_id_lists)
         if do_copy is not None:
-            pulumi.set(__self__, "do_copy", do_copy)
+            _setter("do_copy", do_copy)
         if enable_fs_freeze is not None:
-            pulumi.set(__self__, "enable_fs_freeze", enable_fs_freeze)
+            _setter("enable_fs_freeze", enable_fs_freeze)
         if post_script_path is not None:
-            pulumi.set(__self__, "post_script_path", post_script_path)
+            _setter("post_script_path", post_script_path)
         if pre_script_path is not None:
-            pulumi.set(__self__, "pre_script_path", pre_script_path)
+            _setter("pre_script_path", pre_script_path)
         if timeout_in_seconds is not None:
-            pulumi.set(__self__, "timeout_in_seconds", timeout_in_seconds)
+            _setter("timeout_in_seconds", timeout_in_seconds)
 
     @property
     @pulumi.getter(name="appConsistent")
@@ -368,12 +430,25 @@ class GetBackupJobsFilterResult(dict):
                
                > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
         """
+        GetBackupJobsFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            operator=operator,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             operator: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if operator is not None:
-            pulumi.set(__self__, "operator", operator)
+            _setter("operator", operator)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -470,38 +545,109 @@ class GetBackupJobsJobResult(dict):
         :param str updated_time: The update time of backup job. UNIX time seconds.
         :param str vault_id: The ID of backup vault.
         """
-        pulumi.set(__self__, "actual_bytes", actual_bytes)
-        pulumi.set(__self__, "actual_items", actual_items)
-        pulumi.set(__self__, "back_job_name", back_job_name)
-        pulumi.set(__self__, "backup_job_id", backup_job_id)
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "bytes_done", bytes_done)
-        pulumi.set(__self__, "bytes_total", bytes_total)
-        pulumi.set(__self__, "complete_time", complete_time)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "cross_account_role_name", cross_account_role_name)
-        pulumi.set(__self__, "cross_account_type", cross_account_type)
-        pulumi.set(__self__, "cross_account_user_id", cross_account_user_id)
-        pulumi.set(__self__, "error_message", error_message)
-        pulumi.set(__self__, "exclude", exclude)
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "include", include)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "items_done", items_done)
-        pulumi.set(__self__, "items_total", items_total)
-        pulumi.set(__self__, "nas_create_time", nas_create_time)
-        pulumi.set(__self__, "ots_details", ots_details)
-        pulumi.set(__self__, "paths", paths)
-        pulumi.set(__self__, "plan_id", plan_id)
-        pulumi.set(__self__, "prefix", prefix)
-        pulumi.set(__self__, "progress", progress)
-        pulumi.set(__self__, "source_type", source_type)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "updated_time", updated_time)
-        pulumi.set(__self__, "vault_id", vault_id)
+        GetBackupJobsJobResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actual_bytes=actual_bytes,
+            actual_items=actual_items,
+            back_job_name=back_job_name,
+            backup_job_id=backup_job_id,
+            backup_type=backup_type,
+            bucket=bucket,
+            bytes_done=bytes_done,
+            bytes_total=bytes_total,
+            complete_time=complete_time,
+            create_time=create_time,
+            cross_account_role_name=cross_account_role_name,
+            cross_account_type=cross_account_type,
+            cross_account_user_id=cross_account_user_id,
+            error_message=error_message,
+            exclude=exclude,
+            file_system_id=file_system_id,
+            id=id,
+            include=include,
+            instance_id=instance_id,
+            items_done=items_done,
+            items_total=items_total,
+            nas_create_time=nas_create_time,
+            ots_details=ots_details,
+            paths=paths,
+            plan_id=plan_id,
+            prefix=prefix,
+            progress=progress,
+            source_type=source_type,
+            start_time=start_time,
+            status=status,
+            updated_time=updated_time,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actual_bytes: str,
+             actual_items: str,
+             back_job_name: str,
+             backup_job_id: str,
+             backup_type: str,
+             bucket: str,
+             bytes_done: str,
+             bytes_total: str,
+             complete_time: str,
+             create_time: str,
+             cross_account_role_name: str,
+             cross_account_type: str,
+             cross_account_user_id: int,
+             error_message: str,
+             exclude: str,
+             file_system_id: str,
+             id: str,
+             include: str,
+             instance_id: str,
+             items_done: str,
+             items_total: str,
+             nas_create_time: str,
+             ots_details: Sequence['outputs.GetBackupJobsJobOtsDetailResult'],
+             paths: Sequence[str],
+             plan_id: str,
+             prefix: str,
+             progress: str,
+             source_type: str,
+             start_time: str,
+             status: str,
+             updated_time: str,
+             vault_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("actual_bytes", actual_bytes)
+        _setter("actual_items", actual_items)
+        _setter("back_job_name", back_job_name)
+        _setter("backup_job_id", backup_job_id)
+        _setter("backup_type", backup_type)
+        _setter("bucket", bucket)
+        _setter("bytes_done", bytes_done)
+        _setter("bytes_total", bytes_total)
+        _setter("complete_time", complete_time)
+        _setter("create_time", create_time)
+        _setter("cross_account_role_name", cross_account_role_name)
+        _setter("cross_account_type", cross_account_type)
+        _setter("cross_account_user_id", cross_account_user_id)
+        _setter("error_message", error_message)
+        _setter("exclude", exclude)
+        _setter("file_system_id", file_system_id)
+        _setter("id", id)
+        _setter("include", include)
+        _setter("instance_id", instance_id)
+        _setter("items_done", items_done)
+        _setter("items_total", items_total)
+        _setter("nas_create_time", nas_create_time)
+        _setter("ots_details", ots_details)
+        _setter("paths", paths)
+        _setter("plan_id", plan_id)
+        _setter("prefix", prefix)
+        _setter("progress", progress)
+        _setter("source_type", source_type)
+        _setter("start_time", start_time)
+        _setter("status", status)
+        _setter("updated_time", updated_time)
+        _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="actualBytes")
@@ -761,7 +907,16 @@ class GetBackupJobsJobResult(dict):
 class GetBackupJobsJobOtsDetailResult(dict):
     def __init__(__self__, *,
                  table_names: Sequence[str]):
-        pulumi.set(__self__, "table_names", table_names)
+        GetBackupJobsJobOtsDetailResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table_names=table_names,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table_names: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table_names", table_names)
 
     @property
     @pulumi.getter(name="tableNames")
@@ -826,32 +981,91 @@ class GetEcsBackupClientsClientResult(dict):
         :param bool use_https: Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         :param str zone_id: The ID of Zone.
         """
-        pulumi.set(__self__, "arch_type", arch_type)
-        pulumi.set(__self__, "backup_status", backup_status)
-        pulumi.set(__self__, "client_type", client_type)
-        pulumi.set(__self__, "client_version", client_version)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "data_network_type", data_network_type)
-        pulumi.set(__self__, "data_proxy_setting", data_proxy_setting)
-        pulumi.set(__self__, "ecs_backup_client_id", ecs_backup_client_id)
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "last_heart_beat_time", last_heart_beat_time)
-        pulumi.set(__self__, "max_client_version", max_client_version)
-        pulumi.set(__self__, "max_cpu_core", max_cpu_core)
-        pulumi.set(__self__, "max_worker", max_worker)
-        pulumi.set(__self__, "os_type", os_type)
-        pulumi.set(__self__, "private_ipv4", private_ipv4)
-        pulumi.set(__self__, "proxy_host", proxy_host)
-        pulumi.set(__self__, "proxy_password", proxy_password)
-        pulumi.set(__self__, "proxy_port", proxy_port)
-        pulumi.set(__self__, "proxy_user", proxy_user)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "updated_time", updated_time)
-        pulumi.set(__self__, "use_https", use_https)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetEcsBackupClientsClientResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arch_type=arch_type,
+            backup_status=backup_status,
+            client_type=client_type,
+            client_version=client_version,
+            create_time=create_time,
+            data_network_type=data_network_type,
+            data_proxy_setting=data_proxy_setting,
+            ecs_backup_client_id=ecs_backup_client_id,
+            hostname=hostname,
+            id=id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            last_heart_beat_time=last_heart_beat_time,
+            max_client_version=max_client_version,
+            max_cpu_core=max_cpu_core,
+            max_worker=max_worker,
+            os_type=os_type,
+            private_ipv4=private_ipv4,
+            proxy_host=proxy_host,
+            proxy_password=proxy_password,
+            proxy_port=proxy_port,
+            proxy_user=proxy_user,
+            status=status,
+            updated_time=updated_time,
+            use_https=use_https,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arch_type: str,
+             backup_status: str,
+             client_type: str,
+             client_version: str,
+             create_time: str,
+             data_network_type: str,
+             data_proxy_setting: str,
+             ecs_backup_client_id: str,
+             hostname: str,
+             id: str,
+             instance_id: str,
+             instance_name: str,
+             last_heart_beat_time: str,
+             max_client_version: str,
+             max_cpu_core: str,
+             max_worker: str,
+             os_type: str,
+             private_ipv4: str,
+             proxy_host: str,
+             proxy_password: str,
+             proxy_port: str,
+             proxy_user: str,
+             status: str,
+             updated_time: str,
+             use_https: bool,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("arch_type", arch_type)
+        _setter("backup_status", backup_status)
+        _setter("client_type", client_type)
+        _setter("client_version", client_version)
+        _setter("create_time", create_time)
+        _setter("data_network_type", data_network_type)
+        _setter("data_proxy_setting", data_proxy_setting)
+        _setter("ecs_backup_client_id", ecs_backup_client_id)
+        _setter("hostname", hostname)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("last_heart_beat_time", last_heart_beat_time)
+        _setter("max_client_version", max_client_version)
+        _setter("max_cpu_core", max_cpu_core)
+        _setter("max_worker", max_worker)
+        _setter("os_type", os_type)
+        _setter("private_ipv4", private_ipv4)
+        _setter("proxy_host", proxy_host)
+        _setter("proxy_password", proxy_password)
+        _setter("proxy_port", proxy_port)
+        _setter("proxy_user", proxy_user)
+        _setter("status", status)
+        _setter("updated_time", updated_time)
+        _setter("use_https", use_https)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="archType")
@@ -1103,25 +1317,70 @@ class GetEcsBackupPlansPlanResult(dict):
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
         :param str vault_id: The ID of Backup vault.
         """
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "created_time", created_time)
-        pulumi.set(__self__, "detail", detail)
-        pulumi.set(__self__, "disabled", disabled)
-        pulumi.set(__self__, "ecs_backup_plan_id", ecs_backup_plan_id)
-        pulumi.set(__self__, "ecs_backup_plan_name", ecs_backup_plan_name)
-        pulumi.set(__self__, "exclude", exclude)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "include", include)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "options", options)
-        pulumi.set(__self__, "paths", paths)
-        pulumi.set(__self__, "retention", retention)
-        pulumi.set(__self__, "schedule", schedule)
-        pulumi.set(__self__, "source_type", source_type)
-        pulumi.set(__self__, "speed_limit", speed_limit)
-        pulumi.set(__self__, "updated_time", updated_time)
-        pulumi.set(__self__, "vault_id", vault_id)
+        GetEcsBackupPlansPlanResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_type=backup_type,
+            create_time=create_time,
+            created_time=created_time,
+            detail=detail,
+            disabled=disabled,
+            ecs_backup_plan_id=ecs_backup_plan_id,
+            ecs_backup_plan_name=ecs_backup_plan_name,
+            exclude=exclude,
+            id=id,
+            include=include,
+            instance_id=instance_id,
+            options=options,
+            paths=paths,
+            retention=retention,
+            schedule=schedule,
+            source_type=source_type,
+            speed_limit=speed_limit,
+            updated_time=updated_time,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_type: str,
+             create_time: str,
+             created_time: str,
+             detail: str,
+             disabled: bool,
+             ecs_backup_plan_id: str,
+             ecs_backup_plan_name: str,
+             exclude: str,
+             id: str,
+             include: str,
+             instance_id: str,
+             options: str,
+             paths: Sequence[str],
+             retention: str,
+             schedule: str,
+             source_type: str,
+             speed_limit: str,
+             updated_time: str,
+             vault_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_type", backup_type)
+        _setter("create_time", create_time)
+        _setter("created_time", created_time)
+        _setter("detail", detail)
+        _setter("disabled", disabled)
+        _setter("ecs_backup_plan_id", ecs_backup_plan_id)
+        _setter("ecs_backup_plan_name", ecs_backup_plan_name)
+        _setter("exclude", exclude)
+        _setter("id", id)
+        _setter("include", include)
+        _setter("instance_id", instance_id)
+        _setter("options", options)
+        _setter("paths", paths)
+        _setter("retention", retention)
+        _setter("schedule", schedule)
+        _setter("source_type", source_type)
+        _setter("speed_limit", speed_limit)
+        _setter("updated_time", updated_time)
+        _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupType")
@@ -1305,21 +1564,58 @@ class GetHanaBackupClientsHanaBackupClientResult(dict):
         :param bool use_https: Indicates whether data is transmitted over HTTPS.
         :param str vault_id: The ID of the backup vault.
         """
-        pulumi.set(__self__, "alert_setting", alert_setting)
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "client_name", client_name)
-        pulumi.set(__self__, "client_type", client_type)
-        pulumi.set(__self__, "client_version", client_version)
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "max_version", max_version)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "status_message", status_message)
-        pulumi.set(__self__, "use_https", use_https)
-        pulumi.set(__self__, "vault_id", vault_id)
+        GetHanaBackupClientsHanaBackupClientResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_setting=alert_setting,
+            client_id=client_id,
+            client_name=client_name,
+            client_type=client_type,
+            client_version=client_version,
+            cluster_id=cluster_id,
+            id=id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            max_version=max_version,
+            network_type=network_type,
+            status=status,
+            status_message=status_message,
+            use_https=use_https,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_setting: str,
+             client_id: str,
+             client_name: str,
+             client_type: str,
+             client_version: str,
+             cluster_id: str,
+             id: str,
+             instance_id: str,
+             instance_name: str,
+             max_version: str,
+             network_type: str,
+             status: str,
+             status_message: str,
+             use_https: bool,
+             vault_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alert_setting", alert_setting)
+        _setter("client_id", client_id)
+        _setter("client_name", client_name)
+        _setter("client_type", client_type)
+        _setter("client_version", client_version)
+        _setter("cluster_id", cluster_id)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("max_version", max_version)
+        _setter("network_type", network_type)
+        _setter("status", status)
+        _setter("status_message", status_message)
+        _setter("use_https", use_https)
+        _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="alertSetting")
@@ -1468,17 +1764,46 @@ class GetHanaBackupPlansPlanResult(dict):
         :param str status: The status of the resource.
         :param str vault_id: The ID of the backup vault.
         """
-        pulumi.set(__self__, "backup_prefix", backup_prefix)
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "database_name", database_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "page_total", page_total)
-        pulumi.set(__self__, "plan_id", plan_id)
-        pulumi.set(__self__, "plan_name", plan_name)
-        pulumi.set(__self__, "schedule", schedule)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vault_id", vault_id)
+        GetHanaBackupPlansPlanResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_prefix=backup_prefix,
+            backup_type=backup_type,
+            cluster_id=cluster_id,
+            database_name=database_name,
+            id=id,
+            page_total=page_total,
+            plan_id=plan_id,
+            plan_name=plan_name,
+            schedule=schedule,
+            status=status,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_prefix: str,
+             backup_type: str,
+             cluster_id: str,
+             database_name: str,
+             id: str,
+             page_total: str,
+             plan_id: str,
+             plan_name: str,
+             schedule: str,
+             status: str,
+             vault_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_prefix", backup_prefix)
+        _setter("backup_type", backup_type)
+        _setter("cluster_id", cluster_id)
+        _setter("database_name", database_name)
+        _setter("id", id)
+        _setter("page_total", page_total)
+        _setter("plan_id", plan_id)
+        _setter("plan_name", plan_name)
+        _setter("schedule", schedule)
+        _setter("status", status)
+        _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupPrefix")
@@ -1597,19 +1922,52 @@ class GetHanaInstancesInstanceResult(dict):
         :param bool validate_certificate: Indicates whether the SSL certificate of the SAP HANA instance is verified.
         :param str vault_id: The ID of the backup vault.
         """
-        pulumi.set(__self__, "alert_setting", alert_setting)
-        pulumi.set(__self__, "hana_instance_id", hana_instance_id)
-        pulumi.set(__self__, "hana_name", hana_name)
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_number", instance_number)
-        pulumi.set(__self__, "resource_group_id", resource_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "status_message", status_message)
-        pulumi.set(__self__, "use_ssl", use_ssl)
-        pulumi.set(__self__, "user_name", user_name)
-        pulumi.set(__self__, "validate_certificate", validate_certificate)
-        pulumi.set(__self__, "vault_id", vault_id)
+        GetHanaInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_setting=alert_setting,
+            hana_instance_id=hana_instance_id,
+            hana_name=hana_name,
+            host=host,
+            id=id,
+            instance_number=instance_number,
+            resource_group_id=resource_group_id,
+            status=status,
+            status_message=status_message,
+            use_ssl=use_ssl,
+            user_name=user_name,
+            validate_certificate=validate_certificate,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_setting: str,
+             hana_instance_id: str,
+             hana_name: str,
+             host: str,
+             id: str,
+             instance_number: int,
+             resource_group_id: str,
+             status: str,
+             status_message: str,
+             use_ssl: bool,
+             user_name: str,
+             validate_certificate: bool,
+             vault_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alert_setting", alert_setting)
+        _setter("hana_instance_id", hana_instance_id)
+        _setter("hana_name", hana_name)
+        _setter("host", host)
+        _setter("id", id)
+        _setter("instance_number", instance_number)
+        _setter("resource_group_id", resource_group_id)
+        _setter("status", status)
+        _setter("status_message", status_message)
+        _setter("use_ssl", use_ssl)
+        _setter("user_name", user_name)
+        _setter("validate_certificate", validate_certificate)
+        _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="alertSetting")
@@ -1749,20 +2107,55 @@ class GetNasBackupPlansPlanResult(dict):
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
         :param str vault_id: The ID of backup vault.
         """
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "created_time", created_time)
-        pulumi.set(__self__, "disabled", disabled)
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "nas_backup_plan_id", nas_backup_plan_id)
-        pulumi.set(__self__, "nas_backup_plan_name", nas_backup_plan_name)
-        pulumi.set(__self__, "options", options)
-        pulumi.set(__self__, "paths", paths)
-        pulumi.set(__self__, "retention", retention)
-        pulumi.set(__self__, "schedule", schedule)
-        pulumi.set(__self__, "updated_time", updated_time)
-        pulumi.set(__self__, "vault_id", vault_id)
+        GetNasBackupPlansPlanResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_type=backup_type,
+            create_time=create_time,
+            created_time=created_time,
+            disabled=disabled,
+            file_system_id=file_system_id,
+            id=id,
+            nas_backup_plan_id=nas_backup_plan_id,
+            nas_backup_plan_name=nas_backup_plan_name,
+            options=options,
+            paths=paths,
+            retention=retention,
+            schedule=schedule,
+            updated_time=updated_time,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_type: str,
+             create_time: str,
+             created_time: str,
+             disabled: bool,
+             file_system_id: str,
+             id: str,
+             nas_backup_plan_id: str,
+             nas_backup_plan_name: str,
+             options: str,
+             paths: Sequence[str],
+             retention: str,
+             schedule: str,
+             updated_time: str,
+             vault_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_type", backup_type)
+        _setter("create_time", create_time)
+        _setter("created_time", created_time)
+        _setter("disabled", disabled)
+        _setter("file_system_id", file_system_id)
+        _setter("id", id)
+        _setter("nas_backup_plan_id", nas_backup_plan_id)
+        _setter("nas_backup_plan_name", nas_backup_plan_name)
+        _setter("options", options)
+        _setter("paths", paths)
+        _setter("retention", retention)
+        _setter("schedule", schedule)
+        _setter("updated_time", updated_time)
+        _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupType")
@@ -1906,18 +2299,49 @@ class GetOssBackupPlansPlanResult(dict):
         :param str updated_time: The update time of the backup plan. UNIX time in seconds.
         :param str vault_id: The ID of backup vault.
         """
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "created_time", created_time)
-        pulumi.set(__self__, "disabled", disabled)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "oss_backup_plan_id", oss_backup_plan_id)
-        pulumi.set(__self__, "oss_backup_plan_name", oss_backup_plan_name)
-        pulumi.set(__self__, "prefix", prefix)
-        pulumi.set(__self__, "retention", retention)
-        pulumi.set(__self__, "schedule", schedule)
-        pulumi.set(__self__, "updated_time", updated_time)
-        pulumi.set(__self__, "vault_id", vault_id)
+        GetOssBackupPlansPlanResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_type=backup_type,
+            bucket=bucket,
+            created_time=created_time,
+            disabled=disabled,
+            id=id,
+            oss_backup_plan_id=oss_backup_plan_id,
+            oss_backup_plan_name=oss_backup_plan_name,
+            prefix=prefix,
+            retention=retention,
+            schedule=schedule,
+            updated_time=updated_time,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_type: str,
+             bucket: str,
+             created_time: str,
+             disabled: bool,
+             id: str,
+             oss_backup_plan_id: str,
+             oss_backup_plan_name: str,
+             prefix: str,
+             retention: str,
+             schedule: str,
+             updated_time: str,
+             vault_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_type", backup_type)
+        _setter("bucket", bucket)
+        _setter("created_time", created_time)
+        _setter("disabled", disabled)
+        _setter("id", id)
+        _setter("oss_backup_plan_id", oss_backup_plan_id)
+        _setter("oss_backup_plan_name", oss_backup_plan_name)
+        _setter("prefix", prefix)
+        _setter("retention", retention)
+        _setter("schedule", schedule)
+        _setter("updated_time", updated_time)
+        _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupType")
@@ -2045,18 +2469,49 @@ class GetOtsBackupPlansPlanResult(dict):
                *ots_detail - The details about the Tablestore instance.
         :param str vault_id: The ID of backup vault.
         """
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "created_time", created_time)
-        pulumi.set(__self__, "disabled", disabled)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "ots_backup_plan_id", ots_backup_plan_id)
-        pulumi.set(__self__, "ots_backup_plan_name", ots_backup_plan_name)
-        pulumi.set(__self__, "ots_details", ots_details)
-        pulumi.set(__self__, "retention", retention)
-        pulumi.set(__self__, "schedule", schedule)
-        pulumi.set(__self__, "source_type", source_type)
-        pulumi.set(__self__, "updated_time", updated_time)
-        pulumi.set(__self__, "vault_id", vault_id)
+        GetOtsBackupPlansPlanResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backup_type=backup_type,
+            created_time=created_time,
+            disabled=disabled,
+            id=id,
+            ots_backup_plan_id=ots_backup_plan_id,
+            ots_backup_plan_name=ots_backup_plan_name,
+            ots_details=ots_details,
+            retention=retention,
+            schedule=schedule,
+            source_type=source_type,
+            updated_time=updated_time,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backup_type: str,
+             created_time: str,
+             disabled: bool,
+             id: str,
+             ots_backup_plan_id: str,
+             ots_backup_plan_name: str,
+             ots_details: Sequence['outputs.GetOtsBackupPlansPlanOtsDetailResult'],
+             retention: str,
+             schedule: str,
+             source_type: str,
+             updated_time: str,
+             vault_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("backup_type", backup_type)
+        _setter("created_time", created_time)
+        _setter("disabled", disabled)
+        _setter("id", id)
+        _setter("ots_backup_plan_id", ots_backup_plan_id)
+        _setter("ots_backup_plan_name", ots_backup_plan_name)
+        _setter("ots_details", ots_details)
+        _setter("retention", retention)
+        _setter("schedule", schedule)
+        _setter("source_type", source_type)
+        _setter("updated_time", updated_time)
+        _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="backupType")
@@ -2157,7 +2612,16 @@ class GetOtsBackupPlansPlanResult(dict):
 class GetOtsBackupPlansPlanOtsDetailResult(dict):
     def __init__(__self__, *,
                  table_names: Sequence[str]):
-        pulumi.set(__self__, "table_names", table_names)
+        GetOtsBackupPlansPlanOtsDetailResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            table_names=table_names,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             table_names: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("table_names", table_names)
 
     @property
     @pulumi.getter(name="tableNames")
@@ -2212,27 +2676,76 @@ class GetOtsSnapshotsSnapshotResult(dict):
         :param str updated_time: The time when the backup snapshot was updated. This value is a UNIX timestamp. Unit: seconds.
         :param str vault_id: The ID of the backup vault that stores the backup snapshot.
         """
-        pulumi.set(__self__, "actual_bytes", actual_bytes)
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "bytes_total", bytes_total)
-        pulumi.set(__self__, "complete_time", complete_time)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "created_time", created_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "job_id", job_id)
-        pulumi.set(__self__, "parent_snapshot_hash", parent_snapshot_hash)
-        pulumi.set(__self__, "range_end", range_end)
-        pulumi.set(__self__, "range_start", range_start)
-        pulumi.set(__self__, "retention", retention)
-        pulumi.set(__self__, "snapshot_hash", snapshot_hash)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
-        pulumi.set(__self__, "source_type", source_type)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "table_name", table_name)
-        pulumi.set(__self__, "updated_time", updated_time)
-        pulumi.set(__self__, "vault_id", vault_id)
+        GetOtsSnapshotsSnapshotResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actual_bytes=actual_bytes,
+            backup_type=backup_type,
+            bytes_total=bytes_total,
+            complete_time=complete_time,
+            create_time=create_time,
+            created_time=created_time,
+            id=id,
+            instance_name=instance_name,
+            job_id=job_id,
+            parent_snapshot_hash=parent_snapshot_hash,
+            range_end=range_end,
+            range_start=range_start,
+            retention=retention,
+            snapshot_hash=snapshot_hash,
+            snapshot_id=snapshot_id,
+            source_type=source_type,
+            start_time=start_time,
+            status=status,
+            table_name=table_name,
+            updated_time=updated_time,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actual_bytes: str,
+             backup_type: str,
+             bytes_total: str,
+             complete_time: str,
+             create_time: str,
+             created_time: str,
+             id: str,
+             instance_name: str,
+             job_id: str,
+             parent_snapshot_hash: str,
+             range_end: str,
+             range_start: str,
+             retention: str,
+             snapshot_hash: str,
+             snapshot_id: str,
+             source_type: str,
+             start_time: str,
+             status: str,
+             table_name: str,
+             updated_time: str,
+             vault_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("actual_bytes", actual_bytes)
+        _setter("backup_type", backup_type)
+        _setter("bytes_total", bytes_total)
+        _setter("complete_time", complete_time)
+        _setter("create_time", create_time)
+        _setter("created_time", created_time)
+        _setter("id", id)
+        _setter("instance_name", instance_name)
+        _setter("job_id", job_id)
+        _setter("parent_snapshot_hash", parent_snapshot_hash)
+        _setter("range_end", range_end)
+        _setter("range_start", range_start)
+        _setter("retention", retention)
+        _setter("snapshot_hash", snapshot_hash)
+        _setter("snapshot_id", snapshot_id)
+        _setter("source_type", source_type)
+        _setter("start_time", start_time)
+        _setter("status", status)
+        _setter("table_name", table_name)
+        _setter("updated_time", updated_time)
+        _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="actualBytes")
@@ -2410,7 +2923,16 @@ class GetReplicationVaultRegionsRegionResult(dict):
         """
         :param str replication_region_id: The ID of the replication region.
         """
-        pulumi.set(__self__, "replication_region_id", replication_region_id)
+        GetReplicationVaultRegionsRegionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            replication_region_id=replication_region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             replication_region_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("replication_region_id", replication_region_id)
 
     @property
     @pulumi.getter(name="replicationRegionId")
@@ -2486,38 +3008,109 @@ class GetRestoreJobsJobResult(dict):
         :param str updated_time: The update Time of restore job. Unix Time in Seconds.
         :param str vault_id: The ID of backup vault.
         """
-        pulumi.set(__self__, "actual_bytes", actual_bytes)
-        pulumi.set(__self__, "actual_items", actual_items)
-        pulumi.set(__self__, "bytes_done", bytes_done)
-        pulumi.set(__self__, "bytes_total", bytes_total)
-        pulumi.set(__self__, "complete_time", complete_time)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "error_file", error_file)
-        pulumi.set(__self__, "error_message", error_message)
-        pulumi.set(__self__, "expire_time", expire_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "items_done", items_done)
-        pulumi.set(__self__, "items_total", items_total)
-        pulumi.set(__self__, "options", options)
-        pulumi.set(__self__, "parent_id", parent_id)
-        pulumi.set(__self__, "progress", progress)
-        pulumi.set(__self__, "restore_job_id", restore_job_id)
-        pulumi.set(__self__, "restore_type", restore_type)
-        pulumi.set(__self__, "snapshot_hash", snapshot_hash)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
-        pulumi.set(__self__, "source_type", source_type)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "target_bucket", target_bucket)
-        pulumi.set(__self__, "target_client_id", target_client_id)
-        pulumi.set(__self__, "target_create_time", target_create_time)
-        pulumi.set(__self__, "target_data_source_id", target_data_source_id)
-        pulumi.set(__self__, "target_file_system_id", target_file_system_id)
-        pulumi.set(__self__, "target_instance_id", target_instance_id)
-        pulumi.set(__self__, "target_path", target_path)
-        pulumi.set(__self__, "target_prefix", target_prefix)
-        pulumi.set(__self__, "updated_time", updated_time)
-        pulumi.set(__self__, "vault_id", vault_id)
+        GetRestoreJobsJobResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actual_bytes=actual_bytes,
+            actual_items=actual_items,
+            bytes_done=bytes_done,
+            bytes_total=bytes_total,
+            complete_time=complete_time,
+            create_time=create_time,
+            error_file=error_file,
+            error_message=error_message,
+            expire_time=expire_time,
+            id=id,
+            items_done=items_done,
+            items_total=items_total,
+            options=options,
+            parent_id=parent_id,
+            progress=progress,
+            restore_job_id=restore_job_id,
+            restore_type=restore_type,
+            snapshot_hash=snapshot_hash,
+            snapshot_id=snapshot_id,
+            source_type=source_type,
+            start_time=start_time,
+            status=status,
+            target_bucket=target_bucket,
+            target_client_id=target_client_id,
+            target_create_time=target_create_time,
+            target_data_source_id=target_data_source_id,
+            target_file_system_id=target_file_system_id,
+            target_instance_id=target_instance_id,
+            target_path=target_path,
+            target_prefix=target_prefix,
+            updated_time=updated_time,
+            vault_id=vault_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actual_bytes: str,
+             actual_items: str,
+             bytes_done: str,
+             bytes_total: str,
+             complete_time: str,
+             create_time: str,
+             error_file: str,
+             error_message: str,
+             expire_time: str,
+             id: str,
+             items_done: str,
+             items_total: str,
+             options: str,
+             parent_id: str,
+             progress: int,
+             restore_job_id: str,
+             restore_type: str,
+             snapshot_hash: str,
+             snapshot_id: str,
+             source_type: str,
+             start_time: str,
+             status: str,
+             target_bucket: str,
+             target_client_id: str,
+             target_create_time: str,
+             target_data_source_id: str,
+             target_file_system_id: str,
+             target_instance_id: str,
+             target_path: str,
+             target_prefix: str,
+             updated_time: str,
+             vault_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("actual_bytes", actual_bytes)
+        _setter("actual_items", actual_items)
+        _setter("bytes_done", bytes_done)
+        _setter("bytes_total", bytes_total)
+        _setter("complete_time", complete_time)
+        _setter("create_time", create_time)
+        _setter("error_file", error_file)
+        _setter("error_message", error_message)
+        _setter("expire_time", expire_time)
+        _setter("id", id)
+        _setter("items_done", items_done)
+        _setter("items_total", items_total)
+        _setter("options", options)
+        _setter("parent_id", parent_id)
+        _setter("progress", progress)
+        _setter("restore_job_id", restore_job_id)
+        _setter("restore_type", restore_type)
+        _setter("snapshot_hash", snapshot_hash)
+        _setter("snapshot_id", snapshot_id)
+        _setter("source_type", source_type)
+        _setter("start_time", start_time)
+        _setter("status", status)
+        _setter("target_bucket", target_bucket)
+        _setter("target_client_id", target_client_id)
+        _setter("target_create_time", target_create_time)
+        _setter("target_data_source_id", target_data_source_id)
+        _setter("target_file_system_id", target_file_system_id)
+        _setter("target_instance_id", target_instance_id)
+        _setter("target_path", target_path)
+        _setter("target_prefix", target_prefix)
+        _setter("updated_time", updated_time)
+        _setter("vault_id", vault_id)
 
     @property
     @pulumi.getter(name="actualBytes")
@@ -2773,10 +3366,21 @@ class GetServerBackupPlansFilterResult(dict):
         :param str key: The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
         :param Sequence[str] values: Set of values that are accepted for the given field.
         """
+        GetServerBackupPlansFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if values is not None:
-            pulumi.set(__self__, "values", values)
+            _setter("values", values)
 
     @property
     @pulumi.getter
@@ -2818,15 +3422,40 @@ class GetServerBackupPlansPlanResult(dict):
         :param str retention: Backup retention days, the minimum is 1.
         :param str schedule: Backup strategy.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "details", details)
-        pulumi.set(__self__, "disabled", disabled)
-        pulumi.set(__self__, "ecs_server_backup_plan_id", ecs_server_backup_plan_id)
-        pulumi.set(__self__, "ecs_server_backup_plan_name", ecs_server_backup_plan_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "retention", retention)
-        pulumi.set(__self__, "schedule", schedule)
+        GetServerBackupPlansPlanResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            details=details,
+            disabled=disabled,
+            ecs_server_backup_plan_id=ecs_server_backup_plan_id,
+            ecs_server_backup_plan_name=ecs_server_backup_plan_name,
+            id=id,
+            instance_id=instance_id,
+            retention=retention,
+            schedule=schedule,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             details: Sequence['outputs.GetServerBackupPlansPlanDetailResult'],
+             disabled: bool,
+             ecs_server_backup_plan_id: str,
+             ecs_server_backup_plan_name: str,
+             id: str,
+             instance_id: str,
+             retention: str,
+             schedule: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("details", details)
+        _setter("disabled", disabled)
+        _setter("ecs_server_backup_plan_id", ecs_server_backup_plan_id)
+        _setter("ecs_server_backup_plan_name", ecs_server_backup_plan_name)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("retention", retention)
+        _setter("schedule", schedule)
 
     @property
     @pulumi.getter(name="createTime")
@@ -2926,16 +3555,43 @@ class GetServerBackupPlansPlanDetailResult(dict):
         :param bool snapshot_group: Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
         :param int timeout_in_seconds: Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
         """
-        pulumi.set(__self__, "app_consistent", app_consistent)
-        pulumi.set(__self__, "destination_region_id", destination_region_id)
-        pulumi.set(__self__, "destination_retention", destination_retention)
-        pulumi.set(__self__, "disk_id_lists", disk_id_lists)
-        pulumi.set(__self__, "do_copy", do_copy)
-        pulumi.set(__self__, "enable_fs_freeze", enable_fs_freeze)
-        pulumi.set(__self__, "post_script_path", post_script_path)
-        pulumi.set(__self__, "pre_script_path", pre_script_path)
-        pulumi.set(__self__, "snapshot_group", snapshot_group)
-        pulumi.set(__self__, "timeout_in_seconds", timeout_in_seconds)
+        GetServerBackupPlansPlanDetailResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_consistent=app_consistent,
+            destination_region_id=destination_region_id,
+            destination_retention=destination_retention,
+            disk_id_lists=disk_id_lists,
+            do_copy=do_copy,
+            enable_fs_freeze=enable_fs_freeze,
+            post_script_path=post_script_path,
+            pre_script_path=pre_script_path,
+            snapshot_group=snapshot_group,
+            timeout_in_seconds=timeout_in_seconds,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_consistent: bool,
+             destination_region_id: str,
+             destination_retention: int,
+             disk_id_lists: Sequence[str],
+             do_copy: bool,
+             enable_fs_freeze: bool,
+             post_script_path: str,
+             pre_script_path: str,
+             snapshot_group: bool,
+             timeout_in_seconds: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_consistent", app_consistent)
+        _setter("destination_region_id", destination_region_id)
+        _setter("destination_retention", destination_retention)
+        _setter("disk_id_lists", disk_id_lists)
+        _setter("do_copy", do_copy)
+        _setter("enable_fs_freeze", enable_fs_freeze)
+        _setter("post_script_path", post_script_path)
+        _setter("pre_script_path", pre_script_path)
+        _setter("snapshot_group", snapshot_group)
+        _setter("timeout_in_seconds", timeout_in_seconds)
 
     @property
     @pulumi.getter(name="appConsistent")
@@ -3076,33 +3732,94 @@ class GetSnapshotsSnapshotResult(dict):
         :param str status: The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
         :param str updated_time: The update time of snapshot. UNIX time in seconds.
         """
-        pulumi.set(__self__, "actual_bytes", actual_bytes)
-        pulumi.set(__self__, "actual_items", actual_items)
-        pulumi.set(__self__, "backup_type", backup_type)
-        pulumi.set(__self__, "bucket", bucket)
-        pulumi.set(__self__, "bytes_done", bytes_done)
-        pulumi.set(__self__, "bytes_total", bytes_total)
-        pulumi.set(__self__, "client_id", client_id)
-        pulumi.set(__self__, "complete_time", complete_time)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "created_time", created_time)
-        pulumi.set(__self__, "error_file", error_file)
-        pulumi.set(__self__, "file_system_id", file_system_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "items_done", items_done)
-        pulumi.set(__self__, "items_total", items_total)
-        pulumi.set(__self__, "job_id", job_id)
-        pulumi.set(__self__, "parent_snapshot_hash", parent_snapshot_hash)
-        pulumi.set(__self__, "path", path)
-        pulumi.set(__self__, "prefix", prefix)
-        pulumi.set(__self__, "retention", retention)
-        pulumi.set(__self__, "snapshot_hash", snapshot_hash)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
-        pulumi.set(__self__, "source_type", source_type)
-        pulumi.set(__self__, "start_time", start_time)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "updated_time", updated_time)
+        GetSnapshotsSnapshotResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actual_bytes=actual_bytes,
+            actual_items=actual_items,
+            backup_type=backup_type,
+            bucket=bucket,
+            bytes_done=bytes_done,
+            bytes_total=bytes_total,
+            client_id=client_id,
+            complete_time=complete_time,
+            create_time=create_time,
+            created_time=created_time,
+            error_file=error_file,
+            file_system_id=file_system_id,
+            id=id,
+            instance_id=instance_id,
+            items_done=items_done,
+            items_total=items_total,
+            job_id=job_id,
+            parent_snapshot_hash=parent_snapshot_hash,
+            path=path,
+            prefix=prefix,
+            retention=retention,
+            snapshot_hash=snapshot_hash,
+            snapshot_id=snapshot_id,
+            source_type=source_type,
+            start_time=start_time,
+            status=status,
+            updated_time=updated_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actual_bytes: str,
+             actual_items: str,
+             backup_type: str,
+             bucket: str,
+             bytes_done: str,
+             bytes_total: str,
+             client_id: str,
+             complete_time: str,
+             create_time: str,
+             created_time: str,
+             error_file: str,
+             file_system_id: str,
+             id: str,
+             instance_id: str,
+             items_done: str,
+             items_total: str,
+             job_id: str,
+             parent_snapshot_hash: str,
+             path: str,
+             prefix: str,
+             retention: str,
+             snapshot_hash: str,
+             snapshot_id: str,
+             source_type: str,
+             start_time: str,
+             status: str,
+             updated_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("actual_bytes", actual_bytes)
+        _setter("actual_items", actual_items)
+        _setter("backup_type", backup_type)
+        _setter("bucket", bucket)
+        _setter("bytes_done", bytes_done)
+        _setter("bytes_total", bytes_total)
+        _setter("client_id", client_id)
+        _setter("complete_time", complete_time)
+        _setter("create_time", create_time)
+        _setter("created_time", created_time)
+        _setter("error_file", error_file)
+        _setter("file_system_id", file_system_id)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("items_done", items_done)
+        _setter("items_total", items_total)
+        _setter("job_id", job_id)
+        _setter("parent_snapshot_hash", parent_snapshot_hash)
+        _setter("path", path)
+        _setter("prefix", prefix)
+        _setter("retention", retention)
+        _setter("snapshot_hash", snapshot_hash)
+        _setter("snapshot_id", snapshot_id)
+        _setter("source_type", source_type)
+        _setter("start_time", start_time)
+        _setter("status", status)
+        _setter("updated_time", updated_time)
 
     @property
     @pulumi.getter(name="actualBytes")
@@ -3372,31 +4089,88 @@ class GetVaultsVaultResult(dict):
         :param str vault_storage_class: The storage class of vault. Valid values: `STANDARD`.
         :param str vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
         """
-        pulumi.set(__self__, "bucket_name", bucket_name)
-        pulumi.set(__self__, "bytes_done", bytes_done)
-        pulumi.set(__self__, "created_time", created_time)
-        pulumi.set(__self__, "dedup", dedup)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "index_available", index_available)
-        pulumi.set(__self__, "index_level", index_level)
-        pulumi.set(__self__, "index_update_time", index_update_time)
-        pulumi.set(__self__, "latest_replication_time", latest_replication_time)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "replication", replication)
-        pulumi.set(__self__, "replication_source_region_id", replication_source_region_id)
-        pulumi.set(__self__, "replication_source_vault_id", replication_source_vault_id)
-        pulumi.set(__self__, "retention", retention)
-        pulumi.set(__self__, "search_enabled", search_enabled)
-        pulumi.set(__self__, "source_types", source_types)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_size", storage_size)
-        pulumi.set(__self__, "updated_time", updated_time)
-        pulumi.set(__self__, "vault_id", vault_id)
-        pulumi.set(__self__, "vault_name", vault_name)
-        pulumi.set(__self__, "vault_status_message", vault_status_message)
-        pulumi.set(__self__, "vault_storage_class", vault_storage_class)
-        pulumi.set(__self__, "vault_type", vault_type)
+        GetVaultsVaultResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bucket_name=bucket_name,
+            bytes_done=bytes_done,
+            created_time=created_time,
+            dedup=dedup,
+            description=description,
+            id=id,
+            index_available=index_available,
+            index_level=index_level,
+            index_update_time=index_update_time,
+            latest_replication_time=latest_replication_time,
+            payment_type=payment_type,
+            replication=replication,
+            replication_source_region_id=replication_source_region_id,
+            replication_source_vault_id=replication_source_vault_id,
+            retention=retention,
+            search_enabled=search_enabled,
+            source_types=source_types,
+            status=status,
+            storage_size=storage_size,
+            updated_time=updated_time,
+            vault_id=vault_id,
+            vault_name=vault_name,
+            vault_status_message=vault_status_message,
+            vault_storage_class=vault_storage_class,
+            vault_type=vault_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bucket_name: str,
+             bytes_done: str,
+             created_time: str,
+             dedup: bool,
+             description: str,
+             id: str,
+             index_available: bool,
+             index_level: str,
+             index_update_time: str,
+             latest_replication_time: str,
+             payment_type: str,
+             replication: bool,
+             replication_source_region_id: str,
+             replication_source_vault_id: str,
+             retention: str,
+             search_enabled: bool,
+             source_types: Sequence[str],
+             status: str,
+             storage_size: str,
+             updated_time: str,
+             vault_id: str,
+             vault_name: str,
+             vault_status_message: str,
+             vault_storage_class: str,
+             vault_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bucket_name", bucket_name)
+        _setter("bytes_done", bytes_done)
+        _setter("created_time", created_time)
+        _setter("dedup", dedup)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("index_available", index_available)
+        _setter("index_level", index_level)
+        _setter("index_update_time", index_update_time)
+        _setter("latest_replication_time", latest_replication_time)
+        _setter("payment_type", payment_type)
+        _setter("replication", replication)
+        _setter("replication_source_region_id", replication_source_region_id)
+        _setter("replication_source_vault_id", replication_source_vault_id)
+        _setter("retention", retention)
+        _setter("search_enabled", search_enabled)
+        _setter("source_types", source_types)
+        _setter("status", status)
+        _setter("storage_size", storage_size)
+        _setter("updated_time", updated_time)
+        _setter("vault_id", vault_id)
+        _setter("vault_name", vault_name)
+        _setter("vault_status_message", vault_status_message)
+        _setter("vault_storage_class", vault_storage_class)
+        _setter("vault_type", vault_type)
 
     @property
     @pulumi.getter(name="bucketName")

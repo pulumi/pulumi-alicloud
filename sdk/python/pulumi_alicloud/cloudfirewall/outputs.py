@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -70,10 +70,21 @@ class AddressBookEcsTag(dict):
         :param str tag_key: The key of ECS tag that to be matched.
         :param str tag_value: The value of ECS tag that to be matched.
         """
+        AddressBookEcsTag._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            tag_key=tag_key,
+            tag_value=tag_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             tag_key: Optional[str] = None,
+             tag_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if tag_key is not None:
-            pulumi.set(__self__, "tag_key", tag_key)
+            _setter("tag_key", tag_key)
         if tag_value is not None:
-            pulumi.set(__self__, "tag_value", tag_value)
+            _setter("tag_value", tag_value)
 
     @property
     @pulumi.getter(name="tagKey")
@@ -180,39 +191,80 @@ class FirewallVpcFirewallCenLocalVpc(dict):
         :param str vpc_id: The ID of the VPC instance.
         :param str vpc_name: The instance name of the VPC.
         """
-        pulumi.set(__self__, "network_instance_id", network_instance_id)
+        FirewallVpcFirewallCenLocalVpc._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            network_instance_id=network_instance_id,
+            attachment_id=attachment_id,
+            attachment_name=attachment_name,
+            defend_cidr_lists=defend_cidr_lists,
+            eni_lists=eni_lists,
+            manual_vswitch_id=manual_vswitch_id,
+            network_instance_name=network_instance_name,
+            network_instance_type=network_instance_type,
+            owner_id=owner_id,
+            region_no=region_no,
+            route_mode=route_mode,
+            support_manual_mode=support_manual_mode,
+            transit_router_id=transit_router_id,
+            transit_router_type=transit_router_type,
+            vpc_cidr_table_lists=vpc_cidr_table_lists,
+            vpc_id=vpc_id,
+            vpc_name=vpc_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             network_instance_id: str,
+             attachment_id: Optional[str] = None,
+             attachment_name: Optional[str] = None,
+             defend_cidr_lists: Optional[Sequence[str]] = None,
+             eni_lists: Optional[Sequence['outputs.FirewallVpcFirewallCenLocalVpcEniList']] = None,
+             manual_vswitch_id: Optional[str] = None,
+             network_instance_name: Optional[str] = None,
+             network_instance_type: Optional[str] = None,
+             owner_id: Optional[str] = None,
+             region_no: Optional[str] = None,
+             route_mode: Optional[str] = None,
+             support_manual_mode: Optional[str] = None,
+             transit_router_id: Optional[str] = None,
+             transit_router_type: Optional[str] = None,
+             vpc_cidr_table_lists: Optional[Sequence['outputs.FirewallVpcFirewallCenLocalVpcVpcCidrTableList']] = None,
+             vpc_id: Optional[str] = None,
+             vpc_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("network_instance_id", network_instance_id)
         if attachment_id is not None:
-            pulumi.set(__self__, "attachment_id", attachment_id)
+            _setter("attachment_id", attachment_id)
         if attachment_name is not None:
-            pulumi.set(__self__, "attachment_name", attachment_name)
+            _setter("attachment_name", attachment_name)
         if defend_cidr_lists is not None:
-            pulumi.set(__self__, "defend_cidr_lists", defend_cidr_lists)
+            _setter("defend_cidr_lists", defend_cidr_lists)
         if eni_lists is not None:
-            pulumi.set(__self__, "eni_lists", eni_lists)
+            _setter("eni_lists", eni_lists)
         if manual_vswitch_id is not None:
-            pulumi.set(__self__, "manual_vswitch_id", manual_vswitch_id)
+            _setter("manual_vswitch_id", manual_vswitch_id)
         if network_instance_name is not None:
-            pulumi.set(__self__, "network_instance_name", network_instance_name)
+            _setter("network_instance_name", network_instance_name)
         if network_instance_type is not None:
-            pulumi.set(__self__, "network_instance_type", network_instance_type)
+            _setter("network_instance_type", network_instance_type)
         if owner_id is not None:
-            pulumi.set(__self__, "owner_id", owner_id)
+            _setter("owner_id", owner_id)
         if region_no is not None:
-            pulumi.set(__self__, "region_no", region_no)
+            _setter("region_no", region_no)
         if route_mode is not None:
-            pulumi.set(__self__, "route_mode", route_mode)
+            _setter("route_mode", route_mode)
         if support_manual_mode is not None:
-            pulumi.set(__self__, "support_manual_mode", support_manual_mode)
+            _setter("support_manual_mode", support_manual_mode)
         if transit_router_id is not None:
-            pulumi.set(__self__, "transit_router_id", transit_router_id)
+            _setter("transit_router_id", transit_router_id)
         if transit_router_type is not None:
-            pulumi.set(__self__, "transit_router_type", transit_router_type)
+            _setter("transit_router_type", transit_router_type)
         if vpc_cidr_table_lists is not None:
-            pulumi.set(__self__, "vpc_cidr_table_lists", vpc_cidr_table_lists)
+            _setter("vpc_cidr_table_lists", vpc_cidr_table_lists)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
         if vpc_name is not None:
-            pulumi.set(__self__, "vpc_name", vpc_name)
+            _setter("vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="networkInstanceId")
@@ -379,10 +431,21 @@ class FirewallVpcFirewallCenLocalVpcEniList(dict):
         :param str eni_id: The ID of the instance of the ENI in the VPC.
         :param str eni_private_ip_address: The private IP address of the ENI in the VPC.
         """
+        FirewallVpcFirewallCenLocalVpcEniList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            eni_id=eni_id,
+            eni_private_ip_address=eni_private_ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             eni_id: Optional[str] = None,
+             eni_private_ip_address: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if eni_id is not None:
-            pulumi.set(__self__, "eni_id", eni_id)
+            _setter("eni_id", eni_id)
         if eni_private_ip_address is not None:
-            pulumi.set(__self__, "eni_private_ip_address", eni_private_ip_address)
+            _setter("eni_private_ip_address", eni_private_ip_address)
 
     @property
     @pulumi.getter(name="eniId")
@@ -429,10 +492,21 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableList(dict):
         :param Sequence['FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryListArgs'] route_entry_lists: The list of route entries in the VPC.
         :param str route_table_id: The ID of the route table of the VPC.
         """
+        FirewallVpcFirewallCenLocalVpcVpcCidrTableList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            route_entry_lists=route_entry_lists,
+            route_table_id=route_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             route_entry_lists: Optional[Sequence['outputs.FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList']] = None,
+             route_table_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if route_entry_lists is not None:
-            pulumi.set(__self__, "route_entry_lists", route_entry_lists)
+            _setter("route_entry_lists", route_entry_lists)
         if route_table_id is not None:
-            pulumi.set(__self__, "route_table_id", route_table_id)
+            _setter("route_table_id", route_table_id)
 
     @property
     @pulumi.getter(name="routeEntryLists")
@@ -479,10 +553,21 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList(dict):
         :param str destination_cidr: The target network segment of the VPC.
         :param str next_hop_instance_id: The ID of the next hop instance in the VPC.
         """
+        FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination_cidr=destination_cidr,
+            next_hop_instance_id=next_hop_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination_cidr: Optional[str] = None,
+             next_hop_instance_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if destination_cidr is not None:
-            pulumi.set(__self__, "destination_cidr", destination_cidr)
+            _setter("destination_cidr", destination_cidr)
         if next_hop_instance_id is not None:
-            pulumi.set(__self__, "next_hop_instance_id", next_hop_instance_id)
+            _setter("next_hop_instance_id", next_hop_instance_id)
 
     @property
     @pulumi.getter(name="destinationCidr")
@@ -549,17 +634,38 @@ class FirewallVpcFirewallLocalVpc(dict):
         :param str router_interface_id: The ID of the router interface in the peer VPC.
         :param str vpc_name: The instance name of the peer VPC.
         """
-        pulumi.set(__self__, "local_vpc_cidr_table_lists", local_vpc_cidr_table_lists)
-        pulumi.set(__self__, "region_no", region_no)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        FirewallVpcFirewallLocalVpc._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_vpc_cidr_table_lists=local_vpc_cidr_table_lists,
+            region_no=region_no,
+            vpc_id=vpc_id,
+            eni_id=eni_id,
+            eni_private_ip_address=eni_private_ip_address,
+            router_interface_id=router_interface_id,
+            vpc_name=vpc_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_vpc_cidr_table_lists: Sequence['outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableList'],
+             region_no: str,
+             vpc_id: str,
+             eni_id: Optional[str] = None,
+             eni_private_ip_address: Optional[str] = None,
+             router_interface_id: Optional[str] = None,
+             vpc_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("local_vpc_cidr_table_lists", local_vpc_cidr_table_lists)
+        _setter("region_no", region_no)
+        _setter("vpc_id", vpc_id)
         if eni_id is not None:
-            pulumi.set(__self__, "eni_id", eni_id)
+            _setter("eni_id", eni_id)
         if eni_private_ip_address is not None:
-            pulumi.set(__self__, "eni_private_ip_address", eni_private_ip_address)
+            _setter("eni_private_ip_address", eni_private_ip_address)
         if router_interface_id is not None:
-            pulumi.set(__self__, "router_interface_id", router_interface_id)
+            _setter("router_interface_id", router_interface_id)
         if vpc_name is not None:
-            pulumi.set(__self__, "vpc_name", vpc_name)
+            _setter("vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="localVpcCidrTableLists")
@@ -646,8 +752,19 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableList(dict):
         :param Sequence['FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs'] local_route_entry_lists: The list of route entries of the local VPC. See `local_route_entry_list` below.
         :param str local_route_table_id: The ID of the route table of the local VPC.
         """
-        pulumi.set(__self__, "local_route_entry_lists", local_route_entry_lists)
-        pulumi.set(__self__, "local_route_table_id", local_route_table_id)
+        FirewallVpcFirewallLocalVpcLocalVpcCidrTableList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_route_entry_lists=local_route_entry_lists,
+            local_route_table_id=local_route_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_route_entry_lists: Sequence['outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList'],
+             local_route_table_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("local_route_entry_lists", local_route_entry_lists)
+        _setter("local_route_table_id", local_route_table_id)
 
     @property
     @pulumi.getter(name="localRouteEntryLists")
@@ -694,8 +811,19 @@ class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList(dict):
         :param str local_destination_cidr: The target network segment of the local VPC.
         :param str local_next_hop_instance_id: The ID of the next-hop instance in the local VPC.
         """
-        pulumi.set(__self__, "local_destination_cidr", local_destination_cidr)
-        pulumi.set(__self__, "local_next_hop_instance_id", local_next_hop_instance_id)
+        FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_destination_cidr=local_destination_cidr,
+            local_next_hop_instance_id=local_next_hop_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_destination_cidr: str,
+             local_next_hop_instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("local_destination_cidr", local_destination_cidr)
+        _setter("local_next_hop_instance_id", local_next_hop_instance_id)
 
     @property
     @pulumi.getter(name="localDestinationCidr")
@@ -762,17 +890,38 @@ class FirewallVpcFirewallPeerVpc(dict):
         :param str router_interface_id: The ID of the router interface in the peer VPC.
         :param str vpc_name: The instance name of the peer VPC.
         """
-        pulumi.set(__self__, "peer_vpc_cidr_table_lists", peer_vpc_cidr_table_lists)
-        pulumi.set(__self__, "region_no", region_no)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        FirewallVpcFirewallPeerVpc._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            peer_vpc_cidr_table_lists=peer_vpc_cidr_table_lists,
+            region_no=region_no,
+            vpc_id=vpc_id,
+            eni_id=eni_id,
+            eni_private_ip_address=eni_private_ip_address,
+            router_interface_id=router_interface_id,
+            vpc_name=vpc_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             peer_vpc_cidr_table_lists: Sequence['outputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableList'],
+             region_no: str,
+             vpc_id: str,
+             eni_id: Optional[str] = None,
+             eni_private_ip_address: Optional[str] = None,
+             router_interface_id: Optional[str] = None,
+             vpc_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("peer_vpc_cidr_table_lists", peer_vpc_cidr_table_lists)
+        _setter("region_no", region_no)
+        _setter("vpc_id", vpc_id)
         if eni_id is not None:
-            pulumi.set(__self__, "eni_id", eni_id)
+            _setter("eni_id", eni_id)
         if eni_private_ip_address is not None:
-            pulumi.set(__self__, "eni_private_ip_address", eni_private_ip_address)
+            _setter("eni_private_ip_address", eni_private_ip_address)
         if router_interface_id is not None:
-            pulumi.set(__self__, "router_interface_id", router_interface_id)
+            _setter("router_interface_id", router_interface_id)
         if vpc_name is not None:
-            pulumi.set(__self__, "vpc_name", vpc_name)
+            _setter("vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="peerVpcCidrTableLists")
@@ -859,8 +1008,19 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList(dict):
         :param Sequence['FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs'] peer_route_entry_lists: Peer VPC route entry list information. See `peer_route_entry_list` below.
         :param str peer_route_table_id: The ID of the route table of the peer VPC.
         """
-        pulumi.set(__self__, "peer_route_entry_lists", peer_route_entry_lists)
-        pulumi.set(__self__, "peer_route_table_id", peer_route_table_id)
+        FirewallVpcFirewallPeerVpcPeerVpcCidrTableList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            peer_route_entry_lists=peer_route_entry_lists,
+            peer_route_table_id=peer_route_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             peer_route_entry_lists: Sequence['outputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList'],
+             peer_route_table_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("peer_route_entry_lists", peer_route_entry_lists)
+        _setter("peer_route_table_id", peer_route_table_id)
 
     @property
     @pulumi.getter(name="peerRouteEntryLists")
@@ -907,8 +1067,19 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList(dict):
         :param str peer_destination_cidr: The target network segment of the peer VPC.
         :param str peer_next_hop_instance_id: The ID of the next-hop instance in the peer VPC.
         """
-        pulumi.set(__self__, "peer_destination_cidr", peer_destination_cidr)
-        pulumi.set(__self__, "peer_next_hop_instance_id", peer_next_hop_instance_id)
+        FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            peer_destination_cidr=peer_destination_cidr,
+            peer_next_hop_instance_id=peer_next_hop_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             peer_destination_cidr: str,
+             peer_next_hop_instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("peer_destination_cidr", peer_destination_cidr)
+        _setter("peer_next_hop_instance_id", peer_next_hop_instance_id)
 
     @property
     @pulumi.getter(name="peerDestinationCidr")
@@ -950,16 +1121,41 @@ class GetAddressBooksBookResult(dict):
         :param str tag_relation: One or more tags for the relationship between.
         :param Sequence['GetAddressBooksBookEcsTagArgs'] ecs_tags: The logical relation among the ECS tags that to be matchedh.
         """
-        pulumi.set(__self__, "address_lists", address_lists)
-        pulumi.set(__self__, "auto_add_tag_ecs", auto_add_tag_ecs)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "group_type", group_type)
-        pulumi.set(__self__, "group_uuid", group_uuid)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "tag_relation", tag_relation)
+        GetAddressBooksBookResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_lists=address_lists,
+            auto_add_tag_ecs=auto_add_tag_ecs,
+            description=description,
+            group_name=group_name,
+            group_type=group_type,
+            group_uuid=group_uuid,
+            id=id,
+            tag_relation=tag_relation,
+            ecs_tags=ecs_tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_lists: Sequence[str],
+             auto_add_tag_ecs: int,
+             description: str,
+             group_name: str,
+             group_type: str,
+             group_uuid: str,
+             id: str,
+             tag_relation: str,
+             ecs_tags: Optional[Sequence['outputs.GetAddressBooksBookEcsTagResult']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("address_lists", address_lists)
+        _setter("auto_add_tag_ecs", auto_add_tag_ecs)
+        _setter("description", description)
+        _setter("group_name", group_name)
+        _setter("group_type", group_type)
+        _setter("group_uuid", group_uuid)
+        _setter("id", id)
+        _setter("tag_relation", tag_relation)
         if ecs_tags is not None:
-            pulumi.set(__self__, "ecs_tags", ecs_tags)
+            _setter("ecs_tags", ecs_tags)
 
     @property
     @pulumi.getter(name="addressLists")
@@ -1043,10 +1239,21 @@ class GetAddressBooksBookEcsTagResult(dict):
         :param str tag_key: The key of ECS tag that to be matched.
         :param str tag_value: The value of ECS tag that to be matched.
         """
+        GetAddressBooksBookEcsTagResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            tag_key=tag_key,
+            tag_value=tag_value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             tag_key: Optional[str] = None,
+             tag_value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if tag_key is not None:
-            pulumi.set(__self__, "tag_key", tag_key)
+            _setter("tag_key", tag_key)
         if tag_value is not None:
-            pulumi.set(__self__, "tag_value", tag_value)
+            _setter("tag_value", tag_value)
 
     @property
     @pulumi.getter(name="tagKey")
@@ -1110,31 +1317,88 @@ class GetControlPoliciesPolicyResult(dict):
         :param str source: The source address defined in the access control policy.
         :param str source_type: The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
         """
-        pulumi.set(__self__, "acl_action", acl_action)
-        pulumi.set(__self__, "acl_uuid", acl_uuid)
-        pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "application_name", application_name)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "dest_port", dest_port)
-        pulumi.set(__self__, "dest_port_group", dest_port_group)
-        pulumi.set(__self__, "dest_port_group_ports", dest_port_group_ports)
-        pulumi.set(__self__, "dest_port_type", dest_port_type)
-        pulumi.set(__self__, "destination", destination)
-        pulumi.set(__self__, "destination_group_cidrs", destination_group_cidrs)
-        pulumi.set(__self__, "destination_group_type", destination_group_type)
-        pulumi.set(__self__, "destination_type", destination_type)
-        pulumi.set(__self__, "direction", direction)
-        pulumi.set(__self__, "dns_result", dns_result)
-        pulumi.set(__self__, "dns_result_time", dns_result_time)
-        pulumi.set(__self__, "hit_times", hit_times)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "order", order)
-        pulumi.set(__self__, "proto", proto)
-        pulumi.set(__self__, "release", release)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "source_group_cidrs", source_group_cidrs)
-        pulumi.set(__self__, "source_group_type", source_group_type)
-        pulumi.set(__self__, "source_type", source_type)
+        GetControlPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_action=acl_action,
+            acl_uuid=acl_uuid,
+            application_id=application_id,
+            application_name=application_name,
+            description=description,
+            dest_port=dest_port,
+            dest_port_group=dest_port_group,
+            dest_port_group_ports=dest_port_group_ports,
+            dest_port_type=dest_port_type,
+            destination=destination,
+            destination_group_cidrs=destination_group_cidrs,
+            destination_group_type=destination_group_type,
+            destination_type=destination_type,
+            direction=direction,
+            dns_result=dns_result,
+            dns_result_time=dns_result_time,
+            hit_times=hit_times,
+            id=id,
+            order=order,
+            proto=proto,
+            release=release,
+            source=source,
+            source_group_cidrs=source_group_cidrs,
+            source_group_type=source_group_type,
+            source_type=source_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_action: str,
+             acl_uuid: str,
+             application_id: str,
+             application_name: str,
+             description: str,
+             dest_port: str,
+             dest_port_group: str,
+             dest_port_group_ports: Sequence[str],
+             dest_port_type: str,
+             destination: str,
+             destination_group_cidrs: Sequence[str],
+             destination_group_type: str,
+             destination_type: str,
+             direction: str,
+             dns_result: str,
+             dns_result_time: str,
+             hit_times: str,
+             id: str,
+             order: int,
+             proto: str,
+             release: bool,
+             source: str,
+             source_group_cidrs: Sequence[str],
+             source_group_type: str,
+             source_type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("acl_action", acl_action)
+        _setter("acl_uuid", acl_uuid)
+        _setter("application_id", application_id)
+        _setter("application_name", application_name)
+        _setter("description", description)
+        _setter("dest_port", dest_port)
+        _setter("dest_port_group", dest_port_group)
+        _setter("dest_port_group_ports", dest_port_group_ports)
+        _setter("dest_port_type", dest_port_type)
+        _setter("destination", destination)
+        _setter("destination_group_cidrs", destination_group_cidrs)
+        _setter("destination_group_type", destination_group_type)
+        _setter("destination_type", destination_type)
+        _setter("direction", direction)
+        _setter("dns_result", dns_result)
+        _setter("dns_result_time", dns_result_time)
+        _setter("hit_times", hit_times)
+        _setter("id", id)
+        _setter("order", order)
+        _setter("proto", proto)
+        _setter("release", release)
+        _setter("source", source)
+        _setter("source_group_cidrs", source_group_cidrs)
+        _setter("source_group_type", source_group_type)
+        _setter("source_type", source_type)
 
     @property
     @pulumi.getter(name="aclAction")
@@ -1325,13 +1589,34 @@ class GetInstanceMembersMemberResult(dict):
         :param int modify_time: The last modification time of the cloud firewall member account.> use second-level timestamp format.
         :param str status: The resource attribute field that represents the resource status.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "member_desc", member_desc)
-        pulumi.set(__self__, "member_display_name", member_display_name)
-        pulumi.set(__self__, "member_uid", member_uid)
-        pulumi.set(__self__, "modify_time", modify_time)
-        pulumi.set(__self__, "status", status)
+        GetInstanceMembersMemberResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            id=id,
+            member_desc=member_desc,
+            member_display_name=member_display_name,
+            member_uid=member_uid,
+            modify_time=modify_time,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: int,
+             id: str,
+             member_desc: str,
+             member_display_name: str,
+             member_uid: str,
+             modify_time: int,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("member_desc", member_desc)
+        _setter("member_display_name", member_display_name)
+        _setter("member_uid", member_uid)
+        _setter("modify_time", modify_time)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1408,14 +1693,37 @@ class GetInstancesInstanceResult(dict):
         :param str renewal_status: Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
         :param str status: The Status of Instance.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "end_time", end_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
-        pulumi.set(__self__, "renewal_status", renewal_status)
-        pulumi.set(__self__, "status", status)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            end_time=end_time,
+            id=id,
+            instance_id=instance_id,
+            payment_type=payment_type,
+            renewal_duration_unit=renewal_duration_unit,
+            renewal_status=renewal_status,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             end_time: str,
+             id: str,
+             instance_id: str,
+             payment_type: str,
+             renewal_duration_unit: str,
+             renewal_status: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("end_time", end_time)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("payment_type", payment_type)
+        _setter("renewal_duration_unit", renewal_duration_unit)
+        _setter("renewal_status", renewal_status)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="createTime")
@@ -1503,14 +1811,37 @@ class GetVpcFirewallCensCenResult(dict):
         :param str vpc_firewall_id: VPC firewall ID
         :param str vpc_firewall_name: The name of the VPC firewall instance.
         """
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "connect_type", connect_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_vpcs", local_vpcs)
-        pulumi.set(__self__, "network_instance_id", network_instance_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_firewall_id", vpc_firewall_id)
-        pulumi.set(__self__, "vpc_firewall_name", vpc_firewall_name)
+        GetVpcFirewallCensCenResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            connect_type=connect_type,
+            id=id,
+            local_vpcs=local_vpcs,
+            network_instance_id=network_instance_id,
+            status=status,
+            vpc_firewall_id=vpc_firewall_id,
+            vpc_firewall_name=vpc_firewall_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: str,
+             connect_type: str,
+             id: str,
+             local_vpcs: Sequence['outputs.GetVpcFirewallCensCenLocalVpcResult'],
+             network_instance_id: str,
+             status: str,
+             vpc_firewall_id: str,
+             vpc_firewall_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cen_id", cen_id)
+        _setter("connect_type", connect_type)
+        _setter("id", id)
+        _setter("local_vpcs", local_vpcs)
+        _setter("network_instance_id", network_instance_id)
+        _setter("status", status)
+        _setter("vpc_firewall_id", vpc_firewall_id)
+        _setter("vpc_firewall_name", vpc_firewall_name)
 
     @property
     @pulumi.getter(name="cenId")
@@ -1611,23 +1942,64 @@ class GetVpcFirewallCensCenLocalVpcResult(dict):
         :param str vpc_id: The ID of the VPC instance.
         :param str vpc_name: The instance name of the VPC.
         """
-        pulumi.set(__self__, "attachment_id", attachment_id)
-        pulumi.set(__self__, "attachment_name", attachment_name)
-        pulumi.set(__self__, "defend_cidr_lists", defend_cidr_lists)
-        pulumi.set(__self__, "eni_lists", eni_lists)
-        pulumi.set(__self__, "manual_vswitch_id", manual_vswitch_id)
-        pulumi.set(__self__, "network_instance_id", network_instance_id)
-        pulumi.set(__self__, "network_instance_name", network_instance_name)
-        pulumi.set(__self__, "network_instance_type", network_instance_type)
-        pulumi.set(__self__, "owner_id", owner_id)
-        pulumi.set(__self__, "region_no", region_no)
-        pulumi.set(__self__, "route_mode", route_mode)
-        pulumi.set(__self__, "support_manual_mode", support_manual_mode)
-        pulumi.set(__self__, "transit_router_id", transit_router_id)
-        pulumi.set(__self__, "transit_router_type", transit_router_type)
-        pulumi.set(__self__, "vpc_cidr_table_lists", vpc_cidr_table_lists)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vpc_name", vpc_name)
+        GetVpcFirewallCensCenLocalVpcResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attachment_id=attachment_id,
+            attachment_name=attachment_name,
+            defend_cidr_lists=defend_cidr_lists,
+            eni_lists=eni_lists,
+            manual_vswitch_id=manual_vswitch_id,
+            network_instance_id=network_instance_id,
+            network_instance_name=network_instance_name,
+            network_instance_type=network_instance_type,
+            owner_id=owner_id,
+            region_no=region_no,
+            route_mode=route_mode,
+            support_manual_mode=support_manual_mode,
+            transit_router_id=transit_router_id,
+            transit_router_type=transit_router_type,
+            vpc_cidr_table_lists=vpc_cidr_table_lists,
+            vpc_id=vpc_id,
+            vpc_name=vpc_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attachment_id: str,
+             attachment_name: str,
+             defend_cidr_lists: Sequence[str],
+             eni_lists: Sequence['outputs.GetVpcFirewallCensCenLocalVpcEniListResult'],
+             manual_vswitch_id: str,
+             network_instance_id: str,
+             network_instance_name: str,
+             network_instance_type: str,
+             owner_id: str,
+             region_no: str,
+             route_mode: str,
+             support_manual_mode: str,
+             transit_router_id: str,
+             transit_router_type: str,
+             vpc_cidr_table_lists: Sequence['outputs.GetVpcFirewallCensCenLocalVpcVpcCidrTableListResult'],
+             vpc_id: str,
+             vpc_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attachment_id", attachment_id)
+        _setter("attachment_name", attachment_name)
+        _setter("defend_cidr_lists", defend_cidr_lists)
+        _setter("eni_lists", eni_lists)
+        _setter("manual_vswitch_id", manual_vswitch_id)
+        _setter("network_instance_id", network_instance_id)
+        _setter("network_instance_name", network_instance_name)
+        _setter("network_instance_type", network_instance_type)
+        _setter("owner_id", owner_id)
+        _setter("region_no", region_no)
+        _setter("route_mode", route_mode)
+        _setter("support_manual_mode", support_manual_mode)
+        _setter("transit_router_id", transit_router_id)
+        _setter("transit_router_type", transit_router_type)
+        _setter("vpc_cidr_table_lists", vpc_cidr_table_lists)
+        _setter("vpc_id", vpc_id)
+        _setter("vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="attachmentId")
@@ -1756,8 +2128,19 @@ class GetVpcFirewallCensCenLocalVpcEniListResult(dict):
     def __init__(__self__, *,
                  eni_id: str,
                  eni_private_ip_address: str):
-        pulumi.set(__self__, "eni_id", eni_id)
-        pulumi.set(__self__, "eni_private_ip_address", eni_private_ip_address)
+        GetVpcFirewallCensCenLocalVpcEniListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            eni_id=eni_id,
+            eni_private_ip_address=eni_private_ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             eni_id: str,
+             eni_private_ip_address: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("eni_id", eni_id)
+        _setter("eni_private_ip_address", eni_private_ip_address)
 
     @property
     @pulumi.getter(name="eniId")
@@ -1779,8 +2162,19 @@ class GetVpcFirewallCensCenLocalVpcVpcCidrTableListResult(dict):
         :param Sequence['GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListArgs'] route_entry_lists: The list of route entries in the VPC.
         :param str route_table_id: The ID of the route table of the VPC.
         """
-        pulumi.set(__self__, "route_entry_lists", route_entry_lists)
-        pulumi.set(__self__, "route_table_id", route_table_id)
+        GetVpcFirewallCensCenLocalVpcVpcCidrTableListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            route_entry_lists=route_entry_lists,
+            route_table_id=route_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             route_entry_lists: Sequence['outputs.GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListResult'],
+             route_table_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("route_entry_lists", route_entry_lists)
+        _setter("route_table_id", route_table_id)
 
     @property
     @pulumi.getter(name="routeEntryLists")
@@ -1808,8 +2202,19 @@ class GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListResult(dict):
         :param str destination_cidr: The target network segment of the VPC.
         :param str next_hop_instance_id: The ID of the next hop instance in the VPC.
         """
-        pulumi.set(__self__, "destination_cidr", destination_cidr)
-        pulumi.set(__self__, "next_hop_instance_id", next_hop_instance_id)
+        GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            destination_cidr=destination_cidr,
+            next_hop_instance_id=next_hop_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             destination_cidr: str,
+             next_hop_instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("destination_cidr", destination_cidr)
+        _setter("next_hop_instance_id", next_hop_instance_id)
 
     @property
     @pulumi.getter(name="destinationCidr")
@@ -1881,30 +2286,85 @@ class GetVpcFirewallControlPoliciesPolicyResult(dict):
         :param str source_type: Access control over VPC firewalls policy source address type.
         :param str vpc_firewall_id: The ID of the VPC firewall instance.
         """
-        pulumi.set(__self__, "acl_action", acl_action)
-        pulumi.set(__self__, "acl_uuid", acl_uuid)
-        pulumi.set(__self__, "application_id", application_id)
-        pulumi.set(__self__, "application_name", application_name)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "dest_port", dest_port)
-        pulumi.set(__self__, "dest_port_group", dest_port_group)
-        pulumi.set(__self__, "dest_port_group_ports", dest_port_group_ports)
-        pulumi.set(__self__, "dest_port_type", dest_port_type)
-        pulumi.set(__self__, "destination", destination)
-        pulumi.set(__self__, "destination_group_cidrs", destination_group_cidrs)
-        pulumi.set(__self__, "destination_group_type", destination_group_type)
-        pulumi.set(__self__, "destination_type", destination_type)
-        pulumi.set(__self__, "hit_times", hit_times)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "member_uid", member_uid)
-        pulumi.set(__self__, "order", order)
-        pulumi.set(__self__, "proto", proto)
-        pulumi.set(__self__, "release", release)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "source_group_cidrs", source_group_cidrs)
-        pulumi.set(__self__, "source_group_type", source_group_type)
-        pulumi.set(__self__, "source_type", source_type)
-        pulumi.set(__self__, "vpc_firewall_id", vpc_firewall_id)
+        GetVpcFirewallControlPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acl_action=acl_action,
+            acl_uuid=acl_uuid,
+            application_id=application_id,
+            application_name=application_name,
+            description=description,
+            dest_port=dest_port,
+            dest_port_group=dest_port_group,
+            dest_port_group_ports=dest_port_group_ports,
+            dest_port_type=dest_port_type,
+            destination=destination,
+            destination_group_cidrs=destination_group_cidrs,
+            destination_group_type=destination_group_type,
+            destination_type=destination_type,
+            hit_times=hit_times,
+            id=id,
+            member_uid=member_uid,
+            order=order,
+            proto=proto,
+            release=release,
+            source=source,
+            source_group_cidrs=source_group_cidrs,
+            source_group_type=source_group_type,
+            source_type=source_type,
+            vpc_firewall_id=vpc_firewall_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acl_action: str,
+             acl_uuid: str,
+             application_id: str,
+             application_name: str,
+             description: str,
+             dest_port: str,
+             dest_port_group: str,
+             dest_port_group_ports: Sequence[str],
+             dest_port_type: str,
+             destination: str,
+             destination_group_cidrs: Sequence[str],
+             destination_group_type: str,
+             destination_type: str,
+             hit_times: int,
+             id: str,
+             member_uid: str,
+             order: int,
+             proto: str,
+             release: bool,
+             source: str,
+             source_group_cidrs: Sequence[str],
+             source_group_type: str,
+             source_type: str,
+             vpc_firewall_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("acl_action", acl_action)
+        _setter("acl_uuid", acl_uuid)
+        _setter("application_id", application_id)
+        _setter("application_name", application_name)
+        _setter("description", description)
+        _setter("dest_port", dest_port)
+        _setter("dest_port_group", dest_port_group)
+        _setter("dest_port_group_ports", dest_port_group_ports)
+        _setter("dest_port_type", dest_port_type)
+        _setter("destination", destination)
+        _setter("destination_group_cidrs", destination_group_cidrs)
+        _setter("destination_group_type", destination_group_type)
+        _setter("destination_type", destination_type)
+        _setter("hit_times", hit_times)
+        _setter("id", id)
+        _setter("member_uid", member_uid)
+        _setter("order", order)
+        _setter("proto", proto)
+        _setter("release", release)
+        _setter("source", source)
+        _setter("source_group_cidrs", source_group_cidrs)
+        _setter("source_group_type", source_group_type)
+        _setter("source_type", source_type)
+        _setter("vpc_firewall_id", vpc_firewall_id)
 
     @property
     @pulumi.getter(name="aclAction")
@@ -2122,15 +2582,40 @@ class GetVpcFirewallsFirewallResult(dict):
         :param str vpc_firewall_id: The ID of the VPC firewall instance.
         :param str vpc_firewall_name: The name of the VPC firewall instance.
         """
-        pulumi.set(__self__, "bandwidth", bandwidth)
-        pulumi.set(__self__, "connect_type", connect_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "local_vpcs", local_vpcs)
-        pulumi.set(__self__, "peer_vpcs", peer_vpcs)
-        pulumi.set(__self__, "region_status", region_status)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_firewall_id", vpc_firewall_id)
-        pulumi.set(__self__, "vpc_firewall_name", vpc_firewall_name)
+        GetVpcFirewallsFirewallResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            connect_type=connect_type,
+            id=id,
+            local_vpcs=local_vpcs,
+            peer_vpcs=peer_vpcs,
+            region_status=region_status,
+            status=status,
+            vpc_firewall_id=vpc_firewall_id,
+            vpc_firewall_name=vpc_firewall_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: int,
+             connect_type: str,
+             id: str,
+             local_vpcs: Sequence['outputs.GetVpcFirewallsFirewallLocalVpcResult'],
+             peer_vpcs: Sequence['outputs.GetVpcFirewallsFirewallPeerVpcResult'],
+             region_status: str,
+             status: str,
+             vpc_firewall_id: str,
+             vpc_firewall_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bandwidth", bandwidth)
+        _setter("connect_type", connect_type)
+        _setter("id", id)
+        _setter("local_vpcs", local_vpcs)
+        _setter("peer_vpcs", peer_vpcs)
+        _setter("region_status", region_status)
+        _setter("status", status)
+        _setter("vpc_firewall_id", vpc_firewall_id)
+        _setter("vpc_firewall_name", vpc_firewall_name)
 
     @property
     @pulumi.getter
@@ -2221,13 +2706,34 @@ class GetVpcFirewallsFirewallLocalVpcResult(dict):
         :param str vpc_id: The ID of the peer VPC instance.
         :param str vpc_name: The instance name of the peer VPC.
         """
-        pulumi.set(__self__, "eni_id", eni_id)
-        pulumi.set(__self__, "eni_private_ip_address", eni_private_ip_address)
-        pulumi.set(__self__, "local_vpc_cidr_table_lists", local_vpc_cidr_table_lists)
-        pulumi.set(__self__, "region_no", region_no)
-        pulumi.set(__self__, "router_interface_id", router_interface_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vpc_name", vpc_name)
+        GetVpcFirewallsFirewallLocalVpcResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            eni_id=eni_id,
+            eni_private_ip_address=eni_private_ip_address,
+            local_vpc_cidr_table_lists=local_vpc_cidr_table_lists,
+            region_no=region_no,
+            router_interface_id=router_interface_id,
+            vpc_id=vpc_id,
+            vpc_name=vpc_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             eni_id: str,
+             eni_private_ip_address: str,
+             local_vpc_cidr_table_lists: Sequence['outputs.GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListResult'],
+             region_no: str,
+             router_interface_id: str,
+             vpc_id: str,
+             vpc_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("eni_id", eni_id)
+        _setter("eni_private_ip_address", eni_private_ip_address)
+        _setter("local_vpc_cidr_table_lists", local_vpc_cidr_table_lists)
+        _setter("region_no", region_no)
+        _setter("router_interface_id", router_interface_id)
+        _setter("vpc_id", vpc_id)
+        _setter("vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="eniId")
@@ -2286,8 +2792,19 @@ class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListResult(dict):
         :param Sequence['GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs'] local_route_entry_lists: The list of route entries of the local VPC.
         :param str local_route_table_id: The ID of the route table of the local VPC.
         """
-        pulumi.set(__self__, "local_route_entry_lists", local_route_entry_lists)
-        pulumi.set(__self__, "local_route_table_id", local_route_table_id)
+        GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_route_entry_lists=local_route_entry_lists,
+            local_route_table_id=local_route_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_route_entry_lists: Sequence['outputs.GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListResult'],
+             local_route_table_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("local_route_entry_lists", local_route_entry_lists)
+        _setter("local_route_table_id", local_route_table_id)
 
     @property
     @pulumi.getter(name="localRouteEntryLists")
@@ -2315,8 +2832,19 @@ class GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListRes
         :param str local_destination_cidr: The target network segment of the local VPC.
         :param str local_next_hop_instance_id: The ID of the next-hop instance in the local VPC.
         """
-        pulumi.set(__self__, "local_destination_cidr", local_destination_cidr)
-        pulumi.set(__self__, "local_next_hop_instance_id", local_next_hop_instance_id)
+        GetVpcFirewallsFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_destination_cidr=local_destination_cidr,
+            local_next_hop_instance_id=local_next_hop_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_destination_cidr: str,
+             local_next_hop_instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("local_destination_cidr", local_destination_cidr)
+        _setter("local_next_hop_instance_id", local_next_hop_instance_id)
 
     @property
     @pulumi.getter(name="localDestinationCidr")
@@ -2351,13 +2879,34 @@ class GetVpcFirewallsFirewallPeerVpcResult(dict):
         :param str vpc_id: The ID of the peer VPC instance.
         :param str vpc_name: The instance name of the peer VPC.
         """
-        pulumi.set(__self__, "eni_id", eni_id)
-        pulumi.set(__self__, "eni_private_ip_address", eni_private_ip_address)
-        pulumi.set(__self__, "peer_vpc_cidr_table_lists", peer_vpc_cidr_table_lists)
-        pulumi.set(__self__, "region_no", region_no)
-        pulumi.set(__self__, "router_interface_id", router_interface_id)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vpc_name", vpc_name)
+        GetVpcFirewallsFirewallPeerVpcResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            eni_id=eni_id,
+            eni_private_ip_address=eni_private_ip_address,
+            peer_vpc_cidr_table_lists=peer_vpc_cidr_table_lists,
+            region_no=region_no,
+            router_interface_id=router_interface_id,
+            vpc_id=vpc_id,
+            vpc_name=vpc_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             eni_id: str,
+             eni_private_ip_address: str,
+             peer_vpc_cidr_table_lists: Sequence['outputs.GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListResult'],
+             region_no: str,
+             router_interface_id: str,
+             vpc_id: str,
+             vpc_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("eni_id", eni_id)
+        _setter("eni_private_ip_address", eni_private_ip_address)
+        _setter("peer_vpc_cidr_table_lists", peer_vpc_cidr_table_lists)
+        _setter("region_no", region_no)
+        _setter("router_interface_id", router_interface_id)
+        _setter("vpc_id", vpc_id)
+        _setter("vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="eniId")
@@ -2416,8 +2965,19 @@ class GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListResult(dict):
         :param Sequence['GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs'] peer_route_entry_lists: Peer VPC route entry list information.
         :param str peer_route_table_id: The ID of the route table of the peer VPC.
         """
-        pulumi.set(__self__, "peer_route_entry_lists", peer_route_entry_lists)
-        pulumi.set(__self__, "peer_route_table_id", peer_route_table_id)
+        GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            peer_route_entry_lists=peer_route_entry_lists,
+            peer_route_table_id=peer_route_table_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             peer_route_entry_lists: Sequence['outputs.GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListResult'],
+             peer_route_table_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("peer_route_entry_lists", peer_route_entry_lists)
+        _setter("peer_route_table_id", peer_route_table_id)
 
     @property
     @pulumi.getter(name="peerRouteEntryLists")
@@ -2445,8 +3005,19 @@ class GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListResult
         :param str peer_destination_cidr: The target network segment of the peer VPC.
         :param str peer_next_hop_instance_id: The ID of the next-hop instance in the peer VPC.
         """
-        pulumi.set(__self__, "peer_destination_cidr", peer_destination_cidr)
-        pulumi.set(__self__, "peer_next_hop_instance_id", peer_next_hop_instance_id)
+        GetVpcFirewallsFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            peer_destination_cidr=peer_destination_cidr,
+            peer_next_hop_instance_id=peer_next_hop_instance_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             peer_destination_cidr: str,
+             peer_next_hop_instance_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("peer_destination_cidr", peer_destination_cidr)
+        _setter("peer_next_hop_instance_id", peer_next_hop_instance_id)
 
     @property
     @pulumi.getter(name="peerDestinationCidr")

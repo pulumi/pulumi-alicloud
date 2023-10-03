@@ -14,9 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketLifecycleRuleNoncurrentVersionTransition {
     /**
-     * @return Specifies the number of days after object creation when the specific rule action takes effect.
-     * 
-     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+     * @return Specifies the number of days noncurrent object versions transition.
      * 
      */
     private Integer days;
@@ -27,7 +25,6 @@ public final class BucketLifecycleRuleNoncurrentVersionTransition {
     private @Nullable Boolean isAccessTime;
     /**
      * @return Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one transition configuration.
      * 
      */
     private @Nullable Boolean returnToStdWhenVisit;
@@ -39,9 +36,7 @@ public final class BucketLifecycleRuleNoncurrentVersionTransition {
 
     private BucketLifecycleRuleNoncurrentVersionTransition() {}
     /**
-     * @return Specifies the number of days after object creation when the specific rule action takes effect.
-     * 
-     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one abort_multipart_upload configuration.
+     * @return Specifies the number of days noncurrent object versions transition.
      * 
      */
     public Integer days() {
@@ -56,7 +51,6 @@ public final class BucketLifecycleRuleNoncurrentVersionTransition {
     }
     /**
      * @return Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-     * `NOTE`: One and only one of &#34;created_before_date&#34; and &#34;days&#34; can be specified in one transition configuration.
      * 
      */
     public Optional<Boolean> returnToStdWhenVisit() {

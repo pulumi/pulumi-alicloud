@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -43,27 +43,58 @@ class ServerGroupArgs:
         :param pulumi.Input[str] server_group_type: The type of the server group. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
-        pulumi.set(__self__, "health_check", health_check)
-        pulumi.set(__self__, "server_group_name", server_group_name)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        ServerGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            health_check=health_check,
+            server_group_name=server_group_name,
+            vpc_id=vpc_id,
+            address_ip_version=address_ip_version,
+            connection_drain=connection_drain,
+            connection_drain_timeout=connection_drain_timeout,
+            preserve_client_ip_enabled=preserve_client_ip_enabled,
+            protocol=protocol,
+            resource_group_id=resource_group_id,
+            scheduler=scheduler,
+            server_group_type=server_group_type,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             health_check: pulumi.Input['ServerGroupHealthCheckArgs'],
+             server_group_name: pulumi.Input[str],
+             vpc_id: pulumi.Input[str],
+             address_ip_version: Optional[pulumi.Input[str]] = None,
+             connection_drain: Optional[pulumi.Input[bool]] = None,
+             connection_drain_timeout: Optional[pulumi.Input[int]] = None,
+             preserve_client_ip_enabled: Optional[pulumi.Input[bool]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             scheduler: Optional[pulumi.Input[str]] = None,
+             server_group_type: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("health_check", health_check)
+        _setter("server_group_name", server_group_name)
+        _setter("vpc_id", vpc_id)
         if address_ip_version is not None:
-            pulumi.set(__self__, "address_ip_version", address_ip_version)
+            _setter("address_ip_version", address_ip_version)
         if connection_drain is not None:
-            pulumi.set(__self__, "connection_drain", connection_drain)
+            _setter("connection_drain", connection_drain)
         if connection_drain_timeout is not None:
-            pulumi.set(__self__, "connection_drain_timeout", connection_drain_timeout)
+            _setter("connection_drain_timeout", connection_drain_timeout)
         if preserve_client_ip_enabled is not None:
-            pulumi.set(__self__, "preserve_client_ip_enabled", preserve_client_ip_enabled)
+            _setter("preserve_client_ip_enabled", preserve_client_ip_enabled)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if scheduler is not None:
-            pulumi.set(__self__, "scheduler", scheduler)
+            _setter("scheduler", scheduler)
         if server_group_type is not None:
-            pulumi.set(__self__, "server_group_type", server_group_type)
+            _setter("server_group_type", server_group_type)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="healthCheck")
@@ -242,32 +273,65 @@ class _ServerGroupState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The id of the vpc.
         """
+        _ServerGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address_ip_version=address_ip_version,
+            connection_drain=connection_drain,
+            connection_drain_timeout=connection_drain_timeout,
+            health_check=health_check,
+            preserve_client_ip_enabled=preserve_client_ip_enabled,
+            protocol=protocol,
+            resource_group_id=resource_group_id,
+            scheduler=scheduler,
+            server_group_name=server_group_name,
+            server_group_type=server_group_type,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address_ip_version: Optional[pulumi.Input[str]] = None,
+             connection_drain: Optional[pulumi.Input[bool]] = None,
+             connection_drain_timeout: Optional[pulumi.Input[int]] = None,
+             health_check: Optional[pulumi.Input['ServerGroupHealthCheckArgs']] = None,
+             preserve_client_ip_enabled: Optional[pulumi.Input[bool]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             scheduler: Optional[pulumi.Input[str]] = None,
+             server_group_name: Optional[pulumi.Input[str]] = None,
+             server_group_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if address_ip_version is not None:
-            pulumi.set(__self__, "address_ip_version", address_ip_version)
+            _setter("address_ip_version", address_ip_version)
         if connection_drain is not None:
-            pulumi.set(__self__, "connection_drain", connection_drain)
+            _setter("connection_drain", connection_drain)
         if connection_drain_timeout is not None:
-            pulumi.set(__self__, "connection_drain_timeout", connection_drain_timeout)
+            _setter("connection_drain_timeout", connection_drain_timeout)
         if health_check is not None:
-            pulumi.set(__self__, "health_check", health_check)
+            _setter("health_check", health_check)
         if preserve_client_ip_enabled is not None:
-            pulumi.set(__self__, "preserve_client_ip_enabled", preserve_client_ip_enabled)
+            _setter("preserve_client_ip_enabled", preserve_client_ip_enabled)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if scheduler is not None:
-            pulumi.set(__self__, "scheduler", scheduler)
+            _setter("scheduler", scheduler)
         if server_group_name is not None:
-            pulumi.set(__self__, "server_group_name", server_group_name)
+            _setter("server_group_name", server_group_name)
         if server_group_type is not None:
-            pulumi.set(__self__, "server_group_type", server_group_type)
+            _setter("server_group_type", server_group_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="addressIpVersion")
@@ -599,6 +663,10 @@ class ServerGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServerGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -628,6 +696,11 @@ class ServerGroup(pulumi.CustomResource):
             __props__.__dict__["address_ip_version"] = address_ip_version
             __props__.__dict__["connection_drain"] = connection_drain
             __props__.__dict__["connection_drain_timeout"] = connection_drain_timeout
+            if health_check is not None and not isinstance(health_check, ServerGroupHealthCheckArgs):
+                health_check = health_check or {}
+                def _setter(key, value):
+                    health_check[key] = value
+                ServerGroupHealthCheckArgs._configure(_setter, **health_check)
             if health_check is None and not opts.urn:
                 raise TypeError("Missing required property 'health_check'")
             __props__.__dict__["health_check"] = health_check

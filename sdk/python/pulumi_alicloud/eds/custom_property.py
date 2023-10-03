@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,9 +23,20 @@ class CustomPropertyArgs:
         :param pulumi.Input[str] property_key: The Custom attribute key.
         :param pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]] property_values: Custom attribute sets the value of. See `property_values` below.
         """
-        pulumi.set(__self__, "property_key", property_key)
+        CustomPropertyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property_key=property_key,
+            property_values=property_values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property_key: pulumi.Input[str],
+             property_values: Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("property_key", property_key)
         if property_values is not None:
-            pulumi.set(__self__, "property_values", property_values)
+            _setter("property_values", property_values)
 
     @property
     @pulumi.getter(name="propertyKey")
@@ -62,10 +73,21 @@ class _CustomPropertyState:
         :param pulumi.Input[str] property_key: The Custom attribute key.
         :param pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]] property_values: Custom attribute sets the value of. See `property_values` below.
         """
+        _CustomPropertyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            property_key=property_key,
+            property_values=property_values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             property_key: Optional[pulumi.Input[str]] = None,
+             property_values: Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if property_key is not None:
-            pulumi.set(__self__, "property_key", property_key)
+            _setter("property_key", property_key)
         if property_values is not None:
-            pulumi.set(__self__, "property_values", property_values)
+            _setter("property_values", property_values)
 
     @property
     @pulumi.getter(name="propertyKey")
@@ -185,6 +207,10 @@ class CustomProperty(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CustomPropertyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

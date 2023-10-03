@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['Ipv4GatewayArgs', 'Ipv4Gateway']
@@ -31,19 +31,40 @@ class Ipv4GatewayArgs:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the instance belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of the current resource.
         """
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        Ipv4GatewayArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            vpc_id=vpc_id,
+            dry_run=dry_run,
+            enabled=enabled,
+            ipv4_gateway_description=ipv4_gateway_description,
+            ipv4_gateway_name=ipv4_gateway_name,
+            resource_group_id=resource_group_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             vpc_id: pulumi.Input[str],
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             ipv4_gateway_description: Optional[pulumi.Input[str]] = None,
+             ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("vpc_id", vpc_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if ipv4_gateway_description is not None:
-            pulumi.set(__self__, "ipv4_gateway_description", ipv4_gateway_description)
+            _setter("ipv4_gateway_description", ipv4_gateway_description)
         if ipv4_gateway_name is not None:
-            pulumi.set(__self__, "ipv4_gateway_name", ipv4_gateway_name)
+            _setter("ipv4_gateway_name", ipv4_gateway_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter(name="vpcId")
@@ -158,28 +179,57 @@ class _Ipv4GatewayState:
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of the current resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
         """
+        _Ipv4GatewayState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            dry_run=dry_run,
+            enabled=enabled,
+            ipv4_gateway_description=ipv4_gateway_description,
+            ipv4_gateway_id=ipv4_gateway_id,
+            ipv4_gateway_name=ipv4_gateway_name,
+            ipv4_gateway_route_table_id=ipv4_gateway_route_table_id,
+            resource_group_id=resource_group_id,
+            status=status,
+            tags=tags,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             ipv4_gateway_description: Optional[pulumi.Input[str]] = None,
+             ipv4_gateway_id: Optional[pulumi.Input[str]] = None,
+             ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
+             ipv4_gateway_route_table_id: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if ipv4_gateway_description is not None:
-            pulumi.set(__self__, "ipv4_gateway_description", ipv4_gateway_description)
+            _setter("ipv4_gateway_description", ipv4_gateway_description)
         if ipv4_gateway_id is not None:
-            pulumi.set(__self__, "ipv4_gateway_id", ipv4_gateway_id)
+            _setter("ipv4_gateway_id", ipv4_gateway_id)
         if ipv4_gateway_name is not None:
-            pulumi.set(__self__, "ipv4_gateway_name", ipv4_gateway_name)
+            _setter("ipv4_gateway_name", ipv4_gateway_name)
         if ipv4_gateway_route_table_id is not None:
-            pulumi.set(__self__, "ipv4_gateway_route_table_id", ipv4_gateway_route_table_id)
+            _setter("ipv4_gateway_route_table_id", ipv4_gateway_route_table_id)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -439,6 +489,10 @@ class Ipv4Gateway(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            Ipv4GatewayArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

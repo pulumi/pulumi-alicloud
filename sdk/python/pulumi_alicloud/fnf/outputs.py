@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -36,14 +36,37 @@ class GetExecutionsExecutionResult(dict):
         :param str status: The status of the resource.
         :param str stopped_time: The stopped time of the execution.
         """
-        pulumi.set(__self__, "execution_name", execution_name)
-        pulumi.set(__self__, "flow_name", flow_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "input", input)
-        pulumi.set(__self__, "output", output)
-        pulumi.set(__self__, "started_time", started_time)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "stopped_time", stopped_time)
+        GetExecutionsExecutionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            execution_name=execution_name,
+            flow_name=flow_name,
+            id=id,
+            input=input,
+            output=output,
+            started_time=started_time,
+            status=status,
+            stopped_time=stopped_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             execution_name: str,
+             flow_name: str,
+             id: str,
+             input: str,
+             output: str,
+             started_time: str,
+             status: str,
+             stopped_time: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("execution_name", execution_name)
+        _setter("flow_name", flow_name)
+        _setter("id", id)
+        _setter("input", input)
+        _setter("output", output)
+        _setter("started_time", started_time)
+        _setter("status", status)
+        _setter("stopped_time", stopped_time)
 
     @property
     @pulumi.getter(name="executionName")
@@ -131,14 +154,37 @@ class GetFlowsFlowResult(dict):
         :param str role_arn: The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
         :param str type: The type of the flow. Set the value to `FDL`.
         """
-        pulumi.set(__self__, "definition", definition)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "flow_id", flow_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_modified_time", last_modified_time)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "role_arn", role_arn)
-        pulumi.set(__self__, "type", type)
+        GetFlowsFlowResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            definition=definition,
+            description=description,
+            flow_id=flow_id,
+            id=id,
+            last_modified_time=last_modified_time,
+            name=name,
+            role_arn=role_arn,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             definition: str,
+             description: str,
+             flow_id: str,
+             id: str,
+             last_modified_time: str,
+             name: str,
+             role_arn: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("definition", definition)
+        _setter("description", description)
+        _setter("flow_id", flow_id)
+        _setter("id", id)
+        _setter("last_modified_time", last_modified_time)
+        _setter("name", name)
+        _setter("role_arn", role_arn)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -226,14 +272,37 @@ class GetSchedulesScheduleResult(dict):
         :param str schedule_id: The ID of the time-based schedule.
         :param str schedule_name: The name of the time-based schedule to be created.
         """
-        pulumi.set(__self__, "cron_expression", cron_expression)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enable", enable)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_modified_time", last_modified_time)
-        pulumi.set(__self__, "payload", payload)
-        pulumi.set(__self__, "schedule_id", schedule_id)
-        pulumi.set(__self__, "schedule_name", schedule_name)
+        GetSchedulesScheduleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cron_expression=cron_expression,
+            description=description,
+            enable=enable,
+            id=id,
+            last_modified_time=last_modified_time,
+            payload=payload,
+            schedule_id=schedule_id,
+            schedule_name=schedule_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cron_expression: str,
+             description: str,
+             enable: bool,
+             id: str,
+             last_modified_time: str,
+             payload: str,
+             schedule_id: str,
+             schedule_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cron_expression", cron_expression)
+        _setter("description", description)
+        _setter("enable", enable)
+        _setter("id", id)
+        _setter("last_modified_time", last_modified_time)
+        _setter("payload", payload)
+        _setter("schedule_id", schedule_id)
+        _setter("schedule_name", schedule_name)
 
     @property
     @pulumi.getter(name="cronExpression")

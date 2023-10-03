@@ -33,14 +33,14 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Whether to enable Health Check.
+     * Whether to enable BGP.
      * 
      */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
     /**
-     * @return Whether to enable Health Check.
+     * @return Whether to enable BGP.
      * 
      */
     public Optional<Output<Boolean>> enable() {
@@ -142,7 +142,7 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enable Whether to enable Health Check.
+         * @param enable Whether to enable BGP.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ConnectionHealthCheckConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param enable Whether to enable Health Check.
+         * @param enable Whether to enable BGP.
          * 
          * @return builder
          * 

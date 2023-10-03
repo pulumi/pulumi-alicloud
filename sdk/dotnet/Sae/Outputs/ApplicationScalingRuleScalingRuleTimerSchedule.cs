@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.Sae.Outputs
         /// </summary>
         public readonly string? AtTime;
         /// <summary>
-        /// Maximum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+        /// Maximum number of instances applied.
         /// </summary>
         public readonly int? MaxReplicas;
         /// <summary>
-        /// Minimum number of instances applied. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `mix`.
+        /// Minimum number of instances applied.
         /// </summary>
         public readonly int? MinReplicas;
         /// <summary>

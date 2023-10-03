@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,19 +37,44 @@ class TableArgs:
         :param pulumi.Input[bool] enable_sse: Whether enable OTS server side encryption. Default value is false.
         :param pulumi.Input[str] sse_key_type: The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
         """
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "max_version", max_version)
-        pulumi.set(__self__, "primary_keys", primary_keys)
-        pulumi.set(__self__, "table_name", table_name)
-        pulumi.set(__self__, "time_to_live", time_to_live)
+        TableArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_name=instance_name,
+            max_version=max_version,
+            primary_keys=primary_keys,
+            table_name=table_name,
+            time_to_live=time_to_live,
+            defined_columns=defined_columns,
+            deviation_cell_version_in_sec=deviation_cell_version_in_sec,
+            enable_sse=enable_sse,
+            sse_key_type=sse_key_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_name: pulumi.Input[str],
+             max_version: pulumi.Input[int],
+             primary_keys: pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]],
+             table_name: pulumi.Input[str],
+             time_to_live: pulumi.Input[int],
+             defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]] = None,
+             deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
+             enable_sse: Optional[pulumi.Input[bool]] = None,
+             sse_key_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_name", instance_name)
+        _setter("max_version", max_version)
+        _setter("primary_keys", primary_keys)
+        _setter("table_name", table_name)
+        _setter("time_to_live", time_to_live)
         if defined_columns is not None:
-            pulumi.set(__self__, "defined_columns", defined_columns)
+            _setter("defined_columns", defined_columns)
         if deviation_cell_version_in_sec is not None:
-            pulumi.set(__self__, "deviation_cell_version_in_sec", deviation_cell_version_in_sec)
+            _setter("deviation_cell_version_in_sec", deviation_cell_version_in_sec)
         if enable_sse is not None:
-            pulumi.set(__self__, "enable_sse", enable_sse)
+            _setter("enable_sse", enable_sse)
         if sse_key_type is not None:
-            pulumi.set(__self__, "sse_key_type", sse_key_type)
+            _setter("sse_key_type", sse_key_type)
 
     @property
     @pulumi.getter(name="instanceName")
@@ -184,24 +209,49 @@ class _TableState:
         :param pulumi.Input[str] table_name: The table name of the OTS instance. If changed, a new table would be created.
         :param pulumi.Input[int] time_to_live: The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """
+        _TableState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            defined_columns=defined_columns,
+            deviation_cell_version_in_sec=deviation_cell_version_in_sec,
+            enable_sse=enable_sse,
+            instance_name=instance_name,
+            max_version=max_version,
+            primary_keys=primary_keys,
+            sse_key_type=sse_key_type,
+            table_name=table_name,
+            time_to_live=time_to_live,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]] = None,
+             deviation_cell_version_in_sec: Optional[pulumi.Input[str]] = None,
+             enable_sse: Optional[pulumi.Input[bool]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             max_version: Optional[pulumi.Input[int]] = None,
+             primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]] = None,
+             sse_key_type: Optional[pulumi.Input[str]] = None,
+             table_name: Optional[pulumi.Input[str]] = None,
+             time_to_live: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if defined_columns is not None:
-            pulumi.set(__self__, "defined_columns", defined_columns)
+            _setter("defined_columns", defined_columns)
         if deviation_cell_version_in_sec is not None:
-            pulumi.set(__self__, "deviation_cell_version_in_sec", deviation_cell_version_in_sec)
+            _setter("deviation_cell_version_in_sec", deviation_cell_version_in_sec)
         if enable_sse is not None:
-            pulumi.set(__self__, "enable_sse", enable_sse)
+            _setter("enable_sse", enable_sse)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if max_version is not None:
-            pulumi.set(__self__, "max_version", max_version)
+            _setter("max_version", max_version)
         if primary_keys is not None:
-            pulumi.set(__self__, "primary_keys", primary_keys)
+            _setter("primary_keys", primary_keys)
         if sse_key_type is not None:
-            pulumi.set(__self__, "sse_key_type", sse_key_type)
+            _setter("sse_key_type", sse_key_type)
         if table_name is not None:
-            pulumi.set(__self__, "table_name", table_name)
+            _setter("table_name", table_name)
         if time_to_live is not None:
-            pulumi.set(__self__, "time_to_live", time_to_live)
+            _setter("time_to_live", time_to_live)
 
     @property
     @pulumi.getter(name="definedColumns")
@@ -495,6 +545,10 @@ class Table(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TableArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

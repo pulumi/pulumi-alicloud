@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -109,14 +109,29 @@ class AlarmEscalationsCritical(dict):
         :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param int times: Critical level alarm retry times. Default to 3.
         """
+        AlarmEscalationsCritical._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: Optional[str] = None,
+             statistics: Optional[str] = None,
+             threshold: Optional[str] = None,
+             times: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comparison_operator is not None:
-            pulumi.set(__self__, "comparison_operator", comparison_operator)
+            _setter("comparison_operator", comparison_operator)
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if times is not None:
-            pulumi.set(__self__, "times", times)
+            _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -181,14 +196,29 @@ class AlarmEscalationsInfo(dict):
         :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param int times: Critical level alarm retry times. Default to 3.
         """
+        AlarmEscalationsInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: Optional[str] = None,
+             statistics: Optional[str] = None,
+             threshold: Optional[str] = None,
+             times: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comparison_operator is not None:
-            pulumi.set(__self__, "comparison_operator", comparison_operator)
+            _setter("comparison_operator", comparison_operator)
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if times is not None:
-            pulumi.set(__self__, "times", times)
+            _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -253,14 +283,29 @@ class AlarmEscalationsWarn(dict):
         :param str threshold: Critical level alarm threshold value, which must be a numeric value currently.
         :param int times: Critical level alarm retry times. Default to 3.
         """
+        AlarmEscalationsWarn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: Optional[str] = None,
+             statistics: Optional[str] = None,
+             threshold: Optional[str] = None,
+             times: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comparison_operator is not None:
-            pulumi.set(__self__, "comparison_operator", comparison_operator)
+            _setter("comparison_operator", comparison_operator)
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if times is not None:
-            pulumi.set(__self__, "times", times)
+            _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -325,14 +370,29 @@ class AlarmPrometheus(dict):
         :param str prom_ql: The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
         :param int times: The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
         """
+        AlarmPrometheus._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            annotations=annotations,
+            level=level,
+            prom_ql=prom_ql,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             annotations: Optional[Mapping[str, Any]] = None,
+             level: Optional[str] = None,
+             prom_ql: Optional[str] = None,
+             times: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if level is not None:
-            pulumi.set(__self__, "level", level)
+            _setter("level", level)
         if prom_ql is not None:
-            pulumi.set(__self__, "prom_ql", prom_ql)
+            _setter("prom_ql", prom_ql)
         if times is not None:
-            pulumi.set(__self__, "times", times)
+            _setter("times", times)
 
     @property
     @pulumi.getter
@@ -395,8 +455,19 @@ class DynamicTagGroupMatchExpress(dict):
         :param str tag_value: The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
         :param str tag_value_match_function: Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
         """
-        pulumi.set(__self__, "tag_value", tag_value)
-        pulumi.set(__self__, "tag_value_match_function", tag_value_match_function)
+        DynamicTagGroupMatchExpress._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            tag_value=tag_value,
+            tag_value_match_function=tag_value_match_function,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             tag_value: str,
+             tag_value_match_function: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("tag_value", tag_value)
+        _setter("tag_value_match_function", tag_value_match_function)
 
     @property
     @pulumi.getter(name="tagValue")
@@ -453,15 +524,32 @@ class EventRuleEventPattern(dict):
         :param Sequence[str] name_lists: The name of the event-triggered alert rule.
         :param str sql_filter: The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
         """
-        pulumi.set(__self__, "product", product)
+        EventRuleEventPattern._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            product=product,
+            event_type_lists=event_type_lists,
+            level_lists=level_lists,
+            name_lists=name_lists,
+            sql_filter=sql_filter,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             product: str,
+             event_type_lists: Optional[Sequence[str]] = None,
+             level_lists: Optional[Sequence[str]] = None,
+             name_lists: Optional[Sequence[str]] = None,
+             sql_filter: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("product", product)
         if event_type_lists is not None:
-            pulumi.set(__self__, "event_type_lists", event_type_lists)
+            _setter("event_type_lists", event_type_lists)
         if level_lists is not None:
-            pulumi.set(__self__, "level_lists", level_lists)
+            _setter("level_lists", level_lists)
         if name_lists is not None:
-            pulumi.set(__self__, "name_lists", name_lists)
+            _setter("name_lists", name_lists)
         if sql_filter is not None:
-            pulumi.set(__self__, "sql_filter", sql_filter)
+            _setter("sql_filter", sql_filter)
 
     @property
     @pulumi.getter
@@ -515,12 +603,25 @@ class GroupMetricRuleEscalations(dict):
         :param 'GroupMetricRuleEscalationsInfoArgs' info: The info level. See `info` below.
         :param 'GroupMetricRuleEscalationsWarnArgs' warn: The warn level. See `warn` below.
         """
+        GroupMetricRuleEscalations._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            critical=critical,
+            info=info,
+            warn=warn,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             critical: Optional['outputs.GroupMetricRuleEscalationsCritical'] = None,
+             info: Optional['outputs.GroupMetricRuleEscalationsInfo'] = None,
+             warn: Optional['outputs.GroupMetricRuleEscalationsWarn'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if critical is not None:
-            pulumi.set(__self__, "critical", critical)
+            _setter("critical", critical)
         if info is not None:
-            pulumi.set(__self__, "info", info)
+            _setter("info", info)
         if warn is not None:
-            pulumi.set(__self__, "warn", warn)
+            _setter("warn", warn)
 
     @property
     @pulumi.getter
@@ -572,25 +673,40 @@ class GroupMetricRuleEscalationsCritical(dict):
                  threshold: Optional[str] = None,
                  times: Optional[int] = None):
         """
-        :param str comparison_operator: The comparison operator of the threshold for critical-level alerts.
-        :param str statistics: The statistical aggregation method for critical-level alerts.
-        :param str threshold: The threshold for critical-level alerts.
-        :param int times: The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        :param str comparison_operator: The comparison operator of the threshold for warn-level alerts.
+        :param str statistics: The statistical aggregation method for warn-level alerts.
+        :param str threshold: The threshold for warn-level alerts.
+        :param int times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
+        GroupMetricRuleEscalationsCritical._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: Optional[str] = None,
+             statistics: Optional[str] = None,
+             threshold: Optional[str] = None,
+             times: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comparison_operator is not None:
-            pulumi.set(__self__, "comparison_operator", comparison_operator)
+            _setter("comparison_operator", comparison_operator)
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if times is not None:
-            pulumi.set(__self__, "times", times)
+            _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[str]:
         """
-        The comparison operator of the threshold for critical-level alerts.
+        The comparison operator of the threshold for warn-level alerts.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -598,7 +714,7 @@ class GroupMetricRuleEscalationsCritical(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        The statistical aggregation method for critical-level alerts.
+        The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -606,7 +722,7 @@ class GroupMetricRuleEscalationsCritical(dict):
     @pulumi.getter
     def threshold(self) -> Optional[str]:
         """
-        The threshold for critical-level alerts.
+        The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -614,7 +730,7 @@ class GroupMetricRuleEscalationsCritical(dict):
     @pulumi.getter
     def times(self) -> Optional[int]:
         """
-        The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
@@ -644,25 +760,40 @@ class GroupMetricRuleEscalationsInfo(dict):
                  threshold: Optional[str] = None,
                  times: Optional[int] = None):
         """
-        :param str comparison_operator: The comparison operator of the threshold for critical-level alerts.
-        :param str statistics: The statistical aggregation method for critical-level alerts.
-        :param str threshold: The threshold for critical-level alerts.
-        :param int times: The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        :param str comparison_operator: The comparison operator of the threshold for warn-level alerts.
+        :param str statistics: The statistical aggregation method for warn-level alerts.
+        :param str threshold: The threshold for warn-level alerts.
+        :param int times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
+        GroupMetricRuleEscalationsInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: Optional[str] = None,
+             statistics: Optional[str] = None,
+             threshold: Optional[str] = None,
+             times: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comparison_operator is not None:
-            pulumi.set(__self__, "comparison_operator", comparison_operator)
+            _setter("comparison_operator", comparison_operator)
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if times is not None:
-            pulumi.set(__self__, "times", times)
+            _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[str]:
         """
-        The comparison operator of the threshold for critical-level alerts.
+        The comparison operator of the threshold for warn-level alerts.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -670,7 +801,7 @@ class GroupMetricRuleEscalationsInfo(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        The statistical aggregation method for critical-level alerts.
+        The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -678,7 +809,7 @@ class GroupMetricRuleEscalationsInfo(dict):
     @pulumi.getter
     def threshold(self) -> Optional[str]:
         """
-        The threshold for critical-level alerts.
+        The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -686,7 +817,7 @@ class GroupMetricRuleEscalationsInfo(dict):
     @pulumi.getter
     def times(self) -> Optional[int]:
         """
-        The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
@@ -716,25 +847,40 @@ class GroupMetricRuleEscalationsWarn(dict):
                  threshold: Optional[str] = None,
                  times: Optional[int] = None):
         """
-        :param str comparison_operator: The comparison operator of the threshold for critical-level alerts.
-        :param str statistics: The statistical aggregation method for critical-level alerts.
-        :param str threshold: The threshold for critical-level alerts.
-        :param int times: The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        :param str comparison_operator: The comparison operator of the threshold for warn-level alerts.
+        :param str statistics: The statistical aggregation method for warn-level alerts.
+        :param str threshold: The threshold for warn-level alerts.
+        :param int times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
+        GroupMetricRuleEscalationsWarn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: Optional[str] = None,
+             statistics: Optional[str] = None,
+             threshold: Optional[str] = None,
+             times: Optional[int] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comparison_operator is not None:
-            pulumi.set(__self__, "comparison_operator", comparison_operator)
+            _setter("comparison_operator", comparison_operator)
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if times is not None:
-            pulumi.set(__self__, "times", times)
+            _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[str]:
         """
-        The comparison operator of the threshold for critical-level alerts.
+        The comparison operator of the threshold for warn-level alerts.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -742,7 +888,7 @@ class GroupMetricRuleEscalationsWarn(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        The statistical aggregation method for critical-level alerts.
+        The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -750,7 +896,7 @@ class GroupMetricRuleEscalationsWarn(dict):
     @pulumi.getter
     def threshold(self) -> Optional[str]:
         """
-        The threshold for critical-level alerts.
+        The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -758,7 +904,7 @@ class GroupMetricRuleEscalationsWarn(dict):
     @pulumi.getter
     def times(self) -> Optional[int]:
         """
-        The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
+        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
@@ -795,14 +941,29 @@ class GroupMetricRuleTarget(dict):
                > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
         :param str level: The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
         """
+        GroupMetricRuleTarget._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            id=id,
+            json_params=json_params,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[str] = None,
+             id: Optional[str] = None,
+             json_params: Optional[str] = None,
+             level: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if json_params is not None:
-            pulumi.set(__self__, "json_params", json_params)
+            _setter("json_params", json_params)
         if level is not None:
-            pulumi.set(__self__, "level", level)
+            _setter("level", level)
 
     @property
     @pulumi.getter
@@ -848,10 +1009,21 @@ class HybridMonitorSlsTaskAttachLabel(dict):
         :param str name: The tag key of the metric.
         :param str value: The tag value of the metric.
         """
+        HybridMonitorSlsTaskAttachLabel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -900,14 +1072,29 @@ class HybridMonitorSlsTaskSlsProcessConfig(dict):
         :param Sequence['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs'] group_bies: The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
         :param Sequence['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs'] statistics: The method that is used to aggregate logs imported from Log Service. See `statistics` below.
         """
+        HybridMonitorSlsTaskSlsProcessConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expresses=expresses,
+            filter=filter,
+            group_bies=group_bies,
+            statistics=statistics,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expresses: Optional[Sequence['outputs.HybridMonitorSlsTaskSlsProcessConfigExpress']] = None,
+             filter: Optional['outputs.HybridMonitorSlsTaskSlsProcessConfigFilter'] = None,
+             group_bies: Optional[Sequence['outputs.HybridMonitorSlsTaskSlsProcessConfigGroupBy']] = None,
+             statistics: Optional[Sequence['outputs.HybridMonitorSlsTaskSlsProcessConfigStatistic']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if expresses is not None:
-            pulumi.set(__self__, "expresses", expresses)
+            _setter("expresses", expresses)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if group_bies is not None:
-            pulumi.set(__self__, "group_bies", group_bies)
+            _setter("group_bies", group_bies)
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
 
     @property
     @pulumi.getter
@@ -948,19 +1135,30 @@ class HybridMonitorSlsTaskSlsProcessConfigExpress(dict):
                  alias: Optional[str] = None,
                  express: Optional[str] = None):
         """
-        :param str alias: The alias of the aggregation result.
-        :param str express: The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
+        :param str alias: The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+        :param str express: The extended field that specifies the result of basic operations that are performed on aggregation results.
         """
+        HybridMonitorSlsTaskSlsProcessConfigExpress._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias=alias,
+            express=express,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias: Optional[str] = None,
+             express: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alias is not None:
-            pulumi.set(__self__, "alias", alias)
+            _setter("alias", alias)
         if express is not None:
-            pulumi.set(__self__, "express", express)
+            _setter("express", express)
 
     @property
     @pulumi.getter
     def alias(self) -> Optional[str]:
         """
-        The alias of the aggregation result.
+        The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         """
         return pulumi.get(self, "alias")
 
@@ -968,7 +1166,7 @@ class HybridMonitorSlsTaskSlsProcessConfigExpress(dict):
     @pulumi.getter
     def express(self) -> Optional[str]:
         """
-        The extended fields that specify the results of basic operations that are performed on aggregation results. See `express` below.
+        The extended field that specifies the result of basic operations that are performed on aggregation results.
         """
         return pulumi.get(self, "express")
 
@@ -982,10 +1180,21 @@ class HybridMonitorSlsTaskSlsProcessConfigFilter(dict):
         :param Sequence['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs'] filters: The conditions that are used to filter logs imported from Log Service. See `filters` below.
         :param str relation: The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
         """
+        HybridMonitorSlsTaskSlsProcessConfigFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filters=filters,
+            relation=relation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filters: Optional[Sequence['outputs.HybridMonitorSlsTaskSlsProcessConfigFilterFilter']] = None,
+             relation: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if relation is not None:
-            pulumi.set(__self__, "relation", relation)
+            _setter("relation", relation)
 
     @property
     @pulumi.getter
@@ -1029,15 +1238,28 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterFilter(dict):
                  value: Optional[str] = None):
         """
         :param str operator: The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
-        :param str sls_key_name: The name of the key that is used to aggregate logs imported from Log Service.
-        :param str value: The value of the key that is used to filter logs imported from Log Service.
+        :param str sls_key_name: The name of the key that is used to filter logs imported from Log Service.
+        :param str value: The tag value of the metric.
         """
+        HybridMonitorSlsTaskSlsProcessConfigFilterFilter._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            operator=operator,
+            sls_key_name=sls_key_name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             operator: Optional[str] = None,
+             sls_key_name: Optional[str] = None,
+             value: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if operator is not None:
-            pulumi.set(__self__, "operator", operator)
+            _setter("operator", operator)
         if sls_key_name is not None:
-            pulumi.set(__self__, "sls_key_name", sls_key_name)
+            _setter("sls_key_name", sls_key_name)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1051,7 +1273,7 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterFilter(dict):
     @pulumi.getter(name="slsKeyName")
     def sls_key_name(self) -> Optional[str]:
         """
-        The name of the key that is used to aggregate logs imported from Log Service.
+        The name of the key that is used to filter logs imported from Log Service.
         """
         return pulumi.get(self, "sls_key_name")
 
@@ -1059,7 +1281,7 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterFilter(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value of the key that is used to filter logs imported from Log Service.
+        The tag value of the metric.
         """
         return pulumi.get(self, "value")
 
@@ -1087,19 +1309,30 @@ class HybridMonitorSlsTaskSlsProcessConfigGroupBy(dict):
                  alias: Optional[str] = None,
                  sls_key_name: Optional[str] = None):
         """
-        :param str alias: The alias of the aggregation result.
-        :param str sls_key_name: The name of the key that is used to aggregate logs imported from Log Service.
+        :param str alias: The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+        :param str sls_key_name: The name of the key that is used to filter logs imported from Log Service.
         """
+        HybridMonitorSlsTaskSlsProcessConfigGroupBy._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias=alias,
+            sls_key_name=sls_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias: Optional[str] = None,
+             sls_key_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alias is not None:
-            pulumi.set(__self__, "alias", alias)
+            _setter("alias", alias)
         if sls_key_name is not None:
-            pulumi.set(__self__, "sls_key_name", sls_key_name)
+            _setter("sls_key_name", sls_key_name)
 
     @property
     @pulumi.getter
     def alias(self) -> Optional[str]:
         """
-        The alias of the aggregation result.
+        The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         """
         return pulumi.get(self, "alias")
 
@@ -1107,7 +1340,7 @@ class HybridMonitorSlsTaskSlsProcessConfigGroupBy(dict):
     @pulumi.getter(name="slsKeyName")
     def sls_key_name(self) -> Optional[str]:
         """
-        The name of the key that is used to aggregate logs imported from Log Service.
+        The name of the key that is used to filter logs imported from Log Service.
         """
         return pulumi.get(self, "sls_key_name")
 
@@ -1142,30 +1375,47 @@ class HybridMonitorSlsTaskSlsProcessConfigStatistic(dict):
                  parameter_two: Optional[str] = None,
                  sls_key_name: Optional[str] = None):
         """
-        :param str alias: The alias of the aggregation result.
+        :param str alias: The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         :param str function: The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
         :param str parameter_one: The value of the function that is used to aggregate logs imported from Log Service.
                - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
                - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
         :param str parameter_two: The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
-        :param str sls_key_name: The name of the key that is used to aggregate logs imported from Log Service.
+        :param str sls_key_name: The name of the key that is used to filter logs imported from Log Service.
         """
+        HybridMonitorSlsTaskSlsProcessConfigStatistic._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias=alias,
+            function=function,
+            parameter_one=parameter_one,
+            parameter_two=parameter_two,
+            sls_key_name=sls_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias: Optional[str] = None,
+             function: Optional[str] = None,
+             parameter_one: Optional[str] = None,
+             parameter_two: Optional[str] = None,
+             sls_key_name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alias is not None:
-            pulumi.set(__self__, "alias", alias)
+            _setter("alias", alias)
         if function is not None:
-            pulumi.set(__self__, "function", function)
+            _setter("function", function)
         if parameter_one is not None:
-            pulumi.set(__self__, "parameter_one", parameter_one)
+            _setter("parameter_one", parameter_one)
         if parameter_two is not None:
-            pulumi.set(__self__, "parameter_two", parameter_two)
+            _setter("parameter_two", parameter_two)
         if sls_key_name is not None:
-            pulumi.set(__self__, "sls_key_name", sls_key_name)
+            _setter("sls_key_name", sls_key_name)
 
     @property
     @pulumi.getter
     def alias(self) -> Optional[str]:
         """
-        The alias of the aggregation result.
+        The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         """
         return pulumi.get(self, "alias")
 
@@ -1199,7 +1449,7 @@ class HybridMonitorSlsTaskSlsProcessConfigStatistic(dict):
     @pulumi.getter(name="slsKeyName")
     def sls_key_name(self) -> Optional[str]:
         """
-        The name of the key that is used to aggregate logs imported from Log Service.
+        The name of the key that is used to filter logs imported from Log Service.
         """
         return pulumi.get(self, "sls_key_name")
 
@@ -1230,9 +1480,20 @@ class MetricRuleBlackListMetric(dict):
         :param str metric_name: The name of the monitoring indicator.
         :param str resource: The extended dimension information of the instance. For example, '{"device":"C:"}' indicates that the blacklist policy is applied to all C disks under the ECS instance.
         """
-        pulumi.set(__self__, "metric_name", metric_name)
+        MetricRuleBlackListMetric._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metric_name=metric_name,
+            resource=resource,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metric_name: str,
+             resource: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("metric_name", metric_name)
         if resource is not None:
-            pulumi.set(__self__, "resource", resource)
+            _setter("resource", resource)
 
     @property
     @pulumi.getter(name="metricName")
@@ -1291,14 +1552,33 @@ class MetricRuleTemplateAlertTemplate(dict):
         :param 'MetricRuleTemplateAlertTemplateEscalationsArgs' escalations: The information about the trigger condition based on the alert level. See `escalations` below.
         :param str webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "rule_name", rule_name)
+        MetricRuleTemplateAlertTemplate._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            metric_name=metric_name,
+            namespace=namespace,
+            rule_name=rule_name,
+            escalations=escalations,
+            webhook=webhook,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             metric_name: str,
+             namespace: str,
+             rule_name: str,
+             escalations: Optional['outputs.MetricRuleTemplateAlertTemplateEscalations'] = None,
+             webhook: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("metric_name", metric_name)
+        _setter("namespace", namespace)
+        _setter("rule_name", rule_name)
         if escalations is not None:
-            pulumi.set(__self__, "escalations", escalations)
+            _setter("escalations", escalations)
         if webhook is not None:
-            pulumi.set(__self__, "webhook", webhook)
+            _setter("webhook", webhook)
 
     @property
     @pulumi.getter
@@ -1364,12 +1644,25 @@ class MetricRuleTemplateAlertTemplateEscalations(dict):
         :param 'MetricRuleTemplateAlertTemplateEscalationsInfoArgs' info: The condition for triggering info-level alerts. See `info` below.
         :param 'MetricRuleTemplateAlertTemplateEscalationsWarnArgs' warn: The condition for triggering warn-level alerts. See `warn` below.
         """
+        MetricRuleTemplateAlertTemplateEscalations._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            critical=critical,
+            info=info,
+            warn=warn,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             critical: Optional['outputs.MetricRuleTemplateAlertTemplateEscalationsCritical'] = None,
+             info: Optional['outputs.MetricRuleTemplateAlertTemplateEscalationsInfo'] = None,
+             warn: Optional['outputs.MetricRuleTemplateAlertTemplateEscalationsWarn'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if critical is not None:
-            pulumi.set(__self__, "critical", critical)
+            _setter("critical", critical)
         if info is not None:
-            pulumi.set(__self__, "info", info)
+            _setter("info", info)
         if warn is not None:
-            pulumi.set(__self__, "warn", warn)
+            _setter("warn", warn)
 
     @property
     @pulumi.getter
@@ -1421,25 +1714,40 @@ class MetricRuleTemplateAlertTemplateEscalationsCritical(dict):
                  threshold: Optional[str] = None,
                  times: Optional[str] = None):
         """
-        :param str comparison_operator: The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        :param str statistics: The statistical aggregation method for warn-level alerts.
-        :param str threshold: The threshold for warn-level alerts.
-        :param str times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        :param str comparison_operator: The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        :param str statistics: The statistical aggregation method for critical-level alerts.
+        :param str threshold: The threshold for critical-level alerts.
+        :param str times: The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
         """
+        MetricRuleTemplateAlertTemplateEscalationsCritical._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: Optional[str] = None,
+             statistics: Optional[str] = None,
+             threshold: Optional[str] = None,
+             times: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comparison_operator is not None:
-            pulumi.set(__self__, "comparison_operator", comparison_operator)
+            _setter("comparison_operator", comparison_operator)
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if times is not None:
-            pulumi.set(__self__, "times", times)
+            _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[str]:
         """
-        The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -1447,7 +1755,7 @@ class MetricRuleTemplateAlertTemplateEscalationsCritical(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        The statistical aggregation method for warn-level alerts.
+        The statistical aggregation method for critical-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -1455,7 +1763,7 @@ class MetricRuleTemplateAlertTemplateEscalationsCritical(dict):
     @pulumi.getter
     def threshold(self) -> Optional[str]:
         """
-        The threshold for warn-level alerts.
+        The threshold for critical-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -1463,7 +1771,7 @@ class MetricRuleTemplateAlertTemplateEscalationsCritical(dict):
     @pulumi.getter
     def times(self) -> Optional[str]:
         """
-        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
@@ -1493,25 +1801,40 @@ class MetricRuleTemplateAlertTemplateEscalationsInfo(dict):
                  threshold: Optional[str] = None,
                  times: Optional[str] = None):
         """
-        :param str comparison_operator: The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        :param str statistics: The statistical aggregation method for warn-level alerts.
-        :param str threshold: The threshold for warn-level alerts.
-        :param str times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        :param str comparison_operator: The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        :param str statistics: The statistical aggregation method for critical-level alerts.
+        :param str threshold: The threshold for critical-level alerts.
+        :param str times: The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
         """
+        MetricRuleTemplateAlertTemplateEscalationsInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: Optional[str] = None,
+             statistics: Optional[str] = None,
+             threshold: Optional[str] = None,
+             times: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comparison_operator is not None:
-            pulumi.set(__self__, "comparison_operator", comparison_operator)
+            _setter("comparison_operator", comparison_operator)
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if times is not None:
-            pulumi.set(__self__, "times", times)
+            _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[str]:
         """
-        The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -1519,7 +1842,7 @@ class MetricRuleTemplateAlertTemplateEscalationsInfo(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        The statistical aggregation method for warn-level alerts.
+        The statistical aggregation method for critical-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -1527,7 +1850,7 @@ class MetricRuleTemplateAlertTemplateEscalationsInfo(dict):
     @pulumi.getter
     def threshold(self) -> Optional[str]:
         """
-        The threshold for warn-level alerts.
+        The threshold for critical-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -1535,7 +1858,7 @@ class MetricRuleTemplateAlertTemplateEscalationsInfo(dict):
     @pulumi.getter
     def times(self) -> Optional[str]:
         """
-        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
@@ -1565,25 +1888,40 @@ class MetricRuleTemplateAlertTemplateEscalationsWarn(dict):
                  threshold: Optional[str] = None,
                  times: Optional[str] = None):
         """
-        :param str comparison_operator: The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-        :param str statistics: The statistical aggregation method for warn-level alerts.
-        :param str threshold: The threshold for warn-level alerts.
-        :param str times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        :param str comparison_operator: The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        :param str statistics: The statistical aggregation method for critical-level alerts.
+        :param str threshold: The threshold for critical-level alerts.
+        :param str times: The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
         """
+        MetricRuleTemplateAlertTemplateEscalationsWarn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: Optional[str] = None,
+             statistics: Optional[str] = None,
+             threshold: Optional[str] = None,
+             times: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if comparison_operator is not None:
-            pulumi.set(__self__, "comparison_operator", comparison_operator)
+            _setter("comparison_operator", comparison_operator)
         if statistics is not None:
-            pulumi.set(__self__, "statistics", statistics)
+            _setter("statistics", statistics)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if times is not None:
-            pulumi.set(__self__, "times", times)
+            _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
     def comparison_operator(self) -> Optional[str]:
         """
-        The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+        The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         """
         return pulumi.get(self, "comparison_operator")
 
@@ -1591,7 +1929,7 @@ class MetricRuleTemplateAlertTemplateEscalationsWarn(dict):
     @pulumi.getter
     def statistics(self) -> Optional[str]:
         """
-        The statistical aggregation method for warn-level alerts.
+        The statistical aggregation method for critical-level alerts.
         """
         return pulumi.get(self, "statistics")
 
@@ -1599,7 +1937,7 @@ class MetricRuleTemplateAlertTemplateEscalationsWarn(dict):
     @pulumi.getter
     def threshold(self) -> Optional[str]:
         """
-        The threshold for warn-level alerts.
+        The threshold for critical-level alerts.
         """
         return pulumi.get(self, "threshold")
 
@@ -1607,7 +1945,7 @@ class MetricRuleTemplateAlertTemplateEscalationsWarn(dict):
     @pulumi.getter
     def times(self) -> Optional[str]:
         """
-        The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
@@ -1646,10 +1984,25 @@ class MonitorGroupInstancesInstance(dict):
         :param str instance_name: The name of instance.
         :param str region_id: The region id of instance.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "region_id", region_id)
+        MonitorGroupInstancesInstance._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             instance_id: str,
+             instance_name: str,
+             region_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("region_id", region_id)
 
     @property
     @pulumi.getter
@@ -1693,8 +2046,19 @@ class SiteMonitorIspCity(dict):
         :param str city: The ID of the city.
         :param str isp: The ID of the carrier.
         """
-        pulumi.set(__self__, "city", city)
-        pulumi.set(__self__, "isp", isp)
+        SiteMonitorIspCity._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            city=city,
+            isp=isp,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             city: str,
+             isp: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("city", city)
+        _setter("isp", isp)
 
     @property
     @pulumi.getter
@@ -1749,11 +2113,26 @@ class SlsGroupSlsGroupConfig(dict):
         :param str sls_region: The Sls Region.
         :param str sls_user_id: The ID of the Sls User.
         """
-        pulumi.set(__self__, "sls_logstore", sls_logstore)
-        pulumi.set(__self__, "sls_project", sls_project)
-        pulumi.set(__self__, "sls_region", sls_region)
+        SlsGroupSlsGroupConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sls_logstore=sls_logstore,
+            sls_project=sls_project,
+            sls_region=sls_region,
+            sls_user_id=sls_user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sls_logstore: str,
+             sls_project: str,
+             sls_region: str,
+             sls_user_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("sls_logstore", sls_logstore)
+        _setter("sls_project", sls_project)
+        _setter("sls_region", sls_region)
         if sls_user_id is not None:
-            pulumi.set(__self__, "sls_user_id", sls_user_id)
+            _setter("sls_user_id", sls_user_id)
 
     @property
     @pulumi.getter(name="slsLogstore")
@@ -1803,11 +2182,28 @@ class GetAlarmContactGroupsGroupResult(dict):
         :param bool enable_subscribed: Indicates whether the alarm group subscribes to weekly reports.
         :param str id: The ID of the CMS.
         """
-        pulumi.set(__self__, "alarm_contact_group_name", alarm_contact_group_name)
-        pulumi.set(__self__, "contacts", contacts)
-        pulumi.set(__self__, "describe", describe)
-        pulumi.set(__self__, "enable_subscribed", enable_subscribed)
-        pulumi.set(__self__, "id", id)
+        GetAlarmContactGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alarm_contact_group_name=alarm_contact_group_name,
+            contacts=contacts,
+            describe=describe,
+            enable_subscribed=enable_subscribed,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alarm_contact_group_name: str,
+             contacts: Sequence[str],
+             describe: str,
+             enable_subscribed: bool,
+             id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alarm_contact_group_name", alarm_contact_group_name)
+        _setter("contacts", contacts)
+        _setter("describe", describe)
+        _setter("enable_subscribed", enable_subscribed)
+        _setter("id", id)
 
     @property
     @pulumi.getter(name="alarmContactGroupName")
@@ -1880,19 +2276,52 @@ class GetAlarmContactsContactResult(dict):
         :param str describe: The description of the alarm contact.
         :param str id: The ID of the alarm contact.
         """
-        pulumi.set(__self__, "alarm_contact_name", alarm_contact_name)
-        pulumi.set(__self__, "channels_aliim", channels_aliim)
-        pulumi.set(__self__, "channels_ding_web_hook", channels_ding_web_hook)
-        pulumi.set(__self__, "channels_mail", channels_mail)
-        pulumi.set(__self__, "channels_sms", channels_sms)
-        pulumi.set(__self__, "channels_state_aliim", channels_state_aliim)
-        pulumi.set(__self__, "channels_state_ding_web_hook", channels_state_ding_web_hook)
-        pulumi.set(__self__, "channels_state_mail", channels_state_mail)
-        pulumi.set(__self__, "channels_status_sms", channels_status_sms)
-        pulumi.set(__self__, "contact_groups", contact_groups)
-        pulumi.set(__self__, "describe", describe)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "lang", lang)
+        GetAlarmContactsContactResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alarm_contact_name=alarm_contact_name,
+            channels_aliim=channels_aliim,
+            channels_ding_web_hook=channels_ding_web_hook,
+            channels_mail=channels_mail,
+            channels_sms=channels_sms,
+            channels_state_aliim=channels_state_aliim,
+            channels_state_ding_web_hook=channels_state_ding_web_hook,
+            channels_state_mail=channels_state_mail,
+            channels_status_sms=channels_status_sms,
+            contact_groups=contact_groups,
+            describe=describe,
+            id=id,
+            lang=lang,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alarm_contact_name: str,
+             channels_aliim: str,
+             channels_ding_web_hook: str,
+             channels_mail: str,
+             channels_sms: str,
+             channels_state_aliim: str,
+             channels_state_ding_web_hook: str,
+             channels_state_mail: str,
+             channels_status_sms: str,
+             contact_groups: Sequence[str],
+             describe: str,
+             id: str,
+             lang: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alarm_contact_name", alarm_contact_name)
+        _setter("channels_aliim", channels_aliim)
+        _setter("channels_ding_web_hook", channels_ding_web_hook)
+        _setter("channels_mail", channels_mail)
+        _setter("channels_sms", channels_sms)
+        _setter("channels_state_aliim", channels_state_aliim)
+        _setter("channels_state_ding_web_hook", channels_state_ding_web_hook)
+        _setter("channels_state_mail", channels_state_mail)
+        _setter("channels_status_sms", channels_status_sms)
+        _setter("contact_groups", contact_groups)
+        _setter("describe", describe)
+        _setter("id", id)
+        _setter("lang", lang)
 
     @property
     @pulumi.getter(name="alarmContactName")
@@ -2013,12 +2442,31 @@ class GetDynamicTagGroupsGroupResult(dict):
         :param str status: The status of the resource. Valid values: `RUNNING`, `FINISH`.
         :param str tag_key: The tag key of the tag.
         """
-        pulumi.set(__self__, "dynamic_tag_rule_id", dynamic_tag_rule_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "match_express_filter_relation", match_express_filter_relation)
-        pulumi.set(__self__, "match_expresses", match_expresses)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "tag_key", tag_key)
+        GetDynamicTagGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dynamic_tag_rule_id=dynamic_tag_rule_id,
+            id=id,
+            match_express_filter_relation=match_express_filter_relation,
+            match_expresses=match_expresses,
+            status=status,
+            tag_key=tag_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dynamic_tag_rule_id: str,
+             id: str,
+             match_express_filter_relation: str,
+             match_expresses: Sequence['outputs.GetDynamicTagGroupsGroupMatchExpressResult'],
+             status: str,
+             tag_key: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dynamic_tag_rule_id", dynamic_tag_rule_id)
+        _setter("id", id)
+        _setter("match_express_filter_relation", match_express_filter_relation)
+        _setter("match_expresses", match_expresses)
+        _setter("status", status)
+        _setter("tag_key", tag_key)
 
     @property
     @pulumi.getter(name="dynamicTagRuleId")
@@ -2078,8 +2526,19 @@ class GetDynamicTagGroupsGroupMatchExpressResult(dict):
         :param str tag_value: The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
         :param str tag_value_match_function: Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
         """
-        pulumi.set(__self__, "tag_value", tag_value)
-        pulumi.set(__self__, "tag_value_match_function", tag_value_match_function)
+        GetDynamicTagGroupsGroupMatchExpressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            tag_value=tag_value,
+            tag_value_match_function=tag_value_match_function,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             tag_value: str,
+             tag_value_match_function: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("tag_value", tag_value)
+        _setter("tag_value_match_function", tag_value_match_function)
 
     @property
     @pulumi.getter(name="tagValue")
@@ -2119,14 +2578,37 @@ class GetEventRulesRuleResult(dict):
         :param int silence_time: The mute period during which new alerts are not sent even if the trigger conditions are met.
         :param str status: The status of the resource.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "event_patterns", event_patterns)
-        pulumi.set(__self__, "event_rule_name", event_rule_name)
-        pulumi.set(__self__, "event_type", event_type)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "silence_time", silence_time)
-        pulumi.set(__self__, "status", status)
+        GetEventRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            event_patterns=event_patterns,
+            event_rule_name=event_rule_name,
+            event_type=event_type,
+            group_id=group_id,
+            id=id,
+            silence_time=silence_time,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             event_patterns: Sequence['outputs.GetEventRulesRuleEventPatternResult'],
+             event_rule_name: str,
+             event_type: str,
+             group_id: str,
+             id: str,
+             silence_time: int,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("event_patterns", event_patterns)
+        _setter("event_rule_name", event_rule_name)
+        _setter("event_type", event_type)
+        _setter("group_id", group_id)
+        _setter("id", id)
+        _setter("silence_time", silence_time)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -2210,12 +2692,31 @@ class GetEventRulesRuleEventPatternResult(dict):
         :param str product: The type of the cloud service.
         :param str sql_filter: The SQL condition that is used to filter events.
         """
-        pulumi.set(__self__, "event_type_lists", event_type_lists)
-        pulumi.set(__self__, "keyword_filters", keyword_filters)
-        pulumi.set(__self__, "level_lists", level_lists)
-        pulumi.set(__self__, "name_lists", name_lists)
-        pulumi.set(__self__, "product", product)
-        pulumi.set(__self__, "sql_filter", sql_filter)
+        GetEventRulesRuleEventPatternResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            event_type_lists=event_type_lists,
+            keyword_filters=keyword_filters,
+            level_lists=level_lists,
+            name_lists=name_lists,
+            product=product,
+            sql_filter=sql_filter,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             event_type_lists: Sequence[str],
+             keyword_filters: Sequence['outputs.GetEventRulesRuleEventPatternKeywordFilterResult'],
+             level_lists: Sequence[str],
+             name_lists: Sequence[str],
+             product: str,
+             sql_filter: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("event_type_lists", event_type_lists)
+        _setter("keyword_filters", keyword_filters)
+        _setter("level_lists", level_lists)
+        _setter("name_lists", name_lists)
+        _setter("product", product)
+        _setter("sql_filter", sql_filter)
 
     @property
     @pulumi.getter(name="eventTypeLists")
@@ -2275,8 +2776,19 @@ class GetEventRulesRuleEventPatternKeywordFilterResult(dict):
         :param Sequence[str] key_words: The keywords that are used to match events.
         :param str relation: The relationship between multiple keywords in a condition.
         """
-        pulumi.set(__self__, "key_words", key_words)
-        pulumi.set(__self__, "relation", relation)
+        GetEventRulesRuleEventPatternKeywordFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key_words=key_words,
+            relation=relation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key_words: Sequence[str],
+             relation: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key_words", key_words)
+        _setter("relation", relation)
 
     @property
     @pulumi.getter(name="keyWords")
@@ -2338,25 +2850,70 @@ class GetGroupMetricRulesRuleResult(dict):
         :param str status: The status of Group Metric Rule..
         :param str webhook: The callback URL.
         """
-        pulumi.set(__self__, "contact_groups", contact_groups)
-        pulumi.set(__self__, "dimensions", dimensions)
-        pulumi.set(__self__, "effective_interval", effective_interval)
-        pulumi.set(__self__, "email_subject", email_subject)
-        pulumi.set(__self__, "enable_state", enable_state)
-        pulumi.set(__self__, "escalations", escalations)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_metric_rule_name", group_metric_rule_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "no_effective_interval", no_effective_interval)
-        pulumi.set(__self__, "period", period)
-        pulumi.set(__self__, "resources", resources)
-        pulumi.set(__self__, "rule_id", rule_id)
-        pulumi.set(__self__, "silence_time", silence_time)
-        pulumi.set(__self__, "source_type", source_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "webhook", webhook)
+        GetGroupMetricRulesRuleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_groups=contact_groups,
+            dimensions=dimensions,
+            effective_interval=effective_interval,
+            email_subject=email_subject,
+            enable_state=enable_state,
+            escalations=escalations,
+            group_id=group_id,
+            group_metric_rule_name=group_metric_rule_name,
+            id=id,
+            metric_name=metric_name,
+            namespace=namespace,
+            no_effective_interval=no_effective_interval,
+            period=period,
+            resources=resources,
+            rule_id=rule_id,
+            silence_time=silence_time,
+            source_type=source_type,
+            status=status,
+            webhook=webhook,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_groups: str,
+             dimensions: str,
+             effective_interval: str,
+             email_subject: str,
+             enable_state: bool,
+             escalations: Sequence['outputs.GetGroupMetricRulesRuleEscalationResult'],
+             group_id: str,
+             group_metric_rule_name: str,
+             id: str,
+             metric_name: str,
+             namespace: str,
+             no_effective_interval: str,
+             period: int,
+             resources: str,
+             rule_id: str,
+             silence_time: int,
+             source_type: str,
+             status: str,
+             webhook: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("contact_groups", contact_groups)
+        _setter("dimensions", dimensions)
+        _setter("effective_interval", effective_interval)
+        _setter("email_subject", email_subject)
+        _setter("enable_state", enable_state)
+        _setter("escalations", escalations)
+        _setter("group_id", group_id)
+        _setter("group_metric_rule_name", group_metric_rule_name)
+        _setter("id", id)
+        _setter("metric_name", metric_name)
+        _setter("namespace", namespace)
+        _setter("no_effective_interval", no_effective_interval)
+        _setter("period", period)
+        _setter("resources", resources)
+        _setter("rule_id", rule_id)
+        _setter("silence_time", silence_time)
+        _setter("source_type", source_type)
+        _setter("status", status)
+        _setter("webhook", webhook)
 
     @property
     @pulumi.getter(name="contactGroups")
@@ -2522,9 +3079,22 @@ class GetGroupMetricRulesRuleEscalationResult(dict):
         :param Sequence['GetGroupMetricRulesRuleEscalationInfoArgs'] infos: The info level.
         :param Sequence['GetGroupMetricRulesRuleEscalationWarnArgs'] warns: The warn level.
         """
-        pulumi.set(__self__, "criticals", criticals)
-        pulumi.set(__self__, "infos", infos)
-        pulumi.set(__self__, "warns", warns)
+        GetGroupMetricRulesRuleEscalationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            criticals=criticals,
+            infos=infos,
+            warns=warns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             criticals: Sequence['outputs.GetGroupMetricRulesRuleEscalationCriticalResult'],
+             infos: Sequence['outputs.GetGroupMetricRulesRuleEscalationInfoResult'],
+             warns: Sequence['outputs.GetGroupMetricRulesRuleEscalationWarnResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("criticals", criticals)
+        _setter("infos", infos)
+        _setter("warns", warns)
 
     @property
     @pulumi.getter
@@ -2564,10 +3134,25 @@ class GetGroupMetricRulesRuleEscalationCriticalResult(dict):
         :param str threshold: The threshold for warn-level alerts.
         :param int times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
-        pulumi.set(__self__, "comparison_operator", comparison_operator)
-        pulumi.set(__self__, "statistics", statistics)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "times", times)
+        GetGroupMetricRulesRuleEscalationCriticalResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: str,
+             statistics: str,
+             threshold: str,
+             times: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("comparison_operator", comparison_operator)
+        _setter("statistics", statistics)
+        _setter("threshold", threshold)
+        _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -2615,10 +3200,25 @@ class GetGroupMetricRulesRuleEscalationInfoResult(dict):
         :param str threshold: The threshold for warn-level alerts.
         :param int times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
-        pulumi.set(__self__, "comparison_operator", comparison_operator)
-        pulumi.set(__self__, "statistics", statistics)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "times", times)
+        GetGroupMetricRulesRuleEscalationInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: str,
+             statistics: str,
+             threshold: str,
+             times: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("comparison_operator", comparison_operator)
+        _setter("statistics", statistics)
+        _setter("threshold", threshold)
+        _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -2666,10 +3266,25 @@ class GetGroupMetricRulesRuleEscalationWarnResult(dict):
         :param str threshold: The threshold for warn-level alerts.
         :param int times: The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
-        pulumi.set(__self__, "comparison_operator", comparison_operator)
-        pulumi.set(__self__, "statistics", statistics)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "times", times)
+        GetGroupMetricRulesRuleEscalationWarnResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: str,
+             statistics: str,
+             threshold: str,
+             times: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("comparison_operator", comparison_operator)
+        _setter("statistics", statistics)
+        _setter("threshold", threshold)
+        _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -2715,9 +3330,22 @@ class GetHybridMonitorDatasDataResult(dict):
         :param str metric_name: The name of the monitoring indicator.
         :param Sequence['GetHybridMonitorDatasDataValueArgs'] values: The metric values that are collected at different timestamps.
         """
-        pulumi.set(__self__, "labels", labels)
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "values", values)
+        GetHybridMonitorDatasDataResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            labels=labels,
+            metric_name=metric_name,
+            values=values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             labels: Sequence['outputs.GetHybridMonitorDatasDataLabelResult'],
+             metric_name: str,
+             values: Sequence['outputs.GetHybridMonitorDatasDataValueResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("labels", labels)
+        _setter("metric_name", metric_name)
+        _setter("values", values)
 
     @property
     @pulumi.getter
@@ -2753,8 +3381,19 @@ class GetHybridMonitorDatasDataLabelResult(dict):
         :param str key: Label key.
         :param str value: Label value.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        GetHybridMonitorDatasDataLabelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -2782,8 +3421,19 @@ class GetHybridMonitorDatasDataValueResult(dict):
         :param str ts: The timestamp that indicates the time when the metric value is collected. Unit: seconds.
         :param str value: Label value.
         """
-        pulumi.set(__self__, "ts", ts)
-        pulumi.set(__self__, "value", value)
+        GetHybridMonitorDatasDataValueResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ts=ts,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ts: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ts", ts)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -2819,12 +3469,31 @@ class GetHybridMonitorFcTasksTaskResult(dict):
         :param str target_user_id: The ID of the member account.
         :param str yarm_config: The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "hybrid_monitor_fc_task_id", hybrid_monitor_fc_task_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "target_user_id", target_user_id)
-        pulumi.set(__self__, "yarm_config", yarm_config)
+        GetHybridMonitorFcTasksTaskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            hybrid_monitor_fc_task_id=hybrid_monitor_fc_task_id,
+            id=id,
+            namespace=namespace,
+            target_user_id=target_user_id,
+            yarm_config=yarm_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             hybrid_monitor_fc_task_id: str,
+             id: str,
+             namespace: str,
+             target_user_id: str,
+             yarm_config: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("hybrid_monitor_fc_task_id", hybrid_monitor_fc_task_id)
+        _setter("id", id)
+        _setter("namespace", namespace)
+        _setter("target_user_id", target_user_id)
+        _setter("yarm_config", yarm_config)
 
     @property
     @pulumi.getter(name="createTime")
@@ -2933,33 +3602,94 @@ class GetHybridMonitorSlsTasksTaskResult(dict):
         :param str task_type: Monitoring Task type.
         :param str upload_region: The region where the host resides.
         """
-        pulumi.set(__self__, "attach_labels", attach_labels)
-        pulumi.set(__self__, "collect_interval", collect_interval)
-        pulumi.set(__self__, "collect_target_endpoint", collect_target_endpoint)
-        pulumi.set(__self__, "collect_target_path", collect_target_path)
-        pulumi.set(__self__, "collect_target_type", collect_target_type)
-        pulumi.set(__self__, "collect_timout", collect_timout)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "extra_info", extra_info)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "hybrid_monitor_sls_task_id", hybrid_monitor_sls_task_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instances", instances)
-        pulumi.set(__self__, "log_file_path", log_file_path)
-        pulumi.set(__self__, "log_process", log_process)
-        pulumi.set(__self__, "log_sample", log_sample)
-        pulumi.set(__self__, "log_split", log_split)
-        pulumi.set(__self__, "match_express_relation", match_express_relation)
-        pulumi.set(__self__, "match_expresses", match_expresses)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "network_type", network_type)
-        pulumi.set(__self__, "sls_process", sls_process)
-        pulumi.set(__self__, "sls_process_configs", sls_process_configs)
-        pulumi.set(__self__, "task_name", task_name)
-        pulumi.set(__self__, "task_type", task_type)
-        pulumi.set(__self__, "upload_region", upload_region)
-        pulumi.set(__self__, "yarm_config", yarm_config)
+        GetHybridMonitorSlsTasksTaskResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attach_labels=attach_labels,
+            collect_interval=collect_interval,
+            collect_target_endpoint=collect_target_endpoint,
+            collect_target_path=collect_target_path,
+            collect_target_type=collect_target_type,
+            collect_timout=collect_timout,
+            create_time=create_time,
+            description=description,
+            extra_info=extra_info,
+            group_id=group_id,
+            hybrid_monitor_sls_task_id=hybrid_monitor_sls_task_id,
+            id=id,
+            instances=instances,
+            log_file_path=log_file_path,
+            log_process=log_process,
+            log_sample=log_sample,
+            log_split=log_split,
+            match_express_relation=match_express_relation,
+            match_expresses=match_expresses,
+            namespace=namespace,
+            network_type=network_type,
+            sls_process=sls_process,
+            sls_process_configs=sls_process_configs,
+            task_name=task_name,
+            task_type=task_type,
+            upload_region=upload_region,
+            yarm_config=yarm_config,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attach_labels: Sequence['outputs.GetHybridMonitorSlsTasksTaskAttachLabelResult'],
+             collect_interval: int,
+             collect_target_endpoint: str,
+             collect_target_path: str,
+             collect_target_type: str,
+             collect_timout: int,
+             create_time: str,
+             description: str,
+             extra_info: str,
+             group_id: str,
+             hybrid_monitor_sls_task_id: str,
+             id: str,
+             instances: Sequence[str],
+             log_file_path: str,
+             log_process: str,
+             log_sample: str,
+             log_split: str,
+             match_express_relation: str,
+             match_expresses: Sequence['outputs.GetHybridMonitorSlsTasksTaskMatchExpressResult'],
+             namespace: str,
+             network_type: str,
+             sls_process: str,
+             sls_process_configs: Sequence['outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigResult'],
+             task_name: str,
+             task_type: str,
+             upload_region: str,
+             yarm_config: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attach_labels", attach_labels)
+        _setter("collect_interval", collect_interval)
+        _setter("collect_target_endpoint", collect_target_endpoint)
+        _setter("collect_target_path", collect_target_path)
+        _setter("collect_target_type", collect_target_type)
+        _setter("collect_timout", collect_timout)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("extra_info", extra_info)
+        _setter("group_id", group_id)
+        _setter("hybrid_monitor_sls_task_id", hybrid_monitor_sls_task_id)
+        _setter("id", id)
+        _setter("instances", instances)
+        _setter("log_file_path", log_file_path)
+        _setter("log_process", log_process)
+        _setter("log_sample", log_sample)
+        _setter("log_split", log_split)
+        _setter("match_express_relation", match_express_relation)
+        _setter("match_expresses", match_expresses)
+        _setter("namespace", namespace)
+        _setter("network_type", network_type)
+        _setter("sls_process", sls_process)
+        _setter("sls_process_configs", sls_process_configs)
+        _setter("task_name", task_name)
+        _setter("task_type", task_type)
+        _setter("upload_region", upload_region)
+        _setter("yarm_config", yarm_config)
 
     @property
     @pulumi.getter(name="attachLabels")
@@ -3184,8 +3914,19 @@ class GetHybridMonitorSlsTasksTaskAttachLabelResult(dict):
         :param str name: The name of the instance.
         :param str value: The value of the key that is used to filter logs imported from Log Service.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        GetHybridMonitorSlsTasksTaskAttachLabelResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3215,9 +3956,22 @@ class GetHybridMonitorSlsTasksTaskMatchExpressResult(dict):
         :param str name: The name of the instance.
         :param str value: The value of the key that is used to filter logs imported from Log Service.
         """
-        pulumi.set(__self__, "function", function)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "value", value)
+        GetHybridMonitorSlsTasksTaskMatchExpressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            function=function,
+            name=name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             function: str,
+             name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("function", function)
+        _setter("name", name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3257,10 +4011,25 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigResult(dict):
         :param Sequence['GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByArgs'] group_bies: The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
         :param Sequence['GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticArgs'] statistics: The method that is used to aggregate logs imported from Log Service.
         """
-        pulumi.set(__self__, "expresses", expresses)
-        pulumi.set(__self__, "filters", filters)
-        pulumi.set(__self__, "group_bies", group_bies)
-        pulumi.set(__self__, "statistics", statistics)
+        GetHybridMonitorSlsTasksTaskSlsProcessConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expresses=expresses,
+            filters=filters,
+            group_bies=group_bies,
+            statistics=statistics,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expresses: Sequence['outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressResult'],
+             filters: Sequence['outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterResult'],
+             group_bies: Sequence['outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByResult'],
+             statistics: Sequence['outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("expresses", expresses)
+        _setter("filters", filters)
+        _setter("group_bies", group_bies)
+        _setter("statistics", statistics)
 
     @property
     @pulumi.getter
@@ -3304,8 +4073,19 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressResult(dict):
         :param str alias: The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         :param str express: The extended field that specifies the result of basic operations that are performed on aggregation results.
         """
-        pulumi.set(__self__, "alias", alias)
-        pulumi.set(__self__, "express", express)
+        GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias=alias,
+            express=express,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias: str,
+             express: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alias", alias)
+        _setter("express", express)
 
     @property
     @pulumi.getter
@@ -3333,8 +4113,19 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterResult(dict):
         :param Sequence['GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterArgs'] filters: The conditions that are used to filter logs imported from Log Service.
         :param str relation: The relationship between multiple filter conditions.
         """
-        pulumi.set(__self__, "filters", filters)
-        pulumi.set(__self__, "relation", relation)
+        GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            filters=filters,
+            relation=relation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             filters: Sequence['outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterResult'],
+             relation: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("filters", filters)
+        _setter("relation", relation)
 
     @property
     @pulumi.getter
@@ -3364,9 +4155,22 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterResult(dict):
         :param str sls_key_name: The name of the key that is used to filter logs imported from Log Service.
         :param str value: The value of the key that is used to filter logs imported from Log Service.
         """
-        pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "sls_key_name", sls_key_name)
-        pulumi.set(__self__, "value", value)
+        GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            operator=operator,
+            sls_key_name=sls_key_name,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             operator: str,
+             sls_key_name: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("operator", operator)
+        _setter("sls_key_name", sls_key_name)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -3402,8 +4206,19 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByResult(dict):
         :param str alias: The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         :param str sls_key_name: The name of the key that is used to filter logs imported from Log Service.
         """
-        pulumi.set(__self__, "alias", alias)
-        pulumi.set(__self__, "sls_key_name", sls_key_name)
+        GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupByResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias=alias,
+            sls_key_name=sls_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias: str,
+             sls_key_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alias", alias)
+        _setter("sls_key_name", sls_key_name)
 
     @property
     @pulumi.getter
@@ -3437,11 +4252,28 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticResult(dict):
         :param str parameter_two: The value of the function that is used to aggregate logs imported from Log Service.
         :param str sls_key_name: The name of the key that is used to filter logs imported from Log Service.
         """
-        pulumi.set(__self__, "alias", alias)
-        pulumi.set(__self__, "function", function)
-        pulumi.set(__self__, "parameter_one", parameter_one)
-        pulumi.set(__self__, "parameter_two", parameter_two)
-        pulumi.set(__self__, "sls_key_name", sls_key_name)
+        GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias=alias,
+            function=function,
+            parameter_one=parameter_one,
+            parameter_two=parameter_two,
+            sls_key_name=sls_key_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias: str,
+             function: str,
+             parameter_one: str,
+             parameter_two: str,
+             sls_key_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alias", alias)
+        _setter("function", function)
+        _setter("parameter_one", parameter_one)
+        _setter("parameter_two", parameter_two)
+        _setter("sls_key_name", sls_key_name)
 
     @property
     @pulumi.getter
@@ -3516,20 +4348,55 @@ class GetMetricRuleBlackListsListResult(dict):
         :param str scope_type: The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
         :param Sequence[str] scope_values: Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "effective_time", effective_time)
-        pulumi.set(__self__, "enable_end_time", enable_end_time)
-        pulumi.set(__self__, "enable_start_time", enable_start_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instances", instances)
-        pulumi.set(__self__, "is_enable", is_enable)
-        pulumi.set(__self__, "metric_rule_black_list_id", metric_rule_black_list_id)
-        pulumi.set(__self__, "metric_rule_black_list_name", metric_rule_black_list_name)
-        pulumi.set(__self__, "metrics", metrics)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "scope_type", scope_type)
-        pulumi.set(__self__, "scope_values", scope_values)
+        GetMetricRuleBlackListsListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            create_time=create_time,
+            effective_time=effective_time,
+            enable_end_time=enable_end_time,
+            enable_start_time=enable_start_time,
+            id=id,
+            instances=instances,
+            is_enable=is_enable,
+            metric_rule_black_list_id=metric_rule_black_list_id,
+            metric_rule_black_list_name=metric_rule_black_list_name,
+            metrics=metrics,
+            namespace=namespace,
+            scope_type=scope_type,
+            scope_values=scope_values,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             create_time: str,
+             effective_time: str,
+             enable_end_time: str,
+             enable_start_time: str,
+             id: str,
+             instances: Sequence[str],
+             is_enable: bool,
+             metric_rule_black_list_id: str,
+             metric_rule_black_list_name: str,
+             metrics: Sequence['outputs.GetMetricRuleBlackListsListMetricResult'],
+             namespace: str,
+             scope_type: str,
+             scope_values: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("create_time", create_time)
+        _setter("effective_time", effective_time)
+        _setter("enable_end_time", enable_end_time)
+        _setter("enable_start_time", enable_start_time)
+        _setter("id", id)
+        _setter("instances", instances)
+        _setter("is_enable", is_enable)
+        _setter("metric_rule_black_list_id", metric_rule_black_list_id)
+        _setter("metric_rule_black_list_name", metric_rule_black_list_name)
+        _setter("metrics", metrics)
+        _setter("namespace", namespace)
+        _setter("scope_type", scope_type)
+        _setter("scope_values", scope_values)
 
     @property
     @pulumi.getter
@@ -3650,8 +4517,19 @@ class GetMetricRuleBlackListsListMetricResult(dict):
         :param str metric_name: The name of the monitoring indicator.
         :param str resource: The extended dimension information of the instance. For example, '{"device":"C:"}' indicates that the blacklist policy is applied to all C disks under the ECS instance.
         """
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "resource", resource)
+        GetMetricRuleBlackListsListMetricResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            metric_name=metric_name,
+            resource=resource,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             metric_name: str,
+             resource: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("metric_name", metric_name)
+        _setter("resource", resource)
 
     @property
     @pulumi.getter(name="metricName")
@@ -3691,13 +4569,34 @@ class GetMetricRuleTemplatesTemplateResult(dict):
                > **NOTE:** The version changes with the number of times that the alert template is modified.
         :param str template_id: The ID of the alert template.
         """
-        pulumi.set(__self__, "alert_templates", alert_templates)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "metric_rule_template_name", metric_rule_template_name)
-        pulumi.set(__self__, "rest_version", rest_version)
-        pulumi.set(__self__, "template_id", template_id)
+        GetMetricRuleTemplatesTemplateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_templates=alert_templates,
+            description=description,
+            group_id=group_id,
+            id=id,
+            metric_rule_template_name=metric_rule_template_name,
+            rest_version=rest_version,
+            template_id=template_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_templates: Sequence['outputs.GetMetricRuleTemplatesTemplateAlertTemplateResult'],
+             description: str,
+             group_id: str,
+             id: str,
+             metric_rule_template_name: str,
+             rest_version: str,
+             template_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alert_templates", alert_templates)
+        _setter("description", description)
+        _setter("group_id", group_id)
+        _setter("id", id)
+        _setter("metric_rule_template_name", metric_rule_template_name)
+        _setter("rest_version", rest_version)
+        _setter("template_id", template_id)
 
     @property
     @pulumi.getter(name="alertTemplates")
@@ -3776,13 +4675,34 @@ class GetMetricRuleTemplatesTemplateAlertTemplateResult(dict):
         :param str rule_name: The name of the alert rule.
         :param str webhook: The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "escalations", escalations)
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "rule_name", rule_name)
-        pulumi.set(__self__, "selector", selector)
-        pulumi.set(__self__, "webhook", webhook)
+        GetMetricRuleTemplatesTemplateAlertTemplateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            escalations=escalations,
+            metric_name=metric_name,
+            namespace=namespace,
+            rule_name=rule_name,
+            selector=selector,
+            webhook=webhook,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             escalations: Sequence['outputs.GetMetricRuleTemplatesTemplateAlertTemplateEscalationResult'],
+             metric_name: str,
+             namespace: str,
+             rule_name: str,
+             selector: str,
+             webhook: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("escalations", escalations)
+        _setter("metric_name", metric_name)
+        _setter("namespace", namespace)
+        _setter("rule_name", rule_name)
+        _setter("selector", selector)
+        _setter("webhook", webhook)
 
     @property
     @pulumi.getter
@@ -3849,9 +4769,22 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalationResult(dict):
         :param Sequence['GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoArgs'] infos: The condition for triggering info-level alerts.
         :param Sequence['GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnArgs'] warns: The condition for triggering warn-level alerts.
         """
-        pulumi.set(__self__, "criticals", criticals)
-        pulumi.set(__self__, "infos", infos)
-        pulumi.set(__self__, "warns", warns)
+        GetMetricRuleTemplatesTemplateAlertTemplateEscalationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            criticals=criticals,
+            infos=infos,
+            warns=warns,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             criticals: Sequence['outputs.GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalResult'],
+             infos: Sequence['outputs.GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoResult'],
+             warns: Sequence['outputs.GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("criticals", criticals)
+        _setter("infos", infos)
+        _setter("warns", warns)
 
     @property
     @pulumi.getter
@@ -3892,10 +4825,25 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalResult(dict):
         :param str times: The consecutive number of times for which the metric value is measured before a warn-level
                alert is triggered.
         """
-        pulumi.set(__self__, "comparison_operator", comparison_operator)
-        pulumi.set(__self__, "statistics", statistics)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "times", times)
+        GetMetricRuleTemplatesTemplateAlertTemplateEscalationCriticalResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: str,
+             statistics: str,
+             threshold: str,
+             times: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("comparison_operator", comparison_operator)
+        _setter("statistics", statistics)
+        _setter("threshold", threshold)
+        _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -3945,10 +4893,25 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoResult(dict):
         :param str times: The consecutive number of times for which the metric value is measured before a warn-level
                alert is triggered.
         """
-        pulumi.set(__self__, "comparison_operator", comparison_operator)
-        pulumi.set(__self__, "statistics", statistics)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "times", times)
+        GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfoResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: str,
+             statistics: str,
+             threshold: str,
+             times: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("comparison_operator", comparison_operator)
+        _setter("statistics", statistics)
+        _setter("threshold", threshold)
+        _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -3998,10 +4961,25 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnResult(dict):
         :param str times: The consecutive number of times for which the metric value is measured before a warn-level
                alert is triggered.
         """
-        pulumi.set(__self__, "comparison_operator", comparison_operator)
-        pulumi.set(__self__, "statistics", statistics)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "times", times)
+        GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comparison_operator=comparison_operator,
+            statistics=statistics,
+            threshold=threshold,
+            times=times,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comparison_operator: str,
+             statistics: str,
+             threshold: str,
+             times: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("comparison_operator", comparison_operator)
+        _setter("statistics", statistics)
+        _setter("threshold", threshold)
+        _setter("times", times)
 
     @property
     @pulumi.getter(name="comparisonOperator")
@@ -4041,7 +5019,16 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarnResult(dict):
 class GetMonitorGroupInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  instances: Sequence['outputs.GetMonitorGroupInstancesInstanceInstanceResult']):
-        pulumi.set(__self__, "instances", instances)
+        GetMonitorGroupInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instances=instances,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instances: Sequence['outputs.GetMonitorGroupInstancesInstanceInstanceResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instances", instances)
 
     @property
     @pulumi.getter
@@ -4056,10 +5043,25 @@ class GetMonitorGroupInstancesInstanceInstanceResult(dict):
                  instance_id: str,
                  instance_name: str,
                  region_id: str):
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "region_id", region_id)
+        GetMonitorGroupInstancesInstanceInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             instance_id: str,
+             instance_name: str,
+             region_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("region_id", region_id)
 
     @property
     @pulumi.getter
@@ -4111,18 +5113,49 @@ class GetMonitorGroupsGroupResult(dict):
         :param Sequence[str] template_ids: The alert templates applied to the application group.
         :param str type: The type of the application group.
         """
-        pulumi.set(__self__, "bind_url", bind_url)
-        pulumi.set(__self__, "contact_groups", contact_groups)
-        pulumi.set(__self__, "dynamic_tag_rule_id", dynamic_tag_rule_id)
-        pulumi.set(__self__, "gmt_create", gmt_create)
-        pulumi.set(__self__, "gmt_modified", gmt_modified)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "monitor_group_name", monitor_group_name)
-        pulumi.set(__self__, "service_id", service_id)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "template_ids", template_ids)
-        pulumi.set(__self__, "type", type)
+        GetMonitorGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bind_url=bind_url,
+            contact_groups=contact_groups,
+            dynamic_tag_rule_id=dynamic_tag_rule_id,
+            gmt_create=gmt_create,
+            gmt_modified=gmt_modified,
+            group_id=group_id,
+            id=id,
+            monitor_group_name=monitor_group_name,
+            service_id=service_id,
+            tags=tags,
+            template_ids=template_ids,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bind_url: str,
+             contact_groups: Sequence[str],
+             dynamic_tag_rule_id: str,
+             gmt_create: int,
+             gmt_modified: int,
+             group_id: str,
+             id: str,
+             monitor_group_name: str,
+             service_id: str,
+             tags: Mapping[str, Any],
+             template_ids: Sequence[str],
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("bind_url", bind_url)
+        _setter("contact_groups", contact_groups)
+        _setter("dynamic_tag_rule_id", dynamic_tag_rule_id)
+        _setter("gmt_create", gmt_create)
+        _setter("gmt_modified", gmt_modified)
+        _setter("group_id", group_id)
+        _setter("id", id)
+        _setter("monitor_group_name", monitor_group_name)
+        _setter("service_id", service_id)
+        _setter("tags", tags)
+        _setter("template_ids", template_ids)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="bindUrl")
@@ -4240,13 +5273,34 @@ class GetNamespacesNamespaceResult(dict):
         :param str namespace_id: The ID of the Namespace.
         :param str specification: Data storage duration.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "modify_time", modify_time)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "namespace_id", namespace_id)
-        pulumi.set(__self__, "specification", specification)
+        GetNamespacesNamespaceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            description=description,
+            id=id,
+            modify_time=modify_time,
+            namespace=namespace,
+            namespace_id=namespace_id,
+            specification=specification,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             description: str,
+             id: str,
+             modify_time: str,
+             namespace: str,
+             namespace_id: str,
+             specification: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("modify_time", modify_time)
+        _setter("namespace", namespace)
+        _setter("namespace_id", namespace_id)
+        _setter("specification", specification)
 
     @property
     @pulumi.getter(name="createTime")
@@ -4320,11 +5374,28 @@ class GetSlsGroupsGroupResult(dict):
         :param str sls_group_description: The Description of the Sls Group.
         :param str sls_group_name: The name of the resource.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "sls_group_configs", sls_group_configs)
-        pulumi.set(__self__, "sls_group_description", sls_group_description)
-        pulumi.set(__self__, "sls_group_name", sls_group_name)
+        GetSlsGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            id=id,
+            sls_group_configs=sls_group_configs,
+            sls_group_description=sls_group_description,
+            sls_group_name=sls_group_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             id: str,
+             sls_group_configs: Sequence['outputs.GetSlsGroupsGroupSlsGroupConfigResult'],
+             sls_group_description: str,
+             sls_group_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("sls_group_configs", sls_group_configs)
+        _setter("sls_group_description", sls_group_description)
+        _setter("sls_group_name", sls_group_name)
 
     @property
     @pulumi.getter(name="createTime")
@@ -4380,10 +5451,25 @@ class GetSlsGroupsGroupSlsGroupConfigResult(dict):
         :param str sls_region: The Sls Region.
         :param str sls_user_id: The ID of the Sls User.
         """
-        pulumi.set(__self__, "sls_logstore", sls_logstore)
-        pulumi.set(__self__, "sls_project", sls_project)
-        pulumi.set(__self__, "sls_region", sls_region)
-        pulumi.set(__self__, "sls_user_id", sls_user_id)
+        GetSlsGroupsGroupSlsGroupConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            sls_logstore=sls_logstore,
+            sls_project=sls_project,
+            sls_region=sls_region,
+            sls_user_id=sls_user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             sls_logstore: str,
+             sls_project: str,
+             sls_region: str,
+             sls_user_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("sls_logstore", sls_logstore)
+        _setter("sls_project", sls_project)
+        _setter("sls_region", sls_region)
+        _setter("sls_user_id", sls_user_id)
 
     @property
     @pulumi.getter(name="slsLogstore")

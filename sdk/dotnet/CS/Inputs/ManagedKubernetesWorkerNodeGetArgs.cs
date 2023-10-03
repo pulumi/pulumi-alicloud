@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// This parameter specifies the name of the component.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

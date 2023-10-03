@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['RoleArgs', 'Role']
@@ -33,31 +33,54 @@ class RoleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
         :param pulumi.Input[str] version: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
         """
+        RoleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            document=document,
+            force=force,
+            max_session_duration=max_session_duration,
+            name=name,
+            ram_users=ram_users,
+            services=services,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             document: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             max_session_duration: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ram_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if document is not None:
-            pulumi.set(__self__, "document", document)
+            _setter("document", document)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if max_session_duration is not None:
-            pulumi.set(__self__, "max_session_duration", max_session_duration)
+            _setter("max_session_duration", max_session_duration)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ram_users is not None:
             warnings.warn("""Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
             pulumi.log.warn("""ram_users is deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
         if ram_users is not None:
-            pulumi.set(__self__, "ram_users", ram_users)
+            _setter("ram_users", ram_users)
         if services is not None:
             warnings.warn("""Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
             pulumi.log.warn("""services is deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
         if services is not None:
-            pulumi.set(__self__, "services", services)
+            _setter("services", services)
         if version is not None:
             warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
             pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -191,35 +214,62 @@ class _RoleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of services which can assume the RAM role. The format of each item in this list is `${service}.aliyuncs.com` or `${account_id}@${service}.aliyuncs.com`, such as `ecs.aliyuncs.com` and `1234567890000@ots.aliyuncs.com`. The `${service}` can be `ecs`, `log`, `apigateway` and so on, the `${account_id}` refers to someone's Alicloud account id.
         :param pulumi.Input[str] version: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM role policy document. Valid value is `1`. Default value is `1`.
         """
+        _RoleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            description=description,
+            document=document,
+            force=force,
+            max_session_duration=max_session_duration,
+            name=name,
+            ram_users=ram_users,
+            role_id=role_id,
+            services=services,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             document: Optional[pulumi.Input[str]] = None,
+             force: Optional[pulumi.Input[bool]] = None,
+             max_session_duration: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ram_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             role_id: Optional[pulumi.Input[str]] = None,
+             services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if arn is not None:
-            pulumi.set(__self__, "arn", arn)
+            _setter("arn", arn)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if document is not None:
-            pulumi.set(__self__, "document", document)
+            _setter("document", document)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if max_session_duration is not None:
-            pulumi.set(__self__, "max_session_duration", max_session_duration)
+            _setter("max_session_duration", max_session_duration)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ram_users is not None:
             warnings.warn("""Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
             pulumi.log.warn("""ram_users is deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
         if ram_users is not None:
-            pulumi.set(__self__, "ram_users", ram_users)
+            _setter("ram_users", ram_users)
         if role_id is not None:
-            pulumi.set(__self__, "role_id", role_id)
+            _setter("role_id", role_id)
         if services is not None:
             warnings.warn("""Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
             pulumi.log.warn("""services is deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
         if services is not None:
-            pulumi.set(__self__, "services", services)
+            _setter("services", services)
         if version is not None:
             warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
             pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -478,6 +528,10 @@ class Role(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RoleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -505,17 +559,8 @@ class Role(pulumi.CustomResource):
             __props__.__dict__["force"] = force
             __props__.__dict__["max_session_duration"] = max_session_duration
             __props__.__dict__["name"] = name
-            if ram_users is not None and not opts.urn:
-                warnings.warn("""Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-                pulumi.log.warn("""ram_users is deprecated: Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
             __props__.__dict__["ram_users"] = ram_users
-            if services is not None and not opts.urn:
-                warnings.warn("""Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-                pulumi.log.warn("""services is deprecated: Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
             __props__.__dict__["services"] = services
-            if version is not None and not opts.urn:
-                warnings.warn("""Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """, DeprecationWarning)
-                pulumi.log.warn("""version is deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. """)
             __props__.__dict__["version"] = version
             __props__.__dict__["arn"] = None
             __props__.__dict__["role_id"] = None

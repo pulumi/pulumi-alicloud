@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -192,144 +192,283 @@ class InstanceArgs:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
         """
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "security_groups", security_groups)
+        InstanceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            image_id=image_id,
+            instance_type=instance_type,
+            security_groups=security_groups,
+            allocate_public_ip=allocate_public_ip,
+            auto_release_time=auto_release_time,
+            auto_renew_period=auto_renew_period,
+            availability_zone=availability_zone,
+            credit_specification=credit_specification,
+            data_disks=data_disks,
+            dedicated_host_id=dedicated_host_id,
+            deletion_protection=deletion_protection,
+            deployment_set_id=deployment_set_id,
+            description=description,
+            dry_run=dry_run,
+            force_delete=force_delete,
+            host_name=host_name,
+            hpc_cluster_id=hpc_cluster_id,
+            http_endpoint=http_endpoint,
+            http_put_response_hop_limit=http_put_response_hop_limit,
+            http_tokens=http_tokens,
+            include_data_disks=include_data_disks,
+            instance_charge_type=instance_charge_type,
+            instance_name=instance_name,
+            internet_charge_type=internet_charge_type,
+            internet_max_bandwidth_in=internet_max_bandwidth_in,
+            internet_max_bandwidth_out=internet_max_bandwidth_out,
+            io_optimized=io_optimized,
+            ipv6_address_count=ipv6_address_count,
+            ipv6_addresses=ipv6_addresses,
+            is_outdated=is_outdated,
+            key_name=key_name,
+            kms_encrypted_password=kms_encrypted_password,
+            kms_encryption_context=kms_encryption_context,
+            maintenance_action=maintenance_action,
+            maintenance_notify=maintenance_notify,
+            maintenance_time=maintenance_time,
+            operator_type=operator_type,
+            password=password,
+            period=period,
+            period_unit=period_unit,
+            private_ip=private_ip,
+            renewal_status=renewal_status,
+            resource_group_id=resource_group_id,
+            role_name=role_name,
+            secondary_private_ip_address_count=secondary_private_ip_address_count,
+            secondary_private_ips=secondary_private_ips,
+            security_enhancement_strategy=security_enhancement_strategy,
+            spot_duration=spot_duration,
+            spot_price_limit=spot_price_limit,
+            spot_strategy=spot_strategy,
+            status=status,
+            stopped_mode=stopped_mode,
+            system_disk_auto_snapshot_policy_id=system_disk_auto_snapshot_policy_id,
+            system_disk_category=system_disk_category,
+            system_disk_description=system_disk_description,
+            system_disk_encrypt_algorithm=system_disk_encrypt_algorithm,
+            system_disk_encrypted=system_disk_encrypted,
+            system_disk_kms_key_id=system_disk_kms_key_id,
+            system_disk_name=system_disk_name,
+            system_disk_performance_level=system_disk_performance_level,
+            system_disk_size=system_disk_size,
+            system_disk_storage_cluster_id=system_disk_storage_cluster_id,
+            tags=tags,
+            user_data=user_data,
+            volume_tags=volume_tags,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             image_id: pulumi.Input[str],
+             instance_type: pulumi.Input[str],
+             security_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
+             allocate_public_ip: Optional[pulumi.Input[bool]] = None,
+             auto_release_time: Optional[pulumi.Input[str]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             availability_zone: Optional[pulumi.Input[str]] = None,
+             credit_specification: Optional[pulumi.Input[str]] = None,
+             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
+             dedicated_host_id: Optional[pulumi.Input[str]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             deployment_set_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             force_delete: Optional[pulumi.Input[bool]] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             hpc_cluster_id: Optional[pulumi.Input[str]] = None,
+             http_endpoint: Optional[pulumi.Input[str]] = None,
+             http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+             http_tokens: Optional[pulumi.Input[str]] = None,
+             include_data_disks: Optional[pulumi.Input[bool]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
+             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+             io_optimized: Optional[pulumi.Input[str]] = None,
+             ipv6_address_count: Optional[pulumi.Input[int]] = None,
+             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             is_outdated: Optional[pulumi.Input[bool]] = None,
+             key_name: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             maintenance_action: Optional[pulumi.Input[str]] = None,
+             maintenance_notify: Optional[pulumi.Input[bool]] = None,
+             maintenance_time: Optional[pulumi.Input['InstanceMaintenanceTimeArgs']] = None,
+             operator_type: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             role_name: Optional[pulumi.Input[str]] = None,
+             secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
+             secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
+             spot_duration: Optional[pulumi.Input[int]] = None,
+             spot_price_limit: Optional[pulumi.Input[float]] = None,
+             spot_strategy: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             stopped_mode: Optional[pulumi.Input[str]] = None,
+             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             system_disk_category: Optional[pulumi.Input[str]] = None,
+             system_disk_description: Optional[pulumi.Input[str]] = None,
+             system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+             system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+             system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
+             system_disk_name: Optional[pulumi.Input[str]] = None,
+             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             system_disk_size: Optional[pulumi.Input[int]] = None,
+             system_disk_storage_cluster_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("image_id", image_id)
+        _setter("instance_type", instance_type)
+        _setter("security_groups", security_groups)
         if allocate_public_ip is not None:
             warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
             pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
         if allocate_public_ip is not None:
-            pulumi.set(__self__, "allocate_public_ip", allocate_public_ip)
+            _setter("allocate_public_ip", allocate_public_ip)
         if auto_release_time is not None:
-            pulumi.set(__self__, "auto_release_time", auto_release_time)
+            _setter("auto_release_time", auto_release_time)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if availability_zone is not None:
-            pulumi.set(__self__, "availability_zone", availability_zone)
+            _setter("availability_zone", availability_zone)
         if credit_specification is not None:
-            pulumi.set(__self__, "credit_specification", credit_specification)
+            _setter("credit_specification", credit_specification)
         if data_disks is not None:
-            pulumi.set(__self__, "data_disks", data_disks)
+            _setter("data_disks", data_disks)
         if dedicated_host_id is not None:
-            pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
+            _setter("dedicated_host_id", dedicated_host_id)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if deployment_set_id is not None:
-            pulumi.set(__self__, "deployment_set_id", deployment_set_id)
+            _setter("deployment_set_id", deployment_set_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if force_delete is not None:
-            pulumi.set(__self__, "force_delete", force_delete)
+            _setter("force_delete", force_delete)
         if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+            _setter("host_name", host_name)
         if hpc_cluster_id is not None:
-            pulumi.set(__self__, "hpc_cluster_id", hpc_cluster_id)
+            _setter("hpc_cluster_id", hpc_cluster_id)
         if http_endpoint is not None:
-            pulumi.set(__self__, "http_endpoint", http_endpoint)
+            _setter("http_endpoint", http_endpoint)
         if http_put_response_hop_limit is not None:
-            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+            _setter("http_put_response_hop_limit", http_put_response_hop_limit)
         if http_tokens is not None:
-            pulumi.set(__self__, "http_tokens", http_tokens)
+            _setter("http_tokens", http_tokens)
         if include_data_disks is not None:
-            pulumi.set(__self__, "include_data_disks", include_data_disks)
+            _setter("include_data_disks", include_data_disks)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_in is not None:
             warnings.warn("""The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""", DeprecationWarning)
             pulumi.log.warn("""internet_max_bandwidth_in is deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""")
         if internet_max_bandwidth_in is not None:
-            pulumi.set(__self__, "internet_max_bandwidth_in", internet_max_bandwidth_in)
+            _setter("internet_max_bandwidth_in", internet_max_bandwidth_in)
         if internet_max_bandwidth_out is not None:
-            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+            _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
         if io_optimized is not None:
             warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
             pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
         if io_optimized is not None:
-            pulumi.set(__self__, "io_optimized", io_optimized)
+            _setter("io_optimized", io_optimized)
         if ipv6_address_count is not None:
-            pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
+            _setter("ipv6_address_count", ipv6_address_count)
         if ipv6_addresses is not None:
-            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
+            _setter("ipv6_addresses", ipv6_addresses)
         if is_outdated is not None:
-            pulumi.set(__self__, "is_outdated", is_outdated)
+            _setter("is_outdated", is_outdated)
         if key_name is not None:
-            pulumi.set(__self__, "key_name", key_name)
+            _setter("key_name", key_name)
         if kms_encrypted_password is not None:
-            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+            _setter("kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+            _setter("kms_encryption_context", kms_encryption_context)
         if maintenance_action is not None:
-            pulumi.set(__self__, "maintenance_action", maintenance_action)
+            _setter("maintenance_action", maintenance_action)
         if maintenance_notify is not None:
-            pulumi.set(__self__, "maintenance_notify", maintenance_notify)
+            _setter("maintenance_notify", maintenance_notify)
         if maintenance_time is not None:
-            pulumi.set(__self__, "maintenance_time", maintenance_time)
+            _setter("maintenance_time", maintenance_time)
         if operator_type is not None:
-            pulumi.set(__self__, "operator_type", operator_type)
+            _setter("operator_type", operator_type)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if role_name is not None:
-            pulumi.set(__self__, "role_name", role_name)
+            _setter("role_name", role_name)
         if secondary_private_ip_address_count is not None:
-            pulumi.set(__self__, "secondary_private_ip_address_count", secondary_private_ip_address_count)
+            _setter("secondary_private_ip_address_count", secondary_private_ip_address_count)
         if secondary_private_ips is not None:
-            pulumi.set(__self__, "secondary_private_ips", secondary_private_ips)
+            _setter("secondary_private_ips", secondary_private_ips)
         if security_enhancement_strategy is not None:
-            pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
+            _setter("security_enhancement_strategy", security_enhancement_strategy)
         if spot_duration is not None:
-            pulumi.set(__self__, "spot_duration", spot_duration)
+            _setter("spot_duration", spot_duration)
         if spot_price_limit is not None:
-            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+            _setter("spot_price_limit", spot_price_limit)
         if spot_strategy is not None:
-            pulumi.set(__self__, "spot_strategy", spot_strategy)
+            _setter("spot_strategy", spot_strategy)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if stopped_mode is not None:
-            pulumi.set(__self__, "stopped_mode", stopped_mode)
+            _setter("stopped_mode", stopped_mode)
         if system_disk_auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
+            _setter("system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
         if system_disk_category is not None:
-            pulumi.set(__self__, "system_disk_category", system_disk_category)
+            _setter("system_disk_category", system_disk_category)
         if system_disk_description is not None:
-            pulumi.set(__self__, "system_disk_description", system_disk_description)
+            _setter("system_disk_description", system_disk_description)
         if system_disk_encrypt_algorithm is not None:
-            pulumi.set(__self__, "system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
+            _setter("system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
         if system_disk_encrypted is not None:
-            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+            _setter("system_disk_encrypted", system_disk_encrypted)
         if system_disk_kms_key_id is not None:
-            pulumi.set(__self__, "system_disk_kms_key_id", system_disk_kms_key_id)
+            _setter("system_disk_kms_key_id", system_disk_kms_key_id)
         if system_disk_name is not None:
-            pulumi.set(__self__, "system_disk_name", system_disk_name)
+            _setter("system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
-            pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+            _setter("system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
-            pulumi.set(__self__, "system_disk_size", system_disk_size)
+            _setter("system_disk_size", system_disk_size)
         if system_disk_storage_cluster_id is not None:
-            pulumi.set(__self__, "system_disk_storage_cluster_id", system_disk_storage_cluster_id)
+            _setter("system_disk_storage_cluster_id", system_disk_storage_cluster_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if volume_tags is not None:
-            pulumi.set(__self__, "volume_tags", volume_tags)
+            _setter("volume_tags", volume_tags)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="imageId")
@@ -1367,165 +1506,322 @@ class _InstanceState:
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
         """
+        _InstanceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            allocate_public_ip=allocate_public_ip,
+            auto_release_time=auto_release_time,
+            auto_renew_period=auto_renew_period,
+            availability_zone=availability_zone,
+            cpu=cpu,
+            credit_specification=credit_specification,
+            data_disks=data_disks,
+            dedicated_host_id=dedicated_host_id,
+            deletion_protection=deletion_protection,
+            deployment_set_group_no=deployment_set_group_no,
+            deployment_set_id=deployment_set_id,
+            description=description,
+            dry_run=dry_run,
+            force_delete=force_delete,
+            host_name=host_name,
+            hpc_cluster_id=hpc_cluster_id,
+            http_endpoint=http_endpoint,
+            http_put_response_hop_limit=http_put_response_hop_limit,
+            http_tokens=http_tokens,
+            image_id=image_id,
+            include_data_disks=include_data_disks,
+            instance_charge_type=instance_charge_type,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            internet_charge_type=internet_charge_type,
+            internet_max_bandwidth_in=internet_max_bandwidth_in,
+            internet_max_bandwidth_out=internet_max_bandwidth_out,
+            io_optimized=io_optimized,
+            ipv6_address_count=ipv6_address_count,
+            ipv6_addresses=ipv6_addresses,
+            is_outdated=is_outdated,
+            key_name=key_name,
+            kms_encrypted_password=kms_encrypted_password,
+            kms_encryption_context=kms_encryption_context,
+            maintenance_action=maintenance_action,
+            maintenance_notify=maintenance_notify,
+            maintenance_time=maintenance_time,
+            memory=memory,
+            network_interface_id=network_interface_id,
+            operator_type=operator_type,
+            os_name=os_name,
+            os_type=os_type,
+            password=password,
+            period=period,
+            period_unit=period_unit,
+            primary_ip_address=primary_ip_address,
+            private_ip=private_ip,
+            public_ip=public_ip,
+            renewal_status=renewal_status,
+            resource_group_id=resource_group_id,
+            role_name=role_name,
+            secondary_private_ip_address_count=secondary_private_ip_address_count,
+            secondary_private_ips=secondary_private_ips,
+            security_enhancement_strategy=security_enhancement_strategy,
+            security_groups=security_groups,
+            spot_duration=spot_duration,
+            spot_price_limit=spot_price_limit,
+            spot_strategy=spot_strategy,
+            status=status,
+            stopped_mode=stopped_mode,
+            system_disk_auto_snapshot_policy_id=system_disk_auto_snapshot_policy_id,
+            system_disk_category=system_disk_category,
+            system_disk_description=system_disk_description,
+            system_disk_encrypt_algorithm=system_disk_encrypt_algorithm,
+            system_disk_encrypted=system_disk_encrypted,
+            system_disk_id=system_disk_id,
+            system_disk_kms_key_id=system_disk_kms_key_id,
+            system_disk_name=system_disk_name,
+            system_disk_performance_level=system_disk_performance_level,
+            system_disk_size=system_disk_size,
+            system_disk_storage_cluster_id=system_disk_storage_cluster_id,
+            tags=tags,
+            user_data=user_data,
+            volume_tags=volume_tags,
+            vswitch_id=vswitch_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             allocate_public_ip: Optional[pulumi.Input[bool]] = None,
+             auto_release_time: Optional[pulumi.Input[str]] = None,
+             auto_renew_period: Optional[pulumi.Input[int]] = None,
+             availability_zone: Optional[pulumi.Input[str]] = None,
+             cpu: Optional[pulumi.Input[int]] = None,
+             credit_specification: Optional[pulumi.Input[str]] = None,
+             data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceDataDiskArgs']]]] = None,
+             dedicated_host_id: Optional[pulumi.Input[str]] = None,
+             deletion_protection: Optional[pulumi.Input[bool]] = None,
+             deployment_set_group_no: Optional[pulumi.Input[str]] = None,
+             deployment_set_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             force_delete: Optional[pulumi.Input[bool]] = None,
+             host_name: Optional[pulumi.Input[str]] = None,
+             hpc_cluster_id: Optional[pulumi.Input[str]] = None,
+             http_endpoint: Optional[pulumi.Input[str]] = None,
+             http_put_response_hop_limit: Optional[pulumi.Input[int]] = None,
+             http_tokens: Optional[pulumi.Input[str]] = None,
+             image_id: Optional[pulumi.Input[str]] = None,
+             include_data_disks: Optional[pulumi.Input[bool]] = None,
+             instance_charge_type: Optional[pulumi.Input[str]] = None,
+             instance_name: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             internet_charge_type: Optional[pulumi.Input[str]] = None,
+             internet_max_bandwidth_in: Optional[pulumi.Input[int]] = None,
+             internet_max_bandwidth_out: Optional[pulumi.Input[int]] = None,
+             io_optimized: Optional[pulumi.Input[str]] = None,
+             ipv6_address_count: Optional[pulumi.Input[int]] = None,
+             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             is_outdated: Optional[pulumi.Input[bool]] = None,
+             key_name: Optional[pulumi.Input[str]] = None,
+             kms_encrypted_password: Optional[pulumi.Input[str]] = None,
+             kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             maintenance_action: Optional[pulumi.Input[str]] = None,
+             maintenance_notify: Optional[pulumi.Input[bool]] = None,
+             maintenance_time: Optional[pulumi.Input['InstanceMaintenanceTimeArgs']] = None,
+             memory: Optional[pulumi.Input[int]] = None,
+             network_interface_id: Optional[pulumi.Input[str]] = None,
+             operator_type: Optional[pulumi.Input[str]] = None,
+             os_name: Optional[pulumi.Input[str]] = None,
+             os_type: Optional[pulumi.Input[str]] = None,
+             password: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             period_unit: Optional[pulumi.Input[str]] = None,
+             primary_ip_address: Optional[pulumi.Input[str]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             public_ip: Optional[pulumi.Input[str]] = None,
+             renewal_status: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             role_name: Optional[pulumi.Input[str]] = None,
+             secondary_private_ip_address_count: Optional[pulumi.Input[int]] = None,
+             secondary_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             security_enhancement_strategy: Optional[pulumi.Input[str]] = None,
+             security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             spot_duration: Optional[pulumi.Input[int]] = None,
+             spot_price_limit: Optional[pulumi.Input[float]] = None,
+             spot_strategy: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             stopped_mode: Optional[pulumi.Input[str]] = None,
+             system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             system_disk_category: Optional[pulumi.Input[str]] = None,
+             system_disk_description: Optional[pulumi.Input[str]] = None,
+             system_disk_encrypt_algorithm: Optional[pulumi.Input[str]] = None,
+             system_disk_encrypted: Optional[pulumi.Input[bool]] = None,
+             system_disk_id: Optional[pulumi.Input[str]] = None,
+             system_disk_kms_key_id: Optional[pulumi.Input[str]] = None,
+             system_disk_name: Optional[pulumi.Input[str]] = None,
+             system_disk_performance_level: Optional[pulumi.Input[str]] = None,
+             system_disk_size: Optional[pulumi.Input[int]] = None,
+             system_disk_storage_cluster_id: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+             user_data: Optional[pulumi.Input[str]] = None,
+             volume_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if allocate_public_ip is not None:
             warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
             pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
         if allocate_public_ip is not None:
-            pulumi.set(__self__, "allocate_public_ip", allocate_public_ip)
+            _setter("allocate_public_ip", allocate_public_ip)
         if auto_release_time is not None:
-            pulumi.set(__self__, "auto_release_time", auto_release_time)
+            _setter("auto_release_time", auto_release_time)
         if auto_renew_period is not None:
-            pulumi.set(__self__, "auto_renew_period", auto_renew_period)
+            _setter("auto_renew_period", auto_renew_period)
         if availability_zone is not None:
-            pulumi.set(__self__, "availability_zone", availability_zone)
+            _setter("availability_zone", availability_zone)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if credit_specification is not None:
-            pulumi.set(__self__, "credit_specification", credit_specification)
+            _setter("credit_specification", credit_specification)
         if data_disks is not None:
-            pulumi.set(__self__, "data_disks", data_disks)
+            _setter("data_disks", data_disks)
         if dedicated_host_id is not None:
-            pulumi.set(__self__, "dedicated_host_id", dedicated_host_id)
+            _setter("dedicated_host_id", dedicated_host_id)
         if deletion_protection is not None:
-            pulumi.set(__self__, "deletion_protection", deletion_protection)
+            _setter("deletion_protection", deletion_protection)
         if deployment_set_group_no is not None:
-            pulumi.set(__self__, "deployment_set_group_no", deployment_set_group_no)
+            _setter("deployment_set_group_no", deployment_set_group_no)
         if deployment_set_id is not None:
-            pulumi.set(__self__, "deployment_set_id", deployment_set_id)
+            _setter("deployment_set_id", deployment_set_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if force_delete is not None:
-            pulumi.set(__self__, "force_delete", force_delete)
+            _setter("force_delete", force_delete)
         if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+            _setter("host_name", host_name)
         if hpc_cluster_id is not None:
-            pulumi.set(__self__, "hpc_cluster_id", hpc_cluster_id)
+            _setter("hpc_cluster_id", hpc_cluster_id)
         if http_endpoint is not None:
-            pulumi.set(__self__, "http_endpoint", http_endpoint)
+            _setter("http_endpoint", http_endpoint)
         if http_put_response_hop_limit is not None:
-            pulumi.set(__self__, "http_put_response_hop_limit", http_put_response_hop_limit)
+            _setter("http_put_response_hop_limit", http_put_response_hop_limit)
         if http_tokens is not None:
-            pulumi.set(__self__, "http_tokens", http_tokens)
+            _setter("http_tokens", http_tokens)
         if image_id is not None:
-            pulumi.set(__self__, "image_id", image_id)
+            _setter("image_id", image_id)
         if include_data_disks is not None:
-            pulumi.set(__self__, "include_data_disks", include_data_disks)
+            _setter("include_data_disks", include_data_disks)
         if instance_charge_type is not None:
-            pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+            _setter("instance_charge_type", instance_charge_type)
         if instance_name is not None:
-            pulumi.set(__self__, "instance_name", instance_name)
+            _setter("instance_name", instance_name)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if internet_charge_type is not None:
-            pulumi.set(__self__, "internet_charge_type", internet_charge_type)
+            _setter("internet_charge_type", internet_charge_type)
         if internet_max_bandwidth_in is not None:
             warnings.warn("""The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""", DeprecationWarning)
             pulumi.log.warn("""internet_max_bandwidth_in is deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""")
         if internet_max_bandwidth_in is not None:
-            pulumi.set(__self__, "internet_max_bandwidth_in", internet_max_bandwidth_in)
+            _setter("internet_max_bandwidth_in", internet_max_bandwidth_in)
         if internet_max_bandwidth_out is not None:
-            pulumi.set(__self__, "internet_max_bandwidth_out", internet_max_bandwidth_out)
+            _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
         if io_optimized is not None:
             warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
             pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
         if io_optimized is not None:
-            pulumi.set(__self__, "io_optimized", io_optimized)
+            _setter("io_optimized", io_optimized)
         if ipv6_address_count is not None:
-            pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
+            _setter("ipv6_address_count", ipv6_address_count)
         if ipv6_addresses is not None:
-            pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
+            _setter("ipv6_addresses", ipv6_addresses)
         if is_outdated is not None:
-            pulumi.set(__self__, "is_outdated", is_outdated)
+            _setter("is_outdated", is_outdated)
         if key_name is not None:
-            pulumi.set(__self__, "key_name", key_name)
+            _setter("key_name", key_name)
         if kms_encrypted_password is not None:
-            pulumi.set(__self__, "kms_encrypted_password", kms_encrypted_password)
+            _setter("kms_encrypted_password", kms_encrypted_password)
         if kms_encryption_context is not None:
-            pulumi.set(__self__, "kms_encryption_context", kms_encryption_context)
+            _setter("kms_encryption_context", kms_encryption_context)
         if maintenance_action is not None:
-            pulumi.set(__self__, "maintenance_action", maintenance_action)
+            _setter("maintenance_action", maintenance_action)
         if maintenance_notify is not None:
-            pulumi.set(__self__, "maintenance_notify", maintenance_notify)
+            _setter("maintenance_notify", maintenance_notify)
         if maintenance_time is not None:
-            pulumi.set(__self__, "maintenance_time", maintenance_time)
+            _setter("maintenance_time", maintenance_time)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if network_interface_id is not None:
-            pulumi.set(__self__, "network_interface_id", network_interface_id)
+            _setter("network_interface_id", network_interface_id)
         if operator_type is not None:
-            pulumi.set(__self__, "operator_type", operator_type)
+            _setter("operator_type", operator_type)
         if os_name is not None:
-            pulumi.set(__self__, "os_name", os_name)
+            _setter("os_name", os_name)
         if os_type is not None:
-            pulumi.set(__self__, "os_type", os_type)
+            _setter("os_type", os_type)
         if password is not None:
-            pulumi.set(__self__, "password", password)
+            _setter("password", password)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if period_unit is not None:
-            pulumi.set(__self__, "period_unit", period_unit)
+            _setter("period_unit", period_unit)
         if primary_ip_address is not None:
-            pulumi.set(__self__, "primary_ip_address", primary_ip_address)
+            _setter("primary_ip_address", primary_ip_address)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
         if public_ip is not None:
-            pulumi.set(__self__, "public_ip", public_ip)
+            _setter("public_ip", public_ip)
         if renewal_status is not None:
-            pulumi.set(__self__, "renewal_status", renewal_status)
+            _setter("renewal_status", renewal_status)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if role_name is not None:
-            pulumi.set(__self__, "role_name", role_name)
+            _setter("role_name", role_name)
         if secondary_private_ip_address_count is not None:
-            pulumi.set(__self__, "secondary_private_ip_address_count", secondary_private_ip_address_count)
+            _setter("secondary_private_ip_address_count", secondary_private_ip_address_count)
         if secondary_private_ips is not None:
-            pulumi.set(__self__, "secondary_private_ips", secondary_private_ips)
+            _setter("secondary_private_ips", secondary_private_ips)
         if security_enhancement_strategy is not None:
-            pulumi.set(__self__, "security_enhancement_strategy", security_enhancement_strategy)
+            _setter("security_enhancement_strategy", security_enhancement_strategy)
         if security_groups is not None:
-            pulumi.set(__self__, "security_groups", security_groups)
+            _setter("security_groups", security_groups)
         if spot_duration is not None:
-            pulumi.set(__self__, "spot_duration", spot_duration)
+            _setter("spot_duration", spot_duration)
         if spot_price_limit is not None:
-            pulumi.set(__self__, "spot_price_limit", spot_price_limit)
+            _setter("spot_price_limit", spot_price_limit)
         if spot_strategy is not None:
-            pulumi.set(__self__, "spot_strategy", spot_strategy)
+            _setter("spot_strategy", spot_strategy)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if stopped_mode is not None:
-            pulumi.set(__self__, "stopped_mode", stopped_mode)
+            _setter("stopped_mode", stopped_mode)
         if system_disk_auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
+            _setter("system_disk_auto_snapshot_policy_id", system_disk_auto_snapshot_policy_id)
         if system_disk_category is not None:
-            pulumi.set(__self__, "system_disk_category", system_disk_category)
+            _setter("system_disk_category", system_disk_category)
         if system_disk_description is not None:
-            pulumi.set(__self__, "system_disk_description", system_disk_description)
+            _setter("system_disk_description", system_disk_description)
         if system_disk_encrypt_algorithm is not None:
-            pulumi.set(__self__, "system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
+            _setter("system_disk_encrypt_algorithm", system_disk_encrypt_algorithm)
         if system_disk_encrypted is not None:
-            pulumi.set(__self__, "system_disk_encrypted", system_disk_encrypted)
+            _setter("system_disk_encrypted", system_disk_encrypted)
         if system_disk_id is not None:
-            pulumi.set(__self__, "system_disk_id", system_disk_id)
+            _setter("system_disk_id", system_disk_id)
         if system_disk_kms_key_id is not None:
-            pulumi.set(__self__, "system_disk_kms_key_id", system_disk_kms_key_id)
+            _setter("system_disk_kms_key_id", system_disk_kms_key_id)
         if system_disk_name is not None:
-            pulumi.set(__self__, "system_disk_name", system_disk_name)
+            _setter("system_disk_name", system_disk_name)
         if system_disk_performance_level is not None:
-            pulumi.set(__self__, "system_disk_performance_level", system_disk_performance_level)
+            _setter("system_disk_performance_level", system_disk_performance_level)
         if system_disk_size is not None:
-            pulumi.set(__self__, "system_disk_size", system_disk_size)
+            _setter("system_disk_size", system_disk_size)
         if system_disk_storage_cluster_id is not None:
-            pulumi.set(__self__, "system_disk_storage_cluster_id", system_disk_storage_cluster_id)
+            _setter("system_disk_storage_cluster_id", system_disk_storage_cluster_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if user_data is not None:
-            pulumi.set(__self__, "user_data", user_data)
+            _setter("user_data", user_data)
         if volume_tags is not None:
-            pulumi.set(__self__, "volume_tags", volume_tags)
+            _setter("volume_tags", volume_tags)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
 
     @property
     @pulumi.getter(name="allocatePublicIp")
@@ -2806,6 +3102,10 @@ class Instance(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            InstanceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -2886,9 +3186,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            if allocate_public_ip is not None and not opts.urn:
-                warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
-                pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
             __props__.__dict__["allocate_public_ip"] = allocate_public_ip
             __props__.__dict__["auto_release_time"] = auto_release_time
             __props__.__dict__["auto_renew_period"] = auto_renew_period
@@ -2916,14 +3213,8 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_type'")
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["internet_charge_type"] = internet_charge_type
-            if internet_max_bandwidth_in is not None and not opts.urn:
-                warnings.warn("""The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""", DeprecationWarning)
-                pulumi.log.warn("""internet_max_bandwidth_in is deprecated: The attribute is invalid and no any affect for the instance. So it has been deprecated since version v1.121.2.""")
             __props__.__dict__["internet_max_bandwidth_in"] = internet_max_bandwidth_in
             __props__.__dict__["internet_max_bandwidth_out"] = internet_max_bandwidth_out
-            if io_optimized is not None and not opts.urn:
-                warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
-                pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
             __props__.__dict__["io_optimized"] = io_optimized
             __props__.__dict__["ipv6_address_count"] = ipv6_address_count
             __props__.__dict__["ipv6_addresses"] = ipv6_addresses
@@ -2933,6 +3224,11 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["kms_encryption_context"] = kms_encryption_context
             __props__.__dict__["maintenance_action"] = maintenance_action
             __props__.__dict__["maintenance_notify"] = maintenance_notify
+            if maintenance_time is not None and not isinstance(maintenance_time, InstanceMaintenanceTimeArgs):
+                maintenance_time = maintenance_time or {}
+                def _setter(key, value):
+                    maintenance_time[key] = value
+                InstanceMaintenanceTimeArgs._configure(_setter, **maintenance_time)
             __props__.__dict__["maintenance_time"] = maintenance_time
             __props__.__dict__["operator_type"] = operator_type
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)

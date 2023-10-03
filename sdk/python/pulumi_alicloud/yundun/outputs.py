@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -58,23 +58,54 @@ class BastionHostInstanceAdAuthServer(dict):
                  mobile_mapping: Optional[str] = None,
                  name_mapping: Optional[str] = None,
                  standby_server: Optional[str] = None):
-        pulumi.set(__self__, "account", account)
-        pulumi.set(__self__, "base_dn", base_dn)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "is_ssl", is_ssl)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server", server)
+        BastionHostInstanceAdAuthServer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account=account,
+            base_dn=base_dn,
+            domain=domain,
+            is_ssl=is_ssl,
+            password=password,
+            port=port,
+            server=server,
+            email_mapping=email_mapping,
+            filter=filter,
+            mobile_mapping=mobile_mapping,
+            name_mapping=name_mapping,
+            standby_server=standby_server,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account: str,
+             base_dn: str,
+             domain: str,
+             is_ssl: bool,
+             password: str,
+             port: int,
+             server: str,
+             email_mapping: Optional[str] = None,
+             filter: Optional[str] = None,
+             mobile_mapping: Optional[str] = None,
+             name_mapping: Optional[str] = None,
+             standby_server: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account", account)
+        _setter("base_dn", base_dn)
+        _setter("domain", domain)
+        _setter("is_ssl", is_ssl)
+        _setter("password", password)
+        _setter("port", port)
+        _setter("server", server)
         if email_mapping is not None:
-            pulumi.set(__self__, "email_mapping", email_mapping)
+            _setter("email_mapping", email_mapping)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if mobile_mapping is not None:
-            pulumi.set(__self__, "mobile_mapping", mobile_mapping)
+            _setter("mobile_mapping", mobile_mapping)
         if name_mapping is not None:
-            pulumi.set(__self__, "name_mapping", name_mapping)
+            _setter("name_mapping", name_mapping)
         if standby_server is not None:
-            pulumi.set(__self__, "standby_server", standby_server)
+            _setter("standby_server", standby_server)
 
     @property
     @pulumi.getter
@@ -181,25 +212,56 @@ class BastionHostInstanceLdapAuthServer(dict):
                  mobile_mapping: Optional[str] = None,
                  name_mapping: Optional[str] = None,
                  standby_server: Optional[str] = None):
-        pulumi.set(__self__, "account", account)
-        pulumi.set(__self__, "base_dn", base_dn)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server", server)
+        BastionHostInstanceLdapAuthServer._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account=account,
+            base_dn=base_dn,
+            password=password,
+            port=port,
+            server=server,
+            email_mapping=email_mapping,
+            filter=filter,
+            is_ssl=is_ssl,
+            login_name_mapping=login_name_mapping,
+            mobile_mapping=mobile_mapping,
+            name_mapping=name_mapping,
+            standby_server=standby_server,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account: str,
+             base_dn: str,
+             password: str,
+             port: int,
+             server: str,
+             email_mapping: Optional[str] = None,
+             filter: Optional[str] = None,
+             is_ssl: Optional[bool] = None,
+             login_name_mapping: Optional[str] = None,
+             mobile_mapping: Optional[str] = None,
+             name_mapping: Optional[str] = None,
+             standby_server: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account", account)
+        _setter("base_dn", base_dn)
+        _setter("password", password)
+        _setter("port", port)
+        _setter("server", server)
         if email_mapping is not None:
-            pulumi.set(__self__, "email_mapping", email_mapping)
+            _setter("email_mapping", email_mapping)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if is_ssl is not None:
-            pulumi.set(__self__, "is_ssl", is_ssl)
+            _setter("is_ssl", is_ssl)
         if login_name_mapping is not None:
-            pulumi.set(__self__, "login_name_mapping", login_name_mapping)
+            _setter("login_name_mapping", login_name_mapping)
         if mobile_mapping is not None:
-            pulumi.set(__self__, "mobile_mapping", mobile_mapping)
+            _setter("mobile_mapping", mobile_mapping)
         if name_mapping is not None:
-            pulumi.set(__self__, "name_mapping", name_mapping)
+            _setter("name_mapping", name_mapping)
         if standby_server is not None:
-            pulumi.set(__self__, "standby_server", standby_server)
+            _setter("standby_server", standby_server)
 
     @property
     @pulumi.getter
@@ -275,17 +337,44 @@ class GetBastionHostInstancesInstanceResult(dict):
                  security_group_ids: Sequence[str],
                  user_vswitch_id: str,
                  tags: Optional[Mapping[str, Any]] = None):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_status", instance_status)
-        pulumi.set(__self__, "license_code", license_code)
-        pulumi.set(__self__, "private_domain", private_domain)
-        pulumi.set(__self__, "public_domain", public_domain)
-        pulumi.set(__self__, "public_network_access", public_network_access)
-        pulumi.set(__self__, "security_group_ids", security_group_ids)
-        pulumi.set(__self__, "user_vswitch_id", user_vswitch_id)
+        GetBastionHostInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            instance_status=instance_status,
+            license_code=license_code,
+            private_domain=private_domain,
+            public_domain=public_domain,
+            public_network_access=public_network_access,
+            security_group_ids=security_group_ids,
+            user_vswitch_id=user_vswitch_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             id: str,
+             instance_status: str,
+             license_code: str,
+             private_domain: str,
+             public_domain: str,
+             public_network_access: bool,
+             security_group_ids: Sequence[str],
+             user_vswitch_id: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("id", id)
+        _setter("instance_status", instance_status)
+        _setter("license_code", license_code)
+        _setter("private_domain", private_domain)
+        _setter("public_domain", public_domain)
+        _setter("public_network_access", public_network_access)
+        _setter("security_group_ids", security_group_ids)
+        _setter("user_vswitch_id", user_vswitch_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter
@@ -350,16 +439,41 @@ class GetDBAuditInstanceInstanceResult(dict):
                  public_network_access: bool,
                  user_vswitch_id: str,
                  tags: Optional[Mapping[str, Any]] = None):
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_status", instance_status)
-        pulumi.set(__self__, "license_code", license_code)
-        pulumi.set(__self__, "private_domain", private_domain)
-        pulumi.set(__self__, "public_domain", public_domain)
-        pulumi.set(__self__, "public_network_access", public_network_access)
-        pulumi.set(__self__, "user_vswitch_id", user_vswitch_id)
+        GetDBAuditInstanceInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            instance_status=instance_status,
+            license_code=license_code,
+            private_domain=private_domain,
+            public_domain=public_domain,
+            public_network_access=public_network_access,
+            user_vswitch_id=user_vswitch_id,
+            tags=tags,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             id: str,
+             instance_status: str,
+             license_code: str,
+             private_domain: str,
+             public_domain: str,
+             public_network_access: bool,
+             user_vswitch_id: str,
+             tags: Optional[Mapping[str, Any]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("id", id)
+        _setter("instance_status", instance_status)
+        _setter("license_code", license_code)
+        _setter("private_domain", private_domain)
+        _setter("public_domain", public_domain)
+        _setter("public_network_access", public_network_access)
+        _setter("user_vswitch_id", user_vswitch_id)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
 
     @property
     @pulumi.getter

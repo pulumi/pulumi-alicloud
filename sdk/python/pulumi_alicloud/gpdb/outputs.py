@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -61,14 +61,29 @@ class DbInstancePlanPlanConfig(dict):
         :param 'DbInstancePlanPlanConfigScaleInArgs' scale_in: Scale In instance plan config. See `scale_in` below.
         :param 'DbInstancePlanPlanConfigScaleOutArgs' scale_out: Scale out instance plan config. See `scale_out` below.
         """
+        DbInstancePlanPlanConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pause=pause,
+            resume=resume,
+            scale_in=scale_in,
+            scale_out=scale_out,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pause: Optional['outputs.DbInstancePlanPlanConfigPause'] = None,
+             resume: Optional['outputs.DbInstancePlanPlanConfigResume'] = None,
+             scale_in: Optional['outputs.DbInstancePlanPlanConfigScaleIn'] = None,
+             scale_out: Optional['outputs.DbInstancePlanPlanConfigScaleOut'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if pause is not None:
-            pulumi.set(__self__, "pause", pause)
+            _setter("pause", pause)
         if resume is not None:
-            pulumi.set(__self__, "resume", resume)
+            _setter("resume", resume)
         if scale_in is not None:
-            pulumi.set(__self__, "scale_in", scale_in)
+            _setter("scale_in", scale_in)
         if scale_out is not None:
-            pulumi.set(__self__, "scale_out", scale_out)
+            _setter("scale_out", scale_out)
 
     @property
     @pulumi.getter
@@ -131,10 +146,21 @@ class DbInstancePlanPlanConfigPause(dict):
         :param str execute_time: The executed time of the Plan.
         :param str plan_cron_time: The Cron Time of the plan.
         """
+        DbInstancePlanPlanConfigPause._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            execute_time=execute_time,
+            plan_cron_time=plan_cron_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             execute_time: Optional[str] = None,
+             plan_cron_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if execute_time is not None:
-            pulumi.set(__self__, "execute_time", execute_time)
+            _setter("execute_time", execute_time)
         if plan_cron_time is not None:
-            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+            _setter("plan_cron_time", plan_cron_time)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -181,10 +207,21 @@ class DbInstancePlanPlanConfigResume(dict):
         :param str execute_time: The executed time of the Plan.
         :param str plan_cron_time: The Cron Time of the plan.
         """
+        DbInstancePlanPlanConfigResume._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            execute_time=execute_time,
+            plan_cron_time=plan_cron_time,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             execute_time: Optional[str] = None,
+             plan_cron_time: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if execute_time is not None:
-            pulumi.set(__self__, "execute_time", execute_time)
+            _setter("execute_time", execute_time)
         if plan_cron_time is not None:
-            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+            _setter("plan_cron_time", plan_cron_time)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -235,12 +272,25 @@ class DbInstancePlanPlanConfigScaleIn(dict):
         :param str plan_cron_time: The Cron Time of the plan.
         :param str segment_node_num: The segment Node Num of the Plan.
         """
+        DbInstancePlanPlanConfigScaleIn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            execute_time=execute_time,
+            plan_cron_time=plan_cron_time,
+            segment_node_num=segment_node_num,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             execute_time: Optional[str] = None,
+             plan_cron_time: Optional[str] = None,
+             segment_node_num: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if execute_time is not None:
-            pulumi.set(__self__, "execute_time", execute_time)
+            _setter("execute_time", execute_time)
         if plan_cron_time is not None:
-            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+            _setter("plan_cron_time", plan_cron_time)
         if segment_node_num is not None:
-            pulumi.set(__self__, "segment_node_num", segment_node_num)
+            _setter("segment_node_num", segment_node_num)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -299,12 +349,25 @@ class DbInstancePlanPlanConfigScaleOut(dict):
         :param str plan_cron_time: The Cron Time of the plan.
         :param str segment_node_num: The segment Node Num of the Plan.
         """
+        DbInstancePlanPlanConfigScaleOut._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            execute_time=execute_time,
+            plan_cron_time=plan_cron_time,
+            segment_node_num=segment_node_num,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             execute_time: Optional[str] = None,
+             plan_cron_time: Optional[str] = None,
+             segment_node_num: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if execute_time is not None:
-            pulumi.set(__self__, "execute_time", execute_time)
+            _setter("execute_time", execute_time)
         if plan_cron_time is not None:
-            pulumi.set(__self__, "plan_cron_time", plan_cron_time)
+            _setter("plan_cron_time", plan_cron_time)
         if segment_node_num is not None:
-            pulumi.set(__self__, "segment_node_num", segment_node_num)
+            _setter("segment_node_num", segment_node_num)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -364,12 +427,25 @@ class InstanceIpWhitelist(dict):
         :param str ip_group_name: IP whitelist group name.
         :param str security_ip_list: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         """
+        InstanceIpWhitelist._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_group_attribute=ip_group_attribute,
+            ip_group_name=ip_group_name,
+            security_ip_list=security_ip_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_group_attribute: Optional[str] = None,
+             ip_group_name: Optional[str] = None,
+             security_ip_list: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ip_group_attribute is not None:
-            pulumi.set(__self__, "ip_group_attribute", ip_group_attribute)
+            _setter("ip_group_attribute", ip_group_attribute)
         if ip_group_name is not None:
-            pulumi.set(__self__, "ip_group_name", ip_group_name)
+            _setter("ip_group_name", ip_group_name)
         if security_ip_list is not None:
-            pulumi.set(__self__, "security_ip_list", security_ip_list)
+            _setter("security_ip_list", security_ip_list)
 
     @property
     @pulumi.getter(name="ipGroupAttribute")
@@ -412,11 +488,28 @@ class GetAccountsAccountResult(dict):
         :param str id: The ID of the Account. Its value is same as Queue Name.
         :param str status: The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
         """
-        pulumi.set(__self__, "account_description", account_description)
-        pulumi.set(__self__, "account_name", account_name)
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "status", status)
+        GetAccountsAccountResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_description=account_description,
+            account_name=account_name,
+            db_instance_id=db_instance_id,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_description: str,
+             account_name: str,
+             db_instance_id: str,
+             id: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_description", account_description)
+        _setter("account_name", account_name)
+        _setter("db_instance_id", db_instance_id)
+        _setter("id", id)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="accountDescription")
@@ -483,16 +576,43 @@ class GetDbInstancePlansPlanResult(dict):
         :param str plan_type: The type of the Plan. Valid values: `PauseResume`, `Resize`.
         :param str status: The Status of the Plan.
         """
-        pulumi.set(__self__, "db_instance_plan_name", db_instance_plan_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "plan_configs", plan_configs)
-        pulumi.set(__self__, "plan_desc", plan_desc)
-        pulumi.set(__self__, "plan_end_date", plan_end_date)
-        pulumi.set(__self__, "plan_id", plan_id)
-        pulumi.set(__self__, "plan_schedule_type", plan_schedule_type)
-        pulumi.set(__self__, "plan_start_date", plan_start_date)
-        pulumi.set(__self__, "plan_type", plan_type)
-        pulumi.set(__self__, "status", status)
+        GetDbInstancePlansPlanResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_instance_plan_name=db_instance_plan_name,
+            id=id,
+            plan_configs=plan_configs,
+            plan_desc=plan_desc,
+            plan_end_date=plan_end_date,
+            plan_id=plan_id,
+            plan_schedule_type=plan_schedule_type,
+            plan_start_date=plan_start_date,
+            plan_type=plan_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_instance_plan_name: str,
+             id: str,
+             plan_configs: Sequence['outputs.GetDbInstancePlansPlanPlanConfigResult'],
+             plan_desc: str,
+             plan_end_date: str,
+             plan_id: str,
+             plan_schedule_type: str,
+             plan_start_date: str,
+             plan_type: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("db_instance_plan_name", db_instance_plan_name)
+        _setter("id", id)
+        _setter("plan_configs", plan_configs)
+        _setter("plan_desc", plan_desc)
+        _setter("plan_end_date", plan_end_date)
+        _setter("plan_id", plan_id)
+        _setter("plan_schedule_type", plan_schedule_type)
+        _setter("plan_start_date", plan_start_date)
+        _setter("plan_type", plan_type)
+        _setter("status", status)
 
     @property
     @pulumi.getter(name="dbInstancePlanName")
@@ -585,10 +705,25 @@ class GetDbInstancePlansPlanPlanConfigResult(dict):
         :param Sequence['GetDbInstancePlansPlanPlanConfigScaleInArgs'] scale_ins: Scale In instance plan config.
         :param Sequence['GetDbInstancePlansPlanPlanConfigScaleOutArgs'] scale_outs: Scale out instance plan config.
         """
-        pulumi.set(__self__, "pauses", pauses)
-        pulumi.set(__self__, "resumes", resumes)
-        pulumi.set(__self__, "scale_ins", scale_ins)
-        pulumi.set(__self__, "scale_outs", scale_outs)
+        GetDbInstancePlansPlanPlanConfigResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            pauses=pauses,
+            resumes=resumes,
+            scale_ins=scale_ins,
+            scale_outs=scale_outs,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             pauses: Sequence['outputs.GetDbInstancePlansPlanPlanConfigPauseResult'],
+             resumes: Sequence['outputs.GetDbInstancePlansPlanPlanConfigResumeResult'],
+             scale_ins: Sequence['outputs.GetDbInstancePlansPlanPlanConfigScaleInResult'],
+             scale_outs: Sequence['outputs.GetDbInstancePlansPlanPlanConfigScaleOutResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("pauses", pauses)
+        _setter("resumes", resumes)
+        _setter("scale_ins", scale_ins)
+        _setter("scale_outs", scale_outs)
 
     @property
     @pulumi.getter
@@ -634,9 +769,22 @@ class GetDbInstancePlansPlanPlanConfigPauseResult(dict):
         :param str plan_cron_time: The Cron Time of the plan.
         :param str plan_task_status: The Status of the plan Task.
         """
-        pulumi.set(__self__, "execute_time", execute_time)
-        pulumi.set(__self__, "plan_cron_time", plan_cron_time)
-        pulumi.set(__self__, "plan_task_status", plan_task_status)
+        GetDbInstancePlansPlanPlanConfigPauseResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            execute_time=execute_time,
+            plan_cron_time=plan_cron_time,
+            plan_task_status=plan_task_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             execute_time: str,
+             plan_cron_time: str,
+             plan_task_status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("execute_time", execute_time)
+        _setter("plan_cron_time", plan_cron_time)
+        _setter("plan_task_status", plan_task_status)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -674,9 +822,22 @@ class GetDbInstancePlansPlanPlanConfigResumeResult(dict):
         :param str plan_cron_time: The Cron Time of the plan.
         :param str plan_task_status: The Status of the plan Task.
         """
-        pulumi.set(__self__, "execute_time", execute_time)
-        pulumi.set(__self__, "plan_cron_time", plan_cron_time)
-        pulumi.set(__self__, "plan_task_status", plan_task_status)
+        GetDbInstancePlansPlanPlanConfigResumeResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            execute_time=execute_time,
+            plan_cron_time=plan_cron_time,
+            plan_task_status=plan_task_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             execute_time: str,
+             plan_cron_time: str,
+             plan_task_status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("execute_time", execute_time)
+        _setter("plan_cron_time", plan_cron_time)
+        _setter("plan_task_status", plan_task_status)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -716,10 +877,25 @@ class GetDbInstancePlansPlanPlanConfigScaleInResult(dict):
         :param str plan_task_status: The Status of the plan Task.
         :param str segment_node_num: The segment Node Num of the Plan.
         """
-        pulumi.set(__self__, "execute_time", execute_time)
-        pulumi.set(__self__, "plan_cron_time", plan_cron_time)
-        pulumi.set(__self__, "plan_task_status", plan_task_status)
-        pulumi.set(__self__, "segment_node_num", segment_node_num)
+        GetDbInstancePlansPlanPlanConfigScaleInResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            execute_time=execute_time,
+            plan_cron_time=plan_cron_time,
+            plan_task_status=plan_task_status,
+            segment_node_num=segment_node_num,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             execute_time: str,
+             plan_cron_time: str,
+             plan_task_status: str,
+             segment_node_num: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("execute_time", execute_time)
+        _setter("plan_cron_time", plan_cron_time)
+        _setter("plan_task_status", plan_task_status)
+        _setter("segment_node_num", segment_node_num)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -767,10 +943,25 @@ class GetDbInstancePlansPlanPlanConfigScaleOutResult(dict):
         :param str plan_task_status: The Status of the plan Task.
         :param str segment_node_num: The segment Node Num of the Plan.
         """
-        pulumi.set(__self__, "execute_time", execute_time)
-        pulumi.set(__self__, "plan_cron_time", plan_cron_time)
-        pulumi.set(__self__, "plan_task_status", plan_task_status)
-        pulumi.set(__self__, "segment_node_num", segment_node_num)
+        GetDbInstancePlansPlanPlanConfigScaleOutResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            execute_time=execute_time,
+            plan_cron_time=plan_cron_time,
+            plan_task_status=plan_task_status,
+            segment_node_num=segment_node_num,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             execute_time: str,
+             plan_cron_time: str,
+             plan_task_status: str,
+             segment_node_num: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("execute_time", execute_time)
+        _setter("plan_cron_time", plan_cron_time)
+        _setter("plan_task_status", plan_task_status)
+        _setter("segment_node_num", segment_node_num)
 
     @property
     @pulumi.getter(name="executeTime")
@@ -868,36 +1059,103 @@ class GetInstancesInstanceResult(dict):
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID of the instance.
         """
-        pulumi.set(__self__, "availability_zone", availability_zone)
-        pulumi.set(__self__, "charge_type", charge_type)
-        pulumi.set(__self__, "connection_string", connection_string)
-        pulumi.set(__self__, "cpu_cores", cpu_cores)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "creation_time", creation_time)
-        pulumi.set(__self__, "db_instance_category", db_instance_category)
-        pulumi.set(__self__, "db_instance_class", db_instance_class)
-        pulumi.set(__self__, "db_instance_id", db_instance_id)
-        pulumi.set(__self__, "db_instance_mode", db_instance_mode)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "engine", engine)
-        pulumi.set(__self__, "engine_version", engine_version)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_network_type", instance_network_type)
-        pulumi.set(__self__, "ip_whitelists", ip_whitelists)
-        pulumi.set(__self__, "maintain_end_time", maintain_end_time)
-        pulumi.set(__self__, "maintain_start_time", maintain_start_time)
-        pulumi.set(__self__, "master_node_num", master_node_num)
-        pulumi.set(__self__, "memory_size", memory_size)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "region_id", region_id)
-        pulumi.set(__self__, "seg_node_num", seg_node_num)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "storage_size", storage_size)
-        pulumi.set(__self__, "storage_type", storage_type)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            availability_zone=availability_zone,
+            charge_type=charge_type,
+            connection_string=connection_string,
+            cpu_cores=cpu_cores,
+            create_time=create_time,
+            creation_time=creation_time,
+            db_instance_category=db_instance_category,
+            db_instance_class=db_instance_class,
+            db_instance_id=db_instance_id,
+            db_instance_mode=db_instance_mode,
+            description=description,
+            engine=engine,
+            engine_version=engine_version,
+            id=id,
+            instance_network_type=instance_network_type,
+            ip_whitelists=ip_whitelists,
+            maintain_end_time=maintain_end_time,
+            maintain_start_time=maintain_start_time,
+            master_node_num=master_node_num,
+            memory_size=memory_size,
+            payment_type=payment_type,
+            region_id=region_id,
+            seg_node_num=seg_node_num,
+            status=status,
+            storage_size=storage_size,
+            storage_type=storage_type,
+            tags=tags,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             availability_zone: str,
+             charge_type: str,
+             connection_string: str,
+             cpu_cores: str,
+             create_time: str,
+             creation_time: str,
+             db_instance_category: str,
+             db_instance_class: str,
+             db_instance_id: str,
+             db_instance_mode: str,
+             description: str,
+             engine: str,
+             engine_version: str,
+             id: str,
+             instance_network_type: str,
+             ip_whitelists: Sequence['outputs.GetInstancesInstanceIpWhitelistResult'],
+             maintain_end_time: str,
+             maintain_start_time: str,
+             master_node_num: str,
+             memory_size: str,
+             payment_type: str,
+             region_id: str,
+             seg_node_num: str,
+             status: str,
+             storage_size: int,
+             storage_type: str,
+             tags: Mapping[str, Any],
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("availability_zone", availability_zone)
+        _setter("charge_type", charge_type)
+        _setter("connection_string", connection_string)
+        _setter("cpu_cores", cpu_cores)
+        _setter("create_time", create_time)
+        _setter("creation_time", creation_time)
+        _setter("db_instance_category", db_instance_category)
+        _setter("db_instance_class", db_instance_class)
+        _setter("db_instance_id", db_instance_id)
+        _setter("db_instance_mode", db_instance_mode)
+        _setter("description", description)
+        _setter("engine", engine)
+        _setter("engine_version", engine_version)
+        _setter("id", id)
+        _setter("instance_network_type", instance_network_type)
+        _setter("ip_whitelists", ip_whitelists)
+        _setter("maintain_end_time", maintain_end_time)
+        _setter("maintain_start_time", maintain_start_time)
+        _setter("master_node_num", master_node_num)
+        _setter("memory_size", memory_size)
+        _setter("payment_type", payment_type)
+        _setter("region_id", region_id)
+        _setter("seg_node_num", seg_node_num)
+        _setter("status", status)
+        _setter("storage_size", storage_size)
+        _setter("storage_type", storage_type)
+        _setter("tags", tags)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="availabilityZone")
@@ -1145,9 +1403,22 @@ class GetInstancesInstanceIpWhitelistResult(dict):
         :param str ip_group_name: IP whitelist group name
         :param str security_ip_list: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         """
-        pulumi.set(__self__, "ip_group_attribute", ip_group_attribute)
-        pulumi.set(__self__, "ip_group_name", ip_group_name)
-        pulumi.set(__self__, "security_ip_list", security_ip_list)
+        GetInstancesInstanceIpWhitelistResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ip_group_attribute=ip_group_attribute,
+            ip_group_name=ip_group_name,
+            security_ip_list=security_ip_list,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ip_group_attribute: str,
+             ip_group_name: str,
+             security_ip_list: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ip_group_attribute", ip_group_attribute)
+        _setter("ip_group_name", ip_group_name)
+        _setter("security_ip_list", security_ip_list)
 
     @property
     @pulumi.getter(name="ipGroupAttribute")
@@ -1183,8 +1454,19 @@ class GetZonesZoneResult(dict):
         :param str id: ID of the zone.
         :param Sequence[str] multi_zone_ids: A list of zone ids in which the multi zone.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "multi_zone_ids", multi_zone_ids)
+        GetZonesZoneResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            multi_zone_ids=multi_zone_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             multi_zone_ids: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("multi_zone_ids", multi_zone_ids)
 
     @property
     @pulumi.getter

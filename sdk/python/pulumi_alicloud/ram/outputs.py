@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -33,9 +33,22 @@ class PolicyStatement(dict):
         :param str effect: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
         :param Sequence[str] resources: (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
         """
-        pulumi.set(__self__, "actions", actions)
-        pulumi.set(__self__, "effect", effect)
-        pulumi.set(__self__, "resources", resources)
+        PolicyStatement._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+            effect=effect,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: Sequence[str],
+             effect: str,
+             resources: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("actions", actions)
+        _setter("effect", effect)
+        _setter("resources", resources)
 
     @property
     @pulumi.getter
@@ -71,8 +84,19 @@ class GetGroupsGroupResult(dict):
         :param str comments: Comments of the group.
         :param str name: Name of the group.
         """
-        pulumi.set(__self__, "comments", comments)
-        pulumi.set(__self__, "name", name)
+        GetGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            comments=comments,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             comments: str,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("comments", comments)
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -122,19 +146,52 @@ class GetPoliciesPolicyResult(dict):
         :param str user_name: Filter results by a specific user name. Returned policies are attached to the specified user.
         :param str version_id: The ID of default policy.
         """
-        pulumi.set(__self__, "attachment_count", attachment_count)
-        pulumi.set(__self__, "create_date", create_date)
-        pulumi.set(__self__, "default_version", default_version)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "document", document)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "policy_document", policy_document)
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "update_date", update_date)
-        pulumi.set(__self__, "user_name", user_name)
-        pulumi.set(__self__, "version_id", version_id)
+        GetPoliciesPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attachment_count=attachment_count,
+            create_date=create_date,
+            default_version=default_version,
+            description=description,
+            document=document,
+            id=id,
+            name=name,
+            policy_document=policy_document,
+            policy_name=policy_name,
+            type=type,
+            update_date=update_date,
+            user_name=user_name,
+            version_id=version_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attachment_count: int,
+             create_date: str,
+             default_version: str,
+             description: str,
+             document: str,
+             id: str,
+             name: str,
+             policy_document: str,
+             policy_name: str,
+             type: str,
+             update_date: str,
+             user_name: str,
+             version_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attachment_count", attachment_count)
+        _setter("create_date", create_date)
+        _setter("default_version", default_version)
+        _setter("description", description)
+        _setter("document", document)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("policy_document", policy_document)
+        _setter("policy_name", policy_name)
+        _setter("type", type)
+        _setter("update_date", update_date)
+        _setter("user_name", user_name)
+        _setter("version_id", version_id)
 
     @property
     @pulumi.getter(name="attachmentCount")
@@ -256,15 +313,32 @@ class GetPolicyDocumentStatementResult(dict):
         :param Sequence['GetPolicyDocumentStatementPrincipalArgs'] principals: Principal of the RAM policy document. If you want to create a RAM role policy document, it must be set. See `principal` below.
         :param Sequence[str] resources: List of specific objects which will be authorized. If you want to create a RAM policy document, it must be set.
         """
-        pulumi.set(__self__, "actions", actions)
+        GetPolicyDocumentStatementResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+            conditions=conditions,
+            effect=effect,
+            principals=principals,
+            resources=resources,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: Sequence[str],
+             conditions: Optional[Sequence['outputs.GetPolicyDocumentStatementConditionResult']] = None,
+             effect: Optional[str] = None,
+             principals: Optional[Sequence['outputs.GetPolicyDocumentStatementPrincipalResult']] = None,
+             resources: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("actions", actions)
         if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+            _setter("conditions", conditions)
         if effect is not None:
-            pulumi.set(__self__, "effect", effect)
+            _setter("effect", effect)
         if principals is not None:
-            pulumi.set(__self__, "principals", principals)
+            _setter("principals", principals)
         if resources is not None:
-            pulumi.set(__self__, "resources", resources)
+            _setter("resources", resources)
 
     @property
     @pulumi.getter
@@ -318,9 +392,22 @@ class GetPolicyDocumentStatementConditionResult(dict):
         :param Sequence[str] values: The values of the condition.
         :param str variable: The variable of the condition.
         """
-        pulumi.set(__self__, "operator", operator)
-        pulumi.set(__self__, "values", values)
-        pulumi.set(__self__, "variable", variable)
+        GetPolicyDocumentStatementConditionResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            operator=operator,
+            values=values,
+            variable=variable,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             operator: str,
+             values: Sequence[str],
+             variable: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("operator", operator)
+        _setter("values", values)
+        _setter("variable", variable)
 
     @property
     @pulumi.getter
@@ -356,8 +443,19 @@ class GetPolicyDocumentStatementPrincipalResult(dict):
         :param str entity: The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
         :param Sequence[str] identifiers: The identifiers of the principal.
         """
-        pulumi.set(__self__, "entity", entity)
-        pulumi.set(__self__, "identifiers", identifiers)
+        GetPolicyDocumentStatementPrincipalResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            entity=entity,
+            identifiers=identifiers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             entity: str,
+             identifiers: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("entity", entity)
+        _setter("identifiers", identifiers)
 
     @property
     @pulumi.getter
@@ -397,14 +495,37 @@ class GetRolesRoleResult(dict):
         :param str name: Name of the role.
         :param str update_date: Update date of the role.
         """
-        pulumi.set(__self__, "arn", arn)
-        pulumi.set(__self__, "assume_role_policy_document", assume_role_policy_document)
-        pulumi.set(__self__, "create_date", create_date)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "document", document)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "update_date", update_date)
+        GetRolesRoleResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            assume_role_policy_document=assume_role_policy_document,
+            create_date=create_date,
+            description=description,
+            document=document,
+            id=id,
+            name=name,
+            update_date=update_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: str,
+             assume_role_policy_document: str,
+             create_date: str,
+             description: str,
+             document: str,
+             id: str,
+             name: str,
+             update_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("arn", arn)
+        _setter("assume_role_policy_document", assume_role_policy_document)
+        _setter("create_date", create_date)
+        _setter("description", description)
+        _setter("document", document)
+        _setter("id", id)
+        _setter("name", name)
+        _setter("update_date", update_date)
 
     @property
     @pulumi.getter
@@ -488,12 +609,31 @@ class GetSamlProvidersProviderResult(dict):
         :param str saml_provider_name: The saml provider name.
         :param str update_date: The update time.
         """
-        pulumi.set(__self__, "arn", arn)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "encodedsaml_metadata_document", encodedsaml_metadata_document)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "saml_provider_name", saml_provider_name)
-        pulumi.set(__self__, "update_date", update_date)
+        GetSamlProvidersProviderResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            description=description,
+            encodedsaml_metadata_document=encodedsaml_metadata_document,
+            id=id,
+            saml_provider_name=saml_provider_name,
+            update_date=update_date,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: str,
+             description: str,
+             encodedsaml_metadata_document: str,
+             id: str,
+             saml_provider_name: str,
+             update_date: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("arn", arn)
+        _setter("description", description)
+        _setter("encodedsaml_metadata_document", encodedsaml_metadata_document)
+        _setter("id", id)
+        _setter("saml_provider_name", saml_provider_name)
+        _setter("update_date", update_date)
 
     @property
     @pulumi.getter
@@ -557,10 +697,25 @@ class GetUsersUserResult(dict):
         :param str last_login_date: (Removed) Last login date of the user. Removed from version 1.79.0.
         :param str name: Name of the user.
         """
-        pulumi.set(__self__, "create_date", create_date)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_login_date", last_login_date)
-        pulumi.set(__self__, "name", name)
+        GetUsersUserResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_date=create_date,
+            id=id,
+            last_login_date=last_login_date,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_date: str,
+             id: str,
+             last_login_date: str,
+             name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_date", create_date)
+        _setter("id", id)
+        _setter("last_login_date", last_login_date)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="createDate")

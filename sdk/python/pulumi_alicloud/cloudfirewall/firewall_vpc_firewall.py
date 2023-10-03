@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,14 +31,33 @@ class FirewallVpcFirewallArgs:
         :param pulumi.Input[str] lang: The language type of the requested and received messages. Valid values:
         :param pulumi.Input[str] member_uid: The UID of the Alibaba Cloud member account.
         """
-        pulumi.set(__self__, "local_vpc", local_vpc)
-        pulumi.set(__self__, "peer_vpc", peer_vpc)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "vpc_firewall_name", vpc_firewall_name)
+        FirewallVpcFirewallArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            local_vpc=local_vpc,
+            peer_vpc=peer_vpc,
+            status=status,
+            vpc_firewall_name=vpc_firewall_name,
+            lang=lang,
+            member_uid=member_uid,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             local_vpc: pulumi.Input['FirewallVpcFirewallLocalVpcArgs'],
+             peer_vpc: pulumi.Input['FirewallVpcFirewallPeerVpcArgs'],
+             status: pulumi.Input[str],
+             vpc_firewall_name: pulumi.Input[str],
+             lang: Optional[pulumi.Input[str]] = None,
+             member_uid: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("local_vpc", local_vpc)
+        _setter("peer_vpc", peer_vpc)
+        _setter("status", status)
+        _setter("vpc_firewall_name", vpc_firewall_name)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if member_uid is not None:
-            pulumi.set(__self__, "member_uid", member_uid)
+            _setter("member_uid", member_uid)
 
     @property
     @pulumi.getter(name="localVpc")
@@ -139,26 +158,53 @@ class _FirewallVpcFirewallState:
         :param pulumi.Input[str] vpc_firewall_id: The ID of the VPC firewall instance.
         :param pulumi.Input[str] vpc_firewall_name: The name of the VPC firewall instance.
         """
+        _FirewallVpcFirewallState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            bandwidth=bandwidth,
+            connect_type=connect_type,
+            lang=lang,
+            local_vpc=local_vpc,
+            member_uid=member_uid,
+            peer_vpc=peer_vpc,
+            region_status=region_status,
+            status=status,
+            vpc_firewall_id=vpc_firewall_id,
+            vpc_firewall_name=vpc_firewall_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             connect_type: Optional[pulumi.Input[str]] = None,
+             lang: Optional[pulumi.Input[str]] = None,
+             local_vpc: Optional[pulumi.Input['FirewallVpcFirewallLocalVpcArgs']] = None,
+             member_uid: Optional[pulumi.Input[str]] = None,
+             peer_vpc: Optional[pulumi.Input['FirewallVpcFirewallPeerVpcArgs']] = None,
+             region_status: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             vpc_firewall_id: Optional[pulumi.Input[str]] = None,
+             vpc_firewall_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if connect_type is not None:
-            pulumi.set(__self__, "connect_type", connect_type)
+            _setter("connect_type", connect_type)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if local_vpc is not None:
-            pulumi.set(__self__, "local_vpc", local_vpc)
+            _setter("local_vpc", local_vpc)
         if member_uid is not None:
-            pulumi.set(__self__, "member_uid", member_uid)
+            _setter("member_uid", member_uid)
         if peer_vpc is not None:
-            pulumi.set(__self__, "peer_vpc", peer_vpc)
+            _setter("peer_vpc", peer_vpc)
         if region_status is not None:
-            pulumi.set(__self__, "region_status", region_status)
+            _setter("region_status", region_status)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if vpc_firewall_id is not None:
-            pulumi.set(__self__, "vpc_firewall_id", vpc_firewall_id)
+            _setter("vpc_firewall_id", vpc_firewall_id)
         if vpc_firewall_name is not None:
-            pulumi.set(__self__, "vpc_firewall_name", vpc_firewall_name)
+            _setter("vpc_firewall_name", vpc_firewall_name)
 
     @property
     @pulumi.getter
@@ -422,6 +468,10 @@ class FirewallVpcFirewall(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FirewallVpcFirewallArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -443,10 +493,20 @@ class FirewallVpcFirewall(pulumi.CustomResource):
             __props__ = FirewallVpcFirewallArgs.__new__(FirewallVpcFirewallArgs)
 
             __props__.__dict__["lang"] = lang
+            if local_vpc is not None and not isinstance(local_vpc, FirewallVpcFirewallLocalVpcArgs):
+                local_vpc = local_vpc or {}
+                def _setter(key, value):
+                    local_vpc[key] = value
+                FirewallVpcFirewallLocalVpcArgs._configure(_setter, **local_vpc)
             if local_vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'local_vpc'")
             __props__.__dict__["local_vpc"] = local_vpc
             __props__.__dict__["member_uid"] = member_uid
+            if peer_vpc is not None and not isinstance(peer_vpc, FirewallVpcFirewallPeerVpcArgs):
+                peer_vpc = peer_vpc or {}
+                def _setter(key, value):
+                    peer_vpc[key] = value
+                FirewallVpcFirewallPeerVpcArgs._configure(_setter, **peer_vpc)
             if peer_vpc is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_vpc'")
             __props__.__dict__["peer_vpc"] = peer_vpc

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['GlobalEventsStorageRegionArgs', 'GlobalEventsStorageRegion']
@@ -19,8 +19,17 @@ class GlobalEventsStorageRegionArgs:
         The set of arguments for constructing a GlobalEventsStorageRegion resource.
         :param pulumi.Input[str] storage_region: Global Events Storage Region.
         """
+        GlobalEventsStorageRegionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            storage_region=storage_region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             storage_region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if storage_region is not None:
-            pulumi.set(__self__, "storage_region", storage_region)
+            _setter("storage_region", storage_region)
 
     @property
     @pulumi.getter(name="storageRegion")
@@ -43,8 +52,17 @@ class _GlobalEventsStorageRegionState:
         Input properties used for looking up and filtering GlobalEventsStorageRegion resources.
         :param pulumi.Input[str] storage_region: Global Events Storage Region.
         """
+        _GlobalEventsStorageRegionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            storage_region=storage_region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             storage_region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if storage_region is not None:
-            pulumi.set(__self__, "storage_region", storage_region)
+            _setter("storage_region", storage_region)
 
     @property
     @pulumi.getter(name="storageRegion")
@@ -126,6 +144,10 @@ class GlobalEventsStorageRegion(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GlobalEventsStorageRegionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

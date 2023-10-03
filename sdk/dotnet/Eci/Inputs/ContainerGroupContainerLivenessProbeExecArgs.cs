@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.Eci.Inputs
         private InputList<string>? _commands;
 
         /// <summary>
-        /// The commands run by the init container.
+        /// Commands to be executed inside the container when performing health checks using the command line method.
         /// </summary>
         public InputList<string> Commands
         {

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ScalingGroupArgs', 'ScalingGroup']
@@ -82,51 +82,102 @@ class ScalingGroupArgs:
         :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
         """
-        pulumi.set(__self__, "max_size", max_size)
-        pulumi.set(__self__, "min_size", min_size)
+        ScalingGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_size=max_size,
+            min_size=min_size,
+            db_instance_ids=db_instance_ids,
+            default_cooldown=default_cooldown,
+            desired_capacity=desired_capacity,
+            group_deletion_protection=group_deletion_protection,
+            group_type=group_type,
+            health_check_type=health_check_type,
+            launch_template_id=launch_template_id,
+            launch_template_version=launch_template_version,
+            loadbalancer_ids=loadbalancer_ids,
+            multi_az_policy=multi_az_policy,
+            on_demand_base_capacity=on_demand_base_capacity,
+            on_demand_percentage_above_base_capacity=on_demand_percentage_above_base_capacity,
+            protected_instances=protected_instances,
+            removal_policies=removal_policies,
+            scaling_group_name=scaling_group_name,
+            spot_instance_pools=spot_instance_pools,
+            spot_instance_remedy=spot_instance_remedy,
+            tags=tags,
+            vswitch_id=vswitch_id,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_size: pulumi.Input[int],
+             min_size: pulumi.Input[int],
+             db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             default_cooldown: Optional[pulumi.Input[int]] = None,
+             desired_capacity: Optional[pulumi.Input[int]] = None,
+             group_deletion_protection: Optional[pulumi.Input[bool]] = None,
+             group_type: Optional[pulumi.Input[str]] = None,
+             health_check_type: Optional[pulumi.Input[str]] = None,
+             launch_template_id: Optional[pulumi.Input[str]] = None,
+             launch_template_version: Optional[pulumi.Input[str]] = None,
+             loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             multi_az_policy: Optional[pulumi.Input[str]] = None,
+             on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
+             on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+             protected_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             scaling_group_name: Optional[pulumi.Input[str]] = None,
+             spot_instance_pools: Optional[pulumi.Input[int]] = None,
+             spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max_size", max_size)
+        _setter("min_size", min_size)
         if db_instance_ids is not None:
-            pulumi.set(__self__, "db_instance_ids", db_instance_ids)
+            _setter("db_instance_ids", db_instance_ids)
         if default_cooldown is not None:
-            pulumi.set(__self__, "default_cooldown", default_cooldown)
+            _setter("default_cooldown", default_cooldown)
         if desired_capacity is not None:
-            pulumi.set(__self__, "desired_capacity", desired_capacity)
+            _setter("desired_capacity", desired_capacity)
         if group_deletion_protection is not None:
-            pulumi.set(__self__, "group_deletion_protection", group_deletion_protection)
+            _setter("group_deletion_protection", group_deletion_protection)
         if group_type is not None:
-            pulumi.set(__self__, "group_type", group_type)
+            _setter("group_type", group_type)
         if health_check_type is not None:
-            pulumi.set(__self__, "health_check_type", health_check_type)
+            _setter("health_check_type", health_check_type)
         if launch_template_id is not None:
-            pulumi.set(__self__, "launch_template_id", launch_template_id)
+            _setter("launch_template_id", launch_template_id)
         if launch_template_version is not None:
-            pulumi.set(__self__, "launch_template_version", launch_template_version)
+            _setter("launch_template_version", launch_template_version)
         if loadbalancer_ids is not None:
-            pulumi.set(__self__, "loadbalancer_ids", loadbalancer_ids)
+            _setter("loadbalancer_ids", loadbalancer_ids)
         if multi_az_policy is not None:
-            pulumi.set(__self__, "multi_az_policy", multi_az_policy)
+            _setter("multi_az_policy", multi_az_policy)
         if on_demand_base_capacity is not None:
-            pulumi.set(__self__, "on_demand_base_capacity", on_demand_base_capacity)
+            _setter("on_demand_base_capacity", on_demand_base_capacity)
         if on_demand_percentage_above_base_capacity is not None:
-            pulumi.set(__self__, "on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
+            _setter("on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
         if protected_instances is not None:
-            pulumi.set(__self__, "protected_instances", protected_instances)
+            _setter("protected_instances", protected_instances)
         if removal_policies is not None:
-            pulumi.set(__self__, "removal_policies", removal_policies)
+            _setter("removal_policies", removal_policies)
         if scaling_group_name is not None:
-            pulumi.set(__self__, "scaling_group_name", scaling_group_name)
+            _setter("scaling_group_name", scaling_group_name)
         if spot_instance_pools is not None:
-            pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
+            _setter("spot_instance_pools", spot_instance_pools)
         if spot_instance_remedy is not None:
-            pulumi.set(__self__, "spot_instance_remedy", spot_instance_remedy)
+            _setter("spot_instance_remedy", spot_instance_remedy)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vswitch_id is not None:
             warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
             pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if vswitch_ids is not None:
-            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+            _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter(name="maxSize")
@@ -488,53 +539,104 @@ class _ScalingGroupState:
         :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
         """
+        _ScalingGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            db_instance_ids=db_instance_ids,
+            default_cooldown=default_cooldown,
+            desired_capacity=desired_capacity,
+            group_deletion_protection=group_deletion_protection,
+            group_type=group_type,
+            health_check_type=health_check_type,
+            launch_template_id=launch_template_id,
+            launch_template_version=launch_template_version,
+            loadbalancer_ids=loadbalancer_ids,
+            max_size=max_size,
+            min_size=min_size,
+            multi_az_policy=multi_az_policy,
+            on_demand_base_capacity=on_demand_base_capacity,
+            on_demand_percentage_above_base_capacity=on_demand_percentage_above_base_capacity,
+            protected_instances=protected_instances,
+            removal_policies=removal_policies,
+            scaling_group_name=scaling_group_name,
+            spot_instance_pools=spot_instance_pools,
+            spot_instance_remedy=spot_instance_remedy,
+            tags=tags,
+            vswitch_id=vswitch_id,
+            vswitch_ids=vswitch_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             default_cooldown: Optional[pulumi.Input[int]] = None,
+             desired_capacity: Optional[pulumi.Input[int]] = None,
+             group_deletion_protection: Optional[pulumi.Input[bool]] = None,
+             group_type: Optional[pulumi.Input[str]] = None,
+             health_check_type: Optional[pulumi.Input[str]] = None,
+             launch_template_id: Optional[pulumi.Input[str]] = None,
+             launch_template_version: Optional[pulumi.Input[str]] = None,
+             loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             max_size: Optional[pulumi.Input[int]] = None,
+             min_size: Optional[pulumi.Input[int]] = None,
+             multi_az_policy: Optional[pulumi.Input[str]] = None,
+             on_demand_base_capacity: Optional[pulumi.Input[int]] = None,
+             on_demand_percentage_above_base_capacity: Optional[pulumi.Input[int]] = None,
+             protected_instances: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             scaling_group_name: Optional[pulumi.Input[str]] = None,
+             spot_instance_pools: Optional[pulumi.Input[int]] = None,
+             spot_instance_remedy: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if db_instance_ids is not None:
-            pulumi.set(__self__, "db_instance_ids", db_instance_ids)
+            _setter("db_instance_ids", db_instance_ids)
         if default_cooldown is not None:
-            pulumi.set(__self__, "default_cooldown", default_cooldown)
+            _setter("default_cooldown", default_cooldown)
         if desired_capacity is not None:
-            pulumi.set(__self__, "desired_capacity", desired_capacity)
+            _setter("desired_capacity", desired_capacity)
         if group_deletion_protection is not None:
-            pulumi.set(__self__, "group_deletion_protection", group_deletion_protection)
+            _setter("group_deletion_protection", group_deletion_protection)
         if group_type is not None:
-            pulumi.set(__self__, "group_type", group_type)
+            _setter("group_type", group_type)
         if health_check_type is not None:
-            pulumi.set(__self__, "health_check_type", health_check_type)
+            _setter("health_check_type", health_check_type)
         if launch_template_id is not None:
-            pulumi.set(__self__, "launch_template_id", launch_template_id)
+            _setter("launch_template_id", launch_template_id)
         if launch_template_version is not None:
-            pulumi.set(__self__, "launch_template_version", launch_template_version)
+            _setter("launch_template_version", launch_template_version)
         if loadbalancer_ids is not None:
-            pulumi.set(__self__, "loadbalancer_ids", loadbalancer_ids)
+            _setter("loadbalancer_ids", loadbalancer_ids)
         if max_size is not None:
-            pulumi.set(__self__, "max_size", max_size)
+            _setter("max_size", max_size)
         if min_size is not None:
-            pulumi.set(__self__, "min_size", min_size)
+            _setter("min_size", min_size)
         if multi_az_policy is not None:
-            pulumi.set(__self__, "multi_az_policy", multi_az_policy)
+            _setter("multi_az_policy", multi_az_policy)
         if on_demand_base_capacity is not None:
-            pulumi.set(__self__, "on_demand_base_capacity", on_demand_base_capacity)
+            _setter("on_demand_base_capacity", on_demand_base_capacity)
         if on_demand_percentage_above_base_capacity is not None:
-            pulumi.set(__self__, "on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
+            _setter("on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
         if protected_instances is not None:
-            pulumi.set(__self__, "protected_instances", protected_instances)
+            _setter("protected_instances", protected_instances)
         if removal_policies is not None:
-            pulumi.set(__self__, "removal_policies", removal_policies)
+            _setter("removal_policies", removal_policies)
         if scaling_group_name is not None:
-            pulumi.set(__self__, "scaling_group_name", scaling_group_name)
+            _setter("scaling_group_name", scaling_group_name)
         if spot_instance_pools is not None:
-            pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
+            _setter("spot_instance_pools", spot_instance_pools)
         if spot_instance_remedy is not None:
-            pulumi.set(__self__, "spot_instance_remedy", spot_instance_remedy)
+            _setter("spot_instance_remedy", spot_instance_remedy)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if vswitch_id is not None:
             warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
             pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if vswitch_ids is not None:
-            pulumi.set(__self__, "vswitch_ids", vswitch_ids)
+            _setter("vswitch_ids", vswitch_ids)
 
     @property
     @pulumi.getter(name="dbInstanceIds")
@@ -1073,6 +1175,10 @@ class ScalingGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ScalingGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1133,9 +1239,6 @@ class ScalingGroup(pulumi.CustomResource):
             __props__.__dict__["spot_instance_pools"] = spot_instance_pools
             __props__.__dict__["spot_instance_remedy"] = spot_instance_remedy
             __props__.__dict__["tags"] = tags
-            if vswitch_id is not None and not opts.urn:
-                warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
-                pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
             __props__.__dict__["vswitch_id"] = vswitch_id
             __props__.__dict__["vswitch_ids"] = vswitch_ids
         super(ScalingGroup, __self__).__init__(

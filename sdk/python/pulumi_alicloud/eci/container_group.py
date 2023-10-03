@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -72,52 +72,109 @@ class ContainerGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]] volumes: The list of volumes. See `volumes` below.
         :param pulumi.Input[str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         """
-        pulumi.set(__self__, "container_group_name", container_group_name)
-        pulumi.set(__self__, "containers", containers)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
+        ContainerGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            container_group_name=container_group_name,
+            containers=containers,
+            security_group_id=security_group_id,
+            vswitch_id=vswitch_id,
+            acr_registry_infos=acr_registry_infos,
+            auto_create_eip=auto_create_eip,
+            auto_match_image_cache=auto_match_image_cache,
+            cpu=cpu,
+            dns_config=dns_config,
+            eci_security_context=eci_security_context,
+            eip_bandwidth=eip_bandwidth,
+            eip_instance_id=eip_instance_id,
+            host_aliases=host_aliases,
+            image_registry_credentials=image_registry_credentials,
+            init_containers=init_containers,
+            insecure_registry=insecure_registry,
+            instance_type=instance_type,
+            memory=memory,
+            plain_http_registry=plain_http_registry,
+            ram_role_name=ram_role_name,
+            resource_group_id=resource_group_id,
+            restart_policy=restart_policy,
+            tags=tags,
+            volumes=volumes,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             container_group_name: pulumi.Input[str],
+             containers: pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]],
+             security_group_id: pulumi.Input[str],
+             vswitch_id: pulumi.Input[str],
+             acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]] = None,
+             auto_create_eip: Optional[pulumi.Input[bool]] = None,
+             auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
+             cpu: Optional[pulumi.Input[float]] = None,
+             dns_config: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']] = None,
+             eci_security_context: Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']] = None,
+             eip_bandwidth: Optional[pulumi.Input[int]] = None,
+             eip_instance_id: Optional[pulumi.Input[str]] = None,
+             host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
+             image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]] = None,
+             init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]] = None,
+             insecure_registry: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             memory: Optional[pulumi.Input[float]] = None,
+             plain_http_registry: Optional[pulumi.Input[str]] = None,
+             ram_role_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             restart_policy: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("container_group_name", container_group_name)
+        _setter("containers", containers)
+        _setter("security_group_id", security_group_id)
+        _setter("vswitch_id", vswitch_id)
         if acr_registry_infos is not None:
-            pulumi.set(__self__, "acr_registry_infos", acr_registry_infos)
+            _setter("acr_registry_infos", acr_registry_infos)
         if auto_create_eip is not None:
-            pulumi.set(__self__, "auto_create_eip", auto_create_eip)
+            _setter("auto_create_eip", auto_create_eip)
         if auto_match_image_cache is not None:
-            pulumi.set(__self__, "auto_match_image_cache", auto_match_image_cache)
+            _setter("auto_match_image_cache", auto_match_image_cache)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if dns_config is not None:
-            pulumi.set(__self__, "dns_config", dns_config)
+            _setter("dns_config", dns_config)
         if eci_security_context is not None:
-            pulumi.set(__self__, "eci_security_context", eci_security_context)
+            _setter("eci_security_context", eci_security_context)
         if eip_bandwidth is not None:
-            pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
+            _setter("eip_bandwidth", eip_bandwidth)
         if eip_instance_id is not None:
-            pulumi.set(__self__, "eip_instance_id", eip_instance_id)
+            _setter("eip_instance_id", eip_instance_id)
         if host_aliases is not None:
-            pulumi.set(__self__, "host_aliases", host_aliases)
+            _setter("host_aliases", host_aliases)
         if image_registry_credentials is not None:
-            pulumi.set(__self__, "image_registry_credentials", image_registry_credentials)
+            _setter("image_registry_credentials", image_registry_credentials)
         if init_containers is not None:
-            pulumi.set(__self__, "init_containers", init_containers)
+            _setter("init_containers", init_containers)
         if insecure_registry is not None:
-            pulumi.set(__self__, "insecure_registry", insecure_registry)
+            _setter("insecure_registry", insecure_registry)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if plain_http_registry is not None:
-            pulumi.set(__self__, "plain_http_registry", plain_http_registry)
+            _setter("plain_http_registry", plain_http_registry)
         if ram_role_name is not None:
-            pulumi.set(__self__, "ram_role_name", ram_role_name)
+            _setter("ram_role_name", ram_role_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if restart_policy is not None:
-            pulumi.set(__self__, "restart_policy", restart_policy)
+            _setter("restart_policy", restart_policy)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if volumes is not None:
-            pulumi.set(__self__, "volumes", volumes)
+            _setter("volumes", volumes)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="containerGroupName")
@@ -488,62 +545,125 @@ class _ContainerGroupState:
                **NOTE:** From version 1.208.0, You can specify up to 10 `vswitch_id`. Separate multiple vSwitch IDs with commas (,), such as vsw-***,vsw-***.  attribute `vswitch_id` updating diff will be ignored when you set multiple vSwitchIds, there is only one valid `vswitch_id` exists in the set vSwitchIds.
         :param pulumi.Input[str] zone_id: The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
         """
+        _ContainerGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            acr_registry_infos=acr_registry_infos,
+            auto_create_eip=auto_create_eip,
+            auto_match_image_cache=auto_match_image_cache,
+            container_group_name=container_group_name,
+            containers=containers,
+            cpu=cpu,
+            dns_config=dns_config,
+            eci_security_context=eci_security_context,
+            eip_bandwidth=eip_bandwidth,
+            eip_instance_id=eip_instance_id,
+            host_aliases=host_aliases,
+            image_registry_credentials=image_registry_credentials,
+            init_containers=init_containers,
+            insecure_registry=insecure_registry,
+            instance_type=instance_type,
+            internet_ip=internet_ip,
+            intranet_ip=intranet_ip,
+            memory=memory,
+            plain_http_registry=plain_http_registry,
+            ram_role_name=ram_role_name,
+            resource_group_id=resource_group_id,
+            restart_policy=restart_policy,
+            security_group_id=security_group_id,
+            status=status,
+            tags=tags,
+            volumes=volumes,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             acr_registry_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupAcrRegistryInfoArgs']]]] = None,
+             auto_create_eip: Optional[pulumi.Input[bool]] = None,
+             auto_match_image_cache: Optional[pulumi.Input[bool]] = None,
+             container_group_name: Optional[pulumi.Input[str]] = None,
+             containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerArgs']]]] = None,
+             cpu: Optional[pulumi.Input[float]] = None,
+             dns_config: Optional[pulumi.Input['ContainerGroupDnsConfigArgs']] = None,
+             eci_security_context: Optional[pulumi.Input['ContainerGroupEciSecurityContextArgs']] = None,
+             eip_bandwidth: Optional[pulumi.Input[int]] = None,
+             eip_instance_id: Optional[pulumi.Input[str]] = None,
+             host_aliases: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupHostAliasArgs']]]] = None,
+             image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupImageRegistryCredentialArgs']]]] = None,
+             init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerArgs']]]] = None,
+             insecure_registry: Optional[pulumi.Input[str]] = None,
+             instance_type: Optional[pulumi.Input[str]] = None,
+             internet_ip: Optional[pulumi.Input[str]] = None,
+             intranet_ip: Optional[pulumi.Input[str]] = None,
+             memory: Optional[pulumi.Input[float]] = None,
+             plain_http_registry: Optional[pulumi.Input[str]] = None,
+             ram_role_name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             restart_policy: Optional[pulumi.Input[str]] = None,
+             security_group_id: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeArgs']]]] = None,
+             vswitch_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if acr_registry_infos is not None:
-            pulumi.set(__self__, "acr_registry_infos", acr_registry_infos)
+            _setter("acr_registry_infos", acr_registry_infos)
         if auto_create_eip is not None:
-            pulumi.set(__self__, "auto_create_eip", auto_create_eip)
+            _setter("auto_create_eip", auto_create_eip)
         if auto_match_image_cache is not None:
-            pulumi.set(__self__, "auto_match_image_cache", auto_match_image_cache)
+            _setter("auto_match_image_cache", auto_match_image_cache)
         if container_group_name is not None:
-            pulumi.set(__self__, "container_group_name", container_group_name)
+            _setter("container_group_name", container_group_name)
         if containers is not None:
-            pulumi.set(__self__, "containers", containers)
+            _setter("containers", containers)
         if cpu is not None:
-            pulumi.set(__self__, "cpu", cpu)
+            _setter("cpu", cpu)
         if dns_config is not None:
-            pulumi.set(__self__, "dns_config", dns_config)
+            _setter("dns_config", dns_config)
         if eci_security_context is not None:
-            pulumi.set(__self__, "eci_security_context", eci_security_context)
+            _setter("eci_security_context", eci_security_context)
         if eip_bandwidth is not None:
-            pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
+            _setter("eip_bandwidth", eip_bandwidth)
         if eip_instance_id is not None:
-            pulumi.set(__self__, "eip_instance_id", eip_instance_id)
+            _setter("eip_instance_id", eip_instance_id)
         if host_aliases is not None:
-            pulumi.set(__self__, "host_aliases", host_aliases)
+            _setter("host_aliases", host_aliases)
         if image_registry_credentials is not None:
-            pulumi.set(__self__, "image_registry_credentials", image_registry_credentials)
+            _setter("image_registry_credentials", image_registry_credentials)
         if init_containers is not None:
-            pulumi.set(__self__, "init_containers", init_containers)
+            _setter("init_containers", init_containers)
         if insecure_registry is not None:
-            pulumi.set(__self__, "insecure_registry", insecure_registry)
+            _setter("insecure_registry", insecure_registry)
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if internet_ip is not None:
-            pulumi.set(__self__, "internet_ip", internet_ip)
+            _setter("internet_ip", internet_ip)
         if intranet_ip is not None:
-            pulumi.set(__self__, "intranet_ip", intranet_ip)
+            _setter("intranet_ip", intranet_ip)
         if memory is not None:
-            pulumi.set(__self__, "memory", memory)
+            _setter("memory", memory)
         if plain_http_registry is not None:
-            pulumi.set(__self__, "plain_http_registry", plain_http_registry)
+            _setter("plain_http_registry", plain_http_registry)
         if ram_role_name is not None:
-            pulumi.set(__self__, "ram_role_name", ram_role_name)
+            _setter("ram_role_name", ram_role_name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if restart_policy is not None:
-            pulumi.set(__self__, "restart_policy", restart_policy)
+            _setter("restart_policy", restart_policy)
         if security_group_id is not None:
-            pulumi.set(__self__, "security_group_id", security_group_id)
+            _setter("security_group_id", security_group_id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if volumes is not None:
-            pulumi.set(__self__, "volumes", volumes)
+            _setter("volumes", volumes)
         if vswitch_id is not None:
-            pulumi.set(__self__, "vswitch_id", vswitch_id)
+            _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="acrRegistryInfos")
@@ -1207,6 +1327,10 @@ class ContainerGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ContainerGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1256,7 +1380,17 @@ class ContainerGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'containers'")
             __props__.__dict__["containers"] = containers
             __props__.__dict__["cpu"] = cpu
+            if dns_config is not None and not isinstance(dns_config, ContainerGroupDnsConfigArgs):
+                dns_config = dns_config or {}
+                def _setter(key, value):
+                    dns_config[key] = value
+                ContainerGroupDnsConfigArgs._configure(_setter, **dns_config)
             __props__.__dict__["dns_config"] = dns_config
+            if eci_security_context is not None and not isinstance(eci_security_context, ContainerGroupEciSecurityContextArgs):
+                eci_security_context = eci_security_context or {}
+                def _setter(key, value):
+                    eci_security_context[key] = value
+                ContainerGroupEciSecurityContextArgs._configure(_setter, **eci_security_context)
             __props__.__dict__["eci_security_context"] = eci_security_context
             __props__.__dict__["eip_bandwidth"] = eip_bandwidth
             __props__.__dict__["eip_instance_id"] = eip_instance_id

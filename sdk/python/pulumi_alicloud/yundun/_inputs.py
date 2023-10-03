@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -29,23 +29,54 @@ class BastionHostInstanceAdAuthServerArgs:
                  mobile_mapping: Optional[pulumi.Input[str]] = None,
                  name_mapping: Optional[pulumi.Input[str]] = None,
                  standby_server: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "account", account)
-        pulumi.set(__self__, "base_dn", base_dn)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "is_ssl", is_ssl)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server", server)
+        BastionHostInstanceAdAuthServerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account=account,
+            base_dn=base_dn,
+            domain=domain,
+            is_ssl=is_ssl,
+            password=password,
+            port=port,
+            server=server,
+            email_mapping=email_mapping,
+            filter=filter,
+            mobile_mapping=mobile_mapping,
+            name_mapping=name_mapping,
+            standby_server=standby_server,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account: pulumi.Input[str],
+             base_dn: pulumi.Input[str],
+             domain: pulumi.Input[str],
+             is_ssl: pulumi.Input[bool],
+             password: pulumi.Input[str],
+             port: pulumi.Input[int],
+             server: pulumi.Input[str],
+             email_mapping: Optional[pulumi.Input[str]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             mobile_mapping: Optional[pulumi.Input[str]] = None,
+             name_mapping: Optional[pulumi.Input[str]] = None,
+             standby_server: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account", account)
+        _setter("base_dn", base_dn)
+        _setter("domain", domain)
+        _setter("is_ssl", is_ssl)
+        _setter("password", password)
+        _setter("port", port)
+        _setter("server", server)
         if email_mapping is not None:
-            pulumi.set(__self__, "email_mapping", email_mapping)
+            _setter("email_mapping", email_mapping)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if mobile_mapping is not None:
-            pulumi.set(__self__, "mobile_mapping", mobile_mapping)
+            _setter("mobile_mapping", mobile_mapping)
         if name_mapping is not None:
-            pulumi.set(__self__, "name_mapping", name_mapping)
+            _setter("name_mapping", name_mapping)
         if standby_server is not None:
-            pulumi.set(__self__, "standby_server", standby_server)
+            _setter("standby_server", standby_server)
 
     @property
     @pulumi.getter
@@ -171,25 +202,56 @@ class BastionHostInstanceLdapAuthServerArgs:
                  mobile_mapping: Optional[pulumi.Input[str]] = None,
                  name_mapping: Optional[pulumi.Input[str]] = None,
                  standby_server: Optional[pulumi.Input[str]] = None):
-        pulumi.set(__self__, "account", account)
-        pulumi.set(__self__, "base_dn", base_dn)
-        pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "server", server)
+        BastionHostInstanceLdapAuthServerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account=account,
+            base_dn=base_dn,
+            password=password,
+            port=port,
+            server=server,
+            email_mapping=email_mapping,
+            filter=filter,
+            is_ssl=is_ssl,
+            login_name_mapping=login_name_mapping,
+            mobile_mapping=mobile_mapping,
+            name_mapping=name_mapping,
+            standby_server=standby_server,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account: pulumi.Input[str],
+             base_dn: pulumi.Input[str],
+             password: pulumi.Input[str],
+             port: pulumi.Input[int],
+             server: pulumi.Input[str],
+             email_mapping: Optional[pulumi.Input[str]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             is_ssl: Optional[pulumi.Input[bool]] = None,
+             login_name_mapping: Optional[pulumi.Input[str]] = None,
+             mobile_mapping: Optional[pulumi.Input[str]] = None,
+             name_mapping: Optional[pulumi.Input[str]] = None,
+             standby_server: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account", account)
+        _setter("base_dn", base_dn)
+        _setter("password", password)
+        _setter("port", port)
+        _setter("server", server)
         if email_mapping is not None:
-            pulumi.set(__self__, "email_mapping", email_mapping)
+            _setter("email_mapping", email_mapping)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if is_ssl is not None:
-            pulumi.set(__self__, "is_ssl", is_ssl)
+            _setter("is_ssl", is_ssl)
         if login_name_mapping is not None:
-            pulumi.set(__self__, "login_name_mapping", login_name_mapping)
+            _setter("login_name_mapping", login_name_mapping)
         if mobile_mapping is not None:
-            pulumi.set(__self__, "mobile_mapping", mobile_mapping)
+            _setter("mobile_mapping", mobile_mapping)
         if name_mapping is not None:
-            pulumi.set(__self__, "name_mapping", name_mapping)
+            _setter("name_mapping", name_mapping)
         if standby_server is not None:
-            pulumi.set(__self__, "standby_server", standby_server)
+            _setter("standby_server", standby_server)
 
     @property
     @pulumi.getter

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['BasicEndpointGroupArgs', 'BasicEndpointGroup']
@@ -31,18 +31,39 @@ class BasicEndpointGroupArgs:
         :param pulumi.Input[str] endpoint_sub_address: The sub address of the endpoint.
         :param pulumi.Input[str] endpoint_type: The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
+        BasicEndpointGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            endpoint_group_region=endpoint_group_region,
+            basic_endpoint_group_name=basic_endpoint_group_name,
+            description=description,
+            endpoint_address=endpoint_address,
+            endpoint_sub_address=endpoint_sub_address,
+            endpoint_type=endpoint_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: pulumi.Input[str],
+             endpoint_group_region: pulumi.Input[str],
+             basic_endpoint_group_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             endpoint_address: Optional[pulumi.Input[str]] = None,
+             endpoint_sub_address: Optional[pulumi.Input[str]] = None,
+             endpoint_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("endpoint_group_region", endpoint_group_region)
         if basic_endpoint_group_name is not None:
-            pulumi.set(__self__, "basic_endpoint_group_name", basic_endpoint_group_name)
+            _setter("basic_endpoint_group_name", basic_endpoint_group_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if endpoint_address is not None:
-            pulumi.set(__self__, "endpoint_address", endpoint_address)
+            _setter("endpoint_address", endpoint_address)
         if endpoint_sub_address is not None:
-            pulumi.set(__self__, "endpoint_sub_address", endpoint_sub_address)
+            _setter("endpoint_sub_address", endpoint_sub_address)
         if endpoint_type is not None:
-            pulumi.set(__self__, "endpoint_type", endpoint_type)
+            _setter("endpoint_type", endpoint_type)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -151,22 +172,45 @@ class _BasicEndpointGroupState:
         :param pulumi.Input[str] endpoint_type: The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
         :param pulumi.Input[str] status: The status of the Basic Endpoint Group.
         """
+        _BasicEndpointGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            basic_endpoint_group_name=basic_endpoint_group_name,
+            description=description,
+            endpoint_address=endpoint_address,
+            endpoint_group_region=endpoint_group_region,
+            endpoint_sub_address=endpoint_sub_address,
+            endpoint_type=endpoint_type,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             basic_endpoint_group_name: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             endpoint_address: Optional[pulumi.Input[str]] = None,
+             endpoint_group_region: Optional[pulumi.Input[str]] = None,
+             endpoint_sub_address: Optional[pulumi.Input[str]] = None,
+             endpoint_type: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if accelerator_id is not None:
-            pulumi.set(__self__, "accelerator_id", accelerator_id)
+            _setter("accelerator_id", accelerator_id)
         if basic_endpoint_group_name is not None:
-            pulumi.set(__self__, "basic_endpoint_group_name", basic_endpoint_group_name)
+            _setter("basic_endpoint_group_name", basic_endpoint_group_name)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if endpoint_address is not None:
-            pulumi.set(__self__, "endpoint_address", endpoint_address)
+            _setter("endpoint_address", endpoint_address)
         if endpoint_group_region is not None:
-            pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
+            _setter("endpoint_group_region", endpoint_group_region)
         if endpoint_sub_address is not None:
-            pulumi.set(__self__, "endpoint_sub_address", endpoint_sub_address)
+            _setter("endpoint_sub_address", endpoint_sub_address)
         if endpoint_type is not None:
-            pulumi.set(__self__, "endpoint_type", endpoint_type)
+            _setter("endpoint_type", endpoint_type)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -426,6 +470,10 @@ class BasicEndpointGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BasicEndpointGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

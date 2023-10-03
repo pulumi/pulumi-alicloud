@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FolderArgs', 'Folder']
@@ -21,9 +21,20 @@ class FolderArgs:
         :param pulumi.Input[str] folder_name: The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
         :param pulumi.Input[str] parent_folder_id: The ID of the parent folder. If not set, the system default value will be used.
         """
-        pulumi.set(__self__, "folder_name", folder_name)
+        FolderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            folder_name=folder_name,
+            parent_folder_id=parent_folder_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             folder_name: pulumi.Input[str],
+             parent_folder_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("folder_name", folder_name)
         if parent_folder_id is not None:
-            pulumi.set(__self__, "parent_folder_id", parent_folder_id)
+            _setter("parent_folder_id", parent_folder_id)
 
     @property
     @pulumi.getter(name="folderName")
@@ -60,10 +71,21 @@ class _FolderState:
         :param pulumi.Input[str] folder_name: The name of the folder. The name must be 1 to 24 characters in length and can contain letters, digits, underscores (_), periods (.), and hyphens (-).
         :param pulumi.Input[str] parent_folder_id: The ID of the parent folder. If not set, the system default value will be used.
         """
+        _FolderState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            folder_name=folder_name,
+            parent_folder_id=parent_folder_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             folder_name: Optional[pulumi.Input[str]] = None,
+             parent_folder_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if folder_name is not None:
-            pulumi.set(__self__, "folder_name", folder_name)
+            _setter("folder_name", folder_name)
         if parent_folder_id is not None:
-            pulumi.set(__self__, "parent_folder_id", parent_folder_id)
+            _setter("parent_folder_id", parent_folder_id)
 
     @property
     @pulumi.getter(name="folderName")
@@ -181,6 +203,10 @@ class Folder(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FolderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

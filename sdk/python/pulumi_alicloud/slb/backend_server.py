@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,11 +25,24 @@ class BackendServerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]] backend_servers: A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         """
-        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        BackendServerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            load_balancer_id=load_balancer_id,
+            backend_servers=backend_servers,
+            delete_protection_validation=delete_protection_validation,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             load_balancer_id: pulumi.Input[str],
+             backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]] = None,
+             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("load_balancer_id", load_balancer_id)
         if backend_servers is not None:
-            pulumi.set(__self__, "backend_servers", backend_servers)
+            _setter("backend_servers", backend_servers)
         if delete_protection_validation is not None:
-            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+            _setter("delete_protection_validation", delete_protection_validation)
 
     @property
     @pulumi.getter(name="loadBalancerId")
@@ -80,12 +93,25 @@ class _BackendServerState:
         :param pulumi.Input[bool] delete_protection_validation: Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         :param pulumi.Input[str] load_balancer_id: ID of the load balancer.
         """
+        _BackendServerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            backend_servers=backend_servers,
+            delete_protection_validation=delete_protection_validation,
+            load_balancer_id=load_balancer_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             backend_servers: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServerBackendServerArgs']]]] = None,
+             delete_protection_validation: Optional[pulumi.Input[bool]] = None,
+             load_balancer_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if backend_servers is not None:
-            pulumi.set(__self__, "backend_servers", backend_servers)
+            _setter("backend_servers", backend_servers)
         if delete_protection_validation is not None:
-            pulumi.set(__self__, "delete_protection_validation", delete_protection_validation)
+            _setter("delete_protection_validation", delete_protection_validation)
         if load_balancer_id is not None:
-            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+            _setter("load_balancer_id", load_balancer_id)
 
     @property
     @pulumi.getter(name="backendServers")
@@ -199,6 +225,10 @@ class BackendServer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BackendServerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

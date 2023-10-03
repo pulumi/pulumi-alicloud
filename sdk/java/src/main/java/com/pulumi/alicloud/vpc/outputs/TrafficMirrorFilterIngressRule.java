@@ -16,8 +16,6 @@ public final class TrafficMirrorFilterIngressRule {
      * @return Collection strategy for outbound rules. Value:
      * - accept: collects network traffic.
      * - drop: No network traffic is collected.
-     * - accept: collects network traffic.
-     * - drop: No network traffic is collected.
      * 
      */
     private String action;
@@ -29,7 +27,6 @@ public final class TrafficMirrorFilterIngressRule {
     /**
      * @return The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
      * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
      * 
      */
     private @Nullable String destinationPortRange;
@@ -40,10 +37,6 @@ public final class TrafficMirrorFilterIngressRule {
     private @Nullable Integer priority;
     /**
      * @return The type of protocol used by the outbound network traffic to be mirrored. Value:
-     * - ALL: ALL agreements.
-     * - ICMP: Network Control Message Protocol.
-     * - TCP: Transmission Control Protocol.
-     * - UDP: User Datagram Protocol.
      * - ALL: ALL agreements.
      * - ICMP: Network Control Message Protocol.
      * - TCP: Transmission Control Protocol.
@@ -60,8 +53,6 @@ public final class TrafficMirrorFilterIngressRule {
      * @return The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
      * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
      * 
-     * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * 
      */
     private @Nullable String sourcePortRange;
     private @Nullable String trafficMirrorFilterRuleStatus;
@@ -69,8 +60,6 @@ public final class TrafficMirrorFilterIngressRule {
     private TrafficMirrorFilterIngressRule() {}
     /**
      * @return Collection strategy for outbound rules. Value:
-     * - accept: collects network traffic.
-     * - drop: No network traffic is collected.
      * - accept: collects network traffic.
      * - drop: No network traffic is collected.
      * 
@@ -88,7 +77,6 @@ public final class TrafficMirrorFilterIngressRule {
     /**
      * @return The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
      * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
      * 
      */
     public Optional<String> destinationPortRange() {
@@ -107,10 +95,6 @@ public final class TrafficMirrorFilterIngressRule {
      * - ICMP: Network Control Message Protocol.
      * - TCP: Transmission Control Protocol.
      * - UDP: User Datagram Protocol.
-     * - ALL: ALL agreements.
-     * - ICMP: Network Control Message Protocol.
-     * - TCP: Transmission Control Protocol.
-     * - UDP: User Datagram Protocol.
      * 
      */
     public String protocol() {
@@ -125,8 +109,6 @@ public final class TrafficMirrorFilterIngressRule {
     }
     /**
      * @return The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-     * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * 
      * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
      * 
      */

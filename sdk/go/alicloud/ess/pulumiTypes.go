@@ -587,7 +587,6 @@ func (o EciScalingConfigurationContainerArrayOutput) Index(i pulumi.IntInput) Ec
 type EciScalingConfigurationContainerEnvironmentVar struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
 	// digits, and underscores (_). It cannot start with a digit.
-	// digits, and underscores (_). It cannot start with a digit.
 	Key *string `pulumi:"key"`
 	// The value of the variable. The value can be 0 to 256 characters in length.
 	Value *string `pulumi:"value"`
@@ -606,7 +605,6 @@ type EciScalingConfigurationContainerEnvironmentVarInput interface {
 
 type EciScalingConfigurationContainerEnvironmentVarArgs struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-	// digits, and underscores (_). It cannot start with a digit.
 	// digits, and underscores (_). It cannot start with a digit.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the variable. The value can be 0 to 256 characters in length.
@@ -683,7 +681,6 @@ func (o EciScalingConfigurationContainerEnvironmentVarOutput) ToOutput(ctx conte
 }
 
 // The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-// digits, and underscores (_). It cannot start with a digit.
 // digits, and underscores (_). It cannot start with a digit.
 func (o EciScalingConfigurationContainerEnvironmentVarOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
@@ -853,9 +850,8 @@ func (o EciScalingConfigurationContainerPortArrayOutput) Index(i pulumi.IntInput
 type EciScalingConfigurationContainerVolumeMount struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the
 	// data in the volume.
-	// data in the volume.
 	MountPath *string `pulumi:"mountPath"`
-	// The name of the volume.
+	// The name of the mounted volume.
 	Name *string `pulumi:"name"`
 	// Default to `false`.
 	ReadOnly *bool `pulumi:"readOnly"`
@@ -875,9 +871,8 @@ type EciScalingConfigurationContainerVolumeMountInput interface {
 type EciScalingConfigurationContainerVolumeMountArgs struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the
 	// data in the volume.
-	// data in the volume.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
-	// The name of the volume.
+	// The name of the mounted volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Default to `false`.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
@@ -954,12 +949,11 @@ func (o EciScalingConfigurationContainerVolumeMountOutput) ToOutput(ctx context.
 
 // The directory of the mounted volume. Data under this directory will be overwritten by the
 // data in the volume.
-// data in the volume.
 func (o EciScalingConfigurationContainerVolumeMountOutput) MountPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerVolumeMount) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
 
-// The name of the volume.
+// The name of the mounted volume.
 func (o EciScalingConfigurationContainerVolumeMountOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerVolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1505,7 +1499,6 @@ func (o EciScalingConfigurationInitContainerArrayOutput) Index(i pulumi.IntInput
 type EciScalingConfigurationInitContainerEnvironmentVar struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
 	// digits, and underscores (_). It cannot start with a digit.
-	// digits, and underscores (_). It cannot start with a digit.
 	Key *string `pulumi:"key"`
 	// The value of the variable. The value can be 0 to 256 characters in length.
 	Value *string `pulumi:"value"`
@@ -1524,7 +1517,6 @@ type EciScalingConfigurationInitContainerEnvironmentVarInput interface {
 
 type EciScalingConfigurationInitContainerEnvironmentVarArgs struct {
 	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-	// digits, and underscores (_). It cannot start with a digit.
 	// digits, and underscores (_). It cannot start with a digit.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The value of the variable. The value can be 0 to 256 characters in length.
@@ -1601,7 +1593,6 @@ func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) ToOutput(ctx c
 }
 
 // The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-// digits, and underscores (_). It cannot start with a digit.
 // digits, and underscores (_). It cannot start with a digit.
 func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
@@ -1771,9 +1762,8 @@ func (o EciScalingConfigurationInitContainerPortArrayOutput) Index(i pulumi.IntI
 type EciScalingConfigurationInitContainerVolumeMount struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the
 	// data in the volume.
-	// data in the volume.
 	MountPath *string `pulumi:"mountPath"`
-	// The name of the volume.
+	// The name of the mounted volume.
 	Name *string `pulumi:"name"`
 	// Default to `false`.
 	ReadOnly *bool `pulumi:"readOnly"`
@@ -1793,9 +1783,8 @@ type EciScalingConfigurationInitContainerVolumeMountInput interface {
 type EciScalingConfigurationInitContainerVolumeMountArgs struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the
 	// data in the volume.
-	// data in the volume.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
-	// The name of the volume.
+	// The name of the mounted volume.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Default to `false`.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
@@ -1872,12 +1861,11 @@ func (o EciScalingConfigurationInitContainerVolumeMountOutput) ToOutput(ctx cont
 
 // The directory of the mounted volume. Data under this directory will be overwritten by the
 // data in the volume.
-// data in the volume.
 func (o EciScalingConfigurationInitContainerVolumeMountOutput) MountPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerVolumeMount) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
 
-// The name of the volume.
+// The name of the mounted volume.
 func (o EciScalingConfigurationInitContainerVolumeMountOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerVolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
 }

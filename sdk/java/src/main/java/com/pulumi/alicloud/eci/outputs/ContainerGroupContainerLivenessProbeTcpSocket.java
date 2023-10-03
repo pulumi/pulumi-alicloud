@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerGroupContainerLivenessProbeTcpSocket {
     /**
-     * @return The port number. Valid values: `1` to `65535`.
+     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
      * 
      */
     private @Nullable Integer port;
 
     private ContainerGroupContainerLivenessProbeTcpSocket() {}
     /**
-     * @return The port number. Valid values: `1` to `65535`.
+     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
      * 
      */
     public Optional<Integer> port() {

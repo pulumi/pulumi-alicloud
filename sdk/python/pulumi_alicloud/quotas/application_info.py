@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,24 +30,53 @@ class ApplicationInfoArgs:
         """
         The set of arguments for constructing a ApplicationInfo resource.
         """
-        pulumi.set(__self__, "desire_value", desire_value)
-        pulumi.set(__self__, "product_code", product_code)
-        pulumi.set(__self__, "quota_action_code", quota_action_code)
-        pulumi.set(__self__, "reason", reason)
+        ApplicationInfoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            desire_value=desire_value,
+            product_code=product_code,
+            quota_action_code=quota_action_code,
+            reason=reason,
+            audit_mode=audit_mode,
+            dimensions=dimensions,
+            effective_time=effective_time,
+            env_language=env_language,
+            expire_time=expire_time,
+            notice_type=notice_type,
+            quota_category=quota_category,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             desire_value: pulumi.Input[float],
+             product_code: pulumi.Input[str],
+             quota_action_code: pulumi.Input[str],
+             reason: pulumi.Input[str],
+             audit_mode: Optional[pulumi.Input[str]] = None,
+             dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]] = None,
+             effective_time: Optional[pulumi.Input[str]] = None,
+             env_language: Optional[pulumi.Input[str]] = None,
+             expire_time: Optional[pulumi.Input[str]] = None,
+             notice_type: Optional[pulumi.Input[int]] = None,
+             quota_category: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("desire_value", desire_value)
+        _setter("product_code", product_code)
+        _setter("quota_action_code", quota_action_code)
+        _setter("reason", reason)
         if audit_mode is not None:
-            pulumi.set(__self__, "audit_mode", audit_mode)
+            _setter("audit_mode", audit_mode)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if effective_time is not None:
-            pulumi.set(__self__, "effective_time", effective_time)
+            _setter("effective_time", effective_time)
         if env_language is not None:
-            pulumi.set(__self__, "env_language", env_language)
+            _setter("env_language", env_language)
         if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
+            _setter("expire_time", expire_time)
         if notice_type is not None:
-            pulumi.set(__self__, "notice_type", notice_type)
+            _setter("notice_type", notice_type)
         if quota_category is not None:
-            pulumi.set(__self__, "quota_category", quota_category)
+            _setter("quota_category", quota_category)
 
     @property
     @pulumi.getter(name="desireValue")
@@ -173,42 +202,85 @@ class _ApplicationInfoState:
         """
         Input properties used for looking up and filtering ApplicationInfo resources.
         """
+        _ApplicationInfoState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            approve_value=approve_value,
+            audit_mode=audit_mode,
+            audit_reason=audit_reason,
+            create_time=create_time,
+            desire_value=desire_value,
+            dimensions=dimensions,
+            effective_time=effective_time,
+            env_language=env_language,
+            expire_time=expire_time,
+            notice_type=notice_type,
+            product_code=product_code,
+            quota_action_code=quota_action_code,
+            quota_category=quota_category,
+            quota_description=quota_description,
+            quota_name=quota_name,
+            quota_unit=quota_unit,
+            reason=reason,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             approve_value: Optional[pulumi.Input[str]] = None,
+             audit_mode: Optional[pulumi.Input[str]] = None,
+             audit_reason: Optional[pulumi.Input[str]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             desire_value: Optional[pulumi.Input[float]] = None,
+             dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationInfoDimensionArgs']]]] = None,
+             effective_time: Optional[pulumi.Input[str]] = None,
+             env_language: Optional[pulumi.Input[str]] = None,
+             expire_time: Optional[pulumi.Input[str]] = None,
+             notice_type: Optional[pulumi.Input[int]] = None,
+             product_code: Optional[pulumi.Input[str]] = None,
+             quota_action_code: Optional[pulumi.Input[str]] = None,
+             quota_category: Optional[pulumi.Input[str]] = None,
+             quota_description: Optional[pulumi.Input[str]] = None,
+             quota_name: Optional[pulumi.Input[str]] = None,
+             quota_unit: Optional[pulumi.Input[str]] = None,
+             reason: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if approve_value is not None:
-            pulumi.set(__self__, "approve_value", approve_value)
+            _setter("approve_value", approve_value)
         if audit_mode is not None:
-            pulumi.set(__self__, "audit_mode", audit_mode)
+            _setter("audit_mode", audit_mode)
         if audit_reason is not None:
-            pulumi.set(__self__, "audit_reason", audit_reason)
+            _setter("audit_reason", audit_reason)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if desire_value is not None:
-            pulumi.set(__self__, "desire_value", desire_value)
+            _setter("desire_value", desire_value)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if effective_time is not None:
-            pulumi.set(__self__, "effective_time", effective_time)
+            _setter("effective_time", effective_time)
         if env_language is not None:
-            pulumi.set(__self__, "env_language", env_language)
+            _setter("env_language", env_language)
         if expire_time is not None:
-            pulumi.set(__self__, "expire_time", expire_time)
+            _setter("expire_time", expire_time)
         if notice_type is not None:
-            pulumi.set(__self__, "notice_type", notice_type)
+            _setter("notice_type", notice_type)
         if product_code is not None:
-            pulumi.set(__self__, "product_code", product_code)
+            _setter("product_code", product_code)
         if quota_action_code is not None:
-            pulumi.set(__self__, "quota_action_code", quota_action_code)
+            _setter("quota_action_code", quota_action_code)
         if quota_category is not None:
-            pulumi.set(__self__, "quota_category", quota_category)
+            _setter("quota_category", quota_category)
         if quota_description is not None:
-            pulumi.set(__self__, "quota_description", quota_description)
+            _setter("quota_description", quota_description)
         if quota_name is not None:
-            pulumi.set(__self__, "quota_name", quota_name)
+            _setter("quota_name", quota_name)
         if quota_unit is not None:
-            pulumi.set(__self__, "quota_unit", quota_unit)
+            _setter("quota_unit", quota_unit)
         if reason is not None:
-            pulumi.set(__self__, "reason", reason)
+            _setter("reason", reason)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="approveValue")
@@ -413,6 +485,10 @@ class ApplicationInfo(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationInfoArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

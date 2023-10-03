@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -36,15 +36,40 @@ class GetProjectsProjectResult(dict):
         :param str service_role: The service role authorized to the Intelligent Media Management service to access other cloud resources.
         :param str type: The type of project.
         """
-        pulumi.set(__self__, "billing_type", billing_type)
-        pulumi.set(__self__, "compute_unit", compute_unit)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "modify_time", modify_time)
-        pulumi.set(__self__, "project", project)
-        pulumi.set(__self__, "service_role", service_role)
-        pulumi.set(__self__, "type", type)
+        GetProjectsProjectResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            billing_type=billing_type,
+            compute_unit=compute_unit,
+            create_time=create_time,
+            endpoint=endpoint,
+            id=id,
+            modify_time=modify_time,
+            project=project,
+            service_role=service_role,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             billing_type: str,
+             compute_unit: int,
+             create_time: str,
+             endpoint: str,
+             id: str,
+             modify_time: str,
+             project: str,
+             service_role: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("billing_type", billing_type)
+        _setter("compute_unit", compute_unit)
+        _setter("create_time", create_time)
+        _setter("endpoint", endpoint)
+        _setter("id", id)
+        _setter("modify_time", modify_time)
+        _setter("project", project)
+        _setter("service_role", service_role)
+        _setter("type", type)
 
     @property
     @pulumi.getter(name="billingType")

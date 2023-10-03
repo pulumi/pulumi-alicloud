@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -43,8 +43,19 @@ class AlertAnnotation(dict):
         :param str key: Annotations's key for new alert.
         :param str value: Annotations's value for new alert.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        AlertAnnotation._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -71,9 +82,20 @@ class AlertGroupConfiguration(dict):
         """
         :param str type: including FixedRate,Hourly,Daily,Weekly,Cron.
         """
-        pulumi.set(__self__, "type", type)
+        AlertGroupConfiguration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            fields=fields,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             fields: Optional[Sequence[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if fields is not None:
-            pulumi.set(__self__, "fields", fields)
+            _setter("fields", fields)
 
     @property
     @pulumi.getter
@@ -98,8 +120,19 @@ class AlertJoinConfiguration(dict):
         :param str condition: Join condition.
         :param str type: including FixedRate,Hourly,Daily,Weekly,Cron.
         """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "type", type)
+        AlertJoinConfiguration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("condition", condition)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -127,8 +160,19 @@ class AlertLabel(dict):
         :param str key: Annotations's key for new alert.
         :param str value: Annotations's value for new alert.
         """
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "value", value)
+        AlertLabel._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: str,
+             value: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
+        _setter("value", value)
 
     @property
     @pulumi.getter
@@ -183,14 +227,31 @@ class AlertNotificationList(dict):
         :param Sequence[str] mobile_lists: SMS sending mobile number.
         :param str service_uri: Request address.
         """
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "type", type)
+        AlertNotificationList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            content=content,
+            type=type,
+            email_lists=email_lists,
+            mobile_lists=mobile_lists,
+            service_uri=service_uri,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             content: str,
+             type: str,
+             email_lists: Optional[Sequence[str]] = None,
+             mobile_lists: Optional[Sequence[str]] = None,
+             service_uri: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("content", content)
+        _setter("type", type)
         if email_lists is not None:
-            pulumi.set(__self__, "email_lists", email_lists)
+            _setter("email_lists", email_lists)
         if mobile_lists is not None:
-            pulumi.set(__self__, "mobile_lists", mobile_lists)
+            _setter("mobile_lists", mobile_lists)
         if service_uri is not None:
-            pulumi.set(__self__, "service_uri", service_uri)
+            _setter("service_uri", service_uri)
 
     @property
     @pulumi.getter
@@ -265,10 +326,23 @@ class AlertPolicyConfiguration(dict):
         :param str repeat_interval: Repeat interval used by alert policy, 1h, 1m.e.g.
         :param str action_policy_id: Action Policy Id.
         """
-        pulumi.set(__self__, "alert_policy_id", alert_policy_id)
-        pulumi.set(__self__, "repeat_interval", repeat_interval)
+        AlertPolicyConfiguration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_policy_id=alert_policy_id,
+            repeat_interval=repeat_interval,
+            action_policy_id=action_policy_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_policy_id: str,
+             repeat_interval: str,
+             action_policy_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alert_policy_id", alert_policy_id)
+        _setter("repeat_interval", repeat_interval)
         if action_policy_id is not None:
-            pulumi.set(__self__, "action_policy_id", action_policy_id)
+            _setter("action_policy_id", action_policy_id)
 
     @property
     @pulumi.getter(name="alertPolicyId")
@@ -353,29 +427,62 @@ class AlertQueryList(dict):
         :param str store_type: Query store type for new alert, including log,metric,meta.
         :param str time_span_type: default Custom. No need to configure this parameter.
         """
-        pulumi.set(__self__, "end", end)
-        pulumi.set(__self__, "query", query)
-        pulumi.set(__self__, "start", start)
+        AlertQueryList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            end=end,
+            query=query,
+            start=start,
+            chart_title=chart_title,
+            dashboard_id=dashboard_id,
+            logstore=logstore,
+            power_sql_mode=power_sql_mode,
+            project=project,
+            region=region,
+            role_arn=role_arn,
+            store=store,
+            store_type=store_type,
+            time_span_type=time_span_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             end: str,
+             query: str,
+             start: str,
+             chart_title: Optional[str] = None,
+             dashboard_id: Optional[str] = None,
+             logstore: Optional[str] = None,
+             power_sql_mode: Optional[str] = None,
+             project: Optional[str] = None,
+             region: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             store: Optional[str] = None,
+             store_type: Optional[str] = None,
+             time_span_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("end", end)
+        _setter("query", query)
+        _setter("start", start)
         if chart_title is not None:
-            pulumi.set(__self__, "chart_title", chart_title)
+            _setter("chart_title", chart_title)
         if dashboard_id is not None:
-            pulumi.set(__self__, "dashboard_id", dashboard_id)
+            _setter("dashboard_id", dashboard_id)
         if logstore is not None:
-            pulumi.set(__self__, "logstore", logstore)
+            _setter("logstore", logstore)
         if power_sql_mode is not None:
-            pulumi.set(__self__, "power_sql_mode", power_sql_mode)
+            _setter("power_sql_mode", power_sql_mode)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if store is not None:
-            pulumi.set(__self__, "store", store)
+            _setter("store", store)
         if store_type is not None:
-            pulumi.set(__self__, "store_type", store_type)
+            _setter("store_type", store_type)
         if time_span_type is not None:
-            pulumi.set(__self__, "time_span_type", time_span_type)
+            _setter("time_span_type", time_span_type)
 
     @property
     @pulumi.getter
@@ -527,21 +634,44 @@ class AlertSchedule(dict):
         :param str interval: Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
         :param str time_zone: Time zone for schedule.
         """
-        pulumi.set(__self__, "type", type)
+        AlertSchedule._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            cron_expression=cron_expression,
+            day_of_week=day_of_week,
+            delay=delay,
+            hour=hour,
+            interval=interval,
+            run_immediately=run_immediately,
+            time_zone=time_zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: str,
+             cron_expression: Optional[str] = None,
+             day_of_week: Optional[int] = None,
+             delay: Optional[int] = None,
+             hour: Optional[int] = None,
+             interval: Optional[str] = None,
+             run_immediately: Optional[bool] = None,
+             time_zone: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if cron_expression is not None:
-            pulumi.set(__self__, "cron_expression", cron_expression)
+            _setter("cron_expression", cron_expression)
         if day_of_week is not None:
-            pulumi.set(__self__, "day_of_week", day_of_week)
+            _setter("day_of_week", day_of_week)
         if delay is not None:
-            pulumi.set(__self__, "delay", delay)
+            _setter("delay", delay)
         if hour is not None:
-            pulumi.set(__self__, "hour", hour)
+            _setter("hour", hour)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if run_immediately is not None:
-            pulumi.set(__self__, "run_immediately", run_immediately)
+            _setter("run_immediately", run_immediately)
         if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
+            _setter("time_zone", time_zone)
 
     @property
     @pulumi.getter
@@ -628,8 +758,19 @@ class AlertSeverityConfiguration(dict):
         :param Mapping[str, str] eval_condition: Severity when this condition is met.
         :param int severity: Severity for new alert, including 2,4,6,8,10 for Report,Low,Medium,High,Critical.
         """
-        pulumi.set(__self__, "eval_condition", eval_condition)
-        pulumi.set(__self__, "severity", severity)
+        AlertSeverityConfiguration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            eval_condition=eval_condition,
+            severity=severity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             eval_condition: Mapping[str, str],
+             severity: int,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("eval_condition", eval_condition)
+        _setter("severity", severity)
 
     @property
     @pulumi.getter(name="evalCondition")
@@ -663,14 +804,31 @@ class AlertTemplateConfiguration(dict):
         :param str lang: Alert template language including `cn`, `en`.
         :param Mapping[str, str] tokens: Alert template tokens.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "type", type)
+        AlertTemplateConfiguration._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            type=type,
+            annotations=annotations,
+            lang=lang,
+            tokens=tokens,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             type: str,
+             annotations: Optional[Mapping[str, str]] = None,
+             lang: Optional[str] = None,
+             tokens: Optional[Mapping[str, str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("type", type)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if lang is not None:
-            pulumi.set(__self__, "lang", lang)
+            _setter("lang", lang)
         if tokens is not None:
-            pulumi.set(__self__, "tokens", tokens)
+            _setter("tokens", tokens)
 
     @property
     @pulumi.getter
@@ -765,22 +923,49 @@ class EtlEtlSink(dict):
                
                > **Note:** `from_time` and `to_time` no modification allowed after successful creation.
         """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "logstore", logstore)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "project", project)
+        EtlEtlSink._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            logstore=logstore,
+            name=name,
+            project=project,
+            access_key_id=access_key_id,
+            access_key_secret=access_key_secret,
+            kms_encrypted_access_key_id=kms_encrypted_access_key_id,
+            kms_encrypted_access_key_secret=kms_encrypted_access_key_secret,
+            role_arn=role_arn,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: str,
+             logstore: str,
+             name: str,
+             project: str,
+             access_key_id: Optional[str] = None,
+             access_key_secret: Optional[str] = None,
+             kms_encrypted_access_key_id: Optional[str] = None,
+             kms_encrypted_access_key_secret: Optional[str] = None,
+             role_arn: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint", endpoint)
+        _setter("logstore", logstore)
+        _setter("name", name)
+        _setter("project", project)
         if access_key_id is not None:
-            pulumi.set(__self__, "access_key_id", access_key_id)
+            _setter("access_key_id", access_key_id)
         if access_key_secret is not None:
-            pulumi.set(__self__, "access_key_secret", access_key_secret)
+            _setter("access_key_secret", access_key_secret)
         if kms_encrypted_access_key_id is not None:
-            pulumi.set(__self__, "kms_encrypted_access_key_id", kms_encrypted_access_key_id)
+            _setter("kms_encrypted_access_key_id", kms_encrypted_access_key_id)
         if kms_encrypted_access_key_secret is not None:
-            pulumi.set(__self__, "kms_encrypted_access_key_secret", kms_encrypted_access_key_secret)
+            _setter("kms_encrypted_access_key_secret", kms_encrypted_access_key_secret)
         if role_arn is not None:
-            pulumi.set(__self__, "role_arn", role_arn)
+            _setter("role_arn", role_arn)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -874,8 +1059,19 @@ class OssExportConfigColumn(dict):
         :param str name: The name of the key.
         :param str type: Type of configuration name.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        OssExportConfigColumn._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -899,8 +1095,19 @@ class OssShipperParquetConfig(dict):
     def __init__(__self__, *,
                  name: str,
                  type: str):
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        OssShipperParquetConfig._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             type: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("type", type)
 
     @property
     @pulumi.getter
@@ -946,12 +1153,25 @@ class StoreEncryptConf(dict):
                import pulumi
                ```
         """
+        StoreEncryptConf._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable=enable,
+            encrypt_type=encrypt_type,
+            user_cmk_info=user_cmk_info,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable: Optional[bool] = None,
+             encrypt_type: Optional[str] = None,
+             user_cmk_info: Optional['outputs.StoreEncryptConfUserCmkInfo'] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enable is not None:
-            pulumi.set(__self__, "enable", enable)
+            _setter("enable", enable)
         if encrypt_type is not None:
-            pulumi.set(__self__, "encrypt_type", encrypt_type)
+            _setter("encrypt_type", encrypt_type)
         if user_cmk_info is not None:
-            pulumi.set(__self__, "user_cmk_info", user_cmk_info)
+            _setter("user_cmk_info", user_cmk_info)
 
     @property
     @pulumi.getter
@@ -1011,9 +1231,22 @@ class StoreEncryptConfUserCmkInfo(dict):
         :param str cmk_key_id: User master key id.
         :param str region_id: Region id where the  user master key id is located.
         """
-        pulumi.set(__self__, "arn", arn)
-        pulumi.set(__self__, "cmk_key_id", cmk_key_id)
-        pulumi.set(__self__, "region_id", region_id)
+        StoreEncryptConfUserCmkInfo._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            cmk_key_id=cmk_key_id,
+            region_id=region_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: str,
+             cmk_key_id: str,
+             region_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("arn", arn)
+        _setter("cmk_key_id", cmk_key_id)
+        _setter("region_id", region_id)
 
     @property
     @pulumi.getter
@@ -1084,21 +1317,44 @@ class StoreIndexFieldSearch(dict):
         :param str token: The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
         :param str type: The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
         """
-        pulumi.set(__self__, "name", name)
+        StoreIndexFieldSearch._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            alias=alias,
+            case_sensitive=case_sensitive,
+            enable_analytics=enable_analytics,
+            include_chinese=include_chinese,
+            json_keys=json_keys,
+            token=token,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             alias: Optional[str] = None,
+             case_sensitive: Optional[bool] = None,
+             enable_analytics: Optional[bool] = None,
+             include_chinese: Optional[bool] = None,
+             json_keys: Optional[Sequence['outputs.StoreIndexFieldSearchJsonKey']] = None,
+             token: Optional[str] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if alias is not None:
-            pulumi.set(__self__, "alias", alias)
+            _setter("alias", alias)
         if case_sensitive is not None:
-            pulumi.set(__self__, "case_sensitive", case_sensitive)
+            _setter("case_sensitive", case_sensitive)
         if enable_analytics is not None:
-            pulumi.set(__self__, "enable_analytics", enable_analytics)
+            _setter("enable_analytics", enable_analytics)
         if include_chinese is not None:
-            pulumi.set(__self__, "include_chinese", include_chinese)
+            _setter("include_chinese", include_chinese)
         if json_keys is not None:
-            pulumi.set(__self__, "json_keys", json_keys)
+            _setter("json_keys", json_keys)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1197,13 +1453,28 @@ class StoreIndexFieldSearchJsonKey(dict):
                > **Note:** At least one of the "full_text" and "field_search" should be specified.
         :param str type: The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
         """
-        pulumi.set(__self__, "name", name)
+        StoreIndexFieldSearchJsonKey._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            alias=alias,
+            doc_value=doc_value,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: str,
+             alias: Optional[str] = None,
+             doc_value: Optional[bool] = None,
+             type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if alias is not None:
-            pulumi.set(__self__, "alias", alias)
+            _setter("alias", alias)
         if doc_value is not None:
-            pulumi.set(__self__, "doc_value", doc_value)
+            _setter("doc_value", doc_value)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -1270,12 +1541,25 @@ class StoreIndexFullText(dict):
         :param bool include_chinese: Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
         :param str token: The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
         """
+        StoreIndexFullText._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            case_sensitive=case_sensitive,
+            include_chinese=include_chinese,
+            token=token,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             case_sensitive: Optional[bool] = None,
+             include_chinese: Optional[bool] = None,
+             token: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if case_sensitive is not None:
-            pulumi.set(__self__, "case_sensitive", case_sensitive)
+            _setter("case_sensitive", case_sensitive)
         if include_chinese is not None:
-            pulumi.set(__self__, "include_chinese", include_chinese)
+            _setter("include_chinese", include_chinese)
         if token is not None:
-            pulumi.set(__self__, "token", token)
+            _setter("token", token)
 
     @property
     @pulumi.getter(name="caseSensitive")
@@ -1334,14 +1618,29 @@ class StoreShard(dict):
         :param int id: The ID of the shard.
         :param str status: Shard status, only two status of `readwrite` and `readonly`.
         """
+        StoreShard._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            begin_key=begin_key,
+            end_key=end_key,
+            id=id,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             begin_key: Optional[str] = None,
+             end_key: Optional[str] = None,
+             id: Optional[int] = None,
+             status: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if begin_key is not None:
-            pulumi.set(__self__, "begin_key", begin_key)
+            _setter("begin_key", begin_key)
         if end_key is not None:
-            pulumi.set(__self__, "end_key", end_key)
+            _setter("end_key", end_key)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="beginKey")
@@ -1397,14 +1696,37 @@ class GetProjectsProjectResult(dict):
         :param str region: The region of project.
         :param str status: The status of project.
         """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_modify_time", last_modify_time)
-        pulumi.set(__self__, "owner", owner)
-        pulumi.set(__self__, "policy", policy)
-        pulumi.set(__self__, "project_name", project_name)
-        pulumi.set(__self__, "region", region)
-        pulumi.set(__self__, "status", status)
+        GetProjectsProjectResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            id=id,
+            last_modify_time=last_modify_time,
+            owner=owner,
+            policy=policy,
+            project_name=project_name,
+            region=region,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: str,
+             id: str,
+             last_modify_time: str,
+             owner: str,
+             policy: str,
+             project_name: str,
+             region: str,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("description", description)
+        _setter("id", id)
+        _setter("last_modify_time", last_modify_time)
+        _setter("owner", owner)
+        _setter("policy", policy)
+        _setter("project_name", project_name)
+        _setter("region", region)
+        _setter("status", status)
 
     @property
     @pulumi.getter
@@ -1480,8 +1802,19 @@ class GetStoresStoreResult(dict):
         :param str id: The ID of the store.
         :param str store_name: The name of the store.
         """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "store_name", store_name)
+        GetStoresStoreResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            store_name=store_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: str,
+             store_name: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("id", id)
+        _setter("store_name", store_name)
 
     @property
     @pulumi.getter

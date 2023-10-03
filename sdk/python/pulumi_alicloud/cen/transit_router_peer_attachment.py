@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TransitRouterPeerAttachmentArgs', 'TransitRouterPeerAttachment']
@@ -45,31 +45,66 @@ class TransitRouterPeerAttachmentArgs:
         :param pulumi.Input[str] transit_router_attachment_name: The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
         :param pulumi.Input[str] transit_router_id: The ID of the transit router to attach.
         """
-        pulumi.set(__self__, "cen_id", cen_id)
-        pulumi.set(__self__, "peer_transit_router_id", peer_transit_router_id)
-        pulumi.set(__self__, "peer_transit_router_region_id", peer_transit_router_region_id)
+        TransitRouterPeerAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cen_id=cen_id,
+            peer_transit_router_id=peer_transit_router_id,
+            peer_transit_router_region_id=peer_transit_router_region_id,
+            auto_publish_route_enabled=auto_publish_route_enabled,
+            bandwidth=bandwidth,
+            bandwidth_type=bandwidth_type,
+            cen_bandwidth_package_id=cen_bandwidth_package_id,
+            dry_run=dry_run,
+            resource_type=resource_type,
+            route_table_association_enabled=route_table_association_enabled,
+            route_table_propagation_enabled=route_table_propagation_enabled,
+            transit_router_attachment_description=transit_router_attachment_description,
+            transit_router_attachment_name=transit_router_attachment_name,
+            transit_router_id=transit_router_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cen_id: pulumi.Input[str],
+             peer_transit_router_id: pulumi.Input[str],
+             peer_transit_router_region_id: pulumi.Input[str],
+             auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             bandwidth_type: Optional[pulumi.Input[str]] = None,
+             cen_bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
+             route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
+             route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
+             transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
+             transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cen_id", cen_id)
+        _setter("peer_transit_router_id", peer_transit_router_id)
+        _setter("peer_transit_router_region_id", peer_transit_router_region_id)
         if auto_publish_route_enabled is not None:
-            pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
+            _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if bandwidth_type is not None:
-            pulumi.set(__self__, "bandwidth_type", bandwidth_type)
+            _setter("bandwidth_type", bandwidth_type)
         if cen_bandwidth_package_id is not None:
-            pulumi.set(__self__, "cen_bandwidth_package_id", cen_bandwidth_package_id)
+            _setter("cen_bandwidth_package_id", cen_bandwidth_package_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if resource_type is not None:
-            pulumi.set(__self__, "resource_type", resource_type)
+            _setter("resource_type", resource_type)
         if route_table_association_enabled is not None:
-            pulumi.set(__self__, "route_table_association_enabled", route_table_association_enabled)
+            _setter("route_table_association_enabled", route_table_association_enabled)
         if route_table_propagation_enabled is not None:
-            pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
+            _setter("route_table_propagation_enabled", route_table_propagation_enabled)
         if transit_router_attachment_description is not None:
-            pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
+            _setter("transit_router_attachment_description", transit_router_attachment_description)
         if transit_router_attachment_name is not None:
-            pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
+            _setter("transit_router_attachment_name", transit_router_attachment_name)
         if transit_router_id is not None:
-            pulumi.set(__self__, "transit_router_id", transit_router_id)
+            _setter("transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter(name="cenId")
@@ -278,38 +313,77 @@ class _TransitRouterPeerAttachmentState:
         :param pulumi.Input[str] transit_router_attachment_name: The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
         :param pulumi.Input[str] transit_router_id: The ID of the transit router to attach.
         """
+        _TransitRouterPeerAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_publish_route_enabled=auto_publish_route_enabled,
+            bandwidth=bandwidth,
+            bandwidth_type=bandwidth_type,
+            cen_bandwidth_package_id=cen_bandwidth_package_id,
+            cen_id=cen_id,
+            dry_run=dry_run,
+            peer_transit_router_id=peer_transit_router_id,
+            peer_transit_router_region_id=peer_transit_router_region_id,
+            resource_type=resource_type,
+            route_table_association_enabled=route_table_association_enabled,
+            route_table_propagation_enabled=route_table_propagation_enabled,
+            status=status,
+            transit_router_attachment_description=transit_router_attachment_description,
+            transit_router_attachment_id=transit_router_attachment_id,
+            transit_router_attachment_name=transit_router_attachment_name,
+            transit_router_id=transit_router_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_publish_route_enabled: Optional[pulumi.Input[bool]] = None,
+             bandwidth: Optional[pulumi.Input[int]] = None,
+             bandwidth_type: Optional[pulumi.Input[str]] = None,
+             cen_bandwidth_package_id: Optional[pulumi.Input[str]] = None,
+             cen_id: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             peer_transit_router_id: Optional[pulumi.Input[str]] = None,
+             peer_transit_router_region_id: Optional[pulumi.Input[str]] = None,
+             resource_type: Optional[pulumi.Input[str]] = None,
+             route_table_association_enabled: Optional[pulumi.Input[bool]] = None,
+             route_table_propagation_enabled: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
+             transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
+             transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
+             transit_router_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_publish_route_enabled is not None:
-            pulumi.set(__self__, "auto_publish_route_enabled", auto_publish_route_enabled)
+            _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         if bandwidth is not None:
-            pulumi.set(__self__, "bandwidth", bandwidth)
+            _setter("bandwidth", bandwidth)
         if bandwidth_type is not None:
-            pulumi.set(__self__, "bandwidth_type", bandwidth_type)
+            _setter("bandwidth_type", bandwidth_type)
         if cen_bandwidth_package_id is not None:
-            pulumi.set(__self__, "cen_bandwidth_package_id", cen_bandwidth_package_id)
+            _setter("cen_bandwidth_package_id", cen_bandwidth_package_id)
         if cen_id is not None:
-            pulumi.set(__self__, "cen_id", cen_id)
+            _setter("cen_id", cen_id)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if peer_transit_router_id is not None:
-            pulumi.set(__self__, "peer_transit_router_id", peer_transit_router_id)
+            _setter("peer_transit_router_id", peer_transit_router_id)
         if peer_transit_router_region_id is not None:
-            pulumi.set(__self__, "peer_transit_router_region_id", peer_transit_router_region_id)
+            _setter("peer_transit_router_region_id", peer_transit_router_region_id)
         if resource_type is not None:
-            pulumi.set(__self__, "resource_type", resource_type)
+            _setter("resource_type", resource_type)
         if route_table_association_enabled is not None:
-            pulumi.set(__self__, "route_table_association_enabled", route_table_association_enabled)
+            _setter("route_table_association_enabled", route_table_association_enabled)
         if route_table_propagation_enabled is not None:
-            pulumi.set(__self__, "route_table_propagation_enabled", route_table_propagation_enabled)
+            _setter("route_table_propagation_enabled", route_table_propagation_enabled)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if transit_router_attachment_description is not None:
-            pulumi.set(__self__, "transit_router_attachment_description", transit_router_attachment_description)
+            _setter("transit_router_attachment_description", transit_router_attachment_description)
         if transit_router_attachment_id is not None:
-            pulumi.set(__self__, "transit_router_attachment_id", transit_router_attachment_id)
+            _setter("transit_router_attachment_id", transit_router_attachment_id)
         if transit_router_attachment_name is not None:
-            pulumi.set(__self__, "transit_router_attachment_name", transit_router_attachment_name)
+            _setter("transit_router_attachment_name", transit_router_attachment_name)
         if transit_router_id is not None:
-            pulumi.set(__self__, "transit_router_id", transit_router_id)
+            _setter("transit_router_id", transit_router_id)
 
     @property
     @pulumi.getter(name="autoPublishRouteEnabled")
@@ -683,6 +757,10 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TransitRouterPeerAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

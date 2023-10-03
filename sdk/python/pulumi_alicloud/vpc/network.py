@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -58,43 +58,78 @@ class NetworkArgs:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
+        NetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            classic_link_enabled=classic_link_enabled,
+            description=description,
+            dry_run=dry_run,
+            enable_ipv6=enable_ipv6,
+            ipv6_isp=ipv6_isp,
+            name=name,
+            resource_group_id=resource_group_id,
+            route_table_id=route_table_id,
+            router_table_id=router_table_id,
+            secondary_cidr_blocks=secondary_cidr_blocks,
+            tags=tags,
+            user_cidrs=user_cidrs,
+            vpc_name=vpc_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             classic_link_enabled: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             enable_ipv6: Optional[pulumi.Input[bool]] = None,
+             ipv6_isp: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             route_table_id: Optional[pulumi.Input[str]] = None,
+             router_table_id: Optional[pulumi.Input[str]] = None,
+             secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpc_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr_block is not None:
-            pulumi.set(__self__, "cidr_block", cidr_block)
+            _setter("cidr_block", cidr_block)
         if classic_link_enabled is not None:
-            pulumi.set(__self__, "classic_link_enabled", classic_link_enabled)
+            _setter("classic_link_enabled", classic_link_enabled)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if enable_ipv6 is not None:
-            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+            _setter("enable_ipv6", enable_ipv6)
         if ipv6_isp is not None:
-            pulumi.set(__self__, "ipv6_isp", ipv6_isp)
+            _setter("ipv6_isp", ipv6_isp)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if route_table_id is not None:
-            pulumi.set(__self__, "route_table_id", route_table_id)
+            _setter("route_table_id", route_table_id)
         if router_table_id is not None:
             warnings.warn("""Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""router_table_id is deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""")
         if router_table_id is not None:
-            pulumi.set(__self__, "router_table_id", router_table_id)
+            _setter("router_table_id", router_table_id)
         if secondary_cidr_blocks is not None:
             warnings.warn("""Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""", DeprecationWarning)
             pulumi.log.warn("""secondary_cidr_blocks is deprecated: Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""")
         if secondary_cidr_blocks is not None:
-            pulumi.set(__self__, "secondary_cidr_blocks", secondary_cidr_blocks)
+            _setter("secondary_cidr_blocks", secondary_cidr_blocks)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if user_cidrs is not None:
-            pulumi.set(__self__, "user_cidrs", user_cidrs)
+            _setter("user_cidrs", user_cidrs)
         if vpc_name is not None:
-            pulumi.set(__self__, "vpc_name", vpc_name)
+            _setter("vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -340,53 +375,98 @@ class _NetworkState:
                
                The following arguments will be discarded. Please use new fields as soon as possible:
         """
+        _NetworkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cidr_block=cidr_block,
+            classic_link_enabled=classic_link_enabled,
+            create_time=create_time,
+            description=description,
+            dry_run=dry_run,
+            enable_ipv6=enable_ipv6,
+            ipv6_cidr_block=ipv6_cidr_block,
+            ipv6_cidr_blocks=ipv6_cidr_blocks,
+            ipv6_isp=ipv6_isp,
+            name=name,
+            resource_group_id=resource_group_id,
+            route_table_id=route_table_id,
+            router_id=router_id,
+            router_table_id=router_table_id,
+            secondary_cidr_blocks=secondary_cidr_blocks,
+            status=status,
+            tags=tags,
+            user_cidrs=user_cidrs,
+            vpc_name=vpc_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cidr_block: Optional[pulumi.Input[str]] = None,
+             classic_link_enabled: Optional[pulumi.Input[bool]] = None,
+             create_time: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dry_run: Optional[pulumi.Input[bool]] = None,
+             enable_ipv6: Optional[pulumi.Input[bool]] = None,
+             ipv6_cidr_block: Optional[pulumi.Input[str]] = None,
+             ipv6_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkIpv6CidrBlockArgs']]]] = None,
+             ipv6_isp: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             resource_group_id: Optional[pulumi.Input[str]] = None,
+             route_table_id: Optional[pulumi.Input[str]] = None,
+             router_id: Optional[pulumi.Input[str]] = None,
+             router_table_id: Optional[pulumi.Input[str]] = None,
+             secondary_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             user_cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             vpc_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cidr_block is not None:
-            pulumi.set(__self__, "cidr_block", cidr_block)
+            _setter("cidr_block", cidr_block)
         if classic_link_enabled is not None:
-            pulumi.set(__self__, "classic_link_enabled", classic_link_enabled)
+            _setter("classic_link_enabled", classic_link_enabled)
         if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
+            _setter("create_time", create_time)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
+            _setter("dry_run", dry_run)
         if enable_ipv6 is not None:
-            pulumi.set(__self__, "enable_ipv6", enable_ipv6)
+            _setter("enable_ipv6", enable_ipv6)
         if ipv6_cidr_block is not None:
-            pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
+            _setter("ipv6_cidr_block", ipv6_cidr_block)
         if ipv6_cidr_blocks is not None:
-            pulumi.set(__self__, "ipv6_cidr_blocks", ipv6_cidr_blocks)
+            _setter("ipv6_cidr_blocks", ipv6_cidr_blocks)
         if ipv6_isp is not None:
-            pulumi.set(__self__, "ipv6_isp", ipv6_isp)
+            _setter("ipv6_isp", ipv6_isp)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if resource_group_id is not None:
-            pulumi.set(__self__, "resource_group_id", resource_group_id)
+            _setter("resource_group_id", resource_group_id)
         if route_table_id is not None:
-            pulumi.set(__self__, "route_table_id", route_table_id)
+            _setter("route_table_id", route_table_id)
         if router_id is not None:
-            pulumi.set(__self__, "router_id", router_id)
+            _setter("router_id", router_id)
         if router_table_id is not None:
             warnings.warn("""Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""", DeprecationWarning)
             pulumi.log.warn("""router_table_id is deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""")
         if router_table_id is not None:
-            pulumi.set(__self__, "router_table_id", router_table_id)
+            _setter("router_table_id", router_table_id)
         if secondary_cidr_blocks is not None:
             warnings.warn("""Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""", DeprecationWarning)
             pulumi.log.warn("""secondary_cidr_blocks is deprecated: Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""")
         if secondary_cidr_blocks is not None:
-            pulumi.set(__self__, "secondary_cidr_blocks", secondary_cidr_blocks)
+            _setter("secondary_cidr_blocks", secondary_cidr_blocks)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if user_cidrs is not None:
-            pulumi.set(__self__, "user_cidrs", user_cidrs)
+            _setter("user_cidrs", user_cidrs)
         if vpc_name is not None:
-            pulumi.set(__self__, "vpc_name", vpc_name)
+            _setter("vpc_name", vpc_name)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -785,6 +865,10 @@ class Network(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NetworkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -819,19 +903,10 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["enable_ipv6"] = enable_ipv6
             __props__.__dict__["ipv6_isp"] = ipv6_isp
-            if name is not None and not opts.urn:
-                warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""")
             __props__.__dict__["name"] = name
             __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["route_table_id"] = route_table_id
-            if router_table_id is not None and not opts.urn:
-                warnings.warn("""Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""", DeprecationWarning)
-                pulumi.log.warn("""router_table_id is deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""")
             __props__.__dict__["router_table_id"] = router_table_id
-            if secondary_cidr_blocks is not None and not opts.urn:
-                warnings.warn("""Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""", DeprecationWarning)
-                pulumi.log.warn("""secondary_cidr_blocks is deprecated: Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud_vpc_ipv4_cidr_block` resource cannot be used at the same time.""")
             __props__.__dict__["secondary_cidr_blocks"] = secondary_cidr_blocks
             __props__.__dict__["tags"] = tags
             __props__.__dict__["user_cidrs"] = user_cidrs

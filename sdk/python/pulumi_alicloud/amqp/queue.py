@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['QueueArgs', 'Queue']
@@ -52,25 +52,54 @@ class QueueArgs:
                Message TTL must be set to a non-negative integer, in milliseconds.
                For example, if the message TTL of the queue is 1000, messages survive for at most 1 second in the queue.
         """
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "queue_name", queue_name)
-        pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+        QueueArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_id=instance_id,
+            queue_name=queue_name,
+            virtual_host_name=virtual_host_name,
+            auto_delete_state=auto_delete_state,
+            auto_expire_state=auto_expire_state,
+            dead_letter_exchange=dead_letter_exchange,
+            dead_letter_routing_key=dead_letter_routing_key,
+            exclusive_state=exclusive_state,
+            max_length=max_length,
+            maximum_priority=maximum_priority,
+            message_ttl=message_ttl,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_id: pulumi.Input[str],
+             queue_name: pulumi.Input[str],
+             virtual_host_name: pulumi.Input[str],
+             auto_delete_state: Optional[pulumi.Input[bool]] = None,
+             auto_expire_state: Optional[pulumi.Input[str]] = None,
+             dead_letter_exchange: Optional[pulumi.Input[str]] = None,
+             dead_letter_routing_key: Optional[pulumi.Input[str]] = None,
+             exclusive_state: Optional[pulumi.Input[bool]] = None,
+             max_length: Optional[pulumi.Input[str]] = None,
+             maximum_priority: Optional[pulumi.Input[int]] = None,
+             message_ttl: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_id", instance_id)
+        _setter("queue_name", queue_name)
+        _setter("virtual_host_name", virtual_host_name)
         if auto_delete_state is not None:
-            pulumi.set(__self__, "auto_delete_state", auto_delete_state)
+            _setter("auto_delete_state", auto_delete_state)
         if auto_expire_state is not None:
-            pulumi.set(__self__, "auto_expire_state", auto_expire_state)
+            _setter("auto_expire_state", auto_expire_state)
         if dead_letter_exchange is not None:
-            pulumi.set(__self__, "dead_letter_exchange", dead_letter_exchange)
+            _setter("dead_letter_exchange", dead_letter_exchange)
         if dead_letter_routing_key is not None:
-            pulumi.set(__self__, "dead_letter_routing_key", dead_letter_routing_key)
+            _setter("dead_letter_routing_key", dead_letter_routing_key)
         if exclusive_state is not None:
-            pulumi.set(__self__, "exclusive_state", exclusive_state)
+            _setter("exclusive_state", exclusive_state)
         if max_length is not None:
-            pulumi.set(__self__, "max_length", max_length)
+            _setter("max_length", max_length)
         if maximum_priority is not None:
-            pulumi.set(__self__, "maximum_priority", maximum_priority)
+            _setter("maximum_priority", maximum_priority)
         if message_ttl is not None:
-            pulumi.set(__self__, "message_ttl", message_ttl)
+            _setter("message_ttl", message_ttl)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -259,28 +288,57 @@ class _QueueState:
                The queue name must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
         :param pulumi.Input[str] virtual_host_name: The name of the virtual host.
         """
+        _QueueState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_delete_state=auto_delete_state,
+            auto_expire_state=auto_expire_state,
+            dead_letter_exchange=dead_letter_exchange,
+            dead_letter_routing_key=dead_letter_routing_key,
+            exclusive_state=exclusive_state,
+            instance_id=instance_id,
+            max_length=max_length,
+            maximum_priority=maximum_priority,
+            message_ttl=message_ttl,
+            queue_name=queue_name,
+            virtual_host_name=virtual_host_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_delete_state: Optional[pulumi.Input[bool]] = None,
+             auto_expire_state: Optional[pulumi.Input[str]] = None,
+             dead_letter_exchange: Optional[pulumi.Input[str]] = None,
+             dead_letter_routing_key: Optional[pulumi.Input[str]] = None,
+             exclusive_state: Optional[pulumi.Input[bool]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             max_length: Optional[pulumi.Input[str]] = None,
+             maximum_priority: Optional[pulumi.Input[int]] = None,
+             message_ttl: Optional[pulumi.Input[str]] = None,
+             queue_name: Optional[pulumi.Input[str]] = None,
+             virtual_host_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_delete_state is not None:
-            pulumi.set(__self__, "auto_delete_state", auto_delete_state)
+            _setter("auto_delete_state", auto_delete_state)
         if auto_expire_state is not None:
-            pulumi.set(__self__, "auto_expire_state", auto_expire_state)
+            _setter("auto_expire_state", auto_expire_state)
         if dead_letter_exchange is not None:
-            pulumi.set(__self__, "dead_letter_exchange", dead_letter_exchange)
+            _setter("dead_letter_exchange", dead_letter_exchange)
         if dead_letter_routing_key is not None:
-            pulumi.set(__self__, "dead_letter_routing_key", dead_letter_routing_key)
+            _setter("dead_letter_routing_key", dead_letter_routing_key)
         if exclusive_state is not None:
-            pulumi.set(__self__, "exclusive_state", exclusive_state)
+            _setter("exclusive_state", exclusive_state)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if max_length is not None:
-            pulumi.set(__self__, "max_length", max_length)
+            _setter("max_length", max_length)
         if maximum_priority is not None:
-            pulumi.set(__self__, "maximum_priority", maximum_priority)
+            _setter("maximum_priority", maximum_priority)
         if message_ttl is not None:
-            pulumi.set(__self__, "message_ttl", message_ttl)
+            _setter("message_ttl", message_ttl)
         if queue_name is not None:
-            pulumi.set(__self__, "queue_name", queue_name)
+            _setter("queue_name", queue_name)
         if virtual_host_name is not None:
-            pulumi.set(__self__, "virtual_host_name", virtual_host_name)
+            _setter("virtual_host_name", virtual_host_name)
 
     @property
     @pulumi.getter(name="autoDeleteState")
@@ -584,6 +642,10 @@ class Queue(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            QueueArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['FileSystemArgs', 'FileSystem']
@@ -33,17 +33,40 @@ class FileSystemArgs:
         :param pulumi.Input[int] provisioned_throughput_in_mi_bps: The preset throughput of the File system. Valid values: `1` to `1024`, Unit: MB/s. **NOTE:** Only when `throughput_mode` is `Provisioned`, this param is valid.
         :param pulumi.Input[str] throughput_mode: The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
         """
-        pulumi.set(__self__, "file_system_name", file_system_name)
-        pulumi.set(__self__, "protocol_type", protocol_type)
-        pulumi.set(__self__, "space_capacity", space_capacity)
-        pulumi.set(__self__, "storage_type", storage_type)
-        pulumi.set(__self__, "zone_id", zone_id)
+        FileSystemArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            file_system_name=file_system_name,
+            protocol_type=protocol_type,
+            space_capacity=space_capacity,
+            storage_type=storage_type,
+            zone_id=zone_id,
+            description=description,
+            provisioned_throughput_in_mi_bps=provisioned_throughput_in_mi_bps,
+            throughput_mode=throughput_mode,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             file_system_name: pulumi.Input[str],
+             protocol_type: pulumi.Input[str],
+             space_capacity: pulumi.Input[int],
+             storage_type: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             provisioned_throughput_in_mi_bps: Optional[pulumi.Input[int]] = None,
+             throughput_mode: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("file_system_name", file_system_name)
+        _setter("protocol_type", protocol_type)
+        _setter("space_capacity", space_capacity)
+        _setter("storage_type", storage_type)
+        _setter("zone_id", zone_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if provisioned_throughput_in_mi_bps is not None:
-            pulumi.set(__self__, "provisioned_throughput_in_mi_bps", provisioned_throughput_in_mi_bps)
+            _setter("provisioned_throughput_in_mi_bps", provisioned_throughput_in_mi_bps)
         if throughput_mode is not None:
-            pulumi.set(__self__, "throughput_mode", throughput_mode)
+            _setter("throughput_mode", throughput_mode)
 
     @property
     @pulumi.getter(name="fileSystemName")
@@ -164,22 +187,45 @@ class _FileSystemState:
         :param pulumi.Input[str] throughput_mode: The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
         :param pulumi.Input[str] zone_id: The zone ID of the File system.
         """
+        _FileSystemState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            file_system_name=file_system_name,
+            protocol_type=protocol_type,
+            provisioned_throughput_in_mi_bps=provisioned_throughput_in_mi_bps,
+            space_capacity=space_capacity,
+            storage_type=storage_type,
+            throughput_mode=throughput_mode,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             file_system_name: Optional[pulumi.Input[str]] = None,
+             protocol_type: Optional[pulumi.Input[str]] = None,
+             provisioned_throughput_in_mi_bps: Optional[pulumi.Input[int]] = None,
+             space_capacity: Optional[pulumi.Input[int]] = None,
+             storage_type: Optional[pulumi.Input[str]] = None,
+             throughput_mode: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if file_system_name is not None:
-            pulumi.set(__self__, "file_system_name", file_system_name)
+            _setter("file_system_name", file_system_name)
         if protocol_type is not None:
-            pulumi.set(__self__, "protocol_type", protocol_type)
+            _setter("protocol_type", protocol_type)
         if provisioned_throughput_in_mi_bps is not None:
-            pulumi.set(__self__, "provisioned_throughput_in_mi_bps", provisioned_throughput_in_mi_bps)
+            _setter("provisioned_throughput_in_mi_bps", provisioned_throughput_in_mi_bps)
         if space_capacity is not None:
-            pulumi.set(__self__, "space_capacity", space_capacity)
+            _setter("space_capacity", space_capacity)
         if storage_type is not None:
-            pulumi.set(__self__, "storage_type", storage_type)
+            _setter("storage_type", storage_type)
         if throughput_mode is not None:
-            pulumi.set(__self__, "throughput_mode", throughput_mode)
+            _setter("throughput_mode", throughput_mode)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -395,6 +441,10 @@ class FileSystem(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FileSystemArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

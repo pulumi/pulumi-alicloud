@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ApplicationScaleArgs', 'ApplicationScale']
@@ -25,11 +25,26 @@ class ApplicationScaleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ecu_infos: The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
         :param pulumi.Input[bool] force_status: This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
         """
-        pulumi.set(__self__, "app_id", app_id)
-        pulumi.set(__self__, "deploy_group", deploy_group)
-        pulumi.set(__self__, "ecu_infos", ecu_infos)
+        ApplicationScaleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            deploy_group=deploy_group,
+            ecu_infos=ecu_infos,
+            force_status=force_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: pulumi.Input[str],
+             deploy_group: pulumi.Input[str],
+             ecu_infos: pulumi.Input[Sequence[pulumi.Input[str]]],
+             force_status: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_id", app_id)
+        _setter("deploy_group", deploy_group)
+        _setter("ecu_infos", ecu_infos)
         if force_status is not None:
-            pulumi.set(__self__, "force_status", force_status)
+            _setter("force_status", force_status)
 
     @property
     @pulumi.getter(name="appId")
@@ -96,16 +111,33 @@ class _ApplicationScaleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ecu_infos: The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
         :param pulumi.Input[bool] force_status: This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
         """
+        _ApplicationScaleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_id=app_id,
+            deploy_group=deploy_group,
+            ecc_info=ecc_info,
+            ecu_infos=ecu_infos,
+            force_status=force_status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_id: Optional[pulumi.Input[str]] = None,
+             deploy_group: Optional[pulumi.Input[str]] = None,
+             ecc_info: Optional[pulumi.Input[str]] = None,
+             ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             force_status: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if app_id is not None:
-            pulumi.set(__self__, "app_id", app_id)
+            _setter("app_id", app_id)
         if deploy_group is not None:
-            pulumi.set(__self__, "deploy_group", deploy_group)
+            _setter("deploy_group", deploy_group)
         if ecc_info is not None:
-            pulumi.set(__self__, "ecc_info", ecc_info)
+            _setter("ecc_info", ecc_info)
         if ecu_infos is not None:
-            pulumi.set(__self__, "ecu_infos", ecu_infos)
+            _setter("ecu_infos", ecu_infos)
         if force_status is not None:
-            pulumi.set(__self__, "force_status", force_status)
+            _setter("force_status", force_status)
 
     @property
     @pulumi.getter(name="appId")
@@ -335,6 +367,10 @@ class ApplicationScale(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApplicationScaleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

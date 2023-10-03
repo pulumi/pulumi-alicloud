@@ -18,14 +18,14 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
     public static final EcsLaunchTemplateSystemDiskArgs Empty = new EcsLaunchTemplateSystemDiskArgs();
 
     /**
-     * The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+     * The category of the disk.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+     * @return The category of the disk.
      * 
      */
     public Optional<Output<String>> category() {
@@ -33,14 +33,14 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
     }
 
     /**
-     * Specifies whether to release the system disk when the instance is released. Default to `true`.
+     * Indicates whether the data disk is released with the instance.
      * 
      */
     @Import(name="deleteWithInstance")
     private @Nullable Output<Boolean> deleteWithInstance;
 
     /**
-     * @return Specifies whether to release the system disk when the instance is released. Default to `true`.
+     * @return Indicates whether the data disk is released with the instance.
      * 
      */
     public Optional<Output<Boolean>> deleteWithInstance() {
@@ -93,14 +93,14 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
     }
 
     /**
-     * The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+     * The performance level of the ESSD used as the data disk.
      * 
      */
     @Import(name="performanceLevel")
     private @Nullable Output<String> performanceLevel;
 
     /**
-     * @return The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+     * @return The performance level of the ESSD used as the data disk.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
@@ -108,14 +108,14 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
     }
 
     /**
-     * Size of the system disk, measured in GB. Value range: [20, 500].
+     * The size of the data disk.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return Size of the system disk, measured in GB. Value range: [20, 500].
+     * @return The size of the data disk.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -153,7 +153,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param category The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+         * @param category The category of the disk.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param category The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+         * @param category The category of the disk.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param deleteWithInstance Specifies whether to release the system disk when the instance is released. Default to `true`.
+         * @param deleteWithInstance Indicates whether the data disk is released with the instance.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param deleteWithInstance Specifies whether to release the system disk when the instance is released. Default to `true`.
+         * @param deleteWithInstance Indicates whether the data disk is released with the instance.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param performanceLevel The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+         * @param performanceLevel The performance level of the ESSD used as the data disk.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param performanceLevel The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+         * @param performanceLevel The performance level of the ESSD used as the data disk.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param size Size of the system disk, measured in GB. Value range: [20, 500].
+         * @param size The size of the data disk.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param size Size of the system disk, measured in GB. Value range: [20, 500].
+         * @param size The size of the data disk.
          * 
          * @return builder
          * 

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ServiceSubscriptionArgs', 'ServiceSubscription']
@@ -34,16 +34,37 @@ class ServiceSubscriptionArgs:
         :param pulumi.Input[str] notify_content_format: The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
         :param pulumi.Input[str] notify_strategy: The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
         """
-        pulumi.set(__self__, "endpoint", endpoint)
-        pulumi.set(__self__, "push_type", push_type)
-        pulumi.set(__self__, "subscription_name", subscription_name)
-        pulumi.set(__self__, "topic_name", topic_name)
+        ServiceSubscriptionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            push_type=push_type,
+            subscription_name=subscription_name,
+            topic_name=topic_name,
+            filter_tag=filter_tag,
+            notify_content_format=notify_content_format,
+            notify_strategy=notify_strategy,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: pulumi.Input[str],
+             push_type: pulumi.Input[str],
+             subscription_name: pulumi.Input[str],
+             topic_name: pulumi.Input[str],
+             filter_tag: Optional[pulumi.Input[str]] = None,
+             notify_content_format: Optional[pulumi.Input[str]] = None,
+             notify_strategy: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("endpoint", endpoint)
+        _setter("push_type", push_type)
+        _setter("subscription_name", subscription_name)
+        _setter("topic_name", topic_name)
         if filter_tag is not None:
-            pulumi.set(__self__, "filter_tag", filter_tag)
+            _setter("filter_tag", filter_tag)
         if notify_content_format is not None:
-            pulumi.set(__self__, "notify_content_format", notify_content_format)
+            _setter("notify_content_format", notify_content_format)
         if notify_strategy is not None:
-            pulumi.set(__self__, "notify_strategy", notify_strategy)
+            _setter("notify_strategy", notify_strategy)
 
     @property
     @pulumi.getter
@@ -156,20 +177,41 @@ class _ServiceSubscriptionState:
         :param pulumi.Input[str] subscription_name: Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         :param pulumi.Input[str] topic_name: The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
         """
+        _ServiceSubscriptionState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            endpoint=endpoint,
+            filter_tag=filter_tag,
+            notify_content_format=notify_content_format,
+            notify_strategy=notify_strategy,
+            push_type=push_type,
+            subscription_name=subscription_name,
+            topic_name=topic_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             endpoint: Optional[pulumi.Input[str]] = None,
+             filter_tag: Optional[pulumi.Input[str]] = None,
+             notify_content_format: Optional[pulumi.Input[str]] = None,
+             notify_strategy: Optional[pulumi.Input[str]] = None,
+             push_type: Optional[pulumi.Input[str]] = None,
+             subscription_name: Optional[pulumi.Input[str]] = None,
+             topic_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if endpoint is not None:
-            pulumi.set(__self__, "endpoint", endpoint)
+            _setter("endpoint", endpoint)
         if filter_tag is not None:
-            pulumi.set(__self__, "filter_tag", filter_tag)
+            _setter("filter_tag", filter_tag)
         if notify_content_format is not None:
-            pulumi.set(__self__, "notify_content_format", notify_content_format)
+            _setter("notify_content_format", notify_content_format)
         if notify_strategy is not None:
-            pulumi.set(__self__, "notify_strategy", notify_strategy)
+            _setter("notify_strategy", notify_strategy)
         if push_type is not None:
-            pulumi.set(__self__, "push_type", push_type)
+            _setter("push_type", push_type)
         if subscription_name is not None:
-            pulumi.set(__self__, "subscription_name", subscription_name)
+            _setter("subscription_name", subscription_name)
         if topic_name is not None:
-            pulumi.set(__self__, "topic_name", topic_name)
+            _setter("topic_name", topic_name)
 
     @property
     @pulumi.getter
@@ -383,6 +425,10 @@ class ServiceSubscription(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ServiceSubscriptionArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

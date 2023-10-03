@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -50,21 +50,58 @@ class GetSystemGroupsGroupResult(dict):
         :param str push_domain: The domain name of push streaming used by the group.
         :param Sequence['GetSystemGroupsGroupStatArgs'] stats: The Device statistics of Group.
         """
-        pulumi.set(__self__, "app", app)
-        pulumi.set(__self__, "callback", callback)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "gb_id", gb_id)
-        pulumi.set(__self__, "gb_ip", gb_ip)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_name", group_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "in_protocol", in_protocol)
-        pulumi.set(__self__, "out_protocol", out_protocol)
-        pulumi.set(__self__, "play_domain", play_domain)
-        pulumi.set(__self__, "push_domain", push_domain)
-        pulumi.set(__self__, "stats", stats)
+        GetSystemGroupsGroupResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app=app,
+            callback=callback,
+            create_time=create_time,
+            description=description,
+            enabled=enabled,
+            gb_id=gb_id,
+            gb_ip=gb_ip,
+            group_id=group_id,
+            group_name=group_name,
+            id=id,
+            in_protocol=in_protocol,
+            out_protocol=out_protocol,
+            play_domain=play_domain,
+            push_domain=push_domain,
+            stats=stats,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app: str,
+             callback: str,
+             create_time: str,
+             description: str,
+             enabled: bool,
+             gb_id: str,
+             gb_ip: str,
+             group_id: str,
+             group_name: str,
+             id: str,
+             in_protocol: str,
+             out_protocol: str,
+             play_domain: str,
+             push_domain: str,
+             stats: Sequence['outputs.GetSystemGroupsGroupStatResult'],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app", app)
+        _setter("callback", callback)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("enabled", enabled)
+        _setter("gb_id", gb_id)
+        _setter("gb_ip", gb_ip)
+        _setter("group_id", group_id)
+        _setter("group_name", group_name)
+        _setter("id", id)
+        _setter("in_protocol", in_protocol)
+        _setter("out_protocol", out_protocol)
+        _setter("play_domain", play_domain)
+        _setter("push_domain", push_domain)
+        _setter("stats", stats)
 
     @property
     @pulumi.getter
@@ -200,10 +237,25 @@ class GetSystemGroupsGroupStatResult(dict):
         :param str ipc_num: The total number of cameras in the group.
         :param str platform_num: The total number of platforms in the group.
         """
-        pulumi.set(__self__, "device_num", device_num)
-        pulumi.set(__self__, "ied_num", ied_num)
-        pulumi.set(__self__, "ipc_num", ipc_num)
-        pulumi.set(__self__, "platform_num", platform_num)
+        GetSystemGroupsGroupStatResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            device_num=device_num,
+            ied_num=ied_num,
+            ipc_num=ipc_num,
+            platform_num=platform_num,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             device_num: str,
+             ied_num: str,
+             ipc_num: str,
+             platform_num: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("device_num", device_num)
+        _setter("ied_num", ied_num)
+        _setter("ipc_num", ipc_num)
+        _setter("platform_num", platform_num)
 
     @property
     @pulumi.getter(name="deviceNum")

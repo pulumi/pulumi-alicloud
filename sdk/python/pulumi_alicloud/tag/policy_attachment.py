@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['PolicyAttachmentArgs', 'PolicyAttachment']
@@ -23,9 +23,22 @@ class PolicyAttachmentArgs:
         :param pulumi.Input[str] target_id: The ID of the object.
         :param pulumi.Input[str] target_type: The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
         """
-        pulumi.set(__self__, "policy_id", policy_id)
-        pulumi.set(__self__, "target_id", target_id)
-        pulumi.set(__self__, "target_type", target_type)
+        PolicyAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy_id=policy_id,
+            target_id=target_id,
+            target_type=target_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy_id: pulumi.Input[str],
+             target_id: pulumi.Input[str],
+             target_type: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("policy_id", policy_id)
+        _setter("target_id", target_id)
+        _setter("target_type", target_type)
 
     @property
     @pulumi.getter(name="policyId")
@@ -76,12 +89,25 @@ class _PolicyAttachmentState:
         :param pulumi.Input[str] target_id: The ID of the object.
         :param pulumi.Input[str] target_type: The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
         """
+        _PolicyAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            policy_id=policy_id,
+            target_id=target_id,
+            target_type=target_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             policy_id: Optional[pulumi.Input[str]] = None,
+             target_id: Optional[pulumi.Input[str]] = None,
+             target_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if policy_id is not None:
-            pulumi.set(__self__, "policy_id", policy_id)
+            _setter("policy_id", policy_id)
         if target_id is not None:
-            pulumi.set(__self__, "target_id", target_id)
+            _setter("target_id", target_id)
         if target_type is not None:
-            pulumi.set(__self__, "target_type", target_type)
+            _setter("target_type", target_type)
 
     @property
     @pulumi.getter(name="policyId")
@@ -229,6 +255,10 @@ class PolicyAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PolicyAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

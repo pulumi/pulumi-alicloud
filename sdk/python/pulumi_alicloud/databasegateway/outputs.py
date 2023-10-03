@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -39,16 +39,43 @@ class GetGatewaysGatewayResult(dict):
         :param str status: The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
         :param str user_id: The user's id.
         """
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "gateway_desc", gateway_desc)
-        pulumi.set(__self__, "gateway_instances", gateway_instances)
-        pulumi.set(__self__, "gateway_name", gateway_name)
-        pulumi.set(__self__, "hosts", hosts)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "modified_time", modified_time)
-        pulumi.set(__self__, "parent_id", parent_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "user_id", user_id)
+        GetGatewaysGatewayResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            create_time=create_time,
+            gateway_desc=gateway_desc,
+            gateway_instances=gateway_instances,
+            gateway_name=gateway_name,
+            hosts=hosts,
+            id=id,
+            modified_time=modified_time,
+            parent_id=parent_id,
+            status=status,
+            user_id=user_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             create_time: str,
+             gateway_desc: str,
+             gateway_instances: Sequence['outputs.GetGatewaysGatewayGatewayInstanceResult'],
+             gateway_name: str,
+             hosts: str,
+             id: str,
+             modified_time: str,
+             parent_id: str,
+             status: str,
+             user_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("create_time", create_time)
+        _setter("gateway_desc", gateway_desc)
+        _setter("gateway_instances", gateway_instances)
+        _setter("gateway_name", gateway_name)
+        _setter("hosts", hosts)
+        _setter("id", id)
+        _setter("modified_time", modified_time)
+        _setter("parent_id", parent_id)
+        _setter("status", status)
+        _setter("user_id", user_id)
 
     @property
     @pulumi.getter(name="createTime")
@@ -153,16 +180,43 @@ class GetGatewaysGatewayGatewayInstanceResult(dict):
         :param str message: The prompt information of Gateway instance.
         :param str output_ip: The host of Gateway instance.
         """
-        pulumi.set(__self__, "connect_endpoint_type", connect_endpoint_type)
-        pulumi.set(__self__, "current_daemon_version", current_daemon_version)
-        pulumi.set(__self__, "current_version", current_version)
-        pulumi.set(__self__, "end_point", end_point)
-        pulumi.set(__self__, "gateway_instance_id", gateway_instance_id)
-        pulumi.set(__self__, "gateway_instance_status", gateway_instance_status)
-        pulumi.set(__self__, "last_update_time", last_update_time)
-        pulumi.set(__self__, "local_ip", local_ip)
-        pulumi.set(__self__, "message", message)
-        pulumi.set(__self__, "output_ip", output_ip)
+        GetGatewaysGatewayGatewayInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            connect_endpoint_type=connect_endpoint_type,
+            current_daemon_version=current_daemon_version,
+            current_version=current_version,
+            end_point=end_point,
+            gateway_instance_id=gateway_instance_id,
+            gateway_instance_status=gateway_instance_status,
+            last_update_time=last_update_time,
+            local_ip=local_ip,
+            message=message,
+            output_ip=output_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             connect_endpoint_type: str,
+             current_daemon_version: str,
+             current_version: str,
+             end_point: str,
+             gateway_instance_id: str,
+             gateway_instance_status: str,
+             last_update_time: str,
+             local_ip: str,
+             message: str,
+             output_ip: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("connect_endpoint_type", connect_endpoint_type)
+        _setter("current_daemon_version", current_daemon_version)
+        _setter("current_version", current_version)
+        _setter("end_point", end_point)
+        _setter("gateway_instance_id", gateway_instance_id)
+        _setter("gateway_instance_status", gateway_instance_status)
+        _setter("last_update_time", last_update_time)
+        _setter("local_ip", local_ip)
+        _setter("message", message)
+        _setter("output_ip", output_ip)
 
     @property
     @pulumi.getter(name="connectEndpointType")

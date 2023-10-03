@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ots.Outputs
         /// </summary>
         public readonly bool? EnableSortAndAgg;
         /// <summary>
-        /// Specifies the name of the field in the search index. The value is used as a column name. A field in a search index can be a primary key column or an attribute column.
+        /// The name of the field that is used to sort data. only required if sorter_type is FieldSort.
         /// </summary>
         public readonly string FieldName;
         /// <summary>

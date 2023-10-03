@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['EcsKeyPairAttachmentArgs', 'EcsKeyPairAttachment']
@@ -24,16 +24,31 @@ class EcsKeyPairAttachmentArgs:
         :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[str] key_pair_name: The name of key pair used to bind.
         """
-        pulumi.set(__self__, "instance_ids", instance_ids)
+        EcsKeyPairAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_ids=instance_ids,
+            force=force,
+            key_name=key_name,
+            key_pair_name=key_pair_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             force: Optional[pulumi.Input[bool]] = None,
+             key_name: Optional[pulumi.Input[str]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("instance_ids", instance_ids)
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if key_name is not None:
             warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
         if key_name is not None:
-            pulumi.set(__self__, "key_name", key_name)
+            _setter("key_name", key_name)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
 
     @property
     @pulumi.getter(name="instanceIds")
@@ -97,17 +112,32 @@ class _EcsKeyPairAttachmentState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] key_pair_name: The name of key pair used to bind.
         """
+        _EcsKeyPairAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            force=force,
+            instance_ids=instance_ids,
+            key_name=key_name,
+            key_pair_name=key_pair_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             force: Optional[pulumi.Input[bool]] = None,
+             instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             key_name: Optional[pulumi.Input[str]] = None,
+             key_pair_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if force is not None:
-            pulumi.set(__self__, "force", force)
+            _setter("force", force)
         if instance_ids is not None:
-            pulumi.set(__self__, "instance_ids", instance_ids)
+            _setter("instance_ids", instance_ids)
         if key_name is not None:
             warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
         if key_name is not None:
-            pulumi.set(__self__, "key_name", key_name)
+            _setter("key_name", key_name)
         if key_pair_name is not None:
-            pulumi.set(__self__, "key_pair_name", key_pair_name)
+            _setter("key_pair_name", key_pair_name)
 
     @property
     @pulumi.getter
@@ -294,6 +324,10 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EcsKeyPairAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -316,9 +350,6 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
             if instance_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_ids'")
             __props__.__dict__["instance_ids"] = instance_ids
-            if key_name is not None and not opts.urn:
-                warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
             __props__.__dict__["key_name"] = key_name
             __props__.__dict__["key_pair_name"] = key_pair_name
         super(EcsKeyPairAttachment, __self__).__init__(

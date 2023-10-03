@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -36,15 +36,40 @@ class GetInstancesInstanceResult(dict):
         :param str status: The status of the resource. Valid values: `Attaching`, `Available`, `Detaching`, `InUse`, `Starting`, `Unavailable`.
         :param str zone_id: The ID of the region to which the EAIS instance belongs.
         """
-        pulumi.set(__self__, "client_instance_id", client_instance_id)
-        pulumi.set(__self__, "client_instance_name", client_instance_name)
-        pulumi.set(__self__, "client_instance_type", client_instance_type)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "instance_type", instance_type)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_instance_id=client_instance_id,
+            client_instance_name=client_instance_name,
+            client_instance_type=client_instance_type,
+            id=id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            instance_type=instance_type,
+            status=status,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_instance_id: str,
+             client_instance_name: str,
+             client_instance_type: str,
+             id: str,
+             instance_id: str,
+             instance_name: str,
+             instance_type: str,
+             status: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("client_instance_id", client_instance_id)
+        _setter("client_instance_name", client_instance_name)
+        _setter("client_instance_type", client_instance_type)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("instance_type", instance_type)
+        _setter("status", status)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="clientInstanceId")

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['TopicArgs', 'Topic']
@@ -23,12 +23,25 @@ class TopicArgs:
         :param pulumi.Input[int] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         :param pulumi.Input[str] name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
+        TopicArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            logging_enabled=logging_enabled,
+            maximum_message_size=maximum_message_size,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             logging_enabled: Optional[pulumi.Input[bool]] = None,
+             maximum_message_size: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if logging_enabled is not None:
-            pulumi.set(__self__, "logging_enabled", logging_enabled)
+            _setter("logging_enabled", logging_enabled)
         if maximum_message_size is not None:
-            pulumi.set(__self__, "maximum_message_size", maximum_message_size)
+            _setter("maximum_message_size", maximum_message_size)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="loggingEnabled")
@@ -79,12 +92,25 @@ class _TopicState:
         :param pulumi.Input[int] maximum_message_size: This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
         :param pulumi.Input[str] name: Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
+        _TopicState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            logging_enabled=logging_enabled,
+            maximum_message_size=maximum_message_size,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             logging_enabled: Optional[pulumi.Input[bool]] = None,
+             maximum_message_size: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if logging_enabled is not None:
-            pulumi.set(__self__, "logging_enabled", logging_enabled)
+            _setter("logging_enabled", logging_enabled)
         if maximum_message_size is not None:
-            pulumi.set(__self__, "maximum_message_size", maximum_message_size)
+            _setter("maximum_message_size", maximum_message_size)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="loggingEnabled")
@@ -198,6 +224,10 @@ class Topic(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TopicArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

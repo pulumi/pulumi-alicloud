@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -42,8 +42,17 @@ class InstanceEcsList(dict):
         """
         :param str ecs_id: The ID of the ECS instance.
         """
+        InstanceEcsList._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ecs_id=ecs_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ecs_id: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if ecs_id is not None:
-            pulumi.set(__self__, "ecs_id", ecs_id)
+            _setter("ecs_id", ecs_id)
 
     @property
     @pulumi.getter(name="ecsId")
@@ -81,17 +90,46 @@ class GetAutoSnapShotPoliciesAutoSnapShotPolicyResult(dict):
         :param str status_detail: Automatic snapshot policy status details
         :param Sequence[str] time_points: The set of times at which the snapshot is taken on the day the automatic snapshot is executed.
         """
-        pulumi.set(__self__, "applied_dbfs_number", applied_dbfs_number)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "last_modified", last_modified)
-        pulumi.set(__self__, "policy_id", policy_id)
-        pulumi.set(__self__, "policy_name", policy_name)
-        pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
-        pulumi.set(__self__, "retention_days", retention_days)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "status_detail", status_detail)
-        pulumi.set(__self__, "time_points", time_points)
+        GetAutoSnapShotPoliciesAutoSnapShotPolicyResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            applied_dbfs_number=applied_dbfs_number,
+            create_time=create_time,
+            id=id,
+            last_modified=last_modified,
+            policy_id=policy_id,
+            policy_name=policy_name,
+            repeat_weekdays=repeat_weekdays,
+            retention_days=retention_days,
+            status=status,
+            status_detail=status_detail,
+            time_points=time_points,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             applied_dbfs_number: int,
+             create_time: str,
+             id: str,
+             last_modified: str,
+             policy_id: str,
+             policy_name: str,
+             repeat_weekdays: Sequence[str],
+             retention_days: int,
+             status: str,
+             status_detail: str,
+             time_points: Sequence[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("applied_dbfs_number", applied_dbfs_number)
+        _setter("create_time", create_time)
+        _setter("id", id)
+        _setter("last_modified", last_modified)
+        _setter("policy_id", policy_id)
+        _setter("policy_name", policy_name)
+        _setter("repeat_weekdays", repeat_weekdays)
+        _setter("retention_days", retention_days)
+        _setter("status", status)
+        _setter("status_detail", status_detail)
+        _setter("time_points", time_points)
 
     @property
     @pulumi.getter(name="appliedDbfsNumber")
@@ -221,23 +259,64 @@ class GetInstancesInstanceResult(dict):
         :param str status: The status of the Database file system.
         :param str zone_id: The Zone ID of the Database file system.
         """
-        pulumi.set(__self__, "attach_node_number", attach_node_number)
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "dbfs_cluster_id", dbfs_cluster_id)
-        pulumi.set(__self__, "ecs_lists", ecs_lists)
-        pulumi.set(__self__, "enable_raid", enable_raid)
-        pulumi.set(__self__, "encryption", encryption)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "instance_name", instance_name)
-        pulumi.set(__self__, "kms_key_id", kms_key_id)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "performance_level", performance_level)
-        pulumi.set(__self__, "raid_stripe_unit_number", raid_stripe_unit_number)
-        pulumi.set(__self__, "size", size)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetInstancesInstanceResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            attach_node_number=attach_node_number,
+            category=category,
+            create_time=create_time,
+            dbfs_cluster_id=dbfs_cluster_id,
+            ecs_lists=ecs_lists,
+            enable_raid=enable_raid,
+            encryption=encryption,
+            id=id,
+            instance_id=instance_id,
+            instance_name=instance_name,
+            kms_key_id=kms_key_id,
+            payment_type=payment_type,
+            performance_level=performance_level,
+            raid_stripe_unit_number=raid_stripe_unit_number,
+            size=size,
+            status=status,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             attach_node_number: int,
+             category: str,
+             create_time: str,
+             dbfs_cluster_id: str,
+             ecs_lists: Sequence['outputs.GetInstancesInstanceEcsListResult'],
+             enable_raid: bool,
+             encryption: bool,
+             id: str,
+             instance_id: str,
+             instance_name: str,
+             kms_key_id: str,
+             payment_type: str,
+             performance_level: str,
+             raid_stripe_unit_number: str,
+             size: int,
+             status: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("attach_node_number", attach_node_number)
+        _setter("category", category)
+        _setter("create_time", create_time)
+        _setter("dbfs_cluster_id", dbfs_cluster_id)
+        _setter("ecs_lists", ecs_lists)
+        _setter("enable_raid", enable_raid)
+        _setter("encryption", encryption)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("instance_name", instance_name)
+        _setter("kms_key_id", kms_key_id)
+        _setter("payment_type", payment_type)
+        _setter("performance_level", performance_level)
+        _setter("raid_stripe_unit_number", raid_stripe_unit_number)
+        _setter("size", size)
+        _setter("status", status)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="attachNodeNumber")
@@ -383,7 +462,16 @@ class GetInstancesInstanceEcsListResult(dict):
         """
         :param str ecs_id: The ID of the ECS instance.
         """
-        pulumi.set(__self__, "ecs_id", ecs_id)
+        GetInstancesInstanceEcsListResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            ecs_id=ecs_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             ecs_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("ecs_id", ecs_id)
 
     @property
     @pulumi.getter(name="ecsId")
@@ -427,20 +515,55 @@ class GetSnapshotsSnapshotResult(dict):
         :param int source_fs_size: Source database file system capacity.
         :param str status: The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "last_modified_time", last_modified_time)
-        pulumi.set(__self__, "progress", progress)
-        pulumi.set(__self__, "remain_time", remain_time)
-        pulumi.set(__self__, "retention_days", retention_days)
-        pulumi.set(__self__, "snapshot_id", snapshot_id)
-        pulumi.set(__self__, "snapshot_name", snapshot_name)
-        pulumi.set(__self__, "snapshot_type", snapshot_type)
-        pulumi.set(__self__, "source_fs_size", source_fs_size)
-        pulumi.set(__self__, "status", status)
+        GetSnapshotsSnapshotResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            create_time=create_time,
+            description=description,
+            id=id,
+            instance_id=instance_id,
+            last_modified_time=last_modified_time,
+            progress=progress,
+            remain_time=remain_time,
+            retention_days=retention_days,
+            snapshot_id=snapshot_id,
+            snapshot_name=snapshot_name,
+            snapshot_type=snapshot_type,
+            source_fs_size=source_fs_size,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: str,
+             create_time: str,
+             description: str,
+             id: str,
+             instance_id: str,
+             last_modified_time: str,
+             progress: str,
+             remain_time: int,
+             retention_days: int,
+             snapshot_id: str,
+             snapshot_name: str,
+             snapshot_type: str,
+             source_fs_size: int,
+             status: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("create_time", create_time)
+        _setter("description", description)
+        _setter("id", id)
+        _setter("instance_id", instance_id)
+        _setter("last_modified_time", last_modified_time)
+        _setter("progress", progress)
+        _setter("remain_time", remain_time)
+        _setter("retention_days", retention_days)
+        _setter("snapshot_id", snapshot_id)
+        _setter("snapshot_name", snapshot_name)
+        _setter("snapshot_type", snapshot_type)
+        _setter("source_fs_size", source_fs_size)
+        _setter("status", status)
 
     @property
     @pulumi.getter

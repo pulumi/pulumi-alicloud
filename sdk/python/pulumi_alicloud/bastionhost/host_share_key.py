@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['HostShareKeyArgs', 'HostShareKey']
@@ -25,11 +25,26 @@ class HostShareKeyArgs:
         :param pulumi.Input[str] private_key: The private key. The value is a Base64-encoded string.
         :param pulumi.Input[str] pass_phrase: The password of the private key. The value is a Base64-encoded string.
         """
-        pulumi.set(__self__, "host_share_key_name", host_share_key_name)
-        pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "private_key", private_key)
+        HostShareKeyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_share_key_name=host_share_key_name,
+            instance_id=instance_id,
+            private_key=private_key,
+            pass_phrase=pass_phrase,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_share_key_name: pulumi.Input[str],
+             instance_id: pulumi.Input[str],
+             private_key: pulumi.Input[str],
+             pass_phrase: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("host_share_key_name", host_share_key_name)
+        _setter("instance_id", instance_id)
+        _setter("private_key", private_key)
         if pass_phrase is not None:
-            pulumi.set(__self__, "pass_phrase", pass_phrase)
+            _setter("pass_phrase", pass_phrase)
 
     @property
     @pulumi.getter(name="hostShareKeyName")
@@ -98,18 +113,37 @@ class _HostShareKeyState:
         :param pulumi.Input[str] private_key: The private key. The value is a Base64-encoded string.
         :param pulumi.Input[str] private_key_finger_print: The fingerprint of the private key.
         """
+        _HostShareKeyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host_share_key_id=host_share_key_id,
+            host_share_key_name=host_share_key_name,
+            instance_id=instance_id,
+            pass_phrase=pass_phrase,
+            private_key=private_key,
+            private_key_finger_print=private_key_finger_print,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host_share_key_id: Optional[pulumi.Input[str]] = None,
+             host_share_key_name: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             pass_phrase: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             private_key_finger_print: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if host_share_key_id is not None:
-            pulumi.set(__self__, "host_share_key_id", host_share_key_id)
+            _setter("host_share_key_id", host_share_key_id)
         if host_share_key_name is not None:
-            pulumi.set(__self__, "host_share_key_name", host_share_key_name)
+            _setter("host_share_key_name", host_share_key_name)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if pass_phrase is not None:
-            pulumi.set(__self__, "pass_phrase", pass_phrase)
+            _setter("pass_phrase", pass_phrase)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if private_key_finger_print is not None:
-            pulumi.set(__self__, "private_key_finger_print", private_key_finger_print)
+            _setter("private_key_finger_print", private_key_finger_print)
 
     @property
     @pulumi.getter(name="hostShareKeyId")
@@ -329,6 +363,10 @@ class HostShareKey(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HostShareKeyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

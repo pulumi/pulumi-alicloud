@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -74,80 +74,143 @@ class AlertArgs:
         :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
         :param pulumi.Input[str] version: The version of alert, new alert is 2.0.
         """
-        pulumi.set(__self__, "alert_displayname", alert_displayname)
-        pulumi.set(__self__, "alert_name", alert_name)
-        pulumi.set(__self__, "project_name", project_name)
+        AlertArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_displayname=alert_displayname,
+            alert_name=alert_name,
+            project_name=project_name,
+            alert_description=alert_description,
+            annotations=annotations,
+            auto_annotation=auto_annotation,
+            condition=condition,
+            dashboard=dashboard,
+            group_configuration=group_configuration,
+            join_configurations=join_configurations,
+            labels=labels,
+            mute_until=mute_until,
+            no_data_fire=no_data_fire,
+            no_data_severity=no_data_severity,
+            notification_lists=notification_lists,
+            notify_threshold=notify_threshold,
+            policy_configuration=policy_configuration,
+            query_lists=query_lists,
+            schedule=schedule,
+            schedule_interval=schedule_interval,
+            schedule_type=schedule_type,
+            send_resolved=send_resolved,
+            severity_configurations=severity_configurations,
+            template_configuration=template_configuration,
+            threshold=threshold,
+            throttling=throttling,
+            type=type,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_displayname: pulumi.Input[str],
+             alert_name: pulumi.Input[str],
+             project_name: pulumi.Input[str],
+             alert_description: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]]] = None,
+             auto_annotation: Optional[pulumi.Input[bool]] = None,
+             condition: Optional[pulumi.Input[str]] = None,
+             dashboard: Optional[pulumi.Input[str]] = None,
+             group_configuration: Optional[pulumi.Input['AlertGroupConfigurationArgs']] = None,
+             join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]]] = None,
+             mute_until: Optional[pulumi.Input[int]] = None,
+             no_data_fire: Optional[pulumi.Input[bool]] = None,
+             no_data_severity: Optional[pulumi.Input[int]] = None,
+             notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]] = None,
+             notify_threshold: Optional[pulumi.Input[int]] = None,
+             policy_configuration: Optional[pulumi.Input['AlertPolicyConfigurationArgs']] = None,
+             query_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]]] = None,
+             schedule: Optional[pulumi.Input['AlertScheduleArgs']] = None,
+             schedule_interval: Optional[pulumi.Input[str]] = None,
+             schedule_type: Optional[pulumi.Input[str]] = None,
+             send_resolved: Optional[pulumi.Input[bool]] = None,
+             severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]]] = None,
+             template_configuration: Optional[pulumi.Input['AlertTemplateConfigurationArgs']] = None,
+             threshold: Optional[pulumi.Input[int]] = None,
+             throttling: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alert_displayname", alert_displayname)
+        _setter("alert_name", alert_name)
+        _setter("project_name", project_name)
         if alert_description is not None:
-            pulumi.set(__self__, "alert_description", alert_description)
+            _setter("alert_description", alert_description)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if auto_annotation is not None:
-            pulumi.set(__self__, "auto_annotation", auto_annotation)
+            _setter("auto_annotation", auto_annotation)
         if condition is not None:
             warnings.warn("""Deprecated from 1.161.0+, use eval_condition in severity_configurations""", DeprecationWarning)
             pulumi.log.warn("""condition is deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations""")
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if dashboard is not None:
             warnings.warn("""Deprecated from 1.161.0+, use dashboardId in query_list""", DeprecationWarning)
             pulumi.log.warn("""dashboard is deprecated: Deprecated from 1.161.0+, use dashboardId in query_list""")
         if dashboard is not None:
-            pulumi.set(__self__, "dashboard", dashboard)
+            _setter("dashboard", dashboard)
         if group_configuration is not None:
-            pulumi.set(__self__, "group_configuration", group_configuration)
+            _setter("group_configuration", group_configuration)
         if join_configurations is not None:
-            pulumi.set(__self__, "join_configurations", join_configurations)
+            _setter("join_configurations", join_configurations)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if mute_until is not None:
-            pulumi.set(__self__, "mute_until", mute_until)
+            _setter("mute_until", mute_until)
         if no_data_fire is not None:
-            pulumi.set(__self__, "no_data_fire", no_data_fire)
+            _setter("no_data_fire", no_data_fire)
         if no_data_severity is not None:
-            pulumi.set(__self__, "no_data_severity", no_data_severity)
+            _setter("no_data_severity", no_data_severity)
         if notification_lists is not None:
             warnings.warn("""Deprecated from 1.161.0+, use policy_configuration for notification""", DeprecationWarning)
             pulumi.log.warn("""notification_lists is deprecated: Deprecated from 1.161.0+, use policy_configuration for notification""")
         if notification_lists is not None:
-            pulumi.set(__self__, "notification_lists", notification_lists)
+            _setter("notification_lists", notification_lists)
         if notify_threshold is not None:
             warnings.warn("""Deprecated from 1.161.0+, use threshold""", DeprecationWarning)
             pulumi.log.warn("""notify_threshold is deprecated: Deprecated from 1.161.0+, use threshold""")
         if notify_threshold is not None:
-            pulumi.set(__self__, "notify_threshold", notify_threshold)
+            _setter("notify_threshold", notify_threshold)
         if policy_configuration is not None:
-            pulumi.set(__self__, "policy_configuration", policy_configuration)
+            _setter("policy_configuration", policy_configuration)
         if query_lists is not None:
-            pulumi.set(__self__, "query_lists", query_lists)
+            _setter("query_lists", query_lists)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if schedule_interval is not None:
             warnings.warn("""Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
             pulumi.log.warn("""schedule_interval is deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
         if schedule_interval is not None:
-            pulumi.set(__self__, "schedule_interval", schedule_interval)
+            _setter("schedule_interval", schedule_interval)
         if schedule_type is not None:
             warnings.warn("""Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
             pulumi.log.warn("""schedule_type is deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
         if schedule_type is not None:
-            pulumi.set(__self__, "schedule_type", schedule_type)
+            _setter("schedule_type", schedule_type)
         if send_resolved is not None:
-            pulumi.set(__self__, "send_resolved", send_resolved)
+            _setter("send_resolved", send_resolved)
         if severity_configurations is not None:
-            pulumi.set(__self__, "severity_configurations", severity_configurations)
+            _setter("severity_configurations", severity_configurations)
         if template_configuration is not None:
-            pulumi.set(__self__, "template_configuration", template_configuration)
+            _setter("template_configuration", template_configuration)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if throttling is not None:
             warnings.warn("""Deprecated from 1.161.0+, use repeat_interval in policy_configuration""", DeprecationWarning)
             pulumi.log.warn("""throttling is deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration""")
         if throttling is not None:
-            pulumi.set(__self__, "throttling", throttling)
+            _setter("throttling", throttling)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="alertDisplayname")
@@ -565,83 +628,146 @@ class _AlertState:
         :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
         :param pulumi.Input[str] version: The version of alert, new alert is 2.0.
         """
+        _AlertState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alert_description=alert_description,
+            alert_displayname=alert_displayname,
+            alert_name=alert_name,
+            annotations=annotations,
+            auto_annotation=auto_annotation,
+            condition=condition,
+            dashboard=dashboard,
+            group_configuration=group_configuration,
+            join_configurations=join_configurations,
+            labels=labels,
+            mute_until=mute_until,
+            no_data_fire=no_data_fire,
+            no_data_severity=no_data_severity,
+            notification_lists=notification_lists,
+            notify_threshold=notify_threshold,
+            policy_configuration=policy_configuration,
+            project_name=project_name,
+            query_lists=query_lists,
+            schedule=schedule,
+            schedule_interval=schedule_interval,
+            schedule_type=schedule_type,
+            send_resolved=send_resolved,
+            severity_configurations=severity_configurations,
+            template_configuration=template_configuration,
+            threshold=threshold,
+            throttling=throttling,
+            type=type,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alert_description: Optional[pulumi.Input[str]] = None,
+             alert_displayname: Optional[pulumi.Input[str]] = None,
+             alert_name: Optional[pulumi.Input[str]] = None,
+             annotations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertAnnotationArgs']]]] = None,
+             auto_annotation: Optional[pulumi.Input[bool]] = None,
+             condition: Optional[pulumi.Input[str]] = None,
+             dashboard: Optional[pulumi.Input[str]] = None,
+             group_configuration: Optional[pulumi.Input['AlertGroupConfigurationArgs']] = None,
+             join_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertJoinConfigurationArgs']]]] = None,
+             labels: Optional[pulumi.Input[Sequence[pulumi.Input['AlertLabelArgs']]]] = None,
+             mute_until: Optional[pulumi.Input[int]] = None,
+             no_data_fire: Optional[pulumi.Input[bool]] = None,
+             no_data_severity: Optional[pulumi.Input[int]] = None,
+             notification_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlertNotificationListArgs']]]] = None,
+             notify_threshold: Optional[pulumi.Input[int]] = None,
+             policy_configuration: Optional[pulumi.Input['AlertPolicyConfigurationArgs']] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             query_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlertQueryListArgs']]]] = None,
+             schedule: Optional[pulumi.Input['AlertScheduleArgs']] = None,
+             schedule_interval: Optional[pulumi.Input[str]] = None,
+             schedule_type: Optional[pulumi.Input[str]] = None,
+             send_resolved: Optional[pulumi.Input[bool]] = None,
+             severity_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['AlertSeverityConfigurationArgs']]]] = None,
+             template_configuration: Optional[pulumi.Input['AlertTemplateConfigurationArgs']] = None,
+             threshold: Optional[pulumi.Input[int]] = None,
+             throttling: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alert_description is not None:
-            pulumi.set(__self__, "alert_description", alert_description)
+            _setter("alert_description", alert_description)
         if alert_displayname is not None:
-            pulumi.set(__self__, "alert_displayname", alert_displayname)
+            _setter("alert_displayname", alert_displayname)
         if alert_name is not None:
-            pulumi.set(__self__, "alert_name", alert_name)
+            _setter("alert_name", alert_name)
         if annotations is not None:
-            pulumi.set(__self__, "annotations", annotations)
+            _setter("annotations", annotations)
         if auto_annotation is not None:
-            pulumi.set(__self__, "auto_annotation", auto_annotation)
+            _setter("auto_annotation", auto_annotation)
         if condition is not None:
             warnings.warn("""Deprecated from 1.161.0+, use eval_condition in severity_configurations""", DeprecationWarning)
             pulumi.log.warn("""condition is deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations""")
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if dashboard is not None:
             warnings.warn("""Deprecated from 1.161.0+, use dashboardId in query_list""", DeprecationWarning)
             pulumi.log.warn("""dashboard is deprecated: Deprecated from 1.161.0+, use dashboardId in query_list""")
         if dashboard is not None:
-            pulumi.set(__self__, "dashboard", dashboard)
+            _setter("dashboard", dashboard)
         if group_configuration is not None:
-            pulumi.set(__self__, "group_configuration", group_configuration)
+            _setter("group_configuration", group_configuration)
         if join_configurations is not None:
-            pulumi.set(__self__, "join_configurations", join_configurations)
+            _setter("join_configurations", join_configurations)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if mute_until is not None:
-            pulumi.set(__self__, "mute_until", mute_until)
+            _setter("mute_until", mute_until)
         if no_data_fire is not None:
-            pulumi.set(__self__, "no_data_fire", no_data_fire)
+            _setter("no_data_fire", no_data_fire)
         if no_data_severity is not None:
-            pulumi.set(__self__, "no_data_severity", no_data_severity)
+            _setter("no_data_severity", no_data_severity)
         if notification_lists is not None:
             warnings.warn("""Deprecated from 1.161.0+, use policy_configuration for notification""", DeprecationWarning)
             pulumi.log.warn("""notification_lists is deprecated: Deprecated from 1.161.0+, use policy_configuration for notification""")
         if notification_lists is not None:
-            pulumi.set(__self__, "notification_lists", notification_lists)
+            _setter("notification_lists", notification_lists)
         if notify_threshold is not None:
             warnings.warn("""Deprecated from 1.161.0+, use threshold""", DeprecationWarning)
             pulumi.log.warn("""notify_threshold is deprecated: Deprecated from 1.161.0+, use threshold""")
         if notify_threshold is not None:
-            pulumi.set(__self__, "notify_threshold", notify_threshold)
+            _setter("notify_threshold", notify_threshold)
         if policy_configuration is not None:
-            pulumi.set(__self__, "policy_configuration", policy_configuration)
+            _setter("policy_configuration", policy_configuration)
         if project_name is not None:
-            pulumi.set(__self__, "project_name", project_name)
+            _setter("project_name", project_name)
         if query_lists is not None:
-            pulumi.set(__self__, "query_lists", query_lists)
+            _setter("query_lists", query_lists)
         if schedule is not None:
-            pulumi.set(__self__, "schedule", schedule)
+            _setter("schedule", schedule)
         if schedule_interval is not None:
             warnings.warn("""Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
             pulumi.log.warn("""schedule_interval is deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
         if schedule_interval is not None:
-            pulumi.set(__self__, "schedule_interval", schedule_interval)
+            _setter("schedule_interval", schedule_interval)
         if schedule_type is not None:
             warnings.warn("""Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
             pulumi.log.warn("""schedule_type is deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
         if schedule_type is not None:
-            pulumi.set(__self__, "schedule_type", schedule_type)
+            _setter("schedule_type", schedule_type)
         if send_resolved is not None:
-            pulumi.set(__self__, "send_resolved", send_resolved)
+            _setter("send_resolved", send_resolved)
         if severity_configurations is not None:
-            pulumi.set(__self__, "severity_configurations", severity_configurations)
+            _setter("severity_configurations", severity_configurations)
         if template_configuration is not None:
-            pulumi.set(__self__, "template_configuration", template_configuration)
+            _setter("template_configuration", template_configuration)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if throttling is not None:
             warnings.warn("""Deprecated from 1.161.0+, use repeat_interval in policy_configuration""", DeprecationWarning)
             pulumi.log.warn("""throttling is deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration""")
         if throttling is not None:
-            pulumi.set(__self__, "throttling", throttling)
+            _setter("throttling", throttling)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="alertDescription")
@@ -1582,6 +1708,10 @@ class Alert(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AlertArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1633,49 +1763,48 @@ class Alert(pulumi.CustomResource):
             __props__.__dict__["alert_name"] = alert_name
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["auto_annotation"] = auto_annotation
-            if condition is not None and not opts.urn:
-                warnings.warn("""Deprecated from 1.161.0+, use eval_condition in severity_configurations""", DeprecationWarning)
-                pulumi.log.warn("""condition is deprecated: Deprecated from 1.161.0+, use eval_condition in severity_configurations""")
             __props__.__dict__["condition"] = condition
-            if dashboard is not None and not opts.urn:
-                warnings.warn("""Deprecated from 1.161.0+, use dashboardId in query_list""", DeprecationWarning)
-                pulumi.log.warn("""dashboard is deprecated: Deprecated from 1.161.0+, use dashboardId in query_list""")
             __props__.__dict__["dashboard"] = dashboard
+            if group_configuration is not None and not isinstance(group_configuration, AlertGroupConfigurationArgs):
+                group_configuration = group_configuration or {}
+                def _setter(key, value):
+                    group_configuration[key] = value
+                AlertGroupConfigurationArgs._configure(_setter, **group_configuration)
             __props__.__dict__["group_configuration"] = group_configuration
             __props__.__dict__["join_configurations"] = join_configurations
             __props__.__dict__["labels"] = labels
             __props__.__dict__["mute_until"] = mute_until
             __props__.__dict__["no_data_fire"] = no_data_fire
             __props__.__dict__["no_data_severity"] = no_data_severity
-            if notification_lists is not None and not opts.urn:
-                warnings.warn("""Deprecated from 1.161.0+, use policy_configuration for notification""", DeprecationWarning)
-                pulumi.log.warn("""notification_lists is deprecated: Deprecated from 1.161.0+, use policy_configuration for notification""")
             __props__.__dict__["notification_lists"] = notification_lists
-            if notify_threshold is not None and not opts.urn:
-                warnings.warn("""Deprecated from 1.161.0+, use threshold""", DeprecationWarning)
-                pulumi.log.warn("""notify_threshold is deprecated: Deprecated from 1.161.0+, use threshold""")
             __props__.__dict__["notify_threshold"] = notify_threshold
+            if policy_configuration is not None and not isinstance(policy_configuration, AlertPolicyConfigurationArgs):
+                policy_configuration = policy_configuration or {}
+                def _setter(key, value):
+                    policy_configuration[key] = value
+                AlertPolicyConfigurationArgs._configure(_setter, **policy_configuration)
             __props__.__dict__["policy_configuration"] = policy_configuration
             if project_name is None and not opts.urn:
                 raise TypeError("Missing required property 'project_name'")
             __props__.__dict__["project_name"] = project_name
             __props__.__dict__["query_lists"] = query_lists
+            if schedule is not None and not isinstance(schedule, AlertScheduleArgs):
+                schedule = schedule or {}
+                def _setter(key, value):
+                    schedule[key] = value
+                AlertScheduleArgs._configure(_setter, **schedule)
             __props__.__dict__["schedule"] = schedule
-            if schedule_interval is not None and not opts.urn:
-                warnings.warn("""Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
-                pulumi.log.warn("""schedule_interval is deprecated: Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
             __props__.__dict__["schedule_interval"] = schedule_interval
-            if schedule_type is not None and not opts.urn:
-                warnings.warn("""Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""", DeprecationWarning)
-                pulumi.log.warn("""schedule_type is deprecated: Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead.""")
             __props__.__dict__["schedule_type"] = schedule_type
             __props__.__dict__["send_resolved"] = send_resolved
             __props__.__dict__["severity_configurations"] = severity_configurations
+            if template_configuration is not None and not isinstance(template_configuration, AlertTemplateConfigurationArgs):
+                template_configuration = template_configuration or {}
+                def _setter(key, value):
+                    template_configuration[key] = value
+                AlertTemplateConfigurationArgs._configure(_setter, **template_configuration)
             __props__.__dict__["template_configuration"] = template_configuration
             __props__.__dict__["threshold"] = threshold
-            if throttling is not None and not opts.urn:
-                warnings.warn("""Deprecated from 1.161.0+, use repeat_interval in policy_configuration""", DeprecationWarning)
-                pulumi.log.warn("""throttling is deprecated: Deprecated from 1.161.0+, use repeat_interval in policy_configuration""")
             __props__.__dict__["throttling"] = throttling
             __props__.__dict__["type"] = type
             __props__.__dict__["version"] = version

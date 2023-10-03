@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+        /// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
         /// </summary>
         [Input("httpCode")]
         public Input<string>? HttpCode { get; set; }

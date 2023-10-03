@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['Ipv4CidrBlockArgs', 'Ipv4CidrBlock']
@@ -25,8 +25,19 @@ class Ipv4CidrBlockArgs:
                * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         """
-        pulumi.set(__self__, "secondary_cidr_block", secondary_cidr_block)
-        pulumi.set(__self__, "vpc_id", vpc_id)
+        Ipv4CidrBlockArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            secondary_cidr_block=secondary_cidr_block,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             secondary_cidr_block: pulumi.Input[str],
+             vpc_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("secondary_cidr_block", secondary_cidr_block)
+        _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="secondaryCidrBlock")
@@ -71,10 +82,21 @@ class _Ipv4CidrBlockState:
                * The secondary CIDR block cannot overlap with the primary CIDR block or an existing secondary CIDR block.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         """
+        _Ipv4CidrBlockState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            secondary_cidr_block=secondary_cidr_block,
+            vpc_id=vpc_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             secondary_cidr_block: Optional[pulumi.Input[str]] = None,
+             vpc_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if secondary_cidr_block is not None:
-            pulumi.set(__self__, "secondary_cidr_block", secondary_cidr_block)
+            _setter("secondary_cidr_block", secondary_cidr_block)
         if vpc_id is not None:
-            pulumi.set(__self__, "vpc_id", vpc_id)
+            _setter("vpc_id", vpc_id)
 
     @property
     @pulumi.getter(name="secondaryCidrBlock")
@@ -204,6 +226,10 @@ class Ipv4CidrBlock(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            Ipv4CidrBlockArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

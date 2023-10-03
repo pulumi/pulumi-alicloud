@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['LogConfigArgs', 'LogConfig']
@@ -23,9 +23,22 @@ class LogConfigArgs:
         :param pulumi.Input[str] sls_log_store: The name of the Log Store.
         :param pulumi.Input[str] sls_project: The name of the Project.
         """
-        pulumi.set(__self__, "log_type", log_type)
-        pulumi.set(__self__, "sls_log_store", sls_log_store)
-        pulumi.set(__self__, "sls_project", sls_project)
+        LogConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            log_type=log_type,
+            sls_log_store=sls_log_store,
+            sls_project=sls_project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             log_type: pulumi.Input[str],
+             sls_log_store: pulumi.Input[str],
+             sls_project: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("log_type", log_type)
+        _setter("sls_log_store", sls_log_store)
+        _setter("sls_project", sls_project)
 
     @property
     @pulumi.getter(name="logType")
@@ -76,12 +89,25 @@ class _LogConfigState:
         :param pulumi.Input[str] sls_log_store: The name of the Log Store.
         :param pulumi.Input[str] sls_project: The name of the Project.
         """
+        _LogConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            log_type=log_type,
+            sls_log_store=sls_log_store,
+            sls_project=sls_project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             log_type: Optional[pulumi.Input[str]] = None,
+             sls_log_store: Optional[pulumi.Input[str]] = None,
+             sls_project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if log_type is not None:
-            pulumi.set(__self__, "log_type", log_type)
+            _setter("log_type", log_type)
         if sls_log_store is not None:
-            pulumi.set(__self__, "sls_log_store", sls_log_store)
+            _setter("sls_log_store", sls_log_store)
         if sls_project is not None:
-            pulumi.set(__self__, "sls_project", sls_project)
+            _setter("sls_project", sls_project)
 
     @property
     @pulumi.getter(name="logType")
@@ -251,6 +277,10 @@ class LogConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LogConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 
@@ -77,26 +77,53 @@ class ClusterAdditionalVolume(dict):
         :param str volume_protocol: The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
         :param str volume_type: The type of the additional shared storage. Only NAS file systems are supported.
         """
+        ClusterAdditionalVolume._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            job_queue=job_queue,
+            local_directory=local_directory,
+            location=location,
+            remote_directory=remote_directory,
+            roles=roles,
+            volume_id=volume_id,
+            volume_mount_option=volume_mount_option,
+            volume_mountpoint=volume_mountpoint,
+            volume_protocol=volume_protocol,
+            volume_type=volume_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             job_queue: Optional[str] = None,
+             local_directory: Optional[str] = None,
+             location: Optional[str] = None,
+             remote_directory: Optional[str] = None,
+             roles: Optional[Sequence['outputs.ClusterAdditionalVolumeRole']] = None,
+             volume_id: Optional[str] = None,
+             volume_mount_option: Optional[str] = None,
+             volume_mountpoint: Optional[str] = None,
+             volume_protocol: Optional[str] = None,
+             volume_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if job_queue is not None:
-            pulumi.set(__self__, "job_queue", job_queue)
+            _setter("job_queue", job_queue)
         if local_directory is not None:
-            pulumi.set(__self__, "local_directory", local_directory)
+            _setter("local_directory", local_directory)
         if location is not None:
-            pulumi.set(__self__, "location", location)
+            _setter("location", location)
         if remote_directory is not None:
-            pulumi.set(__self__, "remote_directory", remote_directory)
+            _setter("remote_directory", remote_directory)
         if roles is not None:
-            pulumi.set(__self__, "roles", roles)
+            _setter("roles", roles)
         if volume_id is not None:
-            pulumi.set(__self__, "volume_id", volume_id)
+            _setter("volume_id", volume_id)
         if volume_mount_option is not None:
-            pulumi.set(__self__, "volume_mount_option", volume_mount_option)
+            _setter("volume_mount_option", volume_mount_option)
         if volume_mountpoint is not None:
-            pulumi.set(__self__, "volume_mountpoint", volume_mountpoint)
+            _setter("volume_mountpoint", volume_mountpoint)
         if volume_protocol is not None:
-            pulumi.set(__self__, "volume_protocol", volume_protocol)
+            _setter("volume_protocol", volume_protocol)
         if volume_type is not None:
-            pulumi.set(__self__, "volume_type", volume_type)
+            _setter("volume_type", volume_type)
 
     @property
     @pulumi.getter(name="jobQueue")
@@ -186,8 +213,17 @@ class ClusterAdditionalVolumeRole(dict):
         """
         :param str name: The type of the nodes to which the additional file system is attached.
         """
+        ClusterAdditionalVolumeRole._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -205,8 +241,17 @@ class ClusterApplication(dict):
         """
         :param str tag: The tag of the software.
         """
+        ClusterApplication._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            tag=tag,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             tag: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
 
     @property
     @pulumi.getter
@@ -226,10 +271,21 @@ class ClusterPostInstallScript(dict):
         :param str args: The parameter that is used to run the script after the cluster is created.
         :param str url: The URL that is used to download the script after the cluster is created.
         """
+        ClusterPostInstallScript._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            args=args,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             args: Optional[str] = None,
+             url: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if args is not None:
-            pulumi.set(__self__, "args", args)
+            _setter("args", args)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter
@@ -318,38 +374,109 @@ class GetClustersClusterResult(dict):
         :param str vpc_id: The ID of the VPC network.
         :param str vswitch_id: The vswitch id.
         """
-        pulumi.set(__self__, "account_type", account_type)
-        pulumi.set(__self__, "applications", applications)
-        pulumi.set(__self__, "client_version", client_version)
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "compute_count", compute_count)
-        pulumi.set(__self__, "compute_instance_type", compute_instance_type)
-        pulumi.set(__self__, "create_time", create_time)
-        pulumi.set(__self__, "deploy_mode", deploy_mode)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "ha_enable", ha_enable)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "image_id", image_id)
-        pulumi.set(__self__, "image_owner_alias", image_owner_alias)
-        pulumi.set(__self__, "login_count", login_count)
-        pulumi.set(__self__, "login_instance_type", login_instance_type)
-        pulumi.set(__self__, "manager_count", manager_count)
-        pulumi.set(__self__, "manager_instance_type", manager_instance_type)
-        pulumi.set(__self__, "os_tag", os_tag)
-        pulumi.set(__self__, "post_install_scripts", post_install_scripts)
-        pulumi.set(__self__, "remote_directory", remote_directory)
-        pulumi.set(__self__, "scc_cluster_id", scc_cluster_id)
-        pulumi.set(__self__, "scheduler_type", scheduler_type)
-        pulumi.set(__self__, "security_group_id", security_group_id)
-        pulumi.set(__self__, "status", status)
-        pulumi.set(__self__, "volume_id", volume_id)
-        pulumi.set(__self__, "volume_mountpoint", volume_mountpoint)
-        pulumi.set(__self__, "volume_protocol", volume_protocol)
-        pulumi.set(__self__, "volume_type", volume_type)
-        pulumi.set(__self__, "vpc_id", vpc_id)
-        pulumi.set(__self__, "vswitch_id", vswitch_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        GetClustersClusterResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_type=account_type,
+            applications=applications,
+            client_version=client_version,
+            cluster_id=cluster_id,
+            cluster_name=cluster_name,
+            compute_count=compute_count,
+            compute_instance_type=compute_instance_type,
+            create_time=create_time,
+            deploy_mode=deploy_mode,
+            description=description,
+            ha_enable=ha_enable,
+            id=id,
+            image_id=image_id,
+            image_owner_alias=image_owner_alias,
+            login_count=login_count,
+            login_instance_type=login_instance_type,
+            manager_count=manager_count,
+            manager_instance_type=manager_instance_type,
+            os_tag=os_tag,
+            post_install_scripts=post_install_scripts,
+            remote_directory=remote_directory,
+            scc_cluster_id=scc_cluster_id,
+            scheduler_type=scheduler_type,
+            security_group_id=security_group_id,
+            status=status,
+            volume_id=volume_id,
+            volume_mountpoint=volume_mountpoint,
+            volume_protocol=volume_protocol,
+            volume_type=volume_type,
+            vpc_id=vpc_id,
+            vswitch_id=vswitch_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_type: str,
+             applications: Sequence['outputs.GetClustersClusterApplicationResult'],
+             client_version: str,
+             cluster_id: str,
+             cluster_name: str,
+             compute_count: int,
+             compute_instance_type: str,
+             create_time: str,
+             deploy_mode: str,
+             description: str,
+             ha_enable: bool,
+             id: str,
+             image_id: str,
+             image_owner_alias: str,
+             login_count: int,
+             login_instance_type: str,
+             manager_count: int,
+             manager_instance_type: str,
+             os_tag: str,
+             post_install_scripts: Sequence['outputs.GetClustersClusterPostInstallScriptResult'],
+             remote_directory: str,
+             scc_cluster_id: str,
+             scheduler_type: str,
+             security_group_id: str,
+             status: str,
+             volume_id: str,
+             volume_mountpoint: str,
+             volume_protocol: str,
+             volume_type: str,
+             vpc_id: str,
+             vswitch_id: str,
+             zone_id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_type", account_type)
+        _setter("applications", applications)
+        _setter("client_version", client_version)
+        _setter("cluster_id", cluster_id)
+        _setter("cluster_name", cluster_name)
+        _setter("compute_count", compute_count)
+        _setter("compute_instance_type", compute_instance_type)
+        _setter("create_time", create_time)
+        _setter("deploy_mode", deploy_mode)
+        _setter("description", description)
+        _setter("ha_enable", ha_enable)
+        _setter("id", id)
+        _setter("image_id", image_id)
+        _setter("image_owner_alias", image_owner_alias)
+        _setter("login_count", login_count)
+        _setter("login_instance_type", login_instance_type)
+        _setter("manager_count", manager_count)
+        _setter("manager_instance_type", manager_instance_type)
+        _setter("os_tag", os_tag)
+        _setter("post_install_scripts", post_install_scripts)
+        _setter("remote_directory", remote_directory)
+        _setter("scc_cluster_id", scc_cluster_id)
+        _setter("scheduler_type", scheduler_type)
+        _setter("security_group_id", security_group_id)
+        _setter("status", status)
+        _setter("volume_id", volume_id)
+        _setter("volume_mountpoint", volume_mountpoint)
+        _setter("volume_protocol", volume_protocol)
+        _setter("volume_type", volume_type)
+        _setter("vpc_id", vpc_id)
+        _setter("vswitch_id", vswitch_id)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountType")
@@ -605,7 +732,16 @@ class GetClustersClusterResult(dict):
 class GetClustersClusterApplicationResult(dict):
     def __init__(__self__, *,
                  tag: str):
-        pulumi.set(__self__, "tag", tag)
+        GetClustersClusterApplicationResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            tag=tag,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             tag: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("tag", tag)
 
     @property
     @pulumi.getter
@@ -618,8 +754,19 @@ class GetClustersClusterPostInstallScriptResult(dict):
     def __init__(__self__, *,
                  args: str,
                  url: str):
-        pulumi.set(__self__, "args", args)
-        pulumi.set(__self__, "url", url)
+        GetClustersClusterPostInstallScriptResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            args=args,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             args: str,
+             url: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("args", args)
+        _setter("url", url)
 
     @property
     @pulumi.getter
@@ -675,25 +822,70 @@ class GetJobTemplatesTemplateResult(dict):
         :param int thread: A Single Task and the Number of Required Threads.Possible Values: 1~20000.
         :param str variables: The Job of the Environment Variable.
         """
-        pulumi.set(__self__, "array_request", array_request)
-        pulumi.set(__self__, "clock_time", clock_time)
-        pulumi.set(__self__, "command_line", command_line)
-        pulumi.set(__self__, "gpu", gpu)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "job_template_id", job_template_id)
-        pulumi.set(__self__, "job_template_name", job_template_name)
-        pulumi.set(__self__, "mem", mem)
-        pulumi.set(__self__, "node", node)
-        pulumi.set(__self__, "package_path", package_path)
-        pulumi.set(__self__, "priority", priority)
-        pulumi.set(__self__, "queue", queue)
-        pulumi.set(__self__, "re_runable", re_runable)
-        pulumi.set(__self__, "runas_user", runas_user)
-        pulumi.set(__self__, "stderr_redirect_path", stderr_redirect_path)
-        pulumi.set(__self__, "stdout_redirect_path", stdout_redirect_path)
-        pulumi.set(__self__, "task", task)
-        pulumi.set(__self__, "thread", thread)
-        pulumi.set(__self__, "variables", variables)
+        GetJobTemplatesTemplateResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            array_request=array_request,
+            clock_time=clock_time,
+            command_line=command_line,
+            gpu=gpu,
+            id=id,
+            job_template_id=job_template_id,
+            job_template_name=job_template_name,
+            mem=mem,
+            node=node,
+            package_path=package_path,
+            priority=priority,
+            queue=queue,
+            re_runable=re_runable,
+            runas_user=runas_user,
+            stderr_redirect_path=stderr_redirect_path,
+            stdout_redirect_path=stdout_redirect_path,
+            task=task,
+            thread=thread,
+            variables=variables,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             array_request: str,
+             clock_time: str,
+             command_line: str,
+             gpu: int,
+             id: str,
+             job_template_id: str,
+             job_template_name: str,
+             mem: str,
+             node: int,
+             package_path: str,
+             priority: int,
+             queue: str,
+             re_runable: bool,
+             runas_user: str,
+             stderr_redirect_path: str,
+             stdout_redirect_path: str,
+             task: int,
+             thread: int,
+             variables: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("array_request", array_request)
+        _setter("clock_time", clock_time)
+        _setter("command_line", command_line)
+        _setter("gpu", gpu)
+        _setter("id", id)
+        _setter("job_template_id", job_template_id)
+        _setter("job_template_name", job_template_name)
+        _setter("mem", mem)
+        _setter("node", node)
+        _setter("package_path", package_path)
+        _setter("priority", priority)
+        _setter("queue", queue)
+        _setter("re_runable", re_runable)
+        _setter("runas_user", runas_user)
+        _setter("stderr_redirect_path", stderr_redirect_path)
+        _setter("stdout_redirect_path", stdout_redirect_path)
+        _setter("task", task)
+        _setter("thread", thread)
+        _setter("variables", variables)
 
     @property
     @pulumi.getter(name="arrayRequest")

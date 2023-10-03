@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,16 +37,37 @@ class AnycastEipAddressAttachmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]] pop_locations: The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `pop_locations` below.
         :param pulumi.Input[str] private_ip_address: The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
         """
-        pulumi.set(__self__, "anycast_id", anycast_id)
-        pulumi.set(__self__, "bind_instance_id", bind_instance_id)
-        pulumi.set(__self__, "bind_instance_region_id", bind_instance_region_id)
-        pulumi.set(__self__, "bind_instance_type", bind_instance_type)
+        AnycastEipAddressAttachmentArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            anycast_id=anycast_id,
+            bind_instance_id=bind_instance_id,
+            bind_instance_region_id=bind_instance_region_id,
+            bind_instance_type=bind_instance_type,
+            association_mode=association_mode,
+            pop_locations=pop_locations,
+            private_ip_address=private_ip_address,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             anycast_id: pulumi.Input[str],
+             bind_instance_id: pulumi.Input[str],
+             bind_instance_region_id: pulumi.Input[str],
+             bind_instance_type: pulumi.Input[str],
+             association_mode: Optional[pulumi.Input[str]] = None,
+             pop_locations: Optional[pulumi.Input[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]] = None,
+             private_ip_address: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("anycast_id", anycast_id)
+        _setter("bind_instance_id", bind_instance_id)
+        _setter("bind_instance_region_id", bind_instance_region_id)
+        _setter("bind_instance_type", bind_instance_type)
         if association_mode is not None:
-            pulumi.set(__self__, "association_mode", association_mode)
+            _setter("association_mode", association_mode)
         if pop_locations is not None:
-            pulumi.set(__self__, "pop_locations", pop_locations)
+            _setter("pop_locations", pop_locations)
         if private_ip_address is not None:
-            pulumi.set(__self__, "private_ip_address", private_ip_address)
+            _setter("private_ip_address", private_ip_address)
 
     @property
     @pulumi.getter(name="anycastId")
@@ -165,24 +186,49 @@ class _AnycastEipAddressAttachmentState:
         :param pulumi.Input[str] private_ip_address: The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
         :param pulumi.Input[str] status: The status of the bound cloud resource instance. Value:BINDING: BINDING.Bound: Bound.UNBINDING: UNBINDING.DELETED: DELETED.MODIFYING: being modified.
         """
+        _AnycastEipAddressAttachmentState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            anycast_id=anycast_id,
+            association_mode=association_mode,
+            bind_instance_id=bind_instance_id,
+            bind_instance_region_id=bind_instance_region_id,
+            bind_instance_type=bind_instance_type,
+            bind_time=bind_time,
+            pop_locations=pop_locations,
+            private_ip_address=private_ip_address,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             anycast_id: Optional[pulumi.Input[str]] = None,
+             association_mode: Optional[pulumi.Input[str]] = None,
+             bind_instance_id: Optional[pulumi.Input[str]] = None,
+             bind_instance_region_id: Optional[pulumi.Input[str]] = None,
+             bind_instance_type: Optional[pulumi.Input[str]] = None,
+             bind_time: Optional[pulumi.Input[str]] = None,
+             pop_locations: Optional[pulumi.Input[Sequence[pulumi.Input['AnycastEipAddressAttachmentPopLocationArgs']]]] = None,
+             private_ip_address: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if anycast_id is not None:
-            pulumi.set(__self__, "anycast_id", anycast_id)
+            _setter("anycast_id", anycast_id)
         if association_mode is not None:
-            pulumi.set(__self__, "association_mode", association_mode)
+            _setter("association_mode", association_mode)
         if bind_instance_id is not None:
-            pulumi.set(__self__, "bind_instance_id", bind_instance_id)
+            _setter("bind_instance_id", bind_instance_id)
         if bind_instance_region_id is not None:
-            pulumi.set(__self__, "bind_instance_region_id", bind_instance_region_id)
+            _setter("bind_instance_region_id", bind_instance_region_id)
         if bind_instance_type is not None:
-            pulumi.set(__self__, "bind_instance_type", bind_instance_type)
+            _setter("bind_instance_type", bind_instance_type)
         if bind_time is not None:
-            pulumi.set(__self__, "bind_time", bind_time)
+            _setter("bind_time", bind_time)
         if pop_locations is not None:
-            pulumi.set(__self__, "pop_locations", pop_locations)
+            _setter("pop_locations", pop_locations)
         if private_ip_address is not None:
-            pulumi.set(__self__, "private_ip_address", private_ip_address)
+            _setter("private_ip_address", private_ip_address)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="anycastId")
@@ -630,6 +676,10 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AnycastEipAddressAttachmentArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

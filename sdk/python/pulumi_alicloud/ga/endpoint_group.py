@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -54,34 +54,73 @@ class EndpointGroupArgs:
         :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
         :param pulumi.Input[int] traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
         """
-        pulumi.set(__self__, "accelerator_id", accelerator_id)
-        pulumi.set(__self__, "endpoint_configurations", endpoint_configurations)
-        pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
-        pulumi.set(__self__, "listener_id", listener_id)
+        EndpointGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            endpoint_configurations=endpoint_configurations,
+            endpoint_group_region=endpoint_group_region,
+            listener_id=listener_id,
+            description=description,
+            endpoint_group_type=endpoint_group_type,
+            endpoint_request_protocol=endpoint_request_protocol,
+            health_check_interval_seconds=health_check_interval_seconds,
+            health_check_path=health_check_path,
+            health_check_port=health_check_port,
+            health_check_protocol=health_check_protocol,
+            name=name,
+            port_overrides=port_overrides,
+            tags=tags,
+            threshold_count=threshold_count,
+            traffic_percentage=traffic_percentage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: pulumi.Input[str],
+             endpoint_configurations: pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]],
+             endpoint_group_region: pulumi.Input[str],
+             listener_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             endpoint_group_type: Optional[pulumi.Input[str]] = None,
+             endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
+             health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
+             health_check_path: Optional[pulumi.Input[str]] = None,
+             health_check_port: Optional[pulumi.Input[int]] = None,
+             health_check_protocol: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             port_overrides: Optional[pulumi.Input['EndpointGroupPortOverridesArgs']] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             threshold_count: Optional[pulumi.Input[int]] = None,
+             traffic_percentage: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("accelerator_id", accelerator_id)
+        _setter("endpoint_configurations", endpoint_configurations)
+        _setter("endpoint_group_region", endpoint_group_region)
+        _setter("listener_id", listener_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if endpoint_group_type is not None:
-            pulumi.set(__self__, "endpoint_group_type", endpoint_group_type)
+            _setter("endpoint_group_type", endpoint_group_type)
         if endpoint_request_protocol is not None:
-            pulumi.set(__self__, "endpoint_request_protocol", endpoint_request_protocol)
+            _setter("endpoint_request_protocol", endpoint_request_protocol)
         if health_check_interval_seconds is not None:
-            pulumi.set(__self__, "health_check_interval_seconds", health_check_interval_seconds)
+            _setter("health_check_interval_seconds", health_check_interval_seconds)
         if health_check_path is not None:
-            pulumi.set(__self__, "health_check_path", health_check_path)
+            _setter("health_check_path", health_check_path)
         if health_check_port is not None:
-            pulumi.set(__self__, "health_check_port", health_check_port)
+            _setter("health_check_port", health_check_port)
         if health_check_protocol is not None:
-            pulumi.set(__self__, "health_check_protocol", health_check_protocol)
+            _setter("health_check_protocol", health_check_protocol)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port_overrides is not None:
-            pulumi.set(__self__, "port_overrides", port_overrides)
+            _setter("port_overrides", port_overrides)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if threshold_count is not None:
-            pulumi.set(__self__, "threshold_count", threshold_count)
+            _setter("threshold_count", threshold_count)
         if traffic_percentage is not None:
-            pulumi.set(__self__, "traffic_percentage", traffic_percentage)
+            _setter("traffic_percentage", traffic_percentage)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -322,40 +361,81 @@ class _EndpointGroupState:
         :param pulumi.Input[int] threshold_count: The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
         :param pulumi.Input[int] traffic_percentage: The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
         """
+        _EndpointGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            accelerator_id=accelerator_id,
+            description=description,
+            endpoint_configurations=endpoint_configurations,
+            endpoint_group_region=endpoint_group_region,
+            endpoint_group_type=endpoint_group_type,
+            endpoint_request_protocol=endpoint_request_protocol,
+            health_check_interval_seconds=health_check_interval_seconds,
+            health_check_path=health_check_path,
+            health_check_port=health_check_port,
+            health_check_protocol=health_check_protocol,
+            listener_id=listener_id,
+            name=name,
+            port_overrides=port_overrides,
+            status=status,
+            tags=tags,
+            threshold_count=threshold_count,
+            traffic_percentage=traffic_percentage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             accelerator_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             endpoint_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointGroupEndpointConfigurationArgs']]]] = None,
+             endpoint_group_region: Optional[pulumi.Input[str]] = None,
+             endpoint_group_type: Optional[pulumi.Input[str]] = None,
+             endpoint_request_protocol: Optional[pulumi.Input[str]] = None,
+             health_check_interval_seconds: Optional[pulumi.Input[int]] = None,
+             health_check_path: Optional[pulumi.Input[str]] = None,
+             health_check_port: Optional[pulumi.Input[int]] = None,
+             health_check_protocol: Optional[pulumi.Input[str]] = None,
+             listener_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             port_overrides: Optional[pulumi.Input['EndpointGroupPortOverridesArgs']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             threshold_count: Optional[pulumi.Input[int]] = None,
+             traffic_percentage: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if accelerator_id is not None:
-            pulumi.set(__self__, "accelerator_id", accelerator_id)
+            _setter("accelerator_id", accelerator_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if endpoint_configurations is not None:
-            pulumi.set(__self__, "endpoint_configurations", endpoint_configurations)
+            _setter("endpoint_configurations", endpoint_configurations)
         if endpoint_group_region is not None:
-            pulumi.set(__self__, "endpoint_group_region", endpoint_group_region)
+            _setter("endpoint_group_region", endpoint_group_region)
         if endpoint_group_type is not None:
-            pulumi.set(__self__, "endpoint_group_type", endpoint_group_type)
+            _setter("endpoint_group_type", endpoint_group_type)
         if endpoint_request_protocol is not None:
-            pulumi.set(__self__, "endpoint_request_protocol", endpoint_request_protocol)
+            _setter("endpoint_request_protocol", endpoint_request_protocol)
         if health_check_interval_seconds is not None:
-            pulumi.set(__self__, "health_check_interval_seconds", health_check_interval_seconds)
+            _setter("health_check_interval_seconds", health_check_interval_seconds)
         if health_check_path is not None:
-            pulumi.set(__self__, "health_check_path", health_check_path)
+            _setter("health_check_path", health_check_path)
         if health_check_port is not None:
-            pulumi.set(__self__, "health_check_port", health_check_port)
+            _setter("health_check_port", health_check_port)
         if health_check_protocol is not None:
-            pulumi.set(__self__, "health_check_protocol", health_check_protocol)
+            _setter("health_check_protocol", health_check_protocol)
         if listener_id is not None:
-            pulumi.set(__self__, "listener_id", listener_id)
+            _setter("listener_id", listener_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port_overrides is not None:
-            pulumi.set(__self__, "port_overrides", port_overrides)
+            _setter("port_overrides", port_overrides)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tags is not None:
-            pulumi.set(__self__, "tags", tags)
+            _setter("tags", tags)
         if threshold_count is not None:
-            pulumi.set(__self__, "threshold_count", threshold_count)
+            _setter("threshold_count", threshold_count)
         if traffic_percentage is not None:
-            pulumi.set(__self__, "traffic_percentage", traffic_percentage)
+            _setter("traffic_percentage", traffic_percentage)
 
     @property
     @pulumi.getter(name="acceleratorId")
@@ -787,6 +867,10 @@ class EndpointGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EndpointGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -837,6 +921,11 @@ class EndpointGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'listener_id'")
             __props__.__dict__["listener_id"] = listener_id
             __props__.__dict__["name"] = name
+            if port_overrides is not None and not isinstance(port_overrides, EndpointGroupPortOverridesArgs):
+                port_overrides = port_overrides or {}
+                def _setter(key, value):
+                    port_overrides[key] = value
+                EndpointGroupPortOverridesArgs._configure(_setter, **port_overrides)
             __props__.__dict__["port_overrides"] = port_overrides
             __props__.__dict__["tags"] = tags
             __props__.__dict__["threshold_count"] = threshold_count

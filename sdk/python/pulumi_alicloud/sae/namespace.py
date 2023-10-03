@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['NamespaceArgs', 'Namespace']
@@ -27,15 +27,32 @@ class NamespaceArgs:
         :param pulumi.Input[str] namespace_id: The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
         :param pulumi.Input[str] namespace_short_id: The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
         """
-        pulumi.set(__self__, "namespace_name", namespace_name)
+        NamespaceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            namespace_name=namespace_name,
+            enable_micro_registration=enable_micro_registration,
+            namespace_description=namespace_description,
+            namespace_id=namespace_id,
+            namespace_short_id=namespace_short_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             namespace_name: pulumi.Input[str],
+             enable_micro_registration: Optional[pulumi.Input[bool]] = None,
+             namespace_description: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             namespace_short_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("namespace_name", namespace_name)
         if enable_micro_registration is not None:
-            pulumi.set(__self__, "enable_micro_registration", enable_micro_registration)
+            _setter("enable_micro_registration", enable_micro_registration)
         if namespace_description is not None:
-            pulumi.set(__self__, "namespace_description", namespace_description)
+            _setter("namespace_description", namespace_description)
         if namespace_id is not None:
-            pulumi.set(__self__, "namespace_id", namespace_id)
+            _setter("namespace_id", namespace_id)
         if namespace_short_id is not None:
-            pulumi.set(__self__, "namespace_short_id", namespace_short_id)
+            _setter("namespace_short_id", namespace_short_id)
 
     @property
     @pulumi.getter(name="namespaceName")
@@ -114,16 +131,33 @@ class _NamespaceState:
         :param pulumi.Input[str] namespace_name: The Name of Namespace.
         :param pulumi.Input[str] namespace_short_id: The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
         """
+        _NamespaceState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enable_micro_registration=enable_micro_registration,
+            namespace_description=namespace_description,
+            namespace_id=namespace_id,
+            namespace_name=namespace_name,
+            namespace_short_id=namespace_short_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enable_micro_registration: Optional[pulumi.Input[bool]] = None,
+             namespace_description: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             namespace_name: Optional[pulumi.Input[str]] = None,
+             namespace_short_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enable_micro_registration is not None:
-            pulumi.set(__self__, "enable_micro_registration", enable_micro_registration)
+            _setter("enable_micro_registration", enable_micro_registration)
         if namespace_description is not None:
-            pulumi.set(__self__, "namespace_description", namespace_description)
+            _setter("namespace_description", namespace_description)
         if namespace_id is not None:
-            pulumi.set(__self__, "namespace_id", namespace_id)
+            _setter("namespace_id", namespace_id)
         if namespace_name is not None:
-            pulumi.set(__self__, "namespace_name", namespace_name)
+            _setter("namespace_name", namespace_name)
         if namespace_short_id is not None:
-            pulumi.set(__self__, "namespace_short_id", namespace_short_id)
+            _setter("namespace_short_id", namespace_short_id)
 
     @property
     @pulumi.getter(name="enableMicroRegistration")
@@ -299,6 +333,10 @@ class Namespace(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NamespaceArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

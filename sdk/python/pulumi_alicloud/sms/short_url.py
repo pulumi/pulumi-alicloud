@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ShortUrlArgs', 'ShortUrl']
@@ -23,9 +23,22 @@ class ShortUrlArgs:
         :param pulumi.Input[str] short_url_name: The name of the resource.
         :param pulumi.Input[str] source_url: The original link address.
         """
-        pulumi.set(__self__, "effective_days", effective_days)
-        pulumi.set(__self__, "short_url_name", short_url_name)
-        pulumi.set(__self__, "source_url", source_url)
+        ShortUrlArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            effective_days=effective_days,
+            short_url_name=short_url_name,
+            source_url=source_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             effective_days: pulumi.Input[int],
+             short_url_name: pulumi.Input[str],
+             source_url: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("effective_days", effective_days)
+        _setter("short_url_name", short_url_name)
+        _setter("source_url", source_url)
 
     @property
     @pulumi.getter(name="effectiveDays")
@@ -78,14 +91,29 @@ class _ShortUrlState:
         :param pulumi.Input[str] source_url: The original link address.
         :param pulumi.Input[str] status: Short chain status.
         """
+        _ShortUrlState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            effective_days=effective_days,
+            short_url_name=short_url_name,
+            source_url=source_url,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             effective_days: Optional[pulumi.Input[int]] = None,
+             short_url_name: Optional[pulumi.Input[str]] = None,
+             source_url: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if effective_days is not None:
-            pulumi.set(__self__, "effective_days", effective_days)
+            _setter("effective_days", effective_days)
         if short_url_name is not None:
-            pulumi.set(__self__, "short_url_name", short_url_name)
+            _setter("short_url_name", short_url_name)
         if source_url is not None:
-            pulumi.set(__self__, "source_url", source_url)
+            _setter("source_url", source_url)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="effectiveDays")
@@ -225,6 +253,10 @@ class ShortUrl(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ShortUrlArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

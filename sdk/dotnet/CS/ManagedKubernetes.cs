@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.CS
         public Output<Outputs.ManagedKubernetesMaintenanceWindow> MaintenanceWindow { get; private set; } = null!;
 
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// This parameter specifies the name of the component.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -728,7 +728,7 @@ namespace Pulumi.AliCloud.CS
         public Input<Inputs.ManagedKubernetesMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// This parameter specifies the name of the component.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -1248,7 +1248,7 @@ namespace Pulumi.AliCloud.CS
         public Input<Inputs.ManagedKubernetesMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
-        /// The kubernetes cluster's name. It is unique in one Alicloud account.
+        /// This parameter specifies the name of the component.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

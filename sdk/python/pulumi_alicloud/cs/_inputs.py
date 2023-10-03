@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -61,14 +61,29 @@ class ApplicationServiceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
+        ApplicationServiceArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            status=status,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -115,16 +130,33 @@ class ClusterNodeArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
+        ClusterNodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            eip=eip,
+            id=id,
+            name=name,
+            private_ip=private_ip,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             eip: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if eip is not None:
-            pulumi.set(__self__, "eip", eip)
+            _setter("eip", eip)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -185,12 +217,25 @@ class EdgeKubernetesAddonArgs:
                The following example is the definition of addons block, The type of this field is list:
         :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
+        EdgeKubernetesAddonArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            disabled=disabled,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -242,12 +287,25 @@ class EdgeKubernetesCertificateAuthorityArgs:
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
+        EdgeKubernetesCertificateAuthorityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_cert=client_cert,
+            client_key=client_key,
+            cluster_cert=cluster_cert,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_cert: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             cluster_cert: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if cluster_cert is not None:
-            pulumi.set(__self__, "cluster_cert", cluster_cert)
+            _setter("cluster_cert", cluster_cert)
 
     @property
     @pulumi.getter(name="clientCert")
@@ -299,14 +357,29 @@ class EdgeKubernetesConnectionsArgs:
         :param pulumi.Input[str] master_public_ip: Master node SSH IP address.
         :param pulumi.Input[str] service_domain: Service Access Domain.
         """
+        EdgeKubernetesConnectionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_server_internet=api_server_internet,
+            api_server_intranet=api_server_intranet,
+            master_public_ip=master_public_ip,
+            service_domain=service_domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_server_internet: Optional[pulumi.Input[str]] = None,
+             api_server_intranet: Optional[pulumi.Input[str]] = None,
+             master_public_ip: Optional[pulumi.Input[str]] = None,
+             service_domain: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_server_internet is not None:
-            pulumi.set(__self__, "api_server_internet", api_server_internet)
+            _setter("api_server_internet", api_server_internet)
         if api_server_intranet is not None:
-            pulumi.set(__self__, "api_server_intranet", api_server_intranet)
+            _setter("api_server_intranet", api_server_intranet)
         if master_public_ip is not None:
-            pulumi.set(__self__, "master_public_ip", master_public_ip)
+            _setter("master_public_ip", master_public_ip)
         if service_domain is not None:
-            pulumi.set(__self__, "service_domain", service_domain)
+            _setter("service_domain", service_domain)
 
     @property
     @pulumi.getter(name="apiServerInternet")
@@ -366,9 +439,20 @@ class EdgeKubernetesLogConfigArgs:
         :param pulumi.Input[str] type: Type of collecting logs, only `SLS` are supported currently.
         :param pulumi.Input[str] project: Log Service project name, cluster logs will output to this project.
         """
-        pulumi.set(__self__, "type", type)
+        EdgeKubernetesLogConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            type=type,
+            project=project,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             type: pulumi.Input[str],
+             project: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("type", type)
         if project is not None:
-            pulumi.set(__self__, "project", project)
+            _setter("project", project)
 
     @property
     @pulumi.getter
@@ -404,10 +488,21 @@ class EdgeKubernetesRuntimeArgs:
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         """
+        EdgeKubernetesRuntimeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -457,24 +552,49 @@ class EdgeKubernetesWorkerDataDiskArgs:
         :param pulumi.Input[str] size: The size of a data disk, at least 40. Unit: GiB.
         :param pulumi.Input[str] snapshot_id: The id of snapshot.
         """
+        EdgeKubernetesWorkerDataDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            category=category,
+            device=device,
+            encrypted=encrypted,
+            kms_key_id=kms_key_id,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             device: Optional[pulumi.Input[str]] = None,
+             encrypted: Optional[pulumi.Input[str]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[str]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -596,12 +716,25 @@ class EdgeKubernetesWorkerNodeArgs:
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[str] private_ip: The private IP address of node.
         """
+        EdgeKubernetesWorkerNodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            private_ip=private_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
 
     @property
     @pulumi.getter
@@ -653,12 +786,25 @@ class KubernetesAddonArgs:
                The following example is the definition of addons block, The type of this field is list:
         :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
+        KubernetesAddonArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            disabled=disabled,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -710,12 +856,25 @@ class KubernetesAutoscalerNodepoolArgs:
         :param pulumi.Input[str] labels: The labels for the nodes in scaling group.
         :param pulumi.Input[str] taints: The taints for the nodes in scaling group.
         """
+        KubernetesAutoscalerNodepoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            labels=labels,
+            taints=taints,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[str]] = None,
+             labels: Optional[pulumi.Input[str]] = None,
+             taints: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if labels is not None:
-            pulumi.set(__self__, "labels", labels)
+            _setter("labels", labels)
         if taints is not None:
-            pulumi.set(__self__, "taints", taints)
+            _setter("taints", taints)
 
     @property
     @pulumi.getter
@@ -765,12 +924,25 @@ class KubernetesCertificateAuthorityArgs:
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
+        KubernetesCertificateAuthorityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_cert=client_cert,
+            client_key=client_key,
+            cluster_cert=cluster_cert,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_cert: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             cluster_cert: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if cluster_cert is not None:
-            pulumi.set(__self__, "cluster_cert", cluster_cert)
+            _setter("cluster_cert", cluster_cert)
 
     @property
     @pulumi.getter(name="clientCert")
@@ -822,14 +994,29 @@ class KubernetesConnectionsArgs:
         :param pulumi.Input[str] master_public_ip: Master node SSH IP address.
         :param pulumi.Input[str] service_domain: Service Access Domain.
         """
+        KubernetesConnectionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_server_internet=api_server_internet,
+            api_server_intranet=api_server_intranet,
+            master_public_ip=master_public_ip,
+            service_domain=service_domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_server_internet: Optional[pulumi.Input[str]] = None,
+             api_server_intranet: Optional[pulumi.Input[str]] = None,
+             master_public_ip: Optional[pulumi.Input[str]] = None,
+             service_domain: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_server_internet is not None:
-            pulumi.set(__self__, "api_server_internet", api_server_internet)
+            _setter("api_server_internet", api_server_internet)
         if api_server_intranet is not None:
-            pulumi.set(__self__, "api_server_intranet", api_server_intranet)
+            _setter("api_server_intranet", api_server_intranet)
         if master_public_ip is not None:
-            pulumi.set(__self__, "master_public_ip", master_public_ip)
+            _setter("master_public_ip", master_public_ip)
         if service_domain is not None:
-            pulumi.set(__self__, "service_domain", service_domain)
+            _setter("service_domain", service_domain)
 
     @property
     @pulumi.getter(name="apiServerInternet")
@@ -891,12 +1078,25 @@ class KubernetesMasterNodeArgs:
         :param pulumi.Input[str] name: The name of a node.
         :param pulumi.Input[str] private_ip: The private ip of a node.
         """
+        KubernetesMasterNodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            private_ip=private_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
 
     @property
     @pulumi.getter
@@ -952,15 +1152,34 @@ class KubernetesPermissionPermissionArgs:
         :param pulumi.Input[bool] is_ram_role: Specifies whether the permissions are granted to a RAM role. When `uid` is ram role id, the value of `is_ram_role` must be `true`.
         :param pulumi.Input[str] namespace: The namespace to which the permissions are scoped. This parameter is required only if you set role_type to namespace.
         """
-        pulumi.set(__self__, "cluster", cluster)
-        pulumi.set(__self__, "role_name", role_name)
-        pulumi.set(__self__, "role_type", role_type)
+        KubernetesPermissionPermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cluster=cluster,
+            role_name=role_name,
+            role_type=role_type,
+            is_custom=is_custom,
+            is_ram_role=is_ram_role,
+            namespace=namespace,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cluster: pulumi.Input[str],
+             role_name: pulumi.Input[str],
+             role_type: pulumi.Input[str],
+             is_custom: Optional[pulumi.Input[bool]] = None,
+             is_ram_role: Optional[pulumi.Input[bool]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("cluster", cluster)
+        _setter("role_name", role_name)
+        _setter("role_type", role_type)
         if is_custom is not None:
-            pulumi.set(__self__, "is_custom", is_custom)
+            _setter("is_custom", is_custom)
         if is_ram_role is not None:
-            pulumi.set(__self__, "is_ram_role", is_ram_role)
+            _setter("is_ram_role", is_ram_role)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
 
     @property
     @pulumi.getter
@@ -1044,10 +1263,21 @@ class KubernetesRuntimeArgs:
         :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         """
+        KubernetesRuntimeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
@@ -1085,12 +1315,25 @@ class KubernetesTaintArgs:
         :param pulumi.Input[str] key: The key of a taint.
         :param pulumi.Input[str] value: The key of a taint.
         """
+        KubernetesTaintArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            effect=effect,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             effect: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if effect is not None:
-            pulumi.set(__self__, "effect", effect)
+            _setter("effect", effect)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1152,24 +1395,49 @@ class KubernetesWorkerDataDiskArgs:
         :param pulumi.Input[str] size: The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
         :param pulumi.Input[str] snapshot_id: The id of snapshot.
         """
+        KubernetesWorkerDataDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            category=category,
+            device=device,
+            encrypted=encrypted,
+            kms_key_id=kms_key_id,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             device: Optional[pulumi.Input[str]] = None,
+             encrypted: Optional[pulumi.Input[str]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[str]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -1291,12 +1559,25 @@ class KubernetesWorkerNodeArgs:
         :param pulumi.Input[str] name: Node name.
         :param pulumi.Input[str] private_ip: The private IP address of node.
         """
+        KubernetesWorkerNodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            private_ip=private_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
 
     @property
     @pulumi.getter
@@ -1359,12 +1640,25 @@ class ManagedKubernetesAddonArgs:
                The `varibales.tf`:
         :param pulumi.Input[str] name: This parameter specifies the name of the component.
         """
+        ManagedKubernetesAddonArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            disabled=disabled,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -1427,12 +1721,25 @@ class ManagedKubernetesCertificateAuthorityArgs:
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
+        ManagedKubernetesCertificateAuthorityArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            client_cert=client_cert,
+            client_key=client_key,
+            cluster_cert=cluster_cert,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             client_cert: Optional[pulumi.Input[str]] = None,
+             client_key: Optional[pulumi.Input[str]] = None,
+             cluster_cert: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if client_cert is not None:
-            pulumi.set(__self__, "client_cert", client_cert)
+            _setter("client_cert", client_cert)
         if client_key is not None:
-            pulumi.set(__self__, "client_key", client_key)
+            _setter("client_key", client_key)
         if cluster_cert is not None:
-            pulumi.set(__self__, "cluster_cert", cluster_cert)
+            _setter("cluster_cert", cluster_cert)
 
     @property
     @pulumi.getter(name="clientCert")
@@ -1484,14 +1791,29 @@ class ManagedKubernetesConnectionsArgs:
         :param pulumi.Input[str] master_public_ip: Master node SSH IP address.
         :param pulumi.Input[str] service_domain: Service Access Domain.
         """
+        ManagedKubernetesConnectionsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_server_internet=api_server_internet,
+            api_server_intranet=api_server_intranet,
+            master_public_ip=master_public_ip,
+            service_domain=service_domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_server_internet: Optional[pulumi.Input[str]] = None,
+             api_server_intranet: Optional[pulumi.Input[str]] = None,
+             master_public_ip: Optional[pulumi.Input[str]] = None,
+             service_domain: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_server_internet is not None:
-            pulumi.set(__self__, "api_server_internet", api_server_internet)
+            _setter("api_server_internet", api_server_internet)
         if api_server_intranet is not None:
-            pulumi.set(__self__, "api_server_intranet", api_server_intranet)
+            _setter("api_server_intranet", api_server_intranet)
         if master_public_ip is not None:
-            pulumi.set(__self__, "master_public_ip", master_public_ip)
+            _setter("master_public_ip", master_public_ip)
         if service_domain is not None:
-            pulumi.set(__self__, "service_domain", service_domain)
+            _setter("service_domain", service_domain)
 
     @property
     @pulumi.getter(name="apiServerInternet")
@@ -1560,10 +1882,25 @@ class ManagedKubernetesMaintenanceWindowArgs:
                import pulumi
                ```
         """
-        pulumi.set(__self__, "duration", duration)
-        pulumi.set(__self__, "enable", enable)
-        pulumi.set(__self__, "maintenance_time", maintenance_time)
-        pulumi.set(__self__, "weekly_period", weekly_period)
+        ManagedKubernetesMaintenanceWindowArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            duration=duration,
+            enable=enable,
+            maintenance_time=maintenance_time,
+            weekly_period=weekly_period,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             duration: pulumi.Input[str],
+             enable: pulumi.Input[bool],
+             maintenance_time: pulumi.Input[str],
+             weekly_period: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("duration", duration)
+        _setter("enable", enable)
+        _setter("maintenance_time", maintenance_time)
+        _setter("weekly_period", weekly_period)
 
     @property
     @pulumi.getter
@@ -1632,14 +1969,29 @@ class ManagedKubernetesRrsaMetadataArgs:
         :param pulumi.Input[str] ram_oidc_provider_name: The name of OIDC Provider that was registered in RAM.
         :param pulumi.Input[str] rrsa_oidc_issuer_url: The issuer URL of RRSA OIDC Token.
         """
+        ManagedKubernetesRrsaMetadataArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            ram_oidc_provider_arn=ram_oidc_provider_arn,
+            ram_oidc_provider_name=ram_oidc_provider_name,
+            rrsa_oidc_issuer_url=rrsa_oidc_issuer_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             ram_oidc_provider_arn: Optional[pulumi.Input[str]] = None,
+             ram_oidc_provider_name: Optional[pulumi.Input[str]] = None,
+             rrsa_oidc_issuer_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if ram_oidc_provider_arn is not None:
-            pulumi.set(__self__, "ram_oidc_provider_arn", ram_oidc_provider_arn)
+            _setter("ram_oidc_provider_arn", ram_oidc_provider_arn)
         if ram_oidc_provider_name is not None:
-            pulumi.set(__self__, "ram_oidc_provider_name", ram_oidc_provider_name)
+            _setter("ram_oidc_provider_name", ram_oidc_provider_name)
         if rrsa_oidc_issuer_url is not None:
-            pulumi.set(__self__, "rrsa_oidc_issuer_url", rrsa_oidc_issuer_url)
+            _setter("rrsa_oidc_issuer_url", rrsa_oidc_issuer_url)
 
     @property
     @pulumi.getter
@@ -1696,19 +2048,30 @@ class ManagedKubernetesRuntimeArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[str] name: This parameter specifies the name of the component.
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         """
+        ManagedKubernetesRuntimeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        This parameter specifies the name of the component.
         """
         return pulumi.get(self, "name")
 
@@ -1760,12 +2123,25 @@ class ManagedKubernetesTaintArgs:
         :param pulumi.Input[str] key: The taint key.
         :param pulumi.Input[str] value: The taint value.
         """
+        ManagedKubernetesTaintArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            effect=effect,
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             effect: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if effect is not None:
-            pulumi.set(__self__, "effect", effect)
+            _setter("effect", effect)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -1847,24 +2223,49 @@ class ManagedKubernetesWorkerDataDiskArgs:
         :param pulumi.Input[str] size: (Optional)The size of a data disk, at least 40. Unit: GiB.
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
         """
+        ManagedKubernetesWorkerDataDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            category=category,
+            device=device,
+            encrypted=encrypted,
+            kms_key_id=kms_key_id,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             device: Optional[pulumi.Input[str]] = None,
+             encrypted: Optional[pulumi.Input[str]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[str]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -1983,15 +2384,28 @@ class ManagedKubernetesWorkerNodeArgs:
                  private_ip: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] id: (Deprecated from version 1.177.0) ID of the node.
-        :param pulumi.Input[str] name: The kubernetes cluster's name. It is unique in one Alicloud account.
+        :param pulumi.Input[str] name: This parameter specifies the name of the component.
         :param pulumi.Input[str] private_ip: (Deprecated from version 1.177.0) The private IP address of node.
         """
+        ManagedKubernetesWorkerNodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            id=id,
+            name=name,
+            private_ip=private_ip,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
 
     @property
     @pulumi.getter
@@ -2009,7 +2423,7 @@ class ManagedKubernetesWorkerNodeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The kubernetes cluster's name. It is unique in one Alicloud account.
+        This parameter specifies the name of the component.
         """
         return pulumi.get(self, "name")
 
@@ -2053,24 +2467,49 @@ class NodePoolDataDiskArgs:
         :param pulumi.Input[int] size: The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
         :param pulumi.Input[str] snapshot_id: The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
         """
+        NodePoolDataDiskArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_snapshot_policy_id=auto_snapshot_policy_id,
+            category=category,
+            device=device,
+            encrypted=encrypted,
+            kms_key_id=kms_key_id,
+            name=name,
+            performance_level=performance_level,
+            size=size,
+            snapshot_id=snapshot_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_snapshot_policy_id: Optional[pulumi.Input[str]] = None,
+             category: Optional[pulumi.Input[str]] = None,
+             device: Optional[pulumi.Input[str]] = None,
+             encrypted: Optional[pulumi.Input[str]] = None,
+             kms_key_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             performance_level: Optional[pulumi.Input[str]] = None,
+             size: Optional[pulumi.Input[int]] = None,
+             snapshot_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_snapshot_policy_id is not None:
-            pulumi.set(__self__, "auto_snapshot_policy_id", auto_snapshot_policy_id)
+            _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if device is not None:
-            pulumi.set(__self__, "device", device)
+            _setter("device", device)
         if encrypted is not None:
-            pulumi.set(__self__, "encrypted", encrypted)
+            _setter("encrypted", encrypted)
         if kms_key_id is not None:
-            pulumi.set(__self__, "kms_key_id", kms_key_id)
+            _setter("kms_key_id", kms_key_id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if performance_level is not None:
-            pulumi.set(__self__, "performance_level", performance_level)
+            _setter("performance_level", performance_level)
         if size is not None:
-            pulumi.set(__self__, "size", size)
+            _setter("size", size)
         if snapshot_id is not None:
-            pulumi.set(__self__, "snapshot_id", snapshot_id)
+            _setter("snapshot_id", snapshot_id)
 
     @property
     @pulumi.getter(name="autoSnapshotPolicyId")
@@ -2212,32 +2651,65 @@ class NodePoolKubeletConfigurationArgs:
         :param pulumi.Input[str] serialize_image_pulls: Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
         :param pulumi.Input[Mapping[str, Any]] system_reserved: Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
         """
+        NodePoolKubeletConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            cpu_manager_policy=cpu_manager_policy,
+            event_burst=event_burst,
+            event_record_qps=event_record_qps,
+            eviction_hard=eviction_hard,
+            eviction_soft=eviction_soft,
+            eviction_soft_grace_period=eviction_soft_grace_period,
+            kube_api_burst=kube_api_burst,
+            kube_api_qps=kube_api_qps,
+            kube_reserved=kube_reserved,
+            registry_burst=registry_burst,
+            registry_pull_qps=registry_pull_qps,
+            serialize_image_pulls=serialize_image_pulls,
+            system_reserved=system_reserved,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             cpu_manager_policy: Optional[pulumi.Input[str]] = None,
+             event_burst: Optional[pulumi.Input[str]] = None,
+             event_record_qps: Optional[pulumi.Input[str]] = None,
+             eviction_hard: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             eviction_soft: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             eviction_soft_grace_period: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             kube_api_burst: Optional[pulumi.Input[str]] = None,
+             kube_api_qps: Optional[pulumi.Input[str]] = None,
+             kube_reserved: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             registry_burst: Optional[pulumi.Input[str]] = None,
+             registry_pull_qps: Optional[pulumi.Input[str]] = None,
+             serialize_image_pulls: Optional[pulumi.Input[str]] = None,
+             system_reserved: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if cpu_manager_policy is not None:
-            pulumi.set(__self__, "cpu_manager_policy", cpu_manager_policy)
+            _setter("cpu_manager_policy", cpu_manager_policy)
         if event_burst is not None:
-            pulumi.set(__self__, "event_burst", event_burst)
+            _setter("event_burst", event_burst)
         if event_record_qps is not None:
-            pulumi.set(__self__, "event_record_qps", event_record_qps)
+            _setter("event_record_qps", event_record_qps)
         if eviction_hard is not None:
-            pulumi.set(__self__, "eviction_hard", eviction_hard)
+            _setter("eviction_hard", eviction_hard)
         if eviction_soft is not None:
-            pulumi.set(__self__, "eviction_soft", eviction_soft)
+            _setter("eviction_soft", eviction_soft)
         if eviction_soft_grace_period is not None:
-            pulumi.set(__self__, "eviction_soft_grace_period", eviction_soft_grace_period)
+            _setter("eviction_soft_grace_period", eviction_soft_grace_period)
         if kube_api_burst is not None:
-            pulumi.set(__self__, "kube_api_burst", kube_api_burst)
+            _setter("kube_api_burst", kube_api_burst)
         if kube_api_qps is not None:
-            pulumi.set(__self__, "kube_api_qps", kube_api_qps)
+            _setter("kube_api_qps", kube_api_qps)
         if kube_reserved is not None:
-            pulumi.set(__self__, "kube_reserved", kube_reserved)
+            _setter("kube_reserved", kube_reserved)
         if registry_burst is not None:
-            pulumi.set(__self__, "registry_burst", registry_burst)
+            _setter("registry_burst", registry_burst)
         if registry_pull_qps is not None:
-            pulumi.set(__self__, "registry_pull_qps", registry_pull_qps)
+            _setter("registry_pull_qps", registry_pull_qps)
         if serialize_image_pulls is not None:
-            pulumi.set(__self__, "serialize_image_pulls", serialize_image_pulls)
+            _setter("serialize_image_pulls", serialize_image_pulls)
         if system_reserved is not None:
-            pulumi.set(__self__, "system_reserved", system_reserved)
+            _setter("system_reserved", system_reserved)
 
     @property
     @pulumi.getter(name="cpuManagerPolicy")
@@ -2405,9 +2877,20 @@ class NodePoolLabelArgs:
         :param pulumi.Input[str] key: The label key.
         :param pulumi.Input[str] value: The label value.
         """
-        pulumi.set(__self__, "key", key)
+        NodePoolLabelArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -2449,15 +2932,32 @@ class NodePoolManagementArgs:
         :param pulumi.Input[int] surge: Number of additional nodes. You have to specify one of surge, surge_percentage.
         :param pulumi.Input[int] surge_percentage: Proportion of additional nodes. You have to specify one of surge, surge_percentage.
         """
-        pulumi.set(__self__, "max_unavailable", max_unavailable)
+        NodePoolManagementArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_unavailable=max_unavailable,
+            auto_repair=auto_repair,
+            auto_upgrade=auto_upgrade,
+            surge=surge,
+            surge_percentage=surge_percentage,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_unavailable: pulumi.Input[int],
+             auto_repair: Optional[pulumi.Input[bool]] = None,
+             auto_upgrade: Optional[pulumi.Input[bool]] = None,
+             surge: Optional[pulumi.Input[int]] = None,
+             surge_percentage: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max_unavailable", max_unavailable)
         if auto_repair is not None:
-            pulumi.set(__self__, "auto_repair", auto_repair)
+            _setter("auto_repair", auto_repair)
         if auto_upgrade is not None:
-            pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+            _setter("auto_upgrade", auto_upgrade)
         if surge is not None:
-            pulumi.set(__self__, "surge", surge)
+            _setter("surge", surge)
         if surge_percentage is not None:
-            pulumi.set(__self__, "surge_percentage", surge_percentage)
+            _setter("surge_percentage", surge_percentage)
 
     @property
     @pulumi.getter(name="maxUnavailable")
@@ -2527,8 +3027,17 @@ class NodePoolRollingPolicyArgs:
         """
         :param pulumi.Input[int] max_parallelism: Maximum parallel number nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used.
         """
+        NodePoolRollingPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_parallelism=max_parallelism,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_parallelism: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_parallelism is not None:
-            pulumi.set(__self__, "max_parallelism", max_parallelism)
+            _setter("max_parallelism", max_parallelism)
 
     @property
     @pulumi.getter(name="maxParallelism")
@@ -2550,8 +3059,17 @@ class NodePoolRolloutPolicyArgs:
         """
         :param pulumi.Input[int] max_unavailable: Maximum number of unavailable nodes during rolling upgrade. The value of this field should be greater than `0`, and if it's set to a number less than or equal to `0`, the default setting will be used. Please use `max_parallelism` to instead it from provider version 1.185.0.
         """
+        NodePoolRolloutPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_unavailable=max_unavailable,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_unavailable: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if max_unavailable is not None:
-            pulumi.set(__self__, "max_unavailable", max_unavailable)
+            _setter("max_unavailable", max_unavailable)
 
     @property
     @pulumi.getter(name="maxUnavailable")
@@ -2583,16 +3101,35 @@ class NodePoolScalingConfigArgs:
         :param pulumi.Input[bool] is_bond_eip: Whether to bind EIP for an instance. Default: `false`.
         :param pulumi.Input[str] type: Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
         """
-        pulumi.set(__self__, "max_size", max_size)
-        pulumi.set(__self__, "min_size", min_size)
+        NodePoolScalingConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            max_size=max_size,
+            min_size=min_size,
+            eip_bandwidth=eip_bandwidth,
+            eip_internet_charge_type=eip_internet_charge_type,
+            is_bond_eip=is_bond_eip,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             max_size: pulumi.Input[int],
+             min_size: pulumi.Input[int],
+             eip_bandwidth: Optional[pulumi.Input[int]] = None,
+             eip_internet_charge_type: Optional[pulumi.Input[str]] = None,
+             is_bond_eip: Optional[pulumi.Input[bool]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("max_size", max_size)
+        _setter("min_size", min_size)
         if eip_bandwidth is not None:
-            pulumi.set(__self__, "eip_bandwidth", eip_bandwidth)
+            _setter("eip_bandwidth", eip_bandwidth)
         if eip_internet_charge_type is not None:
-            pulumi.set(__self__, "eip_internet_charge_type", eip_internet_charge_type)
+            _setter("eip_internet_charge_type", eip_internet_charge_type)
         if is_bond_eip is not None:
-            pulumi.set(__self__, "is_bond_eip", is_bond_eip)
+            _setter("is_bond_eip", is_bond_eip)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="maxSize")
@@ -2676,10 +3213,21 @@ class NodePoolSpotPriceLimitArgs:
         :param pulumi.Input[str] instance_type: Spot instance type.
         :param pulumi.Input[str] price_limit: The maximum hourly price of the spot instance. A maximum of three decimal places are allowed.
         """
+        NodePoolSpotPriceLimitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            instance_type=instance_type,
+            price_limit=price_limit,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             instance_type: Optional[pulumi.Input[str]] = None,
+             price_limit: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if instance_type is not None:
-            pulumi.set(__self__, "instance_type", instance_type)
+            _setter("instance_type", instance_type)
         if price_limit is not None:
-            pulumi.set(__self__, "price_limit", price_limit)
+            _setter("price_limit", price_limit)
 
     @property
     @pulumi.getter(name="instanceType")
@@ -2717,11 +3265,24 @@ class NodePoolTaintArgs:
         :param pulumi.Input[str] effect: The scheduling policy.
         :param pulumi.Input[str] value: The value of a taint.
         """
-        pulumi.set(__self__, "key", key)
+        NodePoolTaintArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            key=key,
+            effect=effect,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             key: pulumi.Input[str],
+             effect: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("key", key)
         if effect is not None:
-            pulumi.set(__self__, "effect", effect)
+            _setter("effect", effect)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -2773,12 +3334,25 @@ class ServerlessKubernetesAddonArgs:
                The following example is the definition of addons block, The type of this field is list:
         :param pulumi.Input[str] name: Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         """
+        ServerlessKubernetesAddonArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            config=config,
+            disabled=disabled,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             config: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter
@@ -2832,14 +3406,29 @@ class ServerlessKubernetesRrsaMetadataArgs:
         :param pulumi.Input[str] ram_oidc_provider_name: The name of OIDC Provider that was registered in RAM.
         :param pulumi.Input[str] rrsa_oidc_issuer_url: The issuer URL of RRSA OIDC Token.
         """
+        ServerlessKubernetesRrsaMetadataArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            ram_oidc_provider_arn=ram_oidc_provider_arn,
+            ram_oidc_provider_name=ram_oidc_provider_name,
+            rrsa_oidc_issuer_url=rrsa_oidc_issuer_url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             ram_oidc_provider_arn: Optional[pulumi.Input[str]] = None,
+             ram_oidc_provider_name: Optional[pulumi.Input[str]] = None,
+             rrsa_oidc_issuer_url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if ram_oidc_provider_arn is not None:
-            pulumi.set(__self__, "ram_oidc_provider_arn", ram_oidc_provider_arn)
+            _setter("ram_oidc_provider_arn", ram_oidc_provider_arn)
         if ram_oidc_provider_name is not None:
-            pulumi.set(__self__, "ram_oidc_provider_name", ram_oidc_provider_name)
+            _setter("ram_oidc_provider_name", ram_oidc_provider_name)
         if rrsa_oidc_issuer_url is not None:
-            pulumi.set(__self__, "rrsa_oidc_issuer_url", rrsa_oidc_issuer_url)
+            _setter("rrsa_oidc_issuer_url", rrsa_oidc_issuer_url)
 
     @property
     @pulumi.getter
@@ -2898,16 +3487,33 @@ class SwarmNodeArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
+        SwarmNodeArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            eip=eip,
+            id=id,
+            name=name,
+            private_ip=private_ip,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             eip: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_ip: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if eip is not None:
-            pulumi.set(__self__, "eip", eip)
+            _setter("eip", eip)
         if id is not None:
-            pulumi.set(__self__, "id", id)
+            _setter("id", id)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_ip is not None:
-            pulumi.set(__self__, "private_ip", private_ip)
+            _setter("private_ip", private_ip)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter
@@ -2970,11 +3576,28 @@ class GetKubernetesAddonsAddonArgs:
         :param str next_version: The next version of this addon can be upgraded to.
         :param bool required: Whether the addon is a system addon.
         """
-        pulumi.set(__self__, "current_config", current_config)
-        pulumi.set(__self__, "current_version", current_version)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "next_version", next_version)
-        pulumi.set(__self__, "required", required)
+        GetKubernetesAddonsAddonArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            current_config=current_config,
+            current_version=current_version,
+            name=name,
+            next_version=next_version,
+            required=required,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             current_config: str,
+             current_version: str,
+             name: str,
+             next_version: str,
+             required: bool,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("current_config", current_config)
+        _setter("current_version", current_version)
+        _setter("name", name)
+        _setter("next_version", next_version)
+        _setter("required", required)
 
     @property
     @pulumi.getter(name="currentConfig")
@@ -3054,15 +3677,34 @@ class GetKubernetesPermissionPermissionArgs:
         :param bool is_ram_role: Indicates whether the permissions are granted to the RAM role. Valid values `0`,`1`.
         :param str role_type: The predefined role. Valid values `admin`,`ops`,`dev`,`restricted` and `custom`.
         """
-        pulumi.set(__self__, "resource_id", resource_id)
-        pulumi.set(__self__, "resource_type", resource_type)
-        pulumi.set(__self__, "role_name", role_name)
+        GetKubernetesPermissionPermissionArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            resource_id=resource_id,
+            resource_type=resource_type,
+            role_name=role_name,
+            is_owner=is_owner,
+            is_ram_role=is_ram_role,
+            role_type=role_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             resource_id: str,
+             resource_type: str,
+             role_name: str,
+             is_owner: Optional[bool] = None,
+             is_ram_role: Optional[bool] = None,
+             role_type: Optional[str] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("resource_id", resource_id)
+        _setter("resource_type", resource_type)
+        _setter("role_name", role_name)
         if is_owner is not None:
-            pulumi.set(__self__, "is_owner", is_owner)
+            _setter("is_owner", is_owner)
         if is_ram_role is not None:
-            pulumi.set(__self__, "is_ram_role", is_ram_role)
+            _setter("is_ram_role", is_ram_role)
         if role_type is not None:
-            pulumi.set(__self__, "role_type", role_type)
+            _setter("role_type", role_type)
 
     @property
     @pulumi.getter(name="resourceId")

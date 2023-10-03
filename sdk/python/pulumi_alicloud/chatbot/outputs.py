@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
@@ -26,10 +26,25 @@ class GetAgentsAgentResult(dict):
         :param str agent_name: The name of the agent.
         :param str id: ID of the agent.
         """
-        pulumi.set(__self__, "agent_id", agent_id)
-        pulumi.set(__self__, "agent_key", agent_key)
-        pulumi.set(__self__, "agent_name", agent_name)
-        pulumi.set(__self__, "id", id)
+        GetAgentsAgentResult._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            agent_id=agent_id,
+            agent_key=agent_key,
+            agent_name=agent_name,
+            id=id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             agent_id: str,
+             agent_key: str,
+             agent_name: str,
+             id: str,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("agent_id", agent_id)
+        _setter("agent_key", agent_key)
+        _setter("agent_name", agent_name)
+        _setter("id", id)
 
     @property
     @pulumi.getter(name="agentId")

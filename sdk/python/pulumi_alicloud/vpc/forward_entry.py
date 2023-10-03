@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['ForwardEntryArgs', 'ForwardEntry']
@@ -37,21 +37,46 @@ class ForwardEntryArgs:
                
                > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         """
-        pulumi.set(__self__, "external_ip", external_ip)
-        pulumi.set(__self__, "external_port", external_port)
-        pulumi.set(__self__, "forward_table_id", forward_table_id)
-        pulumi.set(__self__, "internal_ip", internal_ip)
-        pulumi.set(__self__, "internal_port", internal_port)
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        ForwardEntryArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            external_ip=external_ip,
+            external_port=external_port,
+            forward_table_id=forward_table_id,
+            internal_ip=internal_ip,
+            internal_port=internal_port,
+            ip_protocol=ip_protocol,
+            forward_entry_name=forward_entry_name,
+            name=name,
+            port_break=port_break,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             external_ip: pulumi.Input[str],
+             external_port: pulumi.Input[str],
+             forward_table_id: pulumi.Input[str],
+             internal_ip: pulumi.Input[str],
+             internal_port: pulumi.Input[str],
+             ip_protocol: pulumi.Input[str],
+             forward_entry_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             port_break: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("external_ip", external_ip)
+        _setter("external_port", external_port)
+        _setter("forward_table_id", forward_table_id)
+        _setter("internal_ip", internal_ip)
+        _setter("internal_port", internal_port)
+        _setter("ip_protocol", ip_protocol)
         if forward_entry_name is not None:
-            pulumi.set(__self__, "forward_entry_name", forward_entry_name)
+            _setter("forward_entry_name", forward_entry_name)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port_break is not None:
-            pulumi.set(__self__, "port_break", port_break)
+            _setter("port_break", port_break)
 
     @property
     @pulumi.getter(name="externalIp")
@@ -197,31 +222,60 @@ class _ForwardEntryState:
                > **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
         :param pulumi.Input[str] status: (Available in 1.119.1+) The status of forward entry.
         """
+        _ForwardEntryState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            external_ip=external_ip,
+            external_port=external_port,
+            forward_entry_id=forward_entry_id,
+            forward_entry_name=forward_entry_name,
+            forward_table_id=forward_table_id,
+            internal_ip=internal_ip,
+            internal_port=internal_port,
+            ip_protocol=ip_protocol,
+            name=name,
+            port_break=port_break,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             external_ip: Optional[pulumi.Input[str]] = None,
+             external_port: Optional[pulumi.Input[str]] = None,
+             forward_entry_id: Optional[pulumi.Input[str]] = None,
+             forward_entry_name: Optional[pulumi.Input[str]] = None,
+             forward_table_id: Optional[pulumi.Input[str]] = None,
+             internal_ip: Optional[pulumi.Input[str]] = None,
+             internal_port: Optional[pulumi.Input[str]] = None,
+             ip_protocol: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             port_break: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if external_ip is not None:
-            pulumi.set(__self__, "external_ip", external_ip)
+            _setter("external_ip", external_ip)
         if external_port is not None:
-            pulumi.set(__self__, "external_port", external_port)
+            _setter("external_port", external_port)
         if forward_entry_id is not None:
-            pulumi.set(__self__, "forward_entry_id", forward_entry_id)
+            _setter("forward_entry_id", forward_entry_id)
         if forward_entry_name is not None:
-            pulumi.set(__self__, "forward_entry_name", forward_entry_name)
+            _setter("forward_entry_name", forward_entry_name)
         if forward_table_id is not None:
-            pulumi.set(__self__, "forward_table_id", forward_table_id)
+            _setter("forward_table_id", forward_table_id)
         if internal_ip is not None:
-            pulumi.set(__self__, "internal_ip", internal_ip)
+            _setter("internal_ip", internal_ip)
         if internal_port is not None:
-            pulumi.set(__self__, "internal_port", internal_port)
+            _setter("internal_port", internal_port)
         if ip_protocol is not None:
-            pulumi.set(__self__, "ip_protocol", ip_protocol)
+            _setter("ip_protocol", ip_protocol)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""", DeprecationWarning)
             pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""")
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if port_break is not None:
-            pulumi.set(__self__, "port_break", port_break)
+            _setter("port_break", port_break)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="externalIp")
@@ -508,6 +562,10 @@ class ForwardEntry(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ForwardEntryArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -550,9 +608,6 @@ class ForwardEntry(pulumi.CustomResource):
             if ip_protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_protocol'")
             __props__.__dict__["ip_protocol"] = ip_protocol
-            if name is not None and not opts.urn:
-                warnings.warn("""Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead.""")
             __props__.__dict__["name"] = name
             __props__.__dict__["port_break"] = port_break
             __props__.__dict__["forward_entry_id"] = None

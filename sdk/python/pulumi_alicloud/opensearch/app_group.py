@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,20 +37,45 @@ class AppGroupArgs:
         :param pulumi.Input[str] order_type: Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
         :param pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]] orders: Order cycle information. The details see Block order.
         """
-        pulumi.set(__self__, "app_group_name", app_group_name)
-        pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "quota", quota)
-        pulumi.set(__self__, "type", type)
+        AppGroupArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_group_name=app_group_name,
+            payment_type=payment_type,
+            quota=quota,
+            type=type,
+            charge_way=charge_way,
+            current_version=current_version,
+            description=description,
+            order_type=order_type,
+            orders=orders,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_group_name: pulumi.Input[str],
+             payment_type: pulumi.Input[str],
+             quota: pulumi.Input['AppGroupQuotaArgs'],
+             type: pulumi.Input[str],
+             charge_way: Optional[pulumi.Input[str]] = None,
+             current_version: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             order_type: Optional[pulumi.Input[str]] = None,
+             orders: Optional[pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("app_group_name", app_group_name)
+        _setter("payment_type", payment_type)
+        _setter("quota", quota)
+        _setter("type", type)
         if charge_way is not None:
-            pulumi.set(__self__, "charge_way", charge_way)
+            _setter("charge_way", charge_way)
         if current_version is not None:
-            pulumi.set(__self__, "current_version", current_version)
+            _setter("current_version", current_version)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if order_type is not None:
-            pulumi.set(__self__, "order_type", order_type)
+            _setter("order_type", order_type)
         if orders is not None:
-            pulumi.set(__self__, "orders", orders)
+            _setter("orders", orders)
 
     @property
     @pulumi.getter(name="appGroupName")
@@ -189,28 +214,57 @@ class _AppGroupState:
         :param pulumi.Input[str] status: The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
         :param pulumi.Input[str] type: Application type. Valid Values: `standard`, `enhanced`.
         """
+        _AppGroupState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            app_group_name=app_group_name,
+            charge_way=charge_way,
+            current_version=current_version,
+            description=description,
+            instance_id=instance_id,
+            order_type=order_type,
+            orders=orders,
+            payment_type=payment_type,
+            quota=quota,
+            status=status,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             app_group_name: Optional[pulumi.Input[str]] = None,
+             charge_way: Optional[pulumi.Input[str]] = None,
+             current_version: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             instance_id: Optional[pulumi.Input[str]] = None,
+             order_type: Optional[pulumi.Input[str]] = None,
+             orders: Optional[pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]]] = None,
+             payment_type: Optional[pulumi.Input[str]] = None,
+             quota: Optional[pulumi.Input['AppGroupQuotaArgs']] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if app_group_name is not None:
-            pulumi.set(__self__, "app_group_name", app_group_name)
+            _setter("app_group_name", app_group_name)
         if charge_way is not None:
-            pulumi.set(__self__, "charge_way", charge_way)
+            _setter("charge_way", charge_way)
         if current_version is not None:
-            pulumi.set(__self__, "current_version", current_version)
+            _setter("current_version", current_version)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
+            _setter("instance_id", instance_id)
         if order_type is not None:
-            pulumi.set(__self__, "order_type", order_type)
+            _setter("order_type", order_type)
         if orders is not None:
-            pulumi.set(__self__, "orders", orders)
+            _setter("orders", orders)
         if payment_type is not None:
-            pulumi.set(__self__, "payment_type", payment_type)
+            _setter("payment_type", payment_type)
         if quota is not None:
-            pulumi.set(__self__, "quota", quota)
+            _setter("quota", quota)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="appGroupName")
@@ -464,6 +518,10 @@ class AppGroup(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AppGroupArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -498,6 +556,11 @@ class AppGroup(pulumi.CustomResource):
             if payment_type is None and not opts.urn:
                 raise TypeError("Missing required property 'payment_type'")
             __props__.__dict__["payment_type"] = payment_type
+            if quota is not None and not isinstance(quota, AppGroupQuotaArgs):
+                quota = quota or {}
+                def _setter(key, value):
+                    quota[key] = value
+                AppGroupQuotaArgs._configure(_setter, **quota)
             if quota is None and not opts.urn:
                 raise TypeError("Missing required property 'quota'")
             __props__.__dict__["quota"] = quota

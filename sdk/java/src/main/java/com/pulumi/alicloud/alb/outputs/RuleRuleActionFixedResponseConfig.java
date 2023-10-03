@@ -22,7 +22,7 @@ public final class RuleRuleActionFixedResponseConfig {
      */
     private @Nullable String contentType;
     /**
-     * @return The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+     * @return The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
      * 
      */
     private @Nullable String httpCode;
@@ -43,7 +43,7 @@ public final class RuleRuleActionFixedResponseConfig {
         return Optional.ofNullable(this.contentType);
     }
     /**
-     * @return The HTTP status code of the response. The code must be an `HTTP_2xx`, `HTTP_4xx` or `HTTP_5xx.x` is a digit.
+     * @return The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
      * 
      */
     public Optional<String> httpCode() {

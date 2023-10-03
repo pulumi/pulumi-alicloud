@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,33 +53,74 @@ class GroupMetricRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The callback URL.
         """
-        pulumi.set(__self__, "category", category)
-        pulumi.set(__self__, "escalations", escalations)
-        pulumi.set(__self__, "group_id", group_id)
-        pulumi.set(__self__, "group_metric_rule_name", group_metric_rule_name)
-        pulumi.set(__self__, "metric_name", metric_name)
-        pulumi.set(__self__, "namespace", namespace)
-        pulumi.set(__self__, "rule_id", rule_id)
+        GroupMetricRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            escalations=escalations,
+            group_id=group_id,
+            group_metric_rule_name=group_metric_rule_name,
+            metric_name=metric_name,
+            namespace=namespace,
+            rule_id=rule_id,
+            contact_groups=contact_groups,
+            dimensions=dimensions,
+            effective_interval=effective_interval,
+            email_subject=email_subject,
+            interval=interval,
+            no_effective_interval=no_effective_interval,
+            period=period,
+            silence_time=silence_time,
+            targets=targets,
+            webhook=webhook,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: pulumi.Input[str],
+             escalations: pulumi.Input['GroupMetricRuleEscalationsArgs'],
+             group_id: pulumi.Input[str],
+             group_metric_rule_name: pulumi.Input[str],
+             metric_name: pulumi.Input[str],
+             namespace: pulumi.Input[str],
+             rule_id: pulumi.Input[str],
+             contact_groups: Optional[pulumi.Input[str]] = None,
+             dimensions: Optional[pulumi.Input[str]] = None,
+             effective_interval: Optional[pulumi.Input[str]] = None,
+             email_subject: Optional[pulumi.Input[str]] = None,
+             interval: Optional[pulumi.Input[str]] = None,
+             no_effective_interval: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             silence_time: Optional[pulumi.Input[int]] = None,
+             targets: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]] = None,
+             webhook: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("category", category)
+        _setter("escalations", escalations)
+        _setter("group_id", group_id)
+        _setter("group_metric_rule_name", group_metric_rule_name)
+        _setter("metric_name", metric_name)
+        _setter("namespace", namespace)
+        _setter("rule_id", rule_id)
         if contact_groups is not None:
-            pulumi.set(__self__, "contact_groups", contact_groups)
+            _setter("contact_groups", contact_groups)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if effective_interval is not None:
-            pulumi.set(__self__, "effective_interval", effective_interval)
+            _setter("effective_interval", effective_interval)
         if email_subject is not None:
-            pulumi.set(__self__, "email_subject", email_subject)
+            _setter("email_subject", email_subject)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if no_effective_interval is not None:
-            pulumi.set(__self__, "no_effective_interval", no_effective_interval)
+            _setter("no_effective_interval", no_effective_interval)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if silence_time is not None:
-            pulumi.set(__self__, "silence_time", silence_time)
+            _setter("silence_time", silence_time)
         if targets is not None:
-            pulumi.set(__self__, "targets", targets)
+            _setter("targets", targets)
         if webhook is not None:
-            pulumi.set(__self__, "webhook", webhook)
+            _setter("webhook", webhook)
 
     @property
     @pulumi.getter
@@ -328,42 +369,85 @@ class _GroupMetricRuleState:
         :param pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]] targets: The information about the resource for which alerts are triggered. See `targets` below.
         :param pulumi.Input[str] webhook: The callback URL.
         """
+        _GroupMetricRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            category=category,
+            contact_groups=contact_groups,
+            dimensions=dimensions,
+            effective_interval=effective_interval,
+            email_subject=email_subject,
+            escalations=escalations,
+            group_id=group_id,
+            group_metric_rule_name=group_metric_rule_name,
+            interval=interval,
+            metric_name=metric_name,
+            namespace=namespace,
+            no_effective_interval=no_effective_interval,
+            period=period,
+            rule_id=rule_id,
+            silence_time=silence_time,
+            status=status,
+            targets=targets,
+            webhook=webhook,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             category: Optional[pulumi.Input[str]] = None,
+             contact_groups: Optional[pulumi.Input[str]] = None,
+             dimensions: Optional[pulumi.Input[str]] = None,
+             effective_interval: Optional[pulumi.Input[str]] = None,
+             email_subject: Optional[pulumi.Input[str]] = None,
+             escalations: Optional[pulumi.Input['GroupMetricRuleEscalationsArgs']] = None,
+             group_id: Optional[pulumi.Input[str]] = None,
+             group_metric_rule_name: Optional[pulumi.Input[str]] = None,
+             interval: Optional[pulumi.Input[str]] = None,
+             metric_name: Optional[pulumi.Input[str]] = None,
+             namespace: Optional[pulumi.Input[str]] = None,
+             no_effective_interval: Optional[pulumi.Input[str]] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             rule_id: Optional[pulumi.Input[str]] = None,
+             silence_time: Optional[pulumi.Input[int]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             targets: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]] = None,
+             webhook: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if category is not None:
-            pulumi.set(__self__, "category", category)
+            _setter("category", category)
         if contact_groups is not None:
-            pulumi.set(__self__, "contact_groups", contact_groups)
+            _setter("contact_groups", contact_groups)
         if dimensions is not None:
-            pulumi.set(__self__, "dimensions", dimensions)
+            _setter("dimensions", dimensions)
         if effective_interval is not None:
-            pulumi.set(__self__, "effective_interval", effective_interval)
+            _setter("effective_interval", effective_interval)
         if email_subject is not None:
-            pulumi.set(__self__, "email_subject", email_subject)
+            _setter("email_subject", email_subject)
         if escalations is not None:
-            pulumi.set(__self__, "escalations", escalations)
+            _setter("escalations", escalations)
         if group_id is not None:
-            pulumi.set(__self__, "group_id", group_id)
+            _setter("group_id", group_id)
         if group_metric_rule_name is not None:
-            pulumi.set(__self__, "group_metric_rule_name", group_metric_rule_name)
+            _setter("group_metric_rule_name", group_metric_rule_name)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if metric_name is not None:
-            pulumi.set(__self__, "metric_name", metric_name)
+            _setter("metric_name", metric_name)
         if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
+            _setter("namespace", namespace)
         if no_effective_interval is not None:
-            pulumi.set(__self__, "no_effective_interval", no_effective_interval)
+            _setter("no_effective_interval", no_effective_interval)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if rule_id is not None:
-            pulumi.set(__self__, "rule_id", rule_id)
+            _setter("rule_id", rule_id)
         if silence_time is not None:
-            pulumi.set(__self__, "silence_time", silence_time)
+            _setter("silence_time", silence_time)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if targets is not None:
-            pulumi.set(__self__, "targets", targets)
+            _setter("targets", targets)
         if webhook is not None:
-            pulumi.set(__self__, "webhook", webhook)
+            _setter("webhook", webhook)
 
     @property
     @pulumi.getter
@@ -763,6 +847,10 @@ class GroupMetricRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            GroupMetricRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -801,6 +889,11 @@ class GroupMetricRule(pulumi.CustomResource):
             __props__.__dict__["dimensions"] = dimensions
             __props__.__dict__["effective_interval"] = effective_interval
             __props__.__dict__["email_subject"] = email_subject
+            if escalations is not None and not isinstance(escalations, GroupMetricRuleEscalationsArgs):
+                escalations = escalations or {}
+                def _setter(key, value):
+                    escalations[key] = value
+                GroupMetricRuleEscalationsArgs._configure(_setter, **escalations)
             if escalations is None and not opts.urn:
                 raise TypeError("Missing required property 'escalations'")
             __props__.__dict__["escalations"] = escalations

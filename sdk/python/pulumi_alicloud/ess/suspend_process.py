@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = ['SuspendProcessArgs', 'SuspendProcess']
@@ -21,8 +21,19 @@ class SuspendProcessArgs:
         :param pulumi.Input[str] process: Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
         """
-        pulumi.set(__self__, "process", process)
-        pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+        SuspendProcessArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            process=process,
+            scaling_group_id=scaling_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             process: pulumi.Input[str],
+             scaling_group_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("process", process)
+        _setter("scaling_group_id", scaling_group_id)
 
     @property
     @pulumi.getter
@@ -59,10 +70,21 @@ class _SuspendProcessState:
         :param pulumi.Input[str] process: Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group.
         """
+        _SuspendProcessState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            process=process,
+            scaling_group_id=scaling_group_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             process: Optional[pulumi.Input[str]] = None,
+             scaling_group_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if process is not None:
-            pulumi.set(__self__, "process", process)
+            _setter("process", process)
         if scaling_group_id is not None:
-            pulumi.set(__self__, "scaling_group_id", scaling_group_id)
+            _setter("scaling_group_id", scaling_group_id)
 
     @property
     @pulumi.getter
@@ -242,6 +264,10 @@ class SuspendProcess(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SuspendProcessArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

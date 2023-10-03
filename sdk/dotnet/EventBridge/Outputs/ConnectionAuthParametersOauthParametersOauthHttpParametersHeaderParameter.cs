@@ -18,11 +18,11 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
         /// </summary>
         public readonly string? IsValueSecret;
         /// <summary>
-        /// The key of the request header.
+        /// The key of the request path.
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// The value of the request header.
+        /// The key of the request path.
         /// </summary>
         public readonly string? Value;
 
