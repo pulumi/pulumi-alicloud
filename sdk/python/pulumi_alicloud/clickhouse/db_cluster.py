@@ -103,7 +103,41 @@ class DbClusterArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbClusterClass' in kwargs:
+            db_cluster_class = kwargs['dbClusterClass']
+        if 'dbClusterNetworkType' in kwargs:
+            db_cluster_network_type = kwargs['dbClusterNetworkType']
+        if 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if 'dbNodeGroupCount' in kwargs:
+            db_node_group_count = kwargs['dbNodeGroupCount']
+        if 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'dbClusterAccessWhiteLists' in kwargs:
+            db_cluster_access_white_lists = kwargs['dbClusterAccessWhiteLists']
+        if 'dbClusterDescription' in kwargs:
+            db_cluster_description = kwargs['dbClusterDescription']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'usedTime' in kwargs:
+            used_time = kwargs['usedTime']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("category", category)
         _setter("db_cluster_class", db_cluster_class)
         _setter("db_cluster_network_type", db_cluster_network_type)
@@ -464,7 +498,43 @@ class _DbClusterState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'dbClusterAccessWhiteLists' in kwargs:
+            db_cluster_access_white_lists = kwargs['dbClusterAccessWhiteLists']
+        if 'dbClusterClass' in kwargs:
+            db_cluster_class = kwargs['dbClusterClass']
+        if 'dbClusterDescription' in kwargs:
+            db_cluster_description = kwargs['dbClusterDescription']
+        if 'dbClusterNetworkType' in kwargs:
+            db_cluster_network_type = kwargs['dbClusterNetworkType']
+        if 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if 'dbNodeGroupCount' in kwargs:
+            db_node_group_count = kwargs['dbNodeGroupCount']
+        if 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'usedTime' in kwargs:
+            used_time = kwargs['usedTime']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if category is not None:
             _setter("category", category)
         if connection_string is not None:

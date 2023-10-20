@@ -46,7 +46,15 @@ class SecurityPolicyArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              security_policy_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tlsVersions' in kwargs:
+            tls_versions = kwargs['tlsVersions']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityPolicyName' in kwargs:
+            security_policy_name = kwargs['securityPolicyName']
+
         _setter("ciphers", ciphers)
         _setter("tls_versions", tls_versions)
         if resource_group_id is not None:
@@ -159,7 +167,15 @@ class _SecurityPolicyState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              tls_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityPolicyName' in kwargs:
+            security_policy_name = kwargs['securityPolicyName']
+        if 'tlsVersions' in kwargs:
+            tls_versions = kwargs['tlsVersions']
+
         if ciphers is not None:
             _setter("ciphers", ciphers)
         if resource_group_id is not None:

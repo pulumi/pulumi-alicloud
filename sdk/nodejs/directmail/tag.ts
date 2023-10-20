@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Direct Mail Tag resource.
  *
- * For information about Direct Mail Tag and how to use it, see [What is Tag](https://www.alibabacloud.com/help/zh/doc-detail/119007.htm).
+ * For information about Direct Mail Tag and how to use it, see [What is Tag](https://www.alibabacloud.com/help/en/directmail/latest/createtag).
  *
  * > **NOTE:** Available since v1.144.0.
  *

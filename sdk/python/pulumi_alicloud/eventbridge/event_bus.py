@@ -31,7 +31,11 @@ class EventBusArgs:
              _setter: Callable[[Any, Any], None],
              event_bus_name: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventBusName' in kwargs:
+            event_bus_name = kwargs['eventBusName']
+
         _setter("event_bus_name", event_bus_name)
         if description is not None:
             _setter("description", description)
@@ -81,7 +85,11 @@ class _EventBusState:
              _setter: Callable[[Any, Any], None],
              description: Optional[pulumi.Input[str]] = None,
              event_bus_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventBusName' in kwargs:
+            event_bus_name = kwargs['eventBusName']
+
         if description is not None:
             _setter("description", description)
         if event_bus_name is not None:

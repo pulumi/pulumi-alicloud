@@ -15,7 +15,7 @@ import (
 
 // Provides a Threat Detection Vul Whitelist resource.
 //
-// For information about Threat Detection Vul Whitelist and how to use it, see [What is Vul Whitelist](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+// For information about Threat Detection Vul Whitelist and how to use it, see [What is Vul Whitelist](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 //
 // > **NOTE:** Available in v1.195.0+.
 //
@@ -63,9 +63,9 @@ type VulWhitelist struct {
 
 	// Reason for adding whitelist.
 	Reason pulumi.StringPtrOutput `pulumi:"reason"`
-	// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+	// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 	TargetInfo pulumi.StringPtrOutput `pulumi:"targetInfo"`
-	// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+	// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 	Whitelist pulumi.StringOutput `pulumi:"whitelist"`
 }
 
@@ -104,18 +104,18 @@ func GetVulWhitelist(ctx *pulumi.Context,
 type vulWhitelistState struct {
 	// Reason for adding whitelist.
 	Reason *string `pulumi:"reason"`
-	// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+	// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 	TargetInfo *string `pulumi:"targetInfo"`
-	// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+	// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 	Whitelist *string `pulumi:"whitelist"`
 }
 
 type VulWhitelistState struct {
 	// Reason for adding whitelist.
 	Reason pulumi.StringPtrInput
-	// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+	// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 	TargetInfo pulumi.StringPtrInput
-	// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+	// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 	Whitelist pulumi.StringPtrInput
 }
 
@@ -126,9 +126,9 @@ func (VulWhitelistState) ElementType() reflect.Type {
 type vulWhitelistArgs struct {
 	// Reason for adding whitelist.
 	Reason *string `pulumi:"reason"`
-	// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+	// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 	TargetInfo *string `pulumi:"targetInfo"`
-	// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+	// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 	Whitelist string `pulumi:"whitelist"`
 }
 
@@ -136,9 +136,9 @@ type vulWhitelistArgs struct {
 type VulWhitelistArgs struct {
 	// Reason for adding whitelist.
 	Reason pulumi.StringPtrInput
-	// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+	// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 	TargetInfo pulumi.StringPtrInput
-	// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+	// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 	Whitelist pulumi.StringInput
 }
 
@@ -258,12 +258,12 @@ func (o VulWhitelistOutput) Reason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VulWhitelist) pulumi.StringPtrOutput { return v.Reason }).(pulumi.StringPtrOutput)
 }
 
-// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+// Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 func (o VulWhitelistOutput) TargetInfo() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VulWhitelist) pulumi.StringPtrOutput { return v.TargetInfo }).(pulumi.StringPtrOutput)
 }
 
-// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+// Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 func (o VulWhitelistOutput) Whitelist() pulumi.StringOutput {
 	return o.ApplyT(func(v *VulWhitelist) pulumi.StringOutput { return v.Whitelist }).(pulumi.StringOutput)
 }

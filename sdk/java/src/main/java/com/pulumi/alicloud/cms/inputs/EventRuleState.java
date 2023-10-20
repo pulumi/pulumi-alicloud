@@ -3,11 +3,18 @@
 
 package com.pulumi.alicloud.cms.inputs;
 
+import com.pulumi.alicloud.cms.inputs.EventRuleContactParameterArgs;
 import com.pulumi.alicloud.cms.inputs.EventRuleEventPatternArgs;
+import com.pulumi.alicloud.cms.inputs.EventRuleFcParameterArgs;
+import com.pulumi.alicloud.cms.inputs.EventRuleMnsParameterArgs;
+import com.pulumi.alicloud.cms.inputs.EventRuleOpenApiParameterArgs;
+import com.pulumi.alicloud.cms.inputs.EventRuleSlsParameterArgs;
+import com.pulumi.alicloud.cms.inputs.EventRuleWebhookParameterArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +23,21 @@ import javax.annotation.Nullable;
 public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
 
     public static final EventRuleState Empty = new EventRuleState();
+
+    /**
+     * The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+     * 
+     */
+    @Import(name="contactParameters")
+    private @Nullable Output<List<EventRuleContactParameterArgs>> contactParameters;
+
+    /**
+     * @return The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+     * 
+     */
+    public Optional<Output<List<EventRuleContactParameterArgs>>> contactParameters() {
+        return Optional.ofNullable(this.contactParameters);
+    }
 
     /**
      * The description of the event-triggered alert rule.
@@ -48,6 +70,21 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The information about the recipients in Function Compute. See `fc_parameters` below.
+     * 
+     */
+    @Import(name="fcParameters")
+    private @Nullable Output<List<EventRuleFcParameterArgs>> fcParameters;
+
+    /**
+     * @return The information about the recipients in Function Compute. See `fc_parameters` below.
+     * 
+     */
+    public Optional<Output<List<EventRuleFcParameterArgs>>> fcParameters() {
+        return Optional.ofNullable(this.fcParameters);
+    }
+
+    /**
      * The ID of the application group to which the event-triggered alert rule belongs.
      * 
      */
@@ -60,6 +97,36 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> groupId() {
         return Optional.ofNullable(this.groupId);
+    }
+
+    /**
+     * The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+     * 
+     */
+    @Import(name="mnsParameters")
+    private @Nullable Output<List<EventRuleMnsParameterArgs>> mnsParameters;
+
+    /**
+     * @return The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+     * 
+     */
+    public Optional<Output<List<EventRuleMnsParameterArgs>>> mnsParameters() {
+        return Optional.ofNullable(this.mnsParameters);
+    }
+
+    /**
+     * The parameters of API callback notification. See `open_api_parameters` below.
+     * 
+     */
+    @Import(name="openApiParameters")
+    private @Nullable Output<List<EventRuleOpenApiParameterArgs>> openApiParameters;
+
+    /**
+     * @return The parameters of API callback notification. See `open_api_parameters` below.
+     * 
+     */
+    public Optional<Output<List<EventRuleOpenApiParameterArgs>>> openApiParameters() {
+        return Optional.ofNullable(this.openApiParameters);
     }
 
     /**
@@ -93,6 +160,21 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The information about the recipients in Simple Log Service. See `sls_parameters` below.
+     * 
+     */
+    @Import(name="slsParameters")
+    private @Nullable Output<List<EventRuleSlsParameterArgs>> slsParameters;
+
+    /**
+     * @return The information about the recipients in Simple Log Service. See `sls_parameters` below.
+     * 
+     */
+    public Optional<Output<List<EventRuleSlsParameterArgs>>> slsParameters() {
+        return Optional.ofNullable(this.slsParameters);
+    }
+
+    /**
      * The status of the resource. Valid values: `ENABLED`, `DISABLED`.
      * 
      */
@@ -107,15 +189,36 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.status);
     }
 
+    /**
+     * The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+     * 
+     */
+    @Import(name="webhookParameters")
+    private @Nullable Output<List<EventRuleWebhookParameterArgs>> webhookParameters;
+
+    /**
+     * @return The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+     * 
+     */
+    public Optional<Output<List<EventRuleWebhookParameterArgs>>> webhookParameters() {
+        return Optional.ofNullable(this.webhookParameters);
+    }
+
     private EventRuleState() {}
 
     private EventRuleState(EventRuleState $) {
+        this.contactParameters = $.contactParameters;
         this.description = $.description;
         this.eventPattern = $.eventPattern;
+        this.fcParameters = $.fcParameters;
         this.groupId = $.groupId;
+        this.mnsParameters = $.mnsParameters;
+        this.openApiParameters = $.openApiParameters;
         this.ruleName = $.ruleName;
         this.silenceTime = $.silenceTime;
+        this.slsParameters = $.slsParameters;
         this.status = $.status;
+        this.webhookParameters = $.webhookParameters;
     }
 
     public static Builder builder() {
@@ -134,6 +237,37 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(EventRuleState defaults) {
             $ = new EventRuleState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param contactParameters The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contactParameters(@Nullable Output<List<EventRuleContactParameterArgs>> contactParameters) {
+            $.contactParameters = contactParameters;
+            return this;
+        }
+
+        /**
+         * @param contactParameters The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contactParameters(List<EventRuleContactParameterArgs> contactParameters) {
+            return contactParameters(Output.of(contactParameters));
+        }
+
+        /**
+         * @param contactParameters The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contactParameters(EventRuleContactParameterArgs... contactParameters) {
+            return contactParameters(List.of(contactParameters));
         }
 
         /**
@@ -179,6 +313,37 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param fcParameters The information about the recipients in Function Compute. See `fc_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fcParameters(@Nullable Output<List<EventRuleFcParameterArgs>> fcParameters) {
+            $.fcParameters = fcParameters;
+            return this;
+        }
+
+        /**
+         * @param fcParameters The information about the recipients in Function Compute. See `fc_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fcParameters(List<EventRuleFcParameterArgs> fcParameters) {
+            return fcParameters(Output.of(fcParameters));
+        }
+
+        /**
+         * @param fcParameters The information about the recipients in Function Compute. See `fc_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fcParameters(EventRuleFcParameterArgs... fcParameters) {
+            return fcParameters(List.of(fcParameters));
+        }
+
+        /**
          * @param groupId The ID of the application group to which the event-triggered alert rule belongs.
          * 
          * @return builder
@@ -197,6 +362,68 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder groupId(String groupId) {
             return groupId(Output.of(groupId));
+        }
+
+        /**
+         * @param mnsParameters The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mnsParameters(@Nullable Output<List<EventRuleMnsParameterArgs>> mnsParameters) {
+            $.mnsParameters = mnsParameters;
+            return this;
+        }
+
+        /**
+         * @param mnsParameters The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mnsParameters(List<EventRuleMnsParameterArgs> mnsParameters) {
+            return mnsParameters(Output.of(mnsParameters));
+        }
+
+        /**
+         * @param mnsParameters The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mnsParameters(EventRuleMnsParameterArgs... mnsParameters) {
+            return mnsParameters(List.of(mnsParameters));
+        }
+
+        /**
+         * @param openApiParameters The parameters of API callback notification. See `open_api_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openApiParameters(@Nullable Output<List<EventRuleOpenApiParameterArgs>> openApiParameters) {
+            $.openApiParameters = openApiParameters;
+            return this;
+        }
+
+        /**
+         * @param openApiParameters The parameters of API callback notification. See `open_api_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openApiParameters(List<EventRuleOpenApiParameterArgs> openApiParameters) {
+            return openApiParameters(Output.of(openApiParameters));
+        }
+
+        /**
+         * @param openApiParameters The parameters of API callback notification. See `open_api_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder openApiParameters(EventRuleOpenApiParameterArgs... openApiParameters) {
+            return openApiParameters(List.of(openApiParameters));
         }
 
         /**
@@ -242,6 +469,37 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param slsParameters The information about the recipients in Simple Log Service. See `sls_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slsParameters(@Nullable Output<List<EventRuleSlsParameterArgs>> slsParameters) {
+            $.slsParameters = slsParameters;
+            return this;
+        }
+
+        /**
+         * @param slsParameters The information about the recipients in Simple Log Service. See `sls_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slsParameters(List<EventRuleSlsParameterArgs> slsParameters) {
+            return slsParameters(Output.of(slsParameters));
+        }
+
+        /**
+         * @param slsParameters The information about the recipients in Simple Log Service. See `sls_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder slsParameters(EventRuleSlsParameterArgs... slsParameters) {
+            return slsParameters(List.of(slsParameters));
+        }
+
+        /**
          * @param status The status of the resource. Valid values: `ENABLED`, `DISABLED`.
          * 
          * @return builder
@@ -260,6 +518,37 @@ public final class EventRuleState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param webhookParameters The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webhookParameters(@Nullable Output<List<EventRuleWebhookParameterArgs>> webhookParameters) {
+            $.webhookParameters = webhookParameters;
+            return this;
+        }
+
+        /**
+         * @param webhookParameters The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webhookParameters(List<EventRuleWebhookParameterArgs> webhookParameters) {
+            return webhookParameters(Output.of(webhookParameters));
+        }
+
+        /**
+         * @param webhookParameters The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder webhookParameters(EventRuleWebhookParameterArgs... webhookParameters) {
+            return webhookParameters(List.of(webhookParameters));
         }
 
         public EventRuleState build() {

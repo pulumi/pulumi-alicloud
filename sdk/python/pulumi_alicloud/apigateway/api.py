@@ -85,7 +85,35 @@ class ApiArgs:
              request_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiRequestParameterArgs']]]] = None,
              stage_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authType' in kwargs:
+            auth_type = kwargs['authType']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'requestConfig' in kwargs:
+            request_config = kwargs['requestConfig']
+        if 'serviceType' in kwargs:
+            service_type = kwargs['serviceType']
+        if 'constantParameters' in kwargs:
+            constant_parameters = kwargs['constantParameters']
+        if 'fcServiceConfig' in kwargs:
+            fc_service_config = kwargs['fcServiceConfig']
+        if 'forceNonceCheck' in kwargs:
+            force_nonce_check = kwargs['forceNonceCheck']
+        if 'httpServiceConfig' in kwargs:
+            http_service_config = kwargs['httpServiceConfig']
+        if 'httpVpcServiceConfig' in kwargs:
+            http_vpc_service_config = kwargs['httpVpcServiceConfig']
+        if 'mockServiceConfig' in kwargs:
+            mock_service_config = kwargs['mockServiceConfig']
+        if 'requestParameters' in kwargs:
+            request_parameters = kwargs['requestParameters']
+        if 'stageNames' in kwargs:
+            stage_names = kwargs['stageNames']
+        if 'systemParameters' in kwargs:
+            system_parameters = kwargs['systemParameters']
+
         _setter("auth_type", auth_type)
         _setter("description", description)
         _setter("group_id", group_id)
@@ -369,7 +397,37 @@ class _ApiState:
              service_type: Optional[pulumi.Input[str]] = None,
              stage_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              system_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApiSystemParameterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiId' in kwargs:
+            api_id = kwargs['apiId']
+        if 'authType' in kwargs:
+            auth_type = kwargs['authType']
+        if 'constantParameters' in kwargs:
+            constant_parameters = kwargs['constantParameters']
+        if 'fcServiceConfig' in kwargs:
+            fc_service_config = kwargs['fcServiceConfig']
+        if 'forceNonceCheck' in kwargs:
+            force_nonce_check = kwargs['forceNonceCheck']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'httpServiceConfig' in kwargs:
+            http_service_config = kwargs['httpServiceConfig']
+        if 'httpVpcServiceConfig' in kwargs:
+            http_vpc_service_config = kwargs['httpVpcServiceConfig']
+        if 'mockServiceConfig' in kwargs:
+            mock_service_config = kwargs['mockServiceConfig']
+        if 'requestConfig' in kwargs:
+            request_config = kwargs['requestConfig']
+        if 'requestParameters' in kwargs:
+            request_parameters = kwargs['requestParameters']
+        if 'serviceType' in kwargs:
+            service_type = kwargs['serviceType']
+        if 'stageNames' in kwargs:
+            stage_names = kwargs['stageNames']
+        if 'systemParameters' in kwargs:
+            system_parameters = kwargs['systemParameters']
+
         if api_id is not None:
             _setter("api_id", api_id)
         if auth_type is not None:

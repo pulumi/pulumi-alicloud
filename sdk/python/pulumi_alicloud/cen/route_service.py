@@ -49,7 +49,17 @@ class RouteServiceArgs:
              host_region_id: pulumi.Input[str],
              host_vpc_id: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessRegionId' in kwargs:
+            access_region_id = kwargs['accessRegionId']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'hostRegionId' in kwargs:
+            host_region_id = kwargs['hostRegionId']
+        if 'hostVpcId' in kwargs:
+            host_vpc_id = kwargs['hostVpcId']
+
         _setter("access_region_id", access_region_id)
         _setter("cen_id", cen_id)
         _setter("host", host)
@@ -175,7 +185,17 @@ class _RouteServiceState:
              host_region_id: Optional[pulumi.Input[str]] = None,
              host_vpc_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessRegionId' in kwargs:
+            access_region_id = kwargs['accessRegionId']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'hostRegionId' in kwargs:
+            host_region_id = kwargs['hostRegionId']
+        if 'hostVpcId' in kwargs:
+            host_vpc_id = kwargs['hostVpcId']
+
         if access_region_id is not None:
             _setter("access_region_id", access_region_id)
         if cen_id is not None:
@@ -293,7 +313,7 @@ class RouteService(pulumi.CustomResource):
         """
         Provides a CEN Route Service resource. The virtual border routers (VBRs) and Cloud Connect Network (CCN) instances attached to Cloud Enterprise Network (CEN) instances can access the cloud services deployed in VPCs through the CEN instances.
 
-        For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-resolveandrouteserviceincen).
+        For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-resolveandrouteserviceincen).
 
         > **NOTE:** Available since v1.99.0.
 
@@ -355,7 +375,7 @@ class RouteService(pulumi.CustomResource):
         """
         Provides a CEN Route Service resource. The virtual border routers (VBRs) and Cloud Connect Network (CCN) instances attached to Cloud Enterprise Network (CEN) instances can access the cloud services deployed in VPCs through the CEN instances.
 
-        For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-resolveandrouteserviceincen).
+        For information about CEN Route Service and how to use it, see [What is Route Service](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-resolveandrouteserviceincen).
 
         > **NOTE:** Available since v1.99.0.
 

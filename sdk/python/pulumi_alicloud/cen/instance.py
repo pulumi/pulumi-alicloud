@@ -43,7 +43,13 @@ class InstanceArgs:
              name: Optional[pulumi.Input[str]] = None,
              protection_level: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenInstanceName' in kwargs:
+            cen_instance_name = kwargs['cenInstanceName']
+        if 'protectionLevel' in kwargs:
+            protection_level = kwargs['protectionLevel']
+
         if cen_instance_name is not None:
             _setter("cen_instance_name", cen_instance_name)
         if description is not None:
@@ -158,7 +164,13 @@ class _InstanceState:
              protection_level: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenInstanceName' in kwargs:
+            cen_instance_name = kwargs['cenInstanceName']
+        if 'protectionLevel' in kwargs:
+            protection_level = kwargs['protectionLevel']
+
         if cen_instance_name is not None:
             _setter("cen_instance_name", cen_instance_name)
         if description is not None:
@@ -265,7 +277,7 @@ class Instance(pulumi.CustomResource):
         """
         Provides a CEN instance resource. Cloud Enterprise Network (CEN) is a service that allows you to create a global network for rapidly building a distributed business system with a hybrid cloud computing solution. CEN enables you to build a secure, private, and enterprise-class interconnected network between VPCs in different regions and your local data centers. CEN provides enterprise-class scalability that automatically responds to your dynamic computing requirements.
 
-        For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcen).
+        For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
 
         > **NOTE:** Available since v1.15.0.
 
@@ -307,7 +319,7 @@ class Instance(pulumi.CustomResource):
         """
         Provides a CEN instance resource. Cloud Enterprise Network (CEN) is a service that allows you to create a global network for rapidly building a distributed business system with a hybrid cloud computing solution. CEN enables you to build a secure, private, and enterprise-class interconnected network between VPCs in different regions and your local data centers. CEN provides enterprise-class scalability that automatically responds to your dynamic computing requirements.
 
-        For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcen).
+        For information about CEN and how to use it, see [What is Cloud Enterprise Network](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcen).
 
         > **NOTE:** Available since v1.15.0.
 

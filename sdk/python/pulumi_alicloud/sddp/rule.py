@@ -83,7 +83,27 @@ class RuleArgs:
              status: Optional[pulumi.Input[int]] = None,
              target: Optional[pulumi.Input[str]] = None,
              warn_level: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'contentCategory' in kwargs:
+            content_category = kwargs['contentCategory']
+        if 'customType' in kwargs:
+            custom_type = kwargs['customType']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if 'riskLevelId' in kwargs:
+            risk_level_id = kwargs['riskLevelId']
+        if 'ruleType' in kwargs:
+            rule_type = kwargs['ruleType']
+        if 'statExpress' in kwargs:
+            stat_express = kwargs['statExpress']
+        if 'warnLevel' in kwargs:
+            warn_level = kwargs['warnLevel']
+
         _setter("category", category)
         _setter("content", content)
         _setter("rule_name", rule_name)
@@ -365,7 +385,27 @@ class _RuleState:
              status: Optional[pulumi.Input[int]] = None,
              target: Optional[pulumi.Input[str]] = None,
              warn_level: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contentCategory' in kwargs:
+            content_category = kwargs['contentCategory']
+        if 'customType' in kwargs:
+            custom_type = kwargs['customType']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if 'riskLevelId' in kwargs:
+            risk_level_id = kwargs['riskLevelId']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'ruleType' in kwargs:
+            rule_type = kwargs['ruleType']
+        if 'statExpress' in kwargs:
+            stat_express = kwargs['statExpress']
+        if 'warnLevel' in kwargs:
+            warn_level = kwargs['warnLevel']
+
         if category is not None:
             _setter("category", category)
         if content is not None:

@@ -14,6 +14,8 @@ import (
 
 // ## Example Usage
 //
+// # Basic Usage
+//
 // ```go
 // package main
 //
@@ -54,7 +56,7 @@ func LookupCiphertext(ctx *pulumi.Context, args *LookupCiphertextArgs, opts ...p
 
 // A collection of arguments for invoking getCiphertext.
 type LookupCiphertextArgs struct {
-	// (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+	// The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	EncryptionContext map[string]string `pulumi:"encryptionContext"`
 	// The globally unique ID of the CMK.
 	KeyId string `pulumi:"keyId"`
@@ -88,7 +90,7 @@ func LookupCiphertextOutput(ctx *pulumi.Context, args LookupCiphertextOutputArgs
 
 // A collection of arguments for invoking getCiphertext.
 type LookupCiphertextOutputArgs struct {
-	// (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+	// The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
 	EncryptionContext pulumi.StringMapInput `pulumi:"encryptionContext"`
 	// The globally unique ID of the CMK.
 	KeyId pulumi.StringInput `pulumi:"keyId"`

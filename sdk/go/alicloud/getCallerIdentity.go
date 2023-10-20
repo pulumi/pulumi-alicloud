@@ -4,8 +4,12 @@
 package alicloud
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // This data source provides the identity of the current user.
@@ -56,4 +60,60 @@ type GetCallerIdentityResult struct {
 	Id string `pulumi:"id"`
 	// The type of the princiapal. RAMUser for users.
 	IdentityType string `pulumi:"identityType"`
+}
+
+func GetCallerIdentityOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetCallerIdentityResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetCallerIdentityResult, error) {
+		r, err := GetCallerIdentity(ctx, opts...)
+		var s GetCallerIdentityResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetCallerIdentityResultOutput)
+}
+
+// A collection of values returned by getCallerIdentity.
+type GetCallerIdentityResultOutput struct{ *pulumi.OutputState }
+
+func (GetCallerIdentityResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCallerIdentityResult)(nil)).Elem()
+}
+
+func (o GetCallerIdentityResultOutput) ToGetCallerIdentityResultOutput() GetCallerIdentityResultOutput {
+	return o
+}
+
+func (o GetCallerIdentityResultOutput) ToGetCallerIdentityResultOutputWithContext(ctx context.Context) GetCallerIdentityResultOutput {
+	return o
+}
+
+func (o GetCallerIdentityResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCallerIdentityResult] {
+	return pulumix.Output[GetCallerIdentityResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Account ID.
+func (o GetCallerIdentityResultOutput) AccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCallerIdentityResult) string { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// The Alibaba Cloud Resource Name (ARN) of the user making the call.
+func (o GetCallerIdentityResultOutput) Arn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCallerIdentityResult) string { return v.Arn }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetCallerIdentityResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCallerIdentityResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The type of the princiapal. RAMUser for users.
+func (o GetCallerIdentityResultOutput) IdentityType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCallerIdentityResult) string { return v.IdentityType }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetCallerIdentityResultOutput{})
 }

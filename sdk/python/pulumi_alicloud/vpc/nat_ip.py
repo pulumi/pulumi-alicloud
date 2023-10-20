@@ -51,7 +51,23 @@ class NatIpArgs:
              nat_ip_cidr_id: Optional[pulumi.Input[str]] = None,
              nat_ip_description: Optional[pulumi.Input[str]] = None,
              nat_ip_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'natIp' in kwargs:
+            nat_ip = kwargs['natIp']
+        if 'natIpCidr' in kwargs:
+            nat_ip_cidr = kwargs['natIpCidr']
+        if 'natIpCidrId' in kwargs:
+            nat_ip_cidr_id = kwargs['natIpCidrId']
+        if 'natIpDescription' in kwargs:
+            nat_ip_description = kwargs['natIpDescription']
+        if 'natIpName' in kwargs:
+            nat_ip_name = kwargs['natIpName']
+
         _setter("nat_gateway_id", nat_gateway_id)
         if dry_run is not None:
             _setter("dry_run", dry_run)
@@ -199,7 +215,25 @@ class _NatIpState:
              nat_ip_id: Optional[pulumi.Input[str]] = None,
              nat_ip_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'natIp' in kwargs:
+            nat_ip = kwargs['natIp']
+        if 'natIpCidr' in kwargs:
+            nat_ip_cidr = kwargs['natIpCidr']
+        if 'natIpCidrId' in kwargs:
+            nat_ip_cidr_id = kwargs['natIpCidrId']
+        if 'natIpDescription' in kwargs:
+            nat_ip_description = kwargs['natIpDescription']
+        if 'natIpId' in kwargs:
+            nat_ip_id = kwargs['natIpId']
+        if 'natIpName' in kwargs:
+            nat_ip_name = kwargs['natIpName']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if nat_gateway_id is not None:

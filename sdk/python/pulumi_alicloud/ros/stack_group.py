@@ -73,7 +73,29 @@ class StackGroupArgs:
              template_body: Optional[pulumi.Input[str]] = None,
              template_url: Optional[pulumi.Input[str]] = None,
              template_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'stackGroupName' in kwargs:
+            stack_group_name = kwargs['stackGroupName']
+        if 'accountIds' in kwargs:
+            account_ids = kwargs['accountIds']
+        if 'administrationRoleName' in kwargs:
+            administration_role_name = kwargs['administrationRoleName']
+        if 'executionRoleName' in kwargs:
+            execution_role_name = kwargs['executionRoleName']
+        if 'operationDescription' in kwargs:
+            operation_description = kwargs['operationDescription']
+        if 'operationPreferences' in kwargs:
+            operation_preferences = kwargs['operationPreferences']
+        if 'regionIds' in kwargs:
+            region_ids = kwargs['regionIds']
+        if 'templateBody' in kwargs:
+            template_body = kwargs['templateBody']
+        if 'templateUrl' in kwargs:
+            template_url = kwargs['templateUrl']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+
         _setter("stack_group_name", stack_group_name)
         if account_ids is not None:
             _setter("account_ids", account_ids)
@@ -311,7 +333,31 @@ class _StackGroupState:
              template_body: Optional[pulumi.Input[str]] = None,
              template_url: Optional[pulumi.Input[str]] = None,
              template_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountIds' in kwargs:
+            account_ids = kwargs['accountIds']
+        if 'administrationRoleName' in kwargs:
+            administration_role_name = kwargs['administrationRoleName']
+        if 'executionRoleName' in kwargs:
+            execution_role_name = kwargs['executionRoleName']
+        if 'operationDescription' in kwargs:
+            operation_description = kwargs['operationDescription']
+        if 'operationPreferences' in kwargs:
+            operation_preferences = kwargs['operationPreferences']
+        if 'regionIds' in kwargs:
+            region_ids = kwargs['regionIds']
+        if 'stackGroupId' in kwargs:
+            stack_group_id = kwargs['stackGroupId']
+        if 'stackGroupName' in kwargs:
+            stack_group_name = kwargs['stackGroupName']
+        if 'templateBody' in kwargs:
+            template_body = kwargs['templateBody']
+        if 'templateUrl' in kwargs:
+            template_url = kwargs['templateUrl']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+
         if account_ids is not None:
             _setter("account_ids", account_ids)
         if administration_role_name is not None:

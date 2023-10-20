@@ -60,7 +60,19 @@ class EventSourceArgs:
              external_source_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              external_source_type: Optional[pulumi.Input[str]] = None,
              linked_external_source: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventBusName' in kwargs:
+            event_bus_name = kwargs['eventBusName']
+        if 'eventSourceName' in kwargs:
+            event_source_name = kwargs['eventSourceName']
+        if 'externalSourceConfig' in kwargs:
+            external_source_config = kwargs['externalSourceConfig']
+        if 'externalSourceType' in kwargs:
+            external_source_type = kwargs['externalSourceType']
+        if 'linkedExternalSource' in kwargs:
+            linked_external_source = kwargs['linkedExternalSource']
+
         _setter("event_bus_name", event_bus_name)
         _setter("event_source_name", event_source_name)
         if description is not None:
@@ -207,7 +219,19 @@ class _EventSourceState:
              external_source_config: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              external_source_type: Optional[pulumi.Input[str]] = None,
              linked_external_source: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventBusName' in kwargs:
+            event_bus_name = kwargs['eventBusName']
+        if 'eventSourceName' in kwargs:
+            event_source_name = kwargs['eventSourceName']
+        if 'externalSourceConfig' in kwargs:
+            external_source_config = kwargs['externalSourceConfig']
+        if 'externalSourceType' in kwargs:
+            external_source_type = kwargs['externalSourceType']
+        if 'linkedExternalSource' in kwargs:
+            linked_external_source = kwargs['linkedExternalSource']
+
         if description is not None:
             _setter("description", description)
         if event_bus_name is not None:

@@ -84,7 +84,15 @@ class ConnectionBgpConfig(dict):
              local_asn: Optional[str] = None,
              local_bgp_ip: Optional[str] = None,
              tunnel_cidr: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if 'localBgpIp' in kwargs:
+            local_bgp_ip = kwargs['localBgpIp']
+        if 'tunnelCidr' in kwargs:
+            tunnel_cidr = kwargs['tunnelCidr']
+
         if enable is not None:
             _setter("enable", enable)
         if local_asn is not None:
@@ -158,7 +166,9 @@ class ConnectionHealthCheckConfig(dict):
              interval: Optional[int] = None,
              retry: Optional[int] = None,
              sip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dip is not None:
             _setter("dip", dip)
         if enable is not None:
@@ -289,7 +299,25 @@ class ConnectionIkeConfig(dict):
              ike_remote_id: Optional[str] = None,
              ike_version: Optional[str] = None,
              psk: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ikeAuthAlg' in kwargs:
+            ike_auth_alg = kwargs['ikeAuthAlg']
+        if 'ikeEncAlg' in kwargs:
+            ike_enc_alg = kwargs['ikeEncAlg']
+        if 'ikeLifetime' in kwargs:
+            ike_lifetime = kwargs['ikeLifetime']
+        if 'ikeLocalId' in kwargs:
+            ike_local_id = kwargs['ikeLocalId']
+        if 'ikeMode' in kwargs:
+            ike_mode = kwargs['ikeMode']
+        if 'ikePfs' in kwargs:
+            ike_pfs = kwargs['ikePfs']
+        if 'ikeRemoteId' in kwargs:
+            ike_remote_id = kwargs['ikeRemoteId']
+        if 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+
         if ike_auth_alg is not None:
             _setter("ike_auth_alg", ike_auth_alg)
         if ike_enc_alg is not None:
@@ -432,7 +460,17 @@ class ConnectionIpsecConfig(dict):
              ipsec_enc_alg: Optional[str] = None,
              ipsec_lifetime: Optional[int] = None,
              ipsec_pfs: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipsecAuthAlg' in kwargs:
+            ipsec_auth_alg = kwargs['ipsecAuthAlg']
+        if 'ipsecEncAlg' in kwargs:
+            ipsec_enc_alg = kwargs['ipsecEncAlg']
+        if 'ipsecLifetime' in kwargs:
+            ipsec_lifetime = kwargs['ipsecLifetime']
+        if 'ipsecPfs' in kwargs:
+            ipsec_pfs = kwargs['ipsecPfs']
+
         if ipsec_auth_alg is not None:
             _setter("ipsec_auth_alg", ipsec_auth_alg)
         if ipsec_enc_alg is not None:
@@ -523,7 +561,15 @@ class GatewayVpnAttachmentBgpConfig(dict):
              local_asn: Optional[int] = None,
              local_bgp_ip: Optional[str] = None,
              tunnel_cidr: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if 'localBgpIp' in kwargs:
+            local_bgp_ip = kwargs['localBgpIp']
+        if 'tunnelCidr' in kwargs:
+            tunnel_cidr = kwargs['tunnelCidr']
+
         if enable is not None:
             _setter("enable", enable)
         if local_asn is not None:
@@ -601,7 +647,9 @@ class GatewayVpnAttachmentHealthCheckConfig(dict):
              policy: Optional[str] = None,
              retry: Optional[int] = None,
              sip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dip is not None:
             _setter("dip", dip)
         if enable is not None:
@@ -742,7 +790,25 @@ class GatewayVpnAttachmentIkeConfig(dict):
              local_id: Optional[str] = None,
              psk: Optional[str] = None,
              remote_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ikeAuthAlg' in kwargs:
+            ike_auth_alg = kwargs['ikeAuthAlg']
+        if 'ikeEncAlg' in kwargs:
+            ike_enc_alg = kwargs['ikeEncAlg']
+        if 'ikeLifetime' in kwargs:
+            ike_lifetime = kwargs['ikeLifetime']
+        if 'ikeMode' in kwargs:
+            ike_mode = kwargs['ikeMode']
+        if 'ikePfs' in kwargs:
+            ike_pfs = kwargs['ikePfs']
+        if 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+        if 'localId' in kwargs:
+            local_id = kwargs['localId']
+        if 'remoteId' in kwargs:
+            remote_id = kwargs['remoteId']
+
         if ike_auth_alg is not None:
             _setter("ike_auth_alg", ike_auth_alg)
         if ike_enc_alg is not None:
@@ -885,7 +951,17 @@ class GatewayVpnAttachmentIpsecConfig(dict):
              ipsec_enc_alg: Optional[str] = None,
              ipsec_lifetime: Optional[int] = None,
              ipsec_pfs: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipsecAuthAlg' in kwargs:
+            ipsec_auth_alg = kwargs['ipsecAuthAlg']
+        if 'ipsecEncAlg' in kwargs:
+            ipsec_enc_alg = kwargs['ipsecEncAlg']
+        if 'ipsecLifetime' in kwargs:
+            ipsec_lifetime = kwargs['ipsecLifetime']
+        if 'ipsecPfs' in kwargs:
+            ipsec_pfs = kwargs['ipsecPfs']
+
         if ipsec_auth_alg is not None:
             _setter("ipsec_auth_alg", ipsec_auth_alg)
         if ipsec_enc_alg is not None:
@@ -1002,7 +1078,25 @@ class IpsecServerIkeConfig(dict):
              ike_version: Optional[str] = None,
              local_id: Optional[str] = None,
              remote_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ikeAuthAlg' in kwargs:
+            ike_auth_alg = kwargs['ikeAuthAlg']
+        if 'ikeEncAlg' in kwargs:
+            ike_enc_alg = kwargs['ikeEncAlg']
+        if 'ikeLifetime' in kwargs:
+            ike_lifetime = kwargs['ikeLifetime']
+        if 'ikeMode' in kwargs:
+            ike_mode = kwargs['ikeMode']
+        if 'ikePfs' in kwargs:
+            ike_pfs = kwargs['ikePfs']
+        if 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+        if 'localId' in kwargs:
+            local_id = kwargs['localId']
+        if 'remoteId' in kwargs:
+            remote_id = kwargs['remoteId']
+
         if ike_auth_alg is not None:
             _setter("ike_auth_alg", ike_auth_alg)
         if ike_enc_alg is not None:
@@ -1135,7 +1229,17 @@ class IpsecServerIpsecConfig(dict):
              ipsec_enc_alg: Optional[str] = None,
              ipsec_lifetime: Optional[int] = None,
              ipsec_pfs: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipsecAuthAlg' in kwargs:
+            ipsec_auth_alg = kwargs['ipsecAuthAlg']
+        if 'ipsecEncAlg' in kwargs:
+            ipsec_enc_alg = kwargs['ipsecEncAlg']
+        if 'ipsecLifetime' in kwargs:
+            ipsec_lifetime = kwargs['ipsecLifetime']
+        if 'ipsecPfs' in kwargs:
+            ipsec_pfs = kwargs['ipsecPfs']
+
         if ipsec_auth_alg is not None:
             _setter("ipsec_auth_alg", ipsec_auth_alg)
         if ipsec_enc_alg is not None:
@@ -1246,7 +1350,33 @@ class GetConnectionsConnectionResult(dict):
              ipsec_configs: Optional[Sequence['outputs.GetConnectionsConnectionIpsecConfigResult']] = None,
              vco_health_checks: Optional[Sequence['outputs.GetConnectionsConnectionVcoHealthCheckResult']] = None,
              vpn_bgp_configs: Optional[Sequence['outputs.GetConnectionsConnectionVpnBgpConfigResult']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'customerGatewayId' in kwargs:
+            customer_gateway_id = kwargs['customerGatewayId']
+        if 'effectImmediately' in kwargs:
+            effect_immediately = kwargs['effectImmediately']
+        if 'enableDpd' in kwargs:
+            enable_dpd = kwargs['enableDpd']
+        if 'enableNatTraversal' in kwargs:
+            enable_nat_traversal = kwargs['enableNatTraversal']
+        if 'localSubnet' in kwargs:
+            local_subnet = kwargs['localSubnet']
+        if 'remoteSubnet' in kwargs:
+            remote_subnet = kwargs['remoteSubnet']
+        if 'vpnGatewayId' in kwargs:
+            vpn_gateway_id = kwargs['vpnGatewayId']
+        if 'ikeConfigs' in kwargs:
+            ike_configs = kwargs['ikeConfigs']
+        if 'ipsecConfigs' in kwargs:
+            ipsec_configs = kwargs['ipsecConfigs']
+        if 'vcoHealthChecks' in kwargs:
+            vco_health_checks = kwargs['vcoHealthChecks']
+        if 'vpnBgpConfigs' in kwargs:
+            vpn_bgp_configs = kwargs['vpnBgpConfigs']
+
         _setter("create_time", create_time)
         _setter("customer_gateway_id", customer_gateway_id)
         _setter("effect_immediately", effect_immediately)
@@ -1426,7 +1556,25 @@ class GetConnectionsConnectionIkeConfigResult(dict):
              ike_remote_id: Optional[str] = None,
              ike_version: Optional[str] = None,
              psk: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ikeAuthAlg' in kwargs:
+            ike_auth_alg = kwargs['ikeAuthAlg']
+        if 'ikeEncAlg' in kwargs:
+            ike_enc_alg = kwargs['ikeEncAlg']
+        if 'ikeLifetime' in kwargs:
+            ike_lifetime = kwargs['ikeLifetime']
+        if 'ikeLocalId' in kwargs:
+            ike_local_id = kwargs['ikeLocalId']
+        if 'ikeMode' in kwargs:
+            ike_mode = kwargs['ikeMode']
+        if 'ikePfs' in kwargs:
+            ike_pfs = kwargs['ikePfs']
+        if 'ikeRemoteId' in kwargs:
+            ike_remote_id = kwargs['ikeRemoteId']
+        if 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+
         if ike_auth_alg is not None:
             _setter("ike_auth_alg", ike_auth_alg)
         if ike_enc_alg is not None:
@@ -1546,7 +1694,17 @@ class GetConnectionsConnectionIpsecConfigResult(dict):
              ipsec_enc_alg: Optional[str] = None,
              ipsec_lifetime: Optional[int] = None,
              ipsec_pfs: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipsecAuthAlg' in kwargs:
+            ipsec_auth_alg = kwargs['ipsecAuthAlg']
+        if 'ipsecEncAlg' in kwargs:
+            ipsec_enc_alg = kwargs['ipsecEncAlg']
+        if 'ipsecLifetime' in kwargs:
+            ipsec_lifetime = kwargs['ipsecLifetime']
+        if 'ipsecPfs' in kwargs:
+            ipsec_pfs = kwargs['ipsecPfs']
+
         if ipsec_auth_alg is not None:
             _setter("ipsec_auth_alg", ipsec_auth_alg)
         if ipsec_enc_alg is not None:
@@ -1624,7 +1782,9 @@ class GetConnectionsConnectionVcoHealthCheckResult(dict):
              retry: Optional[int] = None,
              sip: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if dip is not None:
             _setter("dip", dip)
         if enable is not None:
@@ -1726,7 +1886,21 @@ class GetConnectionsConnectionVpnBgpConfigResult(dict):
              peer_bgp_ip: Optional[str] = None,
              status: Optional[str] = None,
              tunnel_cidr: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authKey' in kwargs:
+            auth_key = kwargs['authKey']
+        if 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if 'localBgpIp' in kwargs:
+            local_bgp_ip = kwargs['localBgpIp']
+        if 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if 'peerBgpIp' in kwargs:
+            peer_bgp_ip = kwargs['peerBgpIp']
+        if 'tunnelCidr' in kwargs:
+            tunnel_cidr = kwargs['tunnelCidr']
+
         if auth_key is not None:
             _setter("auth_key", auth_key)
         if local_asn is not None:
@@ -1834,7 +2008,13 @@ class GetCustomerGatewaysGatewayResult(dict):
              id: str,
              ip_address: str,
              name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("asn", asn)
         _setter("create_time", create_time)
         _setter("description", description)
@@ -1938,7 +2118,19 @@ class GetGatewayVcoRoutesRouteResult(dict):
              status: str,
              vpn_connection_id: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'asPath' in kwargs:
+            as_path = kwargs['asPath']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if 'routeDest' in kwargs:
+            route_dest = kwargs['routeDest']
+        if 'vpnConnectionId' in kwargs:
+            vpn_connection_id = kwargs['vpnConnectionId']
+
         _setter("as_path", as_path)
         _setter("create_time", create_time)
         _setter("id", id)
@@ -2097,7 +2289,37 @@ class GetGatewayVpnAttachmentsAttachmentResult(dict):
              status: str,
              vpn_attachment_name: str,
              vpn_connection_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bgpConfigs' in kwargs:
+            bgp_configs = kwargs['bgpConfigs']
+        if 'connectionStatus' in kwargs:
+            connection_status = kwargs['connectionStatus']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'customerGatewayId' in kwargs:
+            customer_gateway_id = kwargs['customerGatewayId']
+        if 'effectImmediately' in kwargs:
+            effect_immediately = kwargs['effectImmediately']
+        if 'healthCheckConfigs' in kwargs:
+            health_check_configs = kwargs['healthCheckConfigs']
+        if 'ikeConfigs' in kwargs:
+            ike_configs = kwargs['ikeConfigs']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'ipsecConfigs' in kwargs:
+            ipsec_configs = kwargs['ipsecConfigs']
+        if 'localSubnet' in kwargs:
+            local_subnet = kwargs['localSubnet']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'remoteSubnet' in kwargs:
+            remote_subnet = kwargs['remoteSubnet']
+        if 'vpnAttachmentName' in kwargs:
+            vpn_attachment_name = kwargs['vpnAttachmentName']
+        if 'vpnConnectionId' in kwargs:
+            vpn_connection_id = kwargs['vpnConnectionId']
+
         _setter("bgp_configs", bgp_configs)
         _setter("connection_status", connection_status)
         _setter("create_time", create_time)
@@ -2271,7 +2493,15 @@ class GetGatewayVpnAttachmentsAttachmentBgpConfigResult(dict):
              local_bgp_ip: str,
              status: str,
              tunnel_cidr: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if 'localBgpIp' in kwargs:
+            local_bgp_ip = kwargs['localBgpIp']
+        if 'tunnelCidr' in kwargs:
+            tunnel_cidr = kwargs['tunnelCidr']
+
         _setter("local_asn", local_asn)
         _setter("local_bgp_ip", local_bgp_ip)
         _setter("status", status)
@@ -2349,7 +2579,9 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult(dict):
              retry: int,
              sip: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("dip", dip)
         _setter("enable", enable)
         _setter("interval", interval)
@@ -2462,7 +2694,25 @@ class GetGatewayVpnAttachmentsAttachmentIkeConfigResult(dict):
              local_id: str,
              psk: str,
              remote_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ikeAuthAlg' in kwargs:
+            ike_auth_alg = kwargs['ikeAuthAlg']
+        if 'ikeEncAlg' in kwargs:
+            ike_enc_alg = kwargs['ikeEncAlg']
+        if 'ikeLifetime' in kwargs:
+            ike_lifetime = kwargs['ikeLifetime']
+        if 'ikeMode' in kwargs:
+            ike_mode = kwargs['ikeMode']
+        if 'ikePfs' in kwargs:
+            ike_pfs = kwargs['ikePfs']
+        if 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+        if 'localId' in kwargs:
+            local_id = kwargs['localId']
+        if 'remoteId' in kwargs:
+            remote_id = kwargs['remoteId']
+
         _setter("ike_auth_alg", ike_auth_alg)
         _setter("ike_enc_alg", ike_enc_alg)
         _setter("ike_lifetime", ike_lifetime)
@@ -2573,7 +2823,17 @@ class GetGatewayVpnAttachmentsAttachmentIpsecConfigResult(dict):
              ipsec_enc_alg: str,
              ipsec_lifetime: str,
              ipsec_pfs: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipsecAuthAlg' in kwargs:
+            ipsec_auth_alg = kwargs['ipsecAuthAlg']
+        if 'ipsecEncAlg' in kwargs:
+            ipsec_enc_alg = kwargs['ipsecEncAlg']
+        if 'ipsecLifetime' in kwargs:
+            ipsec_lifetime = kwargs['ipsecLifetime']
+        if 'ipsecPfs' in kwargs:
+            ipsec_pfs = kwargs['ipsecPfs']
+
         _setter("ipsec_auth_alg", ipsec_auth_alg)
         _setter("ipsec_enc_alg", ipsec_enc_alg)
         _setter("ipsec_lifetime", ipsec_lifetime)
@@ -2687,7 +2947,31 @@ class GetGatewaysGatewayResult(dict):
              ssl_connections: int,
              status: str,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPropagate' in kwargs:
+            auto_propagate = kwargs['autoPropagate']
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'enableIpsec' in kwargs:
+            enable_ipsec = kwargs['enableIpsec']
+        if 'enableSsl' in kwargs:
+            enable_ssl = kwargs['enableSsl']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'sslConnections' in kwargs:
+            ssl_connections = kwargs['sslConnections']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("auto_propagate", auto_propagate)
         _setter("business_status", business_status)
         _setter("create_time", create_time)

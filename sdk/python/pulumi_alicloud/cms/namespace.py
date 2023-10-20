@@ -41,7 +41,9 @@ class NamespaceArgs:
              namespace: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("namespace", namespace)
         if description is not None:
             _setter("description", description)
@@ -121,7 +123,9 @@ class _NamespaceState:
              description: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
              specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if namespace is not None:

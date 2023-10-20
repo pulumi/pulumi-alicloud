@@ -55,7 +55,17 @@ class ImageImportArgs:
              license_type: Optional[pulumi.Input[str]] = None,
              os_type: Optional[pulumi.Input[str]] = None,
              platform: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskDeviceMappings' in kwargs:
+            disk_device_mappings = kwargs['diskDeviceMappings']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'licenseType' in kwargs:
+            license_type = kwargs['licenseType']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+
         _setter("disk_device_mappings", disk_device_mappings)
         if architecture is not None:
             _setter("architecture", architecture)
@@ -199,7 +209,17 @@ class _ImageImportState:
              license_type: Optional[pulumi.Input[str]] = None,
              os_type: Optional[pulumi.Input[str]] = None,
              platform: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskDeviceMappings' in kwargs:
+            disk_device_mappings = kwargs['diskDeviceMappings']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'licenseType' in kwargs:
+            license_type = kwargs['licenseType']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+
         if architecture is not None:
             _setter("architecture", architecture)
         if description is not None:

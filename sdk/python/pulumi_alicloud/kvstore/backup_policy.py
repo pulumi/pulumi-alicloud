@@ -35,7 +35,15 @@ class BackupPolicyArgs:
              instance_id: pulumi.Input[str],
              backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              backup_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'backupPeriods' in kwargs:
+            backup_periods = kwargs['backupPeriods']
+        if 'backupTime' in kwargs:
+            backup_time = kwargs['backupTime']
+
         _setter("instance_id", instance_id)
         if backup_periods is not None:
             _setter("backup_periods", backup_periods)
@@ -103,7 +111,15 @@ class _BackupPolicyState:
              backup_periods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              backup_time: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupPeriods' in kwargs:
+            backup_periods = kwargs['backupPeriods']
+        if 'backupTime' in kwargs:
+            backup_time = kwargs['backupTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if backup_periods is not None:
             _setter("backup_periods", backup_periods)
         if backup_time is not None:

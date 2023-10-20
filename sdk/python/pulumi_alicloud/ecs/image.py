@@ -77,7 +77,21 @@ class ImageArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteAutoSnapshot' in kwargs:
+            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
+        if 'diskDeviceMappings' in kwargs:
+            disk_device_mappings = kwargs['diskDeviceMappings']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if architecture is not None:
             _setter("architecture", architecture)
         if delete_auto_snapshot is not None:
@@ -318,7 +332,21 @@ class _ImageState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              snapshot_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteAutoSnapshot' in kwargs:
+            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
+        if 'diskDeviceMappings' in kwargs:
+            disk_device_mappings = kwargs['diskDeviceMappings']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if architecture is not None:
             _setter("architecture", architecture)
         if delete_auto_snapshot is not None:

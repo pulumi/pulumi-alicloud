@@ -39,7 +39,15 @@ class OrganizationArgs:
              source: pulumi.Input[str],
              desired_member_count: Optional[pulumi.Input[int]] = None,
              real_pk: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'organizationName' in kwargs:
+            organization_name = kwargs['organizationName']
+        if 'desiredMemberCount' in kwargs:
+            desired_member_count = kwargs['desiredMemberCount']
+        if 'realPk' in kwargs:
+            real_pk = kwargs['realPk']
+
         _setter("organization_name", organization_name)
         _setter("source", source)
         if desired_member_count is not None:
@@ -124,7 +132,15 @@ class _OrganizationState:
              organization_name: Optional[pulumi.Input[str]] = None,
              real_pk: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desiredMemberCount' in kwargs:
+            desired_member_count = kwargs['desiredMemberCount']
+        if 'organizationName' in kwargs:
+            organization_name = kwargs['organizationName']
+        if 'realPk' in kwargs:
+            real_pk = kwargs['realPk']
+
         if desired_member_count is not None:
             _setter("desired_member_count", desired_member_count)
         if organization_name is not None:

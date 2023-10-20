@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a EAIS Instance resource.
  * 
- * For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/document_detail/185066.html).
+ * For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
  * 
  * &gt; **NOTE:** Available since v1.137.0.
  * 

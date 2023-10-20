@@ -18,6 +18,9 @@ namespace Pulumi.AliCloud.Dms.Outputs
         /// </summary>
         public readonly string AccessId;
         public readonly string AccessSecret;
+        /// <summary>
+        /// The authorization time of the security access agent permission.
+        /// </summary>
         public readonly string CreateTime;
         /// <summary>
         /// Security Protection authorization ID.

@@ -35,7 +35,13 @@ class EnterpriseLogicDatabaseArgs:
              alias: pulumi.Input[str],
              database_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
              logic_database_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'databaseIds' in kwargs:
+            database_ids = kwargs['databaseIds']
+        if 'logicDatabaseId' in kwargs:
+            logic_database_id = kwargs['logicDatabaseId']
+
         _setter("alias", alias)
         _setter("database_ids", database_ids)
         if logic_database_id is not None:
@@ -130,7 +136,25 @@ class _EnterpriseLogicDatabaseState:
              owner_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              schema_name: Optional[pulumi.Input[str]] = None,
              search_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'databaseIds' in kwargs:
+            database_ids = kwargs['databaseIds']
+        if 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if 'envType' in kwargs:
+            env_type = kwargs['envType']
+        if 'logicDatabaseId' in kwargs:
+            logic_database_id = kwargs['logicDatabaseId']
+        if 'ownerIdLists' in kwargs:
+            owner_id_lists = kwargs['ownerIdLists']
+        if 'ownerNameLists' in kwargs:
+            owner_name_lists = kwargs['ownerNameLists']
+        if 'schemaName' in kwargs:
+            schema_name = kwargs['schemaName']
+        if 'searchName' in kwargs:
+            search_name = kwargs['searchName']
+
         if alias is not None:
             _setter("alias", alias)
         if database_ids is not None:
@@ -285,7 +309,7 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
         """
         Provides a DMS Enterprise Logic Database resource.
 
-        For information about DMS Enterprise Logic Database and how to use it, see [What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase).
+        For information about DMS Enterprise Logic Database and how to use it, see [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
 
         > **NOTE:** Available in v1.195.0+.
 
@@ -328,7 +352,7 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
         """
         Provides a DMS Enterprise Logic Database resource.
 
-        For information about DMS Enterprise Logic Database and how to use it, see [What is Logic Database](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createlogicdatabase).
+        For information about DMS Enterprise Logic Database and how to use it, see [What is Logic Database](https://www.alibabacloud.com/help/en/dms/developer-reference/api-dms-enterprise-2018-11-01-createlogicdatabase).
 
         > **NOTE:** Available in v1.195.0+.
 

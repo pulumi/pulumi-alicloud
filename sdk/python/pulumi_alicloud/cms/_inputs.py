@@ -15,7 +15,13 @@ __all__ = [
     'AlarmEscalationsWarnArgs',
     'AlarmPrometheusArgs',
     'DynamicTagGroupMatchExpressArgs',
+    'EventRuleContactParameterArgs',
     'EventRuleEventPatternArgs',
+    'EventRuleFcParameterArgs',
+    'EventRuleMnsParameterArgs',
+    'EventRuleOpenApiParameterArgs',
+    'EventRuleSlsParameterArgs',
+    'EventRuleWebhookParameterArgs',
     'GroupMetricRuleEscalationsArgs',
     'GroupMetricRuleEscalationsCriticalArgs',
     'GroupMetricRuleEscalationsInfoArgs',
@@ -66,7 +72,11 @@ class AlarmEscalationsCriticalArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'comparisonOperator' in kwargs:
+            comparison_operator = kwargs['comparisonOperator']
+
         if comparison_operator is not None:
             _setter("comparison_operator", comparison_operator)
         if statistics is not None:
@@ -152,7 +162,11 @@ class AlarmEscalationsInfoArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'comparisonOperator' in kwargs:
+            comparison_operator = kwargs['comparisonOperator']
+
         if comparison_operator is not None:
             _setter("comparison_operator", comparison_operator)
         if statistics is not None:
@@ -238,7 +252,11 @@ class AlarmEscalationsWarnArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'comparisonOperator' in kwargs:
+            comparison_operator = kwargs['comparisonOperator']
+
         if comparison_operator is not None:
             _setter("comparison_operator", comparison_operator)
         if statistics is not None:
@@ -324,7 +342,11 @@ class AlarmPrometheusArgs:
              level: Optional[pulumi.Input[str]] = None,
              prom_ql: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'promQl' in kwargs:
+            prom_ql = kwargs['promQl']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if level is not None:
@@ -402,7 +424,13 @@ class DynamicTagGroupMatchExpressArgs:
              _setter: Callable[[Any, Any], None],
              tag_value: pulumi.Input[str],
              tag_value_match_function: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tagValue' in kwargs:
+            tag_value = kwargs['tagValue']
+        if 'tagValueMatchFunction' in kwargs:
+            tag_value_match_function = kwargs['tagValueMatchFunction']
+
         _setter("tag_value", tag_value)
         _setter("tag_value_match_function", tag_value_match_function)
 
@@ -429,6 +457,80 @@ class DynamicTagGroupMatchExpressArgs:
     @tag_value_match_function.setter
     def tag_value_match_function(self, value: pulumi.Input[str]):
         pulumi.set(self, "tag_value_match_function", value)
+
+
+@pulumi.input_type
+class EventRuleContactParameterArgs:
+    def __init__(__self__, *,
+                 contact_group_name: Optional[pulumi.Input[str]] = None,
+                 contact_parameters_id: Optional[pulumi.Input[str]] = None,
+                 level: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] contact_group_name: The name of the alert contact group.
+        :param pulumi.Input[str] contact_parameters_id: The ID of the recipient that receives alert notifications.
+        :param pulumi.Input[str] level: The alert level and the corresponding notification methods.
+        """
+        EventRuleContactParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            contact_group_name=contact_group_name,
+            contact_parameters_id=contact_parameters_id,
+            level=level,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             contact_group_name: Optional[pulumi.Input[str]] = None,
+             contact_parameters_id: Optional[pulumi.Input[str]] = None,
+             level: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contactGroupName' in kwargs:
+            contact_group_name = kwargs['contactGroupName']
+        if 'contactParametersId' in kwargs:
+            contact_parameters_id = kwargs['contactParametersId']
+
+        if contact_group_name is not None:
+            _setter("contact_group_name", contact_group_name)
+        if contact_parameters_id is not None:
+            _setter("contact_parameters_id", contact_parameters_id)
+        if level is not None:
+            _setter("level", level)
+
+    @property
+    @pulumi.getter(name="contactGroupName")
+    def contact_group_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the alert contact group.
+        """
+        return pulumi.get(self, "contact_group_name")
+
+    @contact_group_name.setter
+    def contact_group_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "contact_group_name", value)
+
+    @property
+    @pulumi.getter(name="contactParametersId")
+    def contact_parameters_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the recipient that receives alert notifications.
+        """
+        return pulumi.get(self, "contact_parameters_id")
+
+    @contact_parameters_id.setter
+    def contact_parameters_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "contact_parameters_id", value)
+
+    @property
+    @pulumi.getter
+    def level(self) -> Optional[pulumi.Input[str]]:
+        """
+        The alert level and the corresponding notification methods.
+        """
+        return pulumi.get(self, "level")
+
+    @level.setter
+    def level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "level", value)
 
 
 @pulumi.input_type
@@ -462,7 +564,17 @@ class EventRuleEventPatternArgs:
              level_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              sql_filter: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventTypeLists' in kwargs:
+            event_type_lists = kwargs['eventTypeLists']
+        if 'levelLists' in kwargs:
+            level_lists = kwargs['levelLists']
+        if 'nameLists' in kwargs:
+            name_lists = kwargs['nameLists']
+        if 'sqlFilter' in kwargs:
+            sql_filter = kwargs['sqlFilter']
+
         _setter("product", product)
         if event_type_lists is not None:
             _setter("event_type_lists", event_type_lists)
@@ -535,6 +647,570 @@ class EventRuleEventPatternArgs:
 
 
 @pulumi.input_type
+class EventRuleFcParameterArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 fc_parameters_id: Optional[pulumi.Input[str]] = None,
+                 function_name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] arn: (Available since v1.211.1) The ARN of the API operation.
+        :param pulumi.Input[str] fc_parameters_id: The ID of the recipient that receives alert notifications.
+        :param pulumi.Input[str] function_name: The name of the function.
+        :param pulumi.Input[str] region: The region where Function Compute is deployed.
+        :param pulumi.Input[str] service_name: The name of the Function Compute service.
+        """
+        EventRuleFcParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            fc_parameters_id=fc_parameters_id,
+            function_name=function_name,
+            region=region,
+            service_name=service_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[pulumi.Input[str]] = None,
+             fc_parameters_id: Optional[pulumi.Input[str]] = None,
+             function_name: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             service_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fcParametersId' in kwargs:
+            fc_parameters_id = kwargs['fcParametersId']
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
+        if arn is not None:
+            _setter("arn", arn)
+        if fc_parameters_id is not None:
+            _setter("fc_parameters_id", fc_parameters_id)
+        if function_name is not None:
+            _setter("function_name", function_name)
+        if region is not None:
+            _setter("region", region)
+        if service_name is not None:
+            _setter("service_name", service_name)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.211.1) The ARN of the API operation.
+        """
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="fcParametersId")
+    def fc_parameters_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the recipient that receives alert notifications.
+        """
+        return pulumi.get(self, "fc_parameters_id")
+
+    @fc_parameters_id.setter
+    def fc_parameters_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fc_parameters_id", value)
+
+    @property
+    @pulumi.getter(name="functionName")
+    def function_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the function.
+        """
+        return pulumi.get(self, "function_name")
+
+    @function_name.setter
+    def function_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where Function Compute is deployed.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Function Compute service.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+
+@pulumi.input_type
+class EventRuleMnsParameterArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 mns_parameters_id: Optional[pulumi.Input[str]] = None,
+                 queue: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 topic: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] arn: (Available since v1.211.1) The ARN of the API operation.
+        :param pulumi.Input[str] mns_parameters_id: The ID of the recipient that receives alert notifications.
+        :param pulumi.Input[str] queue: The name of the MNS queue.
+        :param pulumi.Input[str] region: The region where Message Service (MNS) is deployed.
+        :param pulumi.Input[str] topic: The MNS topic.
+        """
+        EventRuleMnsParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            mns_parameters_id=mns_parameters_id,
+            queue=queue,
+            region=region,
+            topic=topic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[pulumi.Input[str]] = None,
+             mns_parameters_id: Optional[pulumi.Input[str]] = None,
+             queue: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             topic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mnsParametersId' in kwargs:
+            mns_parameters_id = kwargs['mnsParametersId']
+
+        if arn is not None:
+            _setter("arn", arn)
+        if mns_parameters_id is not None:
+            _setter("mns_parameters_id", mns_parameters_id)
+        if queue is not None:
+            _setter("queue", queue)
+        if region is not None:
+            _setter("region", region)
+        if topic is not None:
+            _setter("topic", topic)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.211.1) The ARN of the API operation.
+        """
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="mnsParametersId")
+    def mns_parameters_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the recipient that receives alert notifications.
+        """
+        return pulumi.get(self, "mns_parameters_id")
+
+    @mns_parameters_id.setter
+    def mns_parameters_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mns_parameters_id", value)
+
+    @property
+    @pulumi.getter
+    def queue(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the MNS queue.
+        """
+        return pulumi.get(self, "queue")
+
+    @queue.setter
+    def queue(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "queue", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where Message Service (MNS) is deployed.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        The MNS topic.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic", value)
+
+
+@pulumi.input_type
+class EventRuleOpenApiParameterArgs:
+    def __init__(__self__, *,
+                 action: Optional[pulumi.Input[str]] = None,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 open_api_parameters_id: Optional[pulumi.Input[str]] = None,
+                 product: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] action: The API name.
+        :param pulumi.Input[str] arn: (Available since v1.211.1) The ARN of the API operation.
+        :param pulumi.Input[str] open_api_parameters_id: The ID of the recipient that receives alert notifications sent by an API callback.
+        :param pulumi.Input[str] product: The ID of the cloud service to which the API operation belongs.
+        :param pulumi.Input[str] region: The region where the resource resides.
+        :param pulumi.Input[str] role: The name of the role.
+        :param pulumi.Input[str] version: The version of the API.
+        """
+        EventRuleOpenApiParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            arn=arn,
+            open_api_parameters_id=open_api_parameters_id,
+            product=product,
+            region=region,
+            role=role,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input[str]] = None,
+             arn: Optional[pulumi.Input[str]] = None,
+             open_api_parameters_id: Optional[pulumi.Input[str]] = None,
+             product: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             role: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'openApiParametersId' in kwargs:
+            open_api_parameters_id = kwargs['openApiParametersId']
+
+        if action is not None:
+            _setter("action", action)
+        if arn is not None:
+            _setter("arn", arn)
+        if open_api_parameters_id is not None:
+            _setter("open_api_parameters_id", open_api_parameters_id)
+        if product is not None:
+            _setter("product", product)
+        if region is not None:
+            _setter("region", region)
+        if role is not None:
+            _setter("role", role)
+        if version is not None:
+            _setter("version", version)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API name.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.211.1) The ARN of the API operation.
+        """
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="openApiParametersId")
+    def open_api_parameters_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the recipient that receives alert notifications sent by an API callback.
+        """
+        return pulumi.get(self, "open_api_parameters_id")
+
+    @open_api_parameters_id.setter
+    def open_api_parameters_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "open_api_parameters_id", value)
+
+    @property
+    @pulumi.getter
+    def product(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the cloud service to which the API operation belongs.
+        """
+        return pulumi.get(self, "product")
+
+    @product.setter
+    def product(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "product", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where the resource resides.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the API.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class EventRuleSlsParameterArgs:
+    def __init__(__self__, *,
+                 arn: Optional[pulumi.Input[str]] = None,
+                 log_store: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 sls_parameters_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] arn: (Available since v1.211.1) The ARN of the API operation.
+        :param pulumi.Input[str] log_store: The name of the Simple Log Service Logstore.
+        :param pulumi.Input[str] project: The name of the Simple Log Service project.
+        :param pulumi.Input[str] region: The region where Simple Log Service is deployed.
+        :param pulumi.Input[str] sls_parameters_id: The ID of the recipient that receives alert notifications.
+        """
+        EventRuleSlsParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            arn=arn,
+            log_store=log_store,
+            project=project,
+            region=region,
+            sls_parameters_id=sls_parameters_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             arn: Optional[pulumi.Input[str]] = None,
+             log_store: Optional[pulumi.Input[str]] = None,
+             project: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             sls_parameters_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'logStore' in kwargs:
+            log_store = kwargs['logStore']
+        if 'slsParametersId' in kwargs:
+            sls_parameters_id = kwargs['slsParametersId']
+
+        if arn is not None:
+            _setter("arn", arn)
+        if log_store is not None:
+            _setter("log_store", log_store)
+        if project is not None:
+            _setter("project", project)
+        if region is not None:
+            _setter("region", region)
+        if sls_parameters_id is not None:
+            _setter("sls_parameters_id", sls_parameters_id)
+
+    @property
+    @pulumi.getter
+    def arn(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Available since v1.211.1) The ARN of the API operation.
+        """
+        return pulumi.get(self, "arn")
+
+    @arn.setter
+    def arn(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "arn", value)
+
+    @property
+    @pulumi.getter(name="logStore")
+    def log_store(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Simple Log Service Logstore.
+        """
+        return pulumi.get(self, "log_store")
+
+    @log_store.setter
+    def log_store(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "log_store", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Simple Log Service project.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region where Simple Log Service is deployed.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="slsParametersId")
+    def sls_parameters_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the recipient that receives alert notifications.
+        """
+        return pulumi.get(self, "sls_parameters_id")
+
+    @sls_parameters_id.setter
+    def sls_parameters_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sls_parameters_id", value)
+
+
+@pulumi.input_type
+class EventRuleWebhookParameterArgs:
+    def __init__(__self__, *,
+                 method: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None,
+                 webhook_parameters_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] method: The HTTP request method.
+        :param pulumi.Input[str] protocol: The name of the protocol.
+        :param pulumi.Input[str] url: The callback URL.
+        :param pulumi.Input[str] webhook_parameters_id: The ID of the recipient that receives alert notifications.
+        """
+        EventRuleWebhookParameterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            method=method,
+            protocol=protocol,
+            url=url,
+            webhook_parameters_id=webhook_parameters_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             method: Optional[pulumi.Input[str]] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             webhook_parameters_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'webhookParametersId' in kwargs:
+            webhook_parameters_id = kwargs['webhookParametersId']
+
+        if method is not None:
+            _setter("method", method)
+        if protocol is not None:
+            _setter("protocol", protocol)
+        if url is not None:
+            _setter("url", url)
+        if webhook_parameters_id is not None:
+            _setter("webhook_parameters_id", webhook_parameters_id)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP request method.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the protocol.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The callback URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="webhookParametersId")
+    def webhook_parameters_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the recipient that receives alert notifications.
+        """
+        return pulumi.get(self, "webhook_parameters_id")
+
+    @webhook_parameters_id.setter
+    def webhook_parameters_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "webhook_parameters_id", value)
+
+
+@pulumi.input_type
 class GroupMetricRuleEscalationsArgs:
     def __init__(__self__, *,
                  critical: Optional[pulumi.Input['GroupMetricRuleEscalationsCriticalArgs']] = None,
@@ -557,7 +1233,9 @@ class GroupMetricRuleEscalationsArgs:
              critical: Optional[pulumi.Input['GroupMetricRuleEscalationsCriticalArgs']] = None,
              info: Optional[pulumi.Input['GroupMetricRuleEscalationsInfoArgs']] = None,
              warn: Optional[pulumi.Input['GroupMetricRuleEscalationsWarnArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if critical is not None:
             _setter("critical", critical)
         if info is not None:
@@ -629,7 +1307,11 @@ class GroupMetricRuleEscalationsCriticalArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'comparisonOperator' in kwargs:
+            comparison_operator = kwargs['comparisonOperator']
+
         if comparison_operator is not None:
             _setter("comparison_operator", comparison_operator)
         if statistics is not None:
@@ -715,7 +1397,11 @@ class GroupMetricRuleEscalationsInfoArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'comparisonOperator' in kwargs:
+            comparison_operator = kwargs['comparisonOperator']
+
         if comparison_operator is not None:
             _setter("comparison_operator", comparison_operator)
         if statistics is not None:
@@ -801,7 +1487,11 @@ class GroupMetricRuleEscalationsWarnArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'comparisonOperator' in kwargs:
+            comparison_operator = kwargs['comparisonOperator']
+
         if comparison_operator is not None:
             _setter("comparison_operator", comparison_operator)
         if statistics is not None:
@@ -889,7 +1579,11 @@ class GroupMetricRuleTargetArgs:
              id: Optional[pulumi.Input[str]] = None,
              json_params: Optional[pulumi.Input[str]] = None,
              level: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jsonParams' in kwargs:
+            json_params = kwargs['jsonParams']
+
         if arn is not None:
             _setter("arn", arn)
         if id is not None:
@@ -969,7 +1663,9 @@ class HybridMonitorSlsTaskAttachLabelArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if value is not None:
@@ -1027,7 +1723,11 @@ class HybridMonitorSlsTaskSlsProcessConfigArgs:
              filter: Optional[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterArgs']] = None,
              group_bies: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs']]]] = None,
              statistics: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupBies' in kwargs:
+            group_bies = kwargs['groupBies']
+
         if expresses is not None:
             _setter("expresses", expresses)
         if filter is not None:
@@ -1105,7 +1805,9 @@ class HybridMonitorSlsTaskSlsProcessConfigExpressArgs:
              _setter: Callable[[Any, Any], None],
              alias: Optional[pulumi.Input[str]] = None,
              express: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if alias is not None:
             _setter("alias", alias)
         if express is not None:
@@ -1155,7 +1857,9 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterArgs:
              _setter: Callable[[Any, Any], None],
              filters: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs']]]] = None,
              relation: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if filters is not None:
             _setter("filters", filters)
         if relation is not None:
@@ -1209,7 +1913,11 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs:
              operator: Optional[pulumi.Input[str]] = None,
              sls_key_name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'slsKeyName' in kwargs:
+            sls_key_name = kwargs['slsKeyName']
+
         if operator is not None:
             _setter("operator", operator)
         if sls_key_name is not None:
@@ -1273,7 +1981,11 @@ class HybridMonitorSlsTaskSlsProcessConfigGroupByArgs:
              _setter: Callable[[Any, Any], None],
              alias: Optional[pulumi.Input[str]] = None,
              sls_key_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'slsKeyName' in kwargs:
+            sls_key_name = kwargs['slsKeyName']
+
         if alias is not None:
             _setter("alias", alias)
         if sls_key_name is not None:
@@ -1337,7 +2049,15 @@ class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs:
              parameter_one: Optional[pulumi.Input[str]] = None,
              parameter_two: Optional[pulumi.Input[str]] = None,
              sls_key_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterOne' in kwargs:
+            parameter_one = kwargs['parameterOne']
+        if 'parameterTwo' in kwargs:
+            parameter_two = kwargs['parameterTwo']
+        if 'slsKeyName' in kwargs:
+            sls_key_name = kwargs['slsKeyName']
+
         if alias is not None:
             _setter("alias", alias)
         if function is not None:
@@ -1431,7 +2151,11 @@ class MetricRuleBlackListMetricArgs:
              _setter: Callable[[Any, Any], None],
              metric_name: pulumi.Input[str],
              resource: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+
         _setter("metric_name", metric_name)
         if resource is not None:
             _setter("resource", resource)
@@ -1500,7 +2224,13 @@ class MetricRuleTemplateAlertTemplateArgs:
              rule_name: pulumi.Input[str],
              escalations: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsArgs']] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+
         _setter("category", category)
         _setter("metric_name", metric_name)
         _setter("namespace", namespace)
@@ -1610,7 +2340,9 @@ class MetricRuleTemplateAlertTemplateEscalationsArgs:
              critical: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsCriticalArgs']] = None,
              info: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsInfoArgs']] = None,
              warn: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsWarnArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if critical is not None:
             _setter("critical", critical)
         if info is not None:
@@ -1682,7 +2414,11 @@ class MetricRuleTemplateAlertTemplateEscalationsCriticalArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'comparisonOperator' in kwargs:
+            comparison_operator = kwargs['comparisonOperator']
+
         if comparison_operator is not None:
             _setter("comparison_operator", comparison_operator)
         if statistics is not None:
@@ -1768,7 +2504,11 @@ class MetricRuleTemplateAlertTemplateEscalationsInfoArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'comparisonOperator' in kwargs:
+            comparison_operator = kwargs['comparisonOperator']
+
         if comparison_operator is not None:
             _setter("comparison_operator", comparison_operator)
         if statistics is not None:
@@ -1854,7 +2594,11 @@ class MetricRuleTemplateAlertTemplateEscalationsWarnArgs:
              statistics: Optional[pulumi.Input[str]] = None,
              threshold: Optional[pulumi.Input[str]] = None,
              times: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'comparisonOperator' in kwargs:
+            comparison_operator = kwargs['comparisonOperator']
+
         if comparison_operator is not None:
             _setter("comparison_operator", comparison_operator)
         if statistics is not None:
@@ -1940,7 +2684,15 @@ class MonitorGroupInstancesInstanceArgs:
              instance_id: pulumi.Input[str],
              instance_name: pulumi.Input[str],
              region_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("category", category)
         _setter("instance_id", instance_id)
         _setter("instance_name", instance_name)
@@ -2014,7 +2766,9 @@ class SiteMonitorIspCityArgs:
              _setter: Callable[[Any, Any], None],
              city: pulumi.Input[str],
              isp: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("city", city)
         _setter("isp", isp)
 
@@ -2070,7 +2824,17 @@ class SlsGroupSlsGroupConfigArgs:
              sls_project: pulumi.Input[str],
              sls_region: pulumi.Input[str],
              sls_user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'slsLogstore' in kwargs:
+            sls_logstore = kwargs['slsLogstore']
+        if 'slsProject' in kwargs:
+            sls_project = kwargs['slsProject']
+        if 'slsRegion' in kwargs:
+            sls_region = kwargs['slsRegion']
+        if 'slsUserId' in kwargs:
+            sls_user_id = kwargs['slsUserId']
+
         _setter("sls_logstore", sls_logstore)
         _setter("sls_project", sls_project)
         _setter("sls_region", sls_region)

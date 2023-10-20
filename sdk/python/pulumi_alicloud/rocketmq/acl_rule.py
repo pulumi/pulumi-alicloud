@@ -63,7 +63,21 @@ class AclRuleArgs:
              source_port_range: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if 'destCidr' in kwargs:
+            dest_cidr = kwargs['destCidr']
+        if 'destPortRange' in kwargs:
+            dest_port_range = kwargs['destPortRange']
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if 'sourceCidr' in kwargs:
+            source_cidr = kwargs['sourceCidr']
+        if 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+
         _setter("acl_id", acl_id)
         _setter("dest_cidr", dest_cidr)
         _setter("dest_port_range", dest_port_range)
@@ -250,7 +264,21 @@ class _AclRuleState:
              priority: Optional[pulumi.Input[int]] = None,
              source_cidr: Optional[pulumi.Input[str]] = None,
              source_port_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if 'destCidr' in kwargs:
+            dest_cidr = kwargs['destCidr']
+        if 'destPortRange' in kwargs:
+            dest_port_range = kwargs['destPortRange']
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if 'sourceCidr' in kwargs:
+            source_cidr = kwargs['sourceCidr']
+        if 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+
         if acl_id is not None:
             _setter("acl_id", acl_id)
         if description is not None:

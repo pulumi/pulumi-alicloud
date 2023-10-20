@@ -45,7 +45,13 @@ class IpaDomainArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("domain_name", domain_name)
         _setter("sources", sources)
         if resource_group_id is not None:
@@ -148,7 +154,13 @@ class _IpaDomainState:
              scope: Optional[pulumi.Input[str]] = None,
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['IpaDomainSourceArgs']]]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if domain_name is not None:
             _setter("domain_name", domain_name)
         if resource_group_id is not None:

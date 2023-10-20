@@ -13,7 +13,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createtopic).
+// Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
 //
 // > **NOTE:** Available since v1.56.0.
 //

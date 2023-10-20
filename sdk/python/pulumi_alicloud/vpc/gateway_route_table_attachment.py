@@ -35,7 +35,15 @@ class GatewayRouteTableAttachmentArgs:
              ipv4_gateway_id: pulumi.Input[str],
              route_table_id: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipv4GatewayId' in kwargs:
+            ipv4_gateway_id = kwargs['ipv4GatewayId']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("ipv4_gateway_id", ipv4_gateway_id)
         _setter("route_table_id", route_table_id)
         if dry_run is not None:
@@ -116,7 +124,17 @@ class _GatewayRouteTableAttachmentState:
              ipv4_gateway_id: Optional[pulumi.Input[str]] = None,
              route_table_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'ipv4GatewayId' in kwargs:
+            ipv4_gateway_id = kwargs['ipv4GatewayId']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if dry_run is not None:

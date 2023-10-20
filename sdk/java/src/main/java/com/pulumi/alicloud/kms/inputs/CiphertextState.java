@@ -32,14 +32,14 @@ public final class CiphertextState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     * The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      * 
      */
     @Import(name="encryptionContext")
     private @Nullable Output<Map<String,String>> encryptionContext;
 
     /**
-     * @return (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     * @return The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      * 
      */
     public Optional<Output<Map<String,String>>> encryptionContext() {
@@ -125,7 +125,7 @@ public final class CiphertextState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionContext (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+         * @param encryptionContext The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class CiphertextState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionContext (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+         * @param encryptionContext The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
          * 
          * @return builder
          * 

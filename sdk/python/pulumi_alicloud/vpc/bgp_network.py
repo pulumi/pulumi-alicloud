@@ -31,7 +31,13 @@ class BgpNetworkArgs:
              _setter: Callable[[Any, Any], None],
              dst_cidr_block: pulumi.Input[str],
              router_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dstCidrBlock' in kwargs:
+            dst_cidr_block = kwargs['dstCidrBlock']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
         _setter("dst_cidr_block", dst_cidr_block)
         _setter("router_id", router_id)
 
@@ -84,7 +90,13 @@ class _BgpNetworkState:
              dst_cidr_block: Optional[pulumi.Input[str]] = None,
              router_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dstCidrBlock' in kwargs:
+            dst_cidr_block = kwargs['dstCidrBlock']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
         if dst_cidr_block is not None:
             _setter("dst_cidr_block", dst_cidr_block)
         if router_id is not None:

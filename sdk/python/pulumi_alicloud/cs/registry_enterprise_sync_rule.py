@@ -59,7 +59,25 @@ class RegistryEnterpriseSyncRuleArgs:
              name: Optional[pulumi.Input[str]] = None,
              repo_name: Optional[pulumi.Input[str]] = None,
              target_repo_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+        if 'tagFilter' in kwargs:
+            tag_filter = kwargs['tagFilter']
+        if 'targetInstanceId' in kwargs:
+            target_instance_id = kwargs['targetInstanceId']
+        if 'targetNamespaceName' in kwargs:
+            target_namespace_name = kwargs['targetNamespaceName']
+        if 'targetRegionId' in kwargs:
+            target_region_id = kwargs['targetRegionId']
+        if 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if 'targetRepoName' in kwargs:
+            target_repo_name = kwargs['targetRepoName']
+
         _setter("instance_id", instance_id)
         _setter("namespace_name", namespace_name)
         _setter("tag_filter", tag_filter)
@@ -242,7 +260,31 @@ class _RegistryEnterpriseSyncRuleState:
              target_namespace_name: Optional[pulumi.Input[str]] = None,
              target_region_id: Optional[pulumi.Input[str]] = None,
              target_repo_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+        if 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if 'ruleId' in kwargs:
+            rule_id = kwargs['ruleId']
+        if 'syncDirection' in kwargs:
+            sync_direction = kwargs['syncDirection']
+        if 'syncScope' in kwargs:
+            sync_scope = kwargs['syncScope']
+        if 'tagFilter' in kwargs:
+            tag_filter = kwargs['tagFilter']
+        if 'targetInstanceId' in kwargs:
+            target_instance_id = kwargs['targetInstanceId']
+        if 'targetNamespaceName' in kwargs:
+            target_namespace_name = kwargs['targetNamespaceName']
+        if 'targetRegionId' in kwargs:
+            target_region_id = kwargs['targetRegionId']
+        if 'targetRepoName' in kwargs:
+            target_repo_name = kwargs['targetRepoName']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if name is not None:

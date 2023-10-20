@@ -63,7 +63,29 @@ class AccountArgs:
              dml_authority: Optional[pulumi.Input[str]] = None,
              total_databases: Optional[pulumi.Input[str]] = None,
              total_dictionaries: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+        if 'allowDatabases' in kwargs:
+            allow_databases = kwargs['allowDatabases']
+        if 'allowDictionaries' in kwargs:
+            allow_dictionaries = kwargs['allowDictionaries']
+        if 'ddlAuthority' in kwargs:
+            ddl_authority = kwargs['ddlAuthority']
+        if 'dmlAuthority' in kwargs:
+            dml_authority = kwargs['dmlAuthority']
+        if 'totalDatabases' in kwargs:
+            total_databases = kwargs['totalDatabases']
+        if 'totalDictionaries' in kwargs:
+            total_dictionaries = kwargs['totalDictionaries']
+
         _setter("account_name", account_name)
         _setter("account_password", account_password)
         _setter("db_cluster_id", db_cluster_id)
@@ -263,7 +285,29 @@ class _AccountState:
              total_databases: Optional[pulumi.Input[str]] = None,
              total_dictionaries: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'allowDatabases' in kwargs:
+            allow_databases = kwargs['allowDatabases']
+        if 'allowDictionaries' in kwargs:
+            allow_dictionaries = kwargs['allowDictionaries']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'ddlAuthority' in kwargs:
+            ddl_authority = kwargs['ddlAuthority']
+        if 'dmlAuthority' in kwargs:
+            dml_authority = kwargs['dmlAuthority']
+        if 'totalDatabases' in kwargs:
+            total_databases = kwargs['totalDatabases']
+        if 'totalDictionaries' in kwargs:
+            total_dictionaries = kwargs['totalDictionaries']
+
         if account_description is not None:
             _setter("account_description", account_description)
         if account_name is not None:

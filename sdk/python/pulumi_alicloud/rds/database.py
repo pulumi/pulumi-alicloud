@@ -50,7 +50,13 @@ class DatabaseArgs:
              character_set: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'characterSet' in kwargs:
+            character_set = kwargs['characterSet']
+
         _setter("instance_id", instance_id)
         if character_set is not None:
             _setter("character_set", character_set)
@@ -158,7 +164,13 @@ class _DatabaseState:
              description: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'characterSet' in kwargs:
+            character_set = kwargs['characterSet']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if character_set is not None:
             _setter("character_set", character_set)
         if description is not None:

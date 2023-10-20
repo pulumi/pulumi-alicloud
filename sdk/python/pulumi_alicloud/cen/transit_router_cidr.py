@@ -43,7 +43,15 @@ class TransitRouterCidrArgs:
              description: Optional[pulumi.Input[str]] = None,
              publish_cidr_route: Optional[pulumi.Input[bool]] = None,
              transit_router_cidr_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'publishCidrRoute' in kwargs:
+            publish_cidr_route = kwargs['publishCidrRoute']
+        if 'transitRouterCidrName' in kwargs:
+            transit_router_cidr_name = kwargs['transitRouterCidrName']
+
         _setter("cidr", cidr)
         _setter("transit_router_id", transit_router_id)
         if description is not None:
@@ -150,7 +158,17 @@ class _TransitRouterCidrState:
              transit_router_cidr_id: Optional[pulumi.Input[str]] = None,
              transit_router_cidr_name: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publishCidrRoute' in kwargs:
+            publish_cidr_route = kwargs['publishCidrRoute']
+        if 'transitRouterCidrId' in kwargs:
+            transit_router_cidr_id = kwargs['transitRouterCidrId']
+        if 'transitRouterCidrName' in kwargs:
+            transit_router_cidr_name = kwargs['transitRouterCidrName']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+
         if cidr is not None:
             _setter("cidr", cidr)
         if description is not None:

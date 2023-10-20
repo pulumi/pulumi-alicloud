@@ -49,7 +49,19 @@ class ChainArgs:
              description: Optional[pulumi.Input[str]] = None,
              repo_name: Optional[pulumi.Input[str]] = None,
              repo_namespace_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'chainName' in kwargs:
+            chain_name = kwargs['chainName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'chainConfigs' in kwargs:
+            chain_configs = kwargs['chainConfigs']
+        if 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if 'repoNamespaceName' in kwargs:
+            repo_namespace_name = kwargs['repoNamespaceName']
+
         _setter("chain_name", chain_name)
         _setter("instance_id", instance_id)
         if chain_configs is not None:
@@ -174,7 +186,21 @@ class _ChainState:
              instance_id: Optional[pulumi.Input[str]] = None,
              repo_name: Optional[pulumi.Input[str]] = None,
              repo_namespace_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'chainConfigs' in kwargs:
+            chain_configs = kwargs['chainConfigs']
+        if 'chainId' in kwargs:
+            chain_id = kwargs['chainId']
+        if 'chainName' in kwargs:
+            chain_name = kwargs['chainName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if 'repoNamespaceName' in kwargs:
+            repo_namespace_name = kwargs['repoNamespaceName']
+
         if chain_configs is not None:
             _setter("chain_configs", chain_configs)
         if chain_id is not None:

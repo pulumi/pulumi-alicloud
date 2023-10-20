@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// > **NOTE:** Deprecated since v1.123.1.
+//
 // > **DEPRECATED:** This resource has been renamed to slb.ApplicationLoadBalancer from version 1.123.1.
 //
 // Provides an Application Load Balancer resource.
@@ -19,7 +21,7 @@ import (
 // > **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create "paybybandwidth" instance.
 //
 // > **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
-// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
+// For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-createloadbalancer-2#t4182.html).
 //
 // ## Example Usage
 //
@@ -39,7 +41,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "terraformtestslbconfig"
+//			name := "terraformslbconfig"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -50,6 +52,7 @@ import (
 //				return err
 //			}
 //			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
@@ -65,8 +68,9 @@ import (
 //				return err
 //			}
 //			_, err = slb.NewLoadBalancer(ctx, "defaultLoadBalancer", &slb.LoadBalancerArgs{
-//				Specification: pulumi.String("slb.s2.small"),
-//				VswitchId:     defaultSwitch.ID(),
+//				LoadBalancerName: pulumi.String(name),
+//				LoadBalancerSpec: pulumi.String("slb.s2.small"),
+//				VswitchId:        defaultSwitch.ID(),
 //				Tags: pulumi.AnyMap{
 //					"tag_a": pulumi.Any(1),
 //					"tag_b": pulumi.Any(2),
@@ -123,34 +127,41 @@ type LoadBalancer struct {
 	// Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
 	LoadBalancerName   pulumi.StringOutput    `pulumi:"loadBalancerName"`
-	LoadBalancerSpec   pulumi.StringOutput    `pulumi:"loadBalancerSpec"`
+	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
+	LoadBalancerSpec pulumi.StringOutput `pulumi:"loadBalancerSpec"`
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-	MasterZoneId                 pulumi.StringOutput    `pulumi:"masterZoneId"`
+	MasterZoneId pulumi.StringOutput `pulumi:"masterZoneId"`
+	// The reason of modification protection. It's effective when `modificationProtectionStatus` is `ConsoleProtection`.
 	ModificationProtectionReason pulumi.StringPtrOutput `pulumi:"modificationProtectionReason"`
-	ModificationProtectionStatus pulumi.StringOutput    `pulumi:"modificationProtectionStatus"`
+	// The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
+	ModificationProtectionStatus pulumi.StringOutput `pulumi:"modificationProtectionStatus"`
+	// Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
-	Name        pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The Id of resource group which the SLB belongs.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+	SlaveZoneId pulumi.StringOutput `pulumi:"slaveZoneId"`
+	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
+	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
+	// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
+	//
+	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
+	Specification pulumi.StringOutput `pulumi:"specification"`
+	// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
 	//
 	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
 	//
 	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
 	//
 	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
-	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-	SlaveZoneId pulumi.StringOutput `pulumi:"slaveZoneId"`
-	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
-	// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
-	//
-	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
-	Specification pulumi.StringOutput `pulumi:"specification"`
-	Status        pulumi.StringOutput `pulumi:"status"`
+	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
@@ -207,34 +218,41 @@ type loadBalancerState struct {
 	// Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	LoadBalancerName   *string `pulumi:"loadBalancerName"`
-	LoadBalancerSpec   *string `pulumi:"loadBalancerSpec"`
+	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
+	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-	MasterZoneId                 *string `pulumi:"masterZoneId"`
+	MasterZoneId *string `pulumi:"masterZoneId"`
+	// The reason of modification protection. It's effective when `modificationProtectionStatus` is `ConsoleProtection`.
 	ModificationProtectionReason *string `pulumi:"modificationProtectionReason"`
+	// The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
 	ModificationProtectionStatus *string `pulumi:"modificationProtectionStatus"`
+	// Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
-	Name        *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 	// The Id of resource group which the SLB belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+	SlaveZoneId *string `pulumi:"slaveZoneId"`
+	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
+	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
+	// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
+	//
+	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
+	Specification *string `pulumi:"specification"`
+	// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
 	//
 	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
 	//
 	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
 	//
 	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-	SlaveZoneId *string `pulumi:"slaveZoneId"`
-	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
-	// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
-	//
-	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
-	Specification *string `pulumi:"specification"`
-	Status        *string `pulumi:"status"`
+	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
@@ -262,34 +280,41 @@ type LoadBalancerState struct {
 	// Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
 	InternetChargeType pulumi.StringPtrInput
 	LoadBalancerName   pulumi.StringPtrInput
-	LoadBalancerSpec   pulumi.StringPtrInput
+	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
+	LoadBalancerSpec pulumi.StringPtrInput
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-	MasterZoneId                 pulumi.StringPtrInput
+	MasterZoneId pulumi.StringPtrInput
+	// The reason of modification protection. It's effective when `modificationProtectionStatus` is `ConsoleProtection`.
 	ModificationProtectionReason pulumi.StringPtrInput
+	// The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
 	ModificationProtectionStatus pulumi.StringPtrInput
+	// Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
-	Name        pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 	// The Id of resource group which the SLB belongs.
+	ResourceGroupId pulumi.StringPtrInput
+	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+	SlaveZoneId pulumi.StringPtrInput
+	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
+	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
+	// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
+	//
+	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
+	Specification pulumi.StringPtrInput
+	// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
 	//
 	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
 	//
 	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
 	//
 	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
-	ResourceGroupId pulumi.StringPtrInput
-	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-	SlaveZoneId pulumi.StringPtrInput
-	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
-	// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
-	//
-	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
-	Specification pulumi.StringPtrInput
-	Status        pulumi.StringPtrInput
+	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags pulumi.MapInput
 	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
@@ -321,34 +346,41 @@ type loadBalancerArgs struct {
 	// Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	LoadBalancerName   *string `pulumi:"loadBalancerName"`
-	LoadBalancerSpec   *string `pulumi:"loadBalancerSpec"`
+	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
+	LoadBalancerSpec *string `pulumi:"loadBalancerSpec"`
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-	MasterZoneId                 *string `pulumi:"masterZoneId"`
+	MasterZoneId *string `pulumi:"masterZoneId"`
+	// The reason of modification protection. It's effective when `modificationProtectionStatus` is `ConsoleProtection`.
 	ModificationProtectionReason *string `pulumi:"modificationProtectionReason"`
+	// The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
 	ModificationProtectionStatus *string `pulumi:"modificationProtectionStatus"`
+	// Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
-	Name        *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 	// The Id of resource group which the SLB belongs.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+	SlaveZoneId *string `pulumi:"slaveZoneId"`
+	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
+	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
+	// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
+	//
+	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
+	Specification *string `pulumi:"specification"`
+	// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
 	//
 	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
 	//
 	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
 	//
 	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
-	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-	SlaveZoneId *string `pulumi:"slaveZoneId"`
-	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
-	// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
-	//
-	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
-	Specification *string `pulumi:"specification"`
-	Status        *string `pulumi:"status"`
+	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
@@ -377,34 +409,41 @@ type LoadBalancerArgs struct {
 	// Before version 1.10.1, the valid values are "paybybandwidth" and "paybytraffic".
 	InternetChargeType pulumi.StringPtrInput
 	LoadBalancerName   pulumi.StringPtrInput
-	LoadBalancerSpec   pulumi.StringPtrInput
+	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
+	LoadBalancerSpec pulumi.StringPtrInput
 	// The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-	MasterZoneId                 pulumi.StringPtrInput
+	MasterZoneId pulumi.StringPtrInput
+	// The reason of modification protection. It's effective when `modificationProtectionStatus` is `ConsoleProtection`.
 	ModificationProtectionReason pulumi.StringPtrInput
+	// The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
 	ModificationProtectionStatus pulumi.StringPtrInput
+	// Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
+	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
-	Name        pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values: [1-9, 12, 24, 36].
 	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 	// The Id of resource group which the SLB belongs.
+	ResourceGroupId pulumi.StringPtrInput
+	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
+	SlaveZoneId pulumi.StringPtrInput
+	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
+	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
+	// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
+	//
+	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
+	Specification pulumi.StringPtrInput
+	// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
 	//
 	// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
 	//
 	// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
 	//
 	// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
-	ResourceGroupId pulumi.StringPtrInput
-	// The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
-	SlaveZoneId pulumi.StringPtrInput
-	// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-	// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
-	// "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
-	//
-	// Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
-	Specification pulumi.StringPtrInput
-	Status        pulumi.StringPtrInput
+	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
 	Tags pulumi.MapInput
 	// The VSwitch ID to launch in. If `addressType` is internet, it will be ignore.
@@ -566,6 +605,7 @@ func (o LoadBalancerOutput) LoadBalancerName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerName }).(pulumi.StringOutput)
 }
 
+// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance. Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
 func (o LoadBalancerOutput) LoadBalancerSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.LoadBalancerSpec }).(pulumi.StringOutput)
 }
@@ -575,19 +615,24 @@ func (o LoadBalancerOutput) MasterZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.MasterZoneId }).(pulumi.StringOutput)
 }
 
+// The reason of modification protection. It's effective when `modificationProtectionStatus` is `ConsoleProtection`.
 func (o LoadBalancerOutput) ModificationProtectionReason() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.ModificationProtectionReason }).(pulumi.StringPtrOutput)
 }
 
+// The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
 func (o LoadBalancerOutput) ModificationProtectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ModificationProtectionStatus }).(pulumi.StringOutput)
 }
 
+// Field `name` has been deprecated from provider version 1.123.1 New field `loadBalancerName` instead.
+//
 // Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead
 func (o LoadBalancerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
 func (o LoadBalancerOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
@@ -599,12 +644,6 @@ func (o LoadBalancerOutput) Period() pulumi.IntPtrOutput {
 }
 
 // The Id of resource group which the SLB belongs.
-//
-// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
-//
-// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
-//
-// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
 func (o LoadBalancerOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
@@ -615,7 +654,7 @@ func (o LoadBalancerOutput) SlaveZoneId() pulumi.StringOutput {
 }
 
 // The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
+// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)" instance, it is must be specified and it valid values are: "slb.s1.small", "slb.s2.small", "slb.s2.medium",
 // "slb.s3.small", "slb.s3.medium", "slb.s3.large" and "slb.s4.large".
 //
 // Deprecated: Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead
@@ -623,6 +662,13 @@ func (o LoadBalancerOutput) Specification() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Specification }).(pulumi.StringOutput)
 }
 
+// The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
+//
+// > **NOTE:** A "Shared-Performance" instance can be changed to "Performance-guaranteed", but the change is irreversible.
+//
+// > **NOTE:** To change a "Shared-Performance" instance to a "Performance-guaranteed" instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+//
+// > **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
 func (o LoadBalancerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

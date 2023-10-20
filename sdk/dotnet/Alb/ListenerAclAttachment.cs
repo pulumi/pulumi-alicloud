@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Alb
     /// <summary>
     /// Provides a ALB Listener Acl Attachment resource. Associating ACL to listening.
     /// 
-    /// For information about ALB Listener Acl Attachment and how to use it, see [What is Listener Acl Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/associateaclswithlistener).
+    /// For information about ALB Listener Acl Attachment and how to use it, see [What is Listener Acl Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-associateaclswithlistener).
     /// 
     /// &gt; **NOTE:** Available since v1.163.0.
     /// 

@@ -118,7 +118,43 @@ class DedicatedPropreHostArgs:
              password_inherit: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[str]] = None,
              period_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ecsClassLists' in kwargs:
+            ecs_class_lists = kwargs['ecsClassLists']
+        if 'ecsZoneId' in kwargs:
+            ecs_zone_id = kwargs['ecsZoneId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'dedicatedHostGroupId' in kwargs:
+            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
+        if 'ecsDeploymentSetId' in kwargs:
+            ecs_deployment_set_id = kwargs['ecsDeploymentSetId']
+        if 'ecsHostName' in kwargs:
+            ecs_host_name = kwargs['ecsHostName']
+        if 'ecsInstanceName' in kwargs:
+            ecs_instance_name = kwargs['ecsInstanceName']
+        if 'ecsUniqueSuffix' in kwargs:
+            ecs_unique_suffix = kwargs['ecsUniqueSuffix']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'osPassword' in kwargs:
+            os_password = kwargs['osPassword']
+        if 'passwordInherit' in kwargs:
+            password_inherit = kwargs['passwordInherit']
+        if 'periodType' in kwargs:
+            period_type = kwargs['periodType']
+
         _setter("ecs_class_lists", ecs_class_lists)
         _setter("ecs_zone_id", ecs_zone_id)
         _setter("engine", engine)
@@ -506,7 +542,45 @@ class _DedicatedPropreHostState:
              security_group_id: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'dedicatedHostGroupId' in kwargs:
+            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
+        if 'ecsClassLists' in kwargs:
+            ecs_class_lists = kwargs['ecsClassLists']
+        if 'ecsDeploymentSetId' in kwargs:
+            ecs_deployment_set_id = kwargs['ecsDeploymentSetId']
+        if 'ecsHostName' in kwargs:
+            ecs_host_name = kwargs['ecsHostName']
+        if 'ecsInstanceId' in kwargs:
+            ecs_instance_id = kwargs['ecsInstanceId']
+        if 'ecsInstanceName' in kwargs:
+            ecs_instance_name = kwargs['ecsInstanceName']
+        if 'ecsUniqueSuffix' in kwargs:
+            ecs_unique_suffix = kwargs['ecsUniqueSuffix']
+        if 'ecsZoneId' in kwargs:
+            ecs_zone_id = kwargs['ecsZoneId']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'osPassword' in kwargs:
+            os_password = kwargs['osPassword']
+        if 'passwordInherit' in kwargs:
+            password_inherit = kwargs['passwordInherit']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'periodType' in kwargs:
+            period_type = kwargs['periodType']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
         if dedicated_host_group_id is not None:

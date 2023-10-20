@@ -30,9 +30,9 @@ import java.util.concurrent.CompletableFuture;
 
 public final class ServicecatalogFunctions {
     /**
-     * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * ```java
@@ -70,9 +70,9 @@ public final class ServicecatalogFunctions {
         return getEndUserProducts(GetEndUserProductsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * ```java
@@ -110,9 +110,9 @@ public final class ServicecatalogFunctions {
         return getEndUserProductsPlain(GetEndUserProductsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * ```java
@@ -150,9 +150,9 @@ public final class ServicecatalogFunctions {
         return getEndUserProducts(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * ```java
@@ -190,9 +190,9 @@ public final class ServicecatalogFunctions {
         return getEndUserProductsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * ```java
@@ -230,9 +230,9 @@ public final class ServicecatalogFunctions {
         return Deployment.getInstance().invoke("alicloud:servicecatalog/getEndUserProducts:getEndUserProducts", TypeShape.of(GetEndUserProductsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * This data source provides Service Catalog End User Product available to the user.[What is End User Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-servicecatalog-2021-09-01-listproductsasenduser)
      * 
-     * &gt; **NOTE:** Available in 1.197.0+
+     * &gt; **NOTE:** Available since v1.197.0.
      * 
      * ## Example Usage
      * ```java
@@ -270,11 +270,13 @@ public final class ServicecatalogFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:servicecatalog/getEndUserProducts:getEndUserProducts", TypeShape.of(GetEndUserProductsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Service Catalog Launch Option available to the user.[What is Launch Option](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listlaunchoptions)
+     * This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -315,11 +317,13 @@ public final class ServicecatalogFunctions {
         return getLaunchOptions(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog Launch Option available to the user.[What is Launch Option](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listlaunchoptions)
+     * This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -360,11 +364,13 @@ public final class ServicecatalogFunctions {
         return getLaunchOptionsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog Launch Option available to the user.[What is Launch Option](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listlaunchoptions)
+     * This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -405,11 +411,13 @@ public final class ServicecatalogFunctions {
         return Deployment.getInstance().invoke("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", TypeShape.of(GetLaunchOptionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Service Catalog Launch Option available to the user.[What is Launch Option](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listlaunchoptions)
+     * This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -450,7 +458,7 @@ public final class ServicecatalogFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", TypeShape.of(GetLaunchOptionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
      * 
      * &gt; **NOTE:** Available in 1.204.0+
      * 
@@ -491,7 +499,7 @@ public final class ServicecatalogFunctions {
         return getPortfolios(GetPortfoliosArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
      * 
      * &gt; **NOTE:** Available in 1.204.0+
      * 
@@ -532,7 +540,7 @@ public final class ServicecatalogFunctions {
         return getPortfoliosPlain(GetPortfoliosPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
      * 
      * &gt; **NOTE:** Available in 1.204.0+
      * 
@@ -573,7 +581,7 @@ public final class ServicecatalogFunctions {
         return getPortfolios(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
      * 
      * &gt; **NOTE:** Available in 1.204.0+
      * 
@@ -614,7 +622,7 @@ public final class ServicecatalogFunctions {
         return getPortfoliosPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
      * 
      * &gt; **NOTE:** Available in 1.204.0+
      * 
@@ -655,7 +663,7 @@ public final class ServicecatalogFunctions {
         return Deployment.getInstance().invoke("alicloud:servicecatalog/getPortfolios:getPortfolios", TypeShape.of(GetPortfoliosResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-createportfolio)
+     * This data source provides Service Catalog Portfolio available to the user.[What is Portfolio](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-createportfolio)
      * 
      * &gt; **NOTE:** Available in 1.204.0+
      * 
@@ -699,7 +707,7 @@ public final class ServicecatalogFunctions {
      * &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
      * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
      * 
-     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductsasenduser)
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
@@ -742,7 +750,7 @@ public final class ServicecatalogFunctions {
      * &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
      * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
      * 
-     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductsasenduser)
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
@@ -785,7 +793,7 @@ public final class ServicecatalogFunctions {
      * &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
      * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
      * 
-     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductsasenduser)
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
@@ -828,7 +836,7 @@ public final class ServicecatalogFunctions {
      * &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
      * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
      * 
-     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductsasenduser)
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
@@ -871,7 +879,7 @@ public final class ServicecatalogFunctions {
      * &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
      * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
      * 
-     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductsasenduser)
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
@@ -914,7 +922,7 @@ public final class ServicecatalogFunctions {
      * &gt; **DEPRECATED:** It has been deprecated from version `1.197.0`.
      * Please use new datasource alicloud.servicecatalog.getEndUserProducts instead.
      * 
-     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductsasenduser)
+     * This data source provides Service Catalog Product As End User available to the user.[What is Product As End User](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductsasenduser)
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
@@ -954,7 +962,7 @@ public final class ServicecatalogFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers", TypeShape.of(GetProductAsEndUsersResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductversions)
+     * This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
@@ -995,7 +1003,7 @@ public final class ServicecatalogFunctions {
         return getProductVersions(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductversions)
+     * This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
@@ -1036,7 +1044,7 @@ public final class ServicecatalogFunctions {
         return getProductVersionsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductversions)
+     * This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
@@ -1077,7 +1085,7 @@ public final class ServicecatalogFunctions {
         return Deployment.getInstance().invoke("alicloud:servicecatalog/getProductVersions:getProductVersions", TypeShape.of(GetProductVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductversions)
+     * This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
      * 
      * &gt; **NOTE:** Available in 1.196.0+
      * 
@@ -1118,11 +1126,13 @@ public final class ServicecatalogFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:servicecatalog/getProductVersions:getProductVersions", TypeShape.of(GetProductVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Service Catalog Provisioned Product available to the user.[What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct)
+     * This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -1159,11 +1169,13 @@ public final class ServicecatalogFunctions {
         return getProvisionedProducts(GetProvisionedProductsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog Provisioned Product available to the user.[What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct)
+     * This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -1200,11 +1212,13 @@ public final class ServicecatalogFunctions {
         return getProvisionedProductsPlain(GetProvisionedProductsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog Provisioned Product available to the user.[What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct)
+     * This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -1241,11 +1255,13 @@ public final class ServicecatalogFunctions {
         return getProvisionedProducts(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog Provisioned Product available to the user.[What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct)
+     * This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -1282,11 +1298,13 @@ public final class ServicecatalogFunctions {
         return getProvisionedProductsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Service Catalog Provisioned Product available to the user.[What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct)
+     * This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -1323,11 +1341,13 @@ public final class ServicecatalogFunctions {
         return Deployment.getInstance().invoke("alicloud:servicecatalog/getProvisionedProducts:getProvisionedProducts", TypeShape.of(GetProvisionedProductsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Service Catalog Provisioned Product available to the user.[What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct)
+     * This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
      * 
-     * &gt; **NOTE:** Available in 1.196.0+
+     * &gt; **NOTE:** Available since v1.196.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 

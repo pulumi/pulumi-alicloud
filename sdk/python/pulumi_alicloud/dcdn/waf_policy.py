@@ -39,7 +39,15 @@ class WafPolicyArgs:
              policy_name: pulumi.Input[str],
              policy_type: pulumi.Input[str],
              status: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defenseScene' in kwargs:
+            defense_scene = kwargs['defenseScene']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+
         _setter("defense_scene", defense_scene)
         _setter("policy_name", policy_name)
         _setter("policy_type", policy_type)
@@ -122,7 +130,15 @@ class _WafPolicyState:
              policy_name: Optional[pulumi.Input[str]] = None,
              policy_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defenseScene' in kwargs:
+            defense_scene = kwargs['defenseScene']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+
         if defense_scene is not None:
             _setter("defense_scene", defense_scene)
         if policy_name is not None:
@@ -194,7 +210,7 @@ class WafPolicy(pulumi.CustomResource):
         """
         Provides a DCDN Waf Policy resource.
 
-        For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/set-the-protection-policies#doc-api-dcdn-CreateDcdnWafPolicy).
+        For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-createdcdnwafpolicy).
 
         > **NOTE:** Available since v1.184.0.
 
@@ -241,7 +257,7 @@ class WafPolicy(pulumi.CustomResource):
         """
         Provides a DCDN Waf Policy resource.
 
-        For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/set-the-protection-policies#doc-api-dcdn-CreateDcdnWafPolicy).
+        For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-createdcdnwafpolicy).
 
         > **NOTE:** Available since v1.184.0.
 

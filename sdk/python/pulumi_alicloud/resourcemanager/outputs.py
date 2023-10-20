@@ -68,7 +68,11 @@ class ResourceGroupRegionStatus(dict):
              _setter: Callable[[Any, Any], None],
              region_id: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         if region_id is not None:
             _setter("region_id", region_id)
         if status is not None:
@@ -114,7 +118,13 @@ class GetAccountDeletionCheckTaskAbandonAbleCheckResult(dict):
              check_id: str,
              check_name: str,
              description: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'checkId' in kwargs:
+            check_id = kwargs['checkId']
+        if 'checkName' in kwargs:
+            check_name = kwargs['checkName']
+
         _setter("check_id", check_id)
         _setter("check_name", check_name)
         _setter("description", description)
@@ -167,7 +177,13 @@ class GetAccountDeletionCheckTaskNotAllowReasonResult(dict):
              check_id: str,
              check_name: str,
              description: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'checkId' in kwargs:
+            check_id = kwargs['checkId']
+        if 'checkName' in kwargs:
+            check_name = kwargs['checkName']
+
         _setter("check_id", check_id)
         _setter("check_name", check_name)
         _setter("description", description)
@@ -256,7 +272,27 @@ class GetAccountsAccountResult(dict):
              resource_directory_id: str,
              status: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if 'joinMethod' in kwargs:
+            join_method = kwargs['joinMethod']
+        if 'joinTime' in kwargs:
+            join_time = kwargs['joinTime']
+        if 'modifyTime' in kwargs:
+            modify_time = kwargs['modifyTime']
+        if 'payerAccountId' in kwargs:
+            payer_account_id = kwargs['payerAccountId']
+        if 'resourceDirectoryId' in kwargs:
+            resource_directory_id = kwargs['resourceDirectoryId']
+
         _setter("account_id", account_id)
         _setter("account_name", account_name)
         _setter("display_name", display_name)
@@ -410,7 +446,21 @@ class GetControlPoliciesPolicyResult(dict):
              policy_document: str,
              policy_id: str,
              policy_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachmentCount' in kwargs:
+            attachment_count = kwargs['attachmentCount']
+        if 'controlPolicyName' in kwargs:
+            control_policy_name = kwargs['controlPolicyName']
+        if 'effectScope' in kwargs:
+            effect_scope = kwargs['effectScope']
+        if 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+
         _setter("attachment_count", attachment_count)
         _setter("control_policy_name", control_policy_name)
         _setter("description", description)
@@ -520,7 +570,17 @@ class GetControlPolicyAttachmentsAttachmentResult(dict):
              policy_id: str,
              policy_name: str,
              policy_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachDate' in kwargs:
+            attach_date = kwargs['attachDate']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+
         _setter("attach_date", attach_date)
         _setter("description", description)
         _setter("id", id)
@@ -604,7 +664,15 @@ class GetDelegatedAdministratorsAdministratorResult(dict):
              delegation_enabled_time: str,
              id: str,
              service_principal: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'delegationEnabledTime' in kwargs:
+            delegation_enabled_time = kwargs['delegationEnabledTime']
+        if 'servicePrincipal' in kwargs:
+            service_principal = kwargs['servicePrincipal']
+
         _setter("account_id", account_id)
         _setter("delegation_enabled_time", delegation_enabled_time)
         _setter("id", id)
@@ -670,7 +738,15 @@ class GetFoldersFolderResult(dict):
              folder_name: str,
              id: str,
              parent_folder_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if 'folderName' in kwargs:
+            folder_name = kwargs['folderName']
+        if 'parentFolderId' in kwargs:
+            parent_folder_id = kwargs['parentFolderId']
+
         _setter("folder_id", folder_id)
         _setter("folder_name", folder_name)
         _setter("id", id)
@@ -772,7 +848,29 @@ class GetHandshakesHandshakeResult(dict):
              status: str,
              target_entity: str,
              target_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'handshakeId' in kwargs:
+            handshake_id = kwargs['handshakeId']
+        if 'invitedAccountRealName' in kwargs:
+            invited_account_real_name = kwargs['invitedAccountRealName']
+        if 'masterAccountId' in kwargs:
+            master_account_id = kwargs['masterAccountId']
+        if 'masterAccountName' in kwargs:
+            master_account_name = kwargs['masterAccountName']
+        if 'masterAccountRealName' in kwargs:
+            master_account_real_name = kwargs['masterAccountRealName']
+        if 'modifyTime' in kwargs:
+            modify_time = kwargs['modifyTime']
+        if 'resourceDirectoryId' in kwargs:
+            resource_directory_id = kwargs['resourceDirectoryId']
+        if 'targetEntity' in kwargs:
+            target_entity = kwargs['targetEntity']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+
         _setter("expire_time", expire_time)
         _setter("handshake_id", handshake_id)
         _setter("id", id)
@@ -931,7 +1029,19 @@ class GetPoliciesPolicyResult(dict):
              policy_name: str,
              policy_type: str,
              update_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachmentCount' in kwargs:
+            attachment_count = kwargs['attachmentCount']
+        if 'defaultVersion' in kwargs:
+            default_version = kwargs['defaultVersion']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+        if 'updateDate' in kwargs:
+            update_date = kwargs['updateDate']
+
         _setter("attachment_count", attachment_count)
         _setter("default_version", default_version)
         _setter("description", description)
@@ -1040,7 +1150,21 @@ class GetPolicyAttachmentsAttachmentResult(dict):
              principal_name: str,
              principal_type: str,
              resource_group_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachDate' in kwargs:
+            attach_date = kwargs['attachDate']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+        if 'principalName' in kwargs:
+            principal_name = kwargs['principalName']
+        if 'principalType' in kwargs:
+            principal_type = kwargs['principalType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("attach_date", attach_date)
         _setter("description", description)
         _setter("id", id)
@@ -1142,7 +1266,15 @@ class GetPolicyVersionsVersionResult(dict):
              is_default_version: bool,
              policy_document: str,
              version_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isDefaultVersion' in kwargs:
+            is_default_version = kwargs['isDefaultVersion']
+        if 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+        if 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
         _setter("id", id)
         _setter("is_default_version", is_default_version)
         _setter("policy_document", policy_document)
@@ -1216,7 +1348,17 @@ class GetResourceDirectoriesDirectoryResult(dict):
              resource_directory_id: str,
              root_folder_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'masterAccountId' in kwargs:
+            master_account_id = kwargs['masterAccountId']
+        if 'masterAccountName' in kwargs:
+            master_account_name = kwargs['masterAccountName']
+        if 'resourceDirectoryId' in kwargs:
+            resource_directory_id = kwargs['resourceDirectoryId']
+        if 'rootFolderId' in kwargs:
+            root_folder_id = kwargs['rootFolderId']
+
         _setter("id", id)
         _setter("master_account_id", master_account_id)
         _setter("master_account_name", master_account_name)
@@ -1312,7 +1454,17 @@ class GetResourceGroupsGroupResult(dict):
              region_statuses: Sequence['outputs.GetResourceGroupsGroupRegionStatusResult'],
              resource_group_name: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'regionStatuses' in kwargs:
+            region_statuses = kwargs['regionStatuses']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         _setter("account_id", account_id)
         _setter("display_name", display_name)
         _setter("id", id)
@@ -1397,7 +1549,11 @@ class GetResourceGroupsGroupRegionStatusResult(dict):
              _setter: Callable[[Any, Any], None],
              region_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("region_id", region_id)
         _setter("status", status)
 
@@ -1449,7 +1605,15 @@ class GetResourceSharesShareResult(dict):
              resource_share_name: str,
              resource_share_owner: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceShareId' in kwargs:
+            resource_share_id = kwargs['resourceShareId']
+        if 'resourceShareName' in kwargs:
+            resource_share_name = kwargs['resourceShareName']
+        if 'resourceShareOwner' in kwargs:
+            resource_share_owner = kwargs['resourceShareOwner']
+
         _setter("id", id)
         _setter("resource_share_id", resource_share_id)
         _setter("resource_share_name", resource_share_name)
@@ -1540,7 +1704,19 @@ class GetRolesRoleResult(dict):
              role_id: str,
              role_name: str,
              update_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'assumeRolePolicyDocument' in kwargs:
+            assume_role_policy_document = kwargs['assumeRolePolicyDocument']
+        if 'maxSessionDuration' in kwargs:
+            max_session_duration = kwargs['maxSessionDuration']
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if 'updateDate' in kwargs:
+            update_date = kwargs['updateDate']
+
         _setter("arn", arn)
         _setter("assume_role_policy_document", assume_role_policy_document)
         _setter("description", description)
@@ -1646,7 +1822,15 @@ class GetSharedResourcesResourceResult(dict):
              resource_share_id: str,
              resource_type: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceShareId' in kwargs:
+            resource_share_id = kwargs['resourceShareId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         _setter("id", id)
         _setter("resource_id", resource_id)
         _setter("resource_share_id", resource_share_id)
@@ -1721,7 +1905,13 @@ class GetSharedTargetsTargetResult(dict):
              resource_share_id: str,
              status: str,
              target_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceShareId' in kwargs:
+            resource_share_id = kwargs['resourceShareId']
+        if 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+
         _setter("id", id)
         _setter("resource_share_id", resource_share_id)
         _setter("status", status)

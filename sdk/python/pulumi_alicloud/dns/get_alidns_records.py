@@ -268,7 +268,7 @@ def get_alidns_records(direction: Optional[str] = None,
     :param Sequence[str] ids: A list of record IDs.
     :param str key_word: Keywords.
     :param str lang: User language.
-    :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+    :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
     :param str order_by: Sort by. Sort from newest to oldest according to the time added by resolution.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str rr_key_word: The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
@@ -367,7 +367,7 @@ def get_alidns_records_output(direction: Optional[pulumi.Input[Optional[str]]] =
     :param Sequence[str] ids: A list of record IDs.
     :param str key_word: Keywords.
     :param str lang: User language.
-    :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+    :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
     :param str order_by: Sort by. Sort from newest to oldest according to the time added by resolution.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str rr_key_word: The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.

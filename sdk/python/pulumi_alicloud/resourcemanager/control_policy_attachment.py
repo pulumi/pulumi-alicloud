@@ -31,7 +31,13 @@ class ControlPolicyAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              policy_id: pulumi.Input[str],
              target_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+
         _setter("policy_id", policy_id)
         _setter("target_id", target_id)
 
@@ -80,7 +86,13 @@ class _ControlPolicyAttachmentState:
              _setter: Callable[[Any, Any], None],
              policy_id: Optional[pulumi.Input[str]] = None,
              target_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+
         if policy_id is not None:
             _setter("policy_id", policy_id)
         if target_id is not None:
@@ -122,7 +134,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         """
         Provides a Resource Manager Control Policy Attachment resource.
 
-        For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-doc-resourcedirectorymaster-2022-04-19-api-doc-attachcontrolpolicy).
+        For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-attachcontrolpolicy).
 
         > **NOTE:** Available since v1.120.0.
 
@@ -186,7 +198,7 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         """
         Provides a Resource Manager Control Policy Attachment resource.
 
-        For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-doc-resourcedirectorymaster-2022-04-19-api-doc-attachcontrolpolicy).
+        For information about Resource Manager Control Policy Attachment and how to use it, see [What is Control Policy Attachment](https://www.alibabacloud.com/help/en/resource-management/latest/api-resourcedirectorymaster-2022-04-19-attachcontrolpolicy).
 
         > **NOTE:** Available since v1.120.0.
 

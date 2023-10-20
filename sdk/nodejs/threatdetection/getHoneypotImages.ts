@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-listavailablehoneypot)
+ * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
  *
  * > **NOTE:** Available in 1.195.0+
  *
@@ -80,7 +80,7 @@ export interface GetHoneypotImagesResult {
     readonly outputFile?: string;
 }
 /**
- * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-listavailablehoneypot)
+ * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
  *
  * > **NOTE:** Available in 1.195.0+
  *

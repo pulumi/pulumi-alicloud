@@ -35,7 +35,13 @@ class DomainGroupArgs:
              domain_group_name: Optional[pulumi.Input[str]] = None,
              group_name: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainGroupName' in kwargs:
+            domain_group_name = kwargs['domainGroupName']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+
         if domain_group_name is not None:
             _setter("domain_group_name", domain_group_name)
         if group_name is not None:
@@ -110,7 +116,13 @@ class _DomainGroupState:
              domain_group_name: Optional[pulumi.Input[str]] = None,
              group_name: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainGroupName' in kwargs:
+            domain_group_name = kwargs['domainGroupName']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+
         if domain_group_name is not None:
             _setter("domain_group_name", domain_group_name)
         if group_name is not None:

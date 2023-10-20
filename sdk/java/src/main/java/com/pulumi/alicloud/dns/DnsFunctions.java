@@ -2694,6 +2694,8 @@ public final class DnsFunctions {
     /**
      * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2735,6 +2737,8 @@ public final class DnsFunctions {
     }
     /**
      * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
      * ```java
@@ -2778,6 +2782,8 @@ public final class DnsFunctions {
     /**
      * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -2819,6 +2825,8 @@ public final class DnsFunctions {
     }
     /**
      * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
+     * 
+     * &gt; **NOTE:** Available since v1.0.0.
      * 
      * ## Example Usage
      * ```java

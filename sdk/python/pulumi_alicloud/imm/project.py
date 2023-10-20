@@ -31,7 +31,11 @@ class ProjectArgs:
              _setter: Callable[[Any, Any], None],
              project: pulumi.Input[str],
              service_role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serviceRole' in kwargs:
+            service_role = kwargs['serviceRole']
+
         _setter("project", project)
         if service_role is not None:
             _setter("service_role", service_role)
@@ -81,7 +85,11 @@ class _ProjectState:
              _setter: Callable[[Any, Any], None],
              project: Optional[pulumi.Input[str]] = None,
              service_role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serviceRole' in kwargs:
+            service_role = kwargs['serviceRole']
+
         if project is not None:
             _setter("project", project)
         if service_role is not None:

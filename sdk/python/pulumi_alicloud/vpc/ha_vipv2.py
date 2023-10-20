@@ -53,7 +53,19 @@ class HaVipv2Args:
              ip_address: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'haVipName' in kwargs:
+            ha_vip_name = kwargs['haVipName']
+        if 'havipName' in kwargs:
+            havip_name = kwargs['havipName']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("vswitch_id", vswitch_id)
         if description is not None:
             _setter("description", description)
@@ -235,7 +247,33 @@ class _HaVipv2State:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associatedEipAddresses' in kwargs:
+            associated_eip_addresses = kwargs['associatedEipAddresses']
+        if 'associatedInstanceType' in kwargs:
+            associated_instance_type = kwargs['associatedInstanceType']
+        if 'associatedInstances' in kwargs:
+            associated_instances = kwargs['associatedInstances']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'haVipId' in kwargs:
+            ha_vip_id = kwargs['haVipId']
+        if 'haVipName' in kwargs:
+            ha_vip_name = kwargs['haVipName']
+        if 'havipName' in kwargs:
+            havip_name = kwargs['havipName']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'masterInstanceId' in kwargs:
+            master_instance_id = kwargs['masterInstanceId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if associated_eip_addresses is not None:
             _setter("associated_eip_addresses", associated_eip_addresses)
         if associated_instance_type is not None:

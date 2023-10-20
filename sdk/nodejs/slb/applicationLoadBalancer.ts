@@ -74,7 +74,7 @@ export class ApplicationLoadBalancer extends pulumi.CustomResource {
     public readonly loadBalancerName!: pulumi.Output<string>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-     * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+     * Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
      * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
      */
     public readonly loadBalancerSpec!: pulumi.Output<string>;
@@ -231,7 +231,7 @@ export interface ApplicationLoadBalancerState {
     loadBalancerName?: pulumi.Input<string>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-     * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+     * Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
      * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
      */
     loadBalancerSpec?: pulumi.Input<string>;
@@ -326,7 +326,7 @@ export interface ApplicationLoadBalancerArgs {
     loadBalancerName?: pulumi.Input<string>;
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-     * Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+     * Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
      * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instanceChargeType = "PayByCLCU"`.
      */
     loadBalancerSpec?: pulumi.Input<string>;

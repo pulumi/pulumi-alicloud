@@ -85,7 +85,35 @@ class LoadBalancerArgs:
              modification_protection_status: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressType' in kwargs:
+            address_type = kwargs['addressType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'zoneMappings' in kwargs:
+            zone_mappings = kwargs['zoneMappings']
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'crossZoneEnabled' in kwargs:
+            cross_zone_enabled = kwargs['crossZoneEnabled']
+        if 'deletionProtectionEnabled' in kwargs:
+            deletion_protection_enabled = kwargs['deletionProtectionEnabled']
+        if 'deletionProtectionReason' in kwargs:
+            deletion_protection_reason = kwargs['deletionProtectionReason']
+        if 'loadBalancerName' in kwargs:
+            load_balancer_name = kwargs['loadBalancerName']
+        if 'loadBalancerType' in kwargs:
+            load_balancer_type = kwargs['loadBalancerType']
+        if 'modificationProtectionReason' in kwargs:
+            modification_protection_reason = kwargs['modificationProtectionReason']
+        if 'modificationProtectionStatus' in kwargs:
+            modification_protection_status = kwargs['modificationProtectionStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("address_type", address_type)
         _setter("vpc_id", vpc_id)
         _setter("zone_mappings", zone_mappings)
@@ -377,7 +405,43 @@ class _LoadBalancerState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'addressType' in kwargs:
+            address_type = kwargs['addressType']
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'crossZoneEnabled' in kwargs:
+            cross_zone_enabled = kwargs['crossZoneEnabled']
+        if 'deletionProtectionEnabled' in kwargs:
+            deletion_protection_enabled = kwargs['deletionProtectionEnabled']
+        if 'deletionProtectionReason' in kwargs:
+            deletion_protection_reason = kwargs['deletionProtectionReason']
+        if 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if 'ipv6AddressType' in kwargs:
+            ipv6_address_type = kwargs['ipv6AddressType']
+        if 'loadBalancerBusinessStatus' in kwargs:
+            load_balancer_business_status = kwargs['loadBalancerBusinessStatus']
+        if 'loadBalancerName' in kwargs:
+            load_balancer_name = kwargs['loadBalancerName']
+        if 'loadBalancerType' in kwargs:
+            load_balancer_type = kwargs['loadBalancerType']
+        if 'modificationProtectionReason' in kwargs:
+            modification_protection_reason = kwargs['modificationProtectionReason']
+        if 'modificationProtectionStatus' in kwargs:
+            modification_protection_status = kwargs['modificationProtectionStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'zoneMappings' in kwargs:
+            zone_mappings = kwargs['zoneMappings']
+
         if address_ip_version is not None:
             _setter("address_ip_version", address_ip_version)
         if address_type is not None:

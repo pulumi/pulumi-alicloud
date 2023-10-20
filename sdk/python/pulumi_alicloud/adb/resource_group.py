@@ -42,7 +42,17 @@ class ResourceGroupArgs:
              group_name: pulumi.Input[str],
              group_type: Optional[pulumi.Input[str]] = None,
              node_num: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if 'nodeNum' in kwargs:
+            node_num = kwargs['nodeNum']
+
         _setter("db_cluster_id", db_cluster_id)
         _setter("group_name", group_name)
         if group_type is not None:
@@ -145,7 +155,21 @@ class _ResourceGroupState:
              node_num: Optional[pulumi.Input[int]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
              user: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if 'nodeNum' in kwargs:
+            node_num = kwargs['nodeNum']
+        if 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if db_cluster_id is not None:

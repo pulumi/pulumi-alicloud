@@ -11,7 +11,7 @@ namespace Pulumi.AliCloud.FC
 {
     /// <summary>
     /// Provides an Alicloud Function Compute custom domain resource.
-    ///  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createcustomdomain).
+    ///  For the detailed information, please refer to the [developer guide](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createcustomdomain).
     /// 
     /// &gt; **NOTE:** Available since v1.98.0.
     /// 

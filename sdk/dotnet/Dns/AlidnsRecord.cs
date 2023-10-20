@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Dns
 {
     /// <summary>
-    /// Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/doc-detail/29772.htm).
+    /// Provides a Alidns Record resource. For information about Alidns Domain Record and how to use it, see [What is Resource Alidns Record](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record).
     /// 
     /// &gt; **NOTE:** Available since v1.85.0.
     /// 
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Dns
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value.
+        /// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using alicloud.dns.getResolutionLines in data source to get the value.
         /// </summary>
         [Output("line")]
         public Output<string?> Line { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value.
+        /// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using alicloud.dns.getResolutionLines in data source to get the value.
         /// </summary>
         [Input("line")]
         public Input<string>? Line { get; set; }
@@ -265,7 +265,7 @@ namespace Pulumi.AliCloud.Dns
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm) or using alicloud.dns.getResolutionLines in data source to get the value.
+        /// The resolution line of domain record. When the `type` is `FORWORD_URL`, this parameter must be `default`. Default value is `default`. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/adding-a-dns-record) or using alicloud.dns.getResolutionLines in data source to get the value.
         /// </summary>
         [Input("line")]
         public Input<string>? Line { get; set; }

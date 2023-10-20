@@ -31,7 +31,9 @@ class KvNamespaceArgs:
              _setter: Callable[[Any, Any], None],
              description: pulumi.Input[str],
              namespace: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("description", description)
         _setter("namespace", namespace)
 
@@ -84,7 +86,9 @@ class _KvNamespaceState:
              description: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if namespace is not None:
@@ -140,7 +144,7 @@ class KvNamespace(pulumi.CustomResource):
         """
         Provides a Dcdn Kv Namespace resource.
 
-        For information about Dcdn Kv Namespace and how to use it, see [What is Kv Namespace](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvnamespace).
+        For information about Dcdn Kv Namespace and how to use it, see [What is Kv Namespace](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-putdcdnkvnamespace).
 
         > **NOTE:** Available since v1.198.0.
 
@@ -183,7 +187,7 @@ class KvNamespace(pulumi.CustomResource):
         """
         Provides a Dcdn Kv Namespace resource.
 
-        For information about Dcdn Kv Namespace and how to use it, see [What is Kv Namespace](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvnamespace).
+        For information about Dcdn Kv Namespace and how to use it, see [What is Kv Namespace](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-putdcdnkvnamespace).
 
         > **NOTE:** Available since v1.198.0.
 

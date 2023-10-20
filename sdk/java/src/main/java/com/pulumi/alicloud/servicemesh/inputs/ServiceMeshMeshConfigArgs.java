@@ -9,6 +9,7 @@ import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshMeshConfigControlPlaneL
 import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshMeshConfigKialiArgs;
 import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshMeshConfigOpaArgs;
 import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshMeshConfigPilotArgs;
+import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshMeshConfigPrometheusArgs;
 import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshMeshConfigProxyArgs;
 import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshMeshConfigSidecarInjectorArgs;
 import com.pulumi.core.Output;
@@ -25,14 +26,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     public static final ServiceMeshMeshConfigArgs Empty = new ServiceMeshMeshConfigArgs();
 
     /**
-     * The configuration of the access logging. See `access_log` below.
+     * The access logging configuration. See `mesh_config-access_log` below.
      * 
      */
     @Import(name="accessLog")
     private @Nullable Output<ServiceMeshMeshConfigAccessLogArgs> accessLog;
 
     /**
-     * @return The configuration of the access logging. See `access_log` below.
+     * @return The access logging configuration. See `mesh_config-access_log` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigAccessLogArgs>> accessLog() {
@@ -40,14 +41,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The configuration of the audit. See `audit` below.
+     * Audit information. See `mesh_config-audit` below.
      * 
      */
     @Import(name="audit")
     private @Nullable Output<ServiceMeshMeshConfigAuditArgs> audit;
 
     /**
-     * @return The configuration of the audit. See `audit` below.
+     * @return Audit information. See `mesh_config-audit` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigAuditArgs>> audit() {
@@ -55,14 +56,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The configuration of the control plane logging. See `control_plane_log` below.
+     * Control plane log collection configuration. See `mesh_config-control_plane_log` below.
      * 
      */
     @Import(name="controlPlaneLog")
     private @Nullable Output<ServiceMeshMeshConfigControlPlaneLogArgs> controlPlaneLog;
 
     /**
-     * @return The configuration of the control plane logging. See `control_plane_log` below.
+     * @return Control plane log collection configuration. See `mesh_config-control_plane_log` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigControlPlaneLogArgs>> controlPlaneLog() {
@@ -70,14 +71,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to enable the use of a custom zipkin.
+     * Whether or not to enable the use of a custom zipkin.
      * 
      */
     @Import(name="customizedZipkin")
     private @Nullable Output<Boolean> customizedZipkin;
 
     /**
-     * @return Whether to enable the use of a custom zipkin.
+     * @return Whether or not to enable the use of a custom zipkin.
      * 
      */
     public Optional<Output<Boolean>> customizedZipkin() {
@@ -85,14 +86,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The enable locality lb.
+     * Whether to enable service can access the service through the nearest node access.
      * 
      */
     @Import(name="enableLocalityLb")
     private @Nullable Output<Boolean> enableLocalityLb;
 
     /**
-     * @return The enable locality lb.
+     * @return Whether to enable service can access the service through the nearest node access.
      * 
      */
     public Optional<Output<Boolean>> enableLocalityLb() {
@@ -100,14 +101,29 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The configuration of the Kiali. See `kiali` below.
+     * The IP ADDRESS range.
+     * 
+     */
+    @Import(name="includeIpRanges")
+    private @Nullable Output<String> includeIpRanges;
+
+    /**
+     * @return The IP ADDRESS range.
+     * 
+     */
+    public Optional<Output<String>> includeIpRanges() {
+        return Optional.ofNullable(this.includeIpRanges);
+    }
+
+    /**
+     * Kiali configuration. See `mesh_config-kiali` below.
      * 
      */
     @Import(name="kiali")
     private @Nullable Output<ServiceMeshMeshConfigKialiArgs> kiali;
 
     /**
-     * @return The configuration of the Kiali. See `kiali` below.
+     * @return Kiali configuration. See `mesh_config-kiali` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigKialiArgs>> kiali() {
@@ -115,14 +131,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The open-door policy of agent (OPA) plug-in information. See `opa` below.
+     * The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
      * 
      */
     @Import(name="opa")
     private @Nullable Output<ServiceMeshMeshConfigOpaArgs> opa;
 
     /**
-     * @return The open-door policy of agent (OPA) plug-in information. See `opa` below.
+     * @return The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigOpaArgs>> opa() {
@@ -130,14 +146,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+     * Out to the traffic policy.
      * 
      */
     @Import(name="outboundTrafficPolicy")
     private @Nullable Output<String> outboundTrafficPolicy;
 
     /**
-     * @return The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+     * @return Out to the traffic policy.
      * 
      */
     public Optional<Output<String>> outboundTrafficPolicy() {
@@ -145,14 +161,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The configuration of the Link trace sampling. See `pilot` below.
+     * Link trace sampling information. See `mesh_config-pilot` below.
      * 
      */
     @Import(name="pilot")
     private @Nullable Output<ServiceMeshMeshConfigPilotArgs> pilot;
 
     /**
-     * @return The configuration of the Link trace sampling. See `pilot` below.
+     * @return Link trace sampling information. See `mesh_config-pilot` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigPilotArgs>> pilot() {
@@ -160,14 +176,29 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The configuration of the Proxy. See `proxy` below.
+     * Prometheus configuration.
+     * 
+     */
+    @Import(name="prometheus")
+    private @Nullable Output<ServiceMeshMeshConfigPrometheusArgs> prometheus;
+
+    /**
+     * @return Prometheus configuration.
+     * 
+     */
+    public Optional<Output<ServiceMeshMeshConfigPrometheusArgs>> prometheus() {
+        return Optional.ofNullable(this.prometheus);
+    }
+
+    /**
+     * Proxy configuration. See `mesh_config-proxy` below.
      * 
      */
     @Import(name="proxy")
     private @Nullable Output<ServiceMeshMeshConfigProxyArgs> proxy;
 
     /**
-     * @return The configuration of the Proxy. See `proxy` below.
+     * @return Proxy configuration. See `mesh_config-proxy` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigProxyArgs>> proxy() {
@@ -175,14 +206,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The configuration of the Sidecar injector. See `sidecar_injector` below.
+     * Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
      * 
      */
     @Import(name="sidecarInjector")
     private @Nullable Output<ServiceMeshMeshConfigSidecarInjectorArgs> sidecarInjector;
 
     /**
-     * @return The configuration of the Sidecar injector. See `sidecar_injector` below.
+     * @return Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
      * 
      */
     public Optional<Output<ServiceMeshMeshConfigSidecarInjectorArgs>> sidecarInjector() {
@@ -190,14 +221,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+     * Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
      * 
      */
     @Import(name="telemetry")
     private @Nullable Output<Boolean> telemetry;
 
     /**
-     * @return Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+     * @return Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
      * 
      */
     public Optional<Output<Boolean>> telemetry() {
@@ -205,14 +236,14 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+     * Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
      * 
      */
     @Import(name="tracing")
     private @Nullable Output<Boolean> tracing;
 
     /**
-     * @return Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+     * @return Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
      * 
      */
     public Optional<Output<Boolean>> tracing() {
@@ -227,10 +258,12 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         this.controlPlaneLog = $.controlPlaneLog;
         this.customizedZipkin = $.customizedZipkin;
         this.enableLocalityLb = $.enableLocalityLb;
+        this.includeIpRanges = $.includeIpRanges;
         this.kiali = $.kiali;
         this.opa = $.opa;
         this.outboundTrafficPolicy = $.outboundTrafficPolicy;
         this.pilot = $.pilot;
+        this.prometheus = $.prometheus;
         this.proxy = $.proxy;
         this.sidecarInjector = $.sidecarInjector;
         this.telemetry = $.telemetry;
@@ -256,7 +289,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accessLog The configuration of the access logging. See `access_log` below.
+         * @param accessLog The access logging configuration. See `mesh_config-access_log` below.
          * 
          * @return builder
          * 
@@ -267,7 +300,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param accessLog The configuration of the access logging. See `access_log` below.
+         * @param accessLog The access logging configuration. See `mesh_config-access_log` below.
          * 
          * @return builder
          * 
@@ -277,7 +310,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param audit The configuration of the audit. See `audit` below.
+         * @param audit Audit information. See `mesh_config-audit` below.
          * 
          * @return builder
          * 
@@ -288,7 +321,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param audit The configuration of the audit. See `audit` below.
+         * @param audit Audit information. See `mesh_config-audit` below.
          * 
          * @return builder
          * 
@@ -298,7 +331,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param controlPlaneLog The configuration of the control plane logging. See `control_plane_log` below.
+         * @param controlPlaneLog Control plane log collection configuration. See `mesh_config-control_plane_log` below.
          * 
          * @return builder
          * 
@@ -309,7 +342,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param controlPlaneLog The configuration of the control plane logging. See `control_plane_log` below.
+         * @param controlPlaneLog Control plane log collection configuration. See `mesh_config-control_plane_log` below.
          * 
          * @return builder
          * 
@@ -319,7 +352,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param customizedZipkin Whether to enable the use of a custom zipkin.
+         * @param customizedZipkin Whether or not to enable the use of a custom zipkin.
          * 
          * @return builder
          * 
@@ -330,7 +363,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param customizedZipkin Whether to enable the use of a custom zipkin.
+         * @param customizedZipkin Whether or not to enable the use of a custom zipkin.
          * 
          * @return builder
          * 
@@ -340,7 +373,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enableLocalityLb The enable locality lb.
+         * @param enableLocalityLb Whether to enable service can access the service through the nearest node access.
          * 
          * @return builder
          * 
@@ -351,7 +384,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enableLocalityLb The enable locality lb.
+         * @param enableLocalityLb Whether to enable service can access the service through the nearest node access.
          * 
          * @return builder
          * 
@@ -361,7 +394,28 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param kiali The configuration of the Kiali. See `kiali` below.
+         * @param includeIpRanges The IP ADDRESS range.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeIpRanges(@Nullable Output<String> includeIpRanges) {
+            $.includeIpRanges = includeIpRanges;
+            return this;
+        }
+
+        /**
+         * @param includeIpRanges The IP ADDRESS range.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includeIpRanges(String includeIpRanges) {
+            return includeIpRanges(Output.of(includeIpRanges));
+        }
+
+        /**
+         * @param kiali Kiali configuration. See `mesh_config-kiali` below.
          * 
          * @return builder
          * 
@@ -372,7 +426,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param kiali The configuration of the Kiali. See `kiali` below.
+         * @param kiali Kiali configuration. See `mesh_config-kiali` below.
          * 
          * @return builder
          * 
@@ -382,7 +436,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param opa The open-door policy of agent (OPA) plug-in information. See `opa` below.
+         * @param opa The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
          * 
          * @return builder
          * 
@@ -393,7 +447,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param opa The open-door policy of agent (OPA) plug-in information. See `opa` below.
+         * @param opa The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
          * 
          * @return builder
          * 
@@ -403,7 +457,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param outboundTrafficPolicy The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+         * @param outboundTrafficPolicy Out to the traffic policy.
          * 
          * @return builder
          * 
@@ -414,7 +468,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param outboundTrafficPolicy The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+         * @param outboundTrafficPolicy Out to the traffic policy.
          * 
          * @return builder
          * 
@@ -424,7 +478,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param pilot The configuration of the Link trace sampling. See `pilot` below.
+         * @param pilot Link trace sampling information. See `mesh_config-pilot` below.
          * 
          * @return builder
          * 
@@ -435,7 +489,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param pilot The configuration of the Link trace sampling. See `pilot` below.
+         * @param pilot Link trace sampling information. See `mesh_config-pilot` below.
          * 
          * @return builder
          * 
@@ -445,7 +499,28 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param proxy The configuration of the Proxy. See `proxy` below.
+         * @param prometheus Prometheus configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prometheus(@Nullable Output<ServiceMeshMeshConfigPrometheusArgs> prometheus) {
+            $.prometheus = prometheus;
+            return this;
+        }
+
+        /**
+         * @param prometheus Prometheus configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prometheus(ServiceMeshMeshConfigPrometheusArgs prometheus) {
+            return prometheus(Output.of(prometheus));
+        }
+
+        /**
+         * @param proxy Proxy configuration. See `mesh_config-proxy` below.
          * 
          * @return builder
          * 
@@ -456,7 +531,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param proxy The configuration of the Proxy. See `proxy` below.
+         * @param proxy Proxy configuration. See `mesh_config-proxy` below.
          * 
          * @return builder
          * 
@@ -466,7 +541,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sidecarInjector The configuration of the Sidecar injector. See `sidecar_injector` below.
+         * @param sidecarInjector Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
          * 
          * @return builder
          * 
@@ -477,7 +552,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param sidecarInjector The configuration of the Sidecar injector. See `sidecar_injector` below.
+         * @param sidecarInjector Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
          * 
          * @return builder
          * 
@@ -487,7 +562,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param telemetry Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+         * @param telemetry Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
          * 
          * @return builder
          * 
@@ -498,7 +573,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param telemetry Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+         * @param telemetry Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
          * 
          * @return builder
          * 
@@ -508,7 +583,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tracing Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+         * @param tracing Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
          * 
          * @return builder
          * 
@@ -519,7 +594,7 @@ public final class ServiceMeshMeshConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param tracing Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+         * @param tracing Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
          * 
          * @return builder
          * 

@@ -106,7 +106,13 @@ class DhcpOptionsSetAssociateVpc(dict):
              _setter: Callable[[Any, Any], None],
              vpc_id: str,
              associate_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'associateStatus' in kwargs:
+            associate_status = kwargs['associateStatus']
+
         _setter("vpc_id", vpc_id)
         if associate_status is not None:
             _setter("associate_status", associate_status)
@@ -166,7 +172,13 @@ class NetworkAclAttachmentResource(dict):
              _setter: Callable[[Any, Any], None],
              resource_id: str,
              resource_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
 
@@ -248,7 +260,13 @@ class NetworkAclEgressAclEntry(dict):
              policy: Optional[str] = None,
              port: Optional[str] = None,
              protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrIp' in kwargs:
+            destination_cidr_ip = kwargs['destinationCidrIp']
+        if 'networkAclEntryName' in kwargs:
+            network_acl_entry_name = kwargs['networkAclEntryName']
+
         if description is not None:
             _setter("description", description)
         if destination_cidr_ip is not None:
@@ -376,7 +394,13 @@ class NetworkAclEntriesEgress(dict):
              policy: Optional[str] = None,
              port: Optional[str] = None,
              protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrIp' in kwargs:
+            destination_cidr_ip = kwargs['destinationCidrIp']
+        if 'entryType' in kwargs:
+            entry_type = kwargs['entryType']
+
         if description is not None:
             _setter("description", description)
         if destination_cidr_ip is not None:
@@ -507,7 +531,13 @@ class NetworkAclEntriesIngress(dict):
              port: Optional[str] = None,
              protocol: Optional[str] = None,
              source_cidr_ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'entryType' in kwargs:
+            entry_type = kwargs['entryType']
+        if 'sourceCidrIp' in kwargs:
+            source_cidr_ip = kwargs['sourceCidrIp']
+
         if description is not None:
             _setter("description", description)
         if entry_type is not None:
@@ -641,7 +671,13 @@ class NetworkAclIngressAclEntry(dict):
              port: Optional[str] = None,
              protocol: Optional[str] = None,
              source_cidr_ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkAclEntryName' in kwargs:
+            network_acl_entry_name = kwargs['networkAclEntryName']
+        if 'sourceCidrIp' in kwargs:
+            source_cidr_ip = kwargs['sourceCidrIp']
+
         if description is not None:
             _setter("description", description)
         if network_acl_entry_name is not None:
@@ -753,7 +789,13 @@ class NetworkAclResource(dict):
              resource_id: str,
              resource_type: str,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
         if status is not None:
@@ -827,7 +869,13 @@ class NetworkIpv6CidrBlock(dict):
              _setter: Callable[[Any, Any], None],
              ipv6_cidr_block: Optional[str] = None,
              ipv6_isp: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipv6CidrBlock' in kwargs:
+            ipv6_cidr_block = kwargs['ipv6CidrBlock']
+        if 'ipv6Isp' in kwargs:
+            ipv6_isp = kwargs['ipv6Isp']
+
         if ipv6_cidr_block is not None:
             _setter("ipv6_cidr_block", ipv6_cidr_block)
         if ipv6_isp is not None:
@@ -874,7 +922,9 @@ class PrefixListEntry(dict):
              _setter: Callable[[Any, Any], None],
              cidr: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cidr is not None:
             _setter("cidr", cidr)
         if description is not None:
@@ -967,7 +1017,21 @@ class PrefixListPrefixListAssociation(dict):
              resource_type: Optional[str] = None,
              resource_uid: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ownerId' in kwargs:
+            owner_id = kwargs['ownerId']
+        if 'prefixListId' in kwargs:
+            prefix_list_id = kwargs['prefixListId']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'resourceUid' in kwargs:
+            resource_uid = kwargs['resourceUid']
+
         if owner_id is not None:
             _setter("owner_id", owner_id)
         if prefix_list_id is not None:
@@ -1125,7 +1189,19 @@ class TrafficMirrorFilterEgressRule(dict):
              source_cidr_block: Optional[str] = None,
              source_port_range: Optional[str] = None,
              traffic_mirror_filter_rule_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrBlock' in kwargs:
+            destination_cidr_block = kwargs['destinationCidrBlock']
+        if 'destinationPortRange' in kwargs:
+            destination_port_range = kwargs['destinationPortRange']
+        if 'sourceCidrBlock' in kwargs:
+            source_cidr_block = kwargs['sourceCidrBlock']
+        if 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+        if 'trafficMirrorFilterRuleStatus' in kwargs:
+            traffic_mirror_filter_rule_status = kwargs['trafficMirrorFilterRuleStatus']
+
         _setter("action", action)
         _setter("protocol", protocol)
         if destination_cidr_block is not None:
@@ -1286,7 +1362,19 @@ class TrafficMirrorFilterIngressRule(dict):
              source_cidr_block: Optional[str] = None,
              source_port_range: Optional[str] = None,
              traffic_mirror_filter_rule_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrBlock' in kwargs:
+            destination_cidr_block = kwargs['destinationCidrBlock']
+        if 'destinationPortRange' in kwargs:
+            destination_port_range = kwargs['destinationPortRange']
+        if 'sourceCidrBlock' in kwargs:
+            source_cidr_block = kwargs['sourceCidrBlock']
+        if 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+        if 'trafficMirrorFilterRuleStatus' in kwargs:
+            traffic_mirror_filter_rule_status = kwargs['trafficMirrorFilterRuleStatus']
+
         _setter("action", action)
         _setter("protocol", protocol)
         if destination_cidr_block is not None:
@@ -1435,7 +1523,25 @@ class GetBgpGroupsGroupResult(dict):
              route_limit: str,
              router_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authKey' in kwargs:
+            auth_key = kwargs['authKey']
+        if 'bgpGroupName' in kwargs:
+            bgp_group_name = kwargs['bgpGroupName']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'isFakeAsn' in kwargs:
+            is_fake_asn = kwargs['isFakeAsn']
+        if 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if 'routeLimit' in kwargs:
+            route_limit = kwargs['routeLimit']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
         _setter("auth_key", auth_key)
         _setter("bgp_group_name", bgp_group_name)
         _setter("description", description)
@@ -1582,7 +1688,13 @@ class GetBgpNetworksNetworkResult(dict):
              id: str,
              router_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dstCidrBlock' in kwargs:
+            dst_cidr_block = kwargs['dstCidrBlock']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
         _setter("dst_cidr_block", dst_cidr_block)
         _setter("id", id)
         _setter("router_id", router_id)
@@ -1708,7 +1820,37 @@ class GetBgpPeersPeerResult(dict):
              route_limit: str,
              router_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authKey' in kwargs:
+            auth_key = kwargs['authKey']
+        if 'bfdMultiHop' in kwargs:
+            bfd_multi_hop = kwargs['bfdMultiHop']
+        if 'bgpGroupId' in kwargs:
+            bgp_group_id = kwargs['bgpGroupId']
+        if 'bgpPeerId' in kwargs:
+            bgp_peer_id = kwargs['bgpPeerId']
+        if 'bgpPeerName' in kwargs:
+            bgp_peer_name = kwargs['bgpPeerName']
+        if 'bgpStatus' in kwargs:
+            bgp_status = kwargs['bgpStatus']
+        if 'enableBfd' in kwargs:
+            enable_bfd = kwargs['enableBfd']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'isFake' in kwargs:
+            is_fake = kwargs['isFake']
+        if 'localAsn' in kwargs:
+            local_asn = kwargs['localAsn']
+        if 'peerAsn' in kwargs:
+            peer_asn = kwargs['peerAsn']
+        if 'peerIpAddress' in kwargs:
+            peer_ip_address = kwargs['peerIpAddress']
+        if 'routeLimit' in kwargs:
+            route_limit = kwargs['routeLimit']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+
         _setter("auth_key", auth_key)
         _setter("bfd_multi_hop", bfd_multi_hop)
         _setter("bgp_group_id", bgp_group_id)
@@ -1981,7 +2123,39 @@ class GetCommonBandwidthPackagesPackageResult(dict):
              resource_group_id: str,
              service_managed: int,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'bandwidthPackageName' in kwargs:
+            bandwidth_package_name = kwargs['bandwidthPackageName']
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'hasReservationData' in kwargs:
+            has_reservation_data = kwargs['hasReservationData']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'publicIpAddresses' in kwargs:
+            public_ip_addresses = kwargs['publicIpAddresses']
+        if 'reservationActiveTime' in kwargs:
+            reservation_active_time = kwargs['reservationActiveTime']
+        if 'reservationBandwidth' in kwargs:
+            reservation_bandwidth = kwargs['reservationBandwidth']
+        if 'reservationInternetChargeType' in kwargs:
+            reservation_internet_charge_type = kwargs['reservationInternetChargeType']
+        if 'reservationOrderType' in kwargs:
+            reservation_order_type = kwargs['reservationOrderType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'serviceManaged' in kwargs:
+            service_managed = kwargs['serviceManaged']
+
         _setter("bandwidth", bandwidth)
         _setter("bandwidth_package_id", bandwidth_package_id)
         _setter("bandwidth_package_name", bandwidth_package_name)
@@ -2200,7 +2374,15 @@ class GetCommonBandwidthPackagesPackagePublicIpAddressResult(dict):
              allocation_id: str,
              bandwidth_package_ip_relation_status: str,
              ip_address: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocationId' in kwargs:
+            allocation_id = kwargs['allocationId']
+        if 'bandwidthPackageIpRelationStatus' in kwargs:
+            bandwidth_package_ip_relation_status = kwargs['bandwidthPackageIpRelationStatus']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("allocation_id", allocation_id)
         _setter("bandwidth_package_ip_relation_status", bandwidth_package_ip_relation_status)
         _setter("ip_address", ip_address)
@@ -2272,7 +2454,23 @@ class GetDhcpOptionsSetsSetResult(dict):
              id: str,
              owner_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associateVpcCount' in kwargs:
+            associate_vpc_count = kwargs['associateVpcCount']
+        if 'dhcpOptionsSetDescription' in kwargs:
+            dhcp_options_set_description = kwargs['dhcpOptionsSetDescription']
+        if 'dhcpOptionsSetId' in kwargs:
+            dhcp_options_set_id = kwargs['dhcpOptionsSetId']
+        if 'dhcpOptionsSetName' in kwargs:
+            dhcp_options_set_name = kwargs['dhcpOptionsSetName']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'domainNameServers' in kwargs:
+            domain_name_servers = kwargs['domainNameServers']
+        if 'ownerId' in kwargs:
+            owner_id = kwargs['ownerId']
+
         _setter("associate_vpc_count", associate_vpc_count)
         _setter("dhcp_options_set_description", dhcp_options_set_description)
         _setter("dhcp_options_set_id", dhcp_options_set_id)
@@ -2371,7 +2569,13 @@ class GetEnhancedNatAvailableZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              local_name: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("local_name", local_name)
         _setter("zone_id", zone_id)
 
@@ -2437,7 +2641,23 @@ class GetForwardEntriesEntryResult(dict):
              ip_protocol: str,
              name: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'externalIp' in kwargs:
+            external_ip = kwargs['externalIp']
+        if 'externalPort' in kwargs:
+            external_port = kwargs['externalPort']
+        if 'forwardEntryId' in kwargs:
+            forward_entry_id = kwargs['forwardEntryId']
+        if 'forwardEntryName' in kwargs:
+            forward_entry_name = kwargs['forwardEntryName']
+        if 'internalIp' in kwargs:
+            internal_ip = kwargs['internalIp']
+        if 'internalPort' in kwargs:
+            internal_port = kwargs['internalPort']
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+
         _setter("external_ip", external_ip)
         _setter("external_port", external_port)
         _setter("forward_entry_id", forward_entry_id)
@@ -2585,7 +2805,25 @@ class GetHavipsHavipResult(dict):
              status: str,
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associatedEipAddresses' in kwargs:
+            associated_eip_addresses = kwargs['associatedEipAddresses']
+        if 'associatedInstances' in kwargs:
+            associated_instances = kwargs['associatedInstances']
+        if 'havipId' in kwargs:
+            havip_id = kwargs['havipId']
+        if 'havipName' in kwargs:
+            havip_name = kwargs['havipName']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'masterInstanceId' in kwargs:
+            master_instance_id = kwargs['masterInstanceId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("associated_eip_addresses", associated_eip_addresses)
         _setter("associated_instances", associated_instances)
         _setter("description", description)
@@ -2766,7 +3004,39 @@ class GetIpsecServersServerResult(dict):
              psk: str,
              psk_enabled: bool,
              vpn_gateway_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientIpPool' in kwargs:
+            client_ip_pool = kwargs['clientIpPool']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'effectImmediately' in kwargs:
+            effect_immediately = kwargs['effectImmediately']
+        if 'idaasInstanceId' in kwargs:
+            idaas_instance_id = kwargs['idaasInstanceId']
+        if 'ikeConfigs' in kwargs:
+            ike_configs = kwargs['ikeConfigs']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'ipsecConfigs' in kwargs:
+            ipsec_configs = kwargs['ipsecConfigs']
+        if 'ipsecServerId' in kwargs:
+            ipsec_server_id = kwargs['ipsecServerId']
+        if 'ipsecServerName' in kwargs:
+            ipsec_server_name = kwargs['ipsecServerName']
+        if 'localSubnet' in kwargs:
+            local_subnet = kwargs['localSubnet']
+        if 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if 'multiFactorAuthEnabled' in kwargs:
+            multi_factor_auth_enabled = kwargs['multiFactorAuthEnabled']
+        if 'onlineClientCount' in kwargs:
+            online_client_count = kwargs['onlineClientCount']
+        if 'pskEnabled' in kwargs:
+            psk_enabled = kwargs['pskEnabled']
+        if 'vpnGatewayId' in kwargs:
+            vpn_gateway_id = kwargs['vpnGatewayId']
+
         _setter("client_ip_pool", client_ip_pool)
         _setter("create_time", create_time)
         _setter("effect_immediately", effect_immediately)
@@ -2965,7 +3235,25 @@ class GetIpsecServersServerIkeConfigResult(dict):
              ike_version: str,
              local_id: str,
              remote_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ikeAuthAlg' in kwargs:
+            ike_auth_alg = kwargs['ikeAuthAlg']
+        if 'ikeEncAlg' in kwargs:
+            ike_enc_alg = kwargs['ikeEncAlg']
+        if 'ikeLifetime' in kwargs:
+            ike_lifetime = kwargs['ikeLifetime']
+        if 'ikeMode' in kwargs:
+            ike_mode = kwargs['ikeMode']
+        if 'ikePfs' in kwargs:
+            ike_pfs = kwargs['ikePfs']
+        if 'ikeVersion' in kwargs:
+            ike_version = kwargs['ikeVersion']
+        if 'localId' in kwargs:
+            local_id = kwargs['localId']
+        if 'remoteId' in kwargs:
+            remote_id = kwargs['remoteId']
+
         _setter("ike_auth_alg", ike_auth_alg)
         _setter("ike_enc_alg", ike_enc_alg)
         _setter("ike_lifetime", ike_lifetime)
@@ -3067,7 +3355,17 @@ class GetIpsecServersServerIpsecConfigResult(dict):
              ipsec_enc_alg: str,
              ipsec_lifetime: int,
              ipsec_pfs: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipsecAuthAlg' in kwargs:
+            ipsec_auth_alg = kwargs['ipsecAuthAlg']
+        if 'ipsecEncAlg' in kwargs:
+            ipsec_enc_alg = kwargs['ipsecEncAlg']
+        if 'ipsecLifetime' in kwargs:
+            ipsec_lifetime = kwargs['ipsecLifetime']
+        if 'ipsecPfs' in kwargs:
+            ipsec_pfs = kwargs['ipsecPfs']
+
         _setter("ipsec_auth_alg", ipsec_auth_alg)
         _setter("ipsec_enc_alg", ipsec_enc_alg)
         _setter("ipsec_lifetime", ipsec_lifetime)
@@ -3153,7 +3451,21 @@ class GetIpv4GatewaysGatewayResult(dict):
              ipv4_gateway_route_table_id: str,
              status: str,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'ipv4GatewayDescription' in kwargs:
+            ipv4_gateway_description = kwargs['ipv4GatewayDescription']
+        if 'ipv4GatewayId' in kwargs:
+            ipv4_gateway_id = kwargs['ipv4GatewayId']
+        if 'ipv4GatewayName' in kwargs:
+            ipv4_gateway_name = kwargs['ipv4GatewayName']
+        if 'ipv4GatewayRouteTableId' in kwargs:
+            ipv4_gateway_route_table_id = kwargs['ipv4GatewayRouteTableId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("create_time", create_time)
         _setter("enabled", enabled)
         _setter("id", id)
@@ -3296,7 +3608,29 @@ class GetIpv6AddressesAddressResult(dict):
              status: str,
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associatedInstanceId' in kwargs:
+            associated_instance_id = kwargs['associatedInstanceId']
+        if 'associatedInstanceType' in kwargs:
+            associated_instance_type = kwargs['associatedInstanceType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+        if 'ipv6AddressId' in kwargs:
+            ipv6_address_id = kwargs['ipv6AddressId']
+        if 'ipv6AddressName' in kwargs:
+            ipv6_address_name = kwargs['ipv6AddressName']
+        if 'ipv6GatewayId' in kwargs:
+            ipv6_gateway_id = kwargs['ipv6GatewayId']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("associated_instance_id", associated_instance_id)
         _setter("associated_instance_type", associated_instance_type)
         _setter("create_time", create_time)
@@ -3450,7 +3784,19 @@ class GetIpv6EgressRulesRuleResult(dict):
              ipv6_egress_rule_name: str,
              ipv6_gateway_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'ipv6EgressRuleId' in kwargs:
+            ipv6_egress_rule_id = kwargs['ipv6EgressRuleId']
+        if 'ipv6EgressRuleName' in kwargs:
+            ipv6_egress_rule_name = kwargs['ipv6EgressRuleName']
+        if 'ipv6GatewayId' in kwargs:
+            ipv6_gateway_id = kwargs['ipv6GatewayId']
+
         _setter("description", description)
         _setter("id", id)
         _setter("instance_id", instance_id)
@@ -3580,7 +3926,23 @@ class GetIpv6GatewaysGatewayResult(dict):
              spec: str,
              status: str,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'ipv6GatewayId' in kwargs:
+            ipv6_gateway_id = kwargs['ipv6GatewayId']
+        if 'ipv6GatewayName' in kwargs:
+            ipv6_gateway_name = kwargs['ipv6GatewayName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("business_status", business_status)
         _setter("create_time", create_time)
         _setter("description", description)
@@ -3725,7 +4087,19 @@ class GetIpv6InternetBandwidthsBandwidthResult(dict):
              ipv6_internet_bandwidth_id: str,
              payment_type: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'ipv6AddressId' in kwargs:
+            ipv6_address_id = kwargs['ipv6AddressId']
+        if 'ipv6GatewayId' in kwargs:
+            ipv6_gateway_id = kwargs['ipv6GatewayId']
+        if 'ipv6InternetBandwidthId' in kwargs:
+            ipv6_internet_bandwidth_id = kwargs['ipv6InternetBandwidthId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+
         _setter("bandwidth", bandwidth)
         _setter("id", id)
         _setter("internet_charge_type", internet_charge_type)
@@ -3903,7 +4277,41 @@ class GetNatGatewaysGatewayResult(dict):
              tags: Mapping[str, Any],
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'ecsMetricEnabled' in kwargs:
+            ecs_metric_enabled = kwargs['ecsMetricEnabled']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'forwardTableIds' in kwargs:
+            forward_table_ids = kwargs['forwardTableIds']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'ipLists' in kwargs:
+            ip_lists = kwargs['ipLists']
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'natGatewayName' in kwargs:
+            nat_gateway_name = kwargs['natGatewayName']
+        if 'natType' in kwargs:
+            nat_type = kwargs['natType']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'snatTableIds' in kwargs:
+            snat_table_ids = kwargs['snatTableIds']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("business_status", business_status)
         _setter("deletion_protection", deletion_protection)
         _setter("description", description)
@@ -4160,7 +4568,23 @@ class GetNatIpCidrsCidrResult(dict):
              nat_ip_cidr_id: str,
              nat_ip_cidr_name: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'natIpCidr' in kwargs:
+            nat_ip_cidr = kwargs['natIpCidr']
+        if 'natIpCidrDescription' in kwargs:
+            nat_ip_cidr_description = kwargs['natIpCidrDescription']
+        if 'natIpCidrId' in kwargs:
+            nat_ip_cidr_id = kwargs['natIpCidrId']
+        if 'natIpCidrName' in kwargs:
+            nat_ip_cidr_name = kwargs['natIpCidrName']
+
         _setter("create_time", create_time)
         _setter("id", id)
         _setter("is_default", is_default)
@@ -4291,7 +4715,23 @@ class GetNatIpsIpResult(dict):
              nat_ip_id: str,
              nat_ip_name: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'natIp' in kwargs:
+            nat_ip = kwargs['natIp']
+        if 'natIpCidr' in kwargs:
+            nat_ip_cidr = kwargs['natIpCidr']
+        if 'natIpDescription' in kwargs:
+            nat_ip_description = kwargs['natIpDescription']
+        if 'natIpId' in kwargs:
+            nat_ip_id = kwargs['natIpId']
+        if 'natIpName' in kwargs:
+            nat_ip_name = kwargs['natIpName']
+
         _setter("id", id)
         _setter("is_default", is_default)
         _setter("nat_gateway_id", nat_gateway_id)
@@ -4422,7 +4862,19 @@ class GetNetworkAclsAclResult(dict):
              resources: Sequence['outputs.GetNetworkAclsAclResourceResult'],
              status: str,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'egressAclEntries' in kwargs:
+            egress_acl_entries = kwargs['egressAclEntries']
+        if 'ingressAclEntries' in kwargs:
+            ingress_acl_entries = kwargs['ingressAclEntries']
+        if 'networkAclId' in kwargs:
+            network_acl_id = kwargs['networkAclId']
+        if 'networkAclName' in kwargs:
+            network_acl_name = kwargs['networkAclName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("description", description)
         _setter("egress_acl_entries", egress_acl_entries)
         _setter("id", id)
@@ -4541,7 +4993,13 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
              policy: str,
              port: str,
              protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrIp' in kwargs:
+            destination_cidr_ip = kwargs['destinationCidrIp']
+        if 'networkAclEntryName' in kwargs:
+            network_acl_entry_name = kwargs['networkAclEntryName']
+
         _setter("description", description)
         _setter("destination_cidr_ip", destination_cidr_ip)
         _setter("network_acl_entry_name", network_acl_entry_name)
@@ -4633,7 +5091,13 @@ class GetNetworkAclsAclIngressAclEntryResult(dict):
              port: str,
              protocol: str,
              source_cidr_ip: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkAclEntryName' in kwargs:
+            network_acl_entry_name = kwargs['networkAclEntryName']
+        if 'sourceCidrIp' in kwargs:
+            source_cidr_ip = kwargs['sourceCidrIp']
+
         _setter("description", description)
         _setter("network_acl_entry_name", network_acl_entry_name)
         _setter("policy", policy)
@@ -4713,7 +5177,13 @@ class GetNetworkAclsAclResourceResult(dict):
              resource_id: str,
              resource_type: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
         _setter("status", status)
@@ -4826,7 +5296,37 @@ class GetNetworksVpcResult(dict):
              vpc_name: str,
              vrouter_id: str,
              vswitch_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'ipv6CidrBlock' in kwargs:
+            ipv6_cidr_block = kwargs['ipv6CidrBlock']
+        if 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if 'secondaryCidrBlocks' in kwargs:
+            secondary_cidr_blocks = kwargs['secondaryCidrBlocks']
+        if 'userCidrs' in kwargs:
+            user_cidrs = kwargs['userCidrs']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcName' in kwargs:
+            vpc_name = kwargs['vpcName']
+        if 'vrouterId' in kwargs:
+            vrouter_id = kwargs['vrouterId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+
         _setter("cidr_block", cidr_block)
         _setter("creation_time", creation_time)
         _setter("description", description)
@@ -5034,7 +5534,19 @@ class GetPbrRouteEntriesEntryResult(dict):
              status: str,
              vpn_gateway_id: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'nextHop' in kwargs:
+            next_hop = kwargs['nextHop']
+        if 'routeDest' in kwargs:
+            route_dest = kwargs['routeDest']
+        if 'routeSource' in kwargs:
+            route_source = kwargs['routeSource']
+        if 'vpnGatewayId' in kwargs:
+            vpn_gateway_id = kwargs['vpnGatewayId']
+
         _setter("create_time", create_time)
         _setter("id", id)
         _setter("next_hop", next_hop)
@@ -5164,7 +5676,23 @@ class GetPeerConnectionsConnectionResult(dict):
              peer_connection_name: str,
              status: str,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceptingAliUid' in kwargs:
+            accepting_ali_uid = kwargs['acceptingAliUid']
+        if 'acceptingRegionId' in kwargs:
+            accepting_region_id = kwargs['acceptingRegionId']
+        if 'acceptingVpcId' in kwargs:
+            accepting_vpc_id = kwargs['acceptingVpcId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'peerConnectionId' in kwargs:
+            peer_connection_id = kwargs['peerConnectionId']
+        if 'peerConnectionName' in kwargs:
+            peer_connection_name = kwargs['peerConnectionName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("accepting_ali_uid", accepting_ali_uid)
         _setter("accepting_region_id", accepting_region_id)
         _setter("accepting_vpc_id", accepting_vpc_id)
@@ -5313,7 +5841,23 @@ class GetPrefixListsListResult(dict):
              prefix_list_id: str,
              prefix_list_name: str,
              share_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'maxEntries' in kwargs:
+            max_entries = kwargs['maxEntries']
+        if 'prefixListDescription' in kwargs:
+            prefix_list_description = kwargs['prefixListDescription']
+        if 'prefixListId' in kwargs:
+            prefix_list_id = kwargs['prefixListId']
+        if 'prefixListName' in kwargs:
+            prefix_list_name = kwargs['prefixListName']
+        if 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+
         _setter("create_time", create_time)
         _setter("entrys", entrys)
         _setter("id", id)
@@ -5416,7 +5960,9 @@ class GetPrefixListsListEntryResult(dict):
              _setter: Callable[[Any, Any], None],
              cidr: str,
              description: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("cidr", cidr)
         _setter("description", description)
 
@@ -5476,7 +6022,19 @@ class GetPublicIpAddressPoolCidrBlocksBlockResult(dict):
              status: str,
              total_ip_num: int,
              used_ip_num: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'publicIpAddressPoolId' in kwargs:
+            public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
+        if 'totalIpNum' in kwargs:
+            total_ip_num = kwargs['totalIpNum']
+        if 'usedIpNum' in kwargs:
+            used_ip_num = kwargs['usedIpNum']
+
         _setter("cidr_block", cidr_block)
         _setter("create_time", create_time)
         _setter("id", id)
@@ -5601,7 +6159,25 @@ class GetPublicIpAddressPoolsPoolResult(dict):
              total_ip_num: int,
              used_ip_num: int,
              user_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'ipAddressRemaining' in kwargs:
+            ip_address_remaining = kwargs['ipAddressRemaining']
+        if 'publicIpAddressPoolId' in kwargs:
+            public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
+        if 'publicIpAddressPoolName' in kwargs:
+            public_ip_address_pool_name = kwargs['publicIpAddressPoolName']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'totalIpNum' in kwargs:
+            total_ip_num = kwargs['totalIpNum']
+        if 'usedIpNum' in kwargs:
+            used_ip_num = kwargs['usedIpNum']
+        if 'userType' in kwargs:
+            user_type = kwargs['userType']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("id", id)
@@ -5747,7 +6323,17 @@ class GetRouteEntriesEntryResult(dict):
              route_table_id: str,
              status: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'nextHopType' in kwargs:
+            next_hop_type = kwargs['nextHopType']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+
         _setter("cidr_block", cidr_block)
         _setter("instance_id", instance_id)
         _setter("next_hop_type", next_hop_type)
@@ -5867,7 +6453,25 @@ class GetRouteTablesTableResult(dict):
              tags: Mapping[str, Any],
              vpc_id: str,
              vswitch_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'routeTableName' in kwargs:
+            route_table_name = kwargs['routeTableName']
+        if 'routeTableType' in kwargs:
+            route_table_type = kwargs['routeTableType']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if 'routerType' in kwargs:
+            router_type = kwargs['routerType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+
         _setter("description", description)
         _setter("id", id)
         _setter("name", name)
@@ -6071,7 +6675,33 @@ class GetRouterInterfacesInterfaceResult(dict):
              specification: str,
              status: str,
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPointId' in kwargs:
+            access_point_id = kwargs['accessPointId']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'healthCheckSourceIp' in kwargs:
+            health_check_source_ip = kwargs['healthCheckSourceIp']
+        if 'healthCheckTargetIp' in kwargs:
+            health_check_target_ip = kwargs['healthCheckTargetIp']
+        if 'oppositeInterfaceId' in kwargs:
+            opposite_interface_id = kwargs['oppositeInterfaceId']
+        if 'oppositeInterfaceOwnerId' in kwargs:
+            opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
+        if 'oppositeRegionId' in kwargs:
+            opposite_region_id = kwargs['oppositeRegionId']
+        if 'oppositeRouterId' in kwargs:
+            opposite_router_id = kwargs['oppositeRouterId']
+        if 'oppositeRouterType' in kwargs:
+            opposite_router_type = kwargs['oppositeRouterType']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if 'routerType' in kwargs:
+            router_type = kwargs['routerType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("access_point_id", access_point_id)
         _setter("creation_time", creation_time)
         _setter("description", description)
@@ -6276,7 +6906,19 @@ class GetSnatEntriesEntryResult(dict):
              source_cidr: str,
              source_vswitch_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'snatEntryId' in kwargs:
+            snat_entry_id = kwargs['snatEntryId']
+        if 'snatEntryName' in kwargs:
+            snat_entry_name = kwargs['snatEntryName']
+        if 'snatIp' in kwargs:
+            snat_ip = kwargs['snatIp']
+        if 'sourceCidr' in kwargs:
+            source_cidr = kwargs['sourceCidr']
+        if 'sourceVswitchId' in kwargs:
+            source_vswitch_id = kwargs['sourceVswitchId']
+
         _setter("id", id)
         _setter("snat_entry_id", snat_entry_id)
         _setter("snat_entry_name", snat_entry_name)
@@ -6377,7 +7019,15 @@ class GetSslVpnClientCertsCertResult(dict):
              name: str,
              ssl_vpn_server_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'sslVpnServerId' in kwargs:
+            ssl_vpn_server_id = kwargs['sslVpnServerId']
+
         _setter("create_time", create_time)
         _setter("end_time", end_time)
         _setter("id", id)
@@ -6497,7 +7147,21 @@ class GetSslVpnServersServerResult(dict):
              port: int,
              proto: str,
              vpn_gateway_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientIpPool' in kwargs:
+            client_ip_pool = kwargs['clientIpPool']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'localSubnet' in kwargs:
+            local_subnet = kwargs['localSubnet']
+        if 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if 'vpnGatewayId' in kwargs:
+            vpn_gateway_id = kwargs['vpnGatewayId']
+
         _setter("cipher", cipher)
         _setter("client_ip_pool", client_ip_pool)
         _setter("compress", compress)
@@ -6692,7 +7356,31 @@ class GetSwitchesVswitchResult(dict):
              vswitch_id: str,
              vswitch_name: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availableIpAddressCount' in kwargs:
+            available_ip_address_count = kwargs['availableIpAddressCount']
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'ipv6CidrBlock' in kwargs:
+            ipv6_cidr_block = kwargs['ipv6CidrBlock']
+        if 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'vswitchName' in kwargs:
+            vswitch_name = kwargs['vswitchName']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("available_ip_address_count", available_ip_address_count)
         _setter("cidr_block", cidr_block)
         _setter("creation_time", creation_time)
@@ -6894,7 +7582,23 @@ class GetTrafficMirrorFilterEgressRulesRuleResult(dict):
              status: str,
              traffic_mirror_filter_id: str,
              traffic_mirror_filter_rule_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrBlock' in kwargs:
+            destination_cidr_block = kwargs['destinationCidrBlock']
+        if 'destinationPortRange' in kwargs:
+            destination_port_range = kwargs['destinationPortRange']
+        if 'ruleAction' in kwargs:
+            rule_action = kwargs['ruleAction']
+        if 'sourceCidrBlock' in kwargs:
+            source_cidr_block = kwargs['sourceCidrBlock']
+        if 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+        if 'trafficMirrorFilterId' in kwargs:
+            traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
+        if 'trafficMirrorFilterRuleId' in kwargs:
+            traffic_mirror_filter_rule_id = kwargs['trafficMirrorFilterRuleId']
+
         _setter("destination_cidr_block", destination_cidr_block)
         _setter("destination_port_range", destination_port_range)
         _setter("id", id)
@@ -7051,7 +7755,23 @@ class GetTrafficMirrorFilterIngressRulesRuleResult(dict):
              status: str,
              traffic_mirror_filter_id: str,
              traffic_mirror_filter_rule_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrBlock' in kwargs:
+            destination_cidr_block = kwargs['destinationCidrBlock']
+        if 'destinationPortRange' in kwargs:
+            destination_port_range = kwargs['destinationPortRange']
+        if 'ruleAction' in kwargs:
+            rule_action = kwargs['ruleAction']
+        if 'sourceCidrBlock' in kwargs:
+            source_cidr_block = kwargs['sourceCidrBlock']
+        if 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+        if 'trafficMirrorFilterId' in kwargs:
+            traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
+        if 'trafficMirrorFilterRuleId' in kwargs:
+            traffic_mirror_filter_rule_id = kwargs['trafficMirrorFilterRuleId']
+
         _setter("destination_cidr_block", destination_cidr_block)
         _setter("destination_port_range", destination_port_range)
         _setter("id", id)
@@ -7184,7 +7904,15 @@ class GetTrafficMirrorFiltersFilterResult(dict):
              traffic_mirror_filter_description: str,
              traffic_mirror_filter_id: str,
              traffic_mirror_filter_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'trafficMirrorFilterDescription' in kwargs:
+            traffic_mirror_filter_description = kwargs['trafficMirrorFilterDescription']
+        if 'trafficMirrorFilterId' in kwargs:
+            traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
+        if 'trafficMirrorFilterName' in kwargs:
+            traffic_mirror_filter_name = kwargs['trafficMirrorFilterName']
+
         _setter("id", id)
         _setter("status", status)
         _setter("traffic_mirror_filter_description", traffic_mirror_filter_description)
@@ -7299,7 +8027,29 @@ class GetTrafficMirrorSessionsSessionResult(dict):
              traffic_mirror_target_id: str,
              traffic_mirror_target_type: str,
              virtual_network_id: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'packetLength' in kwargs:
+            packet_length = kwargs['packetLength']
+        if 'trafficMirrorFilterId' in kwargs:
+            traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
+        if 'trafficMirrorSessionBusinessStatus' in kwargs:
+            traffic_mirror_session_business_status = kwargs['trafficMirrorSessionBusinessStatus']
+        if 'trafficMirrorSessionDescription' in kwargs:
+            traffic_mirror_session_description = kwargs['trafficMirrorSessionDescription']
+        if 'trafficMirrorSessionId' in kwargs:
+            traffic_mirror_session_id = kwargs['trafficMirrorSessionId']
+        if 'trafficMirrorSessionName' in kwargs:
+            traffic_mirror_session_name = kwargs['trafficMirrorSessionName']
+        if 'trafficMirrorSourceIds' in kwargs:
+            traffic_mirror_source_ids = kwargs['trafficMirrorSourceIds']
+        if 'trafficMirrorTargetId' in kwargs:
+            traffic_mirror_target_id = kwargs['trafficMirrorTargetId']
+        if 'trafficMirrorTargetType' in kwargs:
+            traffic_mirror_target_type = kwargs['trafficMirrorTargetType']
+        if 'virtualNetworkId' in kwargs:
+            virtual_network_id = kwargs['virtualNetworkId']
+
         _setter("enabled", enabled)
         _setter("id", id)
         _setter("packet_length", packet_length)
@@ -7479,7 +8229,23 @@ class GetVpcFlowLogsLogResult(dict):
              resource_type: str,
              status: str,
              traffic_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'flowLogId' in kwargs:
+            flow_log_id = kwargs['flowLogId']
+        if 'flowLogName' in kwargs:
+            flow_log_name = kwargs['flowLogName']
+        if 'logStoreName' in kwargs:
+            log_store_name = kwargs['logStoreName']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'trafficType' in kwargs:
+            traffic_type = kwargs['trafficType']
+
         _setter("description", description)
         _setter("flow_log_id", flow_log_id)
         _setter("flow_log_name", flow_log_name)

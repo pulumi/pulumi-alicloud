@@ -7,9 +7,9 @@ import * as utilities from "../utilities";
 /**
  * Provides a Threat Detection Anti Brute Force Rule resource.
  *
- * For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule).
+ * For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
  *
- * > **NOTE:** Available in v1.195.0+.
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.threatdetection.AntiBruteForceRule("default", {
- *     antiBruteForceRuleName: "apispec_test",
+ *     antiBruteForceRuleName: "apispec_example",
  *     failCount: 80,
  *     forbiddenTime: 360,
  *     span: 10,

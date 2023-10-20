@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Ddos
         public Output<string> PortCount { get; private set; } = null!;
 
         /// <summary>
-        /// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        /// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
         /// - ddoscoo: Only supports domestic account.
         /// - ddoscoo_intl: Only supports to international account.
         /// Default to ddoscoo.
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string> PortCount { get; set; } = null!;
 
         /// <summary>
-        /// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        /// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
         /// - ddoscoo: Only supports domestic account.
         /// - ddoscoo_intl: Only supports to international account.
         /// Default to ddoscoo.
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? PortCount { get; set; }
 
         /// <summary>
-        /// The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+        /// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
         /// - ddoscoo: Only supports domestic account.
         /// - ddoscoo_intl: Only supports to international account.
         /// Default to ddoscoo.

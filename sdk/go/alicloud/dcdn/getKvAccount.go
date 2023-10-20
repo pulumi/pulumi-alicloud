@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+// This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
 //
-// > **NOTE:** Available in v1.198.0+
+// > **NOTE:** Available since v1.198.0.
 //
 // ## Example Usage
 //

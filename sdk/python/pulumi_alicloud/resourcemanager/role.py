@@ -39,7 +39,15 @@ class RoleArgs:
              role_name: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              max_session_duration: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'assumeRolePolicyDocument' in kwargs:
+            assume_role_policy_document = kwargs['assumeRolePolicyDocument']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if 'maxSessionDuration' in kwargs:
+            max_session_duration = kwargs['maxSessionDuration']
+
         _setter("assume_role_policy_document", assume_role_policy_document)
         _setter("role_name", role_name)
         if description is not None:
@@ -136,7 +144,19 @@ class _RoleState:
              role_id: Optional[pulumi.Input[str]] = None,
              role_name: Optional[pulumi.Input[str]] = None,
              update_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'assumeRolePolicyDocument' in kwargs:
+            assume_role_policy_document = kwargs['assumeRolePolicyDocument']
+        if 'maxSessionDuration' in kwargs:
+            max_session_duration = kwargs['maxSessionDuration']
+        if 'roleId' in kwargs:
+            role_id = kwargs['roleId']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if 'updateDate' in kwargs:
+            update_date = kwargs['updateDate']
+
         if arn is not None:
             _setter("arn", arn)
         if assume_role_policy_document is not None:

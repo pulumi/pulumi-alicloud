@@ -114,7 +114,13 @@ class ApplicationConfigMapMountDescV2(dict):
              config_map_id: Optional[str] = None,
              key: Optional[str] = None,
              mount_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configMapId' in kwargs:
+            config_map_id = kwargs['configMapId']
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+
         if config_map_id is not None:
             _setter("config_map_id", config_map_id)
         if key is not None:
@@ -183,7 +189,11 @@ class ApplicationCustomHostAliasV2(dict):
              _setter: Callable[[Any, Any], None],
              host_name: Optional[str] = None,
              ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+
         if host_name is not None:
             _setter("host_name", host_name)
         if ip is not None:
@@ -250,7 +260,15 @@ class ApplicationKafkaConfigs(dict):
              kafka_configs: Optional[Sequence['outputs.ApplicationKafkaConfigsKafkaConfig']] = None,
              kafka_endpoint: Optional[str] = None,
              kafka_instance_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'kafkaConfigs' in kwargs:
+            kafka_configs = kwargs['kafkaConfigs']
+        if 'kafkaEndpoint' in kwargs:
+            kafka_endpoint = kwargs['kafkaEndpoint']
+        if 'kafkaInstanceId' in kwargs:
+            kafka_instance_id = kwargs['kafkaInstanceId']
+
         if kafka_configs is not None:
             _setter("kafka_configs", kafka_configs)
         if kafka_endpoint is not None:
@@ -327,7 +345,15 @@ class ApplicationKafkaConfigsKafkaConfig(dict):
              kafka_topic: Optional[str] = None,
              log_dir: Optional[str] = None,
              log_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'kafkaTopic' in kwargs:
+            kafka_topic = kwargs['kafkaTopic']
+        if 'logDir' in kwargs:
+            log_dir = kwargs['logDir']
+        if 'logType' in kwargs:
+            log_type = kwargs['logType']
+
         if kafka_topic is not None:
             _setter("kafka_topic", kafka_topic)
         if log_dir is not None:
@@ -422,7 +448,21 @@ class ApplicationLivenessV2(dict):
              period_seconds: Optional[int] = None,
              tcp_socket: Optional['outputs.ApplicationLivenessV2TcpSocket'] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'exec' in kwargs:
+            exec_ = kwargs['exec']
+        if 'httpGet' in kwargs:
+            http_get = kwargs['httpGet']
+        if 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if 'tcpSocket' in kwargs:
+            tcp_socket = kwargs['tcpSocket']
+        if 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if exec_ is not None:
             _setter("exec_", exec_)
         if http_get is not None:
@@ -500,7 +540,9 @@ class ApplicationLivenessV2Exec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if commands is not None:
             _setter("commands", commands)
 
@@ -563,7 +605,13 @@ class ApplicationLivenessV2HttpGet(dict):
              path: Optional[str] = None,
              port: Optional[int] = None,
              scheme: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isContainKeyWord' in kwargs:
+            is_contain_key_word = kwargs['isContainKeyWord']
+        if 'keyWord' in kwargs:
+            key_word = kwargs['keyWord']
+
         if is_contain_key_word is not None:
             _setter("is_contain_key_word", is_contain_key_word)
         if key_word is not None:
@@ -631,7 +679,9 @@ class ApplicationLivenessV2TcpSocket(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
 
@@ -700,7 +750,19 @@ class ApplicationNasConfig(dict):
              nas_id: Optional[str] = None,
              nas_path: Optional[str] = None,
              read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountDomain' in kwargs:
+            mount_domain = kwargs['mountDomain']
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if 'nasId' in kwargs:
+            nas_id = kwargs['nasId']
+        if 'nasPath' in kwargs:
+            nas_path = kwargs['nasPath']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         if mount_domain is not None:
             _setter("mount_domain", mount_domain)
         if mount_path is not None:
@@ -803,7 +865,17 @@ class ApplicationOssMountDescsV2(dict):
              bucket_path: Optional[str] = None,
              mount_path: Optional[str] = None,
              read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'bucketPath' in kwargs:
+            bucket_path = kwargs['bucketPath']
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
         if bucket_path is not None:
@@ -878,7 +950,11 @@ class ApplicationPostStartV2(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              exec_: Optional['outputs.ApplicationPostStartV2Exec'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'exec' in kwargs:
+            exec_ = kwargs['exec']
+
         if exec_ is not None:
             _setter("exec_", exec_)
 
@@ -906,7 +982,9 @@ class ApplicationPostStartV2Exec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if commands is not None:
             _setter("commands", commands)
 
@@ -951,7 +1029,11 @@ class ApplicationPreStopV2(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              exec_: Optional['outputs.ApplicationPreStopV2Exec'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'exec' in kwargs:
+            exec_ = kwargs['exec']
+
         if exec_ is not None:
             _setter("exec_", exec_)
 
@@ -979,7 +1061,9 @@ class ApplicationPreStopV2Exec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if commands is not None:
             _setter("commands", commands)
 
@@ -1040,7 +1124,15 @@ class ApplicationPvtzDiscoverySvc(dict):
              namespace_id: Optional[str] = None,
              port_protocols: Optional[Sequence['outputs.ApplicationPvtzDiscoverySvcPortProtocol']] = None,
              service_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'portProtocols' in kwargs:
+            port_protocols = kwargs['portProtocols']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if enable is not None:
             _setter("enable", enable)
         if namespace_id is not None:
@@ -1102,7 +1194,9 @@ class ApplicationPvtzDiscoverySvcPortProtocol(dict):
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
              protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
         if protocol is not None:
@@ -1187,7 +1281,21 @@ class ApplicationReadinessV2(dict):
              period_seconds: Optional[int] = None,
              tcp_socket: Optional['outputs.ApplicationReadinessV2TcpSocket'] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'exec' in kwargs:
+            exec_ = kwargs['exec']
+        if 'httpGet' in kwargs:
+            http_get = kwargs['httpGet']
+        if 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if 'tcpSocket' in kwargs:
+            tcp_socket = kwargs['tcpSocket']
+        if 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if exec_ is not None:
             _setter("exec_", exec_)
         if http_get is not None:
@@ -1265,7 +1373,9 @@ class ApplicationReadinessV2Exec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if commands is not None:
             _setter("commands", commands)
 
@@ -1328,7 +1438,13 @@ class ApplicationReadinessV2HttpGet(dict):
              path: Optional[str] = None,
              port: Optional[int] = None,
              scheme: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isContainKeyWord' in kwargs:
+            is_contain_key_word = kwargs['isContainKeyWord']
+        if 'keyWord' in kwargs:
+            key_word = kwargs['keyWord']
+
         if is_contain_key_word is not None:
             _setter("is_contain_key_word", is_contain_key_word)
         if key_word is not None:
@@ -1396,7 +1512,9 @@ class ApplicationReadinessV2TcpSocket(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
 
@@ -1463,7 +1581,17 @@ class ApplicationScalingRuleScalingRuleMetric(dict):
              min_replicas: Optional[int] = None,
              scale_down_rules: Optional['outputs.ApplicationScalingRuleScalingRuleMetricScaleDownRules'] = None,
              scale_up_rules: Optional['outputs.ApplicationScalingRuleScalingRuleMetricScaleUpRules'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxReplicas' in kwargs:
+            max_replicas = kwargs['maxReplicas']
+        if 'minReplicas' in kwargs:
+            min_replicas = kwargs['minReplicas']
+        if 'scaleDownRules' in kwargs:
+            scale_down_rules = kwargs['scaleDownRules']
+        if 'scaleUpRules' in kwargs:
+            scale_up_rules = kwargs['scaleUpRules']
+
         if max_replicas is not None:
             _setter("max_replicas", max_replicas)
         if metrics is not None:
@@ -1586,7 +1714,19 @@ class ApplicationScalingRuleScalingRuleMetricMetric(dict):
              slb_log_store: Optional[str] = None,
              slb_project: Optional[str] = None,
              vport: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricTargetAverageUtilization' in kwargs:
+            metric_target_average_utilization = kwargs['metricTargetAverageUtilization']
+        if 'metricType' in kwargs:
+            metric_type = kwargs['metricType']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+        if 'slbLogStore' in kwargs:
+            slb_log_store = kwargs['slbLogStore']
+        if 'slbProject' in kwargs:
+            slb_project = kwargs['slbProject']
+
         if metric_target_average_utilization is not None:
             _setter("metric_target_average_utilization", metric_target_average_utilization)
         if metric_type is not None:
@@ -1699,7 +1839,11 @@ class ApplicationScalingRuleScalingRuleMetricScaleDownRules(dict):
              disabled: Optional[bool] = None,
              stabilization_window_seconds: Optional[int] = None,
              step: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'stabilizationWindowSeconds' in kwargs:
+            stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
+
         if disabled is not None:
             _setter("disabled", disabled)
         if stabilization_window_seconds is not None:
@@ -1772,7 +1916,11 @@ class ApplicationScalingRuleScalingRuleMetricScaleUpRules(dict):
              disabled: Optional[bool] = None,
              stabilization_window_seconds: Optional[int] = None,
              step: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'stabilizationWindowSeconds' in kwargs:
+            stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
+
         if disabled is not None:
             _setter("disabled", disabled)
         if stabilization_window_seconds is not None:
@@ -1851,7 +1999,13 @@ class ApplicationScalingRuleScalingRuleTimer(dict):
              end_date: Optional[str] = None,
              period: Optional[str] = None,
              schedules: Optional[Sequence['outputs.ApplicationScalingRuleScalingRuleTimerSchedule']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'beginDate' in kwargs:
+            begin_date = kwargs['beginDate']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+
         if begin_date is not None:
             _setter("begin_date", begin_date)
         if end_date is not None:
@@ -1944,7 +2098,17 @@ class ApplicationScalingRuleScalingRuleTimerSchedule(dict):
              max_replicas: Optional[int] = None,
              min_replicas: Optional[int] = None,
              target_replicas: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'atTime' in kwargs:
+            at_time = kwargs['atTime']
+        if 'maxReplicas' in kwargs:
+            max_replicas = kwargs['maxReplicas']
+        if 'minReplicas' in kwargs:
+            min_replicas = kwargs['minReplicas']
+        if 'targetReplicas' in kwargs:
+            target_replicas = kwargs['targetReplicas']
+
         if at_time is not None:
             _setter("at_time", at_time)
         if max_replicas is not None:
@@ -2041,7 +2205,17 @@ class ApplicationTomcatConfigV2(dict):
              port: Optional[int] = None,
              uri_encoding: Optional[str] = None,
              use_body_encoding_for_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contextPath' in kwargs:
+            context_path = kwargs['contextPath']
+        if 'maxThreads' in kwargs:
+            max_threads = kwargs['maxThreads']
+        if 'uriEncoding' in kwargs:
+            uri_encoding = kwargs['uriEncoding']
+        if 'useBodyEncodingForUri' in kwargs:
+            use_body_encoding_for_uri = kwargs['useBodyEncodingForUri']
+
         if context_path is not None:
             _setter("context_path", context_path)
         if max_threads is not None:
@@ -2130,7 +2304,11 @@ class ApplicationUpdateStrategyV2(dict):
              _setter: Callable[[Any, Any], None],
              batch_update: Optional['outputs.ApplicationUpdateStrategyV2BatchUpdate'] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'batchUpdate' in kwargs:
+            batch_update = kwargs['batchUpdate']
+
         if batch_update is not None:
             _setter("batch_update", batch_update)
         if type is not None:
@@ -2195,7 +2373,13 @@ class ApplicationUpdateStrategyV2BatchUpdate(dict):
              batch: Optional[int] = None,
              batch_wait_time: Optional[int] = None,
              release_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'batchWaitTime' in kwargs:
+            batch_wait_time = kwargs['batchWaitTime']
+        if 'releaseType' in kwargs:
+            release_type = kwargs['releaseType']
+
         if batch is not None:
             _setter("batch", batch)
         if batch_wait_time is not None:
@@ -2282,7 +2466,13 @@ class GreyTagRouteDubboRule(dict):
              method_name: Optional[str] = None,
              service_name: Optional[str] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'methodName' in kwargs:
+            method_name = kwargs['methodName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if condition is not None:
             _setter("condition", condition)
         if group is not None:
@@ -2376,7 +2566,9 @@ class GreyTagRouteDubboRuleItem(dict):
              index: Optional[int] = None,
              operator: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cond is not None:
             _setter("cond", cond)
         if expr is not None:
@@ -2452,7 +2644,9 @@ class GreyTagRouteScRule(dict):
              condition: Optional[str] = None,
              items: Optional[Sequence['outputs.GreyTagRouteScRuleItem']] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if items is not None:
@@ -2516,7 +2710,9 @@ class GreyTagRouteScRuleItem(dict):
              operator: Optional[str] = None,
              type: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cond is not None:
             _setter("cond", cond)
         if name is not None:
@@ -2613,7 +2809,15 @@ class IngressDefaultRule(dict):
              app_id: Optional[str] = None,
              app_name: Optional[str] = None,
              container_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'appName' in kwargs:
+            app_name = kwargs['appName']
+        if 'containerPort' in kwargs:
+            container_port = kwargs['containerPort']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if app_name is not None:
@@ -2710,7 +2914,19 @@ class IngressRule(dict):
              path: str,
              backend_protocol: Optional[str] = None,
              rewrite_path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'appName' in kwargs:
+            app_name = kwargs['appName']
+        if 'containerPort' in kwargs:
+            container_port = kwargs['containerPort']
+        if 'backendProtocol' in kwargs:
+            backend_protocol = kwargs['backendProtocol']
+        if 'rewritePath' in kwargs:
+            rewrite_path = kwargs['rewritePath']
+
         _setter("app_id", app_id)
         _setter("app_name", app_name)
         _setter("container_port", container_port)
@@ -2824,7 +3040,13 @@ class LoadBalancerInternetInternet(dict):
              port: Optional[int] = None,
              protocol: Optional[str] = None,
              target_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'httpsCertId' in kwargs:
+            https_cert_id = kwargs['httpsCertId']
+        if 'targetPort' in kwargs:
+            target_port = kwargs['targetPort']
+
         if https_cert_id is not None:
             _setter("https_cert_id", https_cert_id)
         if port is not None:
@@ -2913,7 +3135,13 @@ class LoadBalancerIntranetIntranet(dict):
              port: Optional[int] = None,
              protocol: Optional[str] = None,
              target_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'httpsCertId' in kwargs:
+            https_cert_id = kwargs['httpsCertId']
+        if 'targetPort' in kwargs:
+            target_port = kwargs['targetPort']
+
         if https_cert_id is not None:
             _setter("https_cert_id", https_cert_id)
         if port is not None:
@@ -2999,7 +3227,23 @@ class GetApplicationScalingRulesRuleResult(dict):
              scaling_rule_name: str,
              scaling_rule_timers: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleTimerResult'],
              scaling_rule_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'scalingRuleEnable' in kwargs:
+            scaling_rule_enable = kwargs['scalingRuleEnable']
+        if 'scalingRuleMetrics' in kwargs:
+            scaling_rule_metrics = kwargs['scalingRuleMetrics']
+        if 'scalingRuleName' in kwargs:
+            scaling_rule_name = kwargs['scalingRuleName']
+        if 'scalingRuleTimers' in kwargs:
+            scaling_rule_timers = kwargs['scalingRuleTimers']
+        if 'scalingRuleType' in kwargs:
+            scaling_rule_type = kwargs['scalingRuleType']
+
         _setter("app_id", app_id)
         _setter("create_time", create_time)
         _setter("id", id)
@@ -3109,7 +3353,19 @@ class GetApplicationScalingRulesRuleScalingRuleMetricResult(dict):
              min_replicas: int,
              scale_down_rules: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult'],
              scale_up_rules: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxReplicas' in kwargs:
+            max_replicas = kwargs['maxReplicas']
+        if 'metricsStatuses' in kwargs:
+            metrics_statuses = kwargs['metricsStatuses']
+        if 'minReplicas' in kwargs:
+            min_replicas = kwargs['minReplicas']
+        if 'scaleDownRules' in kwargs:
+            scale_down_rules = kwargs['scaleDownRules']
+        if 'scaleUpRules' in kwargs:
+            scale_up_rules = kwargs['scaleUpRules']
+
         _setter("max_replicas", max_replicas)
         _setter("metrics", metrics)
         _setter("metrics_statuses", metrics_statuses)
@@ -3185,7 +3441,13 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricResult(dict):
              _setter: Callable[[Any, Any], None],
              metric_target_average_utilization: int,
              metric_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricTargetAverageUtilization' in kwargs:
+            metric_target_average_utilization = kwargs['metricTargetAverageUtilization']
+        if 'metricType' in kwargs:
+            metric_type = kwargs['metricType']
+
         _setter("metric_target_average_utilization", metric_target_average_utilization)
         _setter("metric_type", metric_type)
 
@@ -3249,7 +3511,25 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusResult(dict):
              min_replicas: int,
              next_scale_metrics: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricResult'],
              next_scale_time_period: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'currentMetrics' in kwargs:
+            current_metrics = kwargs['currentMetrics']
+        if 'currentReplicas' in kwargs:
+            current_replicas = kwargs['currentReplicas']
+        if 'desiredReplicas' in kwargs:
+            desired_replicas = kwargs['desiredReplicas']
+        if 'lastScaleTime' in kwargs:
+            last_scale_time = kwargs['lastScaleTime']
+        if 'maxReplicas' in kwargs:
+            max_replicas = kwargs['maxReplicas']
+        if 'minReplicas' in kwargs:
+            min_replicas = kwargs['minReplicas']
+        if 'nextScaleMetrics' in kwargs:
+            next_scale_metrics = kwargs['nextScaleMetrics']
+        if 'nextScaleTimePeriod' in kwargs:
+            next_scale_time_period = kwargs['nextScaleTimePeriod']
+
         _setter("current_metrics", current_metrics)
         _setter("current_replicas", current_replicas)
         _setter("desired_replicas", desired_replicas)
@@ -3347,7 +3627,11 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricR
              current_value: int,
              name: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'currentValue' in kwargs:
+            current_value = kwargs['currentValue']
+
         _setter("current_value", current_value)
         _setter("name", name)
         _setter("type", type)
@@ -3400,7 +3684,13 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetri
              name: str,
              next_scale_in_average_utilization: int,
              next_scale_out_average_utilization: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nextScaleInAverageUtilization' in kwargs:
+            next_scale_in_average_utilization = kwargs['nextScaleInAverageUtilization']
+        if 'nextScaleOutAverageUtilization' in kwargs:
+            next_scale_out_average_utilization = kwargs['nextScaleOutAverageUtilization']
+
         _setter("name", name)
         _setter("next_scale_in_average_utilization", next_scale_in_average_utilization)
         _setter("next_scale_out_average_utilization", next_scale_out_average_utilization)
@@ -3453,7 +3743,11 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult(dict):
              disabled: bool,
              stabilization_window_seconds: int,
              step: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'stabilizationWindowSeconds' in kwargs:
+            stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
+
         _setter("disabled", disabled)
         _setter("stabilization_window_seconds", stabilization_window_seconds)
         _setter("step", step)
@@ -3506,7 +3800,11 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult(dict):
              disabled: bool,
              stabilization_window_seconds: int,
              step: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'stabilizationWindowSeconds' in kwargs:
+            stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
+
         _setter("disabled", disabled)
         _setter("stabilization_window_seconds", stabilization_window_seconds)
         _setter("step", step)
@@ -3563,7 +3861,13 @@ class GetApplicationScalingRulesRuleScalingRuleTimerResult(dict):
              end_date: str,
              period: str,
              schedules: Sequence['outputs.GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'beginDate' in kwargs:
+            begin_date = kwargs['beginDate']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+
         _setter("begin_date", begin_date)
         _setter("end_date", end_date)
         _setter("period", period)
@@ -3629,7 +3933,17 @@ class GetApplicationScalingRulesRuleScalingRuleTimerScheduleResult(dict):
              max_replicas: int,
              min_replicas: int,
              target_replicas: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'atTime' in kwargs:
+            at_time = kwargs['atTime']
+        if 'maxReplicas' in kwargs:
+            max_replicas = kwargs['maxReplicas']
+        if 'minReplicas' in kwargs:
+            min_replicas = kwargs['minReplicas']
+        if 'targetReplicas' in kwargs:
+            target_replicas = kwargs['targetReplicas']
+
         _setter("at_time", at_time)
         _setter("max_replicas", max_replicas)
         _setter("min_replicas", min_replicas)
@@ -3891,7 +4205,93 @@ class GetApplicationsApplicationResult(dict):
              vswitch_id: str,
              war_start_options: str,
              web_container: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acrAssumeRoleArn' in kwargs:
+            acr_assume_role_arn = kwargs['acrAssumeRoleArn']
+        if 'acrInstanceId' in kwargs:
+            acr_instance_id = kwargs['acrInstanceId']
+        if 'appDescription' in kwargs:
+            app_description = kwargs['appDescription']
+        if 'appName' in kwargs:
+            app_name = kwargs['appName']
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'commandArgs' in kwargs:
+            command_args = kwargs['commandArgs']
+        if 'configMapMountDesc' in kwargs:
+            config_map_mount_desc = kwargs['configMapMountDesc']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'customHostAlias' in kwargs:
+            custom_host_alias = kwargs['customHostAlias']
+        if 'edasContainerVersion' in kwargs:
+            edas_container_version = kwargs['edasContainerVersion']
+        if 'imageUrl' in kwargs:
+            image_url = kwargs['imageUrl']
+        if 'jarStartArgs' in kwargs:
+            jar_start_args = kwargs['jarStartArgs']
+        if 'jarStartOptions' in kwargs:
+            jar_start_options = kwargs['jarStartOptions']
+        if 'minReadyInstances' in kwargs:
+            min_ready_instances = kwargs['minReadyInstances']
+        if 'mountDescs' in kwargs:
+            mount_descs = kwargs['mountDescs']
+        if 'mountHost' in kwargs:
+            mount_host = kwargs['mountHost']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'nasId' in kwargs:
+            nas_id = kwargs['nasId']
+        if 'ossAkId' in kwargs:
+            oss_ak_id = kwargs['ossAkId']
+        if 'ossAkSecret' in kwargs:
+            oss_ak_secret = kwargs['ossAkSecret']
+        if 'ossMountDescs' in kwargs:
+            oss_mount_descs = kwargs['ossMountDescs']
+        if 'ossMountDetails' in kwargs:
+            oss_mount_details = kwargs['ossMountDetails']
+        if 'packageType' in kwargs:
+            package_type = kwargs['packageType']
+        if 'packageUrl' in kwargs:
+            package_url = kwargs['packageUrl']
+        if 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if 'phpArmsConfigLocation' in kwargs:
+            php_arms_config_location = kwargs['phpArmsConfigLocation']
+        if 'phpConfig' in kwargs:
+            php_config = kwargs['phpConfig']
+        if 'phpConfigLocation' in kwargs:
+            php_config_location = kwargs['phpConfigLocation']
+        if 'postStart' in kwargs:
+            post_start = kwargs['postStart']
+        if 'preStop' in kwargs:
+            pre_stop = kwargs['preStop']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if 'repoNamespace' in kwargs:
+            repo_namespace = kwargs['repoNamespace']
+        if 'repoOriginType' in kwargs:
+            repo_origin_type = kwargs['repoOriginType']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'slsConfigs' in kwargs:
+            sls_configs = kwargs['slsConfigs']
+        if 'terminationGracePeriodSeconds' in kwargs:
+            termination_grace_period_seconds = kwargs['terminationGracePeriodSeconds']
+        if 'tomcatConfig' in kwargs:
+            tomcat_config = kwargs['tomcatConfig']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'warStartOptions' in kwargs:
+            war_start_options = kwargs['warStartOptions']
+        if 'webContainer' in kwargs:
+            web_container = kwargs['webContainer']
+
         _setter("acr_assume_role_arn", acr_assume_role_arn)
         _setter("acr_instance_id", acr_instance_id)
         _setter("app_description", app_description)
@@ -4387,7 +4787,13 @@ class GetApplicationsApplicationMountDescResult(dict):
              _setter: Callable[[Any, Any], None],
              mount_path: str,
              nas_path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if 'nasPath' in kwargs:
+            nas_path = kwargs['nasPath']
+
         _setter("mount_path", mount_path)
         _setter("nas_path", nas_path)
 
@@ -4435,7 +4841,17 @@ class GetApplicationsApplicationOssMountDetailResult(dict):
              bucket_path: str,
              mount_path: str,
              read_only: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'bucketPath' in kwargs:
+            bucket_path = kwargs['bucketPath']
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         _setter("bucket_name", bucket_name)
         _setter("bucket_path", bucket_path)
         _setter("mount_path", mount_path)
@@ -4513,7 +4929,15 @@ class GetConfigMapsMapResult(dict):
              id: str,
              name: str,
              namespace_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configMapId' in kwargs:
+            config_map_id = kwargs['configMapId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+
         _setter("config_map_id", config_map_id)
         _setter("create_time", create_time)
         _setter("data", data)
@@ -4610,7 +5034,15 @@ class GetGreyTagRoutesRouteResult(dict):
              grey_tag_route_name: str,
              id: str,
              sc_rules: Sequence['outputs.GetGreyTagRoutesRouteScRuleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dubboRules' in kwargs:
+            dubbo_rules = kwargs['dubboRules']
+        if 'greyTagRouteName' in kwargs:
+            grey_tag_route_name = kwargs['greyTagRouteName']
+        if 'scRules' in kwargs:
+            sc_rules = kwargs['scRules']
+
         _setter("description", description)
         _setter("dubbo_rules", dubbo_rules)
         _setter("grey_tag_route_name", grey_tag_route_name)
@@ -4693,7 +5125,13 @@ class GetGreyTagRoutesRouteDubboRuleResult(dict):
              method_name: str,
              service_name: str,
              version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'methodName' in kwargs:
+            method_name = kwargs['methodName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         _setter("condition", condition)
         _setter("group", group)
         _setter("items", items)
@@ -4781,7 +5219,9 @@ class GetGreyTagRoutesRouteDubboRuleItemResult(dict):
              index: int,
              operator: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("cond", cond)
         _setter("expr", expr)
         _setter("index", index)
@@ -4852,7 +5292,9 @@ class GetGreyTagRoutesRouteScRuleResult(dict):
              condition: str,
              items: Sequence['outputs.GetGreyTagRoutesRouteScRuleItemResult'],
              path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("condition", condition)
         _setter("items", items)
         _setter("path", path)
@@ -4913,7 +5355,9 @@ class GetGreyTagRoutesRouteScRuleItemResult(dict):
              operator: str,
              type: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("cond", cond)
         _setter("name", name)
         _setter("operator", operator)
@@ -5004,7 +5448,21 @@ class GetIngressesIngressResult(dict):
              listener_port: int,
              namespace_id: str,
              slb_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certId' in kwargs:
+            cert_id = kwargs['certId']
+        if 'defaultRule' in kwargs:
+            default_rule = kwargs['defaultRule']
+        if 'ingressId' in kwargs:
+            ingress_id = kwargs['ingressId']
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+
         _setter("cert_id", cert_id)
         _setter("default_rule", default_rule)
         _setter("description", description)
@@ -5118,7 +5576,13 @@ class GetInstanceSpecificationsSpecificationResult(dict):
              memory: int,
              spec_info: str,
              version: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceSpecificationId' in kwargs:
+            instance_specification_id = kwargs['instanceSpecificationId']
+        if 'specInfo' in kwargs:
+            spec_info = kwargs['specInfo']
+
         _setter("cpu", cpu)
         _setter("enable", enable)
         _setter("id", id)
@@ -5211,7 +5675,15 @@ class GetNamespacesNamespaceResult(dict):
              namespace_description: str,
              namespace_id: str,
              namespace_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namespaceDescription' in kwargs:
+            namespace_description = kwargs['namespaceDescription']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+
         _setter("id", id)
         _setter("namespace_description", namespace_description)
         _setter("namespace_id", namespace_id)

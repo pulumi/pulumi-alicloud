@@ -155,7 +155,69 @@ class GatewayFileShareArgs:
              support_archive: Optional[pulumi.Input[bool]] = None,
              transfer_acceleration: Optional[pulumi.Input[bool]] = None,
              windows_acl: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gatewayFileShareName' in kwargs:
+            gateway_file_share_name = kwargs['gatewayFileShareName']
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossEndpoint' in kwargs:
+            oss_endpoint = kwargs['ossEndpoint']
+        if 'accessBasedEnumeration' in kwargs:
+            access_based_enumeration = kwargs['accessBasedEnumeration']
+        if 'backendLimit' in kwargs:
+            backend_limit = kwargs['backendLimit']
+        if 'bypassCacheRead' in kwargs:
+            bypass_cache_read = kwargs['bypassCacheRead']
+        if 'cacheMode' in kwargs:
+            cache_mode = kwargs['cacheMode']
+        if 'directIo' in kwargs:
+            direct_io = kwargs['directIo']
+        if 'downloadLimit' in kwargs:
+            download_limit = kwargs['downloadLimit']
+        if 'fastReclaim' in kwargs:
+            fast_reclaim = kwargs['fastReclaim']
+        if 'feLimit' in kwargs:
+            fe_limit = kwargs['feLimit']
+        if 'ignoreDelete' in kwargs:
+            ignore_delete = kwargs['ignoreDelete']
+        if 'inPlace' in kwargs:
+            in_place = kwargs['inPlace']
+        if 'lagPeriod' in kwargs:
+            lag_period = kwargs['lagPeriod']
+        if 'nfsV4Optimization' in kwargs:
+            nfs_v4_optimization = kwargs['nfsV4Optimization']
+        if 'ossBucketSsl' in kwargs:
+            oss_bucket_ssl = kwargs['ossBucketSsl']
+        if 'partialSyncPaths' in kwargs:
+            partial_sync_paths = kwargs['partialSyncPaths']
+        if 'pathPrefix' in kwargs:
+            path_prefix = kwargs['pathPrefix']
+        if 'pollingInterval' in kwargs:
+            polling_interval = kwargs['pollingInterval']
+        if 'remoteSync' in kwargs:
+            remote_sync = kwargs['remoteSync']
+        if 'remoteSyncDownload' in kwargs:
+            remote_sync_download = kwargs['remoteSyncDownload']
+        if 'roClientList' in kwargs:
+            ro_client_list = kwargs['roClientList']
+        if 'roUserList' in kwargs:
+            ro_user_list = kwargs['roUserList']
+        if 'rwClientList' in kwargs:
+            rw_client_list = kwargs['rwClientList']
+        if 'rwUserList' in kwargs:
+            rw_user_list = kwargs['rwUserList']
+        if 'supportArchive' in kwargs:
+            support_archive = kwargs['supportArchive']
+        if 'transferAcceleration' in kwargs:
+            transfer_acceleration = kwargs['transferAcceleration']
+        if 'windowsAcl' in kwargs:
+            windows_acl = kwargs['windowsAcl']
+
         _setter("gateway_file_share_name", gateway_file_share_name)
         _setter("gateway_id", gateway_id)
         _setter("local_path", local_path)
@@ -762,7 +824,71 @@ class _GatewayFileShareState:
              support_archive: Optional[pulumi.Input[bool]] = None,
              transfer_acceleration: Optional[pulumi.Input[bool]] = None,
              windows_acl: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessBasedEnumeration' in kwargs:
+            access_based_enumeration = kwargs['accessBasedEnumeration']
+        if 'backendLimit' in kwargs:
+            backend_limit = kwargs['backendLimit']
+        if 'bypassCacheRead' in kwargs:
+            bypass_cache_read = kwargs['bypassCacheRead']
+        if 'cacheMode' in kwargs:
+            cache_mode = kwargs['cacheMode']
+        if 'directIo' in kwargs:
+            direct_io = kwargs['directIo']
+        if 'downloadLimit' in kwargs:
+            download_limit = kwargs['downloadLimit']
+        if 'fastReclaim' in kwargs:
+            fast_reclaim = kwargs['fastReclaim']
+        if 'feLimit' in kwargs:
+            fe_limit = kwargs['feLimit']
+        if 'gatewayFileShareName' in kwargs:
+            gateway_file_share_name = kwargs['gatewayFileShareName']
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'ignoreDelete' in kwargs:
+            ignore_delete = kwargs['ignoreDelete']
+        if 'inPlace' in kwargs:
+            in_place = kwargs['inPlace']
+        if 'indexId' in kwargs:
+            index_id = kwargs['indexId']
+        if 'lagPeriod' in kwargs:
+            lag_period = kwargs['lagPeriod']
+        if 'localPath' in kwargs:
+            local_path = kwargs['localPath']
+        if 'nfsV4Optimization' in kwargs:
+            nfs_v4_optimization = kwargs['nfsV4Optimization']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossBucketSsl' in kwargs:
+            oss_bucket_ssl = kwargs['ossBucketSsl']
+        if 'ossEndpoint' in kwargs:
+            oss_endpoint = kwargs['ossEndpoint']
+        if 'partialSyncPaths' in kwargs:
+            partial_sync_paths = kwargs['partialSyncPaths']
+        if 'pathPrefix' in kwargs:
+            path_prefix = kwargs['pathPrefix']
+        if 'pollingInterval' in kwargs:
+            polling_interval = kwargs['pollingInterval']
+        if 'remoteSync' in kwargs:
+            remote_sync = kwargs['remoteSync']
+        if 'remoteSyncDownload' in kwargs:
+            remote_sync_download = kwargs['remoteSyncDownload']
+        if 'roClientList' in kwargs:
+            ro_client_list = kwargs['roClientList']
+        if 'roUserList' in kwargs:
+            ro_user_list = kwargs['roUserList']
+        if 'rwClientList' in kwargs:
+            rw_client_list = kwargs['rwClientList']
+        if 'rwUserList' in kwargs:
+            rw_user_list = kwargs['rwUserList']
+        if 'supportArchive' in kwargs:
+            support_archive = kwargs['supportArchive']
+        if 'transferAcceleration' in kwargs:
+            transfer_acceleration = kwargs['transferAcceleration']
+        if 'windowsAcl' in kwargs:
+            windows_acl = kwargs['windowsAcl']
+
         if access_based_enumeration is not None:
             _setter("access_based_enumeration", access_based_enumeration)
         if backend_limit is not None:

@@ -95,6 +95,8 @@ export class Instance extends pulumi.CustomResource {
      * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
      * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
      * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+     *
+     * > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
      */
     public readonly category!: pulumi.Output<string>;
     /**
@@ -176,7 +178,7 @@ export class Instance extends pulumi.CustomResource {
      * - true: delete protect.
      * - false: no delete protect.
      *
-     * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
@@ -441,9 +443,6 @@ export class Instance extends pulumi.CustomResource {
      * The availability check method of the instance. Valid values:
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
-     *
-     *
-     * > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
      */
     public readonly tcpConnectionType!: pulumi.Output<string>;
     /**
@@ -743,6 +742,8 @@ export interface InstanceState {
      * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
      * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
      * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+     *
+     * > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
      */
     category?: pulumi.Input<string>;
     /**
@@ -824,7 +825,7 @@ export interface InstanceState {
      * - true: delete protect.
      * - false: no delete protect.
      *
-     * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -1089,9 +1090,6 @@ export interface InstanceState {
      * The availability check method of the instance. Valid values:
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
-     *
-     *
-     * > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
      */
     tcpConnectionType?: pulumi.Input<string>;
     /**
@@ -1205,6 +1203,8 @@ export interface InstanceArgs {
      * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
      * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
      * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+     *
+     * > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
      */
     category?: pulumi.Input<string>;
     /**
@@ -1274,7 +1274,7 @@ export interface InstanceArgs {
      * - true: delete protect.
      * - false: no delete protect.
      *
-     * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * > **NOTE:** `deletionProtection` is valid only when attribute `instanceChargeType` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -1531,9 +1531,6 @@ export interface InstanceArgs {
      * The availability check method of the instance. Valid values:
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
-     *
-     *
-     * > **NOTE:** `zoneIdSlaveA` and `zoneIdSlaveB` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitchId` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitchId` is not specified, the classic network version will be created). For example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "zone-c", `zoneIdSlaveB` = "zone-b", then the `vswitchId` must be "vsw-zone-a,vsw-zone-c,vsw-zone-b". Of course, you can also choose automatic allocation , for example, `zoneId` = "zone-a" and `zoneIdSlaveA` = "Auto",`zoneIdSlaveB` = "Auto", then the `vswitchId` must be "vsw-zone-a,Auto,Auto". The list contains up to 2 slave zone ids , separated by commas.
      */
     tcpConnectionType?: pulumi.Input<string>;
     /**

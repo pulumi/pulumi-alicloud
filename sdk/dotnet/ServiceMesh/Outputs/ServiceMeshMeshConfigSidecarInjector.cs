@@ -22,21 +22,29 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly bool? EnableNamespacesByDefault;
         /// <summary>
-        /// The CPU resource  of the limitsOPA proxy container.
+        /// CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+        /// </summary>
+        public readonly Outputs.ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration? InitCniConfiguration;
+        /// <summary>
+        /// Sidecar injector Pods on the throttle.
         /// </summary>
         public readonly string? LimitCpu;
         /// <summary>
-        /// The memory resource limit of the OPA proxy container.
+        /// Sidecar injector Pods on the throttle.
         /// </summary>
         public readonly string? LimitMemory;
         /// <summary>
-        /// The CPU resource request of the OPA proxy container.
+        /// Sidecar injector Pods on the requested resource.
         /// </summary>
         public readonly string? RequestCpu;
         /// <summary>
-        /// The memory resource request of the OPA proxy container.
+        /// Sidecar injector Pods on the requested resource.
         /// </summary>
         public readonly string? RequestMemory;
+        /// <summary>
+        /// Other configurations of automatically injected sidecar (in YAML format).
+        /// </summary>
+        public readonly string? SidecarInjectorWebhookAsYaml;
 
         [OutputConstructor]
         private ServiceMeshMeshConfigSidecarInjector(
@@ -44,20 +52,26 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
 
             bool? enableNamespacesByDefault,
 
+            Outputs.ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration? initCniConfiguration,
+
             string? limitCpu,
 
             string? limitMemory,
 
             string? requestCpu,
 
-            string? requestMemory)
+            string? requestMemory,
+
+            string? sidecarInjectorWebhookAsYaml)
         {
             AutoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
             EnableNamespacesByDefault = enableNamespacesByDefault;
+            InitCniConfiguration = initCniConfiguration;
             LimitCpu = limitCpu;
             LimitMemory = limitMemory;
             RequestCpu = requestCpu;
             RequestMemory = requestMemory;
+            SidecarInjectorWebhookAsYaml = sidecarInjectorWebhookAsYaml;
         }
     }
 }

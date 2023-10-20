@@ -35,7 +35,15 @@ class AcceleratorSpareIpAttachmentArgs:
              accelerator_id: pulumi.Input[str],
              spare_ip: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'spareIp' in kwargs:
+            spare_ip = kwargs['spareIp']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("accelerator_id", accelerator_id)
         _setter("spare_ip", spare_ip)
         if dry_run is not None:
@@ -106,7 +114,15 @@ class _AcceleratorSpareIpAttachmentState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              spare_ip: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'spareIp' in kwargs:
+            spare_ip = kwargs['spareIp']
+
         if accelerator_id is not None:
             _setter("accelerator_id", accelerator_id)
         if dry_run is not None:

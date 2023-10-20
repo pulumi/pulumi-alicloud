@@ -15,7 +15,7 @@ import (
 
 // Provides a Cen Transit Router Multicast Domain Peer Member resource.
 //
-// For information about Cen Transit Router Multicast Domain Peer Member and how to use it, see [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-deregistertransitroutermulticastgroupmembers).
+// For information about Cen Transit Router Multicast Domain Peer Member and how to use it, see [What is Transit Router Multicast Domain Peer Member](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-deregistertransitroutermulticastgroupmembers).
 //
 // > **NOTE:** Available since v1.195.0.
 //

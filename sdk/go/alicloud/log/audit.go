@@ -17,7 +17,7 @@ import (
 //
 // In addition to inheriting all SLS functions, it also enhances the real-time automatic centralized collection of audit related logs across multi cloud products under multi accounts, and provides support for storage, query and information summary required by audit. It covers actiontrail, OSS, NAS, SLB, API gateway, RDS, WAF, cloud firewall, cloud security center and other products.
 //
-// > **NOTE:** Available in 1.81.0
+// > **NOTE:** Available since v1.81.0
 //
 // ## Example Usage
 //
@@ -28,6 +28,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -35,80 +36,67 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.NewAudit(ctx, "example", &log.AuditArgs{
-//				Aliuid:      pulumi.String("12345678"),
-//				DisplayName: pulumi.String("tf-audit-test"),
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewAudit(ctx, "example", &log.AuditArgs{
+//				DisplayName: pulumi.String("tf-audit-example"),
+//				Aliuid:      *pulumi.String(_default.Id),
 //				VariableMap: pulumi.AnyMap{
 //					"actiontrail_enabled":             pulumi.Any("true"),
-//					"actiontrail_ti_enabled":          pulumi.Any("false"),
 //					"actiontrail_ttl":                 pulumi.Any("180"),
-//					"apigateway_enabled":              pulumi.Any("true"),
-//					"apigateway_ti_enabled":           pulumi.Any("false"),
-//					"apigateway_ttl":                  pulumi.Any("180"),
-//					"appconnect_enabled":              pulumi.Any("false"),
-//					"appconnect_ttl":                  pulumi.Any("180"),
-//					"bastion_enabled":                 pulumi.Any("true"),
-//					"bastion_ti_enabled":              pulumi.Any("false"),
-//					"bastion_ttl":                     pulumi.Any("180"),
-//					"cloudfirewall_enabled":           pulumi.Any("true"),
-//					"cloudfirewall_ti_enabled":        pulumi.Any("false"),
-//					"cloudfirewall_ttl":               pulumi.Any("180"),
-//					"cps_enabled":                     pulumi.Any("true"),
-//					"cps_ti_enabled":                  pulumi.Any("false"),
-//					"cps_ttl":                         pulumi.Any("180"),
-//					"ddos_bgp_access_enabled":         pulumi.Any("false"),
-//					"ddos_bgp_access_ttl":             pulumi.Any("180"),
-//					"ddos_coo_access_enabled":         pulumi.Any("false"),
-//					"ddos_coo_access_ti_enabled":      pulumi.Any("false"),
-//					"ddos_coo_access_ttl":             pulumi.Any("180"),
-//					"ddos_dip_access_enabled":         pulumi.Any("false"),
-//					"ddos_dip_access_ti_enabled":      pulumi.Any("false"),
-//					"ddos_dip_access_ttl":             pulumi.Any("180"),
-//					"drds_audit_collection_policy":    pulumi.Any(""),
+//					"oss_access_enabled":              pulumi.Any("true"),
+//					"oss_access_ttl":                  pulumi.Any("7"),
+//					"oss_sync_enabled":                pulumi.Any("true"),
+//					"oss_sync_ttl":                    pulumi.Any("180"),
+//					"oss_metering_enabled":            pulumi.Any("true"),
+//					"oss_metering_ttl":                pulumi.Any("180"),
+//					"rds_enabled":                     pulumi.Any("true"),
+//					"rds_audit_collection_policy":     pulumi.Any(""),
+//					"rds_ttl":                         pulumi.Any("180"),
+//					"rds_slow_enabled":                pulumi.Any("false"),
+//					"rds_slow_collection_policy":      pulumi.Any(""),
+//					"rds_slow_ttl":                    pulumi.Any("180"),
+//					"rds_perf_enabled":                pulumi.Any("false"),
+//					"rds_perf_collection_policy":      pulumi.Any(""),
+//					"rds_perf_ttl":                    pulumi.Any("180"),
+//					"vpc_flow_enabled":                pulumi.Any("false"),
+//					"vpc_flow_ttl":                    pulumi.Any("7"),
+//					"vpc_flow_collection_policy":      pulumi.Any(""),
+//					"vpc_sync_enabled":                pulumi.Any("true"),
+//					"vpc_sync_ttl":                    pulumi.Any("180"),
+//					"polardb_enabled":                 pulumi.Any("true"),
+//					"polardb_audit_collection_policy": pulumi.Any(""),
+//					"polardb_ttl":                     pulumi.Any("180"),
+//					"polardb_slow_enabled":            pulumi.Any("false"),
+//					"polardb_slow_collection_policy":  pulumi.Any(""),
+//					"polardb_slow_ttl":                pulumi.Any("180"),
+//					"polardb_perf_enabled":            pulumi.Any("false"),
+//					"polardb_perf_collection_policy":  pulumi.Any(""),
+//					"polardb_perf_ttl":                pulumi.Any("180"),
 //					"drds_audit_enabled":              pulumi.Any("true"),
-//					"drds_audit_ti_enabled":           pulumi.Any("false"),
+//					"drds_audit_collection_policy":    pulumi.Any(""),
 //					"drds_audit_ttl":                  pulumi.Any("7"),
 //					"drds_sync_enabled":               pulumi.Any("true"),
 //					"drds_sync_ttl":                   pulumi.Any("180"),
-//					"k8s_audit_collection_policy":     pulumi.Any(""),
-//					"k8s_audit_enabled":               pulumi.Any("true"),
-//					"k8s_audit_ttl":                   pulumi.Any("180"),
-//					"k8s_event_collection_policy":     pulumi.Any(""),
-//					"k8s_event_enabled":               pulumi.Any("true"),
-//					"k8s_event_ttl":                   pulumi.Any("180"),
-//					"k8s_ingress_collection_policy":   pulumi.Any(""),
-//					"k8s_ingress_enabled":             pulumi.Any("true"),
-//					"k8s_ingress_ttl":                 pulumi.Any("180"),
-//					"nas_enabled":                     pulumi.Any("true"),
-//					"nas_ti_enabled":                  pulumi.Any("false"),
-//					"nas_ttl":                         pulumi.Any("180"),
-//					"oss_access_enabled":              pulumi.Any("true"),
-//					"oss_access_ti_enabled":           pulumi.Any("false"),
-//					"oss_access_ttl":                  pulumi.Any("7"),
-//					"oss_metering_enabled":            pulumi.Any("true"),
-//					"oss_metering_ttl":                pulumi.Any("180"),
-//					"oss_sync_enabled":                pulumi.Any("true"),
-//					"oss_sync_ttl":                    pulumi.Any("180"),
-//					"polardb_audit_collection_policy": pulumi.Any(""),
-//					"polardb_enabled":                 pulumi.Any("true"),
-//					"polardb_perf_collection_policy":  pulumi.Any(""),
-//					"polardb_perf_enabled":            pulumi.Any("false"),
-//					"polardb_perf_ttl":                pulumi.Any("180"),
-//					"polardb_slow_collection_policy":  pulumi.Any(""),
-//					"polardb_slow_enabled":            pulumi.Any("false"),
-//					"polardb_slow_ttl":                pulumi.Any("180"),
-//					"polardb_ti_enabled":              pulumi.Any("false"),
-//					"polardb_ttl":                     pulumi.Any("180"),
-//					"rds_audit_collection_policy":     pulumi.Any(""),
-//					"rds_enabled":                     pulumi.Any("true"),
-//					"rds_perf_collection_policy":      pulumi.Any(""),
-//					"rds_perf_enabled":                pulumi.Any("false"),
-//					"rds_perf_ttl":                    pulumi.Any("180"),
-//					"rds_slow_collection_policy":      pulumi.Any(""),
-//					"rds_slow_enabled":                pulumi.Any("false"),
-//					"rds_slow_ttl":                    pulumi.Any("180"),
-//					"rds_ti_enabled":                  pulumi.Any("false"),
-//					"rds_ttl":                         pulumi.Any("180"),
+//					"slb_access_enabled":              pulumi.Any("true"),
+//					"slb_access_collection_policy":    pulumi.Any(""),
+//					"slb_access_ttl":                  pulumi.Any("7"),
+//					"slb_sync_enabled":                pulumi.Any("true"),
+//					"slb_sync_ttl":                    pulumi.Any("180"),
+//					"bastion_enabled":                 pulumi.Any("true"),
+//					"bastion_ttl":                     pulumi.Any("180"),
+//					"waf_enabled":                     pulumi.Any("true"),
+//					"waf_ttl":                         pulumi.Any("180"),
+//					"cloudfirewall_enabled":           pulumi.Any("true"),
+//					"cloudfirewall_ttl":               pulumi.Any("180"),
+//					"ddos_coo_access_enabled":         pulumi.Any("false"),
+//					"ddos_coo_access_ttl":             pulumi.Any("180"),
+//					"ddos_bgp_access_enabled":         pulumi.Any("false"),
+//					"ddos_bgp_access_ttl":             pulumi.Any("180"),
+//					"ddos_dip_access_enabled":         pulumi.Any("false"),
+//					"ddos_dip_access_ttl":             pulumi.Any("180"),
 //					"sas_crack_enabled":               pulumi.Any("true"),
 //					"sas_dns_enabled":                 pulumi.Any("true"),
 //					"sas_http_enabled":                pulumi.Any("true"),
@@ -123,22 +111,24 @@ import (
 //					"sas_snapshot_account_enabled":    pulumi.Any("true"),
 //					"sas_snapshot_port_enabled":       pulumi.Any("true"),
 //					"sas_snapshot_process_enabled":    pulumi.Any("true"),
-//					"sas_ti_enabled":                  pulumi.Any("false"),
 //					"sas_ttl":                         pulumi.Any("180"),
-//					"slb_access_collection_policy":    pulumi.Any(""),
-//					"slb_access_enabled":              pulumi.Any("true"),
-//					"slb_access_ti_enabled":           pulumi.Any("false"),
-//					"slb_access_ttl":                  pulumi.Any("7"),
-//					"slb_sync_enabled":                pulumi.Any("true"),
-//					"slb_sync_ttl":                    pulumi.Any("180"),
-//					"vpc_flow_collection_policy":      pulumi.Any(""),
-//					"vpc_flow_enabled":                pulumi.Any("false"),
-//					"vpc_flow_ttl":                    pulumi.Any("7"),
-//					"vpc_sync_enabled":                pulumi.Any("true"),
-//					"vpc_sync_ttl":                    pulumi.Any("180"),
-//					"waf_enabled":                     pulumi.Any("true"),
-//					"waf_ti_enabled":                  pulumi.Any("false"),
-//					"waf_ttl":                         pulumi.Any("180"),
+//					"apigateway_enabled":              pulumi.Any("true"),
+//					"apigateway_ttl":                  pulumi.Any("180"),
+//					"nas_enabled":                     pulumi.Any("true"),
+//					"nas_ttl":                         pulumi.Any("180"),
+//					"appconnect_enabled":              pulumi.Any("false"),
+//					"appconnect_ttl":                  pulumi.Any("180"),
+//					"cps_enabled":                     pulumi.Any("true"),
+//					"cps_ttl":                         pulumi.Any("180"),
+//					"k8s_audit_enabled":               pulumi.Any("true"),
+//					"k8s_audit_collection_policy":     pulumi.Any(""),
+//					"k8s_audit_ttl":                   pulumi.Any("180"),
+//					"k8s_event_enabled":               pulumi.Any("true"),
+//					"k8s_event_collection_policy":     pulumi.Any(""),
+//					"k8s_event_ttl":                   pulumi.Any("180"),
+//					"k8s_ingress_enabled":             pulumi.Any("true"),
+//					"k8s_ingress_collection_policy":   pulumi.Any(""),
+//					"k8s_ingress_ttl":                 pulumi.Any("180"),
 //				},
 //			})
 //			if err != nil {
@@ -156,6 +146,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -163,18 +154,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.NewAudit(ctx, "example", &log.AuditArgs{
-//				Aliuid:      pulumi.String("12345678"),
-//				DisplayName: pulumi.String("tf-audit-test"),
-//				MultiAccounts: pulumi.StringArray{
-//					pulumi.String("123456789123"),
-//					pulumi.String("12345678912300123"),
-//				},
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewAudit(ctx, "example", &log.AuditArgs{
+//				DisplayName: pulumi.String("tf-audit-example"),
+//				Aliuid:      *pulumi.String(_default.Id),
 //				VariableMap: pulumi.AnyMap{
 //					"actiontrail_enabled": pulumi.Any("true"),
 //					"actiontrail_ttl":     pulumi.Any("180"),
 //					"oss_access_enabled":  pulumi.Any("true"),
 //					"oss_access_ttl":      pulumi.Any("180"),
+//				},
+//				MultiAccounts: pulumi.StringArray{
+//					pulumi.String("123456789123"),
+//					pulumi.String("12345678912300123"),
 //				},
 //			})
 //			if err != nil {
@@ -192,6 +187,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -199,16 +195,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.NewAudit(ctx, "example", &log.AuditArgs{
-//				Aliuid:                pulumi.String("12345678"),
-//				DisplayName:           pulumi.String("tf-audit-test"),
-//				ResourceDirectoryType: pulumi.String("all"),
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewAudit(ctx, "example", &log.AuditArgs{
+//				DisplayName: pulumi.String("tf-audit-example"),
+//				Aliuid:      *pulumi.String(_default.Id),
 //				VariableMap: pulumi.AnyMap{
 //					"actiontrail_enabled": pulumi.Any("true"),
 //					"actiontrail_ttl":     pulumi.Any("180"),
 //					"oss_access_enabled":  pulumi.Any("true"),
 //					"oss_access_ttl":      pulumi.Any("180"),
 //				},
+//				ResourceDirectoryType: pulumi.String("all"),
 //			})
 //			if err != nil {
 //				return err
@@ -223,6 +223,7 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -230,20 +231,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := log.NewAudit(ctx, "example", &log.AuditArgs{
-//				Aliuid:      pulumi.String("12345678"),
-//				DisplayName: pulumi.String("tf-audit-test"),
-//				MultiAccounts: pulumi.StringArray{
-//					pulumi.String("123456789123"),
-//					pulumi.String("12345678912300123"),
-//				},
-//				ResourceDirectoryType: pulumi.String("custom"),
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = log.NewAudit(ctx, "example", &log.AuditArgs{
+//				DisplayName: pulumi.String("tf-audit-example"),
+//				Aliuid:      *pulumi.String(_default.Id),
 //				VariableMap: pulumi.AnyMap{
 //					"actiontrail_enabled": pulumi.Any("true"),
 //					"actiontrail_ttl":     pulumi.Any("180"),
 //					"oss_access_enabled":  pulumi.Any("true"),
 //					"oss_access_ttl":      pulumi.Any("180"),
 //				},
+//				MultiAccounts:         pulumi.StringArray{},
+//				ResourceDirectoryType: pulumi.String("custom"),
 //			})
 //			if err != nil {
 //				return err
@@ -260,7 +262,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:log/audit:Audit example tf-audit-test
+//	$ pulumi import alicloud:log/audit:Audit example tf-audit-example
 //
 // ```
 type Audit struct {

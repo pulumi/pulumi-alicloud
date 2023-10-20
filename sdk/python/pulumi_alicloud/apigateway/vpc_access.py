@@ -39,7 +39,13 @@ class VpcAccessArgs:
              port: pulumi.Input[int],
              vpc_id: pulumi.Input[str],
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("instance_id", instance_id)
         _setter("port", port)
         _setter("vpc_id", vpc_id)
@@ -123,7 +129,13 @@ class _VpcAccessState:
              name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if name is not None:

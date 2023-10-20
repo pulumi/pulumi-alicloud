@@ -35,7 +35,15 @@ class ServiceTopicArgs:
              topic_name: pulumi.Input[str],
              logging_enabled: Optional[pulumi.Input[bool]] = None,
              max_message_size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+        if 'loggingEnabled' in kwargs:
+            logging_enabled = kwargs['loggingEnabled']
+        if 'maxMessageSize' in kwargs:
+            max_message_size = kwargs['maxMessageSize']
+
         _setter("topic_name", topic_name)
         if logging_enabled is not None:
             _setter("logging_enabled", logging_enabled)
@@ -103,7 +111,15 @@ class _ServiceTopicState:
              logging_enabled: Optional[pulumi.Input[bool]] = None,
              max_message_size: Optional[pulumi.Input[int]] = None,
              topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'loggingEnabled' in kwargs:
+            logging_enabled = kwargs['loggingEnabled']
+        if 'maxMessageSize' in kwargs:
+            max_message_size = kwargs['maxMessageSize']
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+
         if logging_enabled is not None:
             _setter("logging_enabled", logging_enabled)
         if max_message_size is not None:

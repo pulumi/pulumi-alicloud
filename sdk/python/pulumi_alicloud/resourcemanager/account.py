@@ -51,7 +51,19 @@ class AccountArgs:
              folder_id: Optional[pulumi.Input[str]] = None,
              payer_account_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'abandonAbleCheckIds' in kwargs:
+            abandon_able_check_ids = kwargs['abandonAbleCheckIds']
+        if 'accountNamePrefix' in kwargs:
+            account_name_prefix = kwargs['accountNamePrefix']
+        if 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if 'payerAccountId' in kwargs:
+            payer_account_id = kwargs['payerAccountId']
+
         _setter("display_name", display_name)
         if abandon_able_check_ids is not None:
             _setter("abandon_able_check_ids", abandon_able_check_ids)
@@ -205,7 +217,27 @@ class _AccountState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'abandonAbleCheckIds' in kwargs:
+            abandon_able_check_ids = kwargs['abandonAbleCheckIds']
+        if 'accountNamePrefix' in kwargs:
+            account_name_prefix = kwargs['accountNamePrefix']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if 'joinMethod' in kwargs:
+            join_method = kwargs['joinMethod']
+        if 'joinTime' in kwargs:
+            join_time = kwargs['joinTime']
+        if 'modifyTime' in kwargs:
+            modify_time = kwargs['modifyTime']
+        if 'payerAccountId' in kwargs:
+            payer_account_id = kwargs['payerAccountId']
+        if 'resourceDirectoryId' in kwargs:
+            resource_directory_id = kwargs['resourceDirectoryId']
+
         if abandon_able_check_ids is not None:
             _setter("abandon_able_check_ids", abandon_able_check_ids)
         if account_name_prefix is not None:

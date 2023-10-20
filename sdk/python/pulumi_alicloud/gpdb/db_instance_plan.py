@@ -61,7 +61,25 @@ class DbInstancePlanArgs:
              plan_end_date: Optional[pulumi.Input[str]] = None,
              plan_start_date: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'dbInstancePlanName' in kwargs:
+            db_instance_plan_name = kwargs['dbInstancePlanName']
+        if 'planConfigs' in kwargs:
+            plan_configs = kwargs['planConfigs']
+        if 'planScheduleType' in kwargs:
+            plan_schedule_type = kwargs['planScheduleType']
+        if 'planType' in kwargs:
+            plan_type = kwargs['planType']
+        if 'planDesc' in kwargs:
+            plan_desc = kwargs['planDesc']
+        if 'planEndDate' in kwargs:
+            plan_end_date = kwargs['planEndDate']
+        if 'planStartDate' in kwargs:
+            plan_start_date = kwargs['planStartDate']
+
         _setter("db_instance_id", db_instance_id)
         _setter("db_instance_plan_name", db_instance_plan_name)
         _setter("plan_configs", plan_configs)
@@ -237,7 +255,27 @@ class _DbInstancePlanState:
              plan_start_date: Optional[pulumi.Input[str]] = None,
              plan_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'dbInstancePlanName' in kwargs:
+            db_instance_plan_name = kwargs['dbInstancePlanName']
+        if 'planConfigs' in kwargs:
+            plan_configs = kwargs['planConfigs']
+        if 'planDesc' in kwargs:
+            plan_desc = kwargs['planDesc']
+        if 'planEndDate' in kwargs:
+            plan_end_date = kwargs['planEndDate']
+        if 'planId' in kwargs:
+            plan_id = kwargs['planId']
+        if 'planScheduleType' in kwargs:
+            plan_schedule_type = kwargs['planScheduleType']
+        if 'planStartDate' in kwargs:
+            plan_start_date = kwargs['planStartDate']
+        if 'planType' in kwargs:
+            plan_type = kwargs['planType']
+
         if db_instance_id is not None:
             _setter("db_instance_id", db_instance_id)
         if db_instance_plan_name is not None:

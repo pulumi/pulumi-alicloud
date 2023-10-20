@@ -54,7 +54,23 @@ class SecurityPreferenceArgs:
              enforce_mfa_for_login: Optional[pulumi.Input[bool]] = None,
              login_network_masks: Optional[pulumi.Input[str]] = None,
              login_session_duration: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowUserToChangePassword' in kwargs:
+            allow_user_to_change_password = kwargs['allowUserToChangePassword']
+        if 'allowUserToManageAccessKeys' in kwargs:
+            allow_user_to_manage_access_keys = kwargs['allowUserToManageAccessKeys']
+        if 'allowUserToManageMfaDevices' in kwargs:
+            allow_user_to_manage_mfa_devices = kwargs['allowUserToManageMfaDevices']
+        if 'enableSaveMfaTicket' in kwargs:
+            enable_save_mfa_ticket = kwargs['enableSaveMfaTicket']
+        if 'enforceMfaForLogin' in kwargs:
+            enforce_mfa_for_login = kwargs['enforceMfaForLogin']
+        if 'loginNetworkMasks' in kwargs:
+            login_network_masks = kwargs['loginNetworkMasks']
+        if 'loginSessionDuration' in kwargs:
+            login_session_duration = kwargs['loginSessionDuration']
+
         if allow_user_to_change_password is not None:
             _setter("allow_user_to_change_password", allow_user_to_change_password)
         if allow_user_to_manage_access_keys is not None:
@@ -201,7 +217,23 @@ class _SecurityPreferenceState:
              enforce_mfa_for_login: Optional[pulumi.Input[bool]] = None,
              login_network_masks: Optional[pulumi.Input[str]] = None,
              login_session_duration: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowUserToChangePassword' in kwargs:
+            allow_user_to_change_password = kwargs['allowUserToChangePassword']
+        if 'allowUserToManageAccessKeys' in kwargs:
+            allow_user_to_manage_access_keys = kwargs['allowUserToManageAccessKeys']
+        if 'allowUserToManageMfaDevices' in kwargs:
+            allow_user_to_manage_mfa_devices = kwargs['allowUserToManageMfaDevices']
+        if 'enableSaveMfaTicket' in kwargs:
+            enable_save_mfa_ticket = kwargs['enableSaveMfaTicket']
+        if 'enforceMfaForLogin' in kwargs:
+            enforce_mfa_for_login = kwargs['enforceMfaForLogin']
+        if 'loginNetworkMasks' in kwargs:
+            login_network_masks = kwargs['loginNetworkMasks']
+        if 'loginSessionDuration' in kwargs:
+            login_session_duration = kwargs['loginSessionDuration']
+
         if allow_user_to_change_password is not None:
             _setter("allow_user_to_change_password", allow_user_to_change_password)
         if allow_user_to_manage_access_keys is not None:

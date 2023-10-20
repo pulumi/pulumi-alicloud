@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Rds
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
-        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Output("deletionProtection")]
         public Output<bool> DeletionProtection { get; private set; } = null!;
@@ -704,7 +704,7 @@ namespace Pulumi.AliCloud.Rds
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
-        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
@@ -1246,7 +1246,7 @@ namespace Pulumi.AliCloud.Rds
         /// - true: delete protect.
         /// - false: no delete protect.
         /// 
-        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        /// &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }

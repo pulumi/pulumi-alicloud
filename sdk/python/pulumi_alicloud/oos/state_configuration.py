@@ -63,7 +63,21 @@ class StateConfigurationArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              template_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scheduleExpression' in kwargs:
+            schedule_expression = kwargs['scheduleExpression']
+        if 'scheduleType' in kwargs:
+            schedule_type = kwargs['scheduleType']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'configureMode' in kwargs:
+            configure_mode = kwargs['configureMode']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+
         _setter("schedule_expression", schedule_expression)
         _setter("schedule_type", schedule_type)
         _setter("targets", targets)
@@ -254,7 +268,21 @@ class _StateConfigurationState:
              targets: Optional[pulumi.Input[str]] = None,
              template_name: Optional[pulumi.Input[str]] = None,
              template_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configureMode' in kwargs:
+            configure_mode = kwargs['configureMode']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'scheduleExpression' in kwargs:
+            schedule_expression = kwargs['scheduleExpression']
+        if 'scheduleType' in kwargs:
+            schedule_type = kwargs['scheduleType']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+
         if configure_mode is not None:
             _setter("configure_mode", configure_mode)
         if description is not None:

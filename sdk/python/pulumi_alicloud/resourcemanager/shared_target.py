@@ -31,7 +31,13 @@ class SharedTargetArgs:
              _setter: Callable[[Any, Any], None],
              resource_share_id: pulumi.Input[str],
              target_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceShareId' in kwargs:
+            resource_share_id = kwargs['resourceShareId']
+        if 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+
         _setter("resource_share_id", resource_share_id)
         _setter("target_id", target_id)
 
@@ -84,7 +90,13 @@ class _SharedTargetState:
              resource_share_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              target_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceShareId' in kwargs:
+            resource_share_id = kwargs['resourceShareId']
+        if 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+
         if resource_share_id is not None:
             _setter("resource_share_id", resource_share_id)
         if status is not None:

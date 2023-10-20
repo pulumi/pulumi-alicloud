@@ -49,7 +49,21 @@ class DispatchRuleArgs:
              notify_rules: pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]],
              dispatch_type: Optional[pulumi.Input[str]] = None,
              is_recover: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dispatchRuleName' in kwargs:
+            dispatch_rule_name = kwargs['dispatchRuleName']
+        if 'groupRules' in kwargs:
+            group_rules = kwargs['groupRules']
+        if 'labelMatchExpressionGrids' in kwargs:
+            label_match_expression_grids = kwargs['labelMatchExpressionGrids']
+        if 'notifyRules' in kwargs:
+            notify_rules = kwargs['notifyRules']
+        if 'dispatchType' in kwargs:
+            dispatch_type = kwargs['dispatchType']
+        if 'isRecover' in kwargs:
+            is_recover = kwargs['isRecover']
+
         _setter("dispatch_rule_name", dispatch_rule_name)
         _setter("group_rules", group_rules)
         _setter("label_match_expression_grids", label_match_expression_grids)
@@ -172,7 +186,21 @@ class _DispatchRuleState:
              label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]] = None,
              notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dispatchRuleName' in kwargs:
+            dispatch_rule_name = kwargs['dispatchRuleName']
+        if 'dispatchType' in kwargs:
+            dispatch_type = kwargs['dispatchType']
+        if 'groupRules' in kwargs:
+            group_rules = kwargs['groupRules']
+        if 'isRecover' in kwargs:
+            is_recover = kwargs['isRecover']
+        if 'labelMatchExpressionGrids' in kwargs:
+            label_match_expression_grids = kwargs['labelMatchExpressionGrids']
+        if 'notifyRules' in kwargs:
+            notify_rules = kwargs['notifyRules']
+
         if dispatch_rule_name is not None:
             _setter("dispatch_rule_name", dispatch_rule_name)
         if dispatch_type is not None:
@@ -288,7 +316,7 @@ class DispatchRule(pulumi.CustomResource):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule resource.
 
-        For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://www.alibabacloud.com/help/en/doc-detail/203146.htm).
+        For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/CreateDispatchRule).
 
         > **NOTE:** Available since v1.136.0.
 
@@ -370,7 +398,7 @@ class DispatchRule(pulumi.CustomResource):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule resource.
 
-        For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://www.alibabacloud.com/help/en/doc-detail/203146.htm).
+        For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/CreateDispatchRule).
 
         > **NOTE:** Available since v1.136.0.
 

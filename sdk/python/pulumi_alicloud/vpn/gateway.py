@@ -84,7 +84,27 @@ class GatewayArgs:
              ssl_connections: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'autoPropagate' in kwargs:
+            auto_propagate = kwargs['autoPropagate']
+        if 'enableIpsec' in kwargs:
+            enable_ipsec = kwargs['enableIpsec']
+        if 'enableSsl' in kwargs:
+            enable_ssl = kwargs['enableSsl']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'sslConnections' in kwargs:
+            ssl_connections = kwargs['sslConnections']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("bandwidth", bandwidth)
         _setter("vpc_id", vpc_id)
         if auto_pay is not None:
@@ -369,7 +389,31 @@ class _GatewayState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'autoPropagate' in kwargs:
+            auto_propagate = kwargs['autoPropagate']
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'enableIpsec' in kwargs:
+            enable_ipsec = kwargs['enableIpsec']
+        if 'enableSsl' in kwargs:
+            enable_ssl = kwargs['enableSsl']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'sslConnections' in kwargs:
+            ssl_connections = kwargs['sslConnections']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if auto_pay is not None:
             _setter("auto_pay", auto_pay)
         if auto_propagate is not None:

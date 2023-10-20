@@ -31,7 +31,13 @@ class KeyPairArgs:
              _setter: Callable[[Any, Any], None],
              key_pair_name: pulumi.Input[str],
              public_key_body: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'publicKeyBody' in kwargs:
+            public_key_body = kwargs['publicKeyBody']
+
         _setter("key_pair_name", key_pair_name)
         _setter("public_key_body", public_key_body)
 
@@ -80,7 +86,13 @@ class _KeyPairState:
              _setter: Callable[[Any, Any], None],
              key_pair_name: Optional[pulumi.Input[str]] = None,
              public_key_body: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'publicKeyBody' in kwargs:
+            public_key_body = kwargs['publicKeyBody']
+
         if key_pair_name is not None:
             _setter("key_pair_name", key_pair_name)
         if public_key_body is not None:

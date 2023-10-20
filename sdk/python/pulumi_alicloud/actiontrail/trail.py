@@ -75,7 +75,31 @@ class TrailArgs:
              status: Optional[pulumi.Input[str]] = None,
              trail_name: Optional[pulumi.Input[str]] = None,
              trail_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventRw' in kwargs:
+            event_rw = kwargs['eventRw']
+        if 'isOrganizationTrail' in kwargs:
+            is_organization_trail = kwargs['isOrganizationTrail']
+        if 'mnsTopicArn' in kwargs:
+            mns_topic_arn = kwargs['mnsTopicArn']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossKeyPrefix' in kwargs:
+            oss_key_prefix = kwargs['ossKeyPrefix']
+        if 'ossWriteRoleArn' in kwargs:
+            oss_write_role_arn = kwargs['ossWriteRoleArn']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if 'slsProjectArn' in kwargs:
+            sls_project_arn = kwargs['slsProjectArn']
+        if 'slsWriteRoleArn' in kwargs:
+            sls_write_role_arn = kwargs['slsWriteRoleArn']
+        if 'trailName' in kwargs:
+            trail_name = kwargs['trailName']
+        if 'trailRegion' in kwargs:
+            trail_region = kwargs['trailRegion']
+
         if event_rw is not None:
             _setter("event_rw", event_rw)
         if is_organization_trail is not None:
@@ -342,7 +366,31 @@ class _TrailState:
              status: Optional[pulumi.Input[str]] = None,
              trail_name: Optional[pulumi.Input[str]] = None,
              trail_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventRw' in kwargs:
+            event_rw = kwargs['eventRw']
+        if 'isOrganizationTrail' in kwargs:
+            is_organization_trail = kwargs['isOrganizationTrail']
+        if 'mnsTopicArn' in kwargs:
+            mns_topic_arn = kwargs['mnsTopicArn']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossKeyPrefix' in kwargs:
+            oss_key_prefix = kwargs['ossKeyPrefix']
+        if 'ossWriteRoleArn' in kwargs:
+            oss_write_role_arn = kwargs['ossWriteRoleArn']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if 'slsProjectArn' in kwargs:
+            sls_project_arn = kwargs['slsProjectArn']
+        if 'slsWriteRoleArn' in kwargs:
+            sls_write_role_arn = kwargs['slsWriteRoleArn']
+        if 'trailName' in kwargs:
+            trail_name = kwargs['trailName']
+        if 'trailRegion' in kwargs:
+            trail_region = kwargs['trailRegion']
+
         if event_rw is not None:
             _setter("event_rw", event_rw)
         if is_organization_trail is not None:

@@ -91,7 +91,27 @@ class EcsBackupPlanArgs:
              paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              speed_limit: Optional[pulumi.Input[str]] = None,
              update_paths: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'ecsBackupPlanName' in kwargs:
+            ecs_backup_plan_name = kwargs['ecsBackupPlanName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+        if 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if 'speedLimit' in kwargs:
+            speed_limit = kwargs['speedLimit']
+        if 'updatePaths' in kwargs:
+            update_paths = kwargs['updatePaths']
+
         _setter("backup_type", backup_type)
         _setter("ecs_backup_plan_name", ecs_backup_plan_name)
         _setter("instance_id", instance_id)
@@ -412,7 +432,27 @@ class _EcsBackupPlanState:
              speed_limit: Optional[pulumi.Input[str]] = None,
              update_paths: Optional[pulumi.Input[bool]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if 'ecsBackupPlanName' in kwargs:
+            ecs_backup_plan_name = kwargs['ecsBackupPlanName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'speedLimit' in kwargs:
+            speed_limit = kwargs['speedLimit']
+        if 'updatePaths' in kwargs:
+            update_paths = kwargs['updatePaths']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         if backup_type is not None:
             _setter("backup_type", backup_type)
         if cross_account_role_name is not None:

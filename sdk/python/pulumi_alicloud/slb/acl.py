@@ -45,7 +45,15 @@ class AclArgs:
              name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'entryLists' in kwargs:
+            entry_lists = kwargs['entryLists']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if entry_lists is not None:
             warnings.warn("""Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""", DeprecationWarning)
             pulumi.log.warn("""entry_lists is deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""")
@@ -156,7 +164,15 @@ class _AclState:
              name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'entryLists' in kwargs:
+            entry_lists = kwargs['entryLists']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if entry_lists is not None:
             warnings.warn("""Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""", DeprecationWarning)
             pulumi.log.warn("""entry_lists is deprecated: Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.""")

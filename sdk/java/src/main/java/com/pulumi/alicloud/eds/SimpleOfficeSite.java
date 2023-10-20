@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a ECD Simple Office Site resource.
  * 
- * For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createsimpleofficesite).
+ * For information about ECD Simple Office Site and how to use it, see [What is Simple Office Site](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createsimpleofficesite).
  * 
  * &gt; **NOTE:** Available since v1.140.0.
  * 

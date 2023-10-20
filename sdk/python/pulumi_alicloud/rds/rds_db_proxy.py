@@ -126,7 +126,45 @@ class RdsDbProxyArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              switch_time: Optional[pulumi.Input[str]] = None,
              upgrade_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbProxyInstanceNum' in kwargs:
+            db_proxy_instance_num = kwargs['dbProxyInstanceNum']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceNetworkType' in kwargs:
+            instance_network_type = kwargs['instanceNetworkType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'dbProxyConnectStringPort' in kwargs:
+            db_proxy_connect_string_port = kwargs['dbProxyConnectStringPort']
+        if 'dbProxyConnectionPrefix' in kwargs:
+            db_proxy_connection_prefix = kwargs['dbProxyConnectionPrefix']
+        if 'dbProxyEndpointReadWriteMode' in kwargs:
+            db_proxy_endpoint_read_write_mode = kwargs['dbProxyEndpointReadWriteMode']
+        if 'dbProxyFeatures' in kwargs:
+            db_proxy_features = kwargs['dbProxyFeatures']
+        if 'dbProxySslEnabled' in kwargs:
+            db_proxy_ssl_enabled = kwargs['dbProxySslEnabled']
+        if 'effectiveSpecificTime' in kwargs:
+            effective_specific_time = kwargs['effectiveSpecificTime']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'readOnlyInstanceDistributionType' in kwargs:
+            read_only_instance_distribution_type = kwargs['readOnlyInstanceDistributionType']
+        if 'readOnlyInstanceMaxDelayTime' in kwargs:
+            read_only_instance_max_delay_time = kwargs['readOnlyInstanceMaxDelayTime']
+        if 'readOnlyInstanceWeights' in kwargs:
+            read_only_instance_weights = kwargs['readOnlyInstanceWeights']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'switchTime' in kwargs:
+            switch_time = kwargs['switchTime']
+        if 'upgradeTime' in kwargs:
+            upgrade_time = kwargs['upgradeTime']
+
         _setter("db_proxy_instance_num", db_proxy_instance_num)
         _setter("instance_id", instance_id)
         _setter("instance_network_type", instance_network_type)
@@ -538,7 +576,55 @@ class _RdsDbProxyState:
              upgrade_time: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbProxyConnectStringPort' in kwargs:
+            db_proxy_connect_string_port = kwargs['dbProxyConnectStringPort']
+        if 'dbProxyConnectionPrefix' in kwargs:
+            db_proxy_connection_prefix = kwargs['dbProxyConnectionPrefix']
+        if 'dbProxyConnectionString' in kwargs:
+            db_proxy_connection_string = kwargs['dbProxyConnectionString']
+        if 'dbProxyEndpointAliases' in kwargs:
+            db_proxy_endpoint_aliases = kwargs['dbProxyEndpointAliases']
+        if 'dbProxyEndpointId' in kwargs:
+            db_proxy_endpoint_id = kwargs['dbProxyEndpointId']
+        if 'dbProxyEndpointReadWriteMode' in kwargs:
+            db_proxy_endpoint_read_write_mode = kwargs['dbProxyEndpointReadWriteMode']
+        if 'dbProxyFeatures' in kwargs:
+            db_proxy_features = kwargs['dbProxyFeatures']
+        if 'dbProxyInstanceNum' in kwargs:
+            db_proxy_instance_num = kwargs['dbProxyInstanceNum']
+        if 'dbProxySslEnabled' in kwargs:
+            db_proxy_ssl_enabled = kwargs['dbProxySslEnabled']
+        if 'effectiveSpecificTime' in kwargs:
+            effective_specific_time = kwargs['effectiveSpecificTime']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceNetworkType' in kwargs:
+            instance_network_type = kwargs['instanceNetworkType']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+        if 'readOnlyInstanceDistributionType' in kwargs:
+            read_only_instance_distribution_type = kwargs['readOnlyInstanceDistributionType']
+        if 'readOnlyInstanceMaxDelayTime' in kwargs:
+            read_only_instance_max_delay_time = kwargs['readOnlyInstanceMaxDelayTime']
+        if 'readOnlyInstanceWeights' in kwargs:
+            read_only_instance_weights = kwargs['readOnlyInstanceWeights']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sslExpiredTime' in kwargs:
+            ssl_expired_time = kwargs['sslExpiredTime']
+        if 'switchTime' in kwargs:
+            switch_time = kwargs['switchTime']
+        if 'upgradeTime' in kwargs:
+            upgrade_time = kwargs['upgradeTime']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if db_proxy_connect_string_port is not None:
             _setter("db_proxy_connect_string_port", db_proxy_connect_string_port)
         if db_proxy_connection_prefix is not None:

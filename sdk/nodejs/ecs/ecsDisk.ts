@@ -106,9 +106,9 @@ export class EcsDisk extends pulumi.CustomResource {
      */
     public readonly performanceLevel!: pulumi.Output<string>;
     /**
-     * The Id of resource group which the disk belongs.
+     * The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
      */
-    public readonly resourceGroupId!: pulumi.Output<string | undefined>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
     /**
      * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
      */
@@ -282,7 +282,7 @@ export interface EcsDiskState {
      */
     performanceLevel?: pulumi.Input<string>;
     /**
-     * The Id of resource group which the disk belongs.
+     * The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -388,7 +388,7 @@ export interface EcsDiskArgs {
      */
     performanceLevel?: pulumi.Input<string>;
     /**
-     * The Id of resource group which the disk belongs.
+     * The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**

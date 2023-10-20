@@ -67,7 +67,29 @@ class ApplicationArgs:
              logical_region_id: Optional[pulumi.Input[str]] = None,
              package_version: Optional[pulumi.Input[str]] = None,
              war_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'packageType' in kwargs:
+            package_type = kwargs['packageType']
+        if 'buildPackId' in kwargs:
+            build_pack_id = kwargs['buildPackId']
+        if 'ecuInfos' in kwargs:
+            ecu_infos = kwargs['ecuInfos']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'healthCheckUrl' in kwargs:
+            health_check_url = kwargs['healthCheckUrl']
+        if 'logicalRegionId' in kwargs:
+            logical_region_id = kwargs['logicalRegionId']
+        if 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if 'warUrl' in kwargs:
+            war_url = kwargs['warUrl']
+
         _setter("application_name", application_name)
         _setter("cluster_id", cluster_id)
         _setter("package_type", package_type)
@@ -277,7 +299,29 @@ class _ApplicationState:
              package_type: Optional[pulumi.Input[str]] = None,
              package_version: Optional[pulumi.Input[str]] = None,
              war_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'buildPackId' in kwargs:
+            build_pack_id = kwargs['buildPackId']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'ecuInfos' in kwargs:
+            ecu_infos = kwargs['ecuInfos']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'healthCheckUrl' in kwargs:
+            health_check_url = kwargs['healthCheckUrl']
+        if 'logicalRegionId' in kwargs:
+            logical_region_id = kwargs['logicalRegionId']
+        if 'packageType' in kwargs:
+            package_type = kwargs['packageType']
+        if 'packageVersion' in kwargs:
+            package_version = kwargs['packageVersion']
+        if 'warUrl' in kwargs:
+            war_url = kwargs['warUrl']
+
         if application_name is not None:
             _setter("application_name", application_name)
         if build_pack_id is not None:

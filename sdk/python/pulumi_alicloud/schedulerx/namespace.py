@@ -31,7 +31,11 @@ class NamespaceArgs:
              _setter: Callable[[Any, Any], None],
              namespace_name: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+
         _setter("namespace_name", namespace_name)
         if description is not None:
             _setter("description", description)
@@ -81,7 +85,11 @@ class _NamespaceState:
              _setter: Callable[[Any, Any], None],
              description: Optional[pulumi.Input[str]] = None,
              namespace_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+
         if description is not None:
             _setter("description", description)
         if namespace_name is not None:

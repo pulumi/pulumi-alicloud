@@ -71,7 +71,27 @@ class HanaInstanceArgs:
              use_ssl: Optional[pulumi.Input[bool]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
              validate_certificate: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+        if 'alertSetting' in kwargs:
+            alert_setting = kwargs['alertSetting']
+        if 'ecsInstanceIds' in kwargs:
+            ecs_instance_ids = kwargs['ecsInstanceIds']
+        if 'hanaName' in kwargs:
+            hana_name = kwargs['hanaName']
+        if 'instanceNumber' in kwargs:
+            instance_number = kwargs['instanceNumber']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'useSsl' in kwargs:
+            use_ssl = kwargs['useSsl']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'validateCertificate' in kwargs:
+            validate_certificate = kwargs['validateCertificate']
+
         _setter("vault_id", vault_id)
         if alert_setting is not None:
             _setter("alert_setting", alert_setting)
@@ -309,7 +329,29 @@ class _HanaInstanceState:
              user_name: Optional[pulumi.Input[str]] = None,
              validate_certificate: Optional[pulumi.Input[bool]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertSetting' in kwargs:
+            alert_setting = kwargs['alertSetting']
+        if 'ecsInstanceIds' in kwargs:
+            ecs_instance_ids = kwargs['ecsInstanceIds']
+        if 'hanaInstanceId' in kwargs:
+            hana_instance_id = kwargs['hanaInstanceId']
+        if 'hanaName' in kwargs:
+            hana_name = kwargs['hanaName']
+        if 'instanceNumber' in kwargs:
+            instance_number = kwargs['instanceNumber']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'useSsl' in kwargs:
+            use_ssl = kwargs['useSsl']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'validateCertificate' in kwargs:
+            validate_certificate = kwargs['validateCertificate']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         if alert_setting is not None:
             _setter("alert_setting", alert_setting)
         if ecs_instance_ids is not None:
@@ -529,7 +571,7 @@ class HanaInstance(pulumi.CustomResource):
         """
         Provides a Hybrid Backup Recovery (HBR) Hana Instance resource.
 
-        For information about Hybrid Backup Recovery (HBR) Hana Instance and how to use it, see [What is Hana Instance](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-doc-hbr-2017-09-08-api-doc-createhanainstance).
+        For information about Hybrid Backup Recovery (HBR) Hana Instance and how to use it, see [What is Hana Instance](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createhanainstance).
 
         > **NOTE:** Available in v1.178.0+.
 
@@ -591,7 +633,7 @@ class HanaInstance(pulumi.CustomResource):
         """
         Provides a Hybrid Backup Recovery (HBR) Hana Instance resource.
 
-        For information about Hybrid Backup Recovery (HBR) Hana Instance and how to use it, see [What is Hana Instance](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-doc-hbr-2017-09-08-api-doc-createhanainstance).
+        For information about Hybrid Backup Recovery (HBR) Hana Instance and how to use it, see [What is Hana Instance](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createhanainstance).
 
         > **NOTE:** Available in v1.178.0+.
 

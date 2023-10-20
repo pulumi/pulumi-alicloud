@@ -77,7 +77,27 @@ class QuotaApplicationArgs:
              expire_time: Optional[pulumi.Input[str]] = None,
              notice_type: Optional[pulumi.Input[int]] = None,
              quota_category: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desireValue' in kwargs:
+            desire_value = kwargs['desireValue']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'quotaActionCode' in kwargs:
+            quota_action_code = kwargs['quotaActionCode']
+        if 'auditMode' in kwargs:
+            audit_mode = kwargs['auditMode']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'envLanguage' in kwargs:
+            env_language = kwargs['envLanguage']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'noticeType' in kwargs:
+            notice_type = kwargs['noticeType']
+        if 'quotaCategory' in kwargs:
+            quota_category = kwargs['quotaCategory']
+
         _setter("desire_value", desire_value)
         _setter("product_code", product_code)
         _setter("quota_action_code", quota_action_code)
@@ -334,7 +354,39 @@ class _QuotaApplicationState:
              quota_unit: Optional[pulumi.Input[str]] = None,
              reason: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'approveValue' in kwargs:
+            approve_value = kwargs['approveValue']
+        if 'auditMode' in kwargs:
+            audit_mode = kwargs['auditMode']
+        if 'auditReason' in kwargs:
+            audit_reason = kwargs['auditReason']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'desireValue' in kwargs:
+            desire_value = kwargs['desireValue']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'envLanguage' in kwargs:
+            env_language = kwargs['envLanguage']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'noticeType' in kwargs:
+            notice_type = kwargs['noticeType']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'quotaActionCode' in kwargs:
+            quota_action_code = kwargs['quotaActionCode']
+        if 'quotaCategory' in kwargs:
+            quota_category = kwargs['quotaCategory']
+        if 'quotaDescription' in kwargs:
+            quota_description = kwargs['quotaDescription']
+        if 'quotaName' in kwargs:
+            quota_name = kwargs['quotaName']
+        if 'quotaUnit' in kwargs:
+            quota_unit = kwargs['quotaUnit']
+
         if approve_value is not None:
             _setter("approve_value", approve_value)
         if audit_mode is not None:

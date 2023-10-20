@@ -50,7 +50,21 @@ class InstanceArgs:
              period: Optional[pulumi.Input[int]] = None,
              renew_period: Optional[pulumi.Input[int]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dnsSecurity' in kwargs:
+            dns_security = kwargs['dnsSecurity']
+        if 'domainNumbers' in kwargs:
+            domain_numbers = kwargs['domainNumbers']
+        if 'versionCode' in kwargs:
+            version_code = kwargs['versionCode']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         _setter("dns_security", dns_security)
         _setter("domain_numbers", domain_numbers)
         _setter("version_code", version_code)
@@ -188,7 +202,23 @@ class _InstanceState:
              renewal_status: Optional[pulumi.Input[str]] = None,
              version_code: Optional[pulumi.Input[str]] = None,
              version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dnsSecurity' in kwargs:
+            dns_security = kwargs['dnsSecurity']
+        if 'domainNumbers' in kwargs:
+            domain_numbers = kwargs['domainNumbers']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'versionCode' in kwargs:
+            version_code = kwargs['versionCode']
+        if 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         if dns_security is not None:
             _setter("dns_security", dns_security)
         if domain_numbers is not None:

@@ -31,7 +31,11 @@ class SuspendProcessArgs:
              _setter: Callable[[Any, Any], None],
              process: pulumi.Input[str],
              scaling_group_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+
         _setter("process", process)
         _setter("scaling_group_id", scaling_group_id)
 
@@ -80,7 +84,11 @@ class _SuspendProcessState:
              _setter: Callable[[Any, Any], None],
              process: Optional[pulumi.Input[str]] = None,
              scaling_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+
         if process is not None:
             _setter("process", process)
         if scaling_group_id is not None:

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Eds
     /// <summary>
     /// Provides a ECD Command resource.
     /// 
-    /// For information about ECD Command and how to use it, see [What is Command](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-runcommand).
+    /// For information about ECD Command and how to use it, see [What is Command](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-runcommand).
     /// 
     /// &gt; **NOTE:** Available since v1.146.0.
     /// 

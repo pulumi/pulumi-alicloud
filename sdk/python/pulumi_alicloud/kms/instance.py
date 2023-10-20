@@ -69,7 +69,29 @@ class InstanceArgs:
              product_version: Optional[pulumi.Input[str]] = None,
              renew_period: Optional[pulumi.Input[int]] = None,
              renew_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyNum' in kwargs:
+            key_num = kwargs['keyNum']
+        if 'secretNum' in kwargs:
+            secret_num = kwargs['secretNum']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcNum' in kwargs:
+            vpc_num = kwargs['vpcNum']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+        if 'bindVpcs' in kwargs:
+            bind_vpcs = kwargs['bindVpcs']
+        if 'productVersion' in kwargs:
+            product_version = kwargs['productVersion']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewStatus' in kwargs:
+            renew_status = kwargs['renewStatus']
+
         _setter("key_num", key_num)
         _setter("secret_num", secret_num)
         _setter("spec", spec)
@@ -291,7 +313,35 @@ class _InstanceState:
              vpc_num: Optional[pulumi.Input[int]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bindVpcs' in kwargs:
+            bind_vpcs = kwargs['bindVpcs']
+        if 'caCertificateChainPem' in kwargs:
+            ca_certificate_chain_pem = kwargs['caCertificateChainPem']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'keyNum' in kwargs:
+            key_num = kwargs['keyNum']
+        if 'productVersion' in kwargs:
+            product_version = kwargs['productVersion']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewStatus' in kwargs:
+            renew_status = kwargs['renewStatus']
+        if 'secretNum' in kwargs:
+            secret_num = kwargs['secretNum']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcNum' in kwargs:
+            vpc_num = kwargs['vpcNum']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+
         if bind_vpcs is not None:
             _setter("bind_vpcs", bind_vpcs)
         if ca_certificate_chain_pem is not None:

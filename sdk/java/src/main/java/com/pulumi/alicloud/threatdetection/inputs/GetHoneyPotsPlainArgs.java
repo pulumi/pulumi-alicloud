@@ -90,9 +90,17 @@ public final class GetHoneyPotsPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.nodeId);
     }
 
+    /**
+     * The name of the honeypot management node.
+     * 
+     */
     @Import(name="nodeName")
     private @Nullable String nodeName;
 
+    /**
+     * @return The name of the honeypot management node.
+     * 
+     */
     public Optional<String> nodeName() {
         return Optional.ofNullable(this.nodeName);
     }
@@ -207,6 +215,12 @@ public final class GetHoneyPotsPlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
+        /**
+         * @param nodeName The name of the honeypot management node.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nodeName(@Nullable String nodeName) {
             $.nodeName = nodeName;
             return this;

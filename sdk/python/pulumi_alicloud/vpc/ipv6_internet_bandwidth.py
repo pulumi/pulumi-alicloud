@@ -39,7 +39,15 @@ class Ipv6InternetBandwidthArgs:
              ipv6_address_id: pulumi.Input[str],
              ipv6_gateway_id: pulumi.Input[str],
              internet_charge_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipv6AddressId' in kwargs:
+            ipv6_address_id = kwargs['ipv6AddressId']
+        if 'ipv6GatewayId' in kwargs:
+            ipv6_gateway_id = kwargs['ipv6GatewayId']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+
         _setter("bandwidth", bandwidth)
         _setter("ipv6_address_id", ipv6_address_id)
         _setter("ipv6_gateway_id", ipv6_gateway_id)
@@ -127,7 +135,15 @@ class _Ipv6InternetBandwidthState:
              ipv6_address_id: Optional[pulumi.Input[str]] = None,
              ipv6_gateway_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'ipv6AddressId' in kwargs:
+            ipv6_address_id = kwargs['ipv6AddressId']
+        if 'ipv6GatewayId' in kwargs:
+            ipv6_gateway_id = kwargs['ipv6GatewayId']
+
         if bandwidth is not None:
             _setter("bandwidth", bandwidth)
         if internet_charge_type is not None:

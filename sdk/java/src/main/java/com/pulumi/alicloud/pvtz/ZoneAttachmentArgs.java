@@ -63,14 +63,14 @@ public final class ZoneAttachmentArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The List of the VPC:
+     * See `vpcs` below.Recommend to use `vpcs`.
      * 
      */
     @Import(name="vpcs")
     private @Nullable Output<List<ZoneAttachmentVpcArgs>> vpcs;
 
     /**
-     * @return The List of the VPC:
+     * @return See `vpcs` below.Recommend to use `vpcs`.
      * 
      */
     public Optional<Output<List<ZoneAttachmentVpcArgs>>> vpcs() {
@@ -194,7 +194,7 @@ public final class ZoneAttachmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcs The List of the VPC:
+         * @param vpcs See `vpcs` below.Recommend to use `vpcs`.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ZoneAttachmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcs The List of the VPC:
+         * @param vpcs See `vpcs` below.Recommend to use `vpcs`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ZoneAttachmentArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vpcs The List of the VPC:
+         * @param vpcs See `vpcs` below.Recommend to use `vpcs`.
          * 
          * @return builder
          * 

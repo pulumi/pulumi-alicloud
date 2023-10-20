@@ -138,7 +138,7 @@ export class DdrInstance extends pulumi.CustomResource {
      * - true: delete protect.
      * - false: no delete protect.
      *
-     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      */
     public readonly deletionProtection!: pulumi.Output<boolean>;
     /**
@@ -704,7 +704,7 @@ export interface DdrInstanceState {
      * - true: delete protect.
      * - false: no delete protect.
      *
-     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -1084,7 +1084,7 @@ export interface DdrInstanceArgs {
      * - true: delete protect.
      * - false: no delete protect.
      *
-     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      */
     deletionProtection?: pulumi.Input<boolean>;
     /**

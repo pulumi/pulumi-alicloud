@@ -44,7 +44,15 @@ class EndpointIpConfigArgs:
              vswitch_id: pulumi.Input[str],
              zone_id: pulumi.Input[str],
              ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("cidr_block", cidr_block)
         _setter("vswitch_id", vswitch_id)
         _setter("zone_id", zone_id)
@@ -119,7 +127,13 @@ class RuleAttachmentVpcArgs:
              _setter: Callable[[Any, Any], None],
              region_id: pulumi.Input[str],
              vpc_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("region_id", region_id)
         _setter("vpc_id", vpc_id)
 
@@ -167,7 +181,9 @@ class RuleForwardIpArgs:
              _setter: Callable[[Any, Any], None],
              ip: pulumi.Input[str],
              port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("ip", ip)
         _setter("port", port)
 
@@ -204,8 +220,6 @@ class ZoneAttachmentVpcArgs:
         """
         :param pulumi.Input[str] vpc_id: The Id of the vpc.
         :param pulumi.Input[str] region_id: The region of the vpc. If not set, the current region will instead of.
-               
-               Recommend to use `vpcs`.
         """
         ZoneAttachmentVpcArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -217,7 +231,13 @@ class ZoneAttachmentVpcArgs:
              _setter: Callable[[Any, Any], None],
              vpc_id: pulumi.Input[str],
              region_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("vpc_id", vpc_id)
         if region_id is not None:
             _setter("region_id", region_id)
@@ -239,8 +259,6 @@ class ZoneAttachmentVpcArgs:
     def region_id(self) -> Optional[pulumi.Input[str]]:
         """
         The region of the vpc. If not set, the current region will instead of.
-
-        Recommend to use `vpcs`.
         """
         return pulumi.get(self, "region_id")
 
@@ -268,7 +286,13 @@ class ZoneUserInfoArgs:
              _setter: Callable[[Any, Any], None],
              region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionIds' in kwargs:
+            region_ids = kwargs['regionIds']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if region_ids is not None:
             _setter("region_ids", region_ids)
         if user_id is not None:

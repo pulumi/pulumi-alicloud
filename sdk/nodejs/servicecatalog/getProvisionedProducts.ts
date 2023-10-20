@@ -7,11 +7,13 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Service Catalog Provisioned Product available to the user.[What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct)
+ * This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,7 +47,13 @@ export function getProvisionedProducts(args?: GetProvisionedProductsArgs, opts?:
  * A collection of arguments for invoking getProvisionedProducts.
  */
 export interface GetProvisionedProductsArgs {
+    /**
+     * The access filter.
+     */
     accessLevelFilter?: string;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: boolean;
     /**
      * A list of Provisioned Product IDs.
@@ -61,7 +69,13 @@ export interface GetProvisionedProductsArgs {
     outputFile?: string;
     pageNumber?: number;
     pageSize?: number;
+    /**
+     * The field that is used to sort the queried data.
+     */
     sortBy?: string;
+    /**
+     * The sorting method.
+     */
     sortOrder?: string;
 }
 
@@ -88,22 +102,26 @@ export interface GetProvisionedProductsResult {
     readonly pageNumber?: number;
     readonly pageSize?: number;
     /**
+     * (Deprecated since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
+     *
      * @deprecated Field 'products' has been deprecated from provider version 1.197.0.
      */
     readonly products: outputs.servicecatalog.GetProvisionedProductsProduct[];
     /**
-     * A list of Provisioned Product Entries. Each element contains the following attributes:
+     * (Available since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
      */
     readonly provisionedProducts: outputs.servicecatalog.GetProvisionedProductsProvisionedProduct[];
     readonly sortBy?: string;
     readonly sortOrder?: string;
 }
 /**
- * This data source provides Service Catalog Provisioned Product available to the user.[What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct)
+ * This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -124,7 +142,13 @@ export function getProvisionedProductsOutput(args?: GetProvisionedProductsOutput
  * A collection of arguments for invoking getProvisionedProducts.
  */
 export interface GetProvisionedProductsOutputArgs {
+    /**
+     * The access filter.
+     */
     accessLevelFilter?: pulumi.Input<string>;
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     */
     enableDetails?: pulumi.Input<boolean>;
     /**
      * A list of Provisioned Product IDs.
@@ -140,6 +164,12 @@ export interface GetProvisionedProductsOutputArgs {
     outputFile?: pulumi.Input<string>;
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
+    /**
+     * The field that is used to sort the queried data.
+     */
     sortBy?: pulumi.Input<string>;
+    /**
+     * The sorting method.
+     */
     sortOrder?: pulumi.Input<string>;
 }

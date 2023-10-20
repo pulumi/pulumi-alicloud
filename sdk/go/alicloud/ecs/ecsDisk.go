@@ -60,8 +60,8 @@ type EcsDisk struct {
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
 	PerformanceLevel pulumi.StringOutput `pulumi:"performanceLevel"`
-	// The Id of resource group which the disk belongs.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
@@ -146,7 +146,7 @@ type ecsDiskState struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// The Id of resource group which the disk belongs.
+	// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
 	Size *int `pulumi:"size"`
@@ -203,7 +203,7 @@ type EcsDiskState struct {
 	PaymentType pulumi.StringPtrInput
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
 	PerformanceLevel pulumi.StringPtrInput
-	// The Id of resource group which the disk belongs.
+	// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
 	ResourceGroupId pulumi.StringPtrInput
 	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
 	Size pulumi.IntPtrInput
@@ -264,7 +264,7 @@ type ecsDiskArgs struct {
 	PaymentType *string `pulumi:"paymentType"`
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// The Id of resource group which the disk belongs.
+	// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
 	Size *int `pulumi:"size"`
@@ -320,7 +320,7 @@ type EcsDiskArgs struct {
 	PaymentType pulumi.StringPtrInput
 	// Specifies the performance level of an ESSD when you create the ESSD. Valid values:
 	PerformanceLevel pulumi.StringPtrInput
-	// The Id of resource group which the disk belongs.
+	// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
 	ResourceGroupId pulumi.StringPtrInput
 	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
 	Size pulumi.IntPtrInput
@@ -533,9 +533,9 @@ func (o EcsDiskOutput) PerformanceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringOutput { return v.PerformanceLevel }).(pulumi.StringOutput)
 }
 
-// The Id of resource group which the disk belongs.
-func (o EcsDiskOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+// The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
+func (o EcsDiskOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsDisk) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.

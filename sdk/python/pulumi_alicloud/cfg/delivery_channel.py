@@ -54,7 +54,19 @@ class DeliveryChannelArgs:
              delivery_channel_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deliveryChannelAssumeRoleArn' in kwargs:
+            delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
+        if 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+        if 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+
         _setter("delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
         _setter("delivery_channel_target_arn", delivery_channel_target_arn)
         _setter("delivery_channel_type", delivery_channel_type)
@@ -198,7 +210,19 @@ class _DeliveryChannelState:
              delivery_channel_type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deliveryChannelAssumeRoleArn' in kwargs:
+            delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
+        if 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+        if 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+
         if delivery_channel_assume_role_arn is not None:
             _setter("delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
         if delivery_channel_condition is not None:

@@ -51,7 +51,21 @@ class AppArgs:
              encoded_icon: Optional[pulumi.Input[str]] = None,
              industry_id: Optional[pulumi.Input[str]] = None,
              package_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appName' in kwargs:
+            app_name = kwargs['appName']
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if 'bundleId' in kwargs:
+            bundle_id = kwargs['bundleId']
+        if 'encodedIcon' in kwargs:
+            encoded_icon = kwargs['encodedIcon']
+        if 'industryId' in kwargs:
+            industry_id = kwargs['industryId']
+        if 'packageName' in kwargs:
+            package_name = kwargs['packageName']
+
         _setter("app_name", app_name)
         _setter("product_id", product_id)
         _setter("type", type)
@@ -189,7 +203,21 @@ class _AppState:
              package_name: Optional[pulumi.Input[str]] = None,
              product_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appName' in kwargs:
+            app_name = kwargs['appName']
+        if 'bundleId' in kwargs:
+            bundle_id = kwargs['bundleId']
+        if 'encodedIcon' in kwargs:
+            encoded_icon = kwargs['encodedIcon']
+        if 'industryId' in kwargs:
+            industry_id = kwargs['industryId']
+        if 'packageName' in kwargs:
+            package_name = kwargs['packageName']
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+
         if app_name is not None:
             _setter("app_name", app_name)
         if bundle_id is not None:

@@ -46,7 +46,15 @@ class SubnetArgs:
              vpd_id: pulumi.Input[str],
              zone_id: pulumi.Input[str],
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'subnetName' in kwargs:
+            subnet_name = kwargs['subnetName']
+        if 'vpdId' in kwargs:
+            vpd_id = kwargs['vpdId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("cidr", cidr)
         _setter("subnet_name", subnet_name)
         _setter("vpd_id", vpd_id)
@@ -177,7 +185,23 @@ class _SubnetState:
              type: Optional[pulumi.Input[str]] = None,
              vpd_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'subnetId' in kwargs:
+            subnet_id = kwargs['subnetId']
+        if 'subnetName' in kwargs:
+            subnet_name = kwargs['subnetName']
+        if 'vpdId' in kwargs:
+            vpd_id = kwargs['vpdId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if cidr is not None:
             _setter("cidr", cidr)
         if create_time is not None:

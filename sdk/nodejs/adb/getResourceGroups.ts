@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/describe-db-resource-group)
+ * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -81,9 +81,9 @@ export interface GetResourceGroupsResult {
     readonly outputFile?: string;
 }
 /**
- * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/describe-db-resource-group)
+ * This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *

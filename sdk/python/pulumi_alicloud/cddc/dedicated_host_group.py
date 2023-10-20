@@ -60,7 +60,25 @@ class DedicatedHostGroupArgs:
              host_replace_policy: Optional[pulumi.Input[str]] = None,
              mem_allocation_ratio: Optional[pulumi.Input[int]] = None,
              open_permission: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'allocationPolicy' in kwargs:
+            allocation_policy = kwargs['allocationPolicy']
+        if 'cpuAllocationRatio' in kwargs:
+            cpu_allocation_ratio = kwargs['cpuAllocationRatio']
+        if 'dedicatedHostGroupDesc' in kwargs:
+            dedicated_host_group_desc = kwargs['dedicatedHostGroupDesc']
+        if 'diskAllocationRatio' in kwargs:
+            disk_allocation_ratio = kwargs['diskAllocationRatio']
+        if 'hostReplacePolicy' in kwargs:
+            host_replace_policy = kwargs['hostReplacePolicy']
+        if 'memAllocationRatio' in kwargs:
+            mem_allocation_ratio = kwargs['memAllocationRatio']
+        if 'openPermission' in kwargs:
+            open_permission = kwargs['openPermission']
+
         _setter("engine", engine)
         _setter("vpc_id", vpc_id)
         if allocation_policy is not None:
@@ -237,7 +255,25 @@ class _DedicatedHostGroupState:
              mem_allocation_ratio: Optional[pulumi.Input[int]] = None,
              open_permission: Optional[pulumi.Input[bool]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocationPolicy' in kwargs:
+            allocation_policy = kwargs['allocationPolicy']
+        if 'cpuAllocationRatio' in kwargs:
+            cpu_allocation_ratio = kwargs['cpuAllocationRatio']
+        if 'dedicatedHostGroupDesc' in kwargs:
+            dedicated_host_group_desc = kwargs['dedicatedHostGroupDesc']
+        if 'diskAllocationRatio' in kwargs:
+            disk_allocation_ratio = kwargs['diskAllocationRatio']
+        if 'hostReplacePolicy' in kwargs:
+            host_replace_policy = kwargs['hostReplacePolicy']
+        if 'memAllocationRatio' in kwargs:
+            mem_allocation_ratio = kwargs['memAllocationRatio']
+        if 'openPermission' in kwargs:
+            open_permission = kwargs['openPermission']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if allocation_policy is not None:
             _setter("allocation_policy", allocation_policy)
         if cpu_allocation_ratio is not None:

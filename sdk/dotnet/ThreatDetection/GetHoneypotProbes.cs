@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public static class GetHoneypotProbes
     {
         /// <summary>
-        /// This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotprobe)
+        /// This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.ThreatDetection
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHoneypotProbesResult>("alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes", args ?? new GetHoneypotProbesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotprobe)
+        /// This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 

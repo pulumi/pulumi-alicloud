@@ -35,7 +35,9 @@ class KvArgs:
              key: pulumi.Input[str],
              namespace: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("namespace", namespace)
         _setter("value", value)
@@ -101,7 +103,9 @@ class _KvState:
              key: Optional[pulumi.Input[str]] = None,
              namespace: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if namespace is not None:
@@ -158,7 +162,7 @@ class Kv(pulumi.CustomResource):
         """
         Provides a Dcdn Kv resource.
 
-        For information about Dcdn Kv and how to use it, see [What is Kv](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkv).
+        For information about Dcdn Kv and how to use it, see [What is Kv](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-putdcdnkv).
 
         > **NOTE:** Available since v1.198.0.
 
@@ -206,7 +210,7 @@ class Kv(pulumi.CustomResource):
         """
         Provides a Dcdn Kv resource.
 
-        For information about Dcdn Kv and how to use it, see [What is Kv](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkv).
+        For information about Dcdn Kv and how to use it, see [What is Kv](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-putdcdnkv).
 
         > **NOTE:** Available since v1.198.0.
 

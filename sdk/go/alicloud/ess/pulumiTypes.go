@@ -3190,7 +3190,7 @@ type GetAlarmsAlarm struct {
 	EvaluationCount int `pulumi:"evaluationCount"`
 	// The id of alarm.
 	Id string `pulumi:"id"`
-	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+	// The name for the alarm's associated metric.
 	MetricName string `pulumi:"metricName"`
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType string `pulumi:"metricType"`
@@ -3236,7 +3236,7 @@ type GetAlarmsAlarmArgs struct {
 	EvaluationCount pulumi.IntInput `pulumi:"evaluationCount"`
 	// The id of alarm.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+	// The name for the alarm's associated metric.
 	MetricName pulumi.StringInput `pulumi:"metricName"`
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType pulumi.StringInput `pulumi:"metricType"`
@@ -3363,7 +3363,7 @@ func (o GetAlarmsAlarmOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlarmsAlarm) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+// The name for the alarm's associated metric.
 func (o GetAlarmsAlarmOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAlarmsAlarm) string { return v.MetricName }).(pulumi.StringOutput)
 }

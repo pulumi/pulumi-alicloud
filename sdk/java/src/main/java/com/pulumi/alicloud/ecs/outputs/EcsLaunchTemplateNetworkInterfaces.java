@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EcsLaunchTemplateNetworkInterfaces {
     /**
-     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * @return The ENI description.
      * 
      */
     private @Nullable String description;
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * @return The ENI name.
      * 
      */
     private @Nullable String name;
@@ -27,26 +27,26 @@ public final class EcsLaunchTemplateNetworkInterfaces {
      */
     private @Nullable String primaryIp;
     /**
-     * @return The security group ID.
+     * @return The security group ID must be one in the same VPC.
      * 
      */
     private @Nullable String securityGroupId;
     /**
-     * @return When creating a VPC-Connected instance, you must specify its VSwitch ID.
+     * @return The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      * 
      */
     private @Nullable String vswitchId;
 
     private EcsLaunchTemplateNetworkInterfaces() {}
     /**
-     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * @return The ENI description.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * @return The ENI name.
      * 
      */
     public Optional<String> name() {
@@ -60,14 +60,14 @@ public final class EcsLaunchTemplateNetworkInterfaces {
         return Optional.ofNullable(this.primaryIp);
     }
     /**
-     * @return The security group ID.
+     * @return The security group ID must be one in the same VPC.
      * 
      */
     public Optional<String> securityGroupId() {
         return Optional.ofNullable(this.securityGroupId);
     }
     /**
-     * @return When creating a VPC-Connected instance, you must specify its VSwitch ID.
+     * @return The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      * 
      */
     public Optional<String> vswitchId() {

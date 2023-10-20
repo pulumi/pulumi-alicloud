@@ -83,7 +83,37 @@ class NetworkInterfaceArgs:
              security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'ipv6AddressCount' in kwargs:
+            ipv6_address_count = kwargs['ipv6AddressCount']
+        if 'ipv6Addresses' in kwargs:
+            ipv6_addresses = kwargs['ipv6Addresses']
+        if 'networkInterfaceName' in kwargs:
+            network_interface_name = kwargs['networkInterfaceName']
+        if 'primaryIpAddress' in kwargs:
+            primary_ip_address = kwargs['primaryIpAddress']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'privateIpAddresses' in kwargs:
+            private_ip_addresses = kwargs['privateIpAddresses']
+        if 'privateIps' in kwargs:
+            private_ips = kwargs['privateIps']
+        if 'privateIpsCount' in kwargs:
+            private_ips_count = kwargs['privateIpsCount']
+        if 'queueNumber' in kwargs:
+            queue_number = kwargs['queueNumber']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'secondaryPrivateIpAddressCount' in kwargs:
+            secondary_private_ip_address_count = kwargs['secondaryPrivateIpAddressCount']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+
         _setter("vswitch_id", vswitch_id)
         if description is not None:
             _setter("description", description)
@@ -408,7 +438,37 @@ class _NetworkInterfaceState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipv6AddressCount' in kwargs:
+            ipv6_address_count = kwargs['ipv6AddressCount']
+        if 'ipv6Addresses' in kwargs:
+            ipv6_addresses = kwargs['ipv6Addresses']
+        if 'networkInterfaceName' in kwargs:
+            network_interface_name = kwargs['networkInterfaceName']
+        if 'primaryIpAddress' in kwargs:
+            primary_ip_address = kwargs['primaryIpAddress']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'privateIpAddresses' in kwargs:
+            private_ip_addresses = kwargs['privateIpAddresses']
+        if 'privateIps' in kwargs:
+            private_ips = kwargs['privateIps']
+        if 'privateIpsCount' in kwargs:
+            private_ips_count = kwargs['privateIpsCount']
+        if 'queueNumber' in kwargs:
+            queue_number = kwargs['queueNumber']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'secondaryPrivateIpAddressCount' in kwargs:
+            secondary_private_ip_address_count = kwargs['secondaryPrivateIpAddressCount']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if description is not None:
             _setter("description", description)
         if ipv6_address_count is not None:

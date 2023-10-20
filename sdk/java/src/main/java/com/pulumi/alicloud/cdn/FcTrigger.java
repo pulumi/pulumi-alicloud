@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a CDN Fc Trigger resource.
  * 
- * For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger).
+ * For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger).
  * 
  * &gt; **NOTE:** Available in v1.165.0+.
  * 
@@ -162,14 +162,14 @@ public class FcTrigger extends com.pulumi.resources.CustomResource {
         return this.sourceArn;
     }
     /**
-     * The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+     * The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
      * 
      */
     @Export(name="triggerArn", type=String.class, parameters={})
     private Output<String> triggerArn;
 
     /**
-     * @return The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+     * @return The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
      * 
      */
     public Output<String> triggerArn() {

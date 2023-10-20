@@ -31,7 +31,13 @@ class RoleAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              instance_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
              role_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+
         _setter("instance_ids", instance_ids)
         _setter("role_name", role_name)
 
@@ -80,7 +86,13 @@ class _RoleAttachmentState:
              _setter: Callable[[Any, Any], None],
              instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              role_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+
         if instance_ids is not None:
             _setter("instance_ids", instance_ids)
         if role_name is not None:

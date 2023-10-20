@@ -125,7 +125,51 @@ class InstanceArgs:
              system_disk: Optional[pulumi.Input['InstanceSystemDiskArgs']] = None,
              unique_suffix: Optional[pulumi.Input[bool]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'scheduleAreaLevel' in kwargs:
+            schedule_area_level = kwargs['scheduleAreaLevel']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'ensRegionId' in kwargs:
+            ens_region_id = kwargs['ensRegionId']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceChargeStrategy' in kwargs:
+            instance_charge_strategy = kwargs['instanceChargeStrategy']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'netDistrictCode' in kwargs:
+            net_district_code = kwargs['netDistrictCode']
+        if 'passwordInherit' in kwargs:
+            password_inherit = kwargs['passwordInherit']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'publicIpIdentification' in kwargs:
+            public_ip_identification = kwargs['publicIpIdentification']
+        if 'schedulingPriceStrategy' in kwargs:
+            scheduling_price_strategy = kwargs['schedulingPriceStrategy']
+        if 'schedulingStrategy' in kwargs:
+            scheduling_strategy = kwargs['schedulingStrategy']
+        if 'systemDisk' in kwargs:
+            system_disk = kwargs['systemDisk']
+        if 'uniqueSuffix' in kwargs:
+            unique_suffix = kwargs['uniqueSuffix']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+
         _setter("instance_type", instance_type)
         _setter("internet_max_bandwidth_out", internet_max_bandwidth_out)
         _setter("payment_type", payment_type)
@@ -590,7 +634,51 @@ class _InstanceState:
              system_disk: Optional[pulumi.Input['InstanceSystemDiskArgs']] = None,
              unique_suffix: Optional[pulumi.Input[bool]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'ensRegionId' in kwargs:
+            ens_region_id = kwargs['ensRegionId']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceChargeStrategy' in kwargs:
+            instance_charge_strategy = kwargs['instanceChargeStrategy']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'netDistrictCode' in kwargs:
+            net_district_code = kwargs['netDistrictCode']
+        if 'passwordInherit' in kwargs:
+            password_inherit = kwargs['passwordInherit']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'publicIpIdentification' in kwargs:
+            public_ip_identification = kwargs['publicIpIdentification']
+        if 'scheduleAreaLevel' in kwargs:
+            schedule_area_level = kwargs['scheduleAreaLevel']
+        if 'schedulingPriceStrategy' in kwargs:
+            scheduling_price_strategy = kwargs['schedulingPriceStrategy']
+        if 'schedulingStrategy' in kwargs:
+            scheduling_strategy = kwargs['schedulingStrategy']
+        if 'systemDisk' in kwargs:
+            system_disk = kwargs['systemDisk']
+        if 'uniqueSuffix' in kwargs:
+            unique_suffix = kwargs['uniqueSuffix']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
         if carrier is not None:

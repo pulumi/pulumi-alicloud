@@ -72,7 +72,13 @@ class ApplicationConfigMapMountDescV2Args:
              config_map_id: Optional[pulumi.Input[str]] = None,
              key: Optional[pulumi.Input[str]] = None,
              mount_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configMapId' in kwargs:
+            config_map_id = kwargs['configMapId']
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+
         if config_map_id is not None:
             _setter("config_map_id", config_map_id)
         if key is not None:
@@ -136,7 +142,11 @@ class ApplicationCustomHostAliasV2Args:
              _setter: Callable[[Any, Any], None],
              host_name: Optional[pulumi.Input[str]] = None,
              ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+
         if host_name is not None:
             _setter("host_name", host_name)
         if ip is not None:
@@ -190,7 +200,15 @@ class ApplicationKafkaConfigsArgs:
              kafka_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgs']]]] = None,
              kafka_endpoint: Optional[pulumi.Input[str]] = None,
              kafka_instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'kafkaConfigs' in kwargs:
+            kafka_configs = kwargs['kafkaConfigs']
+        if 'kafkaEndpoint' in kwargs:
+            kafka_endpoint = kwargs['kafkaEndpoint']
+        if 'kafkaInstanceId' in kwargs:
+            kafka_instance_id = kwargs['kafkaInstanceId']
+
         if kafka_configs is not None:
             _setter("kafka_configs", kafka_configs)
         if kafka_endpoint is not None:
@@ -258,7 +276,15 @@ class ApplicationKafkaConfigsKafkaConfigArgs:
              kafka_topic: Optional[pulumi.Input[str]] = None,
              log_dir: Optional[pulumi.Input[str]] = None,
              log_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'kafkaTopic' in kwargs:
+            kafka_topic = kwargs['kafkaTopic']
+        if 'logDir' in kwargs:
+            log_dir = kwargs['logDir']
+        if 'logType' in kwargs:
+            log_type = kwargs['logType']
+
         if kafka_topic is not None:
             _setter("kafka_topic", kafka_topic)
         if log_dir is not None:
@@ -338,7 +364,21 @@ class ApplicationLivenessV2Args:
              period_seconds: Optional[pulumi.Input[int]] = None,
              tcp_socket: Optional[pulumi.Input['ApplicationLivenessV2TcpSocketArgs']] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'exec' in kwargs:
+            exec_ = kwargs['exec']
+        if 'httpGet' in kwargs:
+            http_get = kwargs['httpGet']
+        if 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if 'tcpSocket' in kwargs:
+            tcp_socket = kwargs['tcpSocket']
+        if 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if exec_ is not None:
             _setter("exec_", exec_)
         if http_get is not None:
@@ -440,7 +480,9 @@ class ApplicationLivenessV2ExecArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if commands is not None:
             _setter("commands", commands)
 
@@ -488,7 +530,13 @@ class ApplicationLivenessV2HttpGetArgs:
              path: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              scheme: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isContainKeyWord' in kwargs:
+            is_contain_key_word = kwargs['isContainKeyWord']
+        if 'keyWord' in kwargs:
+            key_word = kwargs['keyWord']
+
         if is_contain_key_word is not None:
             _setter("is_contain_key_word", is_contain_key_word)
         if key_word is not None:
@@ -576,7 +624,9 @@ class ApplicationLivenessV2TcpSocketArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
 
@@ -624,7 +674,19 @@ class ApplicationNasConfigArgs:
              nas_id: Optional[pulumi.Input[str]] = None,
              nas_path: Optional[pulumi.Input[str]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountDomain' in kwargs:
+            mount_domain = kwargs['mountDomain']
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if 'nasId' in kwargs:
+            nas_id = kwargs['nasId']
+        if 'nasPath' in kwargs:
+            nas_path = kwargs['nasPath']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         if mount_domain is not None:
             _setter("mount_domain", mount_domain)
         if mount_path is not None:
@@ -724,7 +786,17 @@ class ApplicationOssMountDescsV2Args:
              bucket_path: Optional[pulumi.Input[str]] = None,
              mount_path: Optional[pulumi.Input[str]] = None,
              read_only: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'bucketPath' in kwargs:
+            bucket_path = kwargs['bucketPath']
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         if bucket_name is not None:
             _setter("bucket_name", bucket_name)
         if bucket_path is not None:
@@ -798,7 +870,11 @@ class ApplicationPostStartV2Args:
     def _configure(
              _setter: Callable[[Any, Any], None],
              exec_: Optional[pulumi.Input['ApplicationPostStartV2ExecArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'exec' in kwargs:
+            exec_ = kwargs['exec']
+
         if exec_ is not None:
             _setter("exec_", exec_)
 
@@ -830,7 +906,9 @@ class ApplicationPostStartV2ExecArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if commands is not None:
             _setter("commands", commands)
 
@@ -862,7 +940,11 @@ class ApplicationPreStopV2Args:
     def _configure(
              _setter: Callable[[Any, Any], None],
              exec_: Optional[pulumi.Input['ApplicationPreStopV2ExecArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'exec' in kwargs:
+            exec_ = kwargs['exec']
+
         if exec_ is not None:
             _setter("exec_", exec_)
 
@@ -894,7 +976,9 @@ class ApplicationPreStopV2ExecArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if commands is not None:
             _setter("commands", commands)
 
@@ -938,7 +1022,15 @@ class ApplicationPvtzDiscoverySvcArgs:
              namespace_id: Optional[pulumi.Input[str]] = None,
              port_protocols: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationPvtzDiscoverySvcPortProtocolArgs']]]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'portProtocols' in kwargs:
+            port_protocols = kwargs['portProtocols']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if enable is not None:
             _setter("enable", enable)
         if namespace_id is not None:
@@ -1016,7 +1108,9 @@ class ApplicationPvtzDiscoverySvcPortProtocolArgs:
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
         if protocol is not None:
@@ -1082,7 +1176,21 @@ class ApplicationReadinessV2Args:
              period_seconds: Optional[pulumi.Input[int]] = None,
              tcp_socket: Optional[pulumi.Input['ApplicationReadinessV2TcpSocketArgs']] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'exec' in kwargs:
+            exec_ = kwargs['exec']
+        if 'httpGet' in kwargs:
+            http_get = kwargs['httpGet']
+        if 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if 'tcpSocket' in kwargs:
+            tcp_socket = kwargs['tcpSocket']
+        if 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if exec_ is not None:
             _setter("exec_", exec_)
         if http_get is not None:
@@ -1184,7 +1292,9 @@ class ApplicationReadinessV2ExecArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if commands is not None:
             _setter("commands", commands)
 
@@ -1232,7 +1342,13 @@ class ApplicationReadinessV2HttpGetArgs:
              path: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              scheme: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'isContainKeyWord' in kwargs:
+            is_contain_key_word = kwargs['isContainKeyWord']
+        if 'keyWord' in kwargs:
+            key_word = kwargs['keyWord']
+
         if is_contain_key_word is not None:
             _setter("is_contain_key_word", is_contain_key_word)
         if key_word is not None:
@@ -1320,7 +1436,9 @@ class ApplicationReadinessV2TcpSocketArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
 
@@ -1368,7 +1486,17 @@ class ApplicationScalingRuleScalingRuleMetricArgs:
              min_replicas: Optional[pulumi.Input[int]] = None,
              scale_down_rules: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs']] = None,
              scale_up_rules: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxReplicas' in kwargs:
+            max_replicas = kwargs['maxReplicas']
+        if 'minReplicas' in kwargs:
+            min_replicas = kwargs['minReplicas']
+        if 'scaleDownRules' in kwargs:
+            scale_down_rules = kwargs['scaleDownRules']
+        if 'scaleUpRules' in kwargs:
+            scale_up_rules = kwargs['scaleUpRules']
+
         if max_replicas is not None:
             _setter("max_replicas", max_replicas)
         if metrics is not None:
@@ -1486,7 +1614,19 @@ class ApplicationScalingRuleScalingRuleMetricMetricArgs:
              slb_log_store: Optional[pulumi.Input[str]] = None,
              slb_project: Optional[pulumi.Input[str]] = None,
              vport: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricTargetAverageUtilization' in kwargs:
+            metric_target_average_utilization = kwargs['metricTargetAverageUtilization']
+        if 'metricType' in kwargs:
+            metric_type = kwargs['metricType']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+        if 'slbLogStore' in kwargs:
+            slb_log_store = kwargs['slbLogStore']
+        if 'slbProject' in kwargs:
+            slb_project = kwargs['slbProject']
+
         if metric_target_average_utilization is not None:
             _setter("metric_target_average_utilization", metric_target_average_utilization)
         if metric_type is not None:
@@ -1606,7 +1746,11 @@ class ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs:
              disabled: Optional[pulumi.Input[bool]] = None,
              stabilization_window_seconds: Optional[pulumi.Input[int]] = None,
              step: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'stabilizationWindowSeconds' in kwargs:
+            stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
+
         if disabled is not None:
             _setter("disabled", disabled)
         if stabilization_window_seconds is not None:
@@ -1674,7 +1818,11 @@ class ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs:
              disabled: Optional[pulumi.Input[bool]] = None,
              stabilization_window_seconds: Optional[pulumi.Input[int]] = None,
              step: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'stabilizationWindowSeconds' in kwargs:
+            stabilization_window_seconds = kwargs['stabilizationWindowSeconds']
+
         if disabled is not None:
             _setter("disabled", disabled)
         if stabilization_window_seconds is not None:
@@ -1746,7 +1894,13 @@ class ApplicationScalingRuleScalingRuleTimerArgs:
              end_date: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[str]] = None,
              schedules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'beginDate' in kwargs:
+            begin_date = kwargs['beginDate']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+
         if begin_date is not None:
             _setter("begin_date", begin_date)
         if end_date is not None:
@@ -1832,7 +1986,17 @@ class ApplicationScalingRuleScalingRuleTimerScheduleArgs:
              max_replicas: Optional[pulumi.Input[int]] = None,
              min_replicas: Optional[pulumi.Input[int]] = None,
              target_replicas: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'atTime' in kwargs:
+            at_time = kwargs['atTime']
+        if 'maxReplicas' in kwargs:
+            max_replicas = kwargs['maxReplicas']
+        if 'minReplicas' in kwargs:
+            min_replicas = kwargs['minReplicas']
+        if 'targetReplicas' in kwargs:
+            target_replicas = kwargs['targetReplicas']
+
         if at_time is not None:
             _setter("at_time", at_time)
         if max_replicas is not None:
@@ -1922,7 +2086,17 @@ class ApplicationTomcatConfigV2Args:
              port: Optional[pulumi.Input[int]] = None,
              uri_encoding: Optional[pulumi.Input[str]] = None,
              use_body_encoding_for_uri: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contextPath' in kwargs:
+            context_path = kwargs['contextPath']
+        if 'maxThreads' in kwargs:
+            max_threads = kwargs['maxThreads']
+        if 'uriEncoding' in kwargs:
+            uri_encoding = kwargs['uriEncoding']
+        if 'useBodyEncodingForUri' in kwargs:
+            use_body_encoding_for_uri = kwargs['useBodyEncodingForUri']
+
         if context_path is not None:
             _setter("context_path", context_path)
         if max_threads is not None:
@@ -2014,7 +2188,11 @@ class ApplicationUpdateStrategyV2Args:
              _setter: Callable[[Any, Any], None],
              batch_update: Optional[pulumi.Input['ApplicationUpdateStrategyV2BatchUpdateArgs']] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'batchUpdate' in kwargs:
+            batch_update = kwargs['batchUpdate']
+
         if batch_update is not None:
             _setter("batch_update", batch_update)
         if type is not None:
@@ -2068,7 +2246,13 @@ class ApplicationUpdateStrategyV2BatchUpdateArgs:
              batch: Optional[pulumi.Input[int]] = None,
              batch_wait_time: Optional[pulumi.Input[int]] = None,
              release_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'batchWaitTime' in kwargs:
+            batch_wait_time = kwargs['batchWaitTime']
+        if 'releaseType' in kwargs:
+            release_type = kwargs['releaseType']
+
         if batch is not None:
             _setter("batch", batch)
         if batch_wait_time is not None:
@@ -2148,7 +2332,13 @@ class GreyTagRouteDubboRuleArgs:
              method_name: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'methodName' in kwargs:
+            method_name = kwargs['methodName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if condition is not None:
             _setter("condition", condition)
         if group is not None:
@@ -2266,7 +2456,9 @@ class GreyTagRouteDubboRuleItemArgs:
              index: Optional[pulumi.Input[int]] = None,
              operator: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cond is not None:
             _setter("cond", cond)
         if expr is not None:
@@ -2362,7 +2554,9 @@ class GreyTagRouteScRuleArgs:
              condition: Optional[pulumi.Input[str]] = None,
              items: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgs']]]] = None,
              path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if condition is not None:
             _setter("condition", condition)
         if items is not None:
@@ -2438,7 +2632,9 @@ class GreyTagRouteScRuleItemArgs:
              operator: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cond is not None:
             _setter("cond", cond)
         if name is not None:
@@ -2534,7 +2730,15 @@ class IngressDefaultRuleArgs:
              app_id: Optional[pulumi.Input[str]] = None,
              app_name: Optional[pulumi.Input[str]] = None,
              container_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'appName' in kwargs:
+            app_name = kwargs['appName']
+        if 'containerPort' in kwargs:
+            container_port = kwargs['containerPort']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if app_name is not None:
@@ -2618,7 +2822,19 @@ class IngressRuleArgs:
              path: pulumi.Input[str],
              backend_protocol: Optional[pulumi.Input[str]] = None,
              rewrite_path: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'appName' in kwargs:
+            app_name = kwargs['appName']
+        if 'containerPort' in kwargs:
+            container_port = kwargs['containerPort']
+        if 'backendProtocol' in kwargs:
+            backend_protocol = kwargs['backendProtocol']
+        if 'rewritePath' in kwargs:
+            rewrite_path = kwargs['rewritePath']
+
         _setter("app_id", app_id)
         _setter("app_name", app_name)
         _setter("container_port", container_port)
@@ -2741,7 +2957,13 @@ class LoadBalancerInternetInternetArgs:
              port: Optional[pulumi.Input[int]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              target_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'httpsCertId' in kwargs:
+            https_cert_id = kwargs['httpsCertId']
+        if 'targetPort' in kwargs:
+            target_port = kwargs['targetPort']
+
         if https_cert_id is not None:
             _setter("https_cert_id", https_cert_id)
         if port is not None:
@@ -2827,7 +3049,13 @@ class LoadBalancerIntranetIntranetArgs:
              port: Optional[pulumi.Input[int]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              target_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'httpsCertId' in kwargs:
+            https_cert_id = kwargs['httpsCertId']
+        if 'targetPort' in kwargs:
+            target_port = kwargs['targetPort']
+
         if https_cert_id is not None:
             _setter("https_cert_id", https_cert_id)
         if port is not None:

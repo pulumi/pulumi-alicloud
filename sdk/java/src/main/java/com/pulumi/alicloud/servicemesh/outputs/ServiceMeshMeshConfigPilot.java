@@ -18,7 +18,7 @@ public final class ServiceMeshMeshConfigPilot {
      */
     private @Nullable Boolean http10Enabled;
     /**
-     * @return The  percentage of the Link trace sampling.
+     * @return Link trace sampling percentage.
      * 
      */
     private @Nullable Double traceSampling;
@@ -32,7 +32,7 @@ public final class ServiceMeshMeshConfigPilot {
         return Optional.ofNullable(this.http10Enabled);
     }
     /**
-     * @return The  percentage of the Link trace sampling.
+     * @return Link trace sampling percentage.
      * 
      */
     public Optional<Double> traceSampling() {

@@ -69,7 +69,21 @@ class EcsSnapshotArgs:
              retention_days: Optional[pulumi.Input[int]] = None,
              snapshot_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'instantAccess' in kwargs:
+            instant_access = kwargs['instantAccess']
+        if 'instantAccessRetentionDays' in kwargs:
+            instant_access_retention_days = kwargs['instantAccessRetentionDays']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+
         _setter("disk_id", disk_id)
         if category is not None:
             _setter("category", category)
@@ -295,7 +309,21 @@ class _EcsSnapshotState:
              snapshot_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'instantAccess' in kwargs:
+            instant_access = kwargs['instantAccess']
+        if 'instantAccessRetentionDays' in kwargs:
+            instant_access_retention_days = kwargs['instantAccessRetentionDays']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+
         if category is not None:
             _setter("category", category)
         if description is not None:

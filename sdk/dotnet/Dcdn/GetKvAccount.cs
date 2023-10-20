@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Dcdn
     public static class GetKvAccount
     {
         /// <summary>
-        /// This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+        /// This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
         /// 
-        /// &gt; **NOTE:** Available in v1.198.0+
+        /// &gt; **NOTE:** Available since v1.198.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -42,9 +42,9 @@ namespace Pulumi.AliCloud.Dcdn
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKvAccountResult>("alicloud:dcdn/getKvAccount:getKvAccount", args ?? new GetKvAccountArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+        /// This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
         /// 
-        /// &gt; **NOTE:** Available in v1.198.0+
+        /// &gt; **NOTE:** Available since v1.198.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

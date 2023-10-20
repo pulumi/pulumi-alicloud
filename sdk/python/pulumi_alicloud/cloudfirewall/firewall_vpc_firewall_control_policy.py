@@ -92,7 +92,27 @@ class FirewallVpcFirewallControlPolicyArgs:
              lang: Optional[pulumi.Input[str]] = None,
              member_uid: Optional[pulumi.Input[str]] = None,
              release: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclAction' in kwargs:
+            acl_action = kwargs['aclAction']
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'destinationType' in kwargs:
+            destination_type = kwargs['destinationType']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'vpcFirewallId' in kwargs:
+            vpc_firewall_id = kwargs['vpcFirewallId']
+        if 'destPort' in kwargs:
+            dest_port = kwargs['destPort']
+        if 'destPortGroup' in kwargs:
+            dest_port_group = kwargs['destPortGroup']
+        if 'destPortType' in kwargs:
+            dest_port_type = kwargs['destPortType']
+        if 'memberUid' in kwargs:
+            member_uid = kwargs['memberUid']
+
         _setter("acl_action", acl_action)
         _setter("application_name", application_name)
         _setter("description", description)
@@ -427,7 +447,43 @@ class _FirewallVpcFirewallControlPolicyState:
              source_group_type: Optional[pulumi.Input[str]] = None,
              source_type: Optional[pulumi.Input[str]] = None,
              vpc_firewall_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclAction' in kwargs:
+            acl_action = kwargs['aclAction']
+        if 'aclUuid' in kwargs:
+            acl_uuid = kwargs['aclUuid']
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'destPort' in kwargs:
+            dest_port = kwargs['destPort']
+        if 'destPortGroup' in kwargs:
+            dest_port_group = kwargs['destPortGroup']
+        if 'destPortGroupPorts' in kwargs:
+            dest_port_group_ports = kwargs['destPortGroupPorts']
+        if 'destPortType' in kwargs:
+            dest_port_type = kwargs['destPortType']
+        if 'destinationGroupCidrs' in kwargs:
+            destination_group_cidrs = kwargs['destinationGroupCidrs']
+        if 'destinationGroupType' in kwargs:
+            destination_group_type = kwargs['destinationGroupType']
+        if 'destinationType' in kwargs:
+            destination_type = kwargs['destinationType']
+        if 'hitTimes' in kwargs:
+            hit_times = kwargs['hitTimes']
+        if 'memberUid' in kwargs:
+            member_uid = kwargs['memberUid']
+        if 'sourceGroupCidrs' in kwargs:
+            source_group_cidrs = kwargs['sourceGroupCidrs']
+        if 'sourceGroupType' in kwargs:
+            source_group_type = kwargs['sourceGroupType']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'vpcFirewallId' in kwargs:
+            vpc_firewall_id = kwargs['vpcFirewallId']
+
         if acl_action is not None:
             _setter("acl_action", acl_action)
         if acl_uuid is not None:

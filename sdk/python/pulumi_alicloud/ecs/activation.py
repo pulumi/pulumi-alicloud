@@ -45,7 +45,17 @@ class ActivationArgs:
              instance_name: Optional[pulumi.Input[str]] = None,
              ip_address_range: Optional[pulumi.Input[str]] = None,
              time_to_live_in_hours: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'ipAddressRange' in kwargs:
+            ip_address_range = kwargs['ipAddressRange']
+        if 'timeToLiveInHours' in kwargs:
+            time_to_live_in_hours = kwargs['timeToLiveInHours']
+
         if description is not None:
             _setter("description", description)
         if instance_count is not None:
@@ -154,7 +164,17 @@ class _ActivationState:
              instance_name: Optional[pulumi.Input[str]] = None,
              ip_address_range: Optional[pulumi.Input[str]] = None,
              time_to_live_in_hours: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'ipAddressRange' in kwargs:
+            ip_address_range = kwargs['ipAddressRange']
+        if 'timeToLiveInHours' in kwargs:
+            time_to_live_in_hours = kwargs['timeToLiveInHours']
+
         if description is not None:
             _setter("description", description)
         if instance_count is not None:

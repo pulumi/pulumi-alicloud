@@ -47,7 +47,17 @@ class AccountArgs:
              account_password: pulumi.Input[str],
              db_instance_id: pulumi.Input[str],
              account_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+
         _setter("account_name", account_name)
         _setter("account_password", account_password)
         _setter("db_instance_id", db_instance_id)
@@ -151,7 +161,17 @@ class _AccountState:
              account_password: Optional[pulumi.Input[str]] = None,
              db_instance_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+
         if account_description is not None:
             _setter("account_description", account_description)
         if account_name is not None:

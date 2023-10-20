@@ -95,7 +95,7 @@ export class DdosCooInstance extends pulumi.CustomResource {
      */
     public readonly portCount!: pulumi.Output<string>;
     /**
-     * The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+     * The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
      * - ddoscoo: Only supports domestic account.
      * - ddoscoo_intl: Only supports to international account.
      * Default to ddoscoo.
@@ -189,7 +189,7 @@ export interface DdosCooInstanceState {
      */
     portCount?: pulumi.Input<string>;
     /**
-     * The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+     * The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
      * - ddoscoo: Only supports domestic account.
      * - ddoscoo_intl: Only supports to international account.
      * Default to ddoscoo.
@@ -230,7 +230,7 @@ export interface DdosCooInstanceArgs {
      */
     portCount: pulumi.Input<string>;
     /**
-     * The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+     * The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
      * - ddoscoo: Only supports domestic account.
      * - ddoscoo_intl: Only supports to international account.
      * Default to ddoscoo.

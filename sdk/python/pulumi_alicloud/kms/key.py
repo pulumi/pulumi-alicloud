@@ -92,7 +92,29 @@ class KeyArgs:
              rotation_interval: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'automaticRotation' in kwargs:
+            automatic_rotation = kwargs['automaticRotation']
+        if 'deletionWindowInDays' in kwargs:
+            deletion_window_in_days = kwargs['deletionWindowInDays']
+        if 'dkmsInstanceId' in kwargs:
+            dkms_instance_id = kwargs['dkmsInstanceId']
+        if 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+        if 'keySpec' in kwargs:
+            key_spec = kwargs['keySpec']
+        if 'keyState' in kwargs:
+            key_state = kwargs['keyState']
+        if 'keyUsage' in kwargs:
+            key_usage = kwargs['keyUsage']
+        if 'pendingWindowInDays' in kwargs:
+            pending_window_in_days = kwargs['pendingWindowInDays']
+        if 'protectionLevel' in kwargs:
+            protection_level = kwargs['protectionLevel']
+        if 'rotationInterval' in kwargs:
+            rotation_interval = kwargs['rotationInterval']
+
         if automatic_rotation is not None:
             _setter("automatic_rotation", automatic_rotation)
         if deletion_window_in_days is not None:
@@ -435,7 +457,41 @@ class _KeyState:
              rotation_interval: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'automaticRotation' in kwargs:
+            automatic_rotation = kwargs['automaticRotation']
+        if 'creationDate' in kwargs:
+            creation_date = kwargs['creationDate']
+        if 'deleteDate' in kwargs:
+            delete_date = kwargs['deleteDate']
+        if 'deletionWindowInDays' in kwargs:
+            deletion_window_in_days = kwargs['deletionWindowInDays']
+        if 'dkmsInstanceId' in kwargs:
+            dkms_instance_id = kwargs['dkmsInstanceId']
+        if 'isEnabled' in kwargs:
+            is_enabled = kwargs['isEnabled']
+        if 'keySpec' in kwargs:
+            key_spec = kwargs['keySpec']
+        if 'keyState' in kwargs:
+            key_state = kwargs['keyState']
+        if 'keyUsage' in kwargs:
+            key_usage = kwargs['keyUsage']
+        if 'lastRotationDate' in kwargs:
+            last_rotation_date = kwargs['lastRotationDate']
+        if 'materialExpireTime' in kwargs:
+            material_expire_time = kwargs['materialExpireTime']
+        if 'nextRotationDate' in kwargs:
+            next_rotation_date = kwargs['nextRotationDate']
+        if 'pendingWindowInDays' in kwargs:
+            pending_window_in_days = kwargs['pendingWindowInDays']
+        if 'primaryKeyVersion' in kwargs:
+            primary_key_version = kwargs['primaryKeyVersion']
+        if 'protectionLevel' in kwargs:
+            protection_level = kwargs['protectionLevel']
+        if 'rotationInterval' in kwargs:
+            rotation_interval = kwargs['rotationInterval']
+
         if arn is not None:
             _setter("arn", arn)
         if automatic_rotation is not None:

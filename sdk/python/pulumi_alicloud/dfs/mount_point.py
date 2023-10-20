@@ -51,7 +51,19 @@ class MountPointArgs:
              vswitch_id: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupId' in kwargs:
+            access_group_id = kwargs['accessGroupId']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("access_group_id", access_group_id)
         _setter("file_system_id", file_system_id)
         _setter("network_type", network_type)
@@ -191,7 +203,21 @@ class _MountPointState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupId' in kwargs:
+            access_group_id = kwargs['accessGroupId']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'mountPointId' in kwargs:
+            mount_point_id = kwargs['mountPointId']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if access_group_id is not None:
             _setter("access_group_id", access_group_id)
         if description is not None:

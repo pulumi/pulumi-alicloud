@@ -6,36 +6,34 @@ package com.pulumi.alicloud.alb.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class LoadBalancerAccessLogConfig {
     /**
-     * @return The log service that access logs are shipped to.
+     * @return This Log Storage Project.
      * 
      */
-    private @Nullable String logProject;
+    private String logProject;
     /**
-     * @return The log service that access logs are shipped to.
+     * @return This Log Storage Method Is Increased.
      * 
      */
-    private @Nullable String logStore;
+    private String logStore;
 
     private LoadBalancerAccessLogConfig() {}
     /**
-     * @return The log service that access logs are shipped to.
+     * @return This Log Storage Project.
      * 
      */
-    public Optional<String> logProject() {
-        return Optional.ofNullable(this.logProject);
+    public String logProject() {
+        return this.logProject;
     }
     /**
-     * @return The log service that access logs are shipped to.
+     * @return This Log Storage Method Is Increased.
      * 
      */
-    public Optional<String> logStore() {
-        return Optional.ofNullable(this.logStore);
+    public String logStore() {
+        return this.logStore;
     }
 
     public static Builder builder() {
@@ -47,8 +45,8 @@ public final class LoadBalancerAccessLogConfig {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String logProject;
-        private @Nullable String logStore;
+        private String logProject;
+        private String logStore;
         public Builder() {}
         public Builder(LoadBalancerAccessLogConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,13 +55,13 @@ public final class LoadBalancerAccessLogConfig {
         }
 
         @CustomType.Setter
-        public Builder logProject(@Nullable String logProject) {
-            this.logProject = logProject;
+        public Builder logProject(String logProject) {
+            this.logProject = Objects.requireNonNull(logProject);
             return this;
         }
         @CustomType.Setter
-        public Builder logStore(@Nullable String logStore) {
-            this.logStore = logStore;
+        public Builder logStore(String logStore) {
+            this.logStore = Objects.requireNonNull(logStore);
             return this;
         }
         public LoadBalancerAccessLogConfig build() {

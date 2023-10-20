@@ -47,7 +47,15 @@ class SaslUserArgs:
              kms_encryption_context: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              password: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+
         _setter("instance_id", instance_id)
         _setter("username", username)
         if kms_encrypted_password is not None:
@@ -168,7 +176,15 @@ class _SaslUserState:
              password: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              username: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if kms_encrypted_password is not None:
@@ -275,7 +291,7 @@ class SaslUser(pulumi.CustomResource):
         > **NOTE:**  Only the following regions support create alikafka sasl user.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 
-        For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createsasluser).
+        For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
 
         ## Example Usage
 
@@ -351,7 +367,7 @@ class SaslUser(pulumi.CustomResource):
         > **NOTE:**  Only the following regions support create alikafka sasl user.
         [`cn-hangzhou`,`cn-beijing`,`cn-shenzhen`,`cn-shanghai`,`cn-qingdao`,`cn-hongkong`,`cn-huhehaote`,`cn-zhangjiakou`,`cn-chengdu`,`cn-heyuan`,`ap-southeast-1`,`ap-southeast-3`,`ap-southeast-5`,`ap-south-1`,`ap-northeast-1`,`eu-central-1`,`eu-west-1`,`us-west-1`,`us-east-1`]
 
-        For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createsasluser).
+        For information about Alikafka sasl user and how to use it, see [What is Alikafka sasl user ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createsasluser).
 
         ## Example Usage
 

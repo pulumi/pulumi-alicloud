@@ -43,7 +43,17 @@ class InterRegionTrafficQosQueueArgs:
              traffic_qos_policy_id: pulumi.Input[str],
              inter_region_traffic_qos_queue_description: Optional[pulumi.Input[str]] = None,
              inter_region_traffic_qos_queue_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'remainBandwidthPercent' in kwargs:
+            remain_bandwidth_percent = kwargs['remainBandwidthPercent']
+        if 'trafficQosPolicyId' in kwargs:
+            traffic_qos_policy_id = kwargs['trafficQosPolicyId']
+        if 'interRegionTrafficQosQueueDescription' in kwargs:
+            inter_region_traffic_qos_queue_description = kwargs['interRegionTrafficQosQueueDescription']
+        if 'interRegionTrafficQosQueueName' in kwargs:
+            inter_region_traffic_qos_queue_name = kwargs['interRegionTrafficQosQueueName']
+
         _setter("dscps", dscps)
         _setter("remain_bandwidth_percent", remain_bandwidth_percent)
         _setter("traffic_qos_policy_id", traffic_qos_policy_id)
@@ -149,7 +159,17 @@ class _InterRegionTrafficQosQueueState:
              remain_bandwidth_percent: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
              traffic_qos_policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'interRegionTrafficQosQueueDescription' in kwargs:
+            inter_region_traffic_qos_queue_description = kwargs['interRegionTrafficQosQueueDescription']
+        if 'interRegionTrafficQosQueueName' in kwargs:
+            inter_region_traffic_qos_queue_name = kwargs['interRegionTrafficQosQueueName']
+        if 'remainBandwidthPercent' in kwargs:
+            remain_bandwidth_percent = kwargs['remainBandwidthPercent']
+        if 'trafficQosPolicyId' in kwargs:
+            traffic_qos_policy_id = kwargs['trafficQosPolicyId']
+
         if dscps is not None:
             _setter("dscps", dscps)
         if inter_region_traffic_qos_queue_description is not None:
@@ -250,7 +270,7 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
         """
         Provides a Cen Inter Region Traffic Qos Queue resource.
 
-        For information about Cen Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createceninterregiontrafficqosqueue).
+        For information about Cen Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqosqueue).
 
         > **NOTE:** Available since v1.195.0.
 
@@ -346,7 +366,7 @@ class InterRegionTrafficQosQueue(pulumi.CustomResource):
         """
         Provides a Cen Inter Region Traffic Qos Queue resource.
 
-        For information about Cen Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createceninterregiontrafficqosqueue).
+        For information about Cen Inter Region Traffic Qos Queue and how to use it, see [What is Inter Region Traffic Qos Queue](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createceninterregiontrafficqosqueue).
 
         > **NOTE:** Available since v1.195.0.
 

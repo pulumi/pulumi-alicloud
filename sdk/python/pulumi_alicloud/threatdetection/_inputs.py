@@ -38,7 +38,13 @@ class HoneypotPresetMetaArgs:
              burp: pulumi.Input[str],
              portrait_option: Optional[pulumi.Input[bool]] = None,
              trojan_git: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'portraitOption' in kwargs:
+            portrait_option = kwargs['portraitOption']
+        if 'trojanGit' in kwargs:
+            trojan_git = kwargs['trojanGit']
+
         _setter("burp", burp)
         if portrait_option is not None:
             _setter("portrait_option", portrait_option)
@@ -101,7 +107,13 @@ class HoneypotProbeHoneypotBindListArgs:
              _setter: Callable[[Any, Any], None],
              bind_port_lists: Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]] = None,
              honeypot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bindPortLists' in kwargs:
+            bind_port_lists = kwargs['bindPortLists']
+        if 'honeypotId' in kwargs:
+            honeypot_id = kwargs['honeypotId']
+
         if bind_port_lists is not None:
             _setter("bind_port_lists", bind_port_lists)
         if honeypot_id is not None:
@@ -163,7 +175,17 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
              fixed: Optional[pulumi.Input[bool]] = None,
              start_port: Optional[pulumi.Input[int]] = None,
              target_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bindPort' in kwargs:
+            bind_port = kwargs['bindPort']
+        if 'endPort' in kwargs:
+            end_port = kwargs['endPort']
+        if 'startPort' in kwargs:
+            start_port = kwargs['startPort']
+        if 'targetPort' in kwargs:
+            target_port = kwargs['targetPort']
+
         if bind_port is not None:
             _setter("bind_port", bind_port)
         if end_port is not None:

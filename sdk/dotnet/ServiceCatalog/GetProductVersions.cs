@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
     public static class GetProductVersions
     {
         /// <summary>
-        /// This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductversions)
+        /// This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AliCloud.ServiceCatalog
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProductVersionsResult>("alicloud:servicecatalog/getProductVersions:getProductVersions", args ?? new GetProductVersionsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listproductversions)
+        /// This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)
         /// 
         /// &gt; **NOTE:** Available in 1.196.0+
         /// 

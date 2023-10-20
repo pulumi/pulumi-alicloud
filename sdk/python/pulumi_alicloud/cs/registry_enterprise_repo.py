@@ -47,7 +47,13 @@ class RegistryEnterpriseRepoArgs:
              summary: pulumi.Input[str],
              detail: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+
         _setter("instance_id", instance_id)
         _setter("namespace", namespace)
         _setter("repo_type", repo_type)
@@ -170,7 +176,15 @@ class _RegistryEnterpriseRepoState:
              repo_id: Optional[pulumi.Input[str]] = None,
              repo_type: Optional[pulumi.Input[str]] = None,
              summary: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'repoId' in kwargs:
+            repo_id = kwargs['repoId']
+        if 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+
         if detail is not None:
             _setter("detail", detail)
         if instance_id is not None:

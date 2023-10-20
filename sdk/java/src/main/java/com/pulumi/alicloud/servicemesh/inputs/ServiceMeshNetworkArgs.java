@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,14 +16,29 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
     public static final ServiceMeshNetworkArgs Empty = new ServiceMeshNetworkArgs();
 
     /**
-     * The ID of the VPC.
+     * Security group ID.
+     * 
+     */
+    @Import(name="securityGroupId")
+    private @Nullable Output<String> securityGroupId;
+
+    /**
+     * @return Security group ID.
+     * 
+     */
+    public Optional<Output<String>> securityGroupId() {
+        return Optional.ofNullable(this.securityGroupId);
+    }
+
+    /**
+     * VPC ID.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC.
+     * @return VPC ID.
      * 
      */
     public Output<String> vpcId() {
@@ -29,14 +46,14 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The list of Virtual Switch.
+     * Virtual Switch ID.
      * 
      */
     @Import(name="vswitcheList", required=true)
     private Output<String> vswitcheList;
 
     /**
-     * @return The list of Virtual Switch.
+     * @return Virtual Switch ID.
      * 
      */
     public Output<String> vswitcheList() {
@@ -46,6 +63,7 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
     private ServiceMeshNetworkArgs() {}
 
     private ServiceMeshNetworkArgs(ServiceMeshNetworkArgs $) {
+        this.securityGroupId = $.securityGroupId;
         this.vpcId = $.vpcId;
         this.vswitcheList = $.vswitcheList;
     }
@@ -69,7 +87,28 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcId The ID of the VPC.
+         * @param securityGroupId Security group ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupId(@Nullable Output<String> securityGroupId) {
+            $.securityGroupId = securityGroupId;
+            return this;
+        }
+
+        /**
+         * @param securityGroupId Security group ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityGroupId(String securityGroupId) {
+            return securityGroupId(Output.of(securityGroupId));
+        }
+
+        /**
+         * @param vpcId VPC ID.
          * 
          * @return builder
          * 
@@ -80,7 +119,7 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vpcId The ID of the VPC.
+         * @param vpcId VPC ID.
          * 
          * @return builder
          * 
@@ -90,7 +129,7 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vswitcheList The list of Virtual Switch.
+         * @param vswitcheList Virtual Switch ID.
          * 
          * @return builder
          * 
@@ -101,7 +140,7 @@ public final class ServiceMeshNetworkArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param vswitcheList The list of Virtual Switch.
+         * @param vswitcheList Virtual Switch ID.
          * 
          * @return builder
          * 

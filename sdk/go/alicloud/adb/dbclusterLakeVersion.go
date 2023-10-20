@@ -15,7 +15,7 @@ import (
 
 // Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
 //
-// For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2021-12-01-api-doc-createdbcluster).
+// For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createdbcluster).
 //
 // > **NOTE:** Available since v1.190.0.
 //
@@ -28,53 +28,40 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/adb"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "terraform-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
+//			defaultZones, err := adb.GetZones(ctx, nil, nil)
+//			if err != nil {
+//				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			zoneId := defaultZones.Ids[len(defaultZones.Ids)-1]
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String(name),
-//				CidrBlock: pulumi.String("10.4.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				ZoneId:      pulumi.String(zoneId),
-//				VswitchName: pulumi.String(name),
-//			})
+//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = adb.NewDBClusterLakeVersion(ctx, "defaultDBClusterLakeVersion", &adb.DBClusterLakeVersionArgs{
-//				ComputeResource:            pulumi.String("16ACU"),
 //				DbClusterVersion:           pulumi.String("5.0"),
+//				VpcId:                      *pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:                  *pulumi.String(defaultSwitches.Ids[0]),
+//				ZoneId:                     *pulumi.String(defaultZones.Ids[0]),
+//				ComputeResource:            pulumi.String("16ACU"),
+//				StorageResource:            pulumi.String("0ACU"),
 //				PaymentType:                pulumi.String("PayAsYouGo"),
-//				StorageResource:            pulumi.String("24ACU"),
 //				EnableDefaultResourceGroup: pulumi.Bool(false),
-//				VswitchId:                  defaultSwitch.ID(),
-//				VpcId:                      defaultNetwork.ID(),
-//				ZoneId:                     pulumi.String(zoneId),
 //			})
 //			if err != nil {
 //				return err
@@ -97,6 +84,8 @@ import (
 type DBClusterLakeVersion struct {
 	pulumi.CustomResourceState
 
+	// The ID of the backup set that you want to use to restore data.
+	BackupSetId pulumi.StringPtrOutput `pulumi:"backupSetId"`
 	// The name of the service.
 	CommodityCode pulumi.StringOutput `pulumi:"commodityCode"`
 	// The computing resources of the cluster.
@@ -107,7 +96,7 @@ type DBClusterLakeVersion struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the cluster.
 	DbClusterDescription pulumi.StringOutput `pulumi:"dbClusterDescription"`
-	// The version of the cluster. Value options: `5.0`.
+	// The version of the cluster. Valid values: `5.0`.
 	DbClusterVersion pulumi.StringOutput `pulumi:"dbClusterVersion"`
 	// Whether to enable default allocation of resources to userDefault resource groups.
 	EnableDefaultResourceGroup pulumi.BoolPtrOutput `pulumi:"enableDefaultResourceGroup"`
@@ -123,16 +112,22 @@ type DBClusterLakeVersion struct {
 	LockMode pulumi.StringOutput `pulumi:"lockMode"`
 	// The reason why the cluster is locked.
 	LockReason pulumi.StringOutput `pulumi:"lockReason"`
-	// The payment type of the resource. Valid values are `PayAsYouGo`.
+	// The payment type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// The port that is used to access the cluster.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
+	// The point in time to which you want to restore data from the backup set.
+	RestoreToTime pulumi.StringPtrOutput `pulumi:"restoreToTime"`
+	// The method that you want to use to restore data. Valid values:
+	RestoreType pulumi.StringPtrOutput `pulumi:"restoreType"`
 	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
 	// - IP addresses, such as 10.23.XX.XX.
 	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
 	SecurityIps pulumi.StringOutput `pulumi:"securityIps"`
+	// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+	SourceDbClusterId pulumi.StringPtrOutput `pulumi:"sourceDbClusterId"`
 	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The storage resources of the cluster.
@@ -196,6 +191,8 @@ func GetDBClusterLakeVersion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DBClusterLakeVersion resources.
 type dbclusterLakeVersionState struct {
+	// The ID of the backup set that you want to use to restore data.
+	BackupSetId *string `pulumi:"backupSetId"`
 	// The name of the service.
 	CommodityCode *string `pulumi:"commodityCode"`
 	// The computing resources of the cluster.
@@ -206,7 +203,7 @@ type dbclusterLakeVersionState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The description of the cluster.
 	DbClusterDescription *string `pulumi:"dbClusterDescription"`
-	// The version of the cluster. Value options: `5.0`.
+	// The version of the cluster. Valid values: `5.0`.
 	DbClusterVersion *string `pulumi:"dbClusterVersion"`
 	// Whether to enable default allocation of resources to userDefault resource groups.
 	EnableDefaultResourceGroup *bool `pulumi:"enableDefaultResourceGroup"`
@@ -222,16 +219,22 @@ type dbclusterLakeVersionState struct {
 	LockMode *string `pulumi:"lockMode"`
 	// The reason why the cluster is locked.
 	LockReason *string `pulumi:"lockReason"`
-	// The payment type of the resource. Valid values are `PayAsYouGo`.
+	// The payment type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType *string `pulumi:"paymentType"`
 	// The port that is used to access the cluster.
 	Port *string `pulumi:"port"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The point in time to which you want to restore data from the backup set.
+	RestoreToTime *string `pulumi:"restoreToTime"`
+	// The method that you want to use to restore data. Valid values:
+	RestoreType *string `pulumi:"restoreType"`
 	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
 	// - IP addresses, such as 10.23.XX.XX.
 	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
 	SecurityIps *string `pulumi:"securityIps"`
+	// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+	SourceDbClusterId *string `pulumi:"sourceDbClusterId"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// The storage resources of the cluster.
@@ -245,6 +248,8 @@ type dbclusterLakeVersionState struct {
 }
 
 type DBClusterLakeVersionState struct {
+	// The ID of the backup set that you want to use to restore data.
+	BackupSetId pulumi.StringPtrInput
 	// The name of the service.
 	CommodityCode pulumi.StringPtrInput
 	// The computing resources of the cluster.
@@ -255,7 +260,7 @@ type DBClusterLakeVersionState struct {
 	CreateTime pulumi.StringPtrInput
 	// The description of the cluster.
 	DbClusterDescription pulumi.StringPtrInput
-	// The version of the cluster. Value options: `5.0`.
+	// The version of the cluster. Valid values: `5.0`.
 	DbClusterVersion pulumi.StringPtrInput
 	// Whether to enable default allocation of resources to userDefault resource groups.
 	EnableDefaultResourceGroup pulumi.BoolPtrInput
@@ -271,16 +276,22 @@ type DBClusterLakeVersionState struct {
 	LockMode pulumi.StringPtrInput
 	// The reason why the cluster is locked.
 	LockReason pulumi.StringPtrInput
-	// The payment type of the resource. Valid values are `PayAsYouGo`.
+	// The payment type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType pulumi.StringPtrInput
 	// The port that is used to access the cluster.
 	Port pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
+	// The point in time to which you want to restore data from the backup set.
+	RestoreToTime pulumi.StringPtrInput
+	// The method that you want to use to restore data. Valid values:
+	RestoreType pulumi.StringPtrInput
 	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
 	// - IP addresses, such as 10.23.XX.XX.
 	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
 	SecurityIps pulumi.StringPtrInput
+	// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+	SourceDbClusterId pulumi.StringPtrInput
 	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// The storage resources of the cluster.
@@ -298,20 +309,30 @@ func (DBClusterLakeVersionState) ElementType() reflect.Type {
 }
 
 type dbclusterLakeVersionArgs struct {
+	// The ID of the backup set that you want to use to restore data.
+	BackupSetId *string `pulumi:"backupSetId"`
 	// The computing resources of the cluster.
 	ComputeResource string `pulumi:"computeResource"`
 	// The description of the cluster.
 	DbClusterDescription *string `pulumi:"dbClusterDescription"`
-	// The version of the cluster. Value options: `5.0`.
+	// The version of the cluster. Valid values: `5.0`.
 	DbClusterVersion string `pulumi:"dbClusterVersion"`
 	// Whether to enable default allocation of resources to userDefault resource groups.
 	EnableDefaultResourceGroup *bool `pulumi:"enableDefaultResourceGroup"`
-	// The payment type of the resource. Valid values are `PayAsYouGo`.
+	// The payment type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType string `pulumi:"paymentType"`
+	// The ID of the resource group.
+	ResourceGroupId *string `pulumi:"resourceGroupId"`
+	// The point in time to which you want to restore data from the backup set.
+	RestoreToTime *string `pulumi:"restoreToTime"`
+	// The method that you want to use to restore data. Valid values:
+	RestoreType *string `pulumi:"restoreType"`
 	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
 	// - IP addresses, such as 10.23.XX.XX.
 	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
 	SecurityIps *string `pulumi:"securityIps"`
+	// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+	SourceDbClusterId *string `pulumi:"sourceDbClusterId"`
 	// The storage resources of the cluster.
 	StorageResource string `pulumi:"storageResource"`
 	// The vpc ID of the resource.
@@ -324,20 +345,30 @@ type dbclusterLakeVersionArgs struct {
 
 // The set of arguments for constructing a DBClusterLakeVersion resource.
 type DBClusterLakeVersionArgs struct {
+	// The ID of the backup set that you want to use to restore data.
+	BackupSetId pulumi.StringPtrInput
 	// The computing resources of the cluster.
 	ComputeResource pulumi.StringInput
 	// The description of the cluster.
 	DbClusterDescription pulumi.StringPtrInput
-	// The version of the cluster. Value options: `5.0`.
+	// The version of the cluster. Valid values: `5.0`.
 	DbClusterVersion pulumi.StringInput
 	// Whether to enable default allocation of resources to userDefault resource groups.
 	EnableDefaultResourceGroup pulumi.BoolPtrInput
-	// The payment type of the resource. Valid values are `PayAsYouGo`.
+	// The payment type of the resource. Valid values: `PayAsYouGo`.
 	PaymentType pulumi.StringInput
+	// The ID of the resource group.
+	ResourceGroupId pulumi.StringPtrInput
+	// The point in time to which you want to restore data from the backup set.
+	RestoreToTime pulumi.StringPtrInput
+	// The method that you want to use to restore data. Valid values:
+	RestoreType pulumi.StringPtrInput
 	// The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
 	// - IP addresses, such as 10.23.XX.XX.
 	// - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
 	SecurityIps pulumi.StringPtrInput
+	// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+	SourceDbClusterId pulumi.StringPtrInput
 	// The storage resources of the cluster.
 	StorageResource pulumi.StringInput
 	// The vpc ID of the resource.
@@ -459,6 +490,11 @@ func (o DBClusterLakeVersionOutput) ToOutput(ctx context.Context) pulumix.Output
 	}
 }
 
+// The ID of the backup set that you want to use to restore data.
+func (o DBClusterLakeVersionOutput) BackupSetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringPtrOutput { return v.BackupSetId }).(pulumi.StringPtrOutput)
+}
+
 // The name of the service.
 func (o DBClusterLakeVersionOutput) CommodityCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.CommodityCode }).(pulumi.StringOutput)
@@ -484,7 +520,7 @@ func (o DBClusterLakeVersionOutput) DbClusterDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.DbClusterDescription }).(pulumi.StringOutput)
 }
 
-// The version of the cluster. Value options: `5.0`.
+// The version of the cluster. Valid values: `5.0`.
 func (o DBClusterLakeVersionOutput) DbClusterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.DbClusterVersion }).(pulumi.StringOutput)
 }
@@ -524,7 +560,7 @@ func (o DBClusterLakeVersionOutput) LockReason() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.LockReason }).(pulumi.StringOutput)
 }
 
-// The payment type of the resource. Valid values are `PayAsYouGo`.
+// The payment type of the resource. Valid values: `PayAsYouGo`.
 func (o DBClusterLakeVersionOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.PaymentType }).(pulumi.StringOutput)
 }
@@ -539,11 +575,26 @@ func (o DBClusterLakeVersionOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
+// The point in time to which you want to restore data from the backup set.
+func (o DBClusterLakeVersionOutput) RestoreToTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringPtrOutput { return v.RestoreToTime }).(pulumi.StringPtrOutput)
+}
+
+// The method that you want to use to restore data. Valid values:
+func (o DBClusterLakeVersionOutput) RestoreType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringPtrOutput { return v.RestoreType }).(pulumi.StringPtrOutput)
+}
+
 // The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
 // - IP addresses, such as 10.23.XX.XX.
 // - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
 func (o DBClusterLakeVersionOutput) SecurityIps() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringOutput { return v.SecurityIps }).(pulumi.StringOutput)
+}
+
+// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+func (o DBClusterLakeVersionOutput) SourceDbClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DBClusterLakeVersion) pulumi.StringPtrOutput { return v.SourceDbClusterId }).(pulumi.StringPtrOutput)
 }
 
 // The status of the resource.

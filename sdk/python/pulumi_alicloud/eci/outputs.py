@@ -111,7 +111,15 @@ class ContainerGroupAcrRegistryInfo(dict):
              instance_id: Optional[str] = None,
              instance_name: Optional[str] = None,
              region_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         if domains is not None:
             _setter("domains", domains)
         if instance_id is not None:
@@ -258,7 +266,23 @@ class ContainerGroupContainer(dict):
              restart_count: Optional[int] = None,
              volume_mounts: Optional[Sequence['outputs.ContainerGroupContainerVolumeMount']] = None,
              working_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'environmentVars' in kwargs:
+            environment_vars = kwargs['environmentVars']
+        if 'imagePullPolicy' in kwargs:
+            image_pull_policy = kwargs['imagePullPolicy']
+        if 'livenessProbes' in kwargs:
+            liveness_probes = kwargs['livenessProbes']
+        if 'readinessProbes' in kwargs:
+            readiness_probes = kwargs['readinessProbes']
+        if 'restartCount' in kwargs:
+            restart_count = kwargs['restartCount']
+        if 'volumeMounts' in kwargs:
+            volume_mounts = kwargs['volumeMounts']
+        if 'workingDir' in kwargs:
+            working_dir = kwargs['workingDir']
+
         _setter("image", image)
         _setter("name", name)
         if args is not None:
@@ -438,7 +462,9 @@ class ContainerGroupContainerEnvironmentVar(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -533,7 +559,23 @@ class ContainerGroupContainerLivenessProbe(dict):
              success_threshold: Optional[int] = None,
              tcp_sockets: Optional[Sequence['outputs.ContainerGroupContainerLivenessProbeTcpSocket']] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if 'httpGets' in kwargs:
+            http_gets = kwargs['httpGets']
+        if 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if 'successThreshold' in kwargs:
+            success_threshold = kwargs['successThreshold']
+        if 'tcpSockets' in kwargs:
+            tcp_sockets = kwargs['tcpSockets']
+        if 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if execs is not None:
             _setter("execs", execs)
         if failure_threshold is not None:
@@ -631,7 +673,9 @@ class ContainerGroupContainerLivenessProbeExec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if commands is not None:
             _setter("commands", commands)
 
@@ -667,7 +711,9 @@ class ContainerGroupContainerLivenessProbeHttpGet(dict):
              path: Optional[str] = None,
              port: Optional[int] = None,
              scheme: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if path is not None:
             _setter("path", path)
         if port is not None:
@@ -715,7 +761,9 @@ class ContainerGroupContainerLivenessProbeTcpSocket(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
 
@@ -747,7 +795,9 @@ class ContainerGroupContainerPort(dict):
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
              protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
         if protocol is not None:
@@ -842,7 +892,23 @@ class ContainerGroupContainerReadinessProbe(dict):
              success_threshold: Optional[int] = None,
              tcp_sockets: Optional[Sequence['outputs.ContainerGroupContainerReadinessProbeTcpSocket']] = None,
              timeout_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if 'httpGets' in kwargs:
+            http_gets = kwargs['httpGets']
+        if 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if 'successThreshold' in kwargs:
+            success_threshold = kwargs['successThreshold']
+        if 'tcpSockets' in kwargs:
+            tcp_sockets = kwargs['tcpSockets']
+        if 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if execs is not None:
             _setter("execs", execs)
         if failure_threshold is not None:
@@ -940,7 +1006,9 @@ class ContainerGroupContainerReadinessProbeExec(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              commands: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if commands is not None:
             _setter("commands", commands)
 
@@ -976,7 +1044,9 @@ class ContainerGroupContainerReadinessProbeHttpGet(dict):
              path: Optional[str] = None,
              port: Optional[int] = None,
              scheme: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if path is not None:
             _setter("path", path)
         if port is not None:
@@ -1024,7 +1094,9 @@ class ContainerGroupContainerReadinessProbeTcpSocket(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
 
@@ -1079,7 +1151,13 @@ class ContainerGroupContainerVolumeMount(dict):
              mount_path: Optional[str] = None,
              name: Optional[str] = None,
              read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         if mount_path is not None:
             _setter("mount_path", mount_path)
         if name is not None:
@@ -1152,7 +1230,11 @@ class ContainerGroupDnsConfig(dict):
              name_servers: Optional[Sequence[str]] = None,
              options: Optional[Sequence['outputs.ContainerGroupDnsConfigOption']] = None,
              searches: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nameServers' in kwargs:
+            name_servers = kwargs['nameServers']
+
         if name_servers is not None:
             _setter("name_servers", name_servers)
         if options is not None:
@@ -1204,7 +1286,9 @@ class ContainerGroupDnsConfigOption(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if value is not None:
@@ -1242,7 +1326,9 @@ class ContainerGroupEciSecurityContext(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              sysctls: Optional[Sequence['outputs.ContainerGroupEciSecurityContextSysctl']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if sysctls is not None:
             _setter("sysctls", sysctls)
 
@@ -1274,7 +1360,9 @@ class ContainerGroupEciSecurityContextSysctl(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if value is not None:
@@ -1316,7 +1404,9 @@ class ContainerGroupHostAlias(dict):
              _setter: Callable[[Any, Any], None],
              hostnames: Optional[Sequence[str]] = None,
              ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if hostnames is not None:
             _setter("hostnames", hostnames)
         if ip is not None:
@@ -1379,7 +1469,11 @@ class ContainerGroupImageRegistryCredential(dict):
              password: str,
              server: str,
              user_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         _setter("password", password)
         _setter("server", server)
         _setter("user_name", user_name)
@@ -1501,7 +1595,19 @@ class ContainerGroupInitContainer(dict):
              restart_count: Optional[int] = None,
              volume_mounts: Optional[Sequence['outputs.ContainerGroupInitContainerVolumeMount']] = None,
              working_dir: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'environmentVars' in kwargs:
+            environment_vars = kwargs['environmentVars']
+        if 'imagePullPolicy' in kwargs:
+            image_pull_policy = kwargs['imagePullPolicy']
+        if 'restartCount' in kwargs:
+            restart_count = kwargs['restartCount']
+        if 'volumeMounts' in kwargs:
+            volume_mounts = kwargs['volumeMounts']
+        if 'workingDir' in kwargs:
+            working_dir = kwargs['workingDir']
+
         if args is not None:
             _setter("args", args)
         if commands is not None:
@@ -1663,7 +1769,9 @@ class ContainerGroupInitContainerEnvironmentVar(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if value is not None:
@@ -1705,7 +1813,9 @@ class ContainerGroupInitContainerPort(dict):
              _setter: Callable[[Any, Any], None],
              port: Optional[int] = None,
              protocol: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if port is not None:
             _setter("port", port)
         if protocol is not None:
@@ -1770,7 +1880,13 @@ class ContainerGroupInitContainerVolumeMount(dict):
              mount_path: Optional[str] = None,
              name: Optional[str] = None,
              read_only: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         if mount_path is not None:
             _setter("mount_path", mount_path)
         if name is not None:
@@ -1892,7 +2008,27 @@ class ContainerGroupVolume(dict):
              nfs_volume_read_only: Optional[bool] = None,
              nfs_volume_server: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configFileVolumeConfigFileToPaths' in kwargs:
+            config_file_volume_config_file_to_paths = kwargs['configFileVolumeConfigFileToPaths']
+        if 'diskVolumeDiskId' in kwargs:
+            disk_volume_disk_id = kwargs['diskVolumeDiskId']
+        if 'diskVolumeFsType' in kwargs:
+            disk_volume_fs_type = kwargs['diskVolumeFsType']
+        if 'flexVolumeDriver' in kwargs:
+            flex_volume_driver = kwargs['flexVolumeDriver']
+        if 'flexVolumeFsType' in kwargs:
+            flex_volume_fs_type = kwargs['flexVolumeFsType']
+        if 'flexVolumeOptions' in kwargs:
+            flex_volume_options = kwargs['flexVolumeOptions']
+        if 'nfsVolumePath' in kwargs:
+            nfs_volume_path = kwargs['nfsVolumePath']
+        if 'nfsVolumeReadOnly' in kwargs:
+            nfs_volume_read_only = kwargs['nfsVolumeReadOnly']
+        if 'nfsVolumeServer' in kwargs:
+            nfs_volume_server = kwargs['nfsVolumeServer']
+
         if config_file_volume_config_file_to_paths is not None:
             _setter("config_file_volume_config_file_to_paths", config_file_volume_config_file_to_paths)
         if disk_volume_disk_id is not None:
@@ -2025,7 +2161,9 @@ class ContainerGroupVolumeConfigFileVolumeConfigFileToPath(dict):
              _setter: Callable[[Any, Any], None],
              content: Optional[str] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if content is not None:
             _setter("content", content)
         if path is not None:
@@ -2088,7 +2226,11 @@ class ImageCacheImageRegistryCredential(dict):
              password: Optional[str] = None,
              server: Optional[str] = None,
              user_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if password is not None:
             _setter("password", password)
         if server is not None:
@@ -2156,7 +2298,11 @@ class OpenApiImageCacheImageRegistryCredential(dict):
              password: Optional[str] = None,
              server: Optional[str] = None,
              user_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if password is not None:
             _setter("password", password)
         if server is not None:
@@ -2203,7 +2349,9 @@ class VirtualNodeTaint(dict):
              effect: Optional[str] = None,
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if effect is not None:
             _setter("effect", effect)
         if key is not None:
@@ -2366,7 +2514,51 @@ class GetContainerGroupsGroupResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'containerGroupId' in kwargs:
+            container_group_id = kwargs['containerGroupId']
+        if 'containerGroupName' in kwargs:
+            container_group_name = kwargs['containerGroupName']
+        if 'dnsConfigs' in kwargs:
+            dns_configs = kwargs['dnsConfigs']
+        if 'eciSecurityContexts' in kwargs:
+            eci_security_contexts = kwargs['eciSecurityContexts']
+        if 'eniInstanceId' in kwargs:
+            eni_instance_id = kwargs['eniInstanceId']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'failedTime' in kwargs:
+            failed_time = kwargs['failedTime']
+        if 'hostAliases' in kwargs:
+            host_aliases = kwargs['hostAliases']
+        if 'initContainers' in kwargs:
+            init_containers = kwargs['initContainers']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'intranetIp' in kwargs:
+            intranet_ip = kwargs['intranetIp']
+        if 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'restartPolicy' in kwargs:
+            restart_policy = kwargs['restartPolicy']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'succeededTime' in kwargs:
+            succeeded_time = kwargs['succeededTime']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("container_group_id", container_group_id)
         _setter("container_group_name", container_group_name)
         _setter("containers", containers)
@@ -2703,7 +2895,19 @@ class GetContainerGroupsGroupContainerResult(dict):
              restart_count: int,
              volume_mounts: Sequence['outputs.GetContainerGroupsGroupContainerVolumeMountResult'],
              working_dir: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'environmentVars' in kwargs:
+            environment_vars = kwargs['environmentVars']
+        if 'imagePullPolicy' in kwargs:
+            image_pull_policy = kwargs['imagePullPolicy']
+        if 'restartCount' in kwargs:
+            restart_count = kwargs['restartCount']
+        if 'volumeMounts' in kwargs:
+            volume_mounts = kwargs['volumeMounts']
+        if 'workingDir' in kwargs:
+            working_dir = kwargs['workingDir']
+
         _setter("args", args)
         _setter("commands", commands)
         _setter("cpu", cpu)
@@ -2851,7 +3055,9 @@ class GetContainerGroupsGroupContainerEnvironmentVarResult(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -2891,7 +3097,9 @@ class GetContainerGroupsGroupContainerPortResult(dict):
              _setter: Callable[[Any, Any], None],
              port: int,
              protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("port", port)
         _setter("protocol", protocol)
 
@@ -2935,7 +3143,13 @@ class GetContainerGroupsGroupContainerVolumeMountResult(dict):
              mount_path: str,
              name: str,
              read_only: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         _setter("mount_path", mount_path)
         _setter("name", name)
         _setter("read_only", read_only)
@@ -2988,7 +3202,11 @@ class GetContainerGroupsGroupDnsConfigResult(dict):
              name_servers: Sequence[str],
              options: Sequence['outputs.GetContainerGroupsGroupDnsConfigOptionResult'],
              searches: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nameServers' in kwargs:
+            name_servers = kwargs['nameServers']
+
         _setter("name_servers", name_servers)
         _setter("options", options)
         _setter("searches", searches)
@@ -3037,7 +3255,9 @@ class GetContainerGroupsGroupDnsConfigOptionResult(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -3073,7 +3293,9 @@ class GetContainerGroupsGroupEciSecurityContextResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              sysctls: Sequence['outputs.GetContainerGroupsGroupEciSecurityContextSysctlResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("sysctls", sysctls)
 
     @property
@@ -3104,7 +3326,9 @@ class GetContainerGroupsGroupEciSecurityContextSysctlResult(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -3164,7 +3388,13 @@ class GetContainerGroupsGroupEventResult(dict):
              name: str,
              reason: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstTimestamp' in kwargs:
+            first_timestamp = kwargs['firstTimestamp']
+        if 'lastTimestamp' in kwargs:
+            last_timestamp = kwargs['lastTimestamp']
+
         _setter("count", count)
         _setter("first_timestamp", first_timestamp)
         _setter("last_timestamp", last_timestamp)
@@ -3249,7 +3479,9 @@ class GetContainerGroupsGroupHostAliasResult(dict):
              _setter: Callable[[Any, Any], None],
              hostnames: Sequence[str],
              ip: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("hostnames", hostnames)
         _setter("ip", ip)
 
@@ -3337,7 +3569,19 @@ class GetContainerGroupsGroupInitContainerResult(dict):
              restart_count: int,
              volume_mounts: Sequence['outputs.GetContainerGroupsGroupInitContainerVolumeMountResult'],
              working_dir: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'environmentVars' in kwargs:
+            environment_vars = kwargs['environmentVars']
+        if 'imagePullPolicy' in kwargs:
+            image_pull_policy = kwargs['imagePullPolicy']
+        if 'restartCount' in kwargs:
+            restart_count = kwargs['restartCount']
+        if 'volumeMounts' in kwargs:
+            volume_mounts = kwargs['volumeMounts']
+        if 'workingDir' in kwargs:
+            working_dir = kwargs['workingDir']
+
         _setter("args", args)
         _setter("commands", commands)
         _setter("cpu", cpu)
@@ -3485,7 +3729,9 @@ class GetContainerGroupsGroupInitContainerEnvironmentVarResult(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -3525,7 +3771,9 @@ class GetContainerGroupsGroupInitContainerPortResult(dict):
              _setter: Callable[[Any, Any], None],
              port: int,
              protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("port", port)
         _setter("protocol", protocol)
 
@@ -3569,7 +3817,13 @@ class GetContainerGroupsGroupInitContainerVolumeMountResult(dict):
              mount_path: str,
              name: str,
              read_only: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountPath' in kwargs:
+            mount_path = kwargs['mountPath']
+        if 'readOnly' in kwargs:
+            read_only = kwargs['readOnly']
+
         _setter("mount_path", mount_path)
         _setter("name", name)
         _setter("read_only", read_only)
@@ -3654,7 +3908,27 @@ class GetContainerGroupsGroupVolumeResult(dict):
              nfs_volume_read_only: bool,
              nfs_volume_server: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configFileVolumeConfigFileToPaths' in kwargs:
+            config_file_volume_config_file_to_paths = kwargs['configFileVolumeConfigFileToPaths']
+        if 'diskVolumeDiskId' in kwargs:
+            disk_volume_disk_id = kwargs['diskVolumeDiskId']
+        if 'diskVolumeFsType' in kwargs:
+            disk_volume_fs_type = kwargs['diskVolumeFsType']
+        if 'flexVolumeDriver' in kwargs:
+            flex_volume_driver = kwargs['flexVolumeDriver']
+        if 'flexVolumeFsType' in kwargs:
+            flex_volume_fs_type = kwargs['flexVolumeFsType']
+        if 'flexVolumeOptions' in kwargs:
+            flex_volume_options = kwargs['flexVolumeOptions']
+        if 'nfsVolumePath' in kwargs:
+            nfs_volume_path = kwargs['nfsVolumePath']
+        if 'nfsVolumeReadOnly' in kwargs:
+            nfs_volume_read_only = kwargs['nfsVolumeReadOnly']
+        if 'nfsVolumeServer' in kwargs:
+            nfs_volume_server = kwargs['nfsVolumeServer']
+
         _setter("config_file_volume_config_file_to_paths", config_file_volume_config_file_to_paths)
         _setter("disk_volume_disk_id", disk_volume_disk_id)
         _setter("disk_volume_fs_type", disk_volume_fs_type)
@@ -3775,7 +4049,9 @@ class GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPathResult(dict):
              _setter: Callable[[Any, Any], None],
              content: str,
              path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("content", content)
         _setter("path", path)
 
@@ -3847,7 +4123,19 @@ class GetImageCachesCachResult(dict):
              progress: str,
              snapshot_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'containerGroupId' in kwargs:
+            container_group_id = kwargs['containerGroupId']
+        if 'expireDateTime' in kwargs:
+            expire_date_time = kwargs['expireDateTime']
+        if 'imageCacheId' in kwargs:
+            image_cache_id = kwargs['imageCacheId']
+        if 'imageCacheName' in kwargs:
+            image_cache_name = kwargs['imageCacheName']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         _setter("container_group_id", container_group_id)
         _setter("events", events)
         _setter("expire_date_time", expire_date_time)
@@ -3974,7 +4262,13 @@ class GetImageCachesCachEventResult(dict):
              message: str,
              name: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstTimestamp' in kwargs:
+            first_timestamp = kwargs['firstTimestamp']
+        if 'lastTimestamp' in kwargs:
+            last_timestamp = kwargs['lastTimestamp']
+
         _setter("count", count)
         _setter("first_timestamp", first_timestamp)
         _setter("last_timestamp", last_timestamp)
@@ -4110,7 +4404,33 @@ class GetVirtualNodesNodeResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'eniInstanceId' in kwargs:
+            eni_instance_id = kwargs['eniInstanceId']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'intranetIp' in kwargs:
+            intranet_ip = kwargs['intranetIp']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'virtualNodeId' in kwargs:
+            virtual_node_id = kwargs['virtualNodeId']
+        if 'virtualNodeName' in kwargs:
+            virtual_node_name = kwargs['virtualNodeName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("cpu", cpu)
         _setter("create_time", create_time)
         _setter("eni_instance_id", eni_instance_id)
@@ -4311,7 +4631,13 @@ class GetVirtualNodesNodeEventResult(dict):
              name: str,
              reason: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firstTimestamp' in kwargs:
+            first_timestamp = kwargs['firstTimestamp']
+        if 'lastTimestamp' in kwargs:
+            last_timestamp = kwargs['lastTimestamp']
+
         _setter("count", count)
         _setter("first_timestamp", first_timestamp)
         _setter("last_timestamp", last_timestamp)
@@ -4396,7 +4722,13 @@ class GetZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              region_endpoint: str,
              zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionEndpoint' in kwargs:
+            region_endpoint = kwargs['regionEndpoint']
+        if 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+
         _setter("region_endpoint", region_endpoint)
         _setter("zone_ids", zone_ids)
 

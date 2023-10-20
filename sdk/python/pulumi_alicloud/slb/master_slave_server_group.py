@@ -41,7 +41,13 @@ class MasterSlaveServerGroupArgs:
              delete_protection_validation: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              servers: Optional[pulumi.Input[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+
         _setter("load_balancer_id", load_balancer_id)
         if delete_protection_validation is not None:
             _setter("delete_protection_validation", delete_protection_validation)
@@ -127,7 +133,13 @@ class _MasterSlaveServerGroupState:
              load_balancer_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              servers: Optional[pulumi.Input[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+
         if delete_protection_validation is not None:
             _setter("delete_protection_validation", delete_protection_validation)
         if load_balancer_id is not None:

@@ -57,7 +57,13 @@ class NestServiceInstanceCommodity(dict):
              _setter: Callable[[Any, Any], None],
              pay_period: Optional[int] = None,
              pay_period_unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'payPeriod' in kwargs:
+            pay_period = kwargs['payPeriod']
+        if 'payPeriodUnit' in kwargs:
+            pay_period_unit = kwargs['payPeriodUnit']
+
         if pay_period is not None:
             _setter("pay_period", pay_period)
         if pay_period_unit is not None:
@@ -128,7 +134,15 @@ class NestServiceInstanceOperationMetadata(dict):
              operation_end_time: Optional[str] = None,
              operation_start_time: Optional[str] = None,
              resources: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'operatedServiceInstanceId' in kwargs:
+            operated_service_instance_id = kwargs['operatedServiceInstanceId']
+        if 'operationEndTime' in kwargs:
+            operation_end_time = kwargs['operationEndTime']
+        if 'operationStartTime' in kwargs:
+            operation_start_time = kwargs['operationStartTime']
+
         if operated_service_instance_id is not None:
             _setter("operated_service_instance_id", operated_service_instance_id)
         if operation_end_time is not None:
@@ -190,7 +204,9 @@ class GetNestServiceInstancesFilterResult(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if values is not None:
@@ -280,7 +296,23 @@ class GetNestServiceInstancesServiceInstanceResult(dict):
              status: str,
              tags: Mapping[str, Any],
              template_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enableInstanceOps' in kwargs:
+            enable_instance_ops = kwargs['enableInstanceOps']
+        if 'operatedServiceInstanceId' in kwargs:
+            operated_service_instance_id = kwargs['operatedServiceInstanceId']
+        if 'operationEndTime' in kwargs:
+            operation_end_time = kwargs['operationEndTime']
+        if 'operationStartTime' in kwargs:
+            operation_start_time = kwargs['operationStartTime']
+        if 'serviceInstanceId' in kwargs:
+            service_instance_id = kwargs['serviceInstanceId']
+        if 'serviceInstanceName' in kwargs:
+            service_instance_name = kwargs['serviceInstanceName']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+
         _setter("enable_instance_ops", enable_instance_ops)
         _setter("id", id)
         _setter("operated_service_instance_id", operated_service_instance_id)
@@ -460,7 +492,25 @@ class GetNestServiceInstancesServiceInstanceServiceResult(dict):
              supplier_url: str,
              version: str,
              version_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deployType' in kwargs:
+            deploy_type = kwargs['deployType']
+        if 'publishTime' in kwargs:
+            publish_time = kwargs['publishTime']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'serviceInfos' in kwargs:
+            service_infos = kwargs['serviceInfos']
+        if 'serviceType' in kwargs:
+            service_type = kwargs['serviceType']
+        if 'supplierName' in kwargs:
+            supplier_name = kwargs['supplierName']
+        if 'supplierUrl' in kwargs:
+            supplier_url = kwargs['supplierUrl']
+        if 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         _setter("deploy_type", deploy_type)
         _setter("publish_time", publish_time)
         _setter("service_id", service_id)
@@ -580,7 +630,11 @@ class GetNestServiceInstancesServiceInstanceServiceServiceInfoResult(dict):
              locale: str,
              name: str,
              short_description: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'shortDescription' in kwargs:
+            short_description = kwargs['shortDescription']
+
         _setter("image", image)
         _setter("locale", locale)
         _setter("name", name)

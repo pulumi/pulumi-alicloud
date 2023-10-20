@@ -92,7 +92,31 @@ class BandwidthPackageArgs:
              ratio: Optional[pulumi.Input[int]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'autoRenewDuration' in kwargs:
+            auto_renew_duration = kwargs['autoRenewDuration']
+        if 'autoUseCoupon' in kwargs:
+            auto_use_coupon = kwargs['autoUseCoupon']
+        if 'bandwidthPackageName' in kwargs:
+            bandwidth_package_name = kwargs['bandwidthPackageName']
+        if 'bandwidthType' in kwargs:
+            bandwidth_type = kwargs['bandwidthType']
+        if 'billingType' in kwargs:
+            billing_type = kwargs['billingType']
+        if 'cbnGeographicRegionIda' in kwargs:
+            cbn_geographic_region_ida = kwargs['cbnGeographicRegionIda']
+        if 'cbnGeographicRegionIdb' in kwargs:
+            cbn_geographic_region_idb = kwargs['cbnGeographicRegionIdb']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'promotionOptionNo' in kwargs:
+            promotion_option_no = kwargs['promotionOptionNo']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         _setter("bandwidth", bandwidth)
         _setter("type", type)
         if auto_pay is not None:
@@ -417,7 +441,31 @@ class _BandwidthPackageState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'autoRenewDuration' in kwargs:
+            auto_renew_duration = kwargs['autoRenewDuration']
+        if 'autoUseCoupon' in kwargs:
+            auto_use_coupon = kwargs['autoUseCoupon']
+        if 'bandwidthPackageName' in kwargs:
+            bandwidth_package_name = kwargs['bandwidthPackageName']
+        if 'bandwidthType' in kwargs:
+            bandwidth_type = kwargs['bandwidthType']
+        if 'billingType' in kwargs:
+            billing_type = kwargs['billingType']
+        if 'cbnGeographicRegionIda' in kwargs:
+            cbn_geographic_region_ida = kwargs['cbnGeographicRegionIda']
+        if 'cbnGeographicRegionIdb' in kwargs:
+            cbn_geographic_region_idb = kwargs['cbnGeographicRegionIdb']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'promotionOptionNo' in kwargs:
+            promotion_option_no = kwargs['promotionOptionNo']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         if auto_pay is not None:
             _setter("auto_pay", auto_pay)
         if auto_renew_duration is not None:

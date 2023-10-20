@@ -51,7 +51,19 @@ class DispatchRuleGroupRuleArgs:
              grouping_fields: pulumi.Input[Sequence[pulumi.Input[str]]],
              group_id: Optional[pulumi.Input[int]] = None,
              repeat_interval: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupInterval' in kwargs:
+            group_interval = kwargs['groupInterval']
+        if 'groupWaitTime' in kwargs:
+            group_wait_time = kwargs['groupWaitTime']
+        if 'groupingFields' in kwargs:
+            grouping_fields = kwargs['groupingFields']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'repeatInterval' in kwargs:
+            repeat_interval = kwargs['repeatInterval']
+
         _setter("group_interval", group_interval)
         _setter("group_wait_time", group_wait_time)
         _setter("grouping_fields", grouping_fields)
@@ -136,7 +148,11 @@ class DispatchRuleLabelMatchExpressionGridArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              label_match_expression_groups: pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'labelMatchExpressionGroups' in kwargs:
+            label_match_expression_groups = kwargs['labelMatchExpressionGroups']
+
         _setter("label_match_expression_groups", label_match_expression_groups)
 
     @property
@@ -167,7 +183,11 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              label_match_expressions: pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'labelMatchExpressions' in kwargs:
+            label_match_expressions = kwargs['labelMatchExpressions']
+
         _setter("label_match_expressions", label_match_expressions)
 
     @property
@@ -190,7 +210,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
                  operator: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] key: The key of the tag of the dispatch rule. Valud values:
+        :param pulumi.Input[str] key: The key of the tag of the dispatch rule. Valid values:
                * _aliyun_arms_userid: user ID
                * _aliyun_arms_involvedObject_kind: type of the associated object
                * _aliyun_arms_involvedObject_id: ID of the associated object
@@ -216,7 +236,9 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
              key: pulumi.Input[str],
              operator: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("operator", operator)
         _setter("value", value)
@@ -225,7 +247,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The key of the tag of the dispatch rule. Valud values:
+        The key of the tag of the dispatch rule. Valid values:
         * _aliyun_arms_userid: user ID
         * _aliyun_arms_involvedObject_kind: type of the associated object
         * _aliyun_arms_involvedObject_id: ID of the associated object
@@ -287,7 +309,13 @@ class DispatchRuleNotifyRuleArgs:
              _setter: Callable[[Any, Any], None],
              notify_channels: pulumi.Input[Sequence[pulumi.Input[str]]],
              notify_objects: pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleNotifyObjectArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notifyChannels' in kwargs:
+            notify_channels = kwargs['notifyChannels']
+        if 'notifyObjects' in kwargs:
+            notify_objects = kwargs['notifyObjects']
+
         _setter("notify_channels", notify_channels)
         _setter("notify_objects", notify_objects)
 
@@ -339,7 +367,13 @@ class DispatchRuleNotifyRuleNotifyObjectArgs:
              name: pulumi.Input[str],
              notify_object_id: pulumi.Input[str],
              notify_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notifyObjectId' in kwargs:
+            notify_object_id = kwargs['notifyObjectId']
+        if 'notifyType' in kwargs:
+            notify_type = kwargs['notifyType']
+
         _setter("name", name)
         _setter("notify_object_id", notify_object_id)
         _setter("notify_type", notify_type)
@@ -400,7 +434,9 @@ class PrometheusAlertRuleAnnotationArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if value is not None:
@@ -450,7 +486,9 @@ class PrometheusAlertRuleLabelArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if value is not None:

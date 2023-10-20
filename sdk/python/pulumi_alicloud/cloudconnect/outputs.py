@@ -43,7 +43,13 @@ class GetNetworksNetworkResult(dict):
              id: str,
              is_default: bool,
              name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'isDefault' in kwargs:
+            is_default = kwargs['isDefault']
+
         _setter("cidr_block", cidr_block)
         _setter("description", description)
         _setter("id", id)

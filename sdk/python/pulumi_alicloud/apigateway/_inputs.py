@@ -47,7 +47,11 @@ class ApiConstantParameterArgs:
              name: pulumi.Input[str],
              value: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'in' in kwargs:
+            in_ = kwargs['in']
+
         _setter("in_", in_)
         _setter("name", name)
         _setter("value", value)
@@ -134,7 +138,15 @@ class ApiFcServiceConfigArgs:
              service_name: pulumi.Input[str],
              timeout: pulumi.Input[int],
              arn_role: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'arnRole' in kwargs:
+            arn_role = kwargs['arnRole']
+
         _setter("function_name", function_name)
         _setter("region", region)
         _setter("service_name", service_name)
@@ -234,7 +246,11 @@ class ApiHttpServiceConfigArgs:
              path: pulumi.Input[str],
              timeout: pulumi.Input[int],
              aone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aoneName' in kwargs:
+            aone_name = kwargs['aoneName']
+
         _setter("address", address)
         _setter("method", method)
         _setter("path", path)
@@ -334,7 +350,11 @@ class ApiHttpVpcServiceConfigArgs:
              path: pulumi.Input[str],
              timeout: pulumi.Input[int],
              aone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aoneName' in kwargs:
+            aone_name = kwargs['aoneName']
+
         _setter("method", method)
         _setter("name", name)
         _setter("path", path)
@@ -422,7 +442,11 @@ class ApiMockServiceConfigArgs:
              _setter: Callable[[Any, Any], None],
              result: pulumi.Input[str],
              aone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aoneName' in kwargs:
+            aone_name = kwargs['aoneName']
+
         _setter("result", result)
         if aone_name is not None:
             _setter("aone_name", aone_name)
@@ -483,7 +507,11 @@ class ApiRequestConfigArgs:
              path: pulumi.Input[str],
              protocol: pulumi.Input[str],
              body_format: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bodyFormat' in kwargs:
+            body_format = kwargs['bodyFormat']
+
         _setter("method", method)
         _setter("mode", mode)
         _setter("path", path)
@@ -595,7 +623,17 @@ class ApiRequestParameterArgs:
              type: pulumi.Input[str],
              default_value: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'in' in kwargs:
+            in_ = kwargs['in']
+        if 'inService' in kwargs:
+            in_service = kwargs['inService']
+        if 'nameService' in kwargs:
+            name_service = kwargs['nameService']
+        if 'defaultValue' in kwargs:
+            default_value = kwargs['defaultValue']
+
         _setter("in_", in_)
         _setter("in_service", in_service)
         _setter("name", name)
@@ -727,7 +765,13 @@ class ApiSystemParameterArgs:
              in_: pulumi.Input[str],
              name: pulumi.Input[str],
              name_service: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'in' in kwargs:
+            in_ = kwargs['in']
+        if 'nameService' in kwargs:
+            name_service = kwargs['nameService']
+
         _setter("in_", in_)
         _setter("name", name)
         _setter("name_service", name_service)

@@ -35,7 +35,13 @@ class UserGroupArgs:
              instance_id: pulumi.Input[str],
              user_group_name: pulumi.Input[str],
              comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'userGroupName' in kwargs:
+            user_group_name = kwargs['userGroupName']
+
         _setter("instance_id", instance_id)
         _setter("user_group_name", user_group_name)
         if comment is not None:
@@ -106,7 +112,15 @@ class _UserGroupState:
              instance_id: Optional[pulumi.Input[str]] = None,
              user_group_id: Optional[pulumi.Input[str]] = None,
              user_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'userGroupId' in kwargs:
+            user_group_id = kwargs['userGroupId']
+        if 'userGroupName' in kwargs:
+            user_group_name = kwargs['userGroupName']
+
         if comment is not None:
             _setter("comment", comment)
         if instance_id is not None:

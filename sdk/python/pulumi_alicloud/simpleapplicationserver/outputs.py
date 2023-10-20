@@ -54,7 +54,15 @@ class GetImagesImageResult(dict):
              image_name: str,
              image_type: str,
              platform: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'imageType' in kwargs:
+            image_type = kwargs['imageType']
+
         _setter("description", description)
         _setter("id", id)
         _setter("image_id", image_id)
@@ -174,7 +182,31 @@ class GetInstancesInstanceResult(dict):
              plan_id: str,
              public_ip_address: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'ddosStatus' in kwargs:
+            ddos_status = kwargs['ddosStatus']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'innerIpAddress' in kwargs:
+            inner_ip_address = kwargs['innerIpAddress']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'planId' in kwargs:
+            plan_id = kwargs['planId']
+        if 'publicIpAddress' in kwargs:
+            public_ip_address = kwargs['publicIpAddress']
+
         _setter("business_status", business_status)
         _setter("create_time", create_time)
         _setter("ddos_status", ddos_status)
@@ -325,7 +357,13 @@ class GetServerCustomImagesImageResult(dict):
              description: str,
              id: str,
              platform: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customImageId' in kwargs:
+            custom_image_id = kwargs['customImageId']
+        if 'customImageName' in kwargs:
+            custom_image_name = kwargs['customImageName']
+
         _setter("custom_image_id", custom_image_id)
         _setter("custom_image_name", custom_image_name)
         _setter("description", description)
@@ -428,7 +466,21 @@ class GetServerDisksDiskResult(dict):
              payment_type: str,
              size: int,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'diskName' in kwargs:
+            disk_name = kwargs['diskName']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+
         _setter("category", category)
         _setter("create_time", create_time)
         _setter("device", device)
@@ -565,7 +617,15 @@ class GetServerFirewallRulesRuleResult(dict):
              port: str,
              remark: str,
              rule_protocol: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firewallRuleId' in kwargs:
+            firewall_rule_id = kwargs['firewallRuleId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'ruleProtocol' in kwargs:
+            rule_protocol = kwargs['ruleProtocol']
+
         _setter("firewall_rule_id", firewall_rule_id)
         _setter("id", id)
         _setter("instance_id", instance_id)
@@ -665,7 +725,15 @@ class GetServerPlansPlanResult(dict):
              memory: int,
              plan_id: str,
              support_platform: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'planId' in kwargs:
+            plan_id = kwargs['planId']
+        if 'supportPlatform' in kwargs:
+            support_platform = kwargs['supportPlatform']
+
         _setter("bandwidth", bandwidth)
         _setter("core", core)
         _setter("disk_size", disk_size)
@@ -787,7 +855,19 @@ class GetServerSnapshotsSnapshotResult(dict):
              snapshot_name: str,
              source_disk_type: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+        if 'sourceDiskType' in kwargs:
+            source_disk_type = kwargs['sourceDiskType']
+
         _setter("create_time", create_time)
         _setter("disk_id", disk_id)
         _setter("id", id)

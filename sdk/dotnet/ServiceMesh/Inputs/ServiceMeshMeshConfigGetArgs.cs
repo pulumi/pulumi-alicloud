@@ -13,79 +13,91 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
     public sealed class ServiceMeshMeshConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The configuration of the access logging. See `access_log` below.
+        /// The access logging configuration. See `mesh_config-access_log` below.
         /// </summary>
         [Input("accessLog")]
         public Input<Inputs.ServiceMeshMeshConfigAccessLogGetArgs>? AccessLog { get; set; }
 
         /// <summary>
-        /// The configuration of the audit. See `audit` below.
+        /// Audit information. See `mesh_config-audit` below.
         /// </summary>
         [Input("audit")]
         public Input<Inputs.ServiceMeshMeshConfigAuditGetArgs>? Audit { get; set; }
 
         /// <summary>
-        /// The configuration of the control plane logging. See `control_plane_log` below.
+        /// Control plane log collection configuration. See `mesh_config-control_plane_log` below.
         /// </summary>
         [Input("controlPlaneLog")]
         public Input<Inputs.ServiceMeshMeshConfigControlPlaneLogGetArgs>? ControlPlaneLog { get; set; }
 
         /// <summary>
-        /// Whether to enable the use of a custom zipkin.
+        /// Whether or not to enable the use of a custom zipkin.
         /// </summary>
         [Input("customizedZipkin")]
         public Input<bool>? CustomizedZipkin { get; set; }
 
         /// <summary>
-        /// The enable locality lb.
+        /// Whether to enable service can access the service through the nearest node access.
         /// </summary>
         [Input("enableLocalityLb")]
         public Input<bool>? EnableLocalityLb { get; set; }
 
         /// <summary>
-        /// The configuration of the Kiali. See `kiali` below.
+        /// The IP ADDRESS range.
+        /// </summary>
+        [Input("includeIpRanges")]
+        public Input<string>? IncludeIpRanges { get; set; }
+
+        /// <summary>
+        /// Kiali configuration. See `mesh_config-kiali` below.
         /// </summary>
         [Input("kiali")]
         public Input<Inputs.ServiceMeshMeshConfigKialiGetArgs>? Kiali { get; set; }
 
         /// <summary>
-        /// The open-door policy of agent (OPA) plug-in information. See `opa` below.
+        /// The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
         /// </summary>
         [Input("opa")]
         public Input<Inputs.ServiceMeshMeshConfigOpaGetArgs>? Opa { get; set; }
 
         /// <summary>
-        /// The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+        /// Out to the traffic policy.
         /// </summary>
         [Input("outboundTrafficPolicy")]
         public Input<string>? OutboundTrafficPolicy { get; set; }
 
         /// <summary>
-        /// The configuration of the Link trace sampling. See `pilot` below.
+        /// Link trace sampling information. See `mesh_config-pilot` below.
         /// </summary>
         [Input("pilot")]
         public Input<Inputs.ServiceMeshMeshConfigPilotGetArgs>? Pilot { get; set; }
 
         /// <summary>
-        /// The configuration of the Proxy. See `proxy` below.
+        /// Prometheus configuration.
+        /// </summary>
+        [Input("prometheus")]
+        public Input<Inputs.ServiceMeshMeshConfigPrometheusGetArgs>? Prometheus { get; set; }
+
+        /// <summary>
+        /// Proxy configuration. See `mesh_config-proxy` below.
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.ServiceMeshMeshConfigProxyGetArgs>? Proxy { get; set; }
 
         /// <summary>
-        /// The configuration of the Sidecar injector. See `sidecar_injector` below.
+        /// Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
         /// </summary>
         [Input("sidecarInjector")]
         public Input<Inputs.ServiceMeshMeshConfigSidecarInjectorGetArgs>? SidecarInjector { get; set; }
 
         /// <summary>
-        /// Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+        /// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
         /// </summary>
         [Input("telemetry")]
         public Input<bool>? Telemetry { get; set; }
 
         /// <summary>
-        /// Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+        /// Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
         /// </summary>
         [Input("tracing")]
         public Input<bool>? Tracing { get; set; }

@@ -37,7 +37,9 @@ class InstanceDataDiskArgs:
              _setter: Callable[[Any, Any], None],
              category: Optional[pulumi.Input[str]] = None,
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if category is not None:
             _setter("category", category)
         if size is not None:
@@ -87,7 +89,9 @@ class InstanceSystemDiskArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if size is not None:
             _setter("size", size)
 

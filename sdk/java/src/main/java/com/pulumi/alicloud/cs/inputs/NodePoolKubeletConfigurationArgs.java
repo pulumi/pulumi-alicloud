@@ -138,14 +138,14 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
     }
 
     /**
-     * Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+     * Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
      * 
      */
     @Import(name="kubeReserved")
     private @Nullable Output<Map<String,Object>> kubeReserved;
 
     /**
-     * @return Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+     * @return Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
      * 
      */
     public Optional<Output<Map<String,Object>>> kubeReserved() {
@@ -198,14 +198,14 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
     }
 
     /**
-     * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+     * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
      * 
      */
     @Import(name="systemReserved")
     private @Nullable Output<Map<String,Object>> systemReserved;
 
     /**
-     * @return Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+     * @return Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
      * 
      */
     public Optional<Output<Map<String,Object>>> systemReserved() {
@@ -417,7 +417,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param kubeReserved Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+         * @param kubeReserved Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param kubeReserved Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+         * @param kubeReserved Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param systemReserved Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+         * @param systemReserved Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class NodePoolKubeletConfigurationArgs extends com.pulumi.resources
         }
 
         /**
-         * @param systemReserved Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+         * @param systemReserved Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          * 
          * @return builder
          * 

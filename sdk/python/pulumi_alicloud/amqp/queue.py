@@ -80,7 +80,31 @@ class QueueArgs:
              max_length: Optional[pulumi.Input[str]] = None,
              maximum_priority: Optional[pulumi.Input[int]] = None,
              message_ttl: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'queueName' in kwargs:
+            queue_name = kwargs['queueName']
+        if 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+        if 'autoDeleteState' in kwargs:
+            auto_delete_state = kwargs['autoDeleteState']
+        if 'autoExpireState' in kwargs:
+            auto_expire_state = kwargs['autoExpireState']
+        if 'deadLetterExchange' in kwargs:
+            dead_letter_exchange = kwargs['deadLetterExchange']
+        if 'deadLetterRoutingKey' in kwargs:
+            dead_letter_routing_key = kwargs['deadLetterRoutingKey']
+        if 'exclusiveState' in kwargs:
+            exclusive_state = kwargs['exclusiveState']
+        if 'maxLength' in kwargs:
+            max_length = kwargs['maxLength']
+        if 'maximumPriority' in kwargs:
+            maximum_priority = kwargs['maximumPriority']
+        if 'messageTtl' in kwargs:
+            message_ttl = kwargs['messageTtl']
+
         _setter("instance_id", instance_id)
         _setter("queue_name", queue_name)
         _setter("virtual_host_name", virtual_host_name)
@@ -316,7 +340,31 @@ class _QueueState:
              message_ttl: Optional[pulumi.Input[str]] = None,
              queue_name: Optional[pulumi.Input[str]] = None,
              virtual_host_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoDeleteState' in kwargs:
+            auto_delete_state = kwargs['autoDeleteState']
+        if 'autoExpireState' in kwargs:
+            auto_expire_state = kwargs['autoExpireState']
+        if 'deadLetterExchange' in kwargs:
+            dead_letter_exchange = kwargs['deadLetterExchange']
+        if 'deadLetterRoutingKey' in kwargs:
+            dead_letter_routing_key = kwargs['deadLetterRoutingKey']
+        if 'exclusiveState' in kwargs:
+            exclusive_state = kwargs['exclusiveState']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'maxLength' in kwargs:
+            max_length = kwargs['maxLength']
+        if 'maximumPriority' in kwargs:
+            maximum_priority = kwargs['maximumPriority']
+        if 'messageTtl' in kwargs:
+            message_ttl = kwargs['messageTtl']
+        if 'queueName' in kwargs:
+            queue_name = kwargs['queueName']
+        if 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+
         if auto_delete_state is not None:
             _setter("auto_delete_state", auto_delete_state)
         if auto_expire_state is not None:

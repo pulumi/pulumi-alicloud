@@ -33,7 +33,13 @@ class TransitRouterVpcAttachmentZoneMappingArgs:
              _setter: Callable[[Any, Any], None],
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if vswitch_id is not None:
             _setter("vswitch_id", vswitch_id)
         if zone_id is not None:
@@ -79,7 +85,11 @@ class TransitRouterVpnAttachmentZoneArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("zone_id", zone_id)
 
     @property

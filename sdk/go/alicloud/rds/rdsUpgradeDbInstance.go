@@ -154,11 +154,11 @@ type RdsUpgradeDbInstance struct {
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The connection string prefix.
 	ConnectionStringPrefix pulumi.StringPtrOutput `pulumi:"connectionStringPrefix"`
-	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 	DbInstanceClass pulumi.StringOutput `pulumi:"dbInstanceClass"`
 	// The db instance description.
 	DbInstanceDescription pulumi.StringOutput `pulumi:"dbInstanceDescription"`
-	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 	//
 	// > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
 	DbInstanceStorage pulumi.IntOutput `pulumi:"dbInstanceStorage"`
@@ -179,7 +179,7 @@ type RdsUpgradeDbInstance struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction pulumi.StringPtrOutput `pulumi:"direction"`
@@ -231,7 +231,7 @@ type RdsUpgradeDbInstance struct {
 	ReplicationAcl pulumi.StringOutput `pulumi:"replicationAcl"`
 	// The resource group id.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
 	//
 	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	RoleArn pulumi.StringPtrOutput `pulumi:"roleArn"`
@@ -291,11 +291,11 @@ type RdsUpgradeDbInstance struct {
 	//
 	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
-	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
 	//
 	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
-	// The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+	// The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
 	ZoneIdSlave1 pulumi.StringOutput `pulumi:"zoneIdSlave1"`
 }
 
@@ -386,11 +386,11 @@ type rdsUpgradeDbInstanceState struct {
 	ConnectionString *string `pulumi:"connectionString"`
 	// The connection string prefix.
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
-	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 	DbInstanceClass *string `pulumi:"dbInstanceClass"`
 	// The db instance description.
 	DbInstanceDescription *string `pulumi:"dbInstanceDescription"`
-	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 	//
 	// > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
 	DbInstanceStorage *int `pulumi:"dbInstanceStorage"`
@@ -411,7 +411,7 @@ type rdsUpgradeDbInstanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction *string `pulumi:"direction"`
@@ -463,7 +463,7 @@ type rdsUpgradeDbInstanceState struct {
 	ReplicationAcl *string `pulumi:"replicationAcl"`
 	// The resource group id.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
 	//
 	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	RoleArn *string `pulumi:"roleArn"`
@@ -523,11 +523,11 @@ type rdsUpgradeDbInstanceState struct {
 	//
 	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId *string `pulumi:"vswitchId"`
-	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
 	//
 	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
 	ZoneId *string `pulumi:"zoneId"`
-	// The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+	// The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
 	ZoneIdSlave1 *string `pulumi:"zoneIdSlave1"`
 }
 
@@ -562,11 +562,11 @@ type RdsUpgradeDbInstanceState struct {
 	ConnectionString pulumi.StringPtrInput
 	// The connection string prefix.
 	ConnectionStringPrefix pulumi.StringPtrInput
-	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 	DbInstanceClass pulumi.StringPtrInput
 	// The db instance description.
 	DbInstanceDescription pulumi.StringPtrInput
-	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 	//
 	// > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
 	DbInstanceStorage pulumi.IntPtrInput
@@ -587,7 +587,7 @@ type RdsUpgradeDbInstanceState struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction pulumi.StringPtrInput
@@ -639,7 +639,7 @@ type RdsUpgradeDbInstanceState struct {
 	ReplicationAcl pulumi.StringPtrInput
 	// The resource group id.
 	ResourceGroupId pulumi.StringPtrInput
-	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
 	//
 	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	RoleArn pulumi.StringPtrInput
@@ -699,11 +699,11 @@ type RdsUpgradeDbInstanceState struct {
 	//
 	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId pulumi.StringPtrInput
-	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
 	//
 	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
 	ZoneId pulumi.StringPtrInput
-	// The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+	// The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
 	ZoneIdSlave1 pulumi.StringPtrInput
 }
 
@@ -740,11 +740,11 @@ type rdsUpgradeDbInstanceArgs struct {
 	CollectStatMode string `pulumi:"collectStatMode"`
 	// The connection string prefix.
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
-	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 	DbInstanceClass string `pulumi:"dbInstanceClass"`
 	// The db instance description.
 	DbInstanceDescription *string `pulumi:"dbInstanceDescription"`
-	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 	//
 	// > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
 	DbInstanceStorage int `pulumi:"dbInstanceStorage"`
@@ -765,7 +765,7 @@ type rdsUpgradeDbInstanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction *string `pulumi:"direction"`
@@ -817,7 +817,7 @@ type rdsUpgradeDbInstanceArgs struct {
 	ReplicationAcl *string `pulumi:"replicationAcl"`
 	// The resource group id.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
 	//
 	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	RoleArn *string `pulumi:"roleArn"`
@@ -877,11 +877,11 @@ type rdsUpgradeDbInstanceArgs struct {
 	//
 	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId *string `pulumi:"vswitchId"`
-	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
 	//
 	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
 	ZoneId *string `pulumi:"zoneId"`
-	// The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+	// The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
 	ZoneIdSlave1 *string `pulumi:"zoneIdSlave1"`
 }
 
@@ -915,11 +915,11 @@ type RdsUpgradeDbInstanceArgs struct {
 	CollectStatMode pulumi.StringInput
 	// The connection string prefix.
 	ConnectionStringPrefix pulumi.StringPtrInput
-	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 	DbInstanceClass pulumi.StringInput
 	// The db instance description.
 	DbInstanceDescription pulumi.StringPtrInput
-	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+	// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 	//
 	// > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
 	DbInstanceStorage pulumi.IntInput
@@ -940,7 +940,7 @@ type RdsUpgradeDbInstanceArgs struct {
 	// - true: delete protect.
 	// - false: no delete protect.
 	//
-	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+	// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
 	DeletionProtection pulumi.BoolPtrInput
 	// The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
 	Direction pulumi.StringPtrInput
@@ -992,7 +992,7 @@ type RdsUpgradeDbInstanceArgs struct {
 	ReplicationAcl pulumi.StringPtrInput
 	// The resource group id.
 	ResourceGroupId pulumi.StringPtrInput
-	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+	// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
 	//
 	// > **NOTE:** This parameter is available only when the instance runs MySQL.
 	RoleArn pulumi.StringPtrInput
@@ -1052,11 +1052,11 @@ type RdsUpgradeDbInstanceArgs struct {
 	//
 	// > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
 	VswitchId pulumi.StringPtrInput
-	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+	// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
 	//
 	// > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
 	ZoneId pulumi.StringPtrInput
-	// The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+	// The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
 	ZoneIdSlave1 pulumi.StringPtrInput
 }
 
@@ -1234,7 +1234,7 @@ func (o RdsUpgradeDbInstanceOutput) ConnectionStringPrefix() pulumi.StringPtrOut
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.ConnectionStringPrefix }).(pulumi.StringPtrOutput)
 }
 
-// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+// The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 func (o RdsUpgradeDbInstanceOutput) DbInstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.DbInstanceClass }).(pulumi.StringOutput)
 }
@@ -1244,7 +1244,7 @@ func (o RdsUpgradeDbInstanceOutput) DbInstanceDescription() pulumi.StringOutput 
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.DbInstanceDescription }).(pulumi.StringOutput)
 }
 
-// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+// The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 //
 // > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
 func (o RdsUpgradeDbInstanceOutput) DbInstanceStorage() pulumi.IntOutput {
@@ -1277,7 +1277,7 @@ func (o RdsUpgradeDbInstanceOutput) DedicatedHostGroupId() pulumi.StringPtrOutpu
 // - true: delete protect.
 // - false: no delete protect.
 //
-// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+// > **NOTE:** `deletionProtection` is valid only when attribute `paymentType` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
 func (o RdsUpgradeDbInstanceOutput) DeletionProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
@@ -1389,7 +1389,7 @@ func (o RdsUpgradeDbInstanceOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+// The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
 //
 // > **NOTE:** This parameter is available only when the instance runs MySQL.
 func (o RdsUpgradeDbInstanceOutput) RoleArn() pulumi.StringPtrOutput {
@@ -1497,14 +1497,14 @@ func (o RdsUpgradeDbInstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+// The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
 //
 // > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
 func (o RdsUpgradeDbInstanceOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-// The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+// The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
 func (o RdsUpgradeDbInstanceOutput) ZoneIdSlave1() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.ZoneIdSlave1 }).(pulumi.StringOutput)
 }

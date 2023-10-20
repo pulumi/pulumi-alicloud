@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * You can use the route map function to filter routes and modify route attributes.
  * By doing so, you can manage the communication between networks attached to a CEN.
  * 
- * For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenroutemap).
+ * For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-createcenroutemap).
  * 
  * &gt; **NOTE:** Available since v1.82.0.
  * 

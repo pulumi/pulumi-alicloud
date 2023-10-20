@@ -35,7 +35,13 @@ class Ipv4CidrBlockArgs:
              _setter: Callable[[Any, Any], None],
              secondary_cidr_block: pulumi.Input[str],
              vpc_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'secondaryCidrBlock' in kwargs:
+            secondary_cidr_block = kwargs['secondaryCidrBlock']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("secondary_cidr_block", secondary_cidr_block)
         _setter("vpc_id", vpc_id)
 
@@ -92,7 +98,13 @@ class _Ipv4CidrBlockState:
              _setter: Callable[[Any, Any], None],
              secondary_cidr_block: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'secondaryCidrBlock' in kwargs:
+            secondary_cidr_block = kwargs['secondaryCidrBlock']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if secondary_cidr_block is not None:
             _setter("secondary_cidr_block", secondary_cidr_block)
         if vpc_id is not None:

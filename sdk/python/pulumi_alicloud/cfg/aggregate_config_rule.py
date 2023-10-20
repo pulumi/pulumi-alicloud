@@ -87,7 +87,37 @@ class AggregateConfigRuleArgs:
              status: Optional[pulumi.Input[str]] = None,
              tag_key_scope: Optional[pulumi.Input[str]] = None,
              tag_value_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aggregateConfigRuleName' in kwargs:
+            aggregate_config_rule_name = kwargs['aggregateConfigRuleName']
+        if 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if 'configRuleTriggerTypes' in kwargs:
+            config_rule_trigger_types = kwargs['configRuleTriggerTypes']
+        if 'resourceTypesScopes' in kwargs:
+            resource_types_scopes = kwargs['resourceTypesScopes']
+        if 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if 'sourceIdentifier' in kwargs:
+            source_identifier = kwargs['sourceIdentifier']
+        if 'sourceOwner' in kwargs:
+            source_owner = kwargs['sourceOwner']
+        if 'excludeResourceIdsScope' in kwargs:
+            exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
+        if 'inputParameters' in kwargs:
+            input_parameters = kwargs['inputParameters']
+        if 'maximumExecutionFrequency' in kwargs:
+            maximum_execution_frequency = kwargs['maximumExecutionFrequency']
+        if 'regionIdsScope' in kwargs:
+            region_ids_scope = kwargs['regionIdsScope']
+        if 'resourceGroupIdsScope' in kwargs:
+            resource_group_ids_scope = kwargs['resourceGroupIdsScope']
+        if 'tagKeyScope' in kwargs:
+            tag_key_scope = kwargs['tagKeyScope']
+        if 'tagValueScope' in kwargs:
+            tag_value_scope = kwargs['tagValueScope']
+
         _setter("aggregate_config_rule_name", aggregate_config_rule_name)
         _setter("aggregator_id", aggregator_id)
         _setter("config_rule_trigger_types", config_rule_trigger_types)
@@ -387,7 +417,39 @@ class _AggregateConfigRuleState:
              status: Optional[pulumi.Input[str]] = None,
              tag_key_scope: Optional[pulumi.Input[str]] = None,
              tag_value_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aggregateConfigRuleName' in kwargs:
+            aggregate_config_rule_name = kwargs['aggregateConfigRuleName']
+        if 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+        if 'configRuleTriggerTypes' in kwargs:
+            config_rule_trigger_types = kwargs['configRuleTriggerTypes']
+        if 'excludeResourceIdsScope' in kwargs:
+            exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
+        if 'inputParameters' in kwargs:
+            input_parameters = kwargs['inputParameters']
+        if 'maximumExecutionFrequency' in kwargs:
+            maximum_execution_frequency = kwargs['maximumExecutionFrequency']
+        if 'regionIdsScope' in kwargs:
+            region_ids_scope = kwargs['regionIdsScope']
+        if 'resourceGroupIdsScope' in kwargs:
+            resource_group_ids_scope = kwargs['resourceGroupIdsScope']
+        if 'resourceTypesScopes' in kwargs:
+            resource_types_scopes = kwargs['resourceTypesScopes']
+        if 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if 'sourceIdentifier' in kwargs:
+            source_identifier = kwargs['sourceIdentifier']
+        if 'sourceOwner' in kwargs:
+            source_owner = kwargs['sourceOwner']
+        if 'tagKeyScope' in kwargs:
+            tag_key_scope = kwargs['tagKeyScope']
+        if 'tagValueScope' in kwargs:
+            tag_value_scope = kwargs['tagValueScope']
+
         if aggregate_config_rule_name is not None:
             _setter("aggregate_config_rule_name", aggregate_config_rule_name)
         if aggregator_id is not None:

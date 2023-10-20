@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a DCDN Waf Policy resource.
  *
- * For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/set-the-protection-policies#doc-api-dcdn-CreateDcdnWafPolicy).
+ * For information about DCDN Waf Policy and how to use it, see [What is Waf Policy](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-createdcdnwafpolicy).
  *
  * > **NOTE:** Available since v1.184.0.
  *

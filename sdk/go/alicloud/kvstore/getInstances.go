@@ -67,7 +67,7 @@ type GetInstancesArgs struct {
 	GlobalInstance *bool `pulumi:"globalInstance"`
 	// A list of KVStore DBInstance IDs.
 	Ids []string `pulumi:"ids"`
-	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
 	InstanceClass *string `pulumi:"instanceClass"`
 	// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType *string `pulumi:"instanceType"`
@@ -109,7 +109,7 @@ type GetInstancesResult struct {
 	// A list of KVStore Instance IDs.
 	Ids []string `pulumi:"ids"`
 	// (Optional) Type of the applied ApsaraDB for instance.
-	// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+	// For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
 	InstanceClass *string `pulumi:"instanceClass"`
 	// (Optional) Database type. Valid Values: `Memcache`, `Redis`. If no value is specified, all types are returned.
 	InstanceType *string `pulumi:"instanceType"`
@@ -165,7 +165,7 @@ type GetInstancesOutputArgs struct {
 	GlobalInstance pulumi.BoolPtrInput `pulumi:"globalInstance"`
 	// A list of KVStore DBInstance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+	// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
 	InstanceClass pulumi.StringPtrInput `pulumi:"instanceClass"`
 	// The engine type of the KVStore DBInstance. Options are `Memcache`, and `Redis`. If no value is specified, all types are returned.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
@@ -254,7 +254,7 @@ func (o GetInstancesResultOutput) Ids() pulumi.StringArrayOutput {
 }
 
 // (Optional) Type of the applied ApsaraDB for instance.
-// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+// For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
 func (o GetInstancesResultOutput) InstanceClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstancesResult) *string { return v.InstanceClass }).(pulumi.StringPtrOutput)
 }

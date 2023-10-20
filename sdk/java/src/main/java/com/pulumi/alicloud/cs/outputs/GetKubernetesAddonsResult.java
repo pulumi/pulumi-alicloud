@@ -17,7 +17,7 @@ public final class GetKubernetesAddonsResult {
      * @return A list of addons.
      * 
      */
-    private @Nullable List<GetKubernetesAddonsAddon> addons;
+    private List<GetKubernetesAddonsAddon> addons;
     /**
      * @return The id of kubernetes cluster.
      * 
@@ -42,7 +42,7 @@ public final class GetKubernetesAddonsResult {
      * 
      */
     public List<GetKubernetesAddonsAddon> addons() {
-        return this.addons == null ? List.of() : this.addons;
+        return this.addons;
     }
     /**
      * @return The id of kubernetes cluster.
@@ -81,7 +81,7 @@ public final class GetKubernetesAddonsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable List<GetKubernetesAddonsAddon> addons;
+        private List<GetKubernetesAddonsAddon> addons;
         private String clusterId;
         private String id;
         private List<String> ids;
@@ -99,8 +99,8 @@ public final class GetKubernetesAddonsResult {
         }
 
         @CustomType.Setter
-        public Builder addons(@Nullable List<GetKubernetesAddonsAddon> addons) {
-            this.addons = addons;
+        public Builder addons(List<GetKubernetesAddonsAddon> addons) {
+            this.addons = Objects.requireNonNull(addons);
             return this;
         }
         public Builder addons(GetKubernetesAddonsAddon... addons) {

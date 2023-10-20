@@ -35,7 +35,13 @@ class AclEntryAttachmentArgs:
              acl_id: pulumi.Input[str],
              entry: pulumi.Input[str],
              entry_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if 'entryDescription' in kwargs:
+            entry_description = kwargs['entryDescription']
+
         _setter("acl_id", acl_id)
         _setter("entry", entry)
         if entry_description is not None:
@@ -106,7 +112,13 @@ class _AclEntryAttachmentState:
              entry: Optional[pulumi.Input[str]] = None,
              entry_description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if 'entryDescription' in kwargs:
+            entry_description = kwargs['entryDescription']
+
         if acl_id is not None:
             _setter("acl_id", acl_id)
         if entry is not None:

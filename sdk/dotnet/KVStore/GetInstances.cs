@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        /// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
         /// </summary>
         [Input("instanceClass")]
         public string? InstanceClass { get; set; }
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.KVStore
         }
 
         /// <summary>
-        /// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        /// Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
         /// </summary>
         [Input("instanceClass")]
         public Input<string>? InstanceClass { get; set; }
@@ -382,7 +382,7 @@ namespace Pulumi.AliCloud.KVStore
         public readonly ImmutableArray<string> Ids;
         /// <summary>
         /// (Optional) Type of the applied ApsaraDB for instance.
-        /// For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+        /// For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
         /// </summary>
         public readonly string? InstanceClass;
         /// <summary>

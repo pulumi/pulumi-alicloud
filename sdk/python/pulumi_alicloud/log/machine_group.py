@@ -43,7 +43,13 @@ class MachineGroupArgs:
              identify_type: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'identifyLists' in kwargs:
+            identify_lists = kwargs['identifyLists']
+        if 'identifyType' in kwargs:
+            identify_type = kwargs['identifyType']
+
         _setter("identify_lists", identify_lists)
         _setter("project", project)
         if identify_type is not None:
@@ -146,7 +152,13 @@ class _MachineGroupState:
              name: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
              topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'identifyLists' in kwargs:
+            identify_lists = kwargs['identifyLists']
+        if 'identifyType' in kwargs:
+            identify_type = kwargs['identifyType']
+
         if identify_lists is not None:
             _setter("identify_lists", identify_lists)
         if identify_type is not None:

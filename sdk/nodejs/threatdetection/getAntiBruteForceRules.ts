@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule)
+ * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  */
 export function getAntiBruteForceRules(args?: GetAntiBruteForceRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAntiBruteForceRulesResult> {
     args = args || {};
@@ -64,9 +64,9 @@ export interface GetAntiBruteForceRulesResult {
     readonly rules: outputs.threatdetection.GetAntiBruteForceRulesRule[];
 }
 /**
- * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule)
+ * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  */
 export function getAntiBruteForceRulesOutput(args?: GetAntiBruteForceRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAntiBruteForceRulesResult> {
     return pulumi.output(args).apply((a: any) => getAntiBruteForceRules(a, opts))

@@ -39,7 +39,17 @@ class AutoSnapShotPolicyArgs:
              repeat_weekdays: pulumi.Input[Sequence[pulumi.Input[str]]],
              retention_days: pulumi.Input[int],
              time_points: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'repeatWeekdays' in kwargs:
+            repeat_weekdays = kwargs['repeatWeekdays']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'timePoints' in kwargs:
+            time_points = kwargs['timePoints']
+
         _setter("policy_name", policy_name)
         _setter("repeat_weekdays", repeat_weekdays)
         _setter("retention_days", retention_days)
@@ -146,7 +156,27 @@ class _AutoSnapShotPolicyState:
              status: Optional[pulumi.Input[str]] = None,
              status_detail: Optional[pulumi.Input[str]] = None,
              time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appliedDbfsNumber' in kwargs:
+            applied_dbfs_number = kwargs['appliedDbfsNumber']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'lastModified' in kwargs:
+            last_modified = kwargs['lastModified']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'repeatWeekdays' in kwargs:
+            repeat_weekdays = kwargs['repeatWeekdays']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'statusDetail' in kwargs:
+            status_detail = kwargs['statusDetail']
+        if 'timePoints' in kwargs:
+            time_points = kwargs['timePoints']
+
         if applied_dbfs_number is not None:
             _setter("applied_dbfs_number", applied_dbfs_number)
         if create_time is not None:

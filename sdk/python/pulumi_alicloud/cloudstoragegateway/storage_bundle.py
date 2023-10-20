@@ -31,7 +31,11 @@ class StorageBundleArgs:
              _setter: Callable[[Any, Any], None],
              storage_bundle_name: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'storageBundleName' in kwargs:
+            storage_bundle_name = kwargs['storageBundleName']
+
         _setter("storage_bundle_name", storage_bundle_name)
         if description is not None:
             _setter("description", description)
@@ -81,7 +85,11 @@ class _StorageBundleState:
              _setter: Callable[[Any, Any], None],
              description: Optional[pulumi.Input[str]] = None,
              storage_bundle_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'storageBundleName' in kwargs:
+            storage_bundle_name = kwargs['storageBundleName']
+
         if description is not None:
             _setter("description", description)
         if storage_bundle_name is not None:

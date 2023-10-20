@@ -30,17 +30,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			zone, err := pvtz.NewZone(ctx, "zone", nil)
+//			zone, err := pvtz.NewZone(ctx, "zone", &pvtz.ZoneArgs{
+//				ZoneName: pulumi.String("foo.example.com"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			first, err := vpc.NewNetwork(ctx, "first", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("the-first-vpc"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			second, err := vpc.NewNetwork(ctx, "second", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("the-second-vpc"),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -77,17 +81,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			zone, err := pvtz.NewZone(ctx, "zone", nil)
+//			zone, err := pvtz.NewZone(ctx, "zone", &pvtz.ZoneArgs{
+//				ZoneName: pulumi.String("foo.example.com"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			first, err := vpc.NewNetwork(ctx, "first", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("the-first-vpc"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			second, err := vpc.NewNetwork(ctx, "second", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("the-second-vpc"),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -129,17 +137,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			zone, err := pvtz.NewZone(ctx, "zone", nil)
+//			zone, err := pvtz.NewZone(ctx, "zone", &pvtz.ZoneArgs{
+//				ZoneName: pulumi.String("foo.example.com"),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			first, err := vpc.NewNetwork(ctx, "first", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("the-first-vpc"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			second, err := vpc.NewNetwork(ctx, "second", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("the-second-vpc"),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
@@ -152,6 +164,7 @@ import (
 //				return err
 //			}
 //			third, err := vpc.NewNetwork(ctx, "third", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("the-third-vpc"),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			}, pulumi.Provider(alicloud.Eu))
 //			if err != nil {
@@ -199,7 +212,7 @@ type ZoneAttachment struct {
 	UserClientIp pulumi.StringPtrOutput `pulumi:"userClientIp"`
 	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
 	VpcIds pulumi.StringArrayOutput `pulumi:"vpcIds"`
-	// The List of the VPC:
+	// See `vpcs` below.Recommend to use `vpcs`.
 	Vpcs ZoneAttachmentVpcArrayOutput `pulumi:"vpcs"`
 	// The name of the Private Zone Record.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -244,7 +257,7 @@ type zoneAttachmentState struct {
 	UserClientIp *string `pulumi:"userClientIp"`
 	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
 	VpcIds []string `pulumi:"vpcIds"`
-	// The List of the VPC:
+	// See `vpcs` below.Recommend to use `vpcs`.
 	Vpcs []ZoneAttachmentVpc `pulumi:"vpcs"`
 	// The name of the Private Zone Record.
 	ZoneId *string `pulumi:"zoneId"`
@@ -257,7 +270,7 @@ type ZoneAttachmentState struct {
 	UserClientIp pulumi.StringPtrInput
 	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
 	VpcIds pulumi.StringArrayInput
-	// The List of the VPC:
+	// See `vpcs` below.Recommend to use `vpcs`.
 	Vpcs ZoneAttachmentVpcArrayInput
 	// The name of the Private Zone Record.
 	ZoneId pulumi.StringPtrInput
@@ -274,7 +287,7 @@ type zoneAttachmentArgs struct {
 	UserClientIp *string `pulumi:"userClientIp"`
 	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
 	VpcIds []string `pulumi:"vpcIds"`
-	// The List of the VPC:
+	// See `vpcs` below.Recommend to use `vpcs`.
 	Vpcs []ZoneAttachmentVpc `pulumi:"vpcs"`
 	// The name of the Private Zone Record.
 	ZoneId string `pulumi:"zoneId"`
@@ -288,7 +301,7 @@ type ZoneAttachmentArgs struct {
 	UserClientIp pulumi.StringPtrInput
 	// The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
 	VpcIds pulumi.StringArrayInput
-	// The List of the VPC:
+	// See `vpcs` below.Recommend to use `vpcs`.
 	Vpcs ZoneAttachmentVpcArrayInput
 	// The name of the Private Zone Record.
 	ZoneId pulumi.StringInput
@@ -420,7 +433,7 @@ func (o ZoneAttachmentOutput) VpcIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ZoneAttachment) pulumi.StringArrayOutput { return v.VpcIds }).(pulumi.StringArrayOutput)
 }
 
-// The List of the VPC:
+// See `vpcs` below.Recommend to use `vpcs`.
 func (o ZoneAttachmentOutput) Vpcs() ZoneAttachmentVpcArrayOutput {
 	return o.ApplyT(func(v *ZoneAttachment) ZoneAttachmentVpcArrayOutput { return v.Vpcs }).(ZoneAttachmentVpcArrayOutput)
 }

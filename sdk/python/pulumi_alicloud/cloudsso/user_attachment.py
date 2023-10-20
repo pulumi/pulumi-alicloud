@@ -35,7 +35,15 @@ class UserAttachmentArgs:
              directory_id: pulumi.Input[str],
              group_id: pulumi.Input[str],
              user_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("directory_id", directory_id)
         _setter("group_id", group_id)
         _setter("user_id", user_id)
@@ -101,7 +109,15 @@ class _UserAttachmentState:
              directory_id: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if directory_id is not None:
             _setter("directory_id", directory_id)
         if group_id is not None:

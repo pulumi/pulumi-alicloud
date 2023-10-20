@@ -43,7 +43,19 @@ class ChildInstanceRouteEntryToAttachmentArgs:
              destination_cidr_block: pulumi.Input[str],
              transit_router_attachment_id: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'childInstanceRouteTableId' in kwargs:
+            child_instance_route_table_id = kwargs['childInstanceRouteTableId']
+        if 'destinationCidrBlock' in kwargs:
+            destination_cidr_block = kwargs['destinationCidrBlock']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("cen_id", cen_id)
         _setter("child_instance_route_table_id", child_instance_route_table_id)
         _setter("destination_cidr_block", destination_cidr_block)
@@ -152,7 +164,21 @@ class _ChildInstanceRouteEntryToAttachmentState:
              service_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              transit_router_attachment_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'childInstanceRouteTableId' in kwargs:
+            child_instance_route_table_id = kwargs['childInstanceRouteTableId']
+        if 'destinationCidrBlock' in kwargs:
+            destination_cidr_block = kwargs['destinationCidrBlock']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'serviceType' in kwargs:
+            service_type = kwargs['serviceType']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+
         if cen_id is not None:
             _setter("cen_id", cen_id)
         if child_instance_route_table_id is not None:
@@ -267,7 +293,7 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
         """
         Provides a Cen Child Instance Route Entry To Attachment resource.
 
-        For information about Cen Child Instance Route Entry To Attachment and how to use it, see [What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment).
+        For information about Cen Child Instance Route Entry To Attachment and how to use it, see [What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment).
 
         > **NOTE:** Available since v1.195.0.
 
@@ -357,7 +383,7 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
         """
         Provides a Cen Child Instance Route Entry To Attachment resource.
 
-        For information about Cen Child Instance Route Entry To Attachment and how to use it, see [What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenchildinstancerouteentrytoattachment).
+        For information about Cen Child Instance Route Entry To Attachment and how to use it, see [What is Child Instance Route Entry To Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createcenchildinstancerouteentrytoattachment).
 
         > **NOTE:** Available since v1.195.0.
 

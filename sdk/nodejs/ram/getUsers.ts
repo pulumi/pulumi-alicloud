@@ -17,14 +17,55 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const usersDs = alicloud.ram.getUsers({
- *     outputFile: "users.txt",
- *     groupName: "group1",
- *     policyName: "AliyunACSDefaultAccess",
- *     policyType: "Custom",
- *     nameRegex: "^user",
+ * const defaultGroup = new alicloud.ram.Group("defaultGroup", {
+ *     comments: "group comments",
+ *     force: true,
  * });
- * export const firstUserId = usersDs.then(usersDs => usersDs.users?.[0]?.id);
+ * const defaultUser = new alicloud.ram.User("defaultUser", {
+ *     displayName: "displayname",
+ *     mobile: "86-18888888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
+ * });
+ * const defaultGroupMembership = new alicloud.ram.GroupMembership("defaultGroupMembership", {
+ *     groupName: defaultGroup.name,
+ *     userNames: [defaultUser.name],
+ * });
+ * const defaultPolicy = new alicloud.ram.Policy("defaultPolicy", {
+ *     policyName: "ram-policy-example",
+ *     policyDocument: `			{
+ * 				"Statement": [
+ * 				 {
+ * 					"Action": [
+ * 					"oss:ListObjects",
+ * 					"oss:ListObjects"
+ * 			  		],
+ * 			  		"Effect": "Deny",
+ * 			  		"Resource": [
+ * 						"acs:oss:*:*:mybucket",
+ * 						"acs:oss:*:*:mybucket/*"
+ * 			  		]
+ * 				 }
+ * 		  		],
+ * 				"Version": "1"
+ * 			}
+ * `,
+ *     description: "this is a policy example",
+ *     force: true,
+ * });
+ * const defaultUserPolicyAttachment = new alicloud.ram.UserPolicyAttachment("defaultUserPolicyAttachment", {
+ *     policyName: defaultPolicy.policyName,
+ *     userName: defaultUser.name,
+ *     policyType: defaultPolicy.type,
+ * });
+ * const usersDs = alicloud.ram.getUsersOutput({
+ *     outputFile: "users.txt",
+ *     groupName: defaultGroup.name,
+ *     policyName: defaultPolicy.policyName,
+ *     policyType: "Custom",
+ *     nameRegex: defaultUser.name,
+ * });
+ * export const firstUserId = usersDs.apply(usersDs => usersDs.users?.[0]?.id);
  * ```
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
@@ -108,14 +149,55 @@ export interface GetUsersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const usersDs = alicloud.ram.getUsers({
- *     outputFile: "users.txt",
- *     groupName: "group1",
- *     policyName: "AliyunACSDefaultAccess",
- *     policyType: "Custom",
- *     nameRegex: "^user",
+ * const defaultGroup = new alicloud.ram.Group("defaultGroup", {
+ *     comments: "group comments",
+ *     force: true,
  * });
- * export const firstUserId = usersDs.then(usersDs => usersDs.users?.[0]?.id);
+ * const defaultUser = new alicloud.ram.User("defaultUser", {
+ *     displayName: "displayname",
+ *     mobile: "86-18888888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
+ * });
+ * const defaultGroupMembership = new alicloud.ram.GroupMembership("defaultGroupMembership", {
+ *     groupName: defaultGroup.name,
+ *     userNames: [defaultUser.name],
+ * });
+ * const defaultPolicy = new alicloud.ram.Policy("defaultPolicy", {
+ *     policyName: "ram-policy-example",
+ *     policyDocument: `			{
+ * 				"Statement": [
+ * 				 {
+ * 					"Action": [
+ * 					"oss:ListObjects",
+ * 					"oss:ListObjects"
+ * 			  		],
+ * 			  		"Effect": "Deny",
+ * 			  		"Resource": [
+ * 						"acs:oss:*:*:mybucket",
+ * 						"acs:oss:*:*:mybucket/*"
+ * 			  		]
+ * 				 }
+ * 		  		],
+ * 				"Version": "1"
+ * 			}
+ * `,
+ *     description: "this is a policy example",
+ *     force: true,
+ * });
+ * const defaultUserPolicyAttachment = new alicloud.ram.UserPolicyAttachment("defaultUserPolicyAttachment", {
+ *     policyName: defaultPolicy.policyName,
+ *     userName: defaultUser.name,
+ *     policyType: defaultPolicy.type,
+ * });
+ * const usersDs = alicloud.ram.getUsersOutput({
+ *     outputFile: "users.txt",
+ *     groupName: defaultGroup.name,
+ *     policyName: defaultPolicy.policyName,
+ *     policyType: "Custom",
+ *     nameRegex: defaultUser.name,
+ * });
+ * export const firstUserId = usersDs.apply(usersDs => usersDs.users?.[0]?.id);
  * ```
  */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {

@@ -43,7 +43,17 @@ class AccessRuleArgs:
              priority: Optional[pulumi.Input[int]] = None,
              rw_access_type: Optional[pulumi.Input[str]] = None,
              user_access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupName' in kwargs:
+            access_group_name = kwargs['accessGroupName']
+        if 'sourceCidrIp' in kwargs:
+            source_cidr_ip = kwargs['sourceCidrIp']
+        if 'rwAccessType' in kwargs:
+            rw_access_type = kwargs['rwAccessType']
+        if 'userAccessType' in kwargs:
+            user_access_type = kwargs['userAccessType']
+
         _setter("access_group_name", access_group_name)
         _setter("source_cidr_ip", source_cidr_ip)
         if priority is not None:
@@ -150,7 +160,19 @@ class _AccessRuleState:
              rw_access_type: Optional[pulumi.Input[str]] = None,
              source_cidr_ip: Optional[pulumi.Input[str]] = None,
              user_access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupName' in kwargs:
+            access_group_name = kwargs['accessGroupName']
+        if 'accessRuleId' in kwargs:
+            access_rule_id = kwargs['accessRuleId']
+        if 'rwAccessType' in kwargs:
+            rw_access_type = kwargs['rwAccessType']
+        if 'sourceCidrIp' in kwargs:
+            source_cidr_ip = kwargs['sourceCidrIp']
+        if 'userAccessType' in kwargs:
+            user_access_type = kwargs['userAccessType']
+
         if access_group_name is not None:
             _setter("access_group_name", access_group_name)
         if access_rule_id is not None:

@@ -43,7 +43,17 @@ class ReplicationVaultArgs:
              vault_name: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              vault_storage_class: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'replicationSourceRegionId' in kwargs:
+            replication_source_region_id = kwargs['replicationSourceRegionId']
+        if 'replicationSourceVaultId' in kwargs:
+            replication_source_vault_id = kwargs['replicationSourceVaultId']
+        if 'vaultName' in kwargs:
+            vault_name = kwargs['vaultName']
+        if 'vaultStorageClass' in kwargs:
+            vault_storage_class = kwargs['vaultStorageClass']
+
         _setter("replication_source_region_id", replication_source_region_id)
         _setter("replication_source_vault_id", replication_source_vault_id)
         _setter("vault_name", vault_name)
@@ -149,7 +159,17 @@ class _ReplicationVaultState:
              status: Optional[pulumi.Input[str]] = None,
              vault_name: Optional[pulumi.Input[str]] = None,
              vault_storage_class: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'replicationSourceRegionId' in kwargs:
+            replication_source_region_id = kwargs['replicationSourceRegionId']
+        if 'replicationSourceVaultId' in kwargs:
+            replication_source_vault_id = kwargs['replicationSourceVaultId']
+        if 'vaultName' in kwargs:
+            vault_name = kwargs['vaultName']
+        if 'vaultStorageClass' in kwargs:
+            vault_storage_class = kwargs['vaultStorageClass']
+
         if description is not None:
             _setter("description", description)
         if replication_source_region_id is not None:

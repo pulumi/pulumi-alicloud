@@ -43,7 +43,17 @@ class VbrHaArgs:
              description: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              vbr_ha_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'peerVbrId' in kwargs:
+            peer_vbr_id = kwargs['peerVbrId']
+        if 'vbrId' in kwargs:
+            vbr_id = kwargs['vbrId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'vbrHaName' in kwargs:
+            vbr_ha_name = kwargs['vbrHaName']
+
         _setter("peer_vbr_id", peer_vbr_id)
         _setter("vbr_id", vbr_id)
         if description is not None:
@@ -150,7 +160,17 @@ class _VbrHaState:
              status: Optional[pulumi.Input[str]] = None,
              vbr_ha_name: Optional[pulumi.Input[str]] = None,
              vbr_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'peerVbrId' in kwargs:
+            peer_vbr_id = kwargs['peerVbrId']
+        if 'vbrHaName' in kwargs:
+            vbr_ha_name = kwargs['vbrHaName']
+        if 'vbrId' in kwargs:
+            vbr_id = kwargs['vbrId']
+
         if description is not None:
             _setter("description", description)
         if dry_run is not None:

@@ -18,16 +18,12 @@ public final class ZoneAttachmentVpcArgs extends com.pulumi.resources.ResourceAr
     /**
      * The region of the vpc. If not set, the current region will instead of.
      * 
-     * Recommend to use `vpcs`.
-     * 
      */
     @Import(name="regionId")
     private @Nullable Output<String> regionId;
 
     /**
      * @return The region of the vpc. If not set, the current region will instead of.
-     * 
-     * Recommend to use `vpcs`.
      * 
      */
     public Optional<Output<String>> regionId() {
@@ -77,8 +73,6 @@ public final class ZoneAttachmentVpcArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param regionId The region of the vpc. If not set, the current region will instead of.
          * 
-         * Recommend to use `vpcs`.
-         * 
          * @return builder
          * 
          */
@@ -89,8 +83,6 @@ public final class ZoneAttachmentVpcArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param regionId The region of the vpc. If not set, the current region will instead of.
-         * 
-         * Recommend to use `vpcs`.
          * 
          * @return builder
          * 

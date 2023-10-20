@@ -82,7 +82,29 @@ class GetMongoInstancesInstanceResult(dict):
              status: str,
              storage: int,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("availability_zone", availability_zone)
         _setter("charge_type", charge_type)
         _setter("creation_time", creation_time)
@@ -217,7 +239,13 @@ class GetMongoInstancesInstanceMongoResult(dict):
              class_: str,
              description: str,
              node_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'class' in kwargs:
+            class_ = kwargs['class']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         _setter("class_", class_)
         _setter("description", description)
         _setter("node_id", node_id)
@@ -259,7 +287,13 @@ class GetMongoInstancesInstanceShardResult(dict):
              description: str,
              node_id: str,
              storage: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'class' in kwargs:
+            class_ = kwargs['class']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         _setter("class_", class_)
         _setter("description", description)
         _setter("node_id", node_id)

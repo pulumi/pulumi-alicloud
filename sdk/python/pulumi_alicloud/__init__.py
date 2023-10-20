@@ -2506,6 +2506,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "drds/polardbxInstance",
+  "fqn": "pulumi_alicloud.drds",
+  "classes": {
+   "alicloud:drds/polardbxInstance:PolardbxInstance": "PolardbxInstance"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "dts/consumerChannel",
   "fqn": "pulumi_alicloud.dts",
   "classes": {

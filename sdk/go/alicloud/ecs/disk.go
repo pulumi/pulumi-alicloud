@@ -96,7 +96,7 @@ type Disk struct {
 	PerformanceLevel pulumi.StringOutput `pulumi:"performanceLevel"`
 	// The Id of resource group which the disk belongs.
 	// > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
@@ -524,8 +524,8 @@ func (o DiskOutput) PerformanceLevel() pulumi.StringOutput {
 
 // The Id of resource group which the disk belongs.
 // > **NOTE:** Disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-func (o DiskOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+func (o DiskOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.

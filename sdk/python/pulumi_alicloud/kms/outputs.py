@@ -68,7 +68,17 @@ class InstanceBindVpc(dict):
              vpc_id: Optional[str] = None,
              vpc_owner_id: Optional[int] = None,
              vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vpcOwnerId' in kwargs:
+            vpc_owner_id = kwargs['vpcOwnerId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if region_id is not None:
             _setter("region_id", region_id)
         if vpc_id is not None:
@@ -134,7 +144,13 @@ class GetAliasesAliasResult(dict):
              alias_name: str,
              id: str,
              key_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aliasName' in kwargs:
+            alias_name = kwargs['aliasName']
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+
         _setter("alias_name", alias_name)
         _setter("id", id)
         _setter("key_id", key_id)
@@ -195,7 +211,17 @@ class GetKeyVersionsVersionResult(dict):
              id: str,
              key_id: str,
              key_version_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'creationDate' in kwargs:
+            creation_date = kwargs['creationDate']
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if 'keyVersionId' in kwargs:
+            key_version_id = kwargs['keyVersionId']
+
         _setter("create_time", create_time)
         _setter("creation_date", creation_date)
         _setter("id", id)
@@ -326,7 +352,33 @@ class GetKeysKeyResult(dict):
              protection_level: str,
              rotation_interval: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'automaticRotation' in kwargs:
+            automatic_rotation = kwargs['automaticRotation']
+        if 'creationDate' in kwargs:
+            creation_date = kwargs['creationDate']
+        if 'deleteDate' in kwargs:
+            delete_date = kwargs['deleteDate']
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if 'keySpec' in kwargs:
+            key_spec = kwargs['keySpec']
+        if 'keyUsage' in kwargs:
+            key_usage = kwargs['keyUsage']
+        if 'lastRotationDate' in kwargs:
+            last_rotation_date = kwargs['lastRotationDate']
+        if 'materialExpireTime' in kwargs:
+            material_expire_time = kwargs['materialExpireTime']
+        if 'nextRotationDate' in kwargs:
+            next_rotation_date = kwargs['nextRotationDate']
+        if 'primaryKeyVersion' in kwargs:
+            primary_key_version = kwargs['primaryKeyVersion']
+        if 'protectionLevel' in kwargs:
+            protection_level = kwargs['protectionLevel']
+        if 'rotationInterval' in kwargs:
+            rotation_interval = kwargs['rotationInterval']
+
         _setter("arn", arn)
         _setter("automatic_rotation", automatic_rotation)
         _setter("creation_date", creation_date)
@@ -522,7 +574,19 @@ class GetSecretVersionsVersionResult(dict):
              secret_name: str,
              version_id: str,
              version_stages: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'secretData' in kwargs:
+            secret_data = kwargs['secretData']
+        if 'secretDataType' in kwargs:
+            secret_data_type = kwargs['secretDataType']
+        if 'secretName' in kwargs:
+            secret_name = kwargs['secretName']
+        if 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if 'versionStages' in kwargs:
+            version_stages = kwargs['versionStages']
+
         _setter("secret_data", secret_data)
         _setter("secret_data_type", secret_data_type)
         _setter("secret_name", secret_name)
@@ -629,7 +693,25 @@ class GetSecretsSecretResult(dict):
              tags: Mapping[str, Any],
              version_id: str,
              version_stages: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encryptionKeyId' in kwargs:
+            encryption_key_id = kwargs['encryptionKeyId']
+        if 'plannedDeleteTime' in kwargs:
+            planned_delete_time = kwargs['plannedDeleteTime']
+        if 'secretData' in kwargs:
+            secret_data = kwargs['secretData']
+        if 'secretDataType' in kwargs:
+            secret_data_type = kwargs['secretDataType']
+        if 'secretName' in kwargs:
+            secret_name = kwargs['secretName']
+        if 'secretType' in kwargs:
+            secret_type = kwargs['secretType']
+        if 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+        if 'versionStages' in kwargs:
+            version_stages = kwargs['versionStages']
+
         _setter("arn", arn)
         _setter("description", description)
         _setter("encryption_key_id", encryption_key_id)

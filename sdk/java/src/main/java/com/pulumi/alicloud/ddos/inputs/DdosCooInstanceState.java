@@ -107,7 +107,7 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+     * The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
      * - ddoscoo: Only supports domestic account.
      * - ddoscoo_intl: Only supports to international account.
      *   Default to ddoscoo.
@@ -117,7 +117,7 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<String> productType;
 
     /**
-     * @return The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+     * @return The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
      * - ddoscoo: Only supports domestic account.
      * - ddoscoo_intl: Only supports to international account.
      *   Default to ddoscoo.
@@ -300,7 +300,7 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param productType The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+         * @param productType The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
          * - ddoscoo: Only supports domestic account.
          * - ddoscoo_intl: Only supports to international account.
          *   Default to ddoscoo.
@@ -314,7 +314,7 @@ public final class DdosCooInstanceState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param productType The product type for purchasing DDOSCOO instances used to differ different account type. Valid values:
+         * @param productType The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
          * - ddoscoo: Only supports domestic account.
          * - ddoscoo_intl: Only supports to international account.
          *   Default to ddoscoo.

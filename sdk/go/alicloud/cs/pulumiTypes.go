@@ -5263,7 +5263,7 @@ type NodePoolKubeletConfiguration struct {
 	KubeApiBurst *string `pulumi:"kubeApiBurst"`
 	// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
 	KubeApiQps *string `pulumi:"kubeApiQps"`
-	// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+	// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 	KubeReserved map[string]interface{} `pulumi:"kubeReserved"`
 	// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
 	RegistryBurst *string `pulumi:"registryBurst"`
@@ -5271,7 +5271,7 @@ type NodePoolKubeletConfiguration struct {
 	RegistryPullQps *string `pulumi:"registryPullQps"`
 	// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
 	SerializeImagePulls *string `pulumi:"serializeImagePulls"`
-	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 	SystemReserved map[string]interface{} `pulumi:"systemReserved"`
 }
 
@@ -5303,7 +5303,7 @@ type NodePoolKubeletConfigurationArgs struct {
 	KubeApiBurst pulumi.StringPtrInput `pulumi:"kubeApiBurst"`
 	// Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
 	KubeApiQps pulumi.StringPtrInput `pulumi:"kubeApiQps"`
-	// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+	// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 	KubeReserved pulumi.MapInput `pulumi:"kubeReserved"`
 	// Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registryPullQps`. Only used if `registryPullQps` is greater than 0. Valid value is `[0-100]`.
 	RegistryBurst pulumi.StringPtrInput `pulumi:"registryBurst"`
@@ -5311,7 +5311,7 @@ type NodePoolKubeletConfigurationArgs struct {
 	RegistryPullQps pulumi.StringPtrInput `pulumi:"registryPullQps"`
 	// Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
 	SerializeImagePulls pulumi.StringPtrInput `pulumi:"serializeImagePulls"`
-	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+	// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 	SystemReserved pulumi.MapInput `pulumi:"systemReserved"`
 }
 
@@ -5450,7 +5450,7 @@ func (o NodePoolKubeletConfigurationOutput) KubeApiQps() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.KubeApiQps }).(pulumi.StringPtrOutput)
 }
 
-// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 func (o NodePoolKubeletConfigurationOutput) KubeReserved() pulumi.MapOutput {
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.KubeReserved }).(pulumi.MapOutput)
 }
@@ -5470,7 +5470,7 @@ func (o NodePoolKubeletConfigurationOutput) SerializeImagePulls() pulumi.StringP
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) *string { return v.SerializeImagePulls }).(pulumi.StringPtrOutput)
 }
 
-// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 func (o NodePoolKubeletConfigurationOutput) SystemReserved() pulumi.MapOutput {
 	return o.ApplyT(func(v NodePoolKubeletConfiguration) map[string]interface{} { return v.SystemReserved }).(pulumi.MapOutput)
 }
@@ -5585,7 +5585,7 @@ func (o NodePoolKubeletConfigurationPtrOutput) KubeApiQps() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+// Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 func (o NodePoolKubeletConfigurationPtrOutput) KubeReserved() pulumi.MapOutput {
 	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]interface{} {
 		if v == nil {
@@ -5625,7 +5625,7 @@ func (o NodePoolKubeletConfigurationPtrOutput) SerializeImagePulls() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+// Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
 func (o NodePoolKubeletConfigurationPtrOutput) SystemReserved() pulumi.MapOutput {
 	return o.ApplyT(func(v *NodePoolKubeletConfiguration) map[string]interface{} {
 		if v == nil {

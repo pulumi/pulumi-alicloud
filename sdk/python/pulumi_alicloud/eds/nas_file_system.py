@@ -47,7 +47,17 @@ class NasFileSystemArgs:
              mount_target_domain: Optional[pulumi.Input[str]] = None,
              nas_file_system_name: Optional[pulumi.Input[str]] = None,
              reset: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'mountTargetDomain' in kwargs:
+            mount_target_domain = kwargs['mountTargetDomain']
+        if 'nasFileSystemName' in kwargs:
+            nas_file_system_name = kwargs['nasFileSystemName']
+
         _setter("office_site_id", office_site_id)
         if description is not None:
             _setter("description", description)
@@ -173,7 +183,17 @@ class _NasFileSystemState:
              office_site_id: Optional[pulumi.Input[str]] = None,
              reset: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'mountTargetDomain' in kwargs:
+            mount_target_domain = kwargs['mountTargetDomain']
+        if 'nasFileSystemName' in kwargs:
+            nas_file_system_name = kwargs['nasFileSystemName']
+        if 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+
         if description is not None:
             _setter("description", description)
         if file_system_id is not None:

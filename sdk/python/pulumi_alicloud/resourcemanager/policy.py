@@ -39,7 +39,15 @@ class PolicyArgs:
              policy_name: pulumi.Input[str],
              default_version: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'defaultVersion' in kwargs:
+            default_version = kwargs['defaultVersion']
+
         _setter("policy_document", policy_document)
         _setter("policy_name", policy_name)
         if default_version is not None:
@@ -134,7 +142,17 @@ class _PolicyState:
              policy_document: Optional[pulumi.Input[str]] = None,
              policy_name: Optional[pulumi.Input[str]] = None,
              policy_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultVersion' in kwargs:
+            default_version = kwargs['defaultVersion']
+        if 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+
         if default_version is not None:
             warnings.warn("""Field 'default_version' has been deprecated from provider version 1.90.0""", DeprecationWarning)
             pulumi.log.warn("""default_version is deprecated: Field 'default_version' has been deprecated from provider version 1.90.0""")

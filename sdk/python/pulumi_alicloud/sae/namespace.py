@@ -43,7 +43,19 @@ class NamespaceArgs:
              namespace_description: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
              namespace_short_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+        if 'enableMicroRegistration' in kwargs:
+            enable_micro_registration = kwargs['enableMicroRegistration']
+        if 'namespaceDescription' in kwargs:
+            namespace_description = kwargs['namespaceDescription']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'namespaceShortId' in kwargs:
+            namespace_short_id = kwargs['namespaceShortId']
+
         _setter("namespace_name", namespace_name)
         if enable_micro_registration is not None:
             _setter("enable_micro_registration", enable_micro_registration)
@@ -147,7 +159,19 @@ class _NamespaceState:
              namespace_id: Optional[pulumi.Input[str]] = None,
              namespace_name: Optional[pulumi.Input[str]] = None,
              namespace_short_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enableMicroRegistration' in kwargs:
+            enable_micro_registration = kwargs['enableMicroRegistration']
+        if 'namespaceDescription' in kwargs:
+            namespace_description = kwargs['namespaceDescription']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+        if 'namespaceShortId' in kwargs:
+            namespace_short_id = kwargs['namespaceShortId']
+
         if enable_micro_registration is not None:
             _setter("enable_micro_registration", enable_micro_registration)
         if namespace_description is not None:

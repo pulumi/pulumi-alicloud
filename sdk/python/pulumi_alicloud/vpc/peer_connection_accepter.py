@@ -31,7 +31,13 @@ class PeerConnectionAccepterArgs:
              _setter: Callable[[Any, Any], None],
              instance_id: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("instance_id", instance_id)
         if dry_run is not None:
             _setter("dry_run", dry_run)
@@ -113,7 +119,23 @@ class _PeerConnectionAccepterState:
              peer_connection_accepter_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceptingOwnerUid' in kwargs:
+            accepting_owner_uid = kwargs['acceptingOwnerUid']
+        if 'acceptingRegionId' in kwargs:
+            accepting_region_id = kwargs['acceptingRegionId']
+        if 'acceptingVpcId' in kwargs:
+            accepting_vpc_id = kwargs['acceptingVpcId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'peerConnectionAccepterName' in kwargs:
+            peer_connection_accepter_name = kwargs['peerConnectionAccepterName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if accepting_owner_uid is not None:
             _setter("accepting_owner_uid", accepting_owner_uid)
         if accepting_region_id is not None:

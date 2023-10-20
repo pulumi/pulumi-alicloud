@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Arms
     /// <summary>
     /// Provides a Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule resource.
     /// 
-    /// For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://www.alibabacloud.com/help/en/doc-detail/203146.htm).
+    /// For information about Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule and how to use it, see [What is Alert Dispatch_Rule](https://next.api.alibabacloud.com/document/ARMS/2019-08-08/CreateDispatchRule).
     /// 
     /// &gt; **NOTE:** Available since v1.136.0.
     /// 

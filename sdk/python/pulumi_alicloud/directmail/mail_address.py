@@ -39,7 +39,13 @@ class MailAddressArgs:
              sendtype: pulumi.Input[str],
              password: Optional[pulumi.Input[str]] = None,
              reply_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'replyAddress' in kwargs:
+            reply_address = kwargs['replyAddress']
+
         _setter("account_name", account_name)
         _setter("sendtype", sendtype)
         if password is not None:
@@ -128,7 +134,13 @@ class _MailAddressState:
              reply_address: Optional[pulumi.Input[str]] = None,
              sendtype: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'replyAddress' in kwargs:
+            reply_address = kwargs['replyAddress']
+
         if account_name is not None:
             _setter("account_name", account_name)
         if password is not None:

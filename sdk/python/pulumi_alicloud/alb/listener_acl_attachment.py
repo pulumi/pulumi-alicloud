@@ -37,7 +37,15 @@ class ListenerAclAttachmentArgs:
              acl_id: pulumi.Input[str],
              acl_type: pulumi.Input[str],
              listener_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if 'aclType' in kwargs:
+            acl_type = kwargs['aclType']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+
         _setter("acl_id", acl_id)
         _setter("acl_type", acl_type)
         _setter("listener_id", listener_id)
@@ -111,7 +119,15 @@ class _ListenerAclAttachmentState:
              acl_type: Optional[pulumi.Input[str]] = None,
              listener_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if 'aclType' in kwargs:
+            acl_type = kwargs['aclType']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+
         if acl_id is not None:
             _setter("acl_id", acl_id)
         if acl_type is not None:
@@ -184,7 +200,7 @@ class ListenerAclAttachment(pulumi.CustomResource):
         """
         Provides a ALB Listener Acl Attachment resource. Associating ACL to listening.
 
-        For information about ALB Listener Acl Attachment and how to use it, see [What is Listener Acl Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/associateaclswithlistener).
+        For information about ALB Listener Acl Attachment and how to use it, see [What is Listener Acl Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-associateaclswithlistener).
 
         > **NOTE:** Available since v1.163.0.
 
@@ -217,7 +233,7 @@ class ListenerAclAttachment(pulumi.CustomResource):
         """
         Provides a ALB Listener Acl Attachment resource. Associating ACL to listening.
 
-        For information about ALB Listener Acl Attachment and how to use it, see [What is Listener Acl Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/associateaclswithlistener).
+        For information about ALB Listener Acl Attachment and how to use it, see [What is Listener Acl Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-associateaclswithlistener).
 
         > **NOTE:** Available since v1.163.0.
 

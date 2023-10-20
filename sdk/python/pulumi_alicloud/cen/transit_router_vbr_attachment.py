@@ -73,7 +73,31 @@ class TransitRouterVbrAttachmentArgs:
              transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
              transit_router_id: Optional[pulumi.Input[str]] = None,
              vbr_owner_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'vbrId' in kwargs:
+            vbr_id = kwargs['vbrId']
+        if 'autoPublishRouteEnabled' in kwargs:
+            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'routeTableAssociationEnabled' in kwargs:
+            route_table_association_enabled = kwargs['routeTableAssociationEnabled']
+        if 'routeTablePropagationEnabled' in kwargs:
+            route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
+        if 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'vbrOwnerId' in kwargs:
+            vbr_owner_id = kwargs['vbrOwnerId']
+
         _setter("cen_id", cen_id)
         _setter("vbr_id", vbr_id)
         if auto_publish_route_enabled is not None:
@@ -314,7 +338,33 @@ class _TransitRouterVbrAttachmentState:
              transit_router_id: Optional[pulumi.Input[str]] = None,
              vbr_id: Optional[pulumi.Input[str]] = None,
              vbr_owner_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPublishRouteEnabled' in kwargs:
+            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'routeTableAssociationEnabled' in kwargs:
+            route_table_association_enabled = kwargs['routeTableAssociationEnabled']
+        if 'routeTablePropagationEnabled' in kwargs:
+            route_table_propagation_enabled = kwargs['routeTablePropagationEnabled']
+        if 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if 'transitRouterAttachmentId' in kwargs:
+            transit_router_attachment_id = kwargs['transitRouterAttachmentId']
+        if 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'vbrId' in kwargs:
+            vbr_id = kwargs['vbrId']
+        if 'vbrOwnerId' in kwargs:
+            vbr_owner_id = kwargs['vbrOwnerId']
+
         if auto_publish_route_enabled is not None:
             _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         if cen_id is not None:
@@ -534,7 +584,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
                  vbr_owner_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervbrattachment)
+        Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -545,39 +595,32 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        default_instance = alicloud.cen.Instance("defaultInstance",
             cen_instance_name=name,
             protection_level="REDUCED")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name=name,
-            cen_id=example_instance.id)
+        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
         name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("defaultVirtualBorderRouter",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=name_regex.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id.id,
+            vlan_id=2420,
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
-        example_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("exampleTransitRouterVbrAttachment",
-            vbr_id=example_virtual_border_router.id,
-            cen_id=example_instance.id,
-            transit_router_id=example_transit_router.transit_router_id,
-            auto_publish_route_enabled=True,
-            transit_router_attachment_name=name,
-            transit_router_attachment_description=name)
+        default_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment",
+            transit_router_id=default_transit_router.transit_router_id,
+            transit_router_attachment_name="example",
+            transit_router_attachment_description="example",
+            vbr_id=default_virtual_border_router.id,
+            cen_id=default_instance.id)
         ```
 
         ## Import
@@ -612,7 +655,7 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
                  args: TransitRouterVbrAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervbrattachment)
+        Provides a CEN transit router VBR attachment resource that associate the VBR with the CEN instance.[What is Cen Transit Router VBR Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervbrattachment)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -623,39 +666,32 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
-        import pulumi_random as random
 
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        default_instance = alicloud.cen.Instance("defaultInstance",
             cen_instance_name=name,
             protection_level="REDUCED")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
-            transit_router_name=name,
-            cen_id=example_instance.id)
+        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter", cen_id=default_instance.id)
         name_regex = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
-        vlan_id = random.RandomInteger("vlanId",
-            max=2999,
-            min=1)
-        example_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter",
+        default_virtual_border_router = alicloud.expressconnect.VirtualBorderRouter("defaultVirtualBorderRouter",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=name_regex.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id.id,
+            vlan_id=2420,
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
-        example_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("exampleTransitRouterVbrAttachment",
-            vbr_id=example_virtual_border_router.id,
-            cen_id=example_instance.id,
-            transit_router_id=example_transit_router.transit_router_id,
-            auto_publish_route_enabled=True,
-            transit_router_attachment_name=name,
-            transit_router_attachment_description=name)
+        default_transit_router_vbr_attachment = alicloud.cen.TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment",
+            transit_router_id=default_transit_router.transit_router_id,
+            transit_router_attachment_name="example",
+            transit_router_attachment_description="example",
+            vbr_id=default_virtual_border_router.id,
+            cen_id=default_instance.id)
         ```
 
         ## Import

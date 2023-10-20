@@ -31,7 +31,13 @@ class SnapshotArgs:
              _setter: Callable[[Any, Any], None],
              disk_id: pulumi.Input[str],
              snapshot_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+
         _setter("disk_id", disk_id)
         _setter("snapshot_name", snapshot_name)
 
@@ -84,7 +90,13 @@ class _SnapshotState:
              disk_id: Optional[pulumi.Input[str]] = None,
              snapshot_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+
         if disk_id is not None:
             _setter("disk_id", disk_id)
         if snapshot_name is not None:

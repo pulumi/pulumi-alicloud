@@ -61,7 +61,19 @@ class DomainNewArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              scope: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cdnType' in kwargs:
+            cdn_type = kwargs['cdnType']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'certificateConfig' in kwargs:
+            certificate_config = kwargs['certificateConfig']
+        if 'checkUrl' in kwargs:
+            check_url = kwargs['checkUrl']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("cdn_type", cdn_type)
         _setter("domain_name", domain_name)
         _setter("sources", sources)
@@ -233,7 +245,19 @@ class _DomainNewState:
              sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cdnType' in kwargs:
+            cdn_type = kwargs['cdnType']
+        if 'certificateConfig' in kwargs:
+            certificate_config = kwargs['certificateConfig']
+        if 'checkUrl' in kwargs:
+            check_url = kwargs['checkUrl']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if cdn_type is not None:
             _setter("cdn_type", cdn_type)
         if certificate_config is not None:

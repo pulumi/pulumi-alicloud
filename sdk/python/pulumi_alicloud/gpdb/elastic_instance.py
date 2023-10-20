@@ -99,7 +99,41 @@ class ElasticInstanceArgs:
              security_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'instanceSpec' in kwargs:
+            instance_spec = kwargs['instanceSpec']
+        if 'segNodeNum' in kwargs:
+            seg_node_num = kwargs['segNodeNum']
+        if 'segStorageType' in kwargs:
+            seg_storage_type = kwargs['segStorageType']
+        if 'storageSize' in kwargs:
+            storage_size = kwargs['storageSize']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'dbInstanceCategory' in kwargs:
+            db_instance_category = kwargs['dbInstanceCategory']
+        if 'dbInstanceDescription' in kwargs:
+            db_instance_description = kwargs['dbInstanceDescription']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'instanceNetworkType' in kwargs:
+            instance_network_type = kwargs['instanceNetworkType']
+        if 'paymentDuration' in kwargs:
+            payment_duration = kwargs['paymentDuration']
+        if 'paymentDurationUnit' in kwargs:
+            payment_duration_unit = kwargs['paymentDurationUnit']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'securityIpLists' in kwargs:
+            security_ip_lists = kwargs['securityIpLists']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("engine", engine)
         _setter("engine_version", engine_version)
         _setter("instance_spec", instance_spec)
@@ -451,7 +485,43 @@ class _ElasticInstanceState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'dbInstanceCategory' in kwargs:
+            db_instance_category = kwargs['dbInstanceCategory']
+        if 'dbInstanceDescription' in kwargs:
+            db_instance_description = kwargs['dbInstanceDescription']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'encryptionType' in kwargs:
+            encryption_type = kwargs['encryptionType']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'instanceNetworkType' in kwargs:
+            instance_network_type = kwargs['instanceNetworkType']
+        if 'instanceSpec' in kwargs:
+            instance_spec = kwargs['instanceSpec']
+        if 'paymentDuration' in kwargs:
+            payment_duration = kwargs['paymentDuration']
+        if 'paymentDurationUnit' in kwargs:
+            payment_duration_unit = kwargs['paymentDurationUnit']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'securityIpLists' in kwargs:
+            security_ip_lists = kwargs['securityIpLists']
+        if 'segNodeNum' in kwargs:
+            seg_node_num = kwargs['segNodeNum']
+        if 'segStorageType' in kwargs:
+            seg_storage_type = kwargs['segStorageType']
+        if 'storageSize' in kwargs:
+            storage_size = kwargs['storageSize']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if connection_string is not None:
             _setter("connection_string", connection_string)
         if db_instance_category is not None:

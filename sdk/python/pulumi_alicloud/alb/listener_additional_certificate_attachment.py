@@ -31,7 +31,13 @@ class ListenerAdditionalCertificateAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              certificate_id: pulumi.Input[str],
              listener_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+
         _setter("certificate_id", certificate_id)
         _setter("listener_id", listener_id)
 
@@ -88,7 +94,15 @@ class _ListenerAdditionalCertificateAttachmentState:
              certificate_type: Optional[pulumi.Input[str]] = None,
              listener_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if 'certificateType' in kwargs:
+            certificate_type = kwargs['certificateType']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+
         if certificate_id is not None:
             _setter("certificate_id", certificate_id)
         if certificate_type is not None:
@@ -158,7 +172,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Listener Additional Certificate Attachment resource.
 
-        For information about Application Load Balancer (ALB) Listener Additional Certificate Attachment and how to use it, see [What is Listener Additional Certificate Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-associateadditionalcertificateswithlistener).
+        For information about Application Load Balancer (ALB) Listener Additional Certificate Attachment and how to use it, see [What is Listener Additional Certificate Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-associateadditionalcertificateswithlistener).
 
         > **NOTE:** Available since v1.161.0.
 
@@ -184,7 +198,7 @@ class ListenerAdditionalCertificateAttachment(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Listener Additional Certificate Attachment resource.
 
-        For information about Application Load Balancer (ALB) Listener Additional Certificate Attachment and how to use it, see [What is Listener Additional Certificate Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-associateadditionalcertificateswithlistener).
+        For information about Application Load Balancer (ALB) Listener Additional Certificate Attachment and how to use it, see [What is Listener Additional Certificate Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-associateadditionalcertificateswithlistener).
 
         > **NOTE:** Available since v1.161.0.
 

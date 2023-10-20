@@ -27,7 +27,11 @@ class ResourceShareArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              resource_share_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceShareName' in kwargs:
+            resource_share_name = kwargs['resourceShareName']
+
         _setter("resource_share_name", resource_share_name)
 
     @property
@@ -67,7 +71,13 @@ class _ResourceShareState:
              resource_share_name: Optional[pulumi.Input[str]] = None,
              resource_share_owner: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceShareName' in kwargs:
+            resource_share_name = kwargs['resourceShareName']
+        if 'resourceShareOwner' in kwargs:
+            resource_share_owner = kwargs['resourceShareOwner']
+
         if resource_share_name is not None:
             _setter("resource_share_name", resource_share_name)
         if resource_share_owner is not None:

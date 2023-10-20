@@ -17,14 +17,14 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
     public static final ServiceMeshLoadBalancerArgs Empty = new ServiceMeshLoadBalancerArgs();
 
     /**
-     * The ID of the SLB instance that is used when the API server is exposed to the Internet.
+     * The IP address of a public network exposed API Server corresponding to the load balancing ID.
      * 
      */
     @Import(name="apiServerLoadbalancerId")
     private @Nullable Output<String> apiServerLoadbalancerId;
 
     /**
-     * @return The ID of the SLB instance that is used when the API server is exposed to the Internet.
+     * @return The IP address of a public network exposed API Server corresponding to the load balancing ID.
      * 
      */
     public Optional<Output<String>> apiServerLoadbalancerId() {
@@ -32,14 +32,14 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Whether to use the IP address of a public network exposed the API Server.
+     * Indicates whether to use the IP address of a public network exposed API Server.
      * 
      */
     @Import(name="apiServerPublicEip")
     private @Nullable Output<Boolean> apiServerPublicEip;
 
     /**
-     * @return Whether to use the IP address of a public network exposed the API Server.
+     * @return Indicates whether to use the IP address of a public network exposed API Server.
      * 
      */
     public Optional<Output<Boolean>> apiServerPublicEip() {
@@ -47,14 +47,14 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Whether to use the IP address of a public network exposure the Istio Pilot.
+     * Indicates whether to use the IP address of a public network exposure Istio Pilot.
      * 
      */
     @Import(name="pilotPublicEip")
     private @Nullable Output<Boolean> pilotPublicEip;
 
     /**
-     * @return Whether to use the IP address of a public network exposure the Istio Pilot.
+     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot.
      * 
      */
     public Optional<Output<Boolean>> pilotPublicEip() {
@@ -62,14 +62,14 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+     * The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
      * 
      */
     @Import(name="pilotPublicLoadbalancerId")
     private @Nullable Output<String> pilotPublicLoadbalancerId;
 
     /**
-     * @return The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+     * @return The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
      * 
      */
     public Optional<Output<String>> pilotPublicLoadbalancerId() {
@@ -104,7 +104,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param apiServerLoadbalancerId The ID of the SLB instance that is used when the API server is exposed to the Internet.
+         * @param apiServerLoadbalancerId The IP address of a public network exposed API Server corresponding to the load balancing ID.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param apiServerLoadbalancerId The ID of the SLB instance that is used when the API server is exposed to the Internet.
+         * @param apiServerLoadbalancerId The IP address of a public network exposed API Server corresponding to the load balancing ID.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param apiServerPublicEip Whether to use the IP address of a public network exposed the API Server.
+         * @param apiServerPublicEip Indicates whether to use the IP address of a public network exposed API Server.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param apiServerPublicEip Whether to use the IP address of a public network exposed the API Server.
+         * @param apiServerPublicEip Indicates whether to use the IP address of a public network exposed API Server.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pilotPublicEip Whether to use the IP address of a public network exposure the Istio Pilot.
+         * @param pilotPublicEip Indicates whether to use the IP address of a public network exposure Istio Pilot.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pilotPublicEip Whether to use the IP address of a public network exposure the Istio Pilot.
+         * @param pilotPublicEip Indicates whether to use the IP address of a public network exposure Istio Pilot.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pilotPublicLoadbalancerId The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+         * @param pilotPublicLoadbalancerId The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ServiceMeshLoadBalancerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param pilotPublicLoadbalancerId The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+         * @param pilotPublicLoadbalancerId The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
          * 
          * @return builder
          * 

@@ -37,7 +37,13 @@ class LoadBalancerInternetArgs:
              app_id: pulumi.Input[str],
              internets: pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]],
              internet_slb_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'internetSlbId' in kwargs:
+            internet_slb_id = kwargs['internetSlbId']
+
         _setter("app_id", app_id)
         _setter("internets", internets)
         if internet_slb_id is not None:
@@ -108,7 +114,15 @@ class _LoadBalancerInternetState:
              internet_ip: Optional[pulumi.Input[str]] = None,
              internet_slb_id: Optional[pulumi.Input[str]] = None,
              internets: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerInternetInternetArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'internetSlbId' in kwargs:
+            internet_slb_id = kwargs['internetSlbId']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if internet_ip is not None:

@@ -59,7 +59,21 @@ class WebLockConfigArgs:
              exclusive_file: Optional[pulumi.Input[str]] = None,
              exclusive_file_type: Optional[pulumi.Input[str]] = None,
              inclusive_file_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defenceMode' in kwargs:
+            defence_mode = kwargs['defenceMode']
+        if 'localBackupDir' in kwargs:
+            local_backup_dir = kwargs['localBackupDir']
+        if 'exclusiveDir' in kwargs:
+            exclusive_dir = kwargs['exclusiveDir']
+        if 'exclusiveFile' in kwargs:
+            exclusive_file = kwargs['exclusiveFile']
+        if 'exclusiveFileType' in kwargs:
+            exclusive_file_type = kwargs['exclusiveFileType']
+        if 'inclusiveFileType' in kwargs:
+            inclusive_file_type = kwargs['inclusiveFileType']
+
         _setter("defence_mode", defence_mode)
         _setter("dir", dir)
         _setter("local_backup_dir", local_backup_dir)
@@ -231,7 +245,21 @@ class _WebLockConfigState:
              local_backup_dir: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[str]] = None,
              uuid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defenceMode' in kwargs:
+            defence_mode = kwargs['defenceMode']
+        if 'exclusiveDir' in kwargs:
+            exclusive_dir = kwargs['exclusiveDir']
+        if 'exclusiveFile' in kwargs:
+            exclusive_file = kwargs['exclusiveFile']
+        if 'exclusiveFileType' in kwargs:
+            exclusive_file_type = kwargs['exclusiveFileType']
+        if 'inclusiveFileType' in kwargs:
+            inclusive_file_type = kwargs['inclusiveFileType']
+        if 'localBackupDir' in kwargs:
+            local_backup_dir = kwargs['localBackupDir']
+
         if defence_mode is not None:
             _setter("defence_mode", defence_mode)
         if dir is not None:
@@ -378,7 +406,7 @@ class WebLockConfig(pulumi.CustomResource):
         """
         Provides a Threat Detection Web Lock Config resource.
 
-        For information about Threat Detection Web Lock Config and how to use it, see [What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyweblockstart).
+        For information about Threat Detection Web Lock Config and how to use it, see [What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyweblockstart).
 
         > **NOTE:** Available in v1.195.0+.
 
@@ -429,7 +457,7 @@ class WebLockConfig(pulumi.CustomResource):
         """
         Provides a Threat Detection Web Lock Config resource.
 
-        For information about Threat Detection Web Lock Config and how to use it, see [What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyweblockstart).
+        For information about Threat Detection Web Lock Config and how to use it, see [What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyweblockstart).
 
         > **NOTE:** Available in v1.195.0+.
 

@@ -49,7 +49,21 @@ class InstanceAttachmentArgs:
              instance_id: pulumi.Input[str],
              cen_owner_id: Optional[pulumi.Input[int]] = None,
              child_instance_owner_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'childInstanceId' in kwargs:
+            child_instance_id = kwargs['childInstanceId']
+        if 'childInstanceRegionId' in kwargs:
+            child_instance_region_id = kwargs['childInstanceRegionId']
+        if 'childInstanceType' in kwargs:
+            child_instance_type = kwargs['childInstanceType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if 'childInstanceOwnerId' in kwargs:
+            child_instance_owner_id = kwargs['childInstanceOwnerId']
+
         _setter("child_instance_id", child_instance_id)
         _setter("child_instance_region_id", child_instance_region_id)
         _setter("child_instance_type", child_instance_type)
@@ -176,7 +190,21 @@ class _InstanceAttachmentState:
              child_instance_type: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if 'childInstanceId' in kwargs:
+            child_instance_id = kwargs['childInstanceId']
+        if 'childInstanceOwnerId' in kwargs:
+            child_instance_owner_id = kwargs['childInstanceOwnerId']
+        if 'childInstanceRegionId' in kwargs:
+            child_instance_region_id = kwargs['childInstanceRegionId']
+        if 'childInstanceType' in kwargs:
+            child_instance_type = kwargs['childInstanceType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if cen_owner_id is not None:
             _setter("cen_owner_id", cen_owner_id)
         if child_instance_id is not None:

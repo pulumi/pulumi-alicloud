@@ -53,7 +53,19 @@ class RuleArgs:
              rule_name: pulumi.Input[str],
              direction: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'ruleActions' in kwargs:
+            rule_actions = kwargs['ruleActions']
+        if 'ruleConditions' in kwargs:
+            rule_conditions = kwargs['ruleConditions']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("listener_id", listener_id)
         _setter("priority", priority)
         _setter("rule_actions", rule_actions)
@@ -193,7 +205,19 @@ class _RuleState:
              rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['RuleRuleConditionArgs']]]] = None,
              rule_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'ruleActions' in kwargs:
+            rule_actions = kwargs['ruleActions']
+        if 'ruleConditions' in kwargs:
+            rule_conditions = kwargs['ruleConditions']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+
         if direction is not None:
             _setter("direction", direction)
         if dry_run is not None:
@@ -324,7 +348,7 @@ class Rule(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Rule resource.
 
-        For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createrule).
+        For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createrule).
 
         > **NOTE:** Available since v1.133.0.
 
@@ -357,7 +381,7 @@ class Rule(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Rule resource.
 
-        For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createrule).
+        For information about Application Load Balancer (ALB) Rule and how to use it, see [What is Rule](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createrule).
 
         > **NOTE:** Available since v1.133.0.
 

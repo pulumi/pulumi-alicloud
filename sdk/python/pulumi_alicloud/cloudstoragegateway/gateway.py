@@ -71,7 +71,27 @@ class GatewayArgs:
              reason_type: Optional[pulumi.Input[str]] = None,
              release_after_expiration: Optional[pulumi.Input[bool]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gatewayName' in kwargs:
+            gateway_name = kwargs['gatewayName']
+        if 'storageBundleId' in kwargs:
+            storage_bundle_id = kwargs['storageBundleId']
+        if 'gatewayClass' in kwargs:
+            gateway_class = kwargs['gatewayClass']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'publicNetworkBandwidth' in kwargs:
+            public_network_bandwidth = kwargs['publicNetworkBandwidth']
+        if 'reasonDetail' in kwargs:
+            reason_detail = kwargs['reasonDetail']
+        if 'reasonType' in kwargs:
+            reason_type = kwargs['reasonType']
+        if 'releaseAfterExpiration' in kwargs:
+            release_after_expiration = kwargs['releaseAfterExpiration']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("gateway_name", gateway_name)
         _setter("location", location)
         _setter("storage_bundle_id", storage_bundle_id)
@@ -302,7 +322,27 @@ class _GatewayState:
              storage_bundle_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gatewayClass' in kwargs:
+            gateway_class = kwargs['gatewayClass']
+        if 'gatewayName' in kwargs:
+            gateway_name = kwargs['gatewayName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'publicNetworkBandwidth' in kwargs:
+            public_network_bandwidth = kwargs['publicNetworkBandwidth']
+        if 'reasonDetail' in kwargs:
+            reason_detail = kwargs['reasonDetail']
+        if 'reasonType' in kwargs:
+            reason_type = kwargs['reasonType']
+        if 'releaseAfterExpiration' in kwargs:
+            release_after_expiration = kwargs['releaseAfterExpiration']
+        if 'storageBundleId' in kwargs:
+            storage_bundle_id = kwargs['storageBundleId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if description is not None:
             _setter("description", description)
         if gateway_class is not None:

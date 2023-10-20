@@ -65,7 +65,25 @@ class VirtualPhysicalConnectionArgs:
              expect_spec: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              virtual_physical_connection_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'orderMode' in kwargs:
+            order_mode = kwargs['orderMode']
+        if 'parentPhysicalConnectionId' in kwargs:
+            parent_physical_connection_id = kwargs['parentPhysicalConnectionId']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if 'vpconnAliUid' in kwargs:
+            vpconn_ali_uid = kwargs['vpconnAliUid']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'expectSpec' in kwargs:
+            expect_spec = kwargs['expectSpec']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'virtualPhysicalConnectionName' in kwargs:
+            virtual_physical_connection_name = kwargs['virtualPhysicalConnectionName']
+
         _setter("order_mode", order_mode)
         _setter("parent_physical_connection_id", parent_physical_connection_id)
         _setter("spec", spec)
@@ -327,7 +345,55 @@ class _VirtualPhysicalConnectionState:
              virtual_physical_connection_status: Optional[pulumi.Input[str]] = None,
              vlan_id: Optional[pulumi.Input[int]] = None,
              vpconn_ali_uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPointId' in kwargs:
+            access_point_id = kwargs['accessPointId']
+        if 'adLocation' in kwargs:
+            ad_location = kwargs['adLocation']
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'circuitCode' in kwargs:
+            circuit_code = kwargs['circuitCode']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'enabledTime' in kwargs:
+            enabled_time = kwargs['enabledTime']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'expectSpec' in kwargs:
+            expect_spec = kwargs['expectSpec']
+        if 'lineOperator' in kwargs:
+            line_operator = kwargs['lineOperator']
+        if 'loaStatus' in kwargs:
+            loa_status = kwargs['loaStatus']
+        if 'orderMode' in kwargs:
+            order_mode = kwargs['orderMode']
+        if 'parentPhysicalConnectionAliUid' in kwargs:
+            parent_physical_connection_ali_uid = kwargs['parentPhysicalConnectionAliUid']
+        if 'parentPhysicalConnectionId' in kwargs:
+            parent_physical_connection_id = kwargs['parentPhysicalConnectionId']
+        if 'peerLocation' in kwargs:
+            peer_location = kwargs['peerLocation']
+        if 'portNumber' in kwargs:
+            port_number = kwargs['portNumber']
+        if 'portType' in kwargs:
+            port_type = kwargs['portType']
+        if 'redundantPhysicalConnectionId' in kwargs:
+            redundant_physical_connection_id = kwargs['redundantPhysicalConnectionId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'virtualPhysicalConnectionName' in kwargs:
+            virtual_physical_connection_name = kwargs['virtualPhysicalConnectionName']
+        if 'virtualPhysicalConnectionStatus' in kwargs:
+            virtual_physical_connection_status = kwargs['virtualPhysicalConnectionStatus']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if 'vpconnAliUid' in kwargs:
+            vpconn_ali_uid = kwargs['vpconnAliUid']
+
         if access_point_id is not None:
             _setter("access_point_id", access_point_id)
         if ad_location is not None:

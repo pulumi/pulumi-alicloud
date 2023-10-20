@@ -35,7 +35,13 @@ class BgpIpArgs:
              instance_id: pulumi.Input[str],
              ip: pulumi.Input[str],
              resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("instance_id", instance_id)
         _setter("ip", ip)
         if resource_group_id is not None:
@@ -106,7 +112,13 @@ class _BgpIpState:
              ip: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if ip is not None:

@@ -37,7 +37,15 @@ class DomainConfigArgs:
              domain_name: pulumi.Input[str],
              function_args: pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]],
              function_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'functionArgs' in kwargs:
+            function_args = kwargs['functionArgs']
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+
         _setter("domain_name", domain_name)
         _setter("function_args", function_args)
         _setter("function_name", function_name)
@@ -111,7 +119,17 @@ class _DomainConfigState:
              function_args: Optional[pulumi.Input[Sequence[pulumi.Input['DomainConfigFunctionArgArgs']]]] = None,
              function_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'functionArgs' in kwargs:
+            function_args = kwargs['functionArgs']
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+
         if config_id is not None:
             _setter("config_id", config_id)
         if domain_name is not None:

@@ -43,7 +43,15 @@ class SearchIndexSchemaArgs:
              field_schemas: pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaFieldSchemaArgs']]],
              index_settings: Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSettingArgs']]]] = None,
              index_sorts: Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSortArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fieldSchemas' in kwargs:
+            field_schemas = kwargs['fieldSchemas']
+        if 'indexSettings' in kwargs:
+            index_settings = kwargs['indexSettings']
+        if 'indexSorts' in kwargs:
+            index_sorts = kwargs['indexSorts']
+
         _setter("field_schemas", field_schemas)
         if index_settings is not None:
             _setter("index_settings", index_settings)
@@ -126,7 +134,17 @@ class SearchIndexSchemaFieldSchemaArgs:
              index: Optional[pulumi.Input[bool]] = None,
              is_array: Optional[pulumi.Input[bool]] = None,
              store: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fieldName' in kwargs:
+            field_name = kwargs['fieldName']
+        if 'fieldType' in kwargs:
+            field_type = kwargs['fieldType']
+        if 'enableSortAndAgg' in kwargs:
+            enable_sort_and_agg = kwargs['enableSortAndAgg']
+        if 'isArray' in kwargs:
+            is_array = kwargs['isArray']
+
         _setter("field_name", field_name)
         _setter("field_type", field_type)
         if analyzer is not None:
@@ -240,7 +258,11 @@ class SearchIndexSchemaIndexSettingArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              routing_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'routingFields' in kwargs:
+            routing_fields = kwargs['routingFields']
+
         if routing_fields is not None:
             _setter("routing_fields", routing_fields)
 
@@ -272,7 +294,9 @@ class SearchIndexSchemaIndexSortArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              sorters: pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaIndexSortSorterArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("sorters", sorters)
 
     @property
@@ -315,7 +339,13 @@ class SearchIndexSchemaIndexSortSorterArgs:
              mode: Optional[pulumi.Input[str]] = None,
              order: Optional[pulumi.Input[str]] = None,
              sorter_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fieldName' in kwargs:
+            field_name = kwargs['fieldName']
+        if 'sorterType' in kwargs:
+            sorter_type = kwargs['sorterType']
+
         if field_name is not None:
             _setter("field_name", field_name)
         if mode is not None:
@@ -393,7 +423,9 @@ class TableDefinedColumnArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("type", type)
 
@@ -441,7 +473,9 @@ class TablePrimaryKeyArgs:
              _setter: Callable[[Any, Any], None],
              name: pulumi.Input[str],
              type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("type", type)
 
@@ -501,7 +535,19 @@ class TunnelChannelArgs:
              channel_status: Optional[pulumi.Input[str]] = None,
              channel_type: Optional[pulumi.Input[str]] = None,
              client_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'channelId' in kwargs:
+            channel_id = kwargs['channelId']
+        if 'channelRpo' in kwargs:
+            channel_rpo = kwargs['channelRpo']
+        if 'channelStatus' in kwargs:
+            channel_status = kwargs['channelStatus']
+        if 'channelType' in kwargs:
+            channel_type = kwargs['channelType']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+
         if channel_id is not None:
             _setter("channel_id", channel_id)
         if channel_rpo is not None:

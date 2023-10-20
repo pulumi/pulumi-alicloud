@@ -71,7 +71,7 @@ type GetAlidnsRecordsArgs struct {
 	KeyWord *string `pulumi:"keyWord"`
 	// User language.
 	Lang *string `pulumi:"lang"`
-	// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+	// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
 	Line *string `pulumi:"line"`
 	// Sort by. Sort from newest to oldest according to the time added by resolution.
 	OrderBy *string `pulumi:"orderBy"`
@@ -152,7 +152,7 @@ type GetAlidnsRecordsOutputArgs struct {
 	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
 	// User language.
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
-	// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+	// ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
 	Line pulumi.StringPtrInput `pulumi:"line"`
 	// Sort by. Sort from newest to oldest according to the time added by resolution.
 	OrderBy pulumi.StringPtrInput `pulumi:"orderBy"`

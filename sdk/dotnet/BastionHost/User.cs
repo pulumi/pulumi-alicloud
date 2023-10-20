@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// <summary>
     /// Provides a Bastion Host User resource.
     /// 
-    /// For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/doc-detail/204503.htm).
+    /// For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/bastion-host/latest/api-yundun-bastionhost-2019-12-09-createuser).
     /// 
     /// &gt; **NOTE:** Available since v1.133.0.
     /// 

@@ -78,7 +78,19 @@ class DomainCertInfo(dict):
              ssl_pri: Optional[str] = None,
              ssl_protocol: Optional[str] = None,
              ssl_pub: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certName' in kwargs:
+            cert_name = kwargs['certName']
+        if 'certType' in kwargs:
+            cert_type = kwargs['certType']
+        if 'sslPri' in kwargs:
+            ssl_pri = kwargs['sslPri']
+        if 'sslProtocol' in kwargs:
+            ssl_protocol = kwargs['sslProtocol']
+        if 'sslPub' in kwargs:
+            ssl_pub = kwargs['sslPub']
+
         if cert_name is not None:
             _setter("cert_name", cert_name)
         if cert_type is not None:
@@ -172,7 +184,13 @@ class DomainConfigFunctionArg(dict):
              _setter: Callable[[Any, Any], None],
              arg_name: str,
              arg_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'argName' in kwargs:
+            arg_name = kwargs['argName']
+        if 'argValue' in kwargs:
+            arg_value = kwargs['argValue']
+
         _setter("arg_name", arg_name)
         _setter("arg_value", arg_value)
 
@@ -227,7 +245,9 @@ class DomainSource(dict):
              priority: str,
              type: str,
              enabled: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("content", content)
         _setter("port", port)
         _setter("priority", priority)
@@ -330,7 +350,19 @@ class GetDomainsDomainResult(dict):
              resource_group_id: str,
              sources: Sequence['outputs.GetDomainsDomainSourceResult'],
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certInfos' in kwargs:
+            cert_infos = kwargs['certInfos']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("cert_infos", cert_infos)
         _setter("cname", cname)
         _setter("create_time", create_time)
@@ -450,7 +482,17 @@ class GetDomainsDomainCertInfoResult(dict):
              cert_type: str,
              ssl_protocol: str,
              ssl_pub: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certName' in kwargs:
+            cert_name = kwargs['certName']
+        if 'certType' in kwargs:
+            cert_type = kwargs['certType']
+        if 'sslProtocol' in kwargs:
+            ssl_protocol = kwargs['sslProtocol']
+        if 'sslPub' in kwargs:
+            ssl_pub = kwargs['sslPub']
+
         _setter("cert_name", cert_name)
         _setter("cert_type", cert_type)
         _setter("ssl_protocol", ssl_protocol)
@@ -520,7 +562,9 @@ class GetDomainsDomainSourceResult(dict):
              port: int,
              priority: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("content", content)
         _setter("enabled", enabled)
         _setter("port", port)

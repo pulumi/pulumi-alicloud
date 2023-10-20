@@ -61,7 +61,25 @@ class ServerCertificateArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              server_certificate: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alicloudCertifacteId' in kwargs:
+            alicloud_certifacte_id = kwargs['alicloudCertifacteId']
+        if 'alicloudCertifacteName' in kwargs:
+            alicloud_certifacte_name = kwargs['alicloudCertifacteName']
+        if 'alicloudCertificateId' in kwargs:
+            alicloud_certificate_id = kwargs['alicloudCertificateId']
+        if 'alicloudCertificateName' in kwargs:
+            alicloud_certificate_name = kwargs['alicloudCertificateName']
+        if 'alicloudCertificateRegionId' in kwargs:
+            alicloud_certificate_region_id = kwargs['alicloudCertificateRegionId']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'serverCertificate' in kwargs:
+            server_certificate = kwargs['serverCertificate']
+
         if alicloud_certifacte_id is not None:
             warnings.warn("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""alicloud_certifacte_id is deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")
@@ -260,7 +278,25 @@ class _ServerCertificateState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              server_certificate: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alicloudCertifacteId' in kwargs:
+            alicloud_certifacte_id = kwargs['alicloudCertifacteId']
+        if 'alicloudCertifacteName' in kwargs:
+            alicloud_certifacte_name = kwargs['alicloudCertifacteName']
+        if 'alicloudCertificateId' in kwargs:
+            alicloud_certificate_id = kwargs['alicloudCertificateId']
+        if 'alicloudCertificateName' in kwargs:
+            alicloud_certificate_name = kwargs['alicloudCertificateName']
+        if 'alicloudCertificateRegionId' in kwargs:
+            alicloud_certificate_region_id = kwargs['alicloudCertificateRegionId']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'serverCertificate' in kwargs:
+            server_certificate = kwargs['serverCertificate']
+
         if alicloud_certifacte_id is not None:
             warnings.warn("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""", DeprecationWarning)
             pulumi.log.warn("""alicloud_certifacte_id is deprecated: Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")

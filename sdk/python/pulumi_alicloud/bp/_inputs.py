@@ -36,7 +36,13 @@ class StudioApplicationInstanceArgs:
              id: Optional[pulumi.Input[str]] = None,
              node_name: Optional[pulumi.Input[str]] = None,
              node_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+
         if id is not None:
             _setter("id", id)
         if node_name is not None:

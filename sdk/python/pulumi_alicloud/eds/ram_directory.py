@@ -43,7 +43,19 @@ class RamDirectoryArgs:
              desktop_access_type: Optional[pulumi.Input[str]] = None,
              enable_admin_access: Optional[pulumi.Input[bool]] = None,
              enable_internet_access: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ramDirectoryName' in kwargs:
+            ram_directory_name = kwargs['ramDirectoryName']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if 'enableInternetAccess' in kwargs:
+            enable_internet_access = kwargs['enableInternetAccess']
+
         _setter("ram_directory_name", ram_directory_name)
         _setter("vswitch_ids", vswitch_ids)
         if desktop_access_type is not None:
@@ -150,7 +162,19 @@ class _RamDirectoryState:
              ram_directory_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if 'enableInternetAccess' in kwargs:
+            enable_internet_access = kwargs['enableInternetAccess']
+        if 'ramDirectoryName' in kwargs:
+            ram_directory_name = kwargs['ramDirectoryName']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+
         if desktop_access_type is not None:
             _setter("desktop_access_type", desktop_access_type)
         if enable_admin_access is not None:
@@ -251,7 +275,7 @@ class RamDirectory(pulumi.CustomResource):
         """
         Provides a ECD Ram Directory resource.
 
-        For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createramdirectory).
+        For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createramdirectory).
 
         > **NOTE:** Available since v1.174.0.
 
@@ -309,7 +333,7 @@ class RamDirectory(pulumi.CustomResource):
         """
         Provides a ECD Ram Directory resource.
 
-        For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createramdirectory).
+        For information about ECD Ram Directory and how to use it, see [What is Ram Directory](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createramdirectory).
 
         > **NOTE:** Available since v1.174.0.
 

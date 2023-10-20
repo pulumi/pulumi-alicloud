@@ -49,7 +49,19 @@ class ForwardingRuleArgs:
              rule_conditions: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]],
              forwarding_rule_name: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'ruleActions' in kwargs:
+            rule_actions = kwargs['ruleActions']
+        if 'ruleConditions' in kwargs:
+            rule_conditions = kwargs['ruleConditions']
+        if 'forwardingRuleName' in kwargs:
+            forwarding_rule_name = kwargs['forwardingRuleName']
+
         _setter("accelerator_id", accelerator_id)
         _setter("listener_id", listener_id)
         _setter("rule_actions", rule_actions)
@@ -176,7 +188,23 @@ class _ForwardingRuleState:
              priority: Optional[pulumi.Input[int]] = None,
              rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]] = None,
              rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'forwardingRuleId' in kwargs:
+            forwarding_rule_id = kwargs['forwardingRuleId']
+        if 'forwardingRuleName' in kwargs:
+            forwarding_rule_name = kwargs['forwardingRuleName']
+        if 'forwardingRuleStatus' in kwargs:
+            forwarding_rule_status = kwargs['forwardingRuleStatus']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'ruleActions' in kwargs:
+            rule_actions = kwargs['ruleActions']
+        if 'ruleConditions' in kwargs:
+            rule_conditions = kwargs['ruleConditions']
+
         if accelerator_id is not None:
             _setter("accelerator_id", accelerator_id)
         if forwarding_rule_id is not None:

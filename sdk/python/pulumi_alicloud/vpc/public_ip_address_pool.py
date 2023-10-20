@@ -43,7 +43,13 @@ class PublicIpAddressPoolArgs:
              public_ip_address_pool_name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publicIpAddressPoolName' in kwargs:
+            public_ip_address_pool_name = kwargs['publicIpAddressPoolName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if description is not None:
             _setter("description", description)
         if isp is not None:
@@ -171,7 +177,23 @@ class _PublicIpAddressPoolState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              total_ip_num: Optional[pulumi.Input[int]] = None,
              used_ip_num: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'ipAddressRemaining' in kwargs:
+            ip_address_remaining = kwargs['ipAddressRemaining']
+        if 'publicIpAddressPoolId' in kwargs:
+            public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
+        if 'publicIpAddressPoolName' in kwargs:
+            public_ip_address_pool_name = kwargs['publicIpAddressPoolName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'totalIpNum' in kwargs:
+            total_ip_num = kwargs['totalIpNum']
+        if 'usedIpNum' in kwargs:
+            used_ip_num = kwargs['usedIpNum']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if description is not None:

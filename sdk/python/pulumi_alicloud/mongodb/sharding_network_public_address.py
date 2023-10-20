@@ -33,7 +33,13 @@ class ShardingNetworkPublicAddressArgs:
              _setter: Callable[[Any, Any], None],
              db_instance_id: pulumi.Input[str],
              node_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         _setter("db_instance_id", db_instance_id)
         _setter("node_id", node_id)
 
@@ -86,7 +92,15 @@ class _ShardingNetworkPublicAddressState:
              db_instance_id: Optional[pulumi.Input[str]] = None,
              network_addresses: Optional[pulumi.Input[Sequence[pulumi.Input['ShardingNetworkPublicAddressNetworkAddressArgs']]]] = None,
              node_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'networkAddresses' in kwargs:
+            network_addresses = kwargs['networkAddresses']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         if db_instance_id is not None:
             _setter("db_instance_id", db_instance_id)
         if network_addresses is not None:

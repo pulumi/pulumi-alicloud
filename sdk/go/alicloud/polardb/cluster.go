@@ -25,8 +25,7 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
 	AllowShutDown pulumi.StringPtrOutput `pulumi:"allowShutDown"`
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
@@ -37,9 +36,9 @@ type Cluster struct {
 	CloneDataPoint pulumi.StringPtrOutput `pulumi:"cloneDataPoint"`
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringOutput `pulumi:"collectorStatus"`
-	// (Available since 1.81.0+) PolarDB cluster connection string.
+	// (Available since 1.81.0) PolarDB cluster connection string.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
-	// (Available since 1.204.1+) PolarDB cluster creation time.
+	// (Available since 1.204.1) PolarDB cluster creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
 	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
@@ -56,7 +55,9 @@ type Cluster struct {
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntOutput `pulumi:"dbNodeCount"`
-	// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+	// The ID of the node or node subscript. Node subscript values: 1 to 15.
+	DbNodeId pulumi.StringPtrOutput `pulumi:"dbNodeId"`
+	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
 	DbNodeNum pulumi.IntPtrOutput `pulumi:"dbNodeNum"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringOutput `pulumi:"dbType"`
@@ -64,7 +65,7 @@ type Cluster struct {
 	DbVersion pulumi.StringOutput `pulumi:"dbVersion"`
 	// The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
-	DefaultTimeZone pulumi.StringPtrOutput `pulumi:"defaultTimeZone"`
+	DefaultTimeZone pulumi.StringOutput `pulumi:"defaultTimeZone"`
 	// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
 	// > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
 	DeletionLock pulumi.IntPtrOutput `pulumi:"deletionLock"`
@@ -80,18 +81,20 @@ type Cluster struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId pulumi.StringPtrOutput `pulumi:"gdnId"`
+	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+	HotReplicaMode pulumi.StringOutput `pulumi:"hotReplicaMode"`
 	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotStandbyCluster pulumi.StringOutput `pulumi:"hotStandbyCluster"`
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
 	ImciSwitch pulumi.StringOutput `pulumi:"imciSwitch"`
-	// Enable the Binlog function. Valid values are `OFF`, `ON`.
+	// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
 	// > **NOTE:** This parameter is valid only MySQL Engine supports.
-	LoosePolarLogBin pulumi.StringPtrOutput `pulumi:"loosePolarLogBin"`
-	// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+	LoosePolarLogBin pulumi.StringOutput `pulumi:"loosePolarLogBin"`
+	// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
-	LowerCaseTableNames pulumi.IntPtrOutput `pulumi:"lowerCaseTableNames"`
+	LowerCaseTableNames pulumi.IntOutput `pulumi:"lowerCaseTableNames"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
 	MaintainTime pulumi.StringOutput `pulumi:"maintainTime"`
 	// Use as `dbNodeClass` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
@@ -112,12 +115,12 @@ type Cluster struct {
 	// The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
 	// > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
 	PlannedStartTime pulumi.StringPtrOutput `pulumi:"plannedStartTime"`
-	// (Available since 1.196.0+) PolarDB cluster connection port.
+	// (Available since 1.196.0) PolarDB cluster connection port.
 	Port pulumi.StringOutput `pulumi:"port"`
 	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
 	// > **NOTE:** This parameter is valid only for standard clusters.
 	ProxyClass pulumi.StringPtrOutput `pulumi:"proxyClass"`
-	// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+	// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
 	// > **NOTE:** This parameter is valid only for standard clusters.
 	ProxyType pulumi.StringPtrOutput `pulumi:"proxyType"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -126,20 +129,19 @@ type Cluster struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn pulumi.StringOutput `pulumi:"roleArn"`
-	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+	ScaleApRoNumMax pulumi.IntOutput `pulumi:"scaleApRoNumMax"`
+	// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+	ScaleApRoNumMin pulumi.IntOutput `pulumi:"scaleApRoNumMin"`
+	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleMax pulumi.IntPtrOutput `pulumi:"scaleMax"`
-	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`.· This parameter is valid only for serverless clusters.
 	ScaleMin pulumi.IntPtrOutput `pulumi:"scaleMin"`
-	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7. It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleRoNumMax pulumi.IntPtrOutput `pulumi:"scaleRoNumMax"`
-	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleRoNumMin pulumi.IntPtrOutput `pulumi:"scaleRoNumMin"`
-	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
 	SecondsUntilAutoPause pulumi.IntOutput `pulumi:"secondsUntilAutoPause"`
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
@@ -147,12 +149,14 @@ type Cluster struct {
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps pulumi.StringArrayOutput `pulumi:"securityIps"`
-	// The type of the serverless cluster. Set the value to AgileServerless.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+	// > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
+	ServerlessSteadySwitch pulumi.StringPtrOutput `pulumi:"serverlessSteadySwitch"`
+	// The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ServerlessType pulumi.StringPtrOutput `pulumi:"serverlessType"`
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
 	SourceResourceId pulumi.StringPtrOutput `pulumi:"sourceResourceId"`
-	// (Available since 1.204.1+) PolarDB cluster status.
+	// (Available since 1.204.1) PolarDB cluster status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
 	StoragePayType pulumi.StringOutput `pulumi:"storagePayType"`
@@ -169,7 +173,7 @@ type Cluster struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// (Available since 1.200.0+) The region where the TDE key resides.
+	// (Available since 1.200.0) The region where the TDE key resides.
 	// > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
 	// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
 	TdeRegion pulumi.StringOutput `pulumi:"tdeRegion"`
@@ -226,8 +230,7 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
 	AllowShutDown *string `pulumi:"allowShutDown"`
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
@@ -238,9 +241,9 @@ type clusterState struct {
 	CloneDataPoint *string `pulumi:"cloneDataPoint"`
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus *string `pulumi:"collectorStatus"`
-	// (Available since 1.81.0+) PolarDB cluster connection string.
+	// (Available since 1.81.0) PolarDB cluster connection string.
 	ConnectionString *string `pulumi:"connectionString"`
-	// (Available since 1.204.1+) PolarDB cluster creation time.
+	// (Available since 1.204.1) PolarDB cluster creation time.
 	CreateTime *string `pulumi:"createTime"`
 	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
 	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
@@ -257,7 +260,9 @@ type clusterState struct {
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
-	// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+	// The ID of the node or node subscript. Node subscript values: 1 to 15.
+	DbNodeId *string `pulumi:"dbNodeId"`
+	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
 	DbNodeNum *int `pulumi:"dbNodeNum"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType *string `pulumi:"dbType"`
@@ -281,16 +286,18 @@ type clusterState struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId *string `pulumi:"gdnId"`
+	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+	HotReplicaMode *string `pulumi:"hotReplicaMode"`
 	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotStandbyCluster *string `pulumi:"hotStandbyCluster"`
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
 	ImciSwitch *string `pulumi:"imciSwitch"`
-	// Enable the Binlog function. Valid values are `OFF`, `ON`.
+	// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
 	// > **NOTE:** This parameter is valid only MySQL Engine supports.
 	LoosePolarLogBin *string `pulumi:"loosePolarLogBin"`
-	// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+	// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	LowerCaseTableNames *int `pulumi:"lowerCaseTableNames"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -313,12 +320,12 @@ type clusterState struct {
 	// The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
 	// > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
 	PlannedStartTime *string `pulumi:"plannedStartTime"`
-	// (Available since 1.196.0+) PolarDB cluster connection port.
+	// (Available since 1.196.0) PolarDB cluster connection port.
 	Port *string `pulumi:"port"`
 	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
 	// > **NOTE:** This parameter is valid only for standard clusters.
 	ProxyClass *string `pulumi:"proxyClass"`
-	// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+	// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
 	// > **NOTE:** This parameter is valid only for standard clusters.
 	ProxyType *string `pulumi:"proxyType"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -327,20 +334,19 @@ type clusterState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn *string `pulumi:"roleArn"`
-	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+	ScaleApRoNumMax *int `pulumi:"scaleApRoNumMax"`
+	// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+	ScaleApRoNumMin *int `pulumi:"scaleApRoNumMin"`
+	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleMax *int `pulumi:"scaleMax"`
-	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`.· This parameter is valid only for serverless clusters.
 	ScaleMin *int `pulumi:"scaleMin"`
-	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7. It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleRoNumMax *int `pulumi:"scaleRoNumMax"`
-	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleRoNumMin *int `pulumi:"scaleRoNumMin"`
-	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
 	SecondsUntilAutoPause *int `pulumi:"secondsUntilAutoPause"`
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
@@ -348,12 +354,14 @@ type clusterState struct {
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps []string `pulumi:"securityIps"`
-	// The type of the serverless cluster. Set the value to AgileServerless.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+	// > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
+	ServerlessSteadySwitch *string `pulumi:"serverlessSteadySwitch"`
+	// The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ServerlessType *string `pulumi:"serverlessType"`
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
-	// (Available since 1.204.1+) PolarDB cluster status.
+	// (Available since 1.204.1) PolarDB cluster status.
 	Status *string `pulumi:"status"`
 	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
 	StoragePayType *string `pulumi:"storagePayType"`
@@ -370,7 +378,7 @@ type clusterState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// (Available since 1.200.0+) The region where the TDE key resides.
+	// (Available since 1.200.0) The region where the TDE key resides.
 	// > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
 	// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
 	TdeRegion *string `pulumi:"tdeRegion"`
@@ -389,8 +397,7 @@ type clusterState struct {
 }
 
 type ClusterState struct {
-	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
 	AllowShutDown pulumi.StringPtrInput
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
@@ -401,9 +408,9 @@ type ClusterState struct {
 	CloneDataPoint pulumi.StringPtrInput
 	// Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
 	CollectorStatus pulumi.StringPtrInput
-	// (Available since 1.81.0+) PolarDB cluster connection string.
+	// (Available since 1.81.0) PolarDB cluster connection string.
 	ConnectionString pulumi.StringPtrInput
-	// (Available since 1.204.1+) PolarDB cluster creation time.
+	// (Available since 1.204.1) PolarDB cluster creation time.
 	CreateTime pulumi.StringPtrInput
 	// The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
 	// > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creationCategory` can be set to `NormalMultimaster`. From version 1.203.0, `creationCategory` can be set to `SENormal`.
@@ -420,7 +427,9 @@ type ClusterState struct {
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrInput
-	// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+	// The ID of the node or node subscript. Node subscript values: 1 to 15.
+	DbNodeId pulumi.StringPtrInput
+	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
 	DbNodeNum pulumi.IntPtrInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringPtrInput
@@ -444,16 +453,18 @@ type ClusterState struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId pulumi.StringPtrInput
+	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+	HotReplicaMode pulumi.StringPtrInput
 	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotStandbyCluster pulumi.StringPtrInput
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
 	ImciSwitch pulumi.StringPtrInput
-	// Enable the Binlog function. Valid values are `OFF`, `ON`.
+	// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
 	// > **NOTE:** This parameter is valid only MySQL Engine supports.
 	LoosePolarLogBin pulumi.StringPtrInput
-	// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+	// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	LowerCaseTableNames pulumi.IntPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -476,12 +487,12 @@ type ClusterState struct {
 	// The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
 	// > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
 	PlannedStartTime pulumi.StringPtrInput
-	// (Available since 1.196.0+) PolarDB cluster connection port.
+	// (Available since 1.196.0) PolarDB cluster connection port.
 	Port pulumi.StringPtrInput
 	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
 	// > **NOTE:** This parameter is valid only for standard clusters.
 	ProxyClass pulumi.StringPtrInput
-	// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+	// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
 	// > **NOTE:** This parameter is valid only for standard clusters.
 	ProxyType pulumi.StringPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -490,20 +501,19 @@ type ClusterState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn pulumi.StringPtrInput
-	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+	ScaleApRoNumMax pulumi.IntPtrInput
+	// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+	ScaleApRoNumMin pulumi.IntPtrInput
+	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleMax pulumi.IntPtrInput
-	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`.· This parameter is valid only for serverless clusters.
 	ScaleMin pulumi.IntPtrInput
-	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7. It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleRoNumMax pulumi.IntPtrInput
-	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleRoNumMin pulumi.IntPtrInput
-	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
 	SecondsUntilAutoPause pulumi.IntPtrInput
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
@@ -511,12 +521,14 @@ type ClusterState struct {
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps pulumi.StringArrayInput
-	// The type of the serverless cluster. Set the value to AgileServerless.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+	// > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
+	ServerlessSteadySwitch pulumi.StringPtrInput
+	// The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ServerlessType pulumi.StringPtrInput
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
 	SourceResourceId pulumi.StringPtrInput
-	// (Available since 1.204.1+) PolarDB cluster status.
+	// (Available since 1.204.1) PolarDB cluster status.
 	Status pulumi.StringPtrInput
 	// The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
 	StoragePayType pulumi.StringPtrInput
@@ -533,7 +545,7 @@ type ClusterState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
-	// (Available since 1.200.0+) The region where the TDE key resides.
+	// (Available since 1.200.0) The region where the TDE key resides.
 	// > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
 	// **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
 	TdeRegion pulumi.StringPtrInput
@@ -556,8 +568,7 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
 	AllowShutDown *string `pulumi:"allowShutDown"`
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
@@ -583,7 +594,9 @@ type clusterArgs struct {
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount *int `pulumi:"dbNodeCount"`
-	// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+	// The ID of the node or node subscript. Node subscript values: 1 to 15.
+	DbNodeId *string `pulumi:"dbNodeId"`
+	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
 	DbNodeNum *int `pulumi:"dbNodeNum"`
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType string `pulumi:"dbType"`
@@ -607,16 +620,18 @@ type clusterArgs struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId *string `pulumi:"gdnId"`
+	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+	HotReplicaMode *string `pulumi:"hotReplicaMode"`
 	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotStandbyCluster *string `pulumi:"hotStandbyCluster"`
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
 	ImciSwitch *string `pulumi:"imciSwitch"`
-	// Enable the Binlog function. Valid values are `OFF`, `ON`.
+	// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
 	// > **NOTE:** This parameter is valid only MySQL Engine supports.
 	LoosePolarLogBin *string `pulumi:"loosePolarLogBin"`
-	// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+	// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	LowerCaseTableNames *int `pulumi:"lowerCaseTableNames"`
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -642,7 +657,7 @@ type clusterArgs struct {
 	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
 	// > **NOTE:** This parameter is valid only for standard clusters.
 	ProxyClass *string `pulumi:"proxyClass"`
-	// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+	// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
 	// > **NOTE:** This parameter is valid only for standard clusters.
 	ProxyType *string `pulumi:"proxyType"`
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -651,20 +666,19 @@ type clusterArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn *string `pulumi:"roleArn"`
-	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+	ScaleApRoNumMax *int `pulumi:"scaleApRoNumMax"`
+	// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+	ScaleApRoNumMin *int `pulumi:"scaleApRoNumMin"`
+	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleMax *int `pulumi:"scaleMax"`
-	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`.· This parameter is valid only for serverless clusters.
 	ScaleMin *int `pulumi:"scaleMin"`
-	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7. It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleRoNumMax *int `pulumi:"scaleRoNumMax"`
-	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleRoNumMin *int `pulumi:"scaleRoNumMin"`
-	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
 	SecondsUntilAutoPause *int `pulumi:"secondsUntilAutoPause"`
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
@@ -672,8 +686,10 @@ type clusterArgs struct {
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps []string `pulumi:"securityIps"`
-	// The type of the serverless cluster. Set the value to AgileServerless.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+	// > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
+	ServerlessSteadySwitch *string `pulumi:"serverlessSteadySwitch"`
+	// The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ServerlessType *string `pulumi:"serverlessType"`
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
@@ -708,8 +724,7 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
 	AllowShutDown pulumi.StringPtrInput
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
 	AutoRenewPeriod pulumi.IntPtrInput
@@ -735,7 +750,9 @@ type ClusterArgs struct {
 	// Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].
 	// > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
 	DbNodeCount pulumi.IntPtrInput
-	// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+	// The ID of the node or node subscript. Node subscript values: 1 to 15.
+	DbNodeId pulumi.StringPtrInput
+	// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
 	DbNodeNum pulumi.IntPtrInput
 	// Database type. Value options: MySQL, Oracle, PostgreSQL.
 	DbType pulumi.StringInput
@@ -759,16 +776,18 @@ type ClusterArgs struct {
 	// The ID of the global database network (GDN).
 	// > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
 	GdnId pulumi.StringPtrInput
+	// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+	HotReplicaMode pulumi.StringPtrInput
 	// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
 	HotStandbyCluster pulumi.StringPtrInput
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
 	// > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
 	// **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
 	ImciSwitch pulumi.StringPtrInput
-	// Enable the Binlog function. Valid values are `OFF`, `ON`.
+	// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
 	// > **NOTE:** This parameter is valid only MySQL Engine supports.
 	LoosePolarLogBin pulumi.StringPtrInput
-	// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+	// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
 	// > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
 	LowerCaseTableNames pulumi.IntPtrInput
 	// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -794,7 +813,7 @@ type ClusterArgs struct {
 	// The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `ProxyType`
 	// > **NOTE:** This parameter is valid only for standard clusters.
 	ProxyClass pulumi.StringPtrInput
-	// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+	// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
 	// > **NOTE:** This parameter is valid only for standard clusters.
 	ProxyType pulumi.StringPtrInput
 	// Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
@@ -803,20 +822,19 @@ type ClusterArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
 	RoleArn pulumi.StringPtrInput
-	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+	ScaleApRoNumMax pulumi.IntPtrInput
+	// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+	ScaleApRoNumMin pulumi.IntPtrInput
+	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleMax pulumi.IntPtrInput
-	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`.· This parameter is valid only for serverless clusters.
 	ScaleMin pulumi.IntPtrInput
-	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7. It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleRoNumMax pulumi.IntPtrInput
-	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ScaleRoNumMin pulumi.IntPtrInput
-	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
 	SecondsUntilAutoPause pulumi.IntPtrInput
 	// The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
 	// > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
@@ -824,8 +842,10 @@ type ClusterArgs struct {
 	// This attribute has been deprecated from v1.130.0 and using `dbClusterIpArray` sub-element `securityIps` instead.
 	// Its value is same as `dbClusterIpArray` sub-element `securityIps` value and its dbClusterIpArrayName is "default".
 	SecurityIps pulumi.StringArrayInput
-	// The type of the serverless cluster. Set the value to AgileServerless.
-	// > **NOTE:** This parameter is valid only for serverless clusters.
+	// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+	// > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
+	ServerlessSteadySwitch pulumi.StringPtrInput
+	// The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
 	ServerlessType pulumi.StringPtrInput
 	// The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
 	SourceResourceId pulumi.StringPtrInput
@@ -969,8 +989,7 @@ func (o ClusterOutput) ToOutput(ctx context.Context) pulumix.Output[*Cluster] {
 	}
 }
 
-// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-// > **NOTE:** This parameter is valid only for serverless clusters.
+// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
 func (o ClusterOutput) AllowShutDown() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AllowShutDown }).(pulumi.StringPtrOutput)
 }
@@ -996,12 +1015,12 @@ func (o ClusterOutput) CollectorStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CollectorStatus }).(pulumi.StringOutput)
 }
 
-// (Available since 1.81.0+) PolarDB cluster connection string.
+// (Available since 1.81.0) PolarDB cluster connection string.
 func (o ClusterOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
 }
 
-// (Available since 1.204.1+) PolarDB cluster creation time.
+// (Available since 1.204.1) PolarDB cluster creation time.
 func (o ClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -1036,7 +1055,12 @@ func (o ClusterOutput) DbNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.DbNodeCount }).(pulumi.IntOutput)
 }
 
-// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+// The ID of the node or node subscript. Node subscript values: 1 to 15.
+func (o ClusterOutput) DbNodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DbNodeId }).(pulumi.StringPtrOutput)
+}
+
+// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
 func (o ClusterOutput) DbNodeNum() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.DbNodeNum }).(pulumi.IntPtrOutput)
 }
@@ -1053,8 +1077,8 @@ func (o ClusterOutput) DbVersion() pulumi.StringOutput {
 
 // The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
 // > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
-func (o ClusterOutput) DefaultTimeZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.DefaultTimeZone }).(pulumi.StringPtrOutput)
+func (o ClusterOutput) DefaultTimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DefaultTimeZone }).(pulumi.StringOutput)
 }
 
 // turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
@@ -1090,6 +1114,11 @@ func (o ClusterOutput) GdnId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.GdnId }).(pulumi.StringPtrOutput)
 }
 
+// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+func (o ClusterOutput) HotReplicaMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.HotReplicaMode }).(pulumi.StringOutput)
+}
+
 // Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
 func (o ClusterOutput) HotStandbyCluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.HotStandbyCluster }).(pulumi.StringOutput)
@@ -1102,16 +1131,16 @@ func (o ClusterOutput) ImciSwitch() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ImciSwitch }).(pulumi.StringOutput)
 }
 
-// Enable the Binlog function. Valid values are `OFF`, `ON`.
+// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
 // > **NOTE:** This parameter is valid only MySQL Engine supports.
-func (o ClusterOutput) LoosePolarLogBin() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.LoosePolarLogBin }).(pulumi.StringPtrOutput)
+func (o ClusterOutput) LoosePolarLogBin() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.LoosePolarLogBin }).(pulumi.StringOutput)
 }
 
-// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
 // > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
-func (o ClusterOutput) LowerCaseTableNames() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.LowerCaseTableNames }).(pulumi.IntPtrOutput)
+func (o ClusterOutput) LowerCaseTableNames() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.LowerCaseTableNames }).(pulumi.IntOutput)
 }
 
 // Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -1158,7 +1187,7 @@ func (o ClusterOutput) PlannedStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.PlannedStartTime }).(pulumi.StringPtrOutput)
 }
 
-// (Available since 1.196.0+) PolarDB cluster connection port.
+// (Available since 1.196.0) PolarDB cluster connection port.
 func (o ClusterOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Port }).(pulumi.StringOutput)
 }
@@ -1169,7 +1198,7 @@ func (o ClusterOutput) ProxyClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ProxyClass }).(pulumi.StringPtrOutput)
 }
 
-// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
 // > **NOTE:** This parameter is valid only for standard clusters.
 func (o ClusterOutput) ProxyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ProxyType }).(pulumi.StringPtrOutput)
@@ -1190,32 +1219,37 @@ func (o ClusterOutput) RoleArn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.RoleArn }).(pulumi.StringOutput)
 }
 
-// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-// > **NOTE:** This parameter is valid only for serverless clusters.
+// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+func (o ClusterOutput) ScaleApRoNumMax() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ScaleApRoNumMax }).(pulumi.IntOutput)
+}
+
+// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+func (o ClusterOutput) ScaleApRoNumMin() pulumi.IntOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.ScaleApRoNumMin }).(pulumi.IntOutput)
+}
+
+// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 func (o ClusterOutput) ScaleMax() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.ScaleMax }).(pulumi.IntPtrOutput)
 }
 
-// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-// > **NOTE:** This parameter is valid only for serverless clusters.
+// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`.· This parameter is valid only for serverless clusters.
 func (o ClusterOutput) ScaleMin() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.ScaleMin }).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-// > **NOTE:** This parameter is valid only for serverless clusters.
+// The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7. It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 func (o ClusterOutput) ScaleRoNumMax() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.ScaleRoNumMax }).(pulumi.IntPtrOutput)
 }
 
-// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-// > **NOTE:** This parameter is valid only for serverless clusters.
+// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
 func (o ClusterOutput) ScaleRoNumMin() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntPtrOutput { return v.ScaleRoNumMin }).(pulumi.IntPtrOutput)
 }
 
-// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-// > **NOTE:** This parameter is valid only for serverless clusters.
+// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
 func (o ClusterOutput) SecondsUntilAutoPause() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.SecondsUntilAutoPause }).(pulumi.IntOutput)
 }
@@ -1232,8 +1266,13 @@ func (o ClusterOutput) SecurityIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringArrayOutput { return v.SecurityIps }).(pulumi.StringArrayOutput)
 }
 
-// The type of the serverless cluster. Set the value to AgileServerless.
-// > **NOTE:** This parameter is valid only for serverless clusters.
+// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+// > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
+func (o ClusterOutput) ServerlessSteadySwitch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ServerlessSteadySwitch }).(pulumi.StringPtrOutput)
+}
+
+// The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
 func (o ClusterOutput) ServerlessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.ServerlessType }).(pulumi.StringPtrOutput)
 }
@@ -1243,7 +1282,7 @@ func (o ClusterOutput) SourceResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.SourceResourceId }).(pulumi.StringPtrOutput)
 }
 
-// (Available since 1.204.1+) PolarDB cluster status.
+// (Available since 1.204.1) PolarDB cluster status.
 func (o ClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -1278,7 +1317,7 @@ func (o ClusterOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// (Available since 1.200.0+) The region where the TDE key resides.
+// (Available since 1.200.0) The region where the TDE key resides.
 // > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
 // **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
 func (o ClusterOutput) TdeRegion() pulumi.StringOutput {

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Cen
     public static class GetTransitRouterMulticastDomainSources
     {
         /// <summary>
-        /// This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+        /// This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -46,9 +46,9 @@ namespace Pulumi.AliCloud.Cen
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterMulticastDomainSourcesResult>("alicloud:cen/getTransitRouterMulticastDomainSources:getTransitRouterMulticastDomainSources", args ?? new GetTransitRouterMulticastDomainSourcesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+        /// This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -85,6 +85,10 @@ namespace Pulumi.AliCloud.Cen
     {
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of the multicast domain IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
@@ -113,6 +117,10 @@ namespace Pulumi.AliCloud.Cen
     {
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of the multicast domain IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());

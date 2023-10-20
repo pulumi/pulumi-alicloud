@@ -39,7 +39,17 @@ class AppAttachmentArgs:
              app_id: pulumi.Input[str],
              group_id: pulumi.Input[str],
              stage_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiId' in kwargs:
+            api_id = kwargs['apiId']
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'stageName' in kwargs:
+            stage_name = kwargs['stageName']
+
         _setter("api_id", api_id)
         _setter("app_id", app_id)
         _setter("group_id", group_id)
@@ -122,7 +132,17 @@ class _AppAttachmentState:
              app_id: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[str]] = None,
              stage_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiId' in kwargs:
+            api_id = kwargs['apiId']
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'stageName' in kwargs:
+            stage_name = kwargs['stageName']
+
         if api_id is not None:
             _setter("api_id", api_id)
         if app_id is not None:

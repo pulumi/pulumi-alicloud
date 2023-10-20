@@ -109,7 +109,21 @@ class InstanceAdAuthServer(dict):
              mobile_mapping: Optional[str] = None,
              name_mapping: Optional[str] = None,
              standby_server: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseDn' in kwargs:
+            base_dn = kwargs['baseDn']
+        if 'isSsl' in kwargs:
+            is_ssl = kwargs['isSsl']
+        if 'emailMapping' in kwargs:
+            email_mapping = kwargs['emailMapping']
+        if 'mobileMapping' in kwargs:
+            mobile_mapping = kwargs['mobileMapping']
+        if 'nameMapping' in kwargs:
+            name_mapping = kwargs['nameMapping']
+        if 'standbyServer' in kwargs:
+            standby_server = kwargs['standbyServer']
+
         _setter("account", account)
         _setter("base_dn", base_dn)
         _setter("domain", domain)
@@ -313,7 +327,23 @@ class InstanceLdapAuthServer(dict):
              mobile_mapping: Optional[str] = None,
              name_mapping: Optional[str] = None,
              standby_server: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseDn' in kwargs:
+            base_dn = kwargs['baseDn']
+        if 'emailMapping' in kwargs:
+            email_mapping = kwargs['emailMapping']
+        if 'isSsl' in kwargs:
+            is_ssl = kwargs['isSsl']
+        if 'loginNameMapping' in kwargs:
+            login_name_mapping = kwargs['loginNameMapping']
+        if 'mobileMapping' in kwargs:
+            mobile_mapping = kwargs['mobileMapping']
+        if 'nameMapping' in kwargs:
+            name_mapping = kwargs['nameMapping']
+        if 'standbyServer' in kwargs:
+            standby_server = kwargs['standbyServer']
+
         _setter("account", account)
         _setter("base_dn", base_dn)
         _setter("password", password)
@@ -474,7 +504,23 @@ class GetHostAccountsAccountResult(dict):
              instance_id: str,
              private_key_fingerprint: str,
              protocol_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hasPassword' in kwargs:
+            has_password = kwargs['hasPassword']
+        if 'hostAccountId' in kwargs:
+            host_account_id = kwargs['hostAccountId']
+        if 'hostAccountName' in kwargs:
+            host_account_name = kwargs['hostAccountName']
+        if 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'privateKeyFingerprint' in kwargs:
+            private_key_fingerprint = kwargs['privateKeyFingerprint']
+        if 'protocolName' in kwargs:
+            protocol_name = kwargs['protocolName']
+
         _setter("has_password", has_password)
         _setter("host_account_id", host_account_id)
         _setter("host_account_name", host_account_name)
@@ -580,7 +626,15 @@ class GetHostGroupsGroupResult(dict):
              host_group_name: str,
              id: str,
              instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostGroupId' in kwargs:
+            host_group_id = kwargs['hostGroupId']
+        if 'hostGroupName' in kwargs:
+            host_group_name = kwargs['hostGroupName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("comment", comment)
         _setter("host_group_id", host_group_id)
         _setter("host_group_name", host_group_name)
@@ -659,7 +713,17 @@ class GetHostShareKeysKeyResult(dict):
              id: str,
              instance_id: str,
              private_key_finger_print: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostShareKeyId' in kwargs:
+            host_share_key_id = kwargs['hostShareKeyId']
+        if 'hostShareKeyName' in kwargs:
+            host_share_key_name = kwargs['hostShareKeyName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'privateKeyFingerPrint' in kwargs:
+            private_key_finger_print = kwargs['privateKeyFingerPrint']
+
         _setter("host_share_key_id", host_share_key_id)
         _setter("host_share_key_name", host_share_key_name)
         _setter("id", id)
@@ -766,7 +830,25 @@ class GetHostsHostResult(dict):
              protocols: Sequence['outputs.GetHostsHostProtocolResult'],
              source: str,
              source_instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activeAddressType' in kwargs:
+            active_address_type = kwargs['activeAddressType']
+        if 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'hostPrivateAddress' in kwargs:
+            host_private_address = kwargs['hostPrivateAddress']
+        if 'hostPublicAddress' in kwargs:
+            host_public_address = kwargs['hostPublicAddress']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'sourceInstanceId' in kwargs:
+            source_instance_id = kwargs['sourceInstanceId']
+
         _setter("active_address_type", active_address_type)
         _setter("comment", comment)
         _setter("host_id", host_id)
@@ -900,7 +982,13 @@ class GetHostsHostProtocolResult(dict):
              host_finger_print: str,
              port: int,
              protocol_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostFingerPrint' in kwargs:
+            host_finger_print = kwargs['hostFingerPrint']
+        if 'protocolName' in kwargs:
+            protocol_name = kwargs['protocolName']
+
         _setter("host_finger_print", host_finger_print)
         _setter("port", port)
         _setter("protocol_name", protocol_name)
@@ -988,7 +1076,23 @@ class GetInstancesInstanceResult(dict):
              security_group_ids: Sequence[str],
              user_vswitch_id: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceStatus' in kwargs:
+            instance_status = kwargs['instanceStatus']
+        if 'licenseCode' in kwargs:
+            license_code = kwargs['licenseCode']
+        if 'privateDomain' in kwargs:
+            private_domain = kwargs['privateDomain']
+        if 'publicDomain' in kwargs:
+            public_domain = kwargs['publicDomain']
+        if 'publicNetworkAccess' in kwargs:
+            public_network_access = kwargs['publicNetworkAccess']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'userVswitchId' in kwargs:
+            user_vswitch_id = kwargs['userVswitchId']
+
         _setter("description", description)
         _setter("id", id)
         _setter("instance_status", instance_status)
@@ -1118,7 +1222,15 @@ class GetUserGroupsGroupResult(dict):
              instance_id: str,
              user_group_id: str,
              user_group_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'userGroupId' in kwargs:
+            user_group_id = kwargs['userGroupId']
+        if 'userGroupName' in kwargs:
+            user_group_name = kwargs['userGroupName']
+
         _setter("comment", comment)
         _setter("id", id)
         _setter("instance_id", instance_id)
@@ -1225,7 +1337,21 @@ class GetUsersUserResult(dict):
              status: str,
              user_id: str,
              user_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'mobileCountryCode' in kwargs:
+            mobile_country_code = kwargs['mobileCountryCode']
+        if 'sourceUserId' in kwargs:
+            source_user_id = kwargs['sourceUserId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         _setter("comment", comment)
         _setter("display_name", display_name)
         _setter("email", email)

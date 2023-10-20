@@ -55,7 +55,21 @@ class ServiceArgs:
              role: Optional[pulumi.Input[str]] = None,
              tracing_config: Optional[pulumi.Input['ServiceTracingConfigArgs']] = None,
              vpc_config: Optional[pulumi.Input['ServiceVpcConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'internetAccess' in kwargs:
+            internet_access = kwargs['internetAccess']
+        if 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'nasConfig' in kwargs:
+            nas_config = kwargs['nasConfig']
+        if 'tracingConfig' in kwargs:
+            tracing_config = kwargs['tracingConfig']
+        if 'vpcConfig' in kwargs:
+            vpc_config = kwargs['vpcConfig']
+
         if description is not None:
             _setter("description", description)
         if internet_access is not None:
@@ -219,7 +233,25 @@ class _ServiceState:
              tracing_config: Optional[pulumi.Input['ServiceTracingConfigArgs']] = None,
              version: Optional[pulumi.Input[str]] = None,
              vpc_config: Optional[pulumi.Input['ServiceVpcConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'internetAccess' in kwargs:
+            internet_access = kwargs['internetAccess']
+        if 'lastModified' in kwargs:
+            last_modified = kwargs['lastModified']
+        if 'logConfig' in kwargs:
+            log_config = kwargs['logConfig']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'nasConfig' in kwargs:
+            nas_config = kwargs['nasConfig']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'tracingConfig' in kwargs:
+            tracing_config = kwargs['tracingConfig']
+        if 'vpcConfig' in kwargs:
+            vpc_config = kwargs['vpcConfig']
+
         if description is not None:
             _setter("description", description)
         if internet_access is not None:

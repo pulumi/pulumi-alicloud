@@ -43,7 +43,15 @@ class AccessRuleArgs:
              priority: pulumi.Input[int],
              rw_access_type: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupId' in kwargs:
+            access_group_id = kwargs['accessGroupId']
+        if 'networkSegment' in kwargs:
+            network_segment = kwargs['networkSegment']
+        if 'rwAccessType' in kwargs:
+            rw_access_type = kwargs['rwAccessType']
+
         _setter("access_group_id", access_group_id)
         _setter("network_segment", network_segment)
         _setter("priority", priority)
@@ -148,7 +156,17 @@ class _AccessRuleState:
              network_segment: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              rw_access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupId' in kwargs:
+            access_group_id = kwargs['accessGroupId']
+        if 'accessRuleId' in kwargs:
+            access_rule_id = kwargs['accessRuleId']
+        if 'networkSegment' in kwargs:
+            network_segment = kwargs['networkSegment']
+        if 'rwAccessType' in kwargs:
+            rw_access_type = kwargs['rwAccessType']
+
         if access_group_id is not None:
             _setter("access_group_id", access_group_id)
         if access_rule_id is not None:

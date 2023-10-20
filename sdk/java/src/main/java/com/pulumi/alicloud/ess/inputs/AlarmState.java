@@ -126,14 +126,14 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name for the alarm&#39;s associated metric. See Block_metricNames_and_dimensions below for details.
+     * The name for the alarm&#39;s associated metric. See `dimensions` below for details.
      * 
      */
     @Import(name="metricName")
     private @Nullable Output<String> metricName;
 
     /**
-     * @return The name for the alarm&#39;s associated metric. See Block_metricNames_and_dimensions below for details.
+     * @return The name for the alarm&#39;s associated metric. See `dimensions` below for details.
      * 
      */
     public Optional<Output<String>> metricName() {
@@ -447,7 +447,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metricName The name for the alarm&#39;s associated metric. See Block_metricNames_and_dimensions below for details.
+         * @param metricName The name for the alarm&#39;s associated metric. See `dimensions` below for details.
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class AlarmState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metricName The name for the alarm&#39;s associated metric. See Block_metricNames_and_dimensions below for details.
+         * @param metricName The name for the alarm&#39;s associated metric. See `dimensions` below for details.
          * 
          * @return builder
          * 

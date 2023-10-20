@@ -30,7 +30,7 @@ class MonitorConfigArgs:
         :param pulumi.Input[int] evaluation_count: The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
         :param pulumi.Input[int] interval: The health check interval. Unit: seconds. Valid values: `60`.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorConfigIspCityNodeArgs']]] isp_city_nodes: The Monitoring node. See `isp_city_node` below for details.
-        :param pulumi.Input[str] monitor_extend_info: The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+        :param pulumi.Input[str] monitor_extend_info: The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         :param pulumi.Input[str] protocol_type: The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
         :param pulumi.Input[int] timeout: The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
         :param pulumi.Input[str] lang: The lang.
@@ -57,7 +57,19 @@ class MonitorConfigArgs:
              protocol_type: pulumi.Input[str],
              timeout: pulumi.Input[int],
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addrPoolId' in kwargs:
+            addr_pool_id = kwargs['addrPoolId']
+        if 'evaluationCount' in kwargs:
+            evaluation_count = kwargs['evaluationCount']
+        if 'ispCityNodes' in kwargs:
+            isp_city_nodes = kwargs['ispCityNodes']
+        if 'monitorExtendInfo' in kwargs:
+            monitor_extend_info = kwargs['monitorExtendInfo']
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+
         _setter("addr_pool_id", addr_pool_id)
         _setter("evaluation_count", evaluation_count)
         _setter("interval", interval)
@@ -120,7 +132,7 @@ class MonitorConfigArgs:
     @pulumi.getter(name="monitorExtendInfo")
     def monitor_extend_info(self) -> pulumi.Input[str]:
         """
-        The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+        The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         """
         return pulumi.get(self, "monitor_extend_info")
 
@@ -183,7 +195,7 @@ class _MonitorConfigState:
         :param pulumi.Input[int] interval: The health check interval. Unit: seconds. Valid values: `60`.
         :param pulumi.Input[Sequence[pulumi.Input['MonitorConfigIspCityNodeArgs']]] isp_city_nodes: The Monitoring node. See `isp_city_node` below for details.
         :param pulumi.Input[str] lang: The lang.
-        :param pulumi.Input[str] monitor_extend_info: The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+        :param pulumi.Input[str] monitor_extend_info: The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         :param pulumi.Input[str] protocol_type: The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
         :param pulumi.Input[int] timeout: The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
         """
@@ -209,7 +221,19 @@ class _MonitorConfigState:
              monitor_extend_info: Optional[pulumi.Input[str]] = None,
              protocol_type: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addrPoolId' in kwargs:
+            addr_pool_id = kwargs['addrPoolId']
+        if 'evaluationCount' in kwargs:
+            evaluation_count = kwargs['evaluationCount']
+        if 'ispCityNodes' in kwargs:
+            isp_city_nodes = kwargs['ispCityNodes']
+        if 'monitorExtendInfo' in kwargs:
+            monitor_extend_info = kwargs['monitorExtendInfo']
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+
         if addr_pool_id is not None:
             _setter("addr_pool_id", addr_pool_id)
         if evaluation_count is not None:
@@ -291,7 +315,7 @@ class _MonitorConfigState:
     @pulumi.getter(name="monitorExtendInfo")
     def monitor_extend_info(self) -> Optional[pulumi.Input[str]]:
         """
-        The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+        The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         """
         return pulumi.get(self, "monitor_extend_info")
 
@@ -341,7 +365,7 @@ class MonitorConfig(pulumi.CustomResource):
         """
         Provides a DNS Monitor Config resource.
 
-        For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+        For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
 
         > **NOTE:** Available since v1.153.0.
 
@@ -422,7 +446,7 @@ class MonitorConfig(pulumi.CustomResource):
         :param pulumi.Input[int] interval: The health check interval. Unit: seconds. Valid values: `60`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorConfigIspCityNodeArgs']]]] isp_city_nodes: The Monitoring node. See `isp_city_node` below for details.
         :param pulumi.Input[str] lang: The lang.
-        :param pulumi.Input[str] monitor_extend_info: The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+        :param pulumi.Input[str] monitor_extend_info: The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         :param pulumi.Input[str] protocol_type: The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
         :param pulumi.Input[int] timeout: The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
         """
@@ -435,7 +459,7 @@ class MonitorConfig(pulumi.CustomResource):
         """
         Provides a DNS Monitor Config resource.
 
-        For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+        For information about DNS Monitor Config and how to use it, see [What is Monitor Config](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
 
         > **NOTE:** Available since v1.153.0.
 
@@ -597,7 +621,7 @@ class MonitorConfig(pulumi.CustomResource):
         :param pulumi.Input[int] interval: The health check interval. Unit: seconds. Valid values: `60`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MonitorConfigIspCityNodeArgs']]]] isp_city_nodes: The Monitoring node. See `isp_city_node` below for details.
         :param pulumi.Input[str] lang: The lang.
-        :param pulumi.Input[str] monitor_extend_info: The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+        :param pulumi.Input[str] monitor_extend_info: The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         :param pulumi.Input[str] protocol_type: The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
         :param pulumi.Input[int] timeout: The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
         """
@@ -659,7 +683,7 @@ class MonitorConfig(pulumi.CustomResource):
     @pulumi.getter(name="monitorExtendInfo")
     def monitor_extend_info(self) -> pulumi.Output[str]:
         """
-        The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+        The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         """
         return pulumi.get(self, "monitor_extend_info")
 

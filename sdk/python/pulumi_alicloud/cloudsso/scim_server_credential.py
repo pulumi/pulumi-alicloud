@@ -31,7 +31,11 @@ class ScimServerCredentialArgs:
              _setter: Callable[[Any, Any], None],
              directory_id: pulumi.Input[str],
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+
         _setter("directory_id", directory_id)
         if status is not None:
             _setter("status", status)
@@ -85,7 +89,13 @@ class _ScimServerCredentialState:
              credential_id: Optional[pulumi.Input[str]] = None,
              directory_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'credentialId' in kwargs:
+            credential_id = kwargs['credentialId']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+
         if credential_id is not None:
             _setter("credential_id", credential_id)
         if directory_id is not None:

@@ -35,7 +35,15 @@ class StaticAccountArgs:
              access_key: pulumi.Input[str],
              instance_id: pulumi.Input[str],
              secret_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+
         _setter("access_key", access_key)
         _setter("instance_id", instance_id)
         _setter("secret_key", secret_key)
@@ -117,7 +125,21 @@ class _StaticAccountState:
              password: Optional[pulumi.Input[str]] = None,
              secret_key: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'masterUid' in kwargs:
+            master_uid = kwargs['masterUid']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if access_key is not None:
             _setter("access_key", access_key)
         if create_time is not None:

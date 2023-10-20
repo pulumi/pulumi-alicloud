@@ -94,14 +94,14 @@ public final class MonitorConfigState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+     * The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
      * 
      */
     @Import(name="monitorExtendInfo")
     private @Nullable Output<String> monitorExtendInfo;
 
     /**
-     * @return The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+     * @return The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
      * 
      */
     public Optional<Output<String>> monitorExtendInfo() {
@@ -285,7 +285,7 @@ public final class MonitorConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param monitorExtendInfo The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+         * @param monitorExtendInfo The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class MonitorConfigState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param monitorExtendInfo The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/doc-detail/198064.html).
+         * @param monitorExtendInfo The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
          * 
          * @return builder
          * 

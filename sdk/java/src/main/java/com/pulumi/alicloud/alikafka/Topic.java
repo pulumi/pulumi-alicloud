@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createtopic).
+ * Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
  * 
  * &gt; **NOTE:** Available since v1.56.0.
  * 

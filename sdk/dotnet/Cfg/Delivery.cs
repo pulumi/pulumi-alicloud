@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Cfg
     /// <summary>
     /// Provides a Cloud Config Delivery resource.
     /// 
-    /// For information about Cloud Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-doc-config-2020-09-07-api-doc-createconfigdeliverychannel).
+    /// For information about Cloud Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createconfigdeliverychannel).
     /// 
     /// &gt; **NOTE:** Available since v1.171.0.
     /// 

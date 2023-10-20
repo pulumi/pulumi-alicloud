@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.Alb
 {
     /// <summary>
-    /// &gt; **NOTE:** Available since v1.166.0.
+    /// For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-addentriestoacl).
     /// 
-    /// For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addentriestoacl).
+    /// &gt; **NOTE:** Available since v1.166.0.
     /// 
     /// ## Example Usage
     /// 

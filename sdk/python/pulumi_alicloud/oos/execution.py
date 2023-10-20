@@ -59,7 +59,21 @@ class ExecutionArgs:
              safety_check: Optional[pulumi.Input[str]] = None,
              template_content: Optional[pulumi.Input[str]] = None,
              template_version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'loopMode' in kwargs:
+            loop_mode = kwargs['loopMode']
+        if 'parentExecutionId' in kwargs:
+            parent_execution_id = kwargs['parentExecutionId']
+        if 'safetyCheck' in kwargs:
+            safety_check = kwargs['safetyCheck']
+        if 'templateContent' in kwargs:
+            template_content = kwargs['templateContent']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+
         _setter("template_name", template_name)
         if description is not None:
             _setter("description", description)
@@ -283,7 +297,39 @@ class _ExecutionState:
              template_name: Optional[pulumi.Input[str]] = None,
              template_version: Optional[pulumi.Input[str]] = None,
              update_date: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createDate' in kwargs:
+            create_date = kwargs['createDate']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if 'executedBy' in kwargs:
+            executed_by = kwargs['executedBy']
+        if 'isParent' in kwargs:
+            is_parent = kwargs['isParent']
+        if 'loopMode' in kwargs:
+            loop_mode = kwargs['loopMode']
+        if 'parentExecutionId' in kwargs:
+            parent_execution_id = kwargs['parentExecutionId']
+        if 'ramRole' in kwargs:
+            ram_role = kwargs['ramRole']
+        if 'safetyCheck' in kwargs:
+            safety_check = kwargs['safetyCheck']
+        if 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+        if 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+        if 'templateContent' in kwargs:
+            template_content = kwargs['templateContent']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if 'updateDate' in kwargs:
+            update_date = kwargs['updateDate']
+
         if counters is not None:
             _setter("counters", counters)
         if create_date is not None:

@@ -53,7 +53,19 @@ class ProjectArgs:
              product_type: Optional[pulumi.Input[str]] = None,
              properties: Optional[pulumi.Input['ProjectPropertiesArgs']] = None,
              security_properties: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'defaultQuota' in kwargs:
+            default_quota = kwargs['defaultQuota']
+        if 'ipWhiteList' in kwargs:
+            ip_white_list = kwargs['ipWhiteList']
+        if 'productType' in kwargs:
+            product_type = kwargs['productType']
+        if 'securityProperties' in kwargs:
+            security_properties = kwargs['securityProperties']
+
         _setter("project_name", project_name)
         if comment is not None:
             _setter("comment", comment)
@@ -205,7 +217,19 @@ class _ProjectState:
              security_properties: Optional[pulumi.Input['ProjectSecurityPropertiesArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defaultQuota' in kwargs:
+            default_quota = kwargs['defaultQuota']
+        if 'ipWhiteList' in kwargs:
+            ip_white_list = kwargs['ipWhiteList']
+        if 'productType' in kwargs:
+            product_type = kwargs['productType']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'securityProperties' in kwargs:
+            security_properties = kwargs['securityProperties']
+
         if comment is not None:
             _setter("comment", comment)
         if default_quota is not None:

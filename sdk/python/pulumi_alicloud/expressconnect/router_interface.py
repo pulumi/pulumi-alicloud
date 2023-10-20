@@ -119,7 +119,47 @@ class RouterInterfaceArgs:
              router_interface_id: Optional[pulumi.Input[str]] = None,
              router_interface_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'oppositeRegionId' in kwargs:
+            opposite_region_id = kwargs['oppositeRegionId']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if 'routerType' in kwargs:
+            router_type = kwargs['routerType']
+        if 'accessPointId' in kwargs:
+            access_point_id = kwargs['accessPointId']
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'deleteHealthCheckIp' in kwargs:
+            delete_health_check_ip = kwargs['deleteHealthCheckIp']
+        if 'hcRate' in kwargs:
+            hc_rate = kwargs['hcRate']
+        if 'hcThreshold' in kwargs:
+            hc_threshold = kwargs['hcThreshold']
+        if 'healthCheckSourceIp' in kwargs:
+            health_check_source_ip = kwargs['healthCheckSourceIp']
+        if 'healthCheckTargetIp' in kwargs:
+            health_check_target_ip = kwargs['healthCheckTargetIp']
+        if 'oppositeAccessPointId' in kwargs:
+            opposite_access_point_id = kwargs['oppositeAccessPointId']
+        if 'oppositeInterfaceId' in kwargs:
+            opposite_interface_id = kwargs['oppositeInterfaceId']
+        if 'oppositeInterfaceOwnerId' in kwargs:
+            opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
+        if 'oppositeRouterId' in kwargs:
+            opposite_router_id = kwargs['oppositeRouterId']
+        if 'oppositeRouterType' in kwargs:
+            opposite_router_type = kwargs['oppositeRouterType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+        if 'routerInterfaceId' in kwargs:
+            router_interface_id = kwargs['routerInterfaceId']
+        if 'routerInterfaceName' in kwargs:
+            router_interface_name = kwargs['routerInterfaceName']
+
         _setter("opposite_region_id", opposite_region_id)
         _setter("role", role)
         _setter("router_id", router_id)
@@ -629,7 +669,79 @@ class _RouterInterfaceState:
              spec: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vpc_instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPointId' in kwargs:
+            access_point_id = kwargs['accessPointId']
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'connectedTime' in kwargs:
+            connected_time = kwargs['connectedTime']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'crossBorder' in kwargs:
+            cross_border = kwargs['crossBorder']
+        if 'deleteHealthCheckIp' in kwargs:
+            delete_health_check_ip = kwargs['deleteHealthCheckIp']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'hasReservationData' in kwargs:
+            has_reservation_data = kwargs['hasReservationData']
+        if 'hcRate' in kwargs:
+            hc_rate = kwargs['hcRate']
+        if 'hcThreshold' in kwargs:
+            hc_threshold = kwargs['hcThreshold']
+        if 'healthCheckSourceIp' in kwargs:
+            health_check_source_ip = kwargs['healthCheckSourceIp']
+        if 'healthCheckTargetIp' in kwargs:
+            health_check_target_ip = kwargs['healthCheckTargetIp']
+        if 'oppositeAccessPointId' in kwargs:
+            opposite_access_point_id = kwargs['oppositeAccessPointId']
+        if 'oppositeBandwidth' in kwargs:
+            opposite_bandwidth = kwargs['oppositeBandwidth']
+        if 'oppositeInterfaceBusinessStatus' in kwargs:
+            opposite_interface_business_status = kwargs['oppositeInterfaceBusinessStatus']
+        if 'oppositeInterfaceId' in kwargs:
+            opposite_interface_id = kwargs['oppositeInterfaceId']
+        if 'oppositeInterfaceOwnerId' in kwargs:
+            opposite_interface_owner_id = kwargs['oppositeInterfaceOwnerId']
+        if 'oppositeInterfaceSpec' in kwargs:
+            opposite_interface_spec = kwargs['oppositeInterfaceSpec']
+        if 'oppositeInterfaceStatus' in kwargs:
+            opposite_interface_status = kwargs['oppositeInterfaceStatus']
+        if 'oppositeRegionId' in kwargs:
+            opposite_region_id = kwargs['oppositeRegionId']
+        if 'oppositeRouterId' in kwargs:
+            opposite_router_id = kwargs['oppositeRouterId']
+        if 'oppositeRouterType' in kwargs:
+            opposite_router_type = kwargs['oppositeRouterType']
+        if 'oppositeVpcInstanceId' in kwargs:
+            opposite_vpc_instance_id = kwargs['oppositeVpcInstanceId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+        if 'reservationActiveTime' in kwargs:
+            reservation_active_time = kwargs['reservationActiveTime']
+        if 'reservationBandwidth' in kwargs:
+            reservation_bandwidth = kwargs['reservationBandwidth']
+        if 'reservationInternetChargeType' in kwargs:
+            reservation_internet_charge_type = kwargs['reservationInternetChargeType']
+        if 'reservationOrderType' in kwargs:
+            reservation_order_type = kwargs['reservationOrderType']
+        if 'routerId' in kwargs:
+            router_id = kwargs['routerId']
+        if 'routerInterfaceId' in kwargs:
+            router_interface_id = kwargs['routerInterfaceId']
+        if 'routerInterfaceName' in kwargs:
+            router_interface_name = kwargs['routerInterfaceName']
+        if 'routerType' in kwargs:
+            router_type = kwargs['routerType']
+        if 'vpcInstanceId' in kwargs:
+            vpc_instance_id = kwargs['vpcInstanceId']
+
         if access_point_id is not None:
             _setter("access_point_id", access_point_id)
         if auto_pay is not None:

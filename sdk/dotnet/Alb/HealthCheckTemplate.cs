@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Alb
     /// <summary>
     /// Provides a Application Load Balancer (ALB) Health Check Template resource.
     /// 
-    /// For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createhealthchecktemplate).
+    /// For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createhealthchecktemplate).
     /// 
     /// &gt; **NOTE:** Available since v1.134.0.
     /// 

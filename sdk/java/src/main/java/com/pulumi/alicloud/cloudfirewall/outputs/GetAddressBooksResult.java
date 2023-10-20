@@ -13,7 +13,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAddressBooksResult {
+    /**
+     * @return A list of Cloud Firewall Address Books. Each element contains the following attributes:
+     * 
+     */
     private List<GetAddressBooksBook> books;
+    /**
+     * @return The type of the Address Book.
+     * 
+     */
     private @Nullable String groupType;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,13 +30,25 @@ public final class GetAddressBooksResult {
     private String id;
     private List<String> ids;
     private @Nullable String nameRegex;
+    /**
+     * @return A list of Address Book names.
+     * 
+     */
     private List<String> names;
     private @Nullable String outputFile;
 
     private GetAddressBooksResult() {}
+    /**
+     * @return A list of Cloud Firewall Address Books. Each element contains the following attributes:
+     * 
+     */
     public List<GetAddressBooksBook> books() {
         return this.books;
     }
+    /**
+     * @return The type of the Address Book.
+     * 
+     */
     public Optional<String> groupType() {
         return Optional.ofNullable(this.groupType);
     }
@@ -45,6 +65,10 @@ public final class GetAddressBooksResult {
     public Optional<String> nameRegex() {
         return Optional.ofNullable(this.nameRegex);
     }
+    /**
+     * @return A list of Address Book names.
+     * 
+     */
     public List<String> names() {
         return this.names;
     }

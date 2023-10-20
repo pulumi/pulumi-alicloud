@@ -31,7 +31,13 @@ class DeployGroupArgs:
              _setter: Callable[[Any, Any], None],
              app_id: pulumi.Input[str],
              group_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+
         _setter("app_id", app_id)
         _setter("group_name", group_name)
 
@@ -84,7 +90,15 @@ class _DeployGroupState:
              app_id: Optional[pulumi.Input[str]] = None,
              group_name: Optional[pulumi.Input[str]] = None,
              group_type: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if group_name is not None:

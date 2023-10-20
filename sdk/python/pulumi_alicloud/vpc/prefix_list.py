@@ -53,7 +53,19 @@ class PrefixListArgs:
              prefix_list_name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'maxEntries' in kwargs:
+            max_entries = kwargs['maxEntries']
+        if 'prefixListDescription' in kwargs:
+            prefix_list_description = kwargs['prefixListDescription']
+        if 'prefixListName' in kwargs:
+            prefix_list_name = kwargs['prefixListName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if entrys is not None:
             _setter("entrys", entrys)
         if ip_version is not None:
@@ -214,7 +226,27 @@ class _PrefixListState:
              share_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'maxEntries' in kwargs:
+            max_entries = kwargs['maxEntries']
+        if 'prefixListAssociations' in kwargs:
+            prefix_list_associations = kwargs['prefixListAssociations']
+        if 'prefixListDescription' in kwargs:
+            prefix_list_description = kwargs['prefixListDescription']
+        if 'prefixListId' in kwargs:
+            prefix_list_id = kwargs['prefixListId']
+        if 'prefixListName' in kwargs:
+            prefix_list_name = kwargs['prefixListName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if entrys is not None:

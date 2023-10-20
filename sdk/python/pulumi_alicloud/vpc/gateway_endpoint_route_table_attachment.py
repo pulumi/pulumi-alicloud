@@ -31,7 +31,13 @@ class GatewayEndpointRouteTableAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              gateway_endpoint_id: pulumi.Input[str],
              route_table_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gatewayEndpointId' in kwargs:
+            gateway_endpoint_id = kwargs['gatewayEndpointId']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+
         _setter("gateway_endpoint_id", gateway_endpoint_id)
         _setter("route_table_id", route_table_id)
 
@@ -84,7 +90,13 @@ class _GatewayEndpointRouteTableAttachmentState:
              gateway_endpoint_id: Optional[pulumi.Input[str]] = None,
              route_table_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gatewayEndpointId' in kwargs:
+            gateway_endpoint_id = kwargs['gatewayEndpointId']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+
         if gateway_endpoint_id is not None:
             _setter("gateway_endpoint_id", gateway_endpoint_id)
         if route_table_id is not None:

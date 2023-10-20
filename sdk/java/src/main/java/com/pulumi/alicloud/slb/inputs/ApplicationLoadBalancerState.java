@@ -136,7 +136,7 @@ public final class ApplicationLoadBalancerState extends com.pulumi.resources.Res
 
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
-     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+     * Launching &#34;Performance-guaranteed&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
      * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
      * 
      */
@@ -145,7 +145,7 @@ public final class ApplicationLoadBalancerState extends com.pulumi.resources.Res
 
     /**
      * @return The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
-     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+     * Launching &#34;Performance-guaranteed&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
      * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
      * 
      */
@@ -555,7 +555,7 @@ public final class ApplicationLoadBalancerState extends com.pulumi.resources.Res
 
         /**
          * @param loadBalancerSpec The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
-         * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+         * Launching &#34;Performance-guaranteed&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
          * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
          * 
          * @return builder
@@ -568,7 +568,7 @@ public final class ApplicationLoadBalancerState extends com.pulumi.resources.Res
 
         /**
          * @param loadBalancerSpec The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
-         * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+         * Launching &#34;Performance-guaranteed&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
          * `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = &#34;PayByCLCU&#34;`.
          * 
          * @return builder

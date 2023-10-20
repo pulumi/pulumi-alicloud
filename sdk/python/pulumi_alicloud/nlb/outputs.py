@@ -92,7 +92,23 @@ class LoadBalancerZoneMapping(dict):
              ipv6_address: Optional[str] = None,
              private_ipv4_address: Optional[str] = None,
              public_ipv4_address: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'allocationId' in kwargs:
+            allocation_id = kwargs['allocationId']
+        if 'eniId' in kwargs:
+            eni_id = kwargs['eniId']
+        if 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+        if 'privateIpv4Address' in kwargs:
+            private_ipv4_address = kwargs['privateIpv4Address']
+        if 'publicIpv4Address' in kwargs:
+            public_ipv4_address = kwargs['publicIpv4Address']
+
         _setter("vswitch_id", vswitch_id)
         _setter("zone_id", zone_id)
         if allocation_id is not None:
@@ -256,7 +272,31 @@ class ServerGroupHealthCheck(dict):
              healthy_threshold: Optional[int] = None,
              http_check_method: Optional[str] = None,
              unhealthy_threshold: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if 'healthCheckConnectTimeout' in kwargs:
+            health_check_connect_timeout = kwargs['healthCheckConnectTimeout']
+        if 'healthCheckDomain' in kwargs:
+            health_check_domain = kwargs['healthCheckDomain']
+        if 'healthCheckEnabled' in kwargs:
+            health_check_enabled = kwargs['healthCheckEnabled']
+        if 'healthCheckHttpCodes' in kwargs:
+            health_check_http_codes = kwargs['healthCheckHttpCodes']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'healthCheckUrl' in kwargs:
+            health_check_url = kwargs['healthCheckUrl']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'httpCheckMethod' in kwargs:
+            http_check_method = kwargs['httpCheckMethod']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         if health_check_connect_port is not None:
             _setter("health_check_connect_port", health_check_connect_port)
         if health_check_connect_timeout is not None:
@@ -465,7 +505,43 @@ class GetListenersListenerResult(dict):
              server_group_id: str,
              start_port: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alpnEnabled' in kwargs:
+            alpn_enabled = kwargs['alpnEnabled']
+        if 'alpnPolicy' in kwargs:
+            alpn_policy = kwargs['alpnPolicy']
+        if 'caCertificateIds' in kwargs:
+            ca_certificate_ids = kwargs['caCertificateIds']
+        if 'caEnabled' in kwargs:
+            ca_enabled = kwargs['caEnabled']
+        if 'certificateIds' in kwargs:
+            certificate_ids = kwargs['certificateIds']
+        if 'endPort' in kwargs:
+            end_port = kwargs['endPort']
+        if 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+        if 'listenerDescription' in kwargs:
+            listener_description = kwargs['listenerDescription']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'listenerProtocol' in kwargs:
+            listener_protocol = kwargs['listenerProtocol']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'proxyProtocolEnabled' in kwargs:
+            proxy_protocol_enabled = kwargs['proxyProtocolEnabled']
+        if 'secSensorEnabled' in kwargs:
+            sec_sensor_enabled = kwargs['secSensorEnabled']
+        if 'securityPolicyId' in kwargs:
+            security_policy_id = kwargs['securityPolicyId']
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'startPort' in kwargs:
+            start_port = kwargs['startPort']
+
         _setter("alpn_enabled", alpn_enabled)
         _setter("alpn_policy", alpn_policy)
         _setter("ca_certificate_ids", ca_certificate_ids)
@@ -744,7 +820,41 @@ class GetLoadBalancersBalancerResult(dict):
              vpc_id: str,
              zone_mappings: Sequence['outputs.GetLoadBalancersBalancerZoneMappingResult'],
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'addressType' in kwargs:
+            address_type = kwargs['addressType']
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'crossZoneEnabled' in kwargs:
+            cross_zone_enabled = kwargs['crossZoneEnabled']
+        if 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if 'ipv6AddressType' in kwargs:
+            ipv6_address_type = kwargs['ipv6AddressType']
+        if 'loadBalancerBusinessStatus' in kwargs:
+            load_balancer_business_status = kwargs['loadBalancerBusinessStatus']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'loadBalancerName' in kwargs:
+            load_balancer_name = kwargs['loadBalancerName']
+        if 'loadBalancerType' in kwargs:
+            load_balancer_type = kwargs['loadBalancerType']
+        if 'operationLocks' in kwargs:
+            operation_locks = kwargs['operationLocks']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'zoneMappings' in kwargs:
+            zone_mappings = kwargs['zoneMappings']
+
         _setter("address_ip_version", address_ip_version)
         _setter("address_type", address_type)
         _setter("bandwidth_package_id", bandwidth_package_id)
@@ -938,7 +1048,13 @@ class GetLoadBalancersBalancerOperationLockResult(dict):
              _setter: Callable[[Any, Any], None],
              lock_reason: str,
              lock_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+        if 'lockType' in kwargs:
+            lock_type = kwargs['lockType']
+
         _setter("lock_reason", lock_reason)
         _setter("lock_type", lock_type)
 
@@ -998,7 +1114,23 @@ class GetLoadBalancersBalancerZoneMappingResult(dict):
              public_ipv4_address: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocationId' in kwargs:
+            allocation_id = kwargs['allocationId']
+        if 'eniId' in kwargs:
+            eni_id = kwargs['eniId']
+        if 'ipv6Address' in kwargs:
+            ipv6_address = kwargs['ipv6Address']
+        if 'privateIpv4Address' in kwargs:
+            private_ipv4_address = kwargs['privateIpv4Address']
+        if 'publicIpv4Address' in kwargs:
+            public_ipv4_address = kwargs['publicIpv4Address']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("allocation_id", allocation_id)
         _setter("eni_id", eni_id)
         _setter("ipv6_address", ipv6_address)
@@ -1103,7 +1235,15 @@ class GetSecurityPoliciesPolicyResult(dict):
              status: str,
              tags: Mapping[str, Any],
              tls_versions: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityPolicyName' in kwargs:
+            security_policy_name = kwargs['securityPolicyName']
+        if 'tlsVersions' in kwargs:
+            tls_versions = kwargs['tlsVersions']
+
         _setter("ciphers", ciphers)
         _setter("id", id)
         _setter("resource_group_id", resource_group_id)
@@ -1220,7 +1360,19 @@ class GetServerGroupServerAttachmentsAttachmentResult(dict):
              status: str,
              weight: int,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'serverId' in kwargs:
+            server_id = kwargs['serverId']
+        if 'serverIp' in kwargs:
+            server_ip = kwargs['serverIp']
+        if 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("description", description)
         _setter("id", id)
         _setter("port", port)
@@ -1388,7 +1540,31 @@ class GetServerGroupsGroupResult(dict):
              status: str,
              tags: Mapping[str, Any],
              vpc_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'connectionDrain' in kwargs:
+            connection_drain = kwargs['connectionDrain']
+        if 'connectionDrainTimeout' in kwargs:
+            connection_drain_timeout = kwargs['connectionDrainTimeout']
+        if 'healthChecks' in kwargs:
+            health_checks = kwargs['healthChecks']
+        if 'preserveClientIpEnabled' in kwargs:
+            preserve_client_ip_enabled = kwargs['preserveClientIpEnabled']
+        if 'relatedLoadBalancerIds' in kwargs:
+            related_load_balancer_ids = kwargs['relatedLoadBalancerIds']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'serverCount' in kwargs:
+            server_count = kwargs['serverCount']
+        if 'serverGroupName' in kwargs:
+            server_group_name = kwargs['serverGroupName']
+        if 'serverGroupType' in kwargs:
+            server_group_type = kwargs['serverGroupType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("address_ip_version", address_ip_version)
         _setter("connection_drain", connection_drain)
         _setter("connection_drain_timeout", connection_drain_timeout)
@@ -1590,7 +1766,31 @@ class GetServerGroupsGroupHealthCheckResult(dict):
              healthy_threshold: int,
              http_check_method: str,
              unhealthy_threshold: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if 'healthCheckConnectTimeout' in kwargs:
+            health_check_connect_timeout = kwargs['healthCheckConnectTimeout']
+        if 'healthCheckDomain' in kwargs:
+            health_check_domain = kwargs['healthCheckDomain']
+        if 'healthCheckEnabled' in kwargs:
+            health_check_enabled = kwargs['healthCheckEnabled']
+        if 'healthCheckHttpCodes' in kwargs:
+            health_check_http_codes = kwargs['healthCheckHttpCodes']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'healthCheckUrl' in kwargs:
+            health_check_url = kwargs['healthCheckUrl']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'httpCheckMethod' in kwargs:
+            http_check_method = kwargs['httpCheckMethod']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         _setter("health_check_connect_port", health_check_connect_port)
         _setter("health_check_connect_timeout", health_check_connect_timeout)
         _setter("health_check_domain", health_check_domain)
@@ -1715,7 +1915,13 @@ class GetZonesZoneResult(dict):
              id: str,
              local_name: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("id", id)
         _setter("local_name", local_name)
         _setter("zone_id", zone_id)

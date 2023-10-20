@@ -51,7 +51,19 @@ class BasicDefenseThresholdArgs:
              internet_ip: Optional[pulumi.Input[str]] = None,
              is_auto: Optional[pulumi.Input[bool]] = None,
              pps: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ddosType' in kwargs:
+            ddos_type = kwargs['ddosType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'isAuto' in kwargs:
+            is_auto = kwargs['isAuto']
+
         _setter("ddos_type", ddos_type)
         _setter("instance_id", instance_id)
         _setter("instance_type", instance_type)
@@ -197,7 +209,23 @@ class _BasicDefenseThresholdState:
              max_bps: Optional[pulumi.Input[int]] = None,
              max_pps: Optional[pulumi.Input[int]] = None,
              pps: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ddosType' in kwargs:
+            ddos_type = kwargs['ddosType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'isAuto' in kwargs:
+            is_auto = kwargs['isAuto']
+        if 'maxBps' in kwargs:
+            max_bps = kwargs['maxBps']
+        if 'maxPps' in kwargs:
+            max_pps = kwargs['maxPps']
+
         if bps is not None:
             _setter("bps", bps)
         if ddos_type is not None:

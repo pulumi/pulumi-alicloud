@@ -133,7 +133,55 @@ class ClusterArgs:
              use_local_metadb: Optional[pulumi.Input[bool]] = None,
              user_defined_emr_ecs_role: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'emrVer' in kwargs:
+            emr_ver = kwargs['emrVer']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'bootstrapActions' in kwargs:
+            bootstrap_actions = kwargs['bootstrapActions']
+        if 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if 'depositType' in kwargs:
+            deposit_type = kwargs['depositType']
+        if 'easEnable' in kwargs:
+            eas_enable = kwargs['easEnable']
+        if 'highAvailabilityEnable' in kwargs:
+            high_availability_enable = kwargs['highAvailabilityEnable']
+        if 'hostGroups' in kwargs:
+            host_groups = kwargs['hostGroups']
+        if 'isOpenPublicIp' in kwargs:
+            is_open_public_ip = kwargs['isOpenPublicIp']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'masterPwd' in kwargs:
+            master_pwd = kwargs['masterPwd']
+        if 'metaStoreConf' in kwargs:
+            meta_store_conf = kwargs['metaStoreConf']
+        if 'metaStoreType' in kwargs:
+            meta_store_type = kwargs['metaStoreType']
+        if 'modifyClusterServiceConfig' in kwargs:
+            modify_cluster_service_config = kwargs['modifyClusterServiceConfig']
+        if 'optionSoftwareLists' in kwargs:
+            option_software_lists = kwargs['optionSoftwareLists']
+        if 'relatedClusterId' in kwargs:
+            related_cluster_id = kwargs['relatedClusterId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'sshEnable' in kwargs:
+            ssh_enable = kwargs['sshEnable']
+        if 'useLocalMetadb' in kwargs:
+            use_local_metadb = kwargs['useLocalMetadb']
+        if 'userDefinedEmrEcsRole' in kwargs:
+            user_defined_emr_ecs_role = kwargs['userDefinedEmrEcsRole']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("cluster_type", cluster_type)
         _setter("emr_ver", emr_ver)
         _setter("zone_id", zone_id)
@@ -631,7 +679,55 @@ class _ClusterState:
              user_defined_emr_ecs_role: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bootstrapActions' in kwargs:
+            bootstrap_actions = kwargs['bootstrapActions']
+        if 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'depositType' in kwargs:
+            deposit_type = kwargs['depositType']
+        if 'easEnable' in kwargs:
+            eas_enable = kwargs['easEnable']
+        if 'emrVer' in kwargs:
+            emr_ver = kwargs['emrVer']
+        if 'highAvailabilityEnable' in kwargs:
+            high_availability_enable = kwargs['highAvailabilityEnable']
+        if 'hostGroups' in kwargs:
+            host_groups = kwargs['hostGroups']
+        if 'isOpenPublicIp' in kwargs:
+            is_open_public_ip = kwargs['isOpenPublicIp']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'masterPwd' in kwargs:
+            master_pwd = kwargs['masterPwd']
+        if 'metaStoreConf' in kwargs:
+            meta_store_conf = kwargs['metaStoreConf']
+        if 'metaStoreType' in kwargs:
+            meta_store_type = kwargs['metaStoreType']
+        if 'modifyClusterServiceConfig' in kwargs:
+            modify_cluster_service_config = kwargs['modifyClusterServiceConfig']
+        if 'optionSoftwareLists' in kwargs:
+            option_software_lists = kwargs['optionSoftwareLists']
+        if 'relatedClusterId' in kwargs:
+            related_cluster_id = kwargs['relatedClusterId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'sshEnable' in kwargs:
+            ssh_enable = kwargs['sshEnable']
+        if 'useLocalMetadb' in kwargs:
+            use_local_metadb = kwargs['useLocalMetadb']
+        if 'userDefinedEmrEcsRole' in kwargs:
+            user_defined_emr_ecs_role = kwargs['userDefinedEmrEcsRole']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if bootstrap_actions is not None:
             _setter("bootstrap_actions", bootstrap_actions)
         if charge_type is not None:

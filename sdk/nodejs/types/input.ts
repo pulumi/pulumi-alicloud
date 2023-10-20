@@ -322,42 +322,65 @@ export namespace alb {
 
     export interface LoadBalancerAccessLogConfig {
         /**
-         * The log service that access logs are shipped to.
+         * This Log Storage Project.
          */
-        logProject?: pulumi.Input<string>;
+        logProject: pulumi.Input<string>;
         /**
-         * The log service that access logs are shipped to.
+         * This Log Storage Method Is Increased.
          */
-        logStore?: pulumi.Input<string>;
+        logStore: pulumi.Input<string>;
     }
 
     export interface LoadBalancerLoadBalancerBillingConfig {
         /**
-         * The billing method of the ALB instance. Valid value: `PayAsYouGo`.
+         * Pay Type.
          */
         payType: pulumi.Input<string>;
     }
 
     export interface LoadBalancerModificationProtectionConfig {
         /**
-         * The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
+         * Managed Instance.
          */
         reason?: pulumi.Input<string>;
         /**
-         * Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+         * Load Balancing Modify the Protection Status.
          */
         status?: pulumi.Input<string>;
     }
 
     export interface LoadBalancerZoneMapping {
         /**
+         * The SLB Instance Address.
+         */
+        loadBalancerAddresses?: pulumi.Input<pulumi.Input<inputs.alb.LoadBalancerZoneMappingLoadBalancerAddress>[]>;
+        /**
          * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
          */
         vswitchId: pulumi.Input<string>;
         /**
-         * The ID of the zone to which the ALB instance belongs.
+         * The ID of the zone to which the SLB instance belongs.
          */
         zoneId: pulumi.Input<string>;
+    }
+
+    export interface LoadBalancerZoneMappingLoadBalancerAddress {
+        /**
+         * IP Address. The Public IP Address, and Private IP Address from the Address Type.
+         */
+        address?: pulumi.Input<string>;
+        /**
+         * The ID of the EIP instance.
+         */
+        allocationId?: pulumi.Input<string>;
+        /**
+         * The type of the EIP instance.
+         */
+        eipType?: pulumi.Input<string>;
+        /**
+         * Ipv6 address.
+         */
+        ipv6Address?: pulumi.Input<string>;
     }
 
     export interface RuleRuleAction {
@@ -1020,7 +1043,7 @@ export namespace arms {
 
     export interface DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
         /**
-         * The key of the tag of the dispatch rule. Valud values:
+         * The key of the tag of the dispatch rule. Valid values:
          * * _aliyun_arms_userid: user ID
          * * _aliyun_arms_involvedObject_kind: type of the associated object
          * * _aliyun_arms_involvedObject_id: ID of the associated object
@@ -1870,6 +1893,21 @@ export namespace cms {
         tagValueMatchFunction: pulumi.Input<string>;
     }
 
+    export interface EventRuleContactParameter {
+        /**
+         * The name of the alert contact group.
+         */
+        contactGroupName?: pulumi.Input<string>;
+        /**
+         * The ID of the recipient that receives alert notifications.
+         */
+        contactParametersId?: pulumi.Input<string>;
+        /**
+         * The alert level and the corresponding notification methods.
+         */
+        level?: pulumi.Input<string>;
+    }
+
     export interface EventRuleEventPattern {
         /**
          * The type of the event-triggered alert rule. Valid values:
@@ -1891,6 +1929,125 @@ export namespace cms {
          * The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
          */
         sqlFilter?: pulumi.Input<string>;
+    }
+
+    export interface EventRuleFcParameter {
+        /**
+         * (Available since v1.211.1) The ARN of the API operation.
+         */
+        arn?: pulumi.Input<string>;
+        /**
+         * The ID of the recipient that receives alert notifications.
+         */
+        fcParametersId?: pulumi.Input<string>;
+        /**
+         * The name of the function.
+         */
+        functionName?: pulumi.Input<string>;
+        /**
+         * The region where Function Compute is deployed.
+         */
+        region?: pulumi.Input<string>;
+        /**
+         * The name of the Function Compute service.
+         */
+        serviceName?: pulumi.Input<string>;
+    }
+
+    export interface EventRuleMnsParameter {
+        /**
+         * (Available since v1.211.1) The ARN of the API operation.
+         */
+        arn?: pulumi.Input<string>;
+        /**
+         * The ID of the recipient that receives alert notifications.
+         */
+        mnsParametersId?: pulumi.Input<string>;
+        /**
+         * The name of the MNS queue.
+         */
+        queue?: pulumi.Input<string>;
+        /**
+         * The region where Message Service (MNS) is deployed.
+         */
+        region?: pulumi.Input<string>;
+        /**
+         * The MNS topic.
+         */
+        topic?: pulumi.Input<string>;
+    }
+
+    export interface EventRuleOpenApiParameter {
+        /**
+         * The API name.
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * (Available since v1.211.1) The ARN of the API operation.
+         */
+        arn?: pulumi.Input<string>;
+        /**
+         * The ID of the recipient that receives alert notifications sent by an API callback.
+         */
+        openApiParametersId?: pulumi.Input<string>;
+        /**
+         * The ID of the cloud service to which the API operation belongs.
+         */
+        product?: pulumi.Input<string>;
+        /**
+         * The region where the resource resides.
+         */
+        region?: pulumi.Input<string>;
+        /**
+         * The name of the role.
+         */
+        role?: pulumi.Input<string>;
+        /**
+         * The version of the API.
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface EventRuleSlsParameter {
+        /**
+         * (Available since v1.211.1) The ARN of the API operation.
+         */
+        arn?: pulumi.Input<string>;
+        /**
+         * The name of the Simple Log Service Logstore.
+         */
+        logStore?: pulumi.Input<string>;
+        /**
+         * The name of the Simple Log Service project.
+         */
+        project?: pulumi.Input<string>;
+        /**
+         * The region where Simple Log Service is deployed.
+         */
+        region?: pulumi.Input<string>;
+        /**
+         * The ID of the recipient that receives alert notifications.
+         */
+        slsParametersId?: pulumi.Input<string>;
+    }
+
+    export interface EventRuleWebhookParameter {
+        /**
+         * The HTTP request method.
+         */
+        method?: pulumi.Input<string>;
+        /**
+         * The name of the protocol.
+         */
+        protocol?: pulumi.Input<string>;
+        /**
+         * The callback URL.
+         */
+        url?: pulumi.Input<string>;
+        /**
+         * The ID of the recipient that receives alert notifications.
+         */
+        webhookParametersId?: pulumi.Input<string>;
     }
 
     export interface GroupMetricRuleEscalations {
@@ -2549,52 +2706,6 @@ export namespace cs {
         privateIp?: pulumi.Input<string>;
     }
 
-    export interface GetKubernetesAddonsAddon {
-        /**
-         * The current custom configuration of the addon. **Note:** Available in v1.166.0+
-         */
-        currentConfig?: string;
-        /**
-         * The current version of addon, if this field is an empty string, it means that the addon is not installed.
-         */
-        currentVersion?: string;
-        /**
-         * The name of addon.
-         */
-        name?: string;
-        /**
-         * The next version of this addon can be upgraded to.
-         */
-        nextVersion?: string;
-        /**
-         * Whether the addon is a system addon.
-         */
-        required?: boolean;
-    }
-
-    export interface GetKubernetesAddonsAddonArgs {
-        /**
-         * The current custom configuration of the addon. **Note:** Available in v1.166.0+
-         */
-        currentConfig?: pulumi.Input<string>;
-        /**
-         * The current version of addon, if this field is an empty string, it means that the addon is not installed.
-         */
-        currentVersion?: pulumi.Input<string>;
-        /**
-         * The name of addon.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * The next version of this addon can be upgraded to.
-         */
-        nextVersion?: pulumi.Input<string>;
-        /**
-         * Whether the addon is a system addon.
-         */
-        required?: pulumi.Input<boolean>;
-    }
-
     export interface GetKubernetesPermissionPermission {
         /**
          * ndicates whether the permissions are granted to the cluster owner. Valid values `0`, `1`.
@@ -3115,7 +3226,7 @@ export namespace cs {
          */
         kubeApiQps?: pulumi.Input<string>;
         /**
-         * Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+         * Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          */
         kubeReserved?: pulumi.Input<{[key: string]: any}>;
         /**
@@ -3131,7 +3242,7 @@ export namespace cs {
          */
         serializeImagePulls?: pulumi.Input<string>;
         /**
-         * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+         * Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
          */
         systemReserved?: pulumi.Input<{[key: string]: any}>;
     }
@@ -4813,10 +4924,25 @@ export namespace ecp {
 
 export namespace ecs {
     export interface AutoProvisioningGroupLaunchTemplateConfig {
+        /**
+         * The instance type of the Nth extended configurations of the launch template.
+         */
         instanceType?: pulumi.Input<string>;
+        /**
+         * The maximum price of the instance type specified in the Nth extended configurations of the launch template.
+         */
         maxPrice: pulumi.Input<string>;
+        /**
+         * The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
+         */
         priority?: pulumi.Input<string>;
+        /**
+         * The ID of the VSwitch in the Nth extended configurations of the launch template.
+         */
         vswitchId: pulumi.Input<string>;
+        /**
+         * The weight of the instance type specified in the Nth extended configurations of the launch template.
+         */
         weightedCapacity: pulumi.Input<string>;
     }
 
@@ -4918,7 +5044,7 @@ export namespace ecs {
          */
         deleteWithInstance?: pulumi.Input<boolean>;
         /**
-         * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+         * The description of the data disk.
          */
         description?: pulumi.Input<string>;
         /**
@@ -4926,7 +5052,7 @@ export namespace ecs {
          */
         encrypted?: pulumi.Input<boolean>;
         /**
-         * It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+         * The name of the data disk.
          */
         name?: pulumi.Input<string>;
         /**
@@ -4945,11 +5071,11 @@ export namespace ecs {
 
     export interface EcsLaunchTemplateNetworkInterfaces {
         /**
-         * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+         * The ENI description.
          */
         description?: pulumi.Input<string>;
         /**
-         * It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+         * The ENI name.
          */
         name?: pulumi.Input<string>;
         /**
@@ -4957,42 +5083,46 @@ export namespace ecs {
          */
         primaryIp?: pulumi.Input<string>;
         /**
-         * The security group ID.
+         * The security group ID must be one in the same VPC.
          */
         securityGroupId?: pulumi.Input<string>;
         /**
-         * When creating a VPC-Connected instance, you must specify its VSwitch ID.
+         * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
          */
         vswitchId?: pulumi.Input<string>;
     }
 
     export interface EcsLaunchTemplateSystemDisk {
         /**
-         * The category of the disk.
+         * The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `localDisk`.
          */
         category?: pulumi.Input<string>;
         /**
-         * Indicates whether the data disk is released with the instance.
+         * Specifies whether to release the system disk when the instance is released. Default to `true`.
          */
         deleteWithInstance?: pulumi.Input<boolean>;
         /**
-         * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+         * System disk description. It cannot begin with http:// or https://.
          */
         description?: pulumi.Input<string>;
+        /**
+         * Specifies whether the system disk is encrypted.
+         */
+        encrypted?: pulumi.Input<boolean>;
         /**
          * The Iops.
          */
         iops?: pulumi.Input<string>;
         /**
-         * It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+         * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
          */
         name?: pulumi.Input<string>;
         /**
-         * The performance level of the ESSD used as the data disk.
+         * The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
          */
         performanceLevel?: pulumi.Input<string>;
         /**
-         * The size of the data disk.
+         * Size of the system disk, measured in GB. Value range: [20, 500].
          */
         size?: pulumi.Input<number>;
     }
@@ -5244,6 +5374,12 @@ export namespace ecs {
          * The description of the data disk.
          */
         description?: pulumi.Input<string>;
+        /**
+         * Encrypted the data in this disk.
+         *
+         * Default to false
+         */
+        encrypted?: pulumi.Input<boolean>;
         iops?: pulumi.Input<string>;
         /**
          * The name of the data disk.
@@ -7095,7 +7231,7 @@ export namespace ga {
          */
         ruleActionType: pulumi.Input<string>;
         /**
-         * The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+         * The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
          */
         ruleActionValue?: pulumi.Input<string>;
     }
@@ -8970,8 +9106,6 @@ export namespace pvtz {
     export interface ZoneAttachmentVpc {
         /**
          * The region of the vpc. If not set, the current region will instead of.
-         *
-         * Recommend to use `vpcs`.
          */
         regionId?: pulumi.Input<string>;
         /**
@@ -10520,148 +10654,160 @@ export namespace servicecatalog {
 export namespace servicemesh {
     export interface ServiceMeshExtraConfiguration {
         /**
-         * Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+         * Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
          */
         crAggregationEnabled?: pulumi.Input<boolean>;
     }
 
     export interface ServiceMeshLoadBalancer {
         /**
-         * The ID of the SLB instance that is used when the API server is exposed to the Internet.
+         * The IP address of a public network exposed API Server corresponding to the load balancing ID.
          */
         apiServerLoadbalancerId?: pulumi.Input<string>;
         /**
-         * Whether to use the IP address of a public network exposed the API Server.
+         * Indicates whether to use the IP address of a public network exposed API Server.
          */
         apiServerPublicEip?: pulumi.Input<boolean>;
         /**
-         * Whether to use the IP address of a public network exposure the Istio Pilot.
+         * Indicates whether to use the IP address of a public network exposure Istio Pilot.
          */
         pilotPublicEip?: pulumi.Input<boolean>;
         /**
-         * The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+         * The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
          */
         pilotPublicLoadbalancerId?: pulumi.Input<string>;
     }
 
     export interface ServiceMeshMeshConfig {
         /**
-         * The configuration of the access logging. See `accessLog` below.
+         * The access logging configuration. See `mesh_config-access_log` below.
          */
         accessLog?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigAccessLog>;
         /**
-         * The configuration of the audit. See `audit` below.
+         * Audit information. See `mesh_config-audit` below.
          */
         audit?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigAudit>;
         /**
-         * The configuration of the control plane logging. See `controlPlaneLog` below.
+         * Control plane log collection configuration. See `mesh_config-control_plane_log` below.
          */
         controlPlaneLog?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigControlPlaneLog>;
         /**
-         * Whether to enable the use of a custom zipkin.
+         * Whether or not to enable the use of a custom zipkin.
          */
         customizedZipkin?: pulumi.Input<boolean>;
         /**
-         * The enable locality lb.
+         * Whether to enable service can access the service through the nearest node access.
          */
         enableLocalityLb?: pulumi.Input<boolean>;
         /**
-         * The configuration of the Kiali. See `kiali` below.
+         * The IP ADDRESS range.
+         */
+        includeIpRanges?: pulumi.Input<string>;
+        /**
+         * Kiali configuration. See `mesh_config-kiali` below.
          */
         kiali?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigKiali>;
         /**
-         * The open-door policy of agent (OPA) plug-in information. See `opa` below.
+         * The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
          */
         opa?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigOpa>;
         /**
-         * The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+         * Out to the traffic policy.
          */
         outboundTrafficPolicy?: pulumi.Input<string>;
         /**
-         * The configuration of the Link trace sampling. See `pilot` below.
+         * Link trace sampling information. See `mesh_config-pilot` below.
          */
         pilot?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigPilot>;
         /**
-         * The configuration of the Proxy. See `proxy` below.
+         * Prometheus configuration.
+         */
+        prometheus?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigPrometheus>;
+        /**
+         * Proxy configuration. See `mesh_config-proxy` below.
          */
         proxy?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigProxy>;
         /**
-         * The configuration of the Sidecar injector. See `sidecarInjector` below.
+         * Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
          */
         sidecarInjector?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigSidecarInjector>;
         /**
-         * Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+         * Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
          */
         telemetry?: pulumi.Input<boolean>;
         /**
-         * Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+         * Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
          */
         tracing?: pulumi.Input<boolean>;
     }
 
     export interface ServiceMeshMeshConfigAccessLog {
         /**
-         * Whether to enable Service grid audit.
+         * Enable CNI.
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * The Service grid audit that to the project.
+         * The name of the SLS Project to which the control plane logs are collected.
          */
         project?: pulumi.Input<string>;
     }
 
     export interface ServiceMeshMeshConfigAudit {
         /**
-         * Whether to enable Service grid audit.
+         * Enable CNI.
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * The Service grid audit that to the project.
+         * The name of the SLS Project to which the control plane logs are collected.
          */
         project?: pulumi.Input<string>;
     }
 
     export interface ServiceMeshMeshConfigControlPlaneLog {
         /**
-         * Whether to enable Service grid audit.
+         * Enable CNI.
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * The Service grid audit that to the project.
+         * The name of the SLS Project to which the control plane logs are collected.
          */
         project?: pulumi.Input<string>;
     }
 
     export interface ServiceMeshMeshConfigKiali {
         /**
-         * Whether to enable Service grid audit.
+         * Enable CNI.
          */
         enabled?: pulumi.Input<boolean>;
+        /**
+         * Grid topology service address.
+         */
+        url?: pulumi.Input<string>;
     }
 
     export interface ServiceMeshMeshConfigOpa {
         /**
-         * Whether to enable Service grid audit.
+         * Enable CNI.
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * The CPU resource  of the limitsOPA proxy container.
+         * Sidecar injector Pods on the throttle.
          */
         limitCpu?: pulumi.Input<string>;
         /**
-         * The memory resource limit of the OPA proxy container.
+         * Sidecar injector Pods on the throttle.
          */
         limitMemory?: pulumi.Input<string>;
         /**
-         * The log level of the OPA proxy container .
+         * OPA proxy container log level.
          */
         logLevel?: pulumi.Input<string>;
         /**
-         * The CPU resource request of the OPA proxy container.
+         * Sidecar injector Pods on the requested resource.
          */
         requestCpu?: pulumi.Input<string>;
         /**
-         * The memory resource request of the OPA proxy container.
+         * Sidecar injector Pods on the requested resource.
          */
         requestMemory?: pulumi.Input<string>;
     }
@@ -10672,26 +10818,41 @@ export namespace servicemesh {
          */
         http10Enabled?: pulumi.Input<boolean>;
         /**
-         * The  percentage of the Link trace sampling.
+         * Link trace sampling percentage.
          */
         traceSampling?: pulumi.Input<number>;
     }
 
+    export interface ServiceMeshMeshConfigPrometheus {
+        /**
+         * Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+         */
+        externalUrl?: pulumi.Input<string>;
+        /**
+         * Whether to enable external Prometheus.
+         */
+        useExternal?: pulumi.Input<boolean>;
+    }
+
     export interface ServiceMeshMeshConfigProxy {
         /**
-         * The CPU resource  of the limitsOPA proxy container.
+         * Trust cluster domain.
+         */
+        clusterDomain?: pulumi.Input<string>;
+        /**
+         * Sidecar injector Pods on the throttle.
          */
         limitCpu?: pulumi.Input<string>;
         /**
-         * The memory resource limit of the OPA proxy container.
+         * Sidecar injector Pods on the throttle.
          */
         limitMemory?: pulumi.Input<string>;
         /**
-         * The CPU resource request of the OPA proxy container.
+         * Sidecar injector Pods on the requested resource.
          */
         requestCpu?: pulumi.Input<string>;
         /**
-         * The memory resource request of the OPA proxy container.
+         * Sidecar injector Pods on the requested resource.
          */
         requestMemory?: pulumi.Input<string>;
     }
@@ -10706,30 +10867,53 @@ export namespace servicemesh {
          */
         enableNamespacesByDefault?: pulumi.Input<boolean>;
         /**
-         * The CPU resource  of the limitsOPA proxy container.
+         * CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+         */
+        initCniConfiguration?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration>;
+        /**
+         * Sidecar injector Pods on the throttle.
          */
         limitCpu?: pulumi.Input<string>;
         /**
-         * The memory resource limit of the OPA proxy container.
+         * Sidecar injector Pods on the throttle.
          */
         limitMemory?: pulumi.Input<string>;
         /**
-         * The CPU resource request of the OPA proxy container.
+         * Sidecar injector Pods on the requested resource.
          */
         requestCpu?: pulumi.Input<string>;
         /**
-         * The memory resource request of the OPA proxy container.
+         * Sidecar injector Pods on the requested resource.
          */
         requestMemory?: pulumi.Input<string>;
+        /**
+         * Other configurations of automatically injected sidecar (in YAML format).
+         */
+        sidecarInjectorWebhookAsYaml?: pulumi.Input<string>;
+    }
+
+    export interface ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
+        /**
+         * Enable CNI.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * The excluded namespace.
+         */
+        excludeNamespaces?: pulumi.Input<string>;
     }
 
     export interface ServiceMeshNetwork {
         /**
-         * The ID of the VPC.
+         * Security group ID.
+         */
+        securityGroupId?: pulumi.Input<string>;
+        /**
+         * VPC ID.
          */
         vpcId: pulumi.Input<string>;
         /**
-         * The list of Virtual Switch.
+         * Virtual Switch ID.
          */
         vswitcheList: pulumi.Input<string>;
     }

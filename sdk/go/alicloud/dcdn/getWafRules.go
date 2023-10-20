@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+// This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
 //
-// > **NOTE:** Available in 1.201.0+
+// > **NOTE:** Available since v1.201.0.
 //
 // ## Example Usage
 //

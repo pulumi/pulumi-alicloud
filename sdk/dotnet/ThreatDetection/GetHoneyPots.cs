@@ -12,13 +12,15 @@ namespace Pulumi.AliCloud.ThreatDetection
     public static class GetHoneyPots
     {
         /// <summary>
-        /// This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
+        /// This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -34,7 +36,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///         {
         ///             "xxxx",
         ///         },
-        ///         HoneypotName = "tf-test",
+        ///         HoneypotName = "tf-example",
         ///         NodeId = "a44e1ab3-6945-444c-889d-5bacee7056e8",
         ///     });
         /// 
@@ -51,13 +53,15 @@ namespace Pulumi.AliCloud.ThreatDetection
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHoneyPotsResult>("alicloud:threatdetection/getHoneyPots:getHoneyPots", args ?? new GetHoneyPotsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
+        /// This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -73,7 +77,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///         {
         ///             "xxxx",
         ///         },
-        ///         HoneypotName = "tf-test",
+        ///         HoneypotName = "tf-example",
         ///         NodeId = "a44e1ab3-6945-444c-889d-5bacee7056e8",
         ///     });
         /// 
@@ -129,6 +133,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         [Input("nodeId")]
         public string? NodeId { get; set; }
 
+        /// <summary>
+        /// The name of the honeypot management node.
+        /// </summary>
         [Input("nodeName")]
         public string? NodeName { get; set; }
 
@@ -182,6 +189,9 @@ namespace Pulumi.AliCloud.ThreatDetection
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
 
+        /// <summary>
+        /// The name of the honeypot management node.
+        /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 

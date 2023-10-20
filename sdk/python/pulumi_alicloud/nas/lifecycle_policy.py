@@ -43,7 +43,17 @@ class LifecyclePolicyArgs:
              lifecycle_rule_name: pulumi.Input[str],
              paths: pulumi.Input[Sequence[pulumi.Input[str]]],
              storage_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'lifecyclePolicyName' in kwargs:
+            lifecycle_policy_name = kwargs['lifecyclePolicyName']
+        if 'lifecycleRuleName' in kwargs:
+            lifecycle_rule_name = kwargs['lifecycleRuleName']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+
         _setter("file_system_id", file_system_id)
         _setter("lifecycle_policy_name", lifecycle_policy_name)
         _setter("lifecycle_rule_name", lifecycle_rule_name)
@@ -143,7 +153,17 @@ class _LifecyclePolicyState:
              lifecycle_rule_name: Optional[pulumi.Input[str]] = None,
              paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              storage_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'lifecyclePolicyName' in kwargs:
+            lifecycle_policy_name = kwargs['lifecyclePolicyName']
+        if 'lifecycleRuleName' in kwargs:
+            lifecycle_rule_name = kwargs['lifecycleRuleName']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+
         if file_system_id is not None:
             _setter("file_system_id", file_system_id)
         if lifecycle_policy_name is not None:

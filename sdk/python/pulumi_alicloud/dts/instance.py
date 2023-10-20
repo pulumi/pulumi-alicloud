@@ -171,7 +171,41 @@ class InstanceArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              used_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'autoStart' in kwargs:
+            auto_start = kwargs['autoStart']
+        if 'computeUnit' in kwargs:
+            compute_unit = kwargs['computeUnit']
+        if 'databaseCount' in kwargs:
+            database_count = kwargs['databaseCount']
+        if 'destinationEndpointEngineName' in kwargs:
+            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
+        if 'destinationRegion' in kwargs:
+            destination_region = kwargs['destinationRegion']
+        if 'feeType' in kwargs:
+            fee_type = kwargs['feeType']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sourceEndpointEngineName' in kwargs:
+            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
+        if 'sourceRegion' in kwargs:
+            source_region = kwargs['sourceRegion']
+        if 'syncArchitecture' in kwargs:
+            sync_architecture = kwargs['syncArchitecture']
+        if 'synchronizationDirection' in kwargs:
+            synchronization_direction = kwargs['synchronizationDirection']
+        if 'usedTime' in kwargs:
+            used_time = kwargs['usedTime']
+
         if auto_pay is not None:
             _setter("auto_pay", auto_pay)
         if auto_start is not None:
@@ -698,7 +732,47 @@ class _InstanceState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              used_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'autoStart' in kwargs:
+            auto_start = kwargs['autoStart']
+        if 'computeUnit' in kwargs:
+            compute_unit = kwargs['computeUnit']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'databaseCount' in kwargs:
+            database_count = kwargs['databaseCount']
+        if 'destinationEndpointEngineName' in kwargs:
+            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
+        if 'destinationRegion' in kwargs:
+            destination_region = kwargs['destinationRegion']
+        if 'dtsInstanceId' in kwargs:
+            dts_instance_id = kwargs['dtsInstanceId']
+        if 'feeType' in kwargs:
+            fee_type = kwargs['feeType']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sourceEndpointEngineName' in kwargs:
+            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
+        if 'sourceRegion' in kwargs:
+            source_region = kwargs['sourceRegion']
+        if 'syncArchitecture' in kwargs:
+            sync_architecture = kwargs['syncArchitecture']
+        if 'synchronizationDirection' in kwargs:
+            synchronization_direction = kwargs['synchronizationDirection']
+        if 'usedTime' in kwargs:
+            used_time = kwargs['usedTime']
+
         if auto_pay is not None:
             _setter("auto_pay", auto_pay)
         if auto_start is not None:

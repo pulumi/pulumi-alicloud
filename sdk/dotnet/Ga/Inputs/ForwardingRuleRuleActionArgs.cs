@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Ga.Inputs
         public Input<string> RuleActionType { get; set; } = null!;
 
         /// <summary>
-        /// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+        /// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
         /// </summary>
         [Input("ruleActionValue")]
         public Input<string>? RuleActionValue { get; set; }

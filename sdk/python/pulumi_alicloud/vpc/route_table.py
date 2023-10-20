@@ -51,7 +51,15 @@ class RouteTableArgs:
              name: Optional[pulumi.Input[str]] = None,
              route_table_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'associateType' in kwargs:
+            associate_type = kwargs['associateType']
+        if 'routeTableName' in kwargs:
+            route_table_name = kwargs['routeTableName']
+
         _setter("vpc_id", vpc_id)
         if associate_type is not None:
             _setter("associate_type", associate_type)
@@ -199,7 +207,19 @@ class _RouteTableState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associateType' in kwargs:
+            associate_type = kwargs['associateType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'routeTableName' in kwargs:
+            route_table_name = kwargs['routeTableName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if associate_type is not None:
             _setter("associate_type", associate_type)
         if create_time is not None:

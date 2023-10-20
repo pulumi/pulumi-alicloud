@@ -3,7 +3,6 @@
 
 package com.pulumi.alicloud.cs.inputs;
 
-import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsAddonArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
@@ -16,21 +15,6 @@ import javax.annotation.Nullable;
 public final class GetKubernetesAddonsArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKubernetesAddonsArgs Empty = new GetKubernetesAddonsArgs();
-
-    /**
-     * A list of addons.
-     * 
-     */
-    @Import(name="addons")
-    private @Nullable Output<List<GetKubernetesAddonsAddonArgs>> addons;
-
-    /**
-     * @return A list of addons.
-     * 
-     */
-    public Optional<Output<List<GetKubernetesAddonsAddonArgs>>> addons() {
-        return Optional.ofNullable(this.addons);
-    }
 
     /**
      * The id of kubernetes cluster.
@@ -80,7 +64,6 @@ public final class GetKubernetesAddonsArgs extends com.pulumi.resources.InvokeAr
     private GetKubernetesAddonsArgs() {}
 
     private GetKubernetesAddonsArgs(GetKubernetesAddonsArgs $) {
-        this.addons = $.addons;
         this.clusterId = $.clusterId;
         this.ids = $.ids;
         this.nameRegex = $.nameRegex;
@@ -102,37 +85,6 @@ public final class GetKubernetesAddonsArgs extends com.pulumi.resources.InvokeAr
 
         public Builder(GetKubernetesAddonsArgs defaults) {
             $ = new GetKubernetesAddonsArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param addons A list of addons.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder addons(@Nullable Output<List<GetKubernetesAddonsAddonArgs>> addons) {
-            $.addons = addons;
-            return this;
-        }
-
-        /**
-         * @param addons A list of addons.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder addons(List<GetKubernetesAddonsAddonArgs> addons) {
-            return addons(Output.of(addons));
-        }
-
-        /**
-         * @param addons A list of addons.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder addons(GetKubernetesAddonsAddonArgs... addons) {
-            return addons(List.of(addons));
         }
 
         /**

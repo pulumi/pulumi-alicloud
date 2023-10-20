@@ -37,7 +37,15 @@ class SlsGroupArgs:
              sls_group_configs: pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]],
              sls_group_name: pulumi.Input[str],
              sls_group_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'slsGroupConfigs' in kwargs:
+            sls_group_configs = kwargs['slsGroupConfigs']
+        if 'slsGroupName' in kwargs:
+            sls_group_name = kwargs['slsGroupName']
+        if 'slsGroupDescription' in kwargs:
+            sls_group_description = kwargs['slsGroupDescription']
+
         _setter("sls_group_configs", sls_group_configs)
         _setter("sls_group_name", sls_group_name)
         if sls_group_description is not None:
@@ -104,7 +112,15 @@ class _SlsGroupState:
              sls_group_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SlsGroupSlsGroupConfigArgs']]]] = None,
              sls_group_description: Optional[pulumi.Input[str]] = None,
              sls_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'slsGroupConfigs' in kwargs:
+            sls_group_configs = kwargs['slsGroupConfigs']
+        if 'slsGroupDescription' in kwargs:
+            sls_group_description = kwargs['slsGroupDescription']
+        if 'slsGroupName' in kwargs:
+            sls_group_name = kwargs['slsGroupName']
+
         if sls_group_configs is not None:
             _setter("sls_group_configs", sls_group_configs)
         if sls_group_description is not None:

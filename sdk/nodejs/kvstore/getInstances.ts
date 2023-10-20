@@ -83,7 +83,7 @@ export interface GetInstancesArgs {
      */
     ids?: string[];
     /**
-     * Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     * Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
      */
     instanceClass?: string;
     /**
@@ -159,7 +159,7 @@ export interface GetInstancesResult {
     readonly ids: string[];
     /**
      * (Optional) Type of the applied ApsaraDB for instance.
-     * For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     * For more information, see [Instance type table](https://www.alibabacloud.com/help/en/redis/product-overview/overview-4).
      */
     readonly instanceClass?: string;
     /**
@@ -257,7 +257,7 @@ export interface GetInstancesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     * Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
      */
     instanceClass?: pulumi.Input<string>;
     /**

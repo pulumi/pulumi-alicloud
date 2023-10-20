@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
  *
- * For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2021-12-01-api-doc-createdbcluster).
+ * For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createdbcluster).
  *
  * > **NOTE:** Available since v1.190.0.
  *
@@ -19,31 +19,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const config = new pulumi.Config();
- * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.getZones({
- *     availableResourceCreation: "VSwitch",
+ * const defaultZones = alicloud.adb.getZones({});
+ * const defaultNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
  * });
- * const zoneId = Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.ids).length]).then(([defaultZones, length]) => defaultZones.ids[length - 1]);
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: name,
- *     cidrBlock: "10.4.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "10.4.0.0/24",
- *     zoneId: zoneId,
- *     vswitchName: name,
- * });
+ * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultNetworks.ids?.[0],
+ *     zoneId: defaultZones.ids?.[0],
+ * }));
  * const defaultDBClusterLakeVersion = new alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion", {
- *     computeResource: "16ACU",
  *     dbClusterVersion: "5.0",
+ *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     computeResource: "16ACU",
+ *     storageResource: "0ACU",
  *     paymentType: "PayAsYouGo",
- *     storageResource: "24ACU",
  *     enableDefaultResourceGroup: false,
- *     vswitchId: defaultSwitch.id,
- *     vpcId: defaultNetwork.id,
- *     zoneId: zoneId,
  * });
  * ```
  *
@@ -84,6 +76,10 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
     }
 
     /**
+     * The ID of the backup set that you want to use to restore data.
+     */
+    public readonly backupSetId!: pulumi.Output<string | undefined>;
+    /**
      * The name of the service.
      */
     public /*out*/ readonly commodityCode!: pulumi.Output<string>;
@@ -104,7 +100,7 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
      */
     public readonly dbClusterDescription!: pulumi.Output<string>;
     /**
-     * The version of the cluster. Value options: `5.0`.
+     * The version of the cluster. Valid values: `5.0`.
      */
     public readonly dbClusterVersion!: pulumi.Output<string>;
     /**
@@ -136,7 +132,7 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
      */
     public /*out*/ readonly lockReason!: pulumi.Output<string>;
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`.
      */
     public readonly paymentType!: pulumi.Output<string>;
     /**
@@ -146,13 +142,25 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
     /**
      * The ID of the resource group.
      */
-    public /*out*/ readonly resourceGroupId!: pulumi.Output<string>;
+    public readonly resourceGroupId!: pulumi.Output<string>;
+    /**
+     * The point in time to which you want to restore data from the backup set.
+     */
+    public readonly restoreToTime!: pulumi.Output<string | undefined>;
+    /**
+     * The method that you want to use to restore data. Valid values:
+     */
+    public readonly restoreType!: pulumi.Output<string | undefined>;
     /**
      * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
      * - IP addresses, such as 10.23.XX.XX.
      * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
      */
     public readonly securityIps!: pulumi.Output<string>;
+    /**
+     * The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+     */
+    public readonly sourceDbClusterId!: pulumi.Output<string | undefined>;
     /**
      * The status of the resource.
      */
@@ -187,6 +195,7 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DBClusterLakeVersionState | undefined;
+            resourceInputs["backupSetId"] = state ? state.backupSetId : undefined;
             resourceInputs["commodityCode"] = state ? state.commodityCode : undefined;
             resourceInputs["computeResource"] = state ? state.computeResource : undefined;
             resourceInputs["connectionString"] = state ? state.connectionString : undefined;
@@ -203,7 +212,10 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
             resourceInputs["paymentType"] = state ? state.paymentType : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
+            resourceInputs["restoreToTime"] = state ? state.restoreToTime : undefined;
+            resourceInputs["restoreType"] = state ? state.restoreType : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
+            resourceInputs["sourceDbClusterId"] = state ? state.sourceDbClusterId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["storageResource"] = state ? state.storageResource : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
@@ -232,12 +244,17 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
             if ((!args || args.zoneId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
+            resourceInputs["backupSetId"] = args ? args.backupSetId : undefined;
             resourceInputs["computeResource"] = args ? args.computeResource : undefined;
             resourceInputs["dbClusterDescription"] = args ? args.dbClusterDescription : undefined;
             resourceInputs["dbClusterVersion"] = args ? args.dbClusterVersion : undefined;
             resourceInputs["enableDefaultResourceGroup"] = args ? args.enableDefaultResourceGroup : undefined;
             resourceInputs["paymentType"] = args ? args.paymentType : undefined;
+            resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
+            resourceInputs["restoreToTime"] = args ? args.restoreToTime : undefined;
+            resourceInputs["restoreType"] = args ? args.restoreType : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
+            resourceInputs["sourceDbClusterId"] = args ? args.sourceDbClusterId : undefined;
             resourceInputs["storageResource"] = args ? args.storageResource : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
@@ -252,7 +269,6 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
             resourceInputs["lockMode"] = undefined /*out*/;
             resourceInputs["lockReason"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
-            resourceInputs["resourceGroupId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -264,6 +280,10 @@ export class DBClusterLakeVersion extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DBClusterLakeVersion resources.
  */
 export interface DBClusterLakeVersionState {
+    /**
+     * The ID of the backup set that you want to use to restore data.
+     */
+    backupSetId?: pulumi.Input<string>;
     /**
      * The name of the service.
      */
@@ -285,7 +305,7 @@ export interface DBClusterLakeVersionState {
      */
     dbClusterDescription?: pulumi.Input<string>;
     /**
-     * The version of the cluster. Value options: `5.0`.
+     * The version of the cluster. Valid values: `5.0`.
      */
     dbClusterVersion?: pulumi.Input<string>;
     /**
@@ -317,7 +337,7 @@ export interface DBClusterLakeVersionState {
      */
     lockReason?: pulumi.Input<string>;
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`.
      */
     paymentType?: pulumi.Input<string>;
     /**
@@ -329,11 +349,23 @@ export interface DBClusterLakeVersionState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
+     * The point in time to which you want to restore data from the backup set.
+     */
+    restoreToTime?: pulumi.Input<string>;
+    /**
+     * The method that you want to use to restore data. Valid values:
+     */
+    restoreType?: pulumi.Input<string>;
+    /**
      * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
      * - IP addresses, such as 10.23.XX.XX.
      * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
      */
     securityIps?: pulumi.Input<string>;
+    /**
+     * The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+     */
+    sourceDbClusterId?: pulumi.Input<string>;
     /**
      * The status of the resource.
      */
@@ -361,6 +393,10 @@ export interface DBClusterLakeVersionState {
  */
 export interface DBClusterLakeVersionArgs {
     /**
+     * The ID of the backup set that you want to use to restore data.
+     */
+    backupSetId?: pulumi.Input<string>;
+    /**
      * The computing resources of the cluster.
      */
     computeResource: pulumi.Input<string>;
@@ -369,7 +405,7 @@ export interface DBClusterLakeVersionArgs {
      */
     dbClusterDescription?: pulumi.Input<string>;
     /**
-     * The version of the cluster. Value options: `5.0`.
+     * The version of the cluster. Valid values: `5.0`.
      */
     dbClusterVersion: pulumi.Input<string>;
     /**
@@ -377,15 +413,31 @@ export interface DBClusterLakeVersionArgs {
      */
     enableDefaultResourceGroup?: pulumi.Input<boolean>;
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`.
      */
     paymentType: pulumi.Input<string>;
+    /**
+     * The ID of the resource group.
+     */
+    resourceGroupId?: pulumi.Input<string>;
+    /**
+     * The point in time to which you want to restore data from the backup set.
+     */
+    restoreToTime?: pulumi.Input<string>;
+    /**
+     * The method that you want to use to restore data. Valid values:
+     */
+    restoreType?: pulumi.Input<string>;
     /**
      * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
      * - IP addresses, such as 10.23.XX.XX.
      * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
      */
     securityIps?: pulumi.Input<string>;
+    /**
+     * The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+     */
+    sourceDbClusterId?: pulumi.Input<string>;
     /**
      * The storage resources of the cluster.
      */

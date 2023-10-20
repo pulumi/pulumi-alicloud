@@ -58,7 +58,17 @@ class GetGroupsGroupResult(dict):
              owner: str,
              remark: str,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if 'independentNaming' in kwargs:
+            independent_naming = kwargs['independentNaming']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("group_name", group_name)
         _setter("group_type", group_type)
         _setter("id", id)
@@ -200,7 +210,29 @@ class GetInstancesInstanceResult(dict):
              status: int,
              tags: Mapping[str, Any],
              tcp_endpoint: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'httpInternalEndpoint' in kwargs:
+            http_internal_endpoint = kwargs['httpInternalEndpoint']
+        if 'httpInternetEndpoint' in kwargs:
+            http_internet_endpoint = kwargs['httpInternetEndpoint']
+        if 'httpInternetSecureEndpoint' in kwargs:
+            http_internet_secure_endpoint = kwargs['httpInternetSecureEndpoint']
+        if 'independentNaming' in kwargs:
+            independent_naming = kwargs['independentNaming']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceStatus' in kwargs:
+            instance_status = kwargs['instanceStatus']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'releaseTime' in kwargs:
+            release_time = kwargs['releaseTime']
+        if 'tcpEndpoint' in kwargs:
+            tcp_endpoint = kwargs['tcpEndpoint']
+
         _setter("http_internal_endpoint", http_internal_endpoint)
         _setter("http_internet_endpoint", http_internet_endpoint)
         _setter("http_internet_secure_endpoint", http_internet_secure_endpoint)
@@ -388,7 +420,19 @@ class GetTopicsTopicResult(dict):
              tags: Mapping[str, Any],
              topic: str,
              topic_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'independentNaming' in kwargs:
+            independent_naming = kwargs['independentNaming']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'messageType' in kwargs:
+            message_type = kwargs['messageType']
+        if 'relationName' in kwargs:
+            relation_name = kwargs['relationName']
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+
         _setter("id", id)
         _setter("independent_naming", independent_naming)
         _setter("instance_id", instance_id)

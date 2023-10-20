@@ -54,7 +54,27 @@ class EndpointArgs:
              read_write_mode: Optional[pulumi.Input[str]] = None,
              ssl_auto_rotate: Optional[pulumi.Input[str]] = None,
              ssl_enabled: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'autoAddNewNodes' in kwargs:
+            auto_add_new_nodes = kwargs['autoAddNewNodes']
+        if 'dbEndpointDescription' in kwargs:
+            db_endpoint_description = kwargs['dbEndpointDescription']
+        if 'endpointConfig' in kwargs:
+            endpoint_config = kwargs['endpointConfig']
+        if 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+        if 'readWriteMode' in kwargs:
+            read_write_mode = kwargs['readWriteMode']
+        if 'sslAutoRotate' in kwargs:
+            ssl_auto_rotate = kwargs['sslAutoRotate']
+        if 'sslEnabled' in kwargs:
+            ssl_enabled = kwargs['sslEnabled']
+
         _setter("db_cluster_id", db_cluster_id)
         if auto_add_new_nodes is not None:
             _setter("auto_add_new_nodes", auto_add_new_nodes)
@@ -227,7 +247,35 @@ class _EndpointState:
              ssl_connection_string: Optional[pulumi.Input[str]] = None,
              ssl_enabled: Optional[pulumi.Input[str]] = None,
              ssl_expire_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoAddNewNodes' in kwargs:
+            auto_add_new_nodes = kwargs['autoAddNewNodes']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'dbEndpointDescription' in kwargs:
+            db_endpoint_description = kwargs['dbEndpointDescription']
+        if 'dbEndpointId' in kwargs:
+            db_endpoint_id = kwargs['dbEndpointId']
+        if 'endpointConfig' in kwargs:
+            endpoint_config = kwargs['endpointConfig']
+        if 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+        if 'readWriteMode' in kwargs:
+            read_write_mode = kwargs['readWriteMode']
+        if 'sslAutoRotate' in kwargs:
+            ssl_auto_rotate = kwargs['sslAutoRotate']
+        if 'sslCertificateUrl' in kwargs:
+            ssl_certificate_url = kwargs['sslCertificateUrl']
+        if 'sslConnectionString' in kwargs:
+            ssl_connection_string = kwargs['sslConnectionString']
+        if 'sslEnabled' in kwargs:
+            ssl_enabled = kwargs['sslEnabled']
+        if 'sslExpireTime' in kwargs:
+            ssl_expire_time = kwargs['sslExpireTime']
+
         if auto_add_new_nodes is not None:
             _setter("auto_add_new_nodes", auto_add_new_nodes)
         if db_cluster_id is not None:

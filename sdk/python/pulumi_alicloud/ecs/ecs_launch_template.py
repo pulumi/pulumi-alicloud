@@ -64,7 +64,7 @@ class EcsLaunchTemplateArgs:
         """
         The set of arguments for constructing a EcsLaunchTemplate resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
-        :param pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
@@ -83,7 +83,7 @@ class EcsLaunchTemplateArgs:
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
         :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
-        :param pulumi.Input['EcsLaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance.
+        :param pulumi.Input['EcsLaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
@@ -98,7 +98,7 @@ class EcsLaunchTemplateArgs:
         :param pulumi.Input[str] spot_duration: The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
-        :param pulumi.Input['EcsLaunchTemplateSystemDiskArgs'] system_disk: The System Disk.
+        :param pulumi.Input['EcsLaunchTemplateSystemDiskArgs'] system_disk: The System Disk. See `system_disk` below.
         :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
@@ -211,7 +211,89 @@ class EcsLaunchTemplateArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoReleaseTime' in kwargs:
+            auto_release_time = kwargs['autoReleaseTime']
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'deploymentSetId' in kwargs:
+            deployment_set_id = kwargs['deploymentSetId']
+        if 'enableVmOsConfig' in kwargs:
+            enable_vm_os_config = kwargs['enableVmOsConfig']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageOwnerAlias' in kwargs:
+            image_owner_alias = kwargs['imageOwnerAlias']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'internetMaxBandwidthIn' in kwargs:
+            internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'ioOptimized' in kwargs:
+            io_optimized = kwargs['ioOptimized']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'launchTemplateName' in kwargs:
+            launch_template_name = kwargs['launchTemplateName']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'passwordInherit' in kwargs:
+            password_inherit = kwargs['passwordInherit']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityEnhancementStrategy' in kwargs:
+            security_enhancement_strategy = kwargs['securityEnhancementStrategy']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'spotDuration' in kwargs:
+            spot_duration = kwargs['spotDuration']
+        if 'spotPriceLimit' in kwargs:
+            spot_price_limit = kwargs['spotPriceLimit']
+        if 'spotStrategy' in kwargs:
+            spot_strategy = kwargs['spotStrategy']
+        if 'systemDisk' in kwargs:
+            system_disk = kwargs['systemDisk']
+        if 'systemDiskCategory' in kwargs:
+            system_disk_category = kwargs['systemDiskCategory']
+        if 'systemDiskDescription' in kwargs:
+            system_disk_description = kwargs['systemDiskDescription']
+        if 'systemDiskName' in kwargs:
+            system_disk_name = kwargs['systemDiskName']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if 'templateResourceGroupId' in kwargs:
+            template_resource_group_id = kwargs['templateResourceGroupId']
+        if 'templateTags' in kwargs:
+            template_tags = kwargs['templateTags']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'versionDescription' in kwargs:
+            version_description = kwargs['versionDescription']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if auto_release_time is not None:
             _setter("auto_release_time", auto_release_time)
         if data_disks is not None:
@@ -337,7 +419,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]]]:
         """
-        The list of data disks created with instance.
+        The list of data disks created with instance. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -546,7 +628,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input['EcsLaunchTemplateNetworkInterfacesArgs']]:
         """
-        The list of network interfaces created with instance.
+        The list of network interfaces created with instance. See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -704,7 +786,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> Optional[pulumi.Input['EcsLaunchTemplateSystemDiskArgs']]:
         """
-        The System Disk.
+        The System Disk. See `system_disk` below.
         """
         return pulumi.get(self, "system_disk")
 
@@ -937,7 +1019,7 @@ class _EcsLaunchTemplateState:
         """
         Input properties used for looking up and filtering EcsLaunchTemplate resources.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
-        :param pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
@@ -956,7 +1038,7 @@ class _EcsLaunchTemplateState:
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
         :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
-        :param pulumi.Input['EcsLaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance.
+        :param pulumi.Input['EcsLaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
@@ -971,7 +1053,7 @@ class _EcsLaunchTemplateState:
         :param pulumi.Input[str] spot_duration: The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
-        :param pulumi.Input['EcsLaunchTemplateSystemDiskArgs'] system_disk: The System Disk.
+        :param pulumi.Input['EcsLaunchTemplateSystemDiskArgs'] system_disk: The System Disk. See `system_disk` below.
         :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
@@ -1084,7 +1166,89 @@ class _EcsLaunchTemplateState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoReleaseTime' in kwargs:
+            auto_release_time = kwargs['autoReleaseTime']
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'deploymentSetId' in kwargs:
+            deployment_set_id = kwargs['deploymentSetId']
+        if 'enableVmOsConfig' in kwargs:
+            enable_vm_os_config = kwargs['enableVmOsConfig']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageOwnerAlias' in kwargs:
+            image_owner_alias = kwargs['imageOwnerAlias']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'internetMaxBandwidthIn' in kwargs:
+            internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'ioOptimized' in kwargs:
+            io_optimized = kwargs['ioOptimized']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'launchTemplateName' in kwargs:
+            launch_template_name = kwargs['launchTemplateName']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'passwordInherit' in kwargs:
+            password_inherit = kwargs['passwordInherit']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityEnhancementStrategy' in kwargs:
+            security_enhancement_strategy = kwargs['securityEnhancementStrategy']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'spotDuration' in kwargs:
+            spot_duration = kwargs['spotDuration']
+        if 'spotPriceLimit' in kwargs:
+            spot_price_limit = kwargs['spotPriceLimit']
+        if 'spotStrategy' in kwargs:
+            spot_strategy = kwargs['spotStrategy']
+        if 'systemDisk' in kwargs:
+            system_disk = kwargs['systemDisk']
+        if 'systemDiskCategory' in kwargs:
+            system_disk_category = kwargs['systemDiskCategory']
+        if 'systemDiskDescription' in kwargs:
+            system_disk_description = kwargs['systemDiskDescription']
+        if 'systemDiskName' in kwargs:
+            system_disk_name = kwargs['systemDiskName']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if 'templateResourceGroupId' in kwargs:
+            template_resource_group_id = kwargs['templateResourceGroupId']
+        if 'templateTags' in kwargs:
+            template_tags = kwargs['templateTags']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'versionDescription' in kwargs:
+            version_description = kwargs['versionDescription']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if auto_release_time is not None:
             _setter("auto_release_time", auto_release_time)
         if data_disks is not None:
@@ -1210,7 +1374,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsLaunchTemplateDataDiskArgs']]]]:
         """
-        The list of data disks created with instance.
+        The list of data disks created with instance. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -1419,7 +1583,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Optional[pulumi.Input['EcsLaunchTemplateNetworkInterfacesArgs']]:
         """
-        The list of network interfaces created with instance.
+        The list of network interfaces created with instance. See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -1577,7 +1741,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> Optional[pulumi.Input['EcsLaunchTemplateSystemDiskArgs']]:
         """
-        The System Disk.
+        The System Disk. See `system_disk` below.
         """
         return pulumi.get(self, "system_disk")
 
@@ -1815,7 +1979,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
 
         For information about ECS Launch Template and how to use it, see [What is Launch Template](https://www.alibabacloud.com/help/en/doc-detail/74686.htm).
 
-        > **NOTE:** Available in v1.120.0+.
+        > **NOTE:** Available since v1.120.0.
 
         ## Example Usage
 
@@ -1913,7 +2077,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
@@ -1932,7 +2096,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
         :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
-        :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance.
+        :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
@@ -1947,7 +2111,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] spot_duration: The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
-        :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateSystemDiskArgs']] system_disk: The System Disk.
+        :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateSystemDiskArgs']] system_disk: The System Disk. See `system_disk` below.
         :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
@@ -1975,7 +2139,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
 
         For information about ECS Launch Template and how to use it, see [What is Launch Template](https://www.alibabacloud.com/help/en/doc-detail/74686.htm).
 
-        > **NOTE:** Available in v1.120.0+.
+        > **NOTE:** Available since v1.120.0.
 
         ## Example Usage
 
@@ -2261,7 +2425,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsLaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance. See `data_disks` below.
         :param pulumi.Input[str] deployment_set_id: The Deployment Set Id.
         :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[bool] enable_vm_os_config: Whether to enable the instance operating system configuration.
@@ -2280,7 +2444,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
         :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
-        :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance.
+        :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
         :param pulumi.Input[int] period: The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
@@ -2295,7 +2459,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] spot_duration: The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
-        :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateSystemDiskArgs']] system_disk: The System Disk.
+        :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateSystemDiskArgs']] system_disk: The System Disk. See `system_disk` below.
         :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
@@ -2375,7 +2539,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="dataDisks")
     def data_disks(self) -> pulumi.Output[Optional[Sequence['outputs.EcsLaunchTemplateDataDisk']]]:
         """
-        The list of data disks created with instance.
+        The list of data disks created with instance. See `data_disks` below.
         """
         return pulumi.get(self, "data_disks")
 
@@ -2516,7 +2680,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> pulumi.Output[Optional['outputs.EcsLaunchTemplateNetworkInterfaces']]:
         """
-        The list of network interfaces created with instance.
+        The list of network interfaces created with instance. See `network_interfaces` below.
         """
         return pulumi.get(self, "network_interfaces")
 
@@ -2622,7 +2786,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="systemDisk")
     def system_disk(self) -> pulumi.Output['outputs.EcsLaunchTemplateSystemDisk']:
         """
-        The System Disk.
+        The System Disk. See `system_disk` below.
         """
         return pulumi.get(self, "system_disk")
 

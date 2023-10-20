@@ -191,7 +191,7 @@ type Alarm struct {
 	Enable pulumi.BoolPtrOutput `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
 	EvaluationCount pulumi.IntPtrOutput `pulumi:"evaluationCount"`
-	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+	// The name for the alarm's associated metric. See `dimensions` below for details.
 	MetricName pulumi.StringOutput `pulumi:"metricName"`
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType pulumi.StringPtrOutput `pulumi:"metricType"`
@@ -268,7 +268,7 @@ type alarmState struct {
 	Enable *bool `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
 	EvaluationCount *int `pulumi:"evaluationCount"`
-	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+	// The name for the alarm's associated metric. See `dimensions` below for details.
 	MetricName *string `pulumi:"metricName"`
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType *string `pulumi:"metricType"`
@@ -304,7 +304,7 @@ type AlarmState struct {
 	Enable pulumi.BoolPtrInput
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
 	EvaluationCount pulumi.IntPtrInput
-	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+	// The name for the alarm's associated metric. See `dimensions` below for details.
 	MetricName pulumi.StringPtrInput
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType pulumi.StringPtrInput
@@ -344,7 +344,7 @@ type alarmArgs struct {
 	Enable *bool `pulumi:"enable"`
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
 	EvaluationCount *int `pulumi:"evaluationCount"`
-	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+	// The name for the alarm's associated metric. See `dimensions` below for details.
 	MetricName string `pulumi:"metricName"`
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType *string `pulumi:"metricType"`
@@ -376,7 +376,7 @@ type AlarmArgs struct {
 	Enable pulumi.BoolPtrInput
 	// The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
 	EvaluationCount pulumi.IntPtrInput
-	// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+	// The name for the alarm's associated metric. See `dimensions` below for details.
 	MetricName pulumi.StringInput
 	// The type for the alarm's associated metric. Supported value: system, custom. "system" means the metric data is collected by Aliyun Cloud Monitor Service(CMS), "custom" means the metric data is upload to CMS by users. Defaults to system.
 	MetricType pulumi.StringPtrInput
@@ -538,7 +538,7 @@ func (o AlarmOutput) EvaluationCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.IntPtrOutput { return v.EvaluationCount }).(pulumi.IntPtrOutput)
 }
 
-// The name for the alarm's associated metric. See Block_metricNames_and_dimensions below for details.
+// The name for the alarm's associated metric. See `dimensions` below for details.
 func (o AlarmOutput) MetricName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alarm) pulumi.StringOutput { return v.MetricName }).(pulumi.StringOutput)
 }

@@ -35,7 +35,15 @@ class AuditPolicyArgs:
              audit_status: pulumi.Input[str],
              db_instance_id: pulumi.Input[str],
              storage_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'auditStatus' in kwargs:
+            audit_status = kwargs['auditStatus']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'storagePeriod' in kwargs:
+            storage_period = kwargs['storagePeriod']
+
         _setter("audit_status", audit_status)
         _setter("db_instance_id", db_instance_id)
         if storage_period is not None:
@@ -102,7 +110,15 @@ class _AuditPolicyState:
              audit_status: Optional[pulumi.Input[str]] = None,
              db_instance_id: Optional[pulumi.Input[str]] = None,
              storage_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'auditStatus' in kwargs:
+            audit_status = kwargs['auditStatus']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'storagePeriod' in kwargs:
+            storage_period = kwargs['storagePeriod']
+
         if audit_status is not None:
             _setter("audit_status", audit_status)
         if db_instance_id is not None:

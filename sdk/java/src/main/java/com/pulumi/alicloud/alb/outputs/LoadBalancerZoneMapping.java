@@ -3,24 +3,39 @@
 
 package com.pulumi.alicloud.alb.outputs;
 
+import com.pulumi.alicloud.alb.outputs.LoadBalancerZoneMappingLoadBalancerAddress;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class LoadBalancerZoneMapping {
+    /**
+     * @return The SLB Instance Address.
+     * 
+     */
+    private @Nullable List<LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses;
     /**
      * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
      * 
      */
     private String vswitchId;
     /**
-     * @return The ID of the zone to which the ALB instance belongs.
+     * @return The ID of the zone to which the SLB instance belongs.
      * 
      */
     private String zoneId;
 
     private LoadBalancerZoneMapping() {}
+    /**
+     * @return The SLB Instance Address.
+     * 
+     */
+    public List<LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses() {
+        return this.loadBalancerAddresses == null ? List.of() : this.loadBalancerAddresses;
+    }
     /**
      * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
      * 
@@ -29,7 +44,7 @@ public final class LoadBalancerZoneMapping {
         return this.vswitchId;
     }
     /**
-     * @return The ID of the zone to which the ALB instance belongs.
+     * @return The ID of the zone to which the SLB instance belongs.
      * 
      */
     public String zoneId() {
@@ -45,15 +60,25 @@ public final class LoadBalancerZoneMapping {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses;
         private String vswitchId;
         private String zoneId;
         public Builder() {}
         public Builder(LoadBalancerZoneMapping defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.loadBalancerAddresses = defaults.loadBalancerAddresses;
     	      this.vswitchId = defaults.vswitchId;
     	      this.zoneId = defaults.zoneId;
         }
 
+        @CustomType.Setter
+        public Builder loadBalancerAddresses(@Nullable List<LoadBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses) {
+            this.loadBalancerAddresses = loadBalancerAddresses;
+            return this;
+        }
+        public Builder loadBalancerAddresses(LoadBalancerZoneMappingLoadBalancerAddress... loadBalancerAddresses) {
+            return loadBalancerAddresses(List.of(loadBalancerAddresses));
+        }
         @CustomType.Setter
         public Builder vswitchId(String vswitchId) {
             this.vswitchId = Objects.requireNonNull(vswitchId);
@@ -66,6 +91,7 @@ public final class LoadBalancerZoneMapping {
         }
         public LoadBalancerZoneMapping build() {
             final var o = new LoadBalancerZoneMapping();
+            o.loadBalancerAddresses = loadBalancerAddresses;
             o.vswitchId = vswitchId;
             o.zoneId = zoneId;
             return o;

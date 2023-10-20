@@ -35,7 +35,13 @@ class AccessGroupArgs:
              access_group_name: pulumi.Input[str],
              network_type: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupName' in kwargs:
+            access_group_name = kwargs['accessGroupName']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+
         _setter("access_group_name", access_group_name)
         _setter("network_type", network_type)
         if description is not None:
@@ -102,7 +108,13 @@ class _AccessGroupState:
              access_group_name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              network_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessGroupName' in kwargs:
+            access_group_name = kwargs['accessGroupName']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+
         if access_group_name is not None:
             _setter("access_group_name", access_group_name)
         if description is not None:

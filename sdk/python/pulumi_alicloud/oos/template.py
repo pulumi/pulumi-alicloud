@@ -47,7 +47,17 @@ class TemplateArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'autoDeleteExecutions' in kwargs:
+            auto_delete_executions = kwargs['autoDeleteExecutions']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         _setter("content", content)
         _setter("template_name", template_name)
         if auto_delete_executions is not None:
@@ -212,7 +222,37 @@ class _TemplateState:
              updated_by: Optional[pulumi.Input[str]] = None,
              updated_date: Optional[pulumi.Input[str]] = None,
              version_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoDeleteExecutions' in kwargs:
+            auto_delete_executions = kwargs['autoDeleteExecutions']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'createdDate' in kwargs:
+            created_date = kwargs['createdDate']
+        if 'hasTrigger' in kwargs:
+            has_trigger = kwargs['hasTrigger']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'shareType' in kwargs:
+            share_type = kwargs['shareType']
+        if 'templateFormat' in kwargs:
+            template_format = kwargs['templateFormat']
+        if 'templateId' in kwargs:
+            template_id = kwargs['templateId']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'templateType' in kwargs:
+            template_type = kwargs['templateType']
+        if 'templateVersion' in kwargs:
+            template_version = kwargs['templateVersion']
+        if 'updatedBy' in kwargs:
+            updated_by = kwargs['updatedBy']
+        if 'updatedDate' in kwargs:
+            updated_date = kwargs['updatedDate']
+        if 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         if auto_delete_executions is not None:
             _setter("auto_delete_executions", auto_delete_executions)
         if content is not None:

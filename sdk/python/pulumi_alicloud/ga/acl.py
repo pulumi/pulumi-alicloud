@@ -45,7 +45,17 @@ class AclArgs:
              acl_name: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'aclEntries' in kwargs:
+            acl_entries = kwargs['aclEntries']
+        if 'aclName' in kwargs:
+            acl_name = kwargs['aclName']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("address_ip_version", address_ip_version)
         if acl_entries is not None:
             warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
@@ -159,7 +169,17 @@ class _AclState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclEntries' in kwargs:
+            acl_entries = kwargs['aclEntries']
+        if 'aclName' in kwargs:
+            acl_name = kwargs['aclName']
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         if acl_entries is not None:
             warnings.warn("""Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""", DeprecationWarning)
             pulumi.log.warn("""acl_entries is deprecated: Field `acl_entries` has been deprecated from provider version 1.190.0 and it will be removed in the future version. Please use the new resource `alicloud_ga_acl_entry_attachment`.""")

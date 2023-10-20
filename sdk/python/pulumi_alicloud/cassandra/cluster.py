@@ -107,7 +107,45 @@ class ClusterArgs:
              security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'majorVersion' in kwargs:
+            major_version = kwargs['majorVersion']
+        if 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'dataCenterName' in kwargs:
+            data_center_name = kwargs['dataCenterName']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'enablePublic' in kwargs:
+            enable_public = kwargs['enablePublic']
+        if 'ipWhite' in kwargs:
+            ip_white = kwargs['ipWhite']
+        if 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("instance_type", instance_type)
         _setter("major_version", major_version)
         _setter("node_count", node_count)
@@ -493,7 +531,47 @@ class _ClusterState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'dataCenterName' in kwargs:
+            data_center_name = kwargs['dataCenterName']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'enablePublic' in kwargs:
+            enable_public = kwargs['enablePublic']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'ipWhite' in kwargs:
+            ip_white = kwargs['ipWhite']
+        if 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if 'majorVersion' in kwargs:
+            major_version = kwargs['majorVersion']
+        if 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'publicPoints' in kwargs:
+            public_points = kwargs['publicPoints']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:

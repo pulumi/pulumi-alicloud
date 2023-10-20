@@ -53,7 +53,21 @@ class AggregateCompliancePackArgs:
              compliance_pack_template_id: Optional[pulumi.Input[str]] = None,
              config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleIdArgs']]]] = None,
              config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aggregateCompliancePackName' in kwargs:
+            aggregate_compliance_pack_name = kwargs['aggregateCompliancePackName']
+        if 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if 'compliancePackTemplateId' in kwargs:
+            compliance_pack_template_id = kwargs['compliancePackTemplateId']
+        if 'configRuleIds' in kwargs:
+            config_rule_ids = kwargs['configRuleIds']
+        if 'configRules' in kwargs:
+            config_rules = kwargs['configRules']
+
         _setter("aggregate_compliance_pack_name", aggregate_compliance_pack_name)
         _setter("aggregator_id", aggregator_id)
         _setter("description", description)
@@ -204,7 +218,23 @@ class _AggregateCompliancePackState:
              description: Optional[pulumi.Input[str]] = None,
              risk_level: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aggregateCompliancePackName' in kwargs:
+            aggregate_compliance_pack_name = kwargs['aggregateCompliancePackName']
+        if 'aggregatorCompliancePackId' in kwargs:
+            aggregator_compliance_pack_id = kwargs['aggregatorCompliancePackId']
+        if 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if 'compliancePackTemplateId' in kwargs:
+            compliance_pack_template_id = kwargs['compliancePackTemplateId']
+        if 'configRuleIds' in kwargs:
+            config_rule_ids = kwargs['configRuleIds']
+        if 'configRules' in kwargs:
+            config_rules = kwargs['configRules']
+        if 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+
         if aggregate_compliance_pack_name is not None:
             _setter("aggregate_compliance_pack_name", aggregate_compliance_pack_name)
         if aggregator_compliance_pack_id is not None:

@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+// This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
 //
-// > **NOTE:** Available in 1.195.0+
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -54,6 +54,7 @@ func GetTransitRouterMulticastDomainSources(ctx *pulumi.Context, args *GetTransi
 
 // A collection of arguments for invoking getTransitRouterMulticastDomainSources.
 type GetTransitRouterMulticastDomainSourcesArgs struct {
+	// A list of the multicast domain IDs.
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -88,6 +89,7 @@ func GetTransitRouterMulticastDomainSourcesOutput(ctx *pulumi.Context, args GetT
 
 // A collection of arguments for invoking getTransitRouterMulticastDomainSources.
 type GetTransitRouterMulticastDomainSourcesOutputArgs struct {
+	// A list of the multicast domain IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

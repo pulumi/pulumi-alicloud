@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.178.0+.
+        /// &gt; **NOTE:** Available since v1.178.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -30,7 +30,28 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.CloudFirewall.GetAddressBooks.Invoke();
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var @default = new AliCloud.CloudFirewall.AddressBook("default", new()
+        ///     {
+        ///         GroupName = name,
+        ///         GroupType = "ip",
+        ///         Description = "tf-description",
+        ///         AutoAddTagEcs = 0,
+        ///         AddressLists = new[]
+        ///         {
+        ///             "10.21.0.0/16",
+        ///             "10.168.0.0/16",
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.CloudFirewall.GetAddressBooks.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -47,7 +68,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// This data source provides the Cloud Firewall Address Books of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.178.0+.
+        /// &gt; **NOTE:** Available since v1.178.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -63,7 +84,28 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ids = AliCloud.CloudFirewall.GetAddressBooks.Invoke();
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "tf-example";
+        ///     var @default = new AliCloud.CloudFirewall.AddressBook("default", new()
+        ///     {
+        ///         GroupName = name,
+        ///         GroupType = "ip",
+        ///         Description = "tf-description",
+        ///         AutoAddTagEcs = 0,
+        ///         AddressLists = new[]
+        ///         {
+        ///             "10.21.0.0/16",
+        ///             "10.168.0.0/16",
+        ///         },
+        ///     });
+        /// 
+        ///     var ids = AliCloud.CloudFirewall.GetAddressBooks.Invoke(new()
+        ///     {
+        ///         Ids = new[]
+        ///         {
+        ///             @default.Id,
+        ///         },
+        ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -82,7 +124,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class GetAddressBooksArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of the Address Book.
+        /// The type of the Address Book. Valid values: `ip`, `tag`.
         /// </summary>
         [Input("groupType")]
         public string? GroupType { get; set; }
@@ -120,7 +162,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class GetAddressBooksInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of the Address Book.
+        /// The type of the Address Book. Valid values: `ip`, `tag`.
         /// </summary>
         [Input("groupType")]
         public Input<string>? GroupType { get; set; }
@@ -159,7 +201,13 @@ namespace Pulumi.AliCloud.CloudFirewall
     [OutputType]
     public sealed class GetAddressBooksResult
     {
+        /// <summary>
+        /// A list of Cloud Firewall Address Books. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetAddressBooksBookResult> Books;
+        /// <summary>
+        /// The type of the Address Book.
+        /// </summary>
         public readonly string? GroupType;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -167,6 +215,9 @@ namespace Pulumi.AliCloud.CloudFirewall
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         public readonly string? NameRegex;
+        /// <summary>
+        /// A list of Address Book names.
+        /// </summary>
         public readonly ImmutableArray<string> Names;
         public readonly string? OutputFile;
 

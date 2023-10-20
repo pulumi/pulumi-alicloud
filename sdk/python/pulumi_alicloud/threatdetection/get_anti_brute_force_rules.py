@@ -104,9 +104,9 @@ def get_anti_brute_force_rules(ids: Optional[Sequence[str]] = None,
                                output_file: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAntiBruteForceRulesResult:
     """
-    This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule)
+    This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
 
     :param Sequence[str] ids: A list of Anti-Brute Force Rule IDs.
@@ -135,9 +135,9 @@ def get_anti_brute_force_rules_output(ids: Optional[pulumi.Input[Optional[Sequen
                                       output_file: Optional[pulumi.Input[Optional[str]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAntiBruteForceRulesResult]:
     """
-    This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule)
+    This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
 
     :param Sequence[str] ids: A list of Anti-Brute Force Rule IDs.

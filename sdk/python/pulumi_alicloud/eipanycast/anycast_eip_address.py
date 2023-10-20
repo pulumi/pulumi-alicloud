@@ -55,7 +55,19 @@ class AnycastEipAddressArgs:
              payment_type: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serviceLocation' in kwargs:
+            service_location = kwargs['serviceLocation']
+        if 'anycastEipAddressName' in kwargs:
+            anycast_eip_address_name = kwargs['anycastEipAddressName']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("service_location", service_location)
         if anycast_eip_address_name is not None:
             _setter("anycast_eip_address_name", anycast_eip_address_name)
@@ -221,7 +233,21 @@ class _AnycastEipAddressState:
              service_location: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'anycastEipAddressName' in kwargs:
+            anycast_eip_address_name = kwargs['anycastEipAddressName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'serviceLocation' in kwargs:
+            service_location = kwargs['serviceLocation']
+
         if anycast_eip_address_name is not None:
             _setter("anycast_eip_address_name", anycast_eip_address_name)
         if bandwidth is not None:

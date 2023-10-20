@@ -45,7 +45,17 @@ class RuleArgs:
              rule_name: pulumi.Input[str],
              zone_name: pulumi.Input[str],
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'forwardIps' in kwargs:
+            forward_ips = kwargs['forwardIps']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'zoneName' in kwargs:
+            zone_name = kwargs['zoneName']
+
         _setter("endpoint_id", endpoint_id)
         _setter("forward_ips", forward_ips)
         _setter("rule_name", rule_name)
@@ -146,7 +156,17 @@ class _RuleState:
              rule_name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'forwardIps' in kwargs:
+            forward_ips = kwargs['forwardIps']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'zoneName' in kwargs:
+            zone_name = kwargs['zoneName']
+
         if endpoint_id is not None:
             _setter("endpoint_id", endpoint_id)
         if forward_ips is not None:

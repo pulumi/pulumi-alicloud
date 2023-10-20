@@ -51,7 +51,21 @@ class BasicEndpointGroupArgs:
              endpoint_address: Optional[pulumi.Input[str]] = None,
              endpoint_sub_address: Optional[pulumi.Input[str]] = None,
              endpoint_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'endpointGroupRegion' in kwargs:
+            endpoint_group_region = kwargs['endpointGroupRegion']
+        if 'basicEndpointGroupName' in kwargs:
+            basic_endpoint_group_name = kwargs['basicEndpointGroupName']
+        if 'endpointAddress' in kwargs:
+            endpoint_address = kwargs['endpointAddress']
+        if 'endpointSubAddress' in kwargs:
+            endpoint_sub_address = kwargs['endpointSubAddress']
+        if 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+
         _setter("accelerator_id", accelerator_id)
         _setter("endpoint_group_region", endpoint_group_region)
         if basic_endpoint_group_name is not None:
@@ -194,7 +208,21 @@ class _BasicEndpointGroupState:
              endpoint_sub_address: Optional[pulumi.Input[str]] = None,
              endpoint_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'basicEndpointGroupName' in kwargs:
+            basic_endpoint_group_name = kwargs['basicEndpointGroupName']
+        if 'endpointAddress' in kwargs:
+            endpoint_address = kwargs['endpointAddress']
+        if 'endpointGroupRegion' in kwargs:
+            endpoint_group_region = kwargs['endpointGroupRegion']
+        if 'endpointSubAddress' in kwargs:
+            endpoint_sub_address = kwargs['endpointSubAddress']
+        if 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+
         if accelerator_id is not None:
             _setter("accelerator_id", accelerator_id)
         if basic_endpoint_group_name is not None:

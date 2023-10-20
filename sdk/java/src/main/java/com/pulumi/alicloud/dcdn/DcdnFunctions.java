@@ -387,9 +387,9 @@ public final class DcdnFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:dcdn/getIpaDomains:getIpaDomains", TypeShape.of(GetIpaDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
      * 
-     * &gt; **NOTE:** Available in v1.198.0+
+     * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
      * ```java
@@ -426,9 +426,9 @@ public final class DcdnFunctions {
         return getKvAccount(GetKvAccountArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
      * 
-     * &gt; **NOTE:** Available in v1.198.0+
+     * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
      * ```java
@@ -465,9 +465,9 @@ public final class DcdnFunctions {
         return getKvAccountPlain(GetKvAccountPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
      * 
-     * &gt; **NOTE:** Available in v1.198.0+
+     * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
      * ```java
@@ -504,9 +504,9 @@ public final class DcdnFunctions {
         return getKvAccount(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
      * 
-     * &gt; **NOTE:** Available in v1.198.0+
+     * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
      * ```java
@@ -543,9 +543,9 @@ public final class DcdnFunctions {
         return getKvAccountPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
      * 
-     * &gt; **NOTE:** Available in v1.198.0+
+     * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
      * ```java
@@ -582,9 +582,9 @@ public final class DcdnFunctions {
         return Deployment.getInstance().invoke("alicloud:dcdn/getKvAccount:getKvAccount", TypeShape.of(GetKvAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/putdcdnkvaccount)
+     * This data source provides DCDN kv account available to the user.[What is DCDN Kv Account](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-describedcdnkvaccount)
      * 
-     * &gt; **NOTE:** Available in v1.198.0+
+     * &gt; **NOTE:** Available since v1.198.0.
      * 
      * ## Example Usage
      * ```java
@@ -1347,9 +1347,9 @@ public final class DcdnFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:dcdn/getWafPolicies:getWafPolicies", TypeShape.of(GetWafPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
      * 
-     * &gt; **NOTE:** Available in 1.201.0+
+     * &gt; **NOTE:** Available since v1.201.0.
      * 
      * ## Example Usage
      * ```java
@@ -1387,9 +1387,9 @@ public final class DcdnFunctions {
         return getWafRules(GetWafRulesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
      * 
-     * &gt; **NOTE:** Available in 1.201.0+
+     * &gt; **NOTE:** Available since v1.201.0.
      * 
      * ## Example Usage
      * ```java
@@ -1427,9 +1427,9 @@ public final class DcdnFunctions {
         return getWafRulesPlain(GetWafRulesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
      * 
-     * &gt; **NOTE:** Available in 1.201.0+
+     * &gt; **NOTE:** Available since v1.201.0.
      * 
      * ## Example Usage
      * ```java
@@ -1467,9 +1467,9 @@ public final class DcdnFunctions {
         return getWafRules(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
      * 
-     * &gt; **NOTE:** Available in 1.201.0+
+     * &gt; **NOTE:** Available since v1.201.0.
      * 
      * ## Example Usage
      * ```java
@@ -1507,9 +1507,9 @@ public final class DcdnFunctions {
         return getWafRulesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
      * 
-     * &gt; **NOTE:** Available in 1.201.0+
+     * &gt; **NOTE:** Available since v1.201.0.
      * 
      * ## Example Usage
      * ```java
@@ -1547,9 +1547,9 @@ public final class DcdnFunctions {
         return Deployment.getInstance().invoke("alicloud:dcdn/getWafRules:getWafRules", TypeShape.of(GetWafRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+     * This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
      * 
-     * &gt; **NOTE:** Available in 1.201.0+
+     * &gt; **NOTE:** Available since v1.201.0.
      * 
      * ## Example Usage
      * ```java

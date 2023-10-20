@@ -18,14 +18,14 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
     public static final EcsLaunchTemplateSystemDiskArgs Empty = new EcsLaunchTemplateSystemDiskArgs();
 
     /**
-     * The category of the disk.
+     * The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The category of the disk.
+     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -33,14 +33,14 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
     }
 
     /**
-     * Indicates whether the data disk is released with the instance.
+     * Specifies whether to release the system disk when the instance is released. Default to `true`.
      * 
      */
     @Import(name="deleteWithInstance")
     private @Nullable Output<Boolean> deleteWithInstance;
 
     /**
-     * @return Indicates whether the data disk is released with the instance.
+     * @return Specifies whether to release the system disk when the instance is released. Default to `true`.
      * 
      */
     public Optional<Output<Boolean>> deleteWithInstance() {
@@ -48,18 +48,33 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
     }
 
     /**
-     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * System disk description. It cannot begin with http:// or https://.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * @return System disk description. It cannot begin with http:// or https://.
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Specifies whether the system disk is encrypted.
+     * 
+     */
+    @Import(name="encrypted")
+    private @Nullable Output<Boolean> encrypted;
+
+    /**
+     * @return Specifies whether the system disk is encrypted.
+     * 
+     */
+    public Optional<Output<Boolean>> encrypted() {
+        return Optional.ofNullable(this.encrypted);
     }
 
     /**
@@ -78,14 +93,14 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
     }
 
     /**
-     * It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * @return System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> name() {
@@ -93,14 +108,14 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
     }
 
     /**
-     * The performance level of the ESSD used as the data disk.
+     * The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
      * 
      */
     @Import(name="performanceLevel")
     private @Nullable Output<String> performanceLevel;
 
     /**
-     * @return The performance level of the ESSD used as the data disk.
+     * @return The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
@@ -108,14 +123,14 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
     }
 
     /**
-     * The size of the data disk.
+     * Size of the system disk, measured in GB. Value range: [20, 500].
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return The size of the data disk.
+     * @return Size of the system disk, measured in GB. Value range: [20, 500].
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -128,6 +143,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         this.category = $.category;
         this.deleteWithInstance = $.deleteWithInstance;
         this.description = $.description;
+        this.encrypted = $.encrypted;
         this.iops = $.iops;
         this.name = $.name;
         this.performanceLevel = $.performanceLevel;
@@ -153,7 +169,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param category The category of the disk.
+         * @param category The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
          * 
          * @return builder
          * 
@@ -164,7 +180,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param category The category of the disk.
+         * @param category The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
          * 
          * @return builder
          * 
@@ -174,7 +190,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param deleteWithInstance Indicates whether the data disk is released with the instance.
+         * @param deleteWithInstance Specifies whether to release the system disk when the instance is released. Default to `true`.
          * 
          * @return builder
          * 
@@ -185,7 +201,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param deleteWithInstance Indicates whether the data disk is released with the instance.
+         * @param deleteWithInstance Specifies whether to release the system disk when the instance is released. Default to `true`.
          * 
          * @return builder
          * 
@@ -195,7 +211,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+         * @param description System disk description. It cannot begin with http:// or https://.
          * 
          * @return builder
          * 
@@ -206,13 +222,34 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+         * @param description System disk description. It cannot begin with http:// or https://.
          * 
          * @return builder
          * 
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param encrypted Specifies whether the system disk is encrypted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encrypted(@Nullable Output<Boolean> encrypted) {
+            $.encrypted = encrypted;
+            return this;
+        }
+
+        /**
+         * @param encrypted Specifies whether the system disk is encrypted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encrypted(Boolean encrypted) {
+            return encrypted(Output.of(encrypted));
         }
 
         /**
@@ -237,7 +274,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+         * @param name System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -248,7 +285,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+         * @param name System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -258,7 +295,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param performanceLevel The performance level of the ESSD used as the data disk.
+         * @param performanceLevel The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
          * 
          * @return builder
          * 
@@ -269,7 +306,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param performanceLevel The performance level of the ESSD used as the data disk.
+         * @param performanceLevel The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
          * 
          * @return builder
          * 
@@ -279,7 +316,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param size The size of the data disk.
+         * @param size Size of the system disk, measured in GB. Value range: [20, 500].
          * 
          * @return builder
          * 
@@ -290,7 +327,7 @@ public final class EcsLaunchTemplateSystemDiskArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param size The size of the data disk.
+         * @param size Size of the system disk, measured in GB. Value range: [20, 500].
          * 
          * @return builder
          * 

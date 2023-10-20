@@ -63,7 +63,27 @@ class MigrationInstanceArgs:
              instance_class: Optional[pulumi.Input[str]] = None,
              sync_architecture: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationEndpointEngineName' in kwargs:
+            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
+        if 'destinationEndpointRegion' in kwargs:
+            destination_endpoint_region = kwargs['destinationEndpointRegion']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'sourceEndpointEngineName' in kwargs:
+            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
+        if 'sourceEndpointRegion' in kwargs:
+            source_endpoint_region = kwargs['sourceEndpointRegion']
+        if 'computeUnit' in kwargs:
+            compute_unit = kwargs['computeUnit']
+        if 'databaseCount' in kwargs:
+            database_count = kwargs['databaseCount']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'syncArchitecture' in kwargs:
+            sync_architecture = kwargs['syncArchitecture']
+
         _setter("destination_endpoint_engine_name", destination_endpoint_engine_name)
         _setter("destination_endpoint_region", destination_endpoint_region)
         _setter("payment_type", payment_type)
@@ -261,7 +281,29 @@ class _MigrationInstanceState:
              status: Optional[pulumi.Input[str]] = None,
              sync_architecture: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'computeUnit' in kwargs:
+            compute_unit = kwargs['computeUnit']
+        if 'databaseCount' in kwargs:
+            database_count = kwargs['databaseCount']
+        if 'destinationEndpointEngineName' in kwargs:
+            destination_endpoint_engine_name = kwargs['destinationEndpointEngineName']
+        if 'destinationEndpointRegion' in kwargs:
+            destination_endpoint_region = kwargs['destinationEndpointRegion']
+        if 'dtsInstanceId' in kwargs:
+            dts_instance_id = kwargs['dtsInstanceId']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'sourceEndpointEngineName' in kwargs:
+            source_endpoint_engine_name = kwargs['sourceEndpointEngineName']
+        if 'sourceEndpointRegion' in kwargs:
+            source_endpoint_region = kwargs['sourceEndpointRegion']
+        if 'syncArchitecture' in kwargs:
+            sync_architecture = kwargs['syncArchitecture']
+
         if compute_unit is not None:
             _setter("compute_unit", compute_unit)
         if database_count is not None:

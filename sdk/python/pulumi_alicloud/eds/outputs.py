@@ -81,7 +81,13 @@ class CustomPropertyPropertyValue(dict):
              _setter: Callable[[Any, Any], None],
              property_value: Optional[str] = None,
              property_value_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'propertyValue' in kwargs:
+            property_value = kwargs['propertyValue']
+        if 'propertyValueId' in kwargs:
+            property_value_id = kwargs['propertyValueId']
+
         if property_value is not None:
             _setter("property_value", property_value)
         if property_value_id is not None:
@@ -140,7 +146,11 @@ class EcdPolicyGroupAuthorizeAccessPolicyRule(dict):
              _setter: Callable[[Any, Any], None],
              cidr_ip: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrIp' in kwargs:
+            cidr_ip = kwargs['cidrIp']
+
         if cidr_ip is not None:
             _setter("cidr_ip", cidr_ip)
         if description is not None:
@@ -223,7 +233,15 @@ class EcdPolicyGroupAuthorizeSecurityPolicyRule(dict):
              port_range: Optional[str] = None,
              priority: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrIp' in kwargs:
+            cidr_ip = kwargs['cidrIp']
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+
         if cidr_ip is not None:
             _setter("cidr_ip", cidr_ip)
         if description is not None:
@@ -383,7 +401,43 @@ class GetAdConnectorDirectoriesDirectoryResult(dict):
              trust_password: str,
              vpc_id: str,
              vswitch_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adConnectorDirectoryId' in kwargs:
+            ad_connector_directory_id = kwargs['adConnectorDirectoryId']
+        if 'adConnectors' in kwargs:
+            ad_connectors = kwargs['adConnectors']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'customSecurityGroupId' in kwargs:
+            custom_security_group_id = kwargs['customSecurityGroupId']
+        if 'directoryName' in kwargs:
+            directory_name = kwargs['directoryName']
+        if 'directoryType' in kwargs:
+            directory_type = kwargs['directoryType']
+        if 'dnsAddresses' in kwargs:
+            dns_addresses = kwargs['dnsAddresses']
+        if 'dnsUserName' in kwargs:
+            dns_user_name = kwargs['dnsUserName']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'domainUserName' in kwargs:
+            domain_user_name = kwargs['domainUserName']
+        if 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if 'subDnsAddresses' in kwargs:
+            sub_dns_addresses = kwargs['subDnsAddresses']
+        if 'subDomainName' in kwargs:
+            sub_domain_name = kwargs['subDomainName']
+        if 'trustPassword' in kwargs:
+            trust_password = kwargs['trustPassword']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+
         _setter("ad_connector_directory_id", ad_connector_directory_id)
         _setter("ad_connectors", ad_connectors)
         _setter("create_time", create_time)
@@ -592,7 +646,19 @@ class GetAdConnectorDirectoriesDirectoryAdConnectorResult(dict):
              specification: str,
              trust_key: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adConnectorAddress' in kwargs:
+            ad_connector_address = kwargs['adConnectorAddress']
+        if 'connectorStatus' in kwargs:
+            connector_status = kwargs['connectorStatus']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'trustKey' in kwargs:
+            trust_key = kwargs['trustKey']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("ad_connector_address", ad_connector_address)
         _setter("connector_status", connector_status)
         _setter("network_interface_id", network_interface_id)
@@ -780,7 +846,61 @@ class GetAdConnectorOfficeSitesSiteResult(dict):
              trust_password: str,
              vpc_id: str,
              vswitch_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adConnectorOfficeSiteName' in kwargs:
+            ad_connector_office_site_name = kwargs['adConnectorOfficeSiteName']
+        if 'adConnectors' in kwargs:
+            ad_connectors = kwargs['adConnectors']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'customSecurityGroupId' in kwargs:
+            custom_security_group_id = kwargs['customSecurityGroupId']
+        if 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if 'desktopVpcEndpoint' in kwargs:
+            desktop_vpc_endpoint = kwargs['desktopVpcEndpoint']
+        if 'dnsAddresses' in kwargs:
+            dns_addresses = kwargs['dnsAddresses']
+        if 'dnsUserName' in kwargs:
+            dns_user_name = kwargs['dnsUserName']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'domainUserName' in kwargs:
+            domain_user_name = kwargs['domainUserName']
+        if 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if 'enableCrossDesktopAccess' in kwargs:
+            enable_cross_desktop_access = kwargs['enableCrossDesktopAccess']
+        if 'enableInternetAccess' in kwargs:
+            enable_internet_access = kwargs['enableInternetAccess']
+        if 'fileSystemIds' in kwargs:
+            file_system_ids = kwargs['fileSystemIds']
+        if 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if 'networkPackageId' in kwargs:
+            network_package_id = kwargs['networkPackageId']
+        if 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+        if 'officeSiteType' in kwargs:
+            office_site_type = kwargs['officeSiteType']
+        if 'ssoEnabled' in kwargs:
+            sso_enabled = kwargs['ssoEnabled']
+        if 'subDomainDnsAddresses' in kwargs:
+            sub_domain_dns_addresses = kwargs['subDomainDnsAddresses']
+        if 'subDomainName' in kwargs:
+            sub_domain_name = kwargs['subDomainName']
+        if 'trustPassword' in kwargs:
+            trust_password = kwargs['trustPassword']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+
         _setter("ad_connector_office_site_name", ad_connector_office_site_name)
         _setter("ad_connectors", ad_connectors)
         _setter("bandwidth", bandwidth)
@@ -1080,7 +1200,17 @@ class GetAdConnectorOfficeSitesSiteAdConnectorResult(dict):
              connector_status: str,
              network_interface_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adConnectorAddress' in kwargs:
+            ad_connector_address = kwargs['adConnectorAddress']
+        if 'connectorStatus' in kwargs:
+            connector_status = kwargs['connectorStatus']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("ad_connector_address", ad_connector_address)
         _setter("connector_status", connector_status)
         _setter("network_interface_id", network_interface_id)
@@ -1146,7 +1276,11 @@ class GetAdConnectorOfficeSitesSiteLogResult(dict):
              message: str,
              step: str,
              time_stamp: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'timeStamp' in kwargs:
+            time_stamp = kwargs['timeStamp']
+
         _setter("level", level)
         _setter("message", message)
         _setter("step", step)
@@ -1236,7 +1370,23 @@ class GetBundlesBundleResult(dict):
              id: str,
              image_id: str,
              os_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bundleId' in kwargs:
+            bundle_id = kwargs['bundleId']
+        if 'bundleName' in kwargs:
+            bundle_name = kwargs['bundleName']
+        if 'bundleType' in kwargs:
+            bundle_type = kwargs['bundleType']
+        if 'desktopType' in kwargs:
+            desktop_type = kwargs['desktopType']
+        if 'desktopTypeAttributes' in kwargs:
+            desktop_type_attributes = kwargs['desktopTypeAttributes']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+
         _setter("bundle_id", bundle_id)
         _setter("bundle_name", bundle_name)
         _setter("bundle_type", bundle_type)
@@ -1356,7 +1506,17 @@ class GetBundlesBundleDesktopTypeAttributeResult(dict):
              gpu_count: str,
              gpu_spec: str,
              memory_size: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuCount' in kwargs:
+            cpu_count = kwargs['cpuCount']
+        if 'gpuCount' in kwargs:
+            gpu_count = kwargs['gpuCount']
+        if 'gpuSpec' in kwargs:
+            gpu_spec = kwargs['gpuSpec']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+
         _setter("cpu_count", cpu_count)
         _setter("gpu_count", gpu_count)
         _setter("gpu_spec", gpu_spec)
@@ -1414,7 +1574,13 @@ class GetBundlesBundleDiskResult(dict):
              _setter: Callable[[Any, Any], None],
              disk_size: str,
              disk_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+
         _setter("disk_size", disk_size)
         _setter("disk_type", disk_type)
 
@@ -1474,7 +1640,19 @@ class GetCommandsCommandResult(dict):
              invoke_desktops: Sequence['outputs.GetCommandsCommandInvokeDesktopResult'],
              invoke_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commandContent' in kwargs:
+            command_content = kwargs['commandContent']
+        if 'commandType' in kwargs:
+            command_type = kwargs['commandType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'invokeDesktops' in kwargs:
+            invoke_desktops = kwargs['invokeDesktops']
+        if 'invokeId' in kwargs:
+            invoke_id = kwargs['invokeId']
+
         _setter("command_content", command_content)
         _setter("command_type", command_type)
         _setter("create_time", create_time)
@@ -1595,7 +1773,25 @@ class GetCommandsCommandInvokeDesktopResult(dict):
              repeats: int,
              start_time: str,
              stop_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+        if 'errorCode' in kwargs:
+            error_code = kwargs['errorCode']
+        if 'errorInfo' in kwargs:
+            error_info = kwargs['errorInfo']
+        if 'exitCode' in kwargs:
+            exit_code = kwargs['exitCode']
+        if 'finishTime' in kwargs:
+            finish_time = kwargs['finishTime']
+        if 'invocationStatus' in kwargs:
+            invocation_status = kwargs['invocationStatus']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'stopTime' in kwargs:
+            stop_time = kwargs['stopTime']
+
         _setter("desktop_id", desktop_id)
         _setter("dropped", dropped)
         _setter("error_code", error_code)
@@ -1724,7 +1920,15 @@ class GetCustomPropertiesPropertyResult(dict):
              id: str,
              property_key: str,
              property_values: Sequence['outputs.GetCustomPropertiesPropertyPropertyValueResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customPropertyId' in kwargs:
+            custom_property_id = kwargs['customPropertyId']
+        if 'propertyKey' in kwargs:
+            property_key = kwargs['propertyKey']
+        if 'propertyValues' in kwargs:
+            property_values = kwargs['propertyValues']
+
         _setter("custom_property_id", custom_property_id)
         _setter("id", id)
         _setter("property_key", property_key)
@@ -1782,7 +1986,13 @@ class GetCustomPropertiesPropertyPropertyValueResult(dict):
              _setter: Callable[[Any, Any], None],
              property_value: str,
              property_value_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'propertyValue' in kwargs:
+            property_value = kwargs['propertyValue']
+        if 'propertyValueId' in kwargs:
+            property_value_id = kwargs['propertyValueId']
+
         _setter("property_value", property_value)
         _setter("property_value_id", property_value_id)
 
@@ -1854,7 +2064,25 @@ class GetDesktopTypesTypeResult(dict):
              memory_size: str,
              status: str,
              system_disk_size: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuCount' in kwargs:
+            cpu_count = kwargs['cpuCount']
+        if 'dataDiskSize' in kwargs:
+            data_disk_size = kwargs['dataDiskSize']
+        if 'desktopTypeId' in kwargs:
+            desktop_type_id = kwargs['desktopTypeId']
+        if 'gpuCount' in kwargs:
+            gpu_count = kwargs['gpuCount']
+        if 'gpuSpec' in kwargs:
+            gpu_spec = kwargs['gpuSpec']
+        if 'instanceTypeFamily' in kwargs:
+            instance_type_family = kwargs['instanceTypeFamily']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+
         _setter("cpu_count", cpu_count)
         _setter("data_disk_size", data_disk_size)
         _setter("desktop_type_id", desktop_type_id)
@@ -2022,7 +2250,33 @@ class GetDesktopsDesktopResult(dict):
              policy_group_id: str,
              status: str,
              system_disk_size: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+        if 'desktopName' in kwargs:
+            desktop_name = kwargs['desktopName']
+        if 'desktopType' in kwargs:
+            desktop_type = kwargs['desktopType']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'endUserIds' in kwargs:
+            end_user_ids = kwargs['endUserIds']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'policyGroupId' in kwargs:
+            policy_group_id = kwargs['policyGroupId']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+
         _setter("cpu", cpu)
         _setter("create_time", create_time)
         _setter("desktop_id", desktop_id)
@@ -2228,7 +2482,23 @@ class GetImagesImageResult(dict):
              progress: str,
              size: int,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dataDiskSize' in kwargs:
+            data_disk_size = kwargs['dataDiskSize']
+        if 'gpuCategory' in kwargs:
+            gpu_category = kwargs['gpuCategory']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'imageType' in kwargs:
+            image_type = kwargs['imageType']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+
         _setter("create_time", create_time)
         _setter("data_disk_size", data_disk_size)
         _setter("description", description)
@@ -2414,7 +2684,33 @@ class GetNasFileSystemsSystemResult(dict):
              storage_type: str,
              support_acl: bool,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'fileSystemType' in kwargs:
+            file_system_type = kwargs['fileSystemType']
+        if 'meteredSize' in kwargs:
+            metered_size = kwargs['meteredSize']
+        if 'mountTargetDomain' in kwargs:
+            mount_target_domain = kwargs['mountTargetDomain']
+        if 'mountTargetStatus' in kwargs:
+            mount_target_status = kwargs['mountTargetStatus']
+        if 'nasFileSystemName' in kwargs:
+            nas_file_system_name = kwargs['nasFileSystemName']
+        if 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+        if 'officeSiteName' in kwargs:
+            office_site_name = kwargs['officeSiteName']
+        if 'storageType' in kwargs:
+            storage_type = kwargs['storageType']
+        if 'supportAcl' in kwargs:
+            support_acl = kwargs['supportAcl']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("capacity", capacity)
         _setter("create_time", create_time)
         _setter("description", description)
@@ -2612,7 +2908,23 @@ class GetNetworkPackagesPackageResult(dict):
              office_site_id: str,
              office_site_name: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'eipAddresses' in kwargs:
+            eip_addresses = kwargs['eipAddresses']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'networkPackageId' in kwargs:
+            network_package_id = kwargs['networkPackageId']
+        if 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+        if 'officeSiteName' in kwargs:
+            office_site_name = kwargs['officeSiteName']
+
         _setter("bandwidth", bandwidth)
         _setter("create_time", create_time)
         _setter("eip_addresses", eip_addresses)
@@ -2808,7 +3120,45 @@ class GetPolicyGroupsGroupResult(dict):
              watermark: str,
              watermark_transparency: str,
              watermark_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authorizeAccessPolicyRules' in kwargs:
+            authorize_access_policy_rules = kwargs['authorizeAccessPolicyRules']
+        if 'authorizeSecurityPolicyRules' in kwargs:
+            authorize_security_policy_rules = kwargs['authorizeSecurityPolicyRules']
+        if 'cameraRedirect' in kwargs:
+            camera_redirect = kwargs['cameraRedirect']
+        if 'domainList' in kwargs:
+            domain_list = kwargs['domainList']
+        if 'edsCount' in kwargs:
+            eds_count = kwargs['edsCount']
+        if 'htmlAccess' in kwargs:
+            html_access = kwargs['htmlAccess']
+        if 'htmlFileTransfer' in kwargs:
+            html_file_transfer = kwargs['htmlFileTransfer']
+        if 'localDrive' in kwargs:
+            local_drive = kwargs['localDrive']
+        if 'policyGroupId' in kwargs:
+            policy_group_id = kwargs['policyGroupId']
+        if 'policyGroupName' in kwargs:
+            policy_group_name = kwargs['policyGroupName']
+        if 'policyGroupType' in kwargs:
+            policy_group_type = kwargs['policyGroupType']
+        if 'recordingEndTime' in kwargs:
+            recording_end_time = kwargs['recordingEndTime']
+        if 'recordingFps' in kwargs:
+            recording_fps = kwargs['recordingFps']
+        if 'recordingStartTime' in kwargs:
+            recording_start_time = kwargs['recordingStartTime']
+        if 'usbRedirect' in kwargs:
+            usb_redirect = kwargs['usbRedirect']
+        if 'visualQuality' in kwargs:
+            visual_quality = kwargs['visualQuality']
+        if 'watermarkTransparency' in kwargs:
+            watermark_transparency = kwargs['watermarkTransparency']
+        if 'watermarkType' in kwargs:
+            watermark_type = kwargs['watermarkType']
+
         _setter("authorize_access_policy_rules", authorize_access_policy_rules)
         _setter("authorize_security_policy_rules", authorize_security_policy_rules)
         _setter("camera_redirect", camera_redirect)
@@ -3037,7 +3387,11 @@ class GetPolicyGroupsGroupAuthorizeAccessPolicyRuleResult(dict):
              _setter: Callable[[Any, Any], None],
              cidr_ip: str,
              description: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrIp' in kwargs:
+            cidr_ip = kwargs['cidrIp']
+
         _setter("cidr_ip", cidr_ip)
         _setter("description", description)
 
@@ -3097,7 +3451,15 @@ class GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult(dict):
              port_range: str,
              priority: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrIp' in kwargs:
+            cidr_ip = kwargs['cidrIp']
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+
         _setter("cidr_ip", cidr_ip)
         _setter("description", description)
         _setter("ip_protocol", ip_protocol)
@@ -3282,7 +3644,57 @@ class GetRamDirectoriesDirectoryResult(dict):
              trust_password: str,
              vpc_id: str,
              vswitch_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adConnectors' in kwargs:
+            ad_connectors = kwargs['adConnectors']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'customSecurityGroupId' in kwargs:
+            custom_security_group_id = kwargs['customSecurityGroupId']
+        if 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if 'desktopVpcEndpoint' in kwargs:
+            desktop_vpc_endpoint = kwargs['desktopVpcEndpoint']
+        if 'directoryType' in kwargs:
+            directory_type = kwargs['directoryType']
+        if 'dnsAddresses' in kwargs:
+            dns_addresses = kwargs['dnsAddresses']
+        if 'dnsUserName' in kwargs:
+            dns_user_name = kwargs['dnsUserName']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'domainPassword' in kwargs:
+            domain_password = kwargs['domainPassword']
+        if 'domainUserName' in kwargs:
+            domain_user_name = kwargs['domainUserName']
+        if 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if 'enableCrossDesktopAccess' in kwargs:
+            enable_cross_desktop_access = kwargs['enableCrossDesktopAccess']
+        if 'enableInternetAccess' in kwargs:
+            enable_internet_access = kwargs['enableInternetAccess']
+        if 'fileSystemIds' in kwargs:
+            file_system_ids = kwargs['fileSystemIds']
+        if 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if 'ramDirectoryId' in kwargs:
+            ram_directory_id = kwargs['ramDirectoryId']
+        if 'ramDirectoryName' in kwargs:
+            ram_directory_name = kwargs['ramDirectoryName']
+        if 'ssoEnabled' in kwargs:
+            sso_enabled = kwargs['ssoEnabled']
+        if 'subDnsAddresses' in kwargs:
+            sub_dns_addresses = kwargs['subDnsAddresses']
+        if 'subDomainName' in kwargs:
+            sub_domain_name = kwargs['subDomainName']
+        if 'trustPassword' in kwargs:
+            trust_password = kwargs['trustPassword']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+
         _setter("ad_connectors", ad_connectors)
         _setter("create_time", create_time)
         _setter("custom_security_group_id", custom_security_group_id)
@@ -3555,7 +3967,17 @@ class GetRamDirectoriesDirectoryAdConnectorResult(dict):
              connector_status: str,
              network_interface_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adConnectorAddress' in kwargs:
+            ad_connector_address = kwargs['adConnectorAddress']
+        if 'connectorStatus' in kwargs:
+            connector_status = kwargs['connectorStatus']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("ad_connector_address", ad_connector_address)
         _setter("connector_status", connector_status)
         _setter("network_interface_id", network_interface_id)
@@ -3621,7 +4043,11 @@ class GetRamDirectoriesDirectoryLogResult(dict):
              message: str,
              step: str,
              time_stamp: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'timeStamp' in kwargs:
+            time_stamp = kwargs['timeStamp']
+
         _setter("level", level)
         _setter("message", message)
         _setter("step", step)
@@ -3791,7 +4217,63 @@ class GetSimpleOfficeSitesSiteResult(dict):
              trust_password: str,
              vpc_id: str,
              vswitch_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'customSecurityGroupId' in kwargs:
+            custom_security_group_id = kwargs['customSecurityGroupId']
+        if 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if 'desktopVpcEndpoint' in kwargs:
+            desktop_vpc_endpoint = kwargs['desktopVpcEndpoint']
+        if 'dnsAddresses' in kwargs:
+            dns_addresses = kwargs['dnsAddresses']
+        if 'dnsUserName' in kwargs:
+            dns_user_name = kwargs['dnsUserName']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'domainPassword' in kwargs:
+            domain_password = kwargs['domainPassword']
+        if 'domainUserName' in kwargs:
+            domain_user_name = kwargs['domainUserName']
+        if 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if 'enableCrossDesktopAccess' in kwargs:
+            enable_cross_desktop_access = kwargs['enableCrossDesktopAccess']
+        if 'enableInternetAccess' in kwargs:
+            enable_internet_access = kwargs['enableInternetAccess']
+        if 'fileSystemIds' in kwargs:
+            file_system_ids = kwargs['fileSystemIds']
+        if 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if 'networkPackageId' in kwargs:
+            network_package_id = kwargs['networkPackageId']
+        if 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+        if 'officeSiteType' in kwargs:
+            office_site_type = kwargs['officeSiteType']
+        if 'simpleOfficeSiteName' in kwargs:
+            simple_office_site_name = kwargs['simpleOfficeSiteName']
+        if 'ssoEnabled' in kwargs:
+            sso_enabled = kwargs['ssoEnabled']
+        if 'ssoStatus' in kwargs:
+            sso_status = kwargs['ssoStatus']
+        if 'subDnsAddresses' in kwargs:
+            sub_dns_addresses = kwargs['subDnsAddresses']
+        if 'subDomainName' in kwargs:
+            sub_domain_name = kwargs['subDomainName']
+        if 'trustPassword' in kwargs:
+            trust_password = kwargs['trustPassword']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+
         _setter("bandwidth", bandwidth)
         _setter("cen_id", cen_id)
         _setter("cidr_block", cidr_block)
@@ -4129,7 +4611,25 @@ class GetSnapshotsSnapshotResult(dict):
              source_disk_size: str,
              source_disk_type: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+        if 'remainTime' in kwargs:
+            remain_time = kwargs['remainTime']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+        if 'snapshotType' in kwargs:
+            snapshot_type = kwargs['snapshotType']
+        if 'sourceDiskSize' in kwargs:
+            source_disk_size = kwargs['sourceDiskSize']
+        if 'sourceDiskType' in kwargs:
+            source_disk_type = kwargs['sourceDiskType']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("desktop_id", desktop_id)
@@ -4271,7 +4771,11 @@ class GetUsersUserResult(dict):
              id: str,
              phone: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endUserId' in kwargs:
+            end_user_id = kwargs['endUserId']
+
         _setter("email", email)
         _setter("end_user_id", end_user_id)
         _setter("id", id)
@@ -4334,7 +4838,11 @@ class GetZonesZoneResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("zone_id", zone_id)
 
     @property

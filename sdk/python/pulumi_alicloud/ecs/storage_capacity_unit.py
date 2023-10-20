@@ -49,7 +49,15 @@ class StorageCapacityUnitArgs:
              period_unit: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
              storage_capacity_unit_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'storageCapacityUnitName' in kwargs:
+            storage_capacity_unit_name = kwargs['storageCapacityUnitName']
+
         _setter("capacity", capacity)
         if description is not None:
             _setter("description", description)
@@ -179,7 +187,15 @@ class _StorageCapacityUnitState:
              start_time: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              storage_capacity_unit_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'storageCapacityUnitName' in kwargs:
+            storage_capacity_unit_name = kwargs['storageCapacityUnitName']
+
         if capacity is not None:
             _setter("capacity", capacity)
         if description is not None:

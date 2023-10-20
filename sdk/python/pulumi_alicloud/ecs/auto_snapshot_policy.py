@@ -65,7 +65,21 @@ class AutoSnapshotPolicyArgs:
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'repeatWeekdays' in kwargs:
+            repeat_weekdays = kwargs['repeatWeekdays']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'timePoints' in kwargs:
+            time_points = kwargs['timePoints']
+        if 'copiedSnapshotsRetentionDays' in kwargs:
+            copied_snapshots_retention_days = kwargs['copiedSnapshotsRetentionDays']
+        if 'enableCrossRegionCopy' in kwargs:
+            enable_cross_region_copy = kwargs['enableCrossRegionCopy']
+        if 'targetCopyRegions' in kwargs:
+            target_copy_regions = kwargs['targetCopyRegions']
+
         _setter("repeat_weekdays", repeat_weekdays)
         _setter("retention_days", retention_days)
         _setter("time_points", time_points)
@@ -245,7 +259,21 @@ class _AutoSnapshotPolicyState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              target_copy_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              time_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'copiedSnapshotsRetentionDays' in kwargs:
+            copied_snapshots_retention_days = kwargs['copiedSnapshotsRetentionDays']
+        if 'enableCrossRegionCopy' in kwargs:
+            enable_cross_region_copy = kwargs['enableCrossRegionCopy']
+        if 'repeatWeekdays' in kwargs:
+            repeat_weekdays = kwargs['repeatWeekdays']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'targetCopyRegions' in kwargs:
+            target_copy_regions = kwargs['targetCopyRegions']
+        if 'timePoints' in kwargs:
+            time_points = kwargs['timePoints']
+
         if copied_snapshots_retention_days is not None:
             _setter("copied_snapshots_retention_days", copied_snapshots_retention_days)
         if enable_cross_region_copy is not None:

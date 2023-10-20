@@ -47,7 +47,19 @@ class AttachmentArgs:
              delete_protection_validation: Optional[pulumi.Input[bool]] = None,
              server_type: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'backendServers' in kwargs:
+            backend_servers = kwargs['backendServers']
+        if 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+
         _setter("instance_ids", instance_ids)
         _setter("load_balancer_id", load_balancer_id)
         if backend_servers is not None:
@@ -168,7 +180,19 @@ class _AttachmentState:
              load_balancer_id: Optional[pulumi.Input[str]] = None,
              server_type: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backendServers' in kwargs:
+            backend_servers = kwargs['backendServers']
+        if 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+
         if backend_servers is not None:
             _setter("backend_servers", backend_servers)
         if delete_protection_validation is not None:

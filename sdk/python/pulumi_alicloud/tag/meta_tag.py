@@ -31,7 +31,9 @@ class MetaTagArgs:
              _setter: Callable[[Any, Any], None],
              key: pulumi.Input[str],
              values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("values", values)
 
@@ -80,7 +82,9 @@ class _MetaTagState:
              _setter: Callable[[Any, Any], None],
              key: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if values is not None:

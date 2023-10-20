@@ -75,7 +75,13 @@ class AggregateCompliancePackConfigRule(dict):
              _setter: Callable[[Any, Any], None],
              managed_rule_identifier: str,
              config_rule_parameters: Optional[Sequence['outputs.AggregateCompliancePackConfigRuleConfigRuleParameter']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'managedRuleIdentifier' in kwargs:
+            managed_rule_identifier = kwargs['managedRuleIdentifier']
+        if 'configRuleParameters' in kwargs:
+            config_rule_parameters = kwargs['configRuleParameters']
+
         _setter("managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
             _setter("config_rule_parameters", config_rule_parameters)
@@ -135,7 +141,13 @@ class AggregateCompliancePackConfigRuleConfigRuleParameter(dict):
              _setter: Callable[[Any, Any], None],
              parameter_name: Optional[str] = None,
              parameter_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         if parameter_name is not None:
             _setter("parameter_name", parameter_name)
         if parameter_value is not None:
@@ -190,7 +202,11 @@ class AggregateCompliancePackConfigRuleId(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              config_rule_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+
         if config_rule_id is not None:
             _setter("config_rule_id", config_rule_id)
 
@@ -247,7 +263,15 @@ class AggregatorAggregatorAccount(dict):
              account_id: str,
              account_name: str,
              account_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+
         _setter("account_id", account_id)
         _setter("account_name", account_name)
         _setter("account_type", account_type)
@@ -315,7 +339,13 @@ class CompliancePackConfigRule(dict):
              _setter: Callable[[Any, Any], None],
              managed_rule_identifier: str,
              config_rule_parameters: Optional[Sequence['outputs.CompliancePackConfigRuleConfigRuleParameter']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'managedRuleIdentifier' in kwargs:
+            managed_rule_identifier = kwargs['managedRuleIdentifier']
+        if 'configRuleParameters' in kwargs:
+            config_rule_parameters = kwargs['configRuleParameters']
+
         _setter("managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
             _setter("config_rule_parameters", config_rule_parameters)
@@ -375,7 +405,13 @@ class CompliancePackConfigRuleConfigRuleParameter(dict):
              _setter: Callable[[Any, Any], None],
              parameter_name: Optional[str] = None,
              parameter_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         if parameter_name is not None:
             _setter("parameter_name", parameter_name)
         if parameter_value is not None:
@@ -430,7 +466,11 @@ class CompliancePackConfigRuleId(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              config_rule_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+
         if config_rule_id is not None:
             _setter("config_rule_id", config_rule_id)
 
@@ -479,7 +519,11 @@ class RuleCompliance(dict):
              _setter: Callable[[Any, Any], None],
              compliance_type: Optional[str] = None,
              count: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'complianceType' in kwargs:
+            compliance_type = kwargs['complianceType']
+
         if compliance_type is not None:
             _setter("compliance_type", compliance_type)
         if count is not None:
@@ -549,7 +593,21 @@ class GetAggregateCompliancePacksPackResult(dict):
              id: str,
              risk_level: int,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'aggregateCompliancePackName' in kwargs:
+            aggregate_compliance_pack_name = kwargs['aggregateCompliancePackName']
+        if 'aggregatorCompliancePackId' in kwargs:
+            aggregator_compliance_pack_id = kwargs['aggregatorCompliancePackId']
+        if 'compliancePackTemplateId' in kwargs:
+            compliance_pack_template_id = kwargs['compliancePackTemplateId']
+        if 'configRules' in kwargs:
+            config_rules = kwargs['configRules']
+        if 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+
         _setter("account_id", account_id)
         _setter("aggregate_compliance_pack_name", aggregate_compliance_pack_name)
         _setter("aggregator_compliance_pack_id", aggregator_compliance_pack_id)
@@ -656,7 +714,15 @@ class GetAggregateCompliancePacksPackConfigRuleResult(dict):
              config_rule_id: str,
              config_rule_parameters: Sequence['outputs.GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult'],
              managed_rule_identifier: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+        if 'configRuleParameters' in kwargs:
+            config_rule_parameters = kwargs['configRuleParameters']
+        if 'managedRuleIdentifier' in kwargs:
+            managed_rule_identifier = kwargs['managedRuleIdentifier']
+
         _setter("config_rule_id", config_rule_id)
         _setter("config_rule_parameters", config_rule_parameters)
         _setter("managed_rule_identifier", managed_rule_identifier)
@@ -709,7 +775,13 @@ class GetAggregateCompliancePacksPackConfigRuleConfigRuleParameterResult(dict):
              parameter_name: str,
              parameter_value: str,
              required: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("parameter_name", parameter_name)
         _setter("parameter_value", parameter_value)
         _setter("required", required)
@@ -845,7 +917,49 @@ class GetAggregateConfigRulesRuleResult(dict):
              status: str,
              tag_key_scope: str,
              tag_value_scope: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'aggregateConfigRuleName' in kwargs:
+            aggregate_config_rule_name = kwargs['aggregateConfigRuleName']
+        if 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if 'compliancePackId' in kwargs:
+            compliance_pack_id = kwargs['compliancePackId']
+        if 'configRuleArn' in kwargs:
+            config_rule_arn = kwargs['configRuleArn']
+        if 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+        if 'configRuleTriggerTypes' in kwargs:
+            config_rule_trigger_types = kwargs['configRuleTriggerTypes']
+        if 'eventSource' in kwargs:
+            event_source = kwargs['eventSource']
+        if 'excludeResourceIdsScope' in kwargs:
+            exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
+        if 'inputParameters' in kwargs:
+            input_parameters = kwargs['inputParameters']
+        if 'maximumExecutionFrequency' in kwargs:
+            maximum_execution_frequency = kwargs['maximumExecutionFrequency']
+        if 'modifiedTimestamp' in kwargs:
+            modified_timestamp = kwargs['modifiedTimestamp']
+        if 'regionIdsScope' in kwargs:
+            region_ids_scope = kwargs['regionIdsScope']
+        if 'resourceGroupIdsScope' in kwargs:
+            resource_group_ids_scope = kwargs['resourceGroupIdsScope']
+        if 'resourceTypesScopes' in kwargs:
+            resource_types_scopes = kwargs['resourceTypesScopes']
+        if 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if 'sourceIdentifier' in kwargs:
+            source_identifier = kwargs['sourceIdentifier']
+        if 'sourceOwner' in kwargs:
+            source_owner = kwargs['sourceOwner']
+        if 'tagKeyScope' in kwargs:
+            tag_key_scope = kwargs['tagKeyScope']
+        if 'tagValueScope' in kwargs:
+            tag_value_scope = kwargs['tagValueScope']
+
         _setter("account_id", account_id)
         _setter("aggregate_config_rule_name", aggregate_config_rule_name)
         _setter("aggregator_id", aggregator_id)
@@ -1080,7 +1194,11 @@ class GetAggregateConfigRulesRuleComplianceResult(dict):
              _setter: Callable[[Any, Any], None],
              compliance_type: str,
              count: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'complianceType' in kwargs:
+            compliance_type = kwargs['complianceType']
+
         _setter("compliance_type", compliance_type)
         _setter("count", count)
 
@@ -1172,7 +1290,33 @@ class GetAggregateDeliveriesDeliveryResult(dict):
              non_compliant_notification: bool,
              oversized_data_oss_target_arn: str,
              status: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if 'configurationItemChangeNotification' in kwargs:
+            configuration_item_change_notification = kwargs['configurationItemChangeNotification']
+        if 'configurationSnapshot' in kwargs:
+            configuration_snapshot = kwargs['configurationSnapshot']
+        if 'deliveryChannelAssumeRoleArn' in kwargs:
+            delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
+        if 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if 'deliveryChannelId' in kwargs:
+            delivery_channel_id = kwargs['deliveryChannelId']
+        if 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+        if 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+        if 'nonCompliantNotification' in kwargs:
+            non_compliant_notification = kwargs['nonCompliantNotification']
+        if 'oversizedDataOssTargetArn' in kwargs:
+            oversized_data_oss_target_arn = kwargs['oversizedDataOssTargetArn']
+
         _setter("account_id", account_id)
         _setter("aggregator_id", aggregator_id)
         _setter("configuration_item_change_notification", configuration_item_change_notification)
@@ -1353,7 +1497,19 @@ class GetAggregatorsAggregatorResult(dict):
              description: str,
              id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'aggregatorAccounts' in kwargs:
+            aggregator_accounts = kwargs['aggregatorAccounts']
+        if 'aggregatorId' in kwargs:
+            aggregator_id = kwargs['aggregatorId']
+        if 'aggregatorName' in kwargs:
+            aggregator_name = kwargs['aggregatorName']
+        if 'aggregatorType' in kwargs:
+            aggregator_type = kwargs['aggregatorType']
+
         _setter("account_id", account_id)
         _setter("aggregator_accounts", aggregator_accounts)
         _setter("aggregator_id", aggregator_id)
@@ -1451,7 +1607,15 @@ class GetAggregatorsAggregatorAggregatorAccountResult(dict):
              account_id: str,
              account_name: str,
              account_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+
         _setter("account_id", account_id)
         _setter("account_name", account_name)
         _setter("account_type", account_type)
@@ -1528,7 +1692,21 @@ class GetCompliancePacksPackResult(dict):
              id: str,
              risk_level: int,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'compliancePackId' in kwargs:
+            compliance_pack_id = kwargs['compliancePackId']
+        if 'compliancePackName' in kwargs:
+            compliance_pack_name = kwargs['compliancePackName']
+        if 'compliancePackTemplateId' in kwargs:
+            compliance_pack_template_id = kwargs['compliancePackTemplateId']
+        if 'configRules' in kwargs:
+            config_rules = kwargs['configRules']
+        if 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+
         _setter("account_id", account_id)
         _setter("compliance_pack_id", compliance_pack_id)
         _setter("compliance_pack_name", compliance_pack_name)
@@ -1635,7 +1813,15 @@ class GetCompliancePacksPackConfigRuleResult(dict):
              config_rule_id: str,
              config_rule_parameters: Sequence['outputs.GetCompliancePacksPackConfigRuleConfigRuleParameterResult'],
              managed_rule_identifier: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+        if 'configRuleParameters' in kwargs:
+            config_rule_parameters = kwargs['configRuleParameters']
+        if 'managedRuleIdentifier' in kwargs:
+            managed_rule_identifier = kwargs['managedRuleIdentifier']
+
         _setter("config_rule_id", config_rule_id)
         _setter("config_rule_parameters", config_rule_parameters)
         _setter("managed_rule_identifier", managed_rule_identifier)
@@ -1688,7 +1874,13 @@ class GetCompliancePacksPackConfigRuleConfigRuleParameterResult(dict):
              parameter_name: str,
              parameter_value: str,
              required: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("parameter_name", parameter_name)
         _setter("parameter_value", parameter_value)
         _setter("required", required)
@@ -1753,7 +1945,17 @@ class GetConfigurationRecordersRecorderResult(dict):
              organization_master_id: int,
              resource_types: Sequence[str],
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'organizationEnableStatus' in kwargs:
+            organization_enable_status = kwargs['organizationEnableStatus']
+        if 'organizationMasterId' in kwargs:
+            organization_master_id = kwargs['organizationMasterId']
+        if 'resourceTypes' in kwargs:
+            resource_types = kwargs['resourceTypes']
+
         _setter("account_id", account_id)
         _setter("id", id)
         _setter("organization_enable_status", organization_enable_status)
@@ -1877,7 +2079,31 @@ class GetDeliveriesDeliveryResult(dict):
              non_compliant_notification: bool,
              oversized_data_oss_target_arn: str,
              status: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'configurationItemChangeNotification' in kwargs:
+            configuration_item_change_notification = kwargs['configurationItemChangeNotification']
+        if 'configurationSnapshot' in kwargs:
+            configuration_snapshot = kwargs['configurationSnapshot']
+        if 'deliveryChannelAssumeRoleArn' in kwargs:
+            delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
+        if 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if 'deliveryChannelId' in kwargs:
+            delivery_channel_id = kwargs['deliveryChannelId']
+        if 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+        if 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+        if 'nonCompliantNotification' in kwargs:
+            non_compliant_notification = kwargs['nonCompliantNotification']
+        if 'oversizedDataOssTargetArn' in kwargs:
+            oversized_data_oss_target_arn = kwargs['oversizedDataOssTargetArn']
+
         _setter("account_id", account_id)
         _setter("configuration_item_change_notification", configuration_item_change_notification)
         _setter("configuration_snapshot", configuration_snapshot)
@@ -2053,7 +2279,21 @@ class GetDeliveryChannelsChannelResult(dict):
              description: str,
              id: str,
              status: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deliveryChannelAssumeRoleArn' in kwargs:
+            delivery_channel_assume_role_arn = kwargs['deliveryChannelAssumeRoleArn']
+        if 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if 'deliveryChannelId' in kwargs:
+            delivery_channel_id = kwargs['deliveryChannelId']
+        if 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+        if 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+
         _setter("delivery_channel_assume_role_arn", delivery_channel_assume_role_arn)
         _setter("delivery_channel_condition", delivery_channel_condition)
         _setter("delivery_channel_id", delivery_channel_id)
@@ -2255,7 +2495,55 @@ class GetRulesRuleResult(dict):
              status: str,
              tag_key_scope: str,
              tag_value_scope: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'compliancePackId' in kwargs:
+            compliance_pack_id = kwargs['compliancePackId']
+        if 'configRuleArn' in kwargs:
+            config_rule_arn = kwargs['configRuleArn']
+        if 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+        if 'configRuleState' in kwargs:
+            config_rule_state = kwargs['configRuleState']
+        if 'configRuleTriggerTypes' in kwargs:
+            config_rule_trigger_types = kwargs['configRuleTriggerTypes']
+        if 'eventSource' in kwargs:
+            event_source = kwargs['eventSource']
+        if 'excludeResourceIdsScope' in kwargs:
+            exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
+        if 'inputParameters' in kwargs:
+            input_parameters = kwargs['inputParameters']
+        if 'maximumExecutionFrequency' in kwargs:
+            maximum_execution_frequency = kwargs['maximumExecutionFrequency']
+        if 'modifiedTimestamp' in kwargs:
+            modified_timestamp = kwargs['modifiedTimestamp']
+        if 'regionIdsScope' in kwargs:
+            region_ids_scope = kwargs['regionIdsScope']
+        if 'resourceGroupIdsScope' in kwargs:
+            resource_group_ids_scope = kwargs['resourceGroupIdsScope']
+        if 'resourceTypesScopes' in kwargs:
+            resource_types_scopes = kwargs['resourceTypesScopes']
+        if 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'scopeComplianceResourceTypes' in kwargs:
+            scope_compliance_resource_types = kwargs['scopeComplianceResourceTypes']
+        if 'sourceDetailMessageType' in kwargs:
+            source_detail_message_type = kwargs['sourceDetailMessageType']
+        if 'sourceIdentifier' in kwargs:
+            source_identifier = kwargs['sourceIdentifier']
+        if 'sourceMaximumExecutionFrequency' in kwargs:
+            source_maximum_execution_frequency = kwargs['sourceMaximumExecutionFrequency']
+        if 'sourceOwner' in kwargs:
+            source_owner = kwargs['sourceOwner']
+        if 'tagKeyScope' in kwargs:
+            tag_key_scope = kwargs['tagKeyScope']
+        if 'tagValueScope' in kwargs:
+            tag_value_scope = kwargs['tagValueScope']
+
         _setter("account_id", account_id)
         _setter("compliance_pack_id", compliance_pack_id)
         _setter("compliances", compliances)
@@ -2517,7 +2805,11 @@ class GetRulesRuleComplianceResult(dict):
              _setter: Callable[[Any, Any], None],
              compliance_type: str,
              count: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'complianceType' in kwargs:
+            compliance_type = kwargs['complianceType']
+
         _setter("compliance_type", compliance_type)
         _setter("count", count)
 

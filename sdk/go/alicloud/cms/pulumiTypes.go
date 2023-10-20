@@ -946,6 +946,145 @@ func (o DynamicTagGroupMatchExpressArrayOutput) Index(i pulumi.IntInput) Dynamic
 	}).(DynamicTagGroupMatchExpressOutput)
 }
 
+type EventRuleContactParameter struct {
+	// The name of the alert contact group.
+	ContactGroupName *string `pulumi:"contactGroupName"`
+	// The ID of the recipient that receives alert notifications.
+	ContactParametersId *string `pulumi:"contactParametersId"`
+	// The alert level and the corresponding notification methods.
+	Level *string `pulumi:"level"`
+}
+
+// EventRuleContactParameterInput is an input type that accepts EventRuleContactParameterArgs and EventRuleContactParameterOutput values.
+// You can construct a concrete instance of `EventRuleContactParameterInput` via:
+//
+//	EventRuleContactParameterArgs{...}
+type EventRuleContactParameterInput interface {
+	pulumi.Input
+
+	ToEventRuleContactParameterOutput() EventRuleContactParameterOutput
+	ToEventRuleContactParameterOutputWithContext(context.Context) EventRuleContactParameterOutput
+}
+
+type EventRuleContactParameterArgs struct {
+	// The name of the alert contact group.
+	ContactGroupName pulumi.StringPtrInput `pulumi:"contactGroupName"`
+	// The ID of the recipient that receives alert notifications.
+	ContactParametersId pulumi.StringPtrInput `pulumi:"contactParametersId"`
+	// The alert level and the corresponding notification methods.
+	Level pulumi.StringPtrInput `pulumi:"level"`
+}
+
+func (EventRuleContactParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleContactParameter)(nil)).Elem()
+}
+
+func (i EventRuleContactParameterArgs) ToEventRuleContactParameterOutput() EventRuleContactParameterOutput {
+	return i.ToEventRuleContactParameterOutputWithContext(context.Background())
+}
+
+func (i EventRuleContactParameterArgs) ToEventRuleContactParameterOutputWithContext(ctx context.Context) EventRuleContactParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleContactParameterOutput)
+}
+
+func (i EventRuleContactParameterArgs) ToOutput(ctx context.Context) pulumix.Output[EventRuleContactParameter] {
+	return pulumix.Output[EventRuleContactParameter]{
+		OutputState: i.ToEventRuleContactParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
+// EventRuleContactParameterArrayInput is an input type that accepts EventRuleContactParameterArray and EventRuleContactParameterArrayOutput values.
+// You can construct a concrete instance of `EventRuleContactParameterArrayInput` via:
+//
+//	EventRuleContactParameterArray{ EventRuleContactParameterArgs{...} }
+type EventRuleContactParameterArrayInput interface {
+	pulumi.Input
+
+	ToEventRuleContactParameterArrayOutput() EventRuleContactParameterArrayOutput
+	ToEventRuleContactParameterArrayOutputWithContext(context.Context) EventRuleContactParameterArrayOutput
+}
+
+type EventRuleContactParameterArray []EventRuleContactParameterInput
+
+func (EventRuleContactParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventRuleContactParameter)(nil)).Elem()
+}
+
+func (i EventRuleContactParameterArray) ToEventRuleContactParameterArrayOutput() EventRuleContactParameterArrayOutput {
+	return i.ToEventRuleContactParameterArrayOutputWithContext(context.Background())
+}
+
+func (i EventRuleContactParameterArray) ToEventRuleContactParameterArrayOutputWithContext(ctx context.Context) EventRuleContactParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleContactParameterArrayOutput)
+}
+
+func (i EventRuleContactParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]EventRuleContactParameter] {
+	return pulumix.Output[[]EventRuleContactParameter]{
+		OutputState: i.ToEventRuleContactParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type EventRuleContactParameterOutput struct{ *pulumi.OutputState }
+
+func (EventRuleContactParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleContactParameter)(nil)).Elem()
+}
+
+func (o EventRuleContactParameterOutput) ToEventRuleContactParameterOutput() EventRuleContactParameterOutput {
+	return o
+}
+
+func (o EventRuleContactParameterOutput) ToEventRuleContactParameterOutputWithContext(ctx context.Context) EventRuleContactParameterOutput {
+	return o
+}
+
+func (o EventRuleContactParameterOutput) ToOutput(ctx context.Context) pulumix.Output[EventRuleContactParameter] {
+	return pulumix.Output[EventRuleContactParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The name of the alert contact group.
+func (o EventRuleContactParameterOutput) ContactGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleContactParameter) *string { return v.ContactGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the recipient that receives alert notifications.
+func (o EventRuleContactParameterOutput) ContactParametersId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleContactParameter) *string { return v.ContactParametersId }).(pulumi.StringPtrOutput)
+}
+
+// The alert level and the corresponding notification methods.
+func (o EventRuleContactParameterOutput) Level() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleContactParameter) *string { return v.Level }).(pulumi.StringPtrOutput)
+}
+
+type EventRuleContactParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (EventRuleContactParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventRuleContactParameter)(nil)).Elem()
+}
+
+func (o EventRuleContactParameterArrayOutput) ToEventRuleContactParameterArrayOutput() EventRuleContactParameterArrayOutput {
+	return o
+}
+
+func (o EventRuleContactParameterArrayOutput) ToEventRuleContactParameterArrayOutputWithContext(ctx context.Context) EventRuleContactParameterArrayOutput {
+	return o
+}
+
+func (o EventRuleContactParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EventRuleContactParameter] {
+	return pulumix.Output[[]EventRuleContactParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EventRuleContactParameterArrayOutput) Index(i pulumi.IntInput) EventRuleContactParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventRuleContactParameter {
+		return vs[0].([]EventRuleContactParameter)[vs[1].(int)]
+	}).(EventRuleContactParameterOutput)
+}
+
 type EventRuleEventPattern struct {
 	// The type of the event-triggered alert rule. Valid values:
 	EventTypeLists []string `pulumi:"eventTypeLists"`
@@ -1181,6 +1320,800 @@ func (o EventRuleEventPatternPtrOutput) SqlFilter() pulumi.StringPtrOutput {
 		}
 		return v.SqlFilter
 	}).(pulumi.StringPtrOutput)
+}
+
+type EventRuleFcParameter struct {
+	// (Available since v1.211.1) The ARN of the API operation.
+	Arn *string `pulumi:"arn"`
+	// The ID of the recipient that receives alert notifications.
+	FcParametersId *string `pulumi:"fcParametersId"`
+	// The name of the function.
+	FunctionName *string `pulumi:"functionName"`
+	// The region where Function Compute is deployed.
+	Region *string `pulumi:"region"`
+	// The name of the Function Compute service.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// EventRuleFcParameterInput is an input type that accepts EventRuleFcParameterArgs and EventRuleFcParameterOutput values.
+// You can construct a concrete instance of `EventRuleFcParameterInput` via:
+//
+//	EventRuleFcParameterArgs{...}
+type EventRuleFcParameterInput interface {
+	pulumi.Input
+
+	ToEventRuleFcParameterOutput() EventRuleFcParameterOutput
+	ToEventRuleFcParameterOutputWithContext(context.Context) EventRuleFcParameterOutput
+}
+
+type EventRuleFcParameterArgs struct {
+	// (Available since v1.211.1) The ARN of the API operation.
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// The ID of the recipient that receives alert notifications.
+	FcParametersId pulumi.StringPtrInput `pulumi:"fcParametersId"`
+	// The name of the function.
+	FunctionName pulumi.StringPtrInput `pulumi:"functionName"`
+	// The region where Function Compute is deployed.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The name of the Function Compute service.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (EventRuleFcParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleFcParameter)(nil)).Elem()
+}
+
+func (i EventRuleFcParameterArgs) ToEventRuleFcParameterOutput() EventRuleFcParameterOutput {
+	return i.ToEventRuleFcParameterOutputWithContext(context.Background())
+}
+
+func (i EventRuleFcParameterArgs) ToEventRuleFcParameterOutputWithContext(ctx context.Context) EventRuleFcParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleFcParameterOutput)
+}
+
+func (i EventRuleFcParameterArgs) ToOutput(ctx context.Context) pulumix.Output[EventRuleFcParameter] {
+	return pulumix.Output[EventRuleFcParameter]{
+		OutputState: i.ToEventRuleFcParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
+// EventRuleFcParameterArrayInput is an input type that accepts EventRuleFcParameterArray and EventRuleFcParameterArrayOutput values.
+// You can construct a concrete instance of `EventRuleFcParameterArrayInput` via:
+//
+//	EventRuleFcParameterArray{ EventRuleFcParameterArgs{...} }
+type EventRuleFcParameterArrayInput interface {
+	pulumi.Input
+
+	ToEventRuleFcParameterArrayOutput() EventRuleFcParameterArrayOutput
+	ToEventRuleFcParameterArrayOutputWithContext(context.Context) EventRuleFcParameterArrayOutput
+}
+
+type EventRuleFcParameterArray []EventRuleFcParameterInput
+
+func (EventRuleFcParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventRuleFcParameter)(nil)).Elem()
+}
+
+func (i EventRuleFcParameterArray) ToEventRuleFcParameterArrayOutput() EventRuleFcParameterArrayOutput {
+	return i.ToEventRuleFcParameterArrayOutputWithContext(context.Background())
+}
+
+func (i EventRuleFcParameterArray) ToEventRuleFcParameterArrayOutputWithContext(ctx context.Context) EventRuleFcParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleFcParameterArrayOutput)
+}
+
+func (i EventRuleFcParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]EventRuleFcParameter] {
+	return pulumix.Output[[]EventRuleFcParameter]{
+		OutputState: i.ToEventRuleFcParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type EventRuleFcParameterOutput struct{ *pulumi.OutputState }
+
+func (EventRuleFcParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleFcParameter)(nil)).Elem()
+}
+
+func (o EventRuleFcParameterOutput) ToEventRuleFcParameterOutput() EventRuleFcParameterOutput {
+	return o
+}
+
+func (o EventRuleFcParameterOutput) ToEventRuleFcParameterOutputWithContext(ctx context.Context) EventRuleFcParameterOutput {
+	return o
+}
+
+func (o EventRuleFcParameterOutput) ToOutput(ctx context.Context) pulumix.Output[EventRuleFcParameter] {
+	return pulumix.Output[EventRuleFcParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// (Available since v1.211.1) The ARN of the API operation.
+func (o EventRuleFcParameterOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleFcParameter) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the recipient that receives alert notifications.
+func (o EventRuleFcParameterOutput) FcParametersId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleFcParameter) *string { return v.FcParametersId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the function.
+func (o EventRuleFcParameterOutput) FunctionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleFcParameter) *string { return v.FunctionName }).(pulumi.StringPtrOutput)
+}
+
+// The region where Function Compute is deployed.
+func (o EventRuleFcParameterOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleFcParameter) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Function Compute service.
+func (o EventRuleFcParameterOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleFcParameter) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type EventRuleFcParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (EventRuleFcParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventRuleFcParameter)(nil)).Elem()
+}
+
+func (o EventRuleFcParameterArrayOutput) ToEventRuleFcParameterArrayOutput() EventRuleFcParameterArrayOutput {
+	return o
+}
+
+func (o EventRuleFcParameterArrayOutput) ToEventRuleFcParameterArrayOutputWithContext(ctx context.Context) EventRuleFcParameterArrayOutput {
+	return o
+}
+
+func (o EventRuleFcParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EventRuleFcParameter] {
+	return pulumix.Output[[]EventRuleFcParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EventRuleFcParameterArrayOutput) Index(i pulumi.IntInput) EventRuleFcParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventRuleFcParameter {
+		return vs[0].([]EventRuleFcParameter)[vs[1].(int)]
+	}).(EventRuleFcParameterOutput)
+}
+
+type EventRuleMnsParameter struct {
+	// (Available since v1.211.1) The ARN of the API operation.
+	Arn *string `pulumi:"arn"`
+	// The ID of the recipient that receives alert notifications.
+	MnsParametersId *string `pulumi:"mnsParametersId"`
+	// The name of the MNS queue.
+	Queue *string `pulumi:"queue"`
+	// The region where Message Service (MNS) is deployed.
+	Region *string `pulumi:"region"`
+	// The MNS topic.
+	Topic *string `pulumi:"topic"`
+}
+
+// EventRuleMnsParameterInput is an input type that accepts EventRuleMnsParameterArgs and EventRuleMnsParameterOutput values.
+// You can construct a concrete instance of `EventRuleMnsParameterInput` via:
+//
+//	EventRuleMnsParameterArgs{...}
+type EventRuleMnsParameterInput interface {
+	pulumi.Input
+
+	ToEventRuleMnsParameterOutput() EventRuleMnsParameterOutput
+	ToEventRuleMnsParameterOutputWithContext(context.Context) EventRuleMnsParameterOutput
+}
+
+type EventRuleMnsParameterArgs struct {
+	// (Available since v1.211.1) The ARN of the API operation.
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// The ID of the recipient that receives alert notifications.
+	MnsParametersId pulumi.StringPtrInput `pulumi:"mnsParametersId"`
+	// The name of the MNS queue.
+	Queue pulumi.StringPtrInput `pulumi:"queue"`
+	// The region where Message Service (MNS) is deployed.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The MNS topic.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (EventRuleMnsParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleMnsParameter)(nil)).Elem()
+}
+
+func (i EventRuleMnsParameterArgs) ToEventRuleMnsParameterOutput() EventRuleMnsParameterOutput {
+	return i.ToEventRuleMnsParameterOutputWithContext(context.Background())
+}
+
+func (i EventRuleMnsParameterArgs) ToEventRuleMnsParameterOutputWithContext(ctx context.Context) EventRuleMnsParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleMnsParameterOutput)
+}
+
+func (i EventRuleMnsParameterArgs) ToOutput(ctx context.Context) pulumix.Output[EventRuleMnsParameter] {
+	return pulumix.Output[EventRuleMnsParameter]{
+		OutputState: i.ToEventRuleMnsParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
+// EventRuleMnsParameterArrayInput is an input type that accepts EventRuleMnsParameterArray and EventRuleMnsParameterArrayOutput values.
+// You can construct a concrete instance of `EventRuleMnsParameterArrayInput` via:
+//
+//	EventRuleMnsParameterArray{ EventRuleMnsParameterArgs{...} }
+type EventRuleMnsParameterArrayInput interface {
+	pulumi.Input
+
+	ToEventRuleMnsParameterArrayOutput() EventRuleMnsParameterArrayOutput
+	ToEventRuleMnsParameterArrayOutputWithContext(context.Context) EventRuleMnsParameterArrayOutput
+}
+
+type EventRuleMnsParameterArray []EventRuleMnsParameterInput
+
+func (EventRuleMnsParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventRuleMnsParameter)(nil)).Elem()
+}
+
+func (i EventRuleMnsParameterArray) ToEventRuleMnsParameterArrayOutput() EventRuleMnsParameterArrayOutput {
+	return i.ToEventRuleMnsParameterArrayOutputWithContext(context.Background())
+}
+
+func (i EventRuleMnsParameterArray) ToEventRuleMnsParameterArrayOutputWithContext(ctx context.Context) EventRuleMnsParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleMnsParameterArrayOutput)
+}
+
+func (i EventRuleMnsParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]EventRuleMnsParameter] {
+	return pulumix.Output[[]EventRuleMnsParameter]{
+		OutputState: i.ToEventRuleMnsParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type EventRuleMnsParameterOutput struct{ *pulumi.OutputState }
+
+func (EventRuleMnsParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleMnsParameter)(nil)).Elem()
+}
+
+func (o EventRuleMnsParameterOutput) ToEventRuleMnsParameterOutput() EventRuleMnsParameterOutput {
+	return o
+}
+
+func (o EventRuleMnsParameterOutput) ToEventRuleMnsParameterOutputWithContext(ctx context.Context) EventRuleMnsParameterOutput {
+	return o
+}
+
+func (o EventRuleMnsParameterOutput) ToOutput(ctx context.Context) pulumix.Output[EventRuleMnsParameter] {
+	return pulumix.Output[EventRuleMnsParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// (Available since v1.211.1) The ARN of the API operation.
+func (o EventRuleMnsParameterOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleMnsParameter) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the recipient that receives alert notifications.
+func (o EventRuleMnsParameterOutput) MnsParametersId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleMnsParameter) *string { return v.MnsParametersId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the MNS queue.
+func (o EventRuleMnsParameterOutput) Queue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleMnsParameter) *string { return v.Queue }).(pulumi.StringPtrOutput)
+}
+
+// The region where Message Service (MNS) is deployed.
+func (o EventRuleMnsParameterOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleMnsParameter) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The MNS topic.
+func (o EventRuleMnsParameterOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleMnsParameter) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type EventRuleMnsParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (EventRuleMnsParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventRuleMnsParameter)(nil)).Elem()
+}
+
+func (o EventRuleMnsParameterArrayOutput) ToEventRuleMnsParameterArrayOutput() EventRuleMnsParameterArrayOutput {
+	return o
+}
+
+func (o EventRuleMnsParameterArrayOutput) ToEventRuleMnsParameterArrayOutputWithContext(ctx context.Context) EventRuleMnsParameterArrayOutput {
+	return o
+}
+
+func (o EventRuleMnsParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EventRuleMnsParameter] {
+	return pulumix.Output[[]EventRuleMnsParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EventRuleMnsParameterArrayOutput) Index(i pulumi.IntInput) EventRuleMnsParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventRuleMnsParameter {
+		return vs[0].([]EventRuleMnsParameter)[vs[1].(int)]
+	}).(EventRuleMnsParameterOutput)
+}
+
+type EventRuleOpenApiParameter struct {
+	// The API name.
+	Action *string `pulumi:"action"`
+	// (Available since v1.211.1) The ARN of the API operation.
+	Arn *string `pulumi:"arn"`
+	// The ID of the recipient that receives alert notifications sent by an API callback.
+	OpenApiParametersId *string `pulumi:"openApiParametersId"`
+	// The ID of the cloud service to which the API operation belongs.
+	Product *string `pulumi:"product"`
+	// The region where the resource resides.
+	Region *string `pulumi:"region"`
+	// The name of the role.
+	Role *string `pulumi:"role"`
+	// The version of the API.
+	Version *string `pulumi:"version"`
+}
+
+// EventRuleOpenApiParameterInput is an input type that accepts EventRuleOpenApiParameterArgs and EventRuleOpenApiParameterOutput values.
+// You can construct a concrete instance of `EventRuleOpenApiParameterInput` via:
+//
+//	EventRuleOpenApiParameterArgs{...}
+type EventRuleOpenApiParameterInput interface {
+	pulumi.Input
+
+	ToEventRuleOpenApiParameterOutput() EventRuleOpenApiParameterOutput
+	ToEventRuleOpenApiParameterOutputWithContext(context.Context) EventRuleOpenApiParameterOutput
+}
+
+type EventRuleOpenApiParameterArgs struct {
+	// The API name.
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// (Available since v1.211.1) The ARN of the API operation.
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// The ID of the recipient that receives alert notifications sent by an API callback.
+	OpenApiParametersId pulumi.StringPtrInput `pulumi:"openApiParametersId"`
+	// The ID of the cloud service to which the API operation belongs.
+	Product pulumi.StringPtrInput `pulumi:"product"`
+	// The region where the resource resides.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The name of the role.
+	Role pulumi.StringPtrInput `pulumi:"role"`
+	// The version of the API.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (EventRuleOpenApiParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleOpenApiParameter)(nil)).Elem()
+}
+
+func (i EventRuleOpenApiParameterArgs) ToEventRuleOpenApiParameterOutput() EventRuleOpenApiParameterOutput {
+	return i.ToEventRuleOpenApiParameterOutputWithContext(context.Background())
+}
+
+func (i EventRuleOpenApiParameterArgs) ToEventRuleOpenApiParameterOutputWithContext(ctx context.Context) EventRuleOpenApiParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleOpenApiParameterOutput)
+}
+
+func (i EventRuleOpenApiParameterArgs) ToOutput(ctx context.Context) pulumix.Output[EventRuleOpenApiParameter] {
+	return pulumix.Output[EventRuleOpenApiParameter]{
+		OutputState: i.ToEventRuleOpenApiParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
+// EventRuleOpenApiParameterArrayInput is an input type that accepts EventRuleOpenApiParameterArray and EventRuleOpenApiParameterArrayOutput values.
+// You can construct a concrete instance of `EventRuleOpenApiParameterArrayInput` via:
+//
+//	EventRuleOpenApiParameterArray{ EventRuleOpenApiParameterArgs{...} }
+type EventRuleOpenApiParameterArrayInput interface {
+	pulumi.Input
+
+	ToEventRuleOpenApiParameterArrayOutput() EventRuleOpenApiParameterArrayOutput
+	ToEventRuleOpenApiParameterArrayOutputWithContext(context.Context) EventRuleOpenApiParameterArrayOutput
+}
+
+type EventRuleOpenApiParameterArray []EventRuleOpenApiParameterInput
+
+func (EventRuleOpenApiParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventRuleOpenApiParameter)(nil)).Elem()
+}
+
+func (i EventRuleOpenApiParameterArray) ToEventRuleOpenApiParameterArrayOutput() EventRuleOpenApiParameterArrayOutput {
+	return i.ToEventRuleOpenApiParameterArrayOutputWithContext(context.Background())
+}
+
+func (i EventRuleOpenApiParameterArray) ToEventRuleOpenApiParameterArrayOutputWithContext(ctx context.Context) EventRuleOpenApiParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleOpenApiParameterArrayOutput)
+}
+
+func (i EventRuleOpenApiParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]EventRuleOpenApiParameter] {
+	return pulumix.Output[[]EventRuleOpenApiParameter]{
+		OutputState: i.ToEventRuleOpenApiParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type EventRuleOpenApiParameterOutput struct{ *pulumi.OutputState }
+
+func (EventRuleOpenApiParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleOpenApiParameter)(nil)).Elem()
+}
+
+func (o EventRuleOpenApiParameterOutput) ToEventRuleOpenApiParameterOutput() EventRuleOpenApiParameterOutput {
+	return o
+}
+
+func (o EventRuleOpenApiParameterOutput) ToEventRuleOpenApiParameterOutputWithContext(ctx context.Context) EventRuleOpenApiParameterOutput {
+	return o
+}
+
+func (o EventRuleOpenApiParameterOutput) ToOutput(ctx context.Context) pulumix.Output[EventRuleOpenApiParameter] {
+	return pulumix.Output[EventRuleOpenApiParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The API name.
+func (o EventRuleOpenApiParameterOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleOpenApiParameter) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// (Available since v1.211.1) The ARN of the API operation.
+func (o EventRuleOpenApiParameterOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleOpenApiParameter) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the recipient that receives alert notifications sent by an API callback.
+func (o EventRuleOpenApiParameterOutput) OpenApiParametersId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleOpenApiParameter) *string { return v.OpenApiParametersId }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the cloud service to which the API operation belongs.
+func (o EventRuleOpenApiParameterOutput) Product() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleOpenApiParameter) *string { return v.Product }).(pulumi.StringPtrOutput)
+}
+
+// The region where the resource resides.
+func (o EventRuleOpenApiParameterOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleOpenApiParameter) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The name of the role.
+func (o EventRuleOpenApiParameterOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleOpenApiParameter) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// The version of the API.
+func (o EventRuleOpenApiParameterOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleOpenApiParameter) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type EventRuleOpenApiParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (EventRuleOpenApiParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventRuleOpenApiParameter)(nil)).Elem()
+}
+
+func (o EventRuleOpenApiParameterArrayOutput) ToEventRuleOpenApiParameterArrayOutput() EventRuleOpenApiParameterArrayOutput {
+	return o
+}
+
+func (o EventRuleOpenApiParameterArrayOutput) ToEventRuleOpenApiParameterArrayOutputWithContext(ctx context.Context) EventRuleOpenApiParameterArrayOutput {
+	return o
+}
+
+func (o EventRuleOpenApiParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EventRuleOpenApiParameter] {
+	return pulumix.Output[[]EventRuleOpenApiParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EventRuleOpenApiParameterArrayOutput) Index(i pulumi.IntInput) EventRuleOpenApiParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventRuleOpenApiParameter {
+		return vs[0].([]EventRuleOpenApiParameter)[vs[1].(int)]
+	}).(EventRuleOpenApiParameterOutput)
+}
+
+type EventRuleSlsParameter struct {
+	// (Available since v1.211.1) The ARN of the API operation.
+	Arn *string `pulumi:"arn"`
+	// The name of the Simple Log Service Logstore.
+	LogStore *string `pulumi:"logStore"`
+	// The name of the Simple Log Service project.
+	Project *string `pulumi:"project"`
+	// The region where Simple Log Service is deployed.
+	Region *string `pulumi:"region"`
+	// The ID of the recipient that receives alert notifications.
+	SlsParametersId *string `pulumi:"slsParametersId"`
+}
+
+// EventRuleSlsParameterInput is an input type that accepts EventRuleSlsParameterArgs and EventRuleSlsParameterOutput values.
+// You can construct a concrete instance of `EventRuleSlsParameterInput` via:
+//
+//	EventRuleSlsParameterArgs{...}
+type EventRuleSlsParameterInput interface {
+	pulumi.Input
+
+	ToEventRuleSlsParameterOutput() EventRuleSlsParameterOutput
+	ToEventRuleSlsParameterOutputWithContext(context.Context) EventRuleSlsParameterOutput
+}
+
+type EventRuleSlsParameterArgs struct {
+	// (Available since v1.211.1) The ARN of the API operation.
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// The name of the Simple Log Service Logstore.
+	LogStore pulumi.StringPtrInput `pulumi:"logStore"`
+	// The name of the Simple Log Service project.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The region where Simple Log Service is deployed.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The ID of the recipient that receives alert notifications.
+	SlsParametersId pulumi.StringPtrInput `pulumi:"slsParametersId"`
+}
+
+func (EventRuleSlsParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleSlsParameter)(nil)).Elem()
+}
+
+func (i EventRuleSlsParameterArgs) ToEventRuleSlsParameterOutput() EventRuleSlsParameterOutput {
+	return i.ToEventRuleSlsParameterOutputWithContext(context.Background())
+}
+
+func (i EventRuleSlsParameterArgs) ToEventRuleSlsParameterOutputWithContext(ctx context.Context) EventRuleSlsParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleSlsParameterOutput)
+}
+
+func (i EventRuleSlsParameterArgs) ToOutput(ctx context.Context) pulumix.Output[EventRuleSlsParameter] {
+	return pulumix.Output[EventRuleSlsParameter]{
+		OutputState: i.ToEventRuleSlsParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
+// EventRuleSlsParameterArrayInput is an input type that accepts EventRuleSlsParameterArray and EventRuleSlsParameterArrayOutput values.
+// You can construct a concrete instance of `EventRuleSlsParameterArrayInput` via:
+//
+//	EventRuleSlsParameterArray{ EventRuleSlsParameterArgs{...} }
+type EventRuleSlsParameterArrayInput interface {
+	pulumi.Input
+
+	ToEventRuleSlsParameterArrayOutput() EventRuleSlsParameterArrayOutput
+	ToEventRuleSlsParameterArrayOutputWithContext(context.Context) EventRuleSlsParameterArrayOutput
+}
+
+type EventRuleSlsParameterArray []EventRuleSlsParameterInput
+
+func (EventRuleSlsParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventRuleSlsParameter)(nil)).Elem()
+}
+
+func (i EventRuleSlsParameterArray) ToEventRuleSlsParameterArrayOutput() EventRuleSlsParameterArrayOutput {
+	return i.ToEventRuleSlsParameterArrayOutputWithContext(context.Background())
+}
+
+func (i EventRuleSlsParameterArray) ToEventRuleSlsParameterArrayOutputWithContext(ctx context.Context) EventRuleSlsParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleSlsParameterArrayOutput)
+}
+
+func (i EventRuleSlsParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]EventRuleSlsParameter] {
+	return pulumix.Output[[]EventRuleSlsParameter]{
+		OutputState: i.ToEventRuleSlsParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type EventRuleSlsParameterOutput struct{ *pulumi.OutputState }
+
+func (EventRuleSlsParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleSlsParameter)(nil)).Elem()
+}
+
+func (o EventRuleSlsParameterOutput) ToEventRuleSlsParameterOutput() EventRuleSlsParameterOutput {
+	return o
+}
+
+func (o EventRuleSlsParameterOutput) ToEventRuleSlsParameterOutputWithContext(ctx context.Context) EventRuleSlsParameterOutput {
+	return o
+}
+
+func (o EventRuleSlsParameterOutput) ToOutput(ctx context.Context) pulumix.Output[EventRuleSlsParameter] {
+	return pulumix.Output[EventRuleSlsParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// (Available since v1.211.1) The ARN of the API operation.
+func (o EventRuleSlsParameterOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleSlsParameter) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Simple Log Service Logstore.
+func (o EventRuleSlsParameterOutput) LogStore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleSlsParameter) *string { return v.LogStore }).(pulumi.StringPtrOutput)
+}
+
+// The name of the Simple Log Service project.
+func (o EventRuleSlsParameterOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleSlsParameter) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// The region where Simple Log Service is deployed.
+func (o EventRuleSlsParameterOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleSlsParameter) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the recipient that receives alert notifications.
+func (o EventRuleSlsParameterOutput) SlsParametersId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleSlsParameter) *string { return v.SlsParametersId }).(pulumi.StringPtrOutput)
+}
+
+type EventRuleSlsParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (EventRuleSlsParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventRuleSlsParameter)(nil)).Elem()
+}
+
+func (o EventRuleSlsParameterArrayOutput) ToEventRuleSlsParameterArrayOutput() EventRuleSlsParameterArrayOutput {
+	return o
+}
+
+func (o EventRuleSlsParameterArrayOutput) ToEventRuleSlsParameterArrayOutputWithContext(ctx context.Context) EventRuleSlsParameterArrayOutput {
+	return o
+}
+
+func (o EventRuleSlsParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EventRuleSlsParameter] {
+	return pulumix.Output[[]EventRuleSlsParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EventRuleSlsParameterArrayOutput) Index(i pulumi.IntInput) EventRuleSlsParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventRuleSlsParameter {
+		return vs[0].([]EventRuleSlsParameter)[vs[1].(int)]
+	}).(EventRuleSlsParameterOutput)
+}
+
+type EventRuleWebhookParameter struct {
+	// The HTTP request method.
+	Method *string `pulumi:"method"`
+	// The name of the protocol.
+	Protocol *string `pulumi:"protocol"`
+	// The callback URL.
+	Url *string `pulumi:"url"`
+	// The ID of the recipient that receives alert notifications.
+	WebhookParametersId *string `pulumi:"webhookParametersId"`
+}
+
+// EventRuleWebhookParameterInput is an input type that accepts EventRuleWebhookParameterArgs and EventRuleWebhookParameterOutput values.
+// You can construct a concrete instance of `EventRuleWebhookParameterInput` via:
+//
+//	EventRuleWebhookParameterArgs{...}
+type EventRuleWebhookParameterInput interface {
+	pulumi.Input
+
+	ToEventRuleWebhookParameterOutput() EventRuleWebhookParameterOutput
+	ToEventRuleWebhookParameterOutputWithContext(context.Context) EventRuleWebhookParameterOutput
+}
+
+type EventRuleWebhookParameterArgs struct {
+	// The HTTP request method.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// The name of the protocol.
+	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	// The callback URL.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// The ID of the recipient that receives alert notifications.
+	WebhookParametersId pulumi.StringPtrInput `pulumi:"webhookParametersId"`
+}
+
+func (EventRuleWebhookParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleWebhookParameter)(nil)).Elem()
+}
+
+func (i EventRuleWebhookParameterArgs) ToEventRuleWebhookParameterOutput() EventRuleWebhookParameterOutput {
+	return i.ToEventRuleWebhookParameterOutputWithContext(context.Background())
+}
+
+func (i EventRuleWebhookParameterArgs) ToEventRuleWebhookParameterOutputWithContext(ctx context.Context) EventRuleWebhookParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleWebhookParameterOutput)
+}
+
+func (i EventRuleWebhookParameterArgs) ToOutput(ctx context.Context) pulumix.Output[EventRuleWebhookParameter] {
+	return pulumix.Output[EventRuleWebhookParameter]{
+		OutputState: i.ToEventRuleWebhookParameterOutputWithContext(ctx).OutputState,
+	}
+}
+
+// EventRuleWebhookParameterArrayInput is an input type that accepts EventRuleWebhookParameterArray and EventRuleWebhookParameterArrayOutput values.
+// You can construct a concrete instance of `EventRuleWebhookParameterArrayInput` via:
+//
+//	EventRuleWebhookParameterArray{ EventRuleWebhookParameterArgs{...} }
+type EventRuleWebhookParameterArrayInput interface {
+	pulumi.Input
+
+	ToEventRuleWebhookParameterArrayOutput() EventRuleWebhookParameterArrayOutput
+	ToEventRuleWebhookParameterArrayOutputWithContext(context.Context) EventRuleWebhookParameterArrayOutput
+}
+
+type EventRuleWebhookParameterArray []EventRuleWebhookParameterInput
+
+func (EventRuleWebhookParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventRuleWebhookParameter)(nil)).Elem()
+}
+
+func (i EventRuleWebhookParameterArray) ToEventRuleWebhookParameterArrayOutput() EventRuleWebhookParameterArrayOutput {
+	return i.ToEventRuleWebhookParameterArrayOutputWithContext(context.Background())
+}
+
+func (i EventRuleWebhookParameterArray) ToEventRuleWebhookParameterArrayOutputWithContext(ctx context.Context) EventRuleWebhookParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventRuleWebhookParameterArrayOutput)
+}
+
+func (i EventRuleWebhookParameterArray) ToOutput(ctx context.Context) pulumix.Output[[]EventRuleWebhookParameter] {
+	return pulumix.Output[[]EventRuleWebhookParameter]{
+		OutputState: i.ToEventRuleWebhookParameterArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type EventRuleWebhookParameterOutput struct{ *pulumi.OutputState }
+
+func (EventRuleWebhookParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventRuleWebhookParameter)(nil)).Elem()
+}
+
+func (o EventRuleWebhookParameterOutput) ToEventRuleWebhookParameterOutput() EventRuleWebhookParameterOutput {
+	return o
+}
+
+func (o EventRuleWebhookParameterOutput) ToEventRuleWebhookParameterOutputWithContext(ctx context.Context) EventRuleWebhookParameterOutput {
+	return o
+}
+
+func (o EventRuleWebhookParameterOutput) ToOutput(ctx context.Context) pulumix.Output[EventRuleWebhookParameter] {
+	return pulumix.Output[EventRuleWebhookParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The HTTP request method.
+func (o EventRuleWebhookParameterOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleWebhookParameter) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// The name of the protocol.
+func (o EventRuleWebhookParameterOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleWebhookParameter) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// The callback URL.
+func (o EventRuleWebhookParameterOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleWebhookParameter) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the recipient that receives alert notifications.
+func (o EventRuleWebhookParameterOutput) WebhookParametersId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventRuleWebhookParameter) *string { return v.WebhookParametersId }).(pulumi.StringPtrOutput)
+}
+
+type EventRuleWebhookParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (EventRuleWebhookParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EventRuleWebhookParameter)(nil)).Elem()
+}
+
+func (o EventRuleWebhookParameterArrayOutput) ToEventRuleWebhookParameterArrayOutput() EventRuleWebhookParameterArrayOutput {
+	return o
+}
+
+func (o EventRuleWebhookParameterArrayOutput) ToEventRuleWebhookParameterArrayOutputWithContext(ctx context.Context) EventRuleWebhookParameterArrayOutput {
+	return o
+}
+
+func (o EventRuleWebhookParameterArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]EventRuleWebhookParameter] {
+	return pulumix.Output[[]EventRuleWebhookParameter]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o EventRuleWebhookParameterArrayOutput) Index(i pulumi.IntInput) EventRuleWebhookParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EventRuleWebhookParameter {
+		return vs[0].([]EventRuleWebhookParameter)[vs[1].(int)]
+	}).(EventRuleWebhookParameterOutput)
 }
 
 type GroupMetricRuleEscalations struct {
@@ -11237,8 +12170,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlarmPrometheusArrayInput)(nil)).Elem(), AlarmPrometheusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressInput)(nil)).Elem(), DynamicTagGroupMatchExpressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicTagGroupMatchExpressArrayInput)(nil)).Elem(), DynamicTagGroupMatchExpressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleContactParameterInput)(nil)).Elem(), EventRuleContactParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleContactParameterArrayInput)(nil)).Elem(), EventRuleContactParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleEventPatternInput)(nil)).Elem(), EventRuleEventPatternArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleEventPatternPtrInput)(nil)).Elem(), EventRuleEventPatternArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleFcParameterInput)(nil)).Elem(), EventRuleFcParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleFcParameterArrayInput)(nil)).Elem(), EventRuleFcParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleMnsParameterInput)(nil)).Elem(), EventRuleMnsParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleMnsParameterArrayInput)(nil)).Elem(), EventRuleMnsParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleOpenApiParameterInput)(nil)).Elem(), EventRuleOpenApiParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleOpenApiParameterArrayInput)(nil)).Elem(), EventRuleOpenApiParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleSlsParameterInput)(nil)).Elem(), EventRuleSlsParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleSlsParameterArrayInput)(nil)).Elem(), EventRuleSlsParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleWebhookParameterInput)(nil)).Elem(), EventRuleWebhookParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventRuleWebhookParameterArrayInput)(nil)).Elem(), EventRuleWebhookParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsInput)(nil)).Elem(), GroupMetricRuleEscalationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsPtrInput)(nil)).Elem(), GroupMetricRuleEscalationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupMetricRuleEscalationsCriticalInput)(nil)).Elem(), GroupMetricRuleEscalationsCriticalArgs{})
@@ -11369,8 +12314,20 @@ func init() {
 	pulumi.RegisterOutputType(AlarmPrometheusArrayOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressOutput{})
 	pulumi.RegisterOutputType(DynamicTagGroupMatchExpressArrayOutput{})
+	pulumi.RegisterOutputType(EventRuleContactParameterOutput{})
+	pulumi.RegisterOutputType(EventRuleContactParameterArrayOutput{})
 	pulumi.RegisterOutputType(EventRuleEventPatternOutput{})
 	pulumi.RegisterOutputType(EventRuleEventPatternPtrOutput{})
+	pulumi.RegisterOutputType(EventRuleFcParameterOutput{})
+	pulumi.RegisterOutputType(EventRuleFcParameterArrayOutput{})
+	pulumi.RegisterOutputType(EventRuleMnsParameterOutput{})
+	pulumi.RegisterOutputType(EventRuleMnsParameterArrayOutput{})
+	pulumi.RegisterOutputType(EventRuleOpenApiParameterOutput{})
+	pulumi.RegisterOutputType(EventRuleOpenApiParameterArrayOutput{})
+	pulumi.RegisterOutputType(EventRuleSlsParameterOutput{})
+	pulumi.RegisterOutputType(EventRuleSlsParameterArrayOutput{})
+	pulumi.RegisterOutputType(EventRuleWebhookParameterOutput{})
+	pulumi.RegisterOutputType(EventRuleWebhookParameterArrayOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsPtrOutput{})
 	pulumi.RegisterOutputType(GroupMetricRuleEscalationsCriticalOutput{})

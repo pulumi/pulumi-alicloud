@@ -67,7 +67,31 @@ class ClusterArgs:
              node_number: Optional[pulumi.Input[int]] = None,
              release_eip: Optional[pulumi.Input[bool]] = None,
              size: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'diskCategory' in kwargs:
+            disk_category = kwargs['diskCategory']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'isOutdated' in kwargs:
+            is_outdated = kwargs['isOutdated']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'needSlb' in kwargs:
+            need_slb = kwargs['needSlb']
+        if 'nodeNumber' in kwargs:
+            node_number = kwargs['nodeNumber']
+        if 'releaseEip' in kwargs:
+            release_eip = kwargs['releaseEip']
+
         _setter("cidr_block", cidr_block)
         _setter("instance_type", instance_type)
         _setter("password", password)
@@ -295,7 +319,39 @@ class _ClusterState:
              slb_id: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'agentVersion' in kwargs:
+            agent_version = kwargs['agentVersion']
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'diskCategory' in kwargs:
+            disk_category = kwargs['diskCategory']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'isOutdated' in kwargs:
+            is_outdated = kwargs['isOutdated']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'needSlb' in kwargs:
+            need_slb = kwargs['needSlb']
+        if 'nodeNumber' in kwargs:
+            node_number = kwargs['nodeNumber']
+        if 'releaseEip' in kwargs:
+            release_eip = kwargs['releaseEip']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if agent_version is not None:
             _setter("agent_version", agent_version)
         if cidr_block is not None:

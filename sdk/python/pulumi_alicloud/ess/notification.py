@@ -38,7 +38,15 @@ class NotificationArgs:
              notification_arn: pulumi.Input[str],
              notification_types: pulumi.Input[Sequence[pulumi.Input[str]]],
              scaling_group_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notificationArn' in kwargs:
+            notification_arn = kwargs['notificationArn']
+        if 'notificationTypes' in kwargs:
+            notification_types = kwargs['notificationTypes']
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+
         _setter("notification_arn", notification_arn)
         _setter("notification_types", notification_types)
         _setter("scaling_group_id", scaling_group_id)
@@ -110,7 +118,15 @@ class _NotificationState:
              notification_arn: Optional[pulumi.Input[str]] = None,
              notification_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              scaling_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notificationArn' in kwargs:
+            notification_arn = kwargs['notificationArn']
+        if 'notificationTypes' in kwargs:
+            notification_types = kwargs['notificationTypes']
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+
         if notification_arn is not None:
             _setter("notification_arn", notification_arn)
         if notification_types is not None:

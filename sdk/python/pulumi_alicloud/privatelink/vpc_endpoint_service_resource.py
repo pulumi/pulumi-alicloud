@@ -39,7 +39,17 @@ class VpcEndpointServiceResourceArgs:
              resource_type: pulumi.Input[str],
              service_id: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
         _setter("service_id", service_id)
@@ -123,7 +133,17 @@ class _VpcEndpointServiceResourceState:
              resource_id: Optional[pulumi.Input[str]] = None,
              resource_type: Optional[pulumi.Input[str]] = None,
              service_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if resource_id is not None:

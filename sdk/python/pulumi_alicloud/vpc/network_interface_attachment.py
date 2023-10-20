@@ -37,7 +37,17 @@ class NetworkInterfaceAttachmentArgs:
              network_interface_id: pulumi.Input[str],
              trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
              wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'trunkNetworkInstanceId' in kwargs:
+            trunk_network_instance_id = kwargs['trunkNetworkInstanceId']
+        if 'waitForNetworkConfigurationReady' in kwargs:
+            wait_for_network_configuration_ready = kwargs['waitForNetworkConfigurationReady']
+
         _setter("instance_id", instance_id)
         _setter("network_interface_id", network_interface_id)
         if trunk_network_instance_id is not None:
@@ -114,7 +124,17 @@ class _NetworkInterfaceAttachmentState:
              network_interface_id: Optional[pulumi.Input[str]] = None,
              trunk_network_instance_id: Optional[pulumi.Input[str]] = None,
              wait_for_network_configuration_ready: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'trunkNetworkInstanceId' in kwargs:
+            trunk_network_instance_id = kwargs['trunkNetworkInstanceId']
+        if 'waitForNetworkConfigurationReady' in kwargs:
+            wait_for_network_configuration_ready = kwargs['waitForNetworkConfigurationReady']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if network_interface_id is not None:

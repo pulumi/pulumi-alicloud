@@ -39,7 +39,15 @@ class TransitRouterMulticastDomainArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              transit_router_multicast_domain_description: Optional[pulumi.Input[str]] = None,
              transit_router_multicast_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'transitRouterMulticastDomainDescription' in kwargs:
+            transit_router_multicast_domain_description = kwargs['transitRouterMulticastDomainDescription']
+        if 'transitRouterMulticastDomainName' in kwargs:
+            transit_router_multicast_domain_name = kwargs['transitRouterMulticastDomainName']
+
         _setter("transit_router_id", transit_router_id)
         if tags is not None:
             _setter("tags", tags)
@@ -129,7 +137,15 @@ class _TransitRouterMulticastDomainState:
              transit_router_id: Optional[pulumi.Input[str]] = None,
              transit_router_multicast_domain_description: Optional[pulumi.Input[str]] = None,
              transit_router_multicast_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'transitRouterMulticastDomainDescription' in kwargs:
+            transit_router_multicast_domain_description = kwargs['transitRouterMulticastDomainDescription']
+        if 'transitRouterMulticastDomainName' in kwargs:
+            transit_router_multicast_domain_name = kwargs['transitRouterMulticastDomainName']
+
         if status is not None:
             _setter("status", status)
         if tags is not None:
@@ -215,7 +231,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Multicast Domain resource.
 
-        For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain and how to use it, see [What is Transit Router Multicast Domain](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutermulticastdomain).
+        For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain and how to use it, see [What is Transit Router Multicast Domain](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutermulticastdomain).
 
         > **NOTE:** Available since v1.195.0.
 
@@ -264,7 +280,7 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Multicast Domain resource.
 
-        For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain and how to use it, see [What is Transit Router Multicast Domain](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutermulticastdomain).
+        For information about Cloud Enterprise Network (CEN) Transit Router Multicast Domain and how to use it, see [What is Transit Router Multicast Domain](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutermulticastdomain).
 
         > **NOTE:** Available since v1.195.0.
 

@@ -43,7 +43,19 @@ class BgpPeerArgs:
              enable_bfd: Optional[pulumi.Input[bool]] = None,
              ip_version: Optional[pulumi.Input[str]] = None,
              peer_ip_address: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bgpGroupId' in kwargs:
+            bgp_group_id = kwargs['bgpGroupId']
+        if 'bfdMultiHop' in kwargs:
+            bfd_multi_hop = kwargs['bfdMultiHop']
+        if 'enableBfd' in kwargs:
+            enable_bfd = kwargs['enableBfd']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'peerIpAddress' in kwargs:
+            peer_ip_address = kwargs['peerIpAddress']
+
         _setter("bgp_group_id", bgp_group_id)
         if bfd_multi_hop is not None:
             _setter("bfd_multi_hop", bfd_multi_hop)
@@ -151,7 +163,19 @@ class _BgpPeerState:
              ip_version: Optional[pulumi.Input[str]] = None,
              peer_ip_address: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bfdMultiHop' in kwargs:
+            bfd_multi_hop = kwargs['bfdMultiHop']
+        if 'bgpGroupId' in kwargs:
+            bgp_group_id = kwargs['bgpGroupId']
+        if 'enableBfd' in kwargs:
+            enable_bfd = kwargs['enableBfd']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'peerIpAddress' in kwargs:
+            peer_ip_address = kwargs['peerIpAddress']
+
         if bfd_multi_hop is not None:
             _setter("bfd_multi_hop", bfd_multi_hop)
         if bgp_group_id is not None:

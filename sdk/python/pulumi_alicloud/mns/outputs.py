@@ -54,7 +54,19 @@ class GetQueuesQueueResult(dict):
              name: str,
              polling_wait_seconds: int,
              visibility_timeouts: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'delaySeconds' in kwargs:
+            delay_seconds = kwargs['delaySeconds']
+        if 'maximumMessageSize' in kwargs:
+            maximum_message_size = kwargs['maximumMessageSize']
+        if 'messageRetentionPeriod' in kwargs:
+            message_retention_period = kwargs['messageRetentionPeriod']
+        if 'pollingWaitSeconds' in kwargs:
+            polling_wait_seconds = kwargs['pollingWaitSeconds']
+        if 'visibilityTimeouts' in kwargs:
+            visibility_timeouts = kwargs['visibilityTimeouts']
+
         _setter("delay_seconds", delay_seconds)
         _setter("id", id)
         _setter("maximum_message_size", maximum_message_size)
@@ -159,7 +171,17 @@ class GetTopicSubscriptionsSubscriptionResult(dict):
              notify_content_format: str,
              notify_strategy: str,
              topic_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'filterTag' in kwargs:
+            filter_tag = kwargs['filterTag']
+        if 'notifyContentFormat' in kwargs:
+            notify_content_format = kwargs['notifyContentFormat']
+        if 'notifyStrategy' in kwargs:
+            notify_strategy = kwargs['notifyStrategy']
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+
         _setter("endpoint", endpoint)
         _setter("filter_tag", filter_tag)
         _setter("id", id)
@@ -252,7 +274,13 @@ class GetTopicsTopicResult(dict):
              logging_enabled: bool,
              maximum_message_size: int,
              name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'loggingEnabled' in kwargs:
+            logging_enabled = kwargs['loggingEnabled']
+        if 'maximumMessageSize' in kwargs:
+            maximum_message_size = kwargs['maximumMessageSize']
+
         _setter("id", id)
         _setter("logging_enabled", logging_enabled)
         _setter("maximum_message_size", maximum_message_size)

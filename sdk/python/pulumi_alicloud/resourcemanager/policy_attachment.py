@@ -43,7 +43,19 @@ class PolicyAttachmentArgs:
              principal_name: pulumi.Input[str],
              principal_type: pulumi.Input[str],
              resource_group_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+        if 'principalName' in kwargs:
+            principal_name = kwargs['principalName']
+        if 'principalType' in kwargs:
+            principal_type = kwargs['principalType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("policy_name", policy_name)
         _setter("policy_type", policy_type)
         _setter("principal_name", principal_name)
@@ -143,7 +155,19 @@ class _PolicyAttachmentState:
              principal_name: Optional[pulumi.Input[str]] = None,
              principal_type: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+        if 'principalName' in kwargs:
+            principal_name = kwargs['principalName']
+        if 'principalType' in kwargs:
+            principal_type = kwargs['principalType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if policy_name is not None:
             _setter("policy_name", policy_name)
         if policy_type is not None:

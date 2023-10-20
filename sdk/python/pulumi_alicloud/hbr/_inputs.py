@@ -33,7 +33,11 @@ class OtsBackupPlanOtsDetailArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              table_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tableNames' in kwargs:
+            table_names = kwargs['tableNames']
+
         if table_names is not None:
             _setter("table_names", table_names)
 
@@ -81,7 +85,13 @@ class OtsBackupPlanRuleArgs:
              retention: Optional[pulumi.Input[str]] = None,
              rule_name: Optional[pulumi.Input[str]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+
         if backup_type is not None:
             _setter("backup_type", backup_type)
         if disabled is not None:
@@ -169,7 +179,11 @@ class RestoreJobOtsDetailArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              overwrite_existing: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'overwriteExisting' in kwargs:
+            overwrite_existing = kwargs['overwriteExisting']
+
         if overwrite_existing is not None:
             _setter("overwrite_existing", overwrite_existing)
 
@@ -237,7 +251,29 @@ class ServerBackupPlanDetailArgs:
              post_script_path: Optional[pulumi.Input[str]] = None,
              pre_script_path: Optional[pulumi.Input[str]] = None,
              timeout_in_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appConsistent' in kwargs:
+            app_consistent = kwargs['appConsistent']
+        if 'snapshotGroup' in kwargs:
+            snapshot_group = kwargs['snapshotGroup']
+        if 'destinationRegionId' in kwargs:
+            destination_region_id = kwargs['destinationRegionId']
+        if 'destinationRetention' in kwargs:
+            destination_retention = kwargs['destinationRetention']
+        if 'diskIdLists' in kwargs:
+            disk_id_lists = kwargs['diskIdLists']
+        if 'doCopy' in kwargs:
+            do_copy = kwargs['doCopy']
+        if 'enableFsFreeze' in kwargs:
+            enable_fs_freeze = kwargs['enableFsFreeze']
+        if 'postScriptPath' in kwargs:
+            post_script_path = kwargs['postScriptPath']
+        if 'preScriptPath' in kwargs:
+            pre_script_path = kwargs['preScriptPath']
+        if 'timeoutInSeconds' in kwargs:
+            timeout_in_seconds = kwargs['timeoutInSeconds']
+
         _setter("app_consistent", app_consistent)
         _setter("snapshot_group", snapshot_group)
         if destination_region_id is not None:
@@ -403,7 +439,9 @@ class GetBackupJobsFilterArgs:
              key: Optional[str] = None,
              operator: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if operator is not None:
@@ -469,7 +507,9 @@ class GetServerBackupPlansFilterArgs:
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if values is not None:

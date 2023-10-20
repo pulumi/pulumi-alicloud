@@ -37,7 +37,13 @@ class ProjectIpWhiteListArgs:
              _setter: Callable[[Any, Any], None],
              ip_list: Optional[pulumi.Input[str]] = None,
              vpc_ip_list: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipList' in kwargs:
+            ip_list = kwargs['ipList']
+        if 'vpcIpList' in kwargs:
+            vpc_ip_list = kwargs['vpcIpList']
+
         if ip_list is not None:
             _setter("ip_list", ip_list)
         if vpc_ip_list is not None:
@@ -111,7 +117,21 @@ class ProjectPropertiesArgs:
              table_lifecycle: Optional[pulumi.Input['ProjectPropertiesTableLifecycleArgs']] = None,
              timezone: Optional[pulumi.Input[str]] = None,
              type_system: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowFullScan' in kwargs:
+            allow_full_scan = kwargs['allowFullScan']
+        if 'enableDecimal2' in kwargs:
+            enable_decimal2 = kwargs['enableDecimal2']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'sqlMeteringMax' in kwargs:
+            sql_metering_max = kwargs['sqlMeteringMax']
+        if 'tableLifecycle' in kwargs:
+            table_lifecycle = kwargs['tableLifecycle']
+        if 'typeSystem' in kwargs:
+            type_system = kwargs['typeSystem']
+
         if allow_full_scan is not None:
             _setter("allow_full_scan", allow_full_scan)
         if enable_decimal2 is not None:
@@ -249,7 +269,9 @@ class ProjectPropertiesEncryptionArgs:
              algorithm: Optional[pulumi.Input[str]] = None,
              enable: Optional[pulumi.Input[bool]] = None,
              key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if algorithm is not None:
             _setter("algorithm", algorithm)
         if enable is not None:
@@ -313,7 +335,9 @@ class ProjectPropertiesTableLifecycleArgs:
              _setter: Callable[[Any, Any], None],
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if type is not None:
             _setter("type", type)
         if value is not None:
@@ -383,7 +407,23 @@ class ProjectSecurityPropertiesArgs:
              project_protection: Optional[pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgs']] = None,
              using_acl: Optional[pulumi.Input[bool]] = None,
              using_policy: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enableDownloadPrivilege' in kwargs:
+            enable_download_privilege = kwargs['enableDownloadPrivilege']
+        if 'labelSecurity' in kwargs:
+            label_security = kwargs['labelSecurity']
+        if 'objectCreatorHasAccessPermission' in kwargs:
+            object_creator_has_access_permission = kwargs['objectCreatorHasAccessPermission']
+        if 'objectCreatorHasGrantPermission' in kwargs:
+            object_creator_has_grant_permission = kwargs['objectCreatorHasGrantPermission']
+        if 'projectProtection' in kwargs:
+            project_protection = kwargs['projectProtection']
+        if 'usingAcl' in kwargs:
+            using_acl = kwargs['usingAcl']
+        if 'usingPolicy' in kwargs:
+            using_policy = kwargs['usingPolicy']
+
         if enable_download_privilege is not None:
             _setter("enable_download_privilege", enable_download_privilege)
         if label_security is not None:
@@ -503,7 +543,11 @@ class ProjectSecurityPropertiesProjectProtectionArgs:
              _setter: Callable[[Any, Any], None],
              exception_policy: Optional[pulumi.Input[str]] = None,
              protected: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'exceptionPolicy' in kwargs:
+            exception_policy = kwargs['exceptionPolicy']
+
         if exception_policy is not None:
             _setter("exception_policy", exception_policy)
         if protected is not None:

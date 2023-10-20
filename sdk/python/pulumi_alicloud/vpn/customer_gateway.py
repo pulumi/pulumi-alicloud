@@ -39,7 +39,11 @@ class CustomerGatewayArgs:
              asn: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("ip_address", ip_address)
         if asn is not None:
             _setter("asn", asn)
@@ -125,7 +129,11 @@ class _CustomerGatewayState:
              description: Optional[pulumi.Input[str]] = None,
              ip_address: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         if asn is not None:
             _setter("asn", asn)
         if description is not None:

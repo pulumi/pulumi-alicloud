@@ -68,7 +68,25 @@ class DeliveryArgs:
              non_compliant_notification: Optional[pulumi.Input[bool]] = None,
              oversized_data_oss_target_arn: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+        if 'configurationItemChangeNotification' in kwargs:
+            configuration_item_change_notification = kwargs['configurationItemChangeNotification']
+        if 'configurationSnapshot' in kwargs:
+            configuration_snapshot = kwargs['configurationSnapshot']
+        if 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+        if 'nonCompliantNotification' in kwargs:
+            non_compliant_notification = kwargs['nonCompliantNotification']
+        if 'oversizedDataOssTargetArn' in kwargs:
+            oversized_data_oss_target_arn = kwargs['oversizedDataOssTargetArn']
+
         _setter("delivery_channel_target_arn", delivery_channel_target_arn)
         _setter("delivery_channel_type", delivery_channel_type)
         if configuration_item_change_notification is not None:
@@ -271,7 +289,25 @@ class _DeliveryState:
              non_compliant_notification: Optional[pulumi.Input[bool]] = None,
              oversized_data_oss_target_arn: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configurationItemChangeNotification' in kwargs:
+            configuration_item_change_notification = kwargs['configurationItemChangeNotification']
+        if 'configurationSnapshot' in kwargs:
+            configuration_snapshot = kwargs['configurationSnapshot']
+        if 'deliveryChannelCondition' in kwargs:
+            delivery_channel_condition = kwargs['deliveryChannelCondition']
+        if 'deliveryChannelName' in kwargs:
+            delivery_channel_name = kwargs['deliveryChannelName']
+        if 'deliveryChannelTargetArn' in kwargs:
+            delivery_channel_target_arn = kwargs['deliveryChannelTargetArn']
+        if 'deliveryChannelType' in kwargs:
+            delivery_channel_type = kwargs['deliveryChannelType']
+        if 'nonCompliantNotification' in kwargs:
+            non_compliant_notification = kwargs['nonCompliantNotification']
+        if 'oversizedDataOssTargetArn' in kwargs:
+            oversized_data_oss_target_arn = kwargs['oversizedDataOssTargetArn']
+
         if configuration_item_change_notification is not None:
             _setter("configuration_item_change_notification", configuration_item_change_notification)
         if configuration_snapshot is not None:
@@ -438,7 +474,7 @@ class Delivery(pulumi.CustomResource):
         """
         Provides a Cloud Config Delivery resource.
 
-        For information about Cloud Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-doc-config-2020-09-07-api-doc-createconfigdeliverychannel).
+        For information about Cloud Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createconfigdeliverychannel).
 
         > **NOTE:** Available since v1.171.0.
 
@@ -502,7 +538,7 @@ class Delivery(pulumi.CustomResource):
         """
         Provides a Cloud Config Delivery resource.
 
-        For information about Cloud Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-doc-config-2020-09-07-api-doc-createconfigdeliverychannel).
+        For information about Cloud Config Delivery and how to use it, see [What is Delivery](https://www.alibabacloud.com/help/en/cloud-config/latest/api-config-2020-09-07-createconfigdeliverychannel).
 
         > **NOTE:** Available since v1.171.0.
 

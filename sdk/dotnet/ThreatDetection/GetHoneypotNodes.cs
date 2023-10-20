@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public static class GetHoneypotNodes
     {
         /// <summary>
-        /// This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode)
+        /// This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.ThreatDetection
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHoneypotNodesResult>("alicloud:threatdetection/getHoneypotNodes:getHoneypotNodes", args ?? new GetHoneypotNodesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode)
+        /// This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
         /// 
         /// &gt; **NOTE:** Available in 1.195.0+
         /// 

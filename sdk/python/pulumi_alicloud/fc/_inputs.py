@@ -48,7 +48,11 @@ class AliasRoutingConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              additional_version_weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalVersionWeights' in kwargs:
+            additional_version_weights = kwargs['additionalVersionWeights']
+
         if additional_version_weights is not None:
             _setter("additional_version_weights", additional_version_weights)
 
@@ -88,7 +92,13 @@ class CustomDomainCertConfigArgs:
              cert_name: pulumi.Input[str],
              certificate: pulumi.Input[str],
              private_key: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certName' in kwargs:
+            cert_name = kwargs['certName']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+
         _setter("cert_name", cert_name)
         _setter("certificate", certificate)
         _setter("private_key", private_key)
@@ -161,7 +171,13 @@ class CustomDomainRouteConfigArgs:
              service_name: pulumi.Input[str],
              methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              qualifier: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         _setter("function_name", function_name)
         _setter("path", path)
         _setter("service_name", service_name)
@@ -250,7 +266,13 @@ class FunctionAsyncInvokeConfigDestinationConfigArgs:
              _setter: Callable[[Any, Any], None],
              on_failure: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']] = None,
              on_success: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'onFailure' in kwargs:
+            on_failure = kwargs['onFailure']
+        if 'onSuccess' in kwargs:
+            on_success = kwargs['onSuccess']
+
         if on_failure is not None:
             _setter("on_failure", on_failure)
         if on_success is not None:
@@ -296,7 +318,9 @@ class FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -327,7 +351,9 @@ class FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              destination: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("destination", destination)
 
     @property
@@ -366,7 +392,9 @@ class FunctionCustomContainerConfigArgs:
              image: pulumi.Input[str],
              args: Optional[pulumi.Input[str]] = None,
              command: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("image", image)
         if args is not None:
             _setter("args", args)
@@ -437,7 +465,13 @@ class ServiceLogConfigArgs:
              project: pulumi.Input[str],
              enable_instance_metrics: Optional[pulumi.Input[bool]] = None,
              enable_request_metrics: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enableInstanceMetrics' in kwargs:
+            enable_instance_metrics = kwargs['enableInstanceMetrics']
+        if 'enableRequestMetrics' in kwargs:
+            enable_request_metrics = kwargs['enableRequestMetrics']
+
         _setter("logstore", logstore)
         _setter("project", project)
         if enable_instance_metrics is not None:
@@ -517,7 +551,15 @@ class ServiceNasConfigArgs:
              group_id: pulumi.Input[int],
              mount_points: pulumi.Input[Sequence[pulumi.Input['ServiceNasConfigMountPointArgs']]],
              user_id: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'mountPoints' in kwargs:
+            mount_points = kwargs['mountPoints']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("group_id", group_id)
         _setter("mount_points", mount_points)
         _setter("user_id", user_id)
@@ -578,7 +620,13 @@ class ServiceNasConfigMountPointArgs:
              _setter: Callable[[Any, Any], None],
              mount_dir: pulumi.Input[str],
              server_addr: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'mountDir' in kwargs:
+            mount_dir = kwargs['mountDir']
+        if 'serverAddr' in kwargs:
+            server_addr = kwargs['serverAddr']
+
         _setter("mount_dir", mount_dir)
         _setter("server_addr", server_addr)
 
@@ -626,7 +674,9 @@ class ServiceTracingConfigArgs:
              _setter: Callable[[Any, Any], None],
              params: pulumi.Input[Mapping[str, Any]],
              type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("params", params)
         _setter("type", type)
 
@@ -678,7 +728,15 @@ class ServiceVpcConfigArgs:
              security_group_id: pulumi.Input[str],
              vswitch_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("security_group_id", security_group_id)
         _setter("vswitch_ids", vswitch_ids)
         if vpc_id is not None:
@@ -744,7 +802,15 @@ class V2FunctionCodeArgs:
              oss_bucket_name: Optional[pulumi.Input[str]] = None,
              oss_object_name: Optional[pulumi.Input[str]] = None,
              zip_file: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'ossObjectName' in kwargs:
+            oss_object_name = kwargs['ossObjectName']
+        if 'zipFile' in kwargs:
+            zip_file = kwargs['zipFile']
+
         if oss_bucket_name is not None:
             _setter("oss_bucket_name", oss_bucket_name)
         if oss_object_name is not None:
@@ -820,7 +886,13 @@ class V2FunctionCustomContainerConfigArgs:
              command: Optional[pulumi.Input[str]] = None,
              image: Optional[pulumi.Input[str]] = None,
              web_server_mode: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accelerationType' in kwargs:
+            acceleration_type = kwargs['accelerationType']
+        if 'webServerMode' in kwargs:
+            web_server_mode = kwargs['webServerMode']
+
         if acceleration_type is not None:
             _setter("acceleration_type", acceleration_type)
         if args is not None:
@@ -916,7 +988,13 @@ class V2FunctionCustomDnsArgs:
              dns_options: Optional[pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]] = None,
              name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              searches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dnsOptions' in kwargs:
+            dns_options = kwargs['dnsOptions']
+        if 'nameServers' in kwargs:
+            name_servers = kwargs['nameServers']
+
         if dns_options is not None:
             _setter("dns_options", dns_options)
         if name_servers is not None:
@@ -980,7 +1058,9 @@ class V2FunctionCustomDnsDnsOptionArgs:
              _setter: Callable[[Any, Any], None],
              name: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if value is not None:
@@ -1046,7 +1126,21 @@ class V2FunctionCustomHealthCheckConfigArgs:
              period_seconds: Optional[pulumi.Input[int]] = None,
              success_threshold: Optional[pulumi.Input[int]] = None,
              timeout_seconds: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'failureThreshold' in kwargs:
+            failure_threshold = kwargs['failureThreshold']
+        if 'httpGetUrl' in kwargs:
+            http_get_url = kwargs['httpGetUrl']
+        if 'initialDelaySeconds' in kwargs:
+            initial_delay_seconds = kwargs['initialDelaySeconds']
+        if 'periodSeconds' in kwargs:
+            period_seconds = kwargs['periodSeconds']
+        if 'successThreshold' in kwargs:
+            success_threshold = kwargs['successThreshold']
+        if 'timeoutSeconds' in kwargs:
+            timeout_seconds = kwargs['timeoutSeconds']
+
         if failure_threshold is not None:
             _setter("failure_threshold", failure_threshold)
         if http_get_url is not None:
@@ -1152,7 +1246,9 @@ class V2FunctionCustomRuntimeConfigArgs:
              _setter: Callable[[Any, Any], None],
              args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              commands: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if args is not None:
             _setter("args", args)
         if commands is not None:
@@ -1202,7 +1298,13 @@ class V2FunctionInstanceLifecycleConfigArgs:
              _setter: Callable[[Any, Any], None],
              pre_freeze: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgs']] = None,
              pre_stop: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'preFreeze' in kwargs:
+            pre_freeze = kwargs['preFreeze']
+        if 'preStop' in kwargs:
+            pre_stop = kwargs['preStop']
+
         if pre_freeze is not None:
             _setter("pre_freeze", pre_freeze)
         if pre_stop is not None:
@@ -1252,7 +1354,9 @@ class V2FunctionInstanceLifecycleConfigPreFreezeArgs:
              _setter: Callable[[Any, Any], None],
              handler: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if handler is not None:
             _setter("handler", handler)
         if timeout is not None:
@@ -1302,7 +1406,9 @@ class V2FunctionInstanceLifecycleConfigPreStopArgs:
              _setter: Callable[[Any, Any], None],
              handler: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if handler is not None:
             _setter("handler", handler)
         if timeout is not None:

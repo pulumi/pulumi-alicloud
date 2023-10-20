@@ -125,7 +125,7 @@ type Instance struct {
 	Duration pulumi.IntOutput `pulumi:"duration"`
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
 	Engine pulumi.StringPtrOutput `pulumi:"engine"`
-	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
 	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
 	ImmediateDeleteFlag pulumi.BoolPtrOutput `pulumi:"immediateDeleteFlag"`
@@ -234,7 +234,7 @@ type instanceState struct {
 	Duration *int `pulumi:"duration"`
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
 	Engine *string `pulumi:"engine"`
-	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
 	EngineVersion *string `pulumi:"engineVersion"`
 	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
 	ImmediateDeleteFlag *bool `pulumi:"immediateDeleteFlag"`
@@ -298,7 +298,7 @@ type InstanceState struct {
 	Duration pulumi.IntPtrInput
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
 	Engine pulumi.StringPtrInput
-	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
 	EngineVersion pulumi.StringPtrInput
 	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
 	ImmediateDeleteFlag pulumi.BoolPtrInput
@@ -366,7 +366,7 @@ type instanceArgs struct {
 	Duration *int `pulumi:"duration"`
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
 	Engine *string `pulumi:"engine"`
-	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
 	EngineVersion string `pulumi:"engineVersion"`
 	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
 	ImmediateDeleteFlag *bool `pulumi:"immediateDeleteFlag"`
@@ -421,7 +421,7 @@ type InstanceArgs struct {
 	Duration pulumi.IntPtrInput
 	// Valid values are "hbase/hbaseue/bds". The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
 	Engine pulumi.StringPtrInput
-	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+	// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
 	EngineVersion pulumi.StringInput
 	// The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
 	ImmediateDeleteFlag pulumi.BoolPtrInput
@@ -615,7 +615,7 @@ func (o InstanceOutput) Engine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Engine }).(pulumi.StringPtrOutput)
 }
 
-// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+// HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
 func (o InstanceOutput) EngineVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.EngineVersion }).(pulumi.StringOutput)
 }

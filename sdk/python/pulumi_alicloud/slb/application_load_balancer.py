@@ -47,7 +47,7 @@ class ApplicationLoadBalancerArgs:
         :param pulumi.Input[str] instance_charge_type: Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
         :param pulumi.Input[str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
         :param pulumi.Input[str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-               Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+               Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
         :param pulumi.Input[str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
@@ -110,7 +110,37 @@ class ApplicationLoadBalancerArgs:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'addressType' in kwargs:
+            address_type = kwargs['addressType']
+        if 'deleteProtection' in kwargs:
+            delete_protection = kwargs['deleteProtection']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'loadBalancerName' in kwargs:
+            load_balancer_name = kwargs['loadBalancerName']
+        if 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if 'masterZoneId' in kwargs:
+            master_zone_id = kwargs['masterZoneId']
+        if 'modificationProtectionReason' in kwargs:
+            modification_protection_reason = kwargs['modificationProtectionReason']
+        if 'modificationProtectionStatus' in kwargs:
+            modification_protection_status = kwargs['modificationProtectionStatus']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'slaveZoneId' in kwargs:
+            slave_zone_id = kwargs['slaveZoneId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if address is not None:
             _setter("address", address)
         if address_ip_version is not None:
@@ -260,7 +290,7 @@ class ApplicationLoadBalancerArgs:
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
         The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
         `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
         """
         return pulumi.get(self, "load_balancer_spec")
@@ -456,7 +486,7 @@ class _ApplicationLoadBalancerState:
         :param pulumi.Input[str] instance_charge_type: Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
         :param pulumi.Input[str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
         :param pulumi.Input[str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-               Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+               Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
         :param pulumi.Input[str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
@@ -519,7 +549,37 @@ class _ApplicationLoadBalancerState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+        if 'addressType' in kwargs:
+            address_type = kwargs['addressType']
+        if 'deleteProtection' in kwargs:
+            delete_protection = kwargs['deleteProtection']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'loadBalancerName' in kwargs:
+            load_balancer_name = kwargs['loadBalancerName']
+        if 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if 'masterZoneId' in kwargs:
+            master_zone_id = kwargs['masterZoneId']
+        if 'modificationProtectionReason' in kwargs:
+            modification_protection_reason = kwargs['modificationProtectionReason']
+        if 'modificationProtectionStatus' in kwargs:
+            modification_protection_status = kwargs['modificationProtectionStatus']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'slaveZoneId' in kwargs:
+            slave_zone_id = kwargs['slaveZoneId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if address is not None:
             _setter("address", address)
         if address_ip_version is not None:
@@ -669,7 +729,7 @@ class _ApplicationLoadBalancerState:
     def load_balancer_spec(self) -> Optional[pulumi.Input[str]]:
         """
         The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
         `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
         """
         return pulumi.get(self, "load_balancer_spec")
@@ -877,7 +937,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] instance_charge_type: Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
         :param pulumi.Input[str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
         :param pulumi.Input[str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-               Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+               Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
         :param pulumi.Input[str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
@@ -1025,7 +1085,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] instance_charge_type: Support `PayBySpec` (default) and `PayByCLCU`, This parameter takes effect when the value of **payment_type** (instance payment mode) is **PayAsYouGo** (pay-as-you-go).
         :param pulumi.Input[str] internet_charge_type: Valid values are `PayByBandwidth`, `PayByTraffic`. If this value is `PayByBandwidth`, then argument `address_type` must be `internet`. Default is `PayByTraffic`. If load balancer launched in VPC, this value must be `PayByTraffic`. Before version 1.10.1, the valid values are `paybybandwidth` and `paybytraffic`.
         :param pulumi.Input[str] load_balancer_spec: The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-               Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+               Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
                `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
         :param pulumi.Input[str] master_zone_id: The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the [DescribeZone](https://help.aliyun.com/document_detail/27585.htm) API.
         :param pulumi.Input[str] modification_protection_reason: The reason of modification protection. It's effective when `modification_protection_status` is `ConsoleProtection`.
@@ -1135,7 +1195,7 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
     def load_balancer_spec(self) -> pulumi.Output[str]:
         """
         The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
         `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
         """
         return pulumi.get(self, "load_balancer_spec")

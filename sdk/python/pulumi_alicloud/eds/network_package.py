@@ -31,7 +31,11 @@ class NetworkPackageArgs:
              _setter: Callable[[Any, Any], None],
              bandwidth: pulumi.Input[int],
              office_site_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+
         _setter("bandwidth", bandwidth)
         _setter("office_site_id", office_site_id)
 
@@ -88,7 +92,13 @@ class _NetworkPackageState:
              internet_charge_type: Optional[pulumi.Input[str]] = None,
              office_site_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+
         if bandwidth is not None:
             _setter("bandwidth", bandwidth)
         if internet_charge_type is not None:
@@ -158,7 +168,7 @@ class NetworkPackage(pulumi.CustomResource):
         """
         Provides a ECD Network Package resource.
 
-        For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createnetworkpackage).
+        For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createnetworkpackage).
 
         > **NOTE:** Available since v1.142.0.
 
@@ -206,7 +216,7 @@ class NetworkPackage(pulumi.CustomResource):
         """
         Provides a ECD Network Package resource.
 
-        For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createnetworkpackage).
+        For information about ECD Network Package and how to use it, see [What is Network Package](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createnetworkpackage).
 
         > **NOTE:** Available since v1.142.0.
 

@@ -682,39 +682,8 @@ public final class CsFunctions {
     /**
      * This data source provides a list of available addons that the cluster can install.
      * 
-     * &gt; **NOTE:** Available in 1.150.0+.
-     * **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cs.CsFunctions;
-     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
-     *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
-     *             .build());
-     * 
-     *         ctx.export(&#34;addons&#34;, default_.addons());
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.150.0.
+     * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
      * 
      */
     public static Output<GetKubernetesAddonsResult> getKubernetesAddons(GetKubernetesAddonsArgs args) {
@@ -723,39 +692,8 @@ public final class CsFunctions {
     /**
      * This data source provides a list of available addons that the cluster can install.
      * 
-     * &gt; **NOTE:** Available in 1.150.0+.
-     * **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cs.CsFunctions;
-     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
-     *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
-     *             .build());
-     * 
-     *         ctx.export(&#34;addons&#34;, default_.addons());
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.150.0.
+     * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
      * 
      */
     public static CompletableFuture<GetKubernetesAddonsResult> getKubernetesAddonsPlain(GetKubernetesAddonsPlainArgs args) {
@@ -764,39 +702,8 @@ public final class CsFunctions {
     /**
      * This data source provides a list of available addons that the cluster can install.
      * 
-     * &gt; **NOTE:** Available in 1.150.0+.
-     * **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cs.CsFunctions;
-     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
-     *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
-     *             .build());
-     * 
-     *         ctx.export(&#34;addons&#34;, default_.addons());
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.150.0.
+     * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
      * 
      */
     public static Output<GetKubernetesAddonsResult> getKubernetesAddons(GetKubernetesAddonsArgs args, InvokeOptions options) {
@@ -805,39 +712,8 @@ public final class CsFunctions {
     /**
      * This data source provides a list of available addons that the cluster can install.
      * 
-     * &gt; **NOTE:** Available in 1.150.0+.
-     * **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cs.CsFunctions;
-     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = CsFunctions.getKubernetesAddons(GetKubernetesAddonsArgs.builder()
-     *             .clusterId(alicloud_cs_managed_kubernetes.default()[0].id())
-     *             .build());
-     * 
-     *         ctx.export(&#34;addons&#34;, default_.addons());
-     *     }
-     * }
-     * ```
+     * &gt; **NOTE:** Available since v1.150.0.
+     * **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
      * 
      */
     public static CompletableFuture<GetKubernetesAddonsResult> getKubernetesAddonsPlain(GetKubernetesAddonsPlainArgs args, InvokeOptions options) {

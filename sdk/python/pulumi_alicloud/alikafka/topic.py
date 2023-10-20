@@ -51,7 +51,17 @@ class TopicArgs:
              local_topic: Optional[pulumi.Input[bool]] = None,
              partition_num: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'compactTopic' in kwargs:
+            compact_topic = kwargs['compactTopic']
+        if 'localTopic' in kwargs:
+            local_topic = kwargs['localTopic']
+        if 'partitionNum' in kwargs:
+            partition_num = kwargs['partitionNum']
+
         _setter("instance_id", instance_id)
         _setter("remark", remark)
         _setter("topic", topic)
@@ -189,7 +199,17 @@ class _TopicState:
              remark: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              topic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'compactTopic' in kwargs:
+            compact_topic = kwargs['compactTopic']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'localTopic' in kwargs:
+            local_topic = kwargs['localTopic']
+        if 'partitionNum' in kwargs:
+            partition_num = kwargs['partitionNum']
+
         if compact_topic is not None:
             _setter("compact_topic", compact_topic)
         if instance_id is not None:
@@ -304,7 +324,7 @@ class Topic(pulumi.CustomResource):
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createtopic).
+        Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
 
         > **NOTE:** Available since v1.56.0.
 
@@ -366,7 +386,7 @@ class Topic(pulumi.CustomResource):
                  args: TopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createtopic).
+        Provides an ALIKAFKA topic resource, see [What is Alikafka topic ](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createtopic).
 
         > **NOTE:** Available since v1.56.0.
 

@@ -14,31 +14,35 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class EcsLaunchTemplateSystemDisk
     {
         /// <summary>
-        /// The category of the disk.
+        /// The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
         /// </summary>
         public readonly string? Category;
         /// <summary>
-        /// Indicates whether the data disk is released with the instance.
+        /// Specifies whether to release the system disk when the instance is released. Default to `true`.
         /// </summary>
         public readonly bool? DeleteWithInstance;
         /// <summary>
-        /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        /// System disk description. It cannot begin with http:// or https://.
         /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Specifies whether the system disk is encrypted.
+        /// </summary>
+        public readonly bool? Encrypted;
         /// <summary>
         /// The Iops.
         /// </summary>
         public readonly string? Iops;
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        /// System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// The performance level of the ESSD used as the data disk.
+        /// The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
         /// </summary>
         public readonly string? PerformanceLevel;
         /// <summary>
-        /// The size of the data disk.
+        /// Size of the system disk, measured in GB. Value range: [20, 500].
         /// </summary>
         public readonly int? Size;
 
@@ -49,6 +53,8 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             bool? deleteWithInstance,
 
             string? description,
+
+            bool? encrypted,
 
             string? iops,
 
@@ -61,6 +67,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
             Category = category;
             DeleteWithInstance = deleteWithInstance;
             Description = description;
+            Encrypted = encrypted;
             Iops = iops;
             Name = name;
             PerformanceLevel = performanceLevel;

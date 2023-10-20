@@ -11110,6 +11110,7 @@ func (o GetWafRulesWafRuleRateLimitArrayOutput) Index(i pulumi.IntInput) GetWafR
 }
 
 type GetWafRulesWafRuleRateLimitStatus struct {
+	// The HTTP status code returned.
 	Code string `pulumi:"code"`
 	// The number of times that the HTTP status code that was returned.
 	Count int `pulumi:"count"`
@@ -11129,6 +11130,7 @@ type GetWafRulesWafRuleRateLimitStatusInput interface {
 }
 
 type GetWafRulesWafRuleRateLimitStatusArgs struct {
+	// The HTTP status code returned.
 	Code pulumi.StringInput `pulumi:"code"`
 	// The number of times that the HTTP status code that was returned.
 	Count pulumi.IntInput `pulumi:"count"`
@@ -11205,6 +11207,7 @@ func (o GetWafRulesWafRuleRateLimitStatusOutput) ToOutput(ctx context.Context) p
 	}
 }
 
+// The HTTP status code returned.
 func (o GetWafRulesWafRuleRateLimitStatusOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWafRulesWafRuleRateLimitStatus) string { return v.Code }).(pulumi.StringOutput)
 }

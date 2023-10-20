@@ -251,18 +251,18 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
         return this.performanceLevel;
     }
     /**
-     * The Id of resource group which the disk belongs.
+     * The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
      * 
      */
     @Export(name="resourceGroupId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> resourceGroupId;
+    private Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the disk belongs.
+     * @return The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
      * 
      */
-    public Output<Optional<String>> resourceGroupId() {
-        return Codegen.optional(this.resourceGroupId);
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.

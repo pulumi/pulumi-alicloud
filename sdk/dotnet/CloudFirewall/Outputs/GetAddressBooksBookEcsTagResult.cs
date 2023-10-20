@@ -16,17 +16,17 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// <summary>
         /// The key of ECS tag that to be matched.
         /// </summary>
-        public readonly string? TagKey;
+        public readonly string TagKey;
         /// <summary>
         /// The value of ECS tag that to be matched.
         /// </summary>
-        public readonly string? TagValue;
+        public readonly string TagValue;
 
         [OutputConstructor]
         private GetAddressBooksBookEcsTagResult(
-            string? tagKey,
+            string tagKey,
 
-            string? tagValue)
+            string tagValue)
         {
             TagKey = tagKey;
             TagValue = tagValue;

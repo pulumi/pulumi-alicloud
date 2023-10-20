@@ -7,11 +7,13 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Service Catalog Launch Option available to the user.[What is Launch Option](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listlaunchoptions)
+ * This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -41,6 +43,9 @@ export function getLaunchOptions(args: GetLaunchOptionsArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getLaunchOptions.
  */
 export interface GetLaunchOptionsArgs {
+    /**
+     * A list of Launch Option IDs.
+     */
     ids?: string[];
     /**
      * A regex string to filter results by portfolio name.
@@ -66,11 +71,13 @@ export interface GetLaunchOptionsResult {
     readonly id: string;
     readonly ids: string[];
     /**
-     * A list of Launch Option Entries. Each element contains the following attributes:
+     * (Available since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
      */
     readonly launchOptions: outputs.servicecatalog.GetLaunchOptionsLaunchOption[];
     readonly nameRegex?: string;
     /**
+     * (Deprecated since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
+     *
      * @deprecated Field 'options' has been deprecated from provider version 1.197.0.
      */
     readonly options: outputs.servicecatalog.GetLaunchOptionsOption[];
@@ -78,11 +85,13 @@ export interface GetLaunchOptionsResult {
     readonly productId: string;
 }
 /**
- * This data source provides Service Catalog Launch Option available to the user.[What is Launch Option](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listlaunchoptions)
+ * This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
  *
- * > **NOTE:** Available in 1.196.0+
+ * > **NOTE:** Available since v1.196.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -105,6 +114,9 @@ export function getLaunchOptionsOutput(args: GetLaunchOptionsOutputArgs, opts?: 
  * A collection of arguments for invoking getLaunchOptions.
  */
 export interface GetLaunchOptionsOutputArgs {
+    /**
+     * A list of Launch Option IDs.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A regex string to filter results by portfolio name.

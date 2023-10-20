@@ -39,7 +39,17 @@ class DatabaseArgs:
              db_name: pulumi.Input[str],
              character_set_name: Optional[pulumi.Input[str]] = None,
              db_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if 'characterSetName' in kwargs:
+            character_set_name = kwargs['characterSetName']
+        if 'dbDescription' in kwargs:
+            db_description = kwargs['dbDescription']
+
         _setter("db_cluster_id", db_cluster_id)
         _setter("db_name", db_name)
         if character_set_name is not None:
@@ -124,7 +134,17 @@ class _DatabaseState:
              db_cluster_id: Optional[pulumi.Input[str]] = None,
              db_description: Optional[pulumi.Input[str]] = None,
              db_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'characterSetName' in kwargs:
+            character_set_name = kwargs['characterSetName']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'dbDescription' in kwargs:
+            db_description = kwargs['dbDescription']
+        if 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+
         if character_set_name is not None:
             _setter("character_set_name", character_set_name)
         if db_cluster_id is not None:

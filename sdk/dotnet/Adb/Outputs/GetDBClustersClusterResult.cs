@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// </summary>
         public readonly string CommodityCode;
         /// <summary>
-        /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+        /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources.
         /// </summary>
         public readonly string ComputeResource;
         /// <summary>
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Adb.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+        /// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
         /// </summary>
         public readonly string StorageResource;
         /// <summary>

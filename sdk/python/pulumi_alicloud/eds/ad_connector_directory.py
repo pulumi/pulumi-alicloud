@@ -71,7 +71,31 @@ class AdConnectorDirectoryArgs:
              specification: Optional[pulumi.Input[int]] = None,
              sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              sub_domain_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'directoryName' in kwargs:
+            directory_name = kwargs['directoryName']
+        if 'dnsAddresses' in kwargs:
+            dns_addresses = kwargs['dnsAddresses']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'domainPassword' in kwargs:
+            domain_password = kwargs['domainPassword']
+        if 'domainUserName' in kwargs:
+            domain_user_name = kwargs['domainUserName']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if 'subDomainDnsAddresses' in kwargs:
+            sub_domain_dns_addresses = kwargs['subDomainDnsAddresses']
+        if 'subDomainName' in kwargs:
+            sub_domain_name = kwargs['subDomainName']
+
         _setter("directory_name", directory_name)
         _setter("dns_addresses", dns_addresses)
         _setter("domain_name", domain_name)
@@ -300,7 +324,31 @@ class _AdConnectorDirectoryState:
              sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              sub_domain_name: Optional[pulumi.Input[str]] = None,
              vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if 'directoryName' in kwargs:
+            directory_name = kwargs['directoryName']
+        if 'dnsAddresses' in kwargs:
+            dns_addresses = kwargs['dnsAddresses']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'domainPassword' in kwargs:
+            domain_password = kwargs['domainPassword']
+        if 'domainUserName' in kwargs:
+            domain_user_name = kwargs['domainUserName']
+        if 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if 'subDomainDnsAddresses' in kwargs:
+            sub_domain_dns_addresses = kwargs['subDomainDnsAddresses']
+        if 'subDomainName' in kwargs:
+            sub_domain_name = kwargs['subDomainName']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+
         if desktop_access_type is not None:
             _setter("desktop_access_type", desktop_access_type)
         if directory_name is not None:
@@ -506,7 +554,7 @@ class AdConnectorDirectory(pulumi.CustomResource):
         """
         Provides a ECD Ad Connector Directory resource.
 
-        For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createadconnectordirectory).
+        For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createadconnectordirectory).
 
         > **NOTE:** Available since v1.174.0.
 
@@ -578,7 +626,7 @@ class AdConnectorDirectory(pulumi.CustomResource):
         """
         Provides a ECD Ad Connector Directory resource.
 
-        For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createadconnectordirectory).
+        For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createadconnectordirectory).
 
         > **NOTE:** Available since v1.174.0.
 

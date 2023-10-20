@@ -17,16 +17,32 @@ public final class GetProvisionedProductsPlainArgs extends com.pulumi.resources.
 
     public static final GetProvisionedProductsPlainArgs Empty = new GetProvisionedProductsPlainArgs();
 
+    /**
+     * The access filter.
+     * 
+     */
     @Import(name="accessLevelFilter")
     private @Nullable String accessLevelFilter;
 
+    /**
+     * @return The access filter.
+     * 
+     */
     public Optional<String> accessLevelFilter() {
         return Optional.ofNullable(this.accessLevelFilter);
     }
 
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
+    /**
+     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -90,16 +106,32 @@ public final class GetProvisionedProductsPlainArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * The field that is used to sort the queried data.
+     * 
+     */
     @Import(name="sortBy")
     private @Nullable String sortBy;
 
+    /**
+     * @return The field that is used to sort the queried data.
+     * 
+     */
     public Optional<String> sortBy() {
         return Optional.ofNullable(this.sortBy);
     }
 
+    /**
+     * The sorting method.
+     * 
+     */
     @Import(name="sortOrder")
     private @Nullable String sortOrder;
 
+    /**
+     * @return The sorting method.
+     * 
+     */
     public Optional<String> sortOrder() {
         return Optional.ofNullable(this.sortOrder);
     }
@@ -136,11 +168,23 @@ public final class GetProvisionedProductsPlainArgs extends com.pulumi.resources.
             $ = new GetProvisionedProductsPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessLevelFilter The access filter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessLevelFilter(@Nullable String accessLevelFilter) {
             $.accessLevelFilter = accessLevelFilter;
             return this;
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             $.enableDetails = enableDetails;
             return this;
@@ -199,11 +243,23 @@ public final class GetProvisionedProductsPlainArgs extends com.pulumi.resources.
             return this;
         }
 
+        /**
+         * @param sortBy The field that is used to sort the queried data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortBy(@Nullable String sortBy) {
             $.sortBy = sortBy;
             return this;
         }
 
+        /**
+         * @param sortOrder The sorting method.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortOrder(@Nullable String sortOrder) {
             $.sortOrder = sortOrder;
             return this;

@@ -104,7 +104,37 @@ class EipArgs:
              security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activityId' in kwargs:
+            activity_id = kwargs['activityId']
+        if 'addressName' in kwargs:
+            address_name = kwargs['addressName']
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'highDefinitionMonitorLogStatus' in kwargs:
+            high_definition_monitor_log_status = kwargs['highDefinitionMonitorLogStatus']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'logProject' in kwargs:
+            log_project = kwargs['logProject']
+        if 'logStore' in kwargs:
+            log_store = kwargs['logStore']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+        if 'publicIpAddressPoolId' in kwargs:
+            public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityProtectionTypes' in kwargs:
+            security_protection_types = kwargs['securityProtectionTypes']
+
         if activity_id is not None:
             _setter("activity_id", activity_id)
         if address_name is not None:
@@ -504,7 +534,41 @@ class _EipState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activityId' in kwargs:
+            activity_id = kwargs['activityId']
+        if 'addressName' in kwargs:
+            address_name = kwargs['addressName']
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'highDefinitionMonitorLogStatus' in kwargs:
+            high_definition_monitor_log_status = kwargs['highDefinitionMonitorLogStatus']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'logProject' in kwargs:
+            log_project = kwargs['logProject']
+        if 'logStore' in kwargs:
+            log_store = kwargs['logStore']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+        if 'publicIpAddressPoolId' in kwargs:
+            public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityProtectionTypes' in kwargs:
+            security_protection_types = kwargs['securityProtectionTypes']
+
         if activity_id is not None:
             _setter("activity_id", activity_id)
         if address_name is not None:

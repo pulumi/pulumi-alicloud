@@ -51,7 +51,19 @@ class DiskReplicaGroupArgs:
              description: Optional[pulumi.Input[str]] = None,
              group_name: Optional[pulumi.Input[str]] = None,
              rpo: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationRegionId' in kwargs:
+            destination_region_id = kwargs['destinationRegionId']
+        if 'destinationZoneId' in kwargs:
+            destination_zone_id = kwargs['destinationZoneId']
+        if 'sourceRegionId' in kwargs:
+            source_region_id = kwargs['sourceRegionId']
+        if 'sourceZoneId' in kwargs:
+            source_zone_id = kwargs['sourceZoneId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+
         _setter("destination_region_id", destination_region_id)
         _setter("destination_zone_id", destination_zone_id)
         _setter("source_region_id", source_region_id)
@@ -192,7 +204,19 @@ class _DiskReplicaGroupState:
              source_region_id: Optional[pulumi.Input[str]] = None,
              source_zone_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationRegionId' in kwargs:
+            destination_region_id = kwargs['destinationRegionId']
+        if 'destinationZoneId' in kwargs:
+            destination_zone_id = kwargs['destinationZoneId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'sourceRegionId' in kwargs:
+            source_region_id = kwargs['sourceRegionId']
+        if 'sourceZoneId' in kwargs:
+            source_zone_id = kwargs['sourceZoneId']
+
         if description is not None:
             _setter("description", description)
         if destination_region_id is not None:

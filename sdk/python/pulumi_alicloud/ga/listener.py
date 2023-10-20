@@ -71,7 +71,23 @@ class ListenerArgs:
              protocol: Optional[pulumi.Input[str]] = None,
              proxy_protocol: Optional[pulumi.Input[bool]] = None,
              security_policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'portRanges' in kwargs:
+            port_ranges = kwargs['portRanges']
+        if 'clientAffinity' in kwargs:
+            client_affinity = kwargs['clientAffinity']
+        if 'forwardedForConfig' in kwargs:
+            forwarded_for_config = kwargs['forwardedForConfig']
+        if 'listenerType' in kwargs:
+            listener_type = kwargs['listenerType']
+        if 'proxyProtocol' in kwargs:
+            proxy_protocol = kwargs['proxyProtocol']
+        if 'securityPolicyId' in kwargs:
+            security_policy_id = kwargs['securityPolicyId']
+
         _setter("accelerator_id", accelerator_id)
         _setter("port_ranges", port_ranges)
         if certificates is not None:
@@ -290,7 +306,23 @@ class _ListenerState:
              proxy_protocol: Optional[pulumi.Input[bool]] = None,
              security_policy_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'clientAffinity' in kwargs:
+            client_affinity = kwargs['clientAffinity']
+        if 'forwardedForConfig' in kwargs:
+            forwarded_for_config = kwargs['forwardedForConfig']
+        if 'listenerType' in kwargs:
+            listener_type = kwargs['listenerType']
+        if 'portRanges' in kwargs:
+            port_ranges = kwargs['portRanges']
+        if 'proxyProtocol' in kwargs:
+            proxy_protocol = kwargs['proxyProtocol']
+        if 'securityPolicyId' in kwargs:
+            security_policy_id = kwargs['securityPolicyId']
+
         if accelerator_id is not None:
             _setter("accelerator_id", accelerator_id)
         if certificates is not None:

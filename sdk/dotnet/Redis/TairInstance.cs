@@ -106,16 +106,34 @@ namespace Pulumi.AliCloud.Redis
         public Output<string?> SecondaryZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+        /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
         /// </summary>
         [Output("shardCount")]
         public Output<int> ShardCount { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the instance. Valid values: Normal, Creating, Changing, Inactive, Flushing, Released, Transforming, Unavailable, Error, Migrating, and upgrading, networkModifying, SSLModifying, and MajorVersionUpgrading.
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        /// </summary>
+        [Output("storagePerformanceLevel")]
+        public Output<string?> StoragePerformanceLevel { get; private set; } = null!;
+
+        /// <summary>
+        /// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        /// </summary>
+        [Output("storageSizeGb")]
+        public Output<int> StorageSizeGb { get; private set; } = null!;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
         /// The name of the resource.
@@ -136,7 +154,7 @@ namespace Pulumi.AliCloud.Redis
         public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID of the instance.
+        /// Zone ID.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -280,10 +298,34 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
-        /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+        /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
         /// </summary>
         [Input("shardCount")]
         public Input<int>? ShardCount { get; set; }
+
+        /// <summary>
+        /// The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        /// </summary>
+        [Input("storagePerformanceLevel")]
+        public Input<string>? StoragePerformanceLevel { get; set; }
+
+        /// <summary>
+        /// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        /// </summary>
+        [Input("storageSizeGb")]
+        public Input<int>? StorageSizeGb { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The name of the resource.
@@ -304,7 +346,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
-        /// The zone ID of the instance.
+        /// Zone ID.
         /// </summary>
         [Input("zoneId", required: true)]
         public Input<string> ZoneId { get; set; } = null!;
@@ -412,16 +454,40 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? SecondaryZoneId { get; set; }
 
         /// <summary>
-        /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+        /// The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
         /// </summary>
         [Input("shardCount")]
         public Input<int>? ShardCount { get; set; }
 
         /// <summary>
-        /// The status of the instance. Valid values: Normal, Creating, Changing, Inactive, Flushing, Released, Transforming, Unavailable, Error, Migrating, and upgrading, networkModifying, SSLModifying, and MajorVersionUpgrading.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        /// </summary>
+        [Input("storagePerformanceLevel")]
+        public Input<string>? StoragePerformanceLevel { get; set; }
+
+        /// <summary>
+        /// The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is "tair_essd", this attribute takes effect and is required.
+        /// </summary>
+        [Input("storageSizeGb")]
+        public Input<int>? StorageSizeGb { get; set; }
+
+        [Input("tags")]
+        private InputMap<object>? _tags;
+
+        /// <summary>
+        /// The tag of the resource.
+        /// </summary>
+        public InputMap<object> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<object>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The name of the resource.
@@ -442,7 +508,7 @@ namespace Pulumi.AliCloud.Redis
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The zone ID of the instance.
+        /// Zone ID.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

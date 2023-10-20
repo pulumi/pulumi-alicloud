@@ -53,7 +53,17 @@ class ServerGroupServerAttachmentArgs:
              description: Optional[pulumi.Input[str]] = None,
              server_ip: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'serverId' in kwargs:
+            server_id = kwargs['serverId']
+        if 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+        if 'serverIp' in kwargs:
+            server_ip = kwargs['serverIp']
+
         _setter("port", port)
         _setter("server_group_id", server_group_id)
         _setter("server_id", server_id)
@@ -202,7 +212,19 @@ class _ServerGroupServerAttachmentState:
              status: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'serverId' in kwargs:
+            server_id = kwargs['serverId']
+        if 'serverIp' in kwargs:
+            server_ip = kwargs['serverIp']
+        if 'serverType' in kwargs:
+            server_type = kwargs['serverType']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if description is not None:
             _setter("description", description)
         if port is not None:

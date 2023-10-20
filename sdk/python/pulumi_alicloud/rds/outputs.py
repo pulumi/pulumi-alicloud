@@ -84,7 +84,11 @@ class DbInstanceEndpointNodeItem(dict):
              _setter: Callable[[Any, Any], None],
              node_id: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         _setter("node_id", node_id)
         _setter("weight", weight)
 
@@ -124,7 +128,9 @@ class DdrInstanceParameter(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -210,7 +216,11 @@ class DdrInstancePgHbaConf(dict):
              user: str,
              mask: Optional[str] = None,
              option: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'priorityId' in kwargs:
+            priority_id = kwargs['priorityId']
+
         _setter("address", address)
         _setter("database", database)
         _setter("method", method)
@@ -342,7 +352,17 @@ class InstanceBabelfishConfig(dict):
              master_user_password: str,
              master_username: str,
              migration_mode: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'babelfishEnabled' in kwargs:
+            babelfish_enabled = kwargs['babelfishEnabled']
+        if 'masterUserPassword' in kwargs:
+            master_user_password = kwargs['masterUserPassword']
+        if 'masterUsername' in kwargs:
+            master_username = kwargs['masterUsername']
+        if 'migrationMode' in kwargs:
+            migration_mode = kwargs['migrationMode']
+
         _setter("babelfish_enabled", babelfish_enabled)
         _setter("master_user_password", master_user_password)
         _setter("master_username", master_username)
@@ -400,7 +420,9 @@ class InstanceParameter(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -486,7 +508,11 @@ class InstancePgHbaConf(dict):
              user: str,
              mask: Optional[str] = None,
              option: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'priorityId' in kwargs:
+            priority_id = kwargs['priorityId']
+
         _setter("address", address)
         _setter("database", database)
         _setter("method", method)
@@ -631,7 +657,17 @@ class InstanceServerlessConfig(dict):
              min_capacity: float,
              auto_pause: Optional[bool] = None,
              switch_force: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxCapacity' in kwargs:
+            max_capacity = kwargs['maxCapacity']
+        if 'minCapacity' in kwargs:
+            min_capacity = kwargs['minCapacity']
+        if 'autoPause' in kwargs:
+            auto_pause = kwargs['autoPause']
+        if 'switchForce' in kwargs:
+            switch_force = kwargs['switchForce']
+
         _setter("max_capacity", max_capacity)
         _setter("min_capacity", min_capacity)
         if auto_pause is not None:
@@ -704,7 +740,9 @@ class RdsCloneDbInstanceParameter(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -790,7 +828,11 @@ class RdsCloneDbInstancePgHbaConf(dict):
              user: str,
              mask: Optional[str] = None,
              option: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'priorityId' in kwargs:
+            priority_id = kwargs['priorityId']
+
         _setter("address", address)
         _setter("database", database)
         _setter("method", method)
@@ -935,7 +977,17 @@ class RdsCloneDbInstanceServerlessConfig(dict):
              min_capacity: float,
              auto_pause: Optional[bool] = None,
              switch_force: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxCapacity' in kwargs:
+            max_capacity = kwargs['maxCapacity']
+        if 'minCapacity' in kwargs:
+            min_capacity = kwargs['minCapacity']
+        if 'autoPause' in kwargs:
+            auto_pause = kwargs['autoPause']
+        if 'switchForce' in kwargs:
+            switch_force = kwargs['switchForce']
+
         _setter("max_capacity", max_capacity)
         _setter("min_capacity", min_capacity)
         if auto_pause is not None:
@@ -1025,7 +1077,11 @@ class RdsDbProxyReadOnlyInstanceWeight(dict):
              _setter: Callable[[Any, Any], None],
              instance_id: str,
              weight: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("instance_id", instance_id)
         _setter("weight", weight)
 
@@ -1084,7 +1140,13 @@ class RdsParameterGroupParamDetail(dict):
              _setter: Callable[[Any, Any], None],
              param_name: str,
              param_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'paramName' in kwargs:
+            param_name = kwargs['paramName']
+        if 'paramValue' in kwargs:
+            param_value = kwargs['paramValue']
+
         _setter("param_name", param_name)
         _setter("param_value", param_value)
 
@@ -1124,7 +1186,9 @@ class RdsUpgradeDbInstanceParameter(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -1210,7 +1274,11 @@ class RdsUpgradeDbInstancePgHbaConf(dict):
              user: str,
              mask: Optional[str] = None,
              option: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'priorityId' in kwargs:
+            priority_id = kwargs['priorityId']
+
         _setter("address", address)
         _setter("database", database)
         _setter("method", method)
@@ -1311,7 +1379,9 @@ class ReadOnlyInstanceParameter(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -1371,7 +1441,19 @@ class GetAccountsAccountResult(dict):
              id: str,
              priv_exceeded: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if 'databasePrivileges' in kwargs:
+            database_privileges = kwargs['databasePrivileges']
+        if 'privExceeded' in kwargs:
+            priv_exceeded = kwargs['privExceeded']
+
         _setter("account_description", account_description)
         _setter("account_name", account_name)
         _setter("account_type", account_type)
@@ -1460,7 +1542,15 @@ class GetAccountsAccountDatabasePrivilegeResult(dict):
              account_privilege: str,
              account_privilege_detail: str,
              db_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountPrivilege' in kwargs:
+            account_privilege = kwargs['accountPrivilege']
+        if 'accountPrivilegeDetail' in kwargs:
+            account_privilege_detail = kwargs['accountPrivilegeDetail']
+        if 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+
         _setter("account_privilege", account_privilege)
         _setter("account_privilege_detail", account_privilege_detail)
         _setter("db_name", db_name)
@@ -1513,7 +1603,13 @@ class GetCollationTimeZonesCollationTimeZoneResult(dict):
              description: Optional[str] = None,
              standard_time_offset: Optional[str] = None,
              time_zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'standardTimeOffset' in kwargs:
+            standard_time_offset = kwargs['standardTimeOffset']
+        if 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if description is not None:
             _setter("description", description)
         if standard_time_offset is not None:
@@ -1656,7 +1752,47 @@ class GetCrossRegionBackupsBackupResult(dict):
              recovery_begin_time: str,
              recovery_end_time: str,
              restore_regions: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupEndTime' in kwargs:
+            backup_end_time = kwargs['backupEndTime']
+        if 'backupMethod' in kwargs:
+            backup_method = kwargs['backupMethod']
+        if 'backupSetScale' in kwargs:
+            backup_set_scale = kwargs['backupSetScale']
+        if 'backupSetStatus' in kwargs:
+            backup_set_status = kwargs['backupSetStatus']
+        if 'backupStartTime' in kwargs:
+            backup_start_time = kwargs['backupStartTime']
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'consistentTime' in kwargs:
+            consistent_time = kwargs['consistentTime']
+        if 'crossBackupDownloadLink' in kwargs:
+            cross_backup_download_link = kwargs['crossBackupDownloadLink']
+        if 'crossBackupId' in kwargs:
+            cross_backup_id = kwargs['crossBackupId']
+        if 'crossBackupRegion' in kwargs:
+            cross_backup_region = kwargs['crossBackupRegion']
+        if 'crossBackupSetFile' in kwargs:
+            cross_backup_set_file = kwargs['crossBackupSetFile']
+        if 'crossBackupSetLocation' in kwargs:
+            cross_backup_set_location = kwargs['crossBackupSetLocation']
+        if 'crossBackupSetSize' in kwargs:
+            cross_backup_set_size = kwargs['crossBackupSetSize']
+        if 'dbInstanceStorageType' in kwargs:
+            db_instance_storage_type = kwargs['dbInstanceStorageType']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'recoveryBeginTime' in kwargs:
+            recovery_begin_time = kwargs['recoveryBeginTime']
+        if 'recoveryEndTime' in kwargs:
+            recovery_end_time = kwargs['recoveryEndTime']
+        if 'restoreRegions' in kwargs:
+            restore_regions = kwargs['restoreRegions']
+
         _setter("backup_end_time", backup_end_time)
         _setter("backup_method", backup_method)
         _setter("backup_set_scale", backup_set_scale)
@@ -1883,7 +2019,9 @@ class GetCrossRegionsRegionResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
 
     @property
@@ -1942,7 +2080,25 @@ class GetInstanceClassInfosInfoResult(dict):
              max_iops: Optional[str] = None,
              memory_class: Optional[str] = None,
              reference_price: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'classCode' in kwargs:
+            class_code = kwargs['classCode']
+        if 'classGroup' in kwargs:
+            class_group = kwargs['classGroup']
+        if 'instructionSetArch' in kwargs:
+            instruction_set_arch = kwargs['instructionSetArch']
+        if 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if 'maxIombps' in kwargs:
+            max_iombps = kwargs['maxIombps']
+        if 'maxIops' in kwargs:
+            max_iops = kwargs['maxIops']
+        if 'memoryClass' in kwargs:
+            memory_class = kwargs['memoryClass']
+        if 'referencePrice' in kwargs:
+            reference_price = kwargs['referencePrice']
+
         if class_code is not None:
             _setter("class_code", class_code)
         if class_group is not None:
@@ -2061,7 +2217,15 @@ class GetInstanceClassesInstanceClassResult(dict):
              price: str,
              storage_range: 'outputs.GetInstanceClassesInstanceClassStorageRangeResult',
              zone_ids: Sequence['outputs.GetInstanceClassesInstanceClassZoneIdResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'storageRange' in kwargs:
+            storage_range = kwargs['storageRange']
+        if 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+
         _setter("instance_class", instance_class)
         _setter("price", price)
         _setter("storage_range", storage_range)
@@ -2120,7 +2284,9 @@ class GetInstanceClassesInstanceClassStorageRangeResult(dict):
              max: str,
              min: str,
              step: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("max", max)
         _setter("min", min)
         _setter("step", step)
@@ -2169,7 +2335,11 @@ class GetInstanceClassesInstanceClassZoneIdResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              sub_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'subZoneIds' in kwargs:
+            sub_zone_ids = kwargs['subZoneIds']
+
         _setter("id", id)
         _setter("sub_zone_ids", sub_zone_ids)
 
@@ -2217,7 +2387,13 @@ class GetInstanceEnginesInstanceEngineResult(dict):
              engine: str,
              engine_version: str,
              zone_ids: Sequence['outputs.GetInstanceEnginesInstanceEngineZoneIdResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+
         _setter("category", category)
         _setter("engine", engine)
         _setter("engine_version", engine_version)
@@ -2275,7 +2451,11 @@ class GetInstanceEnginesInstanceEngineZoneIdResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              sub_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'subZoneIds' in kwargs:
+            sub_zone_ids = kwargs['subZoneIds']
+
         _setter("id", id)
         _setter("sub_zone_ids", sub_zone_ids)
 
@@ -2564,7 +2744,105 @@ class GetInstancesInstanceResult(dict):
              vswitch_id: str,
              zone_id_slave_a: str,
              zone_id_slave_b: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'caType' in kwargs:
+            ca_type = kwargs['caType']
+        if 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if 'clientCaCert' in kwargs:
+            client_ca_cert = kwargs['clientCaCert']
+        if 'clientCaCertExpireTime' in kwargs:
+            client_ca_cert_expire_time = kwargs['clientCaCertExpireTime']
+        if 'clientCertRevocationList' in kwargs:
+            client_cert_revocation_list = kwargs['clientCertRevocationList']
+        if 'connectionMode' in kwargs:
+            connection_mode = kwargs['connectionMode']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbInstanceStorageType' in kwargs:
+            db_instance_storage_type = kwargs['dbInstanceStorageType']
+        if 'dbInstanceType' in kwargs:
+            db_instance_type = kwargs['dbInstanceType']
+        if 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if 'deleteDate' in kwargs:
+            delete_date = kwargs['deleteDate']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'encryptionKeyStatus' in kwargs:
+            encryption_key_status = kwargs['encryptionKeyStatus']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'guardInstanceId' in kwargs:
+            guard_instance_id = kwargs['guardInstanceId']
+        if 'haMode' in kwargs:
+            ha_mode = kwargs['haMode']
+        if 'hostInstanceInfos' in kwargs:
+            host_instance_infos = kwargs['hostInstanceInfos']
+        if 'instanceStorage' in kwargs:
+            instance_storage = kwargs['instanceStorage']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'keyUsage' in kwargs:
+            key_usage = kwargs['keyUsage']
+        if 'lastModifyStatus' in kwargs:
+            last_modify_status = kwargs['lastModifyStatus']
+        if 'masterInstanceId' in kwargs:
+            master_instance_id = kwargs['masterInstanceId']
+        if 'masterZone' in kwargs:
+            master_zone = kwargs['masterZone']
+        if 'materialExpireTime' in kwargs:
+            material_expire_time = kwargs['materialExpireTime']
+        if 'modifyStatusReason' in kwargs:
+            modify_status_reason = kwargs['modifyStatusReason']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+        if 'readonlyInstanceIds' in kwargs:
+            readonly_instance_ids = kwargs['readonlyInstanceIds']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'replicationAcl' in kwargs:
+            replication_acl = kwargs['replicationAcl']
+        if 'requireUpdate' in kwargs:
+            require_update = kwargs['requireUpdate']
+        if 'requireUpdateItem' in kwargs:
+            require_update_item = kwargs['requireUpdateItem']
+        if 'requireUpdateReason' in kwargs:
+            require_update_reason = kwargs['requireUpdateReason']
+        if 'serverCaUrl' in kwargs:
+            server_ca_url = kwargs['serverCaUrl']
+        if 'serverCert' in kwargs:
+            server_cert = kwargs['serverCert']
+        if 'serverKey' in kwargs:
+            server_key = kwargs['serverKey']
+        if 'sslCreateTime' in kwargs:
+            ssl_create_time = kwargs['sslCreateTime']
+        if 'sslEnabled' in kwargs:
+            ssl_enabled = kwargs['sslEnabled']
+        if 'sslExpireTime' in kwargs:
+            ssl_expire_time = kwargs['sslExpireTime']
+        if 'syncMode' in kwargs:
+            sync_mode = kwargs['syncMode']
+        if 'tempInstanceId' in kwargs:
+            temp_instance_id = kwargs['tempInstanceId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneIdSlaveA' in kwargs:
+            zone_id_slave_a = kwargs['zoneIdSlaveA']
+        if 'zoneIdSlaveB' in kwargs:
+            zone_id_slave_b = kwargs['zoneIdSlaveB']
+
         _setter("acl", acl)
         _setter("availability_zone", availability_zone)
         _setter("ca_type", ca_type)
@@ -3153,7 +3431,23 @@ class GetInstancesInstanceHostInstanceInfoResult(dict):
              region_id: str,
              sync_status: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataSyncTime' in kwargs:
+            data_sync_time = kwargs['dataSyncTime']
+        if 'logSyncTime' in kwargs:
+            log_sync_time = kwargs['logSyncTime']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'syncStatus' in kwargs:
+            sync_status = kwargs['syncStatus']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("data_sync_time", data_sync_time)
         _setter("log_sync_time", log_sync_time)
         _setter("node_id", node_id)
@@ -3254,7 +3548,21 @@ class GetInstancesInstanceParameterResult(dict):
              parameter_description: str,
              parameter_name: str,
              parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'checkingCode' in kwargs:
+            checking_code = kwargs['checkingCode']
+        if 'forceModify' in kwargs:
+            force_modify = kwargs['forceModify']
+        if 'forceRestart' in kwargs:
+            force_restart = kwargs['forceRestart']
+        if 'parameterDescription' in kwargs:
+            parameter_description = kwargs['parameterDescription']
+        if 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("checking_code", checking_code)
         _setter("force_modify", force_modify)
         _setter("force_restart", force_restart)
@@ -3344,7 +3652,17 @@ class GetModifyParameterLogsLogResult(dict):
              old_parameter_value: str,
              parameter_name: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'modifyTime' in kwargs:
+            modify_time = kwargs['modifyTime']
+        if 'newParameterValue' in kwargs:
+            new_parameter_value = kwargs['newParameterValue']
+        if 'oldParameterValue' in kwargs:
+            old_parameter_value = kwargs['oldParameterValue']
+        if 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+
         _setter("modify_time", modify_time)
         _setter("new_parameter_value", new_parameter_value)
         _setter("old_parameter_value", old_parameter_value)
@@ -3507,7 +3825,47 @@ class GetRdsBackupsBackupResult(dict):
              meta_status: str,
              storage_class: str,
              store_status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupDownloadUrl' in kwargs:
+            backup_download_url = kwargs['backupDownloadUrl']
+        if 'backupEndTime' in kwargs:
+            backup_end_time = kwargs['backupEndTime']
+        if 'backupId' in kwargs:
+            backup_id = kwargs['backupId']
+        if 'backupInitiator' in kwargs:
+            backup_initiator = kwargs['backupInitiator']
+        if 'backupIntranetDownloadUrl' in kwargs:
+            backup_intranet_download_url = kwargs['backupIntranetDownloadUrl']
+        if 'backupMethod' in kwargs:
+            backup_method = kwargs['backupMethod']
+        if 'backupMode' in kwargs:
+            backup_mode = kwargs['backupMode']
+        if 'backupSize' in kwargs:
+            backup_size = kwargs['backupSize']
+        if 'backupStartTime' in kwargs:
+            backup_start_time = kwargs['backupStartTime']
+        if 'backupStatus' in kwargs:
+            backup_status = kwargs['backupStatus']
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'consistentTime' in kwargs:
+            consistent_time = kwargs['consistentTime']
+        if 'copyOnlyBackup' in kwargs:
+            copy_only_backup = kwargs['copyOnlyBackup']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'hostInstanceId' in kwargs:
+            host_instance_id = kwargs['hostInstanceId']
+        if 'isAvail' in kwargs:
+            is_avail = kwargs['isAvail']
+        if 'metaStatus' in kwargs:
+            meta_status = kwargs['metaStatus']
+        if 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if 'storeStatus' in kwargs:
+            store_status = kwargs['storeStatus']
+
         _setter("backup_download_url", backup_download_url)
         _setter("backup_end_time", backup_end_time)
         _setter("backup_id", backup_id)
@@ -3756,7 +4114,25 @@ class GetRdsParameterGroupsGroupResult(dict):
              parameter_group_id: str,
              parameter_group_name: str,
              parameter_group_type: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'forceRestart' in kwargs:
+            force_restart = kwargs['forceRestart']
+        if 'paramCounts' in kwargs:
+            param_counts = kwargs['paramCounts']
+        if 'paramDetails' in kwargs:
+            param_details = kwargs['paramDetails']
+        if 'parameterGroupDesc' in kwargs:
+            parameter_group_desc = kwargs['parameterGroupDesc']
+        if 'parameterGroupId' in kwargs:
+            parameter_group_id = kwargs['parameterGroupId']
+        if 'parameterGroupName' in kwargs:
+            parameter_group_name = kwargs['parameterGroupName']
+        if 'parameterGroupType' in kwargs:
+            parameter_group_type = kwargs['parameterGroupType']
+
         _setter("engine", engine)
         _setter("engine_version", engine_version)
         _setter("force_restart", force_restart)
@@ -3834,7 +4210,13 @@ class GetRdsParameterGroupsGroupParamDetailResult(dict):
              _setter: Callable[[Any, Any], None],
              param_name: str,
              param_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'paramName' in kwargs:
+            param_name = kwargs['paramName']
+        if 'paramValue' in kwargs:
+            param_value = kwargs['paramValue']
+
         _setter("param_name", param_name)
         _setter("param_value", param_value)
 
@@ -3888,7 +4270,17 @@ class GetSlotsSlotResult(dict):
              slot_type: str,
              temporary: str,
              wal_delay: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'slotName' in kwargs:
+            slot_name = kwargs['slotName']
+        if 'slotStatus' in kwargs:
+            slot_status = kwargs['slotStatus']
+        if 'slotType' in kwargs:
+            slot_type = kwargs['slotType']
+        if 'walDelay' in kwargs:
+            wal_delay = kwargs['walDelay']
+
         _setter("database", database)
         _setter("plugin", plugin)
         _setter("slot_name", slot_name)
@@ -3973,7 +4365,11 @@ class GetZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'multiZoneIds' in kwargs:
+            multi_zone_ids = kwargs['multiZoneIds']
+
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)
 

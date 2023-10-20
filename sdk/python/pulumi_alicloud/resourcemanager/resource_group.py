@@ -37,7 +37,13 @@ class ResourceGroupArgs:
              display_name: pulumi.Input[str],
              name: Optional[pulumi.Input[str]] = None,
              resource_group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         _setter("display_name", display_name)
         if name is not None:
             warnings.warn("""Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead.""", DeprecationWarning)
@@ -123,7 +129,17 @@ class _ResourceGroupState:
              region_statuses: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceGroupRegionStatusArgs']]]] = None,
              resource_group_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'regionStatuses' in kwargs:
+            region_statuses = kwargs['regionStatuses']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if display_name is not None:

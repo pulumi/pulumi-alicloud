@@ -39,7 +39,15 @@ class CustomRoutingEndpointGroupDestinationArgs:
              from_port: pulumi.Input[int],
              protocols: pulumi.Input[Sequence[pulumi.Input[str]]],
              to_port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'fromPort' in kwargs:
+            from_port = kwargs['fromPort']
+        if 'toPort' in kwargs:
+            to_port = kwargs['toPort']
+
         _setter("endpoint_group_id", endpoint_group_id)
         _setter("from_port", from_port)
         _setter("protocols", protocols)
@@ -138,7 +146,21 @@ class _CustomRoutingEndpointGroupDestinationState:
              protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[str]] = None,
              to_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'customRoutingEndpointGroupDestinationId' in kwargs:
+            custom_routing_endpoint_group_destination_id = kwargs['customRoutingEndpointGroupDestinationId']
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'fromPort' in kwargs:
+            from_port = kwargs['fromPort']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'toPort' in kwargs:
+            to_port = kwargs['toPort']
+
         if accelerator_id is not None:
             _setter("accelerator_id", accelerator_id)
         if custom_routing_endpoint_group_destination_id is not None:

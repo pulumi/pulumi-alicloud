@@ -72,7 +72,13 @@ class ProvisionedProductOutput(dict):
              description: Optional[str] = None,
              output_key: Optional[str] = None,
              output_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'outputKey' in kwargs:
+            output_key = kwargs['outputKey']
+        if 'outputValue' in kwargs:
+            output_value = kwargs['outputValue']
+
         if description is not None:
             _setter("description", description)
         if output_key is not None:
@@ -143,7 +149,13 @@ class ProvisionedProductParameter(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: Optional[str] = None,
              parameter_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         if parameter_key is not None:
             _setter("parameter_key", parameter_key)
         if parameter_value is not None:
@@ -213,7 +225,23 @@ class GetEndUserProductsEndUserProductResult(dict):
              product_name: str,
              product_type: str,
              provider_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'hasDefaultLaunchOption' in kwargs:
+            has_default_launch_option = kwargs['hasDefaultLaunchOption']
+        if 'productArn' in kwargs:
+            product_arn = kwargs['productArn']
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if 'productName' in kwargs:
+            product_name = kwargs['productName']
+        if 'productType' in kwargs:
+            product_type = kwargs['productType']
+        if 'providerName' in kwargs:
+            provider_name = kwargs['providerName']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("has_default_launch_option", has_default_launch_option)
@@ -324,7 +352,15 @@ class GetLaunchOptionsLaunchOptionResult(dict):
              id: str,
              portfolio_id: str,
              portfolio_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'constraintSummaries' in kwargs:
+            constraint_summaries = kwargs['constraintSummaries']
+        if 'portfolioId' in kwargs:
+            portfolio_id = kwargs['portfolioId']
+        if 'portfolioName' in kwargs:
+            portfolio_name = kwargs['portfolioName']
+
         _setter("constraint_summaries", constraint_summaries)
         _setter("id", id)
         _setter("portfolio_id", portfolio_id)
@@ -382,7 +418,11 @@ class GetLaunchOptionsLaunchOptionConstraintSummaryResult(dict):
              _setter: Callable[[Any, Any], None],
              constraint_type: str,
              description: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'constraintType' in kwargs:
+            constraint_type = kwargs['constraintType']
+
         _setter("constraint_type", constraint_type)
         _setter("description", description)
 
@@ -430,7 +470,15 @@ class GetLaunchOptionsOptionResult(dict):
              id: str,
              portfolio_id: str,
              portfolio_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'constraintSummaries' in kwargs:
+            constraint_summaries = kwargs['constraintSummaries']
+        if 'portfolioId' in kwargs:
+            portfolio_id = kwargs['portfolioId']
+        if 'portfolioName' in kwargs:
+            portfolio_name = kwargs['portfolioName']
+
         _setter("constraint_summaries", constraint_summaries)
         _setter("id", id)
         _setter("portfolio_id", portfolio_id)
@@ -488,7 +536,11 @@ class GetLaunchOptionsOptionConstraintSummaryResult(dict):
              _setter: Callable[[Any, Any], None],
              constraint_type: str,
              description: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'constraintType' in kwargs:
+            constraint_type = kwargs['constraintType']
+
         _setter("constraint_type", constraint_type)
         _setter("description", description)
 
@@ -548,7 +600,19 @@ class GetPortfoliosPortfolioResult(dict):
              portfolio_id: str,
              portfolio_name: str,
              provider_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'portfolioArn' in kwargs:
+            portfolio_arn = kwargs['portfolioArn']
+        if 'portfolioId' in kwargs:
+            portfolio_id = kwargs['portfolioId']
+        if 'portfolioName' in kwargs:
+            portfolio_name = kwargs['portfolioName']
+        if 'providerName' in kwargs:
+            provider_name = kwargs['providerName']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("id", id)
@@ -661,7 +725,23 @@ class GetProductAsEndUsersUserResult(dict):
              product_name: str,
              product_type: str,
              provider_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'hasDefaultLaunchOption' in kwargs:
+            has_default_launch_option = kwargs['hasDefaultLaunchOption']
+        if 'productArn' in kwargs:
+            product_arn = kwargs['productArn']
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if 'productName' in kwargs:
+            product_name = kwargs['productName']
+        if 'productType' in kwargs:
+            product_type = kwargs['productType']
+        if 'providerName' in kwargs:
+            provider_name = kwargs['providerName']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("has_default_launch_option", has_default_launch_option)
@@ -796,7 +876,21 @@ class GetProductVersionsProductVersionResult(dict):
              product_version_name: str,
              template_type: str,
              template_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if 'productVersionId' in kwargs:
+            product_version_id = kwargs['productVersionId']
+        if 'productVersionName' in kwargs:
+            product_version_name = kwargs['productVersionName']
+        if 'templateType' in kwargs:
+            template_type = kwargs['templateType']
+        if 'templateUrl' in kwargs:
+            template_url = kwargs['templateUrl']
+
         _setter("active", active)
         _setter("create_time", create_time)
         _setter("description", description)
@@ -940,7 +1034,21 @@ class GetProductVersionsVersionResult(dict):
              product_version_name: str,
              template_type: str,
              template_url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if 'productVersionId' in kwargs:
+            product_version_id = kwargs['productVersionId']
+        if 'productVersionName' in kwargs:
+            product_version_name = kwargs['productVersionName']
+        if 'templateType' in kwargs:
+            template_type = kwargs['templateType']
+        if 'templateUrl' in kwargs:
+            template_url = kwargs['templateUrl']
+
         _setter("active", active)
         _setter("create_time", create_time)
         _setter("description", description)
@@ -1132,7 +1240,45 @@ class GetProvisionedProductsProductResult(dict):
              status: str,
              status_message: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'lastProvisioningTaskId' in kwargs:
+            last_provisioning_task_id = kwargs['lastProvisioningTaskId']
+        if 'lastSuccessfulProvisioningTaskId' in kwargs:
+            last_successful_provisioning_task_id = kwargs['lastSuccessfulProvisioningTaskId']
+        if 'lastTaskId' in kwargs:
+            last_task_id = kwargs['lastTaskId']
+        if 'ownerPrincipalId' in kwargs:
+            owner_principal_id = kwargs['ownerPrincipalId']
+        if 'ownerPrincipalType' in kwargs:
+            owner_principal_type = kwargs['ownerPrincipalType']
+        if 'portfolioId' in kwargs:
+            portfolio_id = kwargs['portfolioId']
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if 'productName' in kwargs:
+            product_name = kwargs['productName']
+        if 'productVersionId' in kwargs:
+            product_version_id = kwargs['productVersionId']
+        if 'productVersionName' in kwargs:
+            product_version_name = kwargs['productVersionName']
+        if 'provisionedProductArn' in kwargs:
+            provisioned_product_arn = kwargs['provisionedProductArn']
+        if 'provisionedProductId' in kwargs:
+            provisioned_product_id = kwargs['provisionedProductId']
+        if 'provisionedProductName' in kwargs:
+            provisioned_product_name = kwargs['provisionedProductName']
+        if 'provisionedProductType' in kwargs:
+            provisioned_product_type = kwargs['provisionedProductType']
+        if 'stackId' in kwargs:
+            stack_id = kwargs['stackId']
+        if 'stackRegionId' in kwargs:
+            stack_region_id = kwargs['stackRegionId']
+        if 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+
         _setter("create_time", create_time)
         _setter("id", id)
         _setter("last_provisioning_task_id", last_provisioning_task_id)
@@ -1349,7 +1495,13 @@ class GetProvisionedProductsProductOutputResult(dict):
              description: str,
              output_key: str,
              output_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'outputKey' in kwargs:
+            output_key = kwargs['outputKey']
+        if 'outputValue' in kwargs:
+            output_value = kwargs['outputValue']
+
         _setter("description", description)
         _setter("output_key", output_key)
         _setter("output_value", output_value)
@@ -1385,7 +1537,13 @@ class GetProvisionedProductsProductParameterResult(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: str,
              parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
 
@@ -1499,7 +1657,45 @@ class GetProvisionedProductsProvisionedProductResult(dict):
              status: str,
              status_message: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'lastProvisioningTaskId' in kwargs:
+            last_provisioning_task_id = kwargs['lastProvisioningTaskId']
+        if 'lastSuccessfulProvisioningTaskId' in kwargs:
+            last_successful_provisioning_task_id = kwargs['lastSuccessfulProvisioningTaskId']
+        if 'lastTaskId' in kwargs:
+            last_task_id = kwargs['lastTaskId']
+        if 'ownerPrincipalId' in kwargs:
+            owner_principal_id = kwargs['ownerPrincipalId']
+        if 'ownerPrincipalType' in kwargs:
+            owner_principal_type = kwargs['ownerPrincipalType']
+        if 'portfolioId' in kwargs:
+            portfolio_id = kwargs['portfolioId']
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if 'productName' in kwargs:
+            product_name = kwargs['productName']
+        if 'productVersionId' in kwargs:
+            product_version_id = kwargs['productVersionId']
+        if 'productVersionName' in kwargs:
+            product_version_name = kwargs['productVersionName']
+        if 'provisionedProductArn' in kwargs:
+            provisioned_product_arn = kwargs['provisionedProductArn']
+        if 'provisionedProductId' in kwargs:
+            provisioned_product_id = kwargs['provisionedProductId']
+        if 'provisionedProductName' in kwargs:
+            provisioned_product_name = kwargs['provisionedProductName']
+        if 'provisionedProductType' in kwargs:
+            provisioned_product_type = kwargs['provisionedProductType']
+        if 'stackId' in kwargs:
+            stack_id = kwargs['stackId']
+        if 'stackRegionId' in kwargs:
+            stack_region_id = kwargs['stackRegionId']
+        if 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+
         _setter("create_time", create_time)
         _setter("id", id)
         _setter("last_provisioning_task_id", last_provisioning_task_id)
@@ -1716,7 +1912,13 @@ class GetProvisionedProductsProvisionedProductOutputResult(dict):
              description: str,
              output_key: str,
              output_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'outputKey' in kwargs:
+            output_key = kwargs['outputKey']
+        if 'outputValue' in kwargs:
+            output_value = kwargs['outputValue']
+
         _setter("description", description)
         _setter("output_key", output_key)
         _setter("output_value", output_value)
@@ -1752,7 +1954,13 @@ class GetProvisionedProductsProvisionedProductParameterResult(dict):
              _setter: Callable[[Any, Any], None],
              parameter_key: str,
              parameter_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterKey' in kwargs:
+            parameter_key = kwargs['parameterKey']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         _setter("parameter_key", parameter_key)
         _setter("parameter_value", parameter_value)
 

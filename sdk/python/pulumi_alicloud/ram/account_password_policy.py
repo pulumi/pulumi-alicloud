@@ -59,7 +59,27 @@ class AccountPasswordPolicyArgs:
              require_numbers: Optional[pulumi.Input[bool]] = None,
              require_symbols: Optional[pulumi.Input[bool]] = None,
              require_uppercase_characters: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hardExpiry' in kwargs:
+            hard_expiry = kwargs['hardExpiry']
+        if 'maxLoginAttempts' in kwargs:
+            max_login_attempts = kwargs['maxLoginAttempts']
+        if 'maxPasswordAge' in kwargs:
+            max_password_age = kwargs['maxPasswordAge']
+        if 'minimumPasswordLength' in kwargs:
+            minimum_password_length = kwargs['minimumPasswordLength']
+        if 'passwordReusePrevention' in kwargs:
+            password_reuse_prevention = kwargs['passwordReusePrevention']
+        if 'requireLowercaseCharacters' in kwargs:
+            require_lowercase_characters = kwargs['requireLowercaseCharacters']
+        if 'requireNumbers' in kwargs:
+            require_numbers = kwargs['requireNumbers']
+        if 'requireSymbols' in kwargs:
+            require_symbols = kwargs['requireSymbols']
+        if 'requireUppercaseCharacters' in kwargs:
+            require_uppercase_characters = kwargs['requireUppercaseCharacters']
+
         if hard_expiry is not None:
             _setter("hard_expiry", hard_expiry)
         if max_login_attempts is not None:
@@ -236,7 +256,27 @@ class _AccountPasswordPolicyState:
              require_numbers: Optional[pulumi.Input[bool]] = None,
              require_symbols: Optional[pulumi.Input[bool]] = None,
              require_uppercase_characters: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hardExpiry' in kwargs:
+            hard_expiry = kwargs['hardExpiry']
+        if 'maxLoginAttempts' in kwargs:
+            max_login_attempts = kwargs['maxLoginAttempts']
+        if 'maxPasswordAge' in kwargs:
+            max_password_age = kwargs['maxPasswordAge']
+        if 'minimumPasswordLength' in kwargs:
+            minimum_password_length = kwargs['minimumPasswordLength']
+        if 'passwordReusePrevention' in kwargs:
+            password_reuse_prevention = kwargs['passwordReusePrevention']
+        if 'requireLowercaseCharacters' in kwargs:
+            require_lowercase_characters = kwargs['requireLowercaseCharacters']
+        if 'requireNumbers' in kwargs:
+            require_numbers = kwargs['requireNumbers']
+        if 'requireSymbols' in kwargs:
+            require_symbols = kwargs['requireSymbols']
+        if 'requireUppercaseCharacters' in kwargs:
+            require_uppercase_characters = kwargs['requireUppercaseCharacters']
+
         if hard_expiry is not None:
             _setter("hard_expiry", hard_expiry)
         if max_login_attempts is not None:

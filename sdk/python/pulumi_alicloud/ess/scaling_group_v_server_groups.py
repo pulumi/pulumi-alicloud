@@ -37,7 +37,13 @@ class ScalingGroupVServerGroupsArgs:
              scaling_group_id: pulumi.Input[str],
              vserver_groups: pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]],
              force: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if 'vserverGroups' in kwargs:
+            vserver_groups = kwargs['vserverGroups']
+
         _setter("scaling_group_id", scaling_group_id)
         _setter("vserver_groups", vserver_groups)
         if force is not None:
@@ -104,7 +110,13 @@ class _ScalingGroupVServerGroupsState:
              force: Optional[pulumi.Input[bool]] = None,
              scaling_group_id: Optional[pulumi.Input[str]] = None,
              vserver_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupVServerGroupsVserverGroupArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if 'vserverGroups' in kwargs:
+            vserver_groups = kwargs['vserverGroups']
+
         if force is not None:
             _setter("force", force)
         if scaling_group_id is not None:

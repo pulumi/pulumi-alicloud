@@ -66,7 +66,15 @@ class DomainAuthConfig(dict):
              master_key: Optional[str] = None,
              slave_key: Optional[str] = None,
              timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authType' in kwargs:
+            auth_type = kwargs['authType']
+        if 'masterKey' in kwargs:
+            master_key = kwargs['masterKey']
+        if 'slaveKey' in kwargs:
+            slave_key = kwargs['slaveKey']
+
         if auth_type is not None:
             _setter("auth_type", auth_type)
         if master_key is not None:
@@ -142,7 +150,15 @@ class DomainCacheConfig(dict):
              ttl: int,
              cache_id: Optional[str] = None,
              weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cacheContent' in kwargs:
+            cache_content = kwargs['cacheContent']
+        if 'cacheType' in kwargs:
+            cache_type = kwargs['cacheType']
+        if 'cacheId' in kwargs:
+            cache_id = kwargs['cacheId']
+
         _setter("cache_content", cache_content)
         _setter("cache_type", cache_type)
         _setter("ttl", ttl)
@@ -216,7 +232,15 @@ class DomainCertificateConfig(dict):
              private_key: Optional[str] = None,
              server_certificate: Optional[str] = None,
              server_certificate_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'serverCertificate' in kwargs:
+            server_certificate = kwargs['serverCertificate']
+        if 'serverCertificateStatus' in kwargs:
+            server_certificate_status = kwargs['serverCertificateStatus']
+
         if private_key is not None:
             _setter("private_key", private_key)
         if server_certificate is not None:
@@ -278,7 +302,13 @@ class DomainConfigFunctionArg(dict):
              _setter: Callable[[Any, Any], None],
              arg_name: str,
              arg_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'argName' in kwargs:
+            arg_name = kwargs['argName']
+        if 'argValue' in kwargs:
+            arg_value = kwargs['argValue']
+
         _setter("arg_name", arg_name)
         _setter("arg_value", arg_value)
 
@@ -338,7 +368,15 @@ class DomainHttpHeaderConfig(dict):
              header_key: str,
              header_value: str,
              header_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'headerKey' in kwargs:
+            header_key = kwargs['headerKey']
+        if 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if 'headerId' in kwargs:
+            header_id = kwargs['headerId']
+
         _setter("header_key", header_key)
         _setter("header_value", header_value)
         if header_id is not None:
@@ -440,7 +478,25 @@ class DomainNewCertificateConfig(dict):
              private_key: Optional[str] = None,
              server_certificate: Optional[str] = None,
              server_certificate_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certId' in kwargs:
+            cert_id = kwargs['certId']
+        if 'certName' in kwargs:
+            cert_name = kwargs['certName']
+        if 'certRegion' in kwargs:
+            cert_region = kwargs['certRegion']
+        if 'certType' in kwargs:
+            cert_type = kwargs['certType']
+        if 'forceSet' in kwargs:
+            force_set = kwargs['forceSet']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'serverCertificate' in kwargs:
+            server_certificate = kwargs['serverCertificate']
+        if 'serverCertificateStatus' in kwargs:
+            server_certificate_status = kwargs['serverCertificateStatus']
+
         if cert_id is not None:
             _setter("cert_id", cert_id)
         if cert_name is not None:
@@ -560,7 +616,9 @@ class DomainNewSource(dict):
              priority: Optional[int] = None,
              type: Optional[str] = None,
              weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if content is not None:
             _setter("content", content)
         if port is not None:
@@ -652,7 +710,15 @@ class DomainPage404Config(dict):
              custom_page_url: Optional[str] = None,
              error_code: Optional[str] = None,
              page_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customPageUrl' in kwargs:
+            custom_page_url = kwargs['customPageUrl']
+        if 'errorCode' in kwargs:
+            error_code = kwargs['errorCode']
+        if 'pageType' in kwargs:
+            page_type = kwargs['pageType']
+
         if custom_page_url is not None:
             _setter("custom_page_url", custom_page_url)
         if error_code is not None:
@@ -708,7 +774,11 @@ class DomainParameterFilterConfig(dict):
              _setter: Callable[[Any, Any], None],
              enable: Optional[str] = None,
              hash_key_args: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hashKeyArgs' in kwargs:
+            hash_key_args = kwargs['hashKeyArgs']
+
         if enable is not None:
             _setter("enable", enable)
         if hash_key_args is not None:
@@ -764,7 +834,15 @@ class DomainReferConfig(dict):
              refer_lists: Sequence[str],
              allow_empty: Optional[str] = None,
              refer_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'referLists' in kwargs:
+            refer_lists = kwargs['referLists']
+        if 'allowEmpty' in kwargs:
+            allow_empty = kwargs['allowEmpty']
+        if 'referType' in kwargs:
+            refer_type = kwargs['referType']
+
         _setter("refer_lists", refer_lists)
         if allow_empty is not None:
             _setter("allow_empty", allow_empty)
@@ -810,7 +888,13 @@ class GetBlockedRegionsRegionResult(dict):
              continent: str,
              countries_and_regions: str,
              countries_and_regions_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'countriesAndRegions' in kwargs:
+            countries_and_regions = kwargs['countriesAndRegions']
+        if 'countriesAndRegionsName' in kwargs:
+            countries_and_regions_name = kwargs['countriesAndRegionsName']
+
         _setter("continent", continent)
         _setter("countries_and_regions", countries_and_regions)
         _setter("countries_and_regions_name", countries_and_regions_name)
@@ -875,7 +959,11 @@ class GetRealTimeLogDeliveriesDeliveryResult(dict):
              project: str,
              sls_region: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'slsRegion' in kwargs:
+            sls_region = kwargs['slsRegion']
+
         _setter("domain", domain)
         _setter("id", id)
         _setter("logstore", logstore)

@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ThreatDetection
     public static class GetAssets
     {
         /// <summary>
-        /// This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describecloudcenterinstances)
+        /// This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -43,9 +43,9 @@ namespace Pulumi.AliCloud.ThreatDetection
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAssetsResult>("alicloud:threatdetection/getAssets:getAssets", args ?? new GetAssetsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describecloudcenterinstances)
+        /// This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

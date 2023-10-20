@@ -67,7 +67,25 @@ class QosPolicyArgs:
              end_time: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destCidr' in kwargs:
+            dest_cidr = kwargs['destCidr']
+        if 'destPortRange' in kwargs:
+            dest_port_range = kwargs['destPortRange']
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if 'qosId' in kwargs:
+            qos_id = kwargs['qosId']
+        if 'sourceCidr' in kwargs:
+            source_cidr = kwargs['sourceCidr']
+        if 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         _setter("dest_cidr", dest_cidr)
         _setter("dest_port_range", dest_port_range)
         _setter("ip_protocol", ip_protocol)
@@ -273,7 +291,25 @@ class _QosPolicyState:
              source_cidr: Optional[pulumi.Input[str]] = None,
              source_port_range: Optional[pulumi.Input[str]] = None,
              start_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destCidr' in kwargs:
+            dest_cidr = kwargs['destCidr']
+        if 'destPortRange' in kwargs:
+            dest_port_range = kwargs['destPortRange']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if 'qosId' in kwargs:
+            qos_id = kwargs['qosId']
+        if 'sourceCidr' in kwargs:
+            source_cidr = kwargs['sourceCidr']
+        if 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if description is not None:
             _setter("description", description)
         if dest_cidr is not None:

@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a PolarDB Global Database Network resource.
  *
- * For information about PolarDB Global Database Network and how to use it, see [What is Global Database Network](https://www.alibabacloud.com/help/en/polardb-for-mysql/latest/createglobaldatabasenetwork).
+ * For information about PolarDB Global Database Network and how to use it, see [What is Global Database Network](https://www.alibabacloud.com/help/en/polardb/api-polardb-2017-08-01-createglobaldatabasenetwork).
  *
  * > **NOTE:** Available since v1.181.0+.
  *

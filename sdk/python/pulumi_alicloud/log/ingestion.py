@@ -59,7 +59,17 @@ class IngestionArgs:
              source: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'ingestionName' in kwargs:
+            ingestion_name = kwargs['ingestionName']
+        if 'runImmediately' in kwargs:
+            run_immediately = kwargs['runImmediately']
+        if 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         _setter("display_name", display_name)
         _setter("ingestion_name", ingestion_name)
         _setter("interval", interval)
@@ -229,7 +239,17 @@ class _IngestionState:
              run_immediately: Optional[pulumi.Input[bool]] = None,
              source: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'ingestionName' in kwargs:
+            ingestion_name = kwargs['ingestionName']
+        if 'runImmediately' in kwargs:
+            run_immediately = kwargs['runImmediately']
+        if 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if description is not None:
             _setter("description", description)
         if display_name is not None:

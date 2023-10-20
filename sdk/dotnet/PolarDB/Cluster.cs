@@ -22,8 +22,7 @@ namespace Pulumi.AliCloud.PolarDB
     public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Output("allowShutDown")]
         public Output<string?> AllowShutDown { get; private set; } = null!;
@@ -54,13 +53,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> CollectorStatus { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since 1.81.0+) PolarDB cluster connection string.
+        /// (Available since 1.81.0) PolarDB cluster connection string.
         /// </summary>
         [Output("connectionString")]
         public Output<string> ConnectionString { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since 1.204.1+) PolarDB cluster creation time.
+        /// (Available since 1.204.1) PolarDB cluster creation time.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -101,7 +100,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<int> DbNodeCount { get; private set; } = null!;
 
         /// <summary>
-        /// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+        /// The ID of the node or node subscript. Node subscript values: 1 to 15.
+        /// </summary>
+        [Output("dbNodeId")]
+        public Output<string?> DbNodeId { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
         /// </summary>
         [Output("dbNodeNum")]
         public Output<int?> DbNodeNum { get; private set; } = null!;
@@ -123,7 +128,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         /// </summary>
         [Output("defaultTimeZone")]
-        public Output<string?> DefaultTimeZone { get; private set; } = null!;
+        public Output<string> DefaultTimeZone { get; private set; } = null!;
 
         /// <summary>
         /// turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
@@ -165,6 +170,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> GdnId { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+        /// </summary>
+        [Output("hotReplicaMode")]
+        public Output<string> HotReplicaMode { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
         /// </summary>
         [Output("hotStandbyCluster")]
@@ -179,18 +190,18 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> ImciSwitch { get; private set; } = null!;
 
         /// <summary>
-        /// Enable the Binlog function. Valid values are `OFF`, `ON`.
+        /// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
         /// &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
         /// </summary>
         [Output("loosePolarLogBin")]
-        public Output<string?> LoosePolarLogBin { get; private set; } = null!;
+        public Output<string> LoosePolarLogBin { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+        /// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
         /// &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         /// </summary>
         [Output("lowerCaseTableNames")]
-        public Output<int?> LowerCaseTableNames { get; private set; } = null!;
+        public Output<int> LowerCaseTableNames { get; private set; } = null!;
 
         /// <summary>
         /// Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
@@ -245,7 +256,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> PlannedStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since 1.196.0+) PolarDB cluster connection port.
+        /// (Available since 1.196.0) PolarDB cluster connection port.
         /// </summary>
         [Output("port")]
         public Output<string> Port { get; private set; } = null!;
@@ -258,7 +269,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> ProxyClass { get; private set; } = null!;
 
         /// <summary>
-        /// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+        /// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
         /// &gt; **NOTE:** This parameter is valid only for standard clusters.
         /// </summary>
         [Output("proxyType")]
@@ -283,36 +294,43 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string> RoleArn { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+        /// </summary>
+        [Output("scaleApRoNumMax")]
+        public Output<int> ScaleApRoNumMax { get; private set; } = null!;
+
+        /// <summary>
+        /// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+        /// </summary>
+        [Output("scaleApRoNumMin")]
+        public Output<int> ScaleApRoNumMin { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Output("scaleMax")]
         public Output<int?> ScaleMax { get; private set; } = null!;
 
         /// <summary>
-        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
         /// </summary>
         [Output("scaleMin")]
         public Output<int?> ScaleMin { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Output("scaleRoNumMax")]
         public Output<int?> ScaleRoNumMax { get; private set; } = null!;
 
         /// <summary>
-        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Output("scaleRoNumMin")]
         public Output<int?> ScaleRoNumMin { get; private set; } = null!;
 
         /// <summary>
-        /// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
         /// </summary>
         [Output("secondsUntilAutoPause")]
         public Output<int> SecondsUntilAutoPause { get; private set; } = null!;
@@ -332,8 +350,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<ImmutableArray<string>> SecurityIps { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the serverless cluster. Set the value to AgileServerless.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+        /// &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+        /// </summary>
+        [Output("serverlessSteadySwitch")]
+        public Output<string?> ServerlessSteadySwitch { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Output("serverlessType")]
         public Output<string?> ServerlessType { get; private set; } = null!;
@@ -345,7 +369,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<string?> SourceResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since 1.204.1+) PolarDB cluster status.
+        /// (Available since 1.204.1) PolarDB cluster status.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -386,7 +410,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// (Available since 1.200.0+) The region where the TDE key resides.
+        /// (Available since 1.200.0) The region where the TDE key resides.
         /// &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
         /// &gt; **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
         /// </summary>
@@ -472,8 +496,7 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("allowShutDown")]
         public Input<string>? AllowShutDown { get; set; }
@@ -545,7 +568,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? DbNodeCount { get; set; }
 
         /// <summary>
-        /// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+        /// The ID of the node or node subscript. Node subscript values: 1 to 15.
+        /// </summary>
+        [Input("dbNodeId")]
+        public Input<string>? DbNodeId { get; set; }
+
+        /// <summary>
+        /// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
         /// </summary>
         [Input("dbNodeNum")]
         public Input<int>? DbNodeNum { get; set; }
@@ -609,6 +638,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? GdnId { get; set; }
 
         /// <summary>
+        /// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+        /// </summary>
+        [Input("hotReplicaMode")]
+        public Input<string>? HotReplicaMode { get; set; }
+
+        /// <summary>
         /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
         /// </summary>
         [Input("hotStandbyCluster")]
@@ -623,14 +658,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? ImciSwitch { get; set; }
 
         /// <summary>
-        /// Enable the Binlog function. Valid values are `OFF`, `ON`.
+        /// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
         /// &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
         /// </summary>
         [Input("loosePolarLogBin")]
         public Input<string>? LoosePolarLogBin { get; set; }
 
         /// <summary>
-        /// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+        /// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
         /// &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         /// </summary>
         [Input("lowerCaseTableNames")]
@@ -702,7 +737,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? ProxyClass { get; set; }
 
         /// <summary>
-        /// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+        /// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
         /// &gt; **NOTE:** This parameter is valid only for standard clusters.
         /// </summary>
         [Input("proxyType")]
@@ -727,36 +762,43 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
-        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+        /// </summary>
+        [Input("scaleApRoNumMax")]
+        public Input<int>? ScaleApRoNumMax { get; set; }
+
+        /// <summary>
+        /// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+        /// </summary>
+        [Input("scaleApRoNumMin")]
+        public Input<int>? ScaleApRoNumMin { get; set; }
+
+        /// <summary>
+        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleMax")]
         public Input<int>? ScaleMax { get; set; }
 
         /// <summary>
-        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleMin")]
         public Input<int>? ScaleMin { get; set; }
 
         /// <summary>
-        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleRoNumMax")]
         public Input<int>? ScaleRoNumMax { get; set; }
 
         /// <summary>
-        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleRoNumMin")]
         public Input<int>? ScaleRoNumMin { get; set; }
 
         /// <summary>
-        /// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("secondsUntilAutoPause")]
         public Input<int>? SecondsUntilAutoPause { get; set; }
@@ -788,8 +830,14 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// The type of the serverless cluster. Set the value to AgileServerless.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+        /// &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+        /// </summary>
+        [Input("serverlessSteadySwitch")]
+        public Input<string>? ServerlessSteadySwitch { get; set; }
+
+        /// <summary>
+        /// The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("serverlessType")]
         public Input<string>? ServerlessType { get; set; }
@@ -882,8 +930,7 @@ namespace Pulumi.AliCloud.PolarDB
     public sealed class ClusterState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("allowShutDown")]
         public Input<string>? AllowShutDown { get; set; }
@@ -914,13 +961,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? CollectorStatus { get; set; }
 
         /// <summary>
-        /// (Available since 1.81.0+) PolarDB cluster connection string.
+        /// (Available since 1.81.0) PolarDB cluster connection string.
         /// </summary>
         [Input("connectionString")]
         public Input<string>? ConnectionString { get; set; }
 
         /// <summary>
-        /// (Available since 1.204.1+) PolarDB cluster creation time.
+        /// (Available since 1.204.1) PolarDB cluster creation time.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -967,7 +1014,13 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<int>? DbNodeCount { get; set; }
 
         /// <summary>
-        /// The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+        /// The ID of the node or node subscript. Node subscript values: 1 to 15.
+        /// </summary>
+        [Input("dbNodeId")]
+        public Input<string>? DbNodeId { get; set; }
+
+        /// <summary>
+        /// The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
         /// </summary>
         [Input("dbNodeNum")]
         public Input<int>? DbNodeNum { get; set; }
@@ -1031,6 +1084,12 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? GdnId { get; set; }
 
         /// <summary>
+        /// Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+        /// </summary>
+        [Input("hotReplicaMode")]
+        public Input<string>? HotReplicaMode { get; set; }
+
+        /// <summary>
         /// Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
         /// </summary>
         [Input("hotStandbyCluster")]
@@ -1045,14 +1104,14 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? ImciSwitch { get; set; }
 
         /// <summary>
-        /// Enable the Binlog function. Valid values are `OFF`, `ON`.
+        /// Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
         /// &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
         /// </summary>
         [Input("loosePolarLogBin")]
         public Input<string>? LoosePolarLogBin { get; set; }
 
         /// <summary>
-        /// Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+        /// Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
         /// &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
         /// </summary>
         [Input("lowerCaseTableNames")]
@@ -1117,7 +1176,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? PlannedStartTime { get; set; }
 
         /// <summary>
-        /// (Available since 1.196.0+) PolarDB cluster connection port.
+        /// (Available since 1.196.0) PolarDB cluster connection port.
         /// </summary>
         [Input("port")]
         public Input<string>? Port { get; set; }
@@ -1130,7 +1189,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? ProxyClass { get; set; }
 
         /// <summary>
-        /// The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+        /// The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
         /// &gt; **NOTE:** This parameter is valid only for standard clusters.
         /// </summary>
         [Input("proxyType")]
@@ -1155,36 +1214,43 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? RoleArn { get; set; }
 
         /// <summary>
-        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+        /// </summary>
+        [Input("scaleApRoNumMax")]
+        public Input<int>? ScaleApRoNumMax { get; set; }
+
+        /// <summary>
+        /// Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+        /// </summary>
+        [Input("scaleApRoNumMin")]
+        public Input<int>? ScaleApRoNumMin { get; set; }
+
+        /// <summary>
+        /// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleMax")]
         public Input<int>? ScaleMax { get; set; }
 
         /// <summary>
-        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleMin")]
         public Input<int>? ScaleMin { get; set; }
 
         /// <summary>
-        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleRoNumMax")]
         public Input<int>? ScaleRoNumMax { get; set; }
 
         /// <summary>
-        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("scaleRoNumMin")]
         public Input<int>? ScaleRoNumMin { get; set; }
 
         /// <summary>
-        /// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("secondsUntilAutoPause")]
         public Input<int>? SecondsUntilAutoPause { get; set; }
@@ -1216,8 +1282,14 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// The type of the serverless cluster. Set the value to AgileServerless.
-        /// &gt; **NOTE:** This parameter is valid only for serverless clusters.
+        /// Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+        /// &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+        /// </summary>
+        [Input("serverlessSteadySwitch")]
+        public Input<string>? ServerlessSteadySwitch { get; set; }
+
+        /// <summary>
+        /// The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
         /// </summary>
         [Input("serverlessType")]
         public Input<string>? ServerlessType { get; set; }
@@ -1229,7 +1301,7 @@ namespace Pulumi.AliCloud.PolarDB
         public Input<string>? SourceResourceId { get; set; }
 
         /// <summary>
-        /// (Available since 1.204.1+) PolarDB cluster status.
+        /// (Available since 1.204.1) PolarDB cluster status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -1276,7 +1348,7 @@ namespace Pulumi.AliCloud.PolarDB
         }
 
         /// <summary>
-        /// (Available since 1.200.0+) The region where the TDE key resides.
+        /// (Available since 1.200.0) The region where the TDE key resides.
         /// &gt; **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
         /// &gt; **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
         /// </summary>

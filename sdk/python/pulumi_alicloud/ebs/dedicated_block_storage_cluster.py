@@ -43,7 +43,15 @@ class DedicatedBlockStorageClusterArgs:
              type: pulumi.Input[str],
              zone_id: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dedicatedBlockStorageClusterName' in kwargs:
+            dedicated_block_storage_cluster_name = kwargs['dedicatedBlockStorageClusterName']
+        if 'totalCapacity' in kwargs:
+            total_capacity = kwargs['totalCapacity']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("dedicated_block_storage_cluster_name", dedicated_block_storage_cluster_name)
         _setter("total_capacity", total_capacity)
         _setter("type", type)
@@ -188,7 +196,33 @@ class _DedicatedBlockStorageClusterState:
              type: Optional[pulumi.Input[str]] = None,
              used_capacity: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availableCapacity' in kwargs:
+            available_capacity = kwargs['availableCapacity']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dedicatedBlockStorageClusterId' in kwargs:
+            dedicated_block_storage_cluster_id = kwargs['dedicatedBlockStorageClusterId']
+        if 'dedicatedBlockStorageClusterName' in kwargs:
+            dedicated_block_storage_cluster_name = kwargs['dedicatedBlockStorageClusterName']
+        if 'deliveryCapacity' in kwargs:
+            delivery_capacity = kwargs['deliveryCapacity']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'supportedCategory' in kwargs:
+            supported_category = kwargs['supportedCategory']
+        if 'totalCapacity' in kwargs:
+            total_capacity = kwargs['totalCapacity']
+        if 'usedCapacity' in kwargs:
+            used_capacity = kwargs['usedCapacity']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if available_capacity is not None:
             _setter("available_capacity", available_capacity)
         if category is not None:

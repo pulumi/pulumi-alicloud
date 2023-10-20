@@ -105,9 +105,9 @@ def get_enterprise_proxy_accesses(enable_details: Optional[bool] = None,
                                   proxy_id: Optional[str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnterpriseProxyAccessesResult:
     """
-    This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createproxyaccess)
+    This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -154,9 +154,9 @@ def get_enterprise_proxy_accesses_output(enable_details: Optional[pulumi.Input[O
                                          proxy_id: Optional[pulumi.Input[str]] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnterpriseProxyAccessesResult]:
     """
-    This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createproxyaccess)
+    This data source provides DMS Enterprise Proxy Access available to the user.[What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 

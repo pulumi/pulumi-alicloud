@@ -195,10 +195,10 @@ def get_router_interfaces(ids: Optional[Sequence[str]] = None,
                           status: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouterInterfacesResult:
     """
-    This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+    This data source provides information about [router interfaces](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
     that connect VPCs together.
 
-    > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interfaces.
+    > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
 
     ## Example Usage
 
@@ -267,10 +267,10 @@ def get_router_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[st
                                  status: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterInterfacesResult]:
     """
-    This data source provides information about [router interfaces](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+    This data source provides information about [router interfaces](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
     that connect VPCs together.
 
-    > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new resource alicloud_express_connect_router_interfaces.
+    > **DEPRECATED:**  This datasource has been deprecated from version `1.199.0`. Please use new data source alicloud_express_connect_router_interfaces.
 
     ## Example Usage
 

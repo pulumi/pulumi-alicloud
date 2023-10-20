@@ -9,6 +9,7 @@ import com.pulumi.alicloud.servicemesh.outputs.ServiceMeshMeshConfigControlPlane
 import com.pulumi.alicloud.servicemesh.outputs.ServiceMeshMeshConfigKiali;
 import com.pulumi.alicloud.servicemesh.outputs.ServiceMeshMeshConfigOpa;
 import com.pulumi.alicloud.servicemesh.outputs.ServiceMeshMeshConfigPilot;
+import com.pulumi.alicloud.servicemesh.outputs.ServiceMeshMeshConfigPrometheus;
 import com.pulumi.alicloud.servicemesh.outputs.ServiceMeshMeshConfigProxy;
 import com.pulumi.alicloud.servicemesh.outputs.ServiceMeshMeshConfigSidecarInjector;
 import com.pulumi.core.annotations.CustomType;
@@ -21,158 +22,182 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfig {
     /**
-     * @return The configuration of the access logging. See `access_log` below.
+     * @return The access logging configuration. See `mesh_config-access_log` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigAccessLog accessLog;
     /**
-     * @return The configuration of the audit. See `audit` below.
+     * @return Audit information. See `mesh_config-audit` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigAudit audit;
     /**
-     * @return The configuration of the control plane logging. See `control_plane_log` below.
+     * @return Control plane log collection configuration. See `mesh_config-control_plane_log` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigControlPlaneLog controlPlaneLog;
     /**
-     * @return Whether to enable the use of a custom zipkin.
+     * @return Whether or not to enable the use of a custom zipkin.
      * 
      */
     private @Nullable Boolean customizedZipkin;
     /**
-     * @return The enable locality lb.
+     * @return Whether to enable service can access the service through the nearest node access.
      * 
      */
     private @Nullable Boolean enableLocalityLb;
     /**
-     * @return The configuration of the Kiali. See `kiali` below.
+     * @return The IP ADDRESS range.
+     * 
+     */
+    private @Nullable String includeIpRanges;
+    /**
+     * @return Kiali configuration. See `mesh_config-kiali` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigKiali kiali;
     /**
-     * @return The open-door policy of agent (OPA) plug-in information. See `opa` below.
+     * @return The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigOpa opa;
     /**
-     * @return The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+     * @return Out to the traffic policy.
      * 
      */
     private @Nullable String outboundTrafficPolicy;
     /**
-     * @return The configuration of the Link trace sampling. See `pilot` below.
+     * @return Link trace sampling information. See `mesh_config-pilot` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigPilot pilot;
     /**
-     * @return The configuration of the Proxy. See `proxy` below.
+     * @return Prometheus configuration.
+     * 
+     */
+    private @Nullable ServiceMeshMeshConfigPrometheus prometheus;
+    /**
+     * @return Proxy configuration. See `mesh_config-proxy` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigProxy proxy;
     /**
-     * @return The configuration of the Sidecar injector. See `sidecar_injector` below.
+     * @return Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
      * 
      */
     private @Nullable ServiceMeshMeshConfigSidecarInjector sidecarInjector;
     /**
-     * @return Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+     * @return Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
      * 
      */
     private @Nullable Boolean telemetry;
     /**
-     * @return Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+     * @return Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
      * 
      */
     private @Nullable Boolean tracing;
 
     private ServiceMeshMeshConfig() {}
     /**
-     * @return The configuration of the access logging. See `access_log` below.
+     * @return The access logging configuration. See `mesh_config-access_log` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigAccessLog> accessLog() {
         return Optional.ofNullable(this.accessLog);
     }
     /**
-     * @return The configuration of the audit. See `audit` below.
+     * @return Audit information. See `mesh_config-audit` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigAudit> audit() {
         return Optional.ofNullable(this.audit);
     }
     /**
-     * @return The configuration of the control plane logging. See `control_plane_log` below.
+     * @return Control plane log collection configuration. See `mesh_config-control_plane_log` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigControlPlaneLog> controlPlaneLog() {
         return Optional.ofNullable(this.controlPlaneLog);
     }
     /**
-     * @return Whether to enable the use of a custom zipkin.
+     * @return Whether or not to enable the use of a custom zipkin.
      * 
      */
     public Optional<Boolean> customizedZipkin() {
         return Optional.ofNullable(this.customizedZipkin);
     }
     /**
-     * @return The enable locality lb.
+     * @return Whether to enable service can access the service through the nearest node access.
      * 
      */
     public Optional<Boolean> enableLocalityLb() {
         return Optional.ofNullable(this.enableLocalityLb);
     }
     /**
-     * @return The configuration of the Kiali. See `kiali` below.
+     * @return The IP ADDRESS range.
+     * 
+     */
+    public Optional<String> includeIpRanges() {
+        return Optional.ofNullable(this.includeIpRanges);
+    }
+    /**
+     * @return Kiali configuration. See `mesh_config-kiali` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigKiali> kiali() {
         return Optional.ofNullable(this.kiali);
     }
     /**
-     * @return The open-door policy of agent (OPA) plug-in information. See `opa` below.
+     * @return The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigOpa> opa() {
         return Optional.ofNullable(this.opa);
     }
     /**
-     * @return The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+     * @return Out to the traffic policy.
      * 
      */
     public Optional<String> outboundTrafficPolicy() {
         return Optional.ofNullable(this.outboundTrafficPolicy);
     }
     /**
-     * @return The configuration of the Link trace sampling. See `pilot` below.
+     * @return Link trace sampling information. See `mesh_config-pilot` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigPilot> pilot() {
         return Optional.ofNullable(this.pilot);
     }
     /**
-     * @return The configuration of the Proxy. See `proxy` below.
+     * @return Prometheus configuration.
+     * 
+     */
+    public Optional<ServiceMeshMeshConfigPrometheus> prometheus() {
+        return Optional.ofNullable(this.prometheus);
+    }
+    /**
+     * @return Proxy configuration. See `mesh_config-proxy` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigProxy> proxy() {
         return Optional.ofNullable(this.proxy);
     }
     /**
-     * @return The configuration of the Sidecar injector. See `sidecar_injector` below.
+     * @return Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
      * 
      */
     public Optional<ServiceMeshMeshConfigSidecarInjector> sidecarInjector() {
         return Optional.ofNullable(this.sidecarInjector);
     }
     /**
-     * @return Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+     * @return Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
      * 
      */
     public Optional<Boolean> telemetry() {
         return Optional.ofNullable(this.telemetry);
     }
     /**
-     * @return Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+     * @return Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
      * 
      */
     public Optional<Boolean> tracing() {
@@ -193,10 +218,12 @@ public final class ServiceMeshMeshConfig {
         private @Nullable ServiceMeshMeshConfigControlPlaneLog controlPlaneLog;
         private @Nullable Boolean customizedZipkin;
         private @Nullable Boolean enableLocalityLb;
+        private @Nullable String includeIpRanges;
         private @Nullable ServiceMeshMeshConfigKiali kiali;
         private @Nullable ServiceMeshMeshConfigOpa opa;
         private @Nullable String outboundTrafficPolicy;
         private @Nullable ServiceMeshMeshConfigPilot pilot;
+        private @Nullable ServiceMeshMeshConfigPrometheus prometheus;
         private @Nullable ServiceMeshMeshConfigProxy proxy;
         private @Nullable ServiceMeshMeshConfigSidecarInjector sidecarInjector;
         private @Nullable Boolean telemetry;
@@ -209,10 +236,12 @@ public final class ServiceMeshMeshConfig {
     	      this.controlPlaneLog = defaults.controlPlaneLog;
     	      this.customizedZipkin = defaults.customizedZipkin;
     	      this.enableLocalityLb = defaults.enableLocalityLb;
+    	      this.includeIpRanges = defaults.includeIpRanges;
     	      this.kiali = defaults.kiali;
     	      this.opa = defaults.opa;
     	      this.outboundTrafficPolicy = defaults.outboundTrafficPolicy;
     	      this.pilot = defaults.pilot;
+    	      this.prometheus = defaults.prometheus;
     	      this.proxy = defaults.proxy;
     	      this.sidecarInjector = defaults.sidecarInjector;
     	      this.telemetry = defaults.telemetry;
@@ -245,6 +274,11 @@ public final class ServiceMeshMeshConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder includeIpRanges(@Nullable String includeIpRanges) {
+            this.includeIpRanges = includeIpRanges;
+            return this;
+        }
+        @CustomType.Setter
         public Builder kiali(@Nullable ServiceMeshMeshConfigKiali kiali) {
             this.kiali = kiali;
             return this;
@@ -262,6 +296,11 @@ public final class ServiceMeshMeshConfig {
         @CustomType.Setter
         public Builder pilot(@Nullable ServiceMeshMeshConfigPilot pilot) {
             this.pilot = pilot;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder prometheus(@Nullable ServiceMeshMeshConfigPrometheus prometheus) {
+            this.prometheus = prometheus;
             return this;
         }
         @CustomType.Setter
@@ -291,10 +330,12 @@ public final class ServiceMeshMeshConfig {
             o.controlPlaneLog = controlPlaneLog;
             o.customizedZipkin = customizedZipkin;
             o.enableLocalityLb = enableLocalityLb;
+            o.includeIpRanges = includeIpRanges;
             o.kiali = kiali;
             o.opa = opa;
             o.outboundTrafficPolicy = outboundTrafficPolicy;
             o.pilot = pilot;
+            o.prometheus = prometheus;
             o.proxy = proxy;
             o.sidecarInjector = sidecarInjector;
             o.telemetry = telemetry;

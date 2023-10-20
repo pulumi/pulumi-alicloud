@@ -58,7 +58,15 @@ class SslVpnServerArgs:
              name: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[int]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientIpPool' in kwargs:
+            client_ip_pool = kwargs['clientIpPool']
+        if 'localSubnet' in kwargs:
+            local_subnet = kwargs['localSubnet']
+        if 'vpnGatewayId' in kwargs:
+            vpn_gateway_id = kwargs['vpnGatewayId']
+
         _setter("client_ip_pool", client_ip_pool)
         _setter("local_subnet", local_subnet)
         _setter("vpn_gateway_id", vpn_gateway_id)
@@ -232,7 +240,19 @@ class _SslVpnServerState:
              port: Optional[pulumi.Input[int]] = None,
              protocol: Optional[pulumi.Input[str]] = None,
              vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientIpPool' in kwargs:
+            client_ip_pool = kwargs['clientIpPool']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'localSubnet' in kwargs:
+            local_subnet = kwargs['localSubnet']
+        if 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if 'vpnGatewayId' in kwargs:
+            vpn_gateway_id = kwargs['vpnGatewayId']
+
         if cipher is not None:
             _setter("cipher", cipher)
         if client_ip_pool is not None:

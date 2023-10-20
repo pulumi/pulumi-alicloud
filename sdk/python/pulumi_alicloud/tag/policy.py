@@ -40,7 +40,17 @@ class PolicyArgs:
              policy_name: pulumi.Input[str],
              policy_desc: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyContent' in kwargs:
+            policy_content = kwargs['policyContent']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyDesc' in kwargs:
+            policy_desc = kwargs['policyDesc']
+        if 'userType' in kwargs:
+            user_type = kwargs['userType']
+
         _setter("policy_content", policy_content)
         _setter("policy_name", policy_name)
         if policy_desc is not None:
@@ -127,7 +137,17 @@ class _PolicyState:
              policy_desc: Optional[pulumi.Input[str]] = None,
              policy_name: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyContent' in kwargs:
+            policy_content = kwargs['policyContent']
+        if 'policyDesc' in kwargs:
+            policy_desc = kwargs['policyDesc']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'userType' in kwargs:
+            user_type = kwargs['userType']
+
         if policy_content is not None:
             _setter("policy_content", policy_content)
         if policy_desc is not None:

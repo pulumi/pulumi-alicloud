@@ -18,7 +18,7 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
      * 
-     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the NAS service that means you have read and agreed the [NAS Terms of Service](https://help.aliyun.com/knowledge_detail/44004.html). The service can not closed once it is opened.
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the NAS service that means you have read and agreed the [NAS Terms of Service](https://www.alibabacloud.com/help/en/scu/latest/overview-of-scu). The service can not closed once it is opened.
      * 
      */
     @Import(name="enable")
@@ -27,7 +27,7 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
      * 
-     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the NAS service that means you have read and agreed the [NAS Terms of Service](https://help.aliyun.com/knowledge_detail/44004.html). The service can not closed once it is opened.
+     * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the NAS service that means you have read and agreed the [NAS Terms of Service](https://www.alibabacloud.com/help/en/scu/latest/overview-of-scu). The service can not closed once it is opened.
      * 
      */
     public Optional<Output<String>> enable() {
@@ -61,7 +61,7 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param enable Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
          * 
-         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the NAS service that means you have read and agreed the [NAS Terms of Service](https://help.aliyun.com/knowledge_detail/44004.html). The service can not closed once it is opened.
+         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the NAS service that means you have read and agreed the [NAS Terms of Service](https://www.alibabacloud.com/help/en/scu/latest/overview-of-scu). The service can not closed once it is opened.
          * 
          * @return builder
          * 
@@ -74,7 +74,7 @@ public final class GetServiceArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param enable Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: &#34;On&#34; or &#34;Off&#34;. Default to &#34;Off&#34;.
          * 
-         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the NAS service that means you have read and agreed the [NAS Terms of Service](https://help.aliyun.com/knowledge_detail/44004.html). The service can not closed once it is opened.
+         * &gt; **NOTE:** Setting `enable = &#34;On&#34;` to open the NAS service that means you have read and agreed the [NAS Terms of Service](https://www.alibabacloud.com/help/en/scu/latest/overview-of-scu). The service can not closed once it is opened.
          * 
          * @return builder
          * 

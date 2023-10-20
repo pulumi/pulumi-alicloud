@@ -117,7 +117,39 @@ class EtlArgs:
              status: Optional[pulumi.Input[str]] = None,
              to_time: Optional[pulumi.Input[int]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'etlName' in kwargs:
+            etl_name = kwargs['etlName']
+        if 'etlSinks' in kwargs:
+            etl_sinks = kwargs['etlSinks']
+        if 'accessKeyId' in kwargs:
+            access_key_id = kwargs['accessKeyId']
+        if 'accessKeySecret' in kwargs:
+            access_key_secret = kwargs['accessKeySecret']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'etlType' in kwargs:
+            etl_type = kwargs['etlType']
+        if 'fromTime' in kwargs:
+            from_time = kwargs['fromTime']
+        if 'kmsEncryptedAccessKeyId' in kwargs:
+            kms_encrypted_access_key_id = kwargs['kmsEncryptedAccessKeyId']
+        if 'kmsEncryptedAccessKeySecret' in kwargs:
+            kms_encrypted_access_key_secret = kwargs['kmsEncryptedAccessKeySecret']
+        if 'kmsEncryptionAccessKeyIdContext' in kwargs:
+            kms_encryption_access_key_id_context = kwargs['kmsEncryptionAccessKeyIdContext']
+        if 'kmsEncryptionAccessKeySecretContext' in kwargs:
+            kms_encryption_access_key_secret_context = kwargs['kmsEncryptionAccessKeySecretContext']
+        if 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'toTime' in kwargs:
+            to_time = kwargs['toTime']
+
         _setter("display_name", display_name)
         _setter("etl_name", etl_name)
         _setter("etl_sinks", etl_sinks)
@@ -540,7 +572,39 @@ class _EtlState:
              status: Optional[pulumi.Input[str]] = None,
              to_time: Optional[pulumi.Input[int]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKeyId' in kwargs:
+            access_key_id = kwargs['accessKeyId']
+        if 'accessKeySecret' in kwargs:
+            access_key_secret = kwargs['accessKeySecret']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'etlName' in kwargs:
+            etl_name = kwargs['etlName']
+        if 'etlSinks' in kwargs:
+            etl_sinks = kwargs['etlSinks']
+        if 'etlType' in kwargs:
+            etl_type = kwargs['etlType']
+        if 'fromTime' in kwargs:
+            from_time = kwargs['fromTime']
+        if 'kmsEncryptedAccessKeyId' in kwargs:
+            kms_encrypted_access_key_id = kwargs['kmsEncryptedAccessKeyId']
+        if 'kmsEncryptedAccessKeySecret' in kwargs:
+            kms_encrypted_access_key_secret = kwargs['kmsEncryptedAccessKeySecret']
+        if 'kmsEncryptionAccessKeyIdContext' in kwargs:
+            kms_encryption_access_key_id_context = kwargs['kmsEncryptionAccessKeyIdContext']
+        if 'kmsEncryptionAccessKeySecretContext' in kwargs:
+            kms_encryption_access_key_secret_context = kwargs['kmsEncryptionAccessKeySecretContext']
+        if 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'toTime' in kwargs:
+            to_time = kwargs['toTime']
+
         if access_key_id is not None:
             _setter("access_key_id", access_key_id)
         if access_key_secret is not None:

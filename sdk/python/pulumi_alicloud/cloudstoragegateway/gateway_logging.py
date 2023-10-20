@@ -39,7 +39,15 @@ class GatewayLoggingArgs:
              sls_logstore: pulumi.Input[str],
              sls_project: pulumi.Input[str],
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'slsLogstore' in kwargs:
+            sls_logstore = kwargs['slsLogstore']
+        if 'slsProject' in kwargs:
+            sls_project = kwargs['slsProject']
+
         _setter("gateway_id", gateway_id)
         _setter("sls_logstore", sls_logstore)
         _setter("sls_project", sls_project)
@@ -123,7 +131,15 @@ class _GatewayLoggingState:
              sls_logstore: Optional[pulumi.Input[str]] = None,
              sls_project: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'gatewayId' in kwargs:
+            gateway_id = kwargs['gatewayId']
+        if 'slsLogstore' in kwargs:
+            sls_logstore = kwargs['slsLogstore']
+        if 'slsProject' in kwargs:
+            sls_project = kwargs['slsProject']
+
         if gateway_id is not None:
             _setter("gateway_id", gateway_id)
         if sls_logstore is not None:

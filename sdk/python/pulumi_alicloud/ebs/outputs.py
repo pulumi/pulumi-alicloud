@@ -96,7 +96,33 @@ class GetDedicatedBlockStorageClustersClusterResult(dict):
              type: str,
              used_capacity: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availableCapacity' in kwargs:
+            available_capacity = kwargs['availableCapacity']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dedicatedBlockStorageClusterId' in kwargs:
+            dedicated_block_storage_cluster_id = kwargs['dedicatedBlockStorageClusterId']
+        if 'dedicatedBlockStorageClusterName' in kwargs:
+            dedicated_block_storage_cluster_name = kwargs['dedicatedBlockStorageClusterName']
+        if 'deliveryCapacity' in kwargs:
+            delivery_capacity = kwargs['deliveryCapacity']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'supportedCategory' in kwargs:
+            supported_category = kwargs['supportedCategory']
+        if 'totalCapacity' in kwargs:
+            total_capacity = kwargs['totalCapacity']
+        if 'usedCapacity' in kwargs:
+            used_capacity = kwargs['usedCapacity']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("available_capacity", available_capacity)
         _setter("category", category)
         _setter("create_time", create_time)
@@ -323,7 +349,31 @@ class GetDiskReplicaGroupsGroupResult(dict):
              standby_region: str,
              standby_zone: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationRegionId' in kwargs:
+            destination_region_id = kwargs['destinationRegionId']
+        if 'destinationZoneId' in kwargs:
+            destination_zone_id = kwargs['destinationZoneId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'lastRecoverPoint' in kwargs:
+            last_recover_point = kwargs['lastRecoverPoint']
+        if 'primaryRegion' in kwargs:
+            primary_region = kwargs['primaryRegion']
+        if 'primaryZone' in kwargs:
+            primary_zone = kwargs['primaryZone']
+        if 'replicaGroupId' in kwargs:
+            replica_group_id = kwargs['replicaGroupId']
+        if 'sourceRegionId' in kwargs:
+            source_region_id = kwargs['sourceRegionId']
+        if 'sourceZoneId' in kwargs:
+            source_zone_id = kwargs['sourceZoneId']
+        if 'standbyRegion' in kwargs:
+            standby_region = kwargs['standbyRegion']
+        if 'standbyZone' in kwargs:
+            standby_zone = kwargs['standbyZone']
+
         _setter("description", description)
         _setter("destination_region_id", destination_region_id)
         _setter("destination_zone_id", destination_zone_id)
@@ -533,7 +583,27 @@ class GetDiskReplicaPairsPairResult(dict):
              rpo: str,
              source_zone_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationDiskId' in kwargs:
+            destination_disk_id = kwargs['destinationDiskId']
+        if 'destinationRegionId' in kwargs:
+            destination_region_id = kwargs['destinationRegionId']
+        if 'destinationZoneId' in kwargs:
+            destination_zone_id = kwargs['destinationZoneId']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'pairName' in kwargs:
+            pair_name = kwargs['pairName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'replicaPairId' in kwargs:
+            replica_pair_id = kwargs['replicaPairId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sourceZoneId' in kwargs:
+            source_zone_id = kwargs['sourceZoneId']
+
         _setter("bandwidth", bandwidth)
         _setter("description", description)
         _setter("destination_disk_id", destination_disk_id)
@@ -678,7 +748,11 @@ class GetRegionsRegionResult(dict):
              _setter: Callable[[Any, Any], None],
              region_id: str,
              zones: Sequence['outputs.GetRegionsRegionZoneResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("region_id", region_id)
         _setter("zones", zones)
 
@@ -714,7 +788,11 @@ class GetRegionsRegionZoneResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("zone_id", zone_id)
 
     @property

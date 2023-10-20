@@ -43,7 +43,19 @@ class TransitRouteTableAggregationArgs:
              transit_route_table_id: pulumi.Input[str],
              transit_route_table_aggregation_description: Optional[pulumi.Input[str]] = None,
              transit_route_table_aggregation_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouteTableAggregationCidr' in kwargs:
+            transit_route_table_aggregation_cidr = kwargs['transitRouteTableAggregationCidr']
+        if 'transitRouteTableAggregationScope' in kwargs:
+            transit_route_table_aggregation_scope = kwargs['transitRouteTableAggregationScope']
+        if 'transitRouteTableId' in kwargs:
+            transit_route_table_id = kwargs['transitRouteTableId']
+        if 'transitRouteTableAggregationDescription' in kwargs:
+            transit_route_table_aggregation_description = kwargs['transitRouteTableAggregationDescription']
+        if 'transitRouteTableAggregationName' in kwargs:
+            transit_route_table_aggregation_name = kwargs['transitRouteTableAggregationName']
+
         _setter("transit_route_table_aggregation_cidr", transit_route_table_aggregation_cidr)
         _setter("transit_route_table_aggregation_scope", transit_route_table_aggregation_scope)
         _setter("transit_route_table_id", transit_route_table_id)
@@ -149,7 +161,19 @@ class _TransitRouteTableAggregationState:
              transit_route_table_aggregation_name: Optional[pulumi.Input[str]] = None,
              transit_route_table_aggregation_scope: Optional[pulumi.Input[str]] = None,
              transit_route_table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouteTableAggregationCidr' in kwargs:
+            transit_route_table_aggregation_cidr = kwargs['transitRouteTableAggregationCidr']
+        if 'transitRouteTableAggregationDescription' in kwargs:
+            transit_route_table_aggregation_description = kwargs['transitRouteTableAggregationDescription']
+        if 'transitRouteTableAggregationName' in kwargs:
+            transit_route_table_aggregation_name = kwargs['transitRouteTableAggregationName']
+        if 'transitRouteTableAggregationScope' in kwargs:
+            transit_route_table_aggregation_scope = kwargs['transitRouteTableAggregationScope']
+        if 'transitRouteTableId' in kwargs:
+            transit_route_table_id = kwargs['transitRouteTableId']
+
         if status is not None:
             _setter("status", status)
         if transit_route_table_aggregation_cidr is not None:
@@ -250,7 +274,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Route Table Aggregation resource.
 
-        For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutetableaggregation).
+        For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation).
 
         > **NOTE:** Available since v1.202.0.
 
@@ -302,7 +326,7 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Route Table Aggregation resource.
 
-        For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutetableaggregation).
+        For information about Cloud Enterprise Network (CEN) Transit Route Table Aggregation and how to use it, see [What is Transit Route Table Aggregation](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutetableaggregation).
 
         > **NOTE:** Available since v1.202.0.
 

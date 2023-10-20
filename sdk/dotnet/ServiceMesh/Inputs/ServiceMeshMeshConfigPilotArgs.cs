@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
         public Input<bool>? Http10Enabled { get; set; }
 
         /// <summary>
-        /// The  percentage of the Link trace sampling.
+        /// Link trace sampling percentage.
         /// </summary>
         [Input("traceSampling")]
         public Input<double>? TraceSampling { get; set; }

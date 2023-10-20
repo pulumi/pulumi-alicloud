@@ -65,7 +65,17 @@ class PrometheusAlertRuleArgs:
              labels: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]] = None,
              notify_type: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'prometheusAlertRuleName' in kwargs:
+            prometheus_alert_rule_name = kwargs['prometheusAlertRuleName']
+        if 'dispatchRuleId' in kwargs:
+            dispatch_rule_id = kwargs['dispatchRuleId']
+        if 'notifyType' in kwargs:
+            notify_type = kwargs['notifyType']
+
         _setter("cluster_id", cluster_id)
         _setter("duration", duration)
         _setter("expression", expression)
@@ -263,7 +273,19 @@ class _PrometheusAlertRuleState:
              prometheus_alert_rule_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'dispatchRuleId' in kwargs:
+            dispatch_rule_id = kwargs['dispatchRuleId']
+        if 'notifyType' in kwargs:
+            notify_type = kwargs['notifyType']
+        if 'prometheusAlertRuleId' in kwargs:
+            prometheus_alert_rule_id = kwargs['prometheusAlertRuleId']
+        if 'prometheusAlertRuleName' in kwargs:
+            prometheus_alert_rule_name = kwargs['prometheusAlertRuleName']
+
         if annotations is not None:
             _setter("annotations", annotations)
         if cluster_id is not None:

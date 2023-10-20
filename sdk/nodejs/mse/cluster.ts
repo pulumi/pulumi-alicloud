@@ -104,7 +104,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly clusterType!: pulumi.Output<string>;
     /**
-     * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+     * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
      */
     public readonly clusterVersion!: pulumi.Output<string>;
     /**
@@ -262,7 +262,7 @@ export interface ClusterState {
      */
     clusterType?: pulumi.Input<string>;
     /**
-     * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+     * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
      */
     clusterVersion?: pulumi.Input<string>;
     /**
@@ -336,7 +336,7 @@ export interface ClusterArgs {
      */
     clusterType: pulumi.Input<string>;
     /**
-     * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+     * The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
      */
     clusterVersion: pulumi.Input<string>;
     /**

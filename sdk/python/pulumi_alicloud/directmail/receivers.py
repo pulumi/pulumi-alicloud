@@ -35,7 +35,13 @@ class ReceiversArgs:
              receivers_alias: pulumi.Input[str],
              receivers_name: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'receiversAlias' in kwargs:
+            receivers_alias = kwargs['receiversAlias']
+        if 'receiversName' in kwargs:
+            receivers_name = kwargs['receiversName']
+
         _setter("receivers_alias", receivers_alias)
         _setter("receivers_name", receivers_name)
         if description is not None:
@@ -106,7 +112,13 @@ class _ReceiversState:
              receivers_alias: Optional[pulumi.Input[str]] = None,
              receivers_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'receiversAlias' in kwargs:
+            receivers_alias = kwargs['receiversAlias']
+        if 'receiversName' in kwargs:
+            receivers_name = kwargs['receiversName']
+
         if description is not None:
             _setter("description", description)
         if receivers_alias is not None:

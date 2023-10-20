@@ -145,7 +145,7 @@ def get_router_interfaces(filters: Optional[Sequence[pulumi.InputType['GetRouter
                           page_size: Optional[int] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouterInterfacesResult:
     """
-    This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+    This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
 
     > **NOTE:** Available in 1.199.0+
 
@@ -200,7 +200,7 @@ def get_router_interfaces_output(filters: Optional[pulumi.Input[Optional[Sequenc
                                  page_size: Optional[pulumi.Input[Optional[int]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterInterfacesResult]:
     """
-    This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+    This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
 
     > **NOTE:** Available in 1.199.0+
 

@@ -93,7 +93,27 @@ class GroupMetricRuleArgs:
              silence_time: Optional[pulumi.Input[int]] = None,
              targets: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupMetricRuleName' in kwargs:
+            group_metric_rule_name = kwargs['groupMetricRuleName']
+        if 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if 'ruleId' in kwargs:
+            rule_id = kwargs['ruleId']
+        if 'contactGroups' in kwargs:
+            contact_groups = kwargs['contactGroups']
+        if 'effectiveInterval' in kwargs:
+            effective_interval = kwargs['effectiveInterval']
+        if 'emailSubject' in kwargs:
+            email_subject = kwargs['emailSubject']
+        if 'noEffectiveInterval' in kwargs:
+            no_effective_interval = kwargs['noEffectiveInterval']
+        if 'silenceTime' in kwargs:
+            silence_time = kwargs['silenceTime']
+
         _setter("category", category)
         _setter("escalations", escalations)
         _setter("group_id", group_id)
@@ -411,7 +431,27 @@ class _GroupMetricRuleState:
              status: Optional[pulumi.Input[str]] = None,
              targets: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contactGroups' in kwargs:
+            contact_groups = kwargs['contactGroups']
+        if 'effectiveInterval' in kwargs:
+            effective_interval = kwargs['effectiveInterval']
+        if 'emailSubject' in kwargs:
+            email_subject = kwargs['emailSubject']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupMetricRuleName' in kwargs:
+            group_metric_rule_name = kwargs['groupMetricRuleName']
+        if 'metricName' in kwargs:
+            metric_name = kwargs['metricName']
+        if 'noEffectiveInterval' in kwargs:
+            no_effective_interval = kwargs['noEffectiveInterval']
+        if 'ruleId' in kwargs:
+            rule_id = kwargs['ruleId']
+        if 'silenceTime' in kwargs:
+            silence_time = kwargs['silenceTime']
+
         if category is not None:
             _setter("category", category)
         if contact_groups is not None:

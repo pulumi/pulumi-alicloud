@@ -14,35 +14,8 @@ import (
 
 // This data source provides a list of available addons that the cluster can install.
 //
-// > **NOTE:** Available in 1.150.0+.
-// **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cs"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_default, err := cs.GetKubernetesAddons(ctx, &cs.GetKubernetesAddonsArgs{
-//				ClusterId: alicloud_cs_managed_kubernetes.Default[0].Id,
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("addons", _default.Addons)
-//			return nil
-//		})
-//	}
-//
-// ```
+// > **NOTE:** Available since v1.150.0.
+// **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
 func GetKubernetesAddons(ctx *pulumi.Context, args *GetKubernetesAddonsArgs, opts ...pulumi.InvokeOption) (*GetKubernetesAddonsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKubernetesAddonsResult
@@ -55,8 +28,6 @@ func GetKubernetesAddons(ctx *pulumi.Context, args *GetKubernetesAddonsArgs, opt
 
 // A collection of arguments for invoking getKubernetesAddons.
 type GetKubernetesAddonsArgs struct {
-	// A list of addons.
-	Addons []GetKubernetesAddonsAddon `pulumi:"addons"`
 	// The id of kubernetes cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// A list of addon IDs. The id of addon consists of the cluster id and the addon name, with the structure <cluster_ud>:<addon_name>.
@@ -94,8 +65,6 @@ func GetKubernetesAddonsOutput(ctx *pulumi.Context, args GetKubernetesAddonsOutp
 
 // A collection of arguments for invoking getKubernetesAddons.
 type GetKubernetesAddonsOutputArgs struct {
-	// A list of addons.
-	Addons GetKubernetesAddonsAddonArrayInput `pulumi:"addons"`
 	// The id of kubernetes cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// A list of addon IDs. The id of addon consists of the cluster id and the addon name, with the structure <cluster_ud>:<addon_name>.

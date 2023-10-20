@@ -31,7 +31,13 @@ class InstanceMemberArgs:
              _setter: Callable[[Any, Any], None],
              member_uid: pulumi.Input[str],
              member_desc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'memberUid' in kwargs:
+            member_uid = kwargs['memberUid']
+        if 'memberDesc' in kwargs:
+            member_desc = kwargs['memberDesc']
+
         _setter("member_uid", member_uid)
         if member_desc is not None:
             _setter("member_desc", member_desc)
@@ -97,7 +103,19 @@ class _InstanceMemberState:
              member_uid: Optional[pulumi.Input[str]] = None,
              modify_time: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'memberDesc' in kwargs:
+            member_desc = kwargs['memberDesc']
+        if 'memberDisplayName' in kwargs:
+            member_display_name = kwargs['memberDisplayName']
+        if 'memberUid' in kwargs:
+            member_uid = kwargs['memberUid']
+        if 'modifyTime' in kwargs:
+            modify_time = kwargs['modifyTime']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if member_desc is not None:

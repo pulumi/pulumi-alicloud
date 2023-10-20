@@ -27,7 +27,11 @@ class GlobalEventsStorageRegionArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              storage_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'storageRegion' in kwargs:
+            storage_region = kwargs['storageRegion']
+
         if storage_region is not None:
             _setter("storage_region", storage_region)
 
@@ -60,7 +64,11 @@ class _GlobalEventsStorageRegionState:
     def _configure(
              _setter: Callable[[Any, Any], None],
              storage_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'storageRegion' in kwargs:
+            storage_region = kwargs['storageRegion']
+
         if storage_region is not None:
             _setter("storage_region", storage_region)
 

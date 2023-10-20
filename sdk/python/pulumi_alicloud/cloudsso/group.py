@@ -35,7 +35,13 @@ class GroupArgs:
              directory_id: pulumi.Input[str],
              group_name: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+
         _setter("directory_id", directory_id)
         _setter("group_name", group_name)
         if description is not None:
@@ -106,7 +112,15 @@ class _GroupState:
              directory_id: Optional[pulumi.Input[str]] = None,
              group_id: Optional[pulumi.Input[str]] = None,
              group_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+
         if description is not None:
             _setter("description", description)
         if directory_id is not None:

@@ -45,7 +45,15 @@ class CustomImageArgs:
              system_snapshot_id: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customImageName' in kwargs:
+            custom_image_name = kwargs['customImageName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'systemSnapshotId' in kwargs:
+            system_snapshot_id = kwargs['systemSnapshotId']
+
         _setter("custom_image_name", custom_image_name)
         _setter("instance_id", instance_id)
         _setter("system_snapshot_id", system_snapshot_id)
@@ -151,7 +159,15 @@ class _CustomImageState:
              instance_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              system_snapshot_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customImageName' in kwargs:
+            custom_image_name = kwargs['customImageName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'systemSnapshotId' in kwargs:
+            system_snapshot_id = kwargs['systemSnapshotId']
+
         if custom_image_name is not None:
             _setter("custom_image_name", custom_image_name)
         if description is not None:

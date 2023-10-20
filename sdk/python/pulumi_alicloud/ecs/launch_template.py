@@ -207,7 +207,89 @@ class LaunchTemplateArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoReleaseTime' in kwargs:
+            auto_release_time = kwargs['autoReleaseTime']
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'deploymentSetId' in kwargs:
+            deployment_set_id = kwargs['deploymentSetId']
+        if 'enableVmOsConfig' in kwargs:
+            enable_vm_os_config = kwargs['enableVmOsConfig']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageOwnerAlias' in kwargs:
+            image_owner_alias = kwargs['imageOwnerAlias']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'internetMaxBandwidthIn' in kwargs:
+            internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'ioOptimized' in kwargs:
+            io_optimized = kwargs['ioOptimized']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'launchTemplateName' in kwargs:
+            launch_template_name = kwargs['launchTemplateName']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'passwordInherit' in kwargs:
+            password_inherit = kwargs['passwordInherit']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityEnhancementStrategy' in kwargs:
+            security_enhancement_strategy = kwargs['securityEnhancementStrategy']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'spotDuration' in kwargs:
+            spot_duration = kwargs['spotDuration']
+        if 'spotPriceLimit' in kwargs:
+            spot_price_limit = kwargs['spotPriceLimit']
+        if 'spotStrategy' in kwargs:
+            spot_strategy = kwargs['spotStrategy']
+        if 'systemDisk' in kwargs:
+            system_disk = kwargs['systemDisk']
+        if 'systemDiskCategory' in kwargs:
+            system_disk_category = kwargs['systemDiskCategory']
+        if 'systemDiskDescription' in kwargs:
+            system_disk_description = kwargs['systemDiskDescription']
+        if 'systemDiskName' in kwargs:
+            system_disk_name = kwargs['systemDiskName']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if 'templateResourceGroupId' in kwargs:
+            template_resource_group_id = kwargs['templateResourceGroupId']
+        if 'templateTags' in kwargs:
+            template_tags = kwargs['templateTags']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'versionDescription' in kwargs:
+            version_description = kwargs['versionDescription']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if auto_release_time is not None:
             _setter("auto_release_time", auto_release_time)
         if data_disks is not None:
@@ -1040,7 +1122,89 @@ class _LaunchTemplateState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoReleaseTime' in kwargs:
+            auto_release_time = kwargs['autoReleaseTime']
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'deploymentSetId' in kwargs:
+            deployment_set_id = kwargs['deploymentSetId']
+        if 'enableVmOsConfig' in kwargs:
+            enable_vm_os_config = kwargs['enableVmOsConfig']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageOwnerAlias' in kwargs:
+            image_owner_alias = kwargs['imageOwnerAlias']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'internetMaxBandwidthIn' in kwargs:
+            internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'ioOptimized' in kwargs:
+            io_optimized = kwargs['ioOptimized']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'launchTemplateName' in kwargs:
+            launch_template_name = kwargs['launchTemplateName']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'passwordInherit' in kwargs:
+            password_inherit = kwargs['passwordInherit']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityEnhancementStrategy' in kwargs:
+            security_enhancement_strategy = kwargs['securityEnhancementStrategy']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'spotDuration' in kwargs:
+            spot_duration = kwargs['spotDuration']
+        if 'spotPriceLimit' in kwargs:
+            spot_price_limit = kwargs['spotPriceLimit']
+        if 'spotStrategy' in kwargs:
+            spot_strategy = kwargs['spotStrategy']
+        if 'systemDisk' in kwargs:
+            system_disk = kwargs['systemDisk']
+        if 'systemDiskCategory' in kwargs:
+            system_disk_category = kwargs['systemDiskCategory']
+        if 'systemDiskDescription' in kwargs:
+            system_disk_description = kwargs['systemDiskDescription']
+        if 'systemDiskName' in kwargs:
+            system_disk_name = kwargs['systemDiskName']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if 'templateResourceGroupId' in kwargs:
+            template_resource_group_id = kwargs['templateResourceGroupId']
+        if 'templateTags' in kwargs:
+            template_tags = kwargs['templateTags']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'versionDescription' in kwargs:
+            version_description = kwargs['versionDescription']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if auto_release_time is not None:
             _setter("auto_release_time", auto_release_time)
         if data_disks is not None:

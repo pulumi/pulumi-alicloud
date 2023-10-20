@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        /// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
         /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
         /// </summary>
         [Output("loadBalancerSpec")]
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        /// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
         /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
         /// </summary>
         [Input("loadBalancerSpec")]
@@ -384,7 +384,7 @@ namespace Pulumi.AliCloud.Slb
 
         /// <summary>
         /// The specification of the Server Load Balancer instance. Default to empty string indicating it is "Shared-Performance" instance.
-        /// Launching "[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
+        /// Launching "Performance-guaranteed" instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`,
         /// `slb.s3.small`, `slb.s3.medium`, `slb.s3.large` and `slb.s4.large`. It will be ignored when `instance_charge_type = "PayByCLCU"`.
         /// </summary>
         [Input("loadBalancerSpec")]

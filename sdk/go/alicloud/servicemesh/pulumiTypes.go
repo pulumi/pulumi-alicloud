@@ -15,7 +15,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type ServiceMeshExtraConfiguration struct {
-	// Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+	// Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
 	CrAggregationEnabled *bool `pulumi:"crAggregationEnabled"`
 }
 
@@ -31,7 +31,7 @@ type ServiceMeshExtraConfigurationInput interface {
 }
 
 type ServiceMeshExtraConfigurationArgs struct {
-	// Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+	// Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
 	CrAggregationEnabled pulumi.BoolPtrInput `pulumi:"crAggregationEnabled"`
 }
 
@@ -130,7 +130,7 @@ func (o ServiceMeshExtraConfigurationOutput) ToOutput(ctx context.Context) pulum
 	}
 }
 
-// Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+// Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
 func (o ServiceMeshExtraConfigurationOutput) CrAggregationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshExtraConfiguration) *bool { return v.CrAggregationEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -165,7 +165,7 @@ func (o ServiceMeshExtraConfigurationPtrOutput) Elem() ServiceMeshExtraConfigura
 	}).(ServiceMeshExtraConfigurationOutput)
 }
 
-// Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of `true` indicates that the Kubernetes API is used.
+// Whether the data plane KubeAPI access capability is enabled. Indicates whether the Kubernetes API of clusters on the data plane is used to access Istio resources. A value of true indicates that the Kubernetes API is used.
 func (o ServiceMeshExtraConfigurationPtrOutput) CrAggregationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshExtraConfiguration) *bool {
 		if v == nil {
@@ -176,13 +176,13 @@ func (o ServiceMeshExtraConfigurationPtrOutput) CrAggregationEnabled() pulumi.Bo
 }
 
 type ServiceMeshLoadBalancer struct {
-	// The ID of the SLB instance that is used when the API server is exposed to the Internet.
+	// The IP address of a public network exposed API Server corresponding to the load balancing ID.
 	ApiServerLoadbalancerId *string `pulumi:"apiServerLoadbalancerId"`
-	// Whether to use the IP address of a public network exposed the API Server.
+	// Indicates whether to use the IP address of a public network exposed API Server.
 	ApiServerPublicEip *bool `pulumi:"apiServerPublicEip"`
-	// Whether to use the IP address of a public network exposure the Istio Pilot.
+	// Indicates whether to use the IP address of a public network exposure Istio Pilot.
 	PilotPublicEip *bool `pulumi:"pilotPublicEip"`
-	// The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+	// The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
 	PilotPublicLoadbalancerId *string `pulumi:"pilotPublicLoadbalancerId"`
 }
 
@@ -198,13 +198,13 @@ type ServiceMeshLoadBalancerInput interface {
 }
 
 type ServiceMeshLoadBalancerArgs struct {
-	// The ID of the SLB instance that is used when the API server is exposed to the Internet.
+	// The IP address of a public network exposed API Server corresponding to the load balancing ID.
 	ApiServerLoadbalancerId pulumi.StringPtrInput `pulumi:"apiServerLoadbalancerId"`
-	// Whether to use the IP address of a public network exposed the API Server.
+	// Indicates whether to use the IP address of a public network exposed API Server.
 	ApiServerPublicEip pulumi.BoolPtrInput `pulumi:"apiServerPublicEip"`
-	// Whether to use the IP address of a public network exposure the Istio Pilot.
+	// Indicates whether to use the IP address of a public network exposure Istio Pilot.
 	PilotPublicEip pulumi.BoolPtrInput `pulumi:"pilotPublicEip"`
-	// The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+	// The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
 	PilotPublicLoadbalancerId pulumi.StringPtrInput `pulumi:"pilotPublicLoadbalancerId"`
 }
 
@@ -303,22 +303,22 @@ func (o ServiceMeshLoadBalancerOutput) ToOutput(ctx context.Context) pulumix.Out
 	}
 }
 
-// The ID of the SLB instance that is used when the API server is exposed to the Internet.
+// The IP address of a public network exposed API Server corresponding to the load balancing ID.
 func (o ServiceMeshLoadBalancerOutput) ApiServerLoadbalancerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshLoadBalancer) *string { return v.ApiServerLoadbalancerId }).(pulumi.StringPtrOutput)
 }
 
-// Whether to use the IP address of a public network exposed the API Server.
+// Indicates whether to use the IP address of a public network exposed API Server.
 func (o ServiceMeshLoadBalancerOutput) ApiServerPublicEip() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshLoadBalancer) *bool { return v.ApiServerPublicEip }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to use the IP address of a public network exposure the Istio Pilot.
+// Indicates whether to use the IP address of a public network exposure Istio Pilot.
 func (o ServiceMeshLoadBalancerOutput) PilotPublicEip() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshLoadBalancer) *bool { return v.PilotPublicEip }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+// The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
 func (o ServiceMeshLoadBalancerOutput) PilotPublicLoadbalancerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshLoadBalancer) *string { return v.PilotPublicLoadbalancerId }).(pulumi.StringPtrOutput)
 }
@@ -353,7 +353,7 @@ func (o ServiceMeshLoadBalancerPtrOutput) Elem() ServiceMeshLoadBalancerOutput {
 	}).(ServiceMeshLoadBalancerOutput)
 }
 
-// The ID of the SLB instance that is used when the API server is exposed to the Internet.
+// The IP address of a public network exposed API Server corresponding to the load balancing ID.
 func (o ServiceMeshLoadBalancerPtrOutput) ApiServerLoadbalancerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshLoadBalancer) *string {
 		if v == nil {
@@ -363,7 +363,7 @@ func (o ServiceMeshLoadBalancerPtrOutput) ApiServerLoadbalancerId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Whether to use the IP address of a public network exposed the API Server.
+// Indicates whether to use the IP address of a public network exposed API Server.
 func (o ServiceMeshLoadBalancerPtrOutput) ApiServerPublicEip() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshLoadBalancer) *bool {
 		if v == nil {
@@ -373,7 +373,7 @@ func (o ServiceMeshLoadBalancerPtrOutput) ApiServerPublicEip() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to use the IP address of a public network exposure the Istio Pilot.
+// Indicates whether to use the IP address of a public network exposure Istio Pilot.
 func (o ServiceMeshLoadBalancerPtrOutput) PilotPublicEip() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshLoadBalancer) *bool {
 		if v == nil {
@@ -383,7 +383,7 @@ func (o ServiceMeshLoadBalancerPtrOutput) PilotPublicEip() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+// The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
 func (o ServiceMeshLoadBalancerPtrOutput) PilotPublicLoadbalancerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshLoadBalancer) *string {
 		if v == nil {
@@ -394,31 +394,35 @@ func (o ServiceMeshLoadBalancerPtrOutput) PilotPublicLoadbalancerId() pulumi.Str
 }
 
 type ServiceMeshMeshConfig struct {
-	// The configuration of the access logging. See `accessLog` below.
+	// The access logging configuration. See `mesh_config-access_log` below.
 	AccessLog *ServiceMeshMeshConfigAccessLog `pulumi:"accessLog"`
-	// The configuration of the audit. See `audit` below.
+	// Audit information. See `mesh_config-audit` below.
 	Audit *ServiceMeshMeshConfigAudit `pulumi:"audit"`
-	// The configuration of the control plane logging. See `controlPlaneLog` below.
+	// Control plane log collection configuration. See `mesh_config-control_plane_log` below.
 	ControlPlaneLog *ServiceMeshMeshConfigControlPlaneLog `pulumi:"controlPlaneLog"`
-	// Whether to enable the use of a custom zipkin.
+	// Whether or not to enable the use of a custom zipkin.
 	CustomizedZipkin *bool `pulumi:"customizedZipkin"`
-	// The enable locality lb.
+	// Whether to enable service can access the service through the nearest node access.
 	EnableLocalityLb *bool `pulumi:"enableLocalityLb"`
-	// The configuration of the Kiali. See `kiali` below.
+	// The IP ADDRESS range.
+	IncludeIpRanges *string `pulumi:"includeIpRanges"`
+	// Kiali configuration. See `mesh_config-kiali` below.
 	Kiali *ServiceMeshMeshConfigKiali `pulumi:"kiali"`
-	// The open-door policy of agent (OPA) plug-in information. See `opa` below.
+	// The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
 	Opa *ServiceMeshMeshConfigOpa `pulumi:"opa"`
-	// The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+	// Out to the traffic policy.
 	OutboundTrafficPolicy *string `pulumi:"outboundTrafficPolicy"`
-	// The configuration of the Link trace sampling. See `pilot` below.
+	// Link trace sampling information. See `mesh_config-pilot` below.
 	Pilot *ServiceMeshMeshConfigPilot `pulumi:"pilot"`
-	// The configuration of the Proxy. See `proxy` below.
+	// Prometheus configuration.
+	Prometheus *ServiceMeshMeshConfigPrometheus `pulumi:"prometheus"`
+	// Proxy configuration. See `mesh_config-proxy` below.
 	Proxy *ServiceMeshMeshConfigProxy `pulumi:"proxy"`
-	// The configuration of the Sidecar injector. See `sidecarInjector` below.
+	// Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
 	SidecarInjector *ServiceMeshMeshConfigSidecarInjector `pulumi:"sidecarInjector"`
-	// Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+	// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
 	Telemetry *bool `pulumi:"telemetry"`
-	// Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+	// Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
 	Tracing *bool `pulumi:"tracing"`
 }
 
@@ -434,31 +438,35 @@ type ServiceMeshMeshConfigInput interface {
 }
 
 type ServiceMeshMeshConfigArgs struct {
-	// The configuration of the access logging. See `accessLog` below.
+	// The access logging configuration. See `mesh_config-access_log` below.
 	AccessLog ServiceMeshMeshConfigAccessLogPtrInput `pulumi:"accessLog"`
-	// The configuration of the audit. See `audit` below.
+	// Audit information. See `mesh_config-audit` below.
 	Audit ServiceMeshMeshConfigAuditPtrInput `pulumi:"audit"`
-	// The configuration of the control plane logging. See `controlPlaneLog` below.
+	// Control plane log collection configuration. See `mesh_config-control_plane_log` below.
 	ControlPlaneLog ServiceMeshMeshConfigControlPlaneLogPtrInput `pulumi:"controlPlaneLog"`
-	// Whether to enable the use of a custom zipkin.
+	// Whether or not to enable the use of a custom zipkin.
 	CustomizedZipkin pulumi.BoolPtrInput `pulumi:"customizedZipkin"`
-	// The enable locality lb.
+	// Whether to enable service can access the service through the nearest node access.
 	EnableLocalityLb pulumi.BoolPtrInput `pulumi:"enableLocalityLb"`
-	// The configuration of the Kiali. See `kiali` below.
+	// The IP ADDRESS range.
+	IncludeIpRanges pulumi.StringPtrInput `pulumi:"includeIpRanges"`
+	// Kiali configuration. See `mesh_config-kiali` below.
 	Kiali ServiceMeshMeshConfigKialiPtrInput `pulumi:"kiali"`
-	// The open-door policy of agent (OPA) plug-in information. See `opa` below.
+	// The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
 	Opa ServiceMeshMeshConfigOpaPtrInput `pulumi:"opa"`
-	// The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+	// Out to the traffic policy.
 	OutboundTrafficPolicy pulumi.StringPtrInput `pulumi:"outboundTrafficPolicy"`
-	// The configuration of the Link trace sampling. See `pilot` below.
+	// Link trace sampling information. See `mesh_config-pilot` below.
 	Pilot ServiceMeshMeshConfigPilotPtrInput `pulumi:"pilot"`
-	// The configuration of the Proxy. See `proxy` below.
+	// Prometheus configuration.
+	Prometheus ServiceMeshMeshConfigPrometheusPtrInput `pulumi:"prometheus"`
+	// Proxy configuration. See `mesh_config-proxy` below.
 	Proxy ServiceMeshMeshConfigProxyPtrInput `pulumi:"proxy"`
-	// The configuration of the Sidecar injector. See `sidecarInjector` below.
+	// Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
 	SidecarInjector ServiceMeshMeshConfigSidecarInjectorPtrInput `pulumi:"sidecarInjector"`
-	// Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+	// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
 	Telemetry pulumi.BoolPtrInput `pulumi:"telemetry"`
-	// Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+	// Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
 	Tracing pulumi.BoolPtrInput `pulumi:"tracing"`
 }
 
@@ -557,67 +565,77 @@ func (o ServiceMeshMeshConfigOutput) ToOutput(ctx context.Context) pulumix.Outpu
 	}
 }
 
-// The configuration of the access logging. See `accessLog` below.
+// The access logging configuration. See `mesh_config-access_log` below.
 func (o ServiceMeshMeshConfigOutput) AccessLog() ServiceMeshMeshConfigAccessLogPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigAccessLog { return v.AccessLog }).(ServiceMeshMeshConfigAccessLogPtrOutput)
 }
 
-// The configuration of the audit. See `audit` below.
+// Audit information. See `mesh_config-audit` below.
 func (o ServiceMeshMeshConfigOutput) Audit() ServiceMeshMeshConfigAuditPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigAudit { return v.Audit }).(ServiceMeshMeshConfigAuditPtrOutput)
 }
 
-// The configuration of the control plane logging. See `controlPlaneLog` below.
+// Control plane log collection configuration. See `mesh_config-control_plane_log` below.
 func (o ServiceMeshMeshConfigOutput) ControlPlaneLog() ServiceMeshMeshConfigControlPlaneLogPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigControlPlaneLog { return v.ControlPlaneLog }).(ServiceMeshMeshConfigControlPlaneLogPtrOutput)
 }
 
-// Whether to enable the use of a custom zipkin.
+// Whether or not to enable the use of a custom zipkin.
 func (o ServiceMeshMeshConfigOutput) CustomizedZipkin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *bool { return v.CustomizedZipkin }).(pulumi.BoolPtrOutput)
 }
 
-// The enable locality lb.
+// Whether to enable service can access the service through the nearest node access.
 func (o ServiceMeshMeshConfigOutput) EnableLocalityLb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *bool { return v.EnableLocalityLb }).(pulumi.BoolPtrOutput)
 }
 
-// The configuration of the Kiali. See `kiali` below.
+// The IP ADDRESS range.
+func (o ServiceMeshMeshConfigOutput) IncludeIpRanges() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfig) *string { return v.IncludeIpRanges }).(pulumi.StringPtrOutput)
+}
+
+// Kiali configuration. See `mesh_config-kiali` below.
 func (o ServiceMeshMeshConfigOutput) Kiali() ServiceMeshMeshConfigKialiPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigKiali { return v.Kiali }).(ServiceMeshMeshConfigKialiPtrOutput)
 }
 
-// The open-door policy of agent (OPA) plug-in information. See `opa` below.
+// The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
 func (o ServiceMeshMeshConfigOutput) Opa() ServiceMeshMeshConfigOpaPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigOpa { return v.Opa }).(ServiceMeshMeshConfigOpaPtrOutput)
 }
 
-// The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+// Out to the traffic policy.
 func (o ServiceMeshMeshConfigOutput) OutboundTrafficPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *string { return v.OutboundTrafficPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The configuration of the Link trace sampling. See `pilot` below.
+// Link trace sampling information. See `mesh_config-pilot` below.
 func (o ServiceMeshMeshConfigOutput) Pilot() ServiceMeshMeshConfigPilotPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigPilot { return v.Pilot }).(ServiceMeshMeshConfigPilotPtrOutput)
 }
 
-// The configuration of the Proxy. See `proxy` below.
+// Prometheus configuration.
+func (o ServiceMeshMeshConfigOutput) Prometheus() ServiceMeshMeshConfigPrometheusPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigPrometheus { return v.Prometheus }).(ServiceMeshMeshConfigPrometheusPtrOutput)
+}
+
+// Proxy configuration. See `mesh_config-proxy` below.
 func (o ServiceMeshMeshConfigOutput) Proxy() ServiceMeshMeshConfigProxyPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigProxy { return v.Proxy }).(ServiceMeshMeshConfigProxyPtrOutput)
 }
 
-// The configuration of the Sidecar injector. See `sidecarInjector` below.
+// Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
 func (o ServiceMeshMeshConfigOutput) SidecarInjector() ServiceMeshMeshConfigSidecarInjectorPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *ServiceMeshMeshConfigSidecarInjector { return v.SidecarInjector }).(ServiceMeshMeshConfigSidecarInjectorPtrOutput)
 }
 
-// Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
 func (o ServiceMeshMeshConfigOutput) Telemetry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *bool { return v.Telemetry }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+// Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
 func (o ServiceMeshMeshConfigOutput) Tracing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfig) *bool { return v.Tracing }).(pulumi.BoolPtrOutput)
 }
@@ -652,7 +670,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Elem() ServiceMeshMeshConfigOutput {
 	}).(ServiceMeshMeshConfigOutput)
 }
 
-// The configuration of the access logging. See `accessLog` below.
+// The access logging configuration. See `mesh_config-access_log` below.
 func (o ServiceMeshMeshConfigPtrOutput) AccessLog() ServiceMeshMeshConfigAccessLogPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigAccessLog {
 		if v == nil {
@@ -662,7 +680,7 @@ func (o ServiceMeshMeshConfigPtrOutput) AccessLog() ServiceMeshMeshConfigAccessL
 	}).(ServiceMeshMeshConfigAccessLogPtrOutput)
 }
 
-// The configuration of the audit. See `audit` below.
+// Audit information. See `mesh_config-audit` below.
 func (o ServiceMeshMeshConfigPtrOutput) Audit() ServiceMeshMeshConfigAuditPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigAudit {
 		if v == nil {
@@ -672,7 +690,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Audit() ServiceMeshMeshConfigAuditPtrOut
 	}).(ServiceMeshMeshConfigAuditPtrOutput)
 }
 
-// The configuration of the control plane logging. See `controlPlaneLog` below.
+// Control plane log collection configuration. See `mesh_config-control_plane_log` below.
 func (o ServiceMeshMeshConfigPtrOutput) ControlPlaneLog() ServiceMeshMeshConfigControlPlaneLogPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigControlPlaneLog {
 		if v == nil {
@@ -682,7 +700,7 @@ func (o ServiceMeshMeshConfigPtrOutput) ControlPlaneLog() ServiceMeshMeshConfigC
 	}).(ServiceMeshMeshConfigControlPlaneLogPtrOutput)
 }
 
-// Whether to enable the use of a custom zipkin.
+// Whether or not to enable the use of a custom zipkin.
 func (o ServiceMeshMeshConfigPtrOutput) CustomizedZipkin() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *bool {
 		if v == nil {
@@ -692,7 +710,7 @@ func (o ServiceMeshMeshConfigPtrOutput) CustomizedZipkin() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The enable locality lb.
+// Whether to enable service can access the service through the nearest node access.
 func (o ServiceMeshMeshConfigPtrOutput) EnableLocalityLb() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *bool {
 		if v == nil {
@@ -702,7 +720,17 @@ func (o ServiceMeshMeshConfigPtrOutput) EnableLocalityLb() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The configuration of the Kiali. See `kiali` below.
+// The IP ADDRESS range.
+func (o ServiceMeshMeshConfigPtrOutput) IncludeIpRanges() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeIpRanges
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kiali configuration. See `mesh_config-kiali` below.
 func (o ServiceMeshMeshConfigPtrOutput) Kiali() ServiceMeshMeshConfigKialiPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigKiali {
 		if v == nil {
@@ -712,7 +740,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Kiali() ServiceMeshMeshConfigKialiPtrOut
 	}).(ServiceMeshMeshConfigKialiPtrOutput)
 }
 
-// The open-door policy of agent (OPA) plug-in information. See `opa` below.
+// The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
 func (o ServiceMeshMeshConfigPtrOutput) Opa() ServiceMeshMeshConfigOpaPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigOpa {
 		if v == nil {
@@ -722,7 +750,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Opa() ServiceMeshMeshConfigOpaPtrOutput 
 	}).(ServiceMeshMeshConfigOpaPtrOutput)
 }
 
-// The policy of the Out to the traffic. Valid values: `ALLOW_ANY` and `REGISTRY_ONLY`.
+// Out to the traffic policy.
 func (o ServiceMeshMeshConfigPtrOutput) OutboundTrafficPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *string {
 		if v == nil {
@@ -732,7 +760,7 @@ func (o ServiceMeshMeshConfigPtrOutput) OutboundTrafficPolicy() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The configuration of the Link trace sampling. See `pilot` below.
+// Link trace sampling information. See `mesh_config-pilot` below.
 func (o ServiceMeshMeshConfigPtrOutput) Pilot() ServiceMeshMeshConfigPilotPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigPilot {
 		if v == nil {
@@ -742,7 +770,17 @@ func (o ServiceMeshMeshConfigPtrOutput) Pilot() ServiceMeshMeshConfigPilotPtrOut
 	}).(ServiceMeshMeshConfigPilotPtrOutput)
 }
 
-// The configuration of the Proxy. See `proxy` below.
+// Prometheus configuration.
+func (o ServiceMeshMeshConfigPtrOutput) Prometheus() ServiceMeshMeshConfigPrometheusPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigPrometheus {
+		if v == nil {
+			return nil
+		}
+		return v.Prometheus
+	}).(ServiceMeshMeshConfigPrometheusPtrOutput)
+}
+
+// Proxy configuration. See `mesh_config-proxy` below.
 func (o ServiceMeshMeshConfigPtrOutput) Proxy() ServiceMeshMeshConfigProxyPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigProxy {
 		if v == nil {
@@ -752,7 +790,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Proxy() ServiceMeshMeshConfigProxyPtrOut
 	}).(ServiceMeshMeshConfigProxyPtrOutput)
 }
 
-// The configuration of the Sidecar injector. See `sidecarInjector` below.
+// Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
 func (o ServiceMeshMeshConfigPtrOutput) SidecarInjector() ServiceMeshMeshConfigSidecarInjectorPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *ServiceMeshMeshConfigSidecarInjector {
 		if v == nil {
@@ -762,7 +800,7 @@ func (o ServiceMeshMeshConfigPtrOutput) SidecarInjector() ServiceMeshMeshConfigS
 	}).(ServiceMeshMeshConfigSidecarInjectorPtrOutput)
 }
 
-// Whether to enable acquisition Prometheus metrics it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
+// Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
 func (o ServiceMeshMeshConfigPtrOutput) Telemetry() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *bool {
 		if v == nil {
@@ -772,7 +810,7 @@ func (o ServiceMeshMeshConfigPtrOutput) Telemetry() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable link trace you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
+// Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
 func (o ServiceMeshMeshConfigPtrOutput) Tracing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfig) *bool {
 		if v == nil {
@@ -783,9 +821,9 @@ func (o ServiceMeshMeshConfigPtrOutput) Tracing() pulumi.BoolPtrOutput {
 }
 
 type ServiceMeshMeshConfigAccessLog struct {
-	// Whether to enable Service grid audit.
+	// Enable CNI.
 	Enabled *bool `pulumi:"enabled"`
-	// The Service grid audit that to the project.
+	// The name of the SLS Project to which the control plane logs are collected.
 	Project *string `pulumi:"project"`
 }
 
@@ -801,9 +839,9 @@ type ServiceMeshMeshConfigAccessLogInput interface {
 }
 
 type ServiceMeshMeshConfigAccessLogArgs struct {
-	// Whether to enable Service grid audit.
+	// Enable CNI.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The Service grid audit that to the project.
+	// The name of the SLS Project to which the control plane logs are collected.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
@@ -902,12 +940,12 @@ func (o ServiceMeshMeshConfigAccessLogOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
-// Whether to enable Service grid audit.
+// Enable CNI.
 func (o ServiceMeshMeshConfigAccessLogOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The Service grid audit that to the project.
+// The name of the SLS Project to which the control plane logs are collected.
 func (o ServiceMeshMeshConfigAccessLogOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAccessLog) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -942,7 +980,7 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) Elem() ServiceMeshMeshConfigAcc
 	}).(ServiceMeshMeshConfigAccessLogOutput)
 }
 
-// Whether to enable Service grid audit.
+// Enable CNI.
 func (o ServiceMeshMeshConfigAccessLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAccessLog) *bool {
 		if v == nil {
@@ -952,7 +990,7 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) Enabled() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Service grid audit that to the project.
+// The name of the SLS Project to which the control plane logs are collected.
 func (o ServiceMeshMeshConfigAccessLogPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAccessLog) *string {
 		if v == nil {
@@ -963,9 +1001,9 @@ func (o ServiceMeshMeshConfigAccessLogPtrOutput) Project() pulumi.StringPtrOutpu
 }
 
 type ServiceMeshMeshConfigAudit struct {
-	// Whether to enable Service grid audit.
+	// Enable CNI.
 	Enabled *bool `pulumi:"enabled"`
-	// The Service grid audit that to the project.
+	// The name of the SLS Project to which the control plane logs are collected.
 	Project *string `pulumi:"project"`
 }
 
@@ -981,9 +1019,9 @@ type ServiceMeshMeshConfigAuditInput interface {
 }
 
 type ServiceMeshMeshConfigAuditArgs struct {
-	// Whether to enable Service grid audit.
+	// Enable CNI.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The Service grid audit that to the project.
+	// The name of the SLS Project to which the control plane logs are collected.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
@@ -1082,12 +1120,12 @@ func (o ServiceMeshMeshConfigAuditOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// Whether to enable Service grid audit.
+// Enable CNI.
 func (o ServiceMeshMeshConfigAuditOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAudit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The Service grid audit that to the project.
+// The name of the SLS Project to which the control plane logs are collected.
 func (o ServiceMeshMeshConfigAuditOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigAudit) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -1122,7 +1160,7 @@ func (o ServiceMeshMeshConfigAuditPtrOutput) Elem() ServiceMeshMeshConfigAuditOu
 	}).(ServiceMeshMeshConfigAuditOutput)
 }
 
-// Whether to enable Service grid audit.
+// Enable CNI.
 func (o ServiceMeshMeshConfigAuditPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAudit) *bool {
 		if v == nil {
@@ -1132,7 +1170,7 @@ func (o ServiceMeshMeshConfigAuditPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Service grid audit that to the project.
+// The name of the SLS Project to which the control plane logs are collected.
 func (o ServiceMeshMeshConfigAuditPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigAudit) *string {
 		if v == nil {
@@ -1143,9 +1181,9 @@ func (o ServiceMeshMeshConfigAuditPtrOutput) Project() pulumi.StringPtrOutput {
 }
 
 type ServiceMeshMeshConfigControlPlaneLog struct {
-	// Whether to enable Service grid audit.
+	// Enable CNI.
 	Enabled *bool `pulumi:"enabled"`
-	// The Service grid audit that to the project.
+	// The name of the SLS Project to which the control plane logs are collected.
 	Project *string `pulumi:"project"`
 }
 
@@ -1161,9 +1199,9 @@ type ServiceMeshMeshConfigControlPlaneLogInput interface {
 }
 
 type ServiceMeshMeshConfigControlPlaneLogArgs struct {
-	// Whether to enable Service grid audit.
+	// Enable CNI.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The Service grid audit that to the project.
+	// The name of the SLS Project to which the control plane logs are collected.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
@@ -1262,12 +1300,12 @@ func (o ServiceMeshMeshConfigControlPlaneLogOutput) ToOutput(ctx context.Context
 	}
 }
 
-// Whether to enable Service grid audit.
+// Enable CNI.
 func (o ServiceMeshMeshConfigControlPlaneLogOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigControlPlaneLog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The Service grid audit that to the project.
+// The name of the SLS Project to which the control plane logs are collected.
 func (o ServiceMeshMeshConfigControlPlaneLogOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigControlPlaneLog) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -1302,7 +1340,7 @@ func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Elem() ServiceMeshMeshCon
 	}).(ServiceMeshMeshConfigControlPlaneLogOutput)
 }
 
-// Whether to enable Service grid audit.
+// Enable CNI.
 func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigControlPlaneLog) *bool {
 		if v == nil {
@@ -1312,7 +1350,7 @@ func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Enabled() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Service grid audit that to the project.
+// The name of the SLS Project to which the control plane logs are collected.
 func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigControlPlaneLog) *string {
 		if v == nil {
@@ -1323,8 +1361,10 @@ func (o ServiceMeshMeshConfigControlPlaneLogPtrOutput) Project() pulumi.StringPt
 }
 
 type ServiceMeshMeshConfigKiali struct {
-	// Whether to enable Service grid audit.
+	// Enable CNI.
 	Enabled *bool `pulumi:"enabled"`
+	// Grid topology service address.
+	Url *string `pulumi:"url"`
 }
 
 // ServiceMeshMeshConfigKialiInput is an input type that accepts ServiceMeshMeshConfigKialiArgs and ServiceMeshMeshConfigKialiOutput values.
@@ -1339,8 +1379,10 @@ type ServiceMeshMeshConfigKialiInput interface {
 }
 
 type ServiceMeshMeshConfigKialiArgs struct {
-	// Whether to enable Service grid audit.
+	// Enable CNI.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Grid topology service address.
+	Url pulumi.StringPtrInput `pulumi:"url"`
 }
 
 func (ServiceMeshMeshConfigKialiArgs) ElementType() reflect.Type {
@@ -1438,9 +1480,14 @@ func (o ServiceMeshMeshConfigKialiOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// Whether to enable Service grid audit.
+// Enable CNI.
 func (o ServiceMeshMeshConfigKialiOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigKiali) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Grid topology service address.
+func (o ServiceMeshMeshConfigKialiOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfigKiali) *string { return v.Url }).(pulumi.StringPtrOutput)
 }
 
 type ServiceMeshMeshConfigKialiPtrOutput struct{ *pulumi.OutputState }
@@ -1473,7 +1520,7 @@ func (o ServiceMeshMeshConfigKialiPtrOutput) Elem() ServiceMeshMeshConfigKialiOu
 	}).(ServiceMeshMeshConfigKialiOutput)
 }
 
-// Whether to enable Service grid audit.
+// Enable CNI.
 func (o ServiceMeshMeshConfigKialiPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigKiali) *bool {
 		if v == nil {
@@ -1483,18 +1530,28 @@ func (o ServiceMeshMeshConfigKialiPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Grid topology service address.
+func (o ServiceMeshMeshConfigKialiPtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigKiali) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceMeshMeshConfigOpa struct {
-	// Whether to enable Service grid audit.
+	// Enable CNI.
 	Enabled *bool `pulumi:"enabled"`
-	// The CPU resource  of the limitsOPA proxy container.
+	// Sidecar injector Pods on the throttle.
 	LimitCpu *string `pulumi:"limitCpu"`
-	// The memory resource limit of the OPA proxy container.
+	// Sidecar injector Pods on the throttle.
 	LimitMemory *string `pulumi:"limitMemory"`
-	// The log level of the OPA proxy container .
+	// OPA proxy container log level.
 	LogLevel *string `pulumi:"logLevel"`
-	// The CPU resource request of the OPA proxy container.
+	// Sidecar injector Pods on the requested resource.
 	RequestCpu *string `pulumi:"requestCpu"`
-	// The memory resource request of the OPA proxy container.
+	// Sidecar injector Pods on the requested resource.
 	RequestMemory *string `pulumi:"requestMemory"`
 }
 
@@ -1510,17 +1567,17 @@ type ServiceMeshMeshConfigOpaInput interface {
 }
 
 type ServiceMeshMeshConfigOpaArgs struct {
-	// Whether to enable Service grid audit.
+	// Enable CNI.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The CPU resource  of the limitsOPA proxy container.
+	// Sidecar injector Pods on the throttle.
 	LimitCpu pulumi.StringPtrInput `pulumi:"limitCpu"`
-	// The memory resource limit of the OPA proxy container.
+	// Sidecar injector Pods on the throttle.
 	LimitMemory pulumi.StringPtrInput `pulumi:"limitMemory"`
-	// The log level of the OPA proxy container .
+	// OPA proxy container log level.
 	LogLevel pulumi.StringPtrInput `pulumi:"logLevel"`
-	// The CPU resource request of the OPA proxy container.
+	// Sidecar injector Pods on the requested resource.
 	RequestCpu pulumi.StringPtrInput `pulumi:"requestCpu"`
-	// The memory resource request of the OPA proxy container.
+	// Sidecar injector Pods on the requested resource.
 	RequestMemory pulumi.StringPtrInput `pulumi:"requestMemory"`
 }
 
@@ -1619,32 +1676,32 @@ func (o ServiceMeshMeshConfigOpaOutput) ToOutput(ctx context.Context) pulumix.Ou
 	}
 }
 
-// Whether to enable Service grid audit.
+// Enable CNI.
 func (o ServiceMeshMeshConfigOpaOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The CPU resource  of the limitsOPA proxy container.
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigOpaOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.LimitCpu }).(pulumi.StringPtrOutput)
 }
 
-// The memory resource limit of the OPA proxy container.
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigOpaOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.LimitMemory }).(pulumi.StringPtrOutput)
 }
 
-// The log level of the OPA proxy container .
+// OPA proxy container log level.
 func (o ServiceMeshMeshConfigOpaOutput) LogLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.LogLevel }).(pulumi.StringPtrOutput)
 }
 
-// The CPU resource request of the OPA proxy container.
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigOpaOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.RequestCpu }).(pulumi.StringPtrOutput)
 }
 
-// The memory resource request of the OPA proxy container.
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigOpaOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigOpa) *string { return v.RequestMemory }).(pulumi.StringPtrOutput)
 }
@@ -1679,7 +1736,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) Elem() ServiceMeshMeshConfigOpaOutput
 	}).(ServiceMeshMeshConfigOpaOutput)
 }
 
-// Whether to enable Service grid audit.
+// Enable CNI.
 func (o ServiceMeshMeshConfigOpaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *bool {
 		if v == nil {
@@ -1689,7 +1746,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The CPU resource  of the limitsOPA proxy container.
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigOpaPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1699,7 +1756,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The memory resource limit of the OPA proxy container.
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigOpaPtrOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1709,7 +1766,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) LimitMemory() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The log level of the OPA proxy container .
+// OPA proxy container log level.
 func (o ServiceMeshMeshConfigOpaPtrOutput) LogLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1719,7 +1776,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) LogLevel() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The CPU resource request of the OPA proxy container.
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigOpaPtrOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1729,7 +1786,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) RequestCpu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The memory resource request of the OPA proxy container.
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigOpaPtrOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigOpa) *string {
 		if v == nil {
@@ -1742,7 +1799,7 @@ func (o ServiceMeshMeshConfigOpaPtrOutput) RequestMemory() pulumi.StringPtrOutpu
 type ServiceMeshMeshConfigPilot struct {
 	// Whether to support the HTTP1.0.
 	Http10Enabled *bool `pulumi:"http10Enabled"`
-	// The  percentage of the Link trace sampling.
+	// Link trace sampling percentage.
 	TraceSampling *float64 `pulumi:"traceSampling"`
 }
 
@@ -1760,7 +1817,7 @@ type ServiceMeshMeshConfigPilotInput interface {
 type ServiceMeshMeshConfigPilotArgs struct {
 	// Whether to support the HTTP1.0.
 	Http10Enabled pulumi.BoolPtrInput `pulumi:"http10Enabled"`
-	// The  percentage of the Link trace sampling.
+	// Link trace sampling percentage.
 	TraceSampling pulumi.Float64PtrInput `pulumi:"traceSampling"`
 }
 
@@ -1864,7 +1921,7 @@ func (o ServiceMeshMeshConfigPilotOutput) Http10Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigPilot) *bool { return v.Http10Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The  percentage of the Link trace sampling.
+// Link trace sampling percentage.
 func (o ServiceMeshMeshConfigPilotOutput) TraceSampling() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigPilot) *float64 { return v.TraceSampling }).(pulumi.Float64PtrOutput)
 }
@@ -1909,7 +1966,7 @@ func (o ServiceMeshMeshConfigPilotPtrOutput) Http10Enabled() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The  percentage of the Link trace sampling.
+// Link trace sampling percentage.
 func (o ServiceMeshMeshConfigPilotPtrOutput) TraceSampling() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigPilot) *float64 {
 		if v == nil {
@@ -1919,14 +1976,196 @@ func (o ServiceMeshMeshConfigPilotPtrOutput) TraceSampling() pulumi.Float64PtrOu
 	}).(pulumi.Float64PtrOutput)
 }
 
+type ServiceMeshMeshConfigPrometheus struct {
+	// Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+	ExternalUrl *string `pulumi:"externalUrl"`
+	// Whether to enable external Prometheus.
+	UseExternal *bool `pulumi:"useExternal"`
+}
+
+// ServiceMeshMeshConfigPrometheusInput is an input type that accepts ServiceMeshMeshConfigPrometheusArgs and ServiceMeshMeshConfigPrometheusOutput values.
+// You can construct a concrete instance of `ServiceMeshMeshConfigPrometheusInput` via:
+//
+//	ServiceMeshMeshConfigPrometheusArgs{...}
+type ServiceMeshMeshConfigPrometheusInput interface {
+	pulumi.Input
+
+	ToServiceMeshMeshConfigPrometheusOutput() ServiceMeshMeshConfigPrometheusOutput
+	ToServiceMeshMeshConfigPrometheusOutputWithContext(context.Context) ServiceMeshMeshConfigPrometheusOutput
+}
+
+type ServiceMeshMeshConfigPrometheusArgs struct {
+	// Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+	ExternalUrl pulumi.StringPtrInput `pulumi:"externalUrl"`
+	// Whether to enable external Prometheus.
+	UseExternal pulumi.BoolPtrInput `pulumi:"useExternal"`
+}
+
+func (ServiceMeshMeshConfigPrometheusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshMeshConfigPrometheus)(nil)).Elem()
+}
+
+func (i ServiceMeshMeshConfigPrometheusArgs) ToServiceMeshMeshConfigPrometheusOutput() ServiceMeshMeshConfigPrometheusOutput {
+	return i.ToServiceMeshMeshConfigPrometheusOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshMeshConfigPrometheusArgs) ToServiceMeshMeshConfigPrometheusOutputWithContext(ctx context.Context) ServiceMeshMeshConfigPrometheusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigPrometheusOutput)
+}
+
+func (i ServiceMeshMeshConfigPrometheusArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigPrometheus] {
+	return pulumix.Output[ServiceMeshMeshConfigPrometheus]{
+		OutputState: i.ToServiceMeshMeshConfigPrometheusOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ServiceMeshMeshConfigPrometheusArgs) ToServiceMeshMeshConfigPrometheusPtrOutput() ServiceMeshMeshConfigPrometheusPtrOutput {
+	return i.ToServiceMeshMeshConfigPrometheusPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshMeshConfigPrometheusArgs) ToServiceMeshMeshConfigPrometheusPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigPrometheusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigPrometheusOutput).ToServiceMeshMeshConfigPrometheusPtrOutputWithContext(ctx)
+}
+
+// ServiceMeshMeshConfigPrometheusPtrInput is an input type that accepts ServiceMeshMeshConfigPrometheusArgs, ServiceMeshMeshConfigPrometheusPtr and ServiceMeshMeshConfigPrometheusPtrOutput values.
+// You can construct a concrete instance of `ServiceMeshMeshConfigPrometheusPtrInput` via:
+//
+//	        ServiceMeshMeshConfigPrometheusArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceMeshMeshConfigPrometheusPtrInput interface {
+	pulumi.Input
+
+	ToServiceMeshMeshConfigPrometheusPtrOutput() ServiceMeshMeshConfigPrometheusPtrOutput
+	ToServiceMeshMeshConfigPrometheusPtrOutputWithContext(context.Context) ServiceMeshMeshConfigPrometheusPtrOutput
+}
+
+type serviceMeshMeshConfigPrometheusPtrType ServiceMeshMeshConfigPrometheusArgs
+
+func ServiceMeshMeshConfigPrometheusPtr(v *ServiceMeshMeshConfigPrometheusArgs) ServiceMeshMeshConfigPrometheusPtrInput {
+	return (*serviceMeshMeshConfigPrometheusPtrType)(v)
+}
+
+func (*serviceMeshMeshConfigPrometheusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshMeshConfigPrometheus)(nil)).Elem()
+}
+
+func (i *serviceMeshMeshConfigPrometheusPtrType) ToServiceMeshMeshConfigPrometheusPtrOutput() ServiceMeshMeshConfigPrometheusPtrOutput {
+	return i.ToServiceMeshMeshConfigPrometheusPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceMeshMeshConfigPrometheusPtrType) ToServiceMeshMeshConfigPrometheusPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigPrometheusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigPrometheusPtrOutput)
+}
+
+func (i *serviceMeshMeshConfigPrometheusPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigPrometheus] {
+	return pulumix.Output[*ServiceMeshMeshConfigPrometheus]{
+		OutputState: i.ToServiceMeshMeshConfigPrometheusPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ServiceMeshMeshConfigPrometheusOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshMeshConfigPrometheusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshMeshConfigPrometheus)(nil)).Elem()
+}
+
+func (o ServiceMeshMeshConfigPrometheusOutput) ToServiceMeshMeshConfigPrometheusOutput() ServiceMeshMeshConfigPrometheusOutput {
+	return o
+}
+
+func (o ServiceMeshMeshConfigPrometheusOutput) ToServiceMeshMeshConfigPrometheusOutputWithContext(ctx context.Context) ServiceMeshMeshConfigPrometheusOutput {
+	return o
+}
+
+func (o ServiceMeshMeshConfigPrometheusOutput) ToServiceMeshMeshConfigPrometheusPtrOutput() ServiceMeshMeshConfigPrometheusPtrOutput {
+	return o.ToServiceMeshMeshConfigPrometheusPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMeshConfigPrometheusOutput) ToServiceMeshMeshConfigPrometheusPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigPrometheusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfigPrometheus) *ServiceMeshMeshConfigPrometheus {
+		return &v
+	}).(ServiceMeshMeshConfigPrometheusPtrOutput)
+}
+
+func (o ServiceMeshMeshConfigPrometheusOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigPrometheus] {
+	return pulumix.Output[ServiceMeshMeshConfigPrometheus]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+func (o ServiceMeshMeshConfigPrometheusOutput) ExternalUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfigPrometheus) *string { return v.ExternalUrl }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable external Prometheus.
+func (o ServiceMeshMeshConfigPrometheusOutput) UseExternal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfigPrometheus) *bool { return v.UseExternal }).(pulumi.BoolPtrOutput)
+}
+
+type ServiceMeshMeshConfigPrometheusPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshMeshConfigPrometheusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshMeshConfigPrometheus)(nil)).Elem()
+}
+
+func (o ServiceMeshMeshConfigPrometheusPtrOutput) ToServiceMeshMeshConfigPrometheusPtrOutput() ServiceMeshMeshConfigPrometheusPtrOutput {
+	return o
+}
+
+func (o ServiceMeshMeshConfigPrometheusPtrOutput) ToServiceMeshMeshConfigPrometheusPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigPrometheusPtrOutput {
+	return o
+}
+
+func (o ServiceMeshMeshConfigPrometheusPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigPrometheus] {
+	return pulumix.Output[*ServiceMeshMeshConfigPrometheus]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceMeshMeshConfigPrometheusPtrOutput) Elem() ServiceMeshMeshConfigPrometheusOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigPrometheus) ServiceMeshMeshConfigPrometheus {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMeshConfigPrometheus
+		return ret
+	}).(ServiceMeshMeshConfigPrometheusOutput)
+}
+
+// Prometheus service addresses (enabled external Prometheus when the system automatically populates).
+func (o ServiceMeshMeshConfigPrometheusPtrOutput) ExternalUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigPrometheus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable external Prometheus.
+func (o ServiceMeshMeshConfigPrometheusPtrOutput) UseExternal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigPrometheus) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseExternal
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ServiceMeshMeshConfigProxy struct {
-	// The CPU resource  of the limitsOPA proxy container.
+	// Trust cluster domain.
+	ClusterDomain *string `pulumi:"clusterDomain"`
+	// Sidecar injector Pods on the throttle.
 	LimitCpu *string `pulumi:"limitCpu"`
-	// The memory resource limit of the OPA proxy container.
+	// Sidecar injector Pods on the throttle.
 	LimitMemory *string `pulumi:"limitMemory"`
-	// The CPU resource request of the OPA proxy container.
+	// Sidecar injector Pods on the requested resource.
 	RequestCpu *string `pulumi:"requestCpu"`
-	// The memory resource request of the OPA proxy container.
+	// Sidecar injector Pods on the requested resource.
 	RequestMemory *string `pulumi:"requestMemory"`
 }
 
@@ -1942,13 +2181,15 @@ type ServiceMeshMeshConfigProxyInput interface {
 }
 
 type ServiceMeshMeshConfigProxyArgs struct {
-	// The CPU resource  of the limitsOPA proxy container.
+	// Trust cluster domain.
+	ClusterDomain pulumi.StringPtrInput `pulumi:"clusterDomain"`
+	// Sidecar injector Pods on the throttle.
 	LimitCpu pulumi.StringPtrInput `pulumi:"limitCpu"`
-	// The memory resource limit of the OPA proxy container.
+	// Sidecar injector Pods on the throttle.
 	LimitMemory pulumi.StringPtrInput `pulumi:"limitMemory"`
-	// The CPU resource request of the OPA proxy container.
+	// Sidecar injector Pods on the requested resource.
 	RequestCpu pulumi.StringPtrInput `pulumi:"requestCpu"`
-	// The memory resource request of the OPA proxy container.
+	// Sidecar injector Pods on the requested resource.
 	RequestMemory pulumi.StringPtrInput `pulumi:"requestMemory"`
 }
 
@@ -2047,22 +2288,27 @@ func (o ServiceMeshMeshConfigProxyOutput) ToOutput(ctx context.Context) pulumix.
 	}
 }
 
-// The CPU resource  of the limitsOPA proxy container.
+// Trust cluster domain.
+func (o ServiceMeshMeshConfigProxyOutput) ClusterDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.ClusterDomain }).(pulumi.StringPtrOutput)
+}
+
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigProxyOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.LimitCpu }).(pulumi.StringPtrOutput)
 }
 
-// The memory resource limit of the OPA proxy container.
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigProxyOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.LimitMemory }).(pulumi.StringPtrOutput)
 }
 
-// The CPU resource request of the OPA proxy container.
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigProxyOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.RequestCpu }).(pulumi.StringPtrOutput)
 }
 
-// The memory resource request of the OPA proxy container.
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigProxyOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigProxy) *string { return v.RequestMemory }).(pulumi.StringPtrOutput)
 }
@@ -2097,7 +2343,17 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) Elem() ServiceMeshMeshConfigProxyOu
 	}).(ServiceMeshMeshConfigProxyOutput)
 }
 
-// The CPU resource  of the limitsOPA proxy container.
+// Trust cluster domain.
+func (o ServiceMeshMeshConfigProxyPtrOutput) ClusterDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigProxyPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {
@@ -2107,7 +2363,7 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The memory resource limit of the OPA proxy container.
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigProxyPtrOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {
@@ -2117,7 +2373,7 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) LimitMemory() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The CPU resource request of the OPA proxy container.
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigProxyPtrOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {
@@ -2127,7 +2383,7 @@ func (o ServiceMeshMeshConfigProxyPtrOutput) RequestCpu() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The memory resource request of the OPA proxy container.
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigProxyPtrOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigProxy) *string {
 		if v == nil {
@@ -2142,14 +2398,18 @@ type ServiceMeshMeshConfigSidecarInjector struct {
 	AutoInjectionPolicyEnabled *bool `pulumi:"autoInjectionPolicyEnabled"`
 	// Whether it is the all namespaces you turn on the auto injection capabilities.
 	EnableNamespacesByDefault *bool `pulumi:"enableNamespacesByDefault"`
-	// The CPU resource  of the limitsOPA proxy container.
+	// CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+	InitCniConfiguration *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration `pulumi:"initCniConfiguration"`
+	// Sidecar injector Pods on the throttle.
 	LimitCpu *string `pulumi:"limitCpu"`
-	// The memory resource limit of the OPA proxy container.
+	// Sidecar injector Pods on the throttle.
 	LimitMemory *string `pulumi:"limitMemory"`
-	// The CPU resource request of the OPA proxy container.
+	// Sidecar injector Pods on the requested resource.
 	RequestCpu *string `pulumi:"requestCpu"`
-	// The memory resource request of the OPA proxy container.
+	// Sidecar injector Pods on the requested resource.
 	RequestMemory *string `pulumi:"requestMemory"`
+	// Other configurations of automatically injected sidecar (in YAML format).
+	SidecarInjectorWebhookAsYaml *string `pulumi:"sidecarInjectorWebhookAsYaml"`
 }
 
 // ServiceMeshMeshConfigSidecarInjectorInput is an input type that accepts ServiceMeshMeshConfigSidecarInjectorArgs and ServiceMeshMeshConfigSidecarInjectorOutput values.
@@ -2168,14 +2428,18 @@ type ServiceMeshMeshConfigSidecarInjectorArgs struct {
 	AutoInjectionPolicyEnabled pulumi.BoolPtrInput `pulumi:"autoInjectionPolicyEnabled"`
 	// Whether it is the all namespaces you turn on the auto injection capabilities.
 	EnableNamespacesByDefault pulumi.BoolPtrInput `pulumi:"enableNamespacesByDefault"`
-	// The CPU resource  of the limitsOPA proxy container.
+	// CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+	InitCniConfiguration ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrInput `pulumi:"initCniConfiguration"`
+	// Sidecar injector Pods on the throttle.
 	LimitCpu pulumi.StringPtrInput `pulumi:"limitCpu"`
-	// The memory resource limit of the OPA proxy container.
+	// Sidecar injector Pods on the throttle.
 	LimitMemory pulumi.StringPtrInput `pulumi:"limitMemory"`
-	// The CPU resource request of the OPA proxy container.
+	// Sidecar injector Pods on the requested resource.
 	RequestCpu pulumi.StringPtrInput `pulumi:"requestCpu"`
-	// The memory resource request of the OPA proxy container.
+	// Sidecar injector Pods on the requested resource.
 	RequestMemory pulumi.StringPtrInput `pulumi:"requestMemory"`
+	// Other configurations of automatically injected sidecar (in YAML format).
+	SidecarInjectorWebhookAsYaml pulumi.StringPtrInput `pulumi:"sidecarInjectorWebhookAsYaml"`
 }
 
 func (ServiceMeshMeshConfigSidecarInjectorArgs) ElementType() reflect.Type {
@@ -2283,24 +2547,36 @@ func (o ServiceMeshMeshConfigSidecarInjectorOutput) EnableNamespacesByDefault() 
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *bool { return v.EnableNamespacesByDefault }).(pulumi.BoolPtrOutput)
 }
 
-// The CPU resource  of the limitsOPA proxy container.
+// CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+func (o ServiceMeshMeshConfigSidecarInjectorOutput) InitCniConfiguration() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
+		return v.InitCniConfiguration
+	}).(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput)
+}
+
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *string { return v.LimitCpu }).(pulumi.StringPtrOutput)
 }
 
-// The memory resource limit of the OPA proxy container.
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *string { return v.LimitMemory }).(pulumi.StringPtrOutput)
 }
 
-// The CPU resource request of the OPA proxy container.
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *string { return v.RequestCpu }).(pulumi.StringPtrOutput)
 }
 
-// The memory resource request of the OPA proxy container.
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigSidecarInjectorOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *string { return v.RequestMemory }).(pulumi.StringPtrOutput)
+}
+
+// Other configurations of automatically injected sidecar (in YAML format).
+func (o ServiceMeshMeshConfigSidecarInjectorOutput) SidecarInjectorWebhookAsYaml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjector) *string { return v.SidecarInjectorWebhookAsYaml }).(pulumi.StringPtrOutput)
 }
 
 type ServiceMeshMeshConfigSidecarInjectorPtrOutput struct{ *pulumi.OutputState }
@@ -2353,7 +2629,17 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) EnableNamespacesByDefault
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The CPU resource  of the limitsOPA proxy container.
+// CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) InitCniConfiguration() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.InitCniConfiguration
+	}).(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput)
+}
+
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) LimitCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *string {
 		if v == nil {
@@ -2363,7 +2649,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) LimitCpu() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The memory resource limit of the OPA proxy container.
+// Sidecar injector Pods on the throttle.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) LimitMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *string {
 		if v == nil {
@@ -2373,7 +2659,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) LimitMemory() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The CPU resource request of the OPA proxy container.
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) RequestCpu() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *string {
 		if v == nil {
@@ -2383,7 +2669,7 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) RequestCpu() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// The memory resource request of the OPA proxy container.
+// Sidecar injector Pods on the requested resource.
 func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) RequestMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *string {
 		if v == nil {
@@ -2393,10 +2679,202 @@ func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) RequestMemory() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Other configurations of automatically injected sidecar (in YAML format).
+func (o ServiceMeshMeshConfigSidecarInjectorPtrOutput) SidecarInjectorWebhookAsYaml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjector) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SidecarInjectorWebhookAsYaml
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration struct {
+	// Enable CNI.
+	Enabled *bool `pulumi:"enabled"`
+	// The excluded namespace.
+	ExcludeNamespaces *string `pulumi:"excludeNamespaces"`
+}
+
+// ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationInput is an input type that accepts ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs and ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput values.
+// You can construct a concrete instance of `ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationInput` via:
+//
+//	ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs{...}
+type ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationInput interface {
+	pulumi.Input
+
+	ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput
+	ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutputWithContext(context.Context) ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput
+}
+
+type ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs struct {
+	// Enable CNI.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The excluded namespace.
+	ExcludeNamespaces pulumi.StringPtrInput `pulumi:"excludeNamespaces"`
+}
+
+func (ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration)(nil)).Elem()
+}
+
+func (i ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs) ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput {
+	return i.ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs) ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutputWithContext(ctx context.Context) ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput)
+}
+
+func (i ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration] {
+	return pulumix.Output[ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration]{
+		OutputState: i.ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs) ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
+	return i.ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs) ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput).ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutputWithContext(ctx)
+}
+
+// ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrInput is an input type that accepts ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs, ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtr and ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput values.
+// You can construct a concrete instance of `ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrInput` via:
+//
+//	        ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput
+	ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutputWithContext(context.Context) ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput
+}
+
+type serviceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrType ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs
+
+func ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtr(v *ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs) ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrInput {
+	return (*serviceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrType)(v)
+}
+
+func (*serviceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration)(nil)).Elem()
+}
+
+func (i *serviceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrType) ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
+	return i.ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrType) ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput)
+}
+
+func (i *serviceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrType) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration] {
+	return pulumix.Output[*ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration]{
+		OutputState: i.ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration)(nil)).Elem()
+}
+
+func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput {
+	return o
+}
+
+func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutputWithContext(ctx context.Context) ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput {
+	return o
+}
+
+func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
+	return o.ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration) *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
+		return &v
+	}).(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput)
+}
+
+func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration] {
+	return pulumix.Output[ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Enable CNI.
+func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The excluded namespace.
+func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput) ExcludeNamespaces() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration) *string { return v.ExcludeNamespaces }).(pulumi.StringPtrOutput)
+}
+
+type ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration)(nil)).Elem()
+}
+
+func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput) ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
+	return o
+}
+
+func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput) ToServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutputWithContext(ctx context.Context) ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput {
+	return o
+}
+
+func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration] {
+	return pulumix.Output[*ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput) Elem() ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration) ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration
+		return ret
+	}).(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput)
+}
+
+// Enable CNI.
+func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The excluded namespace.
+func (o ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput) ExcludeNamespaces() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeNamespaces
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceMeshNetwork struct {
-	// The ID of the VPC.
+	// Security group ID.
+	SecurityGroupId *string `pulumi:"securityGroupId"`
+	// VPC ID.
 	VpcId string `pulumi:"vpcId"`
-	// The list of Virtual Switch.
+	// Virtual Switch ID.
 	VswitcheList string `pulumi:"vswitcheList"`
 }
 
@@ -2412,9 +2890,11 @@ type ServiceMeshNetworkInput interface {
 }
 
 type ServiceMeshNetworkArgs struct {
-	// The ID of the VPC.
+	// Security group ID.
+	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
+	// VPC ID.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// The list of Virtual Switch.
+	// Virtual Switch ID.
 	VswitcheList pulumi.StringInput `pulumi:"vswitcheList"`
 }
 
@@ -2513,12 +2993,17 @@ func (o ServiceMeshNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[S
 	}
 }
 
-// The ID of the VPC.
+// Security group ID.
+func (o ServiceMeshNetworkOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceMeshNetwork) *string { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
+}
+
+// VPC ID.
 func (o ServiceMeshNetworkOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceMeshNetwork) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The list of Virtual Switch.
+// Virtual Switch ID.
 func (o ServiceMeshNetworkOutput) VswitcheList() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceMeshNetwork) string { return v.VswitcheList }).(pulumi.StringOutput)
 }
@@ -2553,7 +3038,17 @@ func (o ServiceMeshNetworkPtrOutput) Elem() ServiceMeshNetworkOutput {
 	}).(ServiceMeshNetworkOutput)
 }
 
-// The ID of the VPC.
+// Security group ID.
+func (o ServiceMeshNetworkPtrOutput) SecurityGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceMeshNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityGroupId
+	}).(pulumi.StringPtrOutput)
+}
+
+// VPC ID.
 func (o ServiceMeshNetworkPtrOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshNetwork) *string {
 		if v == nil {
@@ -2563,7 +3058,7 @@ func (o ServiceMeshNetworkPtrOutput) VpcId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The list of Virtual Switch.
+// Virtual Switch ID.
 func (o ServiceMeshNetworkPtrOutput) VswitcheList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceMeshNetwork) *string {
 		if v == nil {
@@ -5410,10 +5905,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigOpaPtrInput)(nil)).Elem(), ServiceMeshMeshConfigOpaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigPilotInput)(nil)).Elem(), ServiceMeshMeshConfigPilotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigPilotPtrInput)(nil)).Elem(), ServiceMeshMeshConfigPilotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigPrometheusInput)(nil)).Elem(), ServiceMeshMeshConfigPrometheusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigPrometheusPtrInput)(nil)).Elem(), ServiceMeshMeshConfigPrometheusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigProxyInput)(nil)).Elem(), ServiceMeshMeshConfigProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigProxyPtrInput)(nil)).Elem(), ServiceMeshMeshConfigProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigSidecarInjectorInput)(nil)).Elem(), ServiceMeshMeshConfigSidecarInjectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigSidecarInjectorPtrInput)(nil)).Elem(), ServiceMeshMeshConfigSidecarInjectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationInput)(nil)).Elem(), ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrInput)(nil)).Elem(), ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshNetworkInput)(nil)).Elem(), ServiceMeshNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceMeshNetworkPtrInput)(nil)).Elem(), ServiceMeshNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPermissionPermissionInput)(nil)).Elem(), UserPermissionPermissionArgs{})
@@ -5470,10 +5969,14 @@ func init() {
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigOpaPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigPilotOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigPilotPtrOutput{})
+	pulumi.RegisterOutputType(ServiceMeshMeshConfigPrometheusOutput{})
+	pulumi.RegisterOutputType(ServiceMeshMeshConfigPrometheusPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigProxyOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigProxyPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigSidecarInjectorOutput{})
 	pulumi.RegisterOutputType(ServiceMeshMeshConfigSidecarInjectorPtrOutput{})
+	pulumi.RegisterOutputType(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationOutput{})
+	pulumi.RegisterOutputType(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ServiceMeshNetworkOutput{})
 	pulumi.RegisterOutputType(ServiceMeshNetworkPtrOutput{})
 	pulumi.RegisterOutputType(UserPermissionPermissionOutput{})

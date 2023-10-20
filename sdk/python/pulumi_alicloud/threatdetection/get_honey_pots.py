@@ -141,18 +141,20 @@ def get_honey_pots(honeypot_id: Optional[str] = None,
                    output_file: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHoneyPotsResult:
     """
-    This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
+    This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     default = alicloud.threatdetection.get_honey_pots(ids=["xxxx"],
-        honeypot_name="tf-test",
+        honeypot_name="tf-example",
         node_id="a44e1ab3-6945-444c-889d-5bacee7056e8")
     pulumi.export("alicloudThreatDetectionHoneyPotExampleId", default.pots[0].id)
     ```
@@ -163,6 +165,7 @@ def get_honey_pots(honeypot_id: Optional[str] = None,
     :param Sequence[str] ids: A list of Honey Pot IDs.
     :param str name_regex: A regex string to filter results by honey pot name.
     :param str node_id: The ID of the honeypot management node.
+    :param str node_name: The name of the honeypot management node.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -198,18 +201,20 @@ def get_honey_pots_output(honeypot_id: Optional[pulumi.Input[Optional[str]]] = N
                           output_file: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHoneyPotsResult]:
     """
-    This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
+    This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
+
+    Basic Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     default = alicloud.threatdetection.get_honey_pots(ids=["xxxx"],
-        honeypot_name="tf-test",
+        honeypot_name="tf-example",
         node_id="a44e1ab3-6945-444c-889d-5bacee7056e8")
     pulumi.export("alicloudThreatDetectionHoneyPotExampleId", default.pots[0].id)
     ```
@@ -220,6 +225,7 @@ def get_honey_pots_output(honeypot_id: Optional[pulumi.Input[Optional[str]]] = N
     :param Sequence[str] ids: A list of Honey Pot IDs.
     :param str name_regex: A regex string to filter results by honey pot name.
     :param str node_id: The ID of the honeypot management node.
+    :param str node_name: The name of the honeypot management node.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

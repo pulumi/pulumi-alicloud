@@ -39,7 +39,13 @@ class AggregateCompliancePackConfigRuleArgs:
              _setter: Callable[[Any, Any], None],
              managed_rule_identifier: pulumi.Input[str],
              config_rule_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['AggregateCompliancePackConfigRuleConfigRuleParameterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'managedRuleIdentifier' in kwargs:
+            managed_rule_identifier = kwargs['managedRuleIdentifier']
+        if 'configRuleParameters' in kwargs:
+            config_rule_parameters = kwargs['configRuleParameters']
+
         _setter("managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
             _setter("config_rule_parameters", config_rule_parameters)
@@ -88,7 +94,13 @@ class AggregateCompliancePackConfigRuleConfigRuleParameterArgs:
              _setter: Callable[[Any, Any], None],
              parameter_name: Optional[pulumi.Input[str]] = None,
              parameter_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         if parameter_name is not None:
             _setter("parameter_name", parameter_name)
         if parameter_value is not None:
@@ -134,7 +146,11 @@ class AggregateCompliancePackConfigRuleIdArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              config_rule_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+
         if config_rule_id is not None:
             _setter("config_rule_id", config_rule_id)
 
@@ -174,7 +190,15 @@ class AggregatorAggregatorAccountArgs:
              account_id: pulumi.Input[str],
              account_name: pulumi.Input[str],
              account_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+
         _setter("account_id", account_id)
         _setter("account_name", account_name)
         _setter("account_type", account_type)
@@ -235,7 +259,13 @@ class CompliancePackConfigRuleArgs:
              _setter: Callable[[Any, Any], None],
              managed_rule_identifier: pulumi.Input[str],
              config_rule_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleConfigRuleParameterArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'managedRuleIdentifier' in kwargs:
+            managed_rule_identifier = kwargs['managedRuleIdentifier']
+        if 'configRuleParameters' in kwargs:
+            config_rule_parameters = kwargs['configRuleParameters']
+
         _setter("managed_rule_identifier", managed_rule_identifier)
         if config_rule_parameters is not None:
             _setter("config_rule_parameters", config_rule_parameters)
@@ -284,7 +314,13 @@ class CompliancePackConfigRuleConfigRuleParameterArgs:
              _setter: Callable[[Any, Any], None],
              parameter_name: Optional[pulumi.Input[str]] = None,
              parameter_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if 'parameterValue' in kwargs:
+            parameter_value = kwargs['parameterValue']
+
         if parameter_name is not None:
             _setter("parameter_name", parameter_name)
         if parameter_value is not None:
@@ -330,7 +366,11 @@ class CompliancePackConfigRuleIdArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              config_rule_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+
         if config_rule_id is not None:
             _setter("config_rule_id", config_rule_id)
 
@@ -366,7 +406,11 @@ class RuleComplianceArgs:
              _setter: Callable[[Any, Any], None],
              compliance_type: Optional[pulumi.Input[str]] = None,
              count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'complianceType' in kwargs:
+            compliance_type = kwargs['complianceType']
+
         if compliance_type is not None:
             _setter("compliance_type", compliance_type)
         if count is not None:

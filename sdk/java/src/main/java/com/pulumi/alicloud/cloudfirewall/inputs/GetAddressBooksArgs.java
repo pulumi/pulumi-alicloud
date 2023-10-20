@@ -17,14 +17,14 @@ public final class GetAddressBooksArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetAddressBooksArgs Empty = new GetAddressBooksArgs();
 
     /**
-     * The type of the Address Book.
+     * The type of the Address Book. Valid values: `ip`, `tag`.
      * 
      */
     @Import(name="groupType")
     private @Nullable Output<String> groupType;
 
     /**
-     * @return The type of the Address Book.
+     * @return The type of the Address Book. Valid values: `ip`, `tag`.
      * 
      */
     public Optional<Output<String>> groupType() {
@@ -104,7 +104,7 @@ public final class GetAddressBooksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param groupType The type of the Address Book.
+         * @param groupType The type of the Address Book. Valid values: `ip`, `tag`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class GetAddressBooksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param groupType The type of the Address Book.
+         * @param groupType The type of the Address Book. Valid values: `ip`, `tag`.
          * 
          * @return builder
          * 

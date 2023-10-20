@@ -91,7 +91,19 @@ class UserArgs:
              password: Optional[pulumi.Input[str]] = None,
              source_user_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'mobileCountryCode' in kwargs:
+            mobile_country_code = kwargs['mobileCountryCode']
+        if 'sourceUserId' in kwargs:
+            source_user_id = kwargs['sourceUserId']
+
         _setter("instance_id", instance_id)
         _setter("source", source)
         _setter("user_name", user_name)
@@ -353,7 +365,21 @@ class _UserState:
              status: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'mobileCountryCode' in kwargs:
+            mobile_country_code = kwargs['mobileCountryCode']
+        if 'sourceUserId' in kwargs:
+            source_user_id = kwargs['sourceUserId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if comment is not None:
             _setter("comment", comment)
         if display_name is not None:
@@ -568,7 +594,7 @@ class User(pulumi.CustomResource):
         """
         Provides a Bastion Host User resource.
 
-        For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/doc-detail/204503.htm).
+        For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/bastion-host/latest/api-yundun-bastionhost-2019-12-09-createuser).
 
         > **NOTE:** Available since v1.133.0.
 
@@ -679,7 +705,7 @@ class User(pulumi.CustomResource):
         """
         Provides a Bastion Host User resource.
 
-        For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/doc-detail/204503.htm).
+        For information about Bastion Host User and how to use it, see [What is User](https://www.alibabacloud.com/help/en/bastion-host/latest/api-yundun-bastionhost-2019-12-09-createuser).
 
         > **NOTE:** Available since v1.133.0.
 

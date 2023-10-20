@@ -39,7 +39,17 @@ class HoneypotNodeArgs:
              node_name: pulumi.Input[str],
              allow_honeypot_access_internet: Optional[pulumi.Input[bool]] = None,
              security_group_probe_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availableProbeNum' in kwargs:
+            available_probe_num = kwargs['availableProbeNum']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'allowHoneypotAccessInternet' in kwargs:
+            allow_honeypot_access_internet = kwargs['allowHoneypotAccessInternet']
+        if 'securityGroupProbeIpLists' in kwargs:
+            security_group_probe_ip_lists = kwargs['securityGroupProbeIpLists']
+
         _setter("available_probe_num", available_probe_num)
         _setter("node_name", node_name)
         if allow_honeypot_access_internet is not None:
@@ -132,7 +142,19 @@ class _HoneypotNodeState:
              node_name: Optional[pulumi.Input[str]] = None,
              security_group_probe_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowHoneypotAccessInternet' in kwargs:
+            allow_honeypot_access_internet = kwargs['allowHoneypotAccessInternet']
+        if 'availableProbeNum' in kwargs:
+            available_probe_num = kwargs['availableProbeNum']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'nodeName' in kwargs:
+            node_name = kwargs['nodeName']
+        if 'securityGroupProbeIpLists' in kwargs:
+            security_group_probe_ip_lists = kwargs['securityGroupProbeIpLists']
+
         if allow_honeypot_access_internet is not None:
             _setter("allow_honeypot_access_internet", allow_honeypot_access_internet)
         if available_probe_num is not None:

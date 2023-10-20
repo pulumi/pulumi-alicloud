@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshLoadBalancer {
     /**
-     * @return The ID of the SLB instance that is used when the API server is exposed to the Internet.
+     * @return The IP address of a public network exposed API Server corresponding to the load balancing ID.
      * 
      */
     private @Nullable String apiServerLoadbalancerId;
     /**
-     * @return Whether to use the IP address of a public network exposed the API Server.
+     * @return Indicates whether to use the IP address of a public network exposed API Server.
      * 
      */
     private @Nullable Boolean apiServerPublicEip;
     /**
-     * @return Whether to use the IP address of a public network exposure the Istio Pilot.
+     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot.
      * 
      */
     private @Nullable Boolean pilotPublicEip;
     /**
-     * @return The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+     * @return The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
      * 
      */
     private @Nullable String pilotPublicLoadbalancerId;
 
     private ServiceMeshLoadBalancer() {}
     /**
-     * @return The ID of the SLB instance that is used when the API server is exposed to the Internet.
+     * @return The IP address of a public network exposed API Server corresponding to the load balancing ID.
      * 
      */
     public Optional<String> apiServerLoadbalancerId() {
         return Optional.ofNullable(this.apiServerLoadbalancerId);
     }
     /**
-     * @return Whether to use the IP address of a public network exposed the API Server.
+     * @return Indicates whether to use the IP address of a public network exposed API Server.
      * 
      */
     public Optional<Boolean> apiServerPublicEip() {
         return Optional.ofNullable(this.apiServerPublicEip);
     }
     /**
-     * @return Whether to use the IP address of a public network exposure the Istio Pilot.
+     * @return Indicates whether to use the IP address of a public network exposure Istio Pilot.
      * 
      */
     public Optional<Boolean> pilotPublicEip() {
         return Optional.ofNullable(this.pilotPublicEip);
     }
     /**
-     * @return The ID of the Server Load Balancer (SLB) instance that is used when Istio Pilot is exposed to the Internet.
+     * @return The IP address of a public network exposure Istio Pilot corresponds to the load balancing ID.
      * 
      */
     public Optional<String> pilotPublicLoadbalancerId() {

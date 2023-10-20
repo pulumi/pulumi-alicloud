@@ -66,7 +66,17 @@ class DomainSource(dict):
              source_port: str,
              source_type: str,
              source_priority: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sourceContent' in kwargs:
+            source_content = kwargs['sourceContent']
+        if 'sourcePort' in kwargs:
+            source_port = kwargs['sourcePort']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'sourcePriority' in kwargs:
+            source_priority = kwargs['sourcePriority']
+
         _setter("source_content", source_content)
         _setter("source_port", source_port)
         _setter("source_type", source_type)
@@ -157,7 +167,19 @@ class GetDomainsDomainResult(dict):
              sources: Sequence['outputs.GetDomainsDomainSourceResult'],
              ssl_protocol: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'gmtCreated' in kwargs:
+            gmt_created = kwargs['gmtCreated']
+        if 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if 'sandBox' in kwargs:
+            sand_box = kwargs['sandBox']
+        if 'sslProtocol' in kwargs:
+            ssl_protocol = kwargs['sslProtocol']
+
         _setter("cname", cname)
         _setter("description", description)
         _setter("domain_name", domain_name)
@@ -271,7 +293,17 @@ class GetDomainsDomainSourceResult(dict):
              source_port: str,
              source_priority: str,
              source_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sourceContent' in kwargs:
+            source_content = kwargs['sourceContent']
+        if 'sourcePort' in kwargs:
+            source_port = kwargs['sourcePort']
+        if 'sourcePriority' in kwargs:
+            source_priority = kwargs['sourcePriority']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+
         _setter("source_content", source_content)
         _setter("source_port", source_port)
         _setter("source_priority", source_priority)

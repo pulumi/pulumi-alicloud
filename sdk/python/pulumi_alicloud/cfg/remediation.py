@@ -49,7 +49,19 @@ class RemediationArgs:
              remediation_template_id: pulumi.Input[str],
              remediation_type: pulumi.Input[str],
              remediation_source_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+        if 'invokeType' in kwargs:
+            invoke_type = kwargs['invokeType']
+        if 'remediationTemplateId' in kwargs:
+            remediation_template_id = kwargs['remediationTemplateId']
+        if 'remediationType' in kwargs:
+            remediation_type = kwargs['remediationType']
+        if 'remediationSourceType' in kwargs:
+            remediation_source_type = kwargs['remediationSourceType']
+
         _setter("config_rule_id", config_rule_id)
         _setter("invoke_type", invoke_type)
         _setter("params", params)
@@ -175,7 +187,21 @@ class _RemediationState:
              remediation_source_type: Optional[pulumi.Input[str]] = None,
              remediation_template_id: Optional[pulumi.Input[str]] = None,
              remediation_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+        if 'invokeType' in kwargs:
+            invoke_type = kwargs['invokeType']
+        if 'remediationId' in kwargs:
+            remediation_id = kwargs['remediationId']
+        if 'remediationSourceType' in kwargs:
+            remediation_source_type = kwargs['remediationSourceType']
+        if 'remediationTemplateId' in kwargs:
+            remediation_template_id = kwargs['remediationTemplateId']
+        if 'remediationType' in kwargs:
+            remediation_type = kwargs['remediationType']
+
         if config_rule_id is not None:
             _setter("config_rule_id", config_rule_id)
         if invoke_type is not None:

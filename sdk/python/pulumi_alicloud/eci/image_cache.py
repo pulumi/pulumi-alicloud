@@ -65,7 +65,27 @@ class ImageCacheArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              retention_days: Optional[pulumi.Input[int]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageCacheName' in kwargs:
+            image_cache_name = kwargs['imageCacheName']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'eipInstanceId' in kwargs:
+            eip_instance_id = kwargs['eipInstanceId']
+        if 'imageCacheSize' in kwargs:
+            image_cache_size = kwargs['imageCacheSize']
+        if 'imageRegistryCredentials' in kwargs:
+            image_registry_credentials = kwargs['imageRegistryCredentials']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("image_cache_name", image_cache_name)
         _setter("images", images)
         _setter("security_group_id", security_group_id)
@@ -264,7 +284,29 @@ class _ImageCacheState:
              status: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'containerGroupId' in kwargs:
+            container_group_id = kwargs['containerGroupId']
+        if 'eipInstanceId' in kwargs:
+            eip_instance_id = kwargs['eipInstanceId']
+        if 'imageCacheName' in kwargs:
+            image_cache_name = kwargs['imageCacheName']
+        if 'imageCacheSize' in kwargs:
+            image_cache_size = kwargs['imageCacheSize']
+        if 'imageRegistryCredentials' in kwargs:
+            image_registry_credentials = kwargs['imageRegistryCredentials']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if container_group_id is not None:
             _setter("container_group_id", container_group_id)
         if eip_instance_id is not None:

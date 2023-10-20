@@ -68,7 +68,25 @@ class TemplateQuotaArgs:
              expire_time: Optional[pulumi.Input[str]] = None,
              notice_type: Optional[pulumi.Input[int]] = None,
              quota_category: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desireValue' in kwargs:
+            desire_value = kwargs['desireValue']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'quotaActionCode' in kwargs:
+            quota_action_code = kwargs['quotaActionCode']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'envLanguage' in kwargs:
+            env_language = kwargs['envLanguage']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'noticeType' in kwargs:
+            notice_type = kwargs['noticeType']
+        if 'quotaCategory' in kwargs:
+            quota_category = kwargs['quotaCategory']
+
         _setter("desire_value", desire_value)
         _setter("product_code", product_code)
         _setter("quota_action_code", quota_action_code)
@@ -256,7 +274,25 @@ class _TemplateQuotaState:
              product_code: Optional[pulumi.Input[str]] = None,
              quota_action_code: Optional[pulumi.Input[str]] = None,
              quota_category: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'desireValue' in kwargs:
+            desire_value = kwargs['desireValue']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'envLanguage' in kwargs:
+            env_language = kwargs['envLanguage']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'noticeType' in kwargs:
+            notice_type = kwargs['noticeType']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'quotaActionCode' in kwargs:
+            quota_action_code = kwargs['quotaActionCode']
+        if 'quotaCategory' in kwargs:
+            quota_category = kwargs['quotaCategory']
+
         if desire_value is not None:
             _setter("desire_value", desire_value)
         if dimensions is not None:
@@ -410,7 +446,7 @@ class TemplateQuota(pulumi.CustomResource):
         """
         Provides a Quotas Template Quota resource.
 
-        For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createtemplatequotaitem).
+        For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createtemplatequotaitem).
 
         > **NOTE:** Available since v1.206.0.
 
@@ -475,7 +511,7 @@ class TemplateQuota(pulumi.CustomResource):
         """
         Provides a Quotas Template Quota resource.
 
-        For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createtemplatequotaitem).
+        For information about Quotas Template Quota and how to use it, see [What is Template Quota](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createtemplatequotaitem).
 
         > **NOTE:** Available since v1.206.0.
 

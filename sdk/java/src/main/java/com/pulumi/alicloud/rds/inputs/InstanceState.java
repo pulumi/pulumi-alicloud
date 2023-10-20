@@ -168,6 +168,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
      * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
      * 
+     * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
+     * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
@@ -182,6 +184,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
      * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
      * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+     * 
+     * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
      * 
      */
     public Optional<Output<String>> category() {
@@ -432,7 +436,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
      * 
      */
     @Import(name="deletionProtection")
@@ -443,7 +447,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - true: delete protect.
      * - false: no delete protect.
      * 
-     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+     * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
      * 
      */
     public Optional<Output<Boolean>> deletionProtection() {
@@ -1290,8 +1294,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
      * 
-     * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
-     * 
      */
     @Import(name="tcpConnectionType")
     private @Nullable Output<String> tcpConnectionType;
@@ -1300,8 +1302,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * @return The availability check method of the instance. Valid values:
      * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
-     * 
-     * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
      * 
      */
     public Optional<Output<String>> tcpConnectionType() {
@@ -1777,6 +1777,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
          * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
          * 
+         * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
+         * 
          * @return builder
          * 
          */
@@ -1795,6 +1797,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * * **serverless_basic**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.200.0+)
          * * **serverless_standard**: RDS Serverless Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL. (Available in 1.204.0+)
          * * **serverless_ha**: RDS Serverless High-availability Edition for SQL Server. (Available in 1.204.0+)
+         * 
+         * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
          * 
          * @return builder
          * 
@@ -2125,7 +2129,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - true: delete protect.
          * - false: no delete protect.
          * 
-         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
          * 
          * @return builder
          * 
@@ -2140,7 +2144,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - true: delete protect.
          * - false: no delete protect.
          * 
-         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+         * &gt; **NOTE:** `deletion_protection` is valid only when attribute `instance_charge_type` is set to `Postpaid` or `Serverless`, supported engine type: `MySQL`, `PostgreSQL`, `MariaDB`, `MSSQL`.
          * 
          * @return builder
          * 
@@ -3309,8 +3313,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
          * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
          * 
-         * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
-         * 
          * @return builder
          * 
          */
@@ -3323,8 +3325,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * @param tcpConnectionType The availability check method of the instance. Valid values:
          * - **SHORT**: Alibaba Cloud uses short-lived connections to check the availability of the instance.
          * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
-         * 
-         * &gt; **NOTE:** `zone_id_slave_a` and `zone_id_slave_b` can specify slave zone ids when creating the high-availability or enterprise edition instances. Meanwhile, `vswitch_id` needs to pass in the corresponding vswitch id to the slave zone by order (If the `vswitch_id` is not specified, the classic network version will be created). For example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;zone-c&#34;, `zone_id_slave_b` = &#34;zone-b&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,vsw-zone-c,vsw-zone-b&#34;. Of course, you can also choose automatic allocation , for example, `zone_id` = &#34;zone-a&#34; and `zone_id_slave_a` = &#34;Auto&#34;,`zone_id_slave_b` = &#34;Auto&#34;, then the `vswitch_id` must be &#34;vsw-zone-a,Auto,Auto&#34;. The list contains up to 2 slave zone ids , separated by commas.
          * 
          * @return builder
          * 

@@ -35,7 +35,15 @@ class LoadBalancerCommonBandwidthPackageAttachmentArgs:
              bandwidth_package_id: pulumi.Input[str],
              load_balancer_id: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("bandwidth_package_id", bandwidth_package_id)
         _setter("load_balancer_id", load_balancer_id)
         if dry_run is not None:
@@ -106,7 +114,15 @@ class _LoadBalancerCommonBandwidthPackageAttachmentState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              load_balancer_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+
         if bandwidth_package_id is not None:
             _setter("bandwidth_package_id", bandwidth_package_id)
         if dry_run is not None:
@@ -177,7 +193,7 @@ class LoadBalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         """
         Provides a Alb Load Balancer Common Bandwidth Package Attachment resource.
 
-        For information about Alb Load Balancer Common Bandwidth Package Attachment and how to use it, see [What is Load Balancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/attachcommonbandwidthpackagetoloadbalancer).
+        For information about Alb Load Balancer Common Bandwidth Package Attachment and how to use it, see [What is Load Balancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-attachcommonbandwidthpackagetoloadbalancer).
 
         > **NOTE:** Available since v1.200.0.
 
@@ -204,7 +220,7 @@ class LoadBalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
         """
         Provides a Alb Load Balancer Common Bandwidth Package Attachment resource.
 
-        For information about Alb Load Balancer Common Bandwidth Package Attachment and how to use it, see [What is Load Balancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/server-load-balancer/latest/attachcommonbandwidthpackagetoloadbalancer).
+        For information about Alb Load Balancer Common Bandwidth Package Attachment and how to use it, see [What is Load Balancer Common Bandwidth Package Attachment](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-attachcommonbandwidthpackagetoloadbalancer).
 
         > **NOTE:** Available since v1.200.0.
 

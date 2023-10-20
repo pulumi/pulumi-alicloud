@@ -4297,7 +4297,8 @@ func (o GetTransitRouterMulticastDomainPeerMembersMemberArrayOutput) Index(i pul
 type GetTransitRouterMulticastDomainSourcesSource struct {
 	// The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
 	GroupIpAddress string `pulumi:"groupIpAddress"`
-	Id             string `pulumi:"id"`
+	// The id of the resource.
+	Id string `pulumi:"id"`
 	// ENI ID of the multicast source.
 	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
 	// The status of the resource.
@@ -4322,7 +4323,8 @@ type GetTransitRouterMulticastDomainSourcesSourceInput interface {
 type GetTransitRouterMulticastDomainSourcesSourceArgs struct {
 	// The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
 	GroupIpAddress pulumi.StringInput `pulumi:"groupIpAddress"`
-	Id             pulumi.StringInput `pulumi:"id"`
+	// The id of the resource.
+	Id pulumi.StringInput `pulumi:"id"`
 	// ENI ID of the multicast source.
 	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
 	// The status of the resource.
@@ -4407,6 +4409,7 @@ func (o GetTransitRouterMulticastDomainSourcesSourceOutput) GroupIpAddress() pul
 	return o.ApplyT(func(v GetTransitRouterMulticastDomainSourcesSource) string { return v.GroupIpAddress }).(pulumi.StringOutput)
 }
 
+// The id of the resource.
 func (o GetTransitRouterMulticastDomainSourcesSourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetTransitRouterMulticastDomainSourcesSource) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -39,7 +39,17 @@ class EndpointAddressArgs:
              db_endpoint_id: pulumi.Input[str],
              connection_prefix: Optional[pulumi.Input[str]] = None,
              net_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'dbEndpointId' in kwargs:
+            db_endpoint_id = kwargs['dbEndpointId']
+        if 'connectionPrefix' in kwargs:
+            connection_prefix = kwargs['connectionPrefix']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+
         _setter("db_cluster_id", db_cluster_id)
         _setter("db_endpoint_id", db_endpoint_id)
         if connection_prefix is not None:
@@ -136,7 +146,21 @@ class _EndpointAddressState:
              ip_address: Optional[pulumi.Input[str]] = None,
              net_type: Optional[pulumi.Input[str]] = None,
              port: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionPrefix' in kwargs:
+            connection_prefix = kwargs['connectionPrefix']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'dbEndpointId' in kwargs:
+            db_endpoint_id = kwargs['dbEndpointId']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+
         if connection_prefix is not None:
             _setter("connection_prefix", connection_prefix)
         if connection_string is not None:

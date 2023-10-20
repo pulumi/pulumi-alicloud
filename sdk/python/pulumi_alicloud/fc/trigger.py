@@ -63,7 +63,15 @@ class TriggerArgs:
              name_prefix: Optional[pulumi.Input[str]] = None,
              role: Optional[pulumi.Input[str]] = None,
              source_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configMns' in kwargs:
+            config_mns = kwargs['configMns']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'sourceArn' in kwargs:
+            source_arn = kwargs['sourceArn']
+
         _setter("function", function)
         _setter("service", service)
         _setter("type", type)
@@ -253,7 +261,19 @@ class _TriggerState:
              source_arn: Optional[pulumi.Input[str]] = None,
              trigger_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configMns' in kwargs:
+            config_mns = kwargs['configMns']
+        if 'lastModified' in kwargs:
+            last_modified = kwargs['lastModified']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'sourceArn' in kwargs:
+            source_arn = kwargs['sourceArn']
+        if 'triggerId' in kwargs:
+            trigger_id = kwargs['triggerId']
+
         if config is not None:
             _setter("config", config)
         if config_mns is not None:
@@ -431,7 +451,7 @@ class Trigger(pulumi.CustomResource):
                  __props__=None):
         """
         Provides an Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
-         For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createtrigger).
+         For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createtrigger).
 
         > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
 
@@ -889,7 +909,7 @@ class Trigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides an Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
-         For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createtrigger).
+         For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createtrigger).
 
         > **NOTE:** The resource requires a provider field 'account_id'. See account_id.
 

@@ -35,7 +35,15 @@ class PublishTaskArgs:
              biz_type: pulumi.Input[str],
              agent_key: Optional[pulumi.Input[str]] = None,
              data_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bizType' in kwargs:
+            biz_type = kwargs['bizType']
+        if 'agentKey' in kwargs:
+            agent_key = kwargs['agentKey']
+        if 'dataIdLists' in kwargs:
+            data_id_lists = kwargs['dataIdLists']
+
         _setter("biz_type", biz_type)
         if agent_key is not None:
             _setter("agent_key", agent_key)
@@ -115,7 +123,19 @@ class _PublishTaskState:
              data_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              modify_time: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'agentKey' in kwargs:
+            agent_key = kwargs['agentKey']
+        if 'bizType' in kwargs:
+            biz_type = kwargs['bizType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dataIdLists' in kwargs:
+            data_id_lists = kwargs['dataIdLists']
+        if 'modifyTime' in kwargs:
+            modify_time = kwargs['modifyTime']
+
         if agent_key is not None:
             _setter("agent_key", agent_key)
         if biz_type is not None:

@@ -31,7 +31,11 @@ class DomainArgs:
              _setter: Callable[[Any, Any], None],
              accelerator_id: pulumi.Input[str],
              domain: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+
         _setter("accelerator_id", accelerator_id)
         _setter("domain", domain)
 
@@ -84,7 +88,11 @@ class _DomainState:
              accelerator_id: Optional[pulumi.Input[str]] = None,
              domain: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+
         if accelerator_id is not None:
             _setter("accelerator_id", accelerator_id)
         if domain is not None:

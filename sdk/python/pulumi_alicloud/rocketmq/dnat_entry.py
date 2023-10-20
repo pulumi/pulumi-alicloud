@@ -51,7 +51,21 @@ class DnatEntryArgs:
              sag_id: pulumi.Input[str],
              type: pulumi.Input[str],
              external_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'externalPort' in kwargs:
+            external_port = kwargs['externalPort']
+        if 'internalIp' in kwargs:
+            internal_ip = kwargs['internalIp']
+        if 'internalPort' in kwargs:
+            internal_port = kwargs['internalPort']
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+        if 'externalIp' in kwargs:
+            external_ip = kwargs['externalIp']
+
         _setter("external_port", external_port)
         _setter("internal_ip", internal_ip)
         _setter("internal_port", internal_port)
@@ -186,7 +200,21 @@ class _DnatEntryState:
              ip_protocol: Optional[pulumi.Input[str]] = None,
              sag_id: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'externalIp' in kwargs:
+            external_ip = kwargs['externalIp']
+        if 'externalPort' in kwargs:
+            external_port = kwargs['externalPort']
+        if 'internalIp' in kwargs:
+            internal_ip = kwargs['internalIp']
+        if 'internalPort' in kwargs:
+            internal_port = kwargs['internalPort']
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if 'sagId' in kwargs:
+            sag_id = kwargs['sagId']
+
         if external_ip is not None:
             _setter("external_ip", external_ip)
         if external_port is not None:

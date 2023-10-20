@@ -103,7 +103,43 @@ class VirtualBorderRouterArgs:
              status: Optional[pulumi.Input[str]] = None,
              vbr_owner_id: Optional[pulumi.Input[str]] = None,
              virtual_border_router_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localGatewayIp' in kwargs:
+            local_gateway_ip = kwargs['localGatewayIp']
+        if 'peerGatewayIp' in kwargs:
+            peer_gateway_ip = kwargs['peerGatewayIp']
+        if 'peeringSubnetMask' in kwargs:
+            peering_subnet_mask = kwargs['peeringSubnetMask']
+        if 'physicalConnectionId' in kwargs:
+            physical_connection_id = kwargs['physicalConnectionId']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+        if 'associatedPhysicalConnections' in kwargs:
+            associated_physical_connections = kwargs['associatedPhysicalConnections']
+        if 'circuitCode' in kwargs:
+            circuit_code = kwargs['circuitCode']
+        if 'detectMultiplier' in kwargs:
+            detect_multiplier = kwargs['detectMultiplier']
+        if 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if 'includeCrossAccountVbr' in kwargs:
+            include_cross_account_vbr = kwargs['includeCrossAccountVbr']
+        if 'localIpv6GatewayIp' in kwargs:
+            local_ipv6_gateway_ip = kwargs['localIpv6GatewayIp']
+        if 'minRxInterval' in kwargs:
+            min_rx_interval = kwargs['minRxInterval']
+        if 'minTxInterval' in kwargs:
+            min_tx_interval = kwargs['minTxInterval']
+        if 'peerIpv6GatewayIp' in kwargs:
+            peer_ipv6_gateway_ip = kwargs['peerIpv6GatewayIp']
+        if 'peeringIpv6SubnetMask' in kwargs:
+            peering_ipv6_subnet_mask = kwargs['peeringIpv6SubnetMask']
+        if 'vbrOwnerId' in kwargs:
+            vbr_owner_id = kwargs['vbrOwnerId']
+        if 'virtualBorderRouterName' in kwargs:
+            virtual_border_router_name = kwargs['virtualBorderRouterName']
+
         _setter("local_gateway_ip", local_gateway_ip)
         _setter("peer_gateway_ip", peer_gateway_ip)
         _setter("peering_subnet_mask", peering_subnet_mask)
@@ -477,7 +513,45 @@ class _VirtualBorderRouterState:
              vbr_owner_id: Optional[pulumi.Input[str]] = None,
              virtual_border_router_name: Optional[pulumi.Input[str]] = None,
              vlan_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associatedPhysicalConnections' in kwargs:
+            associated_physical_connections = kwargs['associatedPhysicalConnections']
+        if 'circuitCode' in kwargs:
+            circuit_code = kwargs['circuitCode']
+        if 'detectMultiplier' in kwargs:
+            detect_multiplier = kwargs['detectMultiplier']
+        if 'enableIpv6' in kwargs:
+            enable_ipv6 = kwargs['enableIpv6']
+        if 'includeCrossAccountVbr' in kwargs:
+            include_cross_account_vbr = kwargs['includeCrossAccountVbr']
+        if 'localGatewayIp' in kwargs:
+            local_gateway_ip = kwargs['localGatewayIp']
+        if 'localIpv6GatewayIp' in kwargs:
+            local_ipv6_gateway_ip = kwargs['localIpv6GatewayIp']
+        if 'minRxInterval' in kwargs:
+            min_rx_interval = kwargs['minRxInterval']
+        if 'minTxInterval' in kwargs:
+            min_tx_interval = kwargs['minTxInterval']
+        if 'peerGatewayIp' in kwargs:
+            peer_gateway_ip = kwargs['peerGatewayIp']
+        if 'peerIpv6GatewayIp' in kwargs:
+            peer_ipv6_gateway_ip = kwargs['peerIpv6GatewayIp']
+        if 'peeringIpv6SubnetMask' in kwargs:
+            peering_ipv6_subnet_mask = kwargs['peeringIpv6SubnetMask']
+        if 'peeringSubnetMask' in kwargs:
+            peering_subnet_mask = kwargs['peeringSubnetMask']
+        if 'physicalConnectionId' in kwargs:
+            physical_connection_id = kwargs['physicalConnectionId']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+        if 'vbrOwnerId' in kwargs:
+            vbr_owner_id = kwargs['vbrOwnerId']
+        if 'virtualBorderRouterName' in kwargs:
+            virtual_border_router_name = kwargs['virtualBorderRouterName']
+        if 'vlanId' in kwargs:
+            vlan_id = kwargs['vlanId']
+
         if associated_physical_connections is not None:
             _setter("associated_physical_connections", associated_physical_connections)
         if bandwidth is not None:

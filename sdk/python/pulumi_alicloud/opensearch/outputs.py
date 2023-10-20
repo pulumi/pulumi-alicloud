@@ -59,7 +59,13 @@ class AppGroupOrder(dict):
              auto_renew: Optional[bool] = None,
              duration: Optional[int] = None,
              pricing_cycle: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'pricingCycle' in kwargs:
+            pricing_cycle = kwargs['pricingCycle']
+
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
         if duration is not None:
@@ -145,7 +151,13 @@ class AppGroupQuota(dict):
              doc_size: int,
              spec: str,
              qps: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if 'docSize' in kwargs:
+            doc_size = kwargs['docSize']
+
         _setter("compute_resource", compute_resource)
         _setter("doc_size", doc_size)
         _setter("spec", spec)
@@ -306,7 +318,47 @@ class GetAppGroupsGroupResult(dict):
              status: str,
              switched_time: int,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appGroupId' in kwargs:
+            app_group_id = kwargs['appGroupId']
+        if 'appGroupName' in kwargs:
+            app_group_name = kwargs['appGroupName']
+        if 'chargeWay' in kwargs:
+            charge_way = kwargs['chargeWay']
+        if 'commodityCode' in kwargs:
+            commodity_code = kwargs['commodityCode']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'currentVersion' in kwargs:
+            current_version = kwargs['currentVersion']
+        if 'expireOn' in kwargs:
+            expire_on = kwargs['expireOn']
+        if 'firstRankAlgoDeploymentId' in kwargs:
+            first_rank_algo_deployment_id = kwargs['firstRankAlgoDeploymentId']
+        if 'hasPendingQuotaReviewTask' in kwargs:
+            has_pending_quota_review_task = kwargs['hasPendingQuotaReviewTask']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'lockedByExpiration' in kwargs:
+            locked_by_expiration = kwargs['lockedByExpiration']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'pendingSecondRankAlgoDeploymentId' in kwargs:
+            pending_second_rank_algo_deployment_id = kwargs['pendingSecondRankAlgoDeploymentId']
+        if 'processingOrderId' in kwargs:
+            processing_order_id = kwargs['processingOrderId']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'secondRankAlgoDeploymentId' in kwargs:
+            second_rank_algo_deployment_id = kwargs['secondRankAlgoDeploymentId']
+        if 'switchedTime' in kwargs:
+            switched_time = kwargs['switchedTime']
+
         _setter("app_group_id", app_group_id)
         _setter("app_group_name", app_group_name)
         _setter("charge_way", charge_way)
@@ -570,7 +622,13 @@ class GetAppGroupsGroupQuotaResult(dict):
              compute_resource: str,
              doc_size: str,
              spec: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if 'docSize' in kwargs:
+            doc_size = kwargs['docSize']
+
         _setter("compute_resource", compute_resource)
         _setter("doc_size", doc_size)
         _setter("spec", spec)

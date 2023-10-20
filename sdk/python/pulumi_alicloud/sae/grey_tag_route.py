@@ -45,7 +45,17 @@ class GreyTagRouteArgs:
              description: Optional[pulumi.Input[str]] = None,
              dubbo_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]] = None,
              sc_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'greyTagRouteName' in kwargs:
+            grey_tag_route_name = kwargs['greyTagRouteName']
+        if 'dubboRules' in kwargs:
+            dubbo_rules = kwargs['dubboRules']
+        if 'scRules' in kwargs:
+            sc_rules = kwargs['scRules']
+
         _setter("app_id", app_id)
         _setter("grey_tag_route_name", grey_tag_route_name)
         if description is not None:
@@ -148,7 +158,17 @@ class _GreyTagRouteState:
              dubbo_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleArgs']]]] = None,
              grey_tag_route_name: Optional[pulumi.Input[str]] = None,
              sc_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'dubboRules' in kwargs:
+            dubbo_rules = kwargs['dubboRules']
+        if 'greyTagRouteName' in kwargs:
+            grey_tag_route_name = kwargs['greyTagRouteName']
+        if 'scRules' in kwargs:
+            sc_rules = kwargs['scRules']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if description is not None:

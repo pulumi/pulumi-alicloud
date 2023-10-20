@@ -32,7 +32,11 @@ class ResourceGroupRegionStatusArgs:
              _setter: Callable[[Any, Any], None],
              region_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         if region_id is not None:
             _setter("region_id", region_id)
         if status is not None:

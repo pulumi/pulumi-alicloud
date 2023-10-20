@@ -77,7 +77,29 @@ class NestServiceInstanceArgs:
              specification_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              template_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'serviceVersion' in kwargs:
+            service_version = kwargs['serviceVersion']
+        if 'enableInstanceOps' in kwargs:
+            enable_instance_ops = kwargs['enableInstanceOps']
+        if 'enableUserPrometheus' in kwargs:
+            enable_user_prometheus = kwargs['enableUserPrometheus']
+        if 'operationMetadata' in kwargs:
+            operation_metadata = kwargs['operationMetadata']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'serviceInstanceName' in kwargs:
+            service_instance_name = kwargs['serviceInstanceName']
+        if 'specificationName' in kwargs:
+            specification_name = kwargs['specificationName']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+
         _setter("service_id", service_id)
         _setter("service_version", service_version)
         if commodity is not None:
@@ -328,7 +350,29 @@ class _NestServiceInstanceState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              template_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enableInstanceOps' in kwargs:
+            enable_instance_ops = kwargs['enableInstanceOps']
+        if 'enableUserPrometheus' in kwargs:
+            enable_user_prometheus = kwargs['enableUserPrometheus']
+        if 'operationMetadata' in kwargs:
+            operation_metadata = kwargs['operationMetadata']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'serviceInstanceName' in kwargs:
+            service_instance_name = kwargs['serviceInstanceName']
+        if 'serviceVersion' in kwargs:
+            service_version = kwargs['serviceVersion']
+        if 'specificationName' in kwargs:
+            specification_name = kwargs['specificationName']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+
         if commodity is not None:
             _setter("commodity", commodity)
         if enable_instance_ops is not None:

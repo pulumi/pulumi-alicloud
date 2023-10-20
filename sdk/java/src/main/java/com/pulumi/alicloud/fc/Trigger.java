@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 
 /**
  * Provides an Alicloud Function Compute Trigger resource. Based on trigger, execute your code in response to events in Alibaba Cloud.
- *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/function-compute/latest/api-doc-fc-open-2021-04-06-api-doc-createtrigger).
+ *  For information about Service and how to use it, see [What is Function Compute](https://www.alibabacloud.com/help/en/fc/developer-reference/api-fc-open-2021-04-06-createtrigger).
  * 
  * &gt; **NOTE:** The resource requires a provider field &#39;account_id&#39;. See account_id.
  * 

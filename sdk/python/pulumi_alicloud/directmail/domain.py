@@ -27,7 +27,11 @@ class DomainArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              domain_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+
         _setter("domain_name", domain_name)
 
     @property
@@ -63,7 +67,11 @@ class _DomainState:
              _setter: Callable[[Any, Any], None],
              domain_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+
         if domain_name is not None:
             _setter("domain_name", domain_name)
         if status is not None:

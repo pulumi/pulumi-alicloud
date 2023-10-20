@@ -50,7 +50,17 @@ class TopicSubscriptionArgs:
              name: Optional[pulumi.Input[str]] = None,
              notify_content_format: Optional[pulumi.Input[str]] = None,
              notify_strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+        if 'filterTag' in kwargs:
+            filter_tag = kwargs['filterTag']
+        if 'notifyContentFormat' in kwargs:
+            notify_content_format = kwargs['notifyContentFormat']
+        if 'notifyStrategy' in kwargs:
+            notify_strategy = kwargs['notifyStrategy']
+
         _setter("endpoint", endpoint)
         _setter("topic_name", topic_name)
         if filter_tag is not None:
@@ -177,7 +187,17 @@ class _TopicSubscriptionState:
              notify_content_format: Optional[pulumi.Input[str]] = None,
              notify_strategy: Optional[pulumi.Input[str]] = None,
              topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'filterTag' in kwargs:
+            filter_tag = kwargs['filterTag']
+        if 'notifyContentFormat' in kwargs:
+            notify_content_format = kwargs['notifyContentFormat']
+        if 'notifyStrategy' in kwargs:
+            notify_strategy = kwargs['notifyStrategy']
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+
         if endpoint is not None:
             _setter("endpoint", endpoint)
         if filter_tag is not None:

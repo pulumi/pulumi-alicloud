@@ -31,7 +31,13 @@ class DelegatedAdministratorArgs:
              _setter: Callable[[Any, Any], None],
              account_id: pulumi.Input[str],
              service_principal: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'servicePrincipal' in kwargs:
+            service_principal = kwargs['servicePrincipal']
+
         _setter("account_id", account_id)
         _setter("service_principal", service_principal)
 
@@ -80,7 +86,13 @@ class _DelegatedAdministratorState:
              _setter: Callable[[Any, Any], None],
              account_id: Optional[pulumi.Input[str]] = None,
              service_principal: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'servicePrincipal' in kwargs:
+            service_principal = kwargs['servicePrincipal']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if service_principal is not None:

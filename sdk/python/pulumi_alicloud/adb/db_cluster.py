@@ -44,7 +44,7 @@ class DBClusterArgs:
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
-        :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+        :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         :param pulumi.Input[str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         :param pulumi.Input[str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
@@ -128,7 +128,51 @@ class DBClusterArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbClusterCategory' in kwargs:
+            db_cluster_category = kwargs['dbClusterCategory']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if 'dbClusterClass' in kwargs:
+            db_cluster_class = kwargs['dbClusterClass']
+        if 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if 'dbNodeCount' in kwargs:
+            db_node_count = kwargs['dbNodeCount']
+        if 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if 'diskPerformanceLevel' in kwargs:
+            disk_performance_level = kwargs['diskPerformanceLevel']
+        if 'elasticIoResource' in kwargs:
+            elastic_io_resource = kwargs['elasticIoResource']
+        if 'elasticIoResourceSize' in kwargs:
+            elastic_io_resource_size = kwargs['elasticIoResourceSize']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("db_cluster_category", db_cluster_category)
         _setter("mode", mode)
         if auto_renew_period is not None:
@@ -224,7 +268,7 @@ class DBClusterArgs:
     @pulumi.getter(name="computeResource")
     def compute_resource(self) -> Optional[pulumi.Input[str]]:
         """
-        The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+        The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         """
         return pulumi.get(self, "compute_resource")
 
@@ -530,7 +574,7 @@ class _DBClusterState:
         """
         Input properties used for looking up and filtering DBCluster resources.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
-        :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+        :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         :param pulumi.Input[str] connection_string: The connection string of the cluster.
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
@@ -625,7 +669,53 @@ class _DBClusterState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'computeResource' in kwargs:
+            compute_resource = kwargs['computeResource']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'dbClusterCategory' in kwargs:
+            db_cluster_category = kwargs['dbClusterCategory']
+        if 'dbClusterClass' in kwargs:
+            db_cluster_class = kwargs['dbClusterClass']
+        if 'dbClusterVersion' in kwargs:
+            db_cluster_version = kwargs['dbClusterVersion']
+        if 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if 'dbNodeCount' in kwargs:
+            db_node_count = kwargs['dbNodeCount']
+        if 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if 'diskPerformanceLevel' in kwargs:
+            disk_performance_level = kwargs['diskPerformanceLevel']
+        if 'elasticIoResource' in kwargs:
+            elastic_io_resource = kwargs['elasticIoResource']
+        if 'elasticIoResourceSize' in kwargs:
+            elastic_io_resource_size = kwargs['elasticIoResourceSize']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'payType' in kwargs:
+            pay_type = kwargs['payType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if auto_renew_period is not None:
             _setter("auto_renew_period", auto_renew_period)
         if compute_resource is not None:
@@ -705,7 +795,7 @@ class _DBClusterState:
     @pulumi.getter(name="computeResource")
     def compute_resource(self) -> Optional[pulumi.Input[str]]:
         """
-        The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+        The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         """
         return pulumi.get(self, "compute_resource")
 
@@ -1080,7 +1170,7 @@ class DBCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
-        :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+        :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         :param pulumi.Input[str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
@@ -1256,7 +1346,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
-        :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+        :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         :param pulumi.Input[str] connection_string: The connection string of the cluster.
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
         :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
@@ -1335,7 +1425,7 @@ class DBCluster(pulumi.CustomResource):
     @pulumi.getter(name="computeResource")
     def compute_resource(self) -> pulumi.Output[Optional[str]]:
         """
-        The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+        The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         """
         return pulumi.get(self, "compute_resource")
 

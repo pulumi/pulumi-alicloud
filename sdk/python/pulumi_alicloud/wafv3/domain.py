@@ -45,7 +45,13 @@ class DomainArgs:
              listen: pulumi.Input['DomainListenArgs'],
              redirect: pulumi.Input['DomainRedirectArgs'],
              access_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'accessType' in kwargs:
+            access_type = kwargs['accessType']
+
         _setter("domain", domain)
         _setter("instance_id", instance_id)
         _setter("listen", listen)
@@ -154,7 +160,15 @@ class _DomainState:
              redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None,
              resource_manager_resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessType' in kwargs:
+            access_type = kwargs['accessType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'resourceManagerResourceGroupId' in kwargs:
+            resource_manager_resource_group_id = kwargs['resourceManagerResourceGroupId']
+
         if access_type is not None:
             _setter("access_type", access_type)
         if domain is not None:
@@ -269,7 +283,7 @@ class Domain(pulumi.CustomResource):
         """
         Provides a Wafv3 Domain resource.
 
-        For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain).
+        For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
 
         > **NOTE:** Available since v1.200.0.
 
@@ -298,7 +312,7 @@ class Domain(pulumi.CustomResource):
         """
         Provides a Wafv3 Domain resource.
 
-        For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-doc-waf-openapi-2021-10-01-api-doc-createdomain).
+        For information about Wafv3 Domain and how to use it, see [What is Domain](https://www.alibabacloud.com/help/en/web-application-firewall/latest/api-waf-openapi-2021-10-01-createdomain).
 
         > **NOTE:** Available since v1.200.0.
 

@@ -51,63 +51,63 @@ import java.util.concurrent.CompletableFuture;
 
 public final class ThreatdetectionFunctions {
     /**
-     * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule)
+     * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      */
     public static Output<GetAntiBruteForceRulesResult> getAntiBruteForceRules() {
         return getAntiBruteForceRules(GetAntiBruteForceRulesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule)
+     * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      */
     public static CompletableFuture<GetAntiBruteForceRulesResult> getAntiBruteForceRulesPlain() {
         return getAntiBruteForceRulesPlain(GetAntiBruteForceRulesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule)
+     * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      */
     public static Output<GetAntiBruteForceRulesResult> getAntiBruteForceRules(GetAntiBruteForceRulesArgs args) {
         return getAntiBruteForceRules(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule)
+     * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      */
     public static CompletableFuture<GetAntiBruteForceRulesResult> getAntiBruteForceRulesPlain(GetAntiBruteForceRulesPlainArgs args) {
         return getAntiBruteForceRulesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule)
+     * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      */
     public static Output<GetAntiBruteForceRulesResult> getAntiBruteForceRules(GetAntiBruteForceRulesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", TypeShape.of(GetAntiBruteForceRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule)
+     * This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      */
     public static CompletableFuture<GetAntiBruteForceRulesResult> getAntiBruteForceRulesPlain(GetAntiBruteForceRulesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", TypeShape.of(GetAntiBruteForceRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describecloudcenterinstances)
+     * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -143,9 +143,9 @@ public final class ThreatdetectionFunctions {
         return getAssets(GetAssetsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describecloudcenterinstances)
+     * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -181,9 +181,9 @@ public final class ThreatdetectionFunctions {
         return getAssetsPlain(GetAssetsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describecloudcenterinstances)
+     * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -219,9 +219,9 @@ public final class ThreatdetectionFunctions {
         return getAssets(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describecloudcenterinstances)
+     * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -257,9 +257,9 @@ public final class ThreatdetectionFunctions {
         return getAssetsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describecloudcenterinstances)
+     * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -295,9 +295,9 @@ public final class ThreatdetectionFunctions {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getAssets:getAssets", TypeShape.of(GetAssetsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describecloudcenterinstances)
+     * This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -615,7 +615,7 @@ public final class ThreatdetectionFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getBackupPolicies:getBackupPolicies", TypeShape.of(GetBackupPoliciesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/zh/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifystrategy)
+     * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -624,7 +624,7 @@ public final class ThreatdetectionFunctions {
         return getBaselineStrategies(GetBaselineStrategiesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/zh/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifystrategy)
+     * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -633,7 +633,7 @@ public final class ThreatdetectionFunctions {
         return getBaselineStrategiesPlain(GetBaselineStrategiesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/zh/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifystrategy)
+     * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -642,7 +642,7 @@ public final class ThreatdetectionFunctions {
         return getBaselineStrategies(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/zh/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifystrategy)
+     * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -651,7 +651,7 @@ public final class ThreatdetectionFunctions {
         return getBaselineStrategiesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/zh/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifystrategy)
+     * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -660,7 +660,7 @@ public final class ThreatdetectionFunctions {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", TypeShape.of(GetBaselineStrategiesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/zh/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifystrategy)
+     * This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -669,11 +669,13 @@ public final class ThreatdetectionFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getBaselineStrategies:getBaselineStrategies", TypeShape.of(GetBaselineStrategiesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
+     * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -697,7 +699,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneyPots(GetHoneyPotsArgs.builder()
      *             .ids(&#34;xxxx&#34;)
-     *             .honeypotName(&#34;tf-test&#34;)
+     *             .honeypotName(&#34;tf-example&#34;)
      *             .nodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
      *             .build());
      * 
@@ -711,11 +713,13 @@ public final class ThreatdetectionFunctions {
         return getHoneyPots(GetHoneyPotsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
+     * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -739,7 +743,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneyPots(GetHoneyPotsArgs.builder()
      *             .ids(&#34;xxxx&#34;)
-     *             .honeypotName(&#34;tf-test&#34;)
+     *             .honeypotName(&#34;tf-example&#34;)
      *             .nodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
      *             .build());
      * 
@@ -753,11 +757,13 @@ public final class ThreatdetectionFunctions {
         return getHoneyPotsPlain(GetHoneyPotsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
+     * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -781,7 +787,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneyPots(GetHoneyPotsArgs.builder()
      *             .ids(&#34;xxxx&#34;)
-     *             .honeypotName(&#34;tf-test&#34;)
+     *             .honeypotName(&#34;tf-example&#34;)
      *             .nodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
      *             .build());
      * 
@@ -795,11 +801,13 @@ public final class ThreatdetectionFunctions {
         return getHoneyPots(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
+     * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -823,7 +831,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneyPots(GetHoneyPotsArgs.builder()
      *             .ids(&#34;xxxx&#34;)
-     *             .honeypotName(&#34;tf-test&#34;)
+     *             .honeypotName(&#34;tf-example&#34;)
      *             .nodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
      *             .build());
      * 
@@ -837,11 +845,13 @@ public final class ThreatdetectionFunctions {
         return getHoneyPotsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
+     * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -865,7 +875,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneyPots(GetHoneyPotsArgs.builder()
      *             .ids(&#34;xxxx&#34;)
-     *             .honeypotName(&#34;tf-test&#34;)
+     *             .honeypotName(&#34;tf-example&#34;)
      *             .nodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
      *             .build());
      * 
@@ -879,11 +889,13 @@ public final class ThreatdetectionFunctions {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getHoneyPots:getHoneyPots", TypeShape.of(GetHoneyPotsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
+     * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -907,7 +919,7 @@ public final class ThreatdetectionFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ThreatdetectionFunctions.getHoneyPots(GetHoneyPotsArgs.builder()
      *             .ids(&#34;xxxx&#34;)
-     *             .honeypotName(&#34;tf-test&#34;)
+     *             .honeypotName(&#34;tf-example&#34;)
      *             .nodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
      *             .build());
      * 
@@ -921,7 +933,7 @@ public final class ThreatdetectionFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getHoneyPots:getHoneyPots", TypeShape.of(GetHoneyPotsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-listavailablehoneypot)
+     * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -962,7 +974,7 @@ public final class ThreatdetectionFunctions {
         return getHoneypotImages(GetHoneypotImagesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-listavailablehoneypot)
+     * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1003,7 +1015,7 @@ public final class ThreatdetectionFunctions {
         return getHoneypotImagesPlain(GetHoneypotImagesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-listavailablehoneypot)
+     * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1044,7 +1056,7 @@ public final class ThreatdetectionFunctions {
         return getHoneypotImages(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-listavailablehoneypot)
+     * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1085,7 +1097,7 @@ public final class ThreatdetectionFunctions {
         return getHoneypotImagesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-listavailablehoneypot)
+     * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1126,7 +1138,7 @@ public final class ThreatdetectionFunctions {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", TypeShape.of(GetHoneypotImagesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-listavailablehoneypot)
+     * This data source provides Threat Detection Honeypot Image available to the user.[What is Honeypot Image](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-listavailablehoneypot)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1167,7 +1179,7 @@ public final class ThreatdetectionFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getHoneypotImages:getHoneypotImages", TypeShape.of(GetHoneypotImagesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode)
+     * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1207,7 +1219,7 @@ public final class ThreatdetectionFunctions {
         return getHoneypotNodes(GetHoneypotNodesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode)
+     * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1247,7 +1259,7 @@ public final class ThreatdetectionFunctions {
         return getHoneypotNodesPlain(GetHoneypotNodesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode)
+     * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1287,7 +1299,7 @@ public final class ThreatdetectionFunctions {
         return getHoneypotNodes(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode)
+     * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1327,7 +1339,7 @@ public final class ThreatdetectionFunctions {
         return getHoneypotNodesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode)
+     * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1367,7 +1379,7 @@ public final class ThreatdetectionFunctions {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getHoneypotNodes:getHoneypotNodes", TypeShape.of(GetHoneypotNodesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotnode)
+     * This data source provides Threat Detection Honeypot Node available to the user.[What is Honeypot Node](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotnode)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1665,7 +1677,7 @@ public final class ThreatdetectionFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getHoneypotPresets:getHoneypotPresets", TypeShape.of(GetHoneypotPresetsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotprobe)
+     * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1729,7 +1741,7 @@ public final class ThreatdetectionFunctions {
         return getHoneypotProbes(GetHoneypotProbesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotprobe)
+     * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1793,7 +1805,7 @@ public final class ThreatdetectionFunctions {
         return getHoneypotProbesPlain(GetHoneypotProbesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotprobe)
+     * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1857,7 +1869,7 @@ public final class ThreatdetectionFunctions {
         return getHoneypotProbes(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotprobe)
+     * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1921,7 +1933,7 @@ public final class ThreatdetectionFunctions {
         return getHoneypotProbesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotprobe)
+     * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -1985,7 +1997,7 @@ public final class ThreatdetectionFunctions {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getHoneypotProbes:getHoneypotProbes", TypeShape.of(GetHoneypotProbesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotprobe)
+     * This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
      * 
      * &gt; **NOTE:** Available in 1.195.0+
      * 
@@ -2291,7 +2303,7 @@ public final class ThreatdetectionFunctions {
     /**
      * Using this data source can open Threat Detection Log Shipper automatically. If the service has been enabled, it will return `Opened`.
      * 
-     * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyopenlogshipper).
+     * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyopenlogshipper).
      * 
      * &gt; **NOTE:** Available in v1.195.0+.
      * 
@@ -2334,7 +2346,7 @@ public final class ThreatdetectionFunctions {
     /**
      * Using this data source can open Threat Detection Log Shipper automatically. If the service has been enabled, it will return `Opened`.
      * 
-     * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyopenlogshipper).
+     * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyopenlogshipper).
      * 
      * &gt; **NOTE:** Available in v1.195.0+.
      * 
@@ -2377,7 +2389,7 @@ public final class ThreatdetectionFunctions {
     /**
      * Using this data source can open Threat Detection Log Shipper automatically. If the service has been enabled, it will return `Opened`.
      * 
-     * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyopenlogshipper).
+     * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyopenlogshipper).
      * 
      * &gt; **NOTE:** Available in v1.195.0+.
      * 
@@ -2420,7 +2432,7 @@ public final class ThreatdetectionFunctions {
     /**
      * Using this data source can open Threat Detection Log Shipper automatically. If the service has been enabled, it will return `Opened`.
      * 
-     * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyopenlogshipper).
+     * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyopenlogshipper).
      * 
      * &gt; **NOTE:** Available in v1.195.0+.
      * 
@@ -2463,7 +2475,7 @@ public final class ThreatdetectionFunctions {
     /**
      * Using this data source can open Threat Detection Log Shipper automatically. If the service has been enabled, it will return `Opened`.
      * 
-     * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyopenlogshipper).
+     * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyopenlogshipper).
      * 
      * &gt; **NOTE:** Available in v1.195.0+.
      * 
@@ -2506,7 +2518,7 @@ public final class ThreatdetectionFunctions {
     /**
      * Using this data source can open Threat Detection Log Shipper automatically. If the service has been enabled, it will return `Opened`.
      * 
-     * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyopenlogshipper).
+     * For information about Threat Detection Log Shipper and how to use it, see [What is Log Shipper](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifyopenlogshipper).
      * 
      * &gt; **NOTE:** Available in v1.195.0+.
      * 
@@ -2799,9 +2811,9 @@ public final class ThreatdetectionFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:threatdetection/getVulWhitelists:getVulWhitelists", TypeShape.of(GetVulWhitelistsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyweblockstart)
+     * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -2839,9 +2851,9 @@ public final class ThreatdetectionFunctions {
         return getWebLockConfigs(GetWebLockConfigsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyweblockstart)
+     * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -2879,9 +2891,9 @@ public final class ThreatdetectionFunctions {
         return getWebLockConfigsPlain(GetWebLockConfigsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyweblockstart)
+     * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -2919,9 +2931,9 @@ public final class ThreatdetectionFunctions {
         return getWebLockConfigs(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyweblockstart)
+     * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -2959,9 +2971,9 @@ public final class ThreatdetectionFunctions {
         return getWebLockConfigsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyweblockstart)
+     * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java
@@ -2999,9 +3011,9 @@ public final class ThreatdetectionFunctions {
         return Deployment.getInstance().invoke("alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs", TypeShape.of(GetWebLockConfigsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyweblockstart)
+     * This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
      * 
-     * &gt; **NOTE:** Available in 1.195.0+
+     * &gt; **NOTE:** Available since v1.195.0.
      * 
      * ## Example Usage
      * ```java

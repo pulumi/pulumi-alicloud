@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetProductsProduct {
     /**
-     * @return The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+     * @return The Category ID of products.
      * 
      */
     private Integer categoryId;
@@ -88,7 +88,7 @@ public final class GetProductsProduct {
 
     private GetProductsProduct() {}
     /**
-     * @return The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+     * @return The Category ID of products.
      * 
      */
     public Integer categoryId() {

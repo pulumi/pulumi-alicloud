@@ -283,6 +283,8 @@ public final class KmsFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -326,6 +328,8 @@ public final class KmsFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -369,6 +373,8 @@ public final class KmsFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 
@@ -412,6 +418,8 @@ public final class KmsFunctions {
     }
     /**
      * ## Example Usage
+     * 
+     * Basic Usage
      * ```java
      * package generated_program;
      * 

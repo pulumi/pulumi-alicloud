@@ -41,7 +41,15 @@ class HoneypotPresetArgs:
              meta: pulumi.Input['HoneypotPresetMetaArgs'],
              node_id: pulumi.Input[str],
              preset_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'honeypotImageName' in kwargs:
+            honeypot_image_name = kwargs['honeypotImageName']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'presetName' in kwargs:
+            preset_name = kwargs['presetName']
+
         _setter("honeypot_image_name", honeypot_image_name)
         _setter("meta", meta)
         _setter("node_id", node_id)
@@ -128,7 +136,17 @@ class _HoneypotPresetState:
              meta: Optional[pulumi.Input['HoneypotPresetMetaArgs']] = None,
              node_id: Optional[pulumi.Input[str]] = None,
              preset_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'honeypotImageName' in kwargs:
+            honeypot_image_name = kwargs['honeypotImageName']
+        if 'honeypotPresetId' in kwargs:
+            honeypot_preset_id = kwargs['honeypotPresetId']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'presetName' in kwargs:
+            preset_name = kwargs['presetName']
+
         if honeypot_image_name is not None:
             _setter("honeypot_image_name", honeypot_image_name)
         if honeypot_preset_id is not None:

@@ -48,7 +48,19 @@ class ApplicationGroupArgs:
              description: Optional[pulumi.Input[str]] = None,
              import_tag_key: Optional[pulumi.Input[str]] = None,
              import_tag_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationGroupName' in kwargs:
+            application_group_name = kwargs['applicationGroupName']
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'deployRegionId' in kwargs:
+            deploy_region_id = kwargs['deployRegionId']
+        if 'importTagKey' in kwargs:
+            import_tag_key = kwargs['importTagKey']
+        if 'importTagValue' in kwargs:
+            import_tag_value = kwargs['importTagValue']
+
         _setter("application_group_name", application_group_name)
         _setter("application_name", application_name)
         _setter("deploy_region_id", deploy_region_id)
@@ -170,7 +182,19 @@ class _ApplicationGroupState:
              description: Optional[pulumi.Input[str]] = None,
              import_tag_key: Optional[pulumi.Input[str]] = None,
              import_tag_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationGroupName' in kwargs:
+            application_group_name = kwargs['applicationGroupName']
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'deployRegionId' in kwargs:
+            deploy_region_id = kwargs['deployRegionId']
+        if 'importTagKey' in kwargs:
+            import_tag_key = kwargs['importTagKey']
+        if 'importTagValue' in kwargs:
+            import_tag_value = kwargs['importTagValue']
+
         if application_group_name is not None:
             _setter("application_group_name", application_group_name)
         if application_name is not None:

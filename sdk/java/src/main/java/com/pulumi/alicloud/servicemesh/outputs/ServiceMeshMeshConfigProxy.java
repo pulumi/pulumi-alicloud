@@ -12,50 +12,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceMeshMeshConfigProxy {
     /**
-     * @return The CPU resource  of the limitsOPA proxy container.
+     * @return Trust cluster domain.
+     * 
+     */
+    private @Nullable String clusterDomain;
+    /**
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     private @Nullable String limitCpu;
     /**
-     * @return The memory resource limit of the OPA proxy container.
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     private @Nullable String limitMemory;
     /**
-     * @return The CPU resource request of the OPA proxy container.
+     * @return Sidecar injector Pods on the requested resource.
      * 
      */
     private @Nullable String requestCpu;
     /**
-     * @return The memory resource request of the OPA proxy container.
+     * @return Sidecar injector Pods on the requested resource.
      * 
      */
     private @Nullable String requestMemory;
 
     private ServiceMeshMeshConfigProxy() {}
     /**
-     * @return The CPU resource  of the limitsOPA proxy container.
+     * @return Trust cluster domain.
+     * 
+     */
+    public Optional<String> clusterDomain() {
+        return Optional.ofNullable(this.clusterDomain);
+    }
+    /**
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     public Optional<String> limitCpu() {
         return Optional.ofNullable(this.limitCpu);
     }
     /**
-     * @return The memory resource limit of the OPA proxy container.
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     public Optional<String> limitMemory() {
         return Optional.ofNullable(this.limitMemory);
     }
     /**
-     * @return The CPU resource request of the OPA proxy container.
+     * @return Sidecar injector Pods on the requested resource.
      * 
      */
     public Optional<String> requestCpu() {
         return Optional.ofNullable(this.requestCpu);
     }
     /**
-     * @return The memory resource request of the OPA proxy container.
+     * @return Sidecar injector Pods on the requested resource.
      * 
      */
     public Optional<String> requestMemory() {
@@ -71,6 +83,7 @@ public final class ServiceMeshMeshConfigProxy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String clusterDomain;
         private @Nullable String limitCpu;
         private @Nullable String limitMemory;
         private @Nullable String requestCpu;
@@ -78,12 +91,18 @@ public final class ServiceMeshMeshConfigProxy {
         public Builder() {}
         public Builder(ServiceMeshMeshConfigProxy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.clusterDomain = defaults.clusterDomain;
     	      this.limitCpu = defaults.limitCpu;
     	      this.limitMemory = defaults.limitMemory;
     	      this.requestCpu = defaults.requestCpu;
     	      this.requestMemory = defaults.requestMemory;
         }
 
+        @CustomType.Setter
+        public Builder clusterDomain(@Nullable String clusterDomain) {
+            this.clusterDomain = clusterDomain;
+            return this;
+        }
         @CustomType.Setter
         public Builder limitCpu(@Nullable String limitCpu) {
             this.limitCpu = limitCpu;
@@ -106,6 +125,7 @@ public final class ServiceMeshMeshConfigProxy {
         }
         public ServiceMeshMeshConfigProxy build() {
             final var o = new ServiceMeshMeshConfigProxy();
+            o.clusterDomain = clusterDomain;
             o.limitCpu = limitCpu;
             o.limitMemory = limitMemory;
             o.requestCpu = requestCpu;

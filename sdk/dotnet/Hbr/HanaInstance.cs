@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Hbr
     /// <summary>
     /// Provides a Hybrid Backup Recovery (HBR) Hana Instance resource.
     /// 
-    /// For information about Hybrid Backup Recovery (HBR) Hana Instance and how to use it, see [What is Hana Instance](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-doc-hbr-2017-09-08-api-doc-createhanainstance).
+    /// For information about Hybrid Backup Recovery (HBR) Hana Instance and how to use it, see [What is Hana Instance](https://www.alibabacloud.com/help/en/hybrid-backup-recovery/latest/api-hbr-2017-09-08-createhanainstance).
     /// 
     /// &gt; **NOTE:** Available in v1.178.0+.
     /// 

@@ -43,7 +43,17 @@ class CommandArgs:
              desktop_id: pulumi.Input[str],
              content_encoding: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commandContent' in kwargs:
+            command_content = kwargs['commandContent']
+        if 'commandType' in kwargs:
+            command_type = kwargs['commandType']
+        if 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+        if 'contentEncoding' in kwargs:
+            content_encoding = kwargs['contentEncoding']
+
         _setter("command_content", command_content)
         _setter("command_type", command_type)
         _setter("desktop_id", desktop_id)
@@ -149,7 +159,17 @@ class _CommandState:
              desktop_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commandContent' in kwargs:
+            command_content = kwargs['commandContent']
+        if 'commandType' in kwargs:
+            command_type = kwargs['commandType']
+        if 'contentEncoding' in kwargs:
+            content_encoding = kwargs['contentEncoding']
+        if 'desktopId' in kwargs:
+            desktop_id = kwargs['desktopId']
+
         if command_content is not None:
             _setter("command_content", command_content)
         if command_type is not None:
@@ -250,7 +270,7 @@ class Command(pulumi.CustomResource):
         """
         Provides a ECD Command resource.
 
-        For information about ECD Command and how to use it, see [What is Command](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-runcommand).
+        For information about ECD Command and how to use it, see [What is Command](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-runcommand).
 
         > **NOTE:** Available since v1.146.0.
 
@@ -327,7 +347,7 @@ class Command(pulumi.CustomResource):
         """
         Provides a ECD Command resource.
 
-        For information about ECD Command and how to use it, see [What is Command](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-runcommand).
+        For information about ECD Command and how to use it, see [What is Command](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-runcommand).
 
         > **NOTE:** Available since v1.146.0.
 

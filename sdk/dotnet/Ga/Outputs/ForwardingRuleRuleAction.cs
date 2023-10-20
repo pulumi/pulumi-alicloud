@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string RuleActionType;
         /// <summary>
-        /// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+        /// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
         /// </summary>
         public readonly string? RuleActionValue;
 

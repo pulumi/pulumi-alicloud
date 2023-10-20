@@ -33,7 +33,9 @@ class KubernetesPermissionArgs:
              _setter: Callable[[Any, Any], None],
              uid: pulumi.Input[str],
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("uid", uid)
         if permissions is not None:
             _setter("permissions", permissions)
@@ -83,7 +85,9 @@ class _KubernetesPermissionState:
              _setter: Callable[[Any, Any], None],
              permissions: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]] = None,
              uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if permissions is not None:
             _setter("permissions", permissions)
         if uid is not None:

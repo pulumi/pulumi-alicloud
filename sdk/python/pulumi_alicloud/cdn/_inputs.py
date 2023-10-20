@@ -43,7 +43,15 @@ class DomainAuthConfigArgs:
              master_key: Optional[pulumi.Input[str]] = None,
              slave_key: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authType' in kwargs:
+            auth_type = kwargs['authType']
+        if 'masterKey' in kwargs:
+            master_key = kwargs['masterKey']
+        if 'slaveKey' in kwargs:
+            slave_key = kwargs['slaveKey']
+
         if auth_type is not None:
             _setter("auth_type", auth_type)
         if master_key is not None:
@@ -114,7 +122,15 @@ class DomainCacheConfigArgs:
              ttl: pulumi.Input[int],
              cache_id: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cacheContent' in kwargs:
+            cache_content = kwargs['cacheContent']
+        if 'cacheType' in kwargs:
+            cache_type = kwargs['cacheType']
+        if 'cacheId' in kwargs:
+            cache_id = kwargs['cacheId']
+
         _setter("cache_content", cache_content)
         _setter("cache_type", cache_type)
         _setter("ttl", ttl)
@@ -187,7 +203,15 @@ class DomainCertificateConfigArgs:
              private_key: Optional[pulumi.Input[str]] = None,
              server_certificate: Optional[pulumi.Input[str]] = None,
              server_certificate_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'serverCertificate' in kwargs:
+            server_certificate = kwargs['serverCertificate']
+        if 'serverCertificateStatus' in kwargs:
+            server_certificate_status = kwargs['serverCertificateStatus']
+
         if private_key is not None:
             _setter("private_key", private_key)
         if server_certificate is not None:
@@ -242,7 +266,13 @@ class DomainConfigFunctionArgArgs:
              _setter: Callable[[Any, Any], None],
              arg_name: pulumi.Input[str],
              arg_value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'argName' in kwargs:
+            arg_name = kwargs['argName']
+        if 'argValue' in kwargs:
+            arg_value = kwargs['argValue']
+
         _setter("arg_name", arg_name)
         _setter("arg_value", arg_value)
 
@@ -289,7 +319,15 @@ class DomainHttpHeaderConfigArgs:
              header_key: pulumi.Input[str],
              header_value: pulumi.Input[str],
              header_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'headerKey' in kwargs:
+            header_key = kwargs['headerKey']
+        if 'headerValue' in kwargs:
+            header_value = kwargs['headerValue']
+        if 'headerId' in kwargs:
+            header_id = kwargs['headerId']
+
         _setter("header_key", header_key)
         _setter("header_value", header_value)
         if header_id is not None:
@@ -372,7 +410,25 @@ class DomainNewCertificateConfigArgs:
              private_key: Optional[pulumi.Input[str]] = None,
              server_certificate: Optional[pulumi.Input[str]] = None,
              server_certificate_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certId' in kwargs:
+            cert_id = kwargs['certId']
+        if 'certName' in kwargs:
+            cert_name = kwargs['certName']
+        if 'certRegion' in kwargs:
+            cert_region = kwargs['certRegion']
+        if 'certType' in kwargs:
+            cert_type = kwargs['certType']
+        if 'forceSet' in kwargs:
+            force_set = kwargs['forceSet']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'serverCertificate' in kwargs:
+            server_certificate = kwargs['serverCertificate']
+        if 'serverCertificateStatus' in kwargs:
+            server_certificate_status = kwargs['serverCertificateStatus']
+
         if cert_id is not None:
             _setter("cert_id", cert_id)
         if cert_name is not None:
@@ -524,7 +580,9 @@ class DomainNewSourceArgs:
              priority: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if content is not None:
             _setter("content", content)
         if port is not None:
@@ -615,7 +673,15 @@ class DomainPage404ConfigArgs:
              custom_page_url: Optional[pulumi.Input[str]] = None,
              error_code: Optional[pulumi.Input[str]] = None,
              page_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customPageUrl' in kwargs:
+            custom_page_url = kwargs['customPageUrl']
+        if 'errorCode' in kwargs:
+            error_code = kwargs['errorCode']
+        if 'pageType' in kwargs:
+            page_type = kwargs['pageType']
+
         if custom_page_url is not None:
             _setter("custom_page_url", custom_page_url)
         if error_code is not None:
@@ -666,7 +732,11 @@ class DomainParameterFilterConfigArgs:
              _setter: Callable[[Any, Any], None],
              enable: Optional[pulumi.Input[str]] = None,
              hash_key_args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hashKeyArgs' in kwargs:
+            hash_key_args = kwargs['hashKeyArgs']
+
         if enable is not None:
             _setter("enable", enable)
         if hash_key_args is not None:
@@ -709,7 +779,15 @@ class DomainReferConfigArgs:
              refer_lists: pulumi.Input[Sequence[pulumi.Input[str]]],
              allow_empty: Optional[pulumi.Input[str]] = None,
              refer_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'referLists' in kwargs:
+            refer_lists = kwargs['referLists']
+        if 'allowEmpty' in kwargs:
+            allow_empty = kwargs['allowEmpty']
+        if 'referType' in kwargs:
+            refer_type = kwargs['referType']
+
         _setter("refer_lists", refer_lists)
         if allow_empty is not None:
             _setter("allow_empty", allow_empty)

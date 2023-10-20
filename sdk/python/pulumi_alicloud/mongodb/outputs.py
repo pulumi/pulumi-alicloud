@@ -50,7 +50,9 @@ class InstanceParameter(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -139,7 +141,23 @@ class InstanceReplicaSet(dict):
              vpc_cloud_instance_id: Optional[str] = None,
              vpc_id: Optional[str] = None,
              vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionDomain' in kwargs:
+            connection_domain = kwargs['connectionDomain']
+        if 'connectionPort' in kwargs:
+            connection_port = kwargs['connectionPort']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'replicaSetRole' in kwargs:
+            replica_set_role = kwargs['replicaSetRole']
+        if 'vpcCloudInstanceId' in kwargs:
+            vpc_cloud_instance_id = kwargs['vpcCloudInstanceId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if connection_domain is not None:
             _setter("connection_domain", connection_domain)
         if connection_port is not None:
@@ -256,7 +274,15 @@ class ServerlessInstanceSecurityIpGroup(dict):
              security_ip_group_attribute: Optional[str] = None,
              security_ip_group_name: Optional[str] = None,
              security_ip_list: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityIpGroupAttribute' in kwargs:
+            security_ip_group_attribute = kwargs['securityIpGroupAttribute']
+        if 'securityIpGroupName' in kwargs:
+            security_ip_group_name = kwargs['securityIpGroupName']
+        if 'securityIpList' in kwargs:
+            security_ip_list = kwargs['securityIpList']
+
         if security_ip_group_attribute is not None:
             _setter("security_ip_group_attribute", security_ip_group_attribute)
         if security_ip_group_name is not None:
@@ -361,7 +387,23 @@ class ShardingInstanceConfigServerList(dict):
              node_id: Optional[str] = None,
              node_storage: Optional[int] = None,
              port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectString' in kwargs:
+            connect_string = kwargs['connectString']
+        if 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if 'maxIops' in kwargs:
+            max_iops = kwargs['maxIops']
+        if 'nodeClass' in kwargs:
+            node_class = kwargs['nodeClass']
+        if 'nodeDescription' in kwargs:
+            node_description = kwargs['nodeDescription']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'nodeStorage' in kwargs:
+            node_storage = kwargs['nodeStorage']
+
         if connect_string is not None:
             _setter("connect_string", connect_string)
         if max_connections is not None:
@@ -492,7 +534,15 @@ class ShardingInstanceMongoList(dict):
              connect_string: Optional[str] = None,
              node_id: Optional[str] = None,
              port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeClass' in kwargs:
+            node_class = kwargs['nodeClass']
+        if 'connectString' in kwargs:
+            connect_string = kwargs['connectString']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         _setter("node_class", node_class)
         if connect_string is not None:
             _setter("connect_string", connect_string)
@@ -585,7 +635,17 @@ class ShardingInstanceShardList(dict):
              node_storage: int,
              node_id: Optional[str] = None,
              readonly_replicas: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeClass' in kwargs:
+            node_class = kwargs['nodeClass']
+        if 'nodeStorage' in kwargs:
+            node_storage = kwargs['nodeStorage']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'readonlyReplicas' in kwargs:
+            readonly_replicas = kwargs['readonlyReplicas']
+
         _setter("node_class", node_class)
         _setter("node_storage", node_storage)
         if node_id is not None:
@@ -709,7 +769,25 @@ class ShardingNetworkPrivateAddressNetworkAddress(dict):
              role: Optional[str] = None,
              vpc_id: Optional[str] = None,
              vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'networkAddress' in kwargs:
+            network_address = kwargs['networkAddress']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if expired_time is not None:
             _setter("expired_time", expired_time)
         if ip_address is not None:
@@ -894,7 +972,25 @@ class ShardingNetworkPublicAddressNetworkAddress(dict):
              role: Optional[str] = None,
              vpc_id: Optional[str] = None,
              vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'networkAddress' in kwargs:
+            network_address = kwargs['networkAddress']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if expired_time is not None:
             _setter("expired_time", expired_time)
         if ip_address is not None:
@@ -1032,7 +1128,17 @@ class GetAccountsAccountResult(dict):
              id: str,
              instance_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'characterType' in kwargs:
+            character_type = kwargs['characterType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("account_description", account_description)
         _setter("account_name", account_name)
         _setter("character_type", character_type)
@@ -1112,7 +1218,13 @@ class GetAuditPoliciesPolicyResult(dict):
              audit_status: str,
              db_instance_id: str,
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'auditStatus' in kwargs:
+            audit_status = kwargs['auditStatus']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+
         _setter("audit_status", audit_status)
         _setter("db_instance_id", db_instance_id)
         _setter("id", id)
@@ -1229,7 +1341,29 @@ class GetInstancesInstanceResult(dict):
              status: str,
              storage: int,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'expirationTime' in kwargs:
+            expiration_time = kwargs['expirationTime']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("availability_zone", availability_zone)
         _setter("charge_type", charge_type)
         _setter("creation_time", creation_time)
@@ -1426,7 +1560,13 @@ class GetInstancesInstanceMongoResult(dict):
              class_: str,
              description: str,
              node_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'class' in kwargs:
+            class_ = kwargs['class']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         _setter("class_", class_)
         _setter("description", description)
         _setter("node_id", node_id)
@@ -1483,7 +1623,13 @@ class GetInstancesInstanceShardResult(dict):
              description: str,
              node_id: str,
              storage: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'class' in kwargs:
+            class_ = kwargs['class']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         _setter("class_", class_)
         _setter("description", description)
         _setter("node_id", node_id)
@@ -1645,7 +1791,57 @@ class GetServerlessInstancesInstanceResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'capacityUnit' in kwargs:
+            capacity_unit = kwargs['capacityUnit']
+        if 'dbInstanceClass' in kwargs:
+            db_instance_class = kwargs['dbInstanceClass']
+        if 'dbInstanceDescription' in kwargs:
+            db_instance_description = kwargs['dbInstanceDescription']
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'dbInstanceReleaseProtection' in kwargs:
+            db_instance_release_protection = kwargs['dbInstanceReleaseProtection']
+        if 'dbInstanceStorage' in kwargs:
+            db_instance_storage = kwargs['dbInstanceStorage']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'kindCode' in kwargs:
+            kind_code = kwargs['kindCode']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'maintainEndTime' in kwargs:
+            maintain_end_time = kwargs['maintainEndTime']
+        if 'maintainStartTime' in kwargs:
+            maintain_start_time = kwargs['maintainStartTime']
+        if 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if 'maxIops' in kwargs:
+            max_iops = kwargs['maxIops']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityIpGroups' in kwargs:
+            security_ip_groups = kwargs['securityIpGroups']
+        if 'storageEngine' in kwargs:
+            storage_engine = kwargs['storageEngine']
+        if 'vpcAuthMode' in kwargs:
+            vpc_auth_mode = kwargs['vpcAuthMode']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("capacity_unit", capacity_unit)
         _setter("db_instance_class", db_instance_class)
         _setter("db_instance_description", db_instance_description)
@@ -1923,7 +2119,15 @@ class GetServerlessInstancesInstanceSecurityIpGroupResult(dict):
              security_ip_group_attribute: str,
              security_ip_group_name: str,
              security_ip_list: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityIpGroupAttribute' in kwargs:
+            security_ip_group_attribute = kwargs['securityIpGroupAttribute']
+        if 'securityIpGroupName' in kwargs:
+            security_ip_group_name = kwargs['securityIpGroupName']
+        if 'securityIpList' in kwargs:
+            security_ip_list = kwargs['securityIpList']
+
         _setter("security_ip_group_attribute", security_ip_group_attribute)
         _setter("security_ip_group_name", security_ip_group_name)
         _setter("security_ip_list", security_ip_list)
@@ -2008,7 +2212,27 @@ class GetShardingNetworkPrivateAddressesAddressResult(dict):
              role: str,
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'networkAddress' in kwargs:
+            network_address = kwargs['networkAddress']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("db_instance_id", db_instance_id)
         _setter("expired_time", expired_time)
         _setter("ip_address", ip_address)
@@ -2165,7 +2389,27 @@ class GetShardingNetworkPublicAddressesAddressResult(dict):
              role: str,
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceId' in kwargs:
+            db_instance_id = kwargs['dbInstanceId']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'networkAddress' in kwargs:
+            network_address = kwargs['networkAddress']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'nodeType' in kwargs:
+            node_type = kwargs['nodeType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("db_instance_id", db_instance_id)
         _setter("expired_time", expired_time)
         _setter("ip_address", ip_address)
@@ -2286,7 +2530,11 @@ class GetZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'multiZoneIds' in kwargs:
+            multi_zone_ids = kwargs['multiZoneIds']
+
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)
 

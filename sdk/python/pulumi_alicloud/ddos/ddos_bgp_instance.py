@@ -55,7 +55,17 @@ class DdosBgpInstanceArgs:
              name: Optional[pulumi.Input[str]] = None,
              period: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipCount' in kwargs:
+            ip_count = kwargs['ipCount']
+        if 'ipType' in kwargs:
+            ip_type = kwargs['ipType']
+        if 'normalBandwidth' in kwargs:
+            normal_bandwidth = kwargs['normalBandwidth']
+        if 'baseBandwidth' in kwargs:
+            base_bandwidth = kwargs['baseBandwidth']
+
         _setter("bandwidth", bandwidth)
         _setter("ip_count", ip_count)
         _setter("ip_type", ip_type)
@@ -210,7 +220,17 @@ class _DdosBgpInstanceState:
              normal_bandwidth: Optional[pulumi.Input[int]] = None,
              period: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baseBandwidth' in kwargs:
+            base_bandwidth = kwargs['baseBandwidth']
+        if 'ipCount' in kwargs:
+            ip_count = kwargs['ipCount']
+        if 'ipType' in kwargs:
+            ip_type = kwargs['ipType']
+        if 'normalBandwidth' in kwargs:
+            normal_bandwidth = kwargs['normalBandwidth']
+
         if bandwidth is not None:
             _setter("bandwidth", bandwidth)
         if base_bandwidth is not None:

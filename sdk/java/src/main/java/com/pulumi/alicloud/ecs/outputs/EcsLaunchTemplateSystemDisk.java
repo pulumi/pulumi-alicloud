@@ -14,62 +14,74 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EcsLaunchTemplateSystemDisk {
     /**
-     * @return The category of the disk.
+     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
      * 
      */
     private @Nullable String category;
     /**
-     * @return Indicates whether the data disk is released with the instance.
+     * @return Specifies whether to release the system disk when the instance is released. Default to `true`.
      * 
      */
     private @Nullable Boolean deleteWithInstance;
     /**
-     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * @return System disk description. It cannot begin with http:// or https://.
      * 
      */
     private @Nullable String description;
+    /**
+     * @return Specifies whether the system disk is encrypted.
+     * 
+     */
+    private @Nullable Boolean encrypted;
     /**
      * @return The Iops.
      * 
      */
     private @Nullable String iops;
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * @return System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
     private @Nullable String name;
     /**
-     * @return The performance level of the ESSD used as the data disk.
+     * @return The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
      * 
      */
     private @Nullable String performanceLevel;
     /**
-     * @return The size of the data disk.
+     * @return Size of the system disk, measured in GB. Value range: [20, 500].
      * 
      */
     private @Nullable Integer size;
 
     private EcsLaunchTemplateSystemDisk() {}
     /**
-     * @return The category of the disk.
+     * @return The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
      * 
      */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
     /**
-     * @return Indicates whether the data disk is released with the instance.
+     * @return Specifies whether to release the system disk when the instance is released. Default to `true`.
      * 
      */
     public Optional<Boolean> deleteWithInstance() {
         return Optional.ofNullable(this.deleteWithInstance);
     }
     /**
-     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * @return System disk description. It cannot begin with http:// or https://.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    /**
+     * @return Specifies whether the system disk is encrypted.
+     * 
+     */
+    public Optional<Boolean> encrypted() {
+        return Optional.ofNullable(this.encrypted);
     }
     /**
      * @return The Iops.
@@ -79,21 +91,21 @@ public final class EcsLaunchTemplateSystemDisk {
         return Optional.ofNullable(this.iops);
     }
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * @return System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The performance level of the ESSD used as the data disk.
+     * @return The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
      * 
      */
     public Optional<String> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
     /**
-     * @return The size of the data disk.
+     * @return Size of the system disk, measured in GB. Value range: [20, 500].
      * 
      */
     public Optional<Integer> size() {
@@ -112,6 +124,7 @@ public final class EcsLaunchTemplateSystemDisk {
         private @Nullable String category;
         private @Nullable Boolean deleteWithInstance;
         private @Nullable String description;
+        private @Nullable Boolean encrypted;
         private @Nullable String iops;
         private @Nullable String name;
         private @Nullable String performanceLevel;
@@ -122,6 +135,7 @@ public final class EcsLaunchTemplateSystemDisk {
     	      this.category = defaults.category;
     	      this.deleteWithInstance = defaults.deleteWithInstance;
     	      this.description = defaults.description;
+    	      this.encrypted = defaults.encrypted;
     	      this.iops = defaults.iops;
     	      this.name = defaults.name;
     	      this.performanceLevel = defaults.performanceLevel;
@@ -141,6 +155,11 @@ public final class EcsLaunchTemplateSystemDisk {
         @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder encrypted(@Nullable Boolean encrypted) {
+            this.encrypted = encrypted;
             return this;
         }
         @CustomType.Setter
@@ -168,6 +187,7 @@ public final class EcsLaunchTemplateSystemDisk {
             o.category = category;
             o.deleteWithInstance = deleteWithInstance;
             o.description = description;
+            o.encrypted = encrypted;
             o.iops = iops;
             o.name = name;
             o.performanceLevel = performanceLevel;

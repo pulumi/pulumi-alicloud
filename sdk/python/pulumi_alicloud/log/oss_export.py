@@ -126,7 +126,53 @@ class OssExportArgs:
              prefix: Optional[pulumi.Input[str]] = None,
              role_arn: Optional[pulumi.Input[str]] = None,
              suffix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bufferInterval' in kwargs:
+            buffer_interval = kwargs['bufferInterval']
+        if 'bufferSize' in kwargs:
+            buffer_size = kwargs['bufferSize']
+        if 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if 'exportName' in kwargs:
+            export_name = kwargs['exportName']
+        if 'logstoreName' in kwargs:
+            logstore_name = kwargs['logstoreName']
+        if 'pathFormat' in kwargs:
+            path_format = kwargs['pathFormat']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+        if 'compressType' in kwargs:
+            compress_type = kwargs['compressType']
+        if 'configColumns' in kwargs:
+            config_columns = kwargs['configColumns']
+        if 'csvConfigColumns' in kwargs:
+            csv_config_columns = kwargs['csvConfigColumns']
+        if 'csvConfigDelimiter' in kwargs:
+            csv_config_delimiter = kwargs['csvConfigDelimiter']
+        if 'csvConfigEscape' in kwargs:
+            csv_config_escape = kwargs['csvConfigEscape']
+        if 'csvConfigHeader' in kwargs:
+            csv_config_header = kwargs['csvConfigHeader']
+        if 'csvConfigLinefeed' in kwargs:
+            csv_config_linefeed = kwargs['csvConfigLinefeed']
+        if 'csvConfigNull' in kwargs:
+            csv_config_null = kwargs['csvConfigNull']
+        if 'csvConfigQuote' in kwargs:
+            csv_config_quote = kwargs['csvConfigQuote']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'fromTime' in kwargs:
+            from_time = kwargs['fromTime']
+        if 'jsonEnableTag' in kwargs:
+            json_enable_tag = kwargs['jsonEnableTag']
+        if 'logReadRoleArn' in kwargs:
+            log_read_role_arn = kwargs['logReadRoleArn']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
         _setter("bucket", bucket)
         _setter("buffer_interval", buffer_interval)
         _setter("buffer_size", buffer_size)
@@ -584,7 +630,53 @@ class _OssExportState:
              role_arn: Optional[pulumi.Input[str]] = None,
              suffix: Optional[pulumi.Input[str]] = None,
              time_zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bufferInterval' in kwargs:
+            buffer_interval = kwargs['bufferInterval']
+        if 'bufferSize' in kwargs:
+            buffer_size = kwargs['bufferSize']
+        if 'compressType' in kwargs:
+            compress_type = kwargs['compressType']
+        if 'configColumns' in kwargs:
+            config_columns = kwargs['configColumns']
+        if 'contentType' in kwargs:
+            content_type = kwargs['contentType']
+        if 'csvConfigColumns' in kwargs:
+            csv_config_columns = kwargs['csvConfigColumns']
+        if 'csvConfigDelimiter' in kwargs:
+            csv_config_delimiter = kwargs['csvConfigDelimiter']
+        if 'csvConfigEscape' in kwargs:
+            csv_config_escape = kwargs['csvConfigEscape']
+        if 'csvConfigHeader' in kwargs:
+            csv_config_header = kwargs['csvConfigHeader']
+        if 'csvConfigLinefeed' in kwargs:
+            csv_config_linefeed = kwargs['csvConfigLinefeed']
+        if 'csvConfigNull' in kwargs:
+            csv_config_null = kwargs['csvConfigNull']
+        if 'csvConfigQuote' in kwargs:
+            csv_config_quote = kwargs['csvConfigQuote']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'exportName' in kwargs:
+            export_name = kwargs['exportName']
+        if 'fromTime' in kwargs:
+            from_time = kwargs['fromTime']
+        if 'jsonEnableTag' in kwargs:
+            json_enable_tag = kwargs['jsonEnableTag']
+        if 'logReadRoleArn' in kwargs:
+            log_read_role_arn = kwargs['logReadRoleArn']
+        if 'logstoreName' in kwargs:
+            logstore_name = kwargs['logstoreName']
+        if 'pathFormat' in kwargs:
+            path_format = kwargs['pathFormat']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         if bucket is not None:
             _setter("bucket", bucket)
         if buffer_interval is not None:

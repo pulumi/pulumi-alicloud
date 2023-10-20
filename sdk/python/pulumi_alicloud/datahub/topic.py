@@ -58,7 +58,19 @@ class TopicArgs:
              record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              record_type: Optional[pulumi.Input[str]] = None,
              shard_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'lifeCycle' in kwargs:
+            life_cycle = kwargs['lifeCycle']
+        if 'recordSchema' in kwargs:
+            record_schema = kwargs['recordSchema']
+        if 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+        if 'shardCount' in kwargs:
+            shard_count = kwargs['shardCount']
+
         _setter("project_name", project_name)
         if comment is not None:
             _setter("comment", comment)
@@ -220,7 +232,23 @@ class _TopicState:
              record_schema: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              record_type: Optional[pulumi.Input[str]] = None,
              shard_count: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'lastModifyTime' in kwargs:
+            last_modify_time = kwargs['lastModifyTime']
+        if 'lifeCycle' in kwargs:
+            life_cycle = kwargs['lifeCycle']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'recordSchema' in kwargs:
+            record_schema = kwargs['recordSchema']
+        if 'recordType' in kwargs:
+            record_type = kwargs['recordType']
+        if 'shardCount' in kwargs:
+            shard_count = kwargs['shardCount']
+
         if comment is not None:
             _setter("comment", comment)
         if create_time is not None:

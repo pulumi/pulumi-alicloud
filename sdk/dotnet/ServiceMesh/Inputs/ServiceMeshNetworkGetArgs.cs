@@ -13,13 +13,19 @@ namespace Pulumi.AliCloud.ServiceMesh.Inputs
     public sealed class ServiceMeshNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the VPC.
+        /// Security group ID.
+        /// </summary>
+        [Input("securityGroupId")]
+        public Input<string>? SecurityGroupId { get; set; }
+
+        /// <summary>
+        /// VPC ID.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// The list of Virtual Switch.
+        /// Virtual Switch ID.
         /// </summary>
         [Input("vswitcheList", required: true)]
         public Input<string> VswitcheList { get; set; } = null!;

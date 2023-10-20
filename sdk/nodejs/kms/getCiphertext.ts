@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
+ * Basic Usage
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,7 +38,7 @@ export function getCiphertext(args: GetCiphertextArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetCiphertextArgs {
     /**
-     * (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     * The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
     encryptionContext?: {[key: string]: string};
     /**
@@ -68,6 +70,8 @@ export interface GetCiphertextResult {
 /**
  * ## Example Usage
  *
+ * Basic Usage
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -91,7 +95,7 @@ export function getCiphertextOutput(args: GetCiphertextOutputArgs, opts?: pulumi
  */
 export interface GetCiphertextOutputArgs {
     /**
-     * (Optional) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     * The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      */
     encryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -35,7 +35,15 @@ class UserPolicyAttachmentArgs:
              policy_name: pulumi.Input[str],
              policy_type: pulumi.Input[str],
              user_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         _setter("policy_name", policy_name)
         _setter("policy_type", policy_type)
         _setter("user_name", user_name)
@@ -101,7 +109,15 @@ class _UserPolicyAttachmentState:
              policy_name: Optional[pulumi.Input[str]] = None,
              policy_type: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'policyType' in kwargs:
+            policy_type = kwargs['policyType']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if policy_name is not None:
             _setter("policy_name", policy_name)
         if policy_type is not None:

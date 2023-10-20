@@ -41,7 +41,11 @@ class CertificateArgs:
              certificate_name: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateName' in kwargs:
+            certificate_name = kwargs['certificateName']
+
         _setter("cert", cert)
         _setter("key", key)
         if certificate_name is not None:
@@ -142,7 +146,11 @@ class _CertificateState:
              key: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateName' in kwargs:
+            certificate_name = kwargs['certificateName']
+
         if cert is not None:
             _setter("cert", cert)
         if certificate_name is not None:

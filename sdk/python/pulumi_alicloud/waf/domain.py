@@ -96,7 +96,41 @@ class DomainArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              write_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'isAccessProduct' in kwargs:
+            is_access_product = kwargs['isAccessProduct']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'connectionTime' in kwargs:
+            connection_time = kwargs['connectionTime']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'http2Ports' in kwargs:
+            http2_ports = kwargs['http2Ports']
+        if 'httpPorts' in kwargs:
+            http_ports = kwargs['httpPorts']
+        if 'httpToUserIp' in kwargs:
+            http_to_user_ip = kwargs['httpToUserIp']
+        if 'httpsPorts' in kwargs:
+            https_ports = kwargs['httpsPorts']
+        if 'httpsRedirect' in kwargs:
+            https_redirect = kwargs['httpsRedirect']
+        if 'loadBalancing' in kwargs:
+            load_balancing = kwargs['loadBalancing']
+        if 'logHeaders' in kwargs:
+            log_headers = kwargs['logHeaders']
+        if 'readTime' in kwargs:
+            read_time = kwargs['readTime']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sourceIps' in kwargs:
+            source_ips = kwargs['sourceIps']
+        if 'writeTime' in kwargs:
+            write_time = kwargs['writeTime']
+
         _setter("instance_id", instance_id)
         _setter("is_access_product", is_access_product)
         if cluster_type is not None:
@@ -431,7 +465,41 @@ class _DomainState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              source_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              write_time: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'connectionTime' in kwargs:
+            connection_time = kwargs['connectionTime']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'http2Ports' in kwargs:
+            http2_ports = kwargs['http2Ports']
+        if 'httpPorts' in kwargs:
+            http_ports = kwargs['httpPorts']
+        if 'httpToUserIp' in kwargs:
+            http_to_user_ip = kwargs['httpToUserIp']
+        if 'httpsPorts' in kwargs:
+            https_ports = kwargs['httpsPorts']
+        if 'httpsRedirect' in kwargs:
+            https_redirect = kwargs['httpsRedirect']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'isAccessProduct' in kwargs:
+            is_access_product = kwargs['isAccessProduct']
+        if 'loadBalancing' in kwargs:
+            load_balancing = kwargs['loadBalancing']
+        if 'logHeaders' in kwargs:
+            log_headers = kwargs['logHeaders']
+        if 'readTime' in kwargs:
+            read_time = kwargs['readTime']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sourceIps' in kwargs:
+            source_ips = kwargs['sourceIps']
+        if 'writeTime' in kwargs:
+            write_time = kwargs['writeTime']
+
         if cluster_type is not None:
             _setter("cluster_type", cluster_type)
         if cname is not None:

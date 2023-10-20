@@ -99,7 +99,43 @@ class AdConnectorOfficeSiteArgs:
              sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              sub_domain_name: Optional[pulumi.Input[str]] = None,
              verify_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adConnectorOfficeSiteName' in kwargs:
+            ad_connector_office_site_name = kwargs['adConnectorOfficeSiteName']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'dnsAddresses' in kwargs:
+            dns_addresses = kwargs['dnsAddresses']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'adHostname' in kwargs:
+            ad_hostname = kwargs['adHostname']
+        if 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if 'domainPassword' in kwargs:
+            domain_password = kwargs['domainPassword']
+        if 'domainUserName' in kwargs:
+            domain_user_name = kwargs['domainUserName']
+        if 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if 'enableInternetAccess' in kwargs:
+            enable_internet_access = kwargs['enableInternetAccess']
+        if 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'subDomainDnsAddresses' in kwargs:
+            sub_domain_dns_addresses = kwargs['subDomainDnsAddresses']
+        if 'subDomainName' in kwargs:
+            sub_domain_name = kwargs['subDomainName']
+        if 'verifyCode' in kwargs:
+            verify_code = kwargs['verifyCode']
+
         _setter("ad_connector_office_site_name", ad_connector_office_site_name)
         _setter("cen_id", cen_id)
         _setter("cidr_block", cidr_block)
@@ -455,7 +491,43 @@ class _AdConnectorOfficeSiteState:
              sub_domain_dns_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              sub_domain_name: Optional[pulumi.Input[str]] = None,
              verify_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'adConnectorOfficeSiteName' in kwargs:
+            ad_connector_office_site_name = kwargs['adConnectorOfficeSiteName']
+        if 'adHostname' in kwargs:
+            ad_hostname = kwargs['adHostname']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'desktopAccessType' in kwargs:
+            desktop_access_type = kwargs['desktopAccessType']
+        if 'dnsAddresses' in kwargs:
+            dns_addresses = kwargs['dnsAddresses']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'domainPassword' in kwargs:
+            domain_password = kwargs['domainPassword']
+        if 'domainUserName' in kwargs:
+            domain_user_name = kwargs['domainUserName']
+        if 'enableAdminAccess' in kwargs:
+            enable_admin_access = kwargs['enableAdminAccess']
+        if 'enableInternetAccess' in kwargs:
+            enable_internet_access = kwargs['enableInternetAccess']
+        if 'mfaEnabled' in kwargs:
+            mfa_enabled = kwargs['mfaEnabled']
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'subDomainDnsAddresses' in kwargs:
+            sub_domain_dns_addresses = kwargs['subDomainDnsAddresses']
+        if 'subDomainName' in kwargs:
+            sub_domain_name = kwargs['subDomainName']
+        if 'verifyCode' in kwargs:
+            verify_code = kwargs['verifyCode']
+
         if ad_connector_office_site_name is not None:
             _setter("ad_connector_office_site_name", ad_connector_office_site_name)
         if ad_hostname is not None:
@@ -766,7 +838,7 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
         """
         Provides a ECD Ad Connector Office Site resource.
 
-        For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createadconnectorofficesite).
+        For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createadconnectorofficesite).
 
         > **NOTE:** Available since v1.176.0.
 
@@ -841,7 +913,7 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
         """
         Provides a ECD Ad Connector Office Site resource.
 
-        For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/createadconnectorofficesite).
+        For information about ECD Ad Connector Office Site and how to use it, see [What is Ad Connector Office Site](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createadconnectorofficesite).
 
         > **NOTE:** Available since v1.176.0.
 

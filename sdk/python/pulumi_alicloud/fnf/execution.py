@@ -39,7 +39,13 @@ class ExecutionArgs:
              flow_name: pulumi.Input[str],
              input: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executionName' in kwargs:
+            execution_name = kwargs['executionName']
+        if 'flowName' in kwargs:
+            flow_name = kwargs['flowName']
+
         _setter("execution_name", execution_name)
         _setter("flow_name", flow_name)
         if input is not None:
@@ -124,7 +130,13 @@ class _ExecutionState:
              flow_name: Optional[pulumi.Input[str]] = None,
              input: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executionName' in kwargs:
+            execution_name = kwargs['executionName']
+        if 'flowName' in kwargs:
+            flow_name = kwargs['flowName']
+
         if execution_name is not None:
             _setter("execution_name", execution_name)
         if flow_name is not None:

@@ -58,7 +58,25 @@ class MscSubSubscriptionArgs:
              tts_status: Optional[pulumi.Input[int]] = None,
              webhook_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              webhook_status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'itemName' in kwargs:
+            item_name = kwargs['itemName']
+        if 'contactIds' in kwargs:
+            contact_ids = kwargs['contactIds']
+        if 'emailStatus' in kwargs:
+            email_status = kwargs['emailStatus']
+        if 'pmsgStatus' in kwargs:
+            pmsg_status = kwargs['pmsgStatus']
+        if 'smsStatus' in kwargs:
+            sms_status = kwargs['smsStatus']
+        if 'ttsStatus' in kwargs:
+            tts_status = kwargs['ttsStatus']
+        if 'webhookIds' in kwargs:
+            webhook_ids = kwargs['webhookIds']
+        if 'webhookStatus' in kwargs:
+            webhook_status = kwargs['webhookStatus']
+
         _setter("item_name", item_name)
         if contact_ids is not None:
             _setter("contact_ids", contact_ids)
@@ -230,7 +248,25 @@ class _MscSubSubscriptionState:
              tts_status: Optional[pulumi.Input[int]] = None,
              webhook_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              webhook_status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contactIds' in kwargs:
+            contact_ids = kwargs['contactIds']
+        if 'emailStatus' in kwargs:
+            email_status = kwargs['emailStatus']
+        if 'itemName' in kwargs:
+            item_name = kwargs['itemName']
+        if 'pmsgStatus' in kwargs:
+            pmsg_status = kwargs['pmsgStatus']
+        if 'smsStatus' in kwargs:
+            sms_status = kwargs['smsStatus']
+        if 'ttsStatus' in kwargs:
+            tts_status = kwargs['ttsStatus']
+        if 'webhookIds' in kwargs:
+            webhook_ids = kwargs['webhookIds']
+        if 'webhookStatus' in kwargs:
+            webhook_status = kwargs['webhookStatus']
+
         if channel is not None:
             _setter("channel", channel)
         if contact_ids is not None:

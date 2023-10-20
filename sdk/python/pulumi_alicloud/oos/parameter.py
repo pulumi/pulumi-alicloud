@@ -51,7 +51,13 @@ class ParameterArgs:
              description: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("parameter_name", parameter_name)
         _setter("type", type)
         _setter("value", value)
@@ -189,7 +195,13 @@ class _ParameterState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'parameterName' in kwargs:
+            parameter_name = kwargs['parameterName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if constraints is not None:
             _setter("constraints", constraints)
         if description is not None:

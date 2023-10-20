@@ -39,7 +39,17 @@ class AclAttachmentArgs:
              acl_type: pulumi.Input[str],
              listener_id: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if 'aclType' in kwargs:
+            acl_type = kwargs['aclType']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("acl_id", acl_id)
         _setter("acl_type", acl_type)
         _setter("listener_id", listener_id)
@@ -127,7 +137,17 @@ class _AclAttachmentState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              listener_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if 'aclType' in kwargs:
+            acl_type = kwargs['aclType']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+
         if acl_id is not None:
             _setter("acl_id", acl_id)
         if acl_type is not None:

@@ -41,7 +41,15 @@ class ConnectionArgs:
              network_parameters: pulumi.Input['ConnectionNetworkParametersArgs'],
              auth_parameters: Optional[pulumi.Input['ConnectionAuthParametersArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if 'networkParameters' in kwargs:
+            network_parameters = kwargs['networkParameters']
+        if 'authParameters' in kwargs:
+            auth_parameters = kwargs['authParameters']
+
         _setter("connection_name", connection_name)
         _setter("network_parameters", network_parameters)
         if auth_parameters is not None:
@@ -130,7 +138,17 @@ class _ConnectionState:
              create_time: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              network_parameters: Optional[pulumi.Input['ConnectionNetworkParametersArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authParameters' in kwargs:
+            auth_parameters = kwargs['authParameters']
+        if 'connectionName' in kwargs:
+            connection_name = kwargs['connectionName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'networkParameters' in kwargs:
+            network_parameters = kwargs['networkParameters']
+
         if auth_parameters is not None:
             _setter("auth_parameters", auth_parameters)
         if connection_name is not None:

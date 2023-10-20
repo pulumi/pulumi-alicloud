@@ -39,7 +39,17 @@ class VpcEndpointZoneArgs:
              vswitch_id: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("endpoint_id", endpoint_id)
         _setter("vswitch_id", vswitch_id)
         if dry_run is not None:
@@ -128,7 +138,17 @@ class _VpcEndpointZoneState:
              status: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if endpoint_id is not None:

@@ -64,7 +64,25 @@ class GetDeviceGroupsGroupResult(dict):
              group_name: str,
              id: str,
              success: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'deviceActive' in kwargs:
+            device_active = kwargs['deviceActive']
+        if 'deviceCount' in kwargs:
+            device_count = kwargs['deviceCount']
+        if 'deviceOnline' in kwargs:
+            device_online = kwargs['deviceOnline']
+        if 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+        if 'groupDesc' in kwargs:
+            group_desc = kwargs['groupDesc']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+
         _setter("create_time", create_time)
         _setter("device_active", device_active)
         _setter("device_count", device_count)

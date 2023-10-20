@@ -51,7 +51,17 @@ class LogTailConfigArgs:
              project: pulumi.Input[str],
              log_sample: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'inputDetail' in kwargs:
+            input_detail = kwargs['inputDetail']
+        if 'inputType' in kwargs:
+            input_type = kwargs['inputType']
+        if 'outputType' in kwargs:
+            output_type = kwargs['outputType']
+        if 'logSample' in kwargs:
+            log_sample = kwargs['logSample']
+
         _setter("input_detail", input_detail)
         _setter("input_type", input_type)
         _setter("logstore", logstore)
@@ -187,7 +197,17 @@ class _LogTailConfigState:
              name: Optional[pulumi.Input[str]] = None,
              output_type: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'inputDetail' in kwargs:
+            input_detail = kwargs['inputDetail']
+        if 'inputType' in kwargs:
+            input_type = kwargs['inputType']
+        if 'logSample' in kwargs:
+            log_sample = kwargs['logSample']
+        if 'outputType' in kwargs:
+            output_type = kwargs['outputType']
+
         if input_detail is not None:
             _setter("input_detail", input_detail)
         if input_type is not None:

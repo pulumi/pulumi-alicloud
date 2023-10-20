@@ -51,7 +51,23 @@ class VpcEndpointArgs:
              service_id: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'endpointDescription' in kwargs:
+            endpoint_description = kwargs['endpointDescription']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'vpcEndpointName' in kwargs:
+            vpc_endpoint_name = kwargs['vpcEndpointName']
+
         _setter("security_group_ids", security_group_ids)
         _setter("vpc_id", vpc_id)
         if dry_run is not None:
@@ -210,7 +226,29 @@ class _VpcEndpointState:
              status: Optional[pulumi.Input[str]] = None,
              vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionStatus' in kwargs:
+            connection_status = kwargs['connectionStatus']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'endpointBusinessStatus' in kwargs:
+            endpoint_business_status = kwargs['endpointBusinessStatus']
+        if 'endpointDescription' in kwargs:
+            endpoint_description = kwargs['endpointDescription']
+        if 'endpointDomain' in kwargs:
+            endpoint_domain = kwargs['endpointDomain']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'vpcEndpointName' in kwargs:
+            vpc_endpoint_name = kwargs['vpcEndpointName']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if bandwidth is not None:
             _setter("bandwidth", bandwidth)
         if connection_status is not None:

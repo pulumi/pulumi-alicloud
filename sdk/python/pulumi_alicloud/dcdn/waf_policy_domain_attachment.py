@@ -31,7 +31,13 @@ class WafPolicyDomainAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              domain_name: pulumi.Input[str],
              policy_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         _setter("domain_name", domain_name)
         _setter("policy_id", policy_id)
 
@@ -80,7 +86,13 @@ class _WafPolicyDomainAttachmentState:
              _setter: Callable[[Any, Any], None],
              domain_name: Optional[pulumi.Input[str]] = None,
              policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         if domain_name is not None:
             _setter("domain_name", domain_name)
         if policy_id is not None:
@@ -122,7 +134,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         """
         Provides a DCDN Waf Policy Domain Attachment resource.
 
-        For information about DCDN Waf Policy Domain Attachment and how to use it, see [What is Waf Policy Domain Attachment](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/modify-the-domain-name-bound-to-a-protection-policies).
+        For information about DCDN Waf Policy Domain Attachment and how to use it, see [What is Waf Policy Domain Attachment](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-modifydcdnwafpolicydomains).
 
         > **NOTE:** Available since v1.186.0.
 
@@ -186,7 +198,7 @@ class WafPolicyDomainAttachment(pulumi.CustomResource):
         """
         Provides a DCDN Waf Policy Domain Attachment resource.
 
-        For information about DCDN Waf Policy Domain Attachment and how to use it, see [What is Waf Policy Domain Attachment](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/modify-the-domain-name-bound-to-a-protection-policies).
+        For information about DCDN Waf Policy Domain Attachment and how to use it, see [What is Waf Policy Domain Attachment](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-modifydcdnwafpolicydomains).
 
         > **NOTE:** Available since v1.186.0.
 

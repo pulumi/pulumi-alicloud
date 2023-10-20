@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.AliKafka
 {
     /// <summary>
-    /// Provides an ALIKAFKA sasl acl resource, see [What is alikafka sasl acl](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createacl).
+    /// Provides an ALIKAFKA sasl acl resource, see [What is alikafka sasl acl](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createacl).
     /// 
     /// &gt; **NOTE:** Available since v1.66.0.
     /// 

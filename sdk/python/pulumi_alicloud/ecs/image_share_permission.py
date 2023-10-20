@@ -31,7 +31,13 @@ class ImageSharePermissionArgs:
              _setter: Callable[[Any, Any], None],
              account_id: pulumi.Input[str],
              image_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+
         _setter("account_id", account_id)
         _setter("image_id", image_id)
 
@@ -80,7 +86,13 @@ class _ImageSharePermissionState:
              _setter: Callable[[Any, Any], None],
              account_id: Optional[pulumi.Input[str]] = None,
              image_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if image_id is not None:

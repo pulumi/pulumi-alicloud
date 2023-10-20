@@ -9,6 +9,8 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
  *
+ * > **NOTE:** Available since v1.0.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -62,7 +64,7 @@ export interface GetRecordsArgs {
      */
     isLocked?: boolean;
     /**
-     * ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+     * ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
      */
     line?: string;
     /**
@@ -127,6 +129,8 @@ export interface GetRecordsResult {
 /**
  * This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
  *
+ * > **NOTE:** Available since v1.0.0.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -168,7 +172,7 @@ export interface GetRecordsOutputArgs {
      */
     isLocked?: pulumi.Input<boolean>;
     /**
-     * ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+     * ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
      */
     line?: pulumi.Input<string>;
     /**

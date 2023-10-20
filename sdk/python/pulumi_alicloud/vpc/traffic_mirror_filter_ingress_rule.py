@@ -67,7 +67,23 @@ class TrafficMirrorFilterIngressRuleInitArgs:
              dry_run: Optional[pulumi.Input[bool]] = None,
              rule_action: Optional[pulumi.Input[str]] = None,
              source_port_range: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrBlock' in kwargs:
+            destination_cidr_block = kwargs['destinationCidrBlock']
+        if 'sourceCidrBlock' in kwargs:
+            source_cidr_block = kwargs['sourceCidrBlock']
+        if 'trafficMirrorFilterId' in kwargs:
+            traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
+        if 'destinationPortRange' in kwargs:
+            destination_port_range = kwargs['destinationPortRange']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'ruleAction' in kwargs:
+            rule_action = kwargs['ruleAction']
+        if 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+
         _setter("destination_cidr_block", destination_cidr_block)
         _setter("priority", priority)
         _setter("protocol", protocol)
@@ -279,7 +295,25 @@ class _TrafficMirrorFilterIngressRuleState:
              status: Optional[pulumi.Input[str]] = None,
              traffic_mirror_filter_id: Optional[pulumi.Input[str]] = None,
              traffic_mirror_filter_ingress_rule_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationCidrBlock' in kwargs:
+            destination_cidr_block = kwargs['destinationCidrBlock']
+        if 'destinationPortRange' in kwargs:
+            destination_port_range = kwargs['destinationPortRange']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'ruleAction' in kwargs:
+            rule_action = kwargs['ruleAction']
+        if 'sourceCidrBlock' in kwargs:
+            source_cidr_block = kwargs['sourceCidrBlock']
+        if 'sourcePortRange' in kwargs:
+            source_port_range = kwargs['sourcePortRange']
+        if 'trafficMirrorFilterId' in kwargs:
+            traffic_mirror_filter_id = kwargs['trafficMirrorFilterId']
+        if 'trafficMirrorFilterIngressRuleId' in kwargs:
+            traffic_mirror_filter_ingress_rule_id = kwargs['trafficMirrorFilterIngressRuleId']
+
         if action is not None:
             _setter("action", action)
         if destination_cidr_block is not None:

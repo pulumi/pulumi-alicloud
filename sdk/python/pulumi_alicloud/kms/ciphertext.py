@@ -21,7 +21,7 @@ class CiphertextArgs:
         The set of arguments for constructing a Ciphertext resource.
         :param pulumi.Input[str] key_id: The globally unique ID of the CMK.
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted which must be encoded in Base64.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_context: (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_context: The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         """
         CiphertextArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -35,7 +35,13 @@ class CiphertextArgs:
              key_id: pulumi.Input[str],
              plaintext: pulumi.Input[str],
              encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+        if 'encryptionContext' in kwargs:
+            encryption_context = kwargs['encryptionContext']
+
         _setter("key_id", key_id)
         _setter("plaintext", plaintext)
         if encryption_context is not None:
@@ -69,7 +75,7 @@ class CiphertextArgs:
     @pulumi.getter(name="encryptionContext")
     def encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         """
         return pulumi.get(self, "encryption_context")
 
@@ -88,7 +94,7 @@ class _CiphertextState:
         """
         Input properties used for looking up and filtering Ciphertext resources.
         :param pulumi.Input[str] ciphertext_blob: The ciphertext of the data key encrypted with the primary CMK version.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_context: (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_context: The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         :param pulumi.Input[str] key_id: The globally unique ID of the CMK.
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted which must be encoded in Base64.
         """
@@ -106,7 +112,15 @@ class _CiphertextState:
              encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              key_id: Optional[pulumi.Input[str]] = None,
              plaintext: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ciphertextBlob' in kwargs:
+            ciphertext_blob = kwargs['ciphertextBlob']
+        if 'encryptionContext' in kwargs:
+            encryption_context = kwargs['encryptionContext']
+        if 'keyId' in kwargs:
+            key_id = kwargs['keyId']
+
         if ciphertext_blob is not None:
             _setter("ciphertext_blob", ciphertext_blob)
         if encryption_context is not None:
@@ -132,7 +146,7 @@ class _CiphertextState:
     @pulumi.getter(name="encryptionContext")
     def encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         """
         return pulumi.get(self, "encryption_context")
 
@@ -191,7 +205,7 @@ class Ciphertext(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_context: (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_context: The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         :param pulumi.Input[str] key_id: The globally unique ID of the CMK.
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted which must be encoded in Base64.
         """
@@ -279,7 +293,7 @@ class Ciphertext(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ciphertext_blob: The ciphertext of the data key encrypted with the primary CMK version.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_context: (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption_context: The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         :param pulumi.Input[str] key_id: The globally unique ID of the CMK.
         :param pulumi.Input[str] plaintext: The plaintext to be encrypted which must be encoded in Base64.
         """
@@ -305,7 +319,7 @@ class Ciphertext(pulumi.CustomResource):
     @pulumi.getter(name="encryptionContext")
     def encryption_context(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         """
         return pulumi.get(self, "encryption_context")
 

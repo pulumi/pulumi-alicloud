@@ -35,7 +35,15 @@ class UserVpcAuthorizationArgs:
              authorized_user_id: pulumi.Input[str],
              auth_channel: Optional[pulumi.Input[str]] = None,
              auth_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authorizedUserId' in kwargs:
+            authorized_user_id = kwargs['authorizedUserId']
+        if 'authChannel' in kwargs:
+            auth_channel = kwargs['authChannel']
+        if 'authType' in kwargs:
+            auth_type = kwargs['authType']
+
         _setter("authorized_user_id", authorized_user_id)
         if auth_channel is not None:
             _setter("auth_channel", auth_channel)
@@ -103,7 +111,15 @@ class _UserVpcAuthorizationState:
              auth_channel: Optional[pulumi.Input[str]] = None,
              auth_type: Optional[pulumi.Input[str]] = None,
              authorized_user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authChannel' in kwargs:
+            auth_channel = kwargs['authChannel']
+        if 'authType' in kwargs:
+            auth_type = kwargs['authType']
+        if 'authorizedUserId' in kwargs:
+            authorized_user_id = kwargs['authorizedUserId']
+
         if auth_channel is not None:
             _setter("auth_channel", auth_channel)
         if auth_type is not None:

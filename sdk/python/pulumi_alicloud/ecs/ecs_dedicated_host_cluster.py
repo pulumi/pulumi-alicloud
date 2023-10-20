@@ -43,7 +43,15 @@ class EcsDedicatedHostClusterArgs:
              description: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'dedicatedHostClusterName' in kwargs:
+            dedicated_host_cluster_name = kwargs['dedicatedHostClusterName']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("zone_id", zone_id)
         if dedicated_host_cluster_name is not None:
             _setter("dedicated_host_cluster_name", dedicated_host_cluster_name)
@@ -147,7 +155,15 @@ class _EcsDedicatedHostClusterState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dedicatedHostClusterName' in kwargs:
+            dedicated_host_cluster_name = kwargs['dedicatedHostClusterName']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if dedicated_host_cluster_name is not None:
             _setter("dedicated_host_cluster_name", dedicated_host_cluster_name)
         if description is not None:

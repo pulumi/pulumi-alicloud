@@ -35,7 +35,15 @@ class LogConfigArgs:
              log_type: pulumi.Input[str],
              sls_log_store: pulumi.Input[str],
              sls_project: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'logType' in kwargs:
+            log_type = kwargs['logType']
+        if 'slsLogStore' in kwargs:
+            sls_log_store = kwargs['slsLogStore']
+        if 'slsProject' in kwargs:
+            sls_project = kwargs['slsProject']
+
         _setter("log_type", log_type)
         _setter("sls_log_store", sls_log_store)
         _setter("sls_project", sls_project)
@@ -101,7 +109,15 @@ class _LogConfigState:
              log_type: Optional[pulumi.Input[str]] = None,
              sls_log_store: Optional[pulumi.Input[str]] = None,
              sls_project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'logType' in kwargs:
+            log_type = kwargs['logType']
+        if 'slsLogStore' in kwargs:
+            sls_log_store = kwargs['slsLogStore']
+        if 'slsProject' in kwargs:
+            sls_project = kwargs['slsProject']
+
         if log_type is not None:
             _setter("log_type", log_type)
         if sls_log_store is not None:

@@ -31,7 +31,13 @@ class PublicIpAddressPoolCidrBlockArgs:
              _setter: Callable[[Any, Any], None],
              public_ip_address_pool_id: pulumi.Input[str],
              cidr_block: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publicIpAddressPoolId' in kwargs:
+            public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+
         _setter("public_ip_address_pool_id", public_ip_address_pool_id)
         if cidr_block is not None:
             _setter("cidr_block", cidr_block)
@@ -89,7 +95,15 @@ class _PublicIpAddressPoolCidrBlockState:
              create_time: Optional[pulumi.Input[str]] = None,
              public_ip_address_pool_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'publicIpAddressPoolId' in kwargs:
+            public_ip_address_pool_id = kwargs['publicIpAddressPoolId']
+
         if cidr_block is not None:
             _setter("cidr_block", cidr_block)
         if create_time is not None:

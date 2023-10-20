@@ -31,7 +31,11 @@ class ResourceDirectoryArgs:
              _setter: Callable[[Any, Any], None],
              member_deletion_status: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'memberDeletionStatus' in kwargs:
+            member_deletion_status = kwargs['memberDeletionStatus']
+
         if member_deletion_status is not None:
             _setter("member_deletion_status", member_deletion_status)
         if status is not None:
@@ -94,7 +98,17 @@ class _ResourceDirectoryState:
              member_deletion_status: Optional[pulumi.Input[str]] = None,
              root_folder_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'masterAccountId' in kwargs:
+            master_account_id = kwargs['masterAccountId']
+        if 'masterAccountName' in kwargs:
+            master_account_name = kwargs['masterAccountName']
+        if 'memberDeletionStatus' in kwargs:
+            member_deletion_status = kwargs['memberDeletionStatus']
+        if 'rootFolderId' in kwargs:
+            root_folder_id = kwargs['rootFolderId']
+
         if master_account_id is not None:
             _setter("master_account_id", master_account_id)
         if master_account_name is not None:

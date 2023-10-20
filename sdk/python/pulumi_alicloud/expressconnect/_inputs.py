@@ -29,7 +29,9 @@ class GetRouterInterfacesFilterArgs:
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if values is not None:
@@ -74,7 +76,9 @@ class GetVirtualBorderRoutersFilterArgs:
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if values is not None:

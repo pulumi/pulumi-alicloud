@@ -35,7 +35,15 @@ class HostAttachmentArgs:
              host_group_id: pulumi.Input[str],
              host_id: pulumi.Input[str],
              instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostGroupId' in kwargs:
+            host_group_id = kwargs['hostGroupId']
+        if 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("host_group_id", host_group_id)
         _setter("host_id", host_id)
         _setter("instance_id", instance_id)
@@ -101,7 +109,15 @@ class _HostAttachmentState:
              host_group_id: Optional[pulumi.Input[str]] = None,
              host_id: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostGroupId' in kwargs:
+            host_group_id = kwargs['hostGroupId']
+        if 'hostId' in kwargs:
+            host_id = kwargs['hostId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if host_group_id is not None:
             _setter("host_group_id", host_group_id)
         if host_id is not None:

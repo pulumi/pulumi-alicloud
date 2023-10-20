@@ -48,7 +48,11 @@ class AnycastEipAddressAttachmentPopLocation(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              pop_location: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'popLocation' in kwargs:
+            pop_location = kwargs['popLocation']
+
         if pop_location is not None:
             _setter("pop_location", pop_location)
 
@@ -128,7 +132,27 @@ class GetAnycastEipAddressesAddressResult(dict):
              payment_type: str,
              service_location: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aliUid' in kwargs:
+            ali_uid = kwargs['aliUid']
+        if 'anycastEipAddressName' in kwargs:
+            anycast_eip_address_name = kwargs['anycastEipAddressName']
+        if 'anycastEipBindInfoLists' in kwargs:
+            anycast_eip_bind_info_lists = kwargs['anycastEipBindInfoLists']
+        if 'anycastId' in kwargs:
+            anycast_id = kwargs['anycastId']
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'serviceLocation' in kwargs:
+            service_location = kwargs['serviceLocation']
+
         _setter("ali_uid", ali_uid)
         _setter("anycast_eip_address_name", anycast_eip_address_name)
         _setter("anycast_eip_bind_info_lists", anycast_eip_bind_info_lists)
@@ -284,7 +308,17 @@ class GetAnycastEipAddressesAddressAnycastEipBindInfoListResult(dict):
              bind_instance_region_id: str,
              bind_instance_type: str,
              bind_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bindInstanceId' in kwargs:
+            bind_instance_id = kwargs['bindInstanceId']
+        if 'bindInstanceRegionId' in kwargs:
+            bind_instance_region_id = kwargs['bindInstanceRegionId']
+        if 'bindInstanceType' in kwargs:
+            bind_instance_type = kwargs['bindInstanceType']
+        if 'bindTime' in kwargs:
+            bind_time = kwargs['bindTime']
+
         _setter("bind_instance_id", bind_instance_id)
         _setter("bind_instance_region_id", bind_instance_region_id)
         _setter("bind_instance_type", bind_instance_type)

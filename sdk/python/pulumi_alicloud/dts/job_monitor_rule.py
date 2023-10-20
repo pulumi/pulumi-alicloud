@@ -43,7 +43,13 @@ class JobMonitorRuleArgs:
              delay_rule_time: Optional[pulumi.Input[str]] = None,
              phone: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dtsJobId' in kwargs:
+            dts_job_id = kwargs['dtsJobId']
+        if 'delayRuleTime' in kwargs:
+            delay_rule_time = kwargs['delayRuleTime']
+
         _setter("dts_job_id", dts_job_id)
         _setter("type", type)
         if delay_rule_time is not None:
@@ -146,7 +152,13 @@ class _JobMonitorRuleState:
              phone: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'delayRuleTime' in kwargs:
+            delay_rule_time = kwargs['delayRuleTime']
+        if 'dtsJobId' in kwargs:
+            dts_job_id = kwargs['dtsJobId']
+
         if delay_rule_time is not None:
             _setter("delay_rule_time", delay_rule_time)
         if dts_job_id is not None:

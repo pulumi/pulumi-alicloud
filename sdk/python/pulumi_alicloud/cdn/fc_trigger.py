@@ -28,7 +28,7 @@ class FcTriggerArgs:
         :param pulumi.Input[str] notes: The Note information.
         :param pulumi.Input[str] role_arn: The role authorized by RAM. The value formats as `acs:ram::{AccountID}:role/{RoleName}`.
         :param pulumi.Input[str] source_arn: Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
-        :param pulumi.Input[str] trigger_arn: The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+        :param pulumi.Input[str] trigger_arn: The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
         :param pulumi.Input[str] function_arn: The function arn. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`.
         """
         FcTriggerArgs._configure(
@@ -51,7 +51,21 @@ class FcTriggerArgs:
              source_arn: pulumi.Input[str],
              trigger_arn: pulumi.Input[str],
              function_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventMetaName' in kwargs:
+            event_meta_name = kwargs['eventMetaName']
+        if 'eventMetaVersion' in kwargs:
+            event_meta_version = kwargs['eventMetaVersion']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'sourceArn' in kwargs:
+            source_arn = kwargs['sourceArn']
+        if 'triggerArn' in kwargs:
+            trigger_arn = kwargs['triggerArn']
+        if 'functionArn' in kwargs:
+            function_arn = kwargs['functionArn']
+
         _setter("event_meta_name", event_meta_name)
         _setter("event_meta_version", event_meta_version)
         _setter("notes", notes)
@@ -125,7 +139,7 @@ class FcTriggerArgs:
     @pulumi.getter(name="triggerArn")
     def trigger_arn(self) -> pulumi.Input[str]:
         """
-        The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+        The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
         """
         return pulumi.get(self, "trigger_arn")
 
@@ -164,7 +178,7 @@ class _FcTriggerState:
         :param pulumi.Input[str] notes: The Note information.
         :param pulumi.Input[str] role_arn: The role authorized by RAM. The value formats as `acs:ram::{AccountID}:role/{RoleName}`.
         :param pulumi.Input[str] source_arn: Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
-        :param pulumi.Input[str] trigger_arn: The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+        :param pulumi.Input[str] trigger_arn: The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
         """
         _FcTriggerState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -186,7 +200,21 @@ class _FcTriggerState:
              role_arn: Optional[pulumi.Input[str]] = None,
              source_arn: Optional[pulumi.Input[str]] = None,
              trigger_arn: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventMetaName' in kwargs:
+            event_meta_name = kwargs['eventMetaName']
+        if 'eventMetaVersion' in kwargs:
+            event_meta_version = kwargs['eventMetaVersion']
+        if 'functionArn' in kwargs:
+            function_arn = kwargs['functionArn']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'sourceArn' in kwargs:
+            source_arn = kwargs['sourceArn']
+        if 'triggerArn' in kwargs:
+            trigger_arn = kwargs['triggerArn']
+
         if event_meta_name is not None:
             _setter("event_meta_name", event_meta_name)
         if event_meta_version is not None:
@@ -278,7 +306,7 @@ class _FcTriggerState:
     @pulumi.getter(name="triggerArn")
     def trigger_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+        The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
         """
         return pulumi.get(self, "trigger_arn")
 
@@ -303,7 +331,7 @@ class FcTrigger(pulumi.CustomResource):
         """
         Provides a CDN Fc Trigger resource.
 
-        For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger).
+        For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger).
 
         > **NOTE:** Available in v1.165.0+.
 
@@ -342,7 +370,7 @@ class FcTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] notes: The Note information.
         :param pulumi.Input[str] role_arn: The role authorized by RAM. The value formats as `acs:ram::{AccountID}:role/{RoleName}`.
         :param pulumi.Input[str] source_arn: Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
-        :param pulumi.Input[str] trigger_arn: The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+        :param pulumi.Input[str] trigger_arn: The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
         """
         ...
     @overload
@@ -353,7 +381,7 @@ class FcTrigger(pulumi.CustomResource):
         """
         Provides a CDN Fc Trigger resource.
 
-        For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger).
+        For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger).
 
         > **NOTE:** Available in v1.165.0+.
 
@@ -468,7 +496,7 @@ class FcTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] notes: The Note information.
         :param pulumi.Input[str] role_arn: The role authorized by RAM. The value formats as `acs:ram::{AccountID}:role/{RoleName}`.
         :param pulumi.Input[str] source_arn: Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
-        :param pulumi.Input[str] trigger_arn: The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+        :param pulumi.Input[str] trigger_arn: The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -535,7 +563,7 @@ class FcTrigger(pulumi.CustomResource):
     @pulumi.getter(name="triggerArn")
     def trigger_arn(self) -> pulumi.Output[str]:
         """
-        The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+        The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
         """
         return pulumi.get(self, "trigger_arn")
 

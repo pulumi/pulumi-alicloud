@@ -35,7 +35,15 @@ class HostAccountShareKeyAttachmentArgs:
              host_account_id: pulumi.Input[str],
              host_share_key_id: pulumi.Input[str],
              instance_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostAccountId' in kwargs:
+            host_account_id = kwargs['hostAccountId']
+        if 'hostShareKeyId' in kwargs:
+            host_share_key_id = kwargs['hostShareKeyId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("host_account_id", host_account_id)
         _setter("host_share_key_id", host_share_key_id)
         _setter("instance_id", instance_id)
@@ -101,7 +109,15 @@ class _HostAccountShareKeyAttachmentState:
              host_account_id: Optional[pulumi.Input[str]] = None,
              host_share_key_id: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostAccountId' in kwargs:
+            host_account_id = kwargs['hostAccountId']
+        if 'hostShareKeyId' in kwargs:
+            host_share_key_id = kwargs['hostShareKeyId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if host_account_id is not None:
             _setter("host_account_id", host_account_id)
         if host_share_key_id is not None:

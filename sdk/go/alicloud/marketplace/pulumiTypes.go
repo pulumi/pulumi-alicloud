@@ -580,7 +580,7 @@ func (o GetProductProductSkusPackageVersionArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetProductsProduct struct {
-	// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+	// The Category ID of products.
 	CategoryId int `pulumi:"categoryId"`
 	// The code of the product.
 	Code string `pulumi:"code"`
@@ -624,7 +624,7 @@ type GetProductsProductInput interface {
 }
 
 type GetProductsProductArgs struct {
-	// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+	// The Category ID of products.
 	CategoryId pulumi.IntInput `pulumi:"categoryId"`
 	// The code of the product.
 	Code pulumi.StringInput `pulumi:"code"`
@@ -725,7 +725,7 @@ func (o GetProductsProductOutput) ToOutput(ctx context.Context) pulumix.Output[G
 	}
 }
 
-// The Category ID of products. For more information, see [DescribeProducts](https://help.aliyun.com/document_detail/89834.htm).
+// The Category ID of products.
 func (o GetProductsProductOutput) CategoryId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetProductsProduct) int { return v.CategoryId }).(pulumi.IntOutput)
 }

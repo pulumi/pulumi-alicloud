@@ -36,7 +36,13 @@ class GetMetaTagsTagResult(dict):
              category: str,
              key_name: str,
              value_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'valueName' in kwargs:
+            value_name = kwargs['valueName']
+
         _setter("category", category)
         _setter("key_name", key_name)
         _setter("value_name", value_name)

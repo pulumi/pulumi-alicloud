@@ -57,7 +57,25 @@ class VbrHealthCheckArgs:
              health_check_source_ip: Optional[pulumi.Input[str]] = None,
              healthy_threshold: Optional[pulumi.Input[int]] = None,
              vbr_instance_owner_id: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'healthCheckTargetIp' in kwargs:
+            health_check_target_ip = kwargs['healthCheckTargetIp']
+        if 'vbrInstanceId' in kwargs:
+            vbr_instance_id = kwargs['vbrInstanceId']
+        if 'vbrInstanceRegionId' in kwargs:
+            vbr_instance_region_id = kwargs['vbrInstanceRegionId']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckSourceIp' in kwargs:
+            health_check_source_ip = kwargs['healthCheckSourceIp']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'vbrInstanceOwnerId' in kwargs:
+            vbr_instance_owner_id = kwargs['vbrInstanceOwnerId']
+
         _setter("cen_id", cen_id)
         _setter("health_check_target_ip", health_check_target_ip)
         _setter("vbr_instance_id", vbr_instance_id)
@@ -216,7 +234,25 @@ class _VbrHealthCheckState:
              vbr_instance_id: Optional[pulumi.Input[str]] = None,
              vbr_instance_owner_id: Optional[pulumi.Input[int]] = None,
              vbr_instance_region_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckSourceIp' in kwargs:
+            health_check_source_ip = kwargs['healthCheckSourceIp']
+        if 'healthCheckTargetIp' in kwargs:
+            health_check_target_ip = kwargs['healthCheckTargetIp']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'vbrInstanceId' in kwargs:
+            vbr_instance_id = kwargs['vbrInstanceId']
+        if 'vbrInstanceOwnerId' in kwargs:
+            vbr_instance_owner_id = kwargs['vbrInstanceOwnerId']
+        if 'vbrInstanceRegionId' in kwargs:
+            vbr_instance_region_id = kwargs['vbrInstanceRegionId']
+
         if cen_id is not None:
             _setter("cen_id", cen_id)
         if health_check_interval is not None:
@@ -351,7 +387,7 @@ class VbrHealthCheck(pulumi.CustomResource):
         This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance.
         After you attach a Virtual Border Router (VBR) to the CEN instance and configure the health check feature, you can monitor the network conditions of the on-premises data center connected to the VBR.
 
-        For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-enablecenvbrhealthcheck).
+        For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-enablecenvbrhealthcheck).
 
         > **NOTE:** Available since v1.88.0.
 
@@ -432,7 +468,7 @@ class VbrHealthCheck(pulumi.CustomResource):
         This topic describes how to configure the health check feature for a Cloud Enterprise Network (CEN) instance.
         After you attach a Virtual Border Router (VBR) to the CEN instance and configure the health check feature, you can monitor the network conditions of the on-premises data center connected to the VBR.
 
-        For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-enablecenvbrhealthcheck).
+        For information about CEN VBR HealthCheck and how to use it, see [Manage CEN VBR HealthCheck](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-enablecenvbrhealthcheck).
 
         > **NOTE:** Available since v1.88.0.
 

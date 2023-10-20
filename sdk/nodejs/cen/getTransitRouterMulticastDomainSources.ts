@@ -7,9 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+ * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -37,6 +37,9 @@ export function getTransitRouterMulticastDomainSources(args: GetTransitRouterMul
  * A collection of arguments for invoking getTransitRouterMulticastDomainSources.
  */
 export interface GetTransitRouterMulticastDomainSourcesArgs {
+    /**
+     * A list of the multicast domain IDs.
+     */
     ids?: string[];
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -68,9 +71,9 @@ export interface GetTransitRouterMulticastDomainSourcesResult {
     readonly transitRouterMulticastDomainId: string;
 }
 /**
- * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-registertransitroutermulticastgroupsources)
+ * This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
  *
@@ -92,6 +95,9 @@ export function getTransitRouterMulticastDomainSourcesOutput(args: GetTransitRou
  * A collection of arguments for invoking getTransitRouterMulticastDomainSources.
  */
 export interface GetTransitRouterMulticastDomainSourcesOutputArgs {
+    /**
+     * A list of the multicast domain IDs.
+     */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

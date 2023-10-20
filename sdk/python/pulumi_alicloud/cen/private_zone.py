@@ -41,7 +41,17 @@ class PrivateZoneArgs:
              cen_id: pulumi.Input[str],
              host_region_id: pulumi.Input[str],
              host_vpc_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessRegionId' in kwargs:
+            access_region_id = kwargs['accessRegionId']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'hostRegionId' in kwargs:
+            host_region_id = kwargs['hostRegionId']
+        if 'hostVpcId' in kwargs:
+            host_vpc_id = kwargs['hostVpcId']
+
         _setter("access_region_id", access_region_id)
         _setter("cen_id", cen_id)
         _setter("host_region_id", host_region_id)
@@ -132,7 +142,17 @@ class _PrivateZoneState:
              host_region_id: Optional[pulumi.Input[str]] = None,
              host_vpc_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessRegionId' in kwargs:
+            access_region_id = kwargs['accessRegionId']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'hostRegionId' in kwargs:
+            host_region_id = kwargs['hostRegionId']
+        if 'hostVpcId' in kwargs:
+            host_vpc_id = kwargs['hostVpcId']
+
         if access_region_id is not None:
             _setter("access_region_id", access_region_id)
         if cen_id is not None:
@@ -222,7 +242,7 @@ class PrivateZone(pulumi.CustomResource):
         PrivateZone is a VPC-based resolution and management service for private domain names.
         After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
 
-        For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-routeprivatezoneincentovpc).
+        For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-routeprivatezoneincentovpc).
 
         > **NOTE:** Available since v1.83.0.
 
@@ -281,7 +301,7 @@ class PrivateZone(pulumi.CustomResource):
         PrivateZone is a VPC-based resolution and management service for private domain names.
         After you set a PrivateZone access, the Cloud Connect Network (CCN) and Virtual Border Router (VBR) attached to a CEN instance can access the PrivateZone service through CEN.
 
-        For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-routeprivatezoneincentovpc).
+        For information about CEN Private Zone and how to use it, see [Manage CEN Private Zone](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-routeprivatezoneincentovpc).
 
         > **NOTE:** Available since v1.83.0.
 

@@ -67,7 +67,21 @@ class OssBackupPlanArgs:
              cross_account_user_id: Optional[pulumi.Input[int]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              prefix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'ossBackupPlanName' in kwargs:
+            oss_backup_plan_name = kwargs['ossBackupPlanName']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+        if 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+
         _setter("backup_type", backup_type)
         _setter("bucket", bucket)
         _setter("oss_backup_plan_name", oss_backup_plan_name)
@@ -274,7 +288,21 @@ class _OssBackupPlanState:
              retention: Optional[pulumi.Input[str]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
              vault_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if 'ossBackupPlanName' in kwargs:
+            oss_backup_plan_name = kwargs['ossBackupPlanName']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         if backup_type is not None:
             _setter("backup_type", backup_type)
         if bucket is not None:

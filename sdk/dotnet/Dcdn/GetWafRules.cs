@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.Dcdn
     public static class GetWafRules
     {
         /// <summary>
-        /// This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+        /// This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
         /// 
-        /// &gt; **NOTE:** Available in 1.201.0+
+        /// &gt; **NOTE:** Available since v1.201.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -49,9 +49,9 @@ namespace Pulumi.AliCloud.Dcdn
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWafRulesResult>("alicloud:dcdn/getWafRules:getWafRules", args ?? new GetWafRulesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules)
+        /// This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)
         /// 
-        /// &gt; **NOTE:** Available in 1.201.0+
+        /// &gt; **NOTE:** Available since v1.201.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

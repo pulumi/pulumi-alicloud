@@ -54,7 +54,21 @@ class ServiceSubscriptionArgs:
              filter_tag: Optional[pulumi.Input[str]] = None,
              notify_content_format: Optional[pulumi.Input[str]] = None,
              notify_strategy: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pushType' in kwargs:
+            push_type = kwargs['pushType']
+        if 'subscriptionName' in kwargs:
+            subscription_name = kwargs['subscriptionName']
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+        if 'filterTag' in kwargs:
+            filter_tag = kwargs['filterTag']
+        if 'notifyContentFormat' in kwargs:
+            notify_content_format = kwargs['notifyContentFormat']
+        if 'notifyStrategy' in kwargs:
+            notify_strategy = kwargs['notifyStrategy']
+
         _setter("endpoint", endpoint)
         _setter("push_type", push_type)
         _setter("subscription_name", subscription_name)
@@ -197,7 +211,21 @@ class _ServiceSubscriptionState:
              push_type: Optional[pulumi.Input[str]] = None,
              subscription_name: Optional[pulumi.Input[str]] = None,
              topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'filterTag' in kwargs:
+            filter_tag = kwargs['filterTag']
+        if 'notifyContentFormat' in kwargs:
+            notify_content_format = kwargs['notifyContentFormat']
+        if 'notifyStrategy' in kwargs:
+            notify_strategy = kwargs['notifyStrategy']
+        if 'pushType' in kwargs:
+            push_type = kwargs['pushType']
+        if 'subscriptionName' in kwargs:
+            subscription_name = kwargs['subscriptionName']
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+
         if endpoint is not None:
             _setter("endpoint", endpoint)
         if filter_tag is not None:

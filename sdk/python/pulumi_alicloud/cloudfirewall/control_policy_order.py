@@ -35,7 +35,11 @@ class ControlPolicyOrderArgs:
              acl_uuid: pulumi.Input[str],
              direction: pulumi.Input[str],
              order: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclUuid' in kwargs:
+            acl_uuid = kwargs['aclUuid']
+
         _setter("acl_uuid", acl_uuid)
         _setter("direction", direction)
         if order is not None:
@@ -102,7 +106,11 @@ class _ControlPolicyOrderState:
              acl_uuid: Optional[pulumi.Input[str]] = None,
              direction: Optional[pulumi.Input[str]] = None,
              order: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclUuid' in kwargs:
+            acl_uuid = kwargs['aclUuid']
+
         if acl_uuid is not None:
             _setter("acl_uuid", acl_uuid)
         if direction is not None:

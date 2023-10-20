@@ -75,7 +75,35 @@ class HealthCheckTemplateArgs:
              health_check_timeout: Optional[pulumi.Input[int]] = None,
              healthy_threshold: Optional[pulumi.Input[int]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthCheckTemplateName' in kwargs:
+            health_check_template_name = kwargs['healthCheckTemplateName']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'healthCheckCodes' in kwargs:
+            health_check_codes = kwargs['healthCheckCodes']
+        if 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if 'healthCheckHost' in kwargs:
+            health_check_host = kwargs['healthCheckHost']
+        if 'healthCheckHttpVersion' in kwargs:
+            health_check_http_version = kwargs['healthCheckHttpVersion']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckMethod' in kwargs:
+            health_check_method = kwargs['healthCheckMethod']
+        if 'healthCheckPath' in kwargs:
+            health_check_path = kwargs['healthCheckPath']
+        if 'healthCheckProtocol' in kwargs:
+            health_check_protocol = kwargs['healthCheckProtocol']
+        if 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         _setter("health_check_template_name", health_check_template_name)
         if dry_run is not None:
             _setter("dry_run", dry_run)
@@ -323,7 +351,35 @@ class _HealthCheckTemplateState:
              health_check_timeout: Optional[pulumi.Input[int]] = None,
              healthy_threshold: Optional[pulumi.Input[int]] = None,
              unhealthy_threshold: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'healthCheckCodes' in kwargs:
+            health_check_codes = kwargs['healthCheckCodes']
+        if 'healthCheckConnectPort' in kwargs:
+            health_check_connect_port = kwargs['healthCheckConnectPort']
+        if 'healthCheckHost' in kwargs:
+            health_check_host = kwargs['healthCheckHost']
+        if 'healthCheckHttpVersion' in kwargs:
+            health_check_http_version = kwargs['healthCheckHttpVersion']
+        if 'healthCheckInterval' in kwargs:
+            health_check_interval = kwargs['healthCheckInterval']
+        if 'healthCheckMethod' in kwargs:
+            health_check_method = kwargs['healthCheckMethod']
+        if 'healthCheckPath' in kwargs:
+            health_check_path = kwargs['healthCheckPath']
+        if 'healthCheckProtocol' in kwargs:
+            health_check_protocol = kwargs['healthCheckProtocol']
+        if 'healthCheckTemplateName' in kwargs:
+            health_check_template_name = kwargs['healthCheckTemplateName']
+        if 'healthCheckTimeout' in kwargs:
+            health_check_timeout = kwargs['healthCheckTimeout']
+        if 'healthyThreshold' in kwargs:
+            healthy_threshold = kwargs['healthyThreshold']
+        if 'unhealthyThreshold' in kwargs:
+            unhealthy_threshold = kwargs['unhealthyThreshold']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if health_check_codes is not None:
@@ -530,7 +586,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Health Check Template resource.
 
-        For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createhealthchecktemplate).
+        For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createhealthchecktemplate).
 
         > **NOTE:** Available since v1.134.0.
 
@@ -578,7 +634,7 @@ class HealthCheckTemplate(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Health Check Template resource.
 
-        For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createhealthchecktemplate).
+        For information about Application Load Balancer (ALB) Health Check Template and how to use it, see [What is Health Check Template](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createhealthchecktemplate).
 
         > **NOTE:** Available since v1.134.0.
 

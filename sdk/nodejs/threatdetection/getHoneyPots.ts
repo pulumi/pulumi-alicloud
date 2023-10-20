@@ -7,11 +7,13 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
+ * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -19,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * const default = alicloud.threatdetection.getHoneyPots({
  *     ids: ["xxxx"],
- *     honeypotName: "tf-test",
+ *     honeypotName: "tf-example",
  *     nodeId: "a44e1ab3-6945-444c-889d-5bacee7056e8",
  * });
  * export const alicloudThreatDetectionHoneyPotExampleId = _default.then(_default => _default.pots?.[0]?.id);
@@ -64,6 +66,9 @@ export interface GetHoneyPotsArgs {
      * The ID of the honeypot management node.
      */
     nodeId?: string;
+    /**
+     * The name of the honeypot management node.
+     */
     nodeName?: string;
     /**
      * File name where to save data source results (after running `pulumi preview`).
@@ -104,11 +109,13 @@ export interface GetHoneyPotsResult {
     readonly pots: outputs.threatdetection.GetHoneyPotsPot[];
 }
 /**
- * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypot)
+ * This data source provides Threat Detection Honey Pot available to the user.[What is Honey Pot](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypot)
  *
- * > **NOTE:** Available in 1.195.0+
+ * > **NOTE:** Available since v1.195.0.
  *
  * ## Example Usage
+ *
+ * Basic Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -116,7 +123,7 @@ export interface GetHoneyPotsResult {
  *
  * const default = alicloud.threatdetection.getHoneyPots({
  *     ids: ["xxxx"],
- *     honeypotName: "tf-test",
+ *     honeypotName: "tf-example",
  *     nodeId: "a44e1ab3-6945-444c-889d-5bacee7056e8",
  * });
  * export const alicloudThreatDetectionHoneyPotExampleId = _default.then(_default => _default.pots?.[0]?.id);
@@ -150,6 +157,9 @@ export interface GetHoneyPotsOutputArgs {
      * The ID of the honeypot management node.
      */
     nodeId?: pulumi.Input<string>;
+    /**
+     * The name of the honeypot management node.
+     */
     nodeName?: pulumi.Input<string>;
     /**
      * File name where to save data source results (after running `pulumi preview`).

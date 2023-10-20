@@ -69,7 +69,11 @@ class OtsBackupPlanOtsDetail(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              table_names: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tableNames' in kwargs:
+            table_names = kwargs['tableNames']
+
         if table_names is not None:
             _setter("table_names", table_names)
 
@@ -132,7 +136,13 @@ class OtsBackupPlanRule(dict):
              retention: Optional[str] = None,
              rule_name: Optional[str] = None,
              schedule: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+
         if backup_type is not None:
             _setter("backup_type", backup_type)
         if disabled is not None:
@@ -217,7 +227,11 @@ class RestoreJobOtsDetail(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              overwrite_existing: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'overwriteExisting' in kwargs:
+            overwrite_existing = kwargs['overwriteExisting']
+
         if overwrite_existing is not None:
             _setter("overwrite_existing", overwrite_existing)
 
@@ -316,7 +330,29 @@ class ServerBackupPlanDetail(dict):
              post_script_path: Optional[str] = None,
              pre_script_path: Optional[str] = None,
              timeout_in_seconds: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appConsistent' in kwargs:
+            app_consistent = kwargs['appConsistent']
+        if 'snapshotGroup' in kwargs:
+            snapshot_group = kwargs['snapshotGroup']
+        if 'destinationRegionId' in kwargs:
+            destination_region_id = kwargs['destinationRegionId']
+        if 'destinationRetention' in kwargs:
+            destination_retention = kwargs['destinationRetention']
+        if 'diskIdLists' in kwargs:
+            disk_id_lists = kwargs['diskIdLists']
+        if 'doCopy' in kwargs:
+            do_copy = kwargs['doCopy']
+        if 'enableFsFreeze' in kwargs:
+            enable_fs_freeze = kwargs['enableFsFreeze']
+        if 'postScriptPath' in kwargs:
+            post_script_path = kwargs['postScriptPath']
+        if 'preScriptPath' in kwargs:
+            pre_script_path = kwargs['preScriptPath']
+        if 'timeoutInSeconds' in kwargs:
+            timeout_in_seconds = kwargs['timeoutInSeconds']
+
         _setter("app_consistent", app_consistent)
         _setter("snapshot_group", snapshot_group)
         if destination_region_id is not None:
@@ -442,7 +478,9 @@ class GetBackupJobsFilterResult(dict):
              key: Optional[str] = None,
              operator: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if operator is not None:
@@ -615,7 +653,57 @@ class GetBackupJobsJobResult(dict):
              status: str,
              updated_time: str,
              vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'actualBytes' in kwargs:
+            actual_bytes = kwargs['actualBytes']
+        if 'actualItems' in kwargs:
+            actual_items = kwargs['actualItems']
+        if 'backJobName' in kwargs:
+            back_job_name = kwargs['backJobName']
+        if 'backupJobId' in kwargs:
+            backup_job_id = kwargs['backupJobId']
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'bytesDone' in kwargs:
+            bytes_done = kwargs['bytesDone']
+        if 'bytesTotal' in kwargs:
+            bytes_total = kwargs['bytesTotal']
+        if 'completeTime' in kwargs:
+            complete_time = kwargs['completeTime']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'crossAccountRoleName' in kwargs:
+            cross_account_role_name = kwargs['crossAccountRoleName']
+        if 'crossAccountType' in kwargs:
+            cross_account_type = kwargs['crossAccountType']
+        if 'crossAccountUserId' in kwargs:
+            cross_account_user_id = kwargs['crossAccountUserId']
+        if 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'itemsDone' in kwargs:
+            items_done = kwargs['itemsDone']
+        if 'itemsTotal' in kwargs:
+            items_total = kwargs['itemsTotal']
+        if 'nasCreateTime' in kwargs:
+            nas_create_time = kwargs['nasCreateTime']
+        if 'otsDetails' in kwargs:
+            ots_details = kwargs['otsDetails']
+        if 'planId' in kwargs:
+            plan_id = kwargs['planId']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'updatedTime' in kwargs:
+            updated_time = kwargs['updatedTime']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         _setter("actual_bytes", actual_bytes)
         _setter("actual_items", actual_items)
         _setter("back_job_name", back_job_name)
@@ -915,7 +1003,11 @@ class GetBackupJobsJobOtsDetailResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              table_names: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tableNames' in kwargs:
+            table_names = kwargs['tableNames']
+
         _setter("table_names", table_names)
 
     @property
@@ -1039,7 +1131,55 @@ class GetEcsBackupClientsClientResult(dict):
              updated_time: str,
              use_https: bool,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'archType' in kwargs:
+            arch_type = kwargs['archType']
+        if 'backupStatus' in kwargs:
+            backup_status = kwargs['backupStatus']
+        if 'clientType' in kwargs:
+            client_type = kwargs['clientType']
+        if 'clientVersion' in kwargs:
+            client_version = kwargs['clientVersion']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dataNetworkType' in kwargs:
+            data_network_type = kwargs['dataNetworkType']
+        if 'dataProxySetting' in kwargs:
+            data_proxy_setting = kwargs['dataProxySetting']
+        if 'ecsBackupClientId' in kwargs:
+            ecs_backup_client_id = kwargs['ecsBackupClientId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'lastHeartBeatTime' in kwargs:
+            last_heart_beat_time = kwargs['lastHeartBeatTime']
+        if 'maxClientVersion' in kwargs:
+            max_client_version = kwargs['maxClientVersion']
+        if 'maxCpuCore' in kwargs:
+            max_cpu_core = kwargs['maxCpuCore']
+        if 'maxWorker' in kwargs:
+            max_worker = kwargs['maxWorker']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'privateIpv4' in kwargs:
+            private_ipv4 = kwargs['privateIpv4']
+        if 'proxyHost' in kwargs:
+            proxy_host = kwargs['proxyHost']
+        if 'proxyPassword' in kwargs:
+            proxy_password = kwargs['proxyPassword']
+        if 'proxyPort' in kwargs:
+            proxy_port = kwargs['proxyPort']
+        if 'proxyUser' in kwargs:
+            proxy_user = kwargs['proxyUser']
+        if 'updatedTime' in kwargs:
+            updated_time = kwargs['updatedTime']
+        if 'useHttps' in kwargs:
+            use_https = kwargs['useHttps']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("arch_type", arch_type)
         _setter("backup_status", backup_status)
         _setter("client_type", client_type)
@@ -1361,7 +1501,29 @@ class GetEcsBackupPlansPlanResult(dict):
              speed_limit: str,
              updated_time: str,
              vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'ecsBackupPlanId' in kwargs:
+            ecs_backup_plan_id = kwargs['ecsBackupPlanId']
+        if 'ecsBackupPlanName' in kwargs:
+            ecs_backup_plan_name = kwargs['ecsBackupPlanName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'speedLimit' in kwargs:
+            speed_limit = kwargs['speedLimit']
+        if 'updatedTime' in kwargs:
+            updated_time = kwargs['updatedTime']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         _setter("backup_type", backup_type)
         _setter("create_time", create_time)
         _setter("created_time", created_time)
@@ -1600,7 +1762,35 @@ class GetHanaBackupClientsHanaBackupClientResult(dict):
              status_message: str,
              use_https: bool,
              vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertSetting' in kwargs:
+            alert_setting = kwargs['alertSetting']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientName' in kwargs:
+            client_name = kwargs['clientName']
+        if 'clientType' in kwargs:
+            client_type = kwargs['clientType']
+        if 'clientVersion' in kwargs:
+            client_version = kwargs['clientVersion']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'maxVersion' in kwargs:
+            max_version = kwargs['maxVersion']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+        if 'useHttps' in kwargs:
+            use_https = kwargs['useHttps']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         _setter("alert_setting", alert_setting)
         _setter("client_id", client_id)
         _setter("client_name", client_name)
@@ -1792,7 +1982,25 @@ class GetHanaBackupPlansPlanResult(dict):
              schedule: str,
              status: str,
              vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupPrefix' in kwargs:
+            backup_prefix = kwargs['backupPrefix']
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'databaseName' in kwargs:
+            database_name = kwargs['databaseName']
+        if 'pageTotal' in kwargs:
+            page_total = kwargs['pageTotal']
+        if 'planId' in kwargs:
+            plan_id = kwargs['planId']
+        if 'planName' in kwargs:
+            plan_name = kwargs['planName']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         _setter("backup_prefix", backup_prefix)
         _setter("backup_type", backup_type)
         _setter("cluster_id", cluster_id)
@@ -1954,7 +2162,29 @@ class GetHanaInstancesInstanceResult(dict):
              user_name: str,
              validate_certificate: bool,
              vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertSetting' in kwargs:
+            alert_setting = kwargs['alertSetting']
+        if 'hanaInstanceId' in kwargs:
+            hana_instance_id = kwargs['hanaInstanceId']
+        if 'hanaName' in kwargs:
+            hana_name = kwargs['hanaName']
+        if 'instanceNumber' in kwargs:
+            instance_number = kwargs['instanceNumber']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'statusMessage' in kwargs:
+            status_message = kwargs['statusMessage']
+        if 'useSsl' in kwargs:
+            use_ssl = kwargs['useSsl']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'validateCertificate' in kwargs:
+            validate_certificate = kwargs['validateCertificate']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         _setter("alert_setting", alert_setting)
         _setter("hana_instance_id", hana_instance_id)
         _setter("hana_name", hana_name)
@@ -2141,7 +2371,25 @@ class GetNasBackupPlansPlanResult(dict):
              schedule: str,
              updated_time: str,
              vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'nasBackupPlanId' in kwargs:
+            nas_backup_plan_id = kwargs['nasBackupPlanId']
+        if 'nasBackupPlanName' in kwargs:
+            nas_backup_plan_name = kwargs['nasBackupPlanName']
+        if 'updatedTime' in kwargs:
+            updated_time = kwargs['updatedTime']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         _setter("backup_type", backup_type)
         _setter("create_time", create_time)
         _setter("created_time", created_time)
@@ -2329,7 +2577,21 @@ class GetOssBackupPlansPlanResult(dict):
              schedule: str,
              updated_time: str,
              vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'ossBackupPlanId' in kwargs:
+            oss_backup_plan_id = kwargs['ossBackupPlanId']
+        if 'ossBackupPlanName' in kwargs:
+            oss_backup_plan_name = kwargs['ossBackupPlanName']
+        if 'updatedTime' in kwargs:
+            updated_time = kwargs['updatedTime']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         _setter("backup_type", backup_type)
         _setter("bucket", bucket)
         _setter("created_time", created_time)
@@ -2499,7 +2761,25 @@ class GetOtsBackupPlansPlanResult(dict):
              source_type: str,
              updated_time: str,
              vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'otsBackupPlanId' in kwargs:
+            ots_backup_plan_id = kwargs['otsBackupPlanId']
+        if 'otsBackupPlanName' in kwargs:
+            ots_backup_plan_name = kwargs['otsBackupPlanName']
+        if 'otsDetails' in kwargs:
+            ots_details = kwargs['otsDetails']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'updatedTime' in kwargs:
+            updated_time = kwargs['updatedTime']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         _setter("backup_type", backup_type)
         _setter("created_time", created_time)
         _setter("disabled", disabled)
@@ -2620,7 +2900,11 @@ class GetOtsBackupPlansPlanOtsDetailResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              table_names: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'tableNames' in kwargs:
+            table_names = kwargs['tableNames']
+
         _setter("table_names", table_names)
 
     @property
@@ -2724,7 +3008,45 @@ class GetOtsSnapshotsSnapshotResult(dict):
              table_name: str,
              updated_time: str,
              vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'actualBytes' in kwargs:
+            actual_bytes = kwargs['actualBytes']
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'bytesTotal' in kwargs:
+            bytes_total = kwargs['bytesTotal']
+        if 'completeTime' in kwargs:
+            complete_time = kwargs['completeTime']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if 'parentSnapshotHash' in kwargs:
+            parent_snapshot_hash = kwargs['parentSnapshotHash']
+        if 'rangeEnd' in kwargs:
+            range_end = kwargs['rangeEnd']
+        if 'rangeStart' in kwargs:
+            range_start = kwargs['rangeStart']
+        if 'snapshotHash' in kwargs:
+            snapshot_hash = kwargs['snapshotHash']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'updatedTime' in kwargs:
+            updated_time = kwargs['updatedTime']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         _setter("actual_bytes", actual_bytes)
         _setter("backup_type", backup_type)
         _setter("bytes_total", bytes_total)
@@ -2931,7 +3253,11 @@ class GetReplicationVaultRegionsRegionResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              replication_region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'replicationRegionId' in kwargs:
+            replication_region_id = kwargs['replicationRegionId']
+
         _setter("replication_region_id", replication_region_id)
 
     @property
@@ -3078,7 +3404,65 @@ class GetRestoreJobsJobResult(dict):
              target_prefix: str,
              updated_time: str,
              vault_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'actualBytes' in kwargs:
+            actual_bytes = kwargs['actualBytes']
+        if 'actualItems' in kwargs:
+            actual_items = kwargs['actualItems']
+        if 'bytesDone' in kwargs:
+            bytes_done = kwargs['bytesDone']
+        if 'bytesTotal' in kwargs:
+            bytes_total = kwargs['bytesTotal']
+        if 'completeTime' in kwargs:
+            complete_time = kwargs['completeTime']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'errorFile' in kwargs:
+            error_file = kwargs['errorFile']
+        if 'errorMessage' in kwargs:
+            error_message = kwargs['errorMessage']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'itemsDone' in kwargs:
+            items_done = kwargs['itemsDone']
+        if 'itemsTotal' in kwargs:
+            items_total = kwargs['itemsTotal']
+        if 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if 'restoreJobId' in kwargs:
+            restore_job_id = kwargs['restoreJobId']
+        if 'restoreType' in kwargs:
+            restore_type = kwargs['restoreType']
+        if 'snapshotHash' in kwargs:
+            snapshot_hash = kwargs['snapshotHash']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'targetBucket' in kwargs:
+            target_bucket = kwargs['targetBucket']
+        if 'targetClientId' in kwargs:
+            target_client_id = kwargs['targetClientId']
+        if 'targetCreateTime' in kwargs:
+            target_create_time = kwargs['targetCreateTime']
+        if 'targetDataSourceId' in kwargs:
+            target_data_source_id = kwargs['targetDataSourceId']
+        if 'targetFileSystemId' in kwargs:
+            target_file_system_id = kwargs['targetFileSystemId']
+        if 'targetInstanceId' in kwargs:
+            target_instance_id = kwargs['targetInstanceId']
+        if 'targetPath' in kwargs:
+            target_path = kwargs['targetPath']
+        if 'targetPrefix' in kwargs:
+            target_prefix = kwargs['targetPrefix']
+        if 'updatedTime' in kwargs:
+            updated_time = kwargs['updatedTime']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+
         _setter("actual_bytes", actual_bytes)
         _setter("actual_items", actual_items)
         _setter("bytes_done", bytes_done)
@@ -3376,7 +3760,9 @@ class GetServerBackupPlansFilterResult(dict):
              _setter: Callable[[Any, Any], None],
              key: Optional[str] = None,
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if key is not None:
             _setter("key", key)
         if values is not None:
@@ -3446,7 +3832,17 @@ class GetServerBackupPlansPlanResult(dict):
              instance_id: str,
              retention: str,
              schedule: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'ecsServerBackupPlanId' in kwargs:
+            ecs_server_backup_plan_id = kwargs['ecsServerBackupPlanId']
+        if 'ecsServerBackupPlanName' in kwargs:
+            ecs_server_backup_plan_name = kwargs['ecsServerBackupPlanName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("create_time", create_time)
         _setter("details", details)
         _setter("disabled", disabled)
@@ -3581,7 +3977,29 @@ class GetServerBackupPlansPlanDetailResult(dict):
              pre_script_path: str,
              snapshot_group: bool,
              timeout_in_seconds: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appConsistent' in kwargs:
+            app_consistent = kwargs['appConsistent']
+        if 'destinationRegionId' in kwargs:
+            destination_region_id = kwargs['destinationRegionId']
+        if 'destinationRetention' in kwargs:
+            destination_retention = kwargs['destinationRetention']
+        if 'diskIdLists' in kwargs:
+            disk_id_lists = kwargs['diskIdLists']
+        if 'doCopy' in kwargs:
+            do_copy = kwargs['doCopy']
+        if 'enableFsFreeze' in kwargs:
+            enable_fs_freeze = kwargs['enableFsFreeze']
+        if 'postScriptPath' in kwargs:
+            post_script_path = kwargs['postScriptPath']
+        if 'preScriptPath' in kwargs:
+            pre_script_path = kwargs['preScriptPath']
+        if 'snapshotGroup' in kwargs:
+            snapshot_group = kwargs['snapshotGroup']
+        if 'timeoutInSeconds' in kwargs:
+            timeout_in_seconds = kwargs['timeoutInSeconds']
+
         _setter("app_consistent", app_consistent)
         _setter("destination_region_id", destination_region_id)
         _setter("destination_retention", destination_retention)
@@ -3792,7 +4210,51 @@ class GetSnapshotsSnapshotResult(dict):
              start_time: str,
              status: str,
              updated_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'actualBytes' in kwargs:
+            actual_bytes = kwargs['actualBytes']
+        if 'actualItems' in kwargs:
+            actual_items = kwargs['actualItems']
+        if 'backupType' in kwargs:
+            backup_type = kwargs['backupType']
+        if 'bytesDone' in kwargs:
+            bytes_done = kwargs['bytesDone']
+        if 'bytesTotal' in kwargs:
+            bytes_total = kwargs['bytesTotal']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'completeTime' in kwargs:
+            complete_time = kwargs['completeTime']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'errorFile' in kwargs:
+            error_file = kwargs['errorFile']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'itemsDone' in kwargs:
+            items_done = kwargs['itemsDone']
+        if 'itemsTotal' in kwargs:
+            items_total = kwargs['itemsTotal']
+        if 'jobId' in kwargs:
+            job_id = kwargs['jobId']
+        if 'parentSnapshotHash' in kwargs:
+            parent_snapshot_hash = kwargs['parentSnapshotHash']
+        if 'snapshotHash' in kwargs:
+            snapshot_hash = kwargs['snapshotHash']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'updatedTime' in kwargs:
+            updated_time = kwargs['updatedTime']
+
         _setter("actual_bytes", actual_bytes)
         _setter("actual_items", actual_items)
         _setter("backup_type", backup_type)
@@ -4145,7 +4607,47 @@ class GetVaultsVaultResult(dict):
              vault_status_message: str,
              vault_storage_class: str,
              vault_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bucketName' in kwargs:
+            bucket_name = kwargs['bucketName']
+        if 'bytesDone' in kwargs:
+            bytes_done = kwargs['bytesDone']
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'indexAvailable' in kwargs:
+            index_available = kwargs['indexAvailable']
+        if 'indexLevel' in kwargs:
+            index_level = kwargs['indexLevel']
+        if 'indexUpdateTime' in kwargs:
+            index_update_time = kwargs['indexUpdateTime']
+        if 'latestReplicationTime' in kwargs:
+            latest_replication_time = kwargs['latestReplicationTime']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'replicationSourceRegionId' in kwargs:
+            replication_source_region_id = kwargs['replicationSourceRegionId']
+        if 'replicationSourceVaultId' in kwargs:
+            replication_source_vault_id = kwargs['replicationSourceVaultId']
+        if 'searchEnabled' in kwargs:
+            search_enabled = kwargs['searchEnabled']
+        if 'sourceTypes' in kwargs:
+            source_types = kwargs['sourceTypes']
+        if 'storageSize' in kwargs:
+            storage_size = kwargs['storageSize']
+        if 'updatedTime' in kwargs:
+            updated_time = kwargs['updatedTime']
+        if 'vaultId' in kwargs:
+            vault_id = kwargs['vaultId']
+        if 'vaultName' in kwargs:
+            vault_name = kwargs['vaultName']
+        if 'vaultStatusMessage' in kwargs:
+            vault_status_message = kwargs['vaultStatusMessage']
+        if 'vaultStorageClass' in kwargs:
+            vault_storage_class = kwargs['vaultStorageClass']
+        if 'vaultType' in kwargs:
+            vault_type = kwargs['vaultType']
+
         _setter("bucket_name", bucket_name)
         _setter("bytes_done", bytes_done)
         _setter("created_time", created_time)

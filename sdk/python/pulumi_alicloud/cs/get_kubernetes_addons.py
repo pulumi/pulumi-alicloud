@@ -9,7 +9,6 @@ import pulumi.runtime
 from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetKubernetesAddonsResult',
@@ -45,7 +44,7 @@ class GetKubernetesAddonsResult:
 
     @property
     @pulumi.getter
-    def addons(self) -> Optional[Sequence['outputs.GetKubernetesAddonsAddonResult']]:
+    def addons(self) -> Sequence['outputs.GetKubernetesAddonsAddonResult']:
         """
         A list of addons.
         """
@@ -100,35 +99,22 @@ class AwaitableGetKubernetesAddonsResult(GetKubernetesAddonsResult):
             names=self.names)
 
 
-def get_kubernetes_addons(addons: Optional[Sequence[pulumi.InputType['GetKubernetesAddonsAddonArgs']]] = None,
-                          cluster_id: Optional[str] = None,
+def get_kubernetes_addons(cluster_id: Optional[str] = None,
                           ids: Optional[Sequence[str]] = None,
                           name_regex: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesAddonsResult:
     """
     This data source provides a list of available addons that the cluster can install.
 
-    > **NOTE:** Available in 1.150.0+.
-    **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cs.get_kubernetes_addons(cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"])
-    pulumi.export("addons", default.addons)
-    ```
+    > **NOTE:** Available since v1.150.0.
+    **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
 
 
-    :param Sequence[pulumi.InputType['GetKubernetesAddonsAddonArgs']] addons: A list of addons.
     :param str cluster_id: The id of kubernetes cluster.
     :param Sequence[str] ids: A list of addon IDs. The id of addon consists of the cluster id and the addon name, with the structure <cluster_ud>:<addon_name>.
     :param str name_regex: A regex string to filter results by addon name.
     """
     __args__ = dict()
-    __args__['addons'] = addons
     __args__['clusterId'] = cluster_id
     __args__['ids'] = ids
     __args__['nameRegex'] = name_regex
@@ -145,29 +131,17 @@ def get_kubernetes_addons(addons: Optional[Sequence[pulumi.InputType['GetKuberne
 
 
 @_utilities.lift_output_func(get_kubernetes_addons)
-def get_kubernetes_addons_output(addons: Optional[pulumi.Input[Optional[Sequence[pulumi.InputType['GetKubernetesAddonsAddonArgs']]]]] = None,
-                                 cluster_id: Optional[pulumi.Input[str]] = None,
+def get_kubernetes_addons_output(cluster_id: Optional[pulumi.Input[str]] = None,
                                  ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                  name_regex: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKubernetesAddonsResult]:
     """
     This data source provides a list of available addons that the cluster can install.
 
-    > **NOTE:** Available in 1.150.0+.
-    **NOTE:** From version 1.166.0, support for returning custom configuration of kubernetes cluster addon.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    default = alicloud.cs.get_kubernetes_addons(cluster_id=alicloud_cs_managed_kubernetes["default"][0]["id"])
-    pulumi.export("addons", default.addons)
-    ```
+    > **NOTE:** Available since v1.150.0.
+    **NOTE:** From version v1.166.0, support for returning custom configuration of kubernetes cluster addon.
 
 
-    :param Sequence[pulumi.InputType['GetKubernetesAddonsAddonArgs']] addons: A list of addons.
     :param str cluster_id: The id of kubernetes cluster.
     :param Sequence[str] ids: A list of addon IDs. The id of addon consists of the cluster id and the addon name, with the structure <cluster_ud>:<addon_name>.
     :param str name_regex: A regex string to filter results by addon name.

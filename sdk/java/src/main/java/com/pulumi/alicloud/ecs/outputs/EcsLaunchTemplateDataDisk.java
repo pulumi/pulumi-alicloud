@@ -24,7 +24,7 @@ public final class EcsLaunchTemplateDataDisk {
      */
     private @Nullable Boolean deleteWithInstance;
     /**
-     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * @return The description of the data disk.
      * 
      */
     private @Nullable String description;
@@ -34,7 +34,7 @@ public final class EcsLaunchTemplateDataDisk {
      */
     private @Nullable Boolean encrypted;
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * @return The name of the data disk.
      * 
      */
     private @Nullable String name;
@@ -70,7 +70,7 @@ public final class EcsLaunchTemplateDataDisk {
         return Optional.ofNullable(this.deleteWithInstance);
     }
     /**
-     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * @return The description of the data disk.
      * 
      */
     public Optional<String> description() {
@@ -84,7 +84,7 @@ public final class EcsLaunchTemplateDataDisk {
         return Optional.ofNullable(this.encrypted);
     }
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * @return The name of the data disk.
      * 
      */
     public Optional<String> name() {

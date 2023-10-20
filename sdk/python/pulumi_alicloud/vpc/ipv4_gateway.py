@@ -51,7 +51,19 @@ class Ipv4GatewayArgs:
              ipv4_gateway_name: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'ipv4GatewayDescription' in kwargs:
+            ipv4_gateway_description = kwargs['ipv4GatewayDescription']
+        if 'ipv4GatewayName' in kwargs:
+            ipv4_gateway_name = kwargs['ipv4GatewayName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("vpc_id", vpc_id)
         if dry_run is not None:
             _setter("dry_run", dry_run)
@@ -207,7 +219,25 @@ class _Ipv4GatewayState:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'ipv4GatewayDescription' in kwargs:
+            ipv4_gateway_description = kwargs['ipv4GatewayDescription']
+        if 'ipv4GatewayId' in kwargs:
+            ipv4_gateway_id = kwargs['ipv4GatewayId']
+        if 'ipv4GatewayName' in kwargs:
+            ipv4_gateway_name = kwargs['ipv4GatewayName']
+        if 'ipv4GatewayRouteTableId' in kwargs:
+            ipv4_gateway_route_table_id = kwargs['ipv4GatewayRouteTableId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         if create_time is not None:
             _setter("create_time", create_time)
         if dry_run is not None:

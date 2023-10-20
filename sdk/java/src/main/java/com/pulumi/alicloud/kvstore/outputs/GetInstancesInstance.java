@@ -107,7 +107,7 @@ public final class GetInstancesInstance {
      */
     private String id;
     /**
-     * @return Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     * @return Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
      * 
      */
     private String instanceClass;
@@ -370,7 +370,7 @@ public final class GetInstancesInstance {
         return this.id;
     }
     /**
-     * @return Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/61135.htm).
+     * @return Type of the applied ApsaraDB for Redis instance. For more information, see [Instance type table](https://help.aliyun.com/zh/redis/developer-reference/instance-types).
      * 
      */
     public String instanceClass() {

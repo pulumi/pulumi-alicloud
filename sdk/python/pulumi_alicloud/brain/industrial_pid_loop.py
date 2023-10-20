@@ -51,7 +51,23 @@ class IndustrialPidLoopArgs:
              pid_loop_type: pulumi.Input[str],
              pid_project_id: pulumi.Input[str],
              pid_loop_desc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pidLoopConfiguration' in kwargs:
+            pid_loop_configuration = kwargs['pidLoopConfiguration']
+        if 'pidLoopDcsType' in kwargs:
+            pid_loop_dcs_type = kwargs['pidLoopDcsType']
+        if 'pidLoopIsCrucial' in kwargs:
+            pid_loop_is_crucial = kwargs['pidLoopIsCrucial']
+        if 'pidLoopName' in kwargs:
+            pid_loop_name = kwargs['pidLoopName']
+        if 'pidLoopType' in kwargs:
+            pid_loop_type = kwargs['pidLoopType']
+        if 'pidProjectId' in kwargs:
+            pid_project_id = kwargs['pidProjectId']
+        if 'pidLoopDesc' in kwargs:
+            pid_loop_desc = kwargs['pidLoopDesc']
+
         _setter("pid_loop_configuration", pid_loop_configuration)
         _setter("pid_loop_dcs_type", pid_loop_dcs_type)
         _setter("pid_loop_is_crucial", pid_loop_is_crucial)
@@ -190,7 +206,23 @@ class _IndustrialPidLoopState:
              pid_loop_type: Optional[pulumi.Input[str]] = None,
              pid_project_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pidLoopConfiguration' in kwargs:
+            pid_loop_configuration = kwargs['pidLoopConfiguration']
+        if 'pidLoopDcsType' in kwargs:
+            pid_loop_dcs_type = kwargs['pidLoopDcsType']
+        if 'pidLoopDesc' in kwargs:
+            pid_loop_desc = kwargs['pidLoopDesc']
+        if 'pidLoopIsCrucial' in kwargs:
+            pid_loop_is_crucial = kwargs['pidLoopIsCrucial']
+        if 'pidLoopName' in kwargs:
+            pid_loop_name = kwargs['pidLoopName']
+        if 'pidLoopType' in kwargs:
+            pid_loop_type = kwargs['pidLoopType']
+        if 'pidProjectId' in kwargs:
+            pid_project_id = kwargs['pidProjectId']
+
         if pid_loop_configuration is not None:
             _setter("pid_loop_configuration", pid_loop_configuration)
         if pid_loop_dcs_type is not None:

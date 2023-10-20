@@ -127,6 +127,13 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
                  weighted_capacity: str,
                  instance_type: Optional[str] = None,
                  priority: Optional[str] = None):
+        """
+        :param str max_price: The maximum price of the instance type specified in the Nth extended configurations of the launch template.
+        :param str vswitch_id: The ID of the VSwitch in the Nth extended configurations of the launch template.
+        :param str weighted_capacity: The weight of the instance type specified in the Nth extended configurations of the launch template.
+        :param str instance_type: The instance type of the Nth extended configurations of the launch template.
+        :param str priority: The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
+        """
         AutoProvisioningGroupLaunchTemplateConfig._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             max_price=max_price,
@@ -143,7 +150,17 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
              weighted_capacity: str,
              instance_type: Optional[str] = None,
              priority: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxPrice' in kwargs:
+            max_price = kwargs['maxPrice']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'weightedCapacity' in kwargs:
+            weighted_capacity = kwargs['weightedCapacity']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+
         _setter("max_price", max_price)
         _setter("vswitch_id", vswitch_id)
         _setter("weighted_capacity", weighted_capacity)
@@ -155,26 +172,41 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
     @property
     @pulumi.getter(name="maxPrice")
     def max_price(self) -> str:
+        """
+        The maximum price of the instance type specified in the Nth extended configurations of the launch template.
+        """
         return pulumi.get(self, "max_price")
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
+        """
+        The ID of the VSwitch in the Nth extended configurations of the launch template.
+        """
         return pulumi.get(self, "vswitch_id")
 
     @property
     @pulumi.getter(name="weightedCapacity")
     def weighted_capacity(self) -> str:
+        """
+        The weight of the instance type specified in the Nth extended configurations of the launch template.
+        """
         return pulumi.get(self, "weighted_capacity")
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[str]:
+        """
+        The instance type of the Nth extended configurations of the launch template.
+        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter
     def priority(self) -> Optional[str]:
+        """
+        The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
+        """
         return pulumi.get(self, "priority")
 
 
@@ -216,7 +248,13 @@ class DedicatedHostNetworkAttribute(dict):
              _setter: Callable[[Any, Any], None],
              slb_udp_timeout: Optional[int] = None,
              udp_timeout: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'slbUdpTimeout' in kwargs:
+            slb_udp_timeout = kwargs['slbUdpTimeout']
+        if 'udpTimeout' in kwargs:
+            udp_timeout = kwargs['udpTimeout']
+
         if slb_udp_timeout is not None:
             _setter("slb_udp_timeout", slb_udp_timeout)
         if udp_timeout is not None:
@@ -321,7 +359,25 @@ class EcsInstanceSetDataDisk(dict):
              kms_key_id: Optional[str] = None,
              performance_level: Optional[str] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if 'diskCategory' in kwargs:
+            disk_category = kwargs['diskCategory']
+        if 'diskDescription' in kwargs:
+            disk_description = kwargs['diskDescription']
+        if 'diskName' in kwargs:
+            disk_name = kwargs['diskName']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         _setter("disk_size", disk_size)
         if auto_snapshot_policy_id is not None:
             _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -436,7 +492,9 @@ class EcsInstanceSetExcludeInstanceFilter(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("values", values)
 
@@ -511,7 +569,17 @@ class EcsInstanceSetNetworkInterface(dict):
              network_interface_name: Optional[str] = None,
              primary_ip_address: Optional[str] = None,
              vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'networkInterfaceName' in kwargs:
+            network_interface_name = kwargs['networkInterfaceName']
+        if 'primaryIpAddress' in kwargs:
+            primary_ip_address = kwargs['primaryIpAddress']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("security_group_id", security_group_id)
         if description is not None:
             _setter("description", description)
@@ -598,9 +666,9 @@ class EcsLaunchTemplateDataDisk(dict):
         """
         :param str category: The category of the disk.
         :param bool delete_with_instance: Indicates whether the data disk is released with the instance.
-        :param str description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        :param str description: The description of the data disk.
         :param bool encrypted: Encrypted the data in this disk.
-        :param str name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        :param str name: The name of the data disk.
         :param str performance_level: The performance level of the ESSD used as the data disk.
         :param int size: The size of the data disk.
         :param str snapshot_id: The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
@@ -627,7 +695,15 @@ class EcsLaunchTemplateDataDisk(dict):
              performance_level: Optional[str] = None,
              size: Optional[int] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if category is not None:
             _setter("category", category)
         if delete_with_instance is not None:
@@ -665,7 +741,7 @@ class EcsLaunchTemplateDataDisk(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        The description of the data disk.
         """
         return pulumi.get(self, "description")
 
@@ -681,7 +757,7 @@ class EcsLaunchTemplateDataDisk(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        The name of the data disk.
         """
         return pulumi.get(self, "name")
 
@@ -740,11 +816,11 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
                  security_group_id: Optional[str] = None,
                  vswitch_id: Optional[str] = None):
         """
-        :param str description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
-        :param str name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        :param str description: The ENI description.
+        :param str name: The ENI name.
         :param str primary_ip: The primary private IP address of the ENI.
-        :param str security_group_id: The security group ID.
-        :param str vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
+        :param str security_group_id: The security group ID must be one in the same VPC.
+        :param str vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
         EcsLaunchTemplateNetworkInterfaces._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -762,7 +838,15 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
              primary_ip: Optional[str] = None,
              security_group_id: Optional[str] = None,
              vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'primaryIp' in kwargs:
+            primary_ip = kwargs['primaryIp']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -778,7 +862,7 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        The ENI description.
         """
         return pulumi.get(self, "description")
 
@@ -786,7 +870,7 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        The ENI name.
         """
         return pulumi.get(self, "name")
 
@@ -802,7 +886,7 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[str]:
         """
-        The security group ID.
+        The security group ID must be one in the same VPC.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -810,7 +894,7 @@ class EcsLaunchTemplateNetworkInterfaces(dict):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[str]:
         """
-        When creating a VPC-Connected instance, you must specify its VSwitch ID.
+        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -840,24 +924,27 @@ class EcsLaunchTemplateSystemDisk(dict):
                  category: Optional[str] = None,
                  delete_with_instance: Optional[bool] = None,
                  description: Optional[str] = None,
+                 encrypted: Optional[bool] = None,
                  iops: Optional[str] = None,
                  name: Optional[str] = None,
                  performance_level: Optional[str] = None,
                  size: Optional[int] = None):
         """
-        :param str category: The category of the disk.
-        :param bool delete_with_instance: Indicates whether the data disk is released with the instance.
-        :param str description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        :param str category: The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
+        :param bool delete_with_instance: Specifies whether to release the system disk when the instance is released. Default to `true`.
+        :param str description: System disk description. It cannot begin with http:// or https://.
+        :param bool encrypted: Specifies whether the system disk is encrypted.
         :param str iops: The Iops.
-        :param str name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
-        :param str performance_level: The performance level of the ESSD used as the data disk.
-        :param int size: The size of the data disk.
+        :param str name: System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
+        :param str performance_level: The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
+        :param int size: Size of the system disk, measured in GB. Value range: [20, 500].
         """
         EcsLaunchTemplateSystemDisk._configure(
             lambda key, value: pulumi.set(__self__, key, value),
             category=category,
             delete_with_instance=delete_with_instance,
             description=description,
+            encrypted=encrypted,
             iops=iops,
             name=name,
             performance_level=performance_level,
@@ -869,17 +956,26 @@ class EcsLaunchTemplateSystemDisk(dict):
              category: Optional[str] = None,
              delete_with_instance: Optional[bool] = None,
              description: Optional[str] = None,
+             encrypted: Optional[bool] = None,
              iops: Optional[str] = None,
              name: Optional[str] = None,
              performance_level: Optional[str] = None,
              size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+
         if category is not None:
             _setter("category", category)
         if delete_with_instance is not None:
             _setter("delete_with_instance", delete_with_instance)
         if description is not None:
             _setter("description", description)
+        if encrypted is not None:
+            _setter("encrypted", encrypted)
         if iops is not None:
             _setter("iops", iops)
         if name is not None:
@@ -893,7 +989,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def category(self) -> Optional[str]:
         """
-        The category of the disk.
+        The category of the system disk. System disk type. Valid values: `all`, `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `local_disk`.
         """
         return pulumi.get(self, "category")
 
@@ -901,7 +997,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[bool]:
         """
-        Indicates whether the data disk is released with the instance.
+        Specifies whether to release the system disk when the instance is released. Default to `true`.
         """
         return pulumi.get(self, "delete_with_instance")
 
@@ -909,9 +1005,17 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        System disk description. It cannot begin with http:// or https://.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[bool]:
+        """
+        Specifies whether the system disk is encrypted.
+        """
+        return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
@@ -925,7 +1029,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "name")
 
@@ -933,7 +1037,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[str]:
         """
-        The performance level of the ESSD used as the data disk.
+        The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -941,7 +1045,7 @@ class EcsLaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def size(self) -> Optional[int]:
         """
-        The size of the data disk.
+        Size of the system disk, measured in GB. Value range: [20, 500].
         """
         return pulumi.get(self, "size")
 
@@ -971,7 +1075,9 @@ class EcsPrefixListEntry(dict):
              _setter: Callable[[Any, Any], None],
              cidr: Optional[str] = None,
              description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if cidr is not None:
             _setter("cidr", cidr)
         if description is not None:
@@ -1046,7 +1152,13 @@ class ImageDiskDeviceMapping(dict):
              disk_type: Optional[str] = None,
              size: Optional[int] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if device is not None:
             _setter("device", device)
         if disk_type is not None:
@@ -1143,7 +1255,15 @@ class ImageImportDiskDeviceMapping(dict):
              format: Optional[str] = None,
              oss_bucket: Optional[str] = None,
              oss_object: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskImageSize' in kwargs:
+            disk_image_size = kwargs['diskImageSize']
+        if 'ossBucket' in kwargs:
+            oss_bucket = kwargs['ossBucket']
+        if 'ossObject' in kwargs:
+            oss_object = kwargs['ossObject']
+
         if device is not None:
             _setter("device", device)
         if disk_image_size is not None:
@@ -1283,7 +1403,19 @@ class InstanceDataDisk(dict):
              name: Optional[str] = None,
              performance_level: Optional[str] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         _setter("size", size)
         if auto_snapshot_policy_id is not None:
             _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
@@ -1438,7 +1570,13 @@ class InstanceMaintenanceTime(dict):
              _setter: Callable[[Any, Any], None],
              end_time: Optional[str] = None,
              start_time: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+
         if end_time is not None:
             _setter("end_time", end_time)
         if start_time is not None:
@@ -1540,7 +1678,15 @@ class LaunchTemplateDataDisk(dict):
              performance_level: Optional[str] = None,
              size: Optional[int] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if category is not None:
             _setter("category", category)
         if delete_with_instance is not None:
@@ -1688,7 +1834,15 @@ class LaunchTemplateNetworkInterfaces(dict):
              primary_ip: Optional[str] = None,
              security_group_id: Optional[str] = None,
              vswitch_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'primaryIp' in kwargs:
+            primary_ip = kwargs['primaryIp']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -1766,6 +1920,7 @@ class LaunchTemplateSystemDisk(dict):
                  category: Optional[str] = None,
                  delete_with_instance: Optional[bool] = None,
                  description: Optional[str] = None,
+                 encrypted: Optional[bool] = None,
                  iops: Optional[str] = None,
                  name: Optional[str] = None,
                  performance_level: Optional[str] = None,
@@ -1783,6 +1938,9 @@ class LaunchTemplateSystemDisk(dict):
                
                Default to true
         :param str description: The description of the data disk.
+        :param bool encrypted: Encrypted the data in this disk.
+               
+               Default to false
         :param str name: The name of the data disk.
         :param int size: The size of the data disk.
                - cloud：[5, 2000]
@@ -1796,6 +1954,7 @@ class LaunchTemplateSystemDisk(dict):
             category=category,
             delete_with_instance=delete_with_instance,
             description=description,
+            encrypted=encrypted,
             iops=iops,
             name=name,
             performance_level=performance_level,
@@ -1807,17 +1966,26 @@ class LaunchTemplateSystemDisk(dict):
              category: Optional[str] = None,
              delete_with_instance: Optional[bool] = None,
              description: Optional[str] = None,
+             encrypted: Optional[bool] = None,
              iops: Optional[str] = None,
              name: Optional[str] = None,
              performance_level: Optional[str] = None,
              size: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+
         if category is not None:
             _setter("category", category)
         if delete_with_instance is not None:
             _setter("delete_with_instance", delete_with_instance)
         if description is not None:
             _setter("description", description)
+        if encrypted is not None:
+            _setter("encrypted", encrypted)
         if iops is not None:
             _setter("iops", iops)
         if name is not None:
@@ -1859,6 +2027,16 @@ class LaunchTemplateSystemDisk(dict):
         The description of the data disk.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def encrypted(self) -> Optional[bool]:
+        """
+        Encrypted the data in this disk.
+
+        Default to false
+        """
+        return pulumi.get(self, "encrypted")
 
     @property
     @pulumi.getter
@@ -1924,7 +2102,11 @@ class ReservedInstanceOperationLock(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+
         if lock_reason is not None:
             _setter("lock_reason", lock_reason)
 
@@ -1992,7 +2174,25 @@ class GetActivationsActivationResult(dict):
              ip_address_range: str,
              registered_count: int,
              time_to_live_in_hours: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'activationId' in kwargs:
+            activation_id = kwargs['activationId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'deregisteredCount' in kwargs:
+            deregistered_count = kwargs['deregisteredCount']
+        if 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'ipAddressRange' in kwargs:
+            ip_address_range = kwargs['ipAddressRange']
+        if 'registeredCount' in kwargs:
+            registered_count = kwargs['registeredCount']
+        if 'timeToLiveInHours' in kwargs:
+            time_to_live_in_hours = kwargs['timeToLiveInHours']
+
         _setter("activation_id", activation_id)
         _setter("create_time", create_time)
         _setter("deregistered_count", deregistered_count)
@@ -2157,7 +2357,27 @@ class GetAutoSnapshotPoliciesPolicyResult(dict):
              target_copy_regions: Sequence[str],
              time_points: Sequence[str],
              volume_nums: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if 'copiedSnapshotsRetentionDays' in kwargs:
+            copied_snapshots_retention_days = kwargs['copiedSnapshotsRetentionDays']
+        if 'diskNums' in kwargs:
+            disk_nums = kwargs['diskNums']
+        if 'enableCrossRegionCopy' in kwargs:
+            enable_cross_region_copy = kwargs['enableCrossRegionCopy']
+        if 'repeatWeekdays' in kwargs:
+            repeat_weekdays = kwargs['repeatWeekdays']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'targetCopyRegions' in kwargs:
+            target_copy_regions = kwargs['targetCopyRegions']
+        if 'timePoints' in kwargs:
+            time_points = kwargs['timePoints']
+        if 'volumeNums' in kwargs:
+            volume_nums = kwargs['volumeNums']
+
         _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         _setter("copied_snapshots_retention_days", copied_snapshots_retention_days)
         _setter("disk_nums", disk_nums)
@@ -2360,7 +2580,35 @@ class GetCapacityReservationsReservationResult(dict):
              time_slot: str,
              zone_ids: Sequence[str],
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'capacityReservationId' in kwargs:
+            capacity_reservation_id = kwargs['capacityReservationId']
+        if 'capacityReservationName' in kwargs:
+            capacity_reservation_name = kwargs['capacityReservationName']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'endTimeType' in kwargs:
+            end_time_type = kwargs['endTimeType']
+        if 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'matchCriteria' in kwargs:
+            match_criteria = kwargs['matchCriteria']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'startTimeType' in kwargs:
+            start_time_type = kwargs['startTimeType']
+        if 'timeSlot' in kwargs:
+            time_slot = kwargs['timeSlot']
+        if 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+
         _setter("capacity_reservation_id", capacity_reservation_id)
         _setter("capacity_reservation_name", capacity_reservation_name)
         _setter("description", description)
@@ -2577,7 +2825,19 @@ class GetCommandsCommandResult(dict):
              timeout: int,
              type: str,
              working_dir: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commandContent' in kwargs:
+            command_content = kwargs['commandContent']
+        if 'commandId' in kwargs:
+            command_id = kwargs['commandId']
+        if 'enableParameter' in kwargs:
+            enable_parameter = kwargs['enableParameter']
+        if 'parameterNames' in kwargs:
+            parameter_names = kwargs['parameterNames']
+        if 'workingDir' in kwargs:
+            working_dir = kwargs['workingDir']
+
         _setter("command_content", command_content)
         _setter("command_id", command_id)
         _setter("description", description)
@@ -2789,7 +3049,49 @@ class GetDedicatedHostsHostResult(dict):
              supported_instance_types_lists: Sequence[str],
              tags: Mapping[str, Any],
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'actionOnMaintenance' in kwargs:
+            action_on_maintenance = kwargs['actionOnMaintenance']
+        if 'autoPlacement' in kwargs:
+            auto_placement = kwargs['autoPlacement']
+        if 'autoReleaseTime' in kwargs:
+            auto_release_time = kwargs['autoReleaseTime']
+        if 'cpuOverCommitRatio' in kwargs:
+            cpu_over_commit_ratio = kwargs['cpuOverCommitRatio']
+        if 'dedicatedHostId' in kwargs:
+            dedicated_host_id = kwargs['dedicatedHostId']
+        if 'dedicatedHostName' in kwargs:
+            dedicated_host_name = kwargs['dedicatedHostName']
+        if 'dedicatedHostType' in kwargs:
+            dedicated_host_type = kwargs['dedicatedHostType']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'gpuSpec' in kwargs:
+            gpu_spec = kwargs['gpuSpec']
+        if 'machineId' in kwargs:
+            machine_id = kwargs['machineId']
+        if 'networkAttributes' in kwargs:
+            network_attributes = kwargs['networkAttributes']
+        if 'operationLocks' in kwargs:
+            operation_locks = kwargs['operationLocks']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'physicalGpus' in kwargs:
+            physical_gpus = kwargs['physicalGpus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'saleCycle' in kwargs:
+            sale_cycle = kwargs['saleCycle']
+        if 'supportedCustomInstanceTypeFamilies' in kwargs:
+            supported_custom_instance_type_families = kwargs['supportedCustomInstanceTypeFamilies']
+        if 'supportedInstanceTypeFamilies' in kwargs:
+            supported_instance_type_families = kwargs['supportedInstanceTypeFamilies']
+        if 'supportedInstanceTypesLists' in kwargs:
+            supported_instance_types_lists = kwargs['supportedInstanceTypesLists']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("action_on_maintenance", action_on_maintenance)
         _setter("auto_placement", auto_placement)
         _setter("auto_release_time", auto_release_time)
@@ -3082,7 +3384,27 @@ class GetDedicatedHostsHostCapacityResult(dict):
              total_memory: float,
              total_vcpus: int,
              total_vgpus: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availableLocalStorage' in kwargs:
+            available_local_storage = kwargs['availableLocalStorage']
+        if 'availableMemory' in kwargs:
+            available_memory = kwargs['availableMemory']
+        if 'availableVcpus' in kwargs:
+            available_vcpus = kwargs['availableVcpus']
+        if 'availableVgpus' in kwargs:
+            available_vgpus = kwargs['availableVgpus']
+        if 'localStorageCategory' in kwargs:
+            local_storage_category = kwargs['localStorageCategory']
+        if 'totalLocalStorage' in kwargs:
+            total_local_storage = kwargs['totalLocalStorage']
+        if 'totalMemory' in kwargs:
+            total_memory = kwargs['totalMemory']
+        if 'totalVcpus' in kwargs:
+            total_vcpus = kwargs['totalVcpus']
+        if 'totalVgpus' in kwargs:
+            total_vgpus = kwargs['totalVgpus']
+
         _setter("available_local_storage", available_local_storage)
         _setter("available_memory", available_memory)
         _setter("available_vcpus", available_vcpus)
@@ -3185,7 +3507,13 @@ class GetDedicatedHostsHostNetworkAttributeResult(dict):
              _setter: Callable[[Any, Any], None],
              slb_udp_timeout: int,
              udp_timeout: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'slbUdpTimeout' in kwargs:
+            slb_udp_timeout = kwargs['slbUdpTimeout']
+        if 'udpTimeout' in kwargs:
+            udp_timeout = kwargs['udpTimeout']
+
         _setter("slb_udp_timeout", slb_udp_timeout)
         _setter("udp_timeout", udp_timeout)
 
@@ -3221,7 +3549,11 @@ class GetDedicatedHostsHostOperationLockResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+
         _setter("lock_reason", lock_reason)
 
     @property
@@ -3248,7 +3580,11 @@ class GetDedicatedHostsOperationLockResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+
         if lock_reason is not None:
             _setter("lock_reason", lock_reason)
 
@@ -3419,7 +3755,65 @@ class GetDisksDiskResult(dict):
              tags: Mapping[str, Any],
              type: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachedTime' in kwargs:
+            attached_time = kwargs['attachedTime']
+        if 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'deleteAutoSnapshot' in kwargs:
+            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'detachedTime' in kwargs:
+            detached_time = kwargs['detachedTime']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'diskName' in kwargs:
+            disk_name = kwargs['diskName']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'enableAutoSnapshot' in kwargs:
+            enable_auto_snapshot = kwargs['enableAutoSnapshot']
+        if 'enableAutomatedSnapshotPolicy' in kwargs:
+            enable_automated_snapshot_policy = kwargs['enableAutomatedSnapshotPolicy']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'iopsRead' in kwargs:
+            iops_read = kwargs['iopsRead']
+        if 'iopsWrite' in kwargs:
+            iops_write = kwargs['iopsWrite']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'mountInstanceNum' in kwargs:
+            mount_instance_num = kwargs['mountInstanceNum']
+        if 'mountInstances' in kwargs:
+            mount_instances = kwargs['mountInstances']
+        if 'operationLocks' in kwargs:
+            operation_locks = kwargs['operationLocks']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("attached_time", attached_time)
         _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         _setter("availability_zone", availability_zone)
@@ -3747,7 +4141,13 @@ class GetDisksDiskMountInstanceResult(dict):
              attached_time: str,
              device: str,
              instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachedTime' in kwargs:
+            attached_time = kwargs['attachedTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("attached_time", attached_time)
         _setter("device", device)
         _setter("instance_id", instance_id)
@@ -3786,7 +4186,11 @@ class GetDisksDiskOperationLockResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+
         _setter("lock_reason", lock_reason)
 
     @property
@@ -3807,7 +4211,11 @@ class GetDisksOperationLockResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+
         if lock_reason is not None:
             _setter("lock_reason", lock_reason)
 
@@ -3864,7 +4272,21 @@ class GetEcsDedicatedHostClustersClusterResult(dict):
              resource_group_id: str,
              tags: Mapping[str, Any],
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dedicatedHostClusterCapacities' in kwargs:
+            dedicated_host_cluster_capacities = kwargs['dedicatedHostClusterCapacities']
+        if 'dedicatedHostClusterId' in kwargs:
+            dedicated_host_cluster_id = kwargs['dedicatedHostClusterId']
+        if 'dedicatedHostClusterName' in kwargs:
+            dedicated_host_cluster_name = kwargs['dedicatedHostClusterName']
+        if 'dedicatedHostIds' in kwargs:
+            dedicated_host_ids = kwargs['dedicatedHostIds']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("dedicated_host_cluster_capacities", dedicated_host_cluster_capacities)
         _setter("dedicated_host_cluster_id", dedicated_host_cluster_id)
         _setter("dedicated_host_cluster_name", dedicated_host_cluster_name)
@@ -3979,7 +4401,19 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult(dict)
              local_storage_capacities: Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult'],
              total_memory: int,
              total_vcpus: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availableMemory' in kwargs:
+            available_memory = kwargs['availableMemory']
+        if 'availableVcpus' in kwargs:
+            available_vcpus = kwargs['availableVcpus']
+        if 'localStorageCapacities' in kwargs:
+            local_storage_capacities = kwargs['localStorageCapacities']
+        if 'totalMemory' in kwargs:
+            total_memory = kwargs['totalMemory']
+        if 'totalVcpus' in kwargs:
+            total_vcpus = kwargs['totalVcpus']
+
         _setter("available_memory", available_memory)
         _setter("available_vcpus", available_vcpus)
         _setter("local_storage_capacities", local_storage_capacities)
@@ -4050,7 +4484,15 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorage
              available_disk: int,
              data_disk_category: str,
              total_disk: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availableDisk' in kwargs:
+            available_disk = kwargs['availableDisk']
+        if 'dataDiskCategory' in kwargs:
+            data_disk_category = kwargs['dataDiskCategory']
+        if 'totalDisk' in kwargs:
+            total_disk = kwargs['totalDisk']
+
         _setter("available_disk", available_disk)
         _setter("data_disk_category", data_disk_category)
         _setter("total_disk", total_disk)
@@ -4131,7 +4573,19 @@ class GetEcsDeploymentSetsSetResult(dict):
              instance_amount: int,
              instance_ids: Sequence[str],
              strategy: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'deploymentSetId' in kwargs:
+            deployment_set_id = kwargs['deploymentSetId']
+        if 'deploymentSetName' in kwargs:
+            deployment_set_name = kwargs['deploymentSetName']
+        if 'instanceAmount' in kwargs:
+            instance_amount = kwargs['instanceAmount']
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+
         _setter("create_time", create_time)
         _setter("deployment_set_id", deployment_set_id)
         _setter("deployment_set_name", deployment_set_name)
@@ -4390,7 +4844,65 @@ class GetEcsDisksDiskResult(dict):
              tags: Mapping[str, Any],
              type: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachedTime' in kwargs:
+            attached_time = kwargs['attachedTime']
+        if 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'deleteAutoSnapshot' in kwargs:
+            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'detachedTime' in kwargs:
+            detached_time = kwargs['detachedTime']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'diskName' in kwargs:
+            disk_name = kwargs['diskName']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'enableAutoSnapshot' in kwargs:
+            enable_auto_snapshot = kwargs['enableAutoSnapshot']
+        if 'enableAutomatedSnapshotPolicy' in kwargs:
+            enable_automated_snapshot_policy = kwargs['enableAutomatedSnapshotPolicy']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'iopsRead' in kwargs:
+            iops_read = kwargs['iopsRead']
+        if 'iopsWrite' in kwargs:
+            iops_write = kwargs['iopsWrite']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'mountInstanceNum' in kwargs:
+            mount_instance_num = kwargs['mountInstanceNum']
+        if 'mountInstances' in kwargs:
+            mount_instances = kwargs['mountInstances']
+        if 'operationLocks' in kwargs:
+            operation_locks = kwargs['operationLocks']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("attached_time", attached_time)
         _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         _setter("availability_zone", availability_zone)
@@ -4761,7 +5273,13 @@ class GetEcsDisksDiskMountInstanceResult(dict):
              attached_time: str,
              device: str,
              instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachedTime' in kwargs:
+            attached_time = kwargs['attachedTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("attached_time", attached_time)
         _setter("device", device)
         _setter("instance_id", instance_id)
@@ -4803,7 +5321,11 @@ class GetEcsDisksDiskOperationLockResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+
         _setter("lock_reason", lock_reason)
 
     @property
@@ -4824,7 +5346,11 @@ class GetEcsDisksOperationLockResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              lock_reason: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lockReason' in kwargs:
+            lock_reason = kwargs['lockReason']
+
         if lock_reason is not None:
             _setter("lock_reason", lock_reason)
 
@@ -4889,7 +5415,21 @@ class GetEcsImageComponentsComponentResult(dict):
              resource_group_id: str,
              system_type: str,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'componentType' in kwargs:
+            component_type = kwargs['componentType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'imageComponentId' in kwargs:
+            image_component_id = kwargs['imageComponentId']
+        if 'imageComponentName' in kwargs:
+            image_component_name = kwargs['imageComponentName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'systemType' in kwargs:
+            system_type = kwargs['systemType']
+
         _setter("component_type", component_type)
         _setter("content", content)
         _setter("create_time", create_time)
@@ -5074,7 +5614,37 @@ class GetEcsImagePipelinePipelineResult(dict):
              to_region_ids: Sequence[str],
              vswitch_id: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addAccounts' in kwargs:
+            add_accounts = kwargs['addAccounts']
+        if 'baseImage' in kwargs:
+            base_image = kwargs['baseImage']
+        if 'baseImageType' in kwargs:
+            base_image_type = kwargs['baseImageType']
+        if 'buildContent' in kwargs:
+            build_content = kwargs['buildContent']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'deleteInstanceOnFailure' in kwargs:
+            delete_instance_on_failure = kwargs['deleteInstanceOnFailure']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'imagePipelineId' in kwargs:
+            image_pipeline_id = kwargs['imagePipelineId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if 'toRegionIds' in kwargs:
+            to_region_ids = kwargs['toRegionIds']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("add_accounts", add_accounts)
         _setter("base_image", base_image)
         _setter("base_image_type", base_image_type)
@@ -5313,7 +5883,29 @@ class GetEcsInvocationsInvocationResult(dict):
              repeat_mode: str,
              timed: bool,
              username: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commandContent' in kwargs:
+            command_content = kwargs['commandContent']
+        if 'commandId' in kwargs:
+            command_id = kwargs['commandId']
+        if 'commandName' in kwargs:
+            command_name = kwargs['commandName']
+        if 'commandType' in kwargs:
+            command_type = kwargs['commandType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'invocationId' in kwargs:
+            invocation_id = kwargs['invocationId']
+        if 'invocationStatus' in kwargs:
+            invocation_status = kwargs['invocationStatus']
+        if 'invokeInstances' in kwargs:
+            invoke_instances = kwargs['invokeInstances']
+        if 'invokeStatus' in kwargs:
+            invoke_status = kwargs['invokeStatus']
+        if 'repeatMode' in kwargs:
+            repeat_mode = kwargs['repeatMode']
+
         _setter("command_content", command_content)
         _setter("command_id", command_id)
         _setter("command_name", command_name)
@@ -5524,7 +6116,31 @@ class GetEcsInvocationsInvocationInvokeInstanceResult(dict):
              stop_time: str,
              timed: bool,
              update_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'errorCode' in kwargs:
+            error_code = kwargs['errorCode']
+        if 'errorInfo' in kwargs:
+            error_info = kwargs['errorInfo']
+        if 'exitCode' in kwargs:
+            exit_code = kwargs['exitCode']
+        if 'finishTime' in kwargs:
+            finish_time = kwargs['finishTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceInvokeStatus' in kwargs:
+            instance_invoke_status = kwargs['instanceInvokeStatus']
+        if 'invocationStatus' in kwargs:
+            invocation_status = kwargs['invocationStatus']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'stopTime' in kwargs:
+            stop_time = kwargs['stopTime']
+        if 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         _setter("creation_time", creation_time)
         _setter("dropped", dropped)
         _setter("error_code", error_code)
@@ -5696,7 +6312,17 @@ class GetEcsKeyPairsKeyPairResult(dict):
              key_pair_name: str,
              resource_group_id: str,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fingerPrint' in kwargs:
+            finger_print = kwargs['fingerPrint']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("finger_print", finger_print)
         _setter("id", id)
         _setter("instances", instances)
@@ -5813,7 +6439,29 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
              region_id: str,
              status: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'publicIp' in kwargs:
+            public_ip = kwargs['publicIp']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("availability_zone", availability_zone)
         _setter("description", description)
         _setter("image_id", image_id)
@@ -5947,7 +6595,17 @@ class GetEcsKeyPairsPairResult(dict):
              key_pair_name: str,
              resource_group_id: str,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fingerPrint' in kwargs:
+            finger_print = kwargs['fingerPrint']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("finger_print", finger_print)
         _setter("id", id)
         _setter("instances", instances)
@@ -6064,7 +6722,29 @@ class GetEcsKeyPairsPairInstanceResult(dict):
              region_id: str,
              status: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'publicIp' in kwargs:
+            public_ip = kwargs['publicIp']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("availability_zone", availability_zone)
         _setter("description", description)
         _setter("image_id", image_id)
@@ -6343,7 +7023,89 @@ class GetEcsLaunchTemplatesTemplateResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoReleaseTime' in kwargs:
+            auto_release_time = kwargs['autoReleaseTime']
+        if 'createdBy' in kwargs:
+            created_by = kwargs['createdBy']
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'defaultVersionNumber' in kwargs:
+            default_version_number = kwargs['defaultVersionNumber']
+        if 'deploymentSetId' in kwargs:
+            deployment_set_id = kwargs['deploymentSetId']
+        if 'enableVmOsConfig' in kwargs:
+            enable_vm_os_config = kwargs['enableVmOsConfig']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageOwnerAlias' in kwargs:
+            image_owner_alias = kwargs['imageOwnerAlias']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'internetMaxBandwidthIn' in kwargs:
+            internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'ioOptimized' in kwargs:
+            io_optimized = kwargs['ioOptimized']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'latestVersionNumber' in kwargs:
+            latest_version_number = kwargs['latestVersionNumber']
+        if 'launchTemplateId' in kwargs:
+            launch_template_id = kwargs['launchTemplateId']
+        if 'launchTemplateName' in kwargs:
+            launch_template_name = kwargs['launchTemplateName']
+        if 'modifiedTime' in kwargs:
+            modified_time = kwargs['modifiedTime']
+        if 'networkInterfaces' in kwargs:
+            network_interfaces = kwargs['networkInterfaces']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'passwordInherit' in kwargs:
+            password_inherit = kwargs['passwordInherit']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityEnhancementStrategy' in kwargs:
+            security_enhancement_strategy = kwargs['securityEnhancementStrategy']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'spotDuration' in kwargs:
+            spot_duration = kwargs['spotDuration']
+        if 'spotPriceLimit' in kwargs:
+            spot_price_limit = kwargs['spotPriceLimit']
+        if 'spotStrategy' in kwargs:
+            spot_strategy = kwargs['spotStrategy']
+        if 'systemDisks' in kwargs:
+            system_disks = kwargs['systemDisks']
+        if 'templateTags' in kwargs:
+            template_tags = kwargs['templateTags']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'versionDescription' in kwargs:
+            version_description = kwargs['versionDescription']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("auto_release_time", auto_release_time)
         _setter("created_by", created_by)
         _setter("data_disks", data_disks)
@@ -6776,7 +7538,15 @@ class GetEcsLaunchTemplatesTemplateDataDiskResult(dict):
              performance_level: str,
              size: int,
              snapshot_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         _setter("category", category)
         _setter("delete_with_instance", delete_with_instance)
         _setter("description", description)
@@ -6882,7 +7652,15 @@ class GetEcsLaunchTemplatesTemplateNetworkInterfaceResult(dict):
              primary_ip: str,
              security_group_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'primaryIp' in kwargs:
+            primary_ip = kwargs['primaryIp']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("description", description)
         _setter("name", name)
         _setter("primary_ip", primary_ip)
@@ -6969,7 +7747,13 @@ class GetEcsLaunchTemplatesTemplateSystemDiskResult(dict):
              name: str,
              performance_level: str,
              size: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+
         _setter("category", category)
         _setter("delete_with_instance", delete_with_instance)
         _setter("description", description)
@@ -7074,7 +7858,17 @@ class GetEcsNetworkInterfacePermissionsPermissionResult(dict):
              permission: str,
              service_name: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'networkInterfacePermissionId' in kwargs:
+            network_interface_permission_id = kwargs['networkInterfacePermissionId']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         _setter("account_id", account_id)
         _setter("id", id)
         _setter("network_interface_id", network_interface_id)
@@ -7258,7 +8052,49 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associatedPublicIps' in kwargs:
+            associated_public_ips = kwargs['associatedPublicIps']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'networkInterfaceName' in kwargs:
+            network_interface_name = kwargs['networkInterfaceName']
+        if 'networkInterfaceTrafficMode' in kwargs:
+            network_interface_traffic_mode = kwargs['networkInterfaceTrafficMode']
+        if 'ownerId' in kwargs:
+            owner_id = kwargs['ownerId']
+        if 'primaryIpAddress' in kwargs:
+            primary_ip_address = kwargs['primaryIpAddress']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'privateIpAddresses' in kwargs:
+            private_ip_addresses = kwargs['privateIpAddresses']
+        if 'privateIps' in kwargs:
+            private_ips = kwargs['privateIps']
+        if 'queueNumber' in kwargs:
+            queue_number = kwargs['queueNumber']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'serviceManaged' in kwargs:
+            service_managed = kwargs['serviceManaged']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("associated_public_ips", associated_public_ips)
         _setter("creation_time", creation_time)
         _setter("description", description)
@@ -7516,7 +8352,11 @@ class GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              public_ip_address: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publicIpAddress' in kwargs:
+            public_ip_address = kwargs['publicIpAddress']
+
         _setter("public_ip_address", public_ip_address)
 
     @property
@@ -7574,7 +8414,21 @@ class GetEcsPrefixListsListResult(dict):
              max_entries: int,
              prefix_list_id: str,
              prefix_list_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressFamily' in kwargs:
+            address_family = kwargs['addressFamily']
+        if 'associationCount' in kwargs:
+            association_count = kwargs['associationCount']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'maxEntries' in kwargs:
+            max_entries = kwargs['maxEntries']
+        if 'prefixListId' in kwargs:
+            prefix_list_id = kwargs['prefixListId']
+        if 'prefixListName' in kwargs:
+            prefix_list_name = kwargs['prefixListName']
+
         _setter("address_family", address_family)
         _setter("association_count", association_count)
         _setter("create_time", create_time)
@@ -7673,7 +8527,9 @@ class GetEcsPrefixListsListEntryResult(dict):
              _setter: Callable[[Any, Any], None],
              cidr: str,
              description: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("cidr", cidr)
         _setter("description", description)
 
@@ -7734,7 +8590,17 @@ class GetEcsSnapshotGroupsGroupResult(dict):
              snapshot_group_name: str,
              status: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'snapshotGroupId' in kwargs:
+            snapshot_group_id = kwargs['snapshotGroupId']
+        if 'snapshotGroupName' in kwargs:
+            snapshot_group_name = kwargs['snapshotGroupName']
+
         _setter("description", description)
         _setter("id", id)
         _setter("instance_id", instance_id)
@@ -7921,7 +8787,41 @@ class GetEcsSnapshotsSnapshotResult(dict):
              tags: Mapping[str, Any],
              type: str,
              usage: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'instantAccess' in kwargs:
+            instant_access = kwargs['instantAccess']
+        if 'instantAccessRetentionDays' in kwargs:
+            instant_access_retention_days = kwargs['instantAccessRetentionDays']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'remainTime' in kwargs:
+            remain_time = kwargs['remainTime']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+        if 'snapshotSn' in kwargs:
+            snapshot_sn = kwargs['snapshotSn']
+        if 'snapshotType' in kwargs:
+            snapshot_type = kwargs['snapshotType']
+        if 'sourceDiskId' in kwargs:
+            source_disk_id = kwargs['sourceDiskId']
+        if 'sourceDiskSize' in kwargs:
+            source_disk_size = kwargs['sourceDiskSize']
+        if 'sourceDiskType' in kwargs:
+            source_disk_type = kwargs['sourceDiskType']
+        if 'sourceStorageType' in kwargs:
+            source_storage_type = kwargs['sourceStorageType']
+
         _setter("category", category)
         _setter("creation_time", creation_time)
         _setter("description", description)
@@ -8197,7 +9097,21 @@ class GetEcsStorageCapacityUnitsUnitResult(dict):
              status: str,
              storage_capacity_unit_id: str,
              storage_capacity_unit_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocationStatus' in kwargs:
+            allocation_status = kwargs['allocationStatus']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'storageCapacityUnitId' in kwargs:
+            storage_capacity_unit_id = kwargs['storageCapacityUnitId']
+        if 'storageCapacityUnitName' in kwargs:
+            storage_capacity_unit_name = kwargs['storageCapacityUnitName']
+
         _setter("allocation_status", allocation_status)
         _setter("capacity", capacity)
         _setter("create_time", create_time)
@@ -8425,7 +9339,59 @@ class GetEipAddressesAddressResult(dict):
              segment_instance_id: str,
              status: str,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressName' in kwargs:
+            address_name = kwargs['addressName']
+        if 'allocationId' in kwargs:
+            allocation_id = kwargs['allocationId']
+        if 'availableRegions' in kwargs:
+            available_regions = kwargs['availableRegions']
+        if 'bandwidthPackageBandwidth' in kwargs:
+            bandwidth_package_bandwidth = kwargs['bandwidthPackageBandwidth']
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'bandwidthPackageType' in kwargs:
+            bandwidth_package_type = kwargs['bandwidthPackageType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'hasReservationData' in kwargs:
+            has_reservation_data = kwargs['hasReservationData']
+        if 'hdMonitorStatus' in kwargs:
+            hd_monitor_status = kwargs['hdMonitorStatus']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceRegionId' in kwargs:
+            instance_region_id = kwargs['instanceRegionId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'operationLocks' in kwargs:
+            operation_locks = kwargs['operationLocks']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'reservationActiveTime' in kwargs:
+            reservation_active_time = kwargs['reservationActiveTime']
+        if 'reservationBandwidth' in kwargs:
+            reservation_bandwidth = kwargs['reservationBandwidth']
+        if 'reservationInternetChargeType' in kwargs:
+            reservation_internet_charge_type = kwargs['reservationInternetChargeType']
+        if 'reservationOrderType' in kwargs:
+            reservation_order_type = kwargs['reservationOrderType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'secondLimited' in kwargs:
+            second_limited = kwargs['secondLimited']
+        if 'segmentInstanceId' in kwargs:
+            segment_instance_id = kwargs['segmentInstanceId']
+
         _setter("address_name", address_name)
         _setter("allocation_id", allocation_id)
         _setter("available_regions", available_regions)
@@ -8753,7 +9719,21 @@ class GetEipAddressesEipResult(dict):
              internet_charge_type: str,
              ip_address: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("bandwidth", bandwidth)
         _setter("creation_time", creation_time)
         _setter("deletion_protection", deletion_protection)
@@ -8948,7 +9928,59 @@ class GetEipsAddressResult(dict):
              segment_instance_id: str,
              status: str,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressName' in kwargs:
+            address_name = kwargs['addressName']
+        if 'allocationId' in kwargs:
+            allocation_id = kwargs['allocationId']
+        if 'availableRegions' in kwargs:
+            available_regions = kwargs['availableRegions']
+        if 'bandwidthPackageBandwidth' in kwargs:
+            bandwidth_package_bandwidth = kwargs['bandwidthPackageBandwidth']
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'bandwidthPackageType' in kwargs:
+            bandwidth_package_type = kwargs['bandwidthPackageType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'hasReservationData' in kwargs:
+            has_reservation_data = kwargs['hasReservationData']
+        if 'hdMonitorStatus' in kwargs:
+            hd_monitor_status = kwargs['hdMonitorStatus']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceRegionId' in kwargs:
+            instance_region_id = kwargs['instanceRegionId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'operationLocks' in kwargs:
+            operation_locks = kwargs['operationLocks']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'reservationActiveTime' in kwargs:
+            reservation_active_time = kwargs['reservationActiveTime']
+        if 'reservationBandwidth' in kwargs:
+            reservation_bandwidth = kwargs['reservationBandwidth']
+        if 'reservationInternetChargeType' in kwargs:
+            reservation_internet_charge_type = kwargs['reservationInternetChargeType']
+        if 'reservationOrderType' in kwargs:
+            reservation_order_type = kwargs['reservationOrderType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'secondLimited' in kwargs:
+            second_limited = kwargs['secondLimited']
+        if 'segmentInstanceId' in kwargs:
+            segment_instance_id = kwargs['segmentInstanceId']
+
         _setter("address_name", address_name)
         _setter("allocation_id", allocation_id)
         _setter("available_regions", available_regions)
@@ -9214,7 +10246,21 @@ class GetEipsEipResult(dict):
              internet_charge_type: str,
              ip_address: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("bandwidth", bandwidth)
         _setter("creation_time", creation_time)
         _setter("deletion_protection", deletion_protection)
@@ -9373,7 +10419,33 @@ class GetElasticityAssurancesAssuranceResult(dict):
              total_assurance_times: str,
              used_assurance_times: int,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocatedResources' in kwargs:
+            allocated_resources = kwargs['allocatedResources']
+        if 'elasticityAssuranceId' in kwargs:
+            elasticity_assurance_id = kwargs['elasticityAssuranceId']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'privatePoolOptionsId' in kwargs:
+            private_pool_options_id = kwargs['privatePoolOptionsId']
+        if 'privatePoolOptionsMatchCriteria' in kwargs:
+            private_pool_options_match_criteria = kwargs['privatePoolOptionsMatchCriteria']
+        if 'privatePoolOptionsName' in kwargs:
+            private_pool_options_name = kwargs['privatePoolOptionsName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'startTimeType' in kwargs:
+            start_time_type = kwargs['startTimeType']
+        if 'totalAssuranceTimes' in kwargs:
+            total_assurance_times = kwargs['totalAssuranceTimes']
+        if 'usedAssuranceTimes' in kwargs:
+            used_assurance_times = kwargs['usedAssuranceTimes']
+
         _setter("allocated_resources", allocated_resources)
         _setter("description", description)
         _setter("elasticity_assurance_id", elasticity_assurance_id)
@@ -9548,7 +10620,17 @@ class GetElasticityAssurancesAssuranceAllocatedResourceResult(dict):
              total_amount: int,
              used_amount: int,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'totalAmount' in kwargs:
+            total_amount = kwargs['totalAmount']
+        if 'usedAmount' in kwargs:
+            used_amount = kwargs['usedAmount']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("instance_type", instance_type)
         _setter("total_amount", total_amount)
         _setter("used_amount", used_amount)
@@ -9614,7 +10696,11 @@ class GetHpcClustersClusterResult(dict):
              hpc_cluster_id: str,
              id: str,
              name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hpcClusterId' in kwargs:
+            hpc_cluster_id = kwargs['hpcClusterId']
+
         _setter("description", description)
         _setter("hpc_cluster_id", hpc_cluster_id)
         _setter("id", id)
@@ -9755,7 +10841,35 @@ class GetImagesImageResult(dict):
              status: str,
              usage: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'diskDeviceMappings' in kwargs:
+            disk_device_mappings = kwargs['diskDeviceMappings']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageOwnerAlias' in kwargs:
+            image_owner_alias = kwargs['imageOwnerAlias']
+        if 'imageVersion' in kwargs:
+            image_version = kwargs['imageVersion']
+        if 'isCopied' in kwargs:
+            is_copied = kwargs['isCopied']
+        if 'isSelfShared' in kwargs:
+            is_self_shared = kwargs['isSelfShared']
+        if 'isSubscribed' in kwargs:
+            is_subscribed = kwargs['isSubscribed']
+        if 'isSupportIoOptimized' in kwargs:
+            is_support_io_optimized = kwargs['isSupportIoOptimized']
+        if 'osName' in kwargs:
+            os_name = kwargs['osName']
+        if 'osNameEn' in kwargs:
+            os_name_en = kwargs['osNameEn']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+
         _setter("architecture", architecture)
         _setter("creation_time", creation_time)
         _setter("description", description)
@@ -9983,7 +11097,11 @@ class GetImagesImageDiskDeviceMappingResult(dict):
              device: str,
              size: str,
              snapshot_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         _setter("device", device)
         _setter("size", size)
         _setter("snapshot_id", snapshot_id)
@@ -10036,7 +11154,11 @@ class GetInstanceTypeFamiliesFamilyResult(dict):
              generation: str,
              id: str,
              zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneIds' in kwargs:
+            zone_ids = kwargs['zoneIds']
+
         _setter("generation", generation)
         _setter("id", id)
         _setter("zone_ids", zone_ids)
@@ -10129,7 +11251,23 @@ class GetInstanceTypesInstanceTypeResult(dict):
              memory_size: float,
              nvme_support: str,
              price: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZones' in kwargs:
+            availability_zones = kwargs['availabilityZones']
+        if 'burstableInstance' in kwargs:
+            burstable_instance = kwargs['burstableInstance']
+        if 'cpuCoreCount' in kwargs:
+            cpu_core_count = kwargs['cpuCoreCount']
+        if 'eniAmount' in kwargs:
+            eni_amount = kwargs['eniAmount']
+        if 'localStorage' in kwargs:
+            local_storage = kwargs['localStorage']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if 'nvmeSupport' in kwargs:
+            nvme_support = kwargs['nvmeSupport']
+
         _setter("availability_zones", availability_zones)
         _setter("burstable_instance", burstable_instance)
         _setter("cpu_core_count", cpu_core_count)
@@ -10252,7 +11390,13 @@ class GetInstanceTypesInstanceTypeBurstableInstanceResult(dict):
              _setter: Callable[[Any, Any], None],
              baseline_credit: str,
              initial_credit: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'baselineCredit' in kwargs:
+            baseline_credit = kwargs['baselineCredit']
+        if 'initialCredit' in kwargs:
+            initial_credit = kwargs['initialCredit']
+
         _setter("baseline_credit", baseline_credit)
         _setter("initial_credit", initial_credit)
 
@@ -10282,7 +11426,9 @@ class GetInstanceTypesInstanceTypeGpuResult(dict):
              _setter: Callable[[Any, Any], None],
              amount: str,
              category: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("amount", amount)
         _setter("category", category)
 
@@ -10315,7 +11461,9 @@ class GetInstanceTypesInstanceTypeLocalStorageResult(dict):
              amount: str,
              capacity: str,
              category: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("amount", amount)
         _setter("capacity", capacity)
         _setter("category", category)
@@ -10452,7 +11600,45 @@ class GetInstancesInstanceResult(dict):
              vpc_id: str,
              vswitch_id: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'diskDeviceMappings' in kwargs:
+            disk_device_mappings = kwargs['diskDeviceMappings']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'publicIp' in kwargs:
+            public_ip = kwargs['publicIp']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'spotStrategy' in kwargs:
+            spot_strategy = kwargs['spotStrategy']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("availability_zone", availability_zone)
         _setter("creation_time", creation_time)
         _setter("description", description)
@@ -10716,7 +11902,13 @@ class GetInstancesInstanceDiskDeviceMappingResult(dict):
              disk_name: str,
              size: int,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'diskName' in kwargs:
+            disk_name = kwargs['diskName']
+
         _setter("category", category)
         _setter("device", device)
         _setter("disk_id", disk_id)
@@ -10811,7 +12003,17 @@ class GetKeyPairsKeyPairResult(dict):
              key_pair_name: str,
              resource_group_id: str,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fingerPrint' in kwargs:
+            finger_print = kwargs['fingerPrint']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("finger_print", finger_print)
         _setter("id", id)
         _setter("instances", instances)
@@ -10928,7 +12130,29 @@ class GetKeyPairsKeyPairInstanceResult(dict):
              region_id: str,
              status: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'publicIp' in kwargs:
+            public_ip = kwargs['publicIp']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("availability_zone", availability_zone)
         _setter("description", description)
         _setter("image_id", image_id)
@@ -11062,7 +12286,17 @@ class GetKeyPairsPairResult(dict):
              key_pair_name: str,
              resource_group_id: str,
              tags: Mapping[str, Any],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fingerPrint' in kwargs:
+            finger_print = kwargs['fingerPrint']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("finger_print", finger_print)
         _setter("id", id)
         _setter("instances", instances)
@@ -11179,7 +12413,29 @@ class GetKeyPairsPairInstanceResult(dict):
              region_id: str,
              status: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'publicIp' in kwargs:
+            public_ip = kwargs['publicIp']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("availability_zone", availability_zone)
         _setter("description", description)
         _setter("image_id", image_id)
@@ -11382,7 +12638,49 @@ class GetNetworkInterfacesInterfaceResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associatedPublicIps' in kwargs:
+            associated_public_ips = kwargs['associatedPublicIps']
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'networkInterfaceId' in kwargs:
+            network_interface_id = kwargs['networkInterfaceId']
+        if 'networkInterfaceName' in kwargs:
+            network_interface_name = kwargs['networkInterfaceName']
+        if 'networkInterfaceTrafficMode' in kwargs:
+            network_interface_traffic_mode = kwargs['networkInterfaceTrafficMode']
+        if 'ownerId' in kwargs:
+            owner_id = kwargs['ownerId']
+        if 'primaryIpAddress' in kwargs:
+            primary_ip_address = kwargs['primaryIpAddress']
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+        if 'privateIpAddresses' in kwargs:
+            private_ip_addresses = kwargs['privateIpAddresses']
+        if 'privateIps' in kwargs:
+            private_ips = kwargs['privateIps']
+        if 'queueNumber' in kwargs:
+            queue_number = kwargs['queueNumber']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'securityGroups' in kwargs:
+            security_groups = kwargs['securityGroups']
+        if 'serviceId' in kwargs:
+            service_id = kwargs['serviceId']
+        if 'serviceManaged' in kwargs:
+            service_managed = kwargs['serviceManaged']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("associated_public_ips", associated_public_ips)
         _setter("creation_time", creation_time)
         _setter("description", description)
@@ -11604,7 +12902,11 @@ class GetNetworkInterfacesInterfaceAssociatedPublicIpResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              public_ip_address: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'publicIpAddress' in kwargs:
+            public_ip_address = kwargs['publicIpAddress']
+
         _setter("public_ip_address", public_ip_address)
 
     @property
@@ -11676,7 +12978,27 @@ class GetSecurityGroupRulesRuleResult(dict):
              source_cidr_ip: str,
              source_group_id: str,
              source_group_owner_account: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destCidrIp' in kwargs:
+            dest_cidr_ip = kwargs['destCidrIp']
+        if 'destGroupId' in kwargs:
+            dest_group_id = kwargs['destGroupId']
+        if 'destGroupOwnerAccount' in kwargs:
+            dest_group_owner_account = kwargs['destGroupOwnerAccount']
+        if 'ipProtocol' in kwargs:
+            ip_protocol = kwargs['ipProtocol']
+        if 'nicType' in kwargs:
+            nic_type = kwargs['nicType']
+        if 'portRange' in kwargs:
+            port_range = kwargs['portRange']
+        if 'sourceCidrIp' in kwargs:
+            source_cidr_ip = kwargs['sourceCidrIp']
+        if 'sourceGroupId' in kwargs:
+            source_group_id = kwargs['sourceGroupId']
+        if 'sourceGroupOwnerAccount' in kwargs:
+            source_group_owner_account = kwargs['sourceGroupOwnerAccount']
+
         _setter("description", description)
         _setter("dest_cidr_ip", dest_cidr_ip)
         _setter("dest_group_id", dest_group_id)
@@ -11852,7 +13174,19 @@ class GetSecurityGroupsGroupResult(dict):
              security_group_type: str,
              vpc_id: str,
              tags: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'innerAccess' in kwargs:
+            inner_access = kwargs['innerAccess']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupType' in kwargs:
+            security_group_type = kwargs['securityGroupType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+
         _setter("creation_time", creation_time)
         _setter("description", description)
         _setter("id", id)
@@ -12050,7 +13384,41 @@ class GetSnapshotsSnapshotResult(dict):
              tags: Mapping[str, Any],
              type: str,
              usage: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creationTime' in kwargs:
+            creation_time = kwargs['creationTime']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'instantAccess' in kwargs:
+            instant_access = kwargs['instantAccess']
+        if 'instantAccessRetentionDays' in kwargs:
+            instant_access_retention_days = kwargs['instantAccessRetentionDays']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'remainTime' in kwargs:
+            remain_time = kwargs['remainTime']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retentionDays' in kwargs:
+            retention_days = kwargs['retentionDays']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'snapshotName' in kwargs:
+            snapshot_name = kwargs['snapshotName']
+        if 'snapshotSn' in kwargs:
+            snapshot_sn = kwargs['snapshotSn']
+        if 'snapshotType' in kwargs:
+            snapshot_type = kwargs['snapshotType']
+        if 'sourceDiskId' in kwargs:
+            source_disk_id = kwargs['sourceDiskId']
+        if 'sourceDiskSize' in kwargs:
+            source_disk_size = kwargs['sourceDiskSize']
+        if 'sourceDiskType' in kwargs:
+            source_disk_type = kwargs['sourceDiskType']
+        if 'sourceStorageType' in kwargs:
+            source_storage_type = kwargs['sourceStorageType']
+
         _setter("category", category)
         _setter("creation_time", creation_time)
         _setter("description", description)

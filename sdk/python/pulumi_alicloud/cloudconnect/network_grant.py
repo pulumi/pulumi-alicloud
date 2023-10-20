@@ -35,7 +35,15 @@ class NetworkGrantArgs:
              ccn_id: pulumi.Input[str],
              cen_id: pulumi.Input[str],
              cen_uid: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ccnId' in kwargs:
+            ccn_id = kwargs['ccnId']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenUid' in kwargs:
+            cen_uid = kwargs['cenUid']
+
         _setter("ccn_id", ccn_id)
         _setter("cen_id", cen_id)
         _setter("cen_uid", cen_uid)
@@ -101,7 +109,15 @@ class _NetworkGrantState:
              ccn_id: Optional[pulumi.Input[str]] = None,
              cen_id: Optional[pulumi.Input[str]] = None,
              cen_uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ccnId' in kwargs:
+            ccn_id = kwargs['ccnId']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenUid' in kwargs:
+            cen_uid = kwargs['cenUid']
+
         if ccn_id is not None:
             _setter("ccn_id", ccn_id)
         if cen_id is not None:

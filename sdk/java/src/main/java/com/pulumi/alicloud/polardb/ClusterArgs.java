@@ -22,16 +22,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     public static final ClusterArgs Empty = new ClusterArgs();
 
     /**
-     * Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
      * 
      */
     @Import(name="allowShutDown")
     private @Nullable Output<String> allowShutDown;
 
     /**
-     * @return Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
      * 
      */
     public Optional<Output<String>> allowShutDown() {
@@ -186,14 +184,29 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     * The ID of the node or node subscript. Node subscript values: 1 to 15.
+     * 
+     */
+    @Import(name="dbNodeId")
+    private @Nullable Output<String> dbNodeId;
+
+    /**
+     * @return The ID of the node or node subscript. Node subscript values: 1 to 15.
+     * 
+     */
+    public Optional<Output<String>> dbNodeId() {
+        return Optional.ofNullable(this.dbNodeId);
+    }
+
+    /**
+     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
      * 
      */
     @Import(name="dbNodeNum")
     private @Nullable Output<Integer> dbNodeNum;
 
     /**
-     * @return The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     * @return The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
      * 
      */
     public Optional<Output<Integer>> dbNodeNum() {
@@ -344,6 +357,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+     * 
+     */
+    @Import(name="hotReplicaMode")
+    private @Nullable Output<String> hotReplicaMode;
+
+    /**
+     * @return Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+     * 
+     */
+    public Optional<Output<String>> hotReplicaMode() {
+        return Optional.ofNullable(this.hotReplicaMode);
+    }
+
+    /**
      * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
      * 
      */
@@ -378,7 +406,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
      * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
      * 
      */
@@ -386,7 +414,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> loosePolarLogBin;
 
     /**
-     * @return Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * @return Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
      * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
      * 
      */
@@ -395,7 +423,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
      * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      * 
      */
@@ -403,7 +431,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> lowerCaseTableNames;
 
     /**
-     * @return Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * @return Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
      * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      * 
      */
@@ -557,7 +585,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
      * &gt; **NOTE:** This parameter is valid only for standard clusters.
      * 
      */
@@ -565,7 +593,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> proxyType;
 
     /**
-     * @return The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * @return The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
      * &gt; **NOTE:** This parameter is valid only for standard clusters.
      * 
      */
@@ -619,16 +647,44 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     * 
+     */
+    @Import(name="scaleApRoNumMax")
+    private @Nullable Output<Integer> scaleApRoNumMax;
+
+    /**
+     * @return Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     * 
+     */
+    public Optional<Output<Integer>> scaleApRoNumMax() {
+        return Optional.ofNullable(this.scaleApRoNumMax);
+    }
+
+    /**
+     * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     * 
+     */
+    @Import(name="scaleApRoNumMin")
+    private @Nullable Output<Integer> scaleApRoNumMin;
+
+    /**
+     * @return Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     * 
+     */
+    public Optional<Output<Integer>> scaleApRoNumMin() {
+        return Optional.ofNullable(this.scaleApRoNumMin);
+    }
+
+    /**
+     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     @Import(name="scaleMax")
     private @Nullable Output<Integer> scaleMax;
 
     /**
-     * @return The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     public Optional<Output<Integer>> scaleMax() {
@@ -636,16 +692,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
      * 
      */
     @Import(name="scaleMin")
     private @Nullable Output<Integer> scaleMin;
 
     /**
-     * @return The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
      * 
      */
     public Optional<Output<Integer>> scaleMin() {
@@ -653,16 +707,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     @Import(name="scaleRoNumMax")
     private @Nullable Output<Integer> scaleRoNumMax;
 
     /**
-     * @return The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     public Optional<Output<Integer>> scaleRoNumMax() {
@@ -670,16 +722,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     @Import(name="scaleRoNumMin")
     private @Nullable Output<Integer> scaleRoNumMin;
 
     /**
-     * @return The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     public Optional<Output<Integer>> scaleRoNumMin() {
@@ -687,16 +737,14 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
      * 
      */
     @Import(name="secondsUntilAutoPause")
     private @Nullable Output<Integer> secondsUntilAutoPause;
 
     /**
-     * @return The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
      * 
      */
     public Optional<Output<Integer>> secondsUntilAutoPause() {
@@ -738,16 +786,31 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the serverless cluster. Set the value to AgileServerless.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+     * &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+     * 
+     */
+    @Import(name="serverlessSteadySwitch")
+    private @Nullable Output<String> serverlessSteadySwitch;
+
+    /**
+     * @return Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+     * &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+     * 
+     */
+    public Optional<Output<String>> serverlessSteadySwitch() {
+        return Optional.ofNullable(this.serverlessSteadySwitch);
+    }
+
+    /**
+     * The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     @Import(name="serverlessType")
     private @Nullable Output<String> serverlessType;
 
     /**
-     * @return The type of the serverless cluster. Set the value to AgileServerless.
-     * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+     * @return The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
     public Optional<Output<String>> serverlessType() {
@@ -946,6 +1009,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.dbClusterIpArrays = $.dbClusterIpArrays;
         this.dbNodeClass = $.dbNodeClass;
         this.dbNodeCount = $.dbNodeCount;
+        this.dbNodeId = $.dbNodeId;
         this.dbNodeNum = $.dbNodeNum;
         this.dbType = $.dbType;
         this.dbVersion = $.dbVersion;
@@ -956,6 +1020,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.encryptionKey = $.encryptionKey;
         this.fromTimeService = $.fromTimeService;
         this.gdnId = $.gdnId;
+        this.hotReplicaMode = $.hotReplicaMode;
         this.hotStandbyCluster = $.hotStandbyCluster;
         this.imciSwitch = $.imciSwitch;
         this.loosePolarLogBin = $.loosePolarLogBin;
@@ -973,6 +1038,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.renewalStatus = $.renewalStatus;
         this.resourceGroupId = $.resourceGroupId;
         this.roleArn = $.roleArn;
+        this.scaleApRoNumMax = $.scaleApRoNumMax;
+        this.scaleApRoNumMin = $.scaleApRoNumMin;
         this.scaleMax = $.scaleMax;
         this.scaleMin = $.scaleMin;
         this.scaleRoNumMax = $.scaleRoNumMax;
@@ -980,6 +1047,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.secondsUntilAutoPause = $.secondsUntilAutoPause;
         this.securityGroupIds = $.securityGroupIds;
         this.securityIps = $.securityIps;
+        this.serverlessSteadySwitch = $.serverlessSteadySwitch;
         this.serverlessType = $.serverlessType;
         this.sourceResourceId = $.sourceResourceId;
         this.storagePayType = $.storagePayType;
@@ -1013,8 +1081,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowShutDown Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param allowShutDown Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -1025,8 +1092,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowShutDown Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param allowShutDown Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -1247,7 +1313,28 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeNum The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+         * @param dbNodeId The ID of the node or node subscript. Node subscript values: 1 to 15.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbNodeId(@Nullable Output<String> dbNodeId) {
+            $.dbNodeId = dbNodeId;
+            return this;
+        }
+
+        /**
+         * @param dbNodeId The ID of the node or node subscript. Node subscript values: 1 to 15.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbNodeId(String dbNodeId) {
+            return dbNodeId(Output.of(dbNodeId));
+        }
+
+        /**
+         * @param dbNodeNum The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
          * 
          * @return builder
          * 
@@ -1258,7 +1345,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbNodeNum The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+         * @param dbNodeNum The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
          * 
          * @return builder
          * 
@@ -1465,6 +1552,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param hotReplicaMode Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotReplicaMode(@Nullable Output<String> hotReplicaMode) {
+            $.hotReplicaMode = hotReplicaMode;
+            return this;
+        }
+
+        /**
+         * @param hotReplicaMode Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotReplicaMode(String hotReplicaMode) {
+            return hotReplicaMode(Output.of(hotReplicaMode));
+        }
+
+        /**
          * @param hotStandbyCluster Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
          * 
          * @return builder
@@ -1511,7 +1619,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loosePolarLogBin Enable the Binlog function. Valid values are `OFF`, `ON`.
+         * @param loosePolarLogBin Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
          * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
          * 
          * @return builder
@@ -1523,7 +1631,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loosePolarLogBin Enable the Binlog function. Valid values are `OFF`, `ON`.
+         * @param loosePolarLogBin Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
          * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
          * 
          * @return builder
@@ -1534,7 +1642,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lowerCaseTableNames Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+         * @param lowerCaseTableNames Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
          * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
          * 
          * @return builder
@@ -1546,7 +1654,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lowerCaseTableNames Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+         * @param lowerCaseTableNames Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
          * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
          * 
          * @return builder
@@ -1766,7 +1874,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyType The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+         * @param proxyType The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
          * &gt; **NOTE:** This parameter is valid only for standard clusters.
          * 
          * @return builder
@@ -1778,7 +1886,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyType The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+         * @param proxyType The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
          * &gt; **NOTE:** This parameter is valid only for standard clusters.
          * 
          * @return builder
@@ -1852,8 +1960,49 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleMax The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param scaleApRoNumMax Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleApRoNumMax(@Nullable Output<Integer> scaleApRoNumMax) {
+            $.scaleApRoNumMax = scaleApRoNumMax;
+            return this;
+        }
+
+        /**
+         * @param scaleApRoNumMax Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleApRoNumMax(Integer scaleApRoNumMax) {
+            return scaleApRoNumMax(Output.of(scaleApRoNumMax));
+        }
+
+        /**
+         * @param scaleApRoNumMin Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleApRoNumMin(@Nullable Output<Integer> scaleApRoNumMin) {
+            $.scaleApRoNumMin = scaleApRoNumMin;
+            return this;
+        }
+
+        /**
+         * @param scaleApRoNumMin Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleApRoNumMin(Integer scaleApRoNumMin) {
+            return scaleApRoNumMin(Output.of(scaleApRoNumMin));
+        }
+
+        /**
+         * @param scaleMax The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -1864,8 +2013,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleMax The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param scaleMax The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -1875,8 +2023,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleMin The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param scaleMin The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -1887,8 +2034,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleMin The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param scaleMin The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -1898,8 +2044,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleRoNumMax The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param scaleRoNumMax The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -1910,8 +2055,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleRoNumMax The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param scaleRoNumMax The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -1921,8 +2065,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleRoNumMin The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param scaleRoNumMin The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -1933,8 +2076,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scaleRoNumMin The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param scaleRoNumMin The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -1944,8 +2086,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondsUntilAutoPause The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param secondsUntilAutoPause The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -1956,8 +2097,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param secondsUntilAutoPause The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param secondsUntilAutoPause The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -2035,8 +2175,30 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverlessType The type of the serverless cluster. Set the value to AgileServerless.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param serverlessSteadySwitch Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+         * &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessSteadySwitch(@Nullable Output<String> serverlessSteadySwitch) {
+            $.serverlessSteadySwitch = serverlessSteadySwitch;
+            return this;
+        }
+
+        /**
+         * @param serverlessSteadySwitch Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+         * &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverlessSteadySwitch(String serverlessSteadySwitch) {
+            return serverlessSteadySwitch(Output.of(serverlessSteadySwitch));
+        }
+
+        /**
+         * @param serverlessType The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 
@@ -2047,8 +2209,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serverlessType The type of the serverless cluster. Set the value to AgileServerless.
-         * &gt; **NOTE:** This parameter is valid only for serverless clusters.
+         * @param serverlessType The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
          * 
          * @return builder
          * 

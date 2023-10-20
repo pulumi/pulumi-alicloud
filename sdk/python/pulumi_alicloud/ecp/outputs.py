@@ -50,7 +50,19 @@ class GetInstanceTypesInstanceTypeResult(dict):
              instance_type_family: str,
              name: str,
              name_en: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuCoreCount' in kwargs:
+            cpu_core_count = kwargs['cpuCoreCount']
+        if 'defaultResolution' in kwargs:
+            default_resolution = kwargs['defaultResolution']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'instanceTypeFamily' in kwargs:
+            instance_type_family = kwargs['instanceTypeFamily']
+        if 'nameEn' in kwargs:
+            name_en = kwargs['nameEn']
+
         _setter("cpu_core_count", cpu_core_count)
         _setter("default_resolution", default_resolution)
         _setter("instance_type", instance_type)
@@ -170,7 +182,29 @@ class GetInstancesInstanceResult(dict):
              vnc_url: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vncUrl' in kwargs:
+            vnc_url = kwargs['vncUrl']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("description", description)
         _setter("id", id)
         _setter("image_id", image_id)
@@ -319,7 +353,13 @@ class GetKeyPairsPairResult(dict):
              id: str,
              key_pair_finger_print: str,
              key_pair_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyPairFingerPrint' in kwargs:
+            key_pair_finger_print = kwargs['keyPairFingerPrint']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+
         _setter("id", id)
         _setter("key_pair_finger_print", key_pair_finger_print)
         _setter("key_pair_name", key_pair_name)
@@ -364,7 +404,11 @@ class GetZonesZoneResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("zone_id", zone_id)
 
     @property

@@ -92,7 +92,21 @@ class GetCertificatesCertificateResult(dict):
              province: str,
              sans: str,
              start_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'buyInAliyun' in kwargs:
+            buy_in_aliyun = kwargs['buyInAliyun']
+        if 'certId' in kwargs:
+            cert_id = kwargs['certId']
+        if 'certificateName' in kwargs:
+            certificate_name = kwargs['certificateName']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if 'orgName' in kwargs:
+            org_name = kwargs['orgName']
+        if 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         _setter("buy_in_aliyun", buy_in_aliyun)
         _setter("cert", cert)
         _setter("cert_id", cert_id)
@@ -327,7 +341,21 @@ class GetServiceCertificatesCertificateResult(dict):
              province: str,
              sans: str,
              start_date: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'buyInAliyun' in kwargs:
+            buy_in_aliyun = kwargs['buyInAliyun']
+        if 'certId' in kwargs:
+            cert_id = kwargs['certId']
+        if 'certificateName' in kwargs:
+            certificate_name = kwargs['certificateName']
+        if 'endDate' in kwargs:
+            end_date = kwargs['endDate']
+        if 'orgName' in kwargs:
+            org_name = kwargs['orgName']
+        if 'startDate' in kwargs:
+            start_date = kwargs['startDate']
+
         _setter("buy_in_aliyun", buy_in_aliyun)
         _setter("cert", cert)
         _setter("cert_id", cert_id)

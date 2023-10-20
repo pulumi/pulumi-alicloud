@@ -43,7 +43,17 @@ class DomainExtensionArgs:
              load_balancer_id: pulumi.Input[str],
              server_certificate_id: pulumi.Input[str],
              delete_protection_validation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'serverCertificateId' in kwargs:
+            server_certificate_id = kwargs['serverCertificateId']
+        if 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+
         _setter("domain", domain)
         _setter("frontend_port", frontend_port)
         _setter("load_balancer_id", load_balancer_id)
@@ -144,7 +154,17 @@ class _DomainExtensionState:
              frontend_port: Optional[pulumi.Input[int]] = None,
              load_balancer_id: Optional[pulumi.Input[str]] = None,
              server_certificate_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deleteProtectionValidation' in kwargs:
+            delete_protection_validation = kwargs['deleteProtectionValidation']
+        if 'frontendPort' in kwargs:
+            frontend_port = kwargs['frontendPort']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'serverCertificateId' in kwargs:
+            server_certificate_id = kwargs['serverCertificateId']
+
         if delete_protection_validation is not None:
             _setter("delete_protection_validation", delete_protection_validation)
         if domain is not None:

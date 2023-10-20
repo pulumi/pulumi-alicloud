@@ -39,7 +39,17 @@ class HoneyPotArgs:
              honeypot_image_name: pulumi.Input[str],
              honeypot_name: pulumi.Input[str],
              node_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'honeypotImageId' in kwargs:
+            honeypot_image_id = kwargs['honeypotImageId']
+        if 'honeypotImageName' in kwargs:
+            honeypot_image_name = kwargs['honeypotImageName']
+        if 'honeypotName' in kwargs:
+            honeypot_name = kwargs['honeypotName']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+
         _setter("honeypot_image_id", honeypot_image_id)
         _setter("honeypot_image_name", honeypot_image_name)
         _setter("honeypot_name", honeypot_name)
@@ -138,7 +148,21 @@ class _HoneyPotState:
              preset_id: Optional[pulumi.Input[str]] = None,
              states: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'honeypotId' in kwargs:
+            honeypot_id = kwargs['honeypotId']
+        if 'honeypotImageId' in kwargs:
+            honeypot_image_id = kwargs['honeypotImageId']
+        if 'honeypotImageName' in kwargs:
+            honeypot_image_name = kwargs['honeypotImageName']
+        if 'honeypotName' in kwargs:
+            honeypot_name = kwargs['honeypotName']
+        if 'nodeId' in kwargs:
+            node_id = kwargs['nodeId']
+        if 'presetId' in kwargs:
+            preset_id = kwargs['presetId']
+
         if honeypot_id is not None:
             _setter("honeypot_id", honeypot_id)
         if honeypot_image_id is not None:

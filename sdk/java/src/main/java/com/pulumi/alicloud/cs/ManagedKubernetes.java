@@ -29,6 +29,33 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * This resource will help you to manage a ManagedKubernetes Cluster in Alibaba Cloud Kubernetes Service.
+ * 
+ * &gt; **NOTE:** It is recommended to create a cluster with zero worker nodes, and then use a node pool to manage the cluster nodes.
+ * 
+ * &gt; **NOTE:** Kubernetes cluster only supports VPC network and it can access internet while creating kubernetes cluster.
+ * A Nat Gateway and configuring a SNAT for it can ensure one VPC network access internet. If there is no nat gateway in the
+ * VPC, you can set `new_nat_gateway` to &#34;true&#34; to create one automatically.
+ * 
+ * &gt; **NOTE:** Creating kubernetes cluster need to install several packages and it will cost about 15 minutes. Please be patient.
+ * 
+ * &gt; **NOTE:** From version 1.9.4, the provider supports to download kube config, client certificate, client key and cluster ca certificate
+ * after creating cluster successfully, and you can put them into the specified location, like &#39;~/.kube/config&#39;.
+ * 
+ * &gt; **NOTE:** From version 1.20.0, the provider supports disabling internet load balancer for API Server by setting `false` to `slb_internet_enabled`.
+ * 
+ * &gt; **NOTE:** If you want to manage Kubernetes, you can use Kubernetes Provider.
+ * 
+ * &gt; **NOTE:** You need to activate several other products and confirm Authorization Policy used by Container Service before using this resource.
+ * Please refer to the `Authorization management` and `Cluster management` sections in the [Document Center](https://www.alibabacloud.com/help/doc-detail/86488.htm).
+ * 
+ * &gt; **NOTE:** From version 1.72.0, Some parameters have been removed from resource,You can check them below and re-import the cluster if necessary.
+ * 
+ * &gt; **NOTE:** From version 1.120.0, Support for cluster migration from Standard cluster to professional.
+ * 
+ * &gt; **NOTE:** From version 1.177.0+, `runtime`,`enable_ssh`,`rds_instances`,`exclude_autoscaler_nodes`,`worker_number`,`worker_instance_types`,`password`,`key_name`,`kms_encrypted_password`,`kms_encryption_context`,`worker_instance_charge_type`,`worker_period`,`worker_period_unit`,`worker_auto_renew`,`worker_auto_renew_period`,`worker_disk_category`,`worker_disk_size`,`worker_data_disks`,`node_name_mode`,`node_port_range`,`os_type`,`platform`,`image_id`,`cpu_policy`,`user_data`,`taints`,`worker_disk_performance_level`,`worker_disk_snapshot_policy_id`,`install_cloud_monitor` are deprecated.
+ * We Suggest you using resource **`alicloud.cs.NodePool`** to manage your cluster worker nodes.
+ * 
  * ## Import
  * 
  * Kubernetes managed cluster can be imported using the id, e.g. Then complete the main.tf accords to the result of `pulumi preview`.

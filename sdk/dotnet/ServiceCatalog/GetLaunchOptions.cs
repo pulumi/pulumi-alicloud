@@ -12,13 +12,15 @@ namespace Pulumi.AliCloud.ServiceCatalog
     public static class GetLaunchOptions
     {
         /// <summary>
-        /// This data source provides Service Catalog Launch Option available to the user.[What is Launch Option](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listlaunchoptions)
+        /// This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -51,13 +53,15 @@ namespace Pulumi.AliCloud.ServiceCatalog
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLaunchOptionsResult>("alicloud:servicecatalog/getLaunchOptions:getLaunchOptions", args ?? new GetLaunchOptionsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Service Catalog Launch Option available to the user.[What is Launch Option](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-listlaunchoptions)
+        /// This data source provides Service Catalog Launch Option available to the user. [What is Launch Option](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listlaunchoptions).
         /// 
-        /// &gt; **NOTE:** Available in 1.196.0+
+        /// &gt; **NOTE:** Available since v1.196.0.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
+        /// 
+        /// Basic Usage
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -95,6 +99,10 @@ namespace Pulumi.AliCloud.ServiceCatalog
     {
         [Input("ids")]
         private List<string>? _ids;
+
+        /// <summary>
+        /// A list of Launch Option IDs.
+        /// </summary>
         public List<string> Ids
         {
             get => _ids ?? (_ids = new List<string>());
@@ -129,6 +137,10 @@ namespace Pulumi.AliCloud.ServiceCatalog
     {
         [Input("ids")]
         private InputList<string>? _ids;
+
+        /// <summary>
+        /// A list of Launch Option IDs.
+        /// </summary>
         public InputList<string> Ids
         {
             get => _ids ?? (_ids = new InputList<string>());
@@ -169,10 +181,13 @@ namespace Pulumi.AliCloud.ServiceCatalog
         public readonly string Id;
         public readonly ImmutableArray<string> Ids;
         /// <summary>
-        /// A list of Launch Option Entries. Each element contains the following attributes:
+        /// (Available since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLaunchOptionsLaunchOptionResult> LaunchOptions;
         public readonly string? NameRegex;
+        /// <summary>
+        /// (Deprecated since v1.197.0) A list of Launch Option Entries. Each element contains the following attributes:
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetLaunchOptionsOptionResult> Options;
         public readonly string? OutputFile;
         public readonly string ProductId;

@@ -77,7 +77,15 @@ class ClusterDbClusterIpArray(dict):
              db_cluster_ip_array_name: Optional[str] = None,
              modify_mode: Optional[str] = None,
              security_ips: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbClusterIpArrayName' in kwargs:
+            db_cluster_ip_array_name = kwargs['dbClusterIpArrayName']
+        if 'modifyMode' in kwargs:
+            modify_mode = kwargs['modifyMode']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+
         if db_cluster_ip_array_name is not None:
             _setter("db_cluster_ip_array_name", db_cluster_ip_array_name)
         if modify_mode is not None:
@@ -131,7 +139,9 @@ class ClusterParameter(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -190,7 +200,13 @@ class ParameterGroupParameter(dict):
              _setter: Callable[[Any, Any], None],
              param_name: str,
              param_value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'paramName' in kwargs:
+            param_name = kwargs['paramName']
+        if 'paramValue' in kwargs:
+            param_value = kwargs['paramValue']
+
         _setter("param_name", param_name)
         _setter("param_value", param_value)
 
@@ -246,7 +262,21 @@ class GetAccountsAccountResult(dict):
              account_status: str,
              account_type: str,
              database_privileges: Sequence['outputs.GetAccountsAccountDatabasePrivilegeResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountDescription' in kwargs:
+            account_description = kwargs['accountDescription']
+        if 'accountLockState' in kwargs:
+            account_lock_state = kwargs['accountLockState']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountStatus' in kwargs:
+            account_status = kwargs['accountStatus']
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if 'databasePrivileges' in kwargs:
+            database_privileges = kwargs['databasePrivileges']
+
         _setter("account_description", account_description)
         _setter("account_lock_state", account_lock_state)
         _setter("account_name", account_name)
@@ -322,7 +352,13 @@ class GetAccountsAccountDatabasePrivilegeResult(dict):
              _setter: Callable[[Any, Any], None],
              account_privilege: str,
              db_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountPrivilege' in kwargs:
+            account_privilege = kwargs['accountPrivilege']
+        if 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+
         _setter("account_privilege", account_privilege)
         _setter("db_name", db_name)
 
@@ -442,7 +478,41 @@ class GetClustersClusterResult(dict):
              storage_used: int,
              vpc_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if 'dbNodeNumber' in kwargs:
+            db_node_number = kwargs['dbNodeNumber']
+        if 'dbNodes' in kwargs:
+            db_nodes = kwargs['dbNodes']
+        if 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if 'dbVersion' in kwargs:
+            db_version = kwargs['dbVersion']
+        if 'deleteLock' in kwargs:
+            delete_lock = kwargs['deleteLock']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'lockMode' in kwargs:
+            lock_mode = kwargs['lockMode']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'storageUsed' in kwargs:
+            storage_used = kwargs['storageUsed']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("charge_type", charge_type)
         _setter("connection_string", connection_string)
         _setter("create_time", create_time)
@@ -690,7 +760,27 @@ class GetClustersClusterDbNodeResult(dict):
              max_iops: int,
              region_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if 'dbNodeId' in kwargs:
+            db_node_id = kwargs['dbNodeId']
+        if 'dbNodeRole' in kwargs:
+            db_node_role = kwargs['dbNodeRole']
+        if 'dbNodeStatus' in kwargs:
+            db_node_status = kwargs['dbNodeStatus']
+        if 'maxConnections' in kwargs:
+            max_connections = kwargs['maxConnections']
+        if 'maxIops' in kwargs:
+            max_iops = kwargs['maxIops']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("create_time", create_time)
         _setter("db_node_class", db_node_class)
         _setter("db_node_id", db_node_id)
@@ -809,7 +899,17 @@ class GetDatabasesDatabaseResult(dict):
              db_name: str,
              db_status: str,
              engine: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'characterSetName' in kwargs:
+            character_set_name = kwargs['characterSetName']
+        if 'dbDescription' in kwargs:
+            db_description = kwargs['dbDescription']
+        if 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if 'dbStatus' in kwargs:
+            db_status = kwargs['dbStatus']
+
         _setter("accounts", accounts)
         _setter("character_set_name", character_set_name)
         _setter("db_description", db_description)
@@ -889,7 +989,15 @@ class GetDatabasesDatabaseAccountResult(dict):
              account_name: str,
              account_status: str,
              privilege_status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountStatus' in kwargs:
+            account_status = kwargs['accountStatus']
+        if 'privilegeStatus' in kwargs:
+            privilege_status = kwargs['privilegeStatus']
+
         _setter("account_name", account_name)
         _setter("account_status", account_status)
         _setter("privilege_status", privilege_status)
@@ -958,7 +1066,21 @@ class GetEndpointsEndpointResult(dict):
              endpoint_type: str,
              nodes: str,
              read_write_mode: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressItems' in kwargs:
+            address_items = kwargs['addressItems']
+        if 'autoAddNewNodes' in kwargs:
+            auto_add_new_nodes = kwargs['autoAddNewNodes']
+        if 'dbEndpointId' in kwargs:
+            db_endpoint_id = kwargs['dbEndpointId']
+        if 'endpointConfig' in kwargs:
+            endpoint_config = kwargs['endpointConfig']
+        if 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if 'readWriteMode' in kwargs:
+            read_write_mode = kwargs['readWriteMode']
+
         _setter("address_items", address_items)
         _setter("auto_add_new_nodes", auto_add_new_nodes)
         _setter("db_endpoint_id", db_endpoint_id)
@@ -1059,7 +1181,19 @@ class GetEndpointsEndpointAddressItemResult(dict):
              port: str,
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("connection_string", connection_string)
         _setter("ip_address", ip_address)
         _setter("net_type", net_type)
@@ -1159,7 +1293,19 @@ class GetGlobalDatabaseNetworksNetworkResult(dict):
              gdn_id: str,
              id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbClusters' in kwargs:
+            db_clusters = kwargs['dbClusters']
+        if 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if 'dbVersion' in kwargs:
+            db_version = kwargs['dbVersion']
+        if 'gdnId' in kwargs:
+            gdn_id = kwargs['gdnId']
+
         _setter("create_time", create_time)
         _setter("db_clusters", db_clusters)
         _setter("db_type", db_type)
@@ -1257,7 +1403,13 @@ class GetGlobalDatabaseNetworksNetworkDbClusterResult(dict):
              db_cluster_id: str,
              region_id: str,
              role: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("db_cluster_id", db_cluster_id)
         _setter("region_id", region_id)
         _setter("role", role)
@@ -1306,7 +1458,13 @@ class GetNodeClassesClassResult(dict):
              _setter: Callable[[Any, Any], None],
              supported_engines: Sequence['outputs.GetNodeClassesClassSupportedEngineResult'],
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'supportedEngines' in kwargs:
+            supported_engines = kwargs['supportedEngines']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("supported_engines", supported_engines)
         _setter("zone_id", zone_id)
 
@@ -1346,7 +1504,11 @@ class GetNodeClassesClassSupportedEngineResult(dict):
              _setter: Callable[[Any, Any], None],
              available_resources: Sequence['outputs.GetNodeClassesClassSupportedEngineAvailableResourceResult'],
              engine: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availableResources' in kwargs:
+            available_resources = kwargs['availableResources']
+
         _setter("available_resources", available_resources)
         _setter("engine", engine)
 
@@ -1382,7 +1544,11 @@ class GetNodeClassesClassSupportedEngineAvailableResourceResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              db_node_class: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+
         _setter("db_node_class", db_node_class)
 
     @property
@@ -1445,7 +1611,27 @@ class GetParameterGroupsGroupResult(dict):
              parameter_group_id: str,
              parameter_group_name: str,
              parameter_group_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dbType' in kwargs:
+            db_type = kwargs['dbType']
+        if 'dbVersion' in kwargs:
+            db_version = kwargs['dbVersion']
+        if 'forceRestart' in kwargs:
+            force_restart = kwargs['forceRestart']
+        if 'parameterCounts' in kwargs:
+            parameter_counts = kwargs['parameterCounts']
+        if 'parameterGroupDesc' in kwargs:
+            parameter_group_desc = kwargs['parameterGroupDesc']
+        if 'parameterGroupId' in kwargs:
+            parameter_group_id = kwargs['parameterGroupId']
+        if 'parameterGroupName' in kwargs:
+            parameter_group_name = kwargs['parameterGroupName']
+        if 'parameterGroupType' in kwargs:
+            parameter_group_type = kwargs['parameterGroupType']
+
         _setter("create_time", create_time)
         _setter("db_type", db_type)
         _setter("db_version", db_version)
@@ -1557,7 +1743,11 @@ class GetZonesZoneResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              multi_zone_ids: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'multiZoneIds' in kwargs:
+            multi_zone_ids = kwargs['multiZoneIds']
+
         _setter("id", id)
         _setter("multi_zone_ids", multi_zone_ids)
 

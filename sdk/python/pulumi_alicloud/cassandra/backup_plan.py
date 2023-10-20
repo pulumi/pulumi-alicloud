@@ -47,7 +47,19 @@ class BackupPlanArgs:
              active: Optional[pulumi.Input[bool]] = None,
              backup_period: Optional[pulumi.Input[str]] = None,
              retention_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupTime' in kwargs:
+            backup_time = kwargs['backupTime']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'dataCenterId' in kwargs:
+            data_center_id = kwargs['dataCenterId']
+        if 'backupPeriod' in kwargs:
+            backup_period = kwargs['backupPeriod']
+        if 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+
         _setter("backup_time", backup_time)
         _setter("cluster_id", cluster_id)
         _setter("data_center_id", data_center_id)
@@ -167,7 +179,19 @@ class _BackupPlanState:
              cluster_id: Optional[pulumi.Input[str]] = None,
              data_center_id: Optional[pulumi.Input[str]] = None,
              retention_period: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupPeriod' in kwargs:
+            backup_period = kwargs['backupPeriod']
+        if 'backupTime' in kwargs:
+            backup_time = kwargs['backupTime']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'dataCenterId' in kwargs:
+            data_center_id = kwargs['dataCenterId']
+        if 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+
         if active is not None:
             _setter("active", active)
         if backup_period is not None:

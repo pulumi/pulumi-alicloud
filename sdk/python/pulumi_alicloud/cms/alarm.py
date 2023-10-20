@@ -116,7 +116,29 @@ class AlarmArgs:
              threshold: Optional[pulumi.Input[str]] = None,
              triggered_count: Optional[pulumi.Input[int]] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contactGroups' in kwargs:
+            contact_groups = kwargs['contactGroups']
+        if 'effectiveInterval' in kwargs:
+            effective_interval = kwargs['effectiveInterval']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'escalationsCritical' in kwargs:
+            escalations_critical = kwargs['escalationsCritical']
+        if 'escalationsInfo' in kwargs:
+            escalations_info = kwargs['escalationsInfo']
+        if 'escalationsWarn' in kwargs:
+            escalations_warn = kwargs['escalationsWarn']
+        if 'metricDimensions' in kwargs:
+            metric_dimensions = kwargs['metricDimensions']
+        if 'silenceTime' in kwargs:
+            silence_time = kwargs['silenceTime']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'triggeredCount' in kwargs:
+            triggered_count = kwargs['triggeredCount']
+
         _setter("contact_groups", contact_groups)
         _setter("metric", metric)
         _setter("project", project)
@@ -576,7 +598,29 @@ class _AlarmState:
              threshold: Optional[pulumi.Input[str]] = None,
              triggered_count: Optional[pulumi.Input[int]] = None,
              webhook: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contactGroups' in kwargs:
+            contact_groups = kwargs['contactGroups']
+        if 'effectiveInterval' in kwargs:
+            effective_interval = kwargs['effectiveInterval']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'escalationsCritical' in kwargs:
+            escalations_critical = kwargs['escalationsCritical']
+        if 'escalationsInfo' in kwargs:
+            escalations_info = kwargs['escalationsInfo']
+        if 'escalationsWarn' in kwargs:
+            escalations_warn = kwargs['escalationsWarn']
+        if 'metricDimensions' in kwargs:
+            metric_dimensions = kwargs['metricDimensions']
+        if 'silenceTime' in kwargs:
+            silence_time = kwargs['silenceTime']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'triggeredCount' in kwargs:
+            triggered_count = kwargs['triggeredCount']
+
         if contact_groups is not None:
             _setter("contact_groups", contact_groups)
         if dimensions is not None:

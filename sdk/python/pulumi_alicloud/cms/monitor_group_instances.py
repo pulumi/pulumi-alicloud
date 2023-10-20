@@ -33,7 +33,11 @@ class MonitorGroupInstancesArgs:
              _setter: Callable[[Any, Any], None],
              group_id: pulumi.Input[str],
              instances: pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
         _setter("group_id", group_id)
         _setter("instances", instances)
 
@@ -82,7 +86,11 @@ class _MonitorGroupInstancesState:
              _setter: Callable[[Any, Any], None],
              group_id: Optional[pulumi.Input[str]] = None,
              instances: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+
         if group_id is not None:
             _setter("group_id", group_id)
         if instances is not None:

@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Eds
     /// <summary>
     /// Provides a ECD Ad Connector Directory resource.
     /// 
-    /// For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createadconnectordirectory).
+    /// For information about ECD Ad Connector Directory and how to use it, see [What is Ad Connector Directory](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createadconnectordirectory).
     /// 
     /// &gt; **NOTE:** Available since v1.174.0.
     /// 

@@ -3,6 +3,7 @@
 
 package com.pulumi.alicloud.servicemesh.inputs;
 
+import com.pulumi.alicloud.servicemesh.inputs.ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -47,14 +48,29 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * The CPU resource  of the limitsOPA proxy container.
+     * CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+     * 
+     */
+    @Import(name="initCniConfiguration")
+    private @Nullable Output<ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs> initCniConfiguration;
+
+    /**
+     * @return CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+     * 
+     */
+    public Optional<Output<ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs>> initCniConfiguration() {
+        return Optional.ofNullable(this.initCniConfiguration);
+    }
+
+    /**
+     * Sidecar injector Pods on the throttle.
      * 
      */
     @Import(name="limitCpu")
     private @Nullable Output<String> limitCpu;
 
     /**
-     * @return The CPU resource  of the limitsOPA proxy container.
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     public Optional<Output<String>> limitCpu() {
@@ -62,14 +78,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * The memory resource limit of the OPA proxy container.
+     * Sidecar injector Pods on the throttle.
      * 
      */
     @Import(name="limitMemory")
     private @Nullable Output<String> limitMemory;
 
     /**
-     * @return The memory resource limit of the OPA proxy container.
+     * @return Sidecar injector Pods on the throttle.
      * 
      */
     public Optional<Output<String>> limitMemory() {
@@ -77,14 +93,14 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * The CPU resource request of the OPA proxy container.
+     * Sidecar injector Pods on the requested resource.
      * 
      */
     @Import(name="requestCpu")
     private @Nullable Output<String> requestCpu;
 
     /**
-     * @return The CPU resource request of the OPA proxy container.
+     * @return Sidecar injector Pods on the requested resource.
      * 
      */
     public Optional<Output<String>> requestCpu() {
@@ -92,18 +108,33 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     }
 
     /**
-     * The memory resource request of the OPA proxy container.
+     * Sidecar injector Pods on the requested resource.
      * 
      */
     @Import(name="requestMemory")
     private @Nullable Output<String> requestMemory;
 
     /**
-     * @return The memory resource request of the OPA proxy container.
+     * @return Sidecar injector Pods on the requested resource.
      * 
      */
     public Optional<Output<String>> requestMemory() {
         return Optional.ofNullable(this.requestMemory);
+    }
+
+    /**
+     * Other configurations of automatically injected sidecar (in YAML format).
+     * 
+     */
+    @Import(name="sidecarInjectorWebhookAsYaml")
+    private @Nullable Output<String> sidecarInjectorWebhookAsYaml;
+
+    /**
+     * @return Other configurations of automatically injected sidecar (in YAML format).
+     * 
+     */
+    public Optional<Output<String>> sidecarInjectorWebhookAsYaml() {
+        return Optional.ofNullable(this.sidecarInjectorWebhookAsYaml);
     }
 
     private ServiceMeshMeshConfigSidecarInjectorArgs() {}
@@ -111,10 +142,12 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
     private ServiceMeshMeshConfigSidecarInjectorArgs(ServiceMeshMeshConfigSidecarInjectorArgs $) {
         this.autoInjectionPolicyEnabled = $.autoInjectionPolicyEnabled;
         this.enableNamespacesByDefault = $.enableNamespacesByDefault;
+        this.initCniConfiguration = $.initCniConfiguration;
         this.limitCpu = $.limitCpu;
         this.limitMemory = $.limitMemory;
         this.requestCpu = $.requestCpu;
         this.requestMemory = $.requestMemory;
+        this.sidecarInjectorWebhookAsYaml = $.sidecarInjectorWebhookAsYaml;
     }
 
     public static Builder builder() {
@@ -178,7 +211,28 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param limitCpu The CPU resource  of the limitsOPA proxy container.
+         * @param initCniConfiguration CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initCniConfiguration(@Nullable Output<ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs> initCniConfiguration) {
+            $.initCniConfiguration = initCniConfiguration;
+            return this;
+        }
+
+        /**
+         * @param initCniConfiguration CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initCniConfiguration(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs initCniConfiguration) {
+            return initCniConfiguration(Output.of(initCniConfiguration));
+        }
+
+        /**
+         * @param limitCpu Sidecar injector Pods on the throttle.
          * 
          * @return builder
          * 
@@ -189,7 +243,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param limitCpu The CPU resource  of the limitsOPA proxy container.
+         * @param limitCpu Sidecar injector Pods on the throttle.
          * 
          * @return builder
          * 
@@ -199,7 +253,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param limitMemory The memory resource limit of the OPA proxy container.
+         * @param limitMemory Sidecar injector Pods on the throttle.
          * 
          * @return builder
          * 
@@ -210,7 +264,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param limitMemory The memory resource limit of the OPA proxy container.
+         * @param limitMemory Sidecar injector Pods on the throttle.
          * 
          * @return builder
          * 
@@ -220,7 +274,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param requestCpu The CPU resource request of the OPA proxy container.
+         * @param requestCpu Sidecar injector Pods on the requested resource.
          * 
          * @return builder
          * 
@@ -231,7 +285,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param requestCpu The CPU resource request of the OPA proxy container.
+         * @param requestCpu Sidecar injector Pods on the requested resource.
          * 
          * @return builder
          * 
@@ -241,7 +295,7 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param requestMemory The memory resource request of the OPA proxy container.
+         * @param requestMemory Sidecar injector Pods on the requested resource.
          * 
          * @return builder
          * 
@@ -252,13 +306,34 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
         }
 
         /**
-         * @param requestMemory The memory resource request of the OPA proxy container.
+         * @param requestMemory Sidecar injector Pods on the requested resource.
          * 
          * @return builder
          * 
          */
         public Builder requestMemory(String requestMemory) {
             return requestMemory(Output.of(requestMemory));
+        }
+
+        /**
+         * @param sidecarInjectorWebhookAsYaml Other configurations of automatically injected sidecar (in YAML format).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sidecarInjectorWebhookAsYaml(@Nullable Output<String> sidecarInjectorWebhookAsYaml) {
+            $.sidecarInjectorWebhookAsYaml = sidecarInjectorWebhookAsYaml;
+            return this;
+        }
+
+        /**
+         * @param sidecarInjectorWebhookAsYaml Other configurations of automatically injected sidecar (in YAML format).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sidecarInjectorWebhookAsYaml(String sidecarInjectorWebhookAsYaml) {
+            return sidecarInjectorWebhookAsYaml(Output.of(sidecarInjectorWebhookAsYaml));
         }
 
         public ServiceMeshMeshConfigSidecarInjectorArgs build() {

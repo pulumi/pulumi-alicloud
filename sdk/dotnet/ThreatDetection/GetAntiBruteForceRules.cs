@@ -12,17 +12,17 @@ namespace Pulumi.AliCloud.ThreatDetection
     public static class GetAntiBruteForceRules
     {
         /// <summary>
-        /// This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule)
+        /// This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// </summary>
         public static Task<GetAntiBruteForceRulesResult> InvokeAsync(GetAntiBruteForceRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAntiBruteForceRulesResult>("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", args ?? new GetAntiBruteForceRulesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule)
+        /// This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
         /// 
-        /// &gt; **NOTE:** Available in 1.195.0+
+        /// &gt; **NOTE:** Available since v1.195.0.
         /// </summary>
         public static Output<GetAntiBruteForceRulesResult> Invoke(GetAntiBruteForceRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAntiBruteForceRulesResult>("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", args ?? new GetAntiBruteForceRulesInvokeArgs(), options.WithDefaults());

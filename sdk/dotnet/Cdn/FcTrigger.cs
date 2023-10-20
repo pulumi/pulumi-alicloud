@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Cdn
     /// <summary>
     /// Provides a CDN Fc Trigger resource.
     /// 
-    /// For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger).
+    /// For information about CDN Fc Trigger and how to use it, see [What is Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger).
     /// 
     /// &gt; **NOTE:** Available in v1.165.0+.
     /// 
@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Cdn
         public Output<string> SourceArn { get; private set; } = null!;
 
         /// <summary>
-        /// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+        /// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
         /// </summary>
         [Output("triggerArn")]
         public Output<string> TriggerArn { get; private set; } = null!;
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string> SourceArn { get; set; } = null!;
 
         /// <summary>
-        /// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+        /// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
         /// </summary>
         [Input("triggerArn", required: true)]
         public Input<string> TriggerArn { get; set; } = null!;
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Cdn
         public Input<string>? SourceArn { get; set; }
 
         /// <summary>
-        /// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/zh/alibaba-cloud-cdn/latest/add-function-calculation-trigger) for more details.
+        /// The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
         /// </summary>
         [Input("triggerArn")]
         public Input<string>? TriggerArn { get; set; }

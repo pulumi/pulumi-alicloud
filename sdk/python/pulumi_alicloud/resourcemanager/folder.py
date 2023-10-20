@@ -31,7 +31,13 @@ class FolderArgs:
              _setter: Callable[[Any, Any], None],
              folder_name: pulumi.Input[str],
              parent_folder_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'folderName' in kwargs:
+            folder_name = kwargs['folderName']
+        if 'parentFolderId' in kwargs:
+            parent_folder_id = kwargs['parentFolderId']
+
         _setter("folder_name", folder_name)
         if parent_folder_id is not None:
             _setter("parent_folder_id", parent_folder_id)
@@ -81,7 +87,13 @@ class _FolderState:
              _setter: Callable[[Any, Any], None],
              folder_name: Optional[pulumi.Input[str]] = None,
              parent_folder_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'folderName' in kwargs:
+            folder_name = kwargs['folderName']
+        if 'parentFolderId' in kwargs:
+            parent_folder_id = kwargs['parentFolderId']
+
         if folder_name is not None:
             _setter("folder_name", folder_name)
         if parent_folder_id is not None:

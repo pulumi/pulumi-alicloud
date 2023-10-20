@@ -239,7 +239,77 @@ class ReadOnlyInstanceArgs:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              whitelist_network_type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'instanceStorage' in kwargs:
+            instance_storage = kwargs['instanceStorage']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'masterDbInstanceId' in kwargs:
+            master_db_instance_id = kwargs['masterDbInstanceId']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'caType' in kwargs:
+            ca_type = kwargs['caType']
+        if 'clientCaCert' in kwargs:
+            client_ca_cert = kwargs['clientCaCert']
+        if 'clientCaEnabled' in kwargs:
+            client_ca_enabled = kwargs['clientCaEnabled']
+        if 'clientCertRevocationList' in kwargs:
+            client_cert_revocation_list = kwargs['clientCertRevocationList']
+        if 'clientCrlEnabled' in kwargs:
+            client_crl_enabled = kwargs['clientCrlEnabled']
+        if 'dbInstanceIpArrayAttribute' in kwargs:
+            db_instance_ip_array_attribute = kwargs['dbInstanceIpArrayAttribute']
+        if 'dbInstanceIpArrayName' in kwargs:
+            db_instance_ip_array_name = kwargs['dbInstanceIpArrayName']
+        if 'dbInstanceStorageType' in kwargs:
+            db_instance_storage_type = kwargs['dbInstanceStorageType']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'forceRestart' in kwargs:
+            force_restart = kwargs['forceRestart']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'modifyMode' in kwargs:
+            modify_mode = kwargs['modifyMode']
+        if 'replicationAcl' in kwargs:
+            replication_acl = kwargs['replicationAcl']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityIpType' in kwargs:
+            security_ip_type = kwargs['securityIpType']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'serverCert' in kwargs:
+            server_cert = kwargs['serverCert']
+        if 'serverKey' in kwargs:
+            server_key = kwargs['serverKey']
+        if 'sslEnabled' in kwargs:
+            ssl_enabled = kwargs['sslEnabled']
+        if 'switchTime' in kwargs:
+            switch_time = kwargs['switchTime']
+        if 'targetMinorVersion' in kwargs:
+            target_minor_version = kwargs['targetMinorVersion']
+        if 'upgradeDbInstanceKernelVersion' in kwargs:
+            upgrade_db_instance_kernel_version = kwargs['upgradeDbInstanceKernelVersion']
+        if 'upgradeTime' in kwargs:
+            upgrade_time = kwargs['upgradeTime']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'whitelistNetworkType' in kwargs:
+            whitelist_network_type = kwargs['whitelistNetworkType']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("engine_version", engine_version)
         _setter("instance_storage", instance_storage)
         _setter("instance_type", instance_type)
@@ -1080,7 +1150,79 @@ class _ReadOnlyInstanceState:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              whitelist_network_type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'caType' in kwargs:
+            ca_type = kwargs['caType']
+        if 'clientCaCert' in kwargs:
+            client_ca_cert = kwargs['clientCaCert']
+        if 'clientCaEnabled' in kwargs:
+            client_ca_enabled = kwargs['clientCaEnabled']
+        if 'clientCertRevocationList' in kwargs:
+            client_cert_revocation_list = kwargs['clientCertRevocationList']
+        if 'clientCrlEnabled' in kwargs:
+            client_crl_enabled = kwargs['clientCrlEnabled']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'dbInstanceIpArrayAttribute' in kwargs:
+            db_instance_ip_array_attribute = kwargs['dbInstanceIpArrayAttribute']
+        if 'dbInstanceIpArrayName' in kwargs:
+            db_instance_ip_array_name = kwargs['dbInstanceIpArrayName']
+        if 'dbInstanceStorageType' in kwargs:
+            db_instance_storage_type = kwargs['dbInstanceStorageType']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'forceRestart' in kwargs:
+            force_restart = kwargs['forceRestart']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceStorage' in kwargs:
+            instance_storage = kwargs['instanceStorage']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'masterDbInstanceId' in kwargs:
+            master_db_instance_id = kwargs['masterDbInstanceId']
+        if 'modifyMode' in kwargs:
+            modify_mode = kwargs['modifyMode']
+        if 'replicationAcl' in kwargs:
+            replication_acl = kwargs['replicationAcl']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityIpType' in kwargs:
+            security_ip_type = kwargs['securityIpType']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'serverCert' in kwargs:
+            server_cert = kwargs['serverCert']
+        if 'serverKey' in kwargs:
+            server_key = kwargs['serverKey']
+        if 'sslEnabled' in kwargs:
+            ssl_enabled = kwargs['sslEnabled']
+        if 'switchTime' in kwargs:
+            switch_time = kwargs['switchTime']
+        if 'targetMinorVersion' in kwargs:
+            target_minor_version = kwargs['targetMinorVersion']
+        if 'upgradeDbInstanceKernelVersion' in kwargs:
+            upgrade_db_instance_kernel_version = kwargs['upgradeDbInstanceKernelVersion']
+        if 'upgradeTime' in kwargs:
+            upgrade_time = kwargs['upgradeTime']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'whitelistNetworkType' in kwargs:
+            whitelist_network_type = kwargs['whitelistNetworkType']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if acl is not None:
             _setter("acl", acl)
         if auto_renew is not None:

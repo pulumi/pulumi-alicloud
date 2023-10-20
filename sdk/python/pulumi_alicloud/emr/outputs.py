@@ -88,7 +88,15 @@ class ClusterBootstrapAction(dict):
              execution_target: Optional[str] = None,
              name: Optional[str] = None,
              path: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executionFailStrategy' in kwargs:
+            execution_fail_strategy = kwargs['executionFailStrategy']
+        if 'executionMoment' in kwargs:
+            execution_moment = kwargs['executionMoment']
+        if 'executionTarget' in kwargs:
+            execution_target = kwargs['executionTarget']
+
         if arg is not None:
             _setter("arg", arg)
         if execution_fail_strategy is not None:
@@ -201,7 +209,17 @@ class ClusterConfig(dict):
              config_value: str,
              file_name: str,
              service_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configKey' in kwargs:
+            config_key = kwargs['configKey']
+        if 'configValue' in kwargs:
+            config_value = kwargs['configValue']
+        if 'fileName' in kwargs:
+            file_name = kwargs['fileName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         _setter("config_key", config_key)
         _setter("config_value", config_value)
         _setter("file_name", file_name)
@@ -359,7 +377,39 @@ class ClusterHostGroup(dict):
              period: Optional[int] = None,
              sys_disk_capacity: Optional[str] = None,
              sys_disk_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if 'decommissionTimeout' in kwargs:
+            decommission_timeout = kwargs['decommissionTimeout']
+        if 'diskCapacity' in kwargs:
+            disk_capacity = kwargs['diskCapacity']
+        if 'diskCount' in kwargs:
+            disk_count = kwargs['diskCount']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'enableGracefulDecommission' in kwargs:
+            enable_graceful_decommission = kwargs['enableGracefulDecommission']
+        if 'gpuDriver' in kwargs:
+            gpu_driver = kwargs['gpuDriver']
+        if 'hostGroupName' in kwargs:
+            host_group_name = kwargs['hostGroupName']
+        if 'hostGroupType' in kwargs:
+            host_group_type = kwargs['hostGroupType']
+        if 'instanceList' in kwargs:
+            instance_list = kwargs['instanceList']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if 'sysDiskCapacity' in kwargs:
+            sys_disk_capacity = kwargs['sysDiskCapacity']
+        if 'sysDiskType' in kwargs:
+            sys_disk_type = kwargs['sysDiskType']
+
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
         if charge_type is not None:
@@ -563,7 +613,15 @@ class ClusterMetaStoreConf(dict):
              db_password: str,
              db_url: str,
              db_user_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbPassword' in kwargs:
+            db_password = kwargs['dbPassword']
+        if 'dbUrl' in kwargs:
+            db_url = kwargs['dbUrl']
+        if 'dbUserName' in kwargs:
+            db_user_name = kwargs['dbUserName']
+
         _setter("db_password", db_password)
         _setter("db_url", db_url)
         _setter("db_user_name", db_user_name)
@@ -671,7 +729,25 @@ class ClusterModifyClusterServiceConfig(dict):
              group_id: Optional[str] = None,
              host_instance_id: Optional[str] = None,
              refresh_host_config: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configParams' in kwargs:
+            config_params = kwargs['configParams']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'configType' in kwargs:
+            config_type = kwargs['configType']
+        if 'customConfigParams' in kwargs:
+            custom_config_params = kwargs['customConfigParams']
+        if 'gatewayClusterIdLists' in kwargs:
+            gateway_cluster_id_lists = kwargs['gatewayClusterIdLists']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'hostInstanceId' in kwargs:
+            host_instance_id = kwargs['hostInstanceId']
+        if 'refreshHostConfig' in kwargs:
+            refresh_host_config = kwargs['refreshHostConfig']
+
         _setter("config_params", config_params)
         _setter("service_name", service_name)
         if comment is not None:
@@ -947,7 +1023,87 @@ class GetClustersClusterResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessInfos' in kwargs:
+            access_infos = kwargs['accessInfos']
+        if 'autoScalingAllowed' in kwargs:
+            auto_scaling_allowed = kwargs['autoScalingAllowed']
+        if 'autoScalingByLoadAllowed' in kwargs:
+            auto_scaling_by_load_allowed = kwargs['autoScalingByLoadAllowed']
+        if 'autoScalingEnable' in kwargs:
+            auto_scaling_enable = kwargs['autoScalingEnable']
+        if 'autoScalingSpotWithLimitAllowed' in kwargs:
+            auto_scaling_spot_with_limit_allowed = kwargs['autoScalingSpotWithLimitAllowed']
+        if 'bootstrapActionLists' in kwargs:
+            bootstrap_action_lists = kwargs['bootstrapActionLists']
+        if 'bootstrapFailed' in kwargs:
+            bootstrap_failed = kwargs['bootstrapFailed']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'createResource' in kwargs:
+            create_resource = kwargs['createResource']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'createType' in kwargs:
+            create_type = kwargs['createType']
+        if 'depositType' in kwargs:
+            deposit_type = kwargs['depositType']
+        if 'easEnable' in kwargs:
+            eas_enable = kwargs['easEnable']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'extraInfo' in kwargs:
+            extra_info = kwargs['extraInfo']
+        if 'hasUncompletedOrder' in kwargs:
+            has_uncompleted_order = kwargs['hasUncompletedOrder']
+        if 'highAvailabilityEnable' in kwargs:
+            high_availability_enable = kwargs['highAvailabilityEnable']
+        if 'hostGroupLists' in kwargs:
+            host_group_lists = kwargs['hostGroupLists']
+        if 'hostPoolInfos' in kwargs:
+            host_pool_infos = kwargs['hostPoolInfos']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'localMetaDb' in kwargs:
+            local_meta_db = kwargs['localMetaDb']
+        if 'machineType' in kwargs:
+            machine_type = kwargs['machineType']
+        if 'metaStoreType' in kwargs:
+            meta_store_type = kwargs['metaStoreType']
+        if 'netType' in kwargs:
+            net_type = kwargs['netType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'relateClusterInfos' in kwargs:
+            relate_cluster_infos = kwargs['relateClusterInfos']
+        if 'resizeDiskEnable' in kwargs:
+            resize_disk_enable = kwargs['resizeDiskEnable']
+        if 'runningTime' in kwargs:
+            running_time = kwargs['runningTime']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityGroupName' in kwargs:
+            security_group_name = kwargs['securityGroupName']
+        if 'softwareInfos' in kwargs:
+            software_infos = kwargs['softwareInfos']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'stopTime' in kwargs:
+            stop_time = kwargs['stopTime']
+        if 'userDefinedEmrEcsRole' in kwargs:
+            user_defined_emr_ecs_role = kwargs['userDefinedEmrEcsRole']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("access_infos", access_infos)
         _setter("auto_scaling_allowed", auto_scaling_allowed)
         _setter("auto_scaling_by_load_allowed", auto_scaling_by_load_allowed)
@@ -1355,7 +1511,11 @@ class GetClustersClusterAccessInfoResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              zk_links: Sequence['outputs.GetClustersClusterAccessInfoZkLinkResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zkLinks' in kwargs:
+            zk_links = kwargs['zkLinks']
+
         _setter("zk_links", zk_links)
 
     @property
@@ -1386,7 +1546,9 @@ class GetClustersClusterAccessInfoZkLinkResult(dict):
              _setter: Callable[[Any, Any], None],
              link: str,
              port: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("link", link)
         _setter("port", port)
 
@@ -1430,7 +1592,9 @@ class GetClustersClusterBootstrapActionListResult(dict):
              arg: str,
              name: str,
              path: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("arg", arg)
         _setter("name", name)
         _setter("path", path)
@@ -1531,7 +1695,35 @@ class GetClustersClusterHostGroupListResult(dict):
              node_count: int,
              nodes: Sequence['outputs.GetClustersClusterHostGroupListNodeResult'],
              period: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandWidth' in kwargs:
+            band_width = kwargs['bandWidth']
+        if 'chargeType' in kwargs:
+            charge_type = kwargs['chargeType']
+        if 'cpuCore' in kwargs:
+            cpu_core = kwargs['cpuCore']
+        if 'diskCapacity' in kwargs:
+            disk_capacity = kwargs['diskCapacity']
+        if 'diskCount' in kwargs:
+            disk_count = kwargs['diskCount']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'hostGroupChangeType' in kwargs:
+            host_group_change_type = kwargs['hostGroupChangeType']
+        if 'hostGroupId' in kwargs:
+            host_group_id = kwargs['hostGroupId']
+        if 'hostGroupName' in kwargs:
+            host_group_name = kwargs['hostGroupName']
+        if 'hostGroupType' in kwargs:
+            host_group_type = kwargs['hostGroupType']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'memoryCapacity' in kwargs:
+            memory_capacity = kwargs['memoryCapacity']
+        if 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+
         _setter("band_width", band_width)
         _setter("charge_type", charge_type)
         _setter("cpu_core", cpu_core)
@@ -1720,7 +1912,27 @@ class GetClustersClusterHostGroupListNodeResult(dict):
              status: str,
              support_ipv6: bool,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'diskInfos' in kwargs:
+            disk_infos = kwargs['diskInfos']
+        if 'emrExpiredTime' in kwargs:
+            emr_expired_time = kwargs['emrExpiredTime']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'innerIp' in kwargs:
+            inner_ip = kwargs['innerIp']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'pubIp' in kwargs:
+            pub_ip = kwargs['pubIp']
+        if 'supportIpv6' in kwargs:
+            support_ipv6 = kwargs['supportIpv6']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("create_time", create_time)
         _setter("disk_infos", disk_infos)
         _setter("emr_expired_time", emr_expired_time)
@@ -1844,7 +2056,13 @@ class GetClustersClusterHostGroupListNodeDiskInfoResult(dict):
              disk_name: str,
              size: int,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'diskName' in kwargs:
+            disk_name = kwargs['diskName']
+
         _setter("device", device)
         _setter("disk_id", disk_id)
         _setter("disk_name", disk_name)
@@ -1911,7 +2129,13 @@ class GetClustersClusterHostPoolInfoResult(dict):
              _setter: Callable[[Any, Any], None],
              hp_biz_id: str,
              hp_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hpBizId' in kwargs:
+            hp_biz_id = kwargs['hpBizId']
+        if 'hpName' in kwargs:
+            hp_name = kwargs['hpName']
+
         _setter("hp_biz_id", hp_biz_id)
         _setter("hp_name", hp_name)
 
@@ -1959,7 +2183,15 @@ class GetClustersClusterRelateClusterInfoResult(dict):
              cluster_name: str,
              cluster_type: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+
         _setter("cluster_id", cluster_id)
         _setter("cluster_name", cluster_name)
         _setter("cluster_type", cluster_type)
@@ -2021,7 +2253,13 @@ class GetClustersClusterSoftwareInfoResult(dict):
              cluster_type: str,
              emr_ver: str,
              softwares: Sequence['outputs.GetClustersClusterSoftwareInfoSoftwareResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'emrVer' in kwargs:
+            emr_ver = kwargs['emrVer']
+
         _setter("cluster_type", cluster_type)
         _setter("emr_ver", emr_ver)
         _setter("softwares", softwares)
@@ -2082,7 +2320,15 @@ class GetClustersClusterSoftwareInfoSoftwareResult(dict):
              only_display: bool,
              start_tpe: int,
              version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'onlyDisplay' in kwargs:
+            only_display = kwargs['onlyDisplay']
+        if 'startTpe' in kwargs:
+            start_tpe = kwargs['startTpe']
+
         _setter("display_name", display_name)
         _setter("name", name)
         _setter("only_display", only_display)
@@ -2153,7 +2399,9 @@ class GetDiskTypesTypeResult(dict):
              max: int,
              min: int,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("max", max)
         _setter("min", min)
         _setter("value", value)
@@ -2206,7 +2454,13 @@ class GetInstanceTypesTypeResult(dict):
              id: str,
              local_storage_capacity: int,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localStorageCapacity' in kwargs:
+            local_storage_capacity = kwargs['localStorageCapacity']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("id", id)
         _setter("local_storage_capacity", local_storage_capacity)
         _setter("zone_id", zone_id)
@@ -2259,7 +2513,15 @@ class GetMainVersionsMainVersionResult(dict):
              cluster_types: Sequence[str],
              emr_version: str,
              image_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterTypes' in kwargs:
+            cluster_types = kwargs['clusterTypes']
+        if 'emrVersion' in kwargs:
+            emr_version = kwargs['emrVersion']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+
         _setter("cluster_types", cluster_types)
         _setter("emr_version", emr_version)
         _setter("image_id", image_id)

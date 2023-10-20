@@ -47,7 +47,19 @@ class PatchBaselineArgs:
              description: Optional[pulumi.Input[str]] = None,
              rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              rejected_patches_action: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'approvalRules' in kwargs:
+            approval_rules = kwargs['approvalRules']
+        if 'operationSystem' in kwargs:
+            operation_system = kwargs['operationSystem']
+        if 'patchBaselineName' in kwargs:
+            patch_baseline_name = kwargs['patchBaselineName']
+        if 'rejectedPatches' in kwargs:
+            rejected_patches = kwargs['rejectedPatches']
+        if 'rejectedPatchesAction' in kwargs:
+            rejected_patches_action = kwargs['rejectedPatchesAction']
+
         _setter("approval_rules", approval_rules)
         _setter("operation_system", operation_system)
         _setter("patch_baseline_name", patch_baseline_name)
@@ -171,7 +183,21 @@ class _PatchBaselineState:
              patch_baseline_name: Optional[pulumi.Input[str]] = None,
              rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              rejected_patches_action: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'approvalRules' in kwargs:
+            approval_rules = kwargs['approvalRules']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'operationSystem' in kwargs:
+            operation_system = kwargs['operationSystem']
+        if 'patchBaselineName' in kwargs:
+            patch_baseline_name = kwargs['patchBaselineName']
+        if 'rejectedPatches' in kwargs:
+            rejected_patches = kwargs['rejectedPatches']
+        if 'rejectedPatchesAction' in kwargs:
+            rejected_patches_action = kwargs['rejectedPatchesAction']
+
         if approval_rules is not None:
             _setter("approval_rules", approval_rules)
         if create_time is not None:

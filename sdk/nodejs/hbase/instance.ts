@@ -135,7 +135,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly engine!: pulumi.Output<string | undefined>;
     /**
-     * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+     * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
@@ -345,7 +345,7 @@ export interface InstanceState {
      */
     engine?: pulumi.Input<string>;
     /**
-     * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+     * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
      */
     engineVersion?: pulumi.Input<string>;
     /**
@@ -468,7 +468,7 @@ export interface InstanceArgs {
      */
     engine?: pulumi.Input<string>;
     /**
-     * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://help.aliyun.com/document_detail/144607.html).
+     * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
      */
     engineVersion: pulumi.Input<string>;
     /**

@@ -152,9 +152,9 @@ def get_assets(criteria: Optional[str] = None,
                page_size: Optional[int] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAssetsResult:
     """
-    This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describecloudcenterinstances)
+    This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -221,9 +221,9 @@ def get_assets_output(criteria: Optional[pulumi.Input[Optional[str]]] = None,
                       page_size: Optional[pulumi.Input[Optional[int]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAssetsResult]:
     """
-    This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describecloudcenterinstances)
+    This data source provides Threat Detection Asset available to the user.[What is Asset](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describecloudcenterinstances)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 

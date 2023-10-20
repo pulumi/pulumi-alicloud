@@ -71,7 +71,27 @@ class FlowLogArgs:
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              traffic_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'logStoreName' in kwargs:
+            log_store_name = kwargs['logStoreName']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'trafficType' in kwargs:
+            traffic_type = kwargs['trafficType']
+        if 'aggregationInterval' in kwargs:
+            aggregation_interval = kwargs['aggregationInterval']
+        if 'flowLogName' in kwargs:
+            flow_log_name = kwargs['flowLogName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'trafficPaths' in kwargs:
+            traffic_paths = kwargs['trafficPaths']
+
         _setter("log_store_name", log_store_name)
         _setter("project_name", project_name)
         _setter("resource_id", resource_id)
@@ -309,7 +329,33 @@ class _FlowLogState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              traffic_paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              traffic_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aggregationInterval' in kwargs:
+            aggregation_interval = kwargs['aggregationInterval']
+        if 'businessStatus' in kwargs:
+            business_status = kwargs['businessStatus']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'flowLogId' in kwargs:
+            flow_log_id = kwargs['flowLogId']
+        if 'flowLogName' in kwargs:
+            flow_log_name = kwargs['flowLogName']
+        if 'logStoreName' in kwargs:
+            log_store_name = kwargs['logStoreName']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'trafficPaths' in kwargs:
+            traffic_paths = kwargs['trafficPaths']
+        if 'trafficType' in kwargs:
+            traffic_type = kwargs['trafficType']
+
         if aggregation_interval is not None:
             _setter("aggregation_interval", aggregation_interval)
         if business_status is not None:

@@ -85,7 +85,27 @@ class InstanceArgs:
              engine_type: Optional[pulumi.Input[str]] = None,
              instance_alias: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'instanceStorage' in kwargs:
+            instance_storage = kwargs['instanceStorage']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'appKey' in kwargs:
+            app_key = kwargs['appKey']
+        if 'diskCategory' in kwargs:
+            disk_category = kwargs['diskCategory']
+        if 'engineType' in kwargs:
+            engine_type = kwargs['engineType']
+        if 'instanceAlias' in kwargs:
+            instance_alias = kwargs['instanceAlias']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("instance_class", instance_class)
         _setter("instance_storage", instance_storage)
         _setter("payment_type", payment_type)
@@ -324,7 +344,27 @@ class _InstanceState:
              status: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appKey' in kwargs:
+            app_key = kwargs['appKey']
+        if 'diskCategory' in kwargs:
+            disk_category = kwargs['diskCategory']
+        if 'engineType' in kwargs:
+            engine_type = kwargs['engineType']
+        if 'instanceAlias' in kwargs:
+            instance_alias = kwargs['instanceAlias']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'instanceStorage' in kwargs:
+            instance_storage = kwargs['instanceStorage']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if app_key is not None:
             _setter("app_key", app_key)
         if disk_category is not None:

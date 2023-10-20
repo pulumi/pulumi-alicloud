@@ -65,7 +65,23 @@ class GetGatewaysGatewayResult(dict):
              parent_id: str,
              status: str,
              user_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'gatewayDesc' in kwargs:
+            gateway_desc = kwargs['gatewayDesc']
+        if 'gatewayInstances' in kwargs:
+            gateway_instances = kwargs['gatewayInstances']
+        if 'gatewayName' in kwargs:
+            gateway_name = kwargs['gatewayName']
+        if 'modifiedTime' in kwargs:
+            modified_time = kwargs['modifiedTime']
+        if 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("create_time", create_time)
         _setter("gateway_desc", gateway_desc)
         _setter("gateway_instances", gateway_instances)
@@ -206,7 +222,27 @@ class GetGatewaysGatewayGatewayInstanceResult(dict):
              local_ip: str,
              message: str,
              output_ip: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectEndpointType' in kwargs:
+            connect_endpoint_type = kwargs['connectEndpointType']
+        if 'currentDaemonVersion' in kwargs:
+            current_daemon_version = kwargs['currentDaemonVersion']
+        if 'currentVersion' in kwargs:
+            current_version = kwargs['currentVersion']
+        if 'endPoint' in kwargs:
+            end_point = kwargs['endPoint']
+        if 'gatewayInstanceId' in kwargs:
+            gateway_instance_id = kwargs['gatewayInstanceId']
+        if 'gatewayInstanceStatus' in kwargs:
+            gateway_instance_status = kwargs['gatewayInstanceStatus']
+        if 'lastUpdateTime' in kwargs:
+            last_update_time = kwargs['lastUpdateTime']
+        if 'localIp' in kwargs:
+            local_ip = kwargs['localIp']
+        if 'outputIp' in kwargs:
+            output_ip = kwargs['outputIp']
+
         _setter("connect_endpoint_type", connect_endpoint_type)
         _setter("current_daemon_version", current_daemon_version)
         _setter("current_version", current_version)

@@ -69,7 +69,15 @@ class AccessConfigurationPermissionPolicy(dict):
              permission_policy_name: str,
              permission_policy_type: str,
              permission_policy_document: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'permissionPolicyName' in kwargs:
+            permission_policy_name = kwargs['permissionPolicyName']
+        if 'permissionPolicyType' in kwargs:
+            permission_policy_type = kwargs['permissionPolicyType']
+        if 'permissionPolicyDocument' in kwargs:
+            permission_policy_document = kwargs['permissionPolicyDocument']
+
         _setter("permission_policy_name", permission_policy_name)
         _setter("permission_policy_type", permission_policy_type)
         if permission_policy_document is not None:
@@ -138,7 +146,13 @@ class DirectorySamlIdentityProviderConfiguration(dict):
              _setter: Callable[[Any, Any], None],
              encoded_metadata_document: Optional[str] = None,
              sso_status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encodedMetadataDocument' in kwargs:
+            encoded_metadata_document = kwargs['encodedMetadataDocument']
+        if 'ssoStatus' in kwargs:
+            sso_status = kwargs['ssoStatus']
+
         if encoded_metadata_document is not None:
             _setter("encoded_metadata_document", encoded_metadata_document)
         if sso_status is not None:
@@ -216,7 +230,29 @@ class GetAccessAssignmentsAssignmentResult(dict):
              target_name: str,
              target_path_name: str,
              target_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessConfigurationId' in kwargs:
+            access_configuration_id = kwargs['accessConfigurationId']
+        if 'accessConfigurationName' in kwargs:
+            access_configuration_name = kwargs['accessConfigurationName']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'principalId' in kwargs:
+            principal_id = kwargs['principalId']
+        if 'principalName' in kwargs:
+            principal_name = kwargs['principalName']
+        if 'principalType' in kwargs:
+            principal_type = kwargs['principalType']
+        if 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+        if 'targetName' in kwargs:
+            target_name = kwargs['targetName']
+        if 'targetPathName' in kwargs:
+            target_path_name = kwargs['targetPathName']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+
         _setter("access_configuration_id", access_configuration_id)
         _setter("access_configuration_name", access_configuration_name)
         _setter("directory_id", directory_id)
@@ -369,7 +405,25 @@ class GetAccessConfigurationsConfigurationResult(dict):
              relay_state: str,
              session_duration: int,
              status_notifications: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessConfigurationId' in kwargs:
+            access_configuration_id = kwargs['accessConfigurationId']
+        if 'accessConfigurationName' in kwargs:
+            access_configuration_name = kwargs['accessConfigurationName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'permissionPolicies' in kwargs:
+            permission_policies = kwargs['permissionPolicies']
+        if 'relayState' in kwargs:
+            relay_state = kwargs['relayState']
+        if 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+        if 'statusNotifications' in kwargs:
+            status_notifications = kwargs['statusNotifications']
+
         _setter("access_configuration_id", access_configuration_id)
         _setter("access_configuration_name", access_configuration_name)
         _setter("create_time", create_time)
@@ -489,7 +543,17 @@ class GetAccessConfigurationsConfigurationPermissionPolicyResult(dict):
              permission_policy_document: str,
              permission_policy_name: str,
              permission_policy_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addTime' in kwargs:
+            add_time = kwargs['addTime']
+        if 'permissionPolicyDocument' in kwargs:
+            permission_policy_document = kwargs['permissionPolicyDocument']
+        if 'permissionPolicyName' in kwargs:
+            permission_policy_name = kwargs['permissionPolicyName']
+        if 'permissionPolicyType' in kwargs:
+            permission_policy_type = kwargs['permissionPolicyType']
+
         _setter("add_time", add_time)
         _setter("permission_policy_document", permission_policy_document)
         _setter("permission_policy_name", permission_policy_name)
@@ -575,7 +639,21 @@ class GetDirectoriesDirectoryResult(dict):
              saml_identity_provider_configurations: Sequence['outputs.GetDirectoriesDirectorySamlIdentityProviderConfigurationResult'],
              scim_synchronization_status: str,
              tasks: Sequence['outputs.GetDirectoriesDirectoryTaskResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'directoryName' in kwargs:
+            directory_name = kwargs['directoryName']
+        if 'mfaAuthenticationStatus' in kwargs:
+            mfa_authentication_status = kwargs['mfaAuthenticationStatus']
+        if 'samlIdentityProviderConfigurations' in kwargs:
+            saml_identity_provider_configurations = kwargs['samlIdentityProviderConfigurations']
+        if 'scimSynchronizationStatus' in kwargs:
+            scim_synchronization_status = kwargs['scimSynchronizationStatus']
+
         _setter("create_time", create_time)
         _setter("directory_id", directory_id)
         _setter("directory_name", directory_name)
@@ -690,7 +768,19 @@ class GetDirectoriesDirectorySamlIdentityProviderConfigurationResult(dict):
              entity_id: str,
              login_url: str,
              sso_status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'encodedMetadataDocument' in kwargs:
+            encoded_metadata_document = kwargs['encodedMetadataDocument']
+        if 'entityId' in kwargs:
+            entity_id = kwargs['entityId']
+        if 'loginUrl' in kwargs:
+            login_url = kwargs['loginUrl']
+        if 'ssoStatus' in kwargs:
+            sso_status = kwargs['ssoStatus']
+
         _setter("create_time", create_time)
         _setter("encoded_metadata_document", encoded_metadata_document)
         _setter("entity_id", entity_id)
@@ -809,7 +899,37 @@ class GetDirectoriesDirectoryTaskResult(dict):
              target_type: str,
              task_id: str,
              task_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessConfigurationId' in kwargs:
+            access_configuration_id = kwargs['accessConfigurationId']
+        if 'accessConfigurationName' in kwargs:
+            access_configuration_name = kwargs['accessConfigurationName']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'failureReason' in kwargs:
+            failure_reason = kwargs['failureReason']
+        if 'principalId' in kwargs:
+            principal_id = kwargs['principalId']
+        if 'principalName' in kwargs:
+            principal_name = kwargs['principalName']
+        if 'principalType' in kwargs:
+            principal_type = kwargs['principalType']
+        if 'startTime' in kwargs:
+            start_time = kwargs['startTime']
+        if 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+        if 'targetName' in kwargs:
+            target_name = kwargs['targetName']
+        if 'targetPath' in kwargs:
+            target_path = kwargs['targetPath']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+        if 'taskId' in kwargs:
+            task_id = kwargs['taskId']
+        if 'taskType' in kwargs:
+            task_type = kwargs['taskType']
+
         _setter("access_configuration_id", access_configuration_id)
         _setter("access_configuration_name", access_configuration_name)
         _setter("end_time", end_time)
@@ -986,7 +1106,19 @@ class GetGroupsGroupResult(dict):
              group_name: str,
              id: str,
              provision_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'provisionType' in kwargs:
+            provision_type = kwargs['provisionType']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("directory_id", directory_id)
@@ -1095,7 +1227,21 @@ class GetScimServerCredentialsCredentialResult(dict):
              expire_time: str,
              id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'credentialId' in kwargs:
+            credential_id = kwargs['credentialId']
+        if 'credentialSecret' in kwargs:
+            credential_secret = kwargs['credentialSecret']
+        if 'credentialType' in kwargs:
+            credential_type = kwargs['credentialType']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+
         _setter("create_time", create_time)
         _setter("credential_id", credential_id)
         _setter("credential_secret", credential_secret)
@@ -1233,7 +1379,27 @@ class GetUsersUserResult(dict):
              status: str,
              user_id: str,
              user_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'directoryId' in kwargs:
+            directory_id = kwargs['directoryId']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'firstName' in kwargs:
+            first_name = kwargs['firstName']
+        if 'lastName' in kwargs:
+            last_name = kwargs['lastName']
+        if 'mfaDevices' in kwargs:
+            mfa_devices = kwargs['mfaDevices']
+        if 'provisionType' in kwargs:
+            provision_type = kwargs['provisionType']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         _setter("create_time", create_time)
         _setter("description", description)
         _setter("directory_id", directory_id)
@@ -1380,7 +1546,17 @@ class GetUsersUserMfaDeviceResult(dict):
              device_name: str,
              device_type: str,
              effective_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deviceId' in kwargs:
+            device_id = kwargs['deviceId']
+        if 'deviceName' in kwargs:
+            device_name = kwargs['deviceName']
+        if 'deviceType' in kwargs:
+            device_type = kwargs['deviceType']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+
         _setter("device_id", device_id)
         _setter("device_name", device_name)
         _setter("device_type", device_type)

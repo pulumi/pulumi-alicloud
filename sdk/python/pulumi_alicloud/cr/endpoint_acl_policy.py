@@ -43,7 +43,15 @@ class EndpointAclPolicyArgs:
              instance_id: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              module_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'moduleName' in kwargs:
+            module_name = kwargs['moduleName']
+
         _setter("endpoint_type", endpoint_type)
         _setter("entry", entry)
         _setter("instance_id", instance_id)
@@ -145,7 +153,15 @@ class _EndpointAclPolicyState:
              entry: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              module_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'moduleName' in kwargs:
+            module_name = kwargs['moduleName']
+
         if description is not None:
             _setter("description", description)
         if endpoint_type is not None:

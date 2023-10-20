@@ -53,7 +53,19 @@ class AScriptArgs:
              script_content: pulumi.Input[str],
              ext_attribute_enabled: Optional[pulumi.Input[bool]] = None,
              ext_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AScriptExtAttributeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ascriptName' in kwargs:
+            ascript_name = kwargs['ascriptName']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'scriptContent' in kwargs:
+            script_content = kwargs['scriptContent']
+        if 'extAttributeEnabled' in kwargs:
+            ext_attribute_enabled = kwargs['extAttributeEnabled']
+        if 'extAttributes' in kwargs:
+            ext_attributes = kwargs['extAttributes']
+
         _setter("ascript_name", ascript_name)
         _setter("enabled", enabled)
         _setter("listener_id", listener_id)
@@ -197,7 +209,21 @@ class _AScriptState:
              position: Optional[pulumi.Input[str]] = None,
              script_content: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ascriptName' in kwargs:
+            ascript_name = kwargs['ascriptName']
+        if 'extAttributeEnabled' in kwargs:
+            ext_attribute_enabled = kwargs['extAttributeEnabled']
+        if 'extAttributes' in kwargs:
+            ext_attributes = kwargs['extAttributes']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'scriptContent' in kwargs:
+            script_content = kwargs['scriptContent']
+
         if ascript_name is not None:
             _setter("ascript_name", ascript_name)
         if enabled is not None:
@@ -342,7 +368,7 @@ class AScript(pulumi.CustomResource):
         """
         Provides a Alb Ascript resource.
 
-        For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createascripts).
+        For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createascripts).
 
         > **NOTE:** Available since v1.195.0.
 
@@ -373,7 +399,7 @@ class AScript(pulumi.CustomResource):
         """
         Provides a Alb Ascript resource.
 
-        For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createascripts).
+        For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createascripts).
 
         > **NOTE:** Available since v1.195.0.
 

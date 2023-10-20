@@ -97,7 +97,41 @@ class V2FunctionArgs:
              layers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              memory_size: Optional[pulumi.Input[int]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+        if 'caPort' in kwargs:
+            ca_port = kwargs['caPort']
+        if 'codeChecksum' in kwargs:
+            code_checksum = kwargs['codeChecksum']
+        if 'customContainerConfig' in kwargs:
+            custom_container_config = kwargs['customContainerConfig']
+        if 'customDns' in kwargs:
+            custom_dns = kwargs['customDns']
+        if 'customHealthCheckConfig' in kwargs:
+            custom_health_check_config = kwargs['customHealthCheckConfig']
+        if 'customRuntimeConfig' in kwargs:
+            custom_runtime_config = kwargs['customRuntimeConfig']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'environmentVariables' in kwargs:
+            environment_variables = kwargs['environmentVariables']
+        if 'gpuMemorySize' in kwargs:
+            gpu_memory_size = kwargs['gpuMemorySize']
+        if 'initializationTimeout' in kwargs:
+            initialization_timeout = kwargs['initializationTimeout']
+        if 'instanceConcurrency' in kwargs:
+            instance_concurrency = kwargs['instanceConcurrency']
+        if 'instanceLifecycleConfig' in kwargs:
+            instance_lifecycle_config = kwargs['instanceLifecycleConfig']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+
         _setter("function_name", function_name)
         _setter("handler", handler)
         _setter("runtime", runtime)
@@ -447,7 +481,43 @@ class _V2FunctionState:
              runtime: Optional[pulumi.Input[str]] = None,
              service_name: Optional[pulumi.Input[str]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caPort' in kwargs:
+            ca_port = kwargs['caPort']
+        if 'codeChecksum' in kwargs:
+            code_checksum = kwargs['codeChecksum']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'customContainerConfig' in kwargs:
+            custom_container_config = kwargs['customContainerConfig']
+        if 'customDns' in kwargs:
+            custom_dns = kwargs['customDns']
+        if 'customHealthCheckConfig' in kwargs:
+            custom_health_check_config = kwargs['customHealthCheckConfig']
+        if 'customRuntimeConfig' in kwargs:
+            custom_runtime_config = kwargs['customRuntimeConfig']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'environmentVariables' in kwargs:
+            environment_variables = kwargs['environmentVariables']
+        if 'functionName' in kwargs:
+            function_name = kwargs['functionName']
+        if 'gpuMemorySize' in kwargs:
+            gpu_memory_size = kwargs['gpuMemorySize']
+        if 'initializationTimeout' in kwargs:
+            initialization_timeout = kwargs['initializationTimeout']
+        if 'instanceConcurrency' in kwargs:
+            instance_concurrency = kwargs['instanceConcurrency']
+        if 'instanceLifecycleConfig' in kwargs:
+            instance_lifecycle_config = kwargs['instanceLifecycleConfig']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if 'serviceName' in kwargs:
+            service_name = kwargs['serviceName']
+
         if ca_port is not None:
             _setter("ca_port", ca_port)
         if code is not None:

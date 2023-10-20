@@ -33,7 +33,13 @@ class ConfigurationRecorderArgs:
              _setter: Callable[[Any, Any], None],
              enterprise_edition: Optional[pulumi.Input[bool]] = None,
              resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enterpriseEdition' in kwargs:
+            enterprise_edition = kwargs['enterpriseEdition']
+        if 'resourceTypes' in kwargs:
+            resource_types = kwargs['resourceTypes']
+
         if enterprise_edition is not None:
             _setter("enterprise_edition", enterprise_edition)
         if resource_types is not None:
@@ -100,7 +106,17 @@ class _ConfigurationRecorderState:
              organization_master_id: Optional[pulumi.Input[int]] = None,
              resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enterpriseEdition' in kwargs:
+            enterprise_edition = kwargs['enterpriseEdition']
+        if 'organizationEnableStatus' in kwargs:
+            organization_enable_status = kwargs['organizationEnableStatus']
+        if 'organizationMasterId' in kwargs:
+            organization_master_id = kwargs['organizationMasterId']
+        if 'resourceTypes' in kwargs:
+            resource_types = kwargs['resourceTypes']
+
         if enterprise_edition is not None:
             _setter("enterprise_edition", enterprise_edition)
         if organization_enable_status is not None:

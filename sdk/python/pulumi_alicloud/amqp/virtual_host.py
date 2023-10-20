@@ -31,7 +31,13 @@ class VirtualHostArgs:
              _setter: Callable[[Any, Any], None],
              instance_id: pulumi.Input[str],
              virtual_host_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+
         _setter("instance_id", instance_id)
         _setter("virtual_host_name", virtual_host_name)
 
@@ -80,7 +86,13 @@ class _VirtualHostState:
              _setter: Callable[[Any, Any], None],
              instance_id: Optional[pulumi.Input[str]] = None,
              virtual_host_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if virtual_host_name is not None:

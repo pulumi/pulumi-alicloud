@@ -99,7 +99,41 @@ class RuleArgs:
              status: Optional[pulumi.Input[str]] = None,
              tag_key_scope: Optional[pulumi.Input[str]] = None,
              tag_value_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'sourceIdentifier' in kwargs:
+            source_identifier = kwargs['sourceIdentifier']
+        if 'sourceOwner' in kwargs:
+            source_owner = kwargs['sourceOwner']
+        if 'configRuleTriggerTypes' in kwargs:
+            config_rule_trigger_types = kwargs['configRuleTriggerTypes']
+        if 'excludeResourceIdsScope' in kwargs:
+            exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
+        if 'inputParameters' in kwargs:
+            input_parameters = kwargs['inputParameters']
+        if 'maximumExecutionFrequency' in kwargs:
+            maximum_execution_frequency = kwargs['maximumExecutionFrequency']
+        if 'regionIdsScope' in kwargs:
+            region_ids_scope = kwargs['regionIdsScope']
+        if 'resourceGroupIdsScope' in kwargs:
+            resource_group_ids_scope = kwargs['resourceGroupIdsScope']
+        if 'resourceTypesScopes' in kwargs:
+            resource_types_scopes = kwargs['resourceTypesScopes']
+        if 'scopeComplianceResourceTypes' in kwargs:
+            scope_compliance_resource_types = kwargs['scopeComplianceResourceTypes']
+        if 'sourceDetailMessageType' in kwargs:
+            source_detail_message_type = kwargs['sourceDetailMessageType']
+        if 'sourceMaximumExecutionFrequency' in kwargs:
+            source_maximum_execution_frequency = kwargs['sourceMaximumExecutionFrequency']
+        if 'tagKeyScope' in kwargs:
+            tag_key_scope = kwargs['tagKeyScope']
+        if 'tagValueScope' in kwargs:
+            tag_value_scope = kwargs['tagValueScope']
+
         _setter("risk_level", risk_level)
         _setter("rule_name", rule_name)
         _setter("source_identifier", source_identifier)
@@ -488,7 +522,55 @@ class _RuleState:
              status: Optional[pulumi.Input[str]] = None,
              tag_key_scope: Optional[pulumi.Input[str]] = None,
              tag_value_scope: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'compliancePackId' in kwargs:
+            compliance_pack_id = kwargs['compliancePackId']
+        if 'configRuleArn' in kwargs:
+            config_rule_arn = kwargs['configRuleArn']
+        if 'configRuleId' in kwargs:
+            config_rule_id = kwargs['configRuleId']
+        if 'configRuleTriggerTypes' in kwargs:
+            config_rule_trigger_types = kwargs['configRuleTriggerTypes']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'eventSource' in kwargs:
+            event_source = kwargs['eventSource']
+        if 'excludeResourceIdsScope' in kwargs:
+            exclude_resource_ids_scope = kwargs['excludeResourceIdsScope']
+        if 'inputParameters' in kwargs:
+            input_parameters = kwargs['inputParameters']
+        if 'maximumExecutionFrequency' in kwargs:
+            maximum_execution_frequency = kwargs['maximumExecutionFrequency']
+        if 'modifiedTimestamp' in kwargs:
+            modified_timestamp = kwargs['modifiedTimestamp']
+        if 'regionIdsScope' in kwargs:
+            region_ids_scope = kwargs['regionIdsScope']
+        if 'resourceGroupIdsScope' in kwargs:
+            resource_group_ids_scope = kwargs['resourceGroupIdsScope']
+        if 'resourceTypesScopes' in kwargs:
+            resource_types_scopes = kwargs['resourceTypesScopes']
+        if 'riskLevel' in kwargs:
+            risk_level = kwargs['riskLevel']
+        if 'ruleName' in kwargs:
+            rule_name = kwargs['ruleName']
+        if 'scopeComplianceResourceTypes' in kwargs:
+            scope_compliance_resource_types = kwargs['scopeComplianceResourceTypes']
+        if 'sourceDetailMessageType' in kwargs:
+            source_detail_message_type = kwargs['sourceDetailMessageType']
+        if 'sourceIdentifier' in kwargs:
+            source_identifier = kwargs['sourceIdentifier']
+        if 'sourceMaximumExecutionFrequency' in kwargs:
+            source_maximum_execution_frequency = kwargs['sourceMaximumExecutionFrequency']
+        if 'sourceOwner' in kwargs:
+            source_owner = kwargs['sourceOwner']
+        if 'tagKeyScope' in kwargs:
+            tag_key_scope = kwargs['tagKeyScope']
+        if 'tagValueScope' in kwargs:
+            tag_value_scope = kwargs['tagValueScope']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if compliance is not None:

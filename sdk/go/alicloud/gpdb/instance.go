@@ -14,7 +14,7 @@ import (
 )
 
 // Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
-// You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance)
+// You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance)
 //
 // > **NOTE:** Available since v1.47.0.
 //
@@ -135,7 +135,7 @@ type Instance struct {
 	// The encryption type. Valid values: `CloudDisk`.
 	// > **NOTE:** Disk encryption cannot be disabled after it is enabled.
 	EncryptionType pulumi.StringPtrOutput `pulumi:"encryptionType"`
-	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
 	Engine pulumi.StringOutput `pulumi:"engine"`
 	// The version of the database engine used by the instance.
 	EngineVersion pulumi.StringOutput `pulumi:"engineVersion"`
@@ -269,7 +269,7 @@ type instanceState struct {
 	// The encryption type. Valid values: `CloudDisk`.
 	// > **NOTE:** Disk encryption cannot be disabled after it is enabled.
 	EncryptionType *string `pulumi:"encryptionType"`
-	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
 	Engine *string `pulumi:"engine"`
 	// The version of the database engine used by the instance.
 	EngineVersion *string `pulumi:"engineVersion"`
@@ -362,7 +362,7 @@ type InstanceState struct {
 	// The encryption type. Valid values: `CloudDisk`.
 	// > **NOTE:** Disk encryption cannot be disabled after it is enabled.
 	EncryptionType pulumi.StringPtrInput
-	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
 	Engine pulumi.StringPtrInput
 	// The version of the database engine used by the instance.
 	EngineVersion pulumi.StringPtrInput
@@ -457,7 +457,7 @@ type instanceArgs struct {
 	// The encryption type. Valid values: `CloudDisk`.
 	// > **NOTE:** Disk encryption cannot be disabled after it is enabled.
 	EncryptionType *string `pulumi:"encryptionType"`
-	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
 	Engine string `pulumi:"engine"`
 	// The version of the database engine used by the instance.
 	EngineVersion string `pulumi:"engineVersion"`
@@ -545,7 +545,7 @@ type InstanceArgs struct {
 	// The encryption type. Valid values: `CloudDisk`.
 	// > **NOTE:** Disk encryption cannot be disabled after it is enabled.
 	EncryptionType pulumi.StringPtrInput
-	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+	// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
 	Engine pulumi.StringInput
 	// The version of the database engine used by the instance.
 	EngineVersion pulumi.StringInput
@@ -771,7 +771,7 @@ func (o InstanceOutput) EncryptionType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.EncryptionType }).(pulumi.StringPtrOutput)
 }
 
-// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+// The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
 func (o InstanceOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }

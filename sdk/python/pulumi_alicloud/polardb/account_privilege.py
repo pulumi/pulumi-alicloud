@@ -39,7 +39,17 @@ class AccountPrivilegeArgs:
              db_cluster_id: pulumi.Input[str],
              db_names: pulumi.Input[Sequence[pulumi.Input[str]]],
              account_privilege: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'dbNames' in kwargs:
+            db_names = kwargs['dbNames']
+        if 'accountPrivilege' in kwargs:
+            account_privilege = kwargs['accountPrivilege']
+
         _setter("account_name", account_name)
         _setter("db_cluster_id", db_cluster_id)
         _setter("db_names", db_names)
@@ -123,7 +133,17 @@ class _AccountPrivilegeState:
              account_privilege: Optional[pulumi.Input[str]] = None,
              db_cluster_id: Optional[pulumi.Input[str]] = None,
              db_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountPrivilege' in kwargs:
+            account_privilege = kwargs['accountPrivilege']
+        if 'dbClusterId' in kwargs:
+            db_cluster_id = kwargs['dbClusterId']
+        if 'dbNames' in kwargs:
+            db_names = kwargs['dbNames']
+
         if account_name is not None:
             _setter("account_name", account_name)
         if account_privilege is not None:

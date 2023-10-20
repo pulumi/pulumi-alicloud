@@ -22,10 +22,10 @@ class BackupPolicyArgs:
         """
         The set of arguments for constructing a BackupPolicy resource.
         :param pulumi.Input[str] backup_policy_name: Protection of the Name of the Policy.
-        :param pulumi.Input[str] policy: The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createbackuppolicy).
+        :param pulumi.Input[str] policy: The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
         :param pulumi.Input[str] policy_version: Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: Specify the Protection of Server UUID List.
-        :param pulumi.Input[str] policy_region_id: The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
+        :param pulumi.Input[str] policy_region_id: The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
         """
         BackupPolicyArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -43,7 +43,17 @@ class BackupPolicyArgs:
              policy_version: pulumi.Input[str],
              uuid_lists: pulumi.Input[Sequence[pulumi.Input[str]]],
              policy_region_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupPolicyName' in kwargs:
+            backup_policy_name = kwargs['backupPolicyName']
+        if 'policyVersion' in kwargs:
+            policy_version = kwargs['policyVersion']
+        if 'uuidLists' in kwargs:
+            uuid_lists = kwargs['uuidLists']
+        if 'policyRegionId' in kwargs:
+            policy_region_id = kwargs['policyRegionId']
+
         _setter("backup_policy_name", backup_policy_name)
         _setter("policy", policy)
         _setter("policy_version", policy_version)
@@ -67,7 +77,7 @@ class BackupPolicyArgs:
     @pulumi.getter
     def policy(self) -> pulumi.Input[str]:
         """
-        The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createbackuppolicy).
+        The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
         """
         return pulumi.get(self, "policy")
 
@@ -103,7 +113,7 @@ class BackupPolicyArgs:
     @pulumi.getter(name="policyRegionId")
     def policy_region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
+        The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
         """
         return pulumi.get(self, "policy_region_id")
 
@@ -124,8 +134,8 @@ class _BackupPolicyState:
         """
         Input properties used for looking up and filtering BackupPolicy resources.
         :param pulumi.Input[str] backup_policy_name: Protection of the Name of the Policy.
-        :param pulumi.Input[str] policy: The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createbackuppolicy).
-        :param pulumi.Input[str] policy_region_id: The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
+        :param pulumi.Input[str] policy: The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
+        :param pulumi.Input[str] policy_region_id: The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
         :param pulumi.Input[str] policy_version: Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
         :param pulumi.Input[str] status: The status of the Backup Policy instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: Specify the Protection of Server UUID List.
@@ -148,7 +158,17 @@ class _BackupPolicyState:
              policy_version: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupPolicyName' in kwargs:
+            backup_policy_name = kwargs['backupPolicyName']
+        if 'policyRegionId' in kwargs:
+            policy_region_id = kwargs['policyRegionId']
+        if 'policyVersion' in kwargs:
+            policy_version = kwargs['policyVersion']
+        if 'uuidLists' in kwargs:
+            uuid_lists = kwargs['uuidLists']
+
         if backup_policy_name is not None:
             _setter("backup_policy_name", backup_policy_name)
         if policy is not None:
@@ -178,7 +198,7 @@ class _BackupPolicyState:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createbackuppolicy).
+        The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
         """
         return pulumi.get(self, "policy")
 
@@ -190,7 +210,7 @@ class _BackupPolicyState:
     @pulumi.getter(name="policyRegionId")
     def policy_region_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
+        The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
         """
         return pulumi.get(self, "policy_region_id")
 
@@ -249,7 +269,7 @@ class BackupPolicy(pulumi.CustomResource):
         """
         Provides a Threat Detection Backup Policy resource.
 
-        For information about Threat Detection Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createbackuppolicy).
+        For information about Threat Detection Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
 
         > **NOTE:** Available in v1.195.0+.
 
@@ -280,8 +300,8 @@ class BackupPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_policy_name: Protection of the Name of the Policy.
-        :param pulumi.Input[str] policy: The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createbackuppolicy).
-        :param pulumi.Input[str] policy_region_id: The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
+        :param pulumi.Input[str] policy: The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
+        :param pulumi.Input[str] policy_region_id: The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
         :param pulumi.Input[str] policy_version: Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: Specify the Protection of Server UUID List.
         """
@@ -294,7 +314,7 @@ class BackupPolicy(pulumi.CustomResource):
         """
         Provides a Threat Detection Backup Policy resource.
 
-        For information about Threat Detection Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createbackuppolicy).
+        For information about Threat Detection Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
 
         > **NOTE:** Available in v1.195.0+.
 
@@ -393,8 +413,8 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] backup_policy_name: Protection of the Name of the Policy.
-        :param pulumi.Input[str] policy: The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createbackuppolicy).
-        :param pulumi.Input[str] policy_region_id: The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
+        :param pulumi.Input[str] policy: The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
+        :param pulumi.Input[str] policy_region_id: The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
         :param pulumi.Input[str] policy_version: Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
         :param pulumi.Input[str] status: The status of the Backup Policy instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] uuid_lists: Specify the Protection of Server UUID List.
@@ -423,7 +443,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter
     def policy(self) -> pulumi.Output[str]:
         """
-        The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createbackuppolicy).
+        The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
         """
         return pulumi.get(self, "policy")
 
@@ -431,7 +451,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter(name="policyRegionId")
     def policy_region_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
+        The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
         """
         return pulumi.get(self, "policy_region_id")
 

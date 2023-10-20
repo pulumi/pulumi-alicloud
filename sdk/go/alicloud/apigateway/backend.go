@@ -15,7 +15,7 @@ import (
 
 // Provides a Api Gateway Backend resource.
 //
-// For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/latest/api-doc-cloudapi-2016-07-14-api-doc-createbackend).
+// For information about Api Gateway Backend and how to use it, see [What is Backend](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-createbackend).
 //
 // > **NOTE:** Available since v1.181.0.
 //

@@ -746,7 +746,7 @@ type GetDBClustersCluster struct {
 	ChargeType string `pulumi:"chargeType"`
 	// The name of the service.
 	CommodityCode string `pulumi:"commodityCode"`
-	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources.
 	ComputeResource string `pulumi:"computeResource"`
 	// The endpoint of the cluster.
 	ConnectionString string `pulumi:"connectionString"`
@@ -814,7 +814,7 @@ type GetDBClustersCluster struct {
 	SecurityIps []string `pulumi:"securityIps"`
 	// The status of the resource.
 	Status string `pulumi:"status"`
-	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
 	StorageResource string `pulumi:"storageResource"`
 	// A map of tags assigned to the cluster.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -846,7 +846,7 @@ type GetDBClustersClusterArgs struct {
 	ChargeType pulumi.StringInput `pulumi:"chargeType"`
 	// The name of the service.
 	CommodityCode pulumi.StringInput `pulumi:"commodityCode"`
-	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources.
 	ComputeResource pulumi.StringInput `pulumi:"computeResource"`
 	// The endpoint of the cluster.
 	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
@@ -914,7 +914,7 @@ type GetDBClustersClusterArgs struct {
 	SecurityIps pulumi.StringArrayInput `pulumi:"securityIps"`
 	// The status of the resource.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+	// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
 	StorageResource pulumi.StringInput `pulumi:"storageResource"`
 	// A map of tags assigned to the cluster.
 	Tags pulumi.MapInput `pulumi:"tags"`
@@ -1012,7 +1012,7 @@ func (o GetDBClustersClusterOutput) CommodityCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.CommodityCode }).(pulumi.StringOutput)
 }
 
-// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources.
 func (o GetDBClustersClusterOutput) ComputeResource() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.ComputeResource }).(pulumi.StringOutput)
 }
@@ -1182,7 +1182,7 @@ func (o GetDBClustersClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster. For more information, see [Specifications](https://www.alibabacloud.com/help/en/doc-detail/144851.htm).
+// The specifications of storage resources in elastic mode. The resources are used for data read and write operations. The increase of resources can improve the read and write performance of your cluster.
 func (o GetDBClustersClusterOutput) StorageResource() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDBClustersCluster) string { return v.StorageResource }).(pulumi.StringOutput)
 }

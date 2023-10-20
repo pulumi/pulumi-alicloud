@@ -47,7 +47,21 @@ class AccessLogArgs:
              sls_log_store_name: pulumi.Input[str],
              sls_project_name: pulumi.Input[str],
              sls_region_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'slsLogStoreName' in kwargs:
+            sls_log_store_name = kwargs['slsLogStoreName']
+        if 'slsProjectName' in kwargs:
+            sls_project_name = kwargs['slsProjectName']
+        if 'slsRegionId' in kwargs:
+            sls_region_id = kwargs['slsRegionId']
+
         _setter("accelerator_id", accelerator_id)
         _setter("endpoint_group_id", endpoint_group_id)
         _setter("listener_id", listener_id)
@@ -168,7 +182,21 @@ class _AccessLogState:
              sls_project_name: Optional[pulumi.Input[str]] = None,
              sls_region_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'slsLogStoreName' in kwargs:
+            sls_log_store_name = kwargs['slsLogStoreName']
+        if 'slsProjectName' in kwargs:
+            sls_project_name = kwargs['slsProjectName']
+        if 'slsRegionId' in kwargs:
+            sls_region_id = kwargs['slsRegionId']
+
         if accelerator_id is not None:
             _setter("accelerator_id", accelerator_id)
         if endpoint_group_id is not None:

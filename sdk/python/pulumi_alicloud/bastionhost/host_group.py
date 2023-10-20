@@ -35,7 +35,13 @@ class HostGroupArgs:
              host_group_name: pulumi.Input[str],
              instance_id: pulumi.Input[str],
              comment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostGroupName' in kwargs:
+            host_group_name = kwargs['hostGroupName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("host_group_name", host_group_name)
         _setter("instance_id", instance_id)
         if comment is not None:
@@ -106,7 +112,15 @@ class _HostGroupState:
              host_group_id: Optional[pulumi.Input[str]] = None,
              host_group_name: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostGroupId' in kwargs:
+            host_group_id = kwargs['hostGroupId']
+        if 'hostGroupName' in kwargs:
+            host_group_name = kwargs['hostGroupName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if comment is not None:
             _setter("comment", comment)
         if host_group_id is not None:

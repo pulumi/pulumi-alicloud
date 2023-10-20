@@ -79,7 +79,7 @@ export interface GetAlidnsRecordsArgs {
      */
     lang?: string;
     /**
-     * ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+     * ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
      */
     line?: string;
     /**
@@ -222,7 +222,7 @@ export interface GetAlidnsRecordsOutputArgs {
      */
     lang?: pulumi.Input<string>;
     /**
-     * ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+     * ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
      */
     line?: pulumi.Input<string>;
     /**

@@ -47,7 +47,21 @@ class UserArgs:
              nick_name: pulumi.Input[str],
              user_type: pulumi.Input[str],
              account_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'adminUser' in kwargs:
+            admin_user = kwargs['adminUser']
+        if 'authAdminUser' in kwargs:
+            auth_admin_user = kwargs['authAdminUser']
+        if 'nickName' in kwargs:
+            nick_name = kwargs['nickName']
+        if 'userType' in kwargs:
+            user_type = kwargs['userType']
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+
         _setter("account_name", account_name)
         _setter("admin_user", admin_user)
         _setter("auth_admin_user", auth_admin_user)
@@ -165,7 +179,21 @@ class _UserState:
              auth_admin_user: Optional[pulumi.Input[bool]] = None,
              nick_name: Optional[pulumi.Input[str]] = None,
              user_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'adminUser' in kwargs:
+            admin_user = kwargs['adminUser']
+        if 'authAdminUser' in kwargs:
+            auth_admin_user = kwargs['authAdminUser']
+        if 'nickName' in kwargs:
+            nick_name = kwargs['nickName']
+        if 'userType' in kwargs:
+            user_type = kwargs['userType']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if account_name is not None:

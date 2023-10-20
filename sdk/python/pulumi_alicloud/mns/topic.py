@@ -35,7 +35,13 @@ class TopicArgs:
              logging_enabled: Optional[pulumi.Input[bool]] = None,
              maximum_message_size: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'loggingEnabled' in kwargs:
+            logging_enabled = kwargs['loggingEnabled']
+        if 'maximumMessageSize' in kwargs:
+            maximum_message_size = kwargs['maximumMessageSize']
+
         if logging_enabled is not None:
             _setter("logging_enabled", logging_enabled)
         if maximum_message_size is not None:
@@ -104,7 +110,13 @@ class _TopicState:
              logging_enabled: Optional[pulumi.Input[bool]] = None,
              maximum_message_size: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'loggingEnabled' in kwargs:
+            logging_enabled = kwargs['loggingEnabled']
+        if 'maximumMessageSize' in kwargs:
+            maximum_message_size = kwargs['maximumMessageSize']
+
         if logging_enabled is not None:
             _setter("logging_enabled", logging_enabled)
         if maximum_message_size is not None:

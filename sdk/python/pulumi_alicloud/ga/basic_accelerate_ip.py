@@ -31,7 +31,13 @@ class BasicAccelerateIpArgs:
              _setter: Callable[[Any, Any], None],
              accelerator_id: pulumi.Input[str],
              ip_set_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'ipSetId' in kwargs:
+            ip_set_id = kwargs['ipSetId']
+
         _setter("accelerator_id", accelerator_id)
         _setter("ip_set_id", ip_set_id)
 
@@ -88,7 +94,15 @@ class _BasicAccelerateIpState:
              accelerator_id: Optional[pulumi.Input[str]] = None,
              ip_set_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accelerateIpAddress' in kwargs:
+            accelerate_ip_address = kwargs['accelerateIpAddress']
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'ipSetId' in kwargs:
+            ip_set_id = kwargs['ipSetId']
+
         if accelerate_ip_address is not None:
             _setter("accelerate_ip_address", accelerate_ip_address)
         if accelerator_id is not None:

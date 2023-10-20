@@ -209,7 +209,81 @@ class ScalingConfigurationArgs:
              system_disk_size: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if 'creditSpecification' in kwargs:
+            credit_specification = kwargs['creditSpecification']
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instancePatternInfos' in kwargs:
+            instance_pattern_infos = kwargs['instancePatternInfos']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'internetMaxBandwidthIn' in kwargs:
+            internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'ioOptimized' in kwargs:
+            io_optimized = kwargs['ioOptimized']
+        if 'isOutdated' in kwargs:
+            is_outdated = kwargs['isOutdated']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'passwordInherit' in kwargs:
+            password_inherit = kwargs['passwordInherit']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if 'scalingConfigurationName' in kwargs:
+            scaling_configuration_name = kwargs['scalingConfigurationName']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'spotPriceLimits' in kwargs:
+            spot_price_limits = kwargs['spotPriceLimits']
+        if 'spotStrategy' in kwargs:
+            spot_strategy = kwargs['spotStrategy']
+        if 'systemDiskAutoSnapshotPolicyId' in kwargs:
+            system_disk_auto_snapshot_policy_id = kwargs['systemDiskAutoSnapshotPolicyId']
+        if 'systemDiskCategory' in kwargs:
+            system_disk_category = kwargs['systemDiskCategory']
+        if 'systemDiskDescription' in kwargs:
+            system_disk_description = kwargs['systemDiskDescription']
+        if 'systemDiskEncrypted' in kwargs:
+            system_disk_encrypted = kwargs['systemDiskEncrypted']
+        if 'systemDiskName' in kwargs:
+            system_disk_name = kwargs['systemDiskName']
+        if 'systemDiskPerformanceLevel' in kwargs:
+            system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+
         _setter("scaling_group_id", scaling_group_id)
         if active is not None:
             _setter("active", active)
@@ -1023,7 +1097,81 @@ class _ScalingConfigurationState:
              system_disk_size: Optional[pulumi.Input[int]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_data: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'creditSpecification' in kwargs:
+            credit_specification = kwargs['creditSpecification']
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageName' in kwargs:
+            image_name = kwargs['imageName']
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instancePatternInfos' in kwargs:
+            instance_pattern_infos = kwargs['instancePatternInfos']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if 'internetChargeType' in kwargs:
+            internet_charge_type = kwargs['internetChargeType']
+        if 'internetMaxBandwidthIn' in kwargs:
+            internet_max_bandwidth_in = kwargs['internetMaxBandwidthIn']
+        if 'internetMaxBandwidthOut' in kwargs:
+            internet_max_bandwidth_out = kwargs['internetMaxBandwidthOut']
+        if 'ioOptimized' in kwargs:
+            io_optimized = kwargs['ioOptimized']
+        if 'isOutdated' in kwargs:
+            is_outdated = kwargs['isOutdated']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'passwordInherit' in kwargs:
+            password_inherit = kwargs['passwordInherit']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if 'scalingConfigurationName' in kwargs:
+            scaling_configuration_name = kwargs['scalingConfigurationName']
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityGroupIds' in kwargs:
+            security_group_ids = kwargs['securityGroupIds']
+        if 'spotPriceLimits' in kwargs:
+            spot_price_limits = kwargs['spotPriceLimits']
+        if 'spotStrategy' in kwargs:
+            spot_strategy = kwargs['spotStrategy']
+        if 'systemDiskAutoSnapshotPolicyId' in kwargs:
+            system_disk_auto_snapshot_policy_id = kwargs['systemDiskAutoSnapshotPolicyId']
+        if 'systemDiskCategory' in kwargs:
+            system_disk_category = kwargs['systemDiskCategory']
+        if 'systemDiskDescription' in kwargs:
+            system_disk_description = kwargs['systemDiskDescription']
+        if 'systemDiskEncrypted' in kwargs:
+            system_disk_encrypted = kwargs['systemDiskEncrypted']
+        if 'systemDiskName' in kwargs:
+            system_disk_name = kwargs['systemDiskName']
+        if 'systemDiskPerformanceLevel' in kwargs:
+            system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+
         if active is not None:
             _setter("active", active)
         if credit_specification is not None:

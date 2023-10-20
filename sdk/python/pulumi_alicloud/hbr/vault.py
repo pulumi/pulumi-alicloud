@@ -47,7 +47,19 @@ class VaultArgs:
              kms_key_id: Optional[pulumi.Input[str]] = None,
              vault_storage_class: Optional[pulumi.Input[str]] = None,
              vault_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vaultName' in kwargs:
+            vault_name = kwargs['vaultName']
+        if 'encryptType' in kwargs:
+            encrypt_type = kwargs['encryptType']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'vaultStorageClass' in kwargs:
+            vault_storage_class = kwargs['vaultStorageClass']
+        if 'vaultType' in kwargs:
+            vault_type = kwargs['vaultType']
+
         _setter("vault_name", vault_name)
         if description is not None:
             _setter("description", description)
@@ -173,7 +185,19 @@ class _VaultState:
              vault_name: Optional[pulumi.Input[str]] = None,
              vault_storage_class: Optional[pulumi.Input[str]] = None,
              vault_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encryptType' in kwargs:
+            encrypt_type = kwargs['encryptType']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'vaultName' in kwargs:
+            vault_name = kwargs['vaultName']
+        if 'vaultStorageClass' in kwargs:
+            vault_storage_class = kwargs['vaultStorageClass']
+        if 'vaultType' in kwargs:
+            vault_type = kwargs['vaultType']
+
         if description is not None:
             _setter("description", description)
         if encrypt_type is not None:

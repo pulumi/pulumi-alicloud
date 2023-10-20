@@ -44,8 +44,7 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
      */
     public readonly allowShutDown!: pulumi.Output<string | undefined>;
     /**
@@ -66,11 +65,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly collectorStatus!: pulumi.Output<string>;
     /**
-     * (Available since 1.81.0+) PolarDB cluster connection string.
+     * (Available since 1.81.0) PolarDB cluster connection string.
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
-     * (Available since 1.204.1+) PolarDB cluster creation time.
+     * (Available since 1.204.1) PolarDB cluster creation time.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -99,7 +98,11 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly dbNodeCount!: pulumi.Output<number>;
     /**
-     * The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     * The ID of the node or node subscript. Node subscript values: 1 to 15.
+     */
+    public readonly dbNodeId!: pulumi.Output<string | undefined>;
+    /**
+     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
      */
     public readonly dbNodeNum!: pulumi.Output<number | undefined>;
     /**
@@ -114,7 +117,7 @@ export class Cluster extends pulumi.CustomResource {
      * The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
      * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      */
-    public readonly defaultTimeZone!: pulumi.Output<string | undefined>;
+    public readonly defaultTimeZone!: pulumi.Output<string>;
     /**
      * turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
      * > **NOTE:**  Cannot modify after created when `payType` is `Prepaid` .`deletionLock` the cluster protection lock can be turned on or off when `payType` is `Postpaid`.
@@ -143,6 +146,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly gdnId!: pulumi.Output<string | undefined>;
     /**
+     * Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+     */
+    public readonly hotReplicaMode!: pulumi.Output<string>;
+    /**
      * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
      */
     public readonly hotStandbyCluster!: pulumi.Output<string>;
@@ -153,15 +160,15 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly imciSwitch!: pulumi.Output<string>;
     /**
-     * Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
      * > **NOTE:** This parameter is valid only MySQL Engine supports.
      */
-    public readonly loosePolarLogBin!: pulumi.Output<string | undefined>;
+    public readonly loosePolarLogBin!: pulumi.Output<string>;
     /**
-     * Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
      * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      */
-    public readonly lowerCaseTableNames!: pulumi.Output<number | undefined>;
+    public readonly lowerCaseTableNames!: pulumi.Output<number>;
     /**
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      */
@@ -199,7 +206,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly plannedStartTime!: pulumi.Output<string | undefined>;
     /**
-     * (Available since 1.196.0+) PolarDB cluster connection port.
+     * (Available since 1.196.0) PolarDB cluster connection port.
      */
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
@@ -208,7 +215,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly proxyClass!: pulumi.Output<string | undefined>;
     /**
-     * The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
      * > **NOTE:** This parameter is valid only for standard clusters.
      */
     public readonly proxyType!: pulumi.Output<string | undefined>;
@@ -225,28 +232,31 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly roleArn!: pulumi.Output<string>;
     /**
-     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     */
+    public readonly scaleApRoNumMax!: pulumi.Output<number>;
+    /**
+     * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     */
+    public readonly scaleApRoNumMin!: pulumi.Output<number>;
+    /**
+     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     public readonly scaleMax!: pulumi.Output<number | undefined>;
     /**
-     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`.· This parameter is valid only for serverless clusters.
      */
     public readonly scaleMin!: pulumi.Output<number | undefined>;
     /**
-     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7. It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     public readonly scaleRoNumMax!: pulumi.Output<number | undefined>;
     /**
-     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     public readonly scaleRoNumMin!: pulumi.Output<number | undefined>;
     /**
-     * The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
      */
     public readonly secondsUntilAutoPause!: pulumi.Output<number>;
     /**
@@ -260,8 +270,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly securityIps!: pulumi.Output<string[]>;
     /**
-     * The type of the serverless cluster. Set the value to AgileServerless.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+     * > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
+     */
+    public readonly serverlessSteadySwitch!: pulumi.Output<string | undefined>;
+    /**
+     * The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     public readonly serverlessType!: pulumi.Output<string | undefined>;
     /**
@@ -269,7 +283,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly sourceResourceId!: pulumi.Output<string | undefined>;
     /**
-     * (Available since 1.204.1+) PolarDB cluster status.
+     * (Available since 1.204.1) PolarDB cluster status.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -298,7 +312,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * (Available since 1.200.0+) The region where the TDE key resides.
+     * (Available since 1.200.0) The region where the TDE key resides.
      * > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
      * > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
      */
@@ -351,6 +365,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["dbClusterIpArrays"] = state ? state.dbClusterIpArrays : undefined;
             resourceInputs["dbNodeClass"] = state ? state.dbNodeClass : undefined;
             resourceInputs["dbNodeCount"] = state ? state.dbNodeCount : undefined;
+            resourceInputs["dbNodeId"] = state ? state.dbNodeId : undefined;
             resourceInputs["dbNodeNum"] = state ? state.dbNodeNum : undefined;
             resourceInputs["dbType"] = state ? state.dbType : undefined;
             resourceInputs["dbVersion"] = state ? state.dbVersion : undefined;
@@ -361,6 +376,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             resourceInputs["fromTimeService"] = state ? state.fromTimeService : undefined;
             resourceInputs["gdnId"] = state ? state.gdnId : undefined;
+            resourceInputs["hotReplicaMode"] = state ? state.hotReplicaMode : undefined;
             resourceInputs["hotStandbyCluster"] = state ? state.hotStandbyCluster : undefined;
             resourceInputs["imciSwitch"] = state ? state.imciSwitch : undefined;
             resourceInputs["loosePolarLogBin"] = state ? state.loosePolarLogBin : undefined;
@@ -379,6 +395,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["renewalStatus"] = state ? state.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = state ? state.resourceGroupId : undefined;
             resourceInputs["roleArn"] = state ? state.roleArn : undefined;
+            resourceInputs["scaleApRoNumMax"] = state ? state.scaleApRoNumMax : undefined;
+            resourceInputs["scaleApRoNumMin"] = state ? state.scaleApRoNumMin : undefined;
             resourceInputs["scaleMax"] = state ? state.scaleMax : undefined;
             resourceInputs["scaleMin"] = state ? state.scaleMin : undefined;
             resourceInputs["scaleRoNumMax"] = state ? state.scaleRoNumMax : undefined;
@@ -386,6 +404,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["secondsUntilAutoPause"] = state ? state.secondsUntilAutoPause : undefined;
             resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
             resourceInputs["securityIps"] = state ? state.securityIps : undefined;
+            resourceInputs["serverlessSteadySwitch"] = state ? state.serverlessSteadySwitch : undefined;
             resourceInputs["serverlessType"] = state ? state.serverlessType : undefined;
             resourceInputs["sourceResourceId"] = state ? state.sourceResourceId : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
@@ -421,6 +440,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["dbClusterIpArrays"] = args ? args.dbClusterIpArrays : undefined;
             resourceInputs["dbNodeClass"] = args ? args.dbNodeClass : undefined;
             resourceInputs["dbNodeCount"] = args ? args.dbNodeCount : undefined;
+            resourceInputs["dbNodeId"] = args ? args.dbNodeId : undefined;
             resourceInputs["dbNodeNum"] = args ? args.dbNodeNum : undefined;
             resourceInputs["dbType"] = args ? args.dbType : undefined;
             resourceInputs["dbVersion"] = args ? args.dbVersion : undefined;
@@ -431,6 +451,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["fromTimeService"] = args ? args.fromTimeService : undefined;
             resourceInputs["gdnId"] = args ? args.gdnId : undefined;
+            resourceInputs["hotReplicaMode"] = args ? args.hotReplicaMode : undefined;
             resourceInputs["hotStandbyCluster"] = args ? args.hotStandbyCluster : undefined;
             resourceInputs["imciSwitch"] = args ? args.imciSwitch : undefined;
             resourceInputs["loosePolarLogBin"] = args ? args.loosePolarLogBin : undefined;
@@ -448,6 +469,8 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["renewalStatus"] = args ? args.renewalStatus : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["roleArn"] = args ? args.roleArn : undefined;
+            resourceInputs["scaleApRoNumMax"] = args ? args.scaleApRoNumMax : undefined;
+            resourceInputs["scaleApRoNumMin"] = args ? args.scaleApRoNumMin : undefined;
             resourceInputs["scaleMax"] = args ? args.scaleMax : undefined;
             resourceInputs["scaleMin"] = args ? args.scaleMin : undefined;
             resourceInputs["scaleRoNumMax"] = args ? args.scaleRoNumMax : undefined;
@@ -455,6 +478,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["secondsUntilAutoPause"] = args ? args.secondsUntilAutoPause : undefined;
             resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
             resourceInputs["securityIps"] = args ? args.securityIps : undefined;
+            resourceInputs["serverlessSteadySwitch"] = args ? args.serverlessSteadySwitch : undefined;
             resourceInputs["serverlessType"] = args ? args.serverlessType : undefined;
             resourceInputs["sourceResourceId"] = args ? args.sourceResourceId : undefined;
             resourceInputs["storagePayType"] = args ? args.storagePayType : undefined;
@@ -483,8 +507,7 @@ export class Cluster extends pulumi.CustomResource {
  */
 export interface ClusterState {
     /**
-     * Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
      */
     allowShutDown?: pulumi.Input<string>;
     /**
@@ -505,11 +528,11 @@ export interface ClusterState {
      */
     collectorStatus?: pulumi.Input<string>;
     /**
-     * (Available since 1.81.0+) PolarDB cluster connection string.
+     * (Available since 1.81.0) PolarDB cluster connection string.
      */
     connectionString?: pulumi.Input<string>;
     /**
-     * (Available since 1.204.1+) PolarDB cluster creation time.
+     * (Available since 1.204.1) PolarDB cluster creation time.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -538,7 +561,11 @@ export interface ClusterState {
      */
     dbNodeCount?: pulumi.Input<number>;
     /**
-     * The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     * The ID of the node or node subscript. Node subscript values: 1 to 15.
+     */
+    dbNodeId?: pulumi.Input<string>;
+    /**
+     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
      */
     dbNodeNum?: pulumi.Input<number>;
     /**
@@ -582,6 +609,10 @@ export interface ClusterState {
      */
     gdnId?: pulumi.Input<string>;
     /**
+     * Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+     */
+    hotReplicaMode?: pulumi.Input<string>;
+    /**
      * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
      */
     hotStandbyCluster?: pulumi.Input<string>;
@@ -592,12 +623,12 @@ export interface ClusterState {
      */
     imciSwitch?: pulumi.Input<string>;
     /**
-     * Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
      * > **NOTE:** This parameter is valid only MySQL Engine supports.
      */
     loosePolarLogBin?: pulumi.Input<string>;
     /**
-     * Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
      * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      */
     lowerCaseTableNames?: pulumi.Input<number>;
@@ -638,7 +669,7 @@ export interface ClusterState {
      */
     plannedStartTime?: pulumi.Input<string>;
     /**
-     * (Available since 1.196.0+) PolarDB cluster connection port.
+     * (Available since 1.196.0) PolarDB cluster connection port.
      */
     port?: pulumi.Input<string>;
     /**
@@ -647,7 +678,7 @@ export interface ClusterState {
      */
     proxyClass?: pulumi.Input<string>;
     /**
-     * The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
      * > **NOTE:** This parameter is valid only for standard clusters.
      */
     proxyType?: pulumi.Input<string>;
@@ -664,28 +695,31 @@ export interface ClusterState {
      */
     roleArn?: pulumi.Input<string>;
     /**
-     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     */
+    scaleApRoNumMax?: pulumi.Input<number>;
+    /**
+     * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     */
+    scaleApRoNumMin?: pulumi.Input<number>;
+    /**
+     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleMax?: pulumi.Input<number>;
     /**
-     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`.· This parameter is valid only for serverless clusters.
      */
     scaleMin?: pulumi.Input<number>;
     /**
-     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7. It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleRoNumMax?: pulumi.Input<number>;
     /**
-     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleRoNumMin?: pulumi.Input<number>;
     /**
-     * The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
      */
     secondsUntilAutoPause?: pulumi.Input<number>;
     /**
@@ -699,8 +733,12 @@ export interface ClusterState {
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of the serverless cluster. Set the value to AgileServerless.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+     * > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
+     */
+    serverlessSteadySwitch?: pulumi.Input<string>;
+    /**
+     * The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     serverlessType?: pulumi.Input<string>;
     /**
@@ -708,7 +746,7 @@ export interface ClusterState {
      */
     sourceResourceId?: pulumi.Input<string>;
     /**
-     * (Available since 1.204.1+) PolarDB cluster status.
+     * (Available since 1.204.1) PolarDB cluster status.
      */
     status?: pulumi.Input<string>;
     /**
@@ -737,7 +775,7 @@ export interface ClusterState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * (Available since 1.200.0+) The region where the TDE key resides.
+     * (Available since 1.200.0) The region where the TDE key resides.
      * > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
      * > **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
      */
@@ -771,8 +809,7 @@ export interface ClusterState {
  */
 export interface ClusterArgs {
     /**
-     * Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
      */
     allowShutDown?: pulumi.Input<string>;
     /**
@@ -818,7 +855,11 @@ export interface ClusterArgs {
      */
     dbNodeCount?: pulumi.Input<number>;
     /**
-     * The number of Standard Edition nodes. Default value: 1. Valid values are `1`, `2`.
+     * The ID of the node or node subscript. Node subscript values: 1 to 15.
+     */
+    dbNodeId?: pulumi.Input<string>;
+    /**
+     * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
      */
     dbNodeNum?: pulumi.Input<number>;
     /**
@@ -862,6 +903,10 @@ export interface ClusterArgs {
      */
     gdnId?: pulumi.Input<string>;
     /**
+     * Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
+     */
+    hotReplicaMode?: pulumi.Input<string>;
+    /**
      * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
      */
     hotStandbyCluster?: pulumi.Input<string>;
@@ -872,12 +917,12 @@ export interface ClusterArgs {
      */
     imciSwitch?: pulumi.Input<string>;
     /**
-     * Enable the Binlog function. Valid values are `OFF`, `ON`.
+     * Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
      * > **NOTE:** This parameter is valid only MySQL Engine supports.
      */
     loosePolarLogBin?: pulumi.Input<string>;
     /**
-     * Specifies whether the table names are case-sensitive. Default value: 1.  Valid values are `1`, `0`.
+     * Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
      * > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      */
     lowerCaseTableNames?: pulumi.Input<number>;
@@ -923,7 +968,7 @@ export interface ClusterArgs {
      */
     proxyClass?: pulumi.Input<string>;
     /**
-     * The type of PolarProxy. Default value: OFF. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
+     * The type of PolarProxy. Default value: `OFF`. Valid values are `OFF`, `EXCLUSIVE` `GENERAL`.
      * > **NOTE:** This parameter is valid only for standard clusters.
      */
     proxyType?: pulumi.Input<string>;
@@ -940,28 +985,31 @@ export interface ClusterArgs {
      */
     roleArn?: pulumi.Input<string>;
     /**
-     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     */
+    scaleApRoNumMax?: pulumi.Input<number>;
+    /**
+     * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
+     */
+    scaleApRoNumMin?: pulumi.Input<number>;
+    /**
+     * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleMax?: pulumi.Input<number>;
     /**
-     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverlessType is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverlessType is `SteadyServerless`.· This parameter is valid only for serverless clusters.
      */
     scaleMin?: pulumi.Input<number>;
     /**
-     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7. It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleRoNumMax?: pulumi.Input<number>;
     /**
-     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverlessType is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverlessType is `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     scaleRoNumMin?: pulumi.Input<number>;
     /**
-     * The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
      */
     secondsUntilAutoPause?: pulumi.Input<number>;
     /**
@@ -975,8 +1023,12 @@ export interface ClusterArgs {
      */
     securityIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of the serverless cluster. Set the value to AgileServerless.
-     * > **NOTE:** This parameter is valid only for serverless clusters.
+     * Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
+     * > **NOTE:** When serverlessSteadySwitch is `ON` and serverlessType is `SteadyServerless`, parameters `scaleMin`, `scaleMax`, `scaleRoNumMin` and `scaleRoNumMax` are all required.
+     */
+    serverlessSteadySwitch?: pulumi.Input<string>;
+    /**
+     * The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
      */
     serverlessType?: pulumi.Input<string>;
     /**

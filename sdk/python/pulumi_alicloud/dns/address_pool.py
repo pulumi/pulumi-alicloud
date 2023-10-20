@@ -45,7 +45,15 @@ class AddressPoolArgs:
              instance_id: pulumi.Input[str],
              lba_strategy: pulumi.Input[str],
              type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressPoolName' in kwargs:
+            address_pool_name = kwargs['addressPoolName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'lbaStrategy' in kwargs:
+            lba_strategy = kwargs['lbaStrategy']
+
         _setter("address_pool_name", address_pool_name)
         _setter("addresses", addresses)
         _setter("instance_id", instance_id)
@@ -145,7 +153,15 @@ class _AddressPoolState:
              instance_id: Optional[pulumi.Input[str]] = None,
              lba_strategy: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressPoolName' in kwargs:
+            address_pool_name = kwargs['addressPoolName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'lbaStrategy' in kwargs:
+            lba_strategy = kwargs['lbaStrategy']
+
         if address_pool_name is not None:
             _setter("address_pool_name", address_pool_name)
         if addresses is not None:

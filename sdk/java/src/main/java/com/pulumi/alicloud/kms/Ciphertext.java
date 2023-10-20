@@ -73,14 +73,14 @@ public class Ciphertext extends com.pulumi.resources.CustomResource {
         return this.ciphertextBlob;
     }
     /**
-     * (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     * The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      * 
      */
     @Export(name="encryptionContext", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> encryptionContext;
 
     /**
-     * @return (Optional, ForceNew) The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+     * @return The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
      * 
      */
     public Output<Optional<Map<String,String>>> encryptionContext() {

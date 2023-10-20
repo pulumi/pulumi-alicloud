@@ -622,7 +622,7 @@ type ForwardingRuleRuleAction struct {
 	Order int `pulumi:"order"`
 	// Forward action type.
 	RuleActionType string `pulumi:"ruleActionType"`
-	// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+	// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
 	RuleActionValue *string `pulumi:"ruleActionValue"`
 }
 
@@ -645,7 +645,7 @@ type ForwardingRuleRuleActionArgs struct {
 	Order pulumi.IntInput `pulumi:"order"`
 	// Forward action type.
 	RuleActionType pulumi.StringInput `pulumi:"ruleActionType"`
-	// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+	// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
 	RuleActionValue pulumi.StringPtrInput `pulumi:"ruleActionValue"`
 }
 
@@ -736,7 +736,7 @@ func (o ForwardingRuleRuleActionOutput) RuleActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleAction) string { return v.RuleActionType }).(pulumi.StringOutput)
 }
 
-// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+// The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
 func (o ForwardingRuleRuleActionOutput) RuleActionValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ForwardingRuleRuleAction) *string { return v.RuleActionValue }).(pulumi.StringPtrOutput)
 }

@@ -69,7 +69,23 @@ class MetricRuleBlackListArgs:
              metrics: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]] = None,
              scope_type: Optional[pulumi.Input[str]] = None,
              scope_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'metricRuleBlackListName' in kwargs:
+            metric_rule_black_list_name = kwargs['metricRuleBlackListName']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'enableEndTime' in kwargs:
+            enable_end_time = kwargs['enableEndTime']
+        if 'enableStartTime' in kwargs:
+            enable_start_time = kwargs['enableStartTime']
+        if 'isEnable' in kwargs:
+            is_enable = kwargs['isEnable']
+        if 'scopeType' in kwargs:
+            scope_type = kwargs['scopeType']
+        if 'scopeValues' in kwargs:
+            scope_values = kwargs['scopeValues']
+
         _setter("category", category)
         _setter("instances", instances)
         _setter("metric_rule_black_list_name", metric_rule_black_list_name)
@@ -290,7 +306,29 @@ class _MetricRuleBlackListState:
              scope_type: Optional[pulumi.Input[str]] = None,
              scope_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              update_time: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'enableEndTime' in kwargs:
+            enable_end_time = kwargs['enableEndTime']
+        if 'enableStartTime' in kwargs:
+            enable_start_time = kwargs['enableStartTime']
+        if 'isEnable' in kwargs:
+            is_enable = kwargs['isEnable']
+        if 'metricRuleBlackListId' in kwargs:
+            metric_rule_black_list_id = kwargs['metricRuleBlackListId']
+        if 'metricRuleBlackListName' in kwargs:
+            metric_rule_black_list_name = kwargs['metricRuleBlackListName']
+        if 'scopeType' in kwargs:
+            scope_type = kwargs['scopeType']
+        if 'scopeValues' in kwargs:
+            scope_values = kwargs['scopeValues']
+        if 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+
         if category is not None:
             _setter("category", category)
         if create_time is not None:

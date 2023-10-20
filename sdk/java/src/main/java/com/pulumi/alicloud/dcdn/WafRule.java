@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Dcdn Waf Rule resource.
  * 
- * For information about Dcdn Waf Rule and how to use it, see [What is Waf Rule](https://www.alibabacloud.com/help/en/dynamic-route-for-cdn/latest/configure-protection-rules).
+ * For information about Dcdn Waf Rule and how to use it, see [What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules).
  * 
  * &gt; **NOTE:** Available since v1.201.0.
  * 

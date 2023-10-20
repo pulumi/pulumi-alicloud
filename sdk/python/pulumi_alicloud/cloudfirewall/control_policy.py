@@ -87,7 +87,27 @@ class ControlPolicyArgs:
              lang: Optional[pulumi.Input[str]] = None,
              release: Optional[pulumi.Input[str]] = None,
              source_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclAction' in kwargs:
+            acl_action = kwargs['aclAction']
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'destinationType' in kwargs:
+            destination_type = kwargs['destinationType']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'destPort' in kwargs:
+            dest_port = kwargs['destPort']
+        if 'destPortGroup' in kwargs:
+            dest_port_group = kwargs['destPortGroup']
+        if 'destPortType' in kwargs:
+            dest_port_type = kwargs['destPortType']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'sourceIp' in kwargs:
+            source_ip = kwargs['sourceIp']
+
         _setter("acl_action", acl_action)
         _setter("application_name", application_name)
         _setter("description", description)
@@ -385,7 +405,29 @@ class _ControlPolicyState:
              source: Optional[pulumi.Input[str]] = None,
              source_ip: Optional[pulumi.Input[str]] = None,
              source_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclAction' in kwargs:
+            acl_action = kwargs['aclAction']
+        if 'aclUuid' in kwargs:
+            acl_uuid = kwargs['aclUuid']
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'destPort' in kwargs:
+            dest_port = kwargs['destPort']
+        if 'destPortGroup' in kwargs:
+            dest_port_group = kwargs['destPortGroup']
+        if 'destPortType' in kwargs:
+            dest_port_type = kwargs['destPortType']
+        if 'destinationType' in kwargs:
+            destination_type = kwargs['destinationType']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+        if 'sourceIp' in kwargs:
+            source_ip = kwargs['sourceIp']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+
         if acl_action is not None:
             _setter("acl_action", acl_action)
         if acl_uuid is not None:

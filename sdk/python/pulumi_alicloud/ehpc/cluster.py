@@ -267,7 +267,113 @@ class ClusterArgs:
              without_agent: Optional[pulumi.Input[bool]] = None,
              without_elastic_ip: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'computeCount' in kwargs:
+            compute_count = kwargs['computeCount']
+        if 'computeInstanceType' in kwargs:
+            compute_instance_type = kwargs['computeInstanceType']
+        if 'loginCount' in kwargs:
+            login_count = kwargs['loginCount']
+        if 'loginInstanceType' in kwargs:
+            login_instance_type = kwargs['loginInstanceType']
+        if 'managerInstanceType' in kwargs:
+            manager_instance_type = kwargs['managerInstanceType']
+        if 'osTag' in kwargs:
+            os_tag = kwargs['osTag']
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if 'additionalVolumes' in kwargs:
+            additional_volumes = kwargs['additionalVolumes']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'clientVersion' in kwargs:
+            client_version = kwargs['clientVersion']
+        if 'clusterVersion' in kwargs:
+            cluster_version = kwargs['clusterVersion']
+        if 'computeEnableHt' in kwargs:
+            compute_enable_ht = kwargs['computeEnableHt']
+        if 'computeSpotPriceLimit' in kwargs:
+            compute_spot_price_limit = kwargs['computeSpotPriceLimit']
+        if 'computeSpotStrategy' in kwargs:
+            compute_spot_strategy = kwargs['computeSpotStrategy']
+        if 'deployMode' in kwargs:
+            deploy_mode = kwargs['deployMode']
+        if 'ecsChargeType' in kwargs:
+            ecs_charge_type = kwargs['ecsChargeType']
+        if 'ehpcVersion' in kwargs:
+            ehpc_version = kwargs['ehpcVersion']
+        if 'haEnable' in kwargs:
+            ha_enable = kwargs['haEnable']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageOwnerAlias' in kwargs:
+            image_owner_alias = kwargs['imageOwnerAlias']
+        if 'inputFileUrl' in kwargs:
+            input_file_url = kwargs['inputFileUrl']
+        if 'isComputeEss' in kwargs:
+            is_compute_ess = kwargs['isComputeEss']
+        if 'jobQueue' in kwargs:
+            job_queue = kwargs['jobQueue']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'managerCount' in kwargs:
+            manager_count = kwargs['managerCount']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'postInstallScripts' in kwargs:
+            post_install_scripts = kwargs['postInstallScripts']
+        if 'ramNodeTypes' in kwargs:
+            ram_node_types = kwargs['ramNodeTypes']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'releaseInstance' in kwargs:
+            release_instance = kwargs['releaseInstance']
+        if 'remoteDirectory' in kwargs:
+            remote_directory = kwargs['remoteDirectory']
+        if 'remoteVisEnable' in kwargs:
+            remote_vis_enable = kwargs['remoteVisEnable']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sccClusterId' in kwargs:
+            scc_cluster_id = kwargs['sccClusterId']
+        if 'schedulerType' in kwargs:
+            scheduler_type = kwargs['schedulerType']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityGroupName' in kwargs:
+            security_group_name = kwargs['securityGroupName']
+        if 'systemDiskLevel' in kwargs:
+            system_disk_level = kwargs['systemDiskLevel']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if 'systemDiskType' in kwargs:
+            system_disk_type = kwargs['systemDiskType']
+        if 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+        if 'volumeMountOption' in kwargs:
+            volume_mount_option = kwargs['volumeMountOption']
+        if 'volumeMountpoint' in kwargs:
+            volume_mountpoint = kwargs['volumeMountpoint']
+        if 'volumeProtocol' in kwargs:
+            volume_protocol = kwargs['volumeProtocol']
+        if 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'withoutAgent' in kwargs:
+            without_agent = kwargs['withoutAgent']
+        if 'withoutElasticIp' in kwargs:
+            without_elastic_ip = kwargs['withoutElasticIp']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("cluster_name", cluster_name)
         _setter("compute_count", compute_count)
         _setter("compute_instance_type", compute_instance_type)
@@ -1343,7 +1449,113 @@ class _ClusterState:
              without_agent: Optional[pulumi.Input[bool]] = None,
              without_elastic_ip: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if 'additionalVolumes' in kwargs:
+            additional_volumes = kwargs['additionalVolumes']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'clientVersion' in kwargs:
+            client_version = kwargs['clientVersion']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterVersion' in kwargs:
+            cluster_version = kwargs['clusterVersion']
+        if 'computeCount' in kwargs:
+            compute_count = kwargs['computeCount']
+        if 'computeEnableHt' in kwargs:
+            compute_enable_ht = kwargs['computeEnableHt']
+        if 'computeInstanceType' in kwargs:
+            compute_instance_type = kwargs['computeInstanceType']
+        if 'computeSpotPriceLimit' in kwargs:
+            compute_spot_price_limit = kwargs['computeSpotPriceLimit']
+        if 'computeSpotStrategy' in kwargs:
+            compute_spot_strategy = kwargs['computeSpotStrategy']
+        if 'deployMode' in kwargs:
+            deploy_mode = kwargs['deployMode']
+        if 'ecsChargeType' in kwargs:
+            ecs_charge_type = kwargs['ecsChargeType']
+        if 'ehpcVersion' in kwargs:
+            ehpc_version = kwargs['ehpcVersion']
+        if 'haEnable' in kwargs:
+            ha_enable = kwargs['haEnable']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageOwnerAlias' in kwargs:
+            image_owner_alias = kwargs['imageOwnerAlias']
+        if 'inputFileUrl' in kwargs:
+            input_file_url = kwargs['inputFileUrl']
+        if 'isComputeEss' in kwargs:
+            is_compute_ess = kwargs['isComputeEss']
+        if 'jobQueue' in kwargs:
+            job_queue = kwargs['jobQueue']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'loginCount' in kwargs:
+            login_count = kwargs['loginCount']
+        if 'loginInstanceType' in kwargs:
+            login_instance_type = kwargs['loginInstanceType']
+        if 'managerCount' in kwargs:
+            manager_count = kwargs['managerCount']
+        if 'managerInstanceType' in kwargs:
+            manager_instance_type = kwargs['managerInstanceType']
+        if 'osTag' in kwargs:
+            os_tag = kwargs['osTag']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'postInstallScripts' in kwargs:
+            post_install_scripts = kwargs['postInstallScripts']
+        if 'ramNodeTypes' in kwargs:
+            ram_node_types = kwargs['ramNodeTypes']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'releaseInstance' in kwargs:
+            release_instance = kwargs['releaseInstance']
+        if 'remoteDirectory' in kwargs:
+            remote_directory = kwargs['remoteDirectory']
+        if 'remoteVisEnable' in kwargs:
+            remote_vis_enable = kwargs['remoteVisEnable']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sccClusterId' in kwargs:
+            scc_cluster_id = kwargs['sccClusterId']
+        if 'schedulerType' in kwargs:
+            scheduler_type = kwargs['schedulerType']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityGroupName' in kwargs:
+            security_group_name = kwargs['securityGroupName']
+        if 'systemDiskLevel' in kwargs:
+            system_disk_level = kwargs['systemDiskLevel']
+        if 'systemDiskSize' in kwargs:
+            system_disk_size = kwargs['systemDiskSize']
+        if 'systemDiskType' in kwargs:
+            system_disk_type = kwargs['systemDiskType']
+        if 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+        if 'volumeMountOption' in kwargs:
+            volume_mount_option = kwargs['volumeMountOption']
+        if 'volumeMountpoint' in kwargs:
+            volume_mountpoint = kwargs['volumeMountpoint']
+        if 'volumeProtocol' in kwargs:
+            volume_protocol = kwargs['volumeProtocol']
+        if 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'withoutAgent' in kwargs:
+            without_agent = kwargs['withoutAgent']
+        if 'withoutElasticIp' in kwargs:
+            without_elastic_ip = kwargs['withoutElasticIp']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_type is not None:
             _setter("account_type", account_type)
         if additional_volumes is not None:
@@ -2249,7 +2461,7 @@ class Cluster(pulumi.CustomResource):
         """
         Provides a Ehpc Cluster resource.
 
-        For information about Ehpc Cluster and how to use it, see [What is Cluster](https://www.alibabacloud.com/help/e-hpc/latest/createcluster).
+        For information about Ehpc Cluster and how to use it, see [What is Cluster](https://www.alibabacloud.com/help/en/e-hpc/developer-reference/api-ehpc-2018-04-12-createcluster).
 
         > **NOTE:** Available since v1.173.0.
 
@@ -2396,7 +2608,7 @@ class Cluster(pulumi.CustomResource):
         """
         Provides a Ehpc Cluster resource.
 
-        For information about Ehpc Cluster and how to use it, see [What is Cluster](https://www.alibabacloud.com/help/e-hpc/latest/createcluster).
+        For information about Ehpc Cluster and how to use it, see [What is Cluster](https://www.alibabacloud.com/help/en/e-hpc/developer-reference/api-ehpc-2018-04-12-createcluster).
 
         > **NOTE:** Available since v1.173.0.
 

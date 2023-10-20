@@ -15,7 +15,7 @@ import (
 
 // Provides a Application Real-Time Monitoring Service (ARMS) Remote Write resource.
 //
-// For information about Application Real-Time Monitoring Service (ARMS) Remote Write and how to use it, see [What is Remote Write](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-addprometheusremotewrite).
+// For information about Application Real-Time Monitoring Service (ARMS) Remote Write and how to use it, see [What is Remote Write](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-addprometheusremotewrite).
 //
 // > **NOTE:** Available since v1.204.0.
 //

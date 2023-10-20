@@ -52,7 +52,17 @@ class ApplicationArgs:
              latest_image: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'blueGreen' in kwargs:
+            blue_green = kwargs['blueGreen']
+        if 'blueGreenConfirm' in kwargs:
+            blue_green_confirm = kwargs['blueGreenConfirm']
+        if 'latestImage' in kwargs:
+            latest_image = kwargs['latestImage']
+
         _setter("cluster_name", cluster_name)
         _setter("template", template)
         if blue_green is not None:
@@ -197,7 +207,19 @@ class _ApplicationState:
              services: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationServiceArgs']]]] = None,
              template: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'blueGreen' in kwargs:
+            blue_green = kwargs['blueGreen']
+        if 'blueGreenConfirm' in kwargs:
+            blue_green_confirm = kwargs['blueGreenConfirm']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'defaultDomain' in kwargs:
+            default_domain = kwargs['defaultDomain']
+        if 'latestImage' in kwargs:
+            latest_image = kwargs['latestImage']
+
         if blue_green is not None:
             _setter("blue_green", blue_green)
         if blue_green_confirm is not None:

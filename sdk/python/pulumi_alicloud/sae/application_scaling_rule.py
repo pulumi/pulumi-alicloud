@@ -57,7 +57,25 @@ class ApplicationScalingRuleArgs:
              scaling_rule_enable: Optional[pulumi.Input[bool]] = None,
              scaling_rule_metric: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricArgs']] = None,
              scaling_rule_timer: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'scalingRuleName' in kwargs:
+            scaling_rule_name = kwargs['scalingRuleName']
+        if 'scalingRuleType' in kwargs:
+            scaling_rule_type = kwargs['scalingRuleType']
+        if 'minReadyInstanceRatio' in kwargs:
+            min_ready_instance_ratio = kwargs['minReadyInstanceRatio']
+        if 'minReadyInstances' in kwargs:
+            min_ready_instances = kwargs['minReadyInstances']
+        if 'scalingRuleEnable' in kwargs:
+            scaling_rule_enable = kwargs['scalingRuleEnable']
+        if 'scalingRuleMetric' in kwargs:
+            scaling_rule_metric = kwargs['scalingRuleMetric']
+        if 'scalingRuleTimer' in kwargs:
+            scaling_rule_timer = kwargs['scalingRuleTimer']
+
         _setter("app_id", app_id)
         _setter("scaling_rule_name", scaling_rule_name)
         _setter("scaling_rule_type", scaling_rule_type)
@@ -213,7 +231,25 @@ class _ApplicationScalingRuleState:
              scaling_rule_name: Optional[pulumi.Input[str]] = None,
              scaling_rule_timer: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleTimerArgs']] = None,
              scaling_rule_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appId' in kwargs:
+            app_id = kwargs['appId']
+        if 'minReadyInstanceRatio' in kwargs:
+            min_ready_instance_ratio = kwargs['minReadyInstanceRatio']
+        if 'minReadyInstances' in kwargs:
+            min_ready_instances = kwargs['minReadyInstances']
+        if 'scalingRuleEnable' in kwargs:
+            scaling_rule_enable = kwargs['scalingRuleEnable']
+        if 'scalingRuleMetric' in kwargs:
+            scaling_rule_metric = kwargs['scalingRuleMetric']
+        if 'scalingRuleName' in kwargs:
+            scaling_rule_name = kwargs['scalingRuleName']
+        if 'scalingRuleTimer' in kwargs:
+            scaling_rule_timer = kwargs['scalingRuleTimer']
+        if 'scalingRuleType' in kwargs:
+            scaling_rule_type = kwargs['scalingRuleType']
+
         if app_id is not None:
             _setter("app_id", app_id)
         if min_ready_instance_ratio is not None:

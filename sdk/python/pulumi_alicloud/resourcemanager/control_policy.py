@@ -39,7 +39,15 @@ class ControlPolicyArgs:
              effect_scope: pulumi.Input[str],
              policy_document: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'controlPolicyName' in kwargs:
+            control_policy_name = kwargs['controlPolicyName']
+        if 'effectScope' in kwargs:
+            effect_scope = kwargs['effectScope']
+        if 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+
         _setter("control_policy_name", control_policy_name)
         _setter("effect_scope", effect_scope)
         _setter("policy_document", policy_document)
@@ -123,7 +131,15 @@ class _ControlPolicyState:
              description: Optional[pulumi.Input[str]] = None,
              effect_scope: Optional[pulumi.Input[str]] = None,
              policy_document: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'controlPolicyName' in kwargs:
+            control_policy_name = kwargs['controlPolicyName']
+        if 'effectScope' in kwargs:
+            effect_scope = kwargs['effectScope']
+        if 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+
         if control_policy_name is not None:
             _setter("control_policy_name", control_policy_name)
         if description is not None:

@@ -57,7 +57,23 @@ class TemplateScratchArgs:
              source_resource_group: Optional[pulumi.Input['TemplateScratchSourceResourceGroupArgs']] = None,
              source_resources: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]] = None,
              source_tag: Optional[pulumi.Input['TemplateScratchSourceTagArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'templateScratchType' in kwargs:
+            template_scratch_type = kwargs['templateScratchType']
+        if 'executionMode' in kwargs:
+            execution_mode = kwargs['executionMode']
+        if 'logicalIdStrategy' in kwargs:
+            logical_id_strategy = kwargs['logicalIdStrategy']
+        if 'preferenceParameters' in kwargs:
+            preference_parameters = kwargs['preferenceParameters']
+        if 'sourceResourceGroup' in kwargs:
+            source_resource_group = kwargs['sourceResourceGroup']
+        if 'sourceResources' in kwargs:
+            source_resources = kwargs['sourceResources']
+        if 'sourceTag' in kwargs:
+            source_tag = kwargs['sourceTag']
+
         _setter("template_scratch_type", template_scratch_type)
         if description is not None:
             _setter("description", description)
@@ -219,7 +235,23 @@ class _TemplateScratchState:
              source_tag: Optional[pulumi.Input['TemplateScratchSourceTagArgs']] = None,
              status: Optional[pulumi.Input[str]] = None,
              template_scratch_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executionMode' in kwargs:
+            execution_mode = kwargs['executionMode']
+        if 'logicalIdStrategy' in kwargs:
+            logical_id_strategy = kwargs['logicalIdStrategy']
+        if 'preferenceParameters' in kwargs:
+            preference_parameters = kwargs['preferenceParameters']
+        if 'sourceResourceGroup' in kwargs:
+            source_resource_group = kwargs['sourceResourceGroup']
+        if 'sourceResources' in kwargs:
+            source_resources = kwargs['sourceResources']
+        if 'sourceTag' in kwargs:
+            source_tag = kwargs['sourceTag']
+        if 'templateScratchType' in kwargs:
+            template_scratch_type = kwargs['templateScratchType']
+
         if description is not None:
             _setter("description", description)
         if execution_mode is not None:

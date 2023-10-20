@@ -35,7 +35,11 @@ class AclEntryAttachmentArgs:
              acl_id: pulumi.Input[str],
              entry: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+
         _setter("acl_id", acl_id)
         _setter("entry", entry)
         if description is not None:
@@ -106,7 +110,11 @@ class _AclEntryAttachmentState:
              description: Optional[pulumi.Input[str]] = None,
              entry: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+
         if acl_id is not None:
             _setter("acl_id", acl_id)
         if description is not None:
@@ -175,9 +183,9 @@ class AclEntryAttachment(pulumi.CustomResource):
                  entry: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        > **NOTE:** Available since v1.166.0.
+        For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-addentriestoacl).
 
-        For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addentriestoacl).
+        > **NOTE:** Available since v1.166.0.
 
         ## Example Usage
 
@@ -220,9 +228,9 @@ class AclEntryAttachment(pulumi.CustomResource):
                  args: AclEntryAttachmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        > **NOTE:** Available since v1.166.0.
+        For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-addentriestoacl).
 
-        For information about acl entry attachment and how to use it, see [Configure an acl entry](https://www.alibabacloud.com/help/en/server-load-balancer/latest/addentriestoacl).
+        > **NOTE:** Available since v1.166.0.
 
         ## Example Usage
 

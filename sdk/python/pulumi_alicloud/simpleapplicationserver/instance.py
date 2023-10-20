@@ -63,7 +63,23 @@ class InstanceArgs:
              password: Optional[pulumi.Input[str]] = None,
              payment_type: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'planId' in kwargs:
+            plan_id = kwargs['planId']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'dataDiskSize' in kwargs:
+            data_disk_size = kwargs['dataDiskSize']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+
         _setter("image_id", image_id)
         _setter("period", period)
         _setter("plan_id", plan_id)
@@ -255,7 +271,23 @@ class _InstanceState:
              period: Optional[pulumi.Input[int]] = None,
              plan_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'dataDiskSize' in kwargs:
+            data_disk_size = kwargs['dataDiskSize']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'planId' in kwargs:
+            plan_id = kwargs['planId']
+
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:

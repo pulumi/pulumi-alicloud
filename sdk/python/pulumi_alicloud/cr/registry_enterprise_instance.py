@@ -63,7 +63,25 @@ class RegistryEnterpriseInstanceArgs:
              period: Optional[pulumi.Input[int]] = None,
              renew_period: Optional[pulumi.Input[int]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'customOssBucket' in kwargs:
+            custom_oss_bucket = kwargs['customOssBucket']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         _setter("instance_name", instance_name)
         _setter("instance_type", instance_type)
         if custom_oss_bucket is not None:
@@ -268,7 +286,29 @@ class _RegistryEnterpriseInstanceState:
              renew_period: Optional[pulumi.Input[int]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdTime' in kwargs:
+            created_time = kwargs['createdTime']
+        if 'customOssBucket' in kwargs:
+            custom_oss_bucket = kwargs['customOssBucket']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+
         if created_time is not None:
             _setter("created_time", created_time)
         if custom_oss_bucket is not None:

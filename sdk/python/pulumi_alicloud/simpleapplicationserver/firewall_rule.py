@@ -39,7 +39,13 @@ class FirewallRuleArgs:
              port: pulumi.Input[str],
              rule_protocol: pulumi.Input[str],
              remark: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'ruleProtocol' in kwargs:
+            rule_protocol = kwargs['ruleProtocol']
+
         _setter("instance_id", instance_id)
         _setter("port", port)
         _setter("rule_protocol", rule_protocol)
@@ -127,7 +133,15 @@ class _FirewallRuleState:
              port: Optional[pulumi.Input[str]] = None,
              remark: Optional[pulumi.Input[str]] = None,
              rule_protocol: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'firewallRuleId' in kwargs:
+            firewall_rule_id = kwargs['firewallRuleId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'ruleProtocol' in kwargs:
+            rule_protocol = kwargs['ruleProtocol']
+
         if firewall_rule_id is not None:
             _setter("firewall_rule_id", firewall_rule_id)
         if instance_id is not None:

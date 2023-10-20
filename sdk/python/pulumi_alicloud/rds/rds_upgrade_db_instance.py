@@ -77,8 +77,8 @@ class RdsUpgradeDbInstanceArgs:
                * **After**: ApsaraDB RDS collects the statistics of the new instance after the switchover to accelerate the upgrade. If you access tables for which no statistics are generated, the query plans that you specify may be inaccurately executed. In addition, your database service may be unavailable during peak hours.
                
                > **NOTE** If you set the SwitchOver parameter to false, the value Before specifies that ApsaraDB RDS collects the statistics of the new instance before the new instance starts to process read and write requests, and the value After specifies that ApsaraDB RDS collects the statistics of the new instance after the new instance starts to process read and write requests.
-        :param pulumi.Input[str] db_instance_class: The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
-        :param pulumi.Input[int] db_instance_storage: The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        :param pulumi.Input[str] db_instance_class: The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
+        :param pulumi.Input[int] db_instance_storage: The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
                
                > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         :param pulumi.Input[str] db_instance_storage_type: The type of storage media that is used for the new instance. Valid values:
@@ -125,7 +125,7 @@ class RdsUpgradeDbInstanceArgs:
                - true: delete protect.
                - false: no delete protect.
                
-               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
@@ -153,7 +153,7 @@ class RdsUpgradeDbInstanceArgs:
         :param pulumi.Input[str] released_keep_policy: The released keep policy.
         :param pulumi.Input[str] replication_acl: This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
         :param pulumi.Input[str] resource_group_id: The resource group id.
-        :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+        :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
                
                > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
@@ -185,10 +185,10 @@ class RdsUpgradeDbInstanceArgs:
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
                
                > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
-        :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
                
                > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
-        :param pulumi.Input[str] zone_id_slave1: The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+        :param pulumi.Input[str] zone_id_slave1: The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
         """
         RdsUpgradeDbInstanceArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -304,7 +304,103 @@ class RdsUpgradeDbInstanceArgs:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
              zone_id_slave1: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'collectStatMode' in kwargs:
+            collect_stat_mode = kwargs['collectStatMode']
+        if 'dbInstanceClass' in kwargs:
+            db_instance_class = kwargs['dbInstanceClass']
+        if 'dbInstanceStorage' in kwargs:
+            db_instance_storage = kwargs['dbInstanceStorage']
+        if 'dbInstanceStorageType' in kwargs:
+            db_instance_storage_type = kwargs['dbInstanceStorageType']
+        if 'instanceNetworkType' in kwargs:
+            instance_network_type = kwargs['instanceNetworkType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'sourceDbInstanceId' in kwargs:
+            source_db_instance_id = kwargs['sourceDbInstanceId']
+        if 'switchOver' in kwargs:
+            switch_over = kwargs['switchOver']
+        if 'targetMajorVersion' in kwargs:
+            target_major_version = kwargs['targetMajorVersion']
+        if 'autoUpgradeMinorVersion' in kwargs:
+            auto_upgrade_minor_version = kwargs['autoUpgradeMinorVersion']
+        if 'caType' in kwargs:
+            ca_type = kwargs['caType']
+        if 'clientCaCert' in kwargs:
+            client_ca_cert = kwargs['clientCaCert']
+        if 'clientCaEnabled' in kwargs:
+            client_ca_enabled = kwargs['clientCaEnabled']
+        if 'clientCertRevocationList' in kwargs:
+            client_cert_revocation_list = kwargs['clientCertRevocationList']
+        if 'clientCrlEnabled' in kwargs:
+            client_crl_enabled = kwargs['clientCrlEnabled']
+        if 'connectionStringPrefix' in kwargs:
+            connection_string_prefix = kwargs['connectionStringPrefix']
+        if 'dbInstanceDescription' in kwargs:
+            db_instance_description = kwargs['dbInstanceDescription']
+        if 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if 'dedicatedHostGroupId' in kwargs:
+            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'forceRestart' in kwargs:
+            force_restart = kwargs['forceRestart']
+        if 'haMode' in kwargs:
+            ha_mode = kwargs['haMode']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'pgHbaConfs' in kwargs:
+            pg_hba_confs = kwargs['pgHbaConfs']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'releasedKeepPolicy' in kwargs:
+            released_keep_policy = kwargs['releasedKeepPolicy']
+        if 'replicationAcl' in kwargs:
+            replication_acl = kwargs['replicationAcl']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'serverCert' in kwargs:
+            server_cert = kwargs['serverCert']
+        if 'serverKey' in kwargs:
+            server_key = kwargs['serverKey']
+        if 'sourceBiz' in kwargs:
+            source_biz = kwargs['sourceBiz']
+        if 'sslEnabled' in kwargs:
+            ssl_enabled = kwargs['sslEnabled']
+        if 'switchTime' in kwargs:
+            switch_time = kwargs['switchTime']
+        if 'switchTimeMode' in kwargs:
+            switch_time_mode = kwargs['switchTimeMode']
+        if 'syncMode' in kwargs:
+            sync_mode = kwargs['syncMode']
+        if 'tcpConnectionType' in kwargs:
+            tcp_connection_type = kwargs['tcpConnectionType']
+        if 'tdeStatus' in kwargs:
+            tde_status = kwargs['tdeStatus']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'zoneIdSlave1' in kwargs:
+            zone_id_slave1 = kwargs['zoneIdSlave1']
+
         _setter("collect_stat_mode", collect_stat_mode)
         _setter("db_instance_class", db_instance_class)
         _setter("db_instance_storage", db_instance_storage)
@@ -425,7 +521,7 @@ class RdsUpgradeDbInstanceArgs:
     @pulumi.getter(name="dbInstanceClass")
     def db_instance_class(self) -> pulumi.Input[str]:
         """
-        The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
         """
         return pulumi.get(self, "db_instance_class")
 
@@ -437,7 +533,7 @@ class RdsUpgradeDbInstanceArgs:
     @pulumi.getter(name="dbInstanceStorage")
     def db_instance_storage(self) -> pulumi.Input[int]:
         """
-        The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 
         > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         """
@@ -693,7 +789,7 @@ class RdsUpgradeDbInstanceArgs:
         - true: delete protect.
         - false: no delete protect.
 
-        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -919,7 +1015,7 @@ class RdsUpgradeDbInstanceArgs:
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+        The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
 
         > **NOTE:** This parameter is available only when the instance runs MySQL.
         """
@@ -1094,7 +1190,7 @@ class RdsUpgradeDbInstanceArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
 
         > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
@@ -1108,7 +1204,7 @@ class RdsUpgradeDbInstanceArgs:
     @pulumi.getter(name="zoneIdSlave1")
     def zone_id_slave1(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+        The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
         """
         return pulumi.get(self, "zone_id_slave1")
 
@@ -1196,9 +1292,9 @@ class _RdsUpgradeDbInstanceState:
                > **NOTE** If you set the SwitchOver parameter to false, the value Before specifies that ApsaraDB RDS collects the statistics of the new instance before the new instance starts to process read and write requests, and the value After specifies that ApsaraDB RDS collects the statistics of the new instance after the new instance starts to process read and write requests.
         :param pulumi.Input[str] connection_string: The database connection address.
         :param pulumi.Input[str] connection_string_prefix: The connection string prefix.
-        :param pulumi.Input[str] db_instance_class: The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        :param pulumi.Input[str] db_instance_class: The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
         :param pulumi.Input[str] db_instance_description: The db instance description.
-        :param pulumi.Input[int] db_instance_storage: The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        :param pulumi.Input[int] db_instance_storage: The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
                
                > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         :param pulumi.Input[str] db_instance_storage_type: The type of storage media that is used for the new instance. Valid values:
@@ -1215,7 +1311,7 @@ class _RdsUpgradeDbInstanceState:
                - true: delete protect.
                - false: no delete protect.
                
-               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
@@ -1247,7 +1343,7 @@ class _RdsUpgradeDbInstanceState:
         :param pulumi.Input[str] released_keep_policy: The released keep policy.
         :param pulumi.Input[str] replication_acl: This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
         :param pulumi.Input[str] resource_group_id: The resource group id.
-        :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+        :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
                
                > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
@@ -1291,10 +1387,10 @@ class _RdsUpgradeDbInstanceState:
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
                
                > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
-        :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
                
                > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
-        :param pulumi.Input[str] zone_id_slave1: The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+        :param pulumi.Input[str] zone_id_slave1: The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
         """
         _RdsUpgradeDbInstanceState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -1412,7 +1508,105 @@ class _RdsUpgradeDbInstanceState:
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
              zone_id_slave1: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoUpgradeMinorVersion' in kwargs:
+            auto_upgrade_minor_version = kwargs['autoUpgradeMinorVersion']
+        if 'caType' in kwargs:
+            ca_type = kwargs['caType']
+        if 'clientCaCert' in kwargs:
+            client_ca_cert = kwargs['clientCaCert']
+        if 'clientCaEnabled' in kwargs:
+            client_ca_enabled = kwargs['clientCaEnabled']
+        if 'clientCertRevocationList' in kwargs:
+            client_cert_revocation_list = kwargs['clientCertRevocationList']
+        if 'clientCrlEnabled' in kwargs:
+            client_crl_enabled = kwargs['clientCrlEnabled']
+        if 'collectStatMode' in kwargs:
+            collect_stat_mode = kwargs['collectStatMode']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'connectionStringPrefix' in kwargs:
+            connection_string_prefix = kwargs['connectionStringPrefix']
+        if 'dbInstanceClass' in kwargs:
+            db_instance_class = kwargs['dbInstanceClass']
+        if 'dbInstanceDescription' in kwargs:
+            db_instance_description = kwargs['dbInstanceDescription']
+        if 'dbInstanceStorage' in kwargs:
+            db_instance_storage = kwargs['dbInstanceStorage']
+        if 'dbInstanceStorageType' in kwargs:
+            db_instance_storage_type = kwargs['dbInstanceStorageType']
+        if 'dbName' in kwargs:
+            db_name = kwargs['dbName']
+        if 'dedicatedHostGroupId' in kwargs:
+            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'effectiveTime' in kwargs:
+            effective_time = kwargs['effectiveTime']
+        if 'encryptionKey' in kwargs:
+            encryption_key = kwargs['encryptionKey']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'forceRestart' in kwargs:
+            force_restart = kwargs['forceRestart']
+        if 'haMode' in kwargs:
+            ha_mode = kwargs['haMode']
+        if 'instanceNetworkType' in kwargs:
+            instance_network_type = kwargs['instanceNetworkType']
+        if 'maintainTime' in kwargs:
+            maintain_time = kwargs['maintainTime']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'pgHbaConfs' in kwargs:
+            pg_hba_confs = kwargs['pgHbaConfs']
+        if 'privateIpAddress' in kwargs:
+            private_ip_address = kwargs['privateIpAddress']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'releasedKeepPolicy' in kwargs:
+            released_keep_policy = kwargs['releasedKeepPolicy']
+        if 'replicationAcl' in kwargs:
+            replication_acl = kwargs['replicationAcl']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'securityIps' in kwargs:
+            security_ips = kwargs['securityIps']
+        if 'serverCert' in kwargs:
+            server_cert = kwargs['serverCert']
+        if 'serverKey' in kwargs:
+            server_key = kwargs['serverKey']
+        if 'sourceBiz' in kwargs:
+            source_biz = kwargs['sourceBiz']
+        if 'sourceDbInstanceId' in kwargs:
+            source_db_instance_id = kwargs['sourceDbInstanceId']
+        if 'sslEnabled' in kwargs:
+            ssl_enabled = kwargs['sslEnabled']
+        if 'switchOver' in kwargs:
+            switch_over = kwargs['switchOver']
+        if 'switchTime' in kwargs:
+            switch_time = kwargs['switchTime']
+        if 'switchTimeMode' in kwargs:
+            switch_time_mode = kwargs['switchTimeMode']
+        if 'syncMode' in kwargs:
+            sync_mode = kwargs['syncMode']
+        if 'targetMajorVersion' in kwargs:
+            target_major_version = kwargs['targetMajorVersion']
+        if 'tcpConnectionType' in kwargs:
+            tcp_connection_type = kwargs['tcpConnectionType']
+        if 'tdeStatus' in kwargs:
+            tde_status = kwargs['tdeStatus']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'zoneIdSlave1' in kwargs:
+            zone_id_slave1 = kwargs['zoneIdSlave1']
+
         if acl is not None:
             _setter("acl", acl)
         if auto_upgrade_minor_version is not None:
@@ -1668,7 +1862,7 @@ class _RdsUpgradeDbInstanceState:
     @pulumi.getter(name="dbInstanceClass")
     def db_instance_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
         """
         return pulumi.get(self, "db_instance_class")
 
@@ -1692,7 +1886,7 @@ class _RdsUpgradeDbInstanceState:
     @pulumi.getter(name="dbInstanceStorage")
     def db_instance_storage(self) -> Optional[pulumi.Input[int]]:
         """
-        The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 
         > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         """
@@ -1753,7 +1947,7 @@ class _RdsUpgradeDbInstanceState:
         - true: delete protect.
         - false: no delete protect.
 
-        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -2005,7 +2199,7 @@ class _RdsUpgradeDbInstanceState:
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+        The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
 
         > **NOTE:** This parameter is available only when the instance runs MySQL.
         """
@@ -2225,7 +2419,7 @@ class _RdsUpgradeDbInstanceState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
 
         > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
@@ -2239,7 +2433,7 @@ class _RdsUpgradeDbInstanceState:
     @pulumi.getter(name="zoneIdSlave1")
     def zone_id_slave1(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+        The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
         """
         return pulumi.get(self, "zone_id_slave1")
 
@@ -2394,9 +2588,9 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                
                > **NOTE** If you set the SwitchOver parameter to false, the value Before specifies that ApsaraDB RDS collects the statistics of the new instance before the new instance starts to process read and write requests, and the value After specifies that ApsaraDB RDS collects the statistics of the new instance after the new instance starts to process read and write requests.
         :param pulumi.Input[str] connection_string_prefix: The connection string prefix.
-        :param pulumi.Input[str] db_instance_class: The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        :param pulumi.Input[str] db_instance_class: The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
         :param pulumi.Input[str] db_instance_description: The db instance description.
-        :param pulumi.Input[int] db_instance_storage: The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        :param pulumi.Input[int] db_instance_storage: The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
                
                > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         :param pulumi.Input[str] db_instance_storage_type: The type of storage media that is used for the new instance. Valid values:
@@ -2413,7 +2607,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                - true: delete protect.
                - false: no delete protect.
                
-               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
@@ -2445,7 +2639,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] released_keep_policy: The released keep policy.
         :param pulumi.Input[str] replication_acl: This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
         :param pulumi.Input[str] resource_group_id: The resource group id.
-        :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+        :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
                
                > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
@@ -2489,10 +2683,10 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
                
                > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
-        :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
                
                > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
-        :param pulumi.Input[str] zone_id_slave1: The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+        :param pulumi.Input[str] zone_id_slave1: The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
         """
         ...
     @overload
@@ -2812,9 +3006,9 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                > **NOTE** If you set the SwitchOver parameter to false, the value Before specifies that ApsaraDB RDS collects the statistics of the new instance before the new instance starts to process read and write requests, and the value After specifies that ApsaraDB RDS collects the statistics of the new instance after the new instance starts to process read and write requests.
         :param pulumi.Input[str] connection_string: The database connection address.
         :param pulumi.Input[str] connection_string_prefix: The connection string prefix.
-        :param pulumi.Input[str] db_instance_class: The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        :param pulumi.Input[str] db_instance_class: The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
         :param pulumi.Input[str] db_instance_description: The db instance description.
-        :param pulumi.Input[int] db_instance_storage: The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        :param pulumi.Input[int] db_instance_storage: The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
                
                > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         :param pulumi.Input[str] db_instance_storage_type: The type of storage media that is used for the new instance. Valid values:
@@ -2831,7 +3025,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
                - true: delete protect.
                - false: no delete protect.
                
-               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+               > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         :param pulumi.Input[str] direction: The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
         :param pulumi.Input[str] effective_time: The effective time.
         :param pulumi.Input[str] encryption_key: The ID of the private key.
@@ -2863,7 +3057,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] released_keep_policy: The released keep policy.
         :param pulumi.Input[str] replication_acl: This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
         :param pulumi.Input[str] resource_group_id: The resource group id.
-        :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+        :param pulumi.Input[str] role_arn: The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
                
                > **NOTE:** This parameter is available only when the instance runs MySQL.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: The IP address whitelist of the instance. Separate multiple IP addresses with commas (,) and cannot be repeated. The following two formats are supported:
@@ -2907,10 +3101,10 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         :param pulumi.Input[str] vswitch_id: The ID of the vSwitch associated with the specified VPC.
                
                > **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
-        :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        :param pulumi.Input[str] zone_id: The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
                
                > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
-        :param pulumi.Input[str] zone_id_slave1: The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+        :param pulumi.Input[str] zone_id_slave1: The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -3073,7 +3267,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
     @pulumi.getter(name="dbInstanceClass")
     def db_instance_class(self) -> pulumi.Output[str]:
         """
-        The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
         """
         return pulumi.get(self, "db_instance_class")
 
@@ -3089,7 +3283,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
     @pulumi.getter(name="dbInstanceStorage")
     def db_instance_storage(self) -> pulumi.Output[int]:
         """
-        The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/doc-detail/26312.htm).
+        The storage capacity of the new instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
 
         > **NOTE:** The default value of this parameter is the storage capacity of the original instance.
         """
@@ -3134,7 +3328,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
         - true: delete protect.
         - false: no delete protect.
 
-        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgresSQL**, **MariaDB**, **MSSQL**.
+        > **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -3306,7 +3500,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
     @pulumi.getter(name="roleArn")
     def role_arn(self) -> pulumi.Output[Optional[str]]:
         """
-        The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/doc-detail/93689.htm).
+        The Alibaba Cloud Resource Name (ARN) of a RAM role. A RAM role is a virtual RAM identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://www.alibabacloud.com/help/en/ram/user-guide/ram-role-overview).
 
         > **NOTE:** This parameter is available only when the instance runs MySQL.
         """
@@ -3462,7 +3656,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/doc-detail/26243.htm) operation to query the most recent region list.
+        The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
 
         > **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
         """
@@ -3472,7 +3666,7 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
     @pulumi.getter(name="zoneIdSlave1")
     def zone_id_slave1(self) -> pulumi.Output[str]:
         """
-        The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/26243.htm) operation to query zone IDs.
+        The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
         """
         return pulumi.get(self, "zone_id_slave1")
 

@@ -15,7 +15,7 @@ import (
 
 // Provides a Quotas Quota Alarm resource.
 //
-// For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/latest/api-doc-quotas-2020-05-10-api-doc-createquotaalarm).
+// For information about Quotas Quota Alarm and how to use it, see [What is Quota Alarm](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaalarm).
 //
 // > **NOTE:** Available since v1.116.0.
 //

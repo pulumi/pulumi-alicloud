@@ -41,7 +41,13 @@ class StoreIndexArgs:
              project: pulumi.Input[str],
              field_searches: Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchArgs']]]] = None,
              full_text: Optional[pulumi.Input['StoreIndexFullTextArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fieldSearches' in kwargs:
+            field_searches = kwargs['fieldSearches']
+        if 'fullText' in kwargs:
+            full_text = kwargs['fullText']
+
         _setter("logstore", logstore)
         _setter("project", project)
         if field_searches is not None:
@@ -126,7 +132,13 @@ class _StoreIndexState:
              full_text: Optional[pulumi.Input['StoreIndexFullTextArgs']] = None,
              logstore: Optional[pulumi.Input[str]] = None,
              project: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fieldSearches' in kwargs:
+            field_searches = kwargs['fieldSearches']
+        if 'fullText' in kwargs:
+            full_text = kwargs['fullText']
+
         if field_searches is not None:
             _setter("field_searches", field_searches)
         if full_text is not None:

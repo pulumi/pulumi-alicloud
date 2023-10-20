@@ -55,7 +55,21 @@ class DomainResourceArgs:
              rs_type: pulumi.Input[int],
              https_ext: Optional[pulumi.Input[str]] = None,
              ocsp_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'proxyTypes' in kwargs:
+            proxy_types = kwargs['proxyTypes']
+        if 'realServers' in kwargs:
+            real_servers = kwargs['realServers']
+        if 'rsType' in kwargs:
+            rs_type = kwargs['rsType']
+        if 'httpsExt' in kwargs:
+            https_ext = kwargs['httpsExt']
+        if 'ocspEnabled' in kwargs:
+            ocsp_enabled = kwargs['ocspEnabled']
+
         _setter("domain", domain)
         _setter("instance_ids", instance_ids)
         _setter("proxy_types", proxy_types)
@@ -199,7 +213,21 @@ class _DomainResourceState:
              proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]] = None,
              real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              rs_type: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'httpsExt' in kwargs:
+            https_ext = kwargs['httpsExt']
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'ocspEnabled' in kwargs:
+            ocsp_enabled = kwargs['ocspEnabled']
+        if 'proxyTypes' in kwargs:
+            proxy_types = kwargs['proxyTypes']
+        if 'realServers' in kwargs:
+            real_servers = kwargs['realServers']
+        if 'rsType' in kwargs:
+            rs_type = kwargs['rsType']
+
         if cname is not None:
             _setter("cname", cname)
         if domain is not None:

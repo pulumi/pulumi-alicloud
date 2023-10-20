@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  *
  * For information about ECS Launch Template and how to use it, see [What is Launch Template](https://www.alibabacloud.com/help/en/doc-detail/74686.htm).
  *
- * > **NOTE:** Available in v1.120.0+.
+ * > **NOTE:** Available since v1.120.0.
  *
  * ## Example Usage
  *
@@ -148,7 +148,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly autoReleaseTime!: pulumi.Output<string | undefined>;
     /**
-     * The list of data disks created with instance.
+     * The list of data disks created with instance. See `dataDisks` below.
      */
     public readonly dataDisks!: pulumi.Output<outputs.ecs.EcsLaunchTemplateDataDisk[] | undefined>;
     /**
@@ -220,7 +220,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The list of network interfaces created with instance.
+     * The list of network interfaces created with instance. See `networkInterfaces` below.
      */
     public readonly networkInterfaces!: pulumi.Output<outputs.ecs.EcsLaunchTemplateNetworkInterfaces | undefined>;
     /**
@@ -274,7 +274,7 @@ export class EcsLaunchTemplate extends pulumi.CustomResource {
      */
     public readonly spotStrategy!: pulumi.Output<string | undefined>;
     /**
-     * The System Disk.
+     * The System Disk. See `systemDisk` below.
      */
     public readonly systemDisk!: pulumi.Output<outputs.ecs.EcsLaunchTemplateSystemDisk>;
     /**
@@ -462,7 +462,7 @@ export interface EcsLaunchTemplateState {
      */
     autoReleaseTime?: pulumi.Input<string>;
     /**
-     * The list of data disks created with instance.
+     * The list of data disks created with instance. See `dataDisks` below.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsLaunchTemplateDataDisk>[]>;
     /**
@@ -534,7 +534,7 @@ export interface EcsLaunchTemplateState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The list of network interfaces created with instance.
+     * The list of network interfaces created with instance. See `networkInterfaces` below.
      */
     networkInterfaces?: pulumi.Input<inputs.ecs.EcsLaunchTemplateNetworkInterfaces>;
     /**
@@ -588,7 +588,7 @@ export interface EcsLaunchTemplateState {
      */
     spotStrategy?: pulumi.Input<string>;
     /**
-     * The System Disk.
+     * The System Disk. See `systemDisk` below.
      */
     systemDisk?: pulumi.Input<inputs.ecs.EcsLaunchTemplateSystemDisk>;
     /**
@@ -666,7 +666,7 @@ export interface EcsLaunchTemplateArgs {
      */
     autoReleaseTime?: pulumi.Input<string>;
     /**
-     * The list of data disks created with instance.
+     * The list of data disks created with instance. See `dataDisks` below.
      */
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsLaunchTemplateDataDisk>[]>;
     /**
@@ -738,7 +738,7 @@ export interface EcsLaunchTemplateArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The list of network interfaces created with instance.
+     * The list of network interfaces created with instance. See `networkInterfaces` below.
      */
     networkInterfaces?: pulumi.Input<inputs.ecs.EcsLaunchTemplateNetworkInterfaces>;
     /**
@@ -792,7 +792,7 @@ export interface EcsLaunchTemplateArgs {
      */
     spotStrategy?: pulumi.Input<string>;
     /**
-     * The System Disk.
+     * The System Disk. See `systemDisk` below.
      */
     systemDisk?: pulumi.Input<inputs.ecs.EcsLaunchTemplateSystemDisk>;
     /**

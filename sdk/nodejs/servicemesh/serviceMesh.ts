@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * Provides a Service Mesh Service Mesh resource.
  *
- * For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://www.alibabacloud.com/help/en/alibaba-cloud-service-mesh/latest/api-servicemesh-2020-01-11-createservicemesh).
+ * For information about Service Mesh Service Mesh and how to use it, see [What is Service Mesh](https://www.alibabacloud.com/help/en/asm/developer-reference/api-servicemesh-2020-01-11-createservicemesh).
  *
  * > **NOTE:** Available since v1.138.0.
  *
@@ -50,50 +50,69 @@ export class ServiceMesh extends pulumi.CustomResource {
     }
 
     /**
-     * The array of the cluster ids.
+     * List of clusters.
      */
-    public readonly clusterIds!: pulumi.Output<string[]>;
+    public readonly clusterIds!: pulumi.Output<string[] | undefined>;
     /**
-     * The service mesh instance specification. 
-     * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+     * Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
      */
     public readonly clusterSpec!: pulumi.Output<string>;
     /**
-     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
+     * Service grid creation time.
      */
-    public readonly edition!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The configurations of additional features for the ASM instance. See `extraConfiguration` below.
+     * Whether to customize Prometheus. Value:
+     * -'true': custom Prometheus.
+     * -'false': Do not customize Prometheus. Default value: 'false '.
+     */
+    public readonly customizedPrometheus!: pulumi.Output<boolean | undefined>;
+    /**
+     * Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
+     */
+    public readonly edition!: pulumi.Output<string | undefined>;
+    /**
+     * Data plane KubeAPI access capability. See `extraConfiguration` below.
      */
     public readonly extraConfiguration!: pulumi.Output<outputs.servicemesh.ServiceMeshExtraConfiguration>;
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * Whether to forcibly delete the ASM instance. Value:
+     * -'true': force deletion of ASM instance
+     * -'false': no forced deletion of ASM instance. Default value: false.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * The configuration of the Load Balancer. See `loadBalancer` below.
+     * Load balancing information. See `loadBalancer` below.
      */
-    public readonly loadBalancer!: pulumi.Output<outputs.servicemesh.ServiceMeshLoadBalancer>;
+    public readonly loadBalancer!: pulumi.Output<outputs.servicemesh.ServiceMeshLoadBalancer | undefined>;
     /**
-     * The configuration of the Service grid. See `meshConfig` below.
+     * Service grid configuration information. See `meshConfig` below.
      */
-    public readonly meshConfig!: pulumi.Output<outputs.servicemesh.ServiceMeshMeshConfig>;
+    public readonly meshConfig!: pulumi.Output<outputs.servicemesh.ServiceMeshMeshConfig | undefined>;
     /**
-     * The network configuration of the Service grid. See `network` below.
+     * Service grid network configuration information. See `network` below.
      */
     public readonly network!: pulumi.Output<outputs.servicemesh.ServiceMeshNetwork>;
     /**
-     * The name of the resource.
+     * The Prometheus service address (in non-custom cases, use the ARMS address format).
      */
-    public readonly serviceMeshName!: pulumi.Output<string>;
+    public readonly prometheusUrl!: pulumi.Output<string | undefined>;
     /**
-     * The status of the resource. Valid values: `running` or `initial`.
+     * ServiceMeshName.
+     */
+    public readonly serviceMeshName!: pulumi.Output<string | undefined>;
+    /**
+     * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The version of the resource. you can look up the version using `alicloud.servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `alicloud.servicemesh.getServiceMeshes`.
+     * The tag of the resource.
      */
-    public readonly version!: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
+     * Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `alicloud.servicemesh.getServiceMeshes`.
+     */
+    public readonly version!: pulumi.Output<string | undefined>;
 
     /**
      * Create a ServiceMesh resource with the given unique name, arguments, and options.
@@ -110,14 +129,18 @@ export class ServiceMesh extends pulumi.CustomResource {
             const state = argsOrState as ServiceMeshState | undefined;
             resourceInputs["clusterIds"] = state ? state.clusterIds : undefined;
             resourceInputs["clusterSpec"] = state ? state.clusterSpec : undefined;
+            resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["customizedPrometheus"] = state ? state.customizedPrometheus : undefined;
             resourceInputs["edition"] = state ? state.edition : undefined;
             resourceInputs["extraConfiguration"] = state ? state.extraConfiguration : undefined;
             resourceInputs["force"] = state ? state.force : undefined;
             resourceInputs["loadBalancer"] = state ? state.loadBalancer : undefined;
             resourceInputs["meshConfig"] = state ? state.meshConfig : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["prometheusUrl"] = state ? state.prometheusUrl : undefined;
             resourceInputs["serviceMeshName"] = state ? state.serviceMeshName : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as ServiceMeshArgs | undefined;
@@ -126,14 +149,18 @@ export class ServiceMesh extends pulumi.CustomResource {
             }
             resourceInputs["clusterIds"] = args ? args.clusterIds : undefined;
             resourceInputs["clusterSpec"] = args ? args.clusterSpec : undefined;
+            resourceInputs["customizedPrometheus"] = args ? args.customizedPrometheus : undefined;
             resourceInputs["edition"] = args ? args.edition : undefined;
             resourceInputs["extraConfiguration"] = args ? args.extraConfiguration : undefined;
             resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["loadBalancer"] = args ? args.loadBalancer : undefined;
             resourceInputs["meshConfig"] = args ? args.meshConfig : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["prometheusUrl"] = args ? args.prometheusUrl : undefined;
             resourceInputs["serviceMeshName"] = args ? args.serviceMeshName : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -146,48 +173,67 @@ export class ServiceMesh extends pulumi.CustomResource {
  */
 export interface ServiceMeshState {
     /**
-     * The array of the cluster ids.
+     * List of clusters.
      */
     clusterIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The service mesh instance specification. 
-     * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+     * Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
      */
     clusterSpec?: pulumi.Input<string>;
     /**
-     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
+     * Service grid creation time.
+     */
+    createTime?: pulumi.Input<string>;
+    /**
+     * Whether to customize Prometheus. Value:
+     * -'true': custom Prometheus.
+     * -'false': Do not customize Prometheus. Default value: 'false '.
+     */
+    customizedPrometheus?: pulumi.Input<boolean>;
+    /**
+     * Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
      */
     edition?: pulumi.Input<string>;
     /**
-     * The configurations of additional features for the ASM instance. See `extraConfiguration` below.
+     * Data plane KubeAPI access capability. See `extraConfiguration` below.
      */
     extraConfiguration?: pulumi.Input<inputs.servicemesh.ServiceMeshExtraConfiguration>;
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * Whether to forcibly delete the ASM instance. Value:
+     * -'true': force deletion of ASM instance
+     * -'false': no forced deletion of ASM instance. Default value: false.
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The configuration of the Load Balancer. See `loadBalancer` below.
+     * Load balancing information. See `loadBalancer` below.
      */
     loadBalancer?: pulumi.Input<inputs.servicemesh.ServiceMeshLoadBalancer>;
     /**
-     * The configuration of the Service grid. See `meshConfig` below.
+     * Service grid configuration information. See `meshConfig` below.
      */
     meshConfig?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfig>;
     /**
-     * The network configuration of the Service grid. See `network` below.
+     * Service grid network configuration information. See `network` below.
      */
     network?: pulumi.Input<inputs.servicemesh.ServiceMeshNetwork>;
     /**
-     * The name of the resource.
+     * The Prometheus service address (in non-custom cases, use the ARMS address format).
+     */
+    prometheusUrl?: pulumi.Input<string>;
+    /**
+     * ServiceMeshName.
      */
     serviceMeshName?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `running` or `initial`.
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
     /**
-     * The version of the resource. you can look up the version using `alicloud.servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `alicloud.servicemesh.getServiceMeshes`.
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `alicloud.servicemesh.getServiceMeshes`.
      */
     version?: pulumi.Input<string>;
 }
@@ -197,44 +243,59 @@ export interface ServiceMeshState {
  */
 export interface ServiceMeshArgs {
     /**
-     * The array of the cluster ids.
+     * List of clusters.
      */
     clusterIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The service mesh instance specification. 
-     * Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
+     * Cluster specification. The service mesh instance specification. Valid values: `standard`,`enterprise`,`ultimate`. Default to `standard`.
      */
     clusterSpec?: pulumi.Input<string>;
     /**
-     * The type  of the resource. Valid values: `Default` and `Pro`. `Default`: the standard. `Pro`: the Pro version.
+     * Whether to customize Prometheus. Value:
+     * -'true': custom Prometheus.
+     * -'false': Do not customize Prometheus. Default value: 'false '.
+     */
+    customizedPrometheus?: pulumi.Input<boolean>;
+    /**
+     * Grid instance version type. Valid values: `Default` and `Pro`. Default: the standard. Pro: the Pro version.
      */
     edition?: pulumi.Input<string>;
     /**
-     * The configurations of additional features for the ASM instance. See `extraConfiguration` below.
+     * Data plane KubeAPI access capability. See `extraConfiguration` below.
      */
     extraConfiguration?: pulumi.Input<inputs.servicemesh.ServiceMeshExtraConfiguration>;
     /**
-     * This parameter is used for resource destroy. Default value is `false`.
+     * Whether to forcibly delete the ASM instance. Value:
+     * -'true': force deletion of ASM instance
+     * -'false': no forced deletion of ASM instance. Default value: false.
      */
     force?: pulumi.Input<boolean>;
     /**
-     * The configuration of the Load Balancer. See `loadBalancer` below.
+     * Load balancing information. See `loadBalancer` below.
      */
     loadBalancer?: pulumi.Input<inputs.servicemesh.ServiceMeshLoadBalancer>;
     /**
-     * The configuration of the Service grid. See `meshConfig` below.
+     * Service grid configuration information. See `meshConfig` below.
      */
     meshConfig?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfig>;
     /**
-     * The network configuration of the Service grid. See `network` below.
+     * Service grid network configuration information. See `network` below.
      */
     network: pulumi.Input<inputs.servicemesh.ServiceMeshNetwork>;
     /**
-     * The name of the resource.
+     * The Prometheus service address (in non-custom cases, use the ARMS address format).
+     */
+    prometheusUrl?: pulumi.Input<string>;
+    /**
+     * ServiceMeshName.
      */
     serviceMeshName?: pulumi.Input<string>;
     /**
-     * The version of the resource. you can look up the version using `alicloud.servicemesh.getVersions`. **Note:** The `version` supports updating from v1.170.0, the relevant version can be obtained via `istioOperatorVersion` in `alicloud.servicemesh.getServiceMeshes`.
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
+    /**
+     * Service grid version number. The version of the resource. you can look up the version using alicloud_service_mesh_versions. Note: The version supports updating from v1.170.0, the relevant version can be obtained via istioOperatorVersion in `alicloud.servicemesh.getServiceMeshes`.
      */
     version?: pulumi.Input<string>;
 }

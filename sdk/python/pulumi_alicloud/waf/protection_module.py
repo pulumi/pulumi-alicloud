@@ -48,7 +48,13 @@ class ProtectionModuleArgs:
              instance_id: pulumi.Input[str],
              mode: pulumi.Input[int],
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defenseType' in kwargs:
+            defense_type = kwargs['defenseType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("defense_type", defense_type)
         _setter("domain", domain)
         _setter("instance_id", instance_id)
@@ -159,7 +165,13 @@ class _ProtectionModuleState:
              instance_id: Optional[pulumi.Input[str]] = None,
              mode: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'defenseType' in kwargs:
+            defense_type = kwargs['defenseType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         if defense_type is not None:
             _setter("defense_type", defense_type)
         if domain is not None:

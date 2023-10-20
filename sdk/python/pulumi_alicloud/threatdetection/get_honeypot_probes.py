@@ -138,7 +138,7 @@ def get_honeypot_probes(display_name: Optional[str] = None,
                         probe_type: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHoneypotProbesResult:
     """
-    This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotprobe)
+    This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
 
     > **NOTE:** Available in 1.195.0+
 
@@ -214,7 +214,7 @@ def get_honeypot_probes_output(display_name: Optional[pulumi.Input[Optional[str]
                                probe_type: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHoneypotProbesResult]:
     """
-    This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createhoneypotprobe)
+    This data source provides Threat Detection Honeypot Probe available to the user.[What is Honeypot Probe](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createhoneypotprobe)
 
     > **NOTE:** Available in 1.195.0+
 

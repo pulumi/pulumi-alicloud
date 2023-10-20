@@ -31,7 +31,11 @@ class SslVpnClientCertArgs:
              _setter: Callable[[Any, Any], None],
              ssl_vpn_server_id: pulumi.Input[str],
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sslVpnServerId' in kwargs:
+            ssl_vpn_server_id = kwargs['sslVpnServerId']
+
         _setter("ssl_vpn_server_id", ssl_vpn_server_id)
         if name is not None:
             _setter("name", name)
@@ -101,7 +105,19 @@ class _SslVpnClientCertState:
              name: Optional[pulumi.Input[str]] = None,
              ssl_vpn_server_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caCert' in kwargs:
+            ca_cert = kwargs['caCert']
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientConfig' in kwargs:
+            client_config = kwargs['clientConfig']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'sslVpnServerId' in kwargs:
+            ssl_vpn_server_id = kwargs['sslVpnServerId']
+
         if ca_cert is not None:
             _setter("ca_cert", ca_cert)
         if client_cert is not None:

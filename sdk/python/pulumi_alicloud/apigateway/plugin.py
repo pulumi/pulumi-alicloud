@@ -49,7 +49,15 @@ class PluginArgs:
              plugin_type: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pluginData' in kwargs:
+            plugin_data = kwargs['pluginData']
+        if 'pluginName' in kwargs:
+            plugin_name = kwargs['pluginName']
+        if 'pluginType' in kwargs:
+            plugin_type = kwargs['pluginType']
+
         _setter("plugin_data", plugin_data)
         _setter("plugin_name", plugin_name)
         _setter("plugin_type", plugin_type)
@@ -163,7 +171,15 @@ class _PluginState:
              plugin_name: Optional[pulumi.Input[str]] = None,
              plugin_type: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pluginData' in kwargs:
+            plugin_data = kwargs['pluginData']
+        if 'pluginName' in kwargs:
+            plugin_name = kwargs['pluginName']
+        if 'pluginType' in kwargs:
+            plugin_type = kwargs['pluginType']
+
         if description is not None:
             _setter("description", description)
         if plugin_data is not None:
@@ -256,7 +272,7 @@ class Plugin(pulumi.CustomResource):
         """
         Provides a Api Gateway Plugin resource.
 
-        For information about Api Gateway Plugin and how to use it, see [What is Plugin](https://www.alibabacloud.com/help/en/api-gateway/latest/create-an-plugin).
+        For information about Api Gateway Plugin and how to use it, see [What is Plugin](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-createplugin).
 
         > **NOTE:** Available since v1.187.0.
 
@@ -310,7 +326,7 @@ class Plugin(pulumi.CustomResource):
         """
         Provides a Api Gateway Plugin resource.
 
-        For information about Api Gateway Plugin and how to use it, see [What is Plugin](https://www.alibabacloud.com/help/en/api-gateway/latest/create-an-plugin).
+        For information about Api Gateway Plugin and how to use it, see [What is Plugin](https://www.alibabacloud.com/help/en/api-gateway/developer-reference/api-cloudapi-2016-07-14-createplugin).
 
         > **NOTE:** Available since v1.187.0.
 

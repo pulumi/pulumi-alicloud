@@ -12,11 +12,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
-// This data source provides Service Catalog Provisioned Product available to the user.[What is Provisioned Product](https://www.alibabacloud.com/help/en/servicecatalog/latest/api-doc-servicecatalog-2021-09-01-api-doc-launchproduct)
+// This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)
 //
-// > **NOTE:** Available in 1.196.0+
+// > **NOTE:** Available since v1.196.0.
 //
 // ## Example Usage
+//
+// # Basic Usage
 //
 // ```go
 // package main
@@ -57,8 +59,10 @@ func GetProvisionedProducts(ctx *pulumi.Context, args *GetProvisionedProductsArg
 
 // A collection of arguments for invoking getProvisionedProducts.
 type GetProvisionedProductsArgs struct {
+	// The access filter.
 	AccessLevelFilter *string `pulumi:"accessLevelFilter"`
-	EnableDetails     *bool   `pulumi:"enableDetails"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Provisioned Product IDs.
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Product name.
@@ -67,8 +71,10 @@ type GetProvisionedProductsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	SortBy     *string `pulumi:"sortBy"`
-	SortOrder  *string `pulumi:"sortOrder"`
+	// The field that is used to sort the queried data.
+	SortBy *string `pulumi:"sortBy"`
+	// The sorting method.
+	SortOrder *string `pulumi:"sortOrder"`
 }
 
 // A collection of values returned by getProvisionedProducts.
@@ -85,9 +91,11 @@ type GetProvisionedProductsResult struct {
 	OutputFile *string  `pulumi:"outputFile"`
 	PageNumber *int     `pulumi:"pageNumber"`
 	PageSize   *int     `pulumi:"pageSize"`
+	// (Deprecated since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
+	//
 	// Deprecated: Field 'products' has been deprecated from provider version 1.197.0.
 	Products []GetProvisionedProductsProduct `pulumi:"products"`
-	// A list of Provisioned Product Entries. Each element contains the following attributes:
+	// (Available since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
 	ProvisionedProducts []GetProvisionedProductsProvisionedProduct `pulumi:"provisionedProducts"`
 	SortBy              *string                                    `pulumi:"sortBy"`
 	SortOrder           *string                                    `pulumi:"sortOrder"`
@@ -108,8 +116,10 @@ func GetProvisionedProductsOutput(ctx *pulumi.Context, args GetProvisionedProduc
 
 // A collection of arguments for invoking getProvisionedProducts.
 type GetProvisionedProductsOutputArgs struct {
+	// The access filter.
 	AccessLevelFilter pulumi.StringPtrInput `pulumi:"accessLevelFilter"`
-	EnableDetails     pulumi.BoolPtrInput   `pulumi:"enableDetails"`
+	// Default to `false`. Set it to `true` can output more details about resource attributes.
+	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Provisioned Product IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Product name.
@@ -118,8 +128,10 @@ type GetProvisionedProductsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	SortBy     pulumi.StringPtrInput `pulumi:"sortBy"`
-	SortOrder  pulumi.StringPtrInput `pulumi:"sortOrder"`
+	// The field that is used to sort the queried data.
+	SortBy pulumi.StringPtrInput `pulumi:"sortBy"`
+	// The sorting method.
+	SortOrder pulumi.StringPtrInput `pulumi:"sortOrder"`
 }
 
 func (GetProvisionedProductsOutputArgs) ElementType() reflect.Type {
@@ -186,12 +198,14 @@ func (o GetProvisionedProductsResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetProvisionedProductsResult) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
+// (Deprecated since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
+//
 // Deprecated: Field 'products' has been deprecated from provider version 1.197.0.
 func (o GetProvisionedProductsResultOutput) Products() GetProvisionedProductsProductArrayOutput {
 	return o.ApplyT(func(v GetProvisionedProductsResult) []GetProvisionedProductsProduct { return v.Products }).(GetProvisionedProductsProductArrayOutput)
 }
 
-// A list of Provisioned Product Entries. Each element contains the following attributes:
+// (Available since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
 func (o GetProvisionedProductsResultOutput) ProvisionedProducts() GetProvisionedProductsProvisionedProductArrayOutput {
 	return o.ApplyT(func(v GetProvisionedProductsResult) []GetProvisionedProductsProvisionedProduct {
 		return v.ProvisionedProducts

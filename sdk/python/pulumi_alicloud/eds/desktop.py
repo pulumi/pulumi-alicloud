@@ -99,7 +99,39 @@ class DesktopArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_assign_mode: Optional[pulumi.Input[str]] = None,
              user_disk_size_gib: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bundleId' in kwargs:
+            bundle_id = kwargs['bundleId']
+        if 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+        if 'policyGroupId' in kwargs:
+            policy_group_id = kwargs['policyGroupId']
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'desktopName' in kwargs:
+            desktop_name = kwargs['desktopName']
+        if 'desktopType' in kwargs:
+            desktop_type = kwargs['desktopType']
+        if 'endUserIds' in kwargs:
+            end_user_ids = kwargs['endUserIds']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'rootDiskSizeGib' in kwargs:
+            root_disk_size_gib = kwargs['rootDiskSizeGib']
+        if 'stoppedMode' in kwargs:
+            stopped_mode = kwargs['stoppedMode']
+        if 'userAssignMode' in kwargs:
+            user_assign_mode = kwargs['userAssignMode']
+        if 'userDiskSizeGib' in kwargs:
+            user_disk_size_gib = kwargs['userDiskSizeGib']
+
         _setter("bundle_id", bundle_id)
         _setter("office_site_id", office_site_id)
         _setter("policy_group_id", policy_group_id)
@@ -453,7 +485,39 @@ class _DesktopState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              user_assign_mode: Optional[pulumi.Input[str]] = None,
              user_disk_size_gib: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPay' in kwargs:
+            auto_pay = kwargs['autoPay']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'bundleId' in kwargs:
+            bundle_id = kwargs['bundleId']
+        if 'desktopName' in kwargs:
+            desktop_name = kwargs['desktopName']
+        if 'desktopType' in kwargs:
+            desktop_type = kwargs['desktopType']
+        if 'endUserIds' in kwargs:
+            end_user_ids = kwargs['endUserIds']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'officeSiteId' in kwargs:
+            office_site_id = kwargs['officeSiteId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'policyGroupId' in kwargs:
+            policy_group_id = kwargs['policyGroupId']
+        if 'rootDiskSizeGib' in kwargs:
+            root_disk_size_gib = kwargs['rootDiskSizeGib']
+        if 'stoppedMode' in kwargs:
+            stopped_mode = kwargs['stoppedMode']
+        if 'userAssignMode' in kwargs:
+            user_assign_mode = kwargs['userAssignMode']
+        if 'userDiskSizeGib' in kwargs:
+            user_disk_size_gib = kwargs['userDiskSizeGib']
+
         if amount is not None:
             _setter("amount", amount)
         if auto_pay is not None:
@@ -750,7 +814,7 @@ class Desktop(pulumi.CustomResource):
         """
         Provides a ECD Desktop resource.
 
-        For information about ECD Desktop and how to use it, see [What is Desktop](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createdesktops)
+        For information about ECD Desktop and how to use it, see [What is Desktop](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createdesktops)
 
         > **NOTE:** Available since v1.144.0.
 
@@ -837,7 +901,7 @@ class Desktop(pulumi.CustomResource):
         """
         Provides a ECD Desktop resource.
 
-        For information about ECD Desktop and how to use it, see [What is Desktop](https://www.alibabacloud.com/help/en/elastic-desktop-service/latest/api-doc-ecd-2020-09-30-api-doc-createdesktops)
+        For information about ECD Desktop and how to use it, see [What is Desktop](https://www.alibabacloud.com/help/en/wuying-workspace/developer-reference/api-ecd-2020-09-30-createdesktops)
 
         > **NOTE:** Available since v1.144.0.
 

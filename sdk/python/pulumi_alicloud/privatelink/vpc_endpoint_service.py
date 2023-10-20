@@ -45,7 +45,17 @@ class VpcEndpointServiceArgs:
              dry_run: Optional[pulumi.Input[bool]] = None,
              payer: Optional[pulumi.Input[str]] = None,
              service_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoAcceptConnection' in kwargs:
+            auto_accept_connection = kwargs['autoAcceptConnection']
+        if 'connectBandwidth' in kwargs:
+            connect_bandwidth = kwargs['connectBandwidth']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'serviceDescription' in kwargs:
+            service_description = kwargs['serviceDescription']
+
         if auto_accept_connection is not None:
             _setter("auto_accept_connection", auto_accept_connection)
         if connect_bandwidth is not None:
@@ -166,7 +176,21 @@ class _VpcEndpointServiceState:
              service_description: Optional[pulumi.Input[str]] = None,
              service_domain: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoAcceptConnection' in kwargs:
+            auto_accept_connection = kwargs['autoAcceptConnection']
+        if 'connectBandwidth' in kwargs:
+            connect_bandwidth = kwargs['connectBandwidth']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'serviceBusinessStatus' in kwargs:
+            service_business_status = kwargs['serviceBusinessStatus']
+        if 'serviceDescription' in kwargs:
+            service_description = kwargs['serviceDescription']
+        if 'serviceDomain' in kwargs:
+            service_domain = kwargs['serviceDomain']
+
         if auto_accept_connection is not None:
             _setter("auto_accept_connection", auto_accept_connection)
         if connect_bandwidth is not None:

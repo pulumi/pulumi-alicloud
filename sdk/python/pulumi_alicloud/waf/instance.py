@@ -93,7 +93,37 @@ class InstanceArgs:
              renew_period: Optional[pulumi.Input[int]] = None,
              renewal_status: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bigScreen' in kwargs:
+            big_screen = kwargs['bigScreen']
+        if 'exclusiveIpPackage' in kwargs:
+            exclusive_ip_package = kwargs['exclusiveIpPackage']
+        if 'extBandwidth' in kwargs:
+            ext_bandwidth = kwargs['extBandwidth']
+        if 'extDomainPackage' in kwargs:
+            ext_domain_package = kwargs['extDomainPackage']
+        if 'logStorage' in kwargs:
+            log_storage = kwargs['logStorage']
+        if 'logTime' in kwargs:
+            log_time = kwargs['logTime']
+        if 'packageCode' in kwargs:
+            package_code = kwargs['packageCode']
+        if 'prefessionalService' in kwargs:
+            prefessional_service = kwargs['prefessionalService']
+        if 'subscriptionType' in kwargs:
+            subscription_type = kwargs['subscriptionType']
+        if 'wafLog' in kwargs:
+            waf_log = kwargs['wafLog']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("big_screen", big_screen)
         _setter("exclusive_ip_package", exclusive_ip_package)
         _setter("ext_bandwidth", ext_bandwidth)
@@ -402,7 +432,37 @@ class _InstanceState:
              status: Optional[pulumi.Input[int]] = None,
              subscription_type: Optional[pulumi.Input[str]] = None,
              waf_log: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bigScreen' in kwargs:
+            big_screen = kwargs['bigScreen']
+        if 'exclusiveIpPackage' in kwargs:
+            exclusive_ip_package = kwargs['exclusiveIpPackage']
+        if 'extBandwidth' in kwargs:
+            ext_bandwidth = kwargs['extBandwidth']
+        if 'extDomainPackage' in kwargs:
+            ext_domain_package = kwargs['extDomainPackage']
+        if 'logStorage' in kwargs:
+            log_storage = kwargs['logStorage']
+        if 'logTime' in kwargs:
+            log_time = kwargs['logTime']
+        if 'modifyType' in kwargs:
+            modify_type = kwargs['modifyType']
+        if 'packageCode' in kwargs:
+            package_code = kwargs['packageCode']
+        if 'prefessionalService' in kwargs:
+            prefessional_service = kwargs['prefessionalService']
+        if 'renewPeriod' in kwargs:
+            renew_period = kwargs['renewPeriod']
+        if 'renewalStatus' in kwargs:
+            renewal_status = kwargs['renewalStatus']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'subscriptionType' in kwargs:
+            subscription_type = kwargs['subscriptionType']
+        if 'wafLog' in kwargs:
+            waf_log = kwargs['wafLog']
+
         if big_screen is not None:
             _setter("big_screen", big_screen)
         if exclusive_ip_package is not None:

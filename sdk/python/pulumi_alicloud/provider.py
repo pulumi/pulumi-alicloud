@@ -117,7 +117,47 @@ class ProviderArgs:
              shared_credentials_file: Optional[pulumi.Input[str]] = None,
              skip_region_validation: Optional[pulumi.Input[bool]] = None,
              source_ip: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKey' in kwargs:
+            access_key = kwargs['accessKey']
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'assumeRole' in kwargs:
+            assume_role = kwargs['assumeRole']
+        if 'clientConnectTimeout' in kwargs:
+            client_connect_timeout = kwargs['clientConnectTimeout']
+        if 'clientReadTimeout' in kwargs:
+            client_read_timeout = kwargs['clientReadTimeout']
+        if 'configurationSource' in kwargs:
+            configuration_source = kwargs['configurationSource']
+        if 'credentialsUri' in kwargs:
+            credentials_uri = kwargs['credentialsUri']
+        if 'ecsRoleName' in kwargs:
+            ecs_role_name = kwargs['ecsRoleName']
+        if 'logEndpoint' in kwargs:
+            log_endpoint = kwargs['logEndpoint']
+        if 'maxRetryTimeout' in kwargs:
+            max_retry_timeout = kwargs['maxRetryTimeout']
+        if 'mnsEndpoint' in kwargs:
+            mns_endpoint = kwargs['mnsEndpoint']
+        if 'otsInstanceName' in kwargs:
+            ots_instance_name = kwargs['otsInstanceName']
+        if 'secretKey' in kwargs:
+            secret_key = kwargs['secretKey']
+        if 'secureTransport' in kwargs:
+            secure_transport = kwargs['secureTransport']
+        if 'securityToken' in kwargs:
+            security_token = kwargs['securityToken']
+        if 'securityTransport' in kwargs:
+            security_transport = kwargs['securityTransport']
+        if 'sharedCredentialsFile' in kwargs:
+            shared_credentials_file = kwargs['sharedCredentialsFile']
+        if 'skipRegionValidation' in kwargs:
+            skip_region_validation = kwargs['skipRegionValidation']
+        if 'sourceIp' in kwargs:
+            source_ip = kwargs['sourceIp']
+
         if access_key is not None:
             _setter("access_key", access_key)
         if account_id is not None:

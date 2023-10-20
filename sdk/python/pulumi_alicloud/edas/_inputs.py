@@ -50,7 +50,13 @@ class K8sSlbAttachmentSlbConfigArgs:
              name: Optional[pulumi.Input[str]] = None,
              slb_id: Optional[pulumi.Input[str]] = None,
              specification: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'portMappings' in kwargs:
+            port_mappings = kwargs['portMappings']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+
         _setter("port_mappings", port_mappings)
         _setter("scheduler", scheduler)
         _setter("type", type)
@@ -157,7 +163,15 @@ class K8sSlbAttachmentSlbConfigPortMappingArgs:
              loadbalancer_protocol: pulumi.Input[str],
              service_port: pulumi.Input['K8sSlbAttachmentSlbConfigPortMappingServicePortArgs'],
              cert_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'loadbalancerProtocol' in kwargs:
+            loadbalancer_protocol = kwargs['loadbalancerProtocol']
+        if 'servicePort' in kwargs:
+            service_port = kwargs['servicePort']
+        if 'certId' in kwargs:
+            cert_id = kwargs['certId']
+
         _setter("loadbalancer_protocol", loadbalancer_protocol)
         _setter("service_port", service_port)
         if cert_id is not None:
@@ -223,7 +237,11 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePortArgs:
              port: pulumi.Input[int],
              protocol: pulumi.Input[str],
              target_port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'targetPort' in kwargs:
+            target_port = kwargs['targetPort']
+
         _setter("port", port)
         _setter("protocol", protocol)
         _setter("target_port", target_port)

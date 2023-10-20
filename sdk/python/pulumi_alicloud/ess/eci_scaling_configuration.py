@@ -150,7 +150,51 @@ class EciScalingConfigurationArgs:
              spot_strategy: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if 'acrRegistryInfos' in kwargs:
+            acr_registry_infos = kwargs['acrRegistryInfos']
+        if 'autoCreateEip' in kwargs:
+            auto_create_eip = kwargs['autoCreateEip']
+        if 'containerGroupName' in kwargs:
+            container_group_name = kwargs['containerGroupName']
+        if 'dnsPolicy' in kwargs:
+            dns_policy = kwargs['dnsPolicy']
+        if 'egressBandwidth' in kwargs:
+            egress_bandwidth = kwargs['egressBandwidth']
+        if 'eipBandwidth' in kwargs:
+            eip_bandwidth = kwargs['eipBandwidth']
+        if 'enableSls' in kwargs:
+            enable_sls = kwargs['enableSls']
+        if 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if 'hostAliases' in kwargs:
+            host_aliases = kwargs['hostAliases']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'imageRegistryCredentials' in kwargs:
+            image_registry_credentials = kwargs['imageRegistryCredentials']
+        if 'ingressBandwidth' in kwargs:
+            ingress_bandwidth = kwargs['ingressBandwidth']
+        if 'initContainers' in kwargs:
+            init_containers = kwargs['initContainers']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'restartPolicy' in kwargs:
+            restart_policy = kwargs['restartPolicy']
+        if 'scalingConfigurationName' in kwargs:
+            scaling_configuration_name = kwargs['scalingConfigurationName']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'spotPriceLimit' in kwargs:
+            spot_price_limit = kwargs['spotPriceLimit']
+        if 'spotStrategy' in kwargs:
+            spot_strategy = kwargs['spotStrategy']
+
         _setter("scaling_group_id", scaling_group_id)
         if acr_registry_infos is not None:
             _setter("acr_registry_infos", acr_registry_infos)
@@ -694,7 +738,51 @@ class _EciScalingConfigurationState:
              spot_strategy: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              volumes: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationVolumeArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acrRegistryInfos' in kwargs:
+            acr_registry_infos = kwargs['acrRegistryInfos']
+        if 'autoCreateEip' in kwargs:
+            auto_create_eip = kwargs['autoCreateEip']
+        if 'containerGroupName' in kwargs:
+            container_group_name = kwargs['containerGroupName']
+        if 'dnsPolicy' in kwargs:
+            dns_policy = kwargs['dnsPolicy']
+        if 'egressBandwidth' in kwargs:
+            egress_bandwidth = kwargs['egressBandwidth']
+        if 'eipBandwidth' in kwargs:
+            eip_bandwidth = kwargs['eipBandwidth']
+        if 'enableSls' in kwargs:
+            enable_sls = kwargs['enableSls']
+        if 'forceDelete' in kwargs:
+            force_delete = kwargs['forceDelete']
+        if 'hostAliases' in kwargs:
+            host_aliases = kwargs['hostAliases']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'imageRegistryCredentials' in kwargs:
+            image_registry_credentials = kwargs['imageRegistryCredentials']
+        if 'ingressBandwidth' in kwargs:
+            ingress_bandwidth = kwargs['ingressBandwidth']
+        if 'initContainers' in kwargs:
+            init_containers = kwargs['initContainers']
+        if 'ramRoleName' in kwargs:
+            ram_role_name = kwargs['ramRoleName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'restartPolicy' in kwargs:
+            restart_policy = kwargs['restartPolicy']
+        if 'scalingConfigurationName' in kwargs:
+            scaling_configuration_name = kwargs['scalingConfigurationName']
+        if 'scalingGroupId' in kwargs:
+            scaling_group_id = kwargs['scalingGroupId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'spotPriceLimit' in kwargs:
+            spot_price_limit = kwargs['spotPriceLimit']
+        if 'spotStrategy' in kwargs:
+            spot_strategy = kwargs['spotStrategy']
+
         if acr_registry_infos is not None:
             _setter("acr_registry_infos", acr_registry_infos)
         if active is not None:

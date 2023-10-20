@@ -97,7 +97,41 @@ class GetInstancesInstanceResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'cpuNumber' in kwargs:
+            cpu_number = kwargs['cpuNumber']
+        if 'diskCategory' in kwargs:
+            disk_category = kwargs['diskCategory']
+        if 'engineType' in kwargs:
+            engine_type = kwargs['engineType']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'instanceAlias' in kwargs:
+            instance_alias = kwargs['instanceAlias']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceStorage' in kwargs:
+            instance_storage = kwargs['instanceStorage']
+        if 'memorySize' in kwargs:
+            memory_size = kwargs['memorySize']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'vpcConnectionAddress' in kwargs:
+            vpc_connection_address = kwargs['vpcConnectionAddress']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("auto_renew", auto_renew)
         _setter("cpu_number", cpu_number)
         _setter("disk_category", disk_category)
@@ -285,7 +319,13 @@ class GetZonesZoneResult(dict):
              id: str,
              local_name: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("id", id)
         _setter("local_name", local_name)
         _setter("zone_id", zone_id)

@@ -47,7 +47,17 @@ class ReadWriteSplittingConnectionArgs:
              max_delay_time: Optional[pulumi.Input[int]] = None,
              port: Optional[pulumi.Input[int]] = None,
              weight: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'distributionType' in kwargs:
+            distribution_type = kwargs['distributionType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'connectionPrefix' in kwargs:
+            connection_prefix = kwargs['connectionPrefix']
+        if 'maxDelayTime' in kwargs:
+            max_delay_time = kwargs['maxDelayTime']
+
         _setter("distribution_type", distribution_type)
         _setter("instance_id", instance_id)
         if connection_prefix is not None:
@@ -172,7 +182,19 @@ class _ReadWriteSplittingConnectionState:
              max_delay_time: Optional[pulumi.Input[int]] = None,
              port: Optional[pulumi.Input[int]] = None,
              weight: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionPrefix' in kwargs:
+            connection_prefix = kwargs['connectionPrefix']
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'distributionType' in kwargs:
+            distribution_type = kwargs['distributionType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'maxDelayTime' in kwargs:
+            max_delay_time = kwargs['maxDelayTime']
+
         if connection_prefix is not None:
             _setter("connection_prefix", connection_prefix)
         if connection_string is not None:

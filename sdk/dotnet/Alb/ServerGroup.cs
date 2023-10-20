@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Alb
     /// Provides a ALB Server Group resource.
     /// 
     /// For information about ALB Server Group and how to use it,
-    /// see [What is Server Group](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createservergroup).
+    /// see [What is Server Group](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createservergroup).
     /// 
     /// &gt; **NOTE:** Available since v1.131.0.
     /// 

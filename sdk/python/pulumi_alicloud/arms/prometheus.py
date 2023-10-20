@@ -63,7 +63,27 @@ class PrometheusArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'grafanaInstanceId' in kwargs:
+            grafana_instance_id = kwargs['grafanaInstanceId']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'subClustersJson' in kwargs:
+            sub_clusters_json = kwargs['subClustersJson']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("cluster_type", cluster_type)
         _setter("grafana_instance_id", grafana_instance_id)
         if cluster_id is not None:
@@ -256,7 +276,27 @@ class _PrometheusState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'grafanaInstanceId' in kwargs:
+            grafana_instance_id = kwargs['grafanaInstanceId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'subClustersJson' in kwargs:
+            sub_clusters_json = kwargs['subClustersJson']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if cluster_id is not None:
             _setter("cluster_id", cluster_id)
         if cluster_name is not None:
@@ -418,7 +458,7 @@ class Prometheus(pulumi.CustomResource):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Prometheus resource.
 
-        For information about Application Real-Time Monitoring Service (ARMS) Prometheus and how to use it, see [What is Prometheus](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-createprometheusinstance).
+        For information about Application Real-Time Monitoring Service (ARMS) Prometheus and how to use it, see [What is Prometheus](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-createprometheusinstance).
 
         > **NOTE:** Available since v1.203.0.
 
@@ -489,7 +529,7 @@ class Prometheus(pulumi.CustomResource):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Prometheus resource.
 
-        For information about Application Real-Time Monitoring Service (ARMS) Prometheus and how to use it, see [What is Prometheus](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-createprometheusinstance).
+        For information about Application Real-Time Monitoring Service (ARMS) Prometheus and how to use it, see [What is Prometheus](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-createprometheusinstance).
 
         > **NOTE:** Available since v1.203.0.
 

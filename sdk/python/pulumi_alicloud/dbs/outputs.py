@@ -132,7 +132,59 @@ class GetBackupPlansPlanResult(dict):
              source_endpoint_sid: str,
              source_endpoint_user_name: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupGatewayId' in kwargs:
+            backup_gateway_id = kwargs['backupGatewayId']
+        if 'backupMethod' in kwargs:
+            backup_method = kwargs['backupMethod']
+        if 'backupObjects' in kwargs:
+            backup_objects = kwargs['backupObjects']
+        if 'backupPeriod' in kwargs:
+            backup_period = kwargs['backupPeriod']
+        if 'backupPlanId' in kwargs:
+            backup_plan_id = kwargs['backupPlanId']
+        if 'backupPlanName' in kwargs:
+            backup_plan_name = kwargs['backupPlanName']
+        if 'backupRetentionPeriod' in kwargs:
+            backup_retention_period = kwargs['backupRetentionPeriod']
+        if 'backupStartTime' in kwargs:
+            backup_start_time = kwargs['backupStartTime']
+        if 'backupStorageType' in kwargs:
+            backup_storage_type = kwargs['backupStorageType']
+        if 'crossAliyunId' in kwargs:
+            cross_aliyun_id = kwargs['crossAliyunId']
+        if 'crossRoleName' in kwargs:
+            cross_role_name = kwargs['crossRoleName']
+        if 'databaseType' in kwargs:
+            database_type = kwargs['databaseType']
+        if 'duplicationArchivePeriod' in kwargs:
+            duplication_archive_period = kwargs['duplicationArchivePeriod']
+        if 'duplicationInfrequentAccessPeriod' in kwargs:
+            duplication_infrequent_access_period = kwargs['duplicationInfrequentAccessPeriod']
+        if 'enableBackupLog' in kwargs:
+            enable_backup_log = kwargs['enableBackupLog']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'ossBucketName' in kwargs:
+            oss_bucket_name = kwargs['ossBucketName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sourceEndpointDatabaseName' in kwargs:
+            source_endpoint_database_name = kwargs['sourceEndpointDatabaseName']
+        if 'sourceEndpointInstanceId' in kwargs:
+            source_endpoint_instance_id = kwargs['sourceEndpointInstanceId']
+        if 'sourceEndpointInstanceType' in kwargs:
+            source_endpoint_instance_type = kwargs['sourceEndpointInstanceType']
+        if 'sourceEndpointRegion' in kwargs:
+            source_endpoint_region = kwargs['sourceEndpointRegion']
+        if 'sourceEndpointSid' in kwargs:
+            source_endpoint_sid = kwargs['sourceEndpointSid']
+        if 'sourceEndpointUserName' in kwargs:
+            source_endpoint_user_name = kwargs['sourceEndpointUserName']
+
         _setter("backup_gateway_id", backup_gateway_id)
         _setter("backup_method", backup_method)
         _setter("backup_objects", backup_objects)

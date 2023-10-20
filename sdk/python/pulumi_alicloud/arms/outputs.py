@@ -93,7 +93,19 @@ class DispatchRuleGroupRule(dict):
              grouping_fields: Sequence[str],
              group_id: Optional[int] = None,
              repeat_interval: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupInterval' in kwargs:
+            group_interval = kwargs['groupInterval']
+        if 'groupWaitTime' in kwargs:
+            group_wait_time = kwargs['groupWaitTime']
+        if 'groupingFields' in kwargs:
+            grouping_fields = kwargs['groupingFields']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'repeatInterval' in kwargs:
+            repeat_interval = kwargs['repeatInterval']
+
         _setter("group_interval", group_interval)
         _setter("group_wait_time", group_wait_time)
         _setter("grouping_fields", grouping_fields)
@@ -175,7 +187,11 @@ class DispatchRuleLabelMatchExpressionGrid(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              label_match_expression_groups: Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'labelMatchExpressionGroups' in kwargs:
+            label_match_expression_groups = kwargs['labelMatchExpressionGroups']
+
         _setter("label_match_expression_groups", label_match_expression_groups)
 
     @property
@@ -219,7 +235,11 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              label_match_expressions: Sequence['outputs.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'labelMatchExpressions' in kwargs:
+            label_match_expressions = kwargs['labelMatchExpressions']
+
         _setter("label_match_expressions", label_match_expressions)
 
     @property
@@ -238,7 +258,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
                  operator: str,
                  value: str):
         """
-        :param str key: The key of the tag of the dispatch rule. Valud values:
+        :param str key: The key of the tag of the dispatch rule. Valid values:
                * _aliyun_arms_userid: user ID
                * _aliyun_arms_involvedObject_kind: type of the associated object
                * _aliyun_arms_involvedObject_id: ID of the associated object
@@ -264,7 +284,9 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
              key: str,
              operator: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("operator", operator)
         _setter("value", value)
@@ -273,7 +295,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
     @pulumi.getter
     def key(self) -> str:
         """
-        The key of the tag of the dispatch rule. Valud values:
+        The key of the tag of the dispatch rule. Valid values:
         * _aliyun_arms_userid: user ID
         * _aliyun_arms_involvedObject_kind: type of the associated object
         * _aliyun_arms_involvedObject_id: ID of the associated object
@@ -342,7 +364,13 @@ class DispatchRuleNotifyRule(dict):
              _setter: Callable[[Any, Any], None],
              notify_channels: Sequence[str],
              notify_objects: Sequence['outputs.DispatchRuleNotifyRuleNotifyObject'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notifyChannels' in kwargs:
+            notify_channels = kwargs['notifyChannels']
+        if 'notifyObjects' in kwargs:
+            notify_objects = kwargs['notifyObjects']
+
         _setter("notify_channels", notify_channels)
         _setter("notify_objects", notify_objects)
 
@@ -405,7 +433,13 @@ class DispatchRuleNotifyRuleNotifyObject(dict):
              name: str,
              notify_object_id: str,
              notify_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notifyObjectId' in kwargs:
+            notify_object_id = kwargs['notifyObjectId']
+        if 'notifyType' in kwargs:
+            notify_type = kwargs['notifyType']
+
         _setter("name", name)
         _setter("notify_object_id", notify_object_id)
         _setter("notify_type", notify_type)
@@ -454,7 +488,9 @@ class PrometheusAlertRuleAnnotation(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if value is not None:
@@ -496,7 +532,9 @@ class PrometheusAlertRuleLabel(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if value is not None:
@@ -550,7 +588,17 @@ class GetAlertContactGroupsGroupResult(dict):
              contact_ids: Sequence[str],
              create_time: str,
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertContactGroupId' in kwargs:
+            alert_contact_group_id = kwargs['alertContactGroupId']
+        if 'alertContactGroupName' in kwargs:
+            alert_contact_group_name = kwargs['alertContactGroupName']
+        if 'contactIds' in kwargs:
+            contact_ids = kwargs['contactIds']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+
         _setter("alert_contact_group_id", alert_contact_group_id)
         _setter("alert_contact_group_name", alert_contact_group_name)
         _setter("contact_ids", contact_ids)
@@ -645,7 +693,21 @@ class GetAlertContactsContactResult(dict):
              phone_num: str,
              system_noc: bool,
              webhook: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertContactId' in kwargs:
+            alert_contact_id = kwargs['alertContactId']
+        if 'alertContactName' in kwargs:
+            alert_contact_name = kwargs['alertContactName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dingRobotWebhookUrl' in kwargs:
+            ding_robot_webhook_url = kwargs['dingRobotWebhookUrl']
+        if 'phoneNum' in kwargs:
+            phone_num = kwargs['phoneNum']
+        if 'systemNoc' in kwargs:
+            system_noc = kwargs['systemNoc']
+
         _setter("alert_contact_id", alert_contact_id)
         _setter("alert_contact_name", alert_contact_name)
         _setter("create_time", create_time)
@@ -771,7 +833,21 @@ class GetDispatchRulesRuleResult(dict):
              label_match_expression_grids: Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridResult'],
              notify_rules: Sequence['outputs.GetDispatchRulesRuleNotifyRuleResult'],
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dispatchRuleId' in kwargs:
+            dispatch_rule_id = kwargs['dispatchRuleId']
+        if 'dispatchRuleName' in kwargs:
+            dispatch_rule_name = kwargs['dispatchRuleName']
+        if 'dispatchType' in kwargs:
+            dispatch_type = kwargs['dispatchType']
+        if 'groupRules' in kwargs:
+            group_rules = kwargs['groupRules']
+        if 'labelMatchExpressionGrids' in kwargs:
+            label_match_expression_grids = kwargs['labelMatchExpressionGrids']
+        if 'notifyRules' in kwargs:
+            notify_rules = kwargs['notifyRules']
+
         _setter("dispatch_rule_id", dispatch_rule_id)
         _setter("dispatch_rule_name", dispatch_rule_name)
         _setter("dispatch_type", dispatch_type)
@@ -873,7 +949,19 @@ class GetDispatchRulesRuleGroupRuleResult(dict):
              group_wait_time: int,
              grouping_fields: Sequence[str],
              repeat_interval: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupInterval' in kwargs:
+            group_interval = kwargs['groupInterval']
+        if 'groupWaitTime' in kwargs:
+            group_wait_time = kwargs['groupWaitTime']
+        if 'groupingFields' in kwargs:
+            grouping_fields = kwargs['groupingFields']
+        if 'repeatInterval' in kwargs:
+            repeat_interval = kwargs['repeatInterval']
+
         _setter("group_id", group_id)
         _setter("group_interval", group_interval)
         _setter("group_wait_time", group_wait_time)
@@ -933,7 +1021,11 @@ class GetDispatchRulesRuleLabelMatchExpressionGridResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              label_match_expression_groups: Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'labelMatchExpressionGroups' in kwargs:
+            label_match_expression_groups = kwargs['labelMatchExpressionGroups']
+
         _setter("label_match_expression_groups", label_match_expression_groups)
 
     @property
@@ -960,7 +1052,11 @@ class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupResul
     def _configure(
              _setter: Callable[[Any, Any], None],
              label_match_expressions: Sequence['outputs.GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'labelMatchExpressions' in kwargs:
+            label_match_expressions = kwargs['labelMatchExpressions']
+
         _setter("label_match_expressions", label_match_expressions)
 
     @property
@@ -995,7 +1091,9 @@ class GetDispatchRulesRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabel
              key: str,
              operator: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("operator", operator)
         _setter("value", value)
@@ -1044,7 +1142,13 @@ class GetDispatchRulesRuleNotifyRuleResult(dict):
              _setter: Callable[[Any, Any], None],
              notify_channels: Sequence[str],
              notify_objects: Sequence['outputs.GetDispatchRulesRuleNotifyRuleNotifyObjectResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notifyChannels' in kwargs:
+            notify_channels = kwargs['notifyChannels']
+        if 'notifyObjects' in kwargs:
+            notify_objects = kwargs['notifyObjects']
+
         _setter("notify_channels", notify_channels)
         _setter("notify_objects", notify_objects)
 
@@ -1088,7 +1192,13 @@ class GetDispatchRulesRuleNotifyRuleNotifyObjectResult(dict):
              name: str,
              notify_object_id: str,
              notify_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'notifyObjectId' in kwargs:
+            notify_object_id = kwargs['notifyObjectId']
+        if 'notifyType' in kwargs:
+            notify_type = kwargs['notifyType']
+
         _setter("name", name)
         _setter("notify_object_id", notify_object_id)
         _setter("notify_type", notify_type)
@@ -1165,7 +1275,19 @@ class GetIntegrationExportersIntegrationExporterResult(dict):
              param: str,
              target: str,
              version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'exporterType' in kwargs:
+            exporter_type = kwargs['exporterType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'integrationType' in kwargs:
+            integration_type = kwargs['integrationType']
+
         _setter("cluster_id", cluster_id)
         _setter("exporter_type", exporter_type)
         _setter("id", id)
@@ -1304,7 +1426,27 @@ class GetPrometheisPrometheiResult(dict):
              tags: Mapping[str, Any],
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'grafanaInstanceId' in kwargs:
+            grafana_instance_id = kwargs['grafanaInstanceId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'subClustersJson' in kwargs:
+            sub_clusters_json = kwargs['subClustersJson']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("cluster_id", cluster_id)
         _setter("cluster_name", cluster_name)
         _setter("cluster_type", cluster_type)
@@ -1469,7 +1611,19 @@ class GetPrometheusAlertRulesRuleResult(dict):
              prometheus_alert_rule_name: str,
              status: int,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'dispatchRuleId' in kwargs:
+            dispatch_rule_id = kwargs['dispatchRuleId']
+        if 'notifyType' in kwargs:
+            notify_type = kwargs['notifyType']
+        if 'prometheusAlertRuleId' in kwargs:
+            prometheus_alert_rule_id = kwargs['prometheusAlertRuleId']
+        if 'prometheusAlertRuleName' in kwargs:
+            prometheus_alert_rule_name = kwargs['prometheusAlertRuleName']
+
         _setter("annotations", annotations)
         _setter("cluster_id", cluster_id)
         _setter("dispatch_rule_id", dispatch_rule_id)
@@ -1608,7 +1762,9 @@ class GetPrometheusAlertRulesRuleAnnotationResult(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -1648,7 +1804,9 @@ class GetPrometheusAlertRulesRuleLabelResult(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("value", value)
 
@@ -1704,7 +1862,15 @@ class GetPrometheusMonitoringsPrometheusMonitoringResult(dict):
              monitoring_name: str,
              status: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'configYaml' in kwargs:
+            config_yaml = kwargs['configYaml']
+        if 'monitoringName' in kwargs:
+            monitoring_name = kwargs['monitoringName']
+
         _setter("cluster_id", cluster_id)
         _setter("config_yaml", config_yaml)
         _setter("id", id)
@@ -1788,7 +1954,15 @@ class GetRemoteWritesRemoteWriteResult(dict):
              id: str,
              remote_write_name: str,
              remote_write_yaml: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'remoteWriteName' in kwargs:
+            remote_write_name = kwargs['remoteWriteName']
+        if 'remoteWriteYaml' in kwargs:
+            remote_write_yaml = kwargs['remoteWriteYaml']
+
         _setter("cluster_id", cluster_id)
         _setter("id", id)
         _setter("remote_write_name", remote_write_name)

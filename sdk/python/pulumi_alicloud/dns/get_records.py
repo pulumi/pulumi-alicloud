@@ -178,6 +178,8 @@ def get_records(domain_name: Optional[str] = None,
     """
     This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
 
+    > **NOTE:** Available since v1.0.0.
+
     ## Example Usage
 
     ```python
@@ -197,7 +199,7 @@ def get_records(domain_name: Optional[str] = None,
     :param str host_record_regex: Host record regex.
     :param Sequence[str] ids: A list of record IDs.
     :param bool is_locked: Whether the record is locked or not.
-    :param str line: ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+    :param str line: ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Record status. Valid items are `ENABLE` and `DISABLE`.
     :param str type: Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
@@ -245,6 +247,8 @@ def get_records_output(domain_name: Optional[pulumi.Input[str]] = None,
     """
     This data source provides a list of DNS Domain Records in an Alibaba Cloud account according to the specified filters.
 
+    > **NOTE:** Available since v1.0.0.
+
     ## Example Usage
 
     ```python
@@ -264,7 +268,7 @@ def get_records_output(domain_name: Optional[pulumi.Input[str]] = None,
     :param str host_record_regex: Host record regex.
     :param Sequence[str] ids: A list of record IDs.
     :param bool is_locked: Whether the record is locked or not.
-    :param str line: ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+    :param str line: ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: Record status. Valid items are `ENABLE` and `DISABLE`.
     :param str type: Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .

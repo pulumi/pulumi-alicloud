@@ -35,7 +35,15 @@ class IndustrialPidProjectArgs:
              pid_organization_id: pulumi.Input[str],
              pid_project_name: pulumi.Input[str],
              pid_project_desc: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pidOrganizationId' in kwargs:
+            pid_organization_id = kwargs['pidOrganizationId']
+        if 'pidProjectName' in kwargs:
+            pid_project_name = kwargs['pidProjectName']
+        if 'pidProjectDesc' in kwargs:
+            pid_project_desc = kwargs['pidProjectDesc']
+
         _setter("pid_organization_id", pid_organization_id)
         _setter("pid_project_name", pid_project_name)
         if pid_project_desc is not None:
@@ -102,7 +110,15 @@ class _IndustrialPidProjectState:
              pid_organization_id: Optional[pulumi.Input[str]] = None,
              pid_project_desc: Optional[pulumi.Input[str]] = None,
              pid_project_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pidOrganizationId' in kwargs:
+            pid_organization_id = kwargs['pidOrganizationId']
+        if 'pidProjectDesc' in kwargs:
+            pid_project_desc = kwargs['pidProjectDesc']
+        if 'pidProjectName' in kwargs:
+            pid_project_name = kwargs['pidProjectName']
+
         if pid_organization_id is not None:
             _setter("pid_organization_id", pid_organization_id)
         if pid_project_desc is not None:

@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-doc-alikafka-2019-09-16-api-doc-createconsumergroup).
+ * Provides an ALIKAFKA consumer group resource, see [What is alikafka consumer group](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/api-alikafka-2019-09-16-createconsumergroup).
  * 
  * &gt; **NOTE:** Available since v1.56.0.
  * 

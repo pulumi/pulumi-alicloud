@@ -15,6 +15,10 @@ public final class GetEnterpriseProxyAccessesAccess {
      */
     private String accessId;
     private String accessSecret;
+    /**
+     * @return The authorization time of the security access agent permission.
+     * 
+     */
     private String createTime;
     /**
      * @return Security Protection authorization ID.
@@ -73,6 +77,10 @@ public final class GetEnterpriseProxyAccessesAccess {
     public String accessSecret() {
         return this.accessSecret;
     }
+    /**
+     * @return The authorization time of the security access agent permission.
+     * 
+     */
     public String createTime() {
         return this.createTime;
     }

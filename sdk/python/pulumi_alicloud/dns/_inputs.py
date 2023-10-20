@@ -38,7 +38,13 @@ class AccessStrategyDefaultAddrPoolArgs:
              _setter: Callable[[Any, Any], None],
              addr_pool_id: pulumi.Input[str],
              lba_weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addrPoolId' in kwargs:
+            addr_pool_id = kwargs['addrPoolId']
+        if 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+
         _setter("addr_pool_id", addr_pool_id)
         if lba_weight is not None:
             _setter("lba_weight", lba_weight)
@@ -87,7 +93,13 @@ class AccessStrategyFailoverAddrPoolArgs:
              _setter: Callable[[Any, Any], None],
              addr_pool_id: Optional[pulumi.Input[str]] = None,
              lba_weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addrPoolId' in kwargs:
+            addr_pool_id = kwargs['addrPoolId']
+        if 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+
         if addr_pool_id is not None:
             _setter("addr_pool_id", addr_pool_id)
         if lba_weight is not None:
@@ -133,7 +145,11 @@ class AccessStrategyLineArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              line_code: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lineCode' in kwargs:
+            line_code = kwargs['lineCode']
+
         if line_code is not None:
             _setter("line_code", line_code)
 
@@ -181,7 +197,13 @@ class AddressPoolAddressArgs:
              mode: pulumi.Input[str],
              lba_weight: Optional[pulumi.Input[int]] = None,
              remark: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attributeInfo' in kwargs:
+            attribute_info = kwargs['attributeInfo']
+        if 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+
         _setter("address", address)
         _setter("attribute_info", attribute_info)
         _setter("mode", mode)
@@ -270,7 +292,13 @@ class CustomLineIpSegmentListArgs:
              _setter: Callable[[Any, Any], None],
              end_ip: pulumi.Input[str],
              start_ip: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endIp' in kwargs:
+            end_ip = kwargs['endIp']
+        if 'startIp' in kwargs:
+            start_ip = kwargs['startIp']
+
         _setter("end_ip", end_ip)
         _setter("start_ip", start_ip)
 
@@ -326,7 +354,17 @@ class GtmInstanceAlertConfigArgs:
              email_notice: Optional[pulumi.Input[bool]] = None,
              notice_type: Optional[pulumi.Input[str]] = None,
              sms_notice: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dingtalkNotice' in kwargs:
+            dingtalk_notice = kwargs['dingtalkNotice']
+        if 'emailNotice' in kwargs:
+            email_notice = kwargs['emailNotice']
+        if 'noticeType' in kwargs:
+            notice_type = kwargs['noticeType']
+        if 'smsNotice' in kwargs:
+            sms_notice = kwargs['smsNotice']
+
         if dingtalk_notice is not None:
             _setter("dingtalk_notice", dingtalk_notice)
         if email_notice is not None:
@@ -404,7 +442,13 @@ class MonitorConfigIspCityNodeArgs:
              _setter: Callable[[Any, Any], None],
              city_code: pulumi.Input[str],
              isp_code: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cityCode' in kwargs:
+            city_code = kwargs['cityCode']
+        if 'ispCode' in kwargs:
+            isp_code = kwargs['ispCode']
+
         _setter("city_code", city_code)
         _setter("isp_code", isp_code)
 

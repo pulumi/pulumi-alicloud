@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a PolarDB Parameter Group resource.
  * 
- * For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb-for-mysql/latest/createparametergroup).
+ * For information about PolarDB Parameter Group and how to use it, see [What is Parameter Group](https://www.alibabacloud.com/help/en/polardb/polardb-for-mysql/user-guide/apply-a-parameter-template).
  * 
  * &gt; **NOTE:** Available in v1.183.0+.
  * 

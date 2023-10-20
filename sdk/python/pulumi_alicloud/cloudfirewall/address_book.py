@@ -57,7 +57,21 @@ class AddressBookArgs:
              ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              tag_relation: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if 'addressLists' in kwargs:
+            address_lists = kwargs['addressLists']
+        if 'autoAddTagEcs' in kwargs:
+            auto_add_tag_ecs = kwargs['autoAddTagEcs']
+        if 'ecsTags' in kwargs:
+            ecs_tags = kwargs['ecsTags']
+        if 'tagRelation' in kwargs:
+            tag_relation = kwargs['tagRelation']
+
         _setter("description", description)
         _setter("group_name", group_name)
         _setter("group_type", group_type)
@@ -213,7 +227,21 @@ class _AddressBookState:
              group_type: Optional[pulumi.Input[str]] = None,
              lang: Optional[pulumi.Input[str]] = None,
              tag_relation: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressLists' in kwargs:
+            address_lists = kwargs['addressLists']
+        if 'autoAddTagEcs' in kwargs:
+            auto_add_tag_ecs = kwargs['autoAddTagEcs']
+        if 'ecsTags' in kwargs:
+            ecs_tags = kwargs['ecsTags']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'groupType' in kwargs:
+            group_type = kwargs['groupType']
+        if 'tagRelation' in kwargs:
+            tag_relation = kwargs['tagRelation']
+
         if address_lists is not None:
             _setter("address_lists", address_lists)
         if auto_add_tag_ecs is not None:

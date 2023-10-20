@@ -75,7 +75,27 @@ class DiskReplicaPairArgs:
              period_unit: Optional[pulumi.Input[str]] = None,
              replica_pair_id: Optional[pulumi.Input[str]] = None,
              rpo: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationDiskId' in kwargs:
+            destination_disk_id = kwargs['destinationDiskId']
+        if 'destinationRegionId' in kwargs:
+            destination_region_id = kwargs['destinationRegionId']
+        if 'destinationZoneId' in kwargs:
+            destination_zone_id = kwargs['destinationZoneId']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'sourceZoneId' in kwargs:
+            source_zone_id = kwargs['sourceZoneId']
+        if 'pairName' in kwargs:
+            pair_name = kwargs['pairName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'replicaPairId' in kwargs:
+            replica_pair_id = kwargs['replicaPairId']
+
         _setter("destination_disk_id", destination_disk_id)
         _setter("destination_region_id", destination_region_id)
         _setter("destination_zone_id", destination_zone_id)
@@ -331,7 +351,31 @@ class _DiskReplicaPairState:
              rpo: Optional[pulumi.Input[str]] = None,
              source_zone_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'destinationDiskId' in kwargs:
+            destination_disk_id = kwargs['destinationDiskId']
+        if 'destinationRegionId' in kwargs:
+            destination_region_id = kwargs['destinationRegionId']
+        if 'destinationZoneId' in kwargs:
+            destination_zone_id = kwargs['destinationZoneId']
+        if 'diskId' in kwargs:
+            disk_id = kwargs['diskId']
+        if 'pairName' in kwargs:
+            pair_name = kwargs['pairName']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'replicaPairId' in kwargs:
+            replica_pair_id = kwargs['replicaPairId']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'sourceZoneId' in kwargs:
+            source_zone_id = kwargs['sourceZoneId']
+
         if bandwidth is not None:
             _setter("bandwidth", bandwidth)
         if create_time is not None:

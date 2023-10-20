@@ -56,7 +56,7 @@ class EcsDiskArgs:
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs.
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
@@ -119,7 +119,43 @@ class EcsDiskArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'advancedFeatures' in kwargs:
+            advanced_features = kwargs['advancedFeatures']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'deleteAutoSnapshot' in kwargs:
+            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'diskName' in kwargs:
+            disk_name = kwargs['diskName']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'enableAutoSnapshot' in kwargs:
+            enable_auto_snapshot = kwargs['enableAutoSnapshot']
+        if 'encryptAlgorithm' in kwargs:
+            encrypt_algorithm = kwargs['encryptAlgorithm']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'storageSetId' in kwargs:
+            storage_set_id = kwargs['storageSetId']
+        if 'storageSetPartitionNumber' in kwargs:
+            storage_set_partition_number = kwargs['storageSetPartitionNumber']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if advanced_features is not None:
             _setter("advanced_features", advanced_features)
         if availability_zone is not None:
@@ -373,7 +409,7 @@ class EcsDiskArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of resource group which the disk belongs.
+        The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -512,7 +548,7 @@ class _EcsDiskState:
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs.
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         :param pulumi.Input[str] status: The disk status.
@@ -578,7 +614,43 @@ class _EcsDiskState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'advancedFeatures' in kwargs:
+            advanced_features = kwargs['advancedFeatures']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'deleteAutoSnapshot' in kwargs:
+            delete_auto_snapshot = kwargs['deleteAutoSnapshot']
+        if 'deleteWithInstance' in kwargs:
+            delete_with_instance = kwargs['deleteWithInstance']
+        if 'diskName' in kwargs:
+            disk_name = kwargs['diskName']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'enableAutoSnapshot' in kwargs:
+            enable_auto_snapshot = kwargs['enableAutoSnapshot']
+        if 'encryptAlgorithm' in kwargs:
+            encrypt_algorithm = kwargs['encryptAlgorithm']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+        if 'storageSetId' in kwargs:
+            storage_set_id = kwargs['storageSetId']
+        if 'storageSetPartitionNumber' in kwargs:
+            storage_set_partition_number = kwargs['storageSetPartitionNumber']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if advanced_features is not None:
             _setter("advanced_features", advanced_features)
         if availability_zone is not None:
@@ -834,7 +906,7 @@ class _EcsDiskState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of resource group which the disk belongs.
+        The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -996,7 +1068,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs.
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         :param pulumi.Input[str] storage_set_id: The ID of the storage set.
@@ -1155,7 +1227,7 @@ class EcsDisk(pulumi.CustomResource):
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.122.0. New field `disk_name` instead.
         :param pulumi.Input[str] payment_type: Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
         :param pulumi.Input[str] performance_level: Specifies the performance level of an ESSD when you create the ESSD. Valid values:
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs.
+        :param pulumi.Input[str] resource_group_id: The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         :param pulumi.Input[int] size: The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
         :param pulumi.Input[str] snapshot_id: A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
         :param pulumi.Input[str] status: The disk status.
@@ -1328,9 +1400,9 @@ class EcsDisk(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> pulumi.Output[Optional[str]]:
+    def resource_group_id(self) -> pulumi.Output[str]:
         """
-        The Id of resource group which the disk belongs.
+        The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
         """
         return pulumi.get(self, "resource_group_id")
 

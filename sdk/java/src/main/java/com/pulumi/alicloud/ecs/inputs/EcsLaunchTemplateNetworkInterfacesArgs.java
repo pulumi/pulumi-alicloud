@@ -16,14 +16,14 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
     public static final EcsLaunchTemplateNetworkInterfacesArgs Empty = new EcsLaunchTemplateNetworkInterfacesArgs();
 
     /**
-     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * The ENI description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+     * @return The ENI description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +31,14 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
     }
 
     /**
-     * It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * The ENI name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * @return The ENI name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -61,14 +61,14 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
     }
 
     /**
-     * The security group ID.
+     * The security group ID must be one in the same VPC.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return The security group ID.
+     * @return The security group ID must be one in the same VPC.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -76,14 +76,14 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
     }
 
     /**
-     * When creating a VPC-Connected instance, you must specify its VSwitch ID.
+     * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return When creating a VPC-Connected instance, you must specify its VSwitch ID.
+     * @return The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -119,7 +119,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+         * @param description The ENI description.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
+         * @param description The ENI description.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param name It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+         * @param name The ENI name.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param name It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+         * @param name The ENI name.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param securityGroupId The security group ID.
+         * @param securityGroupId The security group ID must be one in the same VPC.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param securityGroupId The security group ID.
+         * @param securityGroupId The security group ID must be one in the same VPC.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param vswitchId When creating a VPC-Connected instance, you must specify its VSwitch ID.
+         * @param vswitchId The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class EcsLaunchTemplateNetworkInterfacesArgs extends com.pulumi.res
         }
 
         /**
-         * @param vswitchId When creating a VPC-Connected instance, you must specify its VSwitch ID.
+         * @param vswitchId The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
          * 
          * @return builder
          * 

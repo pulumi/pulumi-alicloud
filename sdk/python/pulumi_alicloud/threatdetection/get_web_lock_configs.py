@@ -142,9 +142,9 @@ def get_web_lock_configs(ids: Optional[Sequence[str]] = None,
                          status: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWebLockConfigsResult:
     """
-    This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyweblockstart)
+    This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 
@@ -200,9 +200,9 @@ def get_web_lock_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str
                                 status: Optional[pulumi.Input[Optional[str]]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebLockConfigsResult]:
     """
-    This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifyweblockstart)
+    This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)
 
-    > **NOTE:** Available in 1.195.0+
+    > **NOTE:** Available since v1.195.0.
 
     ## Example Usage
 

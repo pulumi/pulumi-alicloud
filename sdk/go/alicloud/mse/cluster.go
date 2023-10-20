@@ -101,7 +101,7 @@ type Cluster struct {
 	ClusterSpecification pulumi.StringOutput `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringOutput `pulumi:"clusterType"`
-	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
 	ClusterVersion pulumi.StringOutput `pulumi:"clusterVersion"`
 	// The connection type. Valid values: `slb`.
 	ConnectionType pulumi.StringOutput `pulumi:"connectionType"`
@@ -189,7 +189,7 @@ type clusterState struct {
 	ClusterSpecification *string `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType *string `pulumi:"clusterType"`
-	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
 	ClusterVersion *string `pulumi:"clusterVersion"`
 	// The connection type. Valid values: `slb`.
 	ConnectionType *string `pulumi:"connectionType"`
@@ -230,7 +230,7 @@ type ClusterState struct {
 	ClusterSpecification pulumi.StringPtrInput
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringPtrInput
-	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
 	ClusterVersion pulumi.StringPtrInput
 	// The connection type. Valid values: `slb`.
 	ConnectionType pulumi.StringPtrInput
@@ -271,7 +271,7 @@ type clusterArgs struct {
 	ClusterSpecification string `pulumi:"clusterSpecification"`
 	// The type of MSE Cluster.
 	ClusterType string `pulumi:"clusterType"`
-	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
 	ClusterVersion string `pulumi:"clusterVersion"`
 	// The connection type. Valid values: `slb`.
 	ConnectionType *string `pulumi:"connectionType"`
@@ -307,7 +307,7 @@ type ClusterArgs struct {
 	ClusterSpecification pulumi.StringInput
 	// The type of MSE Cluster.
 	ClusterType pulumi.StringInput
-	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+	// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
 	ClusterVersion pulumi.StringInput
 	// The connection type. Valid values: `slb`.
 	ConnectionType pulumi.StringPtrInput
@@ -474,7 +474,7 @@ func (o ClusterOutput) ClusterType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterType }).(pulumi.StringOutput)
 }
 
-// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/microservices-engine/latest/api-doc-mse-2019-05-31-api-doc-createcluster)
+// The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
 func (o ClusterOutput) ClusterVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ClusterVersion }).(pulumi.StringOutput)
 }

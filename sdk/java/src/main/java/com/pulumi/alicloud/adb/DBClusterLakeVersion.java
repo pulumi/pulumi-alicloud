@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a AnalyticDB for MySQL (ADB) DB Cluster Lake Version resource.
  * 
- * For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/latest/api-doc-adb-2021-12-01-api-doc-createdbcluster).
+ * For information about AnalyticDB for MySQL (ADB) DB Cluster Lake Version and how to use it, see [What is DB Cluster Lake Version](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-createdbcluster).
  * 
  * &gt; **NOTE:** Available since v1.190.0.
  * 
@@ -31,12 +31,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.alicloud.inputs.GetZonesArgs;
- * import com.pulumi.alicloud.vpc.Network;
- * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.vpc.Switch;
- * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.adb.AdbFunctions;
+ * import com.pulumi.alicloud.adb.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
  * import com.pulumi.alicloud.adb.DBClusterLakeVersion;
  * import com.pulumi.alicloud.adb.DBClusterLakeVersionArgs;
  * import java.util.List;
@@ -52,35 +51,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
- *             .availableResourceCreation(&#34;VSwitch&#34;)
+ *         final var defaultZones = AdbFunctions.getZones();
+ * 
+ *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING$&#34;)
  *             .build());
  * 
- *         final var zoneId = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids())[defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()).length() - 1];
- * 
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
- *             .vpcName(name)
- *             .cidrBlock(&#34;10.4.0.0/16&#34;)
- *             .build());
- * 
- *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(defaultNetwork.id())
- *             .cidrBlock(&#34;10.4.0.0/24&#34;)
- *             .zoneId(zoneId)
- *             .vswitchName(name)
+ *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .build());
  * 
  *         var defaultDBClusterLakeVersion = new DBClusterLakeVersion(&#34;defaultDBClusterLakeVersion&#34;, DBClusterLakeVersionArgs.builder()        
- *             .computeResource(&#34;16ACU&#34;)
  *             .dbClusterVersion(&#34;5.0&#34;)
+ *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .computeResource(&#34;16ACU&#34;)
+ *             .storageResource(&#34;0ACU&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .storageResource(&#34;24ACU&#34;)
  *             .enableDefaultResourceGroup(false)
- *             .vswitchId(defaultSwitch.id())
- *             .vpcId(defaultNetwork.id())
- *             .zoneId(zoneId)
  *             .build());
  * 
  *     }
@@ -98,6 +88,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:adb/dBClusterLakeVersion:DBClusterLakeVersion")
 public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
+    /**
+     * The ID of the backup set that you want to use to restore data.
+     * 
+     */
+    @Export(name="backupSetId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> backupSetId;
+
+    /**
+     * @return The ID of the backup set that you want to use to restore data.
+     * 
+     */
+    public Output<Optional<String>> backupSetId() {
+        return Codegen.optional(this.backupSetId);
+    }
     /**
      * The name of the service.
      * 
@@ -169,14 +173,14 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
         return this.dbClusterDescription;
     }
     /**
-     * The version of the cluster. Value options: `5.0`.
+     * The version of the cluster. Valid values: `5.0`.
      * 
      */
     @Export(name="dbClusterVersion", type=String.class, parameters={})
     private Output<String> dbClusterVersion;
 
     /**
-     * @return The version of the cluster. Value options: `5.0`.
+     * @return The version of the cluster. Valid values: `5.0`.
      * 
      */
     public Output<String> dbClusterVersion() {
@@ -281,14 +285,14 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
         return this.lockReason;
     }
     /**
-     * The payment type of the resource. Valid values are `PayAsYouGo`.
+     * The payment type of the resource. Valid values: `PayAsYouGo`.
      * 
      */
     @Export(name="paymentType", type=String.class, parameters={})
     private Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values are `PayAsYouGo`.
+     * @return The payment type of the resource. Valid values: `PayAsYouGo`.
      * 
      */
     public Output<String> paymentType() {
@@ -323,6 +327,34 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
+     * The point in time to which you want to restore data from the backup set.
+     * 
+     */
+    @Export(name="restoreToTime", type=String.class, parameters={})
+    private Output</* @Nullable */ String> restoreToTime;
+
+    /**
+     * @return The point in time to which you want to restore data from the backup set.
+     * 
+     */
+    public Output<Optional<String>> restoreToTime() {
+        return Codegen.optional(this.restoreToTime);
+    }
+    /**
+     * The method that you want to use to restore data. Valid values:
+     * 
+     */
+    @Export(name="restoreType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> restoreType;
+
+    /**
+     * @return The method that you want to use to restore data. Valid values:
+     * 
+     */
+    public Output<Optional<String>> restoreType() {
+        return Codegen.optional(this.restoreType);
+    }
+    /**
      * The IP addresses in an IP address whitelist of a cluster. Separate multiple IP addresses with commas (,). You can add a maximum of 500 different IP addresses to a whitelist. The entries in the IP address whitelist must be in one of the following formats:
      * - IP addresses, such as 10.23.XX.XX.
      * - CIDR blocks, such as 10.23.xx.xx/24. In this example, 24 indicates that the prefix of each IP address in the IP whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -339,6 +371,20 @@ public class DBClusterLakeVersion extends com.pulumi.resources.CustomResource {
      */
     public Output<String> securityIps() {
         return this.securityIps;
+    }
+    /**
+     * The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+     * 
+     */
+    @Export(name="sourceDbClusterId", type=String.class, parameters={})
+    private Output</* @Nullable */ String> sourceDbClusterId;
+
+    /**
+     * @return The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
+     * 
+     */
+    public Output<Optional<String>> sourceDbClusterId() {
+        return Codegen.optional(this.sourceDbClusterId);
     }
     /**
      * The status of the resource.

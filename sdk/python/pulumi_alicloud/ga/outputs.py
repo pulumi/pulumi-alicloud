@@ -98,7 +98,11 @@ class AclAclEntry(dict):
              _setter: Callable[[Any, Any], None],
              entry: Optional[str] = None,
              entry_description: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'entryDescription' in kwargs:
+            entry_description = kwargs['entryDescription']
+
         if entry is not None:
             _setter("entry", entry)
         if entry_description is not None:
@@ -159,7 +163,13 @@ class CustomRoutingEndpointTrafficPolicyPortRange(dict):
              _setter: Callable[[Any, Any], None],
              from_port: Optional[int] = None,
              to_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fromPort' in kwargs:
+            from_port = kwargs['fromPort']
+        if 'toPort' in kwargs:
+            to_port = kwargs['toPort']
+
         if from_port is not None:
             _setter("from_port", from_port)
         if to_port is not None:
@@ -233,7 +243,13 @@ class EndpointGroupEndpointConfiguration(dict):
              weight: int,
              enable_clientip_preservation: Optional[bool] = None,
              enable_proxy_protocol: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enableClientipPreservation' in kwargs:
+            enable_clientip_preservation = kwargs['enableClientipPreservation']
+        if 'enableProxyProtocol' in kwargs:
+            enable_proxy_protocol = kwargs['enableProxyProtocol']
+
         _setter("endpoint", endpoint)
         _setter("type", type)
         _setter("weight", weight)
@@ -322,7 +338,13 @@ class EndpointGroupPortOverrides(dict):
              _setter: Callable[[Any, Any], None],
              endpoint_port: Optional[int] = None,
              listener_port: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointPort' in kwargs:
+            endpoint_port = kwargs['endpointPort']
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+
         if endpoint_port is not None:
             _setter("endpoint_port", endpoint_port)
         if listener_port is not None:
@@ -378,7 +400,7 @@ class ForwardingRuleRuleAction(dict):
         :param str rule_action_type: Forward action type.
         :param 'ForwardingRuleRuleActionForwardGroupConfigArgs' forward_group_config: Forwarding configuration. See `forward_group_config` below.
                > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
-        :param str rule_action_value: The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+        :param str rule_action_value: The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
         """
         ForwardingRuleRuleAction._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -394,7 +416,15 @@ class ForwardingRuleRuleAction(dict):
              rule_action_type: str,
              forward_group_config: Optional['outputs.ForwardingRuleRuleActionForwardGroupConfig'] = None,
              rule_action_value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ruleActionType' in kwargs:
+            rule_action_type = kwargs['ruleActionType']
+        if 'forwardGroupConfig' in kwargs:
+            forward_group_config = kwargs['forwardGroupConfig']
+        if 'ruleActionValue' in kwargs:
+            rule_action_value = kwargs['ruleActionValue']
+
         _setter("order", order)
         _setter("rule_action_type", rule_action_type)
         if forward_group_config is not None:
@@ -431,7 +461,7 @@ class ForwardingRuleRuleAction(dict):
     @pulumi.getter(name="ruleActionValue")
     def rule_action_value(self) -> Optional[str]:
         """
-        The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+        The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
         """
         return pulumi.get(self, "rule_action_value")
 
@@ -468,7 +498,11 @@ class ForwardingRuleRuleActionForwardGroupConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_tuples: Sequence['outputs.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupTuples' in kwargs:
+            server_group_tuples = kwargs['serverGroupTuples']
+
         _setter("server_group_tuples", server_group_tuples)
 
     @property
@@ -512,7 +546,11 @@ class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              endpoint_group_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+
         _setter("endpoint_group_id", endpoint_group_id)
 
     @property
@@ -568,7 +606,15 @@ class ForwardingRuleRuleCondition(dict):
              rule_condition_type: str,
              host_configs: Optional[Sequence['outputs.ForwardingRuleRuleConditionHostConfig']] = None,
              path_config: Optional['outputs.ForwardingRuleRuleConditionPathConfig'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ruleConditionType' in kwargs:
+            rule_condition_type = kwargs['ruleConditionType']
+        if 'hostConfigs' in kwargs:
+            host_configs = kwargs['hostConfigs']
+        if 'pathConfig' in kwargs:
+            path_config = kwargs['pathConfig']
+
         _setter("rule_condition_type", rule_condition_type)
         if host_configs is not None:
             _setter("host_configs", host_configs)
@@ -615,7 +661,9 @@ class ForwardingRuleRuleConditionHostConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if values is not None:
             _setter("values", values)
 
@@ -643,7 +691,9 @@ class ForwardingRuleRuleConditionPathConfig(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if values is not None:
             _setter("values", values)
 
@@ -671,7 +721,9 @@ class ListenerCertificate(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if id is not None:
             _setter("id", id)
 
@@ -740,7 +792,19 @@ class ListenerForwardedForConfig(dict):
              forwarded_for_port_enabled: Optional[bool] = None,
              forwarded_for_proto_enabled: Optional[bool] = None,
              real_ip_enabled: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'forwardedForGaApEnabled' in kwargs:
+            forwarded_for_ga_ap_enabled = kwargs['forwardedForGaApEnabled']
+        if 'forwardedForGaIdEnabled' in kwargs:
+            forwarded_for_ga_id_enabled = kwargs['forwardedForGaIdEnabled']
+        if 'forwardedForPortEnabled' in kwargs:
+            forwarded_for_port_enabled = kwargs['forwardedForPortEnabled']
+        if 'forwardedForProtoEnabled' in kwargs:
+            forwarded_for_proto_enabled = kwargs['forwardedForProtoEnabled']
+        if 'realIpEnabled' in kwargs:
+            real_ip_enabled = kwargs['realIpEnabled']
+
         if forwarded_for_ga_ap_enabled is not None:
             _setter("forwarded_for_ga_ap_enabled", forwarded_for_ga_ap_enabled)
         if forwarded_for_ga_id_enabled is not None:
@@ -831,7 +895,13 @@ class ListenerPortRange(dict):
              _setter: Callable[[Any, Any], None],
              from_port: int,
              to_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fromPort' in kwargs:
+            from_port = kwargs['fromPort']
+        if 'toPort' in kwargs:
+            to_port = kwargs['toPort']
+
         _setter("from_port", from_port)
         _setter("to_port", to_port)
 
@@ -879,7 +949,13 @@ class GetAcceleratorSpareIpAttachmentsAttachmentResult(dict):
              id: str,
              spare_ip: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'spareIp' in kwargs:
+            spare_ip = kwargs['spareIp']
+
         _setter("accelerator_id", accelerator_id)
         _setter("id", id)
         _setter("spare_ip", spare_ip)
@@ -985,7 +1061,29 @@ class GetAcceleratorsAcceleratorResult(dict):
              second_dns_name: str,
              spec: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'acceleratorName' in kwargs:
+            accelerator_name = kwargs['acceleratorName']
+        if 'basicBandwidthPackages' in kwargs:
+            basic_bandwidth_packages = kwargs['basicBandwidthPackages']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'crossDomainBandwidthPackages' in kwargs:
+            cross_domain_bandwidth_packages = kwargs['crossDomainBandwidthPackages']
+        if 'ddosId' in kwargs:
+            ddos_id = kwargs['ddosId']
+        if 'dnsName' in kwargs:
+            dns_name = kwargs['dnsName']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'secondDnsName' in kwargs:
+            second_dns_name = kwargs['secondDnsName']
+
         _setter("accelerator_id", accelerator_id)
         _setter("accelerator_name", accelerator_name)
         _setter("basic_bandwidth_packages", basic_bandwidth_packages)
@@ -1137,7 +1235,13 @@ class GetAcceleratorsAcceleratorBasicBandwidthPackageResult(dict):
              bandwidth: int,
              bandwidth_type: str,
              instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthType' in kwargs:
+            bandwidth_type = kwargs['bandwidthType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("bandwidth", bandwidth)
         _setter("bandwidth_type", bandwidth_type)
         _setter("instance_id", instance_id)
@@ -1186,7 +1290,11 @@ class GetAcceleratorsAcceleratorCrossDomainBandwidthPackageResult(dict):
              _setter: Callable[[Any, Any], None],
              bandwidth: int,
              instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("bandwidth", bandwidth)
         _setter("instance_id", instance_id)
 
@@ -1242,7 +1350,17 @@ class GetAclsAclResult(dict):
              address_ip_version: str,
              id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclEntries' in kwargs:
+            acl_entries = kwargs['aclEntries']
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if 'aclName' in kwargs:
+            acl_name = kwargs['aclName']
+        if 'addressIpVersion' in kwargs:
+            address_ip_version = kwargs['addressIpVersion']
+
         _setter("acl_entries", acl_entries)
         _setter("acl_id", acl_id)
         _setter("acl_name", acl_name)
@@ -1318,7 +1436,11 @@ class GetAclsAclAclEntryResult(dict):
              _setter: Callable[[Any, Any], None],
              entry: str,
              entry_description: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'entryDescription' in kwargs:
+            entry_description = kwargs['entryDescription']
+
         _setter("entry", entry)
         _setter("entry_description", entry_description)
 
@@ -1370,7 +1492,15 @@ class GetAdditionalCertificatesCertificateResult(dict):
              domain: str,
              id: str,
              listener_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'certificateId' in kwargs:
+            certificate_id = kwargs['certificateId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+
         _setter("accelerator_id", accelerator_id)
         _setter("certificate_id", certificate_id)
         _setter("domain", domain)
@@ -1477,7 +1607,23 @@ class GetBandwidthPackagesPackageResult(dict):
              payment_type: str,
              status: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthPackageId' in kwargs:
+            bandwidth_package_id = kwargs['bandwidthPackageId']
+        if 'bandwidthPackageName' in kwargs:
+            bandwidth_package_name = kwargs['bandwidthPackageName']
+        if 'bandwidthType' in kwargs:
+            bandwidth_type = kwargs['bandwidthType']
+        if 'cbnGeographicRegionIda' in kwargs:
+            cbn_geographic_region_ida = kwargs['cbnGeographicRegionIda']
+        if 'cbnGeographicRegionIdb' in kwargs:
+            cbn_geographic_region_idb = kwargs['cbnGeographicRegionIdb']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+
         _setter("bandwidth", bandwidth)
         _setter("bandwidth_package_id", bandwidth_package_id)
         _setter("bandwidth_package_name", bandwidth_package_name)
@@ -1647,7 +1793,29 @@ class GetBasicAccelerateIpEndpointRelationsRelationResult(dict):
              id: str,
              ip_address: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accelerateIpId' in kwargs:
+            accelerate_ip_id = kwargs['accelerateIpId']
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'basicEndpointName' in kwargs:
+            basic_endpoint_name = kwargs['basicEndpointName']
+        if 'endpointAddress' in kwargs:
+            endpoint_address = kwargs['endpointAddress']
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'endpointSubAddress' in kwargs:
+            endpoint_sub_address = kwargs['endpointSubAddress']
+        if 'endpointSubAddressType' in kwargs:
+            endpoint_sub_address_type = kwargs['endpointSubAddressType']
+        if 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if 'endpointZoneId' in kwargs:
+            endpoint_zone_id = kwargs['endpointZoneId']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("accelerate_ip_id", accelerate_ip_id)
         _setter("accelerator_id", accelerator_id)
         _setter("basic_endpoint_name", basic_endpoint_name)
@@ -1793,7 +1961,17 @@ class GetBasicAccelerateIpsIpResult(dict):
              id: str,
              ip_set_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accelerateIpAddress' in kwargs:
+            accelerate_ip_address = kwargs['accelerateIpAddress']
+        if 'accelerateIpId' in kwargs:
+            accelerate_ip_id = kwargs['accelerateIpId']
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'ipSetId' in kwargs:
+            ip_set_id = kwargs['ipSetId']
+
         _setter("accelerate_ip_address", accelerate_ip_address)
         _setter("accelerate_ip_id", accelerate_ip_id)
         _setter("accelerator_id", accelerator_id)
@@ -1917,7 +2095,31 @@ class GetBasicAcceleratorsAcceleratorResult(dict):
              instance_charge_type: str,
              region_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthBillingType' in kwargs:
+            bandwidth_billing_type = kwargs['bandwidthBillingType']
+        if 'basicAcceleratorId' in kwargs:
+            basic_accelerator_id = kwargs['basicAcceleratorId']
+        if 'basicAcceleratorName' in kwargs:
+            basic_accelerator_name = kwargs['basicAcceleratorName']
+        if 'basicBandwidthPackages' in kwargs:
+            basic_bandwidth_packages = kwargs['basicBandwidthPackages']
+        if 'basicEndpointGroupId' in kwargs:
+            basic_endpoint_group_id = kwargs['basicEndpointGroupId']
+        if 'basicIpSetId' in kwargs:
+            basic_ip_set_id = kwargs['basicIpSetId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'crossDomainBandwidthPackages' in kwargs:
+            cross_domain_bandwidth_packages = kwargs['crossDomainBandwidthPackages']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("bandwidth_billing_type", bandwidth_billing_type)
         _setter("basic_accelerator_id", basic_accelerator_id)
         _setter("basic_accelerator_name", basic_accelerator_name)
@@ -2069,7 +2271,13 @@ class GetBasicAcceleratorsAcceleratorBasicBandwidthPackageResult(dict):
              bandwidth: int,
              bandwidth_type: str,
              instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bandwidthType' in kwargs:
+            bandwidth_type = kwargs['bandwidthType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("bandwidth", bandwidth)
         _setter("bandwidth_type", bandwidth_type)
         _setter("instance_id", instance_id)
@@ -2118,7 +2326,11 @@ class GetBasicAcceleratorsAcceleratorCrossDomainBandwidthPackageResult(dict):
              _setter: Callable[[Any, Any], None],
              bandwidth: int,
              instance_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+
         _setter("bandwidth", bandwidth)
         _setter("instance_id", instance_id)
 
@@ -2194,7 +2406,27 @@ class GetBasicEndpointsEndpointResult(dict):
              endpoint_zone_id: str,
              id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'basicEndpointName' in kwargs:
+            basic_endpoint_name = kwargs['basicEndpointName']
+        if 'endpointAddress' in kwargs:
+            endpoint_address = kwargs['endpointAddress']
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'endpointSubAddress' in kwargs:
+            endpoint_sub_address = kwargs['endpointSubAddress']
+        if 'endpointSubAddressType' in kwargs:
+            endpoint_sub_address_type = kwargs['endpointSubAddressType']
+        if 'endpointType' in kwargs:
+            endpoint_type = kwargs['endpointType']
+        if 'endpointZoneId' in kwargs:
+            endpoint_zone_id = kwargs['endpointZoneId']
+
         _setter("accelerator_id", accelerator_id)
         _setter("basic_endpoint_name", basic_endpoint_name)
         _setter("endpoint_address", endpoint_address)
@@ -2339,7 +2571,21 @@ class GetCustomRoutingEndpointGroupDestinationsCustomRoutingEndpointGroupDestina
              listener_id: str,
              protocols: Sequence[str],
              to_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'customRoutingEndpointGroupDestinationId' in kwargs:
+            custom_routing_endpoint_group_destination_id = kwargs['customRoutingEndpointGroupDestinationId']
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'fromPort' in kwargs:
+            from_port = kwargs['fromPort']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'toPort' in kwargs:
+            to_port = kwargs['toPort']
+
         _setter("accelerator_id", accelerator_id)
         _setter("custom_routing_endpoint_group_destination_id", custom_routing_endpoint_group_destination_id)
         _setter("endpoint_group_id", endpoint_group_id)
@@ -2465,7 +2711,23 @@ class GetCustomRoutingEndpointGroupsGroupResult(dict):
              id: str,
              listener_id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'customRoutingEndpointGroupName' in kwargs:
+            custom_routing_endpoint_group_name = kwargs['customRoutingEndpointGroupName']
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'endpointGroupIpLists' in kwargs:
+            endpoint_group_ip_lists = kwargs['endpointGroupIpLists']
+        if 'endpointGroupRegion' in kwargs:
+            endpoint_group_region = kwargs['endpointGroupRegion']
+        if 'endpointGroupUnconfirmedIpLists' in kwargs:
+            endpoint_group_unconfirmed_ip_lists = kwargs['endpointGroupUnconfirmedIpLists']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+
         _setter("accelerator_id", accelerator_id)
         _setter("custom_routing_endpoint_group_name", custom_routing_endpoint_group_name)
         _setter("description", description)
@@ -2601,7 +2863,21 @@ class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyR
              id: str,
              listener_id: str,
              port_ranges: Sequence['outputs.GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRangeResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'customRoutingEndpointTrafficPolicyId' in kwargs:
+            custom_routing_endpoint_traffic_policy_id = kwargs['customRoutingEndpointTrafficPolicyId']
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'portRanges' in kwargs:
+            port_ranges = kwargs['portRanges']
+
         _setter("accelerator_id", accelerator_id)
         _setter("address", address)
         _setter("custom_routing_endpoint_traffic_policy_id", custom_routing_endpoint_traffic_policy_id)
@@ -2695,7 +2971,13 @@ class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyP
              _setter: Callable[[Any, Any], None],
              from_port: int,
              to_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fromPort' in kwargs:
+            from_port = kwargs['fromPort']
+        if 'toPort' in kwargs:
+            to_port = kwargs['toPort']
+
         _setter("from_port", from_port)
         _setter("to_port", to_port)
 
@@ -2759,7 +3041,19 @@ class GetCustomRoutingEndpointsCustomRoutingEndpointResult(dict):
              listener_id: str,
              traffic_to_endpoint_policy: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'customRoutingEndpointId' in kwargs:
+            custom_routing_endpoint_id = kwargs['customRoutingEndpointId']
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'trafficToEndpointPolicy' in kwargs:
+            traffic_to_endpoint_policy = kwargs['trafficToEndpointPolicy']
+
         _setter("accelerator_id", accelerator_id)
         _setter("custom_routing_endpoint_id", custom_routing_endpoint_id)
         _setter("endpoint", endpoint)
@@ -2885,7 +3179,23 @@ class GetCustomRoutingPortMappingsCustomRoutingPortMappingResult(dict):
              protocols: Sequence[str],
              status: str,
              vswitch: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+        if 'acceleratorPort' in kwargs:
+            accelerator_port = kwargs['acceleratorPort']
+        if 'destinationSocketAddresses' in kwargs:
+            destination_socket_addresses = kwargs['destinationSocketAddresses']
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'endpointGroupRegion' in kwargs:
+            endpoint_group_region = kwargs['endpointGroupRegion']
+        if 'endpointId' in kwargs:
+            endpoint_id = kwargs['endpointId']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+
         _setter("accelerator_id", accelerator_id)
         _setter("accelerator_port", accelerator_port)
         _setter("destination_socket_addresses", destination_socket_addresses)
@@ -2997,7 +3307,11 @@ class GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAddre
              _setter: Callable[[Any, Any], None],
              ip_address: str,
              port: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+
         _setter("ip_address", ip_address)
         _setter("port", port)
 
@@ -3045,7 +3359,11 @@ class GetDomainsDomainResult(dict):
              domain: str,
              id: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'acceleratorId' in kwargs:
+            accelerator_id = kwargs['acceleratorId']
+
         _setter("accelerator_id", accelerator_id)
         _setter("domain", domain)
         _setter("id", id)
@@ -3155,7 +3473,31 @@ class GetEndpointGroupsGroupResult(dict):
              status: str,
              threshold_count: int,
              traffic_percentage: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointConfigurations' in kwargs:
+            endpoint_configurations = kwargs['endpointConfigurations']
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+        if 'endpointGroupRegion' in kwargs:
+            endpoint_group_region = kwargs['endpointGroupRegion']
+        if 'healthCheckIntervalSeconds' in kwargs:
+            health_check_interval_seconds = kwargs['healthCheckIntervalSeconds']
+        if 'healthCheckPath' in kwargs:
+            health_check_path = kwargs['healthCheckPath']
+        if 'healthCheckPort' in kwargs:
+            health_check_port = kwargs['healthCheckPort']
+        if 'healthCheckProtocol' in kwargs:
+            health_check_protocol = kwargs['healthCheckProtocol']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'portOverrides' in kwargs:
+            port_overrides = kwargs['portOverrides']
+        if 'thresholdCount' in kwargs:
+            threshold_count = kwargs['thresholdCount']
+        if 'trafficPercentage' in kwargs:
+            traffic_percentage = kwargs['trafficPercentage']
+
         _setter("description", description)
         _setter("endpoint_configurations", endpoint_configurations)
         _setter("endpoint_group_id", endpoint_group_id)
@@ -3328,7 +3670,15 @@ class GetEndpointGroupsGroupEndpointConfigurationResult(dict):
              probe_protocol: str,
              type: str,
              weight: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enableClientipPreservation' in kwargs:
+            enable_clientip_preservation = kwargs['enableClientipPreservation']
+        if 'probePort' in kwargs:
+            probe_port = kwargs['probePort']
+        if 'probeProtocol' in kwargs:
+            probe_protocol = kwargs['probeProtocol']
+
         _setter("enable_clientip_preservation", enable_clientip_preservation)
         _setter("endpoint", endpoint)
         _setter("probe_port", probe_port)
@@ -3404,7 +3754,13 @@ class GetEndpointGroupsGroupPortOverrideResult(dict):
              _setter: Callable[[Any, Any], None],
              endpoint_port: int,
              listener_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointPort' in kwargs:
+            endpoint_port = kwargs['endpointPort']
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+
         _setter("endpoint_port", endpoint_port)
         _setter("listener_port", listener_port)
 
@@ -3477,7 +3833,21 @@ class GetForwardingRulesForwardingRuleResult(dict):
              priority: int,
              rule_actions: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionResult'],
              rule_conditions: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'forwardingRuleId' in kwargs:
+            forwarding_rule_id = kwargs['forwardingRuleId']
+        if 'forwardingRuleName' in kwargs:
+            forwarding_rule_name = kwargs['forwardingRuleName']
+        if 'forwardingRuleStatus' in kwargs:
+            forwarding_rule_status = kwargs['forwardingRuleStatus']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'ruleActions' in kwargs:
+            rule_actions = kwargs['ruleActions']
+        if 'ruleConditions' in kwargs:
+            rule_conditions = kwargs['ruleConditions']
+
         _setter("forwarding_rule_id", forwarding_rule_id)
         _setter("forwarding_rule_name", forwarding_rule_name)
         _setter("forwarding_rule_status", forwarding_rule_status)
@@ -3577,7 +3947,13 @@ class GetForwardingRulesForwardingRuleRuleActionResult(dict):
              forward_group_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult'],
              order: int,
              rule_action_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'forwardGroupConfigs' in kwargs:
+            forward_group_configs = kwargs['forwardGroupConfigs']
+        if 'ruleActionType' in kwargs:
+            rule_action_type = kwargs['ruleActionType']
+
         _setter("forward_group_configs", forward_group_configs)
         _setter("order", order)
         _setter("rule_action_type", rule_action_type)
@@ -3610,7 +3986,11 @@ class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_tuples: Sequence['outputs.GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTupleResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupTuples' in kwargs:
+            server_group_tuples = kwargs['serverGroupTuples']
+
         _setter("server_group_tuples", server_group_tuples)
 
     @property
@@ -3631,7 +4011,11 @@ class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTup
     def _configure(
              _setter: Callable[[Any, Any], None],
              endpoint_group_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+
         _setter("endpoint_group_id", endpoint_group_id)
 
     @property
@@ -3658,7 +4042,15 @@ class GetForwardingRulesForwardingRuleRuleConditionResult(dict):
              host_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionHostConfigResult'],
              path_configs: Sequence['outputs.GetForwardingRulesForwardingRuleRuleConditionPathConfigResult'],
              rule_condition_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'hostConfigs' in kwargs:
+            host_configs = kwargs['hostConfigs']
+        if 'pathConfigs' in kwargs:
+            path_configs = kwargs['pathConfigs']
+        if 'ruleConditionType' in kwargs:
+            rule_condition_type = kwargs['ruleConditionType']
+
         _setter("host_configs", host_configs)
         _setter("path_configs", path_configs)
         _setter("rule_condition_type", rule_condition_type)
@@ -3691,7 +4083,9 @@ class GetForwardingRulesForwardingRuleRuleConditionHostConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("values", values)
 
     @property
@@ -3712,7 +4106,9 @@ class GetForwardingRulesForwardingRuleRuleConditionPathConfigResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("values", values)
 
     @property
@@ -3760,7 +4156,17 @@ class GetIpSetsSetResult(dict):
              ip_set_id: str,
              ip_version: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accelerateRegionId' in kwargs:
+            accelerate_region_id = kwargs['accelerateRegionId']
+        if 'ipAddressLists' in kwargs:
+            ip_address_lists = kwargs['ipAddressLists']
+        if 'ipSetId' in kwargs:
+            ip_set_id = kwargs['ipSetId']
+        if 'ipVersion' in kwargs:
+            ip_version = kwargs['ipVersion']
+
         _setter("accelerate_region_id", accelerate_region_id)
         _setter("bandwidth", bandwidth)
         _setter("id", id)
@@ -3873,7 +4279,15 @@ class GetListenersListenerResult(dict):
              port_ranges: Sequence['outputs.GetListenersListenerPortRangeResult'],
              protocol: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientAffinity' in kwargs:
+            client_affinity = kwargs['clientAffinity']
+        if 'listenerId' in kwargs:
+            listener_id = kwargs['listenerId']
+        if 'portRanges' in kwargs:
+            port_ranges = kwargs['portRanges']
+
         _setter("certificates", certificates)
         _setter("client_affinity", client_affinity)
         _setter("description", description)
@@ -3976,7 +4390,9 @@ class GetListenersListenerCertificateResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
         _setter("type", type)
 
@@ -4016,7 +4432,13 @@ class GetListenersListenerPortRangeResult(dict):
              _setter: Callable[[Any, Any], None],
              from_port: int,
              to_port: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fromPort' in kwargs:
+            from_port = kwargs['fromPort']
+        if 'toPort' in kwargs:
+            to_port = kwargs['toPort']
+
         _setter("from_port", from_port)
         _setter("to_port", to_port)
 

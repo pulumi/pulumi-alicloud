@@ -81,7 +81,13 @@ class AccessStrategyDefaultAddrPool(dict):
              _setter: Callable[[Any, Any], None],
              addr_pool_id: str,
              lba_weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addrPoolId' in kwargs:
+            addr_pool_id = kwargs['addrPoolId']
+        if 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+
         _setter("addr_pool_id", addr_pool_id)
         if lba_weight is not None:
             _setter("lba_weight", lba_weight)
@@ -141,7 +147,13 @@ class AccessStrategyFailoverAddrPool(dict):
              _setter: Callable[[Any, Any], None],
              addr_pool_id: Optional[str] = None,
              lba_weight: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addrPoolId' in kwargs:
+            addr_pool_id = kwargs['addrPoolId']
+        if 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+
         if addr_pool_id is not None:
             _setter("addr_pool_id", addr_pool_id)
         if lba_weight is not None:
@@ -196,7 +208,11 @@ class AccessStrategyLine(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              line_code: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lineCode' in kwargs:
+            line_code = kwargs['lineCode']
+
         if line_code is not None:
             _setter("line_code", line_code)
 
@@ -259,7 +275,13 @@ class AddressPoolAddress(dict):
              mode: str,
              lba_weight: Optional[int] = None,
              remark: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attributeInfo' in kwargs:
+            attribute_info = kwargs['attributeInfo']
+        if 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+
         _setter("address", address)
         _setter("attribute_info", attribute_info)
         _setter("mode", mode)
@@ -347,7 +369,13 @@ class CustomLineIpSegmentList(dict):
              _setter: Callable[[Any, Any], None],
              end_ip: str,
              start_ip: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endIp' in kwargs:
+            end_ip = kwargs['endIp']
+        if 'startIp' in kwargs:
+            start_ip = kwargs['startIp']
+
         _setter("end_ip", end_ip)
         _setter("start_ip", start_ip)
 
@@ -418,7 +446,17 @@ class GtmInstanceAlertConfig(dict):
              email_notice: Optional[bool] = None,
              notice_type: Optional[str] = None,
              sms_notice: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dingtalkNotice' in kwargs:
+            dingtalk_notice = kwargs['dingtalkNotice']
+        if 'emailNotice' in kwargs:
+            email_notice = kwargs['emailNotice']
+        if 'noticeType' in kwargs:
+            notice_type = kwargs['noticeType']
+        if 'smsNotice' in kwargs:
+            sms_notice = kwargs['smsNotice']
+
         if dingtalk_notice is not None:
             _setter("dingtalk_notice", dingtalk_notice)
         if email_notice is not None:
@@ -499,7 +537,13 @@ class MonitorConfigIspCityNode(dict):
              _setter: Callable[[Any, Any], None],
              city_code: str,
              isp_code: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cityCode' in kwargs:
+            city_code = kwargs['cityCode']
+        if 'ispCode' in kwargs:
+            isp_code = kwargs['ispCode']
+
         _setter("city_code", city_code)
         _setter("isp_code", isp_code)
 
@@ -627,7 +671,53 @@ class GetAccessStrategiesStrategyResult(dict):
              lines: Sequence['outputs.GetAccessStrategiesStrategyLineResult'],
              strategy_mode: str,
              strategy_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessMode' in kwargs:
+            access_mode = kwargs['accessMode']
+        if 'accessStrategyId' in kwargs:
+            access_strategy_id = kwargs['accessStrategyId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'createTimestamp' in kwargs:
+            create_timestamp = kwargs['createTimestamp']
+        if 'defaultAddrPoolType' in kwargs:
+            default_addr_pool_type = kwargs['defaultAddrPoolType']
+        if 'defaultAddrPools' in kwargs:
+            default_addr_pools = kwargs['defaultAddrPools']
+        if 'defaultAvailableAddrNum' in kwargs:
+            default_available_addr_num = kwargs['defaultAvailableAddrNum']
+        if 'defaultLatencyOptimization' in kwargs:
+            default_latency_optimization = kwargs['defaultLatencyOptimization']
+        if 'defaultLbaStrategy' in kwargs:
+            default_lba_strategy = kwargs['defaultLbaStrategy']
+        if 'defaultMaxReturnAddrNum' in kwargs:
+            default_max_return_addr_num = kwargs['defaultMaxReturnAddrNum']
+        if 'defaultMinAvailableAddrNum' in kwargs:
+            default_min_available_addr_num = kwargs['defaultMinAvailableAddrNum']
+        if 'effectiveAddrPoolGroupType' in kwargs:
+            effective_addr_pool_group_type = kwargs['effectiveAddrPoolGroupType']
+        if 'failoverAddrPoolType' in kwargs:
+            failover_addr_pool_type = kwargs['failoverAddrPoolType']
+        if 'failoverAddrPools' in kwargs:
+            failover_addr_pools = kwargs['failoverAddrPools']
+        if 'failoverAvailableAddrNum' in kwargs:
+            failover_available_addr_num = kwargs['failoverAvailableAddrNum']
+        if 'failoverLatencyOptimization' in kwargs:
+            failover_latency_optimization = kwargs['failoverLatencyOptimization']
+        if 'failoverLbaStrategy' in kwargs:
+            failover_lba_strategy = kwargs['failoverLbaStrategy']
+        if 'failoverMaxReturnAddrNum' in kwargs:
+            failover_max_return_addr_num = kwargs['failoverMaxReturnAddrNum']
+        if 'failoverMinAvailableAddrNum' in kwargs:
+            failover_min_available_addr_num = kwargs['failoverMinAvailableAddrNum']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'strategyMode' in kwargs:
+            strategy_mode = kwargs['strategyMode']
+        if 'strategyName' in kwargs:
+            strategy_name = kwargs['strategyName']
+
         _setter("access_mode", access_mode)
         _setter("access_strategy_id", access_strategy_id)
         _setter("create_time", create_time)
@@ -873,7 +963,15 @@ class GetAccessStrategiesStrategyDefaultAddrPoolResult(dict):
              addr_pool_id: str,
              lba_weight: int,
              name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addrCount' in kwargs:
+            addr_count = kwargs['addrCount']
+        if 'addrPoolId' in kwargs:
+            addr_pool_id = kwargs['addrPoolId']
+        if 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+
         _setter("addr_count", addr_count)
         _setter("addr_pool_id", addr_pool_id)
         _setter("lba_weight", lba_weight)
@@ -939,7 +1037,15 @@ class GetAccessStrategiesStrategyFailoverAddrPoolResult(dict):
              addr_pool_id: str,
              lba_weight: int,
              name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addrCount' in kwargs:
+            addr_count = kwargs['addrCount']
+        if 'addrPoolId' in kwargs:
+            addr_pool_id = kwargs['addrPoolId']
+        if 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+
         _setter("addr_count", addr_count)
         _setter("addr_pool_id", addr_pool_id)
         _setter("lba_weight", lba_weight)
@@ -1005,7 +1111,17 @@ class GetAccessStrategiesStrategyLineResult(dict):
              group_name: str,
              line_code: str,
              line_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupCode' in kwargs:
+            group_code = kwargs['groupCode']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'lineCode' in kwargs:
+            line_code = kwargs['lineCode']
+        if 'lineName' in kwargs:
+            line_name = kwargs['lineName']
+
         _setter("group_code", group_code)
         _setter("group_name", group_name)
         _setter("line_code", line_code)
@@ -1107,7 +1223,29 @@ class GetAddressPoolsPoolResult(dict):
              type: str,
              update_time: str,
              update_timestamp: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'addressPoolId' in kwargs:
+            address_pool_id = kwargs['addressPoolId']
+        if 'addressPoolName' in kwargs:
+            address_pool_name = kwargs['addressPoolName']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'createTimestamp' in kwargs:
+            create_timestamp = kwargs['createTimestamp']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'lbaStrategy' in kwargs:
+            lba_strategy = kwargs['lbaStrategy']
+        if 'monitorConfigId' in kwargs:
+            monitor_config_id = kwargs['monitorConfigId']
+        if 'monitorStatus' in kwargs:
+            monitor_status = kwargs['monitorStatus']
+        if 'updateTime' in kwargs:
+            update_time = kwargs['updateTime']
+        if 'updateTimestamp' in kwargs:
+            update_timestamp = kwargs['updateTimestamp']
+
         _setter("address_pool_id", address_pool_id)
         _setter("address_pool_name", address_pool_name)
         _setter("addresses", addresses)
@@ -1258,7 +1396,13 @@ class GetAddressPoolsPoolAddressResult(dict):
              lba_weight: int,
              mode: str,
              remark: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attributeInfo' in kwargs:
+            attribute_info = kwargs['attributeInfo']
+        if 'lbaWeight' in kwargs:
+            lba_weight = kwargs['lbaWeight']
+
         _setter("address", address)
         _setter("attribute_info", attribute_info)
         _setter("lba_weight", lba_weight)
@@ -1333,7 +1477,15 @@ class GetAlidnsDomainGroupsGroupResult(dict):
              group_id: str,
              group_name: str,
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainCount' in kwargs:
+            domain_count = kwargs['domainCount']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+
         _setter("domain_count", domain_count)
         _setter("group_id", group_id)
         _setter("group_name", group_name)
@@ -1473,7 +1625,49 @@ class GetAlidnsDomainsDomainResult(dict):
              tags: Mapping[str, Any],
              version_code: str,
              version_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aliDomain' in kwargs:
+            ali_domain = kwargs['aliDomain']
+        if 'availableTtls' in kwargs:
+            available_ttls = kwargs['availableTtls']
+        if 'dnsServers' in kwargs:
+            dns_servers = kwargs['dnsServers']
+        if 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'inBlackHole' in kwargs:
+            in_black_hole = kwargs['inBlackHole']
+        if 'inClean' in kwargs:
+            in_clean = kwargs['inClean']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'lineType' in kwargs:
+            line_type = kwargs['lineType']
+        if 'minTtl' in kwargs:
+            min_ttl = kwargs['minTtl']
+        if 'punyCode' in kwargs:
+            puny_code = kwargs['punyCode']
+        if 'recordLineTreeJson' in kwargs:
+            record_line_tree_json = kwargs['recordLineTreeJson']
+        if 'recordLines' in kwargs:
+            record_lines = kwargs['recordLines']
+        if 'regionLines' in kwargs:
+            region_lines = kwargs['regionLines']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'slaveDns' in kwargs:
+            slave_dns = kwargs['slaveDns']
+        if 'versionCode' in kwargs:
+            version_code = kwargs['versionCode']
+        if 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         _setter("ali_domain", ali_domain)
         _setter("available_ttls", available_ttls)
         _setter("dns_servers", dns_servers)
@@ -1704,7 +1898,17 @@ class GetAlidnsDomainsDomainRecordLineResult(dict):
              line_code: str,
              line_display_name: str,
              line_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fatherCode' in kwargs:
+            father_code = kwargs['fatherCode']
+        if 'lineCode' in kwargs:
+            line_code = kwargs['lineCode']
+        if 'lineDisplayName' in kwargs:
+            line_display_name = kwargs['lineDisplayName']
+        if 'lineName' in kwargs:
+            line_name = kwargs['lineName']
+
         _setter("father_code", father_code)
         _setter("line_code", line_code)
         _setter("line_display_name", line_display_name)
@@ -1786,7 +1990,21 @@ class GetAlidnsInstancesInstanceResult(dict):
              payment_type: str,
              version_code: str,
              version_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dnsSecurity' in kwargs:
+            dns_security = kwargs['dnsSecurity']
+        if 'domainNumbers' in kwargs:
+            domain_numbers = kwargs['domainNumbers']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'versionCode' in kwargs:
+            version_code = kwargs['versionCode']
+        if 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         _setter("dns_security", dns_security)
         _setter("domain", domain)
         _setter("domain_numbers", domain_numbers)
@@ -1879,7 +2097,7 @@ class GetAlidnsRecordsRecordResult(dict):
         """
         :param str domain_name: The domain name associated to the records.
         :param str id: ID of the resource.
-        :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+        :param str line: ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
         :param bool locked: Indicates whether the record is locked.
         :param int priority: Priority of the `MX` record.
         :param str record_id: ID of the record.
@@ -1920,7 +2138,13 @@ class GetAlidnsRecordsRecordResult(dict):
              ttl: int,
              type: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'recordId' in kwargs:
+            record_id = kwargs['recordId']
+
         _setter("domain_name", domain_name)
         _setter("id", id)
         _setter("line", line)
@@ -1954,7 +2178,7 @@ class GetAlidnsRecordsRecordResult(dict):
     @pulumi.getter
     def line(self) -> str:
         """
-        ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+        ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/dns-lines)
         """
         return pulumi.get(self, "line")
 
@@ -2066,7 +2290,17 @@ class GetCustomLinesLineResult(dict):
              domain_name: str,
              id: str,
              ip_segment_lists: Sequence['outputs.GetCustomLinesLineIpSegmentListResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customLineId' in kwargs:
+            custom_line_id = kwargs['customLineId']
+        if 'customLineName' in kwargs:
+            custom_line_name = kwargs['customLineName']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'ipSegmentLists' in kwargs:
+            ip_segment_lists = kwargs['ipSegmentLists']
+
         _setter("code", code)
         _setter("custom_line_id", custom_line_id)
         _setter("custom_line_name", custom_line_name)
@@ -2142,7 +2376,13 @@ class GetCustomLinesLineIpSegmentListResult(dict):
              _setter: Callable[[Any, Any], None],
              end_ip: str,
              start_ip: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endIp' in kwargs:
+            end_ip = kwargs['endIp']
+        if 'startIp' in kwargs:
+            start_ip = kwargs['startIp']
+
         _setter("end_ip", end_ip)
         _setter("start_ip", start_ip)
 
@@ -2178,7 +2418,13 @@ class GetDomainGroupsGroupResult(dict):
              _setter: Callable[[Any, Any], None],
              group_id: str,
              group_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+
         _setter("group_id", group_id)
         _setter("group_name", group_name)
 
@@ -2232,7 +2478,15 @@ class GetDomainRecordsRecordResult(dict):
              ttl: float,
              type: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'hostRecord' in kwargs:
+            host_record = kwargs['hostRecord']
+        if 'recordId' in kwargs:
+            record_id = kwargs['recordId']
+
         _setter("domain_name", domain_name)
         _setter("host_record", host_record)
         _setter("line", line)
@@ -2394,7 +2648,49 @@ class GetDomainsDomainResult(dict):
              tags: Mapping[str, Any],
              version_code: str,
              version_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aliDomain' in kwargs:
+            ali_domain = kwargs['aliDomain']
+        if 'availableTtls' in kwargs:
+            available_ttls = kwargs['availableTtls']
+        if 'dnsServers' in kwargs:
+            dns_servers = kwargs['dnsServers']
+        if 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+        if 'inBlackHole' in kwargs:
+            in_black_hole = kwargs['inBlackHole']
+        if 'inClean' in kwargs:
+            in_clean = kwargs['inClean']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'lineType' in kwargs:
+            line_type = kwargs['lineType']
+        if 'minTtl' in kwargs:
+            min_ttl = kwargs['minTtl']
+        if 'punyCode' in kwargs:
+            puny_code = kwargs['punyCode']
+        if 'recordLineTreeJson' in kwargs:
+            record_line_tree_json = kwargs['recordLineTreeJson']
+        if 'recordLines' in kwargs:
+            record_lines = kwargs['recordLines']
+        if 'regionLines' in kwargs:
+            region_lines = kwargs['regionLines']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'slaveDns' in kwargs:
+            slave_dns = kwargs['slaveDns']
+        if 'versionCode' in kwargs:
+            version_code = kwargs['versionCode']
+        if 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         _setter("ali_domain", ali_domain)
         _setter("available_ttls", available_ttls)
         _setter("dns_servers", dns_servers)
@@ -2613,7 +2909,17 @@ class GetDomainsDomainRecordLineResult(dict):
              line_code: str,
              line_display_name: str,
              line_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fatherCode' in kwargs:
+            father_code = kwargs['fatherCode']
+        if 'lineCode' in kwargs:
+            line_code = kwargs['lineCode']
+        if 'lineDisplayName' in kwargs:
+            line_display_name = kwargs['lineDisplayName']
+        if 'lineName' in kwargs:
+            line_name = kwargs['lineName']
+
         _setter("father_code", father_code)
         _setter("line_code", line_code)
         _setter("line_display_name", line_display_name)
@@ -2659,7 +2965,13 @@ class GetGroupsGroupResult(dict):
              _setter: Callable[[Any, Any], None],
              group_id: str,
              group_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'groupId' in kwargs:
+            group_id = kwargs['groupId']
+        if 'groupName' in kwargs:
+            group_name = kwargs['groupName']
+
         _setter("group_id", group_id)
         _setter("group_name", group_name)
 
@@ -2759,7 +3071,39 @@ class GetGtmInstancesInstanceResult(dict):
              resource_group_id: str,
              strategy_mode: str,
              ttl: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertConfigs' in kwargs:
+            alert_configs = kwargs['alertConfigs']
+        if 'alertGroups' in kwargs:
+            alert_groups = kwargs['alertGroups']
+        if 'cnameType' in kwargs:
+            cname_type = kwargs['cnameType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'packageEdition' in kwargs:
+            package_edition = kwargs['packageEdition']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'publicCnameMode' in kwargs:
+            public_cname_mode = kwargs['publicCnameMode']
+        if 'publicRr' in kwargs:
+            public_rr = kwargs['publicRr']
+        if 'publicUserDomainName' in kwargs:
+            public_user_domain_name = kwargs['publicUserDomainName']
+        if 'publicZoneName' in kwargs:
+            public_zone_name = kwargs['publicZoneName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'strategyMode' in kwargs:
+            strategy_mode = kwargs['strategyMode']
+
         _setter("alert_configs", alert_configs)
         _setter("alert_groups", alert_groups)
         _setter("cname_type", cname_type)
@@ -2942,7 +3286,17 @@ class GetGtmInstancesInstanceAlertConfigResult(dict):
              email_notice: bool,
              notice_type: str,
              sms_notice: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dingtalkNotice' in kwargs:
+            dingtalk_notice = kwargs['dingtalkNotice']
+        if 'emailNotice' in kwargs:
+            email_notice = kwargs['emailNotice']
+        if 'noticeType' in kwargs:
+            notice_type = kwargs['noticeType']
+        if 'smsNotice' in kwargs:
+            sms_notice = kwargs['smsNotice']
+
         _setter("dingtalk_notice", dingtalk_notice)
         _setter("email_notice", email_notice)
         _setter("notice_type", notice_type)
@@ -3022,7 +3376,21 @@ class GetInstancesInstanceResult(dict):
              payment_type: str,
              version_code: str,
              version_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dnsSecurity' in kwargs:
+            dns_security = kwargs['dnsSecurity']
+        if 'domainNumbers' in kwargs:
+            domain_numbers = kwargs['domainNumbers']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'versionCode' in kwargs:
+            version_code = kwargs['versionCode']
+        if 'versionName' in kwargs:
+            version_name = kwargs['versionName']
+
         _setter("dns_security", dns_security)
         _setter("domain", domain)
         _setter("domain_numbers", domain_numbers)
@@ -3107,7 +3475,7 @@ class GetRecordsRecordResult(dict):
         """
         :param str domain_name: The domain name associated to the records.
         :param str host_record: Host record of the domain.
-        :param str line: ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+        :param str line: ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
         :param bool locked: Indicates whether the record is locked.
         :param int priority: Priority of the `MX` record.
         :param str record_id: ID of the record.
@@ -3142,7 +3510,15 @@ class GetRecordsRecordResult(dict):
              ttl: float,
              type: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'hostRecord' in kwargs:
+            host_record = kwargs['hostRecord']
+        if 'recordId' in kwargs:
+            record_id = kwargs['recordId']
+
         _setter("domain_name", domain_name)
         _setter("host_record", host_record)
         _setter("line", line)
@@ -3174,7 +3550,7 @@ class GetRecordsRecordResult(dict):
     @pulumi.getter
     def line(self) -> str:
         """
-        ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/doc-detail/34339.htm)
+        ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
         """
         return pulumi.get(self, "line")
 
@@ -3257,7 +3633,15 @@ class GetResolutionLinesLineResult(dict):
              line_code: str,
              line_display_name: str,
              line_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lineCode' in kwargs:
+            line_code = kwargs['lineCode']
+        if 'lineDisplayName' in kwargs:
+            line_display_name = kwargs['lineDisplayName']
+        if 'lineName' in kwargs:
+            line_name = kwargs['lineName']
+
         _setter("line_code", line_code)
         _setter("line_display_name", line_display_name)
         _setter("line_name", line_name)

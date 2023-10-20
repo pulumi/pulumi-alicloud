@@ -103,7 +103,25 @@ class ClusterAdditionalVolume(dict):
              volume_mountpoint: Optional[str] = None,
              volume_protocol: Optional[str] = None,
              volume_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'jobQueue' in kwargs:
+            job_queue = kwargs['jobQueue']
+        if 'localDirectory' in kwargs:
+            local_directory = kwargs['localDirectory']
+        if 'remoteDirectory' in kwargs:
+            remote_directory = kwargs['remoteDirectory']
+        if 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+        if 'volumeMountOption' in kwargs:
+            volume_mount_option = kwargs['volumeMountOption']
+        if 'volumeMountpoint' in kwargs:
+            volume_mountpoint = kwargs['volumeMountpoint']
+        if 'volumeProtocol' in kwargs:
+            volume_protocol = kwargs['volumeProtocol']
+        if 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+
         if job_queue is not None:
             _setter("job_queue", job_queue)
         if local_directory is not None:
@@ -221,7 +239,9 @@ class ClusterAdditionalVolumeRole(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
 
@@ -249,7 +269,9 @@ class ClusterApplication(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              tag: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if tag is not None:
             _setter("tag", tag)
 
@@ -281,7 +303,9 @@ class ClusterPostInstallScript(dict):
              _setter: Callable[[Any, Any], None],
              args: Optional[str] = None,
              url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if args is not None:
             _setter("args", args)
         if url is not None:
@@ -444,7 +468,65 @@ class GetClustersClusterResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if 'clientVersion' in kwargs:
+            client_version = kwargs['clientVersion']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'computeCount' in kwargs:
+            compute_count = kwargs['computeCount']
+        if 'computeInstanceType' in kwargs:
+            compute_instance_type = kwargs['computeInstanceType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'deployMode' in kwargs:
+            deploy_mode = kwargs['deployMode']
+        if 'haEnable' in kwargs:
+            ha_enable = kwargs['haEnable']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageOwnerAlias' in kwargs:
+            image_owner_alias = kwargs['imageOwnerAlias']
+        if 'loginCount' in kwargs:
+            login_count = kwargs['loginCount']
+        if 'loginInstanceType' in kwargs:
+            login_instance_type = kwargs['loginInstanceType']
+        if 'managerCount' in kwargs:
+            manager_count = kwargs['managerCount']
+        if 'managerInstanceType' in kwargs:
+            manager_instance_type = kwargs['managerInstanceType']
+        if 'osTag' in kwargs:
+            os_tag = kwargs['osTag']
+        if 'postInstallScripts' in kwargs:
+            post_install_scripts = kwargs['postInstallScripts']
+        if 'remoteDirectory' in kwargs:
+            remote_directory = kwargs['remoteDirectory']
+        if 'sccClusterId' in kwargs:
+            scc_cluster_id = kwargs['sccClusterId']
+        if 'schedulerType' in kwargs:
+            scheduler_type = kwargs['schedulerType']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'volumeId' in kwargs:
+            volume_id = kwargs['volumeId']
+        if 'volumeMountpoint' in kwargs:
+            volume_mountpoint = kwargs['volumeMountpoint']
+        if 'volumeProtocol' in kwargs:
+            volume_protocol = kwargs['volumeProtocol']
+        if 'volumeType' in kwargs:
+            volume_type = kwargs['volumeType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("account_type", account_type)
         _setter("applications", applications)
         _setter("client_version", client_version)
@@ -740,7 +822,9 @@ class GetClustersClusterApplicationResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              tag: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("tag", tag)
 
     @property
@@ -764,7 +848,9 @@ class GetClustersClusterPostInstallScriptResult(dict):
              _setter: Callable[[Any, Any], None],
              args: str,
              url: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("args", args)
         _setter("url", url)
 
@@ -866,7 +952,29 @@ class GetJobTemplatesTemplateResult(dict):
              task: int,
              thread: int,
              variables: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'arrayRequest' in kwargs:
+            array_request = kwargs['arrayRequest']
+        if 'clockTime' in kwargs:
+            clock_time = kwargs['clockTime']
+        if 'commandLine' in kwargs:
+            command_line = kwargs['commandLine']
+        if 'jobTemplateId' in kwargs:
+            job_template_id = kwargs['jobTemplateId']
+        if 'jobTemplateName' in kwargs:
+            job_template_name = kwargs['jobTemplateName']
+        if 'packagePath' in kwargs:
+            package_path = kwargs['packagePath']
+        if 'reRunable' in kwargs:
+            re_runable = kwargs['reRunable']
+        if 'runasUser' in kwargs:
+            runas_user = kwargs['runasUser']
+        if 'stderrRedirectPath' in kwargs:
+            stderr_redirect_path = kwargs['stderrRedirectPath']
+        if 'stdoutRedirectPath' in kwargs:
+            stdout_redirect_path = kwargs['stdoutRedirectPath']
+
         _setter("array_request", array_request)
         _setter("clock_time", clock_time)
         _setter("command_line", command_line)

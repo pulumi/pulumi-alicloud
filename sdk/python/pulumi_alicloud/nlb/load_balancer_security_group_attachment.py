@@ -35,7 +35,15 @@ class LoadBalancerSecurityGroupAttachmentArgs:
              load_balancer_id: pulumi.Input[str],
              security_group_id: pulumi.Input[str],
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("load_balancer_id", load_balancer_id)
         _setter("security_group_id", security_group_id)
         if dry_run is not None:
@@ -102,7 +110,15 @@ class _LoadBalancerSecurityGroupAttachmentState:
              dry_run: Optional[pulumi.Input[bool]] = None,
              load_balancer_id: Optional[pulumi.Input[str]] = None,
              security_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if load_balancer_id is not None:

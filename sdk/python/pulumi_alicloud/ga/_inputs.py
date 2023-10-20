@@ -44,7 +44,11 @@ class AclAclEntryArgs:
              _setter: Callable[[Any, Any], None],
              entry: Optional[pulumi.Input[str]] = None,
              entry_description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'entryDescription' in kwargs:
+            entry_description = kwargs['entryDescription']
+
         if entry is not None:
             _setter("entry", entry)
         if entry_description is not None:
@@ -94,7 +98,13 @@ class CustomRoutingEndpointTrafficPolicyPortRangeArgs:
              _setter: Callable[[Any, Any], None],
              from_port: Optional[pulumi.Input[int]] = None,
              to_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fromPort' in kwargs:
+            from_port = kwargs['fromPort']
+        if 'toPort' in kwargs:
+            to_port = kwargs['toPort']
+
         if from_port is not None:
             _setter("from_port", from_port)
         if to_port is not None:
@@ -157,7 +167,13 @@ class EndpointGroupEndpointConfigurationArgs:
              weight: pulumi.Input[int],
              enable_clientip_preservation: Optional[pulumi.Input[bool]] = None,
              enable_proxy_protocol: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enableClientipPreservation' in kwargs:
+            enable_clientip_preservation = kwargs['enableClientipPreservation']
+        if 'enableProxyProtocol' in kwargs:
+            enable_proxy_protocol = kwargs['enableProxyProtocol']
+
         _setter("endpoint", endpoint)
         _setter("type", type)
         _setter("weight", weight)
@@ -247,7 +263,13 @@ class EndpointGroupPortOverridesArgs:
              _setter: Callable[[Any, Any], None],
              endpoint_port: Optional[pulumi.Input[int]] = None,
              listener_port: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointPort' in kwargs:
+            endpoint_port = kwargs['endpointPort']
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+
         if endpoint_port is not None:
             _setter("endpoint_port", endpoint_port)
         if listener_port is not None:
@@ -290,7 +312,7 @@ class ForwardingRuleRuleActionArgs:
         :param pulumi.Input[str] rule_action_type: Forward action type.
         :param pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigArgs'] forward_group_config: Forwarding configuration. See `forward_group_config` below.
                > **NOTE:** From version 1.207.0, We recommend that you do not use `forward_group_config`, and we recommend that you use the `rule_action_type` and `rule_action_value` to configure forwarding actions.
-        :param pulumi.Input[str] rule_action_value: The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+        :param pulumi.Input[str] rule_action_value: The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
         """
         ForwardingRuleRuleActionArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -306,7 +328,15 @@ class ForwardingRuleRuleActionArgs:
              rule_action_type: pulumi.Input[str],
              forward_group_config: Optional[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigArgs']] = None,
              rule_action_value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ruleActionType' in kwargs:
+            rule_action_type = kwargs['ruleActionType']
+        if 'forwardGroupConfig' in kwargs:
+            forward_group_config = kwargs['forwardGroupConfig']
+        if 'ruleActionValue' in kwargs:
+            rule_action_value = kwargs['ruleActionValue']
+
         _setter("order", order)
         _setter("rule_action_type", rule_action_type)
         if forward_group_config is not None:
@@ -355,7 +385,7 @@ class ForwardingRuleRuleActionArgs:
     @pulumi.getter(name="ruleActionValue")
     def rule_action_value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+        The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
         """
         return pulumi.get(self, "rule_action_value")
 
@@ -379,7 +409,11 @@ class ForwardingRuleRuleActionForwardGroupConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              server_group_tuples: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'serverGroupTuples' in kwargs:
+            server_group_tuples = kwargs['serverGroupTuples']
+
         _setter("server_group_tuples", server_group_tuples)
 
     @property
@@ -410,7 +444,11 @@ class ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              endpoint_group_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'endpointGroupId' in kwargs:
+            endpoint_group_id = kwargs['endpointGroupId']
+
         _setter("endpoint_group_id", endpoint_group_id)
 
     @property
@@ -449,7 +487,15 @@ class ForwardingRuleRuleConditionArgs:
              rule_condition_type: pulumi.Input[str],
              host_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionHostConfigArgs']]]] = None,
              path_config: Optional[pulumi.Input['ForwardingRuleRuleConditionPathConfigArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ruleConditionType' in kwargs:
+            rule_condition_type = kwargs['ruleConditionType']
+        if 'hostConfigs' in kwargs:
+            host_configs = kwargs['hostConfigs']
+        if 'pathConfig' in kwargs:
+            path_config = kwargs['pathConfig']
+
         _setter("rule_condition_type", rule_condition_type)
         if host_configs is not None:
             _setter("host_configs", host_configs)
@@ -508,7 +554,9 @@ class ForwardingRuleRuleConditionHostConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if values is not None:
             _setter("values", values)
 
@@ -540,7 +588,9 @@ class ForwardingRuleRuleConditionPathConfigArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if values is not None:
             _setter("values", values)
 
@@ -572,7 +622,9 @@ class ListenerCertificateArgs:
     def _configure(
              _setter: Callable[[Any, Any], None],
              id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if id is not None:
             _setter("id", id)
 
@@ -620,7 +672,19 @@ class ListenerForwardedForConfigArgs:
              forwarded_for_port_enabled: Optional[pulumi.Input[bool]] = None,
              forwarded_for_proto_enabled: Optional[pulumi.Input[bool]] = None,
              real_ip_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'forwardedForGaApEnabled' in kwargs:
+            forwarded_for_ga_ap_enabled = kwargs['forwardedForGaApEnabled']
+        if 'forwardedForGaIdEnabled' in kwargs:
+            forwarded_for_ga_id_enabled = kwargs['forwardedForGaIdEnabled']
+        if 'forwardedForPortEnabled' in kwargs:
+            forwarded_for_port_enabled = kwargs['forwardedForPortEnabled']
+        if 'forwardedForProtoEnabled' in kwargs:
+            forwarded_for_proto_enabled = kwargs['forwardedForProtoEnabled']
+        if 'realIpEnabled' in kwargs:
+            real_ip_enabled = kwargs['realIpEnabled']
+
         if forwarded_for_ga_ap_enabled is not None:
             _setter("forwarded_for_ga_ap_enabled", forwarded_for_ga_ap_enabled)
         if forwarded_for_ga_id_enabled is not None:
@@ -712,7 +776,13 @@ class ListenerPortRangeArgs:
              _setter: Callable[[Any, Any], None],
              from_port: pulumi.Input[int],
              to_port: pulumi.Input[int],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fromPort' in kwargs:
+            from_port = kwargs['fromPort']
+        if 'toPort' in kwargs:
+            to_port = kwargs['toPort']
+
         _setter("from_port", from_port)
         _setter("to_port", to_port)
 

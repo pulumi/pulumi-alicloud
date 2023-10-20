@@ -39,7 +39,15 @@ class RouteEntryArgs:
              cidr_block: pulumi.Input[str],
              instance_id: pulumi.Input[str],
              route_table_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+
         _setter("cidr_block", cidr_block)
         _setter("instance_id", instance_id)
         _setter("route_table_id", route_table_id)
@@ -113,7 +121,15 @@ class _RouteEntryState:
              cidr_block: Optional[pulumi.Input[str]] = None,
              instance_id: Optional[pulumi.Input[str]] = None,
              route_table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cidrBlock' in kwargs:
+            cidr_block = kwargs['cidrBlock']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'routeTableId' in kwargs:
+            route_table_id = kwargs['routeTableId']
+
         if cidr_block is not None:
             _setter("cidr_block", cidr_block)
         if instance_id is not None:

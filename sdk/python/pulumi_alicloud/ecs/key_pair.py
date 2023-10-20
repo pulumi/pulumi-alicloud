@@ -48,7 +48,21 @@ class KeyPairArgs:
              public_key: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyFile' in kwargs:
+            key_file = kwargs['keyFile']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'keyNamePrefix' in kwargs:
+            key_name_prefix = kwargs['keyNamePrefix']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if key_file is not None:
             _setter("key_file", key_file)
         if key_name is not None:
@@ -186,7 +200,23 @@ class _KeyPairState:
              public_key: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fingerPrint' in kwargs:
+            finger_print = kwargs['fingerPrint']
+        if 'keyFile' in kwargs:
+            key_file = kwargs['keyFile']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'keyNamePrefix' in kwargs:
+            key_name_prefix = kwargs['keyNamePrefix']
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if finger_print is not None:
             _setter("finger_print", finger_print)
         if key_file is not None:

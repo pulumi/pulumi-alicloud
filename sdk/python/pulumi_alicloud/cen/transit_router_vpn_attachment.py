@@ -61,7 +61,23 @@ class TransitRouterVpnAttachmentArgs:
              transit_router_attachment_description: Optional[pulumi.Input[str]] = None,
              transit_router_attachment_name: Optional[pulumi.Input[str]] = None,
              vpn_owner_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'vpnId' in kwargs:
+            vpn_id = kwargs['vpnId']
+        if 'autoPublishRouteEnabled' in kwargs:
+            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if 'vpnOwnerId' in kwargs:
+            vpn_owner_id = kwargs['vpnOwnerId']
+
         _setter("transit_router_id", transit_router_id)
         _setter("vpn_id", vpn_id)
         _setter("zones", zones)
@@ -239,7 +255,23 @@ class _TransitRouterVpnAttachmentState:
              vpn_id: Optional[pulumi.Input[str]] = None,
              vpn_owner_id: Optional[pulumi.Input[str]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoPublishRouteEnabled' in kwargs:
+            auto_publish_route_enabled = kwargs['autoPublishRouteEnabled']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'transitRouterAttachmentDescription' in kwargs:
+            transit_router_attachment_description = kwargs['transitRouterAttachmentDescription']
+        if 'transitRouterAttachmentName' in kwargs:
+            transit_router_attachment_name = kwargs['transitRouterAttachmentName']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'vpnId' in kwargs:
+            vpn_id = kwargs['vpnId']
+        if 'vpnOwnerId' in kwargs:
+            vpn_owner_id = kwargs['vpnOwnerId']
+
         if auto_publish_route_enabled is not None:
             _setter("auto_publish_route_enabled", auto_publish_route_enabled)
         if cen_id is not None:
@@ -400,7 +432,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Vpn Attachment resource.
 
-        For information about Cloud Enterprise Network (CEN) Transit Router Vpn Attachment and how to use it, see [What is Transit Router Vpn Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervpnattachment).
+        For information about Cloud Enterprise Network (CEN) Transit Router Vpn Attachment and how to use it, see [What is Transit Router Vpn Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpnattachment).
 
         > **NOTE:** Available since v1.183.0.
 
@@ -513,7 +545,7 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Vpn Attachment resource.
 
-        For information about Cloud Enterprise Network (CEN) Transit Router Vpn Attachment and how to use it, see [What is Transit Router Vpn Attachment](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitroutervpnattachment).
+        For information about Cloud Enterprise Network (CEN) Transit Router Vpn Attachment and how to use it, see [What is Transit Router Vpn Attachment](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitroutervpnattachment).
 
         > **NOTE:** Available since v1.183.0.
 

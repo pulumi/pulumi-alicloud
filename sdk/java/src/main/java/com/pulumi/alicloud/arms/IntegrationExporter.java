@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Application Real-Time Monitoring Service (ARMS) Integration Exporter resource.
  * 
- * For information about Application Real-Time Monitoring Service (ARMS) Integration Exporter and how to use it, see [What is Integration Exporter](https://www.alibabacloud.com/help/en/application-real-time-monitoring-service/latest/api-doc-arms-2019-08-08-api-doc-addprometheusintegration).
+ * For information about Application Real-Time Monitoring Service (ARMS) Integration Exporter and how to use it, see [What is Integration Exporter](https://www.alibabacloud.com/help/en/arms/developer-reference/api-arms-2019-08-08-addprometheusintegration).
  * 
  * &gt; **NOTE:** Available since v1.203.0.
  * 

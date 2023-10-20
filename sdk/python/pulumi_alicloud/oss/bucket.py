@@ -96,7 +96,31 @@ class BucketArgs:
              transfer_acceleration: Optional[pulumi.Input['BucketTransferAccelerationArgs']] = None,
              versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
              website: Optional[pulumi.Input['BucketWebsiteArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessMonitor' in kwargs:
+            access_monitor = kwargs['accessMonitor']
+        if 'corsRules' in kwargs:
+            cors_rules = kwargs['corsRules']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'lifecycleRuleAllowSameActionOverlap' in kwargs:
+            lifecycle_rule_allow_same_action_overlap = kwargs['lifecycleRuleAllowSameActionOverlap']
+        if 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+        if 'loggingIsenable' in kwargs:
+            logging_isenable = kwargs['loggingIsenable']
+        if 'redundancyType' in kwargs:
+            redundancy_type = kwargs['redundancyType']
+        if 'refererConfig' in kwargs:
+            referer_config = kwargs['refererConfig']
+        if 'serverSideEncryptionRule' in kwargs:
+            server_side_encryption_rule = kwargs['serverSideEncryptionRule']
+        if 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if 'transferAcceleration' in kwargs:
+            transfer_acceleration = kwargs['transferAcceleration']
+
         if access_monitor is not None:
             _setter("access_monitor", access_monitor)
         if acl is not None:
@@ -457,7 +481,37 @@ class _BucketState:
              transfer_acceleration: Optional[pulumi.Input['BucketTransferAccelerationArgs']] = None,
              versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
              website: Optional[pulumi.Input['BucketWebsiteArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessMonitor' in kwargs:
+            access_monitor = kwargs['accessMonitor']
+        if 'corsRules' in kwargs:
+            cors_rules = kwargs['corsRules']
+        if 'creationDate' in kwargs:
+            creation_date = kwargs['creationDate']
+        if 'extranetEndpoint' in kwargs:
+            extranet_endpoint = kwargs['extranetEndpoint']
+        if 'forceDestroy' in kwargs:
+            force_destroy = kwargs['forceDestroy']
+        if 'intranetEndpoint' in kwargs:
+            intranet_endpoint = kwargs['intranetEndpoint']
+        if 'lifecycleRuleAllowSameActionOverlap' in kwargs:
+            lifecycle_rule_allow_same_action_overlap = kwargs['lifecycleRuleAllowSameActionOverlap']
+        if 'lifecycleRules' in kwargs:
+            lifecycle_rules = kwargs['lifecycleRules']
+        if 'loggingIsenable' in kwargs:
+            logging_isenable = kwargs['loggingIsenable']
+        if 'redundancyType' in kwargs:
+            redundancy_type = kwargs['redundancyType']
+        if 'refererConfig' in kwargs:
+            referer_config = kwargs['refererConfig']
+        if 'serverSideEncryptionRule' in kwargs:
+            server_side_encryption_rule = kwargs['serverSideEncryptionRule']
+        if 'storageClass' in kwargs:
+            storage_class = kwargs['storageClass']
+        if 'transferAcceleration' in kwargs:
+            transfer_acceleration = kwargs['transferAcceleration']
+
         if access_monitor is not None:
             _setter("access_monitor", access_monitor)
         if acl is not None:

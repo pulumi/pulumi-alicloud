@@ -43,7 +43,15 @@ class TemplateArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              template_body: Optional[pulumi.Input[str]] = None,
              template_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'templateBody' in kwargs:
+            template_body = kwargs['templateBody']
+        if 'templateUrl' in kwargs:
+            template_url = kwargs['templateUrl']
+
         _setter("template_name", template_name)
         if description is not None:
             _setter("description", description)
@@ -147,7 +155,15 @@ class _TemplateState:
              template_body: Optional[pulumi.Input[str]] = None,
              template_name: Optional[pulumi.Input[str]] = None,
              template_url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'templateBody' in kwargs:
+            template_body = kwargs['templateBody']
+        if 'templateName' in kwargs:
+            template_name = kwargs['templateName']
+        if 'templateUrl' in kwargs:
+            template_url = kwargs['templateUrl']
+
         if description is not None:
             _setter("description", description)
         if tags is not None:

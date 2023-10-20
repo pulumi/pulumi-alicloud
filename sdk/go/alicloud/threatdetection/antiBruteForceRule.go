@@ -15,9 +15,9 @@ import (
 
 // Provides a Threat Detection Anti Brute Force Rule resource.
 //
-// For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule).
+// For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
 //
-// > **NOTE:** Available in v1.195.0+.
+// > **NOTE:** Available since v1.195.0.
 //
 // ## Example Usage
 //
@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := threatdetection.NewAntiBruteForceRule(ctx, "default", &threatdetection.AntiBruteForceRuleArgs{
-//				AntiBruteForceRuleName: pulumi.String("apispec_test"),
+//				AntiBruteForceRuleName: pulumi.String("apispec_example"),
 //				FailCount:              pulumi.Int(80),
 //				ForbiddenTime:          pulumi.Int(360),
 //				Span:                   pulumi.Int(10),

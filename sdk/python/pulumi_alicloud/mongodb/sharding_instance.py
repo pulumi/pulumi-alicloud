@@ -125,7 +125,51 @@ class ShardingInstanceArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'mongoLists' in kwargs:
+            mongo_lists = kwargs['mongoLists']
+        if 'shardLists' in kwargs:
+            shard_lists = kwargs['shardLists']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'backupPeriods' in kwargs:
+            backup_periods = kwargs['backupPeriods']
+        if 'backupTime' in kwargs:
+            backup_time = kwargs['backupTime']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'orderType' in kwargs:
+            order_type = kwargs['orderType']
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityIpLists' in kwargs:
+            security_ip_lists = kwargs['securityIpLists']
+        if 'storageEngine' in kwargs:
+            storage_engine = kwargs['storageEngine']
+        if 'tdeStatus' in kwargs:
+            tde_status = kwargs['tdeStatus']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("engine_version", engine_version)
         _setter("mongo_lists", mongo_lists)
         _setter("shard_lists", shard_lists)
@@ -585,7 +629,55 @@ class _ShardingInstanceState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'backupPeriods' in kwargs:
+            backup_periods = kwargs['backupPeriods']
+        if 'backupTime' in kwargs:
+            backup_time = kwargs['backupTime']
+        if 'configServerLists' in kwargs:
+            config_server_lists = kwargs['configServerLists']
+        if 'engineVersion' in kwargs:
+            engine_version = kwargs['engineVersion']
+        if 'instanceChargeType' in kwargs:
+            instance_charge_type = kwargs['instanceChargeType']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'mongoLists' in kwargs:
+            mongo_lists = kwargs['mongoLists']
+        if 'networkType' in kwargs:
+            network_type = kwargs['networkType']
+        if 'orderType' in kwargs:
+            order_type = kwargs['orderType']
+        if 'protocolType' in kwargs:
+            protocol_type = kwargs['protocolType']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retentionPeriod' in kwargs:
+            retention_period = kwargs['retentionPeriod']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'securityIpLists' in kwargs:
+            security_ip_lists = kwargs['securityIpLists']
+        if 'shardLists' in kwargs:
+            shard_lists = kwargs['shardLists']
+        if 'storageEngine' in kwargs:
+            storage_engine = kwargs['storageEngine']
+        if 'tdeStatus' in kwargs:
+            tde_status = kwargs['tdeStatus']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_password is not None:
             _setter("account_password", account_password)
         if auto_renew is not None:

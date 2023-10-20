@@ -60,7 +60,21 @@ class BindingArgs:
              source_exchange: pulumi.Input[str],
              virtual_host_name: pulumi.Input[str],
              argument: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bindingKey' in kwargs:
+            binding_key = kwargs['bindingKey']
+        if 'bindingType' in kwargs:
+            binding_type = kwargs['bindingType']
+        if 'destinationName' in kwargs:
+            destination_name = kwargs['destinationName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'sourceExchange' in kwargs:
+            source_exchange = kwargs['sourceExchange']
+        if 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+
         _setter("binding_key", binding_key)
         _setter("binding_type", binding_type)
         _setter("destination_name", destination_name)
@@ -213,7 +227,21 @@ class _BindingState:
              instance_id: Optional[pulumi.Input[str]] = None,
              source_exchange: Optional[pulumi.Input[str]] = None,
              virtual_host_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bindingKey' in kwargs:
+            binding_key = kwargs['bindingKey']
+        if 'bindingType' in kwargs:
+            binding_type = kwargs['bindingType']
+        if 'destinationName' in kwargs:
+            destination_name = kwargs['destinationName']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'sourceExchange' in kwargs:
+            source_exchange = kwargs['sourceExchange']
+        if 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+
         if argument is not None:
             _setter("argument", argument)
         if binding_key is not None:

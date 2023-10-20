@@ -39,7 +39,15 @@ class GetFoldersFolderResult(dict):
              folder_path: str,
              id: str,
              project_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'folderId' in kwargs:
+            folder_id = kwargs['folderId']
+        if 'folderPath' in kwargs:
+            folder_path = kwargs['folderPath']
+        if 'projectId' in kwargs:
+            project_id = kwargs['projectId']
+
         _setter("folder_id", folder_id)
         _setter("folder_path", folder_path)
         _setter("id", id)

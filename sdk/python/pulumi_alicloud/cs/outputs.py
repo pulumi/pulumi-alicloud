@@ -98,7 +98,9 @@ class ApplicationService(dict):
              name: Optional[str] = None,
              status: Optional[str] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if id is not None:
             _setter("id", id)
         if name is not None:
@@ -170,7 +172,11 @@ class ClusterNode(dict):
              name: Optional[str] = None,
              private_ip: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+
         if eip is not None:
             _setter("eip", eip)
         if id is not None:
@@ -233,7 +239,9 @@ class EdgeKubernetesAddon(dict):
              config: Optional[str] = None,
              disabled: Optional[bool] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if config is not None:
             _setter("config", config)
         if disabled is not None:
@@ -312,7 +320,15 @@ class EdgeKubernetesCertificateAuthority(dict):
              client_cert: Optional[str] = None,
              client_key: Optional[str] = None,
              cluster_cert: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clusterCert' in kwargs:
+            cluster_cert = kwargs['clusterCert']
+
         if client_cert is not None:
             _setter("client_cert", client_cert)
         if client_key is not None:
@@ -395,7 +411,17 @@ class EdgeKubernetesConnections(dict):
              api_server_intranet: Optional[str] = None,
              master_public_ip: Optional[str] = None,
              service_domain: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiServerInternet' in kwargs:
+            api_server_internet = kwargs['apiServerInternet']
+        if 'apiServerIntranet' in kwargs:
+            api_server_intranet = kwargs['apiServerIntranet']
+        if 'masterPublicIp' in kwargs:
+            master_public_ip = kwargs['masterPublicIp']
+        if 'serviceDomain' in kwargs:
+            service_domain = kwargs['serviceDomain']
+
         if api_server_internet is not None:
             _setter("api_server_internet", api_server_internet)
         if api_server_intranet is not None:
@@ -457,7 +483,9 @@ class EdgeKubernetesLogConfig(dict):
              _setter: Callable[[Any, Any], None],
              type: str,
              project: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("type", type)
         if project is not None:
             _setter("project", project)
@@ -498,7 +526,9 @@ class EdgeKubernetesRuntime(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if version is not None:
@@ -591,7 +621,17 @@ class EdgeKubernetesWorkerDataDisk(dict):
              performance_level: Optional[str] = None,
              size: Optional[str] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if auto_snapshot_policy_id is not None:
             _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
@@ -724,7 +764,11 @@ class EdgeKubernetesWorkerNode(dict):
              id: Optional[str] = None,
              name: Optional[str] = None,
              private_ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+
         if id is not None:
             _setter("id", id)
         if name is not None:
@@ -782,7 +826,9 @@ class KubernetesAddon(dict):
              config: Optional[str] = None,
              disabled: Optional[bool] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if config is not None:
             _setter("config", config)
         if disabled is not None:
@@ -840,7 +886,9 @@ class KubernetesAutoscalerNodepool(dict):
              id: Optional[str] = None,
              labels: Optional[str] = None,
              taints: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if id is not None:
             _setter("id", id)
         if labels is not None:
@@ -917,7 +965,15 @@ class KubernetesCertificateAuthority(dict):
              client_cert: Optional[str] = None,
              client_key: Optional[str] = None,
              cluster_cert: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clusterCert' in kwargs:
+            cluster_cert = kwargs['clusterCert']
+
         if client_cert is not None:
             _setter("client_cert", client_cert)
         if client_key is not None:
@@ -1000,7 +1056,17 @@ class KubernetesConnections(dict):
              api_server_intranet: Optional[str] = None,
              master_public_ip: Optional[str] = None,
              service_domain: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiServerInternet' in kwargs:
+            api_server_internet = kwargs['apiServerInternet']
+        if 'apiServerIntranet' in kwargs:
+            api_server_intranet = kwargs['apiServerIntranet']
+        if 'masterPublicIp' in kwargs:
+            master_public_ip = kwargs['masterPublicIp']
+        if 'serviceDomain' in kwargs:
+            service_domain = kwargs['serviceDomain']
+
         if api_server_internet is not None:
             _setter("api_server_internet", api_server_internet)
         if api_server_intranet is not None:
@@ -1083,7 +1149,11 @@ class KubernetesMasterNode(dict):
              id: Optional[str] = None,
              name: Optional[str] = None,
              private_ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+
         if id is not None:
             _setter("id", id)
         if name is not None:
@@ -1174,7 +1244,17 @@ class KubernetesPermissionPermission(dict):
              is_custom: Optional[bool] = None,
              is_ram_role: Optional[bool] = None,
              namespace: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if 'roleType' in kwargs:
+            role_type = kwargs['roleType']
+        if 'isCustom' in kwargs:
+            is_custom = kwargs['isCustom']
+        if 'isRamRole' in kwargs:
+            is_ram_role = kwargs['isRamRole']
+
         _setter("cluster", cluster)
         _setter("role_name", role_name)
         _setter("role_type", role_type)
@@ -1253,7 +1333,9 @@ class KubernetesRuntime(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if version is not None:
@@ -1299,7 +1381,9 @@ class KubernetesTaint(dict):
              effect: Optional[str] = None,
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if effect is not None:
             _setter("effect", effect)
         if key is not None:
@@ -1402,7 +1486,17 @@ class KubernetesWorkerDataDisk(dict):
              performance_level: Optional[str] = None,
              size: Optional[str] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if auto_snapshot_policy_id is not None:
             _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
@@ -1535,7 +1629,11 @@ class KubernetesWorkerNode(dict):
              id: Optional[str] = None,
              name: Optional[str] = None,
              private_ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+
         if id is not None:
             _setter("id", id)
         if name is not None:
@@ -1604,7 +1702,9 @@ class ManagedKubernetesAddon(dict):
              config: Optional[str] = None,
              disabled: Optional[bool] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if config is not None:
             _setter("config", config)
         if disabled is not None:
@@ -1694,7 +1794,15 @@ class ManagedKubernetesCertificateAuthority(dict):
              client_cert: Optional[str] = None,
              client_key: Optional[str] = None,
              cluster_cert: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clusterCert' in kwargs:
+            cluster_cert = kwargs['clusterCert']
+
         if client_cert is not None:
             _setter("client_cert", client_cert)
         if client_key is not None:
@@ -1777,7 +1885,17 @@ class ManagedKubernetesConnections(dict):
              api_server_intranet: Optional[str] = None,
              master_public_ip: Optional[str] = None,
              service_domain: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiServerInternet' in kwargs:
+            api_server_internet = kwargs['apiServerInternet']
+        if 'apiServerIntranet' in kwargs:
+            api_server_intranet = kwargs['apiServerIntranet']
+        if 'masterPublicIp' in kwargs:
+            master_public_ip = kwargs['masterPublicIp']
+        if 'serviceDomain' in kwargs:
+            service_domain = kwargs['serviceDomain']
+
         if api_server_internet is not None:
             _setter("api_server_internet", api_server_internet)
         if api_server_intranet is not None:
@@ -1871,7 +1989,13 @@ class ManagedKubernetesMaintenanceWindow(dict):
              enable: bool,
              maintenance_time: str,
              weekly_period: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maintenanceTime' in kwargs:
+            maintenance_time = kwargs['maintenanceTime']
+        if 'weeklyPeriod' in kwargs:
+            weekly_period = kwargs['weeklyPeriod']
+
         _setter("duration", duration)
         _setter("enable", enable)
         _setter("maintenance_time", maintenance_time)
@@ -1963,7 +2087,15 @@ class ManagedKubernetesRrsaMetadata(dict):
              ram_oidc_provider_arn: Optional[str] = None,
              ram_oidc_provider_name: Optional[str] = None,
              rrsa_oidc_issuer_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ramOidcProviderArn' in kwargs:
+            ram_oidc_provider_arn = kwargs['ramOidcProviderArn']
+        if 'ramOidcProviderName' in kwargs:
+            ram_oidc_provider_name = kwargs['ramOidcProviderName']
+        if 'rrsaOidcIssuerUrl' in kwargs:
+            rrsa_oidc_issuer_url = kwargs['rrsaOidcIssuerUrl']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if ram_oidc_provider_arn is not None:
@@ -2025,7 +2157,9 @@ class ManagedKubernetesRuntime(dict):
              _setter: Callable[[Any, Any], None],
              name: Optional[str] = None,
              version: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if name is not None:
             _setter("name", name)
         if version is not None:
@@ -2091,7 +2225,9 @@ class ManagedKubernetesTaint(dict):
              effect: Optional[str] = None,
              key: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if effect is not None:
             _setter("effect", effect)
         if key is not None:
@@ -2214,7 +2350,17 @@ class ManagedKubernetesWorkerDataDisk(dict):
              performance_level: Optional[str] = None,
              size: Optional[str] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if auto_snapshot_policy_id is not None:
             _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
@@ -2347,7 +2493,11 @@ class ManagedKubernetesWorkerNode(dict):
              id: Optional[str] = None,
              name: Optional[str] = None,
              private_ip: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+
         if id is not None:
             _setter("id", id)
         if name is not None:
@@ -2450,7 +2600,17 @@ class NodePoolDataDisk(dict):
              performance_level: Optional[str] = None,
              size: Optional[int] = None,
              snapshot_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoSnapshotPolicyId' in kwargs:
+            auto_snapshot_policy_id = kwargs['autoSnapshotPolicyId']
+        if 'kmsKeyId' in kwargs:
+            kms_key_id = kwargs['kmsKeyId']
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+        if 'snapshotId' in kwargs:
+            snapshot_id = kwargs['snapshotId']
+
         if auto_snapshot_policy_id is not None:
             _setter("auto_snapshot_policy_id", auto_snapshot_policy_id)
         if category is not None:
@@ -2609,11 +2769,11 @@ class NodePoolKubeletConfiguration(dict):
         :param Mapping[str, Any] eviction_soft_grace_period: Same as evictionSoftGracePeriod. The map of signal names to quantities that defines grace periods for each soft eviction signal. For example: `{"memory.available" = "30s"}`.
         :param str kube_api_burst: Same as kubeAPIBurst. The burst to allow while talking with kubernetes api-server. Valid value is `[0-100]`.
         :param str kube_api_qps: Same as kubeAPIQPS. The QPS to use while talking with kubernetes api-server. Valid value is `[0-50]`.
-        :param Mapping[str, Any] kube_reserved: Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+        :param Mapping[str, Any] kube_reserved: Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         :param str registry_burst: Same as registryBurst. The maximum size of burst pulls, temporarily allows pulls to burst to this number, while still not exceeding `registry_pull_qps`. Only used if `registry_pull_qps` is greater than 0. Valid value is `[0-100]`.
         :param str registry_pull_qps: Same as registryPullQPS. The limit of registry pulls per second. Setting it to `0` means no limit. Valid value is `[0-50]`.
         :param str serialize_image_pulls: Same as serializeImagePulls. When enabled, it tells the Kubelet to pull images one at a time. We recommend not changing the default value on nodes that run docker daemon with version < 1.9 or an Aufs storage backend. Valid value is `true` or `false`.
-        :param Mapping[str, Any] system_reserved: Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+        :param Mapping[str, Any] system_reserved: Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         """
         NodePoolKubeletConfiguration._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -2647,7 +2807,35 @@ class NodePoolKubeletConfiguration(dict):
              registry_pull_qps: Optional[str] = None,
              serialize_image_pulls: Optional[str] = None,
              system_reserved: Optional[Mapping[str, Any]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cpuManagerPolicy' in kwargs:
+            cpu_manager_policy = kwargs['cpuManagerPolicy']
+        if 'eventBurst' in kwargs:
+            event_burst = kwargs['eventBurst']
+        if 'eventRecordQps' in kwargs:
+            event_record_qps = kwargs['eventRecordQps']
+        if 'evictionHard' in kwargs:
+            eviction_hard = kwargs['evictionHard']
+        if 'evictionSoft' in kwargs:
+            eviction_soft = kwargs['evictionSoft']
+        if 'evictionSoftGracePeriod' in kwargs:
+            eviction_soft_grace_period = kwargs['evictionSoftGracePeriod']
+        if 'kubeApiBurst' in kwargs:
+            kube_api_burst = kwargs['kubeApiBurst']
+        if 'kubeApiQps' in kwargs:
+            kube_api_qps = kwargs['kubeApiQps']
+        if 'kubeReserved' in kwargs:
+            kube_reserved = kwargs['kubeReserved']
+        if 'registryBurst' in kwargs:
+            registry_burst = kwargs['registryBurst']
+        if 'registryPullQps' in kwargs:
+            registry_pull_qps = kwargs['registryPullQps']
+        if 'serializeImagePulls' in kwargs:
+            serialize_image_pulls = kwargs['serializeImagePulls']
+        if 'systemReserved' in kwargs:
+            system_reserved = kwargs['systemReserved']
+
         if cpu_manager_policy is not None:
             _setter("cpu_manager_policy", cpu_manager_policy)
         if event_burst is not None:
@@ -2743,7 +2931,7 @@ class NodePoolKubeletConfiguration(dict):
     @pulumi.getter(name="kubeReserved")
     def kube_reserved(self) -> Optional[Mapping[str, Any]]:
         """
-        Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+        Same as kubeReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for kubernetes system components. Currently, cpu, memory and local storage for root file system are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         """
         return pulumi.get(self, "kube_reserved")
 
@@ -2775,7 +2963,7 @@ class NodePoolKubeletConfiguration(dict):
     @pulumi.getter(name="systemReserved")
     def system_reserved(self) -> Optional[Mapping[str, Any]]:
         """
-        Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](http://kubernetes.io/docs/user-guide/compute-resources) for more details.
+        Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
         """
         return pulumi.get(self, "system_reserved")
 
@@ -2799,7 +2987,9 @@ class NodePoolLabel(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if value is not None:
             _setter("value", value)
@@ -2875,7 +3065,17 @@ class NodePoolManagement(dict):
              auto_upgrade: Optional[bool] = None,
              surge: Optional[int] = None,
              surge_percentage: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxUnavailable' in kwargs:
+            max_unavailable = kwargs['maxUnavailable']
+        if 'autoRepair' in kwargs:
+            auto_repair = kwargs['autoRepair']
+        if 'autoUpgrade' in kwargs:
+            auto_upgrade = kwargs['autoUpgrade']
+        if 'surgePercentage' in kwargs:
+            surge_percentage = kwargs['surgePercentage']
+
         _setter("max_unavailable", max_unavailable)
         if auto_repair is not None:
             _setter("auto_repair", auto_repair)
@@ -2959,7 +3159,11 @@ class NodePoolRollingPolicy(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_parallelism: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxParallelism' in kwargs:
+            max_parallelism = kwargs['maxParallelism']
+
         if max_parallelism is not None:
             _setter("max_parallelism", max_parallelism)
 
@@ -3004,7 +3208,11 @@ class NodePoolRolloutPolicy(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              max_unavailable: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxUnavailable' in kwargs:
+            max_unavailable = kwargs['maxUnavailable']
+
         if max_unavailable is not None:
             _setter("max_unavailable", max_unavailable)
 
@@ -3077,7 +3285,19 @@ class NodePoolScalingConfig(dict):
              eip_internet_charge_type: Optional[str] = None,
              is_bond_eip: Optional[bool] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'maxSize' in kwargs:
+            max_size = kwargs['maxSize']
+        if 'minSize' in kwargs:
+            min_size = kwargs['minSize']
+        if 'eipBandwidth' in kwargs:
+            eip_bandwidth = kwargs['eipBandwidth']
+        if 'eipInternetChargeType' in kwargs:
+            eip_internet_charge_type = kwargs['eipInternetChargeType']
+        if 'isBondEip' in kwargs:
+            is_bond_eip = kwargs['isBondEip']
+
         _setter("max_size", max_size)
         _setter("min_size", min_size)
         if eip_bandwidth is not None:
@@ -3176,7 +3396,13 @@ class NodePoolSpotPriceLimit(dict):
              _setter: Callable[[Any, Any], None],
              instance_type: Optional[str] = None,
              price_limit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'priceLimit' in kwargs:
+            price_limit = kwargs['priceLimit']
+
         if instance_type is not None:
             _setter("instance_type", instance_type)
         if price_limit is not None:
@@ -3222,7 +3448,9 @@ class NodePoolTaint(dict):
              key: str,
              effect: Optional[str] = None,
              value: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         if effect is not None:
             _setter("effect", effect)
@@ -3279,7 +3507,9 @@ class ServerlessKubernetesAddon(dict):
              config: Optional[str] = None,
              disabled: Optional[bool] = None,
              name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if config is not None:
             _setter("config", config)
         if disabled is not None:
@@ -3362,7 +3592,15 @@ class ServerlessKubernetesRrsaMetadata(dict):
              ram_oidc_provider_arn: Optional[str] = None,
              ram_oidc_provider_name: Optional[str] = None,
              rrsa_oidc_issuer_url: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ramOidcProviderArn' in kwargs:
+            ram_oidc_provider_arn = kwargs['ramOidcProviderArn']
+        if 'ramOidcProviderName' in kwargs:
+            ram_oidc_provider_name = kwargs['ramOidcProviderName']
+        if 'rrsaOidcIssuerUrl' in kwargs:
+            rrsa_oidc_issuer_url = kwargs['rrsaOidcIssuerUrl']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if ram_oidc_provider_arn is not None:
@@ -3446,7 +3684,11 @@ class SwarmNode(dict):
              name: Optional[str] = None,
              private_ip: Optional[str] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+
         if eip is not None:
             _setter("eip", eip)
         if id is not None:
@@ -3507,7 +3749,15 @@ class GetClusterCredentialCertificateAuthorityResult(dict):
              client_cert: str,
              client_key: str,
              cluster_cert: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clusterCert' in kwargs:
+            cluster_cert = kwargs['clusterCert']
+
         _setter("client_cert", client_cert)
         _setter("client_key", client_key)
         _setter("cluster_cert", cluster_cert)
@@ -3580,7 +3830,19 @@ class GetEdgeKubernetesClustersClusterResult(dict):
              security_group_id: str,
              vpc_id: str,
              worker_nodes: Sequence['outputs.GetEdgeKubernetesClustersClusterWorkerNodeResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'workerNodes' in kwargs:
+            worker_nodes = kwargs['workerNodes']
+
         _setter("availability_zone", availability_zone)
         _setter("connections", connections)
         _setter("id", id)
@@ -3674,7 +3936,13 @@ class GetEdgeKubernetesClustersClusterConnectionsResult(dict):
              _setter: Callable[[Any, Any], None],
              api_server_internet: str,
              api_server_intranet: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiServerInternet' in kwargs:
+            api_server_internet = kwargs['apiServerInternet']
+        if 'apiServerIntranet' in kwargs:
+            api_server_intranet = kwargs['apiServerIntranet']
+
         _setter("api_server_internet", api_server_internet)
         _setter("api_server_intranet", api_server_intranet)
 
@@ -3718,7 +3986,11 @@ class GetEdgeKubernetesClustersClusterWorkerNodeResult(dict):
              id: str,
              name: str,
              private_ip: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+
         _setter("id", id)
         _setter("name", name)
         _setter("private_ip", private_ip)
@@ -3779,7 +4051,15 @@ class GetKubernetesAddonsAddonResult(dict):
              name: str,
              next_version: str,
              required: bool,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'currentConfig' in kwargs:
+            current_config = kwargs['currentConfig']
+        if 'currentVersion' in kwargs:
+            current_version = kwargs['currentVersion']
+        if 'nextVersion' in kwargs:
+            next_version = kwargs['nextVersion']
+
         _setter("current_config", current_config)
         _setter("current_version", current_version)
         _setter("name", name)
@@ -3973,7 +4253,77 @@ class GetKubernetesClustersClusterResult(dict):
              worker_numbers: Sequence[int],
              worker_period: int,
              worker_period_unit: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'clusterNetworkType' in kwargs:
+            cluster_network_type = kwargs['clusterNetworkType']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'logConfigs' in kwargs:
+            log_configs = kwargs['logConfigs']
+        if 'masterAutoRenew' in kwargs:
+            master_auto_renew = kwargs['masterAutoRenew']
+        if 'masterAutoRenewPeriod' in kwargs:
+            master_auto_renew_period = kwargs['masterAutoRenewPeriod']
+        if 'masterDiskCategory' in kwargs:
+            master_disk_category = kwargs['masterDiskCategory']
+        if 'masterDiskSize' in kwargs:
+            master_disk_size = kwargs['masterDiskSize']
+        if 'masterInstanceChargeType' in kwargs:
+            master_instance_charge_type = kwargs['masterInstanceChargeType']
+        if 'masterInstanceTypes' in kwargs:
+            master_instance_types = kwargs['masterInstanceTypes']
+        if 'masterNodes' in kwargs:
+            master_nodes = kwargs['masterNodes']
+        if 'masterPeriod' in kwargs:
+            master_period = kwargs['masterPeriod']
+        if 'masterPeriodUnit' in kwargs:
+            master_period_unit = kwargs['masterPeriodUnit']
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'nodeCidrMask' in kwargs:
+            node_cidr_mask = kwargs['nodeCidrMask']
+        if 'podCidr' in kwargs:
+            pod_cidr = kwargs['podCidr']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+        if 'slbInternetEnabled' in kwargs:
+            slb_internet_enabled = kwargs['slbInternetEnabled']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if 'workerAutoRenew' in kwargs:
+            worker_auto_renew = kwargs['workerAutoRenew']
+        if 'workerAutoRenewPeriod' in kwargs:
+            worker_auto_renew_period = kwargs['workerAutoRenewPeriod']
+        if 'workerDataDiskCategory' in kwargs:
+            worker_data_disk_category = kwargs['workerDataDiskCategory']
+        if 'workerDataDiskSize' in kwargs:
+            worker_data_disk_size = kwargs['workerDataDiskSize']
+        if 'workerDiskCategory' in kwargs:
+            worker_disk_category = kwargs['workerDiskCategory']
+        if 'workerDiskSize' in kwargs:
+            worker_disk_size = kwargs['workerDiskSize']
+        if 'workerInstanceChargeType' in kwargs:
+            worker_instance_charge_type = kwargs['workerInstanceChargeType']
+        if 'workerInstanceTypes' in kwargs:
+            worker_instance_types = kwargs['workerInstanceTypes']
+        if 'workerNodes' in kwargs:
+            worker_nodes = kwargs['workerNodes']
+        if 'workerNumbers' in kwargs:
+            worker_numbers = kwargs['workerNumbers']
+        if 'workerPeriod' in kwargs:
+            worker_period = kwargs['workerPeriod']
+        if 'workerPeriodUnit' in kwargs:
+            worker_period_unit = kwargs['workerPeriodUnit']
+
         _setter("availability_zone", availability_zone)
         _setter("cluster_network_type", cluster_network_type)
         _setter("connections", connections)
@@ -4297,7 +4647,17 @@ class GetKubernetesClustersClusterConnectionsResult(dict):
              api_server_intranet: str,
              master_public_ip: str,
              service_domain: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiServerInternet' in kwargs:
+            api_server_internet = kwargs['apiServerInternet']
+        if 'apiServerIntranet' in kwargs:
+            api_server_intranet = kwargs['apiServerIntranet']
+        if 'masterPublicIp' in kwargs:
+            master_public_ip = kwargs['masterPublicIp']
+        if 'serviceDomain' in kwargs:
+            service_domain = kwargs['serviceDomain']
+
         _setter("api_server_internet", api_server_internet)
         _setter("api_server_intranet", api_server_intranet)
         _setter("master_public_ip", master_public_ip)
@@ -4355,7 +4715,9 @@ class GetKubernetesClustersClusterLogConfigResult(dict):
              _setter: Callable[[Any, Any], None],
              project: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("project", project)
         _setter("type", type)
 
@@ -4399,7 +4761,11 @@ class GetKubernetesClustersClusterMasterNodeResult(dict):
              id: str,
              name: str,
              private_ip: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+
         _setter("id", id)
         _setter("name", name)
         _setter("private_ip", private_ip)
@@ -4452,7 +4818,11 @@ class GetKubernetesClustersClusterWorkerNodeResult(dict):
              id: str,
              name: str,
              private_ip: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+
         _setter("id", id)
         _setter("name", name)
         _setter("private_ip", private_ip)
@@ -4517,7 +4887,21 @@ class GetKubernetesPermissionPermissionResult(dict):
              is_owner: Optional[bool] = None,
              is_ram_role: Optional[bool] = None,
              role_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceId' in kwargs:
+            resource_id = kwargs['resourceId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'roleName' in kwargs:
+            role_name = kwargs['roleName']
+        if 'isOwner' in kwargs:
+            is_owner = kwargs['isOwner']
+        if 'isRamRole' in kwargs:
+            is_ram_role = kwargs['isRamRole']
+        if 'roleType' in kwargs:
+            role_type = kwargs['roleType']
+
         _setter("resource_id", resource_id)
         _setter("resource_type", resource_type)
         _setter("role_name", role_name)
@@ -4596,7 +4980,9 @@ class GetKubernetesVersionMetadataResult(dict):
              _setter: Callable[[Any, Any], None],
              runtimes: Sequence['outputs.GetKubernetesVersionMetadataRuntimeResult'],
              version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("runtimes", runtimes)
         _setter("version", version)
 
@@ -4636,7 +5022,9 @@ class GetKubernetesVersionMetadataRuntimeResult(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              version: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("version", version)
 
@@ -4761,7 +5149,57 @@ class GetManagedKubernetesClustersClusterResult(dict):
              worker_numbers: Sequence[int],
              worker_period: int,
              worker_period_unit: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'clusterNetworkType' in kwargs:
+            cluster_network_type = kwargs['clusterNetworkType']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'logConfigs' in kwargs:
+            log_configs = kwargs['logConfigs']
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'podCidr' in kwargs:
+            pod_cidr = kwargs['podCidr']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+        if 'slbInternetEnabled' in kwargs:
+            slb_internet_enabled = kwargs['slbInternetEnabled']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if 'workerAutoRenew' in kwargs:
+            worker_auto_renew = kwargs['workerAutoRenew']
+        if 'workerAutoRenewPeriod' in kwargs:
+            worker_auto_renew_period = kwargs['workerAutoRenewPeriod']
+        if 'workerDataDiskCategory' in kwargs:
+            worker_data_disk_category = kwargs['workerDataDiskCategory']
+        if 'workerDataDiskSize' in kwargs:
+            worker_data_disk_size = kwargs['workerDataDiskSize']
+        if 'workerDiskCategory' in kwargs:
+            worker_disk_category = kwargs['workerDiskCategory']
+        if 'workerDiskSize' in kwargs:
+            worker_disk_size = kwargs['workerDiskSize']
+        if 'workerInstanceChargeType' in kwargs:
+            worker_instance_charge_type = kwargs['workerInstanceChargeType']
+        if 'workerInstanceTypes' in kwargs:
+            worker_instance_types = kwargs['workerInstanceTypes']
+        if 'workerNodes' in kwargs:
+            worker_nodes = kwargs['workerNodes']
+        if 'workerNumbers' in kwargs:
+            worker_numbers = kwargs['workerNumbers']
+        if 'workerPeriod' in kwargs:
+            worker_period = kwargs['workerPeriod']
+        if 'workerPeriodUnit' in kwargs:
+            worker_period_unit = kwargs['workerPeriodUnit']
+
         _setter("availability_zone", availability_zone)
         _setter("cluster_network_type", cluster_network_type)
         _setter("connections", connections)
@@ -4989,7 +5427,17 @@ class GetManagedKubernetesClustersClusterConnectionsResult(dict):
              api_server_intranet: str,
              master_public_ip: str,
              service_domain: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiServerInternet' in kwargs:
+            api_server_internet = kwargs['apiServerInternet']
+        if 'apiServerIntranet' in kwargs:
+            api_server_intranet = kwargs['apiServerIntranet']
+        if 'masterPublicIp' in kwargs:
+            master_public_ip = kwargs['masterPublicIp']
+        if 'serviceDomain' in kwargs:
+            service_domain = kwargs['serviceDomain']
+
         _setter("api_server_internet", api_server_internet)
         _setter("api_server_intranet", api_server_intranet)
         _setter("master_public_ip", master_public_ip)
@@ -5047,7 +5495,9 @@ class GetManagedKubernetesClustersClusterLogConfigResult(dict):
              _setter: Callable[[Any, Any], None],
              project: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("project", project)
         _setter("type", type)
 
@@ -5091,7 +5541,11 @@ class GetManagedKubernetesClustersClusterWorkerNodeResult(dict):
              id: str,
              name: str,
              private_ip: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateIp' in kwargs:
+            private_ip = kwargs['privateIp']
+
         _setter("id", id)
         _setter("name", name)
         _setter("private_ip", private_ip)
@@ -5180,7 +5634,25 @@ class GetRegistryEnterpriseInstancesInstanceResult(dict):
              specification: str,
              temp_username: str,
              vpc_endpoints: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authorizationToken' in kwargs:
+            authorization_token = kwargs['authorizationToken']
+        if 'namespaceQuota' in kwargs:
+            namespace_quota = kwargs['namespaceQuota']
+        if 'namespaceUsage' in kwargs:
+            namespace_usage = kwargs['namespaceUsage']
+        if 'publicEndpoints' in kwargs:
+            public_endpoints = kwargs['publicEndpoints']
+        if 'repoQuota' in kwargs:
+            repo_quota = kwargs['repoQuota']
+        if 'repoUsage' in kwargs:
+            repo_usage = kwargs['repoUsage']
+        if 'tempUsername' in kwargs:
+            temp_username = kwargs['tempUsername']
+        if 'vpcEndpoints' in kwargs:
+            vpc_endpoints = kwargs['vpcEndpoints']
+
         _setter("authorization_token", authorization_token)
         _setter("id", id)
         _setter("name", name)
@@ -5330,7 +5802,19 @@ class GetRegistryEnterpriseNamespacesNamespaceResult(dict):
              name: str,
              namespace_id: str,
              namespace_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoCreate' in kwargs:
+            auto_create = kwargs['autoCreate']
+        if 'defaultVisibility' in kwargs:
+            default_visibility = kwargs['defaultVisibility']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+
         _setter("auto_create", auto_create)
         _setter("default_visibility", default_visibility)
         _setter("id", id)
@@ -5435,7 +5919,13 @@ class GetRegistryEnterpriseReposRepoResult(dict):
              repo_type: str,
              summary: str,
              tags: Sequence['outputs.GetRegistryEnterpriseReposRepoTagResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'repoType' in kwargs:
+            repo_type = kwargs['repoType']
+
         _setter("id", id)
         _setter("instance_id", instance_id)
         _setter("name", name)
@@ -5540,7 +6030,17 @@ class GetRegistryEnterpriseReposRepoTagResult(dict):
              image_update: str,
              status: str,
              tag: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'imageCreate' in kwargs:
+            image_create = kwargs['imageCreate']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'imageSize' in kwargs:
+            image_size = kwargs['imageSize']
+        if 'imageUpdate' in kwargs:
+            image_update = kwargs['imageUpdate']
+
         _setter("digest", digest)
         _setter("image_create", image_create)
         _setter("image_id", image_id)
@@ -5673,7 +6173,33 @@ class GetRegistryEnterpriseSyncRulesRuleResult(dict):
              target_namespace_name: str,
              target_region_id: str,
              target_repo_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'namespaceName' in kwargs:
+            namespace_name = kwargs['namespaceName']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'repoName' in kwargs:
+            repo_name = kwargs['repoName']
+        if 'syncDirection' in kwargs:
+            sync_direction = kwargs['syncDirection']
+        if 'syncScope' in kwargs:
+            sync_scope = kwargs['syncScope']
+        if 'syncTrigger' in kwargs:
+            sync_trigger = kwargs['syncTrigger']
+        if 'tagFilter' in kwargs:
+            tag_filter = kwargs['tagFilter']
+        if 'targetInstanceId' in kwargs:
+            target_instance_id = kwargs['targetInstanceId']
+        if 'targetNamespaceName' in kwargs:
+            target_namespace_name = kwargs['targetNamespaceName']
+        if 'targetRegionId' in kwargs:
+            target_region_id = kwargs['targetRegionId']
+        if 'targetRepoName' in kwargs:
+            target_repo_name = kwargs['targetRepoName']
+
         _setter("id", id)
         _setter("instance_id", instance_id)
         _setter("name", name)
@@ -5851,7 +6377,21 @@ class GetServerlessKubernetesClustersClusterResult(dict):
              tags: Mapping[str, Any],
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'endpointPublicAccessEnabled' in kwargs:
+            endpoint_public_access_enabled = kwargs['endpointPublicAccessEnabled']
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("connections", connections)
         _setter("deletion_protection", deletion_protection)
         _setter("endpoint_public_access_enabled", endpoint_public_access_enabled)
@@ -5961,7 +6501,15 @@ class GetServerlessKubernetesClustersClusterConnectionsResult(dict):
              api_server_internet: str,
              api_server_intranet: str,
              master_public_ip: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiServerInternet' in kwargs:
+            api_server_internet = kwargs['apiServerInternet']
+        if 'apiServerIntranet' in kwargs:
+            api_server_intranet = kwargs['apiServerIntranet']
+        if 'masterPublicIp' in kwargs:
+            master_public_ip = kwargs['masterPublicIp']
+
         _setter("api_server_internet", api_server_internet)
         _setter("api_server_intranet", api_server_intranet)
         _setter("master_public_ip", master_public_ip)

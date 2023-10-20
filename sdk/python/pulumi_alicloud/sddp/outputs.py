@@ -51,7 +51,13 @@ class GetConfigsConfigResult(dict):
              description: str,
              id: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configId' in kwargs:
+            config_id = kwargs['configId']
+        if 'defaultValue' in kwargs:
+            default_value = kwargs['defaultValue']
+
         _setter("code", code)
         _setter("config_id", config_id)
         _setter("default_value", default_value)
@@ -163,7 +169,27 @@ class GetDataLimitsLimitResult(dict):
              port: int,
              resource_type: str,
              user_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'auditStatus' in kwargs:
+            audit_status = kwargs['auditStatus']
+        if 'checkStatus' in kwargs:
+            check_status = kwargs['checkStatus']
+        if 'dataLimitId' in kwargs:
+            data_limit_id = kwargs['dataLimitId']
+        if 'engineType' in kwargs:
+            engine_type = kwargs['engineType']
+        if 'localName' in kwargs:
+            local_name = kwargs['localName']
+        if 'logStoreDay' in kwargs:
+            log_store_day = kwargs['logStoreDay']
+        if 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         _setter("audit_status", audit_status)
         _setter("check_status", check_status)
         _setter("data_limit_id", data_limit_id)
@@ -315,7 +341,23 @@ class GetInstancesInstanceResult(dict):
              payment_type: str,
              rds_set: bool,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceNum' in kwargs:
+            instance_num = kwargs['instanceNum']
+        if 'odpsSet' in kwargs:
+            odps_set = kwargs['odpsSet']
+        if 'ossBucketSet' in kwargs:
+            oss_bucket_set = kwargs['ossBucketSet']
+        if 'ossSize' in kwargs:
+            oss_size = kwargs['ossSize']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'rdsSet' in kwargs:
+            rds_set = kwargs['rdsSet']
+
         _setter("authed", authed)
         _setter("id", id)
         _setter("instance_id", instance_id)
@@ -508,7 +550,41 @@ class GetRulesRuleResult(dict):
              target: str,
              user_id: str,
              warn_level: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'categoryName' in kwargs:
+            category_name = kwargs['categoryName']
+        if 'contentCategory' in kwargs:
+            content_category = kwargs['contentCategory']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'customType' in kwargs:
+            custom_type = kwargs['customType']
+        if 'displayName' in kwargs:
+            display_name = kwargs['displayName']
+        if 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if 'loginName' in kwargs:
+            login_name = kwargs['loginName']
+        if 'majorKey' in kwargs:
+            major_key = kwargs['majorKey']
+        if 'productCode' in kwargs:
+            product_code = kwargs['productCode']
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if 'riskLevelId' in kwargs:
+            risk_level_id = kwargs['riskLevelId']
+        if 'riskLevelName' in kwargs:
+            risk_level_name = kwargs['riskLevelName']
+        if 'ruleId' in kwargs:
+            rule_id = kwargs['ruleId']
+        if 'statExpress' in kwargs:
+            stat_express = kwargs['statExpress']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'warnLevel' in kwargs:
+            warn_level = kwargs['warnLevel']
+
         _setter("category", category)
         _setter("category_name", category_name)
         _setter("content", content)

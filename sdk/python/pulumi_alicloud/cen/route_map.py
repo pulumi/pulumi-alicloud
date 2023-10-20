@@ -135,7 +135,59 @@ class RouteMapArgs:
              source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenRegionId' in kwargs:
+            cen_region_id = kwargs['cenRegionId']
+        if 'mapResult' in kwargs:
+            map_result = kwargs['mapResult']
+        if 'transmitDirection' in kwargs:
+            transmit_direction = kwargs['transmitDirection']
+        if 'asPathMatchMode' in kwargs:
+            as_path_match_mode = kwargs['asPathMatchMode']
+        if 'cidrMatchMode' in kwargs:
+            cidr_match_mode = kwargs['cidrMatchMode']
+        if 'communityMatchMode' in kwargs:
+            community_match_mode = kwargs['communityMatchMode']
+        if 'communityOperateMode' in kwargs:
+            community_operate_mode = kwargs['communityOperateMode']
+        if 'destinationChildInstanceTypes' in kwargs:
+            destination_child_instance_types = kwargs['destinationChildInstanceTypes']
+        if 'destinationCidrBlocks' in kwargs:
+            destination_cidr_blocks = kwargs['destinationCidrBlocks']
+        if 'destinationInstanceIds' in kwargs:
+            destination_instance_ids = kwargs['destinationInstanceIds']
+        if 'destinationInstanceIdsReverseMatch' in kwargs:
+            destination_instance_ids_reverse_match = kwargs['destinationInstanceIdsReverseMatch']
+        if 'destinationRouteTableIds' in kwargs:
+            destination_route_table_ids = kwargs['destinationRouteTableIds']
+        if 'matchAsns' in kwargs:
+            match_asns = kwargs['matchAsns']
+        if 'matchCommunitySets' in kwargs:
+            match_community_sets = kwargs['matchCommunitySets']
+        if 'nextPriority' in kwargs:
+            next_priority = kwargs['nextPriority']
+        if 'operateCommunitySets' in kwargs:
+            operate_community_sets = kwargs['operateCommunitySets']
+        if 'prependAsPaths' in kwargs:
+            prepend_as_paths = kwargs['prependAsPaths']
+        if 'routeTypes' in kwargs:
+            route_types = kwargs['routeTypes']
+        if 'sourceChildInstanceTypes' in kwargs:
+            source_child_instance_types = kwargs['sourceChildInstanceTypes']
+        if 'sourceInstanceIds' in kwargs:
+            source_instance_ids = kwargs['sourceInstanceIds']
+        if 'sourceInstanceIdsReverseMatch' in kwargs:
+            source_instance_ids_reverse_match = kwargs['sourceInstanceIdsReverseMatch']
+        if 'sourceRegionIds' in kwargs:
+            source_region_ids = kwargs['sourceRegionIds']
+        if 'sourceRouteTableIds' in kwargs:
+            source_route_table_ids = kwargs['sourceRouteTableIds']
+        if 'transitRouterRouteTableId' in kwargs:
+            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
+
         _setter("cen_id", cen_id)
         _setter("cen_region_id", cen_region_id)
         _setter("map_result", map_result)
@@ -657,7 +709,61 @@ class _RouteMapState:
              status: Optional[pulumi.Input[str]] = None,
              transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
              transmit_direction: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'asPathMatchMode' in kwargs:
+            as_path_match_mode = kwargs['asPathMatchMode']
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenRegionId' in kwargs:
+            cen_region_id = kwargs['cenRegionId']
+        if 'cidrMatchMode' in kwargs:
+            cidr_match_mode = kwargs['cidrMatchMode']
+        if 'communityMatchMode' in kwargs:
+            community_match_mode = kwargs['communityMatchMode']
+        if 'communityOperateMode' in kwargs:
+            community_operate_mode = kwargs['communityOperateMode']
+        if 'destinationChildInstanceTypes' in kwargs:
+            destination_child_instance_types = kwargs['destinationChildInstanceTypes']
+        if 'destinationCidrBlocks' in kwargs:
+            destination_cidr_blocks = kwargs['destinationCidrBlocks']
+        if 'destinationInstanceIds' in kwargs:
+            destination_instance_ids = kwargs['destinationInstanceIds']
+        if 'destinationInstanceIdsReverseMatch' in kwargs:
+            destination_instance_ids_reverse_match = kwargs['destinationInstanceIdsReverseMatch']
+        if 'destinationRouteTableIds' in kwargs:
+            destination_route_table_ids = kwargs['destinationRouteTableIds']
+        if 'mapResult' in kwargs:
+            map_result = kwargs['mapResult']
+        if 'matchAsns' in kwargs:
+            match_asns = kwargs['matchAsns']
+        if 'matchCommunitySets' in kwargs:
+            match_community_sets = kwargs['matchCommunitySets']
+        if 'nextPriority' in kwargs:
+            next_priority = kwargs['nextPriority']
+        if 'operateCommunitySets' in kwargs:
+            operate_community_sets = kwargs['operateCommunitySets']
+        if 'prependAsPaths' in kwargs:
+            prepend_as_paths = kwargs['prependAsPaths']
+        if 'routeMapId' in kwargs:
+            route_map_id = kwargs['routeMapId']
+        if 'routeTypes' in kwargs:
+            route_types = kwargs['routeTypes']
+        if 'sourceChildInstanceTypes' in kwargs:
+            source_child_instance_types = kwargs['sourceChildInstanceTypes']
+        if 'sourceInstanceIds' in kwargs:
+            source_instance_ids = kwargs['sourceInstanceIds']
+        if 'sourceInstanceIdsReverseMatch' in kwargs:
+            source_instance_ids_reverse_match = kwargs['sourceInstanceIdsReverseMatch']
+        if 'sourceRegionIds' in kwargs:
+            source_region_ids = kwargs['sourceRegionIds']
+        if 'sourceRouteTableIds' in kwargs:
+            source_route_table_ids = kwargs['sourceRouteTableIds']
+        if 'transitRouterRouteTableId' in kwargs:
+            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
+        if 'transmitDirection' in kwargs:
+            transmit_direction = kwargs['transmitDirection']
+
         if as_path_match_mode is not None:
             _setter("as_path_match_mode", as_path_match_mode)
         if cen_id is not None:
@@ -1119,7 +1225,7 @@ class RouteMap(pulumi.CustomResource):
         You can use the route map function to filter routes and modify route attributes.
         By doing so, you can manage the communication between networks attached to a CEN.
 
-        For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenroutemap).
+        For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-createcenroutemap).
 
         > **NOTE:** Available since v1.82.0.
 
@@ -1241,7 +1347,7 @@ class RouteMap(pulumi.CustomResource):
         You can use the route map function to filter routes and modify route attributes.
         By doing so, you can manage the communication between networks attached to a CEN.
 
-        For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createcenroutemap).
+        For information about CEN Route Map and how to use it, see [Manage CEN Route Map](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-createcenroutemap).
 
         > **NOTE:** Available since v1.82.0.
 

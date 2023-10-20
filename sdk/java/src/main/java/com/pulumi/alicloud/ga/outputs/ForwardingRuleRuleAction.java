@@ -30,7 +30,7 @@ public final class ForwardingRuleRuleAction {
      */
     private String ruleActionType;
     /**
-     * @return The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+     * @return The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
      * 
      */
     private @Nullable String ruleActionValue;
@@ -59,7 +59,7 @@ public final class ForwardingRuleRuleAction {
         return this.ruleActionType;
     }
     /**
-     * @return The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-doc-ga-2019-11-20-api-doc-createforwardingrules).
+     * @return The value of the forwarding action type. For more information, see [How to use it](https://www.alibabacloud.com/help/en/global-accelerator/latest/api-ga-2019-11-20-createforwardingrules).
      * 
      */
     public Optional<String> ruleActionValue() {

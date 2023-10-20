@@ -92,7 +92,23 @@ class GatewaySlbList(dict):
              slb_ip: Optional[str] = None,
              slb_port: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associateId' in kwargs:
+            associate_id = kwargs['associateId']
+        if 'gatewaySlbMode' in kwargs:
+            gateway_slb_mode = kwargs['gatewaySlbMode']
+        if 'gatewaySlbStatus' in kwargs:
+            gateway_slb_status = kwargs['gatewaySlbStatus']
+        if 'gmtCreate' in kwargs:
+            gmt_create = kwargs['gmtCreate']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+        if 'slbIp' in kwargs:
+            slb_ip = kwargs['slbIp']
+        if 'slbPort' in kwargs:
+            slb_port = kwargs['slbPort']
+
         if associate_id is not None:
             _setter("associate_id", associate_id)
         if gateway_slb_mode is not None:
@@ -274,7 +290,47 @@ class GetClustersClusterResult(dict):
              pay_info: str,
              pub_network_flow: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclId' in kwargs:
+            acl_id = kwargs['aclId']
+        if 'appVersion' in kwargs:
+            app_version = kwargs['appVersion']
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'healthStatus' in kwargs:
+            health_status = kwargs['healthStatus']
+        if 'initCostTime' in kwargs:
+            init_cost_time = kwargs['initCostTime']
+        if 'instanceCount' in kwargs:
+            instance_count = kwargs['instanceCount']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceModels' in kwargs:
+            instance_models = kwargs['instanceModels']
+        if 'internetAddress' in kwargs:
+            internet_address = kwargs['internetAddress']
+        if 'internetDomain' in kwargs:
+            internet_domain = kwargs['internetDomain']
+        if 'internetPort' in kwargs:
+            internet_port = kwargs['internetPort']
+        if 'intranetAddress' in kwargs:
+            intranet_address = kwargs['intranetAddress']
+        if 'intranetDomain' in kwargs:
+            intranet_domain = kwargs['intranetDomain']
+        if 'intranetPort' in kwargs:
+            intranet_port = kwargs['intranetPort']
+        if 'memoryCapacity' in kwargs:
+            memory_capacity = kwargs['memoryCapacity']
+        if 'payInfo' in kwargs:
+            pay_info = kwargs['payInfo']
+        if 'pubNetworkFlow' in kwargs:
+            pub_network_flow = kwargs['pubNetworkFlow']
+
         _setter("acl_id", acl_id)
         _setter("app_version", app_version)
         _setter("cluster_id", cluster_id)
@@ -511,7 +567,19 @@ class GetClustersClusterInstanceModelResult(dict):
              role: str,
              single_tunnel_vip: str,
              vip: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'healthStatus' in kwargs:
+            health_status = kwargs['healthStatus']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'internetIp' in kwargs:
+            internet_ip = kwargs['internetIp']
+        if 'podName' in kwargs:
+            pod_name = kwargs['podName']
+        if 'singleTunnelVip' in kwargs:
+            single_tunnel_vip = kwargs['singleTunnelVip']
+
         _setter("health_status", health_status)
         _setter("instance_type", instance_type)
         _setter("internet_ip", internet_ip)
@@ -611,7 +679,19 @@ class GetEngineNamespacesNamespaceResult(dict):
              quota: int,
              service_count: str,
              type: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'configCount' in kwargs:
+            config_count = kwargs['configCount']
+        if 'namespaceDesc' in kwargs:
+            namespace_desc = kwargs['namespaceDesc']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if 'namespaceShowName' in kwargs:
+            namespace_show_name = kwargs['namespaceShowName']
+        if 'serviceCount' in kwargs:
+            service_count = kwargs['serviceCount']
+
         _setter("config_count", config_count)
         _setter("id", id)
         _setter("namespace_desc", namespace_desc)
@@ -744,7 +824,23 @@ class GetGatewaysGatewayResult(dict):
              status: str,
              vpc_id: str,
              vswitch_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'backupVswitchId' in kwargs:
+            backup_vswitch_id = kwargs['backupVswitchId']
+        if 'gatewayName' in kwargs:
+            gateway_name = kwargs['gatewayName']
+        if 'gatewayUniqueId' in kwargs:
+            gateway_unique_id = kwargs['gatewayUniqueId']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'slbLists' in kwargs:
+            slb_lists = kwargs['slbLists']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         _setter("backup_vswitch_id", backup_vswitch_id)
         _setter("gateway_name", gateway_name)
         _setter("gateway_unique_id", gateway_unique_id)
@@ -889,7 +985,23 @@ class GetGatewaysGatewaySlbListResult(dict):
              slb_ip: str,
              slb_port: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'associateId' in kwargs:
+            associate_id = kwargs['associateId']
+        if 'gatewaySlbMode' in kwargs:
+            gateway_slb_mode = kwargs['gatewaySlbMode']
+        if 'gatewaySlbStatus' in kwargs:
+            gateway_slb_status = kwargs['gatewaySlbStatus']
+        if 'gmtCreate' in kwargs:
+            gmt_create = kwargs['gmtCreate']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+        if 'slbIp' in kwargs:
+            slb_ip = kwargs['slbIp']
+        if 'slbPort' in kwargs:
+            slb_port = kwargs['slbPort']
+
         _setter("associate_id", associate_id)
         _setter("gateway_slb_mode", gateway_slb_mode)
         _setter("gateway_slb_status", gateway_slb_status)
@@ -999,7 +1111,13 @@ class GetZnodesZnodeResult(dict):
              id: str,
              path: str,
              znode_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'znodeName' in kwargs:
+            znode_name = kwargs['znodeName']
+
         _setter("cluster_id", cluster_id)
         _setter("data", data)
         _setter("dir", dir)

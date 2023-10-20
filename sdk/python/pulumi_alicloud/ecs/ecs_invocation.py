@@ -61,7 +61,17 @@ class EcsInvocationArgs:
              timed: Optional[pulumi.Input[bool]] = None,
              username: Optional[pulumi.Input[str]] = None,
              windows_password_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commandId' in kwargs:
+            command_id = kwargs['commandId']
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'repeatMode' in kwargs:
+            repeat_mode = kwargs['repeatMode']
+        if 'windowsPasswordName' in kwargs:
+            windows_password_name = kwargs['windowsPasswordName']
+
         _setter("command_id", command_id)
         _setter("instance_ids", instance_ids)
         if frequency is not None:
@@ -234,7 +244,17 @@ class _EcsInvocationState:
              timed: Optional[pulumi.Input[bool]] = None,
              username: Optional[pulumi.Input[str]] = None,
              windows_password_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'commandId' in kwargs:
+            command_id = kwargs['commandId']
+        if 'instanceIds' in kwargs:
+            instance_ids = kwargs['instanceIds']
+        if 'repeatMode' in kwargs:
+            repeat_mode = kwargs['repeatMode']
+        if 'windowsPasswordName' in kwargs:
+            windows_password_name = kwargs['windowsPasswordName']
+
         if command_id is not None:
             _setter("command_id", command_id)
         if frequency is not None:

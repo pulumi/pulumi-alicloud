@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<int> AutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+        /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         /// </summary>
         [Output("computeResource")]
         public Output<string?> ComputeResource { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+        /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         /// </summary>
         [Input("computeResource")]
         public Input<string>? ComputeResource { get; set; }
@@ -422,7 +422,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<int>? AutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+        /// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         /// </summary>
         [Input("computeResource")]
         public Input<string>? ComputeResource { get; set; }

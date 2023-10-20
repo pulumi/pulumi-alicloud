@@ -39,7 +39,15 @@ class AccessKeyArgs:
              secret_file: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'pgpKey' in kwargs:
+            pgp_key = kwargs['pgpKey']
+        if 'secretFile' in kwargs:
+            secret_file = kwargs['secretFile']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if pgp_key is not None:
             _setter("pgp_key", pgp_key)
         if secret_file is not None:
@@ -140,7 +148,19 @@ class _AccessKeyState:
              secret_file: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encryptedSecret' in kwargs:
+            encrypted_secret = kwargs['encryptedSecret']
+        if 'keyFingerprint' in kwargs:
+            key_fingerprint = kwargs['keyFingerprint']
+        if 'pgpKey' in kwargs:
+            pgp_key = kwargs['pgpKey']
+        if 'secretFile' in kwargs:
+            secret_file = kwargs['secretFile']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if encrypted_secret is not None:
             _setter("encrypted_secret", encrypted_secret)
         if key_fingerprint is not None:

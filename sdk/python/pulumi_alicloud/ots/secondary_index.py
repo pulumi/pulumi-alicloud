@@ -51,7 +51,23 @@ class SecondaryIndexArgs:
              primary_keys: pulumi.Input[Sequence[pulumi.Input[str]]],
              table_name: pulumi.Input[str],
              defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'includeBaseData' in kwargs:
+            include_base_data = kwargs['includeBaseData']
+        if 'indexName' in kwargs:
+            index_name = kwargs['indexName']
+        if 'indexType' in kwargs:
+            index_type = kwargs['indexType']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'primaryKeys' in kwargs:
+            primary_keys = kwargs['primaryKeys']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+        if 'definedColumns' in kwargs:
+            defined_columns = kwargs['definedColumns']
+
         _setter("include_base_data", include_base_data)
         _setter("index_name", index_name)
         _setter("index_type", index_type)
@@ -186,7 +202,23 @@ class _SecondaryIndexState:
              instance_name: Optional[pulumi.Input[str]] = None,
              primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              table_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'definedColumns' in kwargs:
+            defined_columns = kwargs['definedColumns']
+        if 'includeBaseData' in kwargs:
+            include_base_data = kwargs['includeBaseData']
+        if 'indexName' in kwargs:
+            index_name = kwargs['indexName']
+        if 'indexType' in kwargs:
+            index_type = kwargs['indexType']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'primaryKeys' in kwargs:
+            primary_keys = kwargs['primaryKeys']
+        if 'tableName' in kwargs:
+            table_name = kwargs['tableName']
+
         if defined_columns is not None:
             _setter("defined_columns", defined_columns)
         if include_base_data is not None:

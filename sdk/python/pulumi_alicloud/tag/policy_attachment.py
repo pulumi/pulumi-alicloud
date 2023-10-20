@@ -35,7 +35,15 @@ class PolicyAttachmentArgs:
              policy_id: pulumi.Input[str],
              target_id: pulumi.Input[str],
              target_type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+
         _setter("policy_id", policy_id)
         _setter("target_id", target_id)
         _setter("target_type", target_type)
@@ -101,7 +109,15 @@ class _PolicyAttachmentState:
              policy_id: Optional[pulumi.Input[str]] = None,
              target_id: Optional[pulumi.Input[str]] = None,
              target_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+        if 'targetId' in kwargs:
+            target_id = kwargs['targetId']
+        if 'targetType' in kwargs:
+            target_type = kwargs['targetType']
+
         if policy_id is not None:
             _setter("policy_id", policy_id)
         if target_id is not None:

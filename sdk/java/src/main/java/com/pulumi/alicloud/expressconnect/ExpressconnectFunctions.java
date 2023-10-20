@@ -1018,7 +1018,7 @@ public final class ExpressconnectFunctions {
         return Deployment.getInstance().invokeAsync("alicloud:expressconnect/getPhysicalConnections:getPhysicalConnections", TypeShape.of(GetPhysicalConnectionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
      * 
      * &gt; **NOTE:** Available in 1.199.0+
      * 
@@ -1059,7 +1059,7 @@ public final class ExpressconnectFunctions {
         return getRouterInterfaces(GetRouterInterfacesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
      * 
      * &gt; **NOTE:** Available in 1.199.0+
      * 
@@ -1100,7 +1100,7 @@ public final class ExpressconnectFunctions {
         return getRouterInterfacesPlain(GetRouterInterfacesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
      * 
      * &gt; **NOTE:** Available in 1.199.0+
      * 
@@ -1141,7 +1141,7 @@ public final class ExpressconnectFunctions {
         return getRouterInterfaces(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
      * 
      * &gt; **NOTE:** Available in 1.199.0+
      * 
@@ -1182,7 +1182,7 @@ public final class ExpressconnectFunctions {
         return getRouterInterfacesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
      * 
      * &gt; **NOTE:** Available in 1.199.0+
      * 
@@ -1223,7 +1223,7 @@ public final class ExpressconnectFunctions {
         return Deployment.getInstance().invoke("alicloud:expressconnect/getRouterInterfaces:getRouterInterfaces", TypeShape.of(GetRouterInterfacesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/doc-detail/52412.htm)
+     * This data source provides Router Interface available to the user.[What is Router Interface](https://www.alibabacloud.com/help/en/express-connect/developer-reference/api-vpc-2016-04-28-describerouterinterfaces-efficiency-channels)
      * 
      * &gt; **NOTE:** Available in 1.199.0+
      * 

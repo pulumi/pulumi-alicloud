@@ -14,20 +14,27 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class ServiceMeshNetwork
     {
         /// <summary>
-        /// The ID of the VPC.
+        /// Security group ID.
+        /// </summary>
+        public readonly string? SecurityGroupId;
+        /// <summary>
+        /// VPC ID.
         /// </summary>
         public readonly string VpcId;
         /// <summary>
-        /// The list of Virtual Switch.
+        /// Virtual Switch ID.
         /// </summary>
         public readonly string VswitcheList;
 
         [OutputConstructor]
         private ServiceMeshNetwork(
+            string? securityGroupId,
+
             string vpcId,
 
             string vswitcheList)
         {
+            SecurityGroupId = securityGroupId;
             VpcId = vpcId;
             VswitcheList = vswitcheList;
         }

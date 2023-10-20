@@ -43,7 +43,17 @@ class MonitorGroupArgs:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              resource_group_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contactGroups' in kwargs:
+            contact_groups = kwargs['contactGroups']
+        if 'monitorGroupName' in kwargs:
+            monitor_group_name = kwargs['monitorGroupName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         if contact_groups is not None:
             _setter("contact_groups", contact_groups)
         if monitor_group_name is not None:
@@ -148,7 +158,17 @@ class _MonitorGroupState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              resource_group_name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'contactGroups' in kwargs:
+            contact_groups = kwargs['contactGroups']
+        if 'monitorGroupName' in kwargs:
+            monitor_group_name = kwargs['monitorGroupName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'resourceGroupName' in kwargs:
+            resource_group_name = kwargs['resourceGroupName']
+
         if contact_groups is not None:
             _setter("contact_groups", contact_groups)
         if monitor_group_name is not None:

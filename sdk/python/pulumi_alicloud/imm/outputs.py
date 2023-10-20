@@ -60,7 +60,19 @@ class GetProjectsProjectResult(dict):
              project: str,
              service_role: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'billingType' in kwargs:
+            billing_type = kwargs['billingType']
+        if 'computeUnit' in kwargs:
+            compute_unit = kwargs['computeUnit']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'modifyTime' in kwargs:
+            modify_time = kwargs['modifyTime']
+        if 'serviceRole' in kwargs:
+            service_role = kwargs['serviceRole']
+
         _setter("billing_type", billing_type)
         _setter("compute_unit", compute_unit)
         _setter("create_time", create_time)

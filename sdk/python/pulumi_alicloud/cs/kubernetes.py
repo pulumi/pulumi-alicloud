@@ -324,7 +324,135 @@ class KubernetesArgs:
              worker_period: Optional[pulumi.Input[int]] = None,
              worker_period_unit: Optional[pulumi.Input[str]] = None,
              worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'masterInstanceTypes' in kwargs:
+            master_instance_types = kwargs['masterInstanceTypes']
+        if 'masterVswitchIds' in kwargs:
+            master_vswitch_ids = kwargs['masterVswitchIds']
+        if 'apiAudiences' in kwargs:
+            api_audiences = kwargs['apiAudiences']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clusterCaCert' in kwargs:
+            cluster_ca_cert = kwargs['clusterCaCert']
+        if 'clusterDomain' in kwargs:
+            cluster_domain = kwargs['clusterDomain']
+        if 'cpuPolicy' in kwargs:
+            cpu_policy = kwargs['cpuPolicy']
+        if 'customSan' in kwargs:
+            custom_san = kwargs['customSan']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'enableSsh' in kwargs:
+            enable_ssh = kwargs['enableSsh']
+        if 'excludeAutoscalerNodes' in kwargs:
+            exclude_autoscaler_nodes = kwargs['excludeAutoscalerNodes']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'installCloudMonitor' in kwargs:
+            install_cloud_monitor = kwargs['installCloudMonitor']
+        if 'isEnterpriseSecurityGroup' in kwargs:
+            is_enterprise_security_group = kwargs['isEnterpriseSecurityGroup']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if 'masterAutoRenew' in kwargs:
+            master_auto_renew = kwargs['masterAutoRenew']
+        if 'masterAutoRenewPeriod' in kwargs:
+            master_auto_renew_period = kwargs['masterAutoRenewPeriod']
+        if 'masterDiskCategory' in kwargs:
+            master_disk_category = kwargs['masterDiskCategory']
+        if 'masterDiskPerformanceLevel' in kwargs:
+            master_disk_performance_level = kwargs['masterDiskPerformanceLevel']
+        if 'masterDiskSize' in kwargs:
+            master_disk_size = kwargs['masterDiskSize']
+        if 'masterDiskSnapshotPolicyId' in kwargs:
+            master_disk_snapshot_policy_id = kwargs['masterDiskSnapshotPolicyId']
+        if 'masterInstanceChargeType' in kwargs:
+            master_instance_charge_type = kwargs['masterInstanceChargeType']
+        if 'masterPeriod' in kwargs:
+            master_period = kwargs['masterPeriod']
+        if 'masterPeriodUnit' in kwargs:
+            master_period_unit = kwargs['masterPeriodUnit']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'newNatGateway' in kwargs:
+            new_nat_gateway = kwargs['newNatGateway']
+        if 'nodeCidrMask' in kwargs:
+            node_cidr_mask = kwargs['nodeCidrMask']
+        if 'nodeNameMode' in kwargs:
+            node_name_mode = kwargs['nodeNameMode']
+        if 'nodePortRange' in kwargs:
+            node_port_range = kwargs['nodePortRange']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'podCidr' in kwargs:
+            pod_cidr = kwargs['podCidr']
+        if 'podVswitchIds' in kwargs:
+            pod_vswitch_ids = kwargs['podVswitchIds']
+        if 'proxyMode' in kwargs:
+            proxy_mode = kwargs['proxyMode']
+        if 'rdsInstances' in kwargs:
+            rds_instances = kwargs['rdsInstances']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retainResources' in kwargs:
+            retain_resources = kwargs['retainResources']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'serviceAccountIssuer' in kwargs:
+            service_account_issuer = kwargs['serviceAccountIssuer']
+        if 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+        if 'slbInternetEnabled' in kwargs:
+            slb_internet_enabled = kwargs['slbInternetEnabled']
+        if 'userCa' in kwargs:
+            user_ca = kwargs['userCa']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'workerAutoRenew' in kwargs:
+            worker_auto_renew = kwargs['workerAutoRenew']
+        if 'workerAutoRenewPeriod' in kwargs:
+            worker_auto_renew_period = kwargs['workerAutoRenewPeriod']
+        if 'workerDataDiskCategory' in kwargs:
+            worker_data_disk_category = kwargs['workerDataDiskCategory']
+        if 'workerDataDiskSize' in kwargs:
+            worker_data_disk_size = kwargs['workerDataDiskSize']
+        if 'workerDataDisks' in kwargs:
+            worker_data_disks = kwargs['workerDataDisks']
+        if 'workerDiskCategory' in kwargs:
+            worker_disk_category = kwargs['workerDiskCategory']
+        if 'workerDiskPerformanceLevel' in kwargs:
+            worker_disk_performance_level = kwargs['workerDiskPerformanceLevel']
+        if 'workerDiskSize' in kwargs:
+            worker_disk_size = kwargs['workerDiskSize']
+        if 'workerDiskSnapshotPolicyId' in kwargs:
+            worker_disk_snapshot_policy_id = kwargs['workerDiskSnapshotPolicyId']
+        if 'workerInstanceChargeType' in kwargs:
+            worker_instance_charge_type = kwargs['workerInstanceChargeType']
+        if 'workerInstanceTypes' in kwargs:
+            worker_instance_types = kwargs['workerInstanceTypes']
+        if 'workerNumber' in kwargs:
+            worker_number = kwargs['workerNumber']
+        if 'workerPeriod' in kwargs:
+            worker_period = kwargs['workerPeriod']
+        if 'workerPeriodUnit' in kwargs:
+            worker_period_unit = kwargs['workerPeriodUnit']
+        if 'workerVswitchIds' in kwargs:
+            worker_vswitch_ids = kwargs['workerVswitchIds']
+
         _setter("master_instance_types", master_instance_types)
         _setter("master_vswitch_ids", master_vswitch_ids)
         if addons is not None:
@@ -1825,7 +1953,153 @@ class _KubernetesState:
              worker_period_unit: Optional[pulumi.Input[str]] = None,
              worker_ram_role_name: Optional[pulumi.Input[str]] = None,
              worker_vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiAudiences' in kwargs:
+            api_audiences = kwargs['apiAudiences']
+        if 'availabilityZone' in kwargs:
+            availability_zone = kwargs['availabilityZone']
+        if 'certificateAuthority' in kwargs:
+            certificate_authority = kwargs['certificateAuthority']
+        if 'clientCert' in kwargs:
+            client_cert = kwargs['clientCert']
+        if 'clientKey' in kwargs:
+            client_key = kwargs['clientKey']
+        if 'clusterCaCert' in kwargs:
+            cluster_ca_cert = kwargs['clusterCaCert']
+        if 'clusterDomain' in kwargs:
+            cluster_domain = kwargs['clusterDomain']
+        if 'cpuPolicy' in kwargs:
+            cpu_policy = kwargs['cpuPolicy']
+        if 'customSan' in kwargs:
+            custom_san = kwargs['customSan']
+        if 'deletionProtection' in kwargs:
+            deletion_protection = kwargs['deletionProtection']
+        if 'enableSsh' in kwargs:
+            enable_ssh = kwargs['enableSsh']
+        if 'excludeAutoscalerNodes' in kwargs:
+            exclude_autoscaler_nodes = kwargs['excludeAutoscalerNodes']
+        if 'imageId' in kwargs:
+            image_id = kwargs['imageId']
+        if 'installCloudMonitor' in kwargs:
+            install_cloud_monitor = kwargs['installCloudMonitor']
+        if 'isEnterpriseSecurityGroup' in kwargs:
+            is_enterprise_security_group = kwargs['isEnterpriseSecurityGroup']
+        if 'keyName' in kwargs:
+            key_name = kwargs['keyName']
+        if 'kmsEncryptedPassword' in kwargs:
+            kms_encrypted_password = kwargs['kmsEncryptedPassword']
+        if 'kmsEncryptionContext' in kwargs:
+            kms_encryption_context = kwargs['kmsEncryptionContext']
+        if 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if 'loadBalancerSpec' in kwargs:
+            load_balancer_spec = kwargs['loadBalancerSpec']
+        if 'masterAutoRenew' in kwargs:
+            master_auto_renew = kwargs['masterAutoRenew']
+        if 'masterAutoRenewPeriod' in kwargs:
+            master_auto_renew_period = kwargs['masterAutoRenewPeriod']
+        if 'masterDiskCategory' in kwargs:
+            master_disk_category = kwargs['masterDiskCategory']
+        if 'masterDiskPerformanceLevel' in kwargs:
+            master_disk_performance_level = kwargs['masterDiskPerformanceLevel']
+        if 'masterDiskSize' in kwargs:
+            master_disk_size = kwargs['masterDiskSize']
+        if 'masterDiskSnapshotPolicyId' in kwargs:
+            master_disk_snapshot_policy_id = kwargs['masterDiskSnapshotPolicyId']
+        if 'masterInstanceChargeType' in kwargs:
+            master_instance_charge_type = kwargs['masterInstanceChargeType']
+        if 'masterInstanceTypes' in kwargs:
+            master_instance_types = kwargs['masterInstanceTypes']
+        if 'masterNodes' in kwargs:
+            master_nodes = kwargs['masterNodes']
+        if 'masterPeriod' in kwargs:
+            master_period = kwargs['masterPeriod']
+        if 'masterPeriodUnit' in kwargs:
+            master_period_unit = kwargs['masterPeriodUnit']
+        if 'masterVswitchIds' in kwargs:
+            master_vswitch_ids = kwargs['masterVswitchIds']
+        if 'namePrefix' in kwargs:
+            name_prefix = kwargs['namePrefix']
+        if 'natGatewayId' in kwargs:
+            nat_gateway_id = kwargs['natGatewayId']
+        if 'newNatGateway' in kwargs:
+            new_nat_gateway = kwargs['newNatGateway']
+        if 'nodeCidrMask' in kwargs:
+            node_cidr_mask = kwargs['nodeCidrMask']
+        if 'nodeNameMode' in kwargs:
+            node_name_mode = kwargs['nodeNameMode']
+        if 'nodePortRange' in kwargs:
+            node_port_range = kwargs['nodePortRange']
+        if 'osType' in kwargs:
+            os_type = kwargs['osType']
+        if 'podCidr' in kwargs:
+            pod_cidr = kwargs['podCidr']
+        if 'podVswitchIds' in kwargs:
+            pod_vswitch_ids = kwargs['podVswitchIds']
+        if 'proxyMode' in kwargs:
+            proxy_mode = kwargs['proxyMode']
+        if 'rdsInstances' in kwargs:
+            rds_instances = kwargs['rdsInstances']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'retainResources' in kwargs:
+            retain_resources = kwargs['retainResources']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'serviceAccountIssuer' in kwargs:
+            service_account_issuer = kwargs['serviceAccountIssuer']
+        if 'serviceCidr' in kwargs:
+            service_cidr = kwargs['serviceCidr']
+        if 'slbId' in kwargs:
+            slb_id = kwargs['slbId']
+        if 'slbInternet' in kwargs:
+            slb_internet = kwargs['slbInternet']
+        if 'slbInternetEnabled' in kwargs:
+            slb_internet_enabled = kwargs['slbInternetEnabled']
+        if 'slbIntranet' in kwargs:
+            slb_intranet = kwargs['slbIntranet']
+        if 'userCa' in kwargs:
+            user_ca = kwargs['userCa']
+        if 'userData' in kwargs:
+            user_data = kwargs['userData']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'workerAutoRenew' in kwargs:
+            worker_auto_renew = kwargs['workerAutoRenew']
+        if 'workerAutoRenewPeriod' in kwargs:
+            worker_auto_renew_period = kwargs['workerAutoRenewPeriod']
+        if 'workerDataDiskCategory' in kwargs:
+            worker_data_disk_category = kwargs['workerDataDiskCategory']
+        if 'workerDataDiskSize' in kwargs:
+            worker_data_disk_size = kwargs['workerDataDiskSize']
+        if 'workerDataDisks' in kwargs:
+            worker_data_disks = kwargs['workerDataDisks']
+        if 'workerDiskCategory' in kwargs:
+            worker_disk_category = kwargs['workerDiskCategory']
+        if 'workerDiskPerformanceLevel' in kwargs:
+            worker_disk_performance_level = kwargs['workerDiskPerformanceLevel']
+        if 'workerDiskSize' in kwargs:
+            worker_disk_size = kwargs['workerDiskSize']
+        if 'workerDiskSnapshotPolicyId' in kwargs:
+            worker_disk_snapshot_policy_id = kwargs['workerDiskSnapshotPolicyId']
+        if 'workerInstanceChargeType' in kwargs:
+            worker_instance_charge_type = kwargs['workerInstanceChargeType']
+        if 'workerInstanceTypes' in kwargs:
+            worker_instance_types = kwargs['workerInstanceTypes']
+        if 'workerNodes' in kwargs:
+            worker_nodes = kwargs['workerNodes']
+        if 'workerNumber' in kwargs:
+            worker_number = kwargs['workerNumber']
+        if 'workerPeriod' in kwargs:
+            worker_period = kwargs['workerPeriod']
+        if 'workerPeriodUnit' in kwargs:
+            worker_period_unit = kwargs['workerPeriodUnit']
+        if 'workerRamRoleName' in kwargs:
+            worker_ram_role_name = kwargs['workerRamRoleName']
+        if 'workerVswitchIds' in kwargs:
+            worker_vswitch_ids = kwargs['workerVswitchIds']
+
         if addons is not None:
             _setter("addons", addons)
         if api_audiences is not None:

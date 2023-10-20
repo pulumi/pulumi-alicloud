@@ -103,7 +103,25 @@ class DedicatedPropreHostEcsClassList(dict):
              disk_count: Optional[int] = None,
              disk_type: Optional[str] = None,
              system_disk_performance_level: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'sysDiskCapacity' in kwargs:
+            sys_disk_capacity = kwargs['sysDiskCapacity']
+        if 'sysDiskType' in kwargs:
+            sys_disk_type = kwargs['sysDiskType']
+        if 'dataDiskPerformanceLevel' in kwargs:
+            data_disk_performance_level = kwargs['dataDiskPerformanceLevel']
+        if 'diskCapacity' in kwargs:
+            disk_capacity = kwargs['diskCapacity']
+        if 'diskCount' in kwargs:
+            disk_count = kwargs['diskCount']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'systemDiskPerformanceLevel' in kwargs:
+            system_disk_performance_level = kwargs['systemDiskPerformanceLevel']
+
         _setter("instance_type", instance_type)
         _setter("sys_disk_capacity", sys_disk_capacity)
         _setter("sys_disk_type", sys_disk_type)
@@ -214,7 +232,13 @@ class GetDedicatedHostAccountsAccountResult(dict):
              account_name: str,
              dedicated_host_id: str,
              id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'dedicatedHostId' in kwargs:
+            dedicated_host_id = kwargs['dedicatedHostId']
+
         _setter("account_name", account_name)
         _setter("dedicated_host_id", dedicated_host_id)
         _setter("id", id)
@@ -367,7 +391,59 @@ class GetDedicatedHostGroupsGroupResult(dict):
              text: str,
              vpc_id: str,
              zone_id_lists: Sequence['outputs.GetDedicatedHostGroupsGroupZoneIdListResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocationPolicy' in kwargs:
+            allocation_policy = kwargs['allocationPolicy']
+        if 'bastionInstanceId' in kwargs:
+            bastion_instance_id = kwargs['bastionInstanceId']
+        if 'cpuAllocateRation' in kwargs:
+            cpu_allocate_ration = kwargs['cpuAllocateRation']
+        if 'cpuAllocatedAmount' in kwargs:
+            cpu_allocated_amount = kwargs['cpuAllocatedAmount']
+        if 'cpuAllocationRatio' in kwargs:
+            cpu_allocation_ratio = kwargs['cpuAllocationRatio']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dedicatedHostCountGroupByHostTypes' in kwargs:
+            dedicated_host_count_group_by_host_types = kwargs['dedicatedHostCountGroupByHostTypes']
+        if 'dedicatedHostGroupDesc' in kwargs:
+            dedicated_host_group_desc = kwargs['dedicatedHostGroupDesc']
+        if 'dedicatedHostGroupId' in kwargs:
+            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
+        if 'deployType' in kwargs:
+            deploy_type = kwargs['deployType']
+        if 'diskAllocateRation' in kwargs:
+            disk_allocate_ration = kwargs['diskAllocateRation']
+        if 'diskAllocatedAmount' in kwargs:
+            disk_allocated_amount = kwargs['diskAllocatedAmount']
+        if 'diskAllocationRatio' in kwargs:
+            disk_allocation_ratio = kwargs['diskAllocationRatio']
+        if 'diskUsedAmount' in kwargs:
+            disk_used_amount = kwargs['diskUsedAmount']
+        if 'diskUtility' in kwargs:
+            disk_utility = kwargs['diskUtility']
+        if 'hostNumber' in kwargs:
+            host_number = kwargs['hostNumber']
+        if 'hostReplacePolicy' in kwargs:
+            host_replace_policy = kwargs['hostReplacePolicy']
+        if 'instanceNumber' in kwargs:
+            instance_number = kwargs['instanceNumber']
+        if 'memAllocateRation' in kwargs:
+            mem_allocate_ration = kwargs['memAllocateRation']
+        if 'memAllocatedAmount' in kwargs:
+            mem_allocated_amount = kwargs['memAllocatedAmount']
+        if 'memAllocationRatio' in kwargs:
+            mem_allocation_ratio = kwargs['memAllocationRatio']
+        if 'memUsedAmount' in kwargs:
+            mem_used_amount = kwargs['memUsedAmount']
+        if 'memUtility' in kwargs:
+            mem_utility = kwargs['memUtility']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'zoneIdLists' in kwargs:
+            zone_id_lists = kwargs['zoneIdLists']
+
         _setter("allocation_policy", allocation_policy)
         _setter("bastion_instance_id", bastion_instance_id)
         _setter("cpu_allocate_ration", cpu_allocate_ration)
@@ -634,7 +710,11 @@ class GetDedicatedHostGroupsGroupDedicatedHostCountGroupByHostTypeResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              place_holder: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'placeHolder' in kwargs:
+            place_holder = kwargs['placeHolder']
+
         _setter("place_holder", place_holder)
 
     @property
@@ -658,7 +738,11 @@ class GetDedicatedHostGroupsGroupZoneIdListResult(dict):
     def _configure(
              _setter: Callable[[Any, Any], None],
              zone_id_lists: Sequence[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneIdLists' in kwargs:
+            zone_id_lists = kwargs['zoneIdLists']
+
         _setter("zone_id_lists", zone_id_lists)
 
     @property
@@ -801,7 +885,61 @@ class GetDedicatedHostsHostResult(dict):
              vpc_id: str,
              vswitch_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allocationStatus' in kwargs:
+            allocation_status = kwargs['allocationStatus']
+        if 'bastionInstanceId' in kwargs:
+            bastion_instance_id = kwargs['bastionInstanceId']
+        if 'cpuAllocationRatio' in kwargs:
+            cpu_allocation_ratio = kwargs['cpuAllocationRatio']
+        if 'cpuUsed' in kwargs:
+            cpu_used = kwargs['cpuUsed']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'dedicatedHostGroupId' in kwargs:
+            dedicated_host_group_id = kwargs['dedicatedHostGroupId']
+        if 'dedicatedHostId' in kwargs:
+            dedicated_host_id = kwargs['dedicatedHostId']
+        if 'diskAllocationRatio' in kwargs:
+            disk_allocation_ratio = kwargs['diskAllocationRatio']
+        if 'ecsClassCode' in kwargs:
+            ecs_class_code = kwargs['ecsClassCode']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'expiredTime' in kwargs:
+            expired_time = kwargs['expiredTime']
+        if 'hostClass' in kwargs:
+            host_class = kwargs['hostClass']
+        if 'hostCpu' in kwargs:
+            host_cpu = kwargs['hostCpu']
+        if 'hostMem' in kwargs:
+            host_mem = kwargs['hostMem']
+        if 'hostName' in kwargs:
+            host_name = kwargs['hostName']
+        if 'hostStorage' in kwargs:
+            host_storage = kwargs['hostStorage']
+        if 'hostType' in kwargs:
+            host_type = kwargs['hostType']
+        if 'imageCategory' in kwargs:
+            image_category = kwargs['imageCategory']
+        if 'ipAddress' in kwargs:
+            ip_address = kwargs['ipAddress']
+        if 'memAllocationRatio' in kwargs:
+            mem_allocation_ratio = kwargs['memAllocationRatio']
+        if 'memoryUsed' in kwargs:
+            memory_used = kwargs['memoryUsed']
+        if 'openPermission' in kwargs:
+            open_permission = kwargs['openPermission']
+        if 'storageUsed' in kwargs:
+            storage_used = kwargs['storageUsed']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("allocation_status", allocation_status)
         _setter("bastion_instance_id", bastion_instance_id)
         _setter("cpu_allocation_ratio", cpu_allocation_ratio)
@@ -1101,7 +1239,15 @@ class GetHostEcsLevelInfosInfoResult(dict):
              ecs_class: str,
              ecs_class_code: str,
              res_class_code: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'ecsClass' in kwargs:
+            ecs_class = kwargs['ecsClass']
+        if 'ecsClassCode' in kwargs:
+            ecs_class_code = kwargs['ecsClassCode']
+        if 'resClassCode' in kwargs:
+            res_class_code = kwargs['resClassCode']
+
         _setter("description", description)
         _setter("ecs_class", ecs_class)
         _setter("ecs_class_code", ecs_class_code)
@@ -1163,7 +1309,13 @@ class GetZonesZoneResult(dict):
              id: str,
              region_id: str,
              zone_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("id", id)
         _setter("region_id", region_id)
         _setter("zone_id", zone_id)

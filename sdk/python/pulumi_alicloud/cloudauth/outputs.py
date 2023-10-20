@@ -36,7 +36,15 @@ class GetFaceConfigsConfigResult(dict):
              biz_name: str,
              biz_type: str,
              gmt_updated: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bizName' in kwargs:
+            biz_name = kwargs['bizName']
+        if 'bizType' in kwargs:
+            biz_type = kwargs['bizType']
+        if 'gmtUpdated' in kwargs:
+            gmt_updated = kwargs['gmtUpdated']
+
         _setter("biz_name", biz_name)
         _setter("biz_type", biz_type)
         _setter("gmt_updated", gmt_updated)

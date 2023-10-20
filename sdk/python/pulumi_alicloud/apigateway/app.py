@@ -35,7 +35,9 @@ class AppArgs:
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -104,7 +106,9 @@ class _AppState:
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if name is not None:

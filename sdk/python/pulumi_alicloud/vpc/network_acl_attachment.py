@@ -33,7 +33,11 @@ class NetworkAclAttachmentArgs:
              _setter: Callable[[Any, Any], None],
              network_acl_id: pulumi.Input[str],
              resources: pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkAclId' in kwargs:
+            network_acl_id = kwargs['networkAclId']
+
         _setter("network_acl_id", network_acl_id)
         _setter("resources", resources)
 
@@ -82,7 +86,11 @@ class _NetworkAclAttachmentState:
              _setter: Callable[[Any, Any], None],
              network_acl_id: Optional[pulumi.Input[str]] = None,
              resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'networkAclId' in kwargs:
+            network_acl_id = kwargs['networkAclId']
+
         if network_acl_id is not None:
             _setter("network_acl_id", network_acl_id)
         if resources is not None:

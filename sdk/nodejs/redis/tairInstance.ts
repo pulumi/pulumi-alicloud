@@ -98,13 +98,25 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public readonly secondaryZoneId!: pulumi.Output<string | undefined>;
     /**
-     * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+     * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
      */
     public readonly shardCount!: pulumi.Output<number>;
     /**
-     * The status of the instance. Valid values: Normal, Creating, Changing, Inactive, Flushing, Released, Transforming, Unavailable, Error, Migrating, and upgrading, networkModifying, SSLModifying, and MajorVersionUpgrading.
+     * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
+     * The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+     */
+    public readonly storagePerformanceLevel!: pulumi.Output<string | undefined>;
+    /**
+     * The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+     */
+    public readonly storageSizeGb!: pulumi.Output<number>;
+    /**
+     * The tag of the resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * The name of the resource.
      */
@@ -118,7 +130,7 @@ export class TairInstance extends pulumi.CustomResource {
      */
     public readonly vswitchId!: pulumi.Output<string>;
     /**
-     * The zone ID of the instance.
+     * Zone ID.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -151,6 +163,9 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["secondaryZoneId"] = state ? state.secondaryZoneId : undefined;
             resourceInputs["shardCount"] = state ? state.shardCount : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["storagePerformanceLevel"] = state ? state.storagePerformanceLevel : undefined;
+            resourceInputs["storageSizeGb"] = state ? state.storageSizeGb : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tairInstanceName"] = state ? state.tairInstanceName : undefined;
             resourceInputs["vpcId"] = state ? state.vpcId : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
@@ -186,6 +201,9 @@ export class TairInstance extends pulumi.CustomResource {
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
             resourceInputs["secondaryZoneId"] = args ? args.secondaryZoneId : undefined;
             resourceInputs["shardCount"] = args ? args.shardCount : undefined;
+            resourceInputs["storagePerformanceLevel"] = args ? args.storagePerformanceLevel : undefined;
+            resourceInputs["storageSizeGb"] = args ? args.storageSizeGb : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tairInstanceName"] = args ? args.tairInstanceName : undefined;
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
@@ -261,13 +279,25 @@ export interface TairInstanceState {
      */
     secondaryZoneId?: pulumi.Input<string>;
     /**
-     * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+     * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
      */
     shardCount?: pulumi.Input<number>;
     /**
-     * The status of the instance. Valid values: Normal, Creating, Changing, Inactive, Flushing, Released, Transforming, Unavailable, Error, Migrating, and upgrading, networkModifying, SSLModifying, and MajorVersionUpgrading.
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+     */
+    storagePerformanceLevel?: pulumi.Input<string>;
+    /**
+     * The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+     */
+    storageSizeGb?: pulumi.Input<number>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the resource.
      */
@@ -281,7 +311,7 @@ export interface TairInstanceState {
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * The zone ID of the instance.
+     * Zone ID.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -343,9 +373,21 @@ export interface TairInstanceArgs {
      */
     secondaryZoneId?: pulumi.Input<string>;
     /**
-     * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm.
+     * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
      */
     shardCount?: pulumi.Input<number>;
+    /**
+     * The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+     */
+    storagePerformanceLevel?: pulumi.Input<string>;
+    /**
+     * The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instanceType is "tairEssd", this attribute takes effect and is required.
+     */
+    storageSizeGb?: pulumi.Input<number>;
+    /**
+     * The tag of the resource.
+     */
+    tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The name of the resource.
      */
@@ -359,7 +401,7 @@ export interface TairInstanceArgs {
      */
     vswitchId: pulumi.Input<string>;
     /**
-     * The zone ID of the instance.
+     * Zone ID.
      */
     zoneId: pulumi.Input<string>;
 }

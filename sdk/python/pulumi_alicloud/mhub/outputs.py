@@ -65,7 +65,25 @@ class GetAppsAppResult(dict):
              package_name: str,
              product_id: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appKey' in kwargs:
+            app_key = kwargs['appKey']
+        if 'appName' in kwargs:
+            app_name = kwargs['appName']
+        if 'bundleId' in kwargs:
+            bundle_id = kwargs['bundleId']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'encodedIcon' in kwargs:
+            encoded_icon = kwargs['encodedIcon']
+        if 'industryId' in kwargs:
+            industry_id = kwargs['industryId']
+        if 'packageName' in kwargs:
+            package_name = kwargs['packageName']
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+
         _setter("app_key", app_key)
         _setter("app_name", app_name)
         _setter("bundle_id", bundle_id)
@@ -181,7 +199,13 @@ class GetProductsProductResult(dict):
              id: str,
              product_id: str,
              product_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'productId' in kwargs:
+            product_id = kwargs['productId']
+        if 'productName' in kwargs:
+            product_name = kwargs['productName']
+
         _setter("id", id)
         _setter("product_id", product_id)
         _setter("product_name", product_name)

@@ -41,7 +41,9 @@ class ProjectArgs:
              name: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if name is not None:
@@ -132,7 +134,9 @@ class _ProjectState:
              name: Optional[pulumi.Input[str]] = None,
              policy: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         if description is not None:
             _setter("description", description)
         if name is not None:

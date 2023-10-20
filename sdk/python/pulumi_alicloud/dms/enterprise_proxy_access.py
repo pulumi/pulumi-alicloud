@@ -43,7 +43,19 @@ class EnterpriseProxyAccessArgs:
              indep_account: Optional[pulumi.Input[str]] = None,
              indep_password: Optional[pulumi.Input[str]] = None,
              proxy_access_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'proxyId' in kwargs:
+            proxy_id = kwargs['proxyId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'indepAccount' in kwargs:
+            indep_account = kwargs['indepAccount']
+        if 'indepPassword' in kwargs:
+            indep_password = kwargs['indepPassword']
+        if 'proxyAccessId' in kwargs:
+            proxy_access_id = kwargs['proxyAccessId']
+
         _setter("proxy_id", proxy_id)
         _setter("user_id", user_id)
         if indep_account is not None:
@@ -175,7 +187,33 @@ class _EnterpriseProxyAccessState:
              user_id: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
              user_uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessId' in kwargs:
+            access_id = kwargs['accessId']
+        if 'accessSecret' in kwargs:
+            access_secret = kwargs['accessSecret']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'indepAccount' in kwargs:
+            indep_account = kwargs['indepAccount']
+        if 'indepPassword' in kwargs:
+            indep_password = kwargs['indepPassword']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'originInfo' in kwargs:
+            origin_info = kwargs['originInfo']
+        if 'proxyAccessId' in kwargs:
+            proxy_access_id = kwargs['proxyAccessId']
+        if 'proxyId' in kwargs:
+            proxy_id = kwargs['proxyId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+        if 'userUid' in kwargs:
+            user_uid = kwargs['userUid']
+
         if access_id is not None:
             _setter("access_id", access_id)
         if access_secret is not None:
@@ -359,7 +397,7 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
         """
         Provides a DMS Enterprise Proxy Access resource.
 
-        For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createproxyaccess).
+        For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess).
 
         > **NOTE:** Available in v1.195.0+.
 
@@ -403,7 +441,7 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
         """
         Provides a DMS Enterprise Proxy Access resource.
 
-        For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://www.alibabacloud.com/help/zh/data-management-service/latest/api-doc-dms-enterprise-2018-11-01-api-doc-createproxyaccess).
+        For information about DMS Enterprise Proxy Access and how to use it, see [What is Proxy Access](https://next.api.alibabacloud.com/document/dms-enterprise/2018-11-01/CreateProxyAccess).
 
         > **NOTE:** Available in v1.195.0+.
 

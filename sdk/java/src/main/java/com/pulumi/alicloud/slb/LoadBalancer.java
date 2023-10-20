@@ -18,6 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **NOTE:** Deprecated since v1.123.1.
+ * 
  * &gt; **DEPRECATED:** This resource has been renamed to alicloud.slb.ApplicationLoadBalancer from version 1.123.1.
  * 
  * Provides an Application Load Balancer resource.
@@ -25,7 +27,7 @@ import javax.annotation.Nullable;
  * &gt; **NOTE:** At present, to avoid some unnecessary regulation confusion, SLB can not support alicloud international account to create &#34;paybybandwidth&#34; instance.
  * 
  * &gt; **NOTE:** The supported specifications vary by region. Currently not all regions support guaranteed-performance instances.
- * For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/doc-detail/27657.htm).
+ * For more details about guaranteed-performance instance, see [Guaranteed-performance instances](https://www.alibabacloud.com/help/en/slb/classic-load-balancer/developer-reference/api-createloadbalancer-2#t4182.html).
  * 
  * ## Example Usage
  * ```java
@@ -56,12 +58,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraformtestslbconfig&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraformslbconfig&#34;);
  *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .vpcName(name)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .build());
  * 
@@ -73,7 +76,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultLoadBalancer = new LoadBalancer(&#34;defaultLoadBalancer&#34;, LoadBalancerArgs.builder()        
- *             .specification(&#34;slb.s2.small&#34;)
+ *             .loadBalancerName(name)
+ *             .loadBalancerSpec(&#34;slb.s2.small&#34;)
  *             .vswitchId(defaultSwitch.id())
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;tag_a&#34;, 1),
@@ -222,9 +226,17 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     public Output<String> loadBalancerName() {
         return this.loadBalancerName;
     }
+    /**
+     * The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance. Launching &#34;Performance-guaranteed&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
+     * 
+     */
     @Export(name="loadBalancerSpec", type=String.class, parameters={})
     private Output<String> loadBalancerSpec;
 
+    /**
+     * @return The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance. Launching &#34;Performance-guaranteed&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
+     * 
+     */
     public Output<String> loadBalancerSpec() {
         return this.loadBalancerSpec;
     }
@@ -242,19 +254,37 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     public Output<String> masterZoneId() {
         return this.masterZoneId;
     }
+    /**
+     * The reason of modification protection. It&#39;s effective when `modification_protection_status` is `ConsoleProtection`.
+     * 
+     */
     @Export(name="modificationProtectionReason", type=String.class, parameters={})
     private Output</* @Nullable */ String> modificationProtectionReason;
 
+    /**
+     * @return The reason of modification protection. It&#39;s effective when `modification_protection_status` is `ConsoleProtection`.
+     * 
+     */
     public Output<Optional<String>> modificationProtectionReason() {
         return Codegen.optional(this.modificationProtectionReason);
     }
+    /**
+     * The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
+     * 
+     */
     @Export(name="modificationProtectionStatus", type=String.class, parameters={})
     private Output<String> modificationProtectionStatus;
 
+    /**
+     * @return The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
+     * 
+     */
     public Output<String> modificationProtectionStatus() {
         return this.modificationProtectionStatus;
     }
     /**
+     * Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+     * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;load_balancer_name&#39; instead
      * 
@@ -263,12 +293,24 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
+    /**
+     * @return Field `name` has been deprecated from provider version 1.123.1 New field `load_balancer_name` instead.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+     * 
+     */
     @Export(name="paymentType", type=String.class, parameters={})
     private Output<String> paymentType;
 
+    /**
+     * @return The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
+     * 
+     */
     public Output<String> paymentType() {
         return this.paymentType;
     }
@@ -291,24 +333,12 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
      * The Id of resource group which the SLB belongs.
      * 
-     * &gt; **NOTE:** A &#34;Shared-Performance&#34; instance can be changed to &#34;Performance-guaranteed&#34;, but the change is irreversible.
-     * 
-     * &gt; **NOTE:** To change a &#34;Shared-Performance&#34; instance to a &#34;Performance-guaranteed&#34; instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
-     * 
-     * &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
-     * 
      */
     @Export(name="resourceGroupId", type=String.class, parameters={})
     private Output<String> resourceGroupId;
 
     /**
      * @return The Id of resource group which the SLB belongs.
-     * 
-     * &gt; **NOTE:** A &#34;Shared-Performance&#34; instance can be changed to &#34;Performance-guaranteed&#34;, but the change is irreversible.
-     * 
-     * &gt; **NOTE:** To change a &#34;Shared-Performance&#34; instance to a &#34;Performance-guaranteed&#34; instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
-     * 
-     * &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
      * 
      */
     public Output<String> resourceGroupId() {
@@ -330,7 +360,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     }
     /**
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
-     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it is must be specified and it valid values are: &#34;slb.s1.small&#34;, &#34;slb.s2.small&#34;, &#34;slb.s2.medium&#34;,
+     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)&#34; instance, it is must be specified and it valid values are: &#34;slb.s1.small&#34;, &#34;slb.s2.small&#34;, &#34;slb.s2.medium&#34;,
      * &#34;slb.s3.small&#34;, &#34;slb.s3.medium&#34;, &#34;slb.s3.large&#34; and &#34;slb.s4.large&#34;.
      * 
      * @deprecated
@@ -343,16 +373,36 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance.
-     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/doc-detail/27657.htm)&#34; instance, it is must be specified and it valid values are: &#34;slb.s1.small&#34;, &#34;slb.s2.small&#34;, &#34;slb.s2.medium&#34;,
+     * Launching &#34;[Performance-guaranteed](https://www.alibabacloud.com/help/en/slb/product-overview/announcements-and-updates)&#34; instance, it is must be specified and it valid values are: &#34;slb.s1.small&#34;, &#34;slb.s2.small&#34;, &#34;slb.s2.medium&#34;,
      * &#34;slb.s3.small&#34;, &#34;slb.s3.medium&#34;, &#34;slb.s3.large&#34; and &#34;slb.s4.large&#34;.
      * 
      */
     public Output<String> specification() {
         return this.specification;
     }
+    /**
+     * The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
+     * 
+     * &gt; **NOTE:** A &#34;Shared-Performance&#34; instance can be changed to &#34;Performance-guaranteed&#34;, but the change is irreversible.
+     * 
+     * &gt; **NOTE:** To change a &#34;Shared-Performance&#34; instance to a &#34;Performance-guaranteed&#34; instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+     * 
+     * &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
+     * 
+     */
     @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
+    /**
+     * @return The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
+     * 
+     * &gt; **NOTE:** A &#34;Shared-Performance&#34; instance can be changed to &#34;Performance-guaranteed&#34;, but the change is irreversible.
+     * 
+     * &gt; **NOTE:** To change a &#34;Shared-Performance&#34; instance to a &#34;Performance-guaranteed&#34; instance, the SLB will have a short probability of business interruption (10 seconds-30 seconds). Advise to change it during the business downturn, or migrate business to other SLB Instances by using GSLB before changing.
+     * 
+     * &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
+     * 
+     */
     public Output<String> status() {
         return this.status;
     }

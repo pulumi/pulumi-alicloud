@@ -82,7 +82,23 @@ class PhysicalConnectionArgs:
              redundant_physical_connection_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPointId' in kwargs:
+            access_point_id = kwargs['accessPointId']
+        if 'lineOperator' in kwargs:
+            line_operator = kwargs['lineOperator']
+        if 'circuitCode' in kwargs:
+            circuit_code = kwargs['circuitCode']
+        if 'peerLocation' in kwargs:
+            peer_location = kwargs['peerLocation']
+        if 'physicalConnectionName' in kwargs:
+            physical_connection_name = kwargs['physicalConnectionName']
+        if 'portType' in kwargs:
+            port_type = kwargs['portType']
+        if 'redundantPhysicalConnectionId' in kwargs:
+            redundant_physical_connection_id = kwargs['redundantPhysicalConnectionId']
+
         _setter("access_point_id", access_point_id)
         _setter("line_operator", line_operator)
         if bandwidth is not None:
@@ -323,7 +339,23 @@ class _PhysicalConnectionState:
              redundant_physical_connection_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessPointId' in kwargs:
+            access_point_id = kwargs['accessPointId']
+        if 'circuitCode' in kwargs:
+            circuit_code = kwargs['circuitCode']
+        if 'lineOperator' in kwargs:
+            line_operator = kwargs['lineOperator']
+        if 'peerLocation' in kwargs:
+            peer_location = kwargs['peerLocation']
+        if 'physicalConnectionName' in kwargs:
+            physical_connection_name = kwargs['physicalConnectionName']
+        if 'portType' in kwargs:
+            port_type = kwargs['portType']
+        if 'redundantPhysicalConnectionId' in kwargs:
+            redundant_physical_connection_id = kwargs['redundantPhysicalConnectionId']
+
         if access_point_id is not None:
             _setter("access_point_id", access_point_id)
         if bandwidth is not None:

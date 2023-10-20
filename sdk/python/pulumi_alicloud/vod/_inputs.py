@@ -40,7 +40,17 @@ class DomainSourceArgs:
              source_port: pulumi.Input[str],
              source_type: pulumi.Input[str],
              source_priority: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'sourceContent' in kwargs:
+            source_content = kwargs['sourceContent']
+        if 'sourcePort' in kwargs:
+            source_port = kwargs['sourcePort']
+        if 'sourceType' in kwargs:
+            source_type = kwargs['sourceType']
+        if 'sourcePriority' in kwargs:
+            source_priority = kwargs['sourcePriority']
+
         _setter("source_content", source_content)
         _setter("source_port", source_port)
         _setter("source_type", source_type)

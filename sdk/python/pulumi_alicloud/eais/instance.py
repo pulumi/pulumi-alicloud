@@ -43,7 +43,17 @@ class InstanceArgs:
              vswitch_id: pulumi.Input[str],
              force: Optional[pulumi.Input[bool]] = None,
              instance_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+
         _setter("instance_type", instance_type)
         _setter("security_group_id", security_group_id)
         _setter("vswitch_id", vswitch_id)
@@ -149,7 +159,17 @@ class _InstanceState:
              security_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+
         if force is not None:
             _setter("force", force)
         if instance_name is not None:
@@ -250,7 +270,7 @@ class Instance(pulumi.CustomResource):
         """
         Provides a EAIS Instance resource.
 
-        For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/document_detail/185066.html).
+        For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
 
         > **NOTE:** Available since v1.137.0.
 
@@ -309,7 +329,7 @@ class Instance(pulumi.CustomResource):
         """
         Provides a EAIS Instance resource.
 
-        For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/document_detail/185066.html).
+        For information about EAIS Instance and how to use it, see [What is Instance](https://www.alibabacloud.com/help/en/resource-orchestration-service/latest/aliyun-eais-instance).
 
         > **NOTE:** Available since v1.137.0.
 

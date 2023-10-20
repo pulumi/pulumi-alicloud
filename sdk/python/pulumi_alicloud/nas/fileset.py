@@ -39,7 +39,15 @@ class FilesetArgs:
              file_system_path: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              dry_run: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'fileSystemPath' in kwargs:
+            file_system_path = kwargs['fileSystemPath']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+
         _setter("file_system_id", file_system_id)
         _setter("file_system_path", file_system_path)
         if description is not None:
@@ -132,7 +140,17 @@ class _FilesetState:
              file_system_path: Optional[pulumi.Input[str]] = None,
              fileset_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'fileSystemId' in kwargs:
+            file_system_id = kwargs['fileSystemId']
+        if 'fileSystemPath' in kwargs:
+            file_system_path = kwargs['fileSystemPath']
+        if 'filesetId' in kwargs:
+            fileset_id = kwargs['filesetId']
+
         if description is not None:
             _setter("description", description)
         if dry_run is not None:

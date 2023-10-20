@@ -62,7 +62,21 @@ class ExchangeArgs:
              internal: pulumi.Input[bool],
              virtual_host_name: pulumi.Input[str],
              alternate_exchange: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoDeleteState' in kwargs:
+            auto_delete_state = kwargs['autoDeleteState']
+        if 'exchangeName' in kwargs:
+            exchange_name = kwargs['exchangeName']
+        if 'exchangeType' in kwargs:
+            exchange_type = kwargs['exchangeType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+        if 'alternateExchange' in kwargs:
+            alternate_exchange = kwargs['alternateExchange']
+
         _setter("auto_delete_state", auto_delete_state)
         _setter("exchange_name", exchange_name)
         _setter("exchange_type", exchange_type)
@@ -219,7 +233,21 @@ class _ExchangeState:
              instance_id: Optional[pulumi.Input[str]] = None,
              internal: Optional[pulumi.Input[bool]] = None,
              virtual_host_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alternateExchange' in kwargs:
+            alternate_exchange = kwargs['alternateExchange']
+        if 'autoDeleteState' in kwargs:
+            auto_delete_state = kwargs['autoDeleteState']
+        if 'exchangeName' in kwargs:
+            exchange_name = kwargs['exchangeName']
+        if 'exchangeType' in kwargs:
+            exchange_type = kwargs['exchangeType']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'virtualHostName' in kwargs:
+            virtual_host_name = kwargs['virtualHostName']
+
         if alternate_exchange is not None:
             _setter("alternate_exchange", alternate_exchange)
         if auto_delete_state is not None:

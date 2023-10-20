@@ -101,7 +101,41 @@ class ListenerArgs:
              security_policy_id: Optional[pulumi.Input[str]] = None,
              start_port: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'listenerProtocol' in kwargs:
+            listener_protocol = kwargs['listenerProtocol']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'alpnEnabled' in kwargs:
+            alpn_enabled = kwargs['alpnEnabled']
+        if 'alpnPolicy' in kwargs:
+            alpn_policy = kwargs['alpnPolicy']
+        if 'caCertificateIds' in kwargs:
+            ca_certificate_ids = kwargs['caCertificateIds']
+        if 'caEnabled' in kwargs:
+            ca_enabled = kwargs['caEnabled']
+        if 'certificateIds' in kwargs:
+            certificate_ids = kwargs['certificateIds']
+        if 'endPort' in kwargs:
+            end_port = kwargs['endPort']
+        if 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+        if 'listenerDescription' in kwargs:
+            listener_description = kwargs['listenerDescription']
+        if 'proxyProtocolEnabled' in kwargs:
+            proxy_protocol_enabled = kwargs['proxyProtocolEnabled']
+        if 'secSensorEnabled' in kwargs:
+            sec_sensor_enabled = kwargs['secSensorEnabled']
+        if 'securityPolicyId' in kwargs:
+            security_policy_id = kwargs['securityPolicyId']
+        if 'startPort' in kwargs:
+            start_port = kwargs['startPort']
+
         _setter("listener_port", listener_port)
         _setter("listener_protocol", listener_protocol)
         _setter("load_balancer_id", load_balancer_id)
@@ -458,7 +492,41 @@ class _ListenerState:
              server_group_id: Optional[pulumi.Input[str]] = None,
              start_port: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alpnEnabled' in kwargs:
+            alpn_enabled = kwargs['alpnEnabled']
+        if 'alpnPolicy' in kwargs:
+            alpn_policy = kwargs['alpnPolicy']
+        if 'caCertificateIds' in kwargs:
+            ca_certificate_ids = kwargs['caCertificateIds']
+        if 'caEnabled' in kwargs:
+            ca_enabled = kwargs['caEnabled']
+        if 'certificateIds' in kwargs:
+            certificate_ids = kwargs['certificateIds']
+        if 'endPort' in kwargs:
+            end_port = kwargs['endPort']
+        if 'idleTimeout' in kwargs:
+            idle_timeout = kwargs['idleTimeout']
+        if 'listenerDescription' in kwargs:
+            listener_description = kwargs['listenerDescription']
+        if 'listenerPort' in kwargs:
+            listener_port = kwargs['listenerPort']
+        if 'listenerProtocol' in kwargs:
+            listener_protocol = kwargs['listenerProtocol']
+        if 'loadBalancerId' in kwargs:
+            load_balancer_id = kwargs['loadBalancerId']
+        if 'proxyProtocolEnabled' in kwargs:
+            proxy_protocol_enabled = kwargs['proxyProtocolEnabled']
+        if 'secSensorEnabled' in kwargs:
+            sec_sensor_enabled = kwargs['secSensorEnabled']
+        if 'securityPolicyId' in kwargs:
+            security_policy_id = kwargs['securityPolicyId']
+        if 'serverGroupId' in kwargs:
+            server_group_id = kwargs['serverGroupId']
+        if 'startPort' in kwargs:
+            start_port = kwargs['startPort']
+
         if alpn_enabled is not None:
             _setter("alpn_enabled", alpn_enabled)
         if alpn_policy is not None:

@@ -100,7 +100,25 @@ class ClusterApplicationConfig(dict):
              config_scope: Optional[str] = None,
              node_group_id: Optional[str] = None,
              node_group_name: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationName' in kwargs:
+            application_name = kwargs['applicationName']
+        if 'configFileName' in kwargs:
+            config_file_name = kwargs['configFileName']
+        if 'configItemKey' in kwargs:
+            config_item_key = kwargs['configItemKey']
+        if 'configItemValue' in kwargs:
+            config_item_value = kwargs['configItemValue']
+        if 'configDescription' in kwargs:
+            config_description = kwargs['configDescription']
+        if 'configScope' in kwargs:
+            config_scope = kwargs['configScope']
+        if 'nodeGroupId' in kwargs:
+            node_group_id = kwargs['nodeGroupId']
+        if 'nodeGroupName' in kwargs:
+            node_group_name = kwargs['nodeGroupName']
+
         _setter("application_name", application_name)
         _setter("config_file_name", config_file_name)
         _setter("config_item_key", config_item_key)
@@ -245,7 +263,21 @@ class ClusterBootstrapScript(dict):
              script_name: str,
              script_path: str,
              priority: Optional[int] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executionFailStrategy' in kwargs:
+            execution_fail_strategy = kwargs['executionFailStrategy']
+        if 'executionMoment' in kwargs:
+            execution_moment = kwargs['executionMoment']
+        if 'nodeSelector' in kwargs:
+            node_selector = kwargs['nodeSelector']
+        if 'scriptArgs' in kwargs:
+            script_args = kwargs['scriptArgs']
+        if 'scriptName' in kwargs:
+            script_name = kwargs['scriptName']
+        if 'scriptPath' in kwargs:
+            script_path = kwargs['scriptPath']
+
         _setter("execution_fail_strategy", execution_fail_strategy)
         _setter("execution_moment", execution_moment)
         _setter("node_selector", node_selector)
@@ -368,7 +400,19 @@ class ClusterBootstrapScriptNodeSelector(dict):
              node_group_name: Optional[str] = None,
              node_group_types: Optional[Sequence[str]] = None,
              node_names: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'nodeSelectType' in kwargs:
+            node_select_type = kwargs['nodeSelectType']
+        if 'nodeGroupId' in kwargs:
+            node_group_id = kwargs['nodeGroupId']
+        if 'nodeGroupName' in kwargs:
+            node_group_name = kwargs['nodeGroupName']
+        if 'nodeGroupTypes' in kwargs:
+            node_group_types = kwargs['nodeGroupTypes']
+        if 'nodeNames' in kwargs:
+            node_names = kwargs['nodeNames']
+
         _setter("node_select_type", node_select_type)
         if node_group_id is not None:
             _setter("node_group_id", node_group_id)
@@ -488,7 +532,23 @@ class ClusterNodeAttribute(dict):
              zone_id: str,
              data_disk_encrypted: Optional[bool] = None,
              data_disk_kms_key_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'keyPairName' in kwargs:
+            key_pair_name = kwargs['keyPairName']
+        if 'ramRole' in kwargs:
+            ram_role = kwargs['ramRole']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'dataDiskEncrypted' in kwargs:
+            data_disk_encrypted = kwargs['dataDiskEncrypted']
+        if 'dataDiskKmsKeyId' in kwargs:
+            data_disk_kms_key_id = kwargs['dataDiskKmsKeyId']
+
         _setter("key_pair_name", key_pair_name)
         _setter("ram_role", ram_role)
         _setter("security_group_id", security_group_id)
@@ -672,7 +732,39 @@ class ClusterNodeGroup(dict):
              subscription_config: Optional['outputs.ClusterNodeGroupSubscriptionConfig'] = None,
              vswitch_ids: Optional[Sequence[str]] = None,
              with_public_ip: Optional[bool] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dataDisks' in kwargs:
+            data_disks = kwargs['dataDisks']
+        if 'instanceTypes' in kwargs:
+            instance_types = kwargs['instanceTypes']
+        if 'nodeCount' in kwargs:
+            node_count = kwargs['nodeCount']
+        if 'nodeGroupName' in kwargs:
+            node_group_name = kwargs['nodeGroupName']
+        if 'nodeGroupType' in kwargs:
+            node_group_type = kwargs['nodeGroupType']
+        if 'systemDisk' in kwargs:
+            system_disk = kwargs['systemDisk']
+        if 'additionalSecurityGroupIds' in kwargs:
+            additional_security_group_ids = kwargs['additionalSecurityGroupIds']
+        if 'costOptimizedConfig' in kwargs:
+            cost_optimized_config = kwargs['costOptimizedConfig']
+        if 'gracefulShutdown' in kwargs:
+            graceful_shutdown = kwargs['gracefulShutdown']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'spotBidPrices' in kwargs:
+            spot_bid_prices = kwargs['spotBidPrices']
+        if 'spotInstanceRemedy' in kwargs:
+            spot_instance_remedy = kwargs['spotInstanceRemedy']
+        if 'subscriptionConfig' in kwargs:
+            subscription_config = kwargs['subscriptionConfig']
+        if 'vswitchIds' in kwargs:
+            vswitch_ids = kwargs['vswitchIds']
+        if 'withPublicIp' in kwargs:
+            with_public_ip = kwargs['withPublicIp']
+
         _setter("data_disks", data_disks)
         _setter("instance_types", instance_types)
         _setter("node_count", node_count)
@@ -863,7 +955,15 @@ class ClusterNodeGroupCostOptimizedConfig(dict):
              on_demand_base_capacity: int,
              on_demand_percentage_above_base_capacity: int,
              spot_instance_pools: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'onDemandBaseCapacity' in kwargs:
+            on_demand_base_capacity = kwargs['onDemandBaseCapacity']
+        if 'onDemandPercentageAboveBaseCapacity' in kwargs:
+            on_demand_percentage_above_base_capacity = kwargs['onDemandPercentageAboveBaseCapacity']
+        if 'spotInstancePools' in kwargs:
+            spot_instance_pools = kwargs['spotInstancePools']
+
         _setter("on_demand_base_capacity", on_demand_base_capacity)
         _setter("on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
         _setter("spot_instance_pools", spot_instance_pools)
@@ -937,7 +1037,11 @@ class ClusterNodeGroupDataDisk(dict):
              size: int,
              count: Optional[int] = None,
              performance_level: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+
         _setter("category", category)
         _setter("size", size)
         if count is not None:
@@ -1016,7 +1120,13 @@ class ClusterNodeGroupSpotBidPrice(dict):
              _setter: Callable[[Any, Any], None],
              bid_price: int,
              instance_type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bidPrice' in kwargs:
+            bid_price = kwargs['bidPrice']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+
         _setter("bid_price", bid_price)
         _setter("instance_type", instance_type)
 
@@ -1093,7 +1203,19 @@ class ClusterNodeGroupSubscriptionConfig(dict):
              auto_renew: Optional[bool] = None,
              auto_renew_duration: Optional[int] = None,
              auto_renew_duration_unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'paymentDuration' in kwargs:
+            payment_duration = kwargs['paymentDuration']
+        if 'paymentDurationUnit' in kwargs:
+            payment_duration_unit = kwargs['paymentDurationUnit']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewDuration' in kwargs:
+            auto_renew_duration = kwargs['autoRenewDuration']
+        if 'autoRenewDurationUnit' in kwargs:
+            auto_renew_duration_unit = kwargs['autoRenewDurationUnit']
+
         _setter("payment_duration", payment_duration)
         _setter("payment_duration_unit", payment_duration_unit)
         if auto_renew is not None:
@@ -1188,7 +1310,11 @@ class ClusterNodeGroupSystemDisk(dict):
              size: int,
              count: Optional[int] = None,
              performance_level: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'performanceLevel' in kwargs:
+            performance_level = kwargs['performanceLevel']
+
         _setter("category", category)
         _setter("size", size)
         if count is not None:
@@ -1285,7 +1411,19 @@ class ClusterSubscriptionConfig(dict):
              auto_renew: Optional[bool] = None,
              auto_renew_duration: Optional[int] = None,
              auto_renew_duration_unit: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'paymentDuration' in kwargs:
+            payment_duration = kwargs['paymentDuration']
+        if 'paymentDurationUnit' in kwargs:
+            payment_duration_unit = kwargs['paymentDurationUnit']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewDuration' in kwargs:
+            auto_renew_duration = kwargs['autoRenewDuration']
+        if 'autoRenewDurationUnit' in kwargs:
+            auto_renew_duration_unit = kwargs['autoRenewDurationUnit']
+
         _setter("payment_duration", payment_duration)
         _setter("payment_duration_unit", payment_duration_unit)
         if auto_renew is not None:
@@ -1403,7 +1541,35 @@ class GetClustersClusterResult(dict):
              resource_group_id: str,
              state_change_reason: Mapping[str, Any],
              tags: Sequence['outputs.GetClustersClusterTagResult'],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clusterId' in kwargs:
+            cluster_id = kwargs['clusterId']
+        if 'clusterName' in kwargs:
+            cluster_name = kwargs['clusterName']
+        if 'clusterState' in kwargs:
+            cluster_state = kwargs['clusterState']
+        if 'clusterType' in kwargs:
+            cluster_type = kwargs['clusterType']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'emrDefaultRole' in kwargs:
+            emr_default_role = kwargs['emrDefaultRole']
+        if 'endTime' in kwargs:
+            end_time = kwargs['endTime']
+        if 'expireTime' in kwargs:
+            expire_time = kwargs['expireTime']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'readyTime' in kwargs:
+            ready_time = kwargs['readyTime']
+        if 'releaseVersion' in kwargs:
+            release_version = kwargs['releaseVersion']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'stateChangeReason' in kwargs:
+            state_change_reason = kwargs['stateChangeReason']
+
         _setter("cluster_id", cluster_id)
         _setter("cluster_name", cluster_name)
         _setter("cluster_state", cluster_state)
@@ -1547,7 +1713,9 @@ class GetClustersClusterTagResult(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 

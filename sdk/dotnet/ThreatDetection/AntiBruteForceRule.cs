@@ -12,9 +12,9 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// <summary>
     /// Provides a Threat Detection Anti Brute Force Rule resource.
     /// 
-    /// For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-createantibruteforcerule).
+    /// For information about Threat Detection Anti Brute Force Rule and how to use it, see [What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createantibruteforcerule).
     /// 
-    /// &gt; **NOTE:** Available in v1.195.0+.
+    /// &gt; **NOTE:** Available since v1.195.0.
     /// 
     /// ## Example Usage
     /// 
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// {
     ///     var @default = new AliCloud.ThreatDetection.AntiBruteForceRule("default", new()
     ///     {
-    ///         AntiBruteForceRuleName = "apispec_test",
+    ///         AntiBruteForceRuleName = "apispec_example",
     ///         FailCount = 80,
     ///         ForbiddenTime = 360,
     ///         Span = 10,

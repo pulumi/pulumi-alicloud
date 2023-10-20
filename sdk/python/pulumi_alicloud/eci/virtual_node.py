@@ -65,7 +65,25 @@ class VirtualNodeArgs:
              taints: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualNodeTaintArgs']]]] = None,
              virtual_node_name: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'eipInstanceId' in kwargs:
+            eip_instance_id = kwargs['eipInstanceId']
+        if 'enablePublicNetwork' in kwargs:
+            enable_public_network = kwargs['enablePublicNetwork']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'virtualNodeName' in kwargs:
+            virtual_node_name = kwargs['virtualNodeName']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("kube_config", kube_config)
         _setter("security_group_id", security_group_id)
         _setter("vswitch_id", vswitch_id)
@@ -261,7 +279,25 @@ class _VirtualNodeState:
              virtual_node_name: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eipInstanceId' in kwargs:
+            eip_instance_id = kwargs['eipInstanceId']
+        if 'enablePublicNetwork' in kwargs:
+            enable_public_network = kwargs['enablePublicNetwork']
+        if 'kubeConfig' in kwargs:
+            kube_config = kwargs['kubeConfig']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'securityGroupId' in kwargs:
+            security_group_id = kwargs['securityGroupId']
+        if 'virtualNodeName' in kwargs:
+            virtual_node_name = kwargs['virtualNodeName']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if eip_instance_id is not None:
             _setter("eip_instance_id", eip_instance_id)
         if enable_public_network is not None:

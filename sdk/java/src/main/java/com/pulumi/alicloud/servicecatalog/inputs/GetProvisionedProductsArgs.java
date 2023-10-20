@@ -18,16 +18,32 @@ public final class GetProvisionedProductsArgs extends com.pulumi.resources.Invok
 
     public static final GetProvisionedProductsArgs Empty = new GetProvisionedProductsArgs();
 
+    /**
+     * The access filter.
+     * 
+     */
     @Import(name="accessLevelFilter")
     private @Nullable Output<String> accessLevelFilter;
 
+    /**
+     * @return The access filter.
+     * 
+     */
     public Optional<Output<String>> accessLevelFilter() {
         return Optional.ofNullable(this.accessLevelFilter);
     }
 
+    /**
+     * Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Output<Boolean> enableDetails;
 
+    /**
+     * @return Default to `false`. Set it to `true` can output more details about resource attributes.
+     * 
+     */
     public Optional<Output<Boolean>> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -91,16 +107,32 @@ public final class GetProvisionedProductsArgs extends com.pulumi.resources.Invok
         return Optional.ofNullable(this.pageSize);
     }
 
+    /**
+     * The field that is used to sort the queried data.
+     * 
+     */
     @Import(name="sortBy")
     private @Nullable Output<String> sortBy;
 
+    /**
+     * @return The field that is used to sort the queried data.
+     * 
+     */
     public Optional<Output<String>> sortBy() {
         return Optional.ofNullable(this.sortBy);
     }
 
+    /**
+     * The sorting method.
+     * 
+     */
     @Import(name="sortOrder")
     private @Nullable Output<String> sortOrder;
 
+    /**
+     * @return The sorting method.
+     * 
+     */
     public Optional<Output<String>> sortOrder() {
         return Optional.ofNullable(this.sortOrder);
     }
@@ -137,20 +169,44 @@ public final class GetProvisionedProductsArgs extends com.pulumi.resources.Invok
             $ = new GetProvisionedProductsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessLevelFilter The access filter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessLevelFilter(@Nullable Output<String> accessLevelFilter) {
             $.accessLevelFilter = accessLevelFilter;
             return this;
         }
 
+        /**
+         * @param accessLevelFilter The access filter.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessLevelFilter(String accessLevelFilter) {
             return accessLevelFilter(Output.of(accessLevelFilter));
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Output<Boolean> enableDetails) {
             $.enableDetails = enableDetails;
             return this;
         }
 
+        /**
+         * @param enableDetails Default to `false`. Set it to `true` can output more details about resource attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(Boolean enableDetails) {
             return enableDetails(Output.of(enableDetails));
         }
@@ -246,20 +302,44 @@ public final class GetProvisionedProductsArgs extends com.pulumi.resources.Invok
             return pageSize(Output.of(pageSize));
         }
 
+        /**
+         * @param sortBy The field that is used to sort the queried data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortBy(@Nullable Output<String> sortBy) {
             $.sortBy = sortBy;
             return this;
         }
 
+        /**
+         * @param sortBy The field that is used to sort the queried data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortBy(String sortBy) {
             return sortBy(Output.of(sortBy));
         }
 
+        /**
+         * @param sortOrder The sorting method.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortOrder(@Nullable Output<String> sortOrder) {
             $.sortOrder = sortOrder;
             return this;
         }
 
+        /**
+         * @param sortOrder The sorting method.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortOrder(String sortOrder) {
             return sortOrder(Output.of(sortOrder));
         }

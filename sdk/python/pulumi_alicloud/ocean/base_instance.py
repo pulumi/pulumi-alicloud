@@ -108,7 +108,33 @@ class BaseInstanceArgs:
              period: Optional[pulumi.Input[int]] = None,
              period_unit: Optional[pulumi.Input[str]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'backupRetainMode' in kwargs:
+            backup_retain_mode = kwargs['backupRetainMode']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'nodeNum' in kwargs:
+            node_num = kwargs['nodeNum']
+        if 'obVersion' in kwargs:
+            ob_version = kwargs['obVersion']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("disk_size", disk_size)
         _setter("instance_class", instance_class)
         _setter("payment_type", payment_type)
@@ -454,7 +480,37 @@ class _BaseInstanceState:
              series: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if 'autoRenewPeriod' in kwargs:
+            auto_renew_period = kwargs['autoRenewPeriod']
+        if 'backupRetainMode' in kwargs:
+            backup_retain_mode = kwargs['backupRetainMode']
+        if 'commodityCode' in kwargs:
+            commodity_code = kwargs['commodityCode']
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'diskSize' in kwargs:
+            disk_size = kwargs['diskSize']
+        if 'diskType' in kwargs:
+            disk_type = kwargs['diskType']
+        if 'instanceClass' in kwargs:
+            instance_class = kwargs['instanceClass']
+        if 'instanceName' in kwargs:
+            instance_name = kwargs['instanceName']
+        if 'nodeNum' in kwargs:
+            node_num = kwargs['nodeNum']
+        if 'obVersion' in kwargs:
+            ob_version = kwargs['obVersion']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'periodUnit' in kwargs:
+            period_unit = kwargs['periodUnit']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if auto_renew is not None:
             _setter("auto_renew", auto_renew)
         if auto_renew_period is not None:

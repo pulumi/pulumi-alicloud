@@ -35,7 +35,13 @@ class VpdArgs:
              cidr: pulumi.Input[str],
              vpd_name: pulumi.Input[str],
              resource_group_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'vpdName' in kwargs:
+            vpd_name = kwargs['vpdName']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("cidr", cidr)
         _setter("vpd_name", vpd_name)
         if resource_group_id is not None:
@@ -114,7 +120,17 @@ class _VpdState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              vpd_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createTime' in kwargs:
+            create_time = kwargs['createTime']
+        if 'gmtModified' in kwargs:
+            gmt_modified = kwargs['gmtModified']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+        if 'vpdName' in kwargs:
+            vpd_name = kwargs['vpdName']
+
         if cidr is not None:
             _setter("cidr", cidr)
         if create_time is not None:

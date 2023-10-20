@@ -19,9 +19,9 @@ class VulWhitelistArgs:
                  target_info: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VulWhitelist resource.
-        :param pulumi.Input[str] whitelist: Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        :param pulumi.Input[str] whitelist: Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         :param pulumi.Input[str] reason: Reason for adding whitelist.
-        :param pulumi.Input[str] target_info: Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        :param pulumi.Input[str] target_info: Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
         VulWhitelistArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -35,7 +35,11 @@ class VulWhitelistArgs:
              whitelist: pulumi.Input[str],
              reason: Optional[pulumi.Input[str]] = None,
              target_info: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'targetInfo' in kwargs:
+            target_info = kwargs['targetInfo']
+
         _setter("whitelist", whitelist)
         if reason is not None:
             _setter("reason", reason)
@@ -46,7 +50,7 @@ class VulWhitelistArgs:
     @pulumi.getter
     def whitelist(self) -> pulumi.Input[str]:
         """
-        Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
         return pulumi.get(self, "whitelist")
 
@@ -70,7 +74,7 @@ class VulWhitelistArgs:
     @pulumi.getter(name="targetInfo")
     def target_info(self) -> Optional[pulumi.Input[str]]:
         """
-        Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
         return pulumi.get(self, "target_info")
 
@@ -88,8 +92,8 @@ class _VulWhitelistState:
         """
         Input properties used for looking up and filtering VulWhitelist resources.
         :param pulumi.Input[str] reason: Reason for adding whitelist.
-        :param pulumi.Input[str] target_info: Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
-        :param pulumi.Input[str] whitelist: Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        :param pulumi.Input[str] target_info: Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
+        :param pulumi.Input[str] whitelist: Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
         _VulWhitelistState._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -103,7 +107,11 @@ class _VulWhitelistState:
              reason: Optional[pulumi.Input[str]] = None,
              target_info: Optional[pulumi.Input[str]] = None,
              whitelist: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'targetInfo' in kwargs:
+            target_info = kwargs['targetInfo']
+
         if reason is not None:
             _setter("reason", reason)
         if target_info is not None:
@@ -127,7 +135,7 @@ class _VulWhitelistState:
     @pulumi.getter(name="targetInfo")
     def target_info(self) -> Optional[pulumi.Input[str]]:
         """
-        Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
         return pulumi.get(self, "target_info")
 
@@ -139,7 +147,7 @@ class _VulWhitelistState:
     @pulumi.getter
     def whitelist(self) -> Optional[pulumi.Input[str]]:
         """
-        Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
         return pulumi.get(self, "whitelist")
 
@@ -160,7 +168,7 @@ class VulWhitelist(pulumi.CustomResource):
         """
         Provides a Threat Detection Vul Whitelist resource.
 
-        For information about Threat Detection Vul Whitelist and how to use it, see [What is Vul Whitelist](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        For information about Threat Detection Vul Whitelist and how to use it, see [What is Vul Whitelist](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 
         > **NOTE:** Available in v1.195.0+.
 
@@ -189,8 +197,8 @@ class VulWhitelist(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] reason: Reason for adding whitelist.
-        :param pulumi.Input[str] target_info: Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
-        :param pulumi.Input[str] whitelist: Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        :param pulumi.Input[str] target_info: Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
+        :param pulumi.Input[str] whitelist: Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
         ...
     @overload
@@ -201,7 +209,7 @@ class VulWhitelist(pulumi.CustomResource):
         """
         Provides a Threat Detection Vul Whitelist resource.
 
-        For information about Threat Detection Vul Whitelist and how to use it, see [What is Vul Whitelist](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        For information about Threat Detection Vul Whitelist and how to use it, see [What is Vul Whitelist](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
 
         > **NOTE:** Available in v1.195.0+.
 
@@ -284,8 +292,8 @@ class VulWhitelist(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] reason: Reason for adding whitelist.
-        :param pulumi.Input[str] target_info: Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
-        :param pulumi.Input[str] whitelist: Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        :param pulumi.Input[str] target_info: Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
+        :param pulumi.Input[str] whitelist: Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -308,7 +316,7 @@ class VulWhitelist(pulumi.CustomResource):
     @pulumi.getter(name="targetInfo")
     def target_info(self) -> pulumi.Output[Optional[str]]:
         """
-        Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
         return pulumi.get(self, "target_info")
 
@@ -316,7 +324,7 @@ class VulWhitelist(pulumi.CustomResource):
     @pulumi.getter
     def whitelist(self) -> pulumi.Output[str]:
         """
-        Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/latest/api-doc-sas-2018-12-03-api-doc-modifycreatevulwhitelist).
+        Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
         """
         return pulumi.get(self, "whitelist")
 

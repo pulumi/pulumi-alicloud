@@ -46,7 +46,17 @@ class AclArgs:
              dry_run: Optional[pulumi.Input[bool]] = None,
              resource_group_id: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclName' in kwargs:
+            acl_name = kwargs['aclName']
+        if 'aclEntries' in kwargs:
+            acl_entries = kwargs['aclEntries']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         _setter("acl_name", acl_name)
         if acl_entries is not None:
             warnings.warn("""Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""", DeprecationWarning)
@@ -162,7 +172,17 @@ class _AclState:
              resource_group_id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'aclEntries' in kwargs:
+            acl_entries = kwargs['aclEntries']
+        if 'aclName' in kwargs:
+            acl_name = kwargs['aclName']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'resourceGroupId' in kwargs:
+            resource_group_id = kwargs['resourceGroupId']
+
         if acl_entries is not None:
             warnings.warn("""Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""", DeprecationWarning)
             pulumi.log.warn("""acl_entries is deprecated: Field 'acl_entries' has been deprecated from provider version 1.166.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_acl_entry_attachment'.""")
@@ -270,7 +290,7 @@ class Acl(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Acl resource.
 
-        For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createacl).
+        For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createacl).
 
         > **NOTE:** Available since v1.133.0.
 
@@ -314,7 +334,7 @@ class Acl(pulumi.CustomResource):
         """
         Provides a Application Load Balancer (ALB) Acl resource.
 
-        For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createacl).
+        For information about ALB Acl and how to use it, see [What is Acl](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createacl).
 
         > **NOTE:** Available since v1.133.0.
 

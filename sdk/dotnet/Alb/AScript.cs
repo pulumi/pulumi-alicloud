@@ -12,7 +12,7 @@ namespace Pulumi.AliCloud.Alb
     /// <summary>
     /// Provides a Alb Ascript resource.
     /// 
-    /// For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/server-load-balancer/latest/api-doc-alb-2020-06-16-api-doc-createascripts).
+    /// For information about Alb Ascript and how to use it, see [What is AScript](https://www.alibabacloud.com/help/en/slb/application-load-balancer/developer-reference/api-alb-2020-06-16-createascripts).
     /// 
     /// &gt; **NOTE:** Available since v1.195.0.
     /// 

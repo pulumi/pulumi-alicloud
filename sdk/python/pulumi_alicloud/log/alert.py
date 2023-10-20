@@ -136,7 +136,47 @@ class AlertArgs:
              throttling: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertDisplayname' in kwargs:
+            alert_displayname = kwargs['alertDisplayname']
+        if 'alertName' in kwargs:
+            alert_name = kwargs['alertName']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'alertDescription' in kwargs:
+            alert_description = kwargs['alertDescription']
+        if 'autoAnnotation' in kwargs:
+            auto_annotation = kwargs['autoAnnotation']
+        if 'groupConfiguration' in kwargs:
+            group_configuration = kwargs['groupConfiguration']
+        if 'joinConfigurations' in kwargs:
+            join_configurations = kwargs['joinConfigurations']
+        if 'muteUntil' in kwargs:
+            mute_until = kwargs['muteUntil']
+        if 'noDataFire' in kwargs:
+            no_data_fire = kwargs['noDataFire']
+        if 'noDataSeverity' in kwargs:
+            no_data_severity = kwargs['noDataSeverity']
+        if 'notificationLists' in kwargs:
+            notification_lists = kwargs['notificationLists']
+        if 'notifyThreshold' in kwargs:
+            notify_threshold = kwargs['notifyThreshold']
+        if 'policyConfiguration' in kwargs:
+            policy_configuration = kwargs['policyConfiguration']
+        if 'queryLists' in kwargs:
+            query_lists = kwargs['queryLists']
+        if 'scheduleInterval' in kwargs:
+            schedule_interval = kwargs['scheduleInterval']
+        if 'scheduleType' in kwargs:
+            schedule_type = kwargs['scheduleType']
+        if 'sendResolved' in kwargs:
+            send_resolved = kwargs['sendResolved']
+        if 'severityConfigurations' in kwargs:
+            severity_configurations = kwargs['severityConfigurations']
+        if 'templateConfiguration' in kwargs:
+            template_configuration = kwargs['templateConfiguration']
+
         _setter("alert_displayname", alert_displayname)
         _setter("alert_name", alert_name)
         _setter("project_name", project_name)
@@ -690,7 +730,47 @@ class _AlertState:
              throttling: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertDescription' in kwargs:
+            alert_description = kwargs['alertDescription']
+        if 'alertDisplayname' in kwargs:
+            alert_displayname = kwargs['alertDisplayname']
+        if 'alertName' in kwargs:
+            alert_name = kwargs['alertName']
+        if 'autoAnnotation' in kwargs:
+            auto_annotation = kwargs['autoAnnotation']
+        if 'groupConfiguration' in kwargs:
+            group_configuration = kwargs['groupConfiguration']
+        if 'joinConfigurations' in kwargs:
+            join_configurations = kwargs['joinConfigurations']
+        if 'muteUntil' in kwargs:
+            mute_until = kwargs['muteUntil']
+        if 'noDataFire' in kwargs:
+            no_data_fire = kwargs['noDataFire']
+        if 'noDataSeverity' in kwargs:
+            no_data_severity = kwargs['noDataSeverity']
+        if 'notificationLists' in kwargs:
+            notification_lists = kwargs['notificationLists']
+        if 'notifyThreshold' in kwargs:
+            notify_threshold = kwargs['notifyThreshold']
+        if 'policyConfiguration' in kwargs:
+            policy_configuration = kwargs['policyConfiguration']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+        if 'queryLists' in kwargs:
+            query_lists = kwargs['queryLists']
+        if 'scheduleInterval' in kwargs:
+            schedule_interval = kwargs['scheduleInterval']
+        if 'scheduleType' in kwargs:
+            schedule_type = kwargs['scheduleType']
+        if 'sendResolved' in kwargs:
+            send_resolved = kwargs['sendResolved']
+        if 'severityConfigurations' in kwargs:
+            severity_configurations = kwargs['severityConfigurations']
+        if 'templateConfiguration' in kwargs:
+            template_configuration = kwargs['templateConfiguration']
+
         if alert_description is not None:
             _setter("alert_description", alert_description)
         if alert_displayname is not None:

@@ -27,7 +27,7 @@ type DBCluster struct {
 
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
 	AutoRenewPeriod pulumi.IntOutput `pulumi:"autoRenewPeriod"`
-	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
 	ComputeResource pulumi.StringPtrOutput `pulumi:"computeResource"`
 	// The connection string of the cluster.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
@@ -130,7 +130,7 @@ func GetDBCluster(ctx *pulumi.Context,
 type dbclusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
 	ComputeResource *string `pulumi:"computeResource"`
 	// The connection string of the cluster.
 	ConnectionString *string `pulumi:"connectionString"`
@@ -198,7 +198,7 @@ type dbclusterState struct {
 type DBClusterState struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
 	ComputeResource pulumi.StringPtrInput
 	// The connection string of the cluster.
 	ConnectionString pulumi.StringPtrInput
@@ -270,7 +270,7 @@ func (DBClusterState) ElementType() reflect.Type {
 type dbclusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
-	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
 	ComputeResource *string `pulumi:"computeResource"`
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory string `pulumi:"dbClusterCategory"`
@@ -333,7 +333,7 @@ type dbclusterArgs struct {
 type DBClusterArgs struct {
 	// Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
 	AutoRenewPeriod pulumi.IntPtrInput
-	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+	// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
 	ComputeResource pulumi.StringPtrInput
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory pulumi.StringInput
@@ -508,7 +508,7 @@ func (o DBClusterOutput) AutoRenewPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.IntOutput { return v.AutoRenewPeriod }).(pulumi.IntOutput)
 }
 
-// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/doc-detail/144851.htm)
+// The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
 func (o DBClusterOutput) ComputeResource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringPtrOutput { return v.ComputeResource }).(pulumi.StringPtrOutput)
 }

@@ -55,7 +55,15 @@ class TopicArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              topic: Optional[pulumi.Input[str]] = None,
              topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'messageType' in kwargs:
+            message_type = kwargs['messageType']
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+
         _setter("instance_id", instance_id)
         _setter("message_type", message_type)
         if perm is not None:
@@ -214,7 +222,15 @@ class _TopicState:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              topic: Optional[pulumi.Input[str]] = None,
              topic_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'messageType' in kwargs:
+            message_type = kwargs['messageType']
+        if 'topicName' in kwargs:
+            topic_name = kwargs['topicName']
+
         if instance_id is not None:
             _setter("instance_id", instance_id)
         if message_type is not None:

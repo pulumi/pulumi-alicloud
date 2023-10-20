@@ -73,7 +73,33 @@ class DbInstanceArgs:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dbInstanceCategory' in kwargs:
+            db_instance_category = kwargs['dbInstanceCategory']
+        if 'dbInstanceNetworkType' in kwargs:
+            db_instance_network_type = kwargs['dbInstanceNetworkType']
+        if 'dbInstanceStorageType' in kwargs:
+            db_instance_storage_type = kwargs['dbInstanceStorageType']
+        if 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if 'dbVersion' in kwargs:
+            db_version = kwargs['dbVersion']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'dbInstanceDescription' in kwargs:
+            db_instance_description = kwargs['dbInstanceDescription']
+        if 'dbInstanceIpArrays' in kwargs:
+            db_instance_ip_arrays = kwargs['dbInstanceIpArrays']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("db_instance_category", db_instance_category)
         _setter("db_instance_network_type", db_instance_network_type)
         _setter("db_instance_storage_type", db_instance_storage_type)
@@ -309,7 +335,35 @@ class _DbInstanceState:
              vpc_id: Optional[pulumi.Input[str]] = None,
              vswitch_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'connectionString' in kwargs:
+            connection_string = kwargs['connectionString']
+        if 'dbInstanceCategory' in kwargs:
+            db_instance_category = kwargs['dbInstanceCategory']
+        if 'dbInstanceDescription' in kwargs:
+            db_instance_description = kwargs['dbInstanceDescription']
+        if 'dbInstanceIpArrays' in kwargs:
+            db_instance_ip_arrays = kwargs['dbInstanceIpArrays']
+        if 'dbInstanceNetworkType' in kwargs:
+            db_instance_network_type = kwargs['dbInstanceNetworkType']
+        if 'dbInstanceStorageType' in kwargs:
+            db_instance_storage_type = kwargs['dbInstanceStorageType']
+        if 'dbNodeClass' in kwargs:
+            db_node_class = kwargs['dbNodeClass']
+        if 'dbNodeStorage' in kwargs:
+            db_node_storage = kwargs['dbNodeStorage']
+        if 'dbVersion' in kwargs:
+            db_version = kwargs['dbVersion']
+        if 'paymentType' in kwargs:
+            payment_type = kwargs['paymentType']
+        if 'vpcId' in kwargs:
+            vpc_id = kwargs['vpcId']
+        if 'vswitchId' in kwargs:
+            vswitch_id = kwargs['vswitchId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if connection_string is not None:
             _setter("connection_string", connection_string)
         if db_instance_category is not None:

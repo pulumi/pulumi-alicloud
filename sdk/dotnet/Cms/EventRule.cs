@@ -39,26 +39,26 @@ namespace Pulumi.AliCloud.Cms
     ///     {
     ///         RuleName = name,
     ///         GroupId = @default.Id,
+    ///         SilenceTime = 100,
     ///         Description = name,
     ///         Status = "ENABLED",
     ///         EventPattern = new AliCloud.Cms.Inputs.EventRuleEventPatternArgs
     ///         {
     ///             Product = "ecs",
-    ///             EventTypeLists = new[]
+    ///             SqlFilter = "example_value",
+    ///             NameLists = new[]
     ///             {
-    ///                 "StatusNotification",
+    ///                 "example_value",
     ///             },
     ///             LevelLists = new[]
     ///             {
     ///                 "CRITICAL",
     ///             },
-    ///             NameLists = new[]
+    ///             EventTypeLists = new[]
     ///             {
-    ///                 "example_value",
+    ///                 "StatusNotification",
     ///             },
-    ///             SqlFilter = "example_value",
     ///         },
-    ///         SilenceTime = 100,
     ///     });
     /// 
     /// });
@@ -76,6 +76,12 @@ namespace Pulumi.AliCloud.Cms
     public partial class EventRule : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+        /// </summary>
+        [Output("contactParameters")]
+        public Output<ImmutableArray<Outputs.EventRuleContactParameter>> ContactParameters { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the event-triggered alert rule.
         /// </summary>
         [Output("description")]
@@ -88,10 +94,28 @@ namespace Pulumi.AliCloud.Cms
         public Output<Outputs.EventRuleEventPattern> EventPattern { get; private set; } = null!;
 
         /// <summary>
+        /// The information about the recipients in Function Compute. See `fc_parameters` below.
+        /// </summary>
+        [Output("fcParameters")]
+        public Output<ImmutableArray<Outputs.EventRuleFcParameter>> FcParameters { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the application group to which the event-triggered alert rule belongs.
         /// </summary>
         [Output("groupId")]
         public Output<string?> GroupId { get; private set; } = null!;
+
+        /// <summary>
+        /// The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+        /// </summary>
+        [Output("mnsParameters")]
+        public Output<ImmutableArray<Outputs.EventRuleMnsParameter>> MnsParameters { get; private set; } = null!;
+
+        /// <summary>
+        /// The parameters of API callback notification. See `open_api_parameters` below.
+        /// </summary>
+        [Output("openApiParameters")]
+        public Output<ImmutableArray<Outputs.EventRuleOpenApiParameter>> OpenApiParameters { get; private set; } = null!;
 
         /// <summary>
         /// The name of the event-triggered alert rule.
@@ -106,10 +130,22 @@ namespace Pulumi.AliCloud.Cms
         public Output<int?> SilenceTime { get; private set; } = null!;
 
         /// <summary>
+        /// The information about the recipients in Simple Log Service. See `sls_parameters` below.
+        /// </summary>
+        [Output("slsParameters")]
+        public Output<ImmutableArray<Outputs.EventRuleSlsParameter>> SlsParameters { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the resource. Valid values: `ENABLED`, `DISABLED`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
+        /// The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+        /// </summary>
+        [Output("webhookParameters")]
+        public Output<ImmutableArray<Outputs.EventRuleWebhookParameter>> WebhookParameters { get; private set; } = null!;
 
 
         /// <summary>
@@ -157,6 +193,18 @@ namespace Pulumi.AliCloud.Cms
 
     public sealed class EventRuleArgs : global::Pulumi.ResourceArgs
     {
+        [Input("contactParameters")]
+        private InputList<Inputs.EventRuleContactParameterArgs>? _contactParameters;
+
+        /// <summary>
+        /// The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+        /// </summary>
+        public InputList<Inputs.EventRuleContactParameterArgs> ContactParameters
+        {
+            get => _contactParameters ?? (_contactParameters = new InputList<Inputs.EventRuleContactParameterArgs>());
+            set => _contactParameters = value;
+        }
+
         /// <summary>
         /// The description of the event-triggered alert rule.
         /// </summary>
@@ -169,11 +217,47 @@ namespace Pulumi.AliCloud.Cms
         [Input("eventPattern", required: true)]
         public Input<Inputs.EventRuleEventPatternArgs> EventPattern { get; set; } = null!;
 
+        [Input("fcParameters")]
+        private InputList<Inputs.EventRuleFcParameterArgs>? _fcParameters;
+
+        /// <summary>
+        /// The information about the recipients in Function Compute. See `fc_parameters` below.
+        /// </summary>
+        public InputList<Inputs.EventRuleFcParameterArgs> FcParameters
+        {
+            get => _fcParameters ?? (_fcParameters = new InputList<Inputs.EventRuleFcParameterArgs>());
+            set => _fcParameters = value;
+        }
+
         /// <summary>
         /// The ID of the application group to which the event-triggered alert rule belongs.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
+
+        [Input("mnsParameters")]
+        private InputList<Inputs.EventRuleMnsParameterArgs>? _mnsParameters;
+
+        /// <summary>
+        /// The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+        /// </summary>
+        public InputList<Inputs.EventRuleMnsParameterArgs> MnsParameters
+        {
+            get => _mnsParameters ?? (_mnsParameters = new InputList<Inputs.EventRuleMnsParameterArgs>());
+            set => _mnsParameters = value;
+        }
+
+        [Input("openApiParameters")]
+        private InputList<Inputs.EventRuleOpenApiParameterArgs>? _openApiParameters;
+
+        /// <summary>
+        /// The parameters of API callback notification. See `open_api_parameters` below.
+        /// </summary>
+        public InputList<Inputs.EventRuleOpenApiParameterArgs> OpenApiParameters
+        {
+            get => _openApiParameters ?? (_openApiParameters = new InputList<Inputs.EventRuleOpenApiParameterArgs>());
+            set => _openApiParameters = value;
+        }
 
         /// <summary>
         /// The name of the event-triggered alert rule.
@@ -187,11 +271,35 @@ namespace Pulumi.AliCloud.Cms
         [Input("silenceTime")]
         public Input<int>? SilenceTime { get; set; }
 
+        [Input("slsParameters")]
+        private InputList<Inputs.EventRuleSlsParameterArgs>? _slsParameters;
+
+        /// <summary>
+        /// The information about the recipients in Simple Log Service. See `sls_parameters` below.
+        /// </summary>
+        public InputList<Inputs.EventRuleSlsParameterArgs> SlsParameters
+        {
+            get => _slsParameters ?? (_slsParameters = new InputList<Inputs.EventRuleSlsParameterArgs>());
+            set => _slsParameters = value;
+        }
+
         /// <summary>
         /// The status of the resource. Valid values: `ENABLED`, `DISABLED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("webhookParameters")]
+        private InputList<Inputs.EventRuleWebhookParameterArgs>? _webhookParameters;
+
+        /// <summary>
+        /// The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+        /// </summary>
+        public InputList<Inputs.EventRuleWebhookParameterArgs> WebhookParameters
+        {
+            get => _webhookParameters ?? (_webhookParameters = new InputList<Inputs.EventRuleWebhookParameterArgs>());
+            set => _webhookParameters = value;
+        }
 
         public EventRuleArgs()
         {
@@ -201,6 +309,18 @@ namespace Pulumi.AliCloud.Cms
 
     public sealed class EventRuleState : global::Pulumi.ResourceArgs
     {
+        [Input("contactParameters")]
+        private InputList<Inputs.EventRuleContactParameterGetArgs>? _contactParameters;
+
+        /// <summary>
+        /// The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
+        /// </summary>
+        public InputList<Inputs.EventRuleContactParameterGetArgs> ContactParameters
+        {
+            get => _contactParameters ?? (_contactParameters = new InputList<Inputs.EventRuleContactParameterGetArgs>());
+            set => _contactParameters = value;
+        }
+
         /// <summary>
         /// The description of the event-triggered alert rule.
         /// </summary>
@@ -213,11 +333,47 @@ namespace Pulumi.AliCloud.Cms
         [Input("eventPattern")]
         public Input<Inputs.EventRuleEventPatternGetArgs>? EventPattern { get; set; }
 
+        [Input("fcParameters")]
+        private InputList<Inputs.EventRuleFcParameterGetArgs>? _fcParameters;
+
+        /// <summary>
+        /// The information about the recipients in Function Compute. See `fc_parameters` below.
+        /// </summary>
+        public InputList<Inputs.EventRuleFcParameterGetArgs> FcParameters
+        {
+            get => _fcParameters ?? (_fcParameters = new InputList<Inputs.EventRuleFcParameterGetArgs>());
+            set => _fcParameters = value;
+        }
+
         /// <summary>
         /// The ID of the application group to which the event-triggered alert rule belongs.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
+
+        [Input("mnsParameters")]
+        private InputList<Inputs.EventRuleMnsParameterGetArgs>? _mnsParameters;
+
+        /// <summary>
+        /// The information about the recipients in Message Service (MNS). See `mns_parameters` below.
+        /// </summary>
+        public InputList<Inputs.EventRuleMnsParameterGetArgs> MnsParameters
+        {
+            get => _mnsParameters ?? (_mnsParameters = new InputList<Inputs.EventRuleMnsParameterGetArgs>());
+            set => _mnsParameters = value;
+        }
+
+        [Input("openApiParameters")]
+        private InputList<Inputs.EventRuleOpenApiParameterGetArgs>? _openApiParameters;
+
+        /// <summary>
+        /// The parameters of API callback notification. See `open_api_parameters` below.
+        /// </summary>
+        public InputList<Inputs.EventRuleOpenApiParameterGetArgs> OpenApiParameters
+        {
+            get => _openApiParameters ?? (_openApiParameters = new InputList<Inputs.EventRuleOpenApiParameterGetArgs>());
+            set => _openApiParameters = value;
+        }
 
         /// <summary>
         /// The name of the event-triggered alert rule.
@@ -231,11 +387,35 @@ namespace Pulumi.AliCloud.Cms
         [Input("silenceTime")]
         public Input<int>? SilenceTime { get; set; }
 
+        [Input("slsParameters")]
+        private InputList<Inputs.EventRuleSlsParameterGetArgs>? _slsParameters;
+
+        /// <summary>
+        /// The information about the recipients in Simple Log Service. See `sls_parameters` below.
+        /// </summary>
+        public InputList<Inputs.EventRuleSlsParameterGetArgs> SlsParameters
+        {
+            get => _slsParameters ?? (_slsParameters = new InputList<Inputs.EventRuleSlsParameterGetArgs>());
+            set => _slsParameters = value;
+        }
+
         /// <summary>
         /// The status of the resource. Valid values: `ENABLED`, `DISABLED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        [Input("webhookParameters")]
+        private InputList<Inputs.EventRuleWebhookParameterGetArgs>? _webhookParameters;
+
+        /// <summary>
+        /// The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
+        /// </summary>
+        public InputList<Inputs.EventRuleWebhookParameterGetArgs> WebhookParameters
+        {
+            get => _webhookParameters ?? (_webhookParameters = new InputList<Inputs.EventRuleWebhookParameterGetArgs>());
+            set => _webhookParameters = value;
+        }
 
         public EventRuleState()
         {

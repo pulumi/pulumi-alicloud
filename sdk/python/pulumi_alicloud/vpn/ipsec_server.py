@@ -65,7 +65,27 @@ class IpsecServerArgs:
              ipsec_server_name: Optional[pulumi.Input[str]] = None,
              psk: Optional[pulumi.Input[str]] = None,
              psk_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientIpPool' in kwargs:
+            client_ip_pool = kwargs['clientIpPool']
+        if 'localSubnet' in kwargs:
+            local_subnet = kwargs['localSubnet']
+        if 'vpnGatewayId' in kwargs:
+            vpn_gateway_id = kwargs['vpnGatewayId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'effectImmediately' in kwargs:
+            effect_immediately = kwargs['effectImmediately']
+        if 'ikeConfigs' in kwargs:
+            ike_configs = kwargs['ikeConfigs']
+        if 'ipsecConfigs' in kwargs:
+            ipsec_configs = kwargs['ipsecConfigs']
+        if 'ipsecServerName' in kwargs:
+            ipsec_server_name = kwargs['ipsecServerName']
+        if 'pskEnabled' in kwargs:
+            psk_enabled = kwargs['pskEnabled']
+
         _setter("client_ip_pool", client_ip_pool)
         _setter("local_subnet", local_subnet)
         _setter("vpn_gateway_id", vpn_gateway_id)
@@ -257,7 +277,27 @@ class _IpsecServerState:
              psk: Optional[pulumi.Input[str]] = None,
              psk_enabled: Optional[pulumi.Input[bool]] = None,
              vpn_gateway_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'clientIpPool' in kwargs:
+            client_ip_pool = kwargs['clientIpPool']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'effectImmediately' in kwargs:
+            effect_immediately = kwargs['effectImmediately']
+        if 'ikeConfigs' in kwargs:
+            ike_configs = kwargs['ikeConfigs']
+        if 'ipsecConfigs' in kwargs:
+            ipsec_configs = kwargs['ipsecConfigs']
+        if 'ipsecServerName' in kwargs:
+            ipsec_server_name = kwargs['ipsecServerName']
+        if 'localSubnet' in kwargs:
+            local_subnet = kwargs['localSubnet']
+        if 'pskEnabled' in kwargs:
+            psk_enabled = kwargs['pskEnabled']
+        if 'vpnGatewayId' in kwargs:
+            vpn_gateway_id = kwargs['vpnGatewayId']
+
         if client_ip_pool is not None:
             _setter("client_ip_pool", client_ip_pool)
         if dry_run is not None:

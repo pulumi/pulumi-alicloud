@@ -63,7 +63,23 @@ class DataLimitArgs:
              port: Optional[pulumi.Input[int]] = None,
              service_region_id: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'auditStatus' in kwargs:
+            audit_status = kwargs['auditStatus']
+        if 'engineType' in kwargs:
+            engine_type = kwargs['engineType']
+        if 'logStoreDay' in kwargs:
+            log_store_day = kwargs['logStoreDay']
+        if 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if 'serviceRegionId' in kwargs:
+            service_region_id = kwargs['serviceRegionId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         _setter("resource_type", resource_type)
         if audit_status is not None:
             _setter("audit_status", audit_status)
@@ -257,7 +273,23 @@ class _DataLimitState:
              resource_type: Optional[pulumi.Input[str]] = None,
              service_region_id: Optional[pulumi.Input[str]] = None,
              user_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'auditStatus' in kwargs:
+            audit_status = kwargs['auditStatus']
+        if 'engineType' in kwargs:
+            engine_type = kwargs['engineType']
+        if 'logStoreDay' in kwargs:
+            log_store_day = kwargs['logStoreDay']
+        if 'parentId' in kwargs:
+            parent_id = kwargs['parentId']
+        if 'resourceType' in kwargs:
+            resource_type = kwargs['resourceType']
+        if 'serviceRegionId' in kwargs:
+            service_region_id = kwargs['serviceRegionId']
+        if 'userName' in kwargs:
+            user_name = kwargs['userName']
+
         if audit_status is not None:
             _setter("audit_status", audit_status)
         if engine_type is not None:

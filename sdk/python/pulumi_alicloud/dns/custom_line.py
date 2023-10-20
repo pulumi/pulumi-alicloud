@@ -41,7 +41,15 @@ class CustomLineArgs:
              domain_name: pulumi.Input[str],
              ip_segment_lists: pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]],
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customLineName' in kwargs:
+            custom_line_name = kwargs['customLineName']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'ipSegmentLists' in kwargs:
+            ip_segment_lists = kwargs['ipSegmentLists']
+
         _setter("custom_line_name", custom_line_name)
         _setter("domain_name", domain_name)
         _setter("ip_segment_lists", ip_segment_lists)
@@ -125,7 +133,15 @@ class _CustomLineState:
              domain_name: Optional[pulumi.Input[str]] = None,
              ip_segment_lists: Optional[pulumi.Input[Sequence[pulumi.Input['CustomLineIpSegmentListArgs']]]] = None,
              lang: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customLineName' in kwargs:
+            custom_line_name = kwargs['customLineName']
+        if 'domainName' in kwargs:
+            domain_name = kwargs['domainName']
+        if 'ipSegmentLists' in kwargs:
+            ip_segment_lists = kwargs['ipSegmentLists']
+
         if custom_line_name is not None:
             _setter("custom_line_name", custom_line_name)
         if domain_name is not None:

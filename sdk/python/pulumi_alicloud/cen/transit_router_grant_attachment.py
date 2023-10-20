@@ -43,7 +43,19 @@ class TransitRouterGrantAttachmentArgs:
              instance_id: pulumi.Input[str],
              instance_type: pulumi.Input[str],
              order_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'orderType' in kwargs:
+            order_type = kwargs['orderType']
+
         _setter("cen_id", cen_id)
         _setter("cen_owner_id", cen_owner_id)
         _setter("instance_id", instance_id)
@@ -144,7 +156,19 @@ class _TransitRouterGrantAttachmentState:
              instance_id: Optional[pulumi.Input[str]] = None,
              instance_type: Optional[pulumi.Input[str]] = None,
              order_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'cenOwnerId' in kwargs:
+            cen_owner_id = kwargs['cenOwnerId']
+        if 'instanceId' in kwargs:
+            instance_id = kwargs['instanceId']
+        if 'instanceType' in kwargs:
+            instance_type = kwargs['instanceType']
+        if 'orderType' in kwargs:
+            order_type = kwargs['orderType']
+
         if cen_id is not None:
             _setter("cen_id", cen_id)
         if cen_owner_id is not None:

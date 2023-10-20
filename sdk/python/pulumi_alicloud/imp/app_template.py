@@ -47,7 +47,17 @@ class AppTemplateArgs:
              config_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]] = None,
              integration_mode: Optional[pulumi.Input[str]] = None,
              scene: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appTemplateName' in kwargs:
+            app_template_name = kwargs['appTemplateName']
+        if 'componentLists' in kwargs:
+            component_lists = kwargs['componentLists']
+        if 'configLists' in kwargs:
+            config_lists = kwargs['configLists']
+        if 'integrationMode' in kwargs:
+            integration_mode = kwargs['integrationMode']
+
         _setter("app_template_name", app_template_name)
         _setter("component_lists", component_lists)
         if config_lists is not None:
@@ -158,7 +168,17 @@ class _AppTemplateState:
              integration_mode: Optional[pulumi.Input[str]] = None,
              scene: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'appTemplateName' in kwargs:
+            app_template_name = kwargs['appTemplateName']
+        if 'componentLists' in kwargs:
+            component_lists = kwargs['componentLists']
+        if 'configLists' in kwargs:
+            config_lists = kwargs['configLists']
+        if 'integrationMode' in kwargs:
+            integration_mode = kwargs['integrationMode']
+
         if app_template_name is not None:
             _setter("app_template_name", app_template_name)
         if component_lists is not None:

@@ -61,7 +61,15 @@ class PolicyArgs:
              rotate_strategy: Optional[pulumi.Input[str]] = None,
              statements: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyStatementArgs']]]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'rotateStrategy' in kwargs:
+            rotate_strategy = kwargs['rotateStrategy']
+
         if description is not None:
             _setter("description", description)
         if document is not None:
@@ -278,7 +286,21 @@ class _PolicyState:
              type: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
              version_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'attachmentCount' in kwargs:
+            attachment_count = kwargs['attachmentCount']
+        if 'defaultVersion' in kwargs:
+            default_version = kwargs['defaultVersion']
+        if 'policyDocument' in kwargs:
+            policy_document = kwargs['policyDocument']
+        if 'policyName' in kwargs:
+            policy_name = kwargs['policyName']
+        if 'rotateStrategy' in kwargs:
+            rotate_strategy = kwargs['rotateStrategy']
+        if 'versionId' in kwargs:
+            version_id = kwargs['versionId']
+
         if attachment_count is not None:
             _setter("attachment_count", attachment_count)
         if default_version is not None:

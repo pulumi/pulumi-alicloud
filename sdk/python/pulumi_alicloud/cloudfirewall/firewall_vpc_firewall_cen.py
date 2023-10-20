@@ -53,7 +53,19 @@ class FirewallVpcFirewallCenArgs:
              vpc_region: pulumi.Input[str],
              lang: Optional[pulumi.Input[str]] = None,
              member_uid: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'localVpc' in kwargs:
+            local_vpc = kwargs['localVpc']
+        if 'vpcFirewallName' in kwargs:
+            vpc_firewall_name = kwargs['vpcFirewallName']
+        if 'vpcRegion' in kwargs:
+            vpc_region = kwargs['vpcRegion']
+        if 'memberUid' in kwargs:
+            member_uid = kwargs['memberUid']
+
         _setter("cen_id", cen_id)
         _setter("local_vpc", local_vpc)
         _setter("status", status)
@@ -197,7 +209,23 @@ class _FirewallVpcFirewallCenState:
              vpc_firewall_id: Optional[pulumi.Input[str]] = None,
              vpc_firewall_name: Optional[pulumi.Input[str]] = None,
              vpc_region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cenId' in kwargs:
+            cen_id = kwargs['cenId']
+        if 'connectType' in kwargs:
+            connect_type = kwargs['connectType']
+        if 'localVpc' in kwargs:
+            local_vpc = kwargs['localVpc']
+        if 'memberUid' in kwargs:
+            member_uid = kwargs['memberUid']
+        if 'vpcFirewallId' in kwargs:
+            vpc_firewall_id = kwargs['vpcFirewallId']
+        if 'vpcFirewallName' in kwargs:
+            vpc_firewall_name = kwargs['vpcFirewallName']
+        if 'vpcRegion' in kwargs:
+            vpc_region = kwargs['vpcRegion']
+
         if cen_id is not None:
             _setter("cen_id", cen_id)
         if connect_type is not None:

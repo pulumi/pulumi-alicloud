@@ -8,7 +8,7 @@ import * as utilities from "../utilities";
 
 /**
  * Provides a AnalyticDB for PostgreSQL instance resource supports replica set instances only. the AnalyticDB for PostgreSQL provides stable, reliable, and automatic scalable database services.
- * You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance)
+ * You can see detail product introduction [here](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance)
  *
  * > **NOTE:** Available since v1.47.0.
  *
@@ -137,7 +137,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly encryptionType!: pulumi.Output<string | undefined>;
     /**
-     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -409,7 +409,7 @@ export interface InstanceState {
      */
     encryptionType?: pulumi.Input<string>;
     /**
-     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
      */
     engine?: pulumi.Input<string>;
     /**
@@ -573,7 +573,7 @@ export interface InstanceArgs {
      */
     encryptionType?: pulumi.Input<string>;
     /**
-     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-doc-gpdb-2016-05-03-api-doc-createdbinstance) `EngineVersion`.
+     * The database engine used by the instance. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/analyticdb-for-postgresql/latest/api-gpdb-2016-05-03-createdbinstance) `EngineVersion`.
      */
     engine: pulumi.Input<string>;
     /**

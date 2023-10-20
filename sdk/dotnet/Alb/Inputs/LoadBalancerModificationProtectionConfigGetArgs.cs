@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Alb.Inputs
     public sealed class LoadBalancerModificationProtectionConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. **Note:** This parameter takes effect only when `status` is set to `ConsoleProtection`.
+        /// Managed Instance.
         /// </summary>
         [Input("reason")]
         public Input<string>? Reason { get; set; }
 
         /// <summary>
-        /// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
+        /// Load Balancing Modify the Protection Status.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

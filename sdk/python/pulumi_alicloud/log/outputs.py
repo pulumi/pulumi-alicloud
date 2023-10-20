@@ -53,7 +53,9 @@ class AlertAnnotation(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -92,7 +94,9 @@ class AlertGroupConfiguration(dict):
              _setter: Callable[[Any, Any], None],
              type: str,
              fields: Optional[Sequence[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("type", type)
         if fields is not None:
             _setter("fields", fields)
@@ -130,7 +134,9 @@ class AlertJoinConfiguration(dict):
              _setter: Callable[[Any, Any], None],
              condition: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("condition", condition)
         _setter("type", type)
 
@@ -170,7 +176,9 @@ class AlertLabel(dict):
              _setter: Callable[[Any, Any], None],
              key: str,
              value: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("key", key)
         _setter("value", value)
 
@@ -243,7 +251,15 @@ class AlertNotificationList(dict):
              email_lists: Optional[Sequence[str]] = None,
              mobile_lists: Optional[Sequence[str]] = None,
              service_uri: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'emailLists' in kwargs:
+            email_lists = kwargs['emailLists']
+        if 'mobileLists' in kwargs:
+            mobile_lists = kwargs['mobileLists']
+        if 'serviceUri' in kwargs:
+            service_uri = kwargs['serviceUri']
+
         _setter("content", content)
         _setter("type", type)
         if email_lists is not None:
@@ -338,7 +354,15 @@ class AlertPolicyConfiguration(dict):
              alert_policy_id: str,
              repeat_interval: str,
              action_policy_id: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'alertPolicyId' in kwargs:
+            alert_policy_id = kwargs['alertPolicyId']
+        if 'repeatInterval' in kwargs:
+            repeat_interval = kwargs['repeatInterval']
+        if 'actionPolicyId' in kwargs:
+            action_policy_id = kwargs['actionPolicyId']
+
         _setter("alert_policy_id", alert_policy_id)
         _setter("repeat_interval", repeat_interval)
         if action_policy_id is not None:
@@ -459,7 +483,21 @@ class AlertQueryList(dict):
              store: Optional[str] = None,
              store_type: Optional[str] = None,
              time_span_type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'chartTitle' in kwargs:
+            chart_title = kwargs['chartTitle']
+        if 'dashboardId' in kwargs:
+            dashboard_id = kwargs['dashboardId']
+        if 'powerSqlMode' in kwargs:
+            power_sql_mode = kwargs['powerSqlMode']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+        if 'storeType' in kwargs:
+            store_type = kwargs['storeType']
+        if 'timeSpanType' in kwargs:
+            time_span_type = kwargs['timeSpanType']
+
         _setter("end", end)
         _setter("query", query)
         _setter("start", start)
@@ -656,7 +694,17 @@ class AlertSchedule(dict):
              interval: Optional[str] = None,
              run_immediately: Optional[bool] = None,
              time_zone: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if 'dayOfWeek' in kwargs:
+            day_of_week = kwargs['dayOfWeek']
+        if 'runImmediately' in kwargs:
+            run_immediately = kwargs['runImmediately']
+        if 'timeZone' in kwargs:
+            time_zone = kwargs['timeZone']
+
         _setter("type", type)
         if cron_expression is not None:
             _setter("cron_expression", cron_expression)
@@ -768,7 +816,11 @@ class AlertSeverityConfiguration(dict):
              _setter: Callable[[Any, Any], None],
              eval_condition: Mapping[str, str],
              severity: int,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'evalCondition' in kwargs:
+            eval_condition = kwargs['evalCondition']
+
         _setter("eval_condition", eval_condition)
         _setter("severity", severity)
 
@@ -820,7 +872,9 @@ class AlertTemplateConfiguration(dict):
              annotations: Optional[Mapping[str, str]] = None,
              lang: Optional[str] = None,
              tokens: Optional[Mapping[str, str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("id", id)
         _setter("type", type)
         if annotations is not None:
@@ -949,7 +1003,19 @@ class EtlEtlSink(dict):
              kms_encrypted_access_key_secret: Optional[str] = None,
              role_arn: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accessKeyId' in kwargs:
+            access_key_id = kwargs['accessKeyId']
+        if 'accessKeySecret' in kwargs:
+            access_key_secret = kwargs['accessKeySecret']
+        if 'kmsEncryptedAccessKeyId' in kwargs:
+            kms_encrypted_access_key_id = kwargs['kmsEncryptedAccessKeyId']
+        if 'kmsEncryptedAccessKeySecret' in kwargs:
+            kms_encrypted_access_key_secret = kwargs['kmsEncryptedAccessKeySecret']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
         _setter("endpoint", endpoint)
         _setter("logstore", logstore)
         _setter("name", name)
@@ -1069,7 +1135,9 @@ class OssExportConfigColumn(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("type", type)
 
@@ -1105,7 +1173,9 @@ class OssShipperParquetConfig(dict):
              _setter: Callable[[Any, Any], None],
              name: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+
         _setter("name", name)
         _setter("type", type)
 
@@ -1165,7 +1235,13 @@ class StoreEncryptConf(dict):
              enable: Optional[bool] = None,
              encrypt_type: Optional[str] = None,
              user_cmk_info: Optional['outputs.StoreEncryptConfUserCmkInfo'] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'encryptType' in kwargs:
+            encrypt_type = kwargs['encryptType']
+        if 'userCmkInfo' in kwargs:
+            user_cmk_info = kwargs['userCmkInfo']
+
         if enable is not None:
             _setter("enable", enable)
         if encrypt_type is not None:
@@ -1243,7 +1319,13 @@ class StoreEncryptConfUserCmkInfo(dict):
              arn: str,
              cmk_key_id: str,
              region_id: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cmkKeyId' in kwargs:
+            cmk_key_id = kwargs['cmkKeyId']
+        if 'regionId' in kwargs:
+            region_id = kwargs['regionId']
+
         _setter("arn", arn)
         _setter("cmk_key_id", cmk_key_id)
         _setter("region_id", region_id)
@@ -1339,7 +1421,17 @@ class StoreIndexFieldSearch(dict):
              json_keys: Optional[Sequence['outputs.StoreIndexFieldSearchJsonKey']] = None,
              token: Optional[str] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caseSensitive' in kwargs:
+            case_sensitive = kwargs['caseSensitive']
+        if 'enableAnalytics' in kwargs:
+            enable_analytics = kwargs['enableAnalytics']
+        if 'includeChinese' in kwargs:
+            include_chinese = kwargs['includeChinese']
+        if 'jsonKeys' in kwargs:
+            json_keys = kwargs['jsonKeys']
+
         _setter("name", name)
         if alias is not None:
             _setter("alias", alias)
@@ -1467,7 +1559,11 @@ class StoreIndexFieldSearchJsonKey(dict):
              alias: Optional[str] = None,
              doc_value: Optional[bool] = None,
              type: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'docValue' in kwargs:
+            doc_value = kwargs['docValue']
+
         _setter("name", name)
         if alias is not None:
             _setter("alias", alias)
@@ -1553,7 +1649,13 @@ class StoreIndexFullText(dict):
              case_sensitive: Optional[bool] = None,
              include_chinese: Optional[bool] = None,
              token: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'caseSensitive' in kwargs:
+            case_sensitive = kwargs['caseSensitive']
+        if 'includeChinese' in kwargs:
+            include_chinese = kwargs['includeChinese']
+
         if case_sensitive is not None:
             _setter("case_sensitive", case_sensitive)
         if include_chinese is not None:
@@ -1632,7 +1734,13 @@ class StoreShard(dict):
              end_key: Optional[str] = None,
              id: Optional[int] = None,
              status: Optional[str] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'beginKey' in kwargs:
+            begin_key = kwargs['beginKey']
+        if 'endKey' in kwargs:
+            end_key = kwargs['endKey']
+
         if begin_key is not None:
             _setter("begin_key", begin_key)
         if end_key is not None:
@@ -1718,7 +1826,13 @@ class GetProjectsProjectResult(dict):
              project_name: str,
              region: str,
              status: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'lastModifyTime' in kwargs:
+            last_modify_time = kwargs['lastModifyTime']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+
         _setter("description", description)
         _setter("id", id)
         _setter("last_modify_time", last_modify_time)
@@ -1812,7 +1926,11 @@ class GetStoresStoreResult(dict):
              _setter: Callable[[Any, Any], None],
              id: str,
              store_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'storeName' in kwargs:
+            store_name = kwargs['storeName']
+
         _setter("id", id)
         _setter("store_name", store_name)
 

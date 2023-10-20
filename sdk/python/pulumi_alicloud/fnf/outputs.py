@@ -58,7 +58,17 @@ class GetExecutionsExecutionResult(dict):
              started_time: str,
              status: str,
              stopped_time: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'executionName' in kwargs:
+            execution_name = kwargs['executionName']
+        if 'flowName' in kwargs:
+            flow_name = kwargs['flowName']
+        if 'startedTime' in kwargs:
+            started_time = kwargs['startedTime']
+        if 'stoppedTime' in kwargs:
+            stopped_time = kwargs['stoppedTime']
+
         _setter("execution_name", execution_name)
         _setter("flow_name", flow_name)
         _setter("id", id)
@@ -176,7 +186,15 @@ class GetFlowsFlowResult(dict):
              name: str,
              role_arn: str,
              type: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'flowId' in kwargs:
+            flow_id = kwargs['flowId']
+        if 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if 'roleArn' in kwargs:
+            role_arn = kwargs['roleArn']
+
         _setter("definition", definition)
         _setter("description", description)
         _setter("flow_id", flow_id)
@@ -294,7 +312,17 @@ class GetSchedulesScheduleResult(dict):
              payload: str,
              schedule_id: str,
              schedule_name: str,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cronExpression' in kwargs:
+            cron_expression = kwargs['cronExpression']
+        if 'lastModifiedTime' in kwargs:
+            last_modified_time = kwargs['lastModifiedTime']
+        if 'scheduleId' in kwargs:
+            schedule_id = kwargs['scheduleId']
+        if 'scheduleName' in kwargs:
+            schedule_name = kwargs['scheduleName']
+
         _setter("cron_expression", cron_expression)
         _setter("description", description)
         _setter("enable", enable)

@@ -9,7 +9,6 @@ import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
-import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAddressBooksBook {
@@ -32,14 +31,14 @@ public final class GetAddressBooksBook {
      * @return The logical relation among the ECS tags that to be matchedh.
      * 
      */
-    private @Nullable List<GetAddressBooksBookEcsTag> ecsTags;
+    private List<GetAddressBooksBookEcsTag> ecsTags;
     /**
      * @return The name of the Address Book.
      * 
      */
     private String groupName;
     /**
-     * @return The type of the Address Book.
+     * @return The type of the Address Book. Valid values: `ip`, `tag`.
      * 
      */
     private String groupType;
@@ -86,7 +85,7 @@ public final class GetAddressBooksBook {
      * 
      */
     public List<GetAddressBooksBookEcsTag> ecsTags() {
-        return this.ecsTags == null ? List.of() : this.ecsTags;
+        return this.ecsTags;
     }
     /**
      * @return The name of the Address Book.
@@ -96,7 +95,7 @@ public final class GetAddressBooksBook {
         return this.groupName;
     }
     /**
-     * @return The type of the Address Book.
+     * @return The type of the Address Book. Valid values: `ip`, `tag`.
      * 
      */
     public String groupType() {
@@ -136,7 +135,7 @@ public final class GetAddressBooksBook {
         private List<String> addressLists;
         private Integer autoAddTagEcs;
         private String description;
-        private @Nullable List<GetAddressBooksBookEcsTag> ecsTags;
+        private List<GetAddressBooksBookEcsTag> ecsTags;
         private String groupName;
         private String groupType;
         private String groupUuid;
@@ -175,8 +174,8 @@ public final class GetAddressBooksBook {
             return this;
         }
         @CustomType.Setter
-        public Builder ecsTags(@Nullable List<GetAddressBooksBookEcsTag> ecsTags) {
-            this.ecsTags = ecsTags;
+        public Builder ecsTags(List<GetAddressBooksBookEcsTag> ecsTags) {
+            this.ecsTags = Objects.requireNonNull(ecsTags);
             return this;
         }
         public Builder ecsTags(GetAddressBooksBookEcsTag... ecsTags) {

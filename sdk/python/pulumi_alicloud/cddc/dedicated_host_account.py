@@ -39,7 +39,17 @@ class DedicatedHostAccountArgs:
              account_password: pulumi.Input[str],
              dedicated_host_id: pulumi.Input[str],
              account_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'dedicatedHostId' in kwargs:
+            dedicated_host_id = kwargs['dedicatedHostId']
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+
         _setter("account_name", account_name)
         _setter("account_password", account_password)
         _setter("dedicated_host_id", dedicated_host_id)
@@ -123,7 +133,17 @@ class _DedicatedHostAccountState:
              account_password: Optional[pulumi.Input[str]] = None,
              account_type: Optional[pulumi.Input[str]] = None,
              dedicated_host_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountName' in kwargs:
+            account_name = kwargs['accountName']
+        if 'accountPassword' in kwargs:
+            account_password = kwargs['accountPassword']
+        if 'accountType' in kwargs:
+            account_type = kwargs['accountType']
+        if 'dedicatedHostId' in kwargs:
+            dedicated_host_id = kwargs['dedicatedHostId']
+
         if account_name is not None:
             _setter("account_name", account_name)
         if account_password is not None:

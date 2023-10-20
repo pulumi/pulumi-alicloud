@@ -43,7 +43,17 @@ class TransitRouterRouteTableArgs:
              tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
              transit_router_route_table_description: Optional[pulumi.Input[str]] = None,
              transit_router_route_table_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'transitRouterRouteTableDescription' in kwargs:
+            transit_router_route_table_description = kwargs['transitRouterRouteTableDescription']
+        if 'transitRouterRouteTableName' in kwargs:
+            transit_router_route_table_name = kwargs['transitRouterRouteTableName']
+
         _setter("transit_router_id", transit_router_id)
         if dry_run is not None:
             _setter("dry_run", dry_run)
@@ -159,7 +169,21 @@ class _TransitRouterRouteTableState:
              transit_router_route_table_id: Optional[pulumi.Input[str]] = None,
              transit_router_route_table_name: Optional[pulumi.Input[str]] = None,
              transit_router_route_table_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'dryRun' in kwargs:
+            dry_run = kwargs['dryRun']
+        if 'transitRouterId' in kwargs:
+            transit_router_id = kwargs['transitRouterId']
+        if 'transitRouterRouteTableDescription' in kwargs:
+            transit_router_route_table_description = kwargs['transitRouterRouteTableDescription']
+        if 'transitRouterRouteTableId' in kwargs:
+            transit_router_route_table_id = kwargs['transitRouterRouteTableId']
+        if 'transitRouterRouteTableName' in kwargs:
+            transit_router_route_table_name = kwargs['transitRouterRouteTableName']
+        if 'transitRouterRouteTableType' in kwargs:
+            transit_router_route_table_type = kwargs['transitRouterRouteTableType']
+
         if dry_run is not None:
             _setter("dry_run", dry_run)
         if status is not None:
@@ -286,7 +310,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
                  transit_router_route_table_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterroutetable)
+        Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterroutetable)
 
         > **NOTE:** Available since v1.126.0.
 
@@ -332,7 +356,7 @@ class TransitRouterRouteTable(pulumi.CustomResource):
                  args: TransitRouterRouteTableArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-doc-cbn-2017-09-12-api-doc-createtransitrouterroutetable)
+        Provides a CEN transit router route table resource.[What is Cen Transit Router Route Table](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-createtransitrouterroutetable)
 
         > **NOTE:** Available since v1.126.0.
 
